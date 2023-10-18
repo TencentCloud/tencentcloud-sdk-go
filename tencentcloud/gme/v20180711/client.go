@@ -59,8 +59,9 @@ func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
 func NewCreateAgeDetectTaskResponse() (response *CreateAgeDetectTaskResponse) {
     response = &CreateAgeDetectTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAgeDetectTask
@@ -151,8 +152,9 @@ func NewCreateAppRequest() (request *CreateAppRequest) {
 func NewCreateAppResponse() (response *CreateAppResponse) {
     response = &CreateAppResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApp
@@ -219,8 +221,9 @@ func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
 func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
     response = &CreateCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomization
@@ -271,8 +274,9 @@ func NewCreateScanUserRequest() (request *CreateScanUserRequest) {
 func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
     response = &CreateScanUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScanUser
@@ -319,8 +323,9 @@ func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
 func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
     response = &DeleteCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomization
@@ -369,8 +374,9 @@ func NewDeleteRoomMemberRequest() (request *DeleteRoomMemberRequest) {
 func NewDeleteRoomMemberResponse() (response *DeleteRoomMemberResponse) {
     response = &DeleteRoomMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRoomMember
@@ -427,8 +433,9 @@ func NewDeleteScanUserRequest() (request *DeleteScanUserRequest) {
 func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
     response = &DeleteScanUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScanUser
@@ -485,8 +492,9 @@ func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
 func NewDescribeAgeDetectTaskResponse() (response *DescribeAgeDetectTaskResponse) {
     response = &DescribeAgeDetectTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgeDetectTask
@@ -537,8 +545,9 @@ func NewDescribeAppStatisticsRequest() (request *DescribeAppStatisticsRequest) {
 func NewDescribeAppStatisticsResponse() (response *DescribeAppStatisticsResponse) {
     response = &DescribeAppStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAppStatistics
@@ -605,8 +614,9 @@ func NewDescribeApplicationDataRequest() (request *DescribeApplicationDataReques
 func NewDescribeApplicationDataResponse() (response *DescribeApplicationDataResponse) {
     response = &DescribeApplicationDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationData
@@ -661,8 +671,9 @@ func NewDescribeApplicationListRequest() (request *DescribeApplicationListReques
 func NewDescribeApplicationListResponse() (response *DescribeApplicationListResponse) {
     response = &DescribeApplicationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationList
@@ -721,8 +732,9 @@ func NewDescribeRealtimeScanConfigRequest() (request *DescribeRealtimeScanConfig
 func NewDescribeRealtimeScanConfigResponse() (response *DescribeRealtimeScanConfigResponse) {
     response = &DescribeRealtimeScanConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRealtimeScanConfig
@@ -769,8 +781,9 @@ func NewDescribeRecordInfoRequest() (request *DescribeRecordInfoRequest) {
 func NewDescribeRecordInfoResponse() (response *DescribeRecordInfoResponse) {
     response = &DescribeRecordInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordInfo
@@ -831,8 +844,9 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
 func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
     response = &DescribeRoomInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoomInfo
@@ -885,8 +899,9 @@ func NewDescribeScanResultListRequest() (request *DescribeScanResultListRequest)
 func NewDescribeScanResultListResponse() (response *DescribeScanResultListResponse) {
     response = &DescribeScanResultListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanResultList
@@ -955,8 +970,9 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
 func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
     response = &DescribeTaskInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskInfo
@@ -1019,8 +1035,9 @@ func NewDescribeUserInAndOutTimeRequest() (request *DescribeUserInAndOutTimeRequ
 func NewDescribeUserInAndOutTimeResponse() (response *DescribeUserInAndOutTimeResponse) {
     response = &DescribeUserInAndOutTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserInAndOutTime
@@ -1105,8 +1122,9 @@ func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
 func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) {
     response = &GetCustomizationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCustomizationList
@@ -1157,8 +1175,9 @@ func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
 func NewModifyAppStatusResponse() (response *ModifyAppStatusResponse) {
     response = &ModifyAppStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAppStatus
@@ -1223,8 +1242,9 @@ func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
 func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
     response = &ModifyCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomization
@@ -1277,8 +1297,9 @@ func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequ
 func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateResponse) {
     response = &ModifyCustomizationStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomizationState
@@ -1329,8 +1350,9 @@ func NewModifyRecordInfoRequest() (request *ModifyRecordInfoRequest) {
 func NewModifyRecordInfoResponse() (response *ModifyRecordInfoResponse) {
     response = &ModifyRecordInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRecordInfo
@@ -1399,8 +1421,9 @@ func NewModifyUserMicStatusRequest() (request *ModifyUserMicStatusRequest) {
 func NewModifyUserMicStatusResponse() (response *ModifyUserMicStatusResponse) {
     response = &ModifyUserMicStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserMicStatus
@@ -1457,8 +1480,9 @@ func NewScanVoiceRequest() (request *ScanVoiceRequest) {
 func NewScanVoiceResponse() (response *ScanVoiceResponse) {
     response = &ScanVoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanVoice
@@ -2065,8 +2089,9 @@ func NewStartRecordRequest() (request *StartRecordRequest) {
 func NewStartRecordResponse() (response *StartRecordResponse) {
     response = &StartRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartRecord
@@ -2139,8 +2164,9 @@ func NewStopRecordRequest() (request *StopRecordRequest) {
 func NewStopRecordResponse() (response *StopRecordResponse) {
     response = &StopRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopRecord
@@ -2201,8 +2227,9 @@ func NewUpdateScanRoomsRequest() (request *UpdateScanRoomsRequest) {
 func NewUpdateScanRoomsResponse() (response *UpdateScanRoomsResponse) {
     response = &UpdateScanRoomsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateScanRooms
@@ -2249,8 +2276,9 @@ func NewUpdateScanUsersRequest() (request *UpdateScanUsersRequest) {
 func NewUpdateScanUsersResponse() (response *UpdateScanUsersResponse) {
     response = &UpdateScanUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateScanUsers

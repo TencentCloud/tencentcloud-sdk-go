@@ -59,8 +59,9 @@ func NewCreateInstanceByApiRequest() (request *CreateInstanceByApiRequest) {
 func NewCreateInstanceByApiResponse() (response *CreateInstanceByApiResponse) {
     response = &CreateInstanceByApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstanceByApi
@@ -101,8 +102,9 @@ func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
 func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
     response = &DescribeInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstance
@@ -143,8 +145,9 @@ func NewDescribeInstanceStateRequest() (request *DescribeInstanceStateRequest) {
 func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse) {
     response = &DescribeInstanceStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceState
@@ -185,8 +188,9 @@ func NewDescribeSimpleInstancesRequest() (request *DescribeSimpleInstancesReques
 func NewDescribeSimpleInstancesResponse() (response *DescribeSimpleInstancesResponse) {
     response = &DescribeSimpleInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSimpleInstances
@@ -233,8 +237,9 @@ func NewDestroyInstanceByApiRequest() (request *DestroyInstanceByApiRequest) {
 func NewDestroyInstanceByApiResponse() (response *DestroyInstanceByApiResponse) {
     response = &DestroyInstanceByApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyInstanceByApi
@@ -281,8 +286,9 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
 func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
     response = &ModifyInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstance

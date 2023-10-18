@@ -59,8 +59,9 @@ func NewBatchModifyDomainInfoRequest() (request *BatchModifyDomainInfoRequest) {
 func NewBatchModifyDomainInfoResponse() (response *BatchModifyDomainInfoResponse) {
     response = &BatchModifyDomainInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchModifyDomainInfo
@@ -129,8 +130,9 @@ func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
 func NewCheckBatchStatusResponse() (response *CheckBatchStatusResponse) {
     response = &CheckBatchStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBatchStatus
@@ -179,8 +181,9 @@ func NewCheckDomainRequest() (request *CheckDomainRequest) {
 func NewCheckDomainResponse() (response *CheckDomainResponse) {
     response = &CheckDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckDomain
@@ -223,6 +226,81 @@ func (c *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomai
     return
 }
 
+func NewCreateCustomDnsHostRequest() (request *CreateCustomDnsHostRequest) {
+    request = &CreateCustomDnsHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "CreateCustomDnsHost")
+    
+    
+    return
+}
+
+func NewCreateCustomDnsHostResponse() (response *CreateCustomDnsHostResponse) {
+    response = &CreateCustomDnsHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCustomDnsHost
+// 创建自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  INVALIDPARAMETER_DUPLICATECUSTOMDNSNAME = "InvalidParameter.DuplicateCustomDnsName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_CUSTOMHOSTOVERLIMIT = "UnsupportedOperation.CustomHostOverLimit"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) CreateCustomDnsHost(request *CreateCustomDnsHostRequest) (response *CreateCustomDnsHostResponse, err error) {
+    return c.CreateCustomDnsHostWithContext(context.Background(), request)
+}
+
+// CreateCustomDnsHost
+// 创建自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  INVALIDPARAMETER_DUPLICATECUSTOMDNSNAME = "InvalidParameter.DuplicateCustomDnsName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_CUSTOMHOSTOVERLIMIT = "UnsupportedOperation.CustomHostOverLimit"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) CreateCustomDnsHostWithContext(ctx context.Context, request *CreateCustomDnsHostRequest) (response *CreateCustomDnsHostResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomDnsHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomDnsHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomDnsHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
     request = &CreateDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -237,8 +315,9 @@ func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
 func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
     response = &CreateDomainBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomainBatch
@@ -317,8 +396,9 @@ func NewCreateDomainRedemptionRequest() (request *CreateDomainRedemptionRequest)
 func NewCreateDomainRedemptionResponse() (response *CreateDomainRedemptionResponse) {
     response = &CreateDomainRedemptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomainRedemption
@@ -365,8 +445,9 @@ func NewCreatePhoneEmailRequest() (request *CreatePhoneEmailRequest) {
 func NewCreatePhoneEmailResponse() (response *CreatePhoneEmailResponse) {
     response = &CreatePhoneEmailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePhoneEmail
@@ -423,8 +504,9 @@ func NewCreateTemplateRequest() (request *CreateTemplateRequest) {
 func NewCreateTemplateResponse() (response *CreateTemplateResponse) {
     response = &CreateTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTemplate
@@ -531,8 +613,9 @@ func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
 func NewDeletePhoneEmailResponse() (response *DeletePhoneEmailResponse) {
     response = &DeletePhoneEmailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePhoneEmail
@@ -587,8 +670,9 @@ func NewDeleteTemplateRequest() (request *DeleteTemplateRequest) {
 func NewDeleteTemplateResponse() (response *DeleteTemplateResponse) {
     response = &DeleteTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTemplate
@@ -647,8 +731,9 @@ func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperati
 func NewDescribeBatchOperationLogDetailsResponse() (response *DescribeBatchOperationLogDetailsResponse) {
     response = &DescribeBatchOperationLogDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchOperationLogDetails
@@ -699,8 +784,9 @@ func NewDescribeBatchOperationLogsRequest() (request *DescribeBatchOperationLogs
 func NewDescribeBatchOperationLogsResponse() (response *DescribeBatchOperationLogsResponse) {
     response = &DescribeBatchOperationLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchOperationLogs
@@ -751,8 +837,9 @@ func NewDescribeDomainBaseInfoRequest() (request *DescribeDomainBaseInfoRequest)
 func NewDescribeDomainBaseInfoResponse() (response *DescribeDomainBaseInfoResponse) {
     response = &DescribeDomainBaseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainBaseInfo
@@ -809,8 +896,9 @@ func NewDescribeDomainNameListRequest() (request *DescribeDomainNameListRequest)
 func NewDescribeDomainNameListResponse() (response *DescribeDomainNameListResponse) {
     response = &DescribeDomainNameListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainNameList
@@ -859,8 +947,9 @@ func NewDescribeDomainPriceListRequest() (request *DescribeDomainPriceListReques
 func NewDescribeDomainPriceListResponse() (response *DescribeDomainPriceListResponse) {
     response = &DescribeDomainPriceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainPriceList
@@ -913,8 +1002,9 @@ func NewDescribeDomainSimpleInfoRequest() (request *DescribeDomainSimpleInfoRequ
 func NewDescribeDomainSimpleInfoResponse() (response *DescribeDomainSimpleInfoResponse) {
     response = &DescribeDomainSimpleInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainSimpleInfo
@@ -969,8 +1059,9 @@ func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest)
 func NewDescribePhoneEmailListResponse() (response *DescribePhoneEmailListResponse) {
     response = &DescribePhoneEmailListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePhoneEmailList
@@ -1019,8 +1110,9 @@ func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
 func NewDescribeTemplateResponse() (response *DescribeTemplateResponse) {
     response = &DescribeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTemplate
@@ -1083,8 +1175,9 @@ func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
 func NewDescribeTemplateListResponse() (response *DescribeTemplateListResponse) {
     response = &DescribeTemplateListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTemplateList
@@ -1143,8 +1236,9 @@ func NewModifyDomainDNSBatchRequest() (request *ModifyDomainDNSBatchRequest) {
 func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) {
     response = &ModifyDomainDNSBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDomainDNSBatch
@@ -1221,8 +1315,9 @@ func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest)
 func NewModifyDomainOwnerBatchResponse() (response *ModifyDomainOwnerBatchResponse) {
     response = &ModifyDomainOwnerBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDomainOwnerBatch
@@ -1281,8 +1376,9 @@ func NewRenewDomainBatchRequest() (request *RenewDomainBatchRequest) {
 func NewRenewDomainBatchResponse() (response *RenewDomainBatchResponse) {
     response = &RenewDomainBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewDomainBatch
@@ -1349,8 +1445,9 @@ func NewSendPhoneEmailCodeRequest() (request *SendPhoneEmailCodeRequest) {
 func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
     response = &SendPhoneEmailCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendPhoneEmailCode
@@ -1415,8 +1512,9 @@ func NewSetDomainAutoRenewRequest() (request *SetDomainAutoRenewRequest) {
 func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
     response = &SetDomainAutoRenewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetDomainAutoRenew
@@ -1483,8 +1581,9 @@ func NewTransferInDomainBatchRequest() (request *TransferInDomainBatchRequest) {
 func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse) {
     response = &TransferInDomainBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransferInDomainBatch
@@ -1559,8 +1658,9 @@ func NewTransferProhibitionBatchRequest() (request *TransferProhibitionBatchRequ
 func NewTransferProhibitionBatchResponse() (response *TransferProhibitionBatchResponse) {
     response = &TransferProhibitionBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransferProhibitionBatch
@@ -1623,8 +1723,9 @@ func NewUpdateProhibitionBatchRequest() (request *UpdateProhibitionBatchRequest)
 func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchResponse) {
     response = &UpdateProhibitionBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateProhibitionBatch
@@ -1687,8 +1788,9 @@ func NewUploadImageRequest() (request *UploadImageRequest) {
 func NewUploadImageResponse() (response *UploadImageResponse) {
     response = &UploadImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadImage

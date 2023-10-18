@@ -59,8 +59,9 @@ func NewAddDBInstanceToReadOnlyGroupRequest() (request *AddDBInstanceToReadOnlyG
 func NewAddDBInstanceToReadOnlyGroupResponse() (response *AddDBInstanceToReadOnlyGroupResponse) {
     response = &AddDBInstanceToReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddDBInstanceToReadOnlyGroup
@@ -151,8 +152,9 @@ func NewCloneDBInstanceRequest() (request *CloneDBInstanceRequest) {
 func NewCloneDBInstanceResponse() (response *CloneDBInstanceResponse) {
     response = &CloneDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloneDBInstance
@@ -241,8 +243,9 @@ func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
 func NewCloseDBExtranetAccessResponse() (response *CloseDBExtranetAccessResponse) {
     response = &CloseDBExtranetAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseDBExtranetAccess
@@ -325,8 +328,9 @@ func NewCloseServerlessDBExtranetAccessRequest() (request *CloseServerlessDBExtr
 func NewCloseServerlessDBExtranetAccessResponse() (response *CloseServerlessDBExtranetAccessResponse) {
     response = &CloseServerlessDBExtranetAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseServerlessDBExtranetAccess
@@ -447,8 +451,9 @@ func NewCreateBaseBackupRequest() (request *CreateBaseBackupRequest) {
 func NewCreateBaseBackupResponse() (response *CreateBaseBackupResponse) {
     response = &CreateBaseBackupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBaseBackup
@@ -505,8 +510,9 @@ func NewCreateDBInstanceNetworkAccessRequest() (request *CreateDBInstanceNetwork
 func NewCreateDBInstanceNetworkAccessResponse() (response *CreateDBInstanceNetworkAccessResponse) {
     response = &CreateDBInstanceNetworkAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBInstanceNetworkAccess
@@ -595,8 +601,9 @@ func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
 func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
     response = &CreateDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBInstances
@@ -783,8 +790,9 @@ func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
 func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
     response = &CreateInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstances
@@ -987,8 +995,9 @@ func NewCreateParameterTemplateRequest() (request *CreateParameterTemplateReques
 func NewCreateParameterTemplateResponse() (response *CreateParameterTemplateResponse) {
     response = &CreateParameterTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateParameterTemplate
@@ -1043,8 +1052,9 @@ func NewCreateReadOnlyDBInstanceRequest() (request *CreateReadOnlyDBInstanceRequ
 func NewCreateReadOnlyDBInstanceResponse() (response *CreateReadOnlyDBInstanceResponse) {
     response = &CreateReadOnlyDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReadOnlyDBInstance
@@ -1239,8 +1249,9 @@ func NewCreateReadOnlyGroupRequest() (request *CreateReadOnlyGroupRequest) {
 func NewCreateReadOnlyGroupResponse() (response *CreateReadOnlyGroupResponse) {
     response = &CreateReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReadOnlyGroup
@@ -1339,8 +1350,9 @@ func NewCreateReadOnlyGroupNetworkAccessRequest() (request *CreateReadOnlyGroupN
 func NewCreateReadOnlyGroupNetworkAccessResponse() (response *CreateReadOnlyGroupNetworkAccessResponse) {
     response = &CreateReadOnlyGroupNetworkAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReadOnlyGroupNetworkAccess
@@ -1419,8 +1431,9 @@ func NewCreateServerlessDBInstanceRequest() (request *CreateServerlessDBInstance
 func NewCreateServerlessDBInstanceResponse() (response *CreateServerlessDBInstanceResponse) {
     response = &CreateServerlessDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateServerlessDBInstance
@@ -1541,8 +1554,9 @@ func NewDeleteBaseBackupRequest() (request *DeleteBaseBackupRequest) {
 func NewDeleteBaseBackupResponse() (response *DeleteBaseBackupResponse) {
     response = &DeleteBaseBackupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaseBackup
@@ -1597,8 +1611,9 @@ func NewDeleteDBInstanceNetworkAccessRequest() (request *DeleteDBInstanceNetwork
 func NewDeleteDBInstanceNetworkAccessResponse() (response *DeleteDBInstanceNetworkAccessResponse) {
     response = &DeleteDBInstanceNetworkAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDBInstanceNetworkAccess
@@ -1679,8 +1694,9 @@ func NewDeleteLogBackupRequest() (request *DeleteLogBackupRequest) {
 func NewDeleteLogBackupResponse() (response *DeleteLogBackupResponse) {
     response = &DeleteLogBackupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLogBackup
@@ -1733,8 +1749,9 @@ func NewDeleteParameterTemplateRequest() (request *DeleteParameterTemplateReques
 func NewDeleteParameterTemplateResponse() (response *DeleteParameterTemplateResponse) {
     response = &DeleteParameterTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteParameterTemplate
@@ -1781,8 +1798,9 @@ func NewDeleteReadOnlyGroupRequest() (request *DeleteReadOnlyGroupRequest) {
 func NewDeleteReadOnlyGroupResponse() (response *DeleteReadOnlyGroupResponse) {
     response = &DeleteReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReadOnlyGroup
@@ -1861,8 +1879,9 @@ func NewDeleteReadOnlyGroupNetworkAccessRequest() (request *DeleteReadOnlyGroupN
 func NewDeleteReadOnlyGroupNetworkAccessResponse() (response *DeleteReadOnlyGroupNetworkAccessResponse) {
     response = &DeleteReadOnlyGroupNetworkAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReadOnlyGroupNetworkAccess
@@ -1935,8 +1954,9 @@ func NewDeleteServerlessDBInstanceRequest() (request *DeleteServerlessDBInstance
 func NewDeleteServerlessDBInstanceResponse() (response *DeleteServerlessDBInstanceResponse) {
     response = &DeleteServerlessDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteServerlessDBInstance
@@ -2025,8 +2045,9 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
 func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     response = &DescribeAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccounts
@@ -2097,8 +2118,9 @@ func NewDescribeAvailableRecoveryTimeRequest() (request *DescribeAvailableRecove
 func NewDescribeAvailableRecoveryTimeResponse() (response *DescribeAvailableRecoveryTimeResponse) {
     response = &DescribeAvailableRecoveryTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAvailableRecoveryTime
@@ -2159,8 +2181,9 @@ func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownl
 func NewDescribeBackupDownloadRestrictionResponse() (response *DescribeBackupDownloadRestrictionResponse) {
     response = &DescribeBackupDownloadRestrictionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupDownloadRestriction
@@ -2209,8 +2232,9 @@ func NewDescribeBackupDownloadURLRequest() (request *DescribeBackupDownloadURLRe
 func NewDescribeBackupDownloadURLResponse() (response *DescribeBackupDownloadURLResponse) {
     response = &DescribeBackupDownloadURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupDownloadURL
@@ -2271,8 +2295,9 @@ func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest)
 func NewDescribeBackupOverviewResponse() (response *DescribeBackupOverviewResponse) {
     response = &DescribeBackupOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupOverview
@@ -2325,8 +2350,9 @@ func NewDescribeBackupPlansRequest() (request *DescribeBackupPlansRequest) {
 func NewDescribeBackupPlansResponse() (response *DescribeBackupPlansResponse) {
     response = &DescribeBackupPlansResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupPlans
@@ -2391,8 +2417,9 @@ func NewDescribeBackupSummariesRequest() (request *DescribeBackupSummariesReques
 func NewDescribeBackupSummariesResponse() (response *DescribeBackupSummariesResponse) {
     response = &DescribeBackupSummariesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupSummaries
@@ -2449,8 +2476,9 @@ func NewDescribeBaseBackupsRequest() (request *DescribeBaseBackupsRequest) {
 func NewDescribeBaseBackupsResponse() (response *DescribeBaseBackupsResponse) {
     response = &DescribeBaseBackupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaseBackups
@@ -2503,8 +2531,9 @@ func NewDescribeClassesRequest() (request *DescribeClassesRequest) {
 func NewDescribeClassesResponse() (response *DescribeClassesResponse) {
     response = &DescribeClassesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClasses
@@ -2563,8 +2592,9 @@ func NewDescribeCloneDBInstanceSpecRequest() (request *DescribeCloneDBInstanceSp
 func NewDescribeCloneDBInstanceSpecResponse() (response *DescribeCloneDBInstanceSpecResponse) {
     response = &DescribeCloneDBInstanceSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloneDBInstanceSpec
@@ -2627,8 +2657,9 @@ func NewDescribeDBBackupsRequest() (request *DescribeDBBackupsRequest) {
 func NewDescribeDBBackupsResponse() (response *DescribeDBBackupsResponse) {
     response = &DescribeDBBackupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBBackups
@@ -2715,8 +2746,9 @@ func NewDescribeDBErrlogsRequest() (request *DescribeDBErrlogsRequest) {
 func NewDescribeDBErrlogsResponse() (response *DescribeDBErrlogsResponse) {
     response = &DescribeDBErrlogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBErrlogs
@@ -2797,8 +2829,9 @@ func NewDescribeDBInstanceAttributeRequest() (request *DescribeDBInstanceAttribu
 func NewDescribeDBInstanceAttributeResponse() (response *DescribeDBInstanceAttributeResponse) {
     response = &DescribeDBInstanceAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstanceAttribute
@@ -2885,8 +2918,9 @@ func NewDescribeDBInstanceHAConfigRequest() (request *DescribeDBInstanceHAConfig
 func NewDescribeDBInstanceHAConfigResponse() (response *DescribeDBInstanceHAConfigResponse) {
     response = &DescribeDBInstanceHAConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstanceHAConfig
@@ -2955,8 +2989,9 @@ func NewDescribeDBInstanceParametersRequest() (request *DescribeDBInstanceParame
 func NewDescribeDBInstanceParametersResponse() (response *DescribeDBInstanceParametersResponse) {
     response = &DescribeDBInstanceParametersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstanceParameters
@@ -3019,8 +3054,9 @@ func NewDescribeDBInstanceSecurityGroupsRequest() (request *DescribeDBInstanceSe
 func NewDescribeDBInstanceSecurityGroupsResponse() (response *DescribeDBInstanceSecurityGroupsResponse) {
     response = &DescribeDBInstanceSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstanceSecurityGroups
@@ -3081,8 +3117,9 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
 func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     response = &DescribeDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstances
@@ -3181,8 +3218,9 @@ func NewDescribeDBSlowlogsRequest() (request *DescribeDBSlowlogsRequest) {
 func NewDescribeDBSlowlogsResponse() (response *DescribeDBSlowlogsResponse) {
     response = &DescribeDBSlowlogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBSlowlogs
@@ -3259,8 +3297,9 @@ func NewDescribeDBVersionsRequest() (request *DescribeDBVersionsRequest) {
 func NewDescribeDBVersionsResponse() (response *DescribeDBVersionsResponse) {
     response = &DescribeDBVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBVersions
@@ -3315,8 +3354,9 @@ func NewDescribeDBXlogsRequest() (request *DescribeDBXlogsRequest) {
 func NewDescribeDBXlogsResponse() (response *DescribeDBXlogsResponse) {
     response = &DescribeDBXlogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBXlogs
@@ -3403,8 +3443,9 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
 func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
     response = &DescribeDatabasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatabases
@@ -3493,8 +3534,9 @@ func NewDescribeDefaultParametersRequest() (request *DescribeDefaultParametersRe
 func NewDescribeDefaultParametersResponse() (response *DescribeDefaultParametersResponse) {
     response = &DescribeDefaultParametersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDefaultParameters
@@ -3547,8 +3589,9 @@ func NewDescribeEncryptionKeysRequest() (request *DescribeEncryptionKeysRequest)
 func NewDescribeEncryptionKeysResponse() (response *DescribeEncryptionKeysResponse) {
     response = &DescribeEncryptionKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEncryptionKeys
@@ -3601,8 +3644,9 @@ func NewDescribeLogBackupsRequest() (request *DescribeLogBackupsRequest) {
 func NewDescribeLogBackupsResponse() (response *DescribeLogBackupsResponse) {
     response = &DescribeLogBackupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogBackups
@@ -3655,8 +3699,9 @@ func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
 func NewDescribeOrdersResponse() (response *DescribeOrdersResponse) {
     response = &DescribeOrdersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrders
@@ -3729,8 +3774,9 @@ func NewDescribeParameterTemplateAttributesRequest() (request *DescribeParameter
 func NewDescribeParameterTemplateAttributesResponse() (response *DescribeParameterTemplateAttributesResponse) {
     response = &DescribeParameterTemplateAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeParameterTemplateAttributes
@@ -3777,8 +3823,9 @@ func NewDescribeParameterTemplatesRequest() (request *DescribeParameterTemplates
 func NewDescribeParameterTemplatesResponse() (response *DescribeParameterTemplatesResponse) {
     response = &DescribeParameterTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeParameterTemplates
@@ -3829,8 +3876,9 @@ func NewDescribeParamsEventRequest() (request *DescribeParamsEventRequest) {
 func NewDescribeParamsEventResponse() (response *DescribeParamsEventResponse) {
     response = &DescribeParamsEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeParamsEvent
@@ -3891,8 +3939,9 @@ func NewDescribeProductConfigRequest() (request *DescribeProductConfigRequest) {
 func NewDescribeProductConfigResponse() (response *DescribeProductConfigResponse) {
     response = &DescribeProductConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProductConfig
@@ -3971,8 +4020,9 @@ func NewDescribeReadOnlyGroupsRequest() (request *DescribeReadOnlyGroupsRequest)
 func NewDescribeReadOnlyGroupsResponse() (response *DescribeReadOnlyGroupsResponse) {
     response = &DescribeReadOnlyGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReadOnlyGroups
@@ -4047,8 +4097,9 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
 func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     response = &DescribeRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegions
@@ -4129,8 +4180,9 @@ func NewDescribeServerlessDBInstancesRequest() (request *DescribeServerlessDBIns
 func NewDescribeServerlessDBInstancesResponse() (response *DescribeServerlessDBInstancesResponse) {
     response = &DescribeServerlessDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServerlessDBInstances
@@ -4231,8 +4283,9 @@ func NewDescribeSlowQueryAnalysisRequest() (request *DescribeSlowQueryAnalysisRe
 func NewDescribeSlowQueryAnalysisResponse() (response *DescribeSlowQueryAnalysisResponse) {
     response = &DescribeSlowQueryAnalysisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowQueryAnalysis
@@ -4289,8 +4342,9 @@ func NewDescribeSlowQueryListRequest() (request *DescribeSlowQueryListRequest) {
 func NewDescribeSlowQueryListResponse() (response *DescribeSlowQueryListResponse) {
     response = &DescribeSlowQueryListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowQueryList
@@ -4353,8 +4407,9 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
 func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
     response = &DescribeZonesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZones
@@ -4433,8 +4488,9 @@ func NewDestroyDBInstanceRequest() (request *DestroyDBInstanceRequest) {
 func NewDestroyDBInstanceResponse() (response *DestroyDBInstanceResponse) {
     response = &DestroyDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyDBInstance
@@ -4547,8 +4603,9 @@ func NewDisIsolateDBInstancesRequest() (request *DisIsolateDBInstancesRequest) {
 func NewDisIsolateDBInstancesResponse() (response *DisIsolateDBInstancesResponse) {
     response = &DisIsolateDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisIsolateDBInstances
@@ -4661,8 +4718,9 @@ func NewInitDBInstancesRequest() (request *InitDBInstancesRequest) {
 func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
     response = &InitDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InitDBInstances
@@ -4761,8 +4819,9 @@ func NewInquiryPriceCreateDBInstancesRequest() (request *InquiryPriceCreateDBIns
 func NewInquiryPriceCreateDBInstancesResponse() (response *InquiryPriceCreateDBInstancesResponse) {
     response = &InquiryPriceCreateDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceCreateDBInstances
@@ -4853,8 +4912,9 @@ func NewInquiryPriceRenewDBInstanceRequest() (request *InquiryPriceRenewDBInstan
 func NewInquiryPriceRenewDBInstanceResponse() (response *InquiryPriceRenewDBInstanceResponse) {
     response = &InquiryPriceRenewDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceRenewDBInstance
@@ -4941,8 +5001,9 @@ func NewInquiryPriceUpgradeDBInstanceRequest() (request *InquiryPriceUpgradeDBIn
 func NewInquiryPriceUpgradeDBInstanceResponse() (response *InquiryPriceUpgradeDBInstanceResponse) {
     response = &InquiryPriceUpgradeDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceUpgradeDBInstance
@@ -5037,8 +5098,9 @@ func NewIsolateDBInstancesRequest() (request *IsolateDBInstancesRequest) {
 func NewIsolateDBInstancesResponse() (response *IsolateDBInstancesResponse) {
     response = &IsolateDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateDBInstances
@@ -5155,8 +5217,9 @@ func NewModifyAccountRemarkRequest() (request *ModifyAccountRemarkRequest) {
 func NewModifyAccountRemarkResponse() (response *ModifyAccountRemarkResponse) {
     response = &ModifyAccountRemarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccountRemark
@@ -5229,8 +5292,9 @@ func NewModifyBackupDownloadRestrictionRequest() (request *ModifyBackupDownloadR
 func NewModifyBackupDownloadRestrictionResponse() (response *ModifyBackupDownloadRestrictionResponse) {
     response = &ModifyBackupDownloadRestrictionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBackupDownloadRestriction
@@ -5287,8 +5351,9 @@ func NewModifyBackupPlanRequest() (request *ModifyBackupPlanRequest) {
 func NewModifyBackupPlanResponse() (response *ModifyBackupPlanResponse) {
     response = &ModifyBackupPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBackupPlan
@@ -5351,8 +5416,9 @@ func NewModifyBaseBackupExpireTimeRequest() (request *ModifyBaseBackupExpireTime
 func NewModifyBaseBackupExpireTimeResponse() (response *ModifyBaseBackupExpireTimeResponse) {
     response = &ModifyBaseBackupExpireTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaseBackupExpireTime
@@ -5405,8 +5471,9 @@ func NewModifyDBInstanceChargeTypeRequest() (request *ModifyDBInstanceChargeType
 func NewModifyDBInstanceChargeTypeResponse() (response *ModifyDBInstanceChargeTypeResponse) {
     response = &ModifyDBInstanceChargeTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceChargeType
@@ -5467,8 +5534,9 @@ func NewModifyDBInstanceDeploymentRequest() (request *ModifyDBInstanceDeployment
 func NewModifyDBInstanceDeploymentResponse() (response *ModifyDBInstanceDeploymentResponse) {
     response = &ModifyDBInstanceDeploymentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceDeployment
@@ -5531,8 +5599,9 @@ func NewModifyDBInstanceHAConfigRequest() (request *ModifyDBInstanceHAConfigRequ
 func NewModifyDBInstanceHAConfigResponse() (response *ModifyDBInstanceHAConfigResponse) {
     response = &ModifyDBInstanceHAConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceHAConfig
@@ -5603,8 +5672,9 @@ func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
 func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) {
     response = &ModifyDBInstanceNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceName
@@ -5685,8 +5755,9 @@ func NewModifyDBInstanceParametersRequest() (request *ModifyDBInstanceParameters
 func NewModifyDBInstanceParametersResponse() (response *ModifyDBInstanceParametersResponse) {
     response = &ModifyDBInstanceParametersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceParameters
@@ -5749,8 +5820,9 @@ func NewModifyDBInstanceReadOnlyGroupRequest() (request *ModifyDBInstanceReadOnl
 func NewModifyDBInstanceReadOnlyGroupResponse() (response *ModifyDBInstanceReadOnlyGroupResponse) {
     response = &ModifyDBInstanceReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceReadOnlyGroup
@@ -5835,8 +5907,9 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
 func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecurityGroupsResponse) {
     response = &ModifyDBInstanceSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceSecurityGroups
@@ -5897,8 +5970,9 @@ func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
 func NewModifyDBInstanceSpecResponse() (response *ModifyDBInstanceSpecResponse) {
     response = &ModifyDBInstanceSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceSpec
@@ -5975,8 +6049,9 @@ func NewModifyDBInstancesProjectRequest() (request *ModifyDBInstancesProjectRequ
 func NewModifyDBInstancesProjectResponse() (response *ModifyDBInstancesProjectResponse) {
     response = &ModifyDBInstancesProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstancesProject
@@ -6055,8 +6130,9 @@ func NewModifyParameterTemplateRequest() (request *ModifyParameterTemplateReques
 func NewModifyParameterTemplateResponse() (response *ModifyParameterTemplateResponse) {
     response = &ModifyParameterTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyParameterTemplate
@@ -6107,8 +6183,9 @@ func NewModifyReadOnlyGroupConfigRequest() (request *ModifyReadOnlyGroupConfigRe
 func NewModifyReadOnlyGroupConfigResponse() (response *ModifyReadOnlyGroupConfigResponse) {
     response = &ModifyReadOnlyGroupConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyReadOnlyGroupConfig
@@ -6197,8 +6274,9 @@ func NewModifySwitchTimePeriodRequest() (request *ModifySwitchTimePeriodRequest)
 func NewModifySwitchTimePeriodResponse() (response *ModifySwitchTimePeriodResponse) {
     response = &ModifySwitchTimePeriodResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySwitchTimePeriod
@@ -6271,8 +6349,9 @@ func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
 func NewOpenDBExtranetAccessResponse() (response *OpenDBExtranetAccessResponse) {
     response = &OpenDBExtranetAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenDBExtranetAccess
@@ -6355,8 +6434,9 @@ func NewOpenServerlessDBExtranetAccessRequest() (request *OpenServerlessDBExtran
 func NewOpenServerlessDBExtranetAccessResponse() (response *OpenServerlessDBExtranetAccessResponse) {
     response = &OpenServerlessDBExtranetAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenServerlessDBExtranetAccess
@@ -6475,8 +6555,9 @@ func NewRebalanceReadOnlyGroupRequest() (request *RebalanceReadOnlyGroupRequest)
 func NewRebalanceReadOnlyGroupResponse() (response *RebalanceReadOnlyGroupResponse) {
     response = &RebalanceReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RebalanceReadOnlyGroup
@@ -6555,8 +6636,9 @@ func NewRemoveDBInstanceFromReadOnlyGroupRequest() (request *RemoveDBInstanceFro
 func NewRemoveDBInstanceFromReadOnlyGroupResponse() (response *RemoveDBInstanceFromReadOnlyGroupResponse) {
     response = &RemoveDBInstanceFromReadOnlyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveDBInstanceFromReadOnlyGroup
@@ -6641,8 +6723,9 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
 func NewRenewInstanceResponse() (response *RenewInstanceResponse) {
     response = &RenewInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewInstance
@@ -6749,8 +6832,9 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
 func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) {
     response = &ResetAccountPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetAccountPassword
@@ -6835,8 +6919,9 @@ func NewRestartDBInstanceRequest() (request *RestartDBInstanceRequest) {
 func NewRestartDBInstanceResponse() (response *RestartDBInstanceResponse) {
     response = &RestartDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartDBInstance
@@ -6917,8 +7002,9 @@ func NewSetAutoRenewFlagRequest() (request *SetAutoRenewFlagRequest) {
 func NewSetAutoRenewFlagResponse() (response *SetAutoRenewFlagResponse) {
     response = &SetAutoRenewFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetAutoRenewFlag
@@ -6999,8 +7085,9 @@ func NewSwitchDBInstancePrimaryRequest() (request *SwitchDBInstancePrimaryReques
 func NewSwitchDBInstancePrimaryResponse() (response *SwitchDBInstancePrimaryResponse) {
     response = &SwitchDBInstancePrimaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SwitchDBInstancePrimary
@@ -7077,8 +7164,9 @@ func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
 func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
     response = &UpgradeDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDBInstance
@@ -7179,8 +7267,9 @@ func NewUpgradeDBInstanceKernelVersionRequest() (request *UpgradeDBInstanceKerne
 func NewUpgradeDBInstanceKernelVersionResponse() (response *UpgradeDBInstanceKernelVersionResponse) {
     response = &UpgradeDBInstanceKernelVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDBInstanceKernelVersion
@@ -7245,8 +7334,9 @@ func NewUpgradeDBInstanceMajorVersionRequest() (request *UpgradeDBInstanceMajorV
 func NewUpgradeDBInstanceMajorVersionResponse() (response *UpgradeDBInstanceMajorVersionResponse) {
     response = &UpgradeDBInstanceMajorVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDBInstanceMajorVersion

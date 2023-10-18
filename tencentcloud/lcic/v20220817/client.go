@@ -59,8 +59,9 @@ func NewAddGroupMemberRequest() (request *AddGroupMemberRequest) {
 func NewAddGroupMemberResponse() (response *AddGroupMemberResponse) {
     response = &AddGroupMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddGroupMember
@@ -139,8 +140,9 @@ func NewBatchAddGroupMemberRequest() (request *BatchAddGroupMemberRequest) {
 func NewBatchAddGroupMemberResponse() (response *BatchAddGroupMemberResponse) {
     response = &BatchAddGroupMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchAddGroupMember
@@ -215,8 +217,9 @@ func NewBatchCreateGroupWithMembersRequest() (request *BatchCreateGroupWithMembe
 func NewBatchCreateGroupWithMembersResponse() (response *BatchCreateGroupWithMembersResponse) {
     response = &BatchCreateGroupWithMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchCreateGroupWithMembers
@@ -301,8 +304,9 @@ func NewBatchCreateRoomRequest() (request *BatchCreateRoomRequest) {
 func NewBatchCreateRoomResponse() (response *BatchCreateRoomResponse) {
     response = &BatchCreateRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchCreateRoom
@@ -413,8 +417,9 @@ func NewBatchDeleteGroupMemberRequest() (request *BatchDeleteGroupMemberRequest)
 func NewBatchDeleteGroupMemberResponse() (response *BatchDeleteGroupMemberResponse) {
     response = &BatchDeleteGroupMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeleteGroupMember
@@ -491,8 +496,9 @@ func NewBatchDeleteRecordRequest() (request *BatchDeleteRecordRequest) {
 func NewBatchDeleteRecordResponse() (response *BatchDeleteRecordResponse) {
     response = &BatchDeleteRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeleteRecord
@@ -553,8 +559,9 @@ func NewBatchDescribeDocumentRequest() (request *BatchDescribeDocumentRequest) {
 func NewBatchDescribeDocumentResponse() (response *BatchDescribeDocumentResponse) {
     response = &BatchDescribeDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDescribeDocument
@@ -601,8 +608,9 @@ func NewBatchRegisterRequest() (request *BatchRegisterRequest) {
 func NewBatchRegisterResponse() (response *BatchRegisterResponse) {
     response = &BatchRegisterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchRegister
@@ -659,8 +667,9 @@ func NewBindDocumentToRoomRequest() (request *BindDocumentToRoomRequest) {
 func NewBindDocumentToRoomResponse() (response *BindDocumentToRoomResponse) {
     response = &BindDocumentToRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDocumentToRoom
@@ -717,8 +726,9 @@ func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
 func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
     response = &CreateDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDocument
@@ -771,8 +781,9 @@ func NewCreateGroupWithMembersRequest() (request *CreateGroupWithMembersRequest)
 func NewCreateGroupWithMembersResponse() (response *CreateGroupWithMembersResponse) {
     response = &CreateGroupWithMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroupWithMembers
@@ -849,8 +860,9 @@ func NewCreateGroupWithSubGroupRequest() (request *CreateGroupWithSubGroupReques
 func NewCreateGroupWithSubGroupResponse() (response *CreateGroupWithSubGroupResponse) {
     response = &CreateGroupWithSubGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroupWithSubGroup
@@ -933,8 +945,9 @@ func NewCreateRoomRequest() (request *CreateRoomRequest) {
 func NewCreateRoomResponse() (response *CreateRoomResponse) {
     response = &CreateRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRoom
@@ -1009,8 +1022,9 @@ func NewCreateSupervisorRequest() (request *CreateSupervisorRequest) {
 func NewCreateSupervisorResponse() (response *CreateSupervisorResponse) {
     response = &CreateSupervisorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSupervisor
@@ -1061,8 +1075,9 @@ func NewDeleteAppCustomContentRequest() (request *DeleteAppCustomContentRequest)
 func NewDeleteAppCustomContentResponse() (response *DeleteAppCustomContentResponse) {
     response = &DeleteAppCustomContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAppCustomContent
@@ -1113,8 +1128,9 @@ func NewDeleteDocumentRequest() (request *DeleteDocumentRequest) {
 func NewDeleteDocumentResponse() (response *DeleteDocumentResponse) {
     response = &DeleteDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDocument
@@ -1163,8 +1179,9 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
 func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     response = &DeleteGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroup
@@ -1231,8 +1248,9 @@ func NewDeleteGroupMemberRequest() (request *DeleteGroupMemberRequest) {
 func NewDeleteGroupMemberResponse() (response *DeleteGroupMemberResponse) {
     response = &DeleteGroupMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroupMember
@@ -1309,8 +1327,9 @@ func NewDeleteRecordRequest() (request *DeleteRecordRequest) {
 func NewDeleteRecordResponse() (response *DeleteRecordResponse) {
     response = &DeleteRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRecord
@@ -1371,8 +1390,9 @@ func NewDeleteRoomRequest() (request *DeleteRoomRequest) {
 func NewDeleteRoomResponse() (response *DeleteRoomResponse) {
     response = &DeleteRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRoom
@@ -1423,8 +1443,9 @@ func NewDeleteSupervisorRequest() (request *DeleteSupervisorRequest) {
 func NewDeleteSupervisorResponse() (response *DeleteSupervisorResponse) {
     response = &DeleteSupervisorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSupervisor
@@ -1475,8 +1496,9 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
 func NewDeleteUserResponse() (response *DeleteUserResponse) {
     response = &DeleteUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUser
@@ -1613,8 +1635,9 @@ func NewDescribeAnswerListRequest() (request *DescribeAnswerListRequest) {
 func NewDescribeAnswerListResponse() (response *DescribeAnswerListResponse) {
     response = &DescribeAnswerListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAnswerList
@@ -1675,8 +1698,9 @@ func NewDescribeAppDetailRequest() (request *DescribeAppDetailRequest) {
 func NewDescribeAppDetailResponse() (response *DescribeAppDetailResponse) {
     response = &DescribeAppDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAppDetail
@@ -1737,8 +1761,9 @@ func NewDescribeCurrentMemberListRequest() (request *DescribeCurrentMemberListRe
 func NewDescribeCurrentMemberListResponse() (response *DescribeCurrentMemberListResponse) {
     response = &DescribeCurrentMemberListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCurrentMemberList
@@ -1791,8 +1816,9 @@ func NewDescribeDeveloperRequest() (request *DescribeDeveloperRequest) {
 func NewDescribeDeveloperResponse() (response *DescribeDeveloperResponse) {
     response = &DescribeDeveloperResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeveloper
@@ -1851,8 +1877,9 @@ func NewDescribeDocumentRequest() (request *DescribeDocumentRequest) {
 func NewDescribeDocumentResponse() (response *DescribeDocumentResponse) {
     response = &DescribeDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDocument
@@ -1901,8 +1928,9 @@ func NewDescribeDocumentsRequest() (request *DescribeDocumentsRequest) {
 func NewDescribeDocumentsResponse() (response *DescribeDocumentsResponse) {
     response = &DescribeDocumentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDocuments
@@ -1957,8 +1985,9 @@ func NewDescribeDocumentsByRoomRequest() (request *DescribeDocumentsByRoomReques
 func NewDescribeDocumentsByRoomResponse() (response *DescribeDocumentsByRoomResponse) {
     response = &DescribeDocumentsByRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDocumentsByRoom
@@ -2069,8 +2098,9 @@ func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
 func NewDescribeGroupResponse() (response *DescribeGroupResponse) {
     response = &DescribeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroup
@@ -2141,8 +2171,9 @@ func NewDescribeGroupListRequest() (request *DescribeGroupListRequest) {
 func NewDescribeGroupListResponse() (response *DescribeGroupListResponse) {
     response = &DescribeGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupList
@@ -2215,8 +2246,9 @@ func NewDescribeGroupMemberListRequest() (request *DescribeGroupMemberListReques
 func NewDescribeGroupMemberListResponse() (response *DescribeGroupMemberListResponse) {
     response = &DescribeGroupMemberListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupMemberList
@@ -2293,8 +2325,9 @@ func NewDescribeQuestionListRequest() (request *DescribeQuestionListRequest) {
 func NewDescribeQuestionListResponse() (response *DescribeQuestionListResponse) {
     response = &DescribeQuestionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQuestionList
@@ -2355,8 +2388,9 @@ func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
 func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
     response = &DescribeRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoom
@@ -2407,8 +2441,9 @@ func NewDescribeRoomStatisticsRequest() (request *DescribeRoomStatisticsRequest)
 func NewDescribeRoomStatisticsResponse() (response *DescribeRoomStatisticsResponse) {
     response = &DescribeRoomStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoomStatistics
@@ -2461,8 +2496,9 @@ func NewDescribeScoreListRequest() (request *DescribeScoreListRequest) {
 func NewDescribeScoreListResponse() (response *DescribeScoreListResponse) {
     response = &DescribeScoreListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScoreList
@@ -2521,8 +2557,9 @@ func NewDescribeSdkAppIdUsersRequest() (request *DescribeSdkAppIdUsersRequest) {
 func NewDescribeSdkAppIdUsersResponse() (response *DescribeSdkAppIdUsersResponse) {
     response = &DescribeSdkAppIdUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSdkAppIdUsers
@@ -2633,8 +2670,9 @@ func NewDescribeSupervisorsRequest() (request *DescribeSupervisorsRequest) {
 func NewDescribeSupervisorsResponse() (response *DescribeSupervisorsResponse) {
     response = &DescribeSupervisorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSupervisors
@@ -2697,8 +2735,9 @@ func NewDescribeUserRequest() (request *DescribeUserRequest) {
 func NewDescribeUserResponse() (response *DescribeUserResponse) {
     response = &DescribeUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUser
@@ -2747,8 +2786,9 @@ func NewEndRoomRequest() (request *EndRoomRequest) {
 func NewEndRoomResponse() (response *EndRoomResponse) {
     response = &EndRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EndRoom
@@ -2821,8 +2861,9 @@ func NewGetRoomEventRequest() (request *GetRoomEventRequest) {
 func NewGetRoomEventResponse() (response *GetRoomEventResponse) {
     response = &GetRoomEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRoomEvent
@@ -2873,8 +2914,9 @@ func NewGetRoomMessageRequest() (request *GetRoomMessageRequest) {
 func NewGetRoomMessageResponse() (response *GetRoomMessageResponse) {
     response = &GetRoomMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRoomMessage
@@ -2947,8 +2989,9 @@ func NewGetRoomsRequest() (request *GetRoomsRequest) {
 func NewGetRoomsResponse() (response *GetRoomsResponse) {
     response = &GetRoomsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRooms
@@ -3017,8 +3060,9 @@ func NewGetWatermarkRequest() (request *GetWatermarkRequest) {
 func NewGetWatermarkResponse() (response *GetWatermarkResponse) {
     response = &GetWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetWatermark
@@ -3075,8 +3119,9 @@ func NewKickUserFromRoomRequest() (request *KickUserFromRoomRequest) {
 func NewKickUserFromRoomResponse() (response *KickUserFromRoomResponse) {
     response = &KickUserFromRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // KickUserFromRoom
@@ -3125,8 +3170,9 @@ func NewLoginOriginIdRequest() (request *LoginOriginIdRequest) {
 func NewLoginOriginIdResponse() (response *LoginOriginIdResponse) {
     response = &LoginOriginIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LoginOriginId
@@ -3177,8 +3223,9 @@ func NewLoginUserRequest() (request *LoginUserRequest) {
 func NewLoginUserResponse() (response *LoginUserResponse) {
     response = &LoginUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LoginUser
@@ -3227,8 +3274,9 @@ func NewModifyAppRequest() (request *ModifyAppRequest) {
 func NewModifyAppResponse() (response *ModifyAppResponse) {
     response = &ModifyAppResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApp
@@ -3277,8 +3325,9 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
 func NewModifyGroupResponse() (response *ModifyGroupResponse) {
     response = &ModifyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGroup
@@ -3371,8 +3420,9 @@ func NewModifyRoomRequest() (request *ModifyRoomRequest) {
 func NewModifyRoomResponse() (response *ModifyRoomResponse) {
     response = &ModifyRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRoom
@@ -3447,8 +3497,9 @@ func NewModifyUserProfileRequest() (request *ModifyUserProfileRequest) {
 func NewModifyUserProfileResponse() (response *ModifyUserProfileResponse) {
     response = &ModifyUserProfileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserProfile
@@ -3559,8 +3610,9 @@ func NewRegisterUserRequest() (request *RegisterUserRequest) {
 func NewRegisterUserResponse() (response *RegisterUserResponse) {
     response = &RegisterUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterUser
@@ -3613,8 +3665,9 @@ func NewSetAppCustomContentRequest() (request *SetAppCustomContentRequest) {
 func NewSetAppCustomContentResponse() (response *SetAppCustomContentResponse) {
     response = &SetAppCustomContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetAppCustomContent
@@ -3669,8 +3722,9 @@ func NewSetWatermarkRequest() (request *SetWatermarkRequest) {
 func NewSetWatermarkResponse() (response *SetWatermarkResponse) {
     response = &SetWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetWatermark
@@ -3729,8 +3783,9 @@ func NewStartRoomRequest() (request *StartRoomRequest) {
 func NewStartRoomResponse() (response *StartRoomResponse) {
     response = &StartRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartRoom
@@ -3803,8 +3858,9 @@ func NewUnbindDocumentFromRoomRequest() (request *UnbindDocumentFromRoomRequest)
 func NewUnbindDocumentFromRoomResponse() (response *UnbindDocumentFromRoomResponse) {
     response = &UnbindDocumentFromRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindDocumentFromRoom

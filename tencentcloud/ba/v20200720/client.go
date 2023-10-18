@@ -59,8 +59,9 @@ func NewCreateWeappQRUrlRequest() (request *CreateWeappQRUrlRequest) {
 func NewCreateWeappQRUrlResponse() (response *CreateWeappQRUrlResponse) {
     response = &CreateWeappQRUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWeappQRUrl
@@ -111,8 +112,9 @@ func NewDescribeGetAuthInfoRequest() (request *DescribeGetAuthInfoRequest) {
 func NewDescribeGetAuthInfoResponse() (response *DescribeGetAuthInfoResponse) {
     response = &DescribeGetAuthInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGetAuthInfo
@@ -163,8 +165,9 @@ func NewSyncIcpOrderWebInfoRequest() (request *SyncIcpOrderWebInfoRequest) {
 func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
     response = &SyncIcpOrderWebInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncIcpOrderWebInfo

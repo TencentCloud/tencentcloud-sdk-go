@@ -59,8 +59,9 @@ func NewAttachCamRoleRequest() (request *AttachCamRoleRequest) {
 func NewAttachCamRoleResponse() (response *AttachCamRoleResponse) {
     response = &AttachCamRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachCamRole
@@ -107,8 +108,9 @@ func NewBindPsaTagRequest() (request *BindPsaTagRequest) {
 func NewBindPsaTagResponse() (response *BindPsaTagResponse) {
     response = &BindPsaTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindPsaTag
@@ -165,8 +167,9 @@ func NewBuyDevicesRequest() (request *BuyDevicesRequest) {
 func NewBuyDevicesResponse() (response *BuyDevicesResponse) {
     response = &BuyDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BuyDevices
@@ -227,8 +230,9 @@ func NewCreateCustomImageRequest() (request *CreateCustomImageRequest) {
 func NewCreateCustomImageResponse() (response *CreateCustomImageResponse) {
     response = &CreateCustomImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomImage
@@ -289,8 +293,9 @@ func NewCreatePsaRegulationRequest() (request *CreatePsaRegulationRequest) {
 func NewCreatePsaRegulationResponse() (response *CreatePsaRegulationResponse) {
     response = &CreatePsaRegulationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePsaRegulation
@@ -343,8 +348,9 @@ func NewCreateSpotDeviceRequest() (request *CreateSpotDeviceRequest) {
 func NewCreateSpotDeviceResponse() (response *CreateSpotDeviceResponse) {
     response = &CreateSpotDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSpotDevice
@@ -395,8 +401,9 @@ func NewCreateUserCmdRequest() (request *CreateUserCmdRequest) {
 func NewCreateUserCmdResponse() (response *CreateUserCmdResponse) {
     response = &CreateUserCmdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserCmd
@@ -451,8 +458,9 @@ func NewDeleteCustomImagesRequest() (request *DeleteCustomImagesRequest) {
 func NewDeleteCustomImagesResponse() (response *DeleteCustomImagesResponse) {
     response = &DeleteCustomImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomImages
@@ -507,8 +515,9 @@ func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
 func NewDeletePsaRegulationResponse() (response *DeletePsaRegulationResponse) {
     response = &DeletePsaRegulationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePsaRegulation
@@ -559,8 +568,9 @@ func NewDeleteUserCmdsRequest() (request *DeleteUserCmdsRequest) {
 func NewDeleteUserCmdsResponse() (response *DeleteUserCmdsResponse) {
     response = &DeleteUserCmdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserCmds
@@ -611,8 +621,9 @@ func NewDescribeCustomImageProcessRequest() (request *DescribeCustomImageProcess
 func NewDescribeCustomImageProcessResponse() (response *DescribeCustomImageProcessResponse) {
     response = &DescribeCustomImageProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomImageProcess
@@ -663,8 +674,9 @@ func NewDescribeCustomImagesRequest() (request *DescribeCustomImagesRequest) {
 func NewDescribeCustomImagesResponse() (response *DescribeCustomImagesResponse) {
     response = &DescribeCustomImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomImages
@@ -719,8 +731,9 @@ func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
 func NewDescribeDeviceClassResponse() (response *DescribeDeviceClassResponse) {
     response = &DescribeDeviceClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceClass
@@ -775,8 +788,9 @@ func NewDescribeDeviceClassPartitionRequest() (request *DescribeDeviceClassParti
 func NewDescribeDeviceClassPartitionResponse() (response *DescribeDeviceClassPartitionResponse) {
     response = &DescribeDeviceClassPartitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceClassPartition
@@ -825,8 +839,9 @@ func NewDescribeDeviceHardwareInfoRequest() (request *DescribeDeviceHardwareInfo
 func NewDescribeDeviceHardwareInfoResponse() (response *DescribeDeviceHardwareInfoResponse) {
     response = &DescribeDeviceHardwareInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceHardwareInfo
@@ -877,8 +892,9 @@ func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryReques
 func NewDescribeDeviceInventoryResponse() (response *DescribeDeviceInventoryResponse) {
     response = &DescribeDeviceInventoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceInventory
@@ -927,8 +943,9 @@ func NewDescribeDeviceOperationLogRequest() (request *DescribeDeviceOperationLog
 func NewDescribeDeviceOperationLogResponse() (response *DescribeDeviceOperationLogResponse) {
     response = &DescribeDeviceOperationLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceOperationLog
@@ -979,8 +996,9 @@ func NewDescribeDevicePartitionRequest() (request *DescribeDevicePartitionReques
 func NewDescribeDevicePartitionResponse() (response *DescribeDevicePartitionResponse) {
     response = &DescribeDevicePartitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevicePartition
@@ -1031,8 +1049,9 @@ func NewDescribeDevicePositionRequest() (request *DescribeDevicePositionRequest)
 func NewDescribeDevicePositionResponse() (response *DescribeDevicePositionResponse) {
     response = &DescribeDevicePositionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevicePosition
@@ -1079,8 +1098,9 @@ func NewDescribeDevicePriceInfoRequest() (request *DescribeDevicePriceInfoReques
 func NewDescribeDevicePriceInfoResponse() (response *DescribeDevicePriceInfoResponse) {
     response = &DescribeDevicePriceInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevicePriceInfo
@@ -1131,8 +1151,9 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
 func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     response = &DescribeDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevices
@@ -1183,8 +1204,9 @@ func NewDescribeHardwareSpecificationRequest() (request *DescribeHardwareSpecifi
 func NewDescribeHardwareSpecificationResponse() (response *DescribeHardwareSpecificationResponse) {
     response = &DescribeHardwareSpecificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHardwareSpecification
@@ -1235,8 +1257,9 @@ func NewDescribeHostedDeviceOutBandInfoRequest() (request *DescribeHostedDeviceO
 func NewDescribeHostedDeviceOutBandInfoResponse() (response *DescribeHostedDeviceOutBandInfoResponse) {
     response = &DescribeHostedDeviceOutBandInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHostedDeviceOutBandInfo
@@ -1289,8 +1312,9 @@ func NewDescribeOperationResultRequest() (request *DescribeOperationResultReques
 func NewDescribeOperationResultResponse() (response *DescribeOperationResultResponse) {
     response = &DescribeOperationResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOperationResult
@@ -1341,8 +1365,9 @@ func NewDescribeOsInfoRequest() (request *DescribeOsInfoRequest) {
 func NewDescribeOsInfoResponse() (response *DescribeOsInfoResponse) {
     response = &DescribeOsInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOsInfo
@@ -1391,8 +1416,9 @@ func NewDescribePsaRegulationsRequest() (request *DescribePsaRegulationsRequest)
 func NewDescribePsaRegulationsResponse() (response *DescribePsaRegulationsResponse) {
     response = &DescribePsaRegulationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePsaRegulations
@@ -1443,8 +1469,9 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
 func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     response = &DescribeRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegions
@@ -1495,8 +1522,9 @@ func NewDescribeRepairTaskConstantRequest() (request *DescribeRepairTaskConstant
 func NewDescribeRepairTaskConstantResponse() (response *DescribeRepairTaskConstantResponse) {
     response = &DescribeRepairTaskConstantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRepairTaskConstant
@@ -1547,8 +1575,9 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
 func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
     response = &DescribeTaskInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskInfo
@@ -1631,8 +1660,9 @@ func NewDescribeTaskOperationLogRequest() (request *DescribeTaskOperationLogRequ
 func NewDescribeTaskOperationLogResponse() (response *DescribeTaskOperationLogResponse) {
     response = &DescribeTaskOperationLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskOperationLog
@@ -1683,8 +1713,9 @@ func NewDescribeUserCmdTaskInfoRequest() (request *DescribeUserCmdTaskInfoReques
 func NewDescribeUserCmdTaskInfoResponse() (response *DescribeUserCmdTaskInfoResponse) {
     response = &DescribeUserCmdTaskInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserCmdTaskInfo
@@ -1735,8 +1766,9 @@ func NewDescribeUserCmdTasksRequest() (request *DescribeUserCmdTasksRequest) {
 func NewDescribeUserCmdTasksResponse() (response *DescribeUserCmdTasksResponse) {
     response = &DescribeUserCmdTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserCmdTasks
@@ -1787,8 +1819,9 @@ func NewDescribeUserCmdsRequest() (request *DescribeUserCmdsRequest) {
 func NewDescribeUserCmdsResponse() (response *DescribeUserCmdsResponse) {
     response = &DescribeUserCmdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserCmds
@@ -1841,8 +1874,9 @@ func NewDetachCamRoleRequest() (request *DetachCamRoleRequest) {
 func NewDetachCamRoleResponse() (response *DetachCamRoleResponse) {
     response = &DetachCamRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachCamRole
@@ -1889,8 +1923,9 @@ func NewModifyCustomImageAttributeRequest() (request *ModifyCustomImageAttribute
 func NewModifyCustomImageAttributeResponse() (response *ModifyCustomImageAttributeResponse) {
     response = &ModifyCustomImageAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomImageAttribute
@@ -1941,8 +1976,9 @@ func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
 func NewModifyDeviceAliasesResponse() (response *ModifyDeviceAliasesResponse) {
     response = &ModifyDeviceAliasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceAliases
@@ -1993,8 +2029,9 @@ func NewModifyDeviceAutoRenewFlagRequest() (request *ModifyDeviceAutoRenewFlagRe
 func NewModifyDeviceAutoRenewFlagResponse() (response *ModifyDeviceAutoRenewFlagResponse) {
     response = &ModifyDeviceAutoRenewFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceAutoRenewFlag
@@ -2045,8 +2082,9 @@ func NewModifyLanIpRequest() (request *ModifyLanIpRequest) {
 func NewModifyLanIpResponse() (response *ModifyLanIpResponse) {
     response = &ModifyLanIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLanIp
@@ -2105,8 +2143,9 @@ func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
 func NewModifyPayModePre2PostResponse() (response *ModifyPayModePre2PostResponse) {
     response = &ModifyPayModePre2PostResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPayModePre2Post
@@ -2159,8 +2198,9 @@ func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
 func NewModifyPsaRegulationResponse() (response *ModifyPsaRegulationResponse) {
     response = &ModifyPsaRegulationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPsaRegulation
@@ -2211,8 +2251,9 @@ func NewModifyUserCmdRequest() (request *ModifyUserCmdRequest) {
 func NewModifyUserCmdResponse() (response *ModifyUserCmdResponse) {
     response = &ModifyUserCmdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserCmd
@@ -2267,8 +2308,9 @@ func NewOfflineDevicesRequest() (request *OfflineDevicesRequest) {
 func NewOfflineDevicesResponse() (response *OfflineDevicesResponse) {
     response = &OfflineDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OfflineDevices
@@ -2319,8 +2361,9 @@ func NewRebootDevicesRequest() (request *RebootDevicesRequest) {
 func NewRebootDevicesResponse() (response *RebootDevicesResponse) {
     response = &RebootDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RebootDevices
@@ -2371,8 +2414,9 @@ func NewRecoverDevicesRequest() (request *RecoverDevicesRequest) {
 func NewRecoverDevicesResponse() (response *RecoverDevicesResponse) {
     response = &RecoverDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverDevices
@@ -2421,8 +2465,9 @@ func NewReloadDeviceOsRequest() (request *ReloadDeviceOsRequest) {
 func NewReloadDeviceOsResponse() (response *ReloadDeviceOsResponse) {
     response = &ReloadDeviceOsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReloadDeviceOs
@@ -2475,8 +2520,9 @@ func NewRepairTaskControlRequest() (request *RepairTaskControlRequest) {
 func NewRepairTaskControlResponse() (response *RepairTaskControlResponse) {
     response = &RepairTaskControlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RepairTaskControl
@@ -2615,8 +2661,9 @@ func NewResetDevicePasswordRequest() (request *ResetDevicePasswordRequest) {
 func NewResetDevicePasswordResponse() (response *ResetDevicePasswordResponse) {
     response = &ResetDevicePasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetDevicePassword
@@ -2669,8 +2716,9 @@ func NewReturnDevicesRequest() (request *ReturnDevicesRequest) {
 func NewReturnDevicesResponse() (response *ReturnDevicesResponse) {
     response = &ReturnDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReturnDevices
@@ -2719,8 +2767,9 @@ func NewRunUserCmdRequest() (request *RunUserCmdRequest) {
 func NewRunUserCmdResponse() (response *RunUserCmdResponse) {
     response = &RunUserCmdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunUserCmd
@@ -2771,8 +2820,9 @@ func NewSetOutBandVpnAuthPasswordRequest() (request *SetOutBandVpnAuthPasswordRe
 func NewSetOutBandVpnAuthPasswordResponse() (response *SetOutBandVpnAuthPasswordResponse) {
     response = &SetOutBandVpnAuthPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetOutBandVpnAuthPassword
@@ -2825,8 +2875,9 @@ func NewShutdownDevicesRequest() (request *ShutdownDevicesRequest) {
 func NewShutdownDevicesResponse() (response *ShutdownDevicesResponse) {
     response = &ShutdownDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ShutdownDevices
@@ -2877,8 +2928,9 @@ func NewStartDevicesRequest() (request *StartDevicesRequest) {
 func NewStartDevicesResponse() (response *StartDevicesResponse) {
     response = &StartDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartDevices
@@ -2929,8 +2981,9 @@ func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
 func NewUnbindPsaTagResponse() (response *UnbindPsaTagResponse) {
     response = &UnbindPsaTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindPsaTag

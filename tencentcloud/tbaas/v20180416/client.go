@@ -59,8 +59,9 @@ func NewApplyChainMakerBatchUserCertRequest() (request *ApplyChainMakerBatchUser
 func NewApplyChainMakerBatchUserCertResponse() (response *ApplyChainMakerBatchUserCertResponse) {
     response = &ApplyChainMakerBatchUserCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyChainMakerBatchUserCert
@@ -123,8 +124,9 @@ func NewApplyUserCertRequest() (request *ApplyUserCertRequest) {
 func NewApplyUserCertResponse() (response *ApplyUserCertResponse) {
     response = &ApplyUserCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyUserCert
@@ -213,8 +215,9 @@ func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
 func NewDownloadUserCertResponse() (response *DownloadUserCertResponse) {
     response = &DownloadUserCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadUserCert
@@ -301,8 +304,9 @@ func NewGetBlockListRequest() (request *GetBlockListRequest) {
 func NewGetBlockListResponse() (response *GetBlockListResponse) {
     response = &GetBlockListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetBlockList
@@ -373,8 +377,9 @@ func NewGetBlockTransactionListForUserRequest() (request *GetBlockTransactionLis
 func NewGetBlockTransactionListForUserResponse() (response *GetBlockTransactionListForUserResponse) {
     response = &GetBlockTransactionListForUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetBlockTransactionListForUser
@@ -455,8 +460,9 @@ func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
 func NewGetClusterSummaryResponse() (response *GetClusterSummaryResponse) {
     response = &GetClusterSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetClusterSummary
@@ -521,8 +527,9 @@ func NewGetInvokeTxRequest() (request *GetInvokeTxRequest) {
 func NewGetInvokeTxResponse() (response *GetInvokeTxResponse) {
     response = &GetInvokeTxResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetInvokeTx
@@ -599,8 +606,9 @@ func NewGetLatesdTransactionListRequest() (request *GetLatesdTransactionListRequ
 func NewGetLatesdTransactionListResponse() (response *GetLatesdTransactionListResponse) {
     response = &GetLatesdTransactionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLatesdTransactionList
@@ -671,8 +679,9 @@ func NewGetLatestTransactionListRequest() (request *GetLatestTransactionListRequ
 func NewGetLatestTransactionListResponse() (response *GetLatestTransactionListResponse) {
     response = &GetLatestTransactionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLatestTransactionList
@@ -743,8 +752,9 @@ func NewGetTransactionDetailForUserRequest() (request *GetTransactionDetailForUs
 func NewGetTransactionDetailForUserResponse() (response *GetTransactionDetailForUserResponse) {
     response = &GetTransactionDetailForUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTransactionDetailForUser
@@ -819,8 +829,9 @@ func NewInvokeRequest() (request *InvokeRequest) {
 func NewInvokeResponse() (response *InvokeResponse) {
     response = &InvokeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Invoke
@@ -917,8 +928,9 @@ func NewInvokeChainMakerContractRequest() (request *InvokeChainMakerContractRequ
 func NewInvokeChainMakerContractResponse() (response *InvokeChainMakerContractResponse) {
     response = &InvokeChainMakerContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvokeChainMakerContract
@@ -1047,8 +1059,9 @@ func NewInvokeChainMakerDemoContractRequest() (request *InvokeChainMakerDemoCont
 func NewInvokeChainMakerDemoContractResponse() (response *InvokeChainMakerDemoContractResponse) {
     response = &InvokeChainMakerDemoContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvokeChainMakerDemoContract
@@ -1113,8 +1126,9 @@ func NewQueryRequest() (request *QueryRequest) {
 func NewQueryResponse() (response *QueryResponse) {
     response = &QueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Query
@@ -1207,8 +1221,9 @@ func NewQueryChainMakerBlockTransactionRequest() (request *QueryChainMakerBlockT
 func NewQueryChainMakerBlockTransactionResponse() (response *QueryChainMakerBlockTransactionResponse) {
     response = &QueryChainMakerBlockTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerBlockTransaction
@@ -1341,8 +1356,9 @@ func NewQueryChainMakerContractRequest() (request *QueryChainMakerContractReques
 func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResponse) {
     response = &QueryChainMakerContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerContract
@@ -1471,8 +1487,9 @@ func NewQueryChainMakerDemoBlockTransactionRequest() (request *QueryChainMakerDe
 func NewQueryChainMakerDemoBlockTransactionResponse() (response *QueryChainMakerDemoBlockTransactionResponse) {
     response = &QueryChainMakerDemoBlockTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerDemoBlockTransaction
@@ -1535,8 +1552,9 @@ func NewQueryChainMakerDemoContractRequest() (request *QueryChainMakerDemoContra
 func NewQueryChainMakerDemoContractResponse() (response *QueryChainMakerDemoContractResponse) {
     response = &QueryChainMakerDemoContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerDemoContract
@@ -1599,8 +1617,9 @@ func NewQueryChainMakerDemoTransactionRequest() (request *QueryChainMakerDemoTra
 func NewQueryChainMakerDemoTransactionResponse() (response *QueryChainMakerDemoTransactionResponse) {
     response = &QueryChainMakerDemoTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerDemoTransaction
@@ -1663,8 +1682,9 @@ func NewQueryChainMakerTransactionRequest() (request *QueryChainMakerTransaction
 func NewQueryChainMakerTransactionResponse() (response *QueryChainMakerTransactionResponse) {
     response = &QueryChainMakerTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChainMakerTransaction
@@ -1793,8 +1813,9 @@ func NewSrvInvokeRequest() (request *SrvInvokeRequest) {
 func NewSrvInvokeResponse() (response *SrvInvokeResponse) {
     response = &SrvInvokeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SrvInvoke

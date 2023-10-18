@@ -59,8 +59,9 @@ func NewAbortCronJobsRequest() (request *AbortCronJobsRequest) {
 func NewAbortCronJobsResponse() (response *AbortCronJobsResponse) {
     response = &AbortCronJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AbortCronJobs
@@ -101,8 +102,9 @@ func NewAbortJobRequest() (request *AbortJobRequest) {
 func NewAbortJobResponse() (response *AbortJobResponse) {
     response = &AbortJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AbortJob
@@ -169,8 +171,9 @@ func NewAdjustJobSpeedRequest() (request *AdjustJobSpeedRequest) {
 func NewAdjustJobSpeedResponse() (response *AdjustJobSpeedResponse) {
     response = &AdjustJobSpeedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AdjustJobSpeed
@@ -227,8 +230,9 @@ func NewCopyScenarioRequest() (request *CopyScenarioRequest) {
 func NewCopyScenarioResponse() (response *CopyScenarioResponse) {
     response = &CopyScenarioResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyScenario
@@ -275,8 +279,9 @@ func NewCreateAlertChannelRequest() (request *CreateAlertChannelRequest) {
 func NewCreateAlertChannelResponse() (response *CreateAlertChannelResponse) {
     response = &CreateAlertChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAlertChannel
@@ -323,8 +328,9 @@ func NewCreateCronJobRequest() (request *CreateCronJobRequest) {
 func NewCreateCronJobResponse() (response *CreateCronJobResponse) {
     response = &CreateCronJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCronJob
@@ -373,8 +379,9 @@ func NewCreateFileRequest() (request *CreateFileRequest) {
 func NewCreateFileResponse() (response *CreateFileResponse) {
     response = &CreateFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFile
@@ -421,8 +428,9 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
 func NewCreateProjectResponse() (response *CreateProjectResponse) {
     response = &CreateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProject
@@ -487,8 +495,9 @@ func NewCreateScenarioRequest() (request *CreateScenarioRequest) {
 func NewCreateScenarioResponse() (response *CreateScenarioResponse) {
     response = &CreateScenarioResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScenario
@@ -543,8 +552,9 @@ func NewDeleteAlertChannelRequest() (request *DeleteAlertChannelRequest) {
 func NewDeleteAlertChannelResponse() (response *DeleteAlertChannelResponse) {
     response = &DeleteAlertChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAlertChannel
@@ -599,8 +609,9 @@ func NewDeleteCronJobsRequest() (request *DeleteCronJobsRequest) {
 func NewDeleteCronJobsResponse() (response *DeleteCronJobsResponse) {
     response = &DeleteCronJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCronJobs
@@ -655,8 +666,9 @@ func NewDeleteFilesRequest() (request *DeleteFilesRequest) {
 func NewDeleteFilesResponse() (response *DeleteFilesResponse) {
     response = &DeleteFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFiles
@@ -711,8 +723,9 @@ func NewDeleteJobsRequest() (request *DeleteJobsRequest) {
 func NewDeleteJobsResponse() (response *DeleteJobsResponse) {
     response = &DeleteJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteJobs
@@ -777,8 +790,9 @@ func NewDeleteProjectsRequest() (request *DeleteProjectsRequest) {
 func NewDeleteProjectsResponse() (response *DeleteProjectsResponse) {
     response = &DeleteProjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProjects
@@ -843,8 +857,9 @@ func NewDeleteScenariosRequest() (request *DeleteScenariosRequest) {
 func NewDeleteScenariosResponse() (response *DeleteScenariosResponse) {
     response = &DeleteScenariosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScenarios
@@ -907,8 +922,9 @@ func NewDescribeAlertChannelsRequest() (request *DescribeAlertChannelsRequest) {
 func NewDescribeAlertChannelsResponse() (response *DescribeAlertChannelsResponse) {
     response = &DescribeAlertChannelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlertChannels
@@ -955,8 +971,9 @@ func NewDescribeAlertRecordsRequest() (request *DescribeAlertRecordsRequest) {
 func NewDescribeAlertRecordsResponse() (response *DescribeAlertRecordsResponse) {
     response = &DescribeAlertRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlertRecords
@@ -1003,8 +1020,9 @@ func NewDescribeAvailableMetricsRequest() (request *DescribeAvailableMetricsRequ
 func NewDescribeAvailableMetricsResponse() (response *DescribeAvailableMetricsResponse) {
     response = &DescribeAvailableMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAvailableMetrics
@@ -1051,8 +1069,9 @@ func NewDescribeCheckSummaryRequest() (request *DescribeCheckSummaryRequest) {
 func NewDescribeCheckSummaryResponse() (response *DescribeCheckSummaryResponse) {
     response = &DescribeCheckSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCheckSummary
@@ -1109,8 +1128,9 @@ func NewDescribeCronJobsRequest() (request *DescribeCronJobsRequest) {
 func NewDescribeCronJobsResponse() (response *DescribeCronJobsResponse) {
     response = &DescribeCronJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCronJobs
@@ -1157,8 +1177,9 @@ func NewDescribeErrorSummaryRequest() (request *DescribeErrorSummaryRequest) {
 func NewDescribeErrorSummaryResponse() (response *DescribeErrorSummaryResponse) {
     response = &DescribeErrorSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeErrorSummary
@@ -1215,8 +1236,9 @@ func NewDescribeFilesRequest() (request *DescribeFilesRequest) {
 func NewDescribeFilesResponse() (response *DescribeFilesResponse) {
     response = &DescribeFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFiles
@@ -1273,8 +1295,9 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
 func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
     response = &DescribeJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobs
@@ -1335,8 +1358,9 @@ func NewDescribeLabelValuesRequest() (request *DescribeLabelValuesRequest) {
 func NewDescribeLabelValuesResponse() (response *DescribeLabelValuesResponse) {
     response = &DescribeLabelValuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLabelValues
@@ -1393,8 +1417,9 @@ func NewDescribeMetricLabelWithValuesRequest() (request *DescribeMetricLabelWith
 func NewDescribeMetricLabelWithValuesResponse() (response *DescribeMetricLabelWithValuesResponse) {
     response = &DescribeMetricLabelWithValuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMetricLabelWithValues
@@ -1449,8 +1474,9 @@ func NewDescribeNormalLogsRequest() (request *DescribeNormalLogsRequest) {
 func NewDescribeNormalLogsResponse() (response *DescribeNormalLogsResponse) {
     response = &DescribeNormalLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNormalLogs
@@ -1507,8 +1533,9 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
 func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
     response = &DescribeProjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjects
@@ -1581,8 +1608,9 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
 func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     response = &DescribeRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegions
@@ -1641,8 +1669,9 @@ func NewDescribeRequestSummaryRequest() (request *DescribeRequestSummaryRequest)
 func NewDescribeRequestSummaryResponse() (response *DescribeRequestSummaryResponse) {
     response = &DescribeRequestSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRequestSummary
@@ -1695,8 +1724,9 @@ func NewDescribeSampleBatchQueryRequest() (request *DescribeSampleBatchQueryRequ
 func NewDescribeSampleBatchQueryResponse() (response *DescribeSampleBatchQueryResponse) {
     response = &DescribeSampleBatchQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleBatchQuery
@@ -1753,8 +1783,9 @@ func NewDescribeSampleLogsRequest() (request *DescribeSampleLogsRequest) {
 func NewDescribeSampleLogsResponse() (response *DescribeSampleLogsResponse) {
     response = &DescribeSampleLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleLogs
@@ -1809,8 +1840,9 @@ func NewDescribeSampleMatrixBatchQueryRequest() (request *DescribeSampleMatrixBa
 func NewDescribeSampleMatrixBatchQueryResponse() (response *DescribeSampleMatrixBatchQueryResponse) {
     response = &DescribeSampleMatrixBatchQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleMatrixBatchQuery
@@ -1865,8 +1897,9 @@ func NewDescribeSampleMatrixQueryRequest() (request *DescribeSampleMatrixQueryRe
 func NewDescribeSampleMatrixQueryResponse() (response *DescribeSampleMatrixQueryResponse) {
     response = &DescribeSampleMatrixQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleMatrixQuery
@@ -1919,8 +1952,9 @@ func NewDescribeSampleQueryRequest() (request *DescribeSampleQueryRequest) {
 func NewDescribeSampleQueryResponse() (response *DescribeSampleQueryResponse) {
     response = &DescribeSampleQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleQuery
@@ -1977,8 +2011,9 @@ func NewDescribeScenarioWithJobsRequest() (request *DescribeScenarioWithJobsRequ
 func NewDescribeScenarioWithJobsResponse() (response *DescribeScenarioWithJobsResponse) {
     response = &DescribeScenarioWithJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScenarioWithJobs
@@ -2035,8 +2070,9 @@ func NewDescribeScenariosRequest() (request *DescribeScenariosRequest) {
 func NewDescribeScenariosResponse() (response *DescribeScenariosResponse) {
     response = &DescribeScenariosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScenarios
@@ -2093,8 +2129,9 @@ func NewGenerateTmpKeyRequest() (request *GenerateTmpKeyRequest) {
 func NewGenerateTmpKeyResponse() (response *GenerateTmpKeyResponse) {
     response = &GenerateTmpKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateTmpKey
@@ -2151,8 +2188,9 @@ func NewRestartCronJobsRequest() (request *RestartCronJobsRequest) {
 func NewRestartCronJobsResponse() (response *RestartCronJobsResponse) {
     response = &RestartCronJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartCronJobs
@@ -2209,8 +2247,9 @@ func NewStartJobRequest() (request *StartJobRequest) {
 func NewStartJobResponse() (response *StartJobResponse) {
     response = &StartJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartJob
@@ -2277,8 +2316,9 @@ func NewUpdateCronJobRequest() (request *UpdateCronJobRequest) {
 func NewUpdateCronJobResponse() (response *UpdateCronJobResponse) {
     response = &UpdateCronJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCronJob
@@ -2327,8 +2367,9 @@ func NewUpdateFileScenarioRelationRequest() (request *UpdateFileScenarioRelation
 func NewUpdateFileScenarioRelationResponse() (response *UpdateFileScenarioRelationResponse) {
     response = &UpdateFileScenarioRelationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFileScenarioRelation
@@ -2377,8 +2418,9 @@ func NewUpdateJobRequest() (request *UpdateJobRequest) {
 func NewUpdateJobResponse() (response *UpdateJobResponse) {
     response = &UpdateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateJob
@@ -2441,8 +2483,9 @@ func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
 func NewUpdateProjectResponse() (response *UpdateProjectResponse) {
     response = &UpdateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateProject
@@ -2509,8 +2552,9 @@ func NewUpdateScenarioRequest() (request *UpdateScenarioRequest) {
 func NewUpdateScenarioResponse() (response *UpdateScenarioResponse) {
     response = &UpdateScenarioResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateScenario

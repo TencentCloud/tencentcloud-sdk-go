@@ -59,8 +59,9 @@ func NewApplyBlackListRequest() (request *ApplyBlackListRequest) {
 func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
     response = &ApplyBlackListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyBlackList
@@ -111,8 +112,9 @@ func NewApplyBlackListDataRequest() (request *ApplyBlackListDataRequest) {
 func NewApplyBlackListDataResponse() (response *ApplyBlackListDataResponse) {
     response = &ApplyBlackListDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyBlackListData
@@ -165,8 +167,9 @@ func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
 func NewApplyCreditAuditResponse() (response *ApplyCreditAuditResponse) {
     response = &ApplyCreditAuditResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyCreditAudit
@@ -219,8 +222,9 @@ func NewChangeBotCallStatusRequest() (request *ChangeBotCallStatusRequest) {
 func NewChangeBotCallStatusResponse() (response *ChangeBotCallStatusResponse) {
     response = &ChangeBotCallStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeBotCallStatus
@@ -279,8 +283,9 @@ func NewChangeBotTaskStatusRequest() (request *ChangeBotTaskStatusRequest) {
 func NewChangeBotTaskStatusResponse() (response *ChangeBotTaskStatusResponse) {
     response = &ChangeBotTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeBotTaskStatus
@@ -331,8 +336,9 @@ func NewCreateBotTaskRequest() (request *CreateBotTaskRequest) {
 func NewCreateBotTaskResponse() (response *CreateBotTaskResponse) {
     response = &CreateBotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBotTask
@@ -385,8 +391,9 @@ func NewDescribeBotFlowRequest() (request *DescribeBotFlowRequest) {
 func NewDescribeBotFlowResponse() (response *DescribeBotFlowResponse) {
     response = &DescribeBotFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBotFlow
@@ -439,8 +446,9 @@ func NewDescribeCreditResultRequest() (request *DescribeCreditResultRequest) {
 func NewDescribeCreditResultResponse() (response *DescribeCreditResultResponse) {
     response = &DescribeCreditResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCreditResult
@@ -493,8 +501,9 @@ func NewDescribeFileModelRequest() (request *DescribeFileModelRequest) {
 func NewDescribeFileModelResponse() (response *DescribeFileModelResponse) {
     response = &DescribeFileModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileModel
@@ -545,8 +554,9 @@ func NewDescribeRecordsRequest() (request *DescribeRecordsRequest) {
 func NewDescribeRecordsResponse() (response *DescribeRecordsResponse) {
     response = &DescribeRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecords
@@ -597,8 +607,9 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
 func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     response = &DescribeTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskStatus
@@ -651,8 +662,9 @@ func NewDownloadBotRecordRequest() (request *DownloadBotRecordRequest) {
 func NewDownloadBotRecordResponse() (response *DownloadBotRecordResponse) {
     response = &DownloadBotRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadBotRecord
@@ -705,8 +717,9 @@ func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
 func NewDownloadDialogueTextResponse() (response *DownloadDialogueTextResponse) {
     response = &DownloadDialogueTextResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadDialogueText
@@ -759,8 +772,9 @@ func NewDownloadRecordListRequest() (request *DownloadRecordListRequest) {
 func NewDownloadRecordListResponse() (response *DownloadRecordListResponse) {
     response = &DownloadRecordListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadRecordList
@@ -817,8 +831,9 @@ func NewDownloadReportRequest() (request *DownloadReportRequest) {
 func NewDownloadReportResponse() (response *DownloadReportResponse) {
     response = &DownloadReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadReport
@@ -873,8 +888,9 @@ func NewExportBotDataRequest() (request *ExportBotDataRequest) {
 func NewExportBotDataResponse() (response *ExportBotDataResponse) {
     response = &ExportBotDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBotData
@@ -925,8 +941,9 @@ func NewQueryBlackListDataRequest() (request *QueryBlackListDataRequest) {
 func NewQueryBlackListDataResponse() (response *QueryBlackListDataResponse) {
     response = &QueryBlackListDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBlackListData
@@ -981,8 +998,9 @@ func NewQueryBotListRequest() (request *QueryBotListRequest) {
 func NewQueryBotListResponse() (response *QueryBotListResponse) {
     response = &QueryBotListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBotList
@@ -1029,8 +1047,9 @@ func NewQueryCallListRequest() (request *QueryCallListRequest) {
 func NewQueryCallListResponse() (response *QueryCallListResponse) {
     response = &QueryCallListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCallList
@@ -1085,8 +1104,9 @@ func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
 func NewQueryInstantDataResponse() (response *QueryInstantDataResponse) {
     response = &QueryInstantDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryInstantData
@@ -1135,8 +1155,9 @@ func NewQueryProductsRequest() (request *QueryProductsRequest) {
 func NewQueryProductsResponse() (response *QueryProductsResponse) {
     response = &QueryProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryProducts
@@ -1189,8 +1210,9 @@ func NewQueryRecordListRequest() (request *QueryRecordListRequest) {
 func NewQueryRecordListResponse() (response *QueryRecordListResponse) {
     response = &QueryRecordListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryRecordList
@@ -1237,8 +1259,9 @@ func NewUpdateBotTaskRequest() (request *UpdateBotTaskRequest) {
 func NewUpdateBotTaskResponse() (response *UpdateBotTaskResponse) {
     response = &UpdateBotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateBotTask
@@ -1291,8 +1314,9 @@ func NewUploadBotDataRequest() (request *UploadBotDataRequest) {
 func NewUploadBotDataResponse() (response *UploadBotDataResponse) {
     response = &UploadBotDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadBotData
@@ -1347,8 +1371,9 @@ func NewUploadBotFileRequest() (request *UploadBotFileRequest) {
 func NewUploadBotFileResponse() (response *UploadBotFileResponse) {
     response = &UploadBotFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadBotFile
@@ -1401,8 +1426,9 @@ func NewUploadDataFileRequest() (request *UploadDataFileRequest) {
 func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
     response = &UploadDataFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadDataFile
@@ -1455,8 +1481,9 @@ func NewUploadDataJsonRequest() (request *UploadDataJsonRequest) {
 func NewUploadDataJsonResponse() (response *UploadDataJsonResponse) {
     response = &UploadDataJsonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadDataJson
@@ -1507,8 +1534,9 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
 func NewUploadFileResponse() (response *UploadFileResponse) {
     response = &UploadFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadFile

@@ -401,6 +401,77 @@ type ContactInfo struct {
 }
 
 // Predefined struct for user
+type CreateCustomDnsHostRequestParams struct {
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// Dns名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址列表
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+type CreateCustomDnsHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// Dns名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址列表
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+func (r *CreateCustomDnsHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomDnsHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "DnsName")
+	delete(f, "IpSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomDnsHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomDnsHostResponseParams struct {
+	// 异步任务ID
+	LogId *uint64 `json:"LogId,omitnil" name:"LogId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCustomDnsHostResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomDnsHostResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomDnsHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomDnsHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDomainBatchRequestParams struct {
 	// 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`

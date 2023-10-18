@@ -59,8 +59,9 @@ func NewAddClusterStorageOptionRequest() (request *AddClusterStorageOptionReques
 func NewAddClusterStorageOptionResponse() (response *AddClusterStorageOptionResponse) {
     response = &AddClusterStorageOptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddClusterStorageOption
@@ -111,8 +112,9 @@ func NewAddNodesRequest() (request *AddNodesRequest) {
 func NewAddNodesResponse() (response *AddNodesResponse) {
     response = &AddNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddNodes
@@ -181,8 +183,9 @@ func NewAddQueueRequest() (request *AddQueueRequest) {
 func NewAddQueueResponse() (response *AddQueueResponse) {
     response = &AddQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddQueue
@@ -265,8 +268,9 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
 func NewCreateClusterResponse() (response *CreateClusterResponse) {
     response = &CreateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCluster
@@ -341,8 +345,9 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     response = &DeleteClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCluster
@@ -393,8 +398,9 @@ func NewDeleteClusterStorageOptionRequest() (request *DeleteClusterStorageOption
 func NewDeleteClusterStorageOptionResponse() (response *DeleteClusterStorageOptionResponse) {
     response = &DeleteClusterStorageOptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteClusterStorageOption
@@ -443,8 +449,9 @@ func NewDeleteNodesRequest() (request *DeleteNodesRequest) {
 func NewDeleteNodesResponse() (response *DeleteNodesResponse) {
     response = &DeleteNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNodes
@@ -501,8 +508,9 @@ func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
 func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
     response = &DeleteQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteQueue
@@ -601,8 +609,9 @@ func NewDescribeAutoScalingConfigurationRequest() (request *DescribeAutoScalingC
 func NewDescribeAutoScalingConfigurationResponse() (response *DescribeAutoScalingConfigurationResponse) {
     response = &DescribeAutoScalingConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingConfiguration
@@ -655,8 +664,9 @@ func NewDescribeClusterActivitiesRequest() (request *DescribeClusterActivitiesRe
 func NewDescribeClusterActivitiesResponse() (response *DescribeClusterActivitiesResponse) {
     response = &DescribeClusterActivitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterActivities
@@ -703,8 +713,9 @@ func NewDescribeClusterStorageOptionRequest() (request *DescribeClusterStorageOp
 func NewDescribeClusterStorageOptionResponse() (response *DescribeClusterStorageOptionResponse) {
     response = &DescribeClusterStorageOptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterStorageOption
@@ -755,8 +766,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -803,8 +815,9 @@ func NewDescribeInitNodeScriptsRequest() (request *DescribeInitNodeScriptsReques
 func NewDescribeInitNodeScriptsResponse() (response *DescribeInitNodeScriptsResponse) {
     response = &DescribeInitNodeScriptsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInitNodeScripts
@@ -851,8 +864,9 @@ func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
 func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
     response = &DescribeNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNodes
@@ -927,8 +941,9 @@ func NewDescribeQueuesRequest() (request *DescribeQueuesRequest) {
 func NewDescribeQueuesResponse() (response *DescribeQueuesResponse) {
     response = &DescribeQueuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQueues
@@ -999,8 +1014,9 @@ func NewModifyInitNodeScriptsRequest() (request *ModifyInitNodeScriptsRequest) {
 func NewModifyInitNodeScriptsResponse() (response *ModifyInitNodeScriptsResponse) {
     response = &ModifyInitNodeScriptsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInitNodeScripts
@@ -1071,8 +1087,9 @@ func NewSetAutoScalingConfigurationRequest() (request *SetAutoScalingConfigurati
 func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigurationResponse) {
     response = &SetAutoScalingConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetAutoScalingConfiguration

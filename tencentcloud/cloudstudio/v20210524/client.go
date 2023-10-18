@@ -59,8 +59,9 @@ func NewCreateCustomizeTemplatesRequest() (request *CreateCustomizeTemplatesRequ
 func NewCreateCustomizeTemplatesResponse() (response *CreateCustomizeTemplatesResponse) {
     response = &CreateCustomizeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomizeTemplates
@@ -101,8 +102,9 @@ func NewCreateWorkspaceByAgentRequest() (request *CreateWorkspaceByAgentRequest)
 func NewCreateWorkspaceByAgentResponse() (response *CreateWorkspaceByAgentResponse) {
     response = &CreateWorkspaceByAgentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspaceByAgent
@@ -143,8 +145,9 @@ func NewCreateWorkspaceByTemplateRequest() (request *CreateWorkspaceByTemplateRe
 func NewCreateWorkspaceByTemplateResponse() (response *CreateWorkspaceByTemplateResponse) {
     response = &CreateWorkspaceByTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspaceByTemplate
@@ -191,8 +194,9 @@ func NewCreateWorkspaceByVersionControlRequest() (request *CreateWorkspaceByVers
 func NewCreateWorkspaceByVersionControlResponse() (response *CreateWorkspaceByVersionControlResponse) {
     response = &CreateWorkspaceByVersionControlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspaceByVersionControl
@@ -239,8 +243,9 @@ func NewCreateWorkspaceTemporaryTokenRequest() (request *CreateWorkspaceTemporar
 func NewCreateWorkspaceTemporaryTokenResponse() (response *CreateWorkspaceTemporaryTokenResponse) {
     response = &CreateWorkspaceTemporaryTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspaceTemporaryToken
@@ -287,8 +292,9 @@ func NewDeleteCustomizeTemplatesByIdRequest() (request *DeleteCustomizeTemplates
 func NewDeleteCustomizeTemplatesByIdResponse() (response *DeleteCustomizeTemplatesByIdResponse) {
     response = &DeleteCustomizeTemplatesByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomizeTemplatesById
@@ -335,8 +341,9 @@ func NewDescribeCustomizeTemplatesRequest() (request *DescribeCustomizeTemplates
 func NewDescribeCustomizeTemplatesResponse() (response *DescribeCustomizeTemplatesResponse) {
     response = &DescribeCustomizeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomizeTemplates
@@ -383,8 +390,9 @@ func NewDescribeCustomizeTemplatesByIdRequest() (request *DescribeCustomizeTempl
 func NewDescribeCustomizeTemplatesByIdResponse() (response *DescribeCustomizeTemplatesByIdResponse) {
     response = &DescribeCustomizeTemplatesByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomizeTemplatesById
@@ -431,8 +439,9 @@ func NewDescribeCustomizeTemplatesPresetsRequest() (request *DescribeCustomizeTe
 func NewDescribeCustomizeTemplatesPresetsResponse() (response *DescribeCustomizeTemplatesPresetsResponse) {
     response = &DescribeCustomizeTemplatesPresetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomizeTemplatesPresets
@@ -479,8 +488,9 @@ func NewDescribeWorkspaceEnvListRequest() (request *DescribeWorkspaceEnvListRequ
 func NewDescribeWorkspaceEnvListResponse() (response *DescribeWorkspaceEnvListResponse) {
     response = &DescribeWorkspaceEnvListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceEnvList
@@ -527,8 +537,9 @@ func NewDescribeWorkspaceIsReadyRequest() (request *DescribeWorkspaceIsReadyRequ
 func NewDescribeWorkspaceIsReadyResponse() (response *DescribeWorkspaceIsReadyResponse) {
     response = &DescribeWorkspaceIsReadyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceIsReady
@@ -575,8 +586,9 @@ func NewDescribeWorkspaceNameExistRequest() (request *DescribeWorkspaceNameExist
 func NewDescribeWorkspaceNameExistResponse() (response *DescribeWorkspaceNameExistResponse) {
     response = &DescribeWorkspaceNameExistResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceNameExist
@@ -623,8 +635,9 @@ func NewDescribeWorkspaceStatusRequest() (request *DescribeWorkspaceStatusReques
 func NewDescribeWorkspaceStatusResponse() (response *DescribeWorkspaceStatusResponse) {
     response = &DescribeWorkspaceStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceStatus
@@ -671,8 +684,9 @@ func NewDescribeWorkspaceStatusListRequest() (request *DescribeWorkspaceStatusLi
 func NewDescribeWorkspaceStatusListResponse() (response *DescribeWorkspaceStatusListResponse) {
     response = &DescribeWorkspaceStatusListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceStatusList
@@ -719,8 +733,9 @@ func NewModifyCustomizeTemplateVersionControlRequest() (request *ModifyCustomize
 func NewModifyCustomizeTemplateVersionControlResponse() (response *ModifyCustomizeTemplateVersionControlResponse) {
     response = &ModifyCustomizeTemplateVersionControlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomizeTemplateVersionControl
@@ -767,8 +782,9 @@ func NewModifyCustomizeTemplatesFullByIdRequest() (request *ModifyCustomizeTempl
 func NewModifyCustomizeTemplatesFullByIdResponse() (response *ModifyCustomizeTemplatesFullByIdResponse) {
     response = &ModifyCustomizeTemplatesFullByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomizeTemplatesFullById
@@ -815,8 +831,9 @@ func NewModifyCustomizeTemplatesPartByIdRequest() (request *ModifyCustomizeTempl
 func NewModifyCustomizeTemplatesPartByIdResponse() (response *ModifyCustomizeTemplatesPartByIdResponse) {
     response = &ModifyCustomizeTemplatesPartByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomizeTemplatesPartById
@@ -863,8 +880,9 @@ func NewModifyWorkspaceAttributesRequest() (request *ModifyWorkspaceAttributesRe
 func NewModifyWorkspaceAttributesResponse() (response *ModifyWorkspaceAttributesResponse) {
     response = &ModifyWorkspaceAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWorkspaceAttributes
@@ -911,8 +929,9 @@ func NewRecoverWorkspaceRequest() (request *RecoverWorkspaceRequest) {
 func NewRecoverWorkspaceResponse() (response *RecoverWorkspaceResponse) {
     response = &RecoverWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverWorkspace
@@ -959,8 +978,9 @@ func NewRemoveWorkspaceRequest() (request *RemoveWorkspaceRequest) {
 func NewRemoveWorkspaceResponse() (response *RemoveWorkspaceResponse) {
     response = &RemoveWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveWorkspace
@@ -1007,8 +1027,9 @@ func NewRunWorkspaceRequest() (request *RunWorkspaceRequest) {
 func NewRunWorkspaceResponse() (response *RunWorkspaceResponse) {
     response = &RunWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunWorkspace
@@ -1055,8 +1076,9 @@ func NewStopWorkspaceRequest() (request *StopWorkspaceRequest) {
 func NewStopWorkspaceResponse() (response *StopWorkspaceResponse) {
     response = &StopWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopWorkspace

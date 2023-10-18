@@ -59,8 +59,9 @@ func NewDescribeDomainInfoRequest() (request *DescribeDomainInfoRequest) {
 func NewDescribeDomainInfoResponse() (response *DescribeDomainInfoResponse) {
     response = &DescribeDomainInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainInfo
@@ -115,8 +116,9 @@ func NewDescribeFileInfoRequest() (request *DescribeFileInfoRequest) {
 func NewDescribeFileInfoResponse() (response *DescribeFileInfoResponse) {
     response = &DescribeFileInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileInfo
@@ -171,8 +173,9 @@ func NewDescribeIpInfoRequest() (request *DescribeIpInfoRequest) {
 func NewDescribeIpInfoResponse() (response *DescribeIpInfoResponse) {
     response = &DescribeIpInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIpInfo
@@ -227,8 +230,9 @@ func NewDescribeThreatInfoRequest() (request *DescribeThreatInfoRequest) {
 func NewDescribeThreatInfoResponse() (response *DescribeThreatInfoResponse) {
     response = &DescribeThreatInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeThreatInfo

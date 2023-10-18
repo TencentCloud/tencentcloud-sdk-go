@@ -59,8 +59,9 @@ func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
 func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
     response = &CreateApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApplication
@@ -137,8 +138,9 @@ func NewCreateApplicationAutoscalerRequest() (request *CreateApplicationAutoscal
 func NewCreateApplicationAutoscalerResponse() (response *CreateApplicationAutoscalerResponse) {
     response = &CreateApplicationAutoscalerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApplicationAutoscaler
@@ -215,8 +217,9 @@ func NewCreateApplicationServiceRequest() (request *CreateApplicationServiceRequ
 func NewCreateApplicationServiceResponse() (response *CreateApplicationServiceResponse) {
     response = &CreateApplicationServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApplicationService
@@ -305,8 +308,9 @@ func NewCreateConfigDataRequest() (request *CreateConfigDataRequest) {
 func NewCreateConfigDataResponse() (response *CreateConfigDataResponse) {
     response = &CreateConfigDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigData
@@ -363,8 +367,9 @@ func NewCreateCosTokenRequest() (request *CreateCosTokenRequest) {
 func NewCreateCosTokenResponse() (response *CreateCosTokenResponse) {
     response = &CreateCosTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCosToken
@@ -417,8 +422,9 @@ func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
 func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
     response = &CreateEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEnvironment
@@ -487,8 +493,9 @@ func NewCreateLogConfigRequest() (request *CreateLogConfigRequest) {
 func NewCreateLogConfigResponse() (response *CreateLogConfigResponse) {
     response = &CreateLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLogConfig
@@ -553,8 +560,9 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
 func NewCreateResourceResponse() (response *CreateResourceResponse) {
     response = &CreateResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateResource
@@ -619,8 +627,9 @@ func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
 func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
     response = &DeleteApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApplication
@@ -715,8 +724,9 @@ func NewDeleteApplicationAutoscalerRequest() (request *DeleteApplicationAutoscal
 func NewDeleteApplicationAutoscalerResponse() (response *DeleteApplicationAutoscalerResponse) {
     response = &DeleteApplicationAutoscalerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApplicationAutoscaler
@@ -771,8 +781,9 @@ func NewDeleteApplicationServiceRequest() (request *DeleteApplicationServiceRequ
 func NewDeleteApplicationServiceResponse() (response *DeleteApplicationServiceResponse) {
     response = &DeleteApplicationServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApplicationService
@@ -833,8 +844,9 @@ func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
 func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
     response = &DeleteIngressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIngress
@@ -887,8 +899,9 @@ func NewDeployApplicationRequest() (request *DeployApplicationRequest) {
 func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
     response = &DeployApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeployApplication
@@ -1029,8 +1042,9 @@ func NewDescribeApplicationAutoscalerListRequest() (request *DescribeApplication
 func NewDescribeApplicationAutoscalerListResponse() (response *DescribeApplicationAutoscalerListResponse) {
     response = &DescribeApplicationAutoscalerListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationAutoscalerList
@@ -1089,8 +1103,9 @@ func NewDescribeApplicationInfoRequest() (request *DescribeApplicationInfoReques
 func NewDescribeApplicationInfoResponse() (response *DescribeApplicationInfoResponse) {
     response = &DescribeApplicationInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationInfo
@@ -1169,8 +1184,9 @@ func NewDescribeApplicationPodsRequest() (request *DescribeApplicationPodsReques
 func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResponse) {
     response = &DescribeApplicationPodsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationPods
@@ -1237,8 +1253,9 @@ func NewDescribeApplicationServiceListRequest() (request *DescribeApplicationSer
 func NewDescribeApplicationServiceListResponse() (response *DescribeApplicationServiceListResponse) {
     response = &DescribeApplicationServiceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationServiceList
@@ -1297,8 +1314,9 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
 func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
     response = &DescribeApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplications
@@ -1351,8 +1369,9 @@ func NewDescribeApplicationsStatusRequest() (request *DescribeApplicationsStatus
 func NewDescribeApplicationsStatusResponse() (response *DescribeApplicationsStatusResponse) {
     response = &DescribeApplicationsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationsStatus
@@ -1411,8 +1430,9 @@ func NewDescribeConfigDataRequest() (request *DescribeConfigDataRequest) {
 func NewDescribeConfigDataResponse() (response *DescribeConfigDataResponse) {
     response = &DescribeConfigDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigData
@@ -1465,8 +1485,9 @@ func NewDescribeConfigDataListRequest() (request *DescribeConfigDataListRequest)
 func NewDescribeConfigDataListResponse() (response *DescribeConfigDataListResponse) {
     response = &DescribeConfigDataListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigDataList
@@ -1523,8 +1544,9 @@ func NewDescribeDeployApplicationDetailRequest() (request *DescribeDeployApplica
 func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployApplicationDetailResponse) {
     response = &DescribeDeployApplicationDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeployApplicationDetail
@@ -1591,8 +1613,9 @@ func NewDescribeEnvironmentRequest() (request *DescribeEnvironmentRequest) {
 func NewDescribeEnvironmentResponse() (response *DescribeEnvironmentResponse) {
     response = &DescribeEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironment
@@ -1649,8 +1672,9 @@ func NewDescribeEnvironmentStatusRequest() (request *DescribeEnvironmentStatusRe
 func NewDescribeEnvironmentStatusResponse() (response *DescribeEnvironmentStatusResponse) {
     response = &DescribeEnvironmentStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironmentStatus
@@ -1705,8 +1729,9 @@ func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
 func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) {
     response = &DescribeEnvironmentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironments
@@ -1761,8 +1786,9 @@ func NewDescribeIngressRequest() (request *DescribeIngressRequest) {
 func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
     response = &DescribeIngressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIngress
@@ -1817,8 +1843,9 @@ func NewDescribeIngressesRequest() (request *DescribeIngressesRequest) {
 func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
     response = &DescribeIngressesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIngresses
@@ -1875,8 +1902,9 @@ func NewDescribeLogConfigRequest() (request *DescribeLogConfigRequest) {
 func NewDescribeLogConfigResponse() (response *DescribeLogConfigResponse) {
     response = &DescribeLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogConfig
@@ -1933,8 +1961,9 @@ func NewDescribePagedLogConfigListRequest() (request *DescribePagedLogConfigList
 func NewDescribePagedLogConfigListResponse() (response *DescribePagedLogConfigListResponse) {
     response = &DescribePagedLogConfigListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePagedLogConfigList
@@ -1993,8 +2022,9 @@ func NewDescribeRelatedIngressesRequest() (request *DescribeRelatedIngressesRequ
 func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesResponse) {
     response = &DescribeRelatedIngressesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRelatedIngresses
@@ -2051,8 +2081,9 @@ func NewDestroyConfigDataRequest() (request *DestroyConfigDataRequest) {
 func NewDestroyConfigDataResponse() (response *DestroyConfigDataResponse) {
     response = &DestroyConfigDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyConfigData
@@ -2103,8 +2134,9 @@ func NewDestroyEnvironmentRequest() (request *DestroyEnvironmentRequest) {
 func NewDestroyEnvironmentResponse() (response *DestroyEnvironmentResponse) {
     response = &DestroyEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyEnvironment
@@ -2157,8 +2189,9 @@ func NewDestroyLogConfigRequest() (request *DestroyLogConfigRequest) {
 func NewDestroyLogConfigResponse() (response *DestroyLogConfigResponse) {
     response = &DestroyLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyLogConfig
@@ -2213,8 +2246,9 @@ func NewDisableApplicationAutoscalerRequest() (request *DisableApplicationAutosc
 func NewDisableApplicationAutoscalerResponse() (response *DisableApplicationAutoscalerResponse) {
     response = &DisableApplicationAutoscalerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableApplicationAutoscaler
@@ -2263,8 +2297,9 @@ func NewEnableApplicationAutoscalerRequest() (request *EnableApplicationAutoscal
 func NewEnableApplicationAutoscalerResponse() (response *EnableApplicationAutoscalerResponse) {
     response = &EnableApplicationAutoscalerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableApplicationAutoscaler
@@ -2315,8 +2350,9 @@ func NewGenerateApplicationPackageDownloadUrlRequest() (request *GenerateApplica
 func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateApplicationPackageDownloadUrlResponse) {
     response = &GenerateApplicationPackageDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateApplicationPackageDownloadUrl
@@ -2363,8 +2399,9 @@ func NewModifyApplicationAutoscalerRequest() (request *ModifyApplicationAutoscal
 func NewModifyApplicationAutoscalerResponse() (response *ModifyApplicationAutoscalerResponse) {
     response = &ModifyApplicationAutoscalerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationAutoscaler
@@ -2427,8 +2464,9 @@ func NewModifyApplicationInfoRequest() (request *ModifyApplicationInfoRequest) {
 func NewModifyApplicationInfoResponse() (response *ModifyApplicationInfoResponse) {
     response = &ModifyApplicationInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationInfo
@@ -2483,8 +2521,9 @@ func NewModifyApplicationReplicasRequest() (request *ModifyApplicationReplicasRe
 func NewModifyApplicationReplicasResponse() (response *ModifyApplicationReplicasResponse) {
     response = &ModifyApplicationReplicasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationReplicas
@@ -2535,8 +2574,9 @@ func NewModifyApplicationServiceRequest() (request *ModifyApplicationServiceRequ
 func NewModifyApplicationServiceResponse() (response *ModifyApplicationServiceResponse) {
     response = &ModifyApplicationServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationService
@@ -2607,8 +2647,9 @@ func NewModifyConfigDataRequest() (request *ModifyConfigDataRequest) {
 func NewModifyConfigDataResponse() (response *ModifyConfigDataResponse) {
     response = &ModifyConfigDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConfigData
@@ -2659,8 +2700,9 @@ func NewModifyEnvironmentRequest() (request *ModifyEnvironmentRequest) {
 func NewModifyEnvironmentResponse() (response *ModifyEnvironmentResponse) {
     response = &ModifyEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEnvironment
@@ -2719,8 +2761,9 @@ func NewModifyIngressRequest() (request *ModifyIngressRequest) {
 func NewModifyIngressResponse() (response *ModifyIngressResponse) {
     response = &ModifyIngressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyIngress
@@ -2777,8 +2820,9 @@ func NewModifyLogConfigRequest() (request *ModifyLogConfigRequest) {
 func NewModifyLogConfigResponse() (response *ModifyLogConfigResponse) {
     response = &ModifyLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogConfig
@@ -2831,8 +2875,9 @@ func NewRestartApplicationRequest() (request *RestartApplicationRequest) {
 func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
     response = &RestartApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartApplication
@@ -2893,8 +2938,9 @@ func NewRestartApplicationPodRequest() (request *RestartApplicationPodRequest) {
 func NewRestartApplicationPodResponse() (response *RestartApplicationPodResponse) {
     response = &RestartApplicationPodResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartApplicationPod
@@ -2943,8 +2989,9 @@ func NewResumeDeployApplicationRequest() (request *ResumeDeployApplicationReques
 func NewResumeDeployApplicationResponse() (response *ResumeDeployApplicationResponse) {
     response = &ResumeDeployApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeDeployApplication
@@ -2995,8 +3042,9 @@ func NewRevertDeployApplicationRequest() (request *RevertDeployApplicationReques
 func NewRevertDeployApplicationResponse() (response *RevertDeployApplicationResponse) {
     response = &RevertDeployApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevertDeployApplication
@@ -3045,8 +3093,9 @@ func NewRollingUpdateApplicationByVersionRequest() (request *RollingUpdateApplic
 func NewRollingUpdateApplicationByVersionResponse() (response *RollingUpdateApplicationByVersionResponse) {
     response = &RollingUpdateApplicationByVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RollingUpdateApplicationByVersion
@@ -3143,8 +3192,9 @@ func NewStopApplicationRequest() (request *StopApplicationRequest) {
 func NewStopApplicationResponse() (response *StopApplicationResponse) {
     response = &StopApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopApplication

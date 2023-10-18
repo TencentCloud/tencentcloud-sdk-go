@@ -59,8 +59,9 @@ func NewAssignProjectRequest() (request *AssignProjectRequest) {
 func NewAssignProjectResponse() (response *AssignProjectResponse) {
     response = &AssignProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssignProject
@@ -117,8 +118,9 @@ func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
 func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
     response = &CreateDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBInstance
@@ -165,8 +167,9 @@ func NewCreateDBInstanceHourRequest() (request *CreateDBInstanceHourRequest) {
 func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) {
     response = &CreateDBInstanceHourResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBInstanceHour
@@ -213,8 +216,9 @@ func NewDescribeClientConnectionsRequest() (request *DescribeClientConnectionsRe
 func NewDescribeClientConnectionsResponse() (response *DescribeClientConnectionsResponse) {
     response = &DescribeClientConnectionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClientConnections
@@ -269,8 +273,9 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
 func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     response = &DescribeDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstances
@@ -325,8 +330,9 @@ func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
 func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
     response = &DescribeSlowLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowLog
@@ -391,8 +397,9 @@ func NewDescribeSpecInfoRequest() (request *DescribeSpecInfoRequest) {
 func NewDescribeSpecInfoResponse() (response *DescribeSpecInfoResponse) {
     response = &DescribeSpecInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSpecInfo
@@ -441,8 +448,9 @@ func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
 func NewRenameInstanceResponse() (response *RenameInstanceResponse) {
     response = &RenameInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenameInstance
@@ -497,8 +505,9 @@ func NewSetAutoRenewRequest() (request *SetAutoRenewRequest) {
 func NewSetAutoRenewResponse() (response *SetAutoRenewResponse) {
     response = &SetAutoRenewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetAutoRenew
@@ -551,8 +560,9 @@ func NewSetPasswordRequest() (request *SetPasswordRequest) {
 func NewSetPasswordResponse() (response *SetPasswordResponse) {
     response = &SetPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetPassword
@@ -613,8 +623,9 @@ func NewTerminateDBInstanceRequest() (request *TerminateDBInstanceRequest) {
 func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
     response = &TerminateDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateDBInstance
@@ -663,8 +674,9 @@ func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
 func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
     response = &UpgradeDBInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDBInstance
@@ -711,8 +723,9 @@ func NewUpgradeDBInstanceHourRequest() (request *UpgradeDBInstanceHourRequest) {
 func NewUpgradeDBInstanceHourResponse() (response *UpgradeDBInstanceHourResponse) {
     response = &UpgradeDBInstanceHourResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDBInstanceHour

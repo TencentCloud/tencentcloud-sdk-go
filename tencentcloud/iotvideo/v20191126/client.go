@@ -59,8 +59,9 @@ func NewClearDeviceActiveCodeRequest() (request *ClearDeviceActiveCodeRequest) {
 func NewClearDeviceActiveCodeResponse() (response *ClearDeviceActiveCodeResponse) {
     response = &ClearDeviceActiveCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearDeviceActiveCode
@@ -149,8 +150,9 @@ func NewCreateAnonymousAccessTokenRequest() (request *CreateAnonymousAccessToken
 func NewCreateAnonymousAccessTokenResponse() (response *CreateAnonymousAccessTokenResponse) {
     response = &CreateAnonymousAccessTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAnonymousAccessToken
@@ -239,8 +241,9 @@ func NewCreateAppUsrRequest() (request *CreateAppUsrRequest) {
 func NewCreateAppUsrResponse() (response *CreateAppUsrResponse) {
     response = &CreateAppUsrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppUsr
@@ -329,8 +332,9 @@ func NewCreateBindingRequest() (request *CreateBindingRequest) {
 func NewCreateBindingResponse() (response *CreateBindingResponse) {
     response = &CreateBindingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBinding
@@ -423,8 +427,9 @@ func NewCreateDevTokenRequest() (request *CreateDevTokenRequest) {
 func NewCreateDevTokenResponse() (response *CreateDevTokenResponse) {
     response = &CreateDevTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDevToken
@@ -525,8 +530,9 @@ func NewCreateDevicesRequest() (request *CreateDevicesRequest) {
 func NewCreateDevicesResponse() (response *CreateDevicesResponse) {
     response = &CreateDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDevices
@@ -619,8 +625,9 @@ func NewCreateGencodeRequest() (request *CreateGencodeRequest) {
 func NewCreateGencodeResponse() (response *CreateGencodeResponse) {
     response = &CreateGencodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGencode
@@ -709,8 +716,9 @@ func NewCreateIotDataTypeRequest() (request *CreateIotDataTypeRequest) {
 func NewCreateIotDataTypeResponse() (response *CreateIotDataTypeResponse) {
     response = &CreateIotDataTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIotDataType
@@ -799,8 +807,9 @@ func NewCreateIotModelRequest() (request *CreateIotModelRequest) {
 func NewCreateIotModelResponse() (response *CreateIotModelResponse) {
     response = &CreateIotModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIotModel
@@ -893,8 +902,9 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
 func NewCreateProductResponse() (response *CreateProductResponse) {
     response = &CreateProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProduct
@@ -983,8 +993,9 @@ func NewCreateStorageRequest() (request *CreateStorageRequest) {
 func NewCreateStorageResponse() (response *CreateStorageResponse) {
     response = &CreateStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStorage
@@ -1073,8 +1084,9 @@ func NewCreateStorageServiceRequest() (request *CreateStorageServiceRequest) {
 func NewCreateStorageServiceResponse() (response *CreateStorageServiceResponse) {
     response = &CreateStorageServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStorageService
@@ -1163,8 +1175,9 @@ func NewCreateTraceIdsRequest() (request *CreateTraceIdsRequest) {
 func NewCreateTraceIdsResponse() (response *CreateTraceIdsResponse) {
     response = &CreateTraceIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTraceIds
@@ -1253,8 +1266,9 @@ func NewCreateUploadPathRequest() (request *CreateUploadPathRequest) {
 func NewCreateUploadPathResponse() (response *CreateUploadPathResponse) {
     response = &CreateUploadPathResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUploadPath
@@ -1343,8 +1357,9 @@ func NewCreateUsrTokenRequest() (request *CreateUsrTokenRequest) {
 func NewCreateUsrTokenResponse() (response *CreateUsrTokenResponse) {
     response = &CreateUsrTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUsrToken
@@ -1433,8 +1448,9 @@ func NewDeleteAppUsrRequest() (request *DeleteAppUsrRequest) {
 func NewDeleteAppUsrResponse() (response *DeleteAppUsrResponse) {
     response = &DeleteAppUsrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAppUsr
@@ -1523,8 +1539,9 @@ func NewDeleteBindingRequest() (request *DeleteBindingRequest) {
 func NewDeleteBindingResponse() (response *DeleteBindingResponse) {
     response = &DeleteBindingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBinding
@@ -1613,8 +1630,9 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
 func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     response = &DeleteDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDevice
@@ -1703,8 +1721,9 @@ func NewDeleteIotDataTypeRequest() (request *DeleteIotDataTypeRequest) {
 func NewDeleteIotDataTypeResponse() (response *DeleteIotDataTypeResponse) {
     response = &DeleteIotDataTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIotDataType
@@ -1793,8 +1812,9 @@ func NewDeleteMessageQueueRequest() (request *DeleteMessageQueueRequest) {
 func NewDeleteMessageQueueResponse() (response *DeleteMessageQueueResponse) {
     response = &DeleteMessageQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMessageQueue
@@ -1883,8 +1903,9 @@ func NewDeleteOtaVersionRequest() (request *DeleteOtaVersionRequest) {
 func NewDeleteOtaVersionResponse() (response *DeleteOtaVersionResponse) {
     response = &DeleteOtaVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteOtaVersion
@@ -1973,8 +1994,9 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
 func NewDeleteProductResponse() (response *DeleteProductResponse) {
     response = &DeleteProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProduct
@@ -2063,8 +2085,9 @@ func NewDeleteTraceIdsRequest() (request *DeleteTraceIdsRequest) {
 func NewDeleteTraceIdsResponse() (response *DeleteTraceIdsResponse) {
     response = &DeleteTraceIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTraceIds
@@ -2153,8 +2176,9 @@ func NewDeliverStorageServiceRequest() (request *DeliverStorageServiceRequest) {
 func NewDeliverStorageServiceResponse() (response *DeliverStorageServiceResponse) {
     response = &DeliverStorageServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeliverStorageService
@@ -2243,8 +2267,9 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
 func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceResponse) {
     response = &DescribeAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountBalance
@@ -2333,8 +2358,9 @@ func NewDescribeBindDevRequest() (request *DescribeBindDevRequest) {
 func NewDescribeBindDevResponse() (response *DescribeBindDevResponse) {
     response = &DescribeBindDevResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindDev
@@ -2423,8 +2449,9 @@ func NewDescribeBindUsrRequest() (request *DescribeBindUsrRequest) {
 func NewDescribeBindUsrResponse() (response *DescribeBindUsrResponse) {
     response = &DescribeBindUsrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindUsr
@@ -2513,8 +2540,9 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
 func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     response = &DescribeDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevice
@@ -2603,8 +2631,9 @@ func NewDescribeDeviceModelRequest() (request *DescribeDeviceModelRequest) {
 func NewDescribeDeviceModelResponse() (response *DescribeDeviceModelResponse) {
     response = &DescribeDeviceModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceModel
@@ -2693,8 +2722,9 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
 func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     response = &DescribeDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevices
@@ -2783,8 +2813,9 @@ func NewDescribeIotDataTypeRequest() (request *DescribeIotDataTypeRequest) {
 func NewDescribeIotDataTypeResponse() (response *DescribeIotDataTypeResponse) {
     response = &DescribeIotDataTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIotDataType
@@ -2873,8 +2904,9 @@ func NewDescribeIotModelRequest() (request *DescribeIotModelRequest) {
 func NewDescribeIotModelResponse() (response *DescribeIotModelResponse) {
     response = &DescribeIotModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIotModel
@@ -2963,8 +2995,9 @@ func NewDescribeIotModelsRequest() (request *DescribeIotModelsRequest) {
 func NewDescribeIotModelsResponse() (response *DescribeIotModelsResponse) {
     response = &DescribeIotModelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIotModels
@@ -3053,8 +3086,9 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
 func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
     response = &DescribeLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogs
@@ -3147,8 +3181,9 @@ func NewDescribeMessageQueueRequest() (request *DescribeMessageQueueRequest) {
 func NewDescribeMessageQueueResponse() (response *DescribeMessageQueueResponse) {
     response = &DescribeMessageQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMessageQueue
@@ -3237,8 +3272,9 @@ func NewDescribeModelDataRetRequest() (request *DescribeModelDataRetRequest) {
 func NewDescribeModelDataRetResponse() (response *DescribeModelDataRetResponse) {
     response = &DescribeModelDataRetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelDataRet
@@ -3327,8 +3363,9 @@ func NewDescribeOsListRequest() (request *DescribeOsListRequest) {
 func NewDescribeOsListResponse() (response *DescribeOsListResponse) {
     response = &DescribeOsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOsList
@@ -3417,8 +3454,9 @@ func NewDescribeOtaVersionsRequest() (request *DescribeOtaVersionsRequest) {
 func NewDescribeOtaVersionsResponse() (response *DescribeOtaVersionsResponse) {
     response = &DescribeOtaVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOtaVersions
@@ -3507,8 +3545,9 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
 func NewDescribeProductResponse() (response *DescribeProductResponse) {
     response = &DescribeProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProduct
@@ -3597,8 +3636,9 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
 func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     response = &DescribeProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProducts
@@ -3687,8 +3727,9 @@ func NewDescribePubVersionsRequest() (request *DescribePubVersionsRequest) {
 func NewDescribePubVersionsResponse() (response *DescribePubVersionsResponse) {
     response = &DescribePubVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePubVersions
@@ -3777,8 +3818,9 @@ func NewDescribeRechargeRecordsRequest() (request *DescribeRechargeRecordsReques
 func NewDescribeRechargeRecordsResponse() (response *DescribeRechargeRecordsResponse) {
     response = &DescribeRechargeRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRechargeRecords
@@ -3867,8 +3909,9 @@ func NewDescribeRegistrationStatusRequest() (request *DescribeRegistrationStatus
 func NewDescribeRegistrationStatusResponse() (response *DescribeRegistrationStatusResponse) {
     response = &DescribeRegistrationStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegistrationStatus
@@ -3957,8 +4000,9 @@ func NewDescribeRunLogRequest() (request *DescribeRunLogRequest) {
 func NewDescribeRunLogResponse() (response *DescribeRunLogResponse) {
     response = &DescribeRunLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRunLog
@@ -4047,8 +4091,9 @@ func NewDescribeStorageServiceRequest() (request *DescribeStorageServiceRequest)
 func NewDescribeStorageServiceResponse() (response *DescribeStorageServiceResponse) {
     response = &DescribeStorageServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStorageService
@@ -4137,8 +4182,9 @@ func NewDescribeStreamRequest() (request *DescribeStreamRequest) {
 func NewDescribeStreamResponse() (response *DescribeStreamResponse) {
     response = &DescribeStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStream
@@ -4243,8 +4289,9 @@ func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
 func NewDescribeTraceIdsResponse() (response *DescribeTraceIdsResponse) {
     response = &DescribeTraceIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceIds
@@ -4333,8 +4380,9 @@ func NewDescribeTraceStatusRequest() (request *DescribeTraceStatusRequest) {
 func NewDescribeTraceStatusResponse() (response *DescribeTraceStatusResponse) {
     response = &DescribeTraceStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceStatus
@@ -4423,8 +4471,9 @@ func NewDisableDeviceRequest() (request *DisableDeviceRequest) {
 func NewDisableDeviceResponse() (response *DisableDeviceResponse) {
     response = &DisableDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableDevice
@@ -4513,8 +4562,9 @@ func NewDisableDeviceStreamRequest() (request *DisableDeviceStreamRequest) {
 func NewDisableDeviceStreamResponse() (response *DisableDeviceStreamResponse) {
     response = &DisableDeviceStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableDeviceStream
@@ -4603,8 +4653,9 @@ func NewDisableOtaVersionRequest() (request *DisableOtaVersionRequest) {
 func NewDisableOtaVersionResponse() (response *DisableOtaVersionResponse) {
     response = &DisableOtaVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableOtaVersion
@@ -4693,8 +4744,9 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
 func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
     response = &ModifyDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDevice
@@ -4745,8 +4797,9 @@ func NewModifyDeviceActionRequest() (request *ModifyDeviceActionRequest) {
 func NewModifyDeviceActionResponse() (response *ModifyDeviceActionResponse) {
     response = &ModifyDeviceActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceAction
@@ -4859,8 +4912,9 @@ func NewModifyDevicePropertyRequest() (request *ModifyDevicePropertyRequest) {
 func NewModifyDevicePropertyResponse() (response *ModifyDevicePropertyResponse) {
     response = &ModifyDevicePropertyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceProperty
@@ -4973,8 +5027,9 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
 func NewModifyProductResponse() (response *ModifyProductResponse) {
     response = &ModifyProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProduct
@@ -5063,8 +5118,9 @@ func NewModifyVerContentRequest() (request *ModifyVerContentRequest) {
 func NewModifyVerContentResponse() (response *ModifyVerContentResponse) {
     response = &ModifyVerContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVerContent
@@ -5153,8 +5209,9 @@ func NewRefundStorageServiceRequest() (request *RefundStorageServiceRequest) {
 func NewRefundStorageServiceResponse() (response *RefundStorageServiceResponse) {
     response = &RefundStorageServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundStorageService
@@ -5259,8 +5316,9 @@ func NewRunDeviceRequest() (request *RunDeviceRequest) {
 func NewRunDeviceResponse() (response *RunDeviceResponse) {
     response = &RunDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunDevice
@@ -5349,8 +5407,9 @@ func NewRunDeviceStreamRequest() (request *RunDeviceStreamRequest) {
 func NewRunDeviceStreamResponse() (response *RunDeviceStreamResponse) {
     response = &RunDeviceStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunDeviceStream
@@ -5439,8 +5498,9 @@ func NewRunIotModelRequest() (request *RunIotModelRequest) {
 func NewRunIotModelResponse() (response *RunIotModelResponse) {
     response = &RunIotModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunIotModel
@@ -5529,8 +5589,9 @@ func NewRunOtaVersionRequest() (request *RunOtaVersionRequest) {
 func NewRunOtaVersionResponse() (response *RunOtaVersionResponse) {
     response = &RunOtaVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunOtaVersion
@@ -5619,8 +5680,9 @@ func NewRunTestOtaVersionRequest() (request *RunTestOtaVersionRequest) {
 func NewRunTestOtaVersionResponse() (response *RunTestOtaVersionResponse) {
     response = &RunTestOtaVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunTestOtaVersion
@@ -5709,8 +5771,9 @@ func NewSendOnlineMsgRequest() (request *SendOnlineMsgRequest) {
 func NewSendOnlineMsgResponse() (response *SendOnlineMsgResponse) {
     response = &SendOnlineMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendOnlineMsg
@@ -5811,8 +5874,9 @@ func NewSetMessageQueueRequest() (request *SetMessageQueueRequest) {
 func NewSetMessageQueueResponse() (response *SetMessageQueueResponse) {
     response = &SetMessageQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetMessageQueue
@@ -5901,8 +5965,9 @@ func NewUpgradeDeviceRequest() (request *UpgradeDeviceRequest) {
 func NewUpgradeDeviceResponse() (response *UpgradeDeviceResponse) {
     response = &UpgradeDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeDevice
@@ -5999,8 +6064,9 @@ func NewUploadOtaVersionRequest() (request *UploadOtaVersionRequest) {
 func NewUploadOtaVersionResponse() (response *UploadOtaVersionResponse) {
     response = &UploadOtaVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadOtaVersion

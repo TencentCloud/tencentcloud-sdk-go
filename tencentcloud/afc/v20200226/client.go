@@ -59,8 +59,9 @@ func NewGetAntiFraudVipRequest() (request *GetAntiFraudVipRequest) {
 func NewGetAntiFraudVipResponse() (response *GetAntiFraudVipResponse) {
     response = &GetAntiFraudVipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAntiFraudVip
@@ -187,8 +188,9 @@ func NewQueryAntiFraudVipRequest() (request *QueryAntiFraudVipRequest) {
 func NewQueryAntiFraudVipResponse() (response *QueryAntiFraudVipResponse) {
     response = &QueryAntiFraudVipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAntiFraudVip
@@ -281,8 +283,9 @@ func NewTransportGeneralInterfaceRequest() (request *TransportGeneralInterfaceRe
 func NewTransportGeneralInterfaceResponse() (response *TransportGeneralInterfaceResponse) {
     response = &TransportGeneralInterfaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransportGeneralInterface

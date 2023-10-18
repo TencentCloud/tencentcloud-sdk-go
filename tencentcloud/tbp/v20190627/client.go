@@ -59,8 +59,9 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
 func NewTextProcessResponse() (response *TextProcessResponse) {
     response = &TextProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextProcess
@@ -119,8 +120,9 @@ func NewTextResetRequest() (request *TextResetRequest) {
 func NewTextResetResponse() (response *TextResetResponse) {
     response = &TextResetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextReset

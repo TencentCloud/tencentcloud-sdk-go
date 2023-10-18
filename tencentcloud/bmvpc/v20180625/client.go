@@ -59,8 +59,9 @@ func NewAcceptVpcPeerConnectionRequest() (request *AcceptVpcPeerConnectionReques
 func NewAcceptVpcPeerConnectionResponse() (response *AcceptVpcPeerConnectionResponse) {
     response = &AcceptVpcPeerConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AcceptVpcPeerConnection
@@ -119,8 +120,9 @@ func NewAsyncRegisterIpsRequest() (request *AsyncRegisterIpsRequest) {
 func NewAsyncRegisterIpsResponse() (response *AsyncRegisterIpsResponse) {
     response = &AsyncRegisterIpsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AsyncRegisterIps
@@ -167,8 +169,9 @@ func NewBindEipsToNatGatewayRequest() (request *BindEipsToNatGatewayRequest) {
 func NewBindEipsToNatGatewayResponse() (response *BindEipsToNatGatewayResponse) {
     response = &BindEipsToNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindEipsToNatGateway
@@ -221,8 +224,9 @@ func NewBindIpsToNatGatewayRequest() (request *BindIpsToNatGatewayRequest) {
 func NewBindIpsToNatGatewayResponse() (response *BindIpsToNatGatewayResponse) {
     response = &BindIpsToNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindIpsToNatGateway
@@ -277,8 +281,9 @@ func NewBindSubnetsToNatGatewayRequest() (request *BindSubnetsToNatGatewayReques
 func NewBindSubnetsToNatGatewayResponse() (response *BindSubnetsToNatGatewayResponse) {
     response = &BindSubnetsToNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindSubnetsToNatGateway
@@ -333,8 +338,9 @@ func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
 func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse) {
     response = &CreateCustomerGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomerGateway
@@ -391,8 +397,9 @@ func NewCreateDockerSubnetWithVlanRequest() (request *CreateDockerSubnetWithVlan
 func NewCreateDockerSubnetWithVlanResponse() (response *CreateDockerSubnetWithVlanResponse) {
     response = &CreateDockerSubnetWithVlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDockerSubnetWithVlan
@@ -441,8 +448,9 @@ func NewCreateHostedInterfaceRequest() (request *CreateHostedInterfaceRequest) {
 func NewCreateHostedInterfaceResponse() (response *CreateHostedInterfaceResponse) {
     response = &CreateHostedInterfaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHostedInterface
@@ -509,8 +517,9 @@ func NewCreateInterfacesRequest() (request *CreateInterfacesRequest) {
 func NewCreateInterfacesResponse() (response *CreateInterfacesResponse) {
     response = &CreateInterfacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInterfaces
@@ -565,8 +574,9 @@ func NewCreateNatGatewayRequest() (request *CreateNatGatewayRequest) {
 func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
     response = &CreateNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNatGateway
@@ -623,8 +633,9 @@ func NewCreateRoutePoliciesRequest() (request *CreateRoutePoliciesRequest) {
 func NewCreateRoutePoliciesResponse() (response *CreateRoutePoliciesResponse) {
     response = &CreateRoutePoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRoutePolicies
@@ -681,8 +692,9 @@ func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
 func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
     response = &CreateSubnetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubnet
@@ -739,8 +751,9 @@ func NewCreateVirtualSubnetWithVlanRequest() (request *CreateVirtualSubnetWithVl
 func NewCreateVirtualSubnetWithVlanResponse() (response *CreateVirtualSubnetWithVlanResponse) {
     response = &CreateVirtualSubnetWithVlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVirtualSubnetWithVlan
@@ -789,8 +802,9 @@ func NewCreateVpcRequest() (request *CreateVpcRequest) {
 func NewCreateVpcResponse() (response *CreateVpcResponse) {
     response = &CreateVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVpc
@@ -841,8 +855,9 @@ func NewCreateVpcPeerConnectionRequest() (request *CreateVpcPeerConnectionReques
 func NewCreateVpcPeerConnectionResponse() (response *CreateVpcPeerConnectionResponse) {
     response = &CreateVpcPeerConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVpcPeerConnection
@@ -903,8 +918,9 @@ func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
 func NewDeleteCustomerGatewayResponse() (response *DeleteCustomerGatewayResponse) {
     response = &DeleteCustomerGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomerGateway
@@ -961,8 +977,9 @@ func NewDeleteHostedInterfaceRequest() (request *DeleteHostedInterfaceRequest) {
 func NewDeleteHostedInterfaceResponse() (response *DeleteHostedInterfaceResponse) {
     response = &DeleteHostedInterfaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteHostedInterface
@@ -1021,8 +1038,9 @@ func NewDeleteHostedInterfacesRequest() (request *DeleteHostedInterfacesRequest)
 func NewDeleteHostedInterfacesResponse() (response *DeleteHostedInterfacesResponse) {
     response = &DeleteHostedInterfacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteHostedInterfaces
@@ -1075,8 +1093,9 @@ func NewDeleteInterfacesRequest() (request *DeleteInterfacesRequest) {
 func NewDeleteInterfacesResponse() (response *DeleteInterfacesResponse) {
     response = &DeleteInterfacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteInterfaces
@@ -1129,8 +1148,9 @@ func NewDeleteNatGatewayRequest() (request *DeleteNatGatewayRequest) {
 func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
     response = &DeleteNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNatGateway
@@ -1183,8 +1203,9 @@ func NewDeleteRoutePolicyRequest() (request *DeleteRoutePolicyRequest) {
 func NewDeleteRoutePolicyResponse() (response *DeleteRoutePolicyResponse) {
     response = &DeleteRoutePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRoutePolicy
@@ -1239,8 +1260,9 @@ func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
 func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
     response = &DeleteSubnetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSubnet
@@ -1299,8 +1321,9 @@ func NewDeleteVirtualIpRequest() (request *DeleteVirtualIpRequest) {
 func NewDeleteVirtualIpResponse() (response *DeleteVirtualIpResponse) {
     response = &DeleteVirtualIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVirtualIp
@@ -1353,8 +1376,9 @@ func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
 func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
     response = &DeleteVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVpc
@@ -1419,8 +1443,9 @@ func NewDeleteVpcPeerConnectionRequest() (request *DeleteVpcPeerConnectionReques
 func NewDeleteVpcPeerConnectionResponse() (response *DeleteVpcPeerConnectionResponse) {
     response = &DeleteVpcPeerConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVpcPeerConnection
@@ -1479,8 +1504,9 @@ func NewDeleteVpnConnectionRequest() (request *DeleteVpnConnectionRequest) {
 func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
     response = &DeleteVpnConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVpnConnection
@@ -1547,8 +1573,9 @@ func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
 func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
     response = &DeleteVpnGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVpnGateway
@@ -1601,8 +1628,9 @@ func NewDeregisterIpsRequest() (request *DeregisterIpsRequest) {
 func NewDeregisterIpsResponse() (response *DeregisterIpsResponse) {
     response = &DeregisterIpsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeregisterIps
@@ -1655,8 +1683,9 @@ func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequ
 func NewDescribeCustomerGatewaysResponse() (response *DescribeCustomerGatewaysResponse) {
     response = &DescribeCustomerGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomerGateways
@@ -1705,8 +1734,9 @@ func NewDescribeNatGatewaysRequest() (request *DescribeNatGatewaysRequest) {
 func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
     response = &DescribeNatGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNatGateways
@@ -1759,8 +1789,9 @@ func NewDescribeNatSubnetsRequest() (request *DescribeNatSubnetsRequest) {
 func NewDescribeNatSubnetsResponse() (response *DescribeNatSubnetsResponse) {
     response = &DescribeNatSubnetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNatSubnets
@@ -1813,8 +1844,9 @@ func NewDescribeRoutePoliciesRequest() (request *DescribeRoutePoliciesRequest) {
 func NewDescribeRoutePoliciesResponse() (response *DescribeRoutePoliciesResponse) {
     response = &DescribeRoutePoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoutePolicies
@@ -1867,8 +1899,9 @@ func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
 func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
     response = &DescribeRouteTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRouteTables
@@ -1919,8 +1952,9 @@ func NewDescribeSubnetAvailableIpsRequest() (request *DescribeSubnetAvailableIps
 func NewDescribeSubnetAvailableIpsResponse() (response *DescribeSubnetAvailableIpsResponse) {
     response = &DescribeSubnetAvailableIpsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnetAvailableIps
@@ -1969,8 +2003,9 @@ func NewDescribeSubnetByDeviceRequest() (request *DescribeSubnetByDeviceRequest)
 func NewDescribeSubnetByDeviceResponse() (response *DescribeSubnetByDeviceResponse) {
     response = &DescribeSubnetByDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnetByDevice
@@ -2019,8 +2054,9 @@ func NewDescribeSubnetByHostedDeviceRequest() (request *DescribeSubnetByHostedDe
 func NewDescribeSubnetByHostedDeviceResponse() (response *DescribeSubnetByHostedDeviceResponse) {
     response = &DescribeSubnetByHostedDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnetByHostedDevice
@@ -2069,8 +2105,9 @@ func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
 func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
     response = &DescribeSubnetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnets
@@ -2121,8 +2158,9 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
 func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     response = &DescribeTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskStatus
@@ -2173,8 +2211,9 @@ func NewDescribeVpcPeerConnectionsRequest() (request *DescribeVpcPeerConnections
 func NewDescribeVpcPeerConnectionsResponse() (response *DescribeVpcPeerConnectionsResponse) {
     response = &DescribeVpcPeerConnectionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcPeerConnections
@@ -2223,8 +2262,9 @@ func NewDescribeVpcQuotaRequest() (request *DescribeVpcQuotaRequest) {
 func NewDescribeVpcQuotaResponse() (response *DescribeVpcQuotaResponse) {
     response = &DescribeVpcQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcQuota
@@ -2275,8 +2315,9 @@ func NewDescribeVpcResourceRequest() (request *DescribeVpcResourceRequest) {
 func NewDescribeVpcResourceResponse() (response *DescribeVpcResourceResponse) {
     response = &DescribeVpcResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcResource
@@ -2327,8 +2368,9 @@ func NewDescribeVpcViewRequest() (request *DescribeVpcViewRequest) {
 func NewDescribeVpcViewResponse() (response *DescribeVpcViewResponse) {
     response = &DescribeVpcViewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcView
@@ -2381,8 +2423,9 @@ func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
 func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
     response = &DescribeVpcsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcs
@@ -2435,8 +2478,9 @@ func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest)
 func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsResponse) {
     response = &DescribeVpnConnectionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpnConnections
@@ -2485,8 +2529,9 @@ func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
 func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
     response = &DescribeVpnGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpnGateways
@@ -2535,8 +2580,9 @@ func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomer
 func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustomerGatewayConfigurationResponse) {
     response = &DownloadCustomerGatewayConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadCustomerGatewayConfiguration
@@ -2587,8 +2633,9 @@ func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayA
 func NewModifyCustomerGatewayAttributeResponse() (response *ModifyCustomerGatewayAttributeResponse) {
     response = &ModifyCustomerGatewayAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomerGatewayAttribute
@@ -2645,8 +2692,9 @@ func NewModifyRoutePolicyRequest() (request *ModifyRoutePolicyRequest) {
 func NewModifyRoutePolicyResponse() (response *ModifyRoutePolicyResponse) {
     response = &ModifyRoutePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRoutePolicy
@@ -2701,8 +2749,9 @@ func NewModifyRouteTableRequest() (request *ModifyRouteTableRequest) {
 func NewModifyRouteTableResponse() (response *ModifyRouteTableResponse) {
     response = &ModifyRouteTableResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRouteTable
@@ -2755,8 +2804,9 @@ func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
 func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse) {
     response = &ModifySubnetAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubnetAttribute
@@ -2809,8 +2859,9 @@ func NewModifySubnetDHCPRelayRequest() (request *ModifySubnetDHCPRelayRequest) {
 func NewModifySubnetDHCPRelayResponse() (response *ModifySubnetDHCPRelayResponse) {
     response = &ModifySubnetDHCPRelayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubnetDHCPRelay
@@ -2863,8 +2914,9 @@ func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
 func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
     response = &ModifyVpcAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVpcAttribute
@@ -2917,8 +2969,9 @@ func NewModifyVpcPeerConnectionRequest() (request *ModifyVpcPeerConnectionReques
 func NewModifyVpcPeerConnectionResponse() (response *ModifyVpcPeerConnectionResponse) {
     response = &ModifyVpcPeerConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVpcPeerConnection
@@ -2977,8 +3030,9 @@ func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttri
 func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAttributeResponse) {
     response = &ModifyVpnConnectionAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVpnConnectionAttribute
@@ -3047,8 +3101,9 @@ func NewModifyVpnGatewayAttributeRequest() (request *ModifyVpnGatewayAttributeRe
 func NewModifyVpnGatewayAttributeResponse() (response *ModifyVpnGatewayAttributeResponse) {
     response = &ModifyVpnGatewayAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVpnGatewayAttribute
@@ -3101,8 +3156,9 @@ func NewRejectVpcPeerConnectionRequest() (request *RejectVpcPeerConnectionReques
 func NewRejectVpcPeerConnectionResponse() (response *RejectVpcPeerConnectionResponse) {
     response = &RejectVpcPeerConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RejectVpcPeerConnection
@@ -3163,8 +3219,9 @@ func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
 func NewResetVpnConnectionResponse() (response *ResetVpnConnectionResponse) {
     response = &ResetVpnConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetVpnConnection
@@ -3219,8 +3276,9 @@ func NewUnbindEipsFromNatGatewayRequest() (request *UnbindEipsFromNatGatewayRequ
 func NewUnbindEipsFromNatGatewayResponse() (response *UnbindEipsFromNatGatewayResponse) {
     response = &UnbindEipsFromNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindEipsFromNatGateway
@@ -3275,8 +3333,9 @@ func NewUnbindIpsFromNatGatewayRequest() (request *UnbindIpsFromNatGatewayReques
 func NewUnbindIpsFromNatGatewayResponse() (response *UnbindIpsFromNatGatewayResponse) {
     response = &UnbindIpsFromNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindIpsFromNatGateway
@@ -3329,8 +3388,9 @@ func NewUnbindSubnetsFromNatGatewayRequest() (request *UnbindSubnetsFromNatGatew
 func NewUnbindSubnetsFromNatGatewayResponse() (response *UnbindSubnetsFromNatGatewayResponse) {
     response = &UnbindSubnetsFromNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindSubnetsFromNatGateway
@@ -3383,8 +3443,9 @@ func NewUpgradeNatGatewayRequest() (request *UpgradeNatGatewayRequest) {
 func NewUpgradeNatGatewayResponse() (response *UpgradeNatGatewayResponse) {
     response = &UpgradeNatGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeNatGateway

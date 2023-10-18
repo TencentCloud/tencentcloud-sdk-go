@@ -59,8 +59,9 @@ func NewCancelEncryptTaskRequest() (request *CancelEncryptTaskRequest) {
 func NewCancelEncryptTaskResponse() (response *CancelEncryptTaskResponse) {
     response = &CancelEncryptTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelEncryptTask
@@ -121,8 +122,9 @@ func NewCreateBindInstanceRequest() (request *CreateBindInstanceRequest) {
 func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
     response = &CreateBindInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBindInstance
@@ -181,8 +183,9 @@ func NewCreateCosSecKeyInstanceRequest() (request *CreateCosSecKeyInstanceReques
 func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResponse) {
     response = &CreateCosSecKeyInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCosSecKeyInstance
@@ -237,8 +240,9 @@ func NewCreateEncryptInstanceRequest() (request *CreateEncryptInstanceRequest) {
 func NewCreateEncryptInstanceResponse() (response *CreateEncryptInstanceResponse) {
     response = &CreateEncryptInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEncryptInstance
@@ -335,8 +339,9 @@ func NewCreateOrderInstanceRequest() (request *CreateOrderInstanceRequest) {
 func NewCreateOrderInstanceResponse() (response *CreateOrderInstanceResponse) {
     response = &CreateOrderInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrderInstance
@@ -405,8 +410,9 @@ func NewCreateResourceInstancesRequest() (request *CreateResourceInstancesReques
 func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResponse) {
     response = &CreateResourceInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateResourceInstances
@@ -467,8 +473,9 @@ func NewCreateShieldInstanceRequest() (request *CreateShieldInstanceRequest) {
 func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) {
     response = &CreateShieldInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateShieldInstance
@@ -535,8 +542,9 @@ func NewCreateShieldPlanInstanceRequest() (request *CreateShieldPlanInstanceRequ
 func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceResponse) {
     response = &CreateShieldPlanInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateShieldPlanInstance
@@ -595,8 +603,9 @@ func NewDeleteShieldInstancesRequest() (request *DeleteShieldInstancesRequest) {
 func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse) {
     response = &DeleteShieldInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteShieldInstances
@@ -653,8 +662,9 @@ func NewDescribeApkDetectionResultRequest() (request *DescribeApkDetectionResult
 func NewDescribeApkDetectionResultResponse() (response *DescribeApkDetectionResultResponse) {
     response = &DescribeApkDetectionResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApkDetectionResult
@@ -717,8 +727,9 @@ func NewDescribeEncryptInstancesRequest() (request *DescribeEncryptInstancesRequ
 func NewDescribeEncryptInstancesResponse() (response *DescribeEncryptInstancesResponse) {
     response = &DescribeEncryptInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEncryptInstances
@@ -777,8 +788,9 @@ func NewDescribeEncryptPlanRequest() (request *DescribeEncryptPlanRequest) {
 func NewDescribeEncryptPlanResponse() (response *DescribeEncryptPlanResponse) {
     response = &DescribeEncryptPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEncryptPlan
@@ -837,8 +849,9 @@ func NewDescribeOrderInstancesRequest() (request *DescribeOrderInstancesRequest)
 func NewDescribeOrderInstancesResponse() (response *DescribeOrderInstancesResponse) {
     response = &DescribeOrderInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrderInstances
@@ -909,8 +922,9 @@ func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRe
 func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstancesResponse) {
     response = &DescribeResourceInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceInstances
@@ -975,8 +989,9 @@ func NewDescribeShieldInstancesRequest() (request *DescribeShieldInstancesReques
 func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResponse) {
     response = &DescribeShieldInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShieldInstances
@@ -1045,8 +1060,9 @@ func NewDescribeShieldPlanInstanceRequest() (request *DescribeShieldPlanInstance
 func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstanceResponse) {
     response = &DescribeShieldPlanInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShieldPlanInstance
@@ -1103,8 +1119,9 @@ func NewDescribeShieldResultRequest() (request *DescribeShieldResultRequest) {
 func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) {
     response = &DescribeShieldResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShieldResult
@@ -1161,8 +1178,9 @@ func NewDescribeUrlDetectionResultRequest() (request *DescribeUrlDetectionResult
 func NewDescribeUrlDetectionResultResponse() (response *DescribeUrlDetectionResultResponse) {
     response = &DescribeUrlDetectionResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUrlDetectionResult
@@ -1221,8 +1239,9 @@ func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInst
 func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoInstanceResponse) {
     response = &DescribeUserBaseInfoInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserBaseInfoInstance
@@ -1281,8 +1300,9 @@ func NewRequestLocalTaskRequest() (request *RequestLocalTaskRequest) {
 func NewRequestLocalTaskResponse() (response *RequestLocalTaskResponse) {
     response = &RequestLocalTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RequestLocalTask
@@ -1331,8 +1351,9 @@ func NewUpdateClientStateRequest() (request *UpdateClientStateRequest) {
 func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
     response = &UpdateClientStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateClientState
@@ -1379,8 +1400,9 @@ func NewUpdateLocalTaskResultRequest() (request *UpdateLocalTaskResultRequest) {
 func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse) {
     response = &UpdateLocalTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateLocalTaskResult

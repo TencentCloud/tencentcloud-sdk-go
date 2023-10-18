@@ -59,8 +59,9 @@ func NewCreateContainerInstanceRequest() (request *CreateContainerInstanceReques
 func NewCreateContainerInstanceResponse() (response *CreateContainerInstanceResponse) {
     response = &CreateContainerInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateContainerInstance
@@ -109,8 +110,9 @@ func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceReques
 func NewDeleteContainerInstanceResponse() (response *DeleteContainerInstanceResponse) {
     response = &DeleteContainerInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteContainerInstance
@@ -159,8 +161,9 @@ func NewDescribeContainerInstanceRequest() (request *DescribeContainerInstanceRe
 func NewDescribeContainerInstanceResponse() (response *DescribeContainerInstanceResponse) {
     response = &DescribeContainerInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerInstance
@@ -209,8 +212,9 @@ func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInst
 func NewDescribeContainerInstanceEventsResponse() (response *DescribeContainerInstanceEventsResponse) {
     response = &DescribeContainerInstanceEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerInstanceEvents
@@ -259,8 +263,9 @@ func NewDescribeContainerInstancesRequest() (request *DescribeContainerInstances
 func NewDescribeContainerInstancesResponse() (response *DescribeContainerInstancesResponse) {
     response = &DescribeContainerInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerInstances
@@ -309,8 +314,9 @@ func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
 func NewDescribeContainerLogResponse() (response *DescribeContainerLogResponse) {
     response = &DescribeContainerLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerLog
@@ -359,8 +365,9 @@ func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
 func NewInquiryPriceCreateCisResponse() (response *InquiryPriceCreateCisResponse) {
     response = &InquiryPriceCreateCisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceCreateCis

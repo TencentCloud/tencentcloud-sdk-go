@@ -59,8 +59,9 @@ func NewCreateBotRequest() (request *CreateBotRequest) {
 func NewCreateBotResponse() (response *CreateBotResponse) {
     response = &CreateBotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBot
@@ -111,8 +112,9 @@ func NewResetRequest() (request *ResetRequest) {
 func NewResetResponse() (response *ResetResponse) {
     response = &ResetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Reset
@@ -169,8 +171,9 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
 func NewTextProcessResponse() (response *TextProcessResponse) {
     response = &TextProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextProcess
@@ -229,8 +232,9 @@ func NewTextResetRequest() (request *TextResetRequest) {
 func NewTextResetResponse() (response *TextResetResponse) {
     response = &TextResetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextReset

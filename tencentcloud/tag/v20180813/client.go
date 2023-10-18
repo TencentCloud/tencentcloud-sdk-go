@@ -59,8 +59,9 @@ func NewAddProjectRequest() (request *AddProjectRequest) {
 func NewAddProjectResponse() (response *AddProjectResponse) {
     response = &AddProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddProject
@@ -113,8 +114,9 @@ func NewAddResourceTagRequest() (request *AddResourceTagRequest) {
 func NewAddResourceTagResponse() (response *AddResourceTagResponse) {
     response = &AddResourceTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddResourceTag
@@ -183,8 +185,9 @@ func NewAttachResourcesTagRequest() (request *AttachResourcesTagRequest) {
 func NewAttachResourcesTagResponse() (response *AttachResourcesTagResponse) {
     response = &AttachResourcesTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachResourcesTag
@@ -269,8 +272,9 @@ func NewCreateTagRequest() (request *CreateTagRequest) {
 func NewCreateTagResponse() (response *CreateTagResponse) {
     response = &CreateTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTag
@@ -339,8 +343,9 @@ func NewCreateTagsRequest() (request *CreateTagsRequest) {
 func NewCreateTagsResponse() (response *CreateTagsResponse) {
     response = &CreateTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTags
@@ -413,8 +418,9 @@ func NewDeleteResourceTagRequest() (request *DeleteResourceTagRequest) {
 func NewDeleteResourceTagResponse() (response *DeleteResourceTagResponse) {
     response = &DeleteResourceTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteResourceTag
@@ -473,8 +479,9 @@ func NewDeleteTagRequest() (request *DeleteTagRequest) {
 func NewDeleteTagResponse() (response *DeleteTagResponse) {
     response = &DeleteTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTag
@@ -539,8 +546,9 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
 func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
     response = &DeleteTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTags
@@ -609,8 +617,9 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
 func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
     response = &DescribeProjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjects
@@ -663,8 +672,9 @@ func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
 func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) {
     response = &DescribeResourceTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTags
@@ -711,8 +721,9 @@ func NewDescribeResourceTagsByResourceIdsRequest() (request *DescribeResourceTag
 func NewDescribeResourceTagsByResourceIdsResponse() (response *DescribeResourceTagsByResourceIdsResponse) {
     response = &DescribeResourceTagsByResourceIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTagsByResourceIds
@@ -771,8 +782,9 @@ func NewDescribeResourceTagsByResourceIdsSeqRequest() (request *DescribeResource
 func NewDescribeResourceTagsByResourceIdsSeqResponse() (response *DescribeResourceTagsByResourceIdsSeqResponse) {
     response = &DescribeResourceTagsByResourceIdsSeqResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTagsByResourceIdsSeq
@@ -829,8 +841,9 @@ func NewDescribeResourceTagsByTagKeysRequest() (request *DescribeResourceTagsByT
 func NewDescribeResourceTagsByTagKeysResponse() (response *DescribeResourceTagsByTagKeysResponse) {
     response = &DescribeResourceTagsByTagKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTagsByTagKeys
@@ -891,8 +904,9 @@ func NewDescribeResourcesByTagsRequest() (request *DescribeResourcesByTagsReques
 func NewDescribeResourcesByTagsResponse() (response *DescribeResourcesByTagsResponse) {
     response = &DescribeResourcesByTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourcesByTags
@@ -947,8 +961,9 @@ func NewDescribeResourcesByTagsUnionRequest() (request *DescribeResourcesByTagsU
 func NewDescribeResourcesByTagsUnionResponse() (response *DescribeResourcesByTagsUnionResponse) {
     response = &DescribeResourcesByTagsUnionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourcesByTagsUnion
@@ -1001,8 +1016,9 @@ func NewDescribeTagKeysRequest() (request *DescribeTagKeysRequest) {
 func NewDescribeTagKeysResponse() (response *DescribeTagKeysResponse) {
     response = &DescribeTagKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagKeys
@@ -1051,8 +1067,9 @@ func NewDescribeTagValuesRequest() (request *DescribeTagValuesRequest) {
 func NewDescribeTagValuesResponse() (response *DescribeTagValuesResponse) {
     response = &DescribeTagValuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagValues
@@ -1103,8 +1120,9 @@ func NewDescribeTagValuesSeqRequest() (request *DescribeTagValuesSeqRequest) {
 func NewDescribeTagValuesSeqResponse() (response *DescribeTagValuesSeqResponse) {
     response = &DescribeTagValuesSeqResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagValuesSeq
@@ -1153,8 +1171,9 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
 func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
     response = &DescribeTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTags
@@ -1203,8 +1222,9 @@ func NewDescribeTagsSeqRequest() (request *DescribeTagsSeqRequest) {
 func NewDescribeTagsSeqResponse() (response *DescribeTagsSeqResponse) {
     response = &DescribeTagsSeqResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagsSeq
@@ -1255,8 +1275,9 @@ func NewDetachResourcesTagRequest() (request *DetachResourcesTagRequest) {
 func NewDetachResourcesTagResponse() (response *DetachResourcesTagResponse) {
     response = &DetachResourcesTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachResourcesTag
@@ -1327,8 +1348,9 @@ func NewGetResourcesRequest() (request *GetResourcesRequest) {
 func NewGetResourcesResponse() (response *GetResourcesResponse) {
     response = &GetResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetResources
@@ -1405,8 +1427,9 @@ func NewGetTagKeysRequest() (request *GetTagKeysRequest) {
 func NewGetTagKeysResponse() (response *GetTagKeysResponse) {
     response = &GetTagKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTagKeys
@@ -1461,8 +1484,9 @@ func NewGetTagValuesRequest() (request *GetTagValuesRequest) {
 func NewGetTagValuesResponse() (response *GetTagValuesResponse) {
     response = &GetTagValuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTagValues
@@ -1519,8 +1543,9 @@ func NewGetTagsRequest() (request *GetTagsRequest) {
 func NewGetTagsResponse() (response *GetTagsResponse) {
     response = &GetTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTags
@@ -1577,8 +1602,9 @@ func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
 func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
     response = &ModifyResourceTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyResourceTags
@@ -1651,8 +1677,9 @@ func NewModifyResourcesTagValueRequest() (request *ModifyResourcesTagValueReques
 func NewModifyResourcesTagValueResponse() (response *ModifyResourcesTagValueResponse) {
     response = &ModifyResourcesTagValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyResourcesTagValue
@@ -1731,8 +1758,9 @@ func NewTagResourcesRequest() (request *TagResourcesRequest) {
 func NewTagResourcesResponse() (response *TagResourcesResponse) {
     response = &TagResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TagResources
@@ -1813,8 +1841,9 @@ func NewUnTagResourcesRequest() (request *UnTagResourcesRequest) {
 func NewUnTagResourcesResponse() (response *UnTagResourcesResponse) {
     response = &UnTagResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnTagResources
@@ -1887,8 +1916,9 @@ func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
 func NewUpdateProjectResponse() (response *UpdateProjectResponse) {
     response = &UpdateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateProject
@@ -1941,8 +1971,9 @@ func NewUpdateResourceTagValueRequest() (request *UpdateResourceTagValueRequest)
 func NewUpdateResourceTagValueResponse() (response *UpdateResourceTagValueResponse) {
     response = &UpdateResourceTagValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateResourceTagValue

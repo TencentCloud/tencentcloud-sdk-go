@@ -59,8 +59,9 @@ func NewGetTaskDetailRequest() (request *GetTaskDetailRequest) {
 func NewGetTaskDetailResponse() (response *GetTaskDetailResponse) {
     response = &GetTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTaskDetail
@@ -127,8 +128,9 @@ func NewGetTaskListRequest() (request *GetTaskListRequest) {
 func NewGetTaskListResponse() (response *GetTaskListResponse) {
     response = &GetTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTaskList
@@ -189,8 +191,9 @@ func NewPredictRatingRequest() (request *PredictRatingRequest) {
 func NewPredictRatingResponse() (response *PredictRatingResponse) {
     response = &PredictRatingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PredictRating
@@ -253,8 +256,9 @@ func NewQueryCallDetailsRequest() (request *QueryCallDetailsRequest) {
 func NewQueryCallDetailsResponse() (response *QueryCallDetailsResponse) {
     response = &QueryCallDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCallDetails
@@ -307,8 +311,9 @@ func NewQueryCallStatRequest() (request *QueryCallStatRequest) {
 func NewQueryCallStatResponse() (response *QueryCallStatResponse) {
     response = &QueryCallStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCallStat
@@ -359,8 +364,9 @@ func NewQueryGeneralStatRequest() (request *QueryGeneralStatRequest) {
 func NewQueryGeneralStatResponse() (response *QueryGeneralStatResponse) {
     response = &QueryGeneralStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryGeneralStat
@@ -411,8 +417,9 @@ func NewUploadIdRequest() (request *UploadIdRequest) {
 func NewUploadIdResponse() (response *UploadIdResponse) {
     response = &UploadIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadId

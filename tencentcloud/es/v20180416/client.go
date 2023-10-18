@@ -59,8 +59,9 @@ func NewCreateIndexRequest() (request *CreateIndexRequest) {
 func NewCreateIndexResponse() (response *CreateIndexResponse) {
     response = &CreateIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIndex
@@ -123,8 +124,9 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
 func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
     response = &CreateInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstance
@@ -249,8 +251,9 @@ func NewCreateLogstashInstanceRequest() (request *CreateLogstashInstanceRequest)
 func NewCreateLogstashInstanceResponse() (response *CreateLogstashInstanceResponse) {
     response = &CreateLogstashInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLogstashInstance
@@ -513,8 +516,9 @@ func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
 func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
     response = &DeleteIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIndex
@@ -573,8 +577,9 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
 func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     response = &DeleteInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteInstance
@@ -637,8 +642,9 @@ func NewDeleteLogstashInstanceRequest() (request *DeleteLogstashInstanceRequest)
 func NewDeleteLogstashInstanceResponse() (response *DeleteLogstashInstanceResponse) {
     response = &DeleteLogstashInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLogstashInstance
@@ -691,8 +697,9 @@ func NewDeleteLogstashPipelinesRequest() (request *DeleteLogstashPipelinesReques
 func NewDeleteLogstashPipelinesResponse() (response *DeleteLogstashPipelinesResponse) {
     response = &DeleteLogstashPipelinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLogstashPipelines
@@ -743,8 +750,9 @@ func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
 func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
     response = &DescribeIndexListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndexList
@@ -803,8 +811,9 @@ func NewDescribeIndexMetaRequest() (request *DescribeIndexMetaRequest) {
 func NewDescribeIndexMetaResponse() (response *DescribeIndexMetaResponse) {
     response = &DescribeIndexMetaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndexMeta
@@ -865,8 +874,9 @@ func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
 func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) {
     response = &DescribeInstanceLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceLogs
@@ -933,8 +943,9 @@ func NewDescribeInstanceOperationsRequest() (request *DescribeInstanceOperations
 func NewDescribeInstanceOperationsResponse() (response *DescribeInstanceOperationsResponse) {
     response = &DescribeInstanceOperationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceOperations
@@ -991,8 +1002,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -1073,8 +1085,9 @@ func NewDescribeLogstashInstanceLogsRequest() (request *DescribeLogstashInstance
 func NewDescribeLogstashInstanceLogsResponse() (response *DescribeLogstashInstanceLogsResponse) {
     response = &DescribeLogstashInstanceLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogstashInstanceLogs
@@ -1123,8 +1136,9 @@ func NewDescribeLogstashInstanceOperationsRequest() (request *DescribeLogstashIn
 func NewDescribeLogstashInstanceOperationsResponse() (response *DescribeLogstashInstanceOperationsResponse) {
     response = &DescribeLogstashInstanceOperationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogstashInstanceOperations
@@ -1175,8 +1189,9 @@ func NewDescribeLogstashInstancesRequest() (request *DescribeLogstashInstancesRe
 func NewDescribeLogstashInstancesResponse() (response *DescribeLogstashInstancesResponse) {
     response = &DescribeLogstashInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogstashInstances
@@ -1227,8 +1242,9 @@ func NewDescribeLogstashPipelinesRequest() (request *DescribeLogstashPipelinesRe
 func NewDescribeLogstashPipelinesResponse() (response *DescribeLogstashPipelinesResponse) {
     response = &DescribeLogstashPipelinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogstashPipelines
@@ -1277,8 +1293,9 @@ func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
 func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
     response = &DescribeViewsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeViews
@@ -1337,8 +1354,9 @@ func NewDiagnoseInstanceRequest() (request *DiagnoseInstanceRequest) {
 func NewDiagnoseInstanceResponse() (response *DiagnoseInstanceResponse) {
     response = &DiagnoseInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DiagnoseInstance
@@ -1405,8 +1423,9 @@ func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRe
 func NewGetRequestTargetNodeTypesResponse() (response *GetRequestTargetNodeTypesResponse) {
     response = &GetRequestTargetNodeTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRequestTargetNodeTypes
@@ -1463,8 +1482,9 @@ func NewModifyEsVipSecurityGroupRequest() (request *ModifyEsVipSecurityGroupRequ
 func NewModifyEsVipSecurityGroupResponse() (response *ModifyEsVipSecurityGroupResponse) {
     response = &ModifyEsVipSecurityGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEsVipSecurityGroup
@@ -1521,8 +1541,9 @@ func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
 func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
     response = &RestartInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartInstance
@@ -1593,8 +1614,9 @@ func NewRestartKibanaRequest() (request *RestartKibanaRequest) {
 func NewRestartKibanaResponse() (response *RestartKibanaResponse) {
     response = &RestartKibanaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartKibana
@@ -1653,8 +1675,9 @@ func NewRestartLogstashInstanceRequest() (request *RestartLogstashInstanceReques
 func NewRestartLogstashInstanceResponse() (response *RestartLogstashInstanceResponse) {
     response = &RestartLogstashInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartLogstashInstance
@@ -1709,8 +1732,9 @@ func NewRestartNodesRequest() (request *RestartNodesRequest) {
 func NewRestartNodesResponse() (response *RestartNodesResponse) {
     response = &RestartNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartNodes
@@ -1787,8 +1811,9 @@ func NewSaveAndDeployLogstashPipelineRequest() (request *SaveAndDeployLogstashPi
 func NewSaveAndDeployLogstashPipelineResponse() (response *SaveAndDeployLogstashPipelineResponse) {
     response = &SaveAndDeployLogstashPipelineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SaveAndDeployLogstashPipeline
@@ -1835,8 +1860,9 @@ func NewStartLogstashPipelinesRequest() (request *StartLogstashPipelinesRequest)
 func NewStartLogstashPipelinesResponse() (response *StartLogstashPipelinesResponse) {
     response = &StartLogstashPipelinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartLogstashPipelines
@@ -1887,8 +1913,9 @@ func NewStopLogstashPipelinesRequest() (request *StopLogstashPipelinesRequest) {
 func NewStopLogstashPipelinesResponse() (response *StopLogstashPipelinesResponse) {
     response = &StopLogstashPipelinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopLogstashPipelines
@@ -1939,8 +1966,9 @@ func NewUpdateDiagnoseSettingsRequest() (request *UpdateDiagnoseSettingsRequest)
 func NewUpdateDiagnoseSettingsResponse() (response *UpdateDiagnoseSettingsResponse) {
     response = &UpdateDiagnoseSettingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDiagnoseSettings
@@ -1999,8 +2027,9 @@ func NewUpdateDictionariesRequest() (request *UpdateDictionariesRequest) {
 func NewUpdateDictionariesResponse() (response *UpdateDictionariesResponse) {
     response = &UpdateDictionariesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDictionaries
@@ -2075,8 +2104,9 @@ func NewUpdateIndexRequest() (request *UpdateIndexRequest) {
 func NewUpdateIndexResponse() (response *UpdateIndexResponse) {
     response = &UpdateIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateIndex
@@ -2141,8 +2171,9 @@ func NewUpdateInstanceRequest() (request *UpdateInstanceRequest) {
 func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
     response = &UpdateInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateInstance
@@ -2341,8 +2372,9 @@ func NewUpdateJdkRequest() (request *UpdateJdkRequest) {
 func NewUpdateJdkResponse() (response *UpdateJdkResponse) {
     response = &UpdateJdkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateJdk
@@ -2407,8 +2439,9 @@ func NewUpdateLogstashInstanceRequest() (request *UpdateLogstashInstanceRequest)
 func NewUpdateLogstashInstanceResponse() (response *UpdateLogstashInstanceResponse) {
     response = &UpdateLogstashInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateLogstashInstance
@@ -2497,8 +2530,9 @@ func NewUpdateLogstashPipelineDescRequest() (request *UpdateLogstashPipelineDesc
 func NewUpdateLogstashPipelineDescResponse() (response *UpdateLogstashPipelineDescResponse) {
     response = &UpdateLogstashPipelineDescResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateLogstashPipelineDesc
@@ -2549,8 +2583,9 @@ func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
 func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
     response = &UpdatePluginsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdatePlugins
@@ -2629,8 +2664,9 @@ func NewUpdateRequestTargetNodeTypesRequest() (request *UpdateRequestTargetNodeT
 func NewUpdateRequestTargetNodeTypesResponse() (response *UpdateRequestTargetNodeTypesResponse) {
     response = &UpdateRequestTargetNodeTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRequestTargetNodeTypes
@@ -2691,8 +2727,9 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
 func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
     response = &UpgradeInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeInstance
@@ -2781,8 +2818,9 @@ func NewUpgradeLicenseRequest() (request *UpgradeLicenseRequest) {
 func NewUpgradeLicenseResponse() (response *UpgradeLicenseResponse) {
     response = &UpgradeLicenseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeLicense

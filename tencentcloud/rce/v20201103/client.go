@@ -59,8 +59,9 @@ func NewDescribeRiskAssessmentRequest() (request *DescribeRiskAssessmentRequest)
 func NewDescribeRiskAssessmentResponse() (response *DescribeRiskAssessmentResponse) {
     response = &DescribeRiskAssessmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskAssessment
@@ -193,8 +194,9 @@ func NewDescribeRiskTrendsRequest() (request *DescribeRiskTrendsRequest) {
 func NewDescribeRiskTrendsResponse() (response *DescribeRiskTrendsResponse) {
     response = &DescribeRiskTrendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskTrends
@@ -293,8 +295,9 @@ func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
 func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
     response = &ManageMarketingRiskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ManageMarketingRisk

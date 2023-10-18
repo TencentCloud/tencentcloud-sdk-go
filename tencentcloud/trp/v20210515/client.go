@@ -59,8 +59,9 @@ func NewAuthorizedTransferRequest() (request *AuthorizedTransferRequest) {
 func NewAuthorizedTransferResponse() (response *AuthorizedTransferResponse) {
     response = &AuthorizedTransferResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AuthorizedTransfer
@@ -101,8 +102,9 @@ func NewCreateCodeBatchRequest() (request *CreateCodeBatchRequest) {
 func NewCreateCodeBatchResponse() (response *CreateCodeBatchResponse) {
     response = &CreateCodeBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCodeBatch
@@ -153,8 +155,9 @@ func NewCreateCodePackRequest() (request *CreateCodePackRequest) {
 func NewCreateCodePackResponse() (response *CreateCodePackResponse) {
     response = &CreateCodePackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCodePack
@@ -205,8 +208,9 @@ func NewCreateCorporationOrderRequest() (request *CreateCorporationOrderRequest)
 func NewCreateCorporationOrderResponse() (response *CreateCorporationOrderResponse) {
     response = &CreateCorporationOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCorporationOrder
@@ -257,8 +261,9 @@ func NewCreateCustomPackRequest() (request *CreateCustomPackRequest) {
 func NewCreateCustomPackResponse() (response *CreateCustomPackResponse) {
     response = &CreateCustomPackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomPack
@@ -309,8 +314,9 @@ func NewCreateCustomRuleRequest() (request *CreateCustomRuleRequest) {
 func NewCreateCustomRuleResponse() (response *CreateCustomRuleResponse) {
     response = &CreateCustomRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomRule
@@ -361,8 +367,9 @@ func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
 func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
     response = &CreateMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMerchant
@@ -413,8 +420,9 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
 func NewCreateProductResponse() (response *CreateProductResponse) {
     response = &CreateProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProduct
@@ -465,8 +473,9 @@ func NewCreateTraceChainRequest() (request *CreateTraceChainRequest) {
 func NewCreateTraceChainResponse() (response *CreateTraceChainResponse) {
     response = &CreateTraceChainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTraceChain
@@ -517,8 +526,9 @@ func NewCreateTraceCodesRequest() (request *CreateTraceCodesRequest) {
 func NewCreateTraceCodesResponse() (response *CreateTraceCodesResponse) {
     response = &CreateTraceCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTraceCodes
@@ -569,8 +579,9 @@ func NewCreateTraceCodesAsyncRequest() (request *CreateTraceCodesAsyncRequest) {
 func NewCreateTraceCodesAsyncResponse() (response *CreateTraceCodesAsyncResponse) {
     response = &CreateTraceCodesAsyncResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTraceCodesAsync
@@ -621,8 +632,9 @@ func NewCreateTraceDataRequest() (request *CreateTraceDataRequest) {
 func NewCreateTraceDataResponse() (response *CreateTraceDataResponse) {
     response = &CreateTraceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTraceData
@@ -673,8 +685,9 @@ func NewDeleteCodeBatchRequest() (request *DeleteCodeBatchRequest) {
 func NewDeleteCodeBatchResponse() (response *DeleteCodeBatchResponse) {
     response = &DeleteCodeBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCodeBatch
@@ -725,8 +738,9 @@ func NewDeleteMerchantRequest() (request *DeleteMerchantRequest) {
 func NewDeleteMerchantResponse() (response *DeleteMerchantResponse) {
     response = &DeleteMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMerchant
@@ -777,8 +791,9 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
 func NewDeleteProductResponse() (response *DeleteProductResponse) {
     response = &DeleteProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProduct
@@ -829,8 +844,9 @@ func NewDeleteTraceDataRequest() (request *DeleteTraceDataRequest) {
 func NewDeleteTraceDataResponse() (response *DeleteTraceDataResponse) {
     response = &DeleteTraceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTraceData
@@ -877,8 +893,9 @@ func NewDescribeAgentCorpsRequest() (request *DescribeAgentCorpsRequest) {
 func NewDescribeAgentCorpsResponse() (response *DescribeAgentCorpsResponse) {
     response = &DescribeAgentCorpsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentCorps
@@ -929,8 +946,9 @@ func NewDescribeCodeBatchByIdRequest() (request *DescribeCodeBatchByIdRequest) {
 func NewDescribeCodeBatchByIdResponse() (response *DescribeCodeBatchByIdResponse) {
     response = &DescribeCodeBatchByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodeBatchById
@@ -983,8 +1001,9 @@ func NewDescribeCodeBatchesRequest() (request *DescribeCodeBatchesRequest) {
 func NewDescribeCodeBatchesResponse() (response *DescribeCodeBatchesResponse) {
     response = &DescribeCodeBatchesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodeBatches
@@ -1037,8 +1056,9 @@ func NewDescribeCodeBatchsRequest() (request *DescribeCodeBatchsRequest) {
 func NewDescribeCodeBatchsResponse() (response *DescribeCodeBatchsResponse) {
     response = &DescribeCodeBatchsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodeBatchs
@@ -1099,8 +1119,9 @@ func NewDescribeCodePackStatusRequest() (request *DescribeCodePackStatusRequest)
 func NewDescribeCodePackStatusResponse() (response *DescribeCodePackStatusResponse) {
     response = &DescribeCodePackStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodePackStatus
@@ -1149,8 +1170,9 @@ func NewDescribeCodePackUrlRequest() (request *DescribeCodePackUrlRequest) {
 func NewDescribeCodePackUrlResponse() (response *DescribeCodePackUrlResponse) {
     response = &DescribeCodePackUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodePackUrl
@@ -1199,8 +1221,9 @@ func NewDescribeCodePacksRequest() (request *DescribeCodePacksRequest) {
 func NewDescribeCodePacksResponse() (response *DescribeCodePacksResponse) {
     response = &DescribeCodePacksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodePacks
@@ -1251,8 +1274,9 @@ func NewDescribeCodesByPackRequest() (request *DescribeCodesByPackRequest) {
 func NewDescribeCodesByPackResponse() (response *DescribeCodesByPackResponse) {
     response = &DescribeCodesByPackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodesByPack
@@ -1303,8 +1327,9 @@ func NewDescribeCorpQuotasRequest() (request *DescribeCorpQuotasRequest) {
 func NewDescribeCorpQuotasResponse() (response *DescribeCorpQuotasResponse) {
     response = &DescribeCorpQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCorpQuotas
@@ -1355,8 +1380,9 @@ func NewDescribeCustomRuleByIdRequest() (request *DescribeCustomRuleByIdRequest)
 func NewDescribeCustomRuleByIdResponse() (response *DescribeCustomRuleByIdResponse) {
     response = &DescribeCustomRuleByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomRuleById
@@ -1409,8 +1435,9 @@ func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
 func NewDescribeCustomRulesResponse() (response *DescribeCustomRulesResponse) {
     response = &DescribeCustomRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomRules
@@ -1463,8 +1490,9 @@ func NewDescribeJobFileUrlRequest() (request *DescribeJobFileUrlRequest) {
 func NewDescribeJobFileUrlResponse() (response *DescribeJobFileUrlResponse) {
     response = &DescribeJobFileUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobFileUrl
@@ -1515,8 +1543,9 @@ func NewDescribeMerchantByIdRequest() (request *DescribeMerchantByIdRequest) {
 func NewDescribeMerchantByIdResponse() (response *DescribeMerchantByIdResponse) {
     response = &DescribeMerchantByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMerchantById
@@ -1567,8 +1596,9 @@ func NewDescribeMerchantsRequest() (request *DescribeMerchantsRequest) {
 func NewDescribeMerchantsResponse() (response *DescribeMerchantsResponse) {
     response = &DescribeMerchantsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMerchants
@@ -1625,8 +1655,9 @@ func NewDescribeProductByIdRequest() (request *DescribeProductByIdRequest) {
 func NewDescribeProductByIdResponse() (response *DescribeProductByIdResponse) {
     response = &DescribeProductByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProductById
@@ -1677,8 +1708,9 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
 func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     response = &DescribeProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProducts
@@ -1733,8 +1765,9 @@ func NewDescribeRawScanLogsRequest() (request *DescribeRawScanLogsRequest) {
 func NewDescribeRawScanLogsResponse() (response *DescribeRawScanLogsResponse) {
     response = &DescribeRawScanLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRawScanLogs
@@ -1785,8 +1818,9 @@ func NewDescribeScanLogsRequest() (request *DescribeScanLogsRequest) {
 func NewDescribeScanLogsResponse() (response *DescribeScanLogsResponse) {
     response = &DescribeScanLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanLogs
@@ -1837,8 +1871,9 @@ func NewDescribeScanStatsRequest() (request *DescribeScanStatsRequest) {
 func NewDescribeScanStatsResponse() (response *DescribeScanStatsResponse) {
     response = &DescribeScanStatsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanStats
@@ -1893,8 +1928,9 @@ func NewDescribeTmpTokenRequest() (request *DescribeTmpTokenRequest) {
 func NewDescribeTmpTokenResponse() (response *DescribeTmpTokenResponse) {
     response = &DescribeTmpTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTmpToken
@@ -1949,8 +1985,9 @@ func NewDescribeTraceCodeByIdRequest() (request *DescribeTraceCodeByIdRequest) {
 func NewDescribeTraceCodeByIdResponse() (response *DescribeTraceCodeByIdResponse) {
     response = &DescribeTraceCodeByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceCodeById
@@ -2001,8 +2038,9 @@ func NewDescribeTraceCodesRequest() (request *DescribeTraceCodesRequest) {
 func NewDescribeTraceCodesResponse() (response *DescribeTraceCodesResponse) {
     response = &DescribeTraceCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceCodes
@@ -2053,8 +2091,9 @@ func NewDescribeTraceDataByIdRequest() (request *DescribeTraceDataByIdRequest) {
 func NewDescribeTraceDataByIdResponse() (response *DescribeTraceDataByIdResponse) {
     response = &DescribeTraceDataByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceDataById
@@ -2105,8 +2144,9 @@ func NewDescribeTraceDataListRequest() (request *DescribeTraceDataListRequest) {
 func NewDescribeTraceDataListResponse() (response *DescribeTraceDataListResponse) {
     response = &DescribeTraceDataListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTraceDataList
@@ -2157,8 +2197,9 @@ func NewEffectFeedbackRequest() (request *EffectFeedbackRequest) {
 func NewEffectFeedbackResponse() (response *EffectFeedbackResponse) {
     response = &EffectFeedbackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EffectFeedback
@@ -2209,8 +2250,9 @@ func NewModifyCodeBatchRequest() (request *ModifyCodeBatchRequest) {
 func NewModifyCodeBatchResponse() (response *ModifyCodeBatchResponse) {
     response = &ModifyCodeBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCodeBatch
@@ -2261,8 +2303,9 @@ func NewModifyCustomRuleRequest() (request *ModifyCustomRuleRequest) {
 func NewModifyCustomRuleResponse() (response *ModifyCustomRuleResponse) {
     response = &ModifyCustomRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomRule
@@ -2313,8 +2356,9 @@ func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest)
 func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusResponse) {
     response = &ModifyCustomRuleStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomRuleStatus
@@ -2365,8 +2409,9 @@ func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
 func NewModifyMerchantResponse() (response *ModifyMerchantResponse) {
     response = &ModifyMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMerchant
@@ -2417,8 +2462,9 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
 func NewModifyProductResponse() (response *ModifyProductResponse) {
     response = &ModifyProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProduct
@@ -2469,8 +2515,9 @@ func NewModifyTraceCodeRequest() (request *ModifyTraceCodeRequest) {
 func NewModifyTraceCodeResponse() (response *ModifyTraceCodeResponse) {
     response = &ModifyTraceCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTraceCode
@@ -2521,8 +2568,9 @@ func NewModifyTraceCodeUnlinkRequest() (request *ModifyTraceCodeUnlinkRequest) {
 func NewModifyTraceCodeUnlinkResponse() (response *ModifyTraceCodeUnlinkResponse) {
     response = &ModifyTraceCodeUnlinkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTraceCodeUnlink
@@ -2577,8 +2625,9 @@ func NewModifyTraceDataRequest() (request *ModifyTraceDataRequest) {
 func NewModifyTraceDataResponse() (response *ModifyTraceDataResponse) {
     response = &ModifyTraceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTraceData
@@ -2629,8 +2678,9 @@ func NewModifyTraceDataRanksRequest() (request *ModifyTraceDataRanksRequest) {
 func NewModifyTraceDataRanksResponse() (response *ModifyTraceDataRanksResponse) {
     response = &ModifyTraceDataRanksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTraceDataRanks
@@ -2681,8 +2731,9 @@ func NewReportBatchCallbackStatusRequest() (request *ReportBatchCallbackStatusRe
 func NewReportBatchCallbackStatusResponse() (response *ReportBatchCallbackStatusResponse) {
     response = &ReportBatchCallbackStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportBatchCallbackStatus

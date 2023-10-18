@@ -59,8 +59,9 @@ func NewRecognizeProductRequest() (request *RecognizeProductRequest) {
 func NewRecognizeProductResponse() (response *RecognizeProductResponse) {
     response = &RecognizeProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeProduct

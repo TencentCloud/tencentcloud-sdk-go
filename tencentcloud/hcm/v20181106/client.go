@@ -59,8 +59,9 @@ func NewEvaluationRequest() (request *EvaluationRequest) {
 func NewEvaluationResponse() (response *EvaluationResponse) {
     response = &EvaluationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Evaluation

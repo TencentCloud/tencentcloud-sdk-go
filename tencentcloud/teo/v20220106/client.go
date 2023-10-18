@@ -59,8 +59,9 @@ func NewCreatePrefetchTaskRequest() (request *CreatePrefetchTaskRequest) {
 func NewCreatePrefetchTaskResponse() (response *CreatePrefetchTaskResponse) {
     response = &CreatePrefetchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePrefetchTask
@@ -129,8 +130,9 @@ func NewCreatePurgeTaskRequest() (request *CreatePurgeTaskRequest) {
 func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
     response = &CreatePurgeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePurgeTask
@@ -201,8 +203,9 @@ func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
 func NewDescribePrefetchTasksResponse() (response *DescribePrefetchTasksResponse) {
     response = &DescribePrefetchTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrefetchTasks
@@ -255,8 +258,9 @@ func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
 func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
     response = &DescribePurgeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePurgeTasks
@@ -307,8 +311,9 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
 func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
     response = &DescribeZonesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZones

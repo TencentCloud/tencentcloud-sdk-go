@@ -59,8 +59,9 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
 func NewCreateDomainResponse() (response *CreateDomainResponse) {
     response = &CreateDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomain
@@ -131,8 +132,9 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
 func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
     response = &DeleteDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDomain
@@ -181,8 +183,9 @@ func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
 func NewDescribeDashboardResponse() (response *DescribeDashboardResponse) {
     response = &DescribeDashboardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDashboard
@@ -231,8 +234,9 @@ func NewDescribeDomainCertsRequest() (request *DescribeDomainCertsRequest) {
 func NewDescribeDomainCertsResponse() (response *DescribeDomainCertsResponse) {
     response = &DescribeDomainCertsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainCerts
@@ -281,8 +285,9 @@ func NewDescribeDomainTagsRequest() (request *DescribeDomainTagsRequest) {
 func NewDescribeDomainTagsResponse() (response *DescribeDomainTagsResponse) {
     response = &DescribeDomainTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainTags
@@ -329,8 +334,9 @@ func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
 func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
     response = &DescribeDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomains
@@ -381,8 +387,9 @@ func NewDescribeNoticeInfoRequest() (request *DescribeNoticeInfoRequest) {
 func NewDescribeNoticeInfoResponse() (response *DescribeNoticeInfoResponse) {
     response = &DescribeNoticeInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNoticeInfo
@@ -429,8 +436,9 @@ func NewModifyDomainTagsRequest() (request *ModifyDomainTagsRequest) {
 func NewModifyDomainTagsResponse() (response *ModifyDomainTagsResponse) {
     response = &ModifyDomainTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDomainTags
@@ -483,8 +491,9 @@ func NewRefreshDomainRequest() (request *RefreshDomainRequest) {
 func NewRefreshDomainResponse() (response *RefreshDomainResponse) {
     response = &RefreshDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefreshDomain
@@ -535,8 +544,9 @@ func NewResolveDomainRequest() (request *ResolveDomainRequest) {
 func NewResolveDomainResponse() (response *ResolveDomainResponse) {
     response = &ResolveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResolveDomain

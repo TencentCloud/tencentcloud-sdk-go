@@ -59,8 +59,9 @@ func NewGetOpenIdRequest() (request *GetOpenIdRequest) {
 func NewGetOpenIdResponse() (response *GetOpenIdResponse) {
     response = &GetOpenIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetOpenId
@@ -131,8 +132,9 @@ func NewGetTokenRequest() (request *GetTokenRequest) {
 func NewGetTokenResponse() (response *GetTokenResponse) {
     response = &GetTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetToken
@@ -199,8 +201,9 @@ func NewQueryDevAndRiskRequest() (request *QueryDevAndRiskRequest) {
 func NewQueryDevAndRiskResponse() (response *QueryDevAndRiskResponse) {
     response = &QueryDevAndRiskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryDevAndRisk

@@ -59,8 +59,9 @@ func NewDescribeEisConnectorConfigRequest() (request *DescribeEisConnectorConfig
 func NewDescribeEisConnectorConfigResponse() (response *DescribeEisConnectorConfigResponse) {
     response = &DescribeEisConnectorConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEisConnectorConfig
@@ -115,8 +116,9 @@ func NewListEisConnectorOperationsRequest() (request *ListEisConnectorOperations
 func NewListEisConnectorOperationsResponse() (response *ListEisConnectorOperationsResponse) {
     response = &ListEisConnectorOperationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEisConnectorOperations
@@ -171,8 +173,9 @@ func NewListEisConnectorsRequest() (request *ListEisConnectorsRequest) {
 func NewListEisConnectorsResponse() (response *ListEisConnectorsResponse) {
     response = &ListEisConnectorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEisConnectors

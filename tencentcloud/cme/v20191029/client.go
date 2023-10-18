@@ -59,8 +59,9 @@ func NewAddTeamMemberRequest() (request *AddTeamMemberRequest) {
 func NewAddTeamMemberResponse() (response *AddTeamMemberResponse) {
     response = &AddTeamMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddTeamMember
@@ -119,8 +120,9 @@ func NewCopyProjectRequest() (request *CopyProjectRequest) {
 func NewCopyProjectResponse() (response *CopyProjectResponse) {
     response = &CopyProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyProject
@@ -179,8 +181,9 @@ func NewCreateClassRequest() (request *CreateClassRequest) {
 func NewCreateClassResponse() (response *CreateClassResponse) {
     response = &CreateClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateClass
@@ -243,8 +246,9 @@ func NewCreateLinkRequest() (request *CreateLinkRequest) {
 func NewCreateLinkResponse() (response *CreateLinkResponse) {
     response = &CreateLinkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLink
@@ -317,8 +321,9 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
 func NewCreateProjectResponse() (response *CreateProjectResponse) {
     response = &CreateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProject
@@ -431,8 +436,9 @@ func NewCreateTeamRequest() (request *CreateTeamRequest) {
 func NewCreateTeamResponse() (response *CreateTeamResponse) {
     response = &CreateTeamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTeam
@@ -493,8 +499,9 @@ func NewCreateVideoEncodingPresetRequest() (request *CreateVideoEncodingPresetRe
 func NewCreateVideoEncodingPresetResponse() (response *CreateVideoEncodingPresetResponse) {
     response = &CreateVideoEncodingPresetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVideoEncodingPreset
@@ -545,8 +552,9 @@ func NewDeleteClassRequest() (request *DeleteClassRequest) {
 func NewDeleteClassResponse() (response *DeleteClassResponse) {
     response = &DeleteClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteClass
@@ -613,8 +621,9 @@ func NewDeleteLoginStatusRequest() (request *DeleteLoginStatusRequest) {
 func NewDeleteLoginStatusResponse() (response *DeleteLoginStatusResponse) {
     response = &DeleteLoginStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLoginStatus
@@ -665,8 +674,9 @@ func NewDeleteMaterialRequest() (request *DeleteMaterialRequest) {
 func NewDeleteMaterialResponse() (response *DeleteMaterialResponse) {
     response = &DeleteMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMaterial
@@ -723,8 +733,9 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
 func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
     response = &DeleteProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProject
@@ -785,8 +796,9 @@ func NewDeleteTeamRequest() (request *DeleteTeamRequest) {
 func NewDeleteTeamResponse() (response *DeleteTeamResponse) {
     response = &DeleteTeamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTeam
@@ -851,8 +863,9 @@ func NewDeleteTeamMembersRequest() (request *DeleteTeamMembersRequest) {
 func NewDeleteTeamMembersResponse() (response *DeleteTeamMembersResponse) {
     response = &DeleteTeamMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTeamMembers
@@ -907,8 +920,9 @@ func NewDeleteVideoEncodingPresetRequest() (request *DeleteVideoEncodingPresetRe
 func NewDeleteVideoEncodingPresetResponse() (response *DeleteVideoEncodingPresetResponse) {
     response = &DeleteVideoEncodingPresetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVideoEncodingPreset
@@ -959,8 +973,9 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
 func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     response = &DescribeAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccounts
@@ -1033,8 +1048,9 @@ func NewDescribeClassRequest() (request *DescribeClassRequest) {
 func NewDescribeClassResponse() (response *DescribeClassResponse) {
     response = &DescribeClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClass
@@ -1091,8 +1107,9 @@ func NewDescribeJoinTeamsRequest() (request *DescribeJoinTeamsRequest) {
 func NewDescribeJoinTeamsResponse() (response *DescribeJoinTeamsResponse) {
     response = &DescribeJoinTeamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJoinTeams
@@ -1151,8 +1168,9 @@ func NewDescribeLoginStatusRequest() (request *DescribeLoginStatusRequest) {
 func NewDescribeLoginStatusResponse() (response *DescribeLoginStatusResponse) {
     response = &DescribeLoginStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoginStatus
@@ -1205,8 +1223,9 @@ func NewDescribeMaterialsRequest() (request *DescribeMaterialsRequest) {
 func NewDescribeMaterialsResponse() (response *DescribeMaterialsResponse) {
     response = &DescribeMaterialsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMaterials
@@ -1265,8 +1284,9 @@ func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
 func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
     response = &DescribePlatformsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePlatforms
@@ -1335,8 +1355,9 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
 func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
     response = &DescribeProjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjects
@@ -1407,8 +1428,9 @@ func NewDescribeResourceAuthorizationRequest() (request *DescribeResourceAuthori
 func NewDescribeResourceAuthorizationResponse() (response *DescribeResourceAuthorizationResponse) {
     response = &DescribeResourceAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceAuthorization
@@ -1467,8 +1489,9 @@ func NewDescribeSharedSpaceRequest() (request *DescribeSharedSpaceRequest) {
 func NewDescribeSharedSpaceResponse() (response *DescribeSharedSpaceResponse) {
     response = &DescribeSharedSpaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSharedSpace
@@ -1521,8 +1544,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail
@@ -1587,8 +1611,9 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
 func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     response = &DescribeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTasks
@@ -1643,8 +1668,9 @@ func NewDescribeTeamMembersRequest() (request *DescribeTeamMembersRequest) {
 func NewDescribeTeamMembersResponse() (response *DescribeTeamMembersResponse) {
     response = &DescribeTeamMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTeamMembers
@@ -1709,8 +1735,9 @@ func NewDescribeTeamsRequest() (request *DescribeTeamsRequest) {
 func NewDescribeTeamsResponse() (response *DescribeTeamsResponse) {
     response = &DescribeTeamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTeams
@@ -1771,8 +1798,9 @@ func NewDescribeVideoEncodingPresetsRequest() (request *DescribeVideoEncodingPre
 func NewDescribeVideoEncodingPresetsResponse() (response *DescribeVideoEncodingPresetsResponse) {
     response = &DescribeVideoEncodingPresetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVideoEncodingPresets
@@ -1825,8 +1853,9 @@ func NewExportVideoByEditorTrackDataRequest() (request *ExportVideoByEditorTrack
 func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTrackDataResponse) {
     response = &ExportVideoByEditorTrackDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVideoByEditorTrackData
@@ -1909,8 +1938,9 @@ func NewExportVideoByTemplateRequest() (request *ExportVideoByTemplateRequest) {
 func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse) {
     response = &ExportVideoByTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVideoByTemplate
@@ -1997,8 +2027,9 @@ func NewExportVideoByVideoSegmentationDataRequest() (request *ExportVideoByVideo
 func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVideoSegmentationDataResponse) {
     response = &ExportVideoByVideoSegmentationDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVideoByVideoSegmentationData
@@ -2061,8 +2092,9 @@ func NewExportVideoEditProjectRequest() (request *ExportVideoEditProjectRequest)
 func NewExportVideoEditProjectResponse() (response *ExportVideoEditProjectResponse) {
     response = &ExportVideoEditProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVideoEditProject
@@ -2147,8 +2179,9 @@ func NewFlattenListMediaRequest() (request *FlattenListMediaRequest) {
 func NewFlattenListMediaResponse() (response *FlattenListMediaResponse) {
     response = &FlattenListMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FlattenListMedia
@@ -2211,8 +2244,9 @@ func NewGenerateVideoSegmentationSchemeByAiRequest() (request *GenerateVideoSegm
 func NewGenerateVideoSegmentationSchemeByAiResponse() (response *GenerateVideoSegmentationSchemeByAiResponse) {
     response = &GenerateVideoSegmentationSchemeByAiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateVideoSegmentationSchemeByAi
@@ -2277,8 +2311,9 @@ func NewGrantResourceAuthorizationRequest() (request *GrantResourceAuthorization
 func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizationResponse) {
     response = &GrantResourceAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GrantResourceAuthorization
@@ -2337,8 +2372,9 @@ func NewHandleMediaCastProjectRequest() (request *HandleMediaCastProjectRequest)
 func NewHandleMediaCastProjectResponse() (response *HandleMediaCastProjectResponse) {
     response = &HandleMediaCastProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // HandleMediaCastProject
@@ -2469,8 +2505,9 @@ func NewHandleStreamConnectProjectRequest() (request *HandleStreamConnectProject
 func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProjectResponse) {
     response = &HandleStreamConnectProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // HandleStreamConnectProject
@@ -2617,8 +2654,9 @@ func NewImportMaterialRequest() (request *ImportMaterialRequest) {
 func NewImportMaterialResponse() (response *ImportMaterialResponse) {
     response = &ImportMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportMaterial
@@ -2701,8 +2739,9 @@ func NewImportMediaToProjectRequest() (request *ImportMediaToProjectRequest) {
 func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) {
     response = &ImportMediaToProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportMediaToProject
@@ -2781,8 +2820,9 @@ func NewListMediaRequest() (request *ListMediaRequest) {
 func NewListMediaResponse() (response *ListMediaResponse) {
     response = &ListMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListMedia
@@ -2849,8 +2889,9 @@ func NewModifyMaterialRequest() (request *ModifyMaterialRequest) {
 func NewModifyMaterialResponse() (response *ModifyMaterialResponse) {
     response = &ModifyMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMaterial
@@ -2911,8 +2952,9 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
 func NewModifyProjectResponse() (response *ModifyProjectResponse) {
     response = &ModifyProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProject
@@ -2979,8 +3021,9 @@ func NewModifyTeamRequest() (request *ModifyTeamRequest) {
 func NewModifyTeamResponse() (response *ModifyTeamResponse) {
     response = &ModifyTeamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTeam
@@ -3043,8 +3086,9 @@ func NewModifyTeamMemberRequest() (request *ModifyTeamMemberRequest) {
 func NewModifyTeamMemberResponse() (response *ModifyTeamMemberResponse) {
     response = &ModifyTeamMemberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTeamMember
@@ -3107,8 +3151,9 @@ func NewModifyVideoEncodingPresetRequest() (request *ModifyVideoEncodingPresetRe
 func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPresetResponse) {
     response = &ModifyVideoEncodingPresetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVideoEncodingPreset
@@ -3155,8 +3200,9 @@ func NewMoveClassRequest() (request *MoveClassRequest) {
 func NewMoveClassResponse() (response *MoveClassResponse) {
     response = &MoveClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MoveClass
@@ -3229,8 +3275,9 @@ func NewMoveResourceRequest() (request *MoveResourceRequest) {
 func NewMoveResourceResponse() (response *MoveResourceResponse) {
     response = &MoveResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MoveResource
@@ -3309,8 +3356,9 @@ func NewParseEventRequest() (request *ParseEventRequest) {
 func NewParseEventResponse() (response *ParseEventResponse) {
     response = &ParseEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ParseEvent
@@ -3365,8 +3413,9 @@ func NewRevokeResourceAuthorizationRequest() (request *RevokeResourceAuthorizati
 func NewRevokeResourceAuthorizationResponse() (response *RevokeResourceAuthorizationResponse) {
     response = &RevokeResourceAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevokeResourceAuthorization
@@ -3421,8 +3470,9 @@ func NewSearchMaterialRequest() (request *SearchMaterialRequest) {
 func NewSearchMaterialResponse() (response *SearchMaterialResponse) {
     response = &SearchMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchMaterial

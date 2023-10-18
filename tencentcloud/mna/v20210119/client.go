@@ -59,8 +59,9 @@ func NewAddDeviceRequest() (request *AddDeviceRequest) {
 func NewAddDeviceResponse() (response *AddDeviceResponse) {
     response = &AddDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddDevice
@@ -117,8 +118,9 @@ func NewCreateEncryptedKeyRequest() (request *CreateEncryptedKeyRequest) {
 func NewCreateEncryptedKeyResponse() (response *CreateEncryptedKeyResponse) {
     response = &CreateEncryptedKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEncryptedKey
@@ -165,8 +167,9 @@ func NewCreateQosRequest() (request *CreateQosRequest) {
 func NewCreateQosResponse() (response *CreateQosResponse) {
     response = &CreateQosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateQos
@@ -241,8 +244,9 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
 func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     response = &DeleteDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDevice
@@ -293,8 +297,9 @@ func NewDeleteQosRequest() (request *DeleteQosRequest) {
 func NewDeleteQosResponse() (response *DeleteQosResponse) {
     response = &DeleteQosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteQos
@@ -361,8 +366,9 @@ func NewDescribeQosRequest() (request *DescribeQosRequest) {
 func NewDescribeQosResponse() (response *DescribeQosResponse) {
     response = &DescribeQosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQos
@@ -411,8 +417,9 @@ func NewGetDeviceRequest() (request *GetDeviceRequest) {
 func NewGetDeviceResponse() (response *GetDeviceResponse) {
     response = &GetDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDevice
@@ -463,8 +470,9 @@ func NewGetDevicesRequest() (request *GetDevicesRequest) {
 func NewGetDevicesResponse() (response *GetDevicesResponse) {
     response = &GetDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDevices
@@ -515,8 +523,9 @@ func NewGetFlowStatisticRequest() (request *GetFlowStatisticRequest) {
 func NewGetFlowStatisticResponse() (response *GetFlowStatisticResponse) {
     response = &GetFlowStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFlowStatistic
@@ -571,8 +580,9 @@ func NewGetMultiFlowStatisticRequest() (request *GetMultiFlowStatisticRequest) {
 func NewGetMultiFlowStatisticResponse() (response *GetMultiFlowStatisticResponse) {
     response = &GetMultiFlowStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetMultiFlowStatistic
@@ -623,8 +633,9 @@ func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
 func NewGetPublicKeyResponse() (response *GetPublicKeyResponse) {
     response = &GetPublicKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPublicKey
@@ -671,8 +682,9 @@ func NewGetStatisticDataRequest() (request *GetStatisticDataRequest) {
 func NewGetStatisticDataResponse() (response *GetStatisticDataResponse) {
     response = &GetStatisticDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetStatisticData
@@ -729,8 +741,9 @@ func NewUpdateDeviceRequest() (request *UpdateDeviceRequest) {
 func NewUpdateDeviceResponse() (response *UpdateDeviceResponse) {
     response = &UpdateDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDevice

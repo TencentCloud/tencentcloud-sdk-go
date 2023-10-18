@@ -4249,10 +4249,12 @@ func (r *ChannelUpdateSealStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelVerifyPdfRequestParams struct {
-	// 流程ID
+	// 合同流程ID，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -4264,10 +4266,12 @@ type ChannelVerifyPdfRequestParams struct {
 type ChannelVerifyPdfRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流程ID
+	// 合同流程ID，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -4297,11 +4301,28 @@ func (r *ChannelVerifyPdfRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelVerifyPdfResponseParams struct {
-	// 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
+	// 验签结果代码，代码的含义如下：
+	// 
+	// <ul><li>**1**：文件未被篡改，全部签名在腾讯电子签完成。</li>
+	// <li>**2**：文件未被篡改，部分签名在腾讯电子签完成。</li>
+	// <li>**3**：文件被篡改。</li>
+	// <li>**4**：异常：文件内没有签名域。</li>
+	// <li>**5**：异常：文件签名格式错误。</li></ul>
 	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
-	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
+	// 验签结果详情，每个签名域对应的验签结果。状态值如下
+	// <ul><li> **1** :验签成功，在电子签签署</li>
+	// <li> **2** :验签成功，在其他平台签署</li>
+	// <li> **3** :验签失败</li>
+	// <li> **4** :pdf文件没有签名域</li>
+	// <li> **5** :文件签名格式错误</li></ul>
 	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitnil" name:"PdfVerifyResults"`
+
+	// 验签序列号, 为11为数组组成的字符串
+	VerifySerialNo *string `json:"VerifySerialNo,omitnil" name:"VerifySerialNo"`
+
+	// 合同文件MD5哈希值
+	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil" name:"PdfResourceMd5"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

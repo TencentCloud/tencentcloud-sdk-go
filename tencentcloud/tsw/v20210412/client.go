@@ -59,8 +59,9 @@ func NewDescribeComponentAlertObjectRequest() (request *DescribeComponentAlertOb
 func NewDescribeComponentAlertObjectResponse() (response *DescribeComponentAlertObjectResponse) {
     response = &DescribeComponentAlertObjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeComponentAlertObject
@@ -101,8 +102,9 @@ func NewDescribeServiceAlertObjectRequest() (request *DescribeServiceAlertObject
 func NewDescribeServiceAlertObjectResponse() (response *DescribeServiceAlertObjectResponse) {
     response = &DescribeServiceAlertObjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServiceAlertObject
@@ -143,8 +145,9 @@ func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
 func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
     response = &DescribeTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeToken

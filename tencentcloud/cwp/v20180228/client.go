@@ -59,8 +59,9 @@ func NewAddLoginWhiteListsRequest() (request *AddLoginWhiteListsRequest) {
 func NewAddLoginWhiteListsResponse() (response *AddLoginWhiteListsResponse) {
     response = &AddLoginWhiteListsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddLoginWhiteLists
@@ -121,8 +122,9 @@ func NewCancelIgnoreVulRequest() (request *CancelIgnoreVulRequest) {
 func NewCancelIgnoreVulResponse() (response *CancelIgnoreVulResponse) {
     response = &CancelIgnoreVulResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelIgnoreVul
@@ -179,8 +181,9 @@ func NewChangeRuleEventsIgnoreStatusRequest() (request *ChangeRuleEventsIgnoreSt
 func NewChangeRuleEventsIgnoreStatusResponse() (response *ChangeRuleEventsIgnoreStatusResponse) {
     response = &ChangeRuleEventsIgnoreStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeRuleEventsIgnoreStatus
@@ -237,8 +240,9 @@ func NewChangeStrategyEnableStatusRequest() (request *ChangeStrategyEnableStatus
 func NewChangeStrategyEnableStatusResponse() (response *ChangeStrategyEnableStatusResponse) {
     response = &ChangeStrategyEnableStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeStrategyEnableStatus
@@ -295,8 +299,9 @@ func NewCheckBashPolicyParamsRequest() (request *CheckBashPolicyParamsRequest) {
 func NewCheckBashPolicyParamsResponse() (response *CheckBashPolicyParamsResponse) {
     response = &CheckBashPolicyParamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBashPolicyParams
@@ -351,8 +356,9 @@ func NewCheckBashRuleParamsRequest() (request *CheckBashRuleParamsRequest) {
 func NewCheckBashRuleParamsResponse() (response *CheckBashRuleParamsResponse) {
     response = &CheckBashRuleParamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBashRuleParams
@@ -407,8 +413,9 @@ func NewCheckFileTamperRuleRequest() (request *CheckFileTamperRuleRequest) {
 func NewCheckFileTamperRuleResponse() (response *CheckFileTamperRuleResponse) {
     response = &CheckFileTamperRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckFileTamperRule
@@ -463,8 +470,9 @@ func NewCheckFirstScanBaselineRequest() (request *CheckFirstScanBaselineRequest)
 func NewCheckFirstScanBaselineResponse() (response *CheckFirstScanBaselineResponse) {
     response = &CheckFirstScanBaselineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckFirstScanBaseline
@@ -511,8 +519,9 @@ func NewCheckLogKafkaConnectionStateRequest() (request *CheckLogKafkaConnectionS
 func NewCheckLogKafkaConnectionStateResponse() (response *CheckLogKafkaConnectionStateResponse) {
     response = &CheckLogKafkaConnectionStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckLogKafkaConnectionState
@@ -559,8 +568,9 @@ func NewClearLocalStorageRequest() (request *ClearLocalStorageRequest) {
 func NewClearLocalStorageResponse() (response *ClearLocalStorageResponse) {
     response = &ClearLocalStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearLocalStorage
@@ -607,8 +617,9 @@ func NewCreateBanWhiteListRequest() (request *CreateBanWhiteListRequest) {
 func NewCreateBanWhiteListResponse() (response *CreateBanWhiteListResponse) {
     response = &CreateBanWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBanWhiteList
@@ -673,8 +684,9 @@ func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest)
 func NewCreateBaselineStrategyResponse() (response *CreateBaselineStrategyResponse) {
     response = &CreateBaselineStrategyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBaselineStrategy
@@ -741,8 +753,9 @@ func NewCreateBuyBindTaskRequest() (request *CreateBuyBindTaskRequest) {
 func NewCreateBuyBindTaskResponse() (response *CreateBuyBindTaskResponse) {
     response = &CreateBuyBindTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBuyBindTask
@@ -793,8 +806,9 @@ func NewCreateCloudProtectServiceOrderRecordRequest() (request *CreateCloudProte
 func NewCreateCloudProtectServiceOrderRecordResponse() (response *CreateCloudProtectServiceOrderRecordResponse) {
     response = &CreateCloudProtectServiceOrderRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudProtectServiceOrderRecord
@@ -845,8 +859,9 @@ func NewCreateEmergencyVulScanRequest() (request *CreateEmergencyVulScanRequest)
 func NewCreateEmergencyVulScanResponse() (response *CreateEmergencyVulScanResponse) {
     response = &CreateEmergencyVulScanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEmergencyVulScan
@@ -911,8 +926,9 @@ func NewCreateIncidentBacktrackingRequest() (request *CreateIncidentBacktracking
 func NewCreateIncidentBacktrackingResponse() (response *CreateIncidentBacktrackingResponse) {
     response = &CreateIncidentBacktrackingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIncidentBacktracking
@@ -977,8 +993,9 @@ func NewCreateLicenseOrderRequest() (request *CreateLicenseOrderRequest) {
 func NewCreateLicenseOrderResponse() (response *CreateLicenseOrderResponse) {
     response = &CreateLicenseOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLicenseOrder
@@ -1049,8 +1066,9 @@ func NewCreateLogExportRequest() (request *CreateLogExportRequest) {
 func NewCreateLogExportResponse() (response *CreateLogExportResponse) {
     response = &CreateLogExportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLogExport
@@ -1109,8 +1127,9 @@ func NewCreateMaliciousRequestWhiteListRequest() (request *CreateMaliciousReques
 func NewCreateMaliciousRequestWhiteListResponse() (response *CreateMaliciousRequestWhiteListResponse) {
     response = &CreateMaliciousRequestWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMaliciousRequestWhiteList
@@ -1165,8 +1184,9 @@ func NewCreateMalwareWhiteListRequest() (request *CreateMalwareWhiteListRequest)
 func NewCreateMalwareWhiteListResponse() (response *CreateMalwareWhiteListResponse) {
     response = &CreateMalwareWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMalwareWhiteList
@@ -1215,8 +1235,9 @@ func NewCreateNetAttackWhiteListRequest() (request *CreateNetAttackWhiteListRequ
 func NewCreateNetAttackWhiteListResponse() (response *CreateNetAttackWhiteListResponse) {
     response = &CreateNetAttackWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNetAttackWhiteList
@@ -1265,8 +1286,9 @@ func NewCreateProtectServerRequest() (request *CreateProtectServerRequest) {
 func NewCreateProtectServerResponse() (response *CreateProtectServerResponse) {
     response = &CreateProtectServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProtectServer
@@ -1323,8 +1345,9 @@ func NewCreateRansomDefenseStrategyRequest() (request *CreateRansomDefenseStrate
 func NewCreateRansomDefenseStrategyResponse() (response *CreateRansomDefenseStrategyResponse) {
     response = &CreateRansomDefenseStrategyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRansomDefenseStrategy
@@ -1373,8 +1396,9 @@ func NewCreateScanMalwareSettingRequest() (request *CreateScanMalwareSettingRequ
 func NewCreateScanMalwareSettingResponse() (response *CreateScanMalwareSettingResponse) {
     response = &CreateScanMalwareSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScanMalwareSetting
@@ -1447,8 +1471,9 @@ func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
 func NewCreateSearchLogResponse() (response *CreateSearchLogResponse) {
     response = &CreateSearchLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSearchLog
@@ -1501,8 +1526,9 @@ func NewCreateSearchTemplateRequest() (request *CreateSearchTemplateRequest) {
 func NewCreateSearchTemplateResponse() (response *CreateSearchTemplateResponse) {
     response = &CreateSearchTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSearchTemplate
@@ -1559,8 +1585,9 @@ func NewCreateVulFixRequest() (request *CreateVulFixRequest) {
 func NewCreateVulFixResponse() (response *CreateVulFixResponse) {
     response = &CreateVulFixResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVulFix
@@ -1625,8 +1652,9 @@ func NewCreateWhiteListOrderRequest() (request *CreateWhiteListOrderRequest) {
 func NewCreateWhiteListOrderResponse() (response *CreateWhiteListOrderResponse) {
     response = &CreateWhiteListOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWhiteListOrder
@@ -1673,8 +1701,9 @@ func NewDeleteAllJavaMemShellsRequest() (request *DeleteAllJavaMemShellsRequest)
 func NewDeleteAllJavaMemShellsResponse() (response *DeleteAllJavaMemShellsResponse) {
     response = &DeleteAllJavaMemShellsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAllJavaMemShells
@@ -1733,8 +1762,9 @@ func NewDeleteAttackLogsRequest() (request *DeleteAttackLogsRequest) {
 func NewDeleteAttackLogsResponse() (response *DeleteAttackLogsResponse) {
     response = &DeleteAttackLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAttackLogs
@@ -1797,8 +1827,9 @@ func NewDeleteBanWhiteListRequest() (request *DeleteBanWhiteListRequest) {
 func NewDeleteBanWhiteListResponse() (response *DeleteBanWhiteListResponse) {
     response = &DeleteBanWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBanWhiteList
@@ -1859,8 +1890,9 @@ func NewDeleteBaselinePolicyRequest() (request *DeleteBaselinePolicyRequest) {
 func NewDeleteBaselinePolicyResponse() (response *DeleteBaselinePolicyResponse) {
     response = &DeleteBaselinePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaselinePolicy
@@ -1921,8 +1953,9 @@ func NewDeleteBaselineRuleRequest() (request *DeleteBaselineRuleRequest) {
 func NewDeleteBaselineRuleResponse() (response *DeleteBaselineRuleResponse) {
     response = &DeleteBaselineRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaselineRule
@@ -1971,8 +2004,9 @@ func NewDeleteBaselineRuleIgnoreRequest() (request *DeleteBaselineRuleIgnoreRequ
 func NewDeleteBaselineRuleIgnoreResponse() (response *DeleteBaselineRuleIgnoreResponse) {
     response = &DeleteBaselineRuleIgnoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaselineRuleIgnore
@@ -2021,8 +2055,9 @@ func NewDeleteBaselineStrategyRequest() (request *DeleteBaselineStrategyRequest)
 func NewDeleteBaselineStrategyResponse() (response *DeleteBaselineStrategyResponse) {
     response = &DeleteBaselineStrategyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaselineStrategy
@@ -2081,8 +2116,9 @@ func NewDeleteBaselineWeakPasswordRequest() (request *DeleteBaselineWeakPassword
 func NewDeleteBaselineWeakPasswordResponse() (response *DeleteBaselineWeakPasswordResponse) {
     response = &DeleteBaselineWeakPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBaselineWeakPassword
@@ -2131,8 +2167,9 @@ func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
 func NewDeleteBashEventsResponse() (response *DeleteBashEventsResponse) {
     response = &DeleteBashEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBashEvents
@@ -2197,8 +2234,9 @@ func NewDeleteBashPoliciesRequest() (request *DeleteBashPoliciesRequest) {
 func NewDeleteBashPoliciesResponse() (response *DeleteBashPoliciesResponse) {
     response = &DeleteBashPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBashPolicies
@@ -2263,8 +2301,9 @@ func NewDeleteBashRulesRequest() (request *DeleteBashRulesRequest) {
 func NewDeleteBashRulesResponse() (response *DeleteBashRulesResponse) {
     response = &DeleteBashRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBashRules
@@ -2329,8 +2368,9 @@ func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
 func NewDeleteBruteAttacksResponse() (response *DeleteBruteAttacksResponse) {
     response = &DeleteBruteAttacksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBruteAttacks
@@ -2389,8 +2429,9 @@ func NewDeleteLicenseRecordRequest() (request *DeleteLicenseRecordRequest) {
 func NewDeleteLicenseRecordResponse() (response *DeleteLicenseRecordResponse) {
     response = &DeleteLicenseRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLicenseRecord
@@ -2447,8 +2488,9 @@ func NewDeleteLicenseRecordAllRequest() (request *DeleteLicenseRecordAllRequest)
 func NewDeleteLicenseRecordAllResponse() (response *DeleteLicenseRecordAllResponse) {
     response = &DeleteLicenseRecordAllResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLicenseRecordAll
@@ -2505,8 +2547,9 @@ func NewDeleteLogExportRequest() (request *DeleteLogExportRequest) {
 func NewDeleteLogExportResponse() (response *DeleteLogExportResponse) {
     response = &DeleteLogExportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLogExport
@@ -2563,8 +2606,9 @@ func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
 func NewDeleteLoginWhiteListResponse() (response *DeleteLoginWhiteListResponse) {
     response = &DeleteLoginWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLoginWhiteList
@@ -2623,8 +2667,9 @@ func NewDeleteMachineRequest() (request *DeleteMachineRequest) {
 func NewDeleteMachineResponse() (response *DeleteMachineResponse) {
     response = &DeleteMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMachine
@@ -2693,8 +2738,9 @@ func NewDeleteMachineClearHistoryRequest() (request *DeleteMachineClearHistoryRe
 func NewDeleteMachineClearHistoryResponse() (response *DeleteMachineClearHistoryResponse) {
     response = &DeleteMachineClearHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMachineClearHistory
@@ -2763,8 +2809,9 @@ func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
 func NewDeleteMachineTagResponse() (response *DeleteMachineTagResponse) {
     response = &DeleteMachineTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMachineTag
@@ -2823,8 +2870,9 @@ func NewDeleteMaliciousRequestWhiteListRequest() (request *DeleteMaliciousReques
 func NewDeleteMaliciousRequestWhiteListResponse() (response *DeleteMaliciousRequestWhiteListResponse) {
     response = &DeleteMaliciousRequestWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMaliciousRequestWhiteList
@@ -2877,8 +2925,9 @@ func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsReques
 func NewDeleteMaliciousRequestsResponse() (response *DeleteMaliciousRequestsResponse) {
     response = &DeleteMaliciousRequestsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMaliciousRequests
@@ -2935,8 +2984,9 @@ func NewDeleteMalwareScanTaskRequest() (request *DeleteMalwareScanTaskRequest) {
 func NewDeleteMalwareScanTaskResponse() (response *DeleteMalwareScanTaskResponse) {
     response = &DeleteMalwareScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMalwareScanTask
@@ -2995,8 +3045,9 @@ func NewDeleteMalwareWhiteListRequest() (request *DeleteMalwareWhiteListRequest)
 func NewDeleteMalwareWhiteListResponse() (response *DeleteMalwareWhiteListResponse) {
     response = &DeleteMalwareWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMalwareWhiteList
@@ -3061,8 +3112,9 @@ func NewDeleteMalwaresRequest() (request *DeleteMalwaresRequest) {
 func NewDeleteMalwaresResponse() (response *DeleteMalwaresResponse) {
     response = &DeleteMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMalwares
@@ -3121,8 +3173,9 @@ func NewDeleteNetAttackWhiteListRequest() (request *DeleteNetAttackWhiteListRequ
 func NewDeleteNetAttackWhiteListResponse() (response *DeleteNetAttackWhiteListResponse) {
     response = &DeleteNetAttackWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNetAttackWhiteList
@@ -3187,8 +3240,9 @@ func NewDeleteNonlocalLoginPlacesRequest() (request *DeleteNonlocalLoginPlacesRe
 func NewDeleteNonlocalLoginPlacesResponse() (response *DeleteNonlocalLoginPlacesResponse) {
     response = &DeleteNonlocalLoginPlacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNonlocalLoginPlaces
@@ -3253,8 +3307,9 @@ func NewDeletePrivilegeEventsRequest() (request *DeletePrivilegeEventsRequest) {
 func NewDeletePrivilegeEventsResponse() (response *DeletePrivilegeEventsResponse) {
     response = &DeletePrivilegeEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePrivilegeEvents
@@ -3315,8 +3370,9 @@ func NewDeletePrivilegeRulesRequest() (request *DeletePrivilegeRulesRequest) {
 func NewDeletePrivilegeRulesResponse() (response *DeletePrivilegeRulesResponse) {
     response = &DeletePrivilegeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePrivilegeRules
@@ -3385,8 +3441,9 @@ func NewDeleteProtectDirRequest() (request *DeleteProtectDirRequest) {
 func NewDeleteProtectDirResponse() (response *DeleteProtectDirResponse) {
     response = &DeleteProtectDirResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProtectDir
@@ -3451,8 +3508,9 @@ func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequ
 func NewDeleteReverseShellEventsResponse() (response *DeleteReverseShellEventsResponse) {
     response = &DeleteReverseShellEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReverseShellEvents
@@ -3515,8 +3573,9 @@ func NewDeleteReverseShellRulesRequest() (request *DeleteReverseShellRulesReques
 func NewDeleteReverseShellRulesResponse() (response *DeleteReverseShellRulesResponse) {
     response = &DeleteReverseShellRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReverseShellRules
@@ -3587,8 +3646,9 @@ func NewDeleteRiskDnsEventRequest() (request *DeleteRiskDnsEventRequest) {
 func NewDeleteRiskDnsEventResponse() (response *DeleteRiskDnsEventResponse) {
     response = &DeleteRiskDnsEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRiskDnsEvent
@@ -3637,8 +3697,9 @@ func NewDeleteRiskDnsPolicyRequest() (request *DeleteRiskDnsPolicyRequest) {
 func NewDeleteRiskDnsPolicyResponse() (response *DeleteRiskDnsPolicyResponse) {
     response = &DeleteRiskDnsPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRiskDnsPolicy
@@ -3685,8 +3746,9 @@ func NewDeleteScanTaskRequest() (request *DeleteScanTaskRequest) {
 func NewDeleteScanTaskResponse() (response *DeleteScanTaskResponse) {
     response = &DeleteScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScanTask
@@ -3753,8 +3815,9 @@ func NewDeleteSearchTemplateRequest() (request *DeleteSearchTemplateRequest) {
 func NewDeleteSearchTemplateResponse() (response *DeleteSearchTemplateResponse) {
     response = &DeleteSearchTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSearchTemplate
@@ -3809,8 +3872,9 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
 func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
     response = &DeleteTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTags
@@ -3865,8 +3929,9 @@ func NewDeleteWebHookPolicyRequest() (request *DeleteWebHookPolicyRequest) {
 func NewDeleteWebHookPolicyResponse() (response *DeleteWebHookPolicyResponse) {
     response = &DeleteWebHookPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWebHookPolicy
@@ -3921,8 +3986,9 @@ func NewDeleteWebHookReceiverRequest() (request *DeleteWebHookReceiverRequest) {
 func NewDeleteWebHookReceiverResponse() (response *DeleteWebHookReceiverResponse) {
     response = &DeleteWebHookReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWebHookReceiver
@@ -3977,8 +4043,9 @@ func NewDeleteWebHookRuleRequest() (request *DeleteWebHookRuleRequest) {
 func NewDeleteWebHookRuleResponse() (response *DeleteWebHookRuleResponse) {
     response = &DeleteWebHookRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWebHookRule
@@ -4027,8 +4094,9 @@ func NewDeleteWebPageEventLogRequest() (request *DeleteWebPageEventLogRequest) {
 func NewDeleteWebPageEventLogResponse() (response *DeleteWebPageEventLogResponse) {
     response = &DeleteWebPageEventLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWebPageEventLog
@@ -4085,8 +4153,9 @@ func NewDescribeABTestConfigRequest() (request *DescribeABTestConfigRequest) {
 func NewDescribeABTestConfigResponse() (response *DescribeABTestConfigResponse) {
     response = &DescribeABTestConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeABTestConfig
@@ -4133,8 +4202,9 @@ func NewDescribeAESKeyRequest() (request *DescribeAESKeyRequest) {
 func NewDescribeAESKeyResponse() (response *DescribeAESKeyResponse) {
     response = &DescribeAESKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAESKey
@@ -4181,8 +4251,9 @@ func NewDescribeAccountStatisticsRequest() (request *DescribeAccountStatisticsRe
 func NewDescribeAccountStatisticsResponse() (response *DescribeAccountStatisticsResponse) {
     response = &DescribeAccountStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountStatistics
@@ -4241,8 +4312,9 @@ func NewDescribeAgentInstallCommandRequest() (request *DescribeAgentInstallComma
 func NewDescribeAgentInstallCommandResponse() (response *DescribeAgentInstallCommandResponse) {
     response = &DescribeAgentInstallCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentInstallCommand
@@ -4295,8 +4367,9 @@ func NewDescribeAgentInstallationTokenRequest() (request *DescribeAgentInstallat
 func NewDescribeAgentInstallationTokenResponse() (response *DescribeAgentInstallationTokenResponse) {
     response = &DescribeAgentInstallationTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentInstallationToken
@@ -4351,8 +4424,9 @@ func NewDescribeAlarmIncidentNodesRequest() (request *DescribeAlarmIncidentNodes
 func NewDescribeAlarmIncidentNodesResponse() (response *DescribeAlarmIncidentNodesResponse) {
     response = &DescribeAlarmIncidentNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarmIncidentNodes
@@ -4407,8 +4481,9 @@ func NewDescribeAlarmVertexIdRequest() (request *DescribeAlarmVertexIdRequest) {
 func NewDescribeAlarmVertexIdResponse() (response *DescribeAlarmVertexIdResponse) {
     response = &DescribeAlarmVertexIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarmVertexId
@@ -4463,8 +4538,9 @@ func NewDescribeAssetAppCountRequest() (request *DescribeAssetAppCountRequest) {
 func NewDescribeAssetAppCountResponse() (response *DescribeAssetAppCountResponse) {
     response = &DescribeAssetAppCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetAppCount
@@ -4517,8 +4593,9 @@ func NewDescribeAssetAppListRequest() (request *DescribeAssetAppListRequest) {
 func NewDescribeAssetAppListResponse() (response *DescribeAssetAppListResponse) {
     response = &DescribeAssetAppListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetAppList
@@ -4579,8 +4656,9 @@ func NewDescribeAssetAppProcessListRequest() (request *DescribeAssetAppProcessLi
 func NewDescribeAssetAppProcessListResponse() (response *DescribeAssetAppProcessListResponse) {
     response = &DescribeAssetAppProcessListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetAppProcessList
@@ -4633,8 +4711,9 @@ func NewDescribeAssetCoreModuleInfoRequest() (request *DescribeAssetCoreModuleIn
 func NewDescribeAssetCoreModuleInfoResponse() (response *DescribeAssetCoreModuleInfoResponse) {
     response = &DescribeAssetCoreModuleInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetCoreModuleInfo
@@ -4687,8 +4766,9 @@ func NewDescribeAssetCoreModuleListRequest() (request *DescribeAssetCoreModuleLi
 func NewDescribeAssetCoreModuleListResponse() (response *DescribeAssetCoreModuleListResponse) {
     response = &DescribeAssetCoreModuleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetCoreModuleList
@@ -4749,8 +4829,9 @@ func NewDescribeAssetDatabaseCountRequest() (request *DescribeAssetDatabaseCount
 func NewDescribeAssetDatabaseCountResponse() (response *DescribeAssetDatabaseCountResponse) {
     response = &DescribeAssetDatabaseCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDatabaseCount
@@ -4803,8 +4884,9 @@ func NewDescribeAssetDatabaseInfoRequest() (request *DescribeAssetDatabaseInfoRe
 func NewDescribeAssetDatabaseInfoResponse() (response *DescribeAssetDatabaseInfoResponse) {
     response = &DescribeAssetDatabaseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDatabaseInfo
@@ -4857,8 +4939,9 @@ func NewDescribeAssetDatabaseListRequest() (request *DescribeAssetDatabaseListRe
 func NewDescribeAssetDatabaseListResponse() (response *DescribeAssetDatabaseListResponse) {
     response = &DescribeAssetDatabaseListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDatabaseList
@@ -4919,8 +5002,9 @@ func NewDescribeAssetDiskListRequest() (request *DescribeAssetDiskListRequest) {
 func NewDescribeAssetDiskListResponse() (response *DescribeAssetDiskListResponse) {
     response = &DescribeAssetDiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDiskList
@@ -4973,8 +5057,9 @@ func NewDescribeAssetEnvListRequest() (request *DescribeAssetEnvListRequest) {
 func NewDescribeAssetEnvListResponse() (response *DescribeAssetEnvListResponse) {
     response = &DescribeAssetEnvListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetEnvList
@@ -5035,8 +5120,9 @@ func NewDescribeAssetHostTotalCountRequest() (request *DescribeAssetHostTotalCou
 func NewDescribeAssetHostTotalCountResponse() (response *DescribeAssetHostTotalCountResponse) {
     response = &DescribeAssetHostTotalCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetHostTotalCount
@@ -5089,8 +5175,9 @@ func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
 func NewDescribeAssetInfoResponse() (response *DescribeAssetInfoResponse) {
     response = &DescribeAssetInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetInfo
@@ -5143,8 +5230,9 @@ func NewDescribeAssetInitServiceListRequest() (request *DescribeAssetInitService
 func NewDescribeAssetInitServiceListResponse() (response *DescribeAssetInitServiceListResponse) {
     response = &DescribeAssetInitServiceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetInitServiceList
@@ -5199,8 +5287,9 @@ func NewDescribeAssetJarInfoRequest() (request *DescribeAssetJarInfoRequest) {
 func NewDescribeAssetJarInfoResponse() (response *DescribeAssetJarInfoResponse) {
     response = &DescribeAssetJarInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetJarInfo
@@ -5253,8 +5342,9 @@ func NewDescribeAssetJarListRequest() (request *DescribeAssetJarListRequest) {
 func NewDescribeAssetJarListResponse() (response *DescribeAssetJarListResponse) {
     response = &DescribeAssetJarListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetJarList
@@ -5315,8 +5405,9 @@ func NewDescribeAssetLoadInfoRequest() (request *DescribeAssetLoadInfoRequest) {
 func NewDescribeAssetLoadInfoResponse() (response *DescribeAssetLoadInfoResponse) {
     response = &DescribeAssetLoadInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetLoadInfo
@@ -5367,8 +5458,9 @@ func NewDescribeAssetMachineDetailRequest() (request *DescribeAssetMachineDetail
 func NewDescribeAssetMachineDetailResponse() (response *DescribeAssetMachineDetailResponse) {
     response = &DescribeAssetMachineDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetMachineDetail
@@ -5421,8 +5513,9 @@ func NewDescribeAssetMachineListRequest() (request *DescribeAssetMachineListRequ
 func NewDescribeAssetMachineListResponse() (response *DescribeAssetMachineListResponse) {
     response = &DescribeAssetMachineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetMachineList
@@ -5477,8 +5570,9 @@ func NewDescribeAssetMachineTagTopRequest() (request *DescribeAssetMachineTagTop
 func NewDescribeAssetMachineTagTopResponse() (response *DescribeAssetMachineTagTopResponse) {
     response = &DescribeAssetMachineTagTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetMachineTagTop
@@ -5529,8 +5623,9 @@ func NewDescribeAssetPlanTaskListRequest() (request *DescribeAssetPlanTaskListRe
 func NewDescribeAssetPlanTaskListResponse() (response *DescribeAssetPlanTaskListResponse) {
     response = &DescribeAssetPlanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetPlanTaskList
@@ -5591,8 +5686,9 @@ func NewDescribeAssetPortCountRequest() (request *DescribeAssetPortCountRequest)
 func NewDescribeAssetPortCountResponse() (response *DescribeAssetPortCountResponse) {
     response = &DescribeAssetPortCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetPortCount
@@ -5645,8 +5741,9 @@ func NewDescribeAssetPortInfoListRequest() (request *DescribeAssetPortInfoListRe
 func NewDescribeAssetPortInfoListResponse() (response *DescribeAssetPortInfoListResponse) {
     response = &DescribeAssetPortInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetPortInfoList
@@ -5701,8 +5798,9 @@ func NewDescribeAssetProcessCountRequest() (request *DescribeAssetProcessCountRe
 func NewDescribeAssetProcessCountResponse() (response *DescribeAssetProcessCountResponse) {
     response = &DescribeAssetProcessCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetProcessCount
@@ -5755,8 +5853,9 @@ func NewDescribeAssetProcessInfoListRequest() (request *DescribeAssetProcessInfo
 func NewDescribeAssetProcessInfoListResponse() (response *DescribeAssetProcessInfoListResponse) {
     response = &DescribeAssetProcessInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetProcessInfoList
@@ -5811,8 +5910,9 @@ func NewDescribeAssetRecentMachineInfoRequest() (request *DescribeAssetRecentMac
 func NewDescribeAssetRecentMachineInfoResponse() (response *DescribeAssetRecentMachineInfoResponse) {
     response = &DescribeAssetRecentMachineInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetRecentMachineInfo
@@ -5871,8 +5971,9 @@ func NewDescribeAssetSystemPackageListRequest() (request *DescribeAssetSystemPac
 func NewDescribeAssetSystemPackageListResponse() (response *DescribeAssetSystemPackageListResponse) {
     response = &DescribeAssetSystemPackageListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetSystemPackageList
@@ -5925,8 +6026,9 @@ func NewDescribeAssetTotalCountRequest() (request *DescribeAssetTotalCountReques
 func NewDescribeAssetTotalCountResponse() (response *DescribeAssetTotalCountResponse) {
     response = &DescribeAssetTotalCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetTotalCount
@@ -5981,8 +6083,9 @@ func NewDescribeAssetTypeTopRequest() (request *DescribeAssetTypeTopRequest) {
 func NewDescribeAssetTypeTopResponse() (response *DescribeAssetTypeTopResponse) {
     response = &DescribeAssetTypeTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetTypeTop
@@ -6033,8 +6136,9 @@ func NewDescribeAssetTypesRequest() (request *DescribeAssetTypesRequest) {
 func NewDescribeAssetTypesResponse() (response *DescribeAssetTypesResponse) {
     response = &DescribeAssetTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetTypes
@@ -6085,8 +6189,9 @@ func NewDescribeAssetUserCountRequest() (request *DescribeAssetUserCountRequest)
 func NewDescribeAssetUserCountResponse() (response *DescribeAssetUserCountResponse) {
     response = &DescribeAssetUserCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetUserCount
@@ -6137,8 +6242,9 @@ func NewDescribeAssetUserInfoRequest() (request *DescribeAssetUserInfoRequest) {
 func NewDescribeAssetUserInfoResponse() (response *DescribeAssetUserInfoResponse) {
     response = &DescribeAssetUserInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetUserInfo
@@ -6189,8 +6295,9 @@ func NewDescribeAssetUserKeyListRequest() (request *DescribeAssetUserKeyListRequ
 func NewDescribeAssetUserKeyListResponse() (response *DescribeAssetUserKeyListResponse) {
     response = &DescribeAssetUserKeyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetUserKeyList
@@ -6245,8 +6352,9 @@ func NewDescribeAssetUserListRequest() (request *DescribeAssetUserListRequest) {
 func NewDescribeAssetUserListResponse() (response *DescribeAssetUserListResponse) {
     response = &DescribeAssetUserListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetUserList
@@ -6301,8 +6409,9 @@ func NewDescribeAssetWebAppCountRequest() (request *DescribeAssetWebAppCountRequ
 func NewDescribeAssetWebAppCountResponse() (response *DescribeAssetWebAppCountResponse) {
     response = &DescribeAssetWebAppCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebAppCount
@@ -6355,8 +6464,9 @@ func NewDescribeAssetWebAppListRequest() (request *DescribeAssetWebAppListReques
 func NewDescribeAssetWebAppListResponse() (response *DescribeAssetWebAppListResponse) {
     response = &DescribeAssetWebAppListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebAppList
@@ -6411,8 +6521,9 @@ func NewDescribeAssetWebAppPluginListRequest() (request *DescribeAssetWebAppPlug
 func NewDescribeAssetWebAppPluginListResponse() (response *DescribeAssetWebAppPluginListResponse) {
     response = &DescribeAssetWebAppPluginListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebAppPluginList
@@ -6465,8 +6576,9 @@ func NewDescribeAssetWebFrameCountRequest() (request *DescribeAssetWebFrameCount
 func NewDescribeAssetWebFrameCountResponse() (response *DescribeAssetWebFrameCountResponse) {
     response = &DescribeAssetWebFrameCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebFrameCount
@@ -6519,8 +6631,9 @@ func NewDescribeAssetWebFrameListRequest() (request *DescribeAssetWebFrameListRe
 func NewDescribeAssetWebFrameListResponse() (response *DescribeAssetWebFrameListResponse) {
     response = &DescribeAssetWebFrameListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebFrameList
@@ -6573,8 +6686,9 @@ func NewDescribeAssetWebLocationCountRequest() (request *DescribeAssetWebLocatio
 func NewDescribeAssetWebLocationCountResponse() (response *DescribeAssetWebLocationCountResponse) {
     response = &DescribeAssetWebLocationCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebLocationCount
@@ -6627,8 +6741,9 @@ func NewDescribeAssetWebLocationInfoRequest() (request *DescribeAssetWebLocation
 func NewDescribeAssetWebLocationInfoResponse() (response *DescribeAssetWebLocationInfoResponse) {
     response = &DescribeAssetWebLocationInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebLocationInfo
@@ -6681,8 +6796,9 @@ func NewDescribeAssetWebLocationListRequest() (request *DescribeAssetWebLocation
 func NewDescribeAssetWebLocationListResponse() (response *DescribeAssetWebLocationListResponse) {
     response = &DescribeAssetWebLocationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebLocationList
@@ -6735,8 +6851,9 @@ func NewDescribeAssetWebLocationPathListRequest() (request *DescribeAssetWebLoca
 func NewDescribeAssetWebLocationPathListResponse() (response *DescribeAssetWebLocationPathListResponse) {
     response = &DescribeAssetWebLocationPathListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebLocationPathList
@@ -6789,8 +6906,9 @@ func NewDescribeAssetWebServiceCountRequest() (request *DescribeAssetWebServiceC
 func NewDescribeAssetWebServiceCountResponse() (response *DescribeAssetWebServiceCountResponse) {
     response = &DescribeAssetWebServiceCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebServiceCount
@@ -6843,8 +6961,9 @@ func NewDescribeAssetWebServiceInfoListRequest() (request *DescribeAssetWebServi
 func NewDescribeAssetWebServiceInfoListResponse() (response *DescribeAssetWebServiceInfoListResponse) {
     response = &DescribeAssetWebServiceInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebServiceInfoList
@@ -6905,8 +7024,9 @@ func NewDescribeAssetWebServiceProcessListRequest() (request *DescribeAssetWebSe
 func NewDescribeAssetWebServiceProcessListResponse() (response *DescribeAssetWebServiceProcessListResponse) {
     response = &DescribeAssetWebServiceProcessListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetWebServiceProcessList
@@ -6959,8 +7079,9 @@ func NewDescribeAttackEventInfoRequest() (request *DescribeAttackEventInfoReques
 func NewDescribeAttackEventInfoResponse() (response *DescribeAttackEventInfoResponse) {
     response = &DescribeAttackEventInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackEventInfo
@@ -7007,8 +7128,9 @@ func NewDescribeAttackEventsRequest() (request *DescribeAttackEventsRequest) {
 func NewDescribeAttackEventsResponse() (response *DescribeAttackEventsResponse) {
     response = &DescribeAttackEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackEvents
@@ -7069,8 +7191,9 @@ func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
 func NewDescribeAttackLogInfoResponse() (response *DescribeAttackLogInfoResponse) {
     response = &DescribeAttackLogInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackLogInfo
@@ -7133,8 +7256,9 @@ func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
 func NewDescribeAttackLogsResponse() (response *DescribeAttackLogsResponse) {
     response = &DescribeAttackLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackLogs
@@ -7195,8 +7319,9 @@ func NewDescribeAttackSourceRequest() (request *DescribeAttackSourceRequest) {
 func NewDescribeAttackSourceResponse() (response *DescribeAttackSourceResponse) {
     response = &DescribeAttackSourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackSource
@@ -7261,8 +7386,9 @@ func NewDescribeAttackSourceEventsRequest() (request *DescribeAttackSourceEvents
 func NewDescribeAttackSourceEventsResponse() (response *DescribeAttackSourceEventsResponse) {
     response = &DescribeAttackSourceEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackSourceEvents
@@ -7329,8 +7455,9 @@ func NewDescribeAttackStatisticsRequest() (request *DescribeAttackStatisticsRequ
 func NewDescribeAttackStatisticsResponse() (response *DescribeAttackStatisticsResponse) {
     response = &DescribeAttackStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackStatistics
@@ -7397,8 +7524,9 @@ func NewDescribeAttackTopRequest() (request *DescribeAttackTopRequest) {
 func NewDescribeAttackTopResponse() (response *DescribeAttackTopResponse) {
     response = &DescribeAttackTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackTop
@@ -7465,8 +7593,9 @@ func NewDescribeAttackTrendsRequest() (request *DescribeAttackTrendsRequest) {
 func NewDescribeAttackTrendsResponse() (response *DescribeAttackTrendsResponse) {
     response = &DescribeAttackTrendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackTrends
@@ -7533,8 +7662,9 @@ func NewDescribeAttackVulTypeListRequest() (request *DescribeAttackVulTypeListRe
 func NewDescribeAttackVulTypeListResponse() (response *DescribeAttackVulTypeListResponse) {
     response = &DescribeAttackVulTypeListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttackVulTypeList
@@ -7581,8 +7711,9 @@ func NewDescribeAvailableExpertServiceDetailRequest() (request *DescribeAvailabl
 func NewDescribeAvailableExpertServiceDetailResponse() (response *DescribeAvailableExpertServiceDetailResponse) {
     response = &DescribeAvailableExpertServiceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAvailableExpertServiceDetail
@@ -7633,8 +7764,9 @@ func NewDescribeBanModeRequest() (request *DescribeBanModeRequest) {
 func NewDescribeBanModeResponse() (response *DescribeBanModeResponse) {
     response = &DescribeBanModeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBanMode
@@ -7691,8 +7823,9 @@ func NewDescribeBanRegionsRequest() (request *DescribeBanRegionsRequest) {
 func NewDescribeBanRegionsResponse() (response *DescribeBanRegionsResponse) {
     response = &DescribeBanRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBanRegions
@@ -7749,8 +7882,9 @@ func NewDescribeBanStatusRequest() (request *DescribeBanStatusRequest) {
 func NewDescribeBanStatusResponse() (response *DescribeBanStatusResponse) {
     response = &DescribeBanStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBanStatus
@@ -7811,8 +7945,9 @@ func NewDescribeBanWhiteListRequest() (request *DescribeBanWhiteListRequest) {
 func NewDescribeBanWhiteListResponse() (response *DescribeBanWhiteListResponse) {
     response = &DescribeBanWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBanWhiteList
@@ -7873,8 +8008,9 @@ func NewDescribeBaselineAnalysisDataRequest() (request *DescribeBaselineAnalysis
 func NewDescribeBaselineAnalysisDataResponse() (response *DescribeBaselineAnalysisDataResponse) {
     response = &DescribeBaselineAnalysisDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineAnalysisData
@@ -7933,8 +8069,9 @@ func NewDescribeBaselineBasicInfoRequest() (request *DescribeBaselineBasicInfoRe
 func NewDescribeBaselineBasicInfoResponse() (response *DescribeBaselineBasicInfoResponse) {
     response = &DescribeBaselineBasicInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineBasicInfo
@@ -7991,8 +8128,9 @@ func NewDescribeBaselineDefaultStrategyListRequest() (request *DescribeBaselineD
 func NewDescribeBaselineDefaultStrategyListResponse() (response *DescribeBaselineDefaultStrategyListResponse) {
     response = &DescribeBaselineDefaultStrategyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineDefaultStrategyList
@@ -8039,8 +8177,9 @@ func NewDescribeBaselineDetailRequest() (request *DescribeBaselineDetailRequest)
 func NewDescribeBaselineDetailResponse() (response *DescribeBaselineDetailResponse) {
     response = &DescribeBaselineDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineDetail
@@ -8097,8 +8236,9 @@ func NewDescribeBaselineDetectListRequest() (request *DescribeBaselineDetectList
 func NewDescribeBaselineDetectListResponse() (response *DescribeBaselineDetectListResponse) {
     response = &DescribeBaselineDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineDetectList
@@ -8149,8 +8289,9 @@ func NewDescribeBaselineDetectOverviewRequest() (request *DescribeBaselineDetect
 func NewDescribeBaselineDetectOverviewResponse() (response *DescribeBaselineDetectOverviewResponse) {
     response = &DescribeBaselineDetectOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineDetectOverview
@@ -8201,8 +8342,9 @@ func NewDescribeBaselineDownloadListRequest() (request *DescribeBaselineDownload
 func NewDescribeBaselineDownloadListResponse() (response *DescribeBaselineDownloadListResponse) {
     response = &DescribeBaselineDownloadListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineDownloadList
@@ -8251,8 +8393,9 @@ func NewDescribeBaselineEffectHostListRequest() (request *DescribeBaselineEffect
 func NewDescribeBaselineEffectHostListResponse() (response *DescribeBaselineEffectHostListResponse) {
     response = &DescribeBaselineEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineEffectHostList
@@ -8311,8 +8454,9 @@ func NewDescribeBaselineFixListRequest() (request *DescribeBaselineFixListReques
 func NewDescribeBaselineFixListResponse() (response *DescribeBaselineFixListResponse) {
     response = &DescribeBaselineFixListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineFixList
@@ -8361,8 +8505,9 @@ func NewDescribeBaselineHostDetectListRequest() (request *DescribeBaselineHostDe
 func NewDescribeBaselineHostDetectListResponse() (response *DescribeBaselineHostDetectListResponse) {
     response = &DescribeBaselineHostDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineHostDetectList
@@ -8413,8 +8558,9 @@ func NewDescribeBaselineHostIgnoreListRequest() (request *DescribeBaselineHostIg
 func NewDescribeBaselineHostIgnoreListResponse() (response *DescribeBaselineHostIgnoreListResponse) {
     response = &DescribeBaselineHostIgnoreListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineHostIgnoreList
@@ -8465,8 +8611,9 @@ func NewDescribeBaselineHostRiskTopRequest() (request *DescribeBaselineHostRiskT
 func NewDescribeBaselineHostRiskTopResponse() (response *DescribeBaselineHostRiskTopResponse) {
     response = &DescribeBaselineHostRiskTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineHostRiskTop
@@ -8517,8 +8664,9 @@ func NewDescribeBaselineHostTopRequest() (request *DescribeBaselineHostTopReques
 func NewDescribeBaselineHostTopResponse() (response *DescribeBaselineHostTopResponse) {
     response = &DescribeBaselineHostTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineHostTop
@@ -8577,8 +8725,9 @@ func NewDescribeBaselineItemDetectListRequest() (request *DescribeBaselineItemDe
 func NewDescribeBaselineItemDetectListResponse() (response *DescribeBaselineItemDetectListResponse) {
     response = &DescribeBaselineItemDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineItemDetectList
@@ -8629,8 +8778,9 @@ func NewDescribeBaselineItemIgnoreListRequest() (request *DescribeBaselineItemIg
 func NewDescribeBaselineItemIgnoreListResponse() (response *DescribeBaselineItemIgnoreListResponse) {
     response = &DescribeBaselineItemIgnoreListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineItemIgnoreList
@@ -8681,8 +8831,9 @@ func NewDescribeBaselineItemInfoRequest() (request *DescribeBaselineItemInfoRequ
 func NewDescribeBaselineItemInfoResponse() (response *DescribeBaselineItemInfoResponse) {
     response = &DescribeBaselineItemInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineItemInfo
@@ -8731,8 +8882,9 @@ func NewDescribeBaselineItemListRequest() (request *DescribeBaselineItemListRequ
 func NewDescribeBaselineItemListResponse() (response *DescribeBaselineItemListResponse) {
     response = &DescribeBaselineItemListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineItemList
@@ -8783,8 +8935,9 @@ func NewDescribeBaselineItemRiskTopRequest() (request *DescribeBaselineItemRiskT
 func NewDescribeBaselineItemRiskTopResponse() (response *DescribeBaselineItemRiskTopResponse) {
     response = &DescribeBaselineItemRiskTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineItemRiskTop
@@ -8835,8 +8988,9 @@ func NewDescribeBaselineListRequest() (request *DescribeBaselineListRequest) {
 func NewDescribeBaselineListResponse() (response *DescribeBaselineListResponse) {
     response = &DescribeBaselineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineList
@@ -8895,8 +9049,9 @@ func NewDescribeBaselinePolicyListRequest() (request *DescribeBaselinePolicyList
 func NewDescribeBaselinePolicyListResponse() (response *DescribeBaselinePolicyListResponse) {
     response = &DescribeBaselinePolicyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselinePolicyList
@@ -8947,8 +9102,9 @@ func NewDescribeBaselineRuleRequest() (request *DescribeBaselineRuleRequest) {
 func NewDescribeBaselineRuleResponse() (response *DescribeBaselineRuleResponse) {
     response = &DescribeBaselineRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineRule
@@ -9005,8 +9161,9 @@ func NewDescribeBaselineRuleCategoryListRequest() (request *DescribeBaselineRule
 func NewDescribeBaselineRuleCategoryListResponse() (response *DescribeBaselineRuleCategoryListResponse) {
     response = &DescribeBaselineRuleCategoryListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineRuleCategoryList
@@ -9053,8 +9210,9 @@ func NewDescribeBaselineRuleDetectListRequest() (request *DescribeBaselineRuleDe
 func NewDescribeBaselineRuleDetectListResponse() (response *DescribeBaselineRuleDetectListResponse) {
     response = &DescribeBaselineRuleDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineRuleDetectList
@@ -9103,8 +9261,9 @@ func NewDescribeBaselineRuleIgnoreListRequest() (request *DescribeBaselineRuleIg
 func NewDescribeBaselineRuleIgnoreListResponse() (response *DescribeBaselineRuleIgnoreListResponse) {
     response = &DescribeBaselineRuleIgnoreListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineRuleIgnoreList
@@ -9153,8 +9312,9 @@ func NewDescribeBaselineRuleListRequest() (request *DescribeBaselineRuleListRequ
 func NewDescribeBaselineRuleListResponse() (response *DescribeBaselineRuleListResponse) {
     response = &DescribeBaselineRuleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineRuleList
@@ -9205,8 +9365,9 @@ func NewDescribeBaselineScanScheduleRequest() (request *DescribeBaselineScanSche
 func NewDescribeBaselineScanScheduleResponse() (response *DescribeBaselineScanScheduleResponse) {
     response = &DescribeBaselineScanScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineScanSchedule
@@ -9265,8 +9426,9 @@ func NewDescribeBaselineStrategyDetailRequest() (request *DescribeBaselineStrate
 func NewDescribeBaselineStrategyDetailResponse() (response *DescribeBaselineStrategyDetailResponse) {
     response = &DescribeBaselineStrategyDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineStrategyDetail
@@ -9325,8 +9487,9 @@ func NewDescribeBaselineStrategyListRequest() (request *DescribeBaselineStrategy
 func NewDescribeBaselineStrategyListResponse() (response *DescribeBaselineStrategyListResponse) {
     response = &DescribeBaselineStrategyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineStrategyList
@@ -9385,8 +9548,9 @@ func NewDescribeBaselineTopRequest() (request *DescribeBaselineTopRequest) {
 func NewDescribeBaselineTopResponse() (response *DescribeBaselineTopResponse) {
     response = &DescribeBaselineTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineTop
@@ -9445,8 +9609,9 @@ func NewDescribeBaselineWeakPasswordListRequest() (request *DescribeBaselineWeak
 func NewDescribeBaselineWeakPasswordListResponse() (response *DescribeBaselineWeakPasswordListResponse) {
     response = &DescribeBaselineWeakPasswordListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaselineWeakPasswordList
@@ -9497,8 +9662,9 @@ func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
 func NewDescribeBashEventsResponse() (response *DescribeBashEventsResponse) {
     response = &DescribeBashEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashEvents
@@ -9561,8 +9727,9 @@ func NewDescribeBashEventsInfoRequest() (request *DescribeBashEventsInfoRequest)
 func NewDescribeBashEventsInfoResponse() (response *DescribeBashEventsInfoResponse) {
     response = &DescribeBashEventsInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashEventsInfo
@@ -9629,8 +9796,9 @@ func NewDescribeBashEventsInfoNewRequest() (request *DescribeBashEventsInfoNewRe
 func NewDescribeBashEventsInfoNewResponse() (response *DescribeBashEventsInfoNewResponse) {
     response = &DescribeBashEventsInfoNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashEventsInfoNew
@@ -9697,8 +9865,9 @@ func NewDescribeBashEventsNewRequest() (request *DescribeBashEventsNewRequest) {
 func NewDescribeBashEventsNewResponse() (response *DescribeBashEventsNewResponse) {
     response = &DescribeBashEventsNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashEventsNew
@@ -9763,8 +9932,9 @@ func NewDescribeBashPoliciesRequest() (request *DescribeBashPoliciesRequest) {
 func NewDescribeBashPoliciesResponse() (response *DescribeBashPoliciesResponse) {
     response = &DescribeBashPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashPolicies
@@ -9829,8 +9999,9 @@ func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
 func NewDescribeBashRulesResponse() (response *DescribeBashRulesResponse) {
     response = &DescribeBashRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBashRules
@@ -9893,8 +10064,9 @@ func NewDescribeBruteAttackListRequest() (request *DescribeBruteAttackListReques
 func NewDescribeBruteAttackListResponse() (response *DescribeBruteAttackListResponse) {
     response = &DescribeBruteAttackListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBruteAttackList
@@ -9955,8 +10127,9 @@ func NewDescribeBruteAttackRulesRequest() (request *DescribeBruteAttackRulesRequ
 func NewDescribeBruteAttackRulesResponse() (response *DescribeBruteAttackRulesResponse) {
     response = &DescribeBruteAttackRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBruteAttackRules
@@ -10003,8 +10176,9 @@ func NewDescribeCanFixVulMachineRequest() (request *DescribeCanFixVulMachineRequ
 func NewDescribeCanFixVulMachineResponse() (response *DescribeCanFixVulMachineResponse) {
     response = &DescribeCanFixVulMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCanFixVulMachine
@@ -10067,8 +10241,9 @@ func NewDescribeCanNotSeparateMachineRequest() (request *DescribeCanNotSeparateM
 func NewDescribeCanNotSeparateMachineResponse() (response *DescribeCanNotSeparateMachineResponse) {
     response = &DescribeCanNotSeparateMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCanNotSeparateMachine
@@ -10133,8 +10308,9 @@ func NewDescribeClientExceptionRequest() (request *DescribeClientExceptionReques
 func NewDescribeClientExceptionResponse() (response *DescribeClientExceptionResponse) {
     response = &DescribeClientExceptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClientException
@@ -10199,8 +10375,9 @@ func NewDescribeCloudProtectServiceOrderListRequest() (request *DescribeCloudPro
 func NewDescribeCloudProtectServiceOrderListResponse() (response *DescribeCloudProtectServiceOrderListResponse) {
     response = &DescribeCloudProtectServiceOrderListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudProtectServiceOrderList
@@ -10265,8 +10442,9 @@ func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisti
 func NewDescribeComponentStatisticsResponse() (response *DescribeComponentStatisticsResponse) {
     response = &DescribeComponentStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeComponentStatistics
@@ -10325,8 +10503,9 @@ func NewDescribeDefenceEventDetailRequest() (request *DescribeDefenceEventDetail
 func NewDescribeDefenceEventDetailResponse() (response *DescribeDefenceEventDetailResponse) {
     response = &DescribeDefenceEventDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDefenceEventDetail
@@ -10387,8 +10566,9 @@ func NewDescribeDirectConnectInstallCommandRequest() (request *DescribeDirectCon
 func NewDescribeDirectConnectInstallCommandResponse() (response *DescribeDirectConnectInstallCommandResponse) {
     response = &DescribeDirectConnectInstallCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDirectConnectInstallCommand
@@ -10445,8 +10625,9 @@ func NewDescribeESAggregationsRequest() (request *DescribeESAggregationsRequest)
 func NewDescribeESAggregationsResponse() (response *DescribeESAggregationsResponse) {
     response = &DescribeESAggregationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeESAggregations
@@ -10501,8 +10682,9 @@ func NewDescribeEmergencyResponseListRequest() (request *DescribeEmergencyRespon
 func NewDescribeEmergencyResponseListResponse() (response *DescribeEmergencyResponseListResponse) {
     response = &DescribeEmergencyResponseListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEmergencyResponseList
@@ -10555,8 +10737,9 @@ func NewDescribeEmergencyVulListRequest() (request *DescribeEmergencyVulListRequ
 func NewDescribeEmergencyVulListResponse() (response *DescribeEmergencyVulListResponse) {
     response = &DescribeEmergencyVulListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEmergencyVulList
@@ -10613,8 +10796,9 @@ func NewDescribeEventByTableRequest() (request *DescribeEventByTableRequest) {
 func NewDescribeEventByTableResponse() (response *DescribeEventByTableResponse) {
     response = &DescribeEventByTableResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEventByTable
@@ -10671,8 +10855,9 @@ func NewDescribeExpertServiceListRequest() (request *DescribeExpertServiceListRe
 func NewDescribeExpertServiceListResponse() (response *DescribeExpertServiceListResponse) {
     response = &DescribeExpertServiceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExpertServiceList
@@ -10725,8 +10910,9 @@ func NewDescribeExpertServiceOrderListRequest() (request *DescribeExpertServiceO
 func NewDescribeExpertServiceOrderListResponse() (response *DescribeExpertServiceOrderListResponse) {
     response = &DescribeExpertServiceOrderListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExpertServiceOrderList
@@ -10779,8 +10965,9 @@ func NewDescribeExportMachinesRequest() (request *DescribeExportMachinesRequest)
 func NewDescribeExportMachinesResponse() (response *DescribeExportMachinesResponse) {
     response = &DescribeExportMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExportMachines
@@ -10837,8 +11024,9 @@ func NewDescribeFastAnalysisRequest() (request *DescribeFastAnalysisRequest) {
 func NewDescribeFastAnalysisResponse() (response *DescribeFastAnalysisResponse) {
     response = &DescribeFastAnalysisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFastAnalysis
@@ -10895,8 +11083,9 @@ func NewDescribeFileTamperEventRuleInfoRequest() (request *DescribeFileTamperEve
 func NewDescribeFileTamperEventRuleInfoResponse() (response *DescribeFileTamperEventRuleInfoResponse) {
     response = &DescribeFileTamperEventRuleInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTamperEventRuleInfo
@@ -10957,8 +11146,9 @@ func NewDescribeFileTamperEventsRequest() (request *DescribeFileTamperEventsRequ
 func NewDescribeFileTamperEventsResponse() (response *DescribeFileTamperEventsResponse) {
     response = &DescribeFileTamperEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTamperEvents
@@ -11011,8 +11201,9 @@ func NewDescribeFileTamperRuleCountRequest() (request *DescribeFileTamperRuleCou
 func NewDescribeFileTamperRuleCountResponse() (response *DescribeFileTamperRuleCountResponse) {
     response = &DescribeFileTamperRuleCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTamperRuleCount
@@ -11071,8 +11262,9 @@ func NewDescribeFileTamperRuleInfoRequest() (request *DescribeFileTamperRuleInfo
 func NewDescribeFileTamperRuleInfoResponse() (response *DescribeFileTamperRuleInfoResponse) {
     response = &DescribeFileTamperRuleInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTamperRuleInfo
@@ -11133,8 +11325,9 @@ func NewDescribeFileTamperRulesRequest() (request *DescribeFileTamperRulesReques
 func NewDescribeFileTamperRulesResponse() (response *DescribeFileTamperRulesResponse) {
     response = &DescribeFileTamperRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTamperRules
@@ -11193,8 +11386,9 @@ func NewDescribeGeneralStatRequest() (request *DescribeGeneralStatRequest) {
 func NewDescribeGeneralStatResponse() (response *DescribeGeneralStatResponse) {
     response = &DescribeGeneralStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGeneralStat
@@ -11251,8 +11445,9 @@ func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsReques
 func NewDescribeHistoryAccountsResponse() (response *DescribeHistoryAccountsResponse) {
     response = &DescribeHistoryAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHistoryAccounts
@@ -11311,8 +11506,9 @@ func NewDescribeHistoryServiceRequest() (request *DescribeHistoryServiceRequest)
 func NewDescribeHistoryServiceResponse() (response *DescribeHistoryServiceResponse) {
     response = &DescribeHistoryServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHistoryService
@@ -11359,8 +11555,9 @@ func NewDescribeHostInfoRequest() (request *DescribeHostInfoRequest) {
 func NewDescribeHostInfoResponse() (response *DescribeHostInfoResponse) {
     response = &DescribeHostInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHostInfo
@@ -11417,8 +11614,9 @@ func NewDescribeHostLoginListRequest() (request *DescribeHostLoginListRequest) {
 func NewDescribeHostLoginListResponse() (response *DescribeHostLoginListResponse) {
     response = &DescribeHostLoginListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHostLoginList
@@ -11477,8 +11675,9 @@ func NewDescribeHotVulTopRequest() (request *DescribeHotVulTopRequest) {
 func NewDescribeHotVulTopResponse() (response *DescribeHotVulTopResponse) {
     response = &DescribeHotVulTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHotVulTop
@@ -11527,8 +11726,9 @@ func NewDescribeIgnoreBaselineRuleRequest() (request *DescribeIgnoreBaselineRule
 func NewDescribeIgnoreBaselineRuleResponse() (response *DescribeIgnoreBaselineRuleResponse) {
     response = &DescribeIgnoreBaselineRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIgnoreBaselineRule
@@ -11585,8 +11785,9 @@ func NewDescribeIgnoreHostAndItemConfigRequest() (request *DescribeIgnoreHostAnd
 func NewDescribeIgnoreHostAndItemConfigResponse() (response *DescribeIgnoreHostAndItemConfigResponse) {
     response = &DescribeIgnoreHostAndItemConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIgnoreHostAndItemConfig
@@ -11635,8 +11836,9 @@ func NewDescribeIgnoreRuleEffectHostListRequest() (request *DescribeIgnoreRuleEf
 func NewDescribeIgnoreRuleEffectHostListResponse() (response *DescribeIgnoreRuleEffectHostListResponse) {
     response = &DescribeIgnoreRuleEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIgnoreRuleEffectHostList
@@ -11695,8 +11897,9 @@ func NewDescribeImportMachineInfoRequest() (request *DescribeImportMachineInfoRe
 func NewDescribeImportMachineInfoResponse() (response *DescribeImportMachineInfoResponse) {
     response = &DescribeImportMachineInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImportMachineInfo
@@ -11753,8 +11956,9 @@ func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
 func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
     response = &DescribeIndexListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndexList
@@ -11803,8 +12007,9 @@ func NewDescribeJavaMemShellInfoRequest() (request *DescribeJavaMemShellInfoRequ
 func NewDescribeJavaMemShellInfoResponse() (response *DescribeJavaMemShellInfoResponse) {
     response = &DescribeJavaMemShellInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJavaMemShellInfo
@@ -11865,8 +12070,9 @@ func NewDescribeJavaMemShellListRequest() (request *DescribeJavaMemShellListRequ
 func NewDescribeJavaMemShellListResponse() (response *DescribeJavaMemShellListResponse) {
     response = &DescribeJavaMemShellListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJavaMemShellList
@@ -11925,8 +12131,9 @@ func NewDescribeJavaMemShellPluginInfoRequest() (request *DescribeJavaMemShellPl
 func NewDescribeJavaMemShellPluginInfoResponse() (response *DescribeJavaMemShellPluginInfoResponse) {
     response = &DescribeJavaMemShellPluginInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJavaMemShellPluginInfo
@@ -11985,8 +12192,9 @@ func NewDescribeJavaMemShellPluginListRequest() (request *DescribeJavaMemShellPl
 func NewDescribeJavaMemShellPluginListResponse() (response *DescribeJavaMemShellPluginListResponse) {
     response = &DescribeJavaMemShellPluginListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJavaMemShellPluginList
@@ -12045,8 +12253,9 @@ func NewDescribeLicenseRequest() (request *DescribeLicenseRequest) {
 func NewDescribeLicenseResponse() (response *DescribeLicenseResponse) {
     response = &DescribeLicenseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicense
@@ -12093,8 +12302,9 @@ func NewDescribeLicenseBindListRequest() (request *DescribeLicenseBindListReques
 func NewDescribeLicenseBindListResponse() (response *DescribeLicenseBindListResponse) {
     response = &DescribeLicenseBindListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicenseBindList
@@ -12147,8 +12357,9 @@ func NewDescribeLicenseBindScheduleRequest() (request *DescribeLicenseBindSchedu
 func NewDescribeLicenseBindScheduleResponse() (response *DescribeLicenseBindScheduleResponse) {
     response = &DescribeLicenseBindScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicenseBindSchedule
@@ -12201,8 +12412,9 @@ func NewDescribeLicenseGeneralRequest() (request *DescribeLicenseGeneralRequest)
 func NewDescribeLicenseGeneralResponse() (response *DescribeLicenseGeneralResponse) {
     response = &DescribeLicenseGeneralResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicenseGeneral
@@ -12249,8 +12461,9 @@ func NewDescribeLicenseListRequest() (request *DescribeLicenseListRequest) {
 func NewDescribeLicenseListResponse() (response *DescribeLicenseListResponse) {
     response = &DescribeLicenseListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicenseList
@@ -12301,8 +12514,9 @@ func NewDescribeLicenseWhiteConfigRequest() (request *DescribeLicenseWhiteConfig
 func NewDescribeLicenseWhiteConfigResponse() (response *DescribeLicenseWhiteConfigResponse) {
     response = &DescribeLicenseWhiteConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLicenseWhiteConfig
@@ -12355,8 +12569,9 @@ func NewDescribeLogDeliveryKafkaOptionsRequest() (request *DescribeLogDeliveryKa
 func NewDescribeLogDeliveryKafkaOptionsResponse() (response *DescribeLogDeliveryKafkaOptionsResponse) {
     response = &DescribeLogDeliveryKafkaOptionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogDeliveryKafkaOptions
@@ -12409,8 +12624,9 @@ func NewDescribeLogExportsRequest() (request *DescribeLogExportsRequest) {
 func NewDescribeLogExportsResponse() (response *DescribeLogExportsResponse) {
     response = &DescribeLogExportsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogExports
@@ -12463,8 +12679,9 @@ func NewDescribeLogHistogramRequest() (request *DescribeLogHistogramRequest) {
 func NewDescribeLogHistogramResponse() (response *DescribeLogHistogramResponse) {
     response = &DescribeLogHistogramResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogHistogram
@@ -12517,8 +12734,9 @@ func NewDescribeLogIndexRequest() (request *DescribeLogIndexRequest) {
 func NewDescribeLogIndexResponse() (response *DescribeLogIndexResponse) {
     response = &DescribeLogIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogIndex
@@ -12571,8 +12789,9 @@ func NewDescribeLogKafkaDeliverInfoRequest() (request *DescribeLogKafkaDeliverIn
 func NewDescribeLogKafkaDeliverInfoResponse() (response *DescribeLogKafkaDeliverInfoResponse) {
     response = &DescribeLogKafkaDeliverInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogKafkaDeliverInfo
@@ -12625,8 +12844,9 @@ func NewDescribeLogStorageConfigRequest() (request *DescribeLogStorageConfigRequ
 func NewDescribeLogStorageConfigResponse() (response *DescribeLogStorageConfigResponse) {
     response = &DescribeLogStorageConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogStorageConfig
@@ -12679,8 +12899,9 @@ func NewDescribeLogStorageRecordRequest() (request *DescribeLogStorageRecordRequ
 func NewDescribeLogStorageRecordResponse() (response *DescribeLogStorageRecordResponse) {
     response = &DescribeLogStorageRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogStorageRecord
@@ -12733,8 +12954,9 @@ func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatist
 func NewDescribeLogStorageStatisticResponse() (response *DescribeLogStorageStatisticResponse) {
     response = &DescribeLogStorageStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogStorageStatistic
@@ -12781,8 +13003,9 @@ func NewDescribeLogTypeRequest() (request *DescribeLogTypeRequest) {
 func NewDescribeLogTypeResponse() (response *DescribeLogTypeResponse) {
     response = &DescribeLogTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogType
@@ -12829,8 +13052,9 @@ func NewDescribeLoginWhiteCombinedListRequest() (request *DescribeLoginWhiteComb
 func NewDescribeLoginWhiteCombinedListResponse() (response *DescribeLoginWhiteCombinedListResponse) {
     response = &DescribeLoginWhiteCombinedListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoginWhiteCombinedList
@@ -12889,8 +13113,9 @@ func NewDescribeLoginWhiteHostListRequest() (request *DescribeLoginWhiteHostList
 func NewDescribeLoginWhiteHostListResponse() (response *DescribeLoginWhiteHostListResponse) {
     response = &DescribeLoginWhiteHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoginWhiteHostList
@@ -12949,8 +13174,9 @@ func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest)
 func NewDescribeLoginWhiteListResponse() (response *DescribeLoginWhiteListResponse) {
     response = &DescribeLoginWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoginWhiteList
@@ -13007,8 +13233,9 @@ func NewDescribeMachineClearHistoryRequest() (request *DescribeMachineClearHisto
 func NewDescribeMachineClearHistoryResponse() (response *DescribeMachineClearHistoryResponse) {
     response = &DescribeMachineClearHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineClearHistory
@@ -13055,8 +13282,9 @@ func NewDescribeMachineDefenseCntRequest() (request *DescribeMachineDefenseCntRe
 func NewDescribeMachineDefenseCntResponse() (response *DescribeMachineDefenseCntResponse) {
     response = &DescribeMachineDefenseCntResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineDefenseCnt
@@ -13115,8 +13343,9 @@ func NewDescribeMachineFileTamperRulesRequest() (request *DescribeMachineFileTam
 func NewDescribeMachineFileTamperRulesResponse() (response *DescribeMachineFileTamperRulesResponse) {
     response = &DescribeMachineFileTamperRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineFileTamperRules
@@ -13175,8 +13404,9 @@ func NewDescribeMachineGeneralRequest() (request *DescribeMachineGeneralRequest)
 func NewDescribeMachineGeneralResponse() (response *DescribeMachineGeneralResponse) {
     response = &DescribeMachineGeneralResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineGeneral
@@ -13223,8 +13453,9 @@ func NewDescribeMachineInfoRequest() (request *DescribeMachineInfoRequest) {
 func NewDescribeMachineInfoResponse() (response *DescribeMachineInfoResponse) {
     response = &DescribeMachineInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineInfo
@@ -13281,8 +13512,9 @@ func NewDescribeMachineLicenseDetailRequest() (request *DescribeMachineLicenseDe
 func NewDescribeMachineLicenseDetailResponse() (response *DescribeMachineLicenseDetailResponse) {
     response = &DescribeMachineLicenseDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineLicenseDetail
@@ -13341,8 +13573,9 @@ func NewDescribeMachineListRequest() (request *DescribeMachineListRequest) {
 func NewDescribeMachineListResponse() (response *DescribeMachineListResponse) {
     response = &DescribeMachineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineList
@@ -13403,8 +13636,9 @@ func NewDescribeMachineOsListRequest() (request *DescribeMachineOsListRequest) {
 func NewDescribeMachineOsListResponse() (response *DescribeMachineOsListResponse) {
     response = &DescribeMachineOsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineOsList
@@ -13451,8 +13685,9 @@ func NewDescribeMachineRegionListRequest() (request *DescribeMachineRegionListRe
 func NewDescribeMachineRegionListResponse() (response *DescribeMachineRegionListResponse) {
     response = &DescribeMachineRegionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineRegionList
@@ -13499,8 +13734,9 @@ func NewDescribeMachineRegionsRequest() (request *DescribeMachineRegionsRequest)
 func NewDescribeMachineRegionsResponse() (response *DescribeMachineRegionsResponse) {
     response = &DescribeMachineRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineRegions
@@ -13555,8 +13791,9 @@ func NewDescribeMachineRiskCntRequest() (request *DescribeMachineRiskCntRequest)
 func NewDescribeMachineRiskCntResponse() (response *DescribeMachineRiskCntResponse) {
     response = &DescribeMachineRiskCntResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineRiskCnt
@@ -13615,8 +13852,9 @@ func NewDescribeMachineSnapshotRequest() (request *DescribeMachineSnapshotReques
 func NewDescribeMachineSnapshotResponse() (response *DescribeMachineSnapshotResponse) {
     response = &DescribeMachineSnapshotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineSnapshot
@@ -13677,8 +13915,9 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
 func NewDescribeMachinesResponse() (response *DescribeMachinesResponse) {
     response = &DescribeMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachines
@@ -13737,8 +13976,9 @@ func NewDescribeMachinesSimpleRequest() (request *DescribeMachinesSimpleRequest)
 func NewDescribeMachinesSimpleResponse() (response *DescribeMachinesSimpleResponse) {
     response = &DescribeMachinesSimpleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachinesSimple
@@ -13799,8 +14039,9 @@ func NewDescribeMalWareListRequest() (request *DescribeMalWareListRequest) {
 func NewDescribeMalWareListResponse() (response *DescribeMalWareListResponse) {
     response = &DescribeMalWareListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalWareList
@@ -13863,8 +14104,9 @@ func NewDescribeMaliciousRequestWhiteListRequest() (request *DescribeMaliciousRe
 func NewDescribeMaliciousRequestWhiteListResponse() (response *DescribeMaliciousRequestWhiteListResponse) {
     response = &DescribeMaliciousRequestWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMaliciousRequestWhiteList
@@ -13923,8 +14165,9 @@ func NewDescribeMalwareFileRequest() (request *DescribeMalwareFileRequest) {
 func NewDescribeMalwareFileResponse() (response *DescribeMalwareFileResponse) {
     response = &DescribeMalwareFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareFile
@@ -13987,8 +14230,9 @@ func NewDescribeMalwareInfoRequest() (request *DescribeMalwareInfoRequest) {
 func NewDescribeMalwareInfoResponse() (response *DescribeMalwareInfoResponse) {
     response = &DescribeMalwareInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareInfo
@@ -14051,8 +14295,9 @@ func NewDescribeMalwareRiskOverviewRequest() (request *DescribeMalwareRiskOvervi
 func NewDescribeMalwareRiskOverviewResponse() (response *DescribeMalwareRiskOverviewResponse) {
     response = &DescribeMalwareRiskOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareRiskOverview
@@ -14099,8 +14344,9 @@ func NewDescribeMalwareRiskWarningRequest() (request *DescribeMalwareRiskWarning
 func NewDescribeMalwareRiskWarningResponse() (response *DescribeMalwareRiskWarningResponse) {
     response = &DescribeMalwareRiskWarningResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareRiskWarning
@@ -14147,8 +14393,9 @@ func NewDescribeMalwareTimingScanSettingRequest() (request *DescribeMalwareTimin
 func NewDescribeMalwareTimingScanSettingResponse() (response *DescribeMalwareTimingScanSettingResponse) {
     response = &DescribeMalwareTimingScanSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareTimingScanSetting
@@ -14195,8 +14442,9 @@ func NewDescribeMalwareWhiteListRequest() (request *DescribeMalwareWhiteListRequ
 func NewDescribeMalwareWhiteListResponse() (response *DescribeMalwareWhiteListResponse) {
     response = &DescribeMalwareWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareWhiteList
@@ -14257,8 +14505,9 @@ func NewDescribeMalwareWhiteListAffectListRequest() (request *DescribeMalwareWhi
 func NewDescribeMalwareWhiteListAffectListResponse() (response *DescribeMalwareWhiteListAffectListResponse) {
     response = &DescribeMalwareWhiteListAffectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMalwareWhiteListAffectList
@@ -14319,8 +14568,9 @@ func NewDescribeMonthInspectionReportRequest() (request *DescribeMonthInspection
 func NewDescribeMonthInspectionReportResponse() (response *DescribeMonthInspectionReportResponse) {
     response = &DescribeMonthInspectionReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMonthInspectionReport
@@ -14381,8 +14631,9 @@ func NewDescribeNetAttackSettingRequest() (request *DescribeNetAttackSettingRequ
 func NewDescribeNetAttackSettingResponse() (response *DescribeNetAttackSettingResponse) {
     response = &DescribeNetAttackSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNetAttackSetting
@@ -14443,8 +14694,9 @@ func NewDescribeNetAttackWhiteListRequest() (request *DescribeNetAttackWhiteList
 func NewDescribeNetAttackWhiteListResponse() (response *DescribeNetAttackWhiteListResponse) {
     response = &DescribeNetAttackWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNetAttackWhiteList
@@ -14505,8 +14757,9 @@ func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatistics
 func NewDescribeOpenPortStatisticsResponse() (response *DescribeOpenPortStatisticsResponse) {
     response = &DescribeOpenPortStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOpenPortStatistics
@@ -14563,8 +14816,9 @@ func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatistics
 func NewDescribeOverviewStatisticsResponse() (response *DescribeOverviewStatisticsResponse) {
     response = &DescribeOverviewStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOverviewStatistics
@@ -14617,8 +14871,9 @@ func NewDescribePrivilegeEventInfoRequest() (request *DescribePrivilegeEventInfo
 func NewDescribePrivilegeEventInfoResponse() (response *DescribePrivilegeEventInfoResponse) {
     response = &DescribePrivilegeEventInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivilegeEventInfo
@@ -14685,8 +14940,9 @@ func NewDescribePrivilegeEventsRequest() (request *DescribePrivilegeEventsReques
 func NewDescribePrivilegeEventsResponse() (response *DescribePrivilegeEventsResponse) {
     response = &DescribePrivilegeEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivilegeEvents
@@ -14749,8 +15005,9 @@ func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest)
 func NewDescribePrivilegeRulesResponse() (response *DescribePrivilegeRulesResponse) {
     response = &DescribePrivilegeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivilegeRules
@@ -14813,8 +15070,9 @@ func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest)
 func NewDescribeProVersionInfoResponse() (response *DescribeProVersionInfoResponse) {
     response = &DescribeProVersionInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProVersionInfo
@@ -14861,8 +15119,9 @@ func NewDescribeProVersionStatusRequest() (request *DescribeProVersionStatusRequ
 func NewDescribeProVersionStatusResponse() (response *DescribeProVersionStatusResponse) {
     response = &DescribeProVersionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProVersionStatus
@@ -14921,8 +15180,9 @@ func NewDescribeProcessStatisticsRequest() (request *DescribeProcessStatisticsRe
 func NewDescribeProcessStatisticsResponse() (response *DescribeProcessStatisticsResponse) {
     response = &DescribeProcessStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProcessStatistics
@@ -14979,8 +15239,9 @@ func NewDescribeProductStatusRequest() (request *DescribeProductStatusRequest) {
 func NewDescribeProductStatusResponse() (response *DescribeProductStatusResponse) {
     response = &DescribeProductStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProductStatus
@@ -15037,8 +15298,9 @@ func NewDescribeProtectDirListRequest() (request *DescribeProtectDirListRequest)
 func NewDescribeProtectDirListResponse() (response *DescribeProtectDirListResponse) {
     response = &DescribeProtectDirListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProtectDirList
@@ -15097,8 +15359,9 @@ func NewDescribeProtectDirRelatedServerRequest() (request *DescribeProtectDirRel
 func NewDescribeProtectDirRelatedServerResponse() (response *DescribeProtectDirRelatedServerResponse) {
     response = &DescribeProtectDirRelatedServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProtectDirRelatedServer
@@ -15151,8 +15414,9 @@ func NewDescribeProtectNetListRequest() (request *DescribeProtectNetListRequest)
 func NewDescribeProtectNetListResponse() (response *DescribeProtectNetListResponse) {
     response = &DescribeProtectNetListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProtectNetList
@@ -15205,8 +15469,9 @@ func NewDescribePublicProxyInstallCommandRequest() (request *DescribePublicProxy
 func NewDescribePublicProxyInstallCommandResponse() (response *DescribePublicProxyInstallCommandResponse) {
     response = &DescribePublicProxyInstallCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicProxyInstallCommand
@@ -15259,8 +15524,9 @@ func NewDescribeRansomDefenseBackupListRequest() (request *DescribeRansomDefense
 func NewDescribeRansomDefenseBackupListResponse() (response *DescribeRansomDefenseBackupListResponse) {
     response = &DescribeRansomDefenseBackupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseBackupList
@@ -15319,8 +15585,9 @@ func NewDescribeRansomDefenseEventsListRequest() (request *DescribeRansomDefense
 func NewDescribeRansomDefenseEventsListResponse() (response *DescribeRansomDefenseEventsListResponse) {
     response = &DescribeRansomDefenseEventsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseEventsList
@@ -15379,8 +15646,9 @@ func NewDescribeRansomDefenseMachineListRequest() (request *DescribeRansomDefens
 func NewDescribeRansomDefenseMachineListResponse() (response *DescribeRansomDefenseMachineListResponse) {
     response = &DescribeRansomDefenseMachineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseMachineList
@@ -15439,8 +15707,9 @@ func NewDescribeRansomDefenseMachineStrategyInfoRequest() (request *DescribeRans
 func NewDescribeRansomDefenseMachineStrategyInfoResponse() (response *DescribeRansomDefenseMachineStrategyInfoResponse) {
     response = &DescribeRansomDefenseMachineStrategyInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseMachineStrategyInfo
@@ -15489,8 +15758,9 @@ func NewDescribeRansomDefenseRollBackTaskListRequest() (request *DescribeRansomD
 func NewDescribeRansomDefenseRollBackTaskListResponse() (response *DescribeRansomDefenseRollBackTaskListResponse) {
     response = &DescribeRansomDefenseRollBackTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseRollBackTaskList
@@ -15549,8 +15819,9 @@ func NewDescribeRansomDefenseStateRequest() (request *DescribeRansomDefenseState
 func NewDescribeRansomDefenseStateResponse() (response *DescribeRansomDefenseStateResponse) {
     response = &DescribeRansomDefenseStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseState
@@ -15599,8 +15870,9 @@ func NewDescribeRansomDefenseStrategyDetailRequest() (request *DescribeRansomDef
 func NewDescribeRansomDefenseStrategyDetailResponse() (response *DescribeRansomDefenseStrategyDetailResponse) {
     response = &DescribeRansomDefenseStrategyDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseStrategyDetail
@@ -15649,8 +15921,9 @@ func NewDescribeRansomDefenseStrategyListRequest() (request *DescribeRansomDefen
 func NewDescribeRansomDefenseStrategyListResponse() (response *DescribeRansomDefenseStrategyListResponse) {
     response = &DescribeRansomDefenseStrategyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseStrategyList
@@ -15709,8 +15982,9 @@ func NewDescribeRansomDefenseStrategyMachinesRequest() (request *DescribeRansomD
 func NewDescribeRansomDefenseStrategyMachinesResponse() (response *DescribeRansomDefenseStrategyMachinesResponse) {
     response = &DescribeRansomDefenseStrategyMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseStrategyMachines
@@ -15769,8 +16043,9 @@ func NewDescribeRansomDefenseTrendRequest() (request *DescribeRansomDefenseTrend
 func NewDescribeRansomDefenseTrendResponse() (response *DescribeRansomDefenseTrendResponse) {
     response = &DescribeRansomDefenseTrendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRansomDefenseTrend
@@ -15819,8 +16094,9 @@ func NewDescribeRecommendedProtectCpuRequest() (request *DescribeRecommendedProt
 func NewDescribeRecommendedProtectCpuResponse() (response *DescribeRecommendedProtectCpuResponse) {
     response = &DescribeRecommendedProtectCpuResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecommendedProtectCpu
@@ -15869,8 +16145,9 @@ func NewDescribeReverseShellEventInfoRequest() (request *DescribeReverseShellEve
 func NewDescribeReverseShellEventInfoResponse() (response *DescribeReverseShellEventInfoResponse) {
     response = &DescribeReverseShellEventInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReverseShellEventInfo
@@ -15937,8 +16214,9 @@ func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEvents
 func NewDescribeReverseShellEventsResponse() (response *DescribeReverseShellEventsResponse) {
     response = &DescribeReverseShellEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReverseShellEvents
@@ -16001,8 +16279,9 @@ func NewDescribeReverseShellRulesRequest() (request *DescribeReverseShellRulesRe
 func NewDescribeReverseShellRulesResponse() (response *DescribeReverseShellRulesResponse) {
     response = &DescribeReverseShellRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReverseShellRules
@@ -16071,8 +16350,9 @@ func NewDescribeRiskBatchStatusRequest() (request *DescribeRiskBatchStatusReques
 func NewDescribeRiskBatchStatusResponse() (response *DescribeRiskBatchStatusResponse) {
     response = &DescribeRiskBatchStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskBatchStatus
@@ -16135,8 +16415,9 @@ func NewDescribeRiskDnsEventInfoRequest() (request *DescribeRiskDnsEventInfoRequ
 func NewDescribeRiskDnsEventInfoResponse() (response *DescribeRiskDnsEventInfoResponse) {
     response = &DescribeRiskDnsEventInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskDnsEventInfo
@@ -16189,8 +16470,9 @@ func NewDescribeRiskDnsEventListRequest() (request *DescribeRiskDnsEventListRequ
 func NewDescribeRiskDnsEventListResponse() (response *DescribeRiskDnsEventListResponse) {
     response = &DescribeRiskDnsEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskDnsEventList
@@ -16241,8 +16523,9 @@ func NewDescribeRiskDnsInfoRequest() (request *DescribeRiskDnsInfoRequest) {
 func NewDescribeRiskDnsInfoResponse() (response *DescribeRiskDnsInfoResponse) {
     response = &DescribeRiskDnsInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskDnsInfo
@@ -16291,8 +16574,9 @@ func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
 func NewDescribeRiskDnsListResponse() (response *DescribeRiskDnsListResponse) {
     response = &DescribeRiskDnsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskDnsList
@@ -16351,8 +16635,9 @@ func NewDescribeRiskDnsPolicyListRequest() (request *DescribeRiskDnsPolicyListRe
 func NewDescribeRiskDnsPolicyListResponse() (response *DescribeRiskDnsPolicyListResponse) {
     response = &DescribeRiskDnsPolicyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskDnsPolicyList
@@ -16403,8 +16688,9 @@ func NewDescribeRiskProcessEventsRequest() (request *DescribeRiskProcessEventsRe
 func NewDescribeRiskProcessEventsResponse() (response *DescribeRiskProcessEventsResponse) {
     response = &DescribeRiskProcessEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskProcessEvents
@@ -16455,8 +16741,9 @@ func NewDescribeSafeInfoRequest() (request *DescribeSafeInfoRequest) {
 func NewDescribeSafeInfoResponse() (response *DescribeSafeInfoResponse) {
     response = &DescribeSafeInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSafeInfo
@@ -16509,8 +16796,9 @@ func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareSchedu
 func NewDescribeScanMalwareScheduleResponse() (response *DescribeScanMalwareScheduleResponse) {
     response = &DescribeScanMalwareScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanMalwareSchedule
@@ -16569,8 +16857,9 @@ func NewDescribeScanScheduleRequest() (request *DescribeScanScheduleRequest) {
 func NewDescribeScanScheduleResponse() (response *DescribeScanScheduleResponse) {
     response = &DescribeScanScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanSchedule
@@ -16629,8 +16918,9 @@ func NewDescribeScanStateRequest() (request *DescribeScanStateRequest) {
 func NewDescribeScanStateResponse() (response *DescribeScanStateResponse) {
     response = &DescribeScanStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanState
@@ -16693,8 +16983,9 @@ func NewDescribeScanTaskDetailsRequest() (request *DescribeScanTaskDetailsReques
 func NewDescribeScanTaskDetailsResponse() (response *DescribeScanTaskDetailsResponse) {
     response = &DescribeScanTaskDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskDetails
@@ -16751,8 +17042,9 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
 func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusResponse) {
     response = &DescribeScanTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskStatus
@@ -16811,8 +17103,9 @@ func NewDescribeScanVulSettingRequest() (request *DescribeScanVulSettingRequest)
 func NewDescribeScanVulSettingResponse() (response *DescribeScanVulSettingResponse) {
     response = &DescribeScanVulSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanVulSetting
@@ -16869,8 +17162,9 @@ func NewDescribeScreenAttackHotspotRequest() (request *DescribeScreenAttackHotsp
 func NewDescribeScreenAttackHotspotResponse() (response *DescribeScreenAttackHotspotResponse) {
     response = &DescribeScreenAttackHotspotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenAttackHotspot
@@ -16923,8 +17217,9 @@ func NewDescribeScreenBroadcastsRequest() (request *DescribeScreenBroadcastsRequ
 func NewDescribeScreenBroadcastsResponse() (response *DescribeScreenBroadcastsResponse) {
     response = &DescribeScreenBroadcastsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenBroadcasts
@@ -16981,8 +17276,9 @@ func NewDescribeScreenDefenseTrendsRequest() (request *DescribeScreenDefenseTren
 func NewDescribeScreenDefenseTrendsResponse() (response *DescribeScreenDefenseTrendsResponse) {
     response = &DescribeScreenDefenseTrendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenDefenseTrends
@@ -17047,8 +17343,9 @@ func NewDescribeScreenEmergentMsgRequest() (request *DescribeScreenEmergentMsgRe
 func NewDescribeScreenEmergentMsgResponse() (response *DescribeScreenEmergentMsgResponse) {
     response = &DescribeScreenEmergentMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenEmergentMsg
@@ -17109,8 +17406,9 @@ func NewDescribeScreenEventsCntRequest() (request *DescribeScreenEventsCntReques
 func NewDescribeScreenEventsCntResponse() (response *DescribeScreenEventsCntResponse) {
     response = &DescribeScreenEventsCntResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenEventsCnt
@@ -17163,8 +17461,9 @@ func NewDescribeScreenGeneralStatRequest() (request *DescribeScreenGeneralStatRe
 func NewDescribeScreenGeneralStatResponse() (response *DescribeScreenGeneralStatResponse) {
     response = &DescribeScreenGeneralStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenGeneralStat
@@ -17223,8 +17522,9 @@ func NewDescribeScreenHostInvasionRequest() (request *DescribeScreenHostInvasion
 func NewDescribeScreenHostInvasionResponse() (response *DescribeScreenHostInvasionResponse) {
     response = &DescribeScreenHostInvasionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenHostInvasion
@@ -17279,8 +17579,9 @@ func NewDescribeScreenMachineRegionsRequest() (request *DescribeScreenMachineReg
 func NewDescribeScreenMachineRegionsResponse() (response *DescribeScreenMachineRegionsResponse) {
     response = &DescribeScreenMachineRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenMachineRegions
@@ -17335,8 +17636,9 @@ func NewDescribeScreenMachinesRequest() (request *DescribeScreenMachinesRequest)
 func NewDescribeScreenMachinesResponse() (response *DescribeScreenMachinesResponse) {
     response = &DescribeScreenMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenMachines
@@ -17391,8 +17693,9 @@ func NewDescribeScreenProtectionCntRequest() (request *DescribeScreenProtectionC
 func NewDescribeScreenProtectionCntResponse() (response *DescribeScreenProtectionCntResponse) {
     response = &DescribeScreenProtectionCntResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenProtectionCnt
@@ -17453,8 +17756,9 @@ func NewDescribeScreenProtectionStatRequest() (request *DescribeScreenProtection
 func NewDescribeScreenProtectionStatResponse() (response *DescribeScreenProtectionStatResponse) {
     response = &DescribeScreenProtectionStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenProtectionStat
@@ -17517,8 +17821,9 @@ func NewDescribeScreenRiskAssetsTopRequest() (request *DescribeScreenRiskAssetsT
 func NewDescribeScreenRiskAssetsTopResponse() (response *DescribeScreenRiskAssetsTopResponse) {
     response = &DescribeScreenRiskAssetsTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenRiskAssetsTop
@@ -17583,8 +17888,9 @@ func NewDescribeSearchLogsRequest() (request *DescribeSearchLogsRequest) {
 func NewDescribeSearchLogsResponse() (response *DescribeSearchLogsResponse) {
     response = &DescribeSearchLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSearchLogs
@@ -17631,8 +17937,9 @@ func NewDescribeSearchTemplatesRequest() (request *DescribeSearchTemplatesReques
 func NewDescribeSearchTemplatesResponse() (response *DescribeSearchTemplatesResponse) {
     response = &DescribeSearchTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSearchTemplates
@@ -17685,8 +17992,9 @@ func NewDescribeSecurityBroadcastInfoRequest() (request *DescribeSecurityBroadca
 func NewDescribeSecurityBroadcastInfoResponse() (response *DescribeSecurityBroadcastInfoResponse) {
     response = &DescribeSecurityBroadcastInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityBroadcastInfo
@@ -17745,8 +18053,9 @@ func NewDescribeSecurityBroadcastsRequest() (request *DescribeSecurityBroadcasts
 func NewDescribeSecurityBroadcastsResponse() (response *DescribeSecurityBroadcastsResponse) {
     response = &DescribeSecurityBroadcastsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityBroadcasts
@@ -17805,8 +18114,9 @@ func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequ
 func NewDescribeSecurityDynamicsResponse() (response *DescribeSecurityDynamicsResponse) {
     response = &DescribeSecurityDynamicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityDynamics
@@ -17857,8 +18167,9 @@ func NewDescribeSecurityEventStatRequest() (request *DescribeSecurityEventStatRe
 func NewDescribeSecurityEventStatResponse() (response *DescribeSecurityEventStatResponse) {
     response = &DescribeSecurityEventStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityEventStat
@@ -17907,8 +18218,9 @@ func NewDescribeSecurityEventsCntRequest() (request *DescribeSecurityEventsCntRe
 func NewDescribeSecurityEventsCntResponse() (response *DescribeSecurityEventsCntResponse) {
     response = &DescribeSecurityEventsCntResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityEventsCnt
@@ -17961,8 +18273,9 @@ func NewDescribeSecurityProtectionStatRequest() (request *DescribeSecurityProtec
 func NewDescribeSecurityProtectionStatResponse() (response *DescribeSecurityProtectionStatResponse) {
     response = &DescribeSecurityProtectionStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityProtectionStat
@@ -18015,8 +18328,9 @@ func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest)
 func NewDescribeSecurityTrendsResponse() (response *DescribeSecurityTrendsResponse) {
     response = &DescribeSecurityTrendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityTrends
@@ -18075,8 +18389,9 @@ func NewDescribeServerRelatedDirInfoRequest() (request *DescribeServerRelatedDir
 func NewDescribeServerRelatedDirInfoResponse() (response *DescribeServerRelatedDirInfoResponse) {
     response = &DescribeServerRelatedDirInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServerRelatedDirInfo
@@ -18129,8 +18444,9 @@ func NewDescribeServersAndRiskAndFirstInfoRequest() (request *DescribeServersAnd
 func NewDescribeServersAndRiskAndFirstInfoResponse() (response *DescribeServersAndRiskAndFirstInfoResponse) {
     response = &DescribeServersAndRiskAndFirstInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServersAndRiskAndFirstInfo
@@ -18177,8 +18493,9 @@ func NewDescribeStrategyExistRequest() (request *DescribeStrategyExistRequest) {
 func NewDescribeStrategyExistResponse() (response *DescribeStrategyExistResponse) {
     response = &DescribeStrategyExistResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStrategyExist
@@ -18235,8 +18552,9 @@ func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
 func NewDescribeTagMachinesResponse() (response *DescribeTagMachinesResponse) {
     response = &DescribeTagMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagMachines
@@ -18293,8 +18611,9 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
 func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
     response = &DescribeTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTags
@@ -18357,8 +18676,9 @@ func NewDescribeTrialReportRequest() (request *DescribeTrialReportRequest) {
 func NewDescribeTrialReportResponse() (response *DescribeTrialReportResponse) {
     response = &DescribeTrialReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrialReport
@@ -18421,8 +18741,9 @@ func NewDescribeUndoVulCountsRequest() (request *DescribeUndoVulCountsRequest) {
 func NewDescribeUndoVulCountsResponse() (response *DescribeUndoVulCountsResponse) {
     response = &DescribeUndoVulCountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUndoVulCounts
@@ -18477,8 +18798,9 @@ func NewDescribeUsersConfigRequest() (request *DescribeUsersConfigRequest) {
 func NewDescribeUsersConfigResponse() (response *DescribeUsersConfigResponse) {
     response = &DescribeUsersConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsersConfig
@@ -18533,8 +18855,9 @@ func NewDescribeUsualLoginPlacesRequest() (request *DescribeUsualLoginPlacesRequ
 func NewDescribeUsualLoginPlacesResponse() (response *DescribeUsualLoginPlacesResponse) {
     response = &DescribeUsualLoginPlacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsualLoginPlaces
@@ -18595,8 +18918,9 @@ func NewDescribeVdbAndPocInfoRequest() (request *DescribeVdbAndPocInfoRequest) {
 func NewDescribeVdbAndPocInfoResponse() (response *DescribeVdbAndPocInfoResponse) {
     response = &DescribeVdbAndPocInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVdbAndPocInfo
@@ -18643,8 +18967,9 @@ func NewDescribeVersionCompareChartRequest() (request *DescribeVersionCompareCha
 func NewDescribeVersionCompareChartResponse() (response *DescribeVersionCompareChartResponse) {
     response = &DescribeVersionCompareChartResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVersionCompareChart
@@ -18691,8 +19016,9 @@ func NewDescribeVersionStatisticsRequest() (request *DescribeVersionStatisticsRe
 func NewDescribeVersionStatisticsResponse() (response *DescribeVersionStatisticsResponse) {
     response = &DescribeVersionStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVersionStatistics
@@ -18751,8 +19077,9 @@ func NewDescribeVertexDetailRequest() (request *DescribeVertexDetailRequest) {
 func NewDescribeVertexDetailResponse() (response *DescribeVertexDetailResponse) {
     response = &DescribeVertexDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVertexDetail
@@ -18811,8 +19138,9 @@ func NewDescribeVulCountByDatesRequest() (request *DescribeVulCountByDatesReques
 func NewDescribeVulCountByDatesResponse() (response *DescribeVulCountByDatesResponse) {
     response = &DescribeVulCountByDatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulCountByDates
@@ -18869,8 +19197,9 @@ func NewDescribeVulCveIdInfoRequest() (request *DescribeVulCveIdInfoRequest) {
 func NewDescribeVulCveIdInfoResponse() (response *DescribeVulCveIdInfoResponse) {
     response = &DescribeVulCveIdInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulCveIdInfo
@@ -18931,8 +19260,9 @@ func NewDescribeVulDefenceEventRequest() (request *DescribeVulDefenceEventReques
 func NewDescribeVulDefenceEventResponse() (response *DescribeVulDefenceEventResponse) {
     response = &DescribeVulDefenceEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefenceEvent
@@ -18993,8 +19323,9 @@ func NewDescribeVulDefenceListRequest() (request *DescribeVulDefenceListRequest)
 func NewDescribeVulDefenceListResponse() (response *DescribeVulDefenceListResponse) {
     response = &DescribeVulDefenceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefenceList
@@ -19055,8 +19386,9 @@ func NewDescribeVulDefenceOverviewRequest() (request *DescribeVulDefenceOverview
 func NewDescribeVulDefenceOverviewResponse() (response *DescribeVulDefenceOverviewResponse) {
     response = &DescribeVulDefenceOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefenceOverview
@@ -19117,8 +19449,9 @@ func NewDescribeVulDefencePluginDetailRequest() (request *DescribeVulDefencePlug
 func NewDescribeVulDefencePluginDetailResponse() (response *DescribeVulDefencePluginDetailResponse) {
     response = &DescribeVulDefencePluginDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefencePluginDetail
@@ -19177,8 +19510,9 @@ func NewDescribeVulDefencePluginExceptionCountRequest() (request *DescribeVulDef
 func NewDescribeVulDefencePluginExceptionCountResponse() (response *DescribeVulDefencePluginExceptionCountResponse) {
     response = &DescribeVulDefencePluginExceptionCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefencePluginExceptionCount
@@ -19237,8 +19571,9 @@ func NewDescribeVulDefencePluginStatusRequest() (request *DescribeVulDefencePlug
 func NewDescribeVulDefencePluginStatusResponse() (response *DescribeVulDefencePluginStatusResponse) {
     response = &DescribeVulDefencePluginStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefencePluginStatus
@@ -19297,8 +19632,9 @@ func NewDescribeVulDefenceSettingRequest() (request *DescribeVulDefenceSettingRe
 func NewDescribeVulDefenceSettingResponse() (response *DescribeVulDefenceSettingResponse) {
     response = &DescribeVulDefenceSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDefenceSetting
@@ -19357,8 +19693,9 @@ func NewDescribeVulEffectHostListRequest() (request *DescribeVulEffectHostListRe
 func NewDescribeVulEffectHostListResponse() (response *DescribeVulEffectHostListResponse) {
     response = &DescribeVulEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulEffectHostList
@@ -19419,8 +19756,9 @@ func NewDescribeVulEffectModulesRequest() (request *DescribeVulEffectModulesRequ
 func NewDescribeVulEffectModulesResponse() (response *DescribeVulEffectModulesResponse) {
     response = &DescribeVulEffectModulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulEffectModules
@@ -19481,8 +19819,9 @@ func NewDescribeVulEmergentMsgRequest() (request *DescribeVulEmergentMsgRequest)
 func NewDescribeVulEmergentMsgResponse() (response *DescribeVulEmergentMsgResponse) {
     response = &DescribeVulEmergentMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulEmergentMsg
@@ -19529,8 +19868,9 @@ func NewDescribeVulFixStatusRequest() (request *DescribeVulFixStatusRequest) {
 func NewDescribeVulFixStatusResponse() (response *DescribeVulFixStatusResponse) {
     response = &DescribeVulFixStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulFixStatus
@@ -19593,8 +19933,9 @@ func NewDescribeVulHostCountScanTimeRequest() (request *DescribeVulHostCountScan
 func NewDescribeVulHostCountScanTimeResponse() (response *DescribeVulHostCountScanTimeResponse) {
     response = &DescribeVulHostCountScanTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulHostCountScanTime
@@ -19641,8 +19982,9 @@ func NewDescribeVulHostTopRequest() (request *DescribeVulHostTopRequest) {
 func NewDescribeVulHostTopResponse() (response *DescribeVulHostTopResponse) {
     response = &DescribeVulHostTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulHostTop
@@ -19701,8 +20043,9 @@ func NewDescribeVulInfoCvssRequest() (request *DescribeVulInfoCvssRequest) {
 func NewDescribeVulInfoCvssResponse() (response *DescribeVulInfoCvssResponse) {
     response = &DescribeVulInfoCvssResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulInfoCvss
@@ -19763,8 +20106,9 @@ func NewDescribeVulLabelsRequest() (request *DescribeVulLabelsRequest) {
 func NewDescribeVulLabelsResponse() (response *DescribeVulLabelsResponse) {
     response = &DescribeVulLabelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulLabels
@@ -19821,8 +20165,9 @@ func NewDescribeVulLevelCountRequest() (request *DescribeVulLevelCountRequest) {
 func NewDescribeVulLevelCountResponse() (response *DescribeVulLevelCountResponse) {
     response = &DescribeVulLevelCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulLevelCount
@@ -19869,8 +20214,9 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
 func NewDescribeVulListResponse() (response *DescribeVulListResponse) {
     response = &DescribeVulListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulList
@@ -19927,8 +20273,9 @@ func NewDescribeVulOverviewRequest() (request *DescribeVulOverviewRequest) {
 func NewDescribeVulOverviewResponse() (response *DescribeVulOverviewResponse) {
     response = &DescribeVulOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulOverview
@@ -19989,8 +20336,9 @@ func NewDescribeVulStoreListRequest() (request *DescribeVulStoreListRequest) {
 func NewDescribeVulStoreListResponse() (response *DescribeVulStoreListResponse) {
     response = &DescribeVulStoreListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulStoreList
@@ -20039,8 +20387,9 @@ func NewDescribeVulTopRequest() (request *DescribeVulTopRequest) {
 func NewDescribeVulTopResponse() (response *DescribeVulTopResponse) {
     response = &DescribeVulTopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulTop
@@ -20099,8 +20448,9 @@ func NewDescribeVulTrendRequest() (request *DescribeVulTrendRequest) {
 func NewDescribeVulTrendResponse() (response *DescribeVulTrendResponse) {
     response = &DescribeVulTrendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulTrend
@@ -20149,8 +20499,9 @@ func NewDescribeWarningHostConfigRequest() (request *DescribeWarningHostConfigRe
 func NewDescribeWarningHostConfigResponse() (response *DescribeWarningHostConfigResponse) {
     response = &DescribeWarningHostConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWarningHostConfig
@@ -20199,8 +20550,9 @@ func NewDescribeWarningListRequest() (request *DescribeWarningListRequest) {
 func NewDescribeWarningListResponse() (response *DescribeWarningListResponse) {
     response = &DescribeWarningListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWarningList
@@ -20247,8 +20599,9 @@ func NewDescribeWebHookPolicyRequest() (request *DescribeWebHookPolicyRequest) {
 func NewDescribeWebHookPolicyResponse() (response *DescribeWebHookPolicyResponse) {
     response = &DescribeWebHookPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebHookPolicy
@@ -20295,8 +20648,9 @@ func NewDescribeWebHookReceiverRequest() (request *DescribeWebHookReceiverReques
 func NewDescribeWebHookReceiverResponse() (response *DescribeWebHookReceiverResponse) {
     response = &DescribeWebHookReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebHookReceiver
@@ -20343,8 +20697,9 @@ func NewDescribeWebHookReceiverUsageRequest() (request *DescribeWebHookReceiverU
 func NewDescribeWebHookReceiverUsageResponse() (response *DescribeWebHookReceiverUsageResponse) {
     response = &DescribeWebHookReceiverUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebHookReceiverUsage
@@ -20391,8 +20746,9 @@ func NewDescribeWebHookRuleRequest() (request *DescribeWebHookRuleRequest) {
 func NewDescribeWebHookRuleResponse() (response *DescribeWebHookRuleResponse) {
     response = &DescribeWebHookRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebHookRule
@@ -20441,8 +20797,9 @@ func NewDescribeWebHookRulesRequest() (request *DescribeWebHookRulesRequest) {
 func NewDescribeWebHookRulesResponse() (response *DescribeWebHookRulesResponse) {
     response = &DescribeWebHookRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebHookRules
@@ -20493,8 +20850,9 @@ func NewDescribeWebPageEventListRequest() (request *DescribeWebPageEventListRequ
 func NewDescribeWebPageEventListResponse() (response *DescribeWebPageEventListResponse) {
     response = &DescribeWebPageEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebPageEventList
@@ -20549,8 +20907,9 @@ func NewDescribeWebPageGeneralizeRequest() (request *DescribeWebPageGeneralizeRe
 func NewDescribeWebPageGeneralizeResponse() (response *DescribeWebPageGeneralizeResponse) {
     response = &DescribeWebPageGeneralizeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebPageGeneralize
@@ -20597,8 +20956,9 @@ func NewDescribeWebPageProtectStatRequest() (request *DescribeWebPageProtectStat
 func NewDescribeWebPageProtectStatResponse() (response *DescribeWebPageProtectStatResponse) {
     response = &DescribeWebPageProtectStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebPageProtectStat
@@ -20645,8 +21005,9 @@ func NewDescribeWebPageServiceInfoRequest() (request *DescribeWebPageServiceInfo
 func NewDescribeWebPageServiceInfoResponse() (response *DescribeWebPageServiceInfoResponse) {
     response = &DescribeWebPageServiceInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWebPageServiceInfo
@@ -20693,8 +21054,9 @@ func NewDestroyOrderRequest() (request *DestroyOrderRequest) {
 func NewDestroyOrderResponse() (response *DestroyOrderResponse) {
     response = &DestroyOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyOrder
@@ -20743,8 +21105,9 @@ func NewEditBashRulesRequest() (request *EditBashRulesRequest) {
 func NewEditBashRulesResponse() (response *EditBashRulesResponse) {
     response = &EditBashRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditBashRules
@@ -20811,8 +21174,9 @@ func NewEditPrivilegeRulesRequest() (request *EditPrivilegeRulesRequest) {
 func NewEditPrivilegeRulesResponse() (response *EditPrivilegeRulesResponse) {
     response = &EditPrivilegeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditPrivilegeRules
@@ -20881,8 +21245,9 @@ func NewEditReverseShellRulesRequest() (request *EditReverseShellRulesRequest) {
 func NewEditReverseShellRulesResponse() (response *EditReverseShellRulesResponse) {
     response = &EditReverseShellRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditReverseShellRules
@@ -20957,8 +21322,9 @@ func NewEditTagsRequest() (request *EditTagsRequest) {
 func NewEditTagsResponse() (response *EditTagsResponse) {
     response = &EditTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditTags
@@ -21021,8 +21387,9 @@ func NewExportAssetAppListRequest() (request *ExportAssetAppListRequest) {
 func NewExportAssetAppListResponse() (response *ExportAssetAppListResponse) {
     response = &ExportAssetAppListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetAppList
@@ -21083,8 +21450,9 @@ func NewExportAssetCoreModuleListRequest() (request *ExportAssetCoreModuleListRe
 func NewExportAssetCoreModuleListResponse() (response *ExportAssetCoreModuleListResponse) {
     response = &ExportAssetCoreModuleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetCoreModuleList
@@ -21145,8 +21513,9 @@ func NewExportAssetDatabaseListRequest() (request *ExportAssetDatabaseListReques
 func NewExportAssetDatabaseListResponse() (response *ExportAssetDatabaseListResponse) {
     response = &ExportAssetDatabaseListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetDatabaseList
@@ -21207,8 +21576,9 @@ func NewExportAssetEnvListRequest() (request *ExportAssetEnvListRequest) {
 func NewExportAssetEnvListResponse() (response *ExportAssetEnvListResponse) {
     response = &ExportAssetEnvListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetEnvList
@@ -21269,8 +21639,9 @@ func NewExportAssetInitServiceListRequest() (request *ExportAssetInitServiceList
 func NewExportAssetInitServiceListResponse() (response *ExportAssetInitServiceListResponse) {
     response = &ExportAssetInitServiceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetInitServiceList
@@ -21331,8 +21702,9 @@ func NewExportAssetJarListRequest() (request *ExportAssetJarListRequest) {
 func NewExportAssetJarListResponse() (response *ExportAssetJarListResponse) {
     response = &ExportAssetJarListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetJarList
@@ -21393,8 +21765,9 @@ func NewExportAssetMachineDetailRequest() (request *ExportAssetMachineDetailRequ
 func NewExportAssetMachineDetailResponse() (response *ExportAssetMachineDetailResponse) {
     response = &ExportAssetMachineDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetMachineDetail
@@ -21447,8 +21820,9 @@ func NewExportAssetMachineListRequest() (request *ExportAssetMachineListRequest)
 func NewExportAssetMachineListResponse() (response *ExportAssetMachineListResponse) {
     response = &ExportAssetMachineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetMachineList
@@ -21501,8 +21875,9 @@ func NewExportAssetPlanTaskListRequest() (request *ExportAssetPlanTaskListReques
 func NewExportAssetPlanTaskListResponse() (response *ExportAssetPlanTaskListResponse) {
     response = &ExportAssetPlanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetPlanTaskList
@@ -21563,8 +21938,9 @@ func NewExportAssetPortInfoListRequest() (request *ExportAssetPortInfoListReques
 func NewExportAssetPortInfoListResponse() (response *ExportAssetPortInfoListResponse) {
     response = &ExportAssetPortInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetPortInfoList
@@ -21617,8 +21993,9 @@ func NewExportAssetProcessInfoListRequest() (request *ExportAssetProcessInfoList
 func NewExportAssetProcessInfoListResponse() (response *ExportAssetProcessInfoListResponse) {
     response = &ExportAssetProcessInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetProcessInfoList
@@ -21671,8 +22048,9 @@ func NewExportAssetRecentMachineInfoRequest() (request *ExportAssetRecentMachine
 func NewExportAssetRecentMachineInfoResponse() (response *ExportAssetRecentMachineInfoResponse) {
     response = &ExportAssetRecentMachineInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetRecentMachineInfo
@@ -21729,8 +22107,9 @@ func NewExportAssetSystemPackageListRequest() (request *ExportAssetSystemPackage
 func NewExportAssetSystemPackageListResponse() (response *ExportAssetSystemPackageListResponse) {
     response = &ExportAssetSystemPackageListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetSystemPackageList
@@ -21783,8 +22162,9 @@ func NewExportAssetUserListRequest() (request *ExportAssetUserListRequest) {
 func NewExportAssetUserListResponse() (response *ExportAssetUserListResponse) {
     response = &ExportAssetUserListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetUserList
@@ -21837,8 +22217,9 @@ func NewExportAssetWebAppListRequest() (request *ExportAssetWebAppListRequest) {
 func NewExportAssetWebAppListResponse() (response *ExportAssetWebAppListResponse) {
     response = &ExportAssetWebAppListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetWebAppList
@@ -21891,8 +22272,9 @@ func NewExportAssetWebFrameListRequest() (request *ExportAssetWebFrameListReques
 func NewExportAssetWebFrameListResponse() (response *ExportAssetWebFrameListResponse) {
     response = &ExportAssetWebFrameListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetWebFrameList
@@ -21945,8 +22327,9 @@ func NewExportAssetWebLocationListRequest() (request *ExportAssetWebLocationList
 func NewExportAssetWebLocationListResponse() (response *ExportAssetWebLocationListResponse) {
     response = &ExportAssetWebLocationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetWebLocationList
@@ -21999,8 +22382,9 @@ func NewExportAssetWebServiceInfoListRequest() (request *ExportAssetWebServiceIn
 func NewExportAssetWebServiceInfoListResponse() (response *ExportAssetWebServiceInfoListResponse) {
     response = &ExportAssetWebServiceInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetWebServiceInfoList
@@ -22059,8 +22443,9 @@ func NewExportAttackEventsRequest() (request *ExportAttackEventsRequest) {
 func NewExportAttackEventsResponse() (response *ExportAttackEventsResponse) {
     response = &ExportAttackEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAttackEvents
@@ -22119,8 +22504,9 @@ func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
 func NewExportAttackLogsResponse() (response *ExportAttackLogsResponse) {
     response = &ExportAttackLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAttackLogs
@@ -22177,8 +22563,9 @@ func NewExportBaselineEffectHostListRequest() (request *ExportBaselineEffectHost
 func NewExportBaselineEffectHostListResponse() (response *ExportBaselineEffectHostListResponse) {
     response = &ExportBaselineEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineEffectHostList
@@ -22235,8 +22622,9 @@ func NewExportBaselineFixListRequest() (request *ExportBaselineFixListRequest) {
 func NewExportBaselineFixListResponse() (response *ExportBaselineFixListResponse) {
     response = &ExportBaselineFixListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineFixList
@@ -22285,8 +22673,9 @@ func NewExportBaselineHostDetectListRequest() (request *ExportBaselineHostDetect
 func NewExportBaselineHostDetectListResponse() (response *ExportBaselineHostDetectListResponse) {
     response = &ExportBaselineHostDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineHostDetectList
@@ -22335,8 +22724,9 @@ func NewExportBaselineItemDetectListRequest() (request *ExportBaselineItemDetect
 func NewExportBaselineItemDetectListResponse() (response *ExportBaselineItemDetectListResponse) {
     response = &ExportBaselineItemDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineItemDetectList
@@ -22385,8 +22775,9 @@ func NewExportBaselineItemListRequest() (request *ExportBaselineItemListRequest)
 func NewExportBaselineItemListResponse() (response *ExportBaselineItemListResponse) {
     response = &ExportBaselineItemListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineItemList
@@ -22435,8 +22826,9 @@ func NewExportBaselineListRequest() (request *ExportBaselineListRequest) {
 func NewExportBaselineListResponse() (response *ExportBaselineListResponse) {
     response = &ExportBaselineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineList
@@ -22495,8 +22887,9 @@ func NewExportBaselineRuleDetectListRequest() (request *ExportBaselineRuleDetect
 func NewExportBaselineRuleDetectListResponse() (response *ExportBaselineRuleDetectListResponse) {
     response = &ExportBaselineRuleDetectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineRuleDetectList
@@ -22545,8 +22938,9 @@ func NewExportBaselineWeakPasswordListRequest() (request *ExportBaselineWeakPass
 func NewExportBaselineWeakPasswordListResponse() (response *ExportBaselineWeakPasswordListResponse) {
     response = &ExportBaselineWeakPasswordListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBaselineWeakPasswordList
@@ -22595,8 +22989,9 @@ func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
 func NewExportBashEventsResponse() (response *ExportBashEventsResponse) {
     response = &ExportBashEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBashEvents
@@ -22651,8 +23046,9 @@ func NewExportBashEventsNewRequest() (request *ExportBashEventsNewRequest) {
 func NewExportBashEventsNewResponse() (response *ExportBashEventsNewResponse) {
     response = &ExportBashEventsNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBashEventsNew
@@ -22707,8 +23103,9 @@ func NewExportBashPoliciesRequest() (request *ExportBashPoliciesRequest) {
 func NewExportBashPoliciesResponse() (response *ExportBashPoliciesResponse) {
     response = &ExportBashPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBashPolicies
@@ -22763,8 +23160,9 @@ func NewExportBruteAttacksRequest() (request *ExportBruteAttacksRequest) {
 func NewExportBruteAttacksResponse() (response *ExportBruteAttacksResponse) {
     response = &ExportBruteAttacksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportBruteAttacks
@@ -22817,8 +23215,9 @@ func NewExportFileTamperEventsRequest() (request *ExportFileTamperEventsRequest)
 func NewExportFileTamperEventsResponse() (response *ExportFileTamperEventsResponse) {
     response = &ExportFileTamperEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportFileTamperEvents
@@ -22875,8 +23274,9 @@ func NewExportFileTamperRulesRequest() (request *ExportFileTamperRulesRequest) {
 func NewExportFileTamperRulesResponse() (response *ExportFileTamperRulesResponse) {
     response = &ExportFileTamperRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportFileTamperRules
@@ -22933,8 +23333,9 @@ func NewExportIgnoreBaselineRuleRequest() (request *ExportIgnoreBaselineRuleRequ
 func NewExportIgnoreBaselineRuleResponse() (response *ExportIgnoreBaselineRuleResponse) {
     response = &ExportIgnoreBaselineRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportIgnoreBaselineRule
@@ -22991,8 +23392,9 @@ func NewExportIgnoreRuleEffectHostListRequest() (request *ExportIgnoreRuleEffect
 func NewExportIgnoreRuleEffectHostListResponse() (response *ExportIgnoreRuleEffectHostListResponse) {
     response = &ExportIgnoreRuleEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportIgnoreRuleEffectHostList
@@ -23049,8 +23451,9 @@ func NewExportJavaMemShellPluginsRequest() (request *ExportJavaMemShellPluginsRe
 func NewExportJavaMemShellPluginsResponse() (response *ExportJavaMemShellPluginsResponse) {
     response = &ExportJavaMemShellPluginsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportJavaMemShellPlugins
@@ -23109,8 +23512,9 @@ func NewExportJavaMemShellsRequest() (request *ExportJavaMemShellsRequest) {
 func NewExportJavaMemShellsResponse() (response *ExportJavaMemShellsResponse) {
     response = &ExportJavaMemShellsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportJavaMemShells
@@ -23169,8 +23573,9 @@ func NewExportLicenseDetailRequest() (request *ExportLicenseDetailRequest) {
 func NewExportLicenseDetailResponse() (response *ExportLicenseDetailResponse) {
     response = &ExportLicenseDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportLicenseDetail
@@ -23217,8 +23622,9 @@ func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsReques
 func NewExportMaliciousRequestsResponse() (response *ExportMaliciousRequestsResponse) {
     response = &ExportMaliciousRequestsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportMaliciousRequests
@@ -23269,8 +23675,9 @@ func NewExportMalwaresRequest() (request *ExportMalwaresRequest) {
 func NewExportMalwaresResponse() (response *ExportMalwaresResponse) {
     response = &ExportMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportMalwares
@@ -23329,8 +23736,9 @@ func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRe
 func NewExportNonlocalLoginPlacesResponse() (response *ExportNonlocalLoginPlacesResponse) {
     response = &ExportNonlocalLoginPlacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportNonlocalLoginPlaces
@@ -23385,8 +23793,9 @@ func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
 func NewExportPrivilegeEventsResponse() (response *ExportPrivilegeEventsResponse) {
     response = &ExportPrivilegeEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportPrivilegeEvents
@@ -23439,8 +23848,9 @@ func NewExportProtectDirListRequest() (request *ExportProtectDirListRequest) {
 func NewExportProtectDirListResponse() (response *ExportProtectDirListResponse) {
     response = &ExportProtectDirListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportProtectDirList
@@ -23499,8 +23909,9 @@ func NewExportRansomDefenseBackupListRequest() (request *ExportRansomDefenseBack
 func NewExportRansomDefenseBackupListResponse() (response *ExportRansomDefenseBackupListResponse) {
     response = &ExportRansomDefenseBackupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRansomDefenseBackupList
@@ -23559,8 +23970,9 @@ func NewExportRansomDefenseEventsListRequest() (request *ExportRansomDefenseEven
 func NewExportRansomDefenseEventsListResponse() (response *ExportRansomDefenseEventsListResponse) {
     response = &ExportRansomDefenseEventsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRansomDefenseEventsList
@@ -23619,8 +24031,9 @@ func NewExportRansomDefenseMachineListRequest() (request *ExportRansomDefenseMac
 func NewExportRansomDefenseMachineListResponse() (response *ExportRansomDefenseMachineListResponse) {
     response = &ExportRansomDefenseMachineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRansomDefenseMachineList
@@ -23679,8 +24092,9 @@ func NewExportRansomDefenseStrategyListRequest() (request *ExportRansomDefenseSt
 func NewExportRansomDefenseStrategyListResponse() (response *ExportRansomDefenseStrategyListResponse) {
     response = &ExportRansomDefenseStrategyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRansomDefenseStrategyList
@@ -23739,8 +24153,9 @@ func NewExportRansomDefenseStrategyMachinesRequest() (request *ExportRansomDefen
 func NewExportRansomDefenseStrategyMachinesResponse() (response *ExportRansomDefenseStrategyMachinesResponse) {
     response = &ExportRansomDefenseStrategyMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRansomDefenseStrategyMachines
@@ -23799,8 +24214,9 @@ func NewExportReverseShellEventsRequest() (request *ExportReverseShellEventsRequ
 func NewExportReverseShellEventsResponse() (response *ExportReverseShellEventsResponse) {
     response = &ExportReverseShellEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportReverseShellEvents
@@ -23861,8 +24277,9 @@ func NewExportRiskDnsEventListRequest() (request *ExportRiskDnsEventListRequest)
 func NewExportRiskDnsEventListResponse() (response *ExportRiskDnsEventListResponse) {
     response = &ExportRiskDnsEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRiskDnsEventList
@@ -23911,8 +24328,9 @@ func NewExportRiskDnsPolicyListRequest() (request *ExportRiskDnsPolicyListReques
 func NewExportRiskDnsPolicyListResponse() (response *ExportRiskDnsPolicyListResponse) {
     response = &ExportRiskDnsPolicyListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRiskDnsPolicyList
@@ -23959,8 +24377,9 @@ func NewExportRiskProcessEventsRequest() (request *ExportRiskProcessEventsReques
 func NewExportRiskProcessEventsResponse() (response *ExportRiskProcessEventsResponse) {
     response = &ExportRiskProcessEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportRiskProcessEvents
@@ -24011,8 +24430,9 @@ func NewExportScanTaskDetailsRequest() (request *ExportScanTaskDetailsRequest) {
 func NewExportScanTaskDetailsResponse() (response *ExportScanTaskDetailsResponse) {
     response = &ExportScanTaskDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportScanTaskDetails
@@ -24067,8 +24487,9 @@ func NewExportSecurityTrendsRequest() (request *ExportSecurityTrendsRequest) {
 func NewExportSecurityTrendsResponse() (response *ExportSecurityTrendsResponse) {
     response = &ExportSecurityTrendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportSecurityTrends
@@ -24115,8 +24536,9 @@ func NewExportTasksRequest() (request *ExportTasksRequest) {
 func NewExportTasksResponse() (response *ExportTasksResponse) {
     response = &ExportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportTasks
@@ -24165,8 +24587,9 @@ func NewExportVulDefenceEventRequest() (request *ExportVulDefenceEventRequest) {
 func NewExportVulDefenceEventResponse() (response *ExportVulDefenceEventResponse) {
     response = &ExportVulDefenceEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulDefenceEvent
@@ -24221,8 +24644,9 @@ func NewExportVulDefenceListRequest() (request *ExportVulDefenceListRequest) {
 func NewExportVulDefenceListResponse() (response *ExportVulDefenceListResponse) {
     response = &ExportVulDefenceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulDefenceList
@@ -24277,8 +24701,9 @@ func NewExportVulDefencePluginEventRequest() (request *ExportVulDefencePluginEve
 func NewExportVulDefencePluginEventResponse() (response *ExportVulDefencePluginEventResponse) {
     response = &ExportVulDefencePluginEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulDefencePluginEvent
@@ -24333,8 +24758,9 @@ func NewExportVulDetectionExcelRequest() (request *ExportVulDetectionExcelReques
 func NewExportVulDetectionExcelResponse() (response *ExportVulDetectionExcelResponse) {
     response = &ExportVulDetectionExcelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulDetectionExcel
@@ -24389,8 +24815,9 @@ func NewExportVulDetectionReportRequest() (request *ExportVulDetectionReportRequ
 func NewExportVulDetectionReportResponse() (response *ExportVulDetectionReportResponse) {
     response = &ExportVulDetectionReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulDetectionReport
@@ -24445,8 +24872,9 @@ func NewExportVulEffectHostListRequest() (request *ExportVulEffectHostListReques
 func NewExportVulEffectHostListResponse() (response *ExportVulEffectHostListResponse) {
     response = &ExportVulEffectHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulEffectHostList
@@ -24507,8 +24935,9 @@ func NewExportVulInfoRequest() (request *ExportVulInfoRequest) {
 func NewExportVulInfoResponse() (response *ExportVulInfoResponse) {
     response = &ExportVulInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulInfo
@@ -24569,8 +24998,9 @@ func NewExportVulListRequest() (request *ExportVulListRequest) {
 func NewExportVulListResponse() (response *ExportVulListResponse) {
     response = &ExportVulListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportVulList
@@ -24625,8 +25055,9 @@ func NewExportWebPageEventListRequest() (request *ExportWebPageEventListRequest)
 func NewExportWebPageEventListResponse() (response *ExportWebPageEventListResponse) {
     response = &ExportWebPageEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportWebPageEventList
@@ -24681,8 +25112,9 @@ func NewFixBaselineDetectRequest() (request *FixBaselineDetectRequest) {
 func NewFixBaselineDetectResponse() (response *FixBaselineDetectResponse) {
     response = &FixBaselineDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FixBaselineDetect
@@ -24733,8 +25165,9 @@ func NewGetLocalStorageItemRequest() (request *GetLocalStorageItemRequest) {
 func NewGetLocalStorageItemResponse() (response *GetLocalStorageItemResponse) {
     response = &GetLocalStorageItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLocalStorageItem
@@ -24781,8 +25214,9 @@ func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
 func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
     response = &IgnoreImpactedHostsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IgnoreImpactedHosts
@@ -24845,8 +25279,9 @@ func NewKeysLocalStorageRequest() (request *KeysLocalStorageRequest) {
 func NewKeysLocalStorageResponse() (response *KeysLocalStorageResponse) {
     response = &KeysLocalStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // KeysLocalStorage
@@ -24893,8 +25328,9 @@ func NewModifyAutoOpenProVersionConfigRequest() (request *ModifyAutoOpenProVersi
 func NewModifyAutoOpenProVersionConfigResponse() (response *ModifyAutoOpenProVersionConfigResponse) {
     response = &ModifyAutoOpenProVersionConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAutoOpenProVersionConfig
@@ -24949,8 +25385,9 @@ func NewModifyBanModeRequest() (request *ModifyBanModeRequest) {
 func NewModifyBanModeResponse() (response *ModifyBanModeResponse) {
     response = &ModifyBanModeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBanMode
@@ -25009,8 +25446,9 @@ func NewModifyBanStatusRequest() (request *ModifyBanStatusRequest) {
 func NewModifyBanStatusResponse() (response *ModifyBanStatusResponse) {
     response = &ModifyBanStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBanStatus
@@ -25069,8 +25507,9 @@ func NewModifyBanWhiteListRequest() (request *ModifyBanWhiteListRequest) {
 func NewModifyBanWhiteListResponse() (response *ModifyBanWhiteListResponse) {
     response = &ModifyBanWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBanWhiteList
@@ -25133,8 +25572,9 @@ func NewModifyBaselinePolicyRequest() (request *ModifyBaselinePolicyRequest) {
 func NewModifyBaselinePolicyResponse() (response *ModifyBaselinePolicyResponse) {
     response = &ModifyBaselinePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaselinePolicy
@@ -25185,8 +25625,9 @@ func NewModifyBaselinePolicyStateRequest() (request *ModifyBaselinePolicyStateRe
 func NewModifyBaselinePolicyStateResponse() (response *ModifyBaselinePolicyStateResponse) {
     response = &ModifyBaselinePolicyStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaselinePolicyState
@@ -25235,8 +25676,9 @@ func NewModifyBaselineRuleRequest() (request *ModifyBaselineRuleRequest) {
 func NewModifyBaselineRuleResponse() (response *ModifyBaselineRuleResponse) {
     response = &ModifyBaselineRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaselineRule
@@ -25287,8 +25729,9 @@ func NewModifyBaselineRuleIgnoreRequest() (request *ModifyBaselineRuleIgnoreRequ
 func NewModifyBaselineRuleIgnoreResponse() (response *ModifyBaselineRuleIgnoreResponse) {
     response = &ModifyBaselineRuleIgnoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaselineRuleIgnore
@@ -25339,8 +25782,9 @@ func NewModifyBaselineWeakPasswordRequest() (request *ModifyBaselineWeakPassword
 func NewModifyBaselineWeakPasswordResponse() (response *ModifyBaselineWeakPasswordResponse) {
     response = &ModifyBaselineWeakPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBaselineWeakPassword
@@ -25389,8 +25833,9 @@ func NewModifyBashPolicyRequest() (request *ModifyBashPolicyRequest) {
 func NewModifyBashPolicyResponse() (response *ModifyBashPolicyResponse) {
     response = &ModifyBashPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBashPolicy
@@ -25459,8 +25904,9 @@ func NewModifyBashPolicyStatusRequest() (request *ModifyBashPolicyStatusRequest)
 func NewModifyBashPolicyStatusResponse() (response *ModifyBashPolicyStatusResponse) {
     response = &ModifyBashPolicyStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBashPolicyStatus
@@ -25529,8 +25975,9 @@ func NewModifyBruteAttackRulesRequest() (request *ModifyBruteAttackRulesRequest)
 func NewModifyBruteAttackRulesResponse() (response *ModifyBruteAttackRulesResponse) {
     response = &ModifyBruteAttackRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBruteAttackRules
@@ -25589,8 +26036,9 @@ func NewModifyEventAttackStatusRequest() (request *ModifyEventAttackStatusReques
 func NewModifyEventAttackStatusResponse() (response *ModifyEventAttackStatusResponse) {
     response = &ModifyEventAttackStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEventAttackStatus
@@ -25649,8 +26097,9 @@ func NewModifyFileTamperEventsRequest() (request *ModifyFileTamperEventsRequest)
 func NewModifyFileTamperEventsResponse() (response *ModifyFileTamperEventsResponse) {
     response = &ModifyFileTamperEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFileTamperEvents
@@ -25707,8 +26156,9 @@ func NewModifyFileTamperRuleRequest() (request *ModifyFileTamperRuleRequest) {
 func NewModifyFileTamperRuleResponse() (response *ModifyFileTamperRuleResponse) {
     response = &ModifyFileTamperRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFileTamperRule
@@ -25769,8 +26219,9 @@ func NewModifyFileTamperRuleStatusRequest() (request *ModifyFileTamperRuleStatus
 func NewModifyFileTamperRuleStatusResponse() (response *ModifyFileTamperRuleStatusResponse) {
     response = &ModifyFileTamperRuleStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFileTamperRuleStatus
@@ -25835,8 +26286,9 @@ func NewModifyJavaMemShellPluginSwitchRequest() (request *ModifyJavaMemShellPlug
 func NewModifyJavaMemShellPluginSwitchResponse() (response *ModifyJavaMemShellPluginSwitchResponse) {
     response = &ModifyJavaMemShellPluginSwitchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyJavaMemShellPluginSwitch
@@ -25895,8 +26347,9 @@ func NewModifyJavaMemShellsStatusRequest() (request *ModifyJavaMemShellsStatusRe
 func NewModifyJavaMemShellsStatusResponse() (response *ModifyJavaMemShellsStatusResponse) {
     response = &ModifyJavaMemShellsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyJavaMemShellsStatus
@@ -25955,8 +26408,9 @@ func NewModifyLicenseBindsRequest() (request *ModifyLicenseBindsRequest) {
 func NewModifyLicenseBindsResponse() (response *ModifyLicenseBindsResponse) {
     response = &ModifyLicenseBindsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLicenseBinds
@@ -26013,8 +26467,9 @@ func NewModifyLicenseOrderRequest() (request *ModifyLicenseOrderRequest) {
 func NewModifyLicenseOrderResponse() (response *ModifyLicenseOrderResponse) {
     response = &ModifyLicenseOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLicenseOrder
@@ -26071,8 +26526,9 @@ func NewModifyLicenseUnBindsRequest() (request *ModifyLicenseUnBindsRequest) {
 func NewModifyLicenseUnBindsResponse() (response *ModifyLicenseUnBindsResponse) {
     response = &ModifyLicenseUnBindsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLicenseUnBinds
@@ -26131,8 +26587,9 @@ func NewModifyLogKafkaAccessRequest() (request *ModifyLogKafkaAccessRequest) {
 func NewModifyLogKafkaAccessResponse() (response *ModifyLogKafkaAccessResponse) {
     response = &ModifyLogKafkaAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogKafkaAccess
@@ -26191,8 +26648,9 @@ func NewModifyLogKafkaDeliverTypeRequest() (request *ModifyLogKafkaDeliverTypeRe
 func NewModifyLogKafkaDeliverTypeResponse() (response *ModifyLogKafkaDeliverTypeResponse) {
     response = &ModifyLogKafkaDeliverTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogKafkaDeliverType
@@ -26251,8 +26709,9 @@ func NewModifyLogKafkaStateRequest() (request *ModifyLogKafkaStateRequest) {
 func NewModifyLogKafkaStateResponse() (response *ModifyLogKafkaStateResponse) {
     response = &ModifyLogKafkaStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogKafkaState
@@ -26311,8 +26770,9 @@ func NewModifyLogStorageConfigRequest() (request *ModifyLogStorageConfigRequest)
 func NewModifyLogStorageConfigResponse() (response *ModifyLogStorageConfigResponse) {
     response = &ModifyLogStorageConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogStorageConfig
@@ -26359,8 +26819,9 @@ func NewModifyLoginWhiteInfoRequest() (request *ModifyLoginWhiteInfoRequest) {
 func NewModifyLoginWhiteInfoResponse() (response *ModifyLoginWhiteInfoResponse) {
     response = &ModifyLoginWhiteInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoginWhiteInfo
@@ -26419,8 +26880,9 @@ func NewModifyLoginWhiteRecordRequest() (request *ModifyLoginWhiteRecordRequest)
 func NewModifyLoginWhiteRecordResponse() (response *ModifyLoginWhiteRecordResponse) {
     response = &ModifyLoginWhiteRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoginWhiteRecord
@@ -26481,8 +26943,9 @@ func NewModifyMachineAutoClearConfigRequest() (request *ModifyMachineAutoClearCo
 func NewModifyMachineAutoClearConfigResponse() (response *ModifyMachineAutoClearConfigResponse) {
     response = &ModifyMachineAutoClearConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMachineAutoClearConfig
@@ -26529,8 +26992,9 @@ func NewModifyMachineRemarkRequest() (request *ModifyMachineRemarkRequest) {
 func NewModifyMachineRemarkResponse() (response *ModifyMachineRemarkResponse) {
     response = &ModifyMachineRemarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMachineRemark
@@ -26587,8 +27051,9 @@ func NewModifyMaliciousRequestWhiteListRequest() (request *ModifyMaliciousReques
 func NewModifyMaliciousRequestWhiteListResponse() (response *ModifyMaliciousRequestWhiteListResponse) {
     response = &ModifyMaliciousRequestWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMaliciousRequestWhiteList
@@ -26645,8 +27110,9 @@ func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingSc
 func NewModifyMalwareTimingScanSettingsResponse() (response *ModifyMalwareTimingScanSettingsResponse) {
     response = &ModifyMalwareTimingScanSettingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMalwareTimingScanSettings
@@ -26715,8 +27181,9 @@ func NewModifyMalwareWhiteListRequest() (request *ModifyMalwareWhiteListRequest)
 func NewModifyMalwareWhiteListResponse() (response *ModifyMalwareWhiteListResponse) {
     response = &ModifyMalwareWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMalwareWhiteList
@@ -26765,8 +27232,9 @@ func NewModifyNetAttackSettingRequest() (request *ModifyNetAttackSettingRequest)
 func NewModifyNetAttackSettingResponse() (response *ModifyNetAttackSettingResponse) {
     response = &ModifyNetAttackSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNetAttackSetting
@@ -26815,8 +27283,9 @@ func NewModifyNetAttackWhiteListRequest() (request *ModifyNetAttackWhiteListRequ
 func NewModifyNetAttackWhiteListResponse() (response *ModifyNetAttackWhiteListResponse) {
     response = &ModifyNetAttackWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNetAttackWhiteList
@@ -26865,8 +27334,9 @@ func NewModifyOrderAttributeRequest() (request *ModifyOrderAttributeRequest) {
 func NewModifyOrderAttributeResponse() (response *ModifyOrderAttributeResponse) {
     response = &ModifyOrderAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyOrderAttribute
@@ -26923,8 +27393,9 @@ func NewModifyRansomDefenseEventsStatusRequest() (request *ModifyRansomDefenseEv
 func NewModifyRansomDefenseEventsStatusResponse() (response *ModifyRansomDefenseEventsStatusResponse) {
     response = &ModifyRansomDefenseEventsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRansomDefenseEventsStatus
@@ -26989,8 +27460,9 @@ func NewModifyRansomDefenseStrategyStatusRequest() (request *ModifyRansomDefense
 func NewModifyRansomDefenseStrategyStatusResponse() (response *ModifyRansomDefenseStrategyStatusResponse) {
     response = &ModifyRansomDefenseStrategyStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRansomDefenseStrategyStatus
@@ -27039,8 +27511,9 @@ func NewModifyRiskDnsPolicyRequest() (request *ModifyRiskDnsPolicyRequest) {
 func NewModifyRiskDnsPolicyResponse() (response *ModifyRiskDnsPolicyResponse) {
     response = &ModifyRiskDnsPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRiskDnsPolicy
@@ -27091,8 +27564,9 @@ func NewModifyRiskDnsPolicyStatusRequest() (request *ModifyRiskDnsPolicyStatusRe
 func NewModifyRiskDnsPolicyStatusResponse() (response *ModifyRiskDnsPolicyStatusResponse) {
     response = &ModifyRiskDnsPolicyStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRiskDnsPolicyStatus
@@ -27141,8 +27615,9 @@ func NewModifyRiskEventsStatusRequest() (request *ModifyRiskEventsStatusRequest)
 func NewModifyRiskEventsStatusResponse() (response *ModifyRiskEventsStatusResponse) {
     response = &ModifyRiskEventsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRiskEventsStatus
@@ -27207,8 +27682,9 @@ func NewModifyUsersConfigRequest() (request *ModifyUsersConfigRequest) {
 func NewModifyUsersConfigResponse() (response *ModifyUsersConfigResponse) {
     response = &ModifyUsersConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUsersConfig
@@ -27273,8 +27749,9 @@ func NewModifyVulDefenceEventStatusRequest() (request *ModifyVulDefenceEventStat
 func NewModifyVulDefenceEventStatusResponse() (response *ModifyVulDefenceEventStatusResponse) {
     response = &ModifyVulDefenceEventStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVulDefenceEventStatus
@@ -27333,8 +27810,9 @@ func NewModifyVulDefenceSettingRequest() (request *ModifyVulDefenceSettingReques
 func NewModifyVulDefenceSettingResponse() (response *ModifyVulDefenceSettingResponse) {
     response = &ModifyVulDefenceSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVulDefenceSetting
@@ -27405,8 +27883,9 @@ func NewModifyWarningHostConfigRequest() (request *ModifyWarningHostConfigReques
 func NewModifyWarningHostConfigResponse() (response *ModifyWarningHostConfigResponse) {
     response = &ModifyWarningHostConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWarningHostConfig
@@ -27465,8 +27944,9 @@ func NewModifyWarningSettingRequest() (request *ModifyWarningSettingRequest) {
 func NewModifyWarningSettingResponse() (response *ModifyWarningSettingResponse) {
     response = &ModifyWarningSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWarningSetting
@@ -27525,8 +28005,9 @@ func NewModifyWebHookPolicyRequest() (request *ModifyWebHookPolicyRequest) {
 func NewModifyWebHookPolicyResponse() (response *ModifyWebHookPolicyResponse) {
     response = &ModifyWebHookPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebHookPolicy
@@ -27585,8 +28066,9 @@ func NewModifyWebHookPolicyStatusRequest() (request *ModifyWebHookPolicyStatusRe
 func NewModifyWebHookPolicyStatusResponse() (response *ModifyWebHookPolicyStatusResponse) {
     response = &ModifyWebHookPolicyStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebHookPolicyStatus
@@ -27645,8 +28127,9 @@ func NewModifyWebHookReceiverRequest() (request *ModifyWebHookReceiverRequest) {
 func NewModifyWebHookReceiverResponse() (response *ModifyWebHookReceiverResponse) {
     response = &ModifyWebHookReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebHookReceiver
@@ -27693,8 +28176,9 @@ func NewModifyWebHookRuleRequest() (request *ModifyWebHookRuleRequest) {
 func NewModifyWebHookRuleResponse() (response *ModifyWebHookRuleResponse) {
     response = &ModifyWebHookRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebHookRule
@@ -27747,8 +28231,9 @@ func NewModifyWebHookRuleStatusRequest() (request *ModifyWebHookRuleStatusReques
 func NewModifyWebHookRuleStatusResponse() (response *ModifyWebHookRuleStatusResponse) {
     response = &ModifyWebHookRuleStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebHookRuleStatus
@@ -27799,8 +28284,9 @@ func NewModifyWebPageProtectDirRequest() (request *ModifyWebPageProtectDirReques
 func NewModifyWebPageProtectDirResponse() (response *ModifyWebPageProtectDirResponse) {
     response = &ModifyWebPageProtectDirResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebPageProtectDir
@@ -27873,8 +28359,9 @@ func NewModifyWebPageProtectSettingRequest() (request *ModifyWebPageProtectSetti
 func NewModifyWebPageProtectSettingResponse() (response *ModifyWebPageProtectSettingResponse) {
     response = &ModifyWebPageProtectSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebPageProtectSetting
@@ -27933,8 +28420,9 @@ func NewModifyWebPageProtectSwitchRequest() (request *ModifyWebPageProtectSwitch
 func NewModifyWebPageProtectSwitchResponse() (response *ModifyWebPageProtectSwitchResponse) {
     response = &ModifyWebPageProtectSwitchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWebPageProtectSwitch
@@ -28001,8 +28489,9 @@ func NewRansomDefenseRollbackRequest() (request *RansomDefenseRollbackRequest) {
 func NewRansomDefenseRollbackResponse() (response *RansomDefenseRollbackResponse) {
     response = &RansomDefenseRollbackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RansomDefenseRollback
@@ -28053,8 +28542,9 @@ func NewRecoverMalwaresRequest() (request *RecoverMalwaresRequest) {
 func NewRecoverMalwaresResponse() (response *RecoverMalwaresResponse) {
     response = &RecoverMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverMalwares
@@ -28117,8 +28607,9 @@ func NewRemoveLocalStorageItemRequest() (request *RemoveLocalStorageItemRequest)
 func NewRemoveLocalStorageItemResponse() (response *RemoveLocalStorageItemResponse) {
     response = &RemoveLocalStorageItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveLocalStorageItem
@@ -28165,8 +28656,9 @@ func NewRemoveMachineRequest() (request *RemoveMachineRequest) {
 func NewRemoveMachineResponse() (response *RemoveMachineResponse) {
     response = &RemoveMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveMachine
@@ -28229,8 +28721,9 @@ func NewRetryCreateSnapshotRequest() (request *RetryCreateSnapshotRequest) {
 func NewRetryCreateSnapshotResponse() (response *RetryCreateSnapshotResponse) {
     response = &RetryCreateSnapshotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetryCreateSnapshot
@@ -28297,8 +28790,9 @@ func NewRetryVulFixRequest() (request *RetryVulFixRequest) {
 func NewRetryVulFixResponse() (response *RetryVulFixResponse) {
     response = &RetryVulFixResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetryVulFix
@@ -28361,8 +28855,9 @@ func NewScanAssetRequest() (request *ScanAssetRequest) {
 func NewScanAssetResponse() (response *ScanAssetResponse) {
     response = &ScanAssetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanAsset
@@ -28427,8 +28922,9 @@ func NewScanBaselineRequest() (request *ScanBaselineRequest) {
 func NewScanBaselineResponse() (response *ScanBaselineResponse) {
     response = &ScanBaselineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanBaseline
@@ -28497,8 +28993,9 @@ func NewScanTaskAgainRequest() (request *ScanTaskAgainRequest) {
 func NewScanTaskAgainResponse() (response *ScanTaskAgainResponse) {
     response = &ScanTaskAgainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanTaskAgain
@@ -28563,8 +29060,9 @@ func NewScanVulRequest() (request *ScanVulRequest) {
 func NewScanVulResponse() (response *ScanVulResponse) {
     response = &ScanVulResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanVul
@@ -28633,8 +29131,9 @@ func NewScanVulAgainRequest() (request *ScanVulAgainRequest) {
 func NewScanVulAgainResponse() (response *ScanVulAgainResponse) {
     response = &ScanVulAgainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanVulAgain
@@ -28701,8 +29200,9 @@ func NewScanVulSettingRequest() (request *ScanVulSettingRequest) {
 func NewScanVulSettingResponse() (response *ScanVulSettingResponse) {
     response = &ScanVulSettingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanVulSetting
@@ -28761,8 +29261,9 @@ func NewSearchLogRequest() (request *SearchLogRequest) {
 func NewSearchLogResponse() (response *SearchLogResponse) {
     response = &SearchLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchLog
@@ -28821,8 +29322,9 @@ func NewSeparateMalwaresRequest() (request *SeparateMalwaresRequest) {
 func NewSeparateMalwaresResponse() (response *SeparateMalwaresResponse) {
     response = &SeparateMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SeparateMalwares
@@ -28885,8 +29387,9 @@ func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
 func NewSetBashEventsStatusResponse() (response *SetBashEventsStatusResponse) {
     response = &SetBashEventsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetBashEventsStatus
@@ -28945,8 +29448,9 @@ func NewSetLocalStorageExpireRequest() (request *SetLocalStorageExpireRequest) {
 func NewSetLocalStorageExpireResponse() (response *SetLocalStorageExpireResponse) {
     response = &SetLocalStorageExpireResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetLocalStorageExpire
@@ -28993,8 +29497,9 @@ func NewSetLocalStorageItemRequest() (request *SetLocalStorageItemRequest) {
 func NewSetLocalStorageItemResponse() (response *SetLocalStorageItemResponse) {
     response = &SetLocalStorageItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetLocalStorageItem
@@ -29041,8 +29546,9 @@ func NewStartBaselineDetectRequest() (request *StartBaselineDetectRequest) {
 func NewStartBaselineDetectResponse() (response *StartBaselineDetectResponse) {
     response = &StartBaselineDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartBaselineDetect
@@ -29093,8 +29599,9 @@ func NewStopAssetScanRequest() (request *StopAssetScanRequest) {
 func NewStopAssetScanResponse() (response *StopAssetScanResponse) {
     response = &StopAssetScanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopAssetScan
@@ -29157,8 +29664,9 @@ func NewStopBaselineDetectRequest() (request *StopBaselineDetectRequest) {
 func NewStopBaselineDetectResponse() (response *StopBaselineDetectResponse) {
     response = &StopBaselineDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopBaselineDetect
@@ -29207,8 +29715,9 @@ func NewStopNoticeBanTipsRequest() (request *StopNoticeBanTipsRequest) {
 func NewStopNoticeBanTipsResponse() (response *StopNoticeBanTipsResponse) {
     response = &StopNoticeBanTipsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopNoticeBanTips
@@ -29255,8 +29764,9 @@ func NewSwitchBashRulesRequest() (request *SwitchBashRulesRequest) {
 func NewSwitchBashRulesResponse() (response *SwitchBashRulesResponse) {
     response = &SwitchBashRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SwitchBashRules
@@ -29325,8 +29835,9 @@ func NewSyncAssetScanRequest() (request *SyncAssetScanRequest) {
 func NewSyncAssetScanResponse() (response *SyncAssetScanResponse) {
     response = &SyncAssetScanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncAssetScan
@@ -29385,8 +29896,9 @@ func NewSyncBaselineDetectSummaryRequest() (request *SyncBaselineDetectSummaryRe
 func NewSyncBaselineDetectSummaryResponse() (response *SyncBaselineDetectSummaryResponse) {
     response = &SyncBaselineDetectSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncBaselineDetectSummary
@@ -29435,8 +29947,9 @@ func NewSyncMachinesRequest() (request *SyncMachinesRequest) {
 func NewSyncMachinesResponse() (response *SyncMachinesResponse) {
     response = &SyncMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncMachines
@@ -29491,8 +30004,9 @@ func NewTestWebHookRuleRequest() (request *TestWebHookRuleRequest) {
 func NewTestWebHookRuleResponse() (response *TestWebHookRuleResponse) {
     response = &TestWebHookRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TestWebHookRule
@@ -29543,8 +30057,9 @@ func NewTrustMalwaresRequest() (request *TrustMalwaresRequest) {
 func NewTrustMalwaresResponse() (response *TrustMalwaresResponse) {
     response = &TrustMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TrustMalwares
@@ -29605,8 +30120,9 @@ func NewUntrustMalwaresRequest() (request *UntrustMalwaresRequest) {
 func NewUntrustMalwaresResponse() (response *UntrustMalwaresResponse) {
     response = &UntrustMalwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UntrustMalwares
@@ -29667,8 +30183,9 @@ func NewUpdateBaselineStrategyRequest() (request *UpdateBaselineStrategyRequest)
 func NewUpdateBaselineStrategyResponse() (response *UpdateBaselineStrategyResponse) {
     response = &UpdateBaselineStrategyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateBaselineStrategy
@@ -29729,8 +30246,9 @@ func NewUpdateMachineTagsRequest() (request *UpdateMachineTagsRequest) {
 func NewUpdateMachineTagsResponse() (response *UpdateMachineTagsResponse) {
     response = &UpdateMachineTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateMachineTags

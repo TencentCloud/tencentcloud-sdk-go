@@ -59,8 +59,9 @@ func NewAddUserContactRequest() (request *AddUserContactRequest) {
 func NewAddUserContactResponse() (response *AddUserContactResponse) {
     response = &AddUserContactResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddUserContact
@@ -133,8 +134,9 @@ func NewCancelKillTaskRequest() (request *CancelKillTaskRequest) {
 func NewCancelKillTaskResponse() (response *CancelKillTaskResponse) {
     response = &CancelKillTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelKillTask
@@ -205,8 +207,9 @@ func NewCloseAuditServiceRequest() (request *CloseAuditServiceRequest) {
 func NewCloseAuditServiceResponse() (response *CloseAuditServiceResponse) {
     response = &CloseAuditServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseAuditService
@@ -275,8 +278,9 @@ func NewCreateAuditLogFileRequest() (request *CreateAuditLogFileRequest) {
 func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
     response = &CreateAuditLogFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAuditLogFile
@@ -349,8 +353,9 @@ func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest)
 func NewCreateDBDiagReportTaskResponse() (response *CreateDBDiagReportTaskResponse) {
     response = &CreateDBDiagReportTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBDiagReportTask
@@ -421,8 +426,9 @@ func NewCreateDBDiagReportUrlRequest() (request *CreateDBDiagReportUrlRequest) {
 func NewCreateDBDiagReportUrlResponse() (response *CreateDBDiagReportUrlResponse) {
     response = &CreateDBDiagReportUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDBDiagReportUrl
@@ -493,8 +499,9 @@ func NewCreateKillTaskRequest() (request *CreateKillTaskRequest) {
 func NewCreateKillTaskResponse() (response *CreateKillTaskResponse) {
     response = &CreateKillTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateKillTask
@@ -563,8 +570,9 @@ func NewCreateMailProfileRequest() (request *CreateMailProfileRequest) {
 func NewCreateMailProfileResponse() (response *CreateMailProfileResponse) {
     response = &CreateMailProfileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMailProfile
@@ -635,8 +643,9 @@ func NewCreateProxySessionKillTaskRequest() (request *CreateProxySessionKillTask
 func NewCreateProxySessionKillTaskResponse() (response *CreateProxySessionKillTaskResponse) {
     response = &CreateProxySessionKillTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProxySessionKillTask
@@ -685,8 +694,9 @@ func NewCreateRedisBigKeyAnalysisTaskRequest() (request *CreateRedisBigKeyAnalys
 func NewCreateRedisBigKeyAnalysisTaskResponse() (response *CreateRedisBigKeyAnalysisTaskResponse) {
     response = &CreateRedisBigKeyAnalysisTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRedisBigKeyAnalysisTask
@@ -745,8 +755,9 @@ func NewCreateSchedulerMailProfileRequest() (request *CreateSchedulerMailProfile
 func NewCreateSchedulerMailProfileResponse() (response *CreateSchedulerMailProfileResponse) {
     response = &CreateSchedulerMailProfileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSchedulerMailProfile
@@ -819,8 +830,9 @@ func NewCreateSecurityAuditLogExportTaskRequest() (request *CreateSecurityAuditL
 func NewCreateSecurityAuditLogExportTaskResponse() (response *CreateSecurityAuditLogExportTaskResponse) {
     response = &CreateSecurityAuditLogExportTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSecurityAuditLogExportTask
@@ -891,8 +903,9 @@ func NewCreateSqlFilterRequest() (request *CreateSqlFilterRequest) {
 func NewCreateSqlFilterResponse() (response *CreateSqlFilterResponse) {
     response = &CreateSqlFilterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSqlFilter
@@ -963,8 +976,9 @@ func NewDeleteAuditLogFileRequest() (request *DeleteAuditLogFileRequest) {
 func NewDeleteAuditLogFileResponse() (response *DeleteAuditLogFileResponse) {
     response = &DeleteAuditLogFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAuditLogFile
@@ -1035,8 +1049,9 @@ func NewDeleteDBDiagReportTasksRequest() (request *DeleteDBDiagReportTasksReques
 func NewDeleteDBDiagReportTasksResponse() (response *DeleteDBDiagReportTasksResponse) {
     response = &DeleteDBDiagReportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDBDiagReportTasks
@@ -1109,8 +1124,9 @@ func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAudit
 func NewDeleteSecurityAuditLogExportTasksResponse() (response *DeleteSecurityAuditLogExportTasksResponse) {
     response = &DeleteSecurityAuditLogExportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecurityAuditLogExportTasks
@@ -1181,8 +1197,9 @@ func NewDeleteSqlFiltersRequest() (request *DeleteSqlFiltersRequest) {
 func NewDeleteSqlFiltersResponse() (response *DeleteSqlFiltersResponse) {
     response = &DeleteSqlFiltersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSqlFilters
@@ -1253,8 +1270,9 @@ func NewDescribeAlarmTemplateRequest() (request *DescribeAlarmTemplateRequest) {
 func NewDescribeAlarmTemplateResponse() (response *DescribeAlarmTemplateResponse) {
     response = &DescribeAlarmTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarmTemplate
@@ -1317,8 +1335,9 @@ func NewDescribeAllUserContactRequest() (request *DescribeAllUserContactRequest)
 func NewDescribeAllUserContactResponse() (response *DescribeAllUserContactResponse) {
     response = &DescribeAllUserContactResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllUserContact
@@ -1389,8 +1408,9 @@ func NewDescribeAllUserGroupRequest() (request *DescribeAllUserGroupRequest) {
 func NewDescribeAllUserGroupResponse() (response *DescribeAllUserGroupResponse) {
     response = &DescribeAllUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllUserGroup
@@ -1461,8 +1481,9 @@ func NewDescribeAuditInstanceListRequest() (request *DescribeAuditInstanceListRe
 func NewDescribeAuditInstanceListResponse() (response *DescribeAuditInstanceListResponse) {
     response = &DescribeAuditInstanceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuditInstanceList
@@ -1533,8 +1554,9 @@ func NewDescribeAuditLogFilesRequest() (request *DescribeAuditLogFilesRequest) {
 func NewDescribeAuditLogFilesResponse() (response *DescribeAuditLogFilesResponse) {
     response = &DescribeAuditLogFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuditLogFiles
@@ -1605,8 +1627,9 @@ func NewDescribeDBDiagEventRequest() (request *DescribeDBDiagEventRequest) {
 func NewDescribeDBDiagEventResponse() (response *DescribeDBDiagEventResponse) {
     response = &DescribeDBDiagEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBDiagEvent
@@ -1677,8 +1700,9 @@ func NewDescribeDBDiagEventsRequest() (request *DescribeDBDiagEventsRequest) {
 func NewDescribeDBDiagEventsResponse() (response *DescribeDBDiagEventsResponse) {
     response = &DescribeDBDiagEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBDiagEvents
@@ -1749,8 +1773,9 @@ func NewDescribeDBDiagHistoryRequest() (request *DescribeDBDiagHistoryRequest) {
 func NewDescribeDBDiagHistoryResponse() (response *DescribeDBDiagHistoryResponse) {
     response = &DescribeDBDiagHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBDiagHistory
@@ -1821,8 +1846,9 @@ func NewDescribeDBDiagReportTasksRequest() (request *DescribeDBDiagReportTasksRe
 func NewDescribeDBDiagReportTasksResponse() (response *DescribeDBDiagReportTasksResponse) {
     response = &DescribeDBDiagReportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBDiagReportTasks
@@ -1893,8 +1919,9 @@ func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
 func NewDescribeDBSpaceStatusResponse() (response *DescribeDBSpaceStatusResponse) {
     response = &DescribeDBSpaceStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBSpaceStatus
@@ -1965,8 +1992,9 @@ func NewDescribeDiagDBInstancesRequest() (request *DescribeDiagDBInstancesReques
 func NewDescribeDiagDBInstancesResponse() (response *DescribeDiagDBInstancesResponse) {
     response = &DescribeDiagDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDiagDBInstances
@@ -2039,8 +2067,9 @@ func NewDescribeHealthScoreRequest() (request *DescribeHealthScoreRequest) {
 func NewDescribeHealthScoreResponse() (response *DescribeHealthScoreResponse) {
     response = &DescribeHealthScoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHealthScore
@@ -2113,8 +2142,9 @@ func NewDescribeIndexRecommendAggregationSlowLogsRequest() (request *DescribeInd
 func NewDescribeIndexRecommendAggregationSlowLogsResponse() (response *DescribeIndexRecommendAggregationSlowLogsResponse) {
     response = &DescribeIndexRecommendAggregationSlowLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndexRecommendAggregationSlowLogs
@@ -2187,8 +2217,9 @@ func NewDescribeIndexRecommendInfoRequest() (request *DescribeIndexRecommendInfo
 func NewDescribeIndexRecommendInfoResponse() (response *DescribeIndexRecommendInfoResponse) {
     response = &DescribeIndexRecommendInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndexRecommendInfo
@@ -2261,8 +2292,9 @@ func NewDescribeMailProfileRequest() (request *DescribeMailProfileRequest) {
 func NewDescribeMailProfileResponse() (response *DescribeMailProfileResponse) {
     response = &DescribeMailProfileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMailProfile
@@ -2333,8 +2365,9 @@ func NewDescribeMySqlProcessListRequest() (request *DescribeMySqlProcessListRequ
 func NewDescribeMySqlProcessListResponse() (response *DescribeMySqlProcessListResponse) {
     response = &DescribeMySqlProcessListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMySqlProcessList
@@ -2405,8 +2438,9 @@ func NewDescribeNoPrimaryKeyTablesRequest() (request *DescribeNoPrimaryKeyTables
 func NewDescribeNoPrimaryKeyTablesResponse() (response *DescribeNoPrimaryKeyTablesResponse) {
     response = &DescribeNoPrimaryKeyTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNoPrimaryKeyTables
@@ -2477,8 +2511,9 @@ func NewDescribeProxyProcessStatisticsRequest() (request *DescribeProxyProcessSt
 func NewDescribeProxyProcessStatisticsResponse() (response *DescribeProxyProcessStatisticsResponse) {
     response = &DescribeProxyProcessStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyProcessStatistics
@@ -2551,8 +2586,9 @@ func NewDescribeProxySessionKillTasksRequest() (request *DescribeProxySessionKil
 func NewDescribeProxySessionKillTasksResponse() (response *DescribeProxySessionKillTasksResponse) {
     response = &DescribeProxySessionKillTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxySessionKillTasks
@@ -2635,8 +2671,9 @@ func NewDescribeRedisProcessListRequest() (request *DescribeRedisProcessListRequ
 func NewDescribeRedisProcessListResponse() (response *DescribeRedisProcessListResponse) {
     response = &DescribeRedisProcessListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRedisProcessList
@@ -2707,8 +2744,9 @@ func NewDescribeRedisTopBigKeysRequest() (request *DescribeRedisTopBigKeysReques
 func NewDescribeRedisTopBigKeysResponse() (response *DescribeRedisTopBigKeysResponse) {
     response = &DescribeRedisTopBigKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRedisTopBigKeys
@@ -2779,8 +2817,9 @@ func NewDescribeRedisTopKeyPrefixListRequest() (request *DescribeRedisTopKeyPref
 func NewDescribeRedisTopKeyPrefixListResponse() (response *DescribeRedisTopKeyPrefixListResponse) {
     response = &DescribeRedisTopKeyPrefixListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRedisTopKeyPrefixList
@@ -2851,8 +2890,9 @@ func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurity
 func NewDescribeSecurityAuditLogDownloadUrlsResponse() (response *DescribeSecurityAuditLogDownloadUrlsResponse) {
     response = &DescribeSecurityAuditLogDownloadUrlsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityAuditLogDownloadUrls
@@ -2923,8 +2963,9 @@ func NewDescribeSecurityAuditLogExportTasksRequest() (request *DescribeSecurityA
 func NewDescribeSecurityAuditLogExportTasksResponse() (response *DescribeSecurityAuditLogExportTasksResponse) {
     response = &DescribeSecurityAuditLogExportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityAuditLogExportTasks
@@ -2995,8 +3036,9 @@ func NewDescribeSlowLogTimeSeriesStatsRequest() (request *DescribeSlowLogTimeSer
 func NewDescribeSlowLogTimeSeriesStatsResponse() (response *DescribeSlowLogTimeSeriesStatsResponse) {
     response = &DescribeSlowLogTimeSeriesStatsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowLogTimeSeriesStats
@@ -3069,8 +3111,9 @@ func NewDescribeSlowLogTopSqlsRequest() (request *DescribeSlowLogTopSqlsRequest)
 func NewDescribeSlowLogTopSqlsResponse() (response *DescribeSlowLogTopSqlsResponse) {
     response = &DescribeSlowLogTopSqlsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowLogTopSqls
@@ -3143,8 +3186,9 @@ func NewDescribeSlowLogUserHostStatsRequest() (request *DescribeSlowLogUserHostS
 func NewDescribeSlowLogUserHostStatsResponse() (response *DescribeSlowLogUserHostStatsResponse) {
     response = &DescribeSlowLogUserHostStatsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowLogUserHostStats
@@ -3215,8 +3259,9 @@ func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
 func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
     response = &DescribeSlowLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSlowLogs
@@ -3287,8 +3332,9 @@ func NewDescribeSqlFiltersRequest() (request *DescribeSqlFiltersRequest) {
 func NewDescribeSqlFiltersResponse() (response *DescribeSqlFiltersResponse) {
     response = &DescribeSqlFiltersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSqlFilters
@@ -3359,8 +3405,9 @@ func NewDescribeSqlTemplateRequest() (request *DescribeSqlTemplateRequest) {
 func NewDescribeSqlTemplateResponse() (response *DescribeSqlTemplateResponse) {
     response = &DescribeSqlTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSqlTemplate
@@ -3431,8 +3478,9 @@ func NewDescribeTopSpaceSchemaTimeSeriesRequest() (request *DescribeTopSpaceSche
 func NewDescribeTopSpaceSchemaTimeSeriesResponse() (response *DescribeTopSpaceSchemaTimeSeriesResponse) {
     response = &DescribeTopSpaceSchemaTimeSeriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopSpaceSchemaTimeSeries
@@ -3503,8 +3551,9 @@ func NewDescribeTopSpaceSchemasRequest() (request *DescribeTopSpaceSchemasReques
 func NewDescribeTopSpaceSchemasResponse() (response *DescribeTopSpaceSchemasResponse) {
     response = &DescribeTopSpaceSchemasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopSpaceSchemas
@@ -3575,8 +3624,9 @@ func NewDescribeTopSpaceTableTimeSeriesRequest() (request *DescribeTopSpaceTable
 func NewDescribeTopSpaceTableTimeSeriesResponse() (response *DescribeTopSpaceTableTimeSeriesResponse) {
     response = &DescribeTopSpaceTableTimeSeriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopSpaceTableTimeSeries
@@ -3647,8 +3697,9 @@ func NewDescribeTopSpaceTablesRequest() (request *DescribeTopSpaceTablesRequest)
 func NewDescribeTopSpaceTablesResponse() (response *DescribeTopSpaceTablesResponse) {
     response = &DescribeTopSpaceTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopSpaceTables
@@ -3719,8 +3770,9 @@ func NewDescribeUserSqlAdviceRequest() (request *DescribeUserSqlAdviceRequest) {
 func NewDescribeUserSqlAdviceResponse() (response *DescribeUserSqlAdviceResponse) {
     response = &DescribeUserSqlAdviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserSqlAdvice
@@ -3791,8 +3843,9 @@ func NewKillMySqlThreadsRequest() (request *KillMySqlThreadsRequest) {
 func NewKillMySqlThreadsResponse() (response *KillMySqlThreadsResponse) {
     response = &KillMySqlThreadsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // KillMySqlThreads
@@ -3865,8 +3918,9 @@ func NewModifyAlarmPolicyRequest() (request *ModifyAlarmPolicyRequest) {
 func NewModifyAlarmPolicyResponse() (response *ModifyAlarmPolicyResponse) {
     response = &ModifyAlarmPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAlarmPolicy
@@ -3933,8 +3987,9 @@ func NewModifyAuditServiceRequest() (request *ModifyAuditServiceRequest) {
 func NewModifyAuditServiceResponse() (response *ModifyAuditServiceResponse) {
     response = &ModifyAuditServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAuditService
@@ -4003,8 +4058,9 @@ func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequ
 func NewModifyDiagDBInstanceConfResponse() (response *ModifyDiagDBInstanceConfResponse) {
     response = &ModifyDiagDBInstanceConfResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDiagDBInstanceConf
@@ -4075,8 +4131,9 @@ func NewModifySqlFiltersRequest() (request *ModifySqlFiltersRequest) {
 func NewModifySqlFiltersResponse() (response *ModifySqlFiltersResponse) {
     response = &ModifySqlFiltersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySqlFilters
@@ -4147,8 +4204,9 @@ func NewOpenAuditServiceRequest() (request *OpenAuditServiceRequest) {
 func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
     response = &OpenAuditServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenAuditService
@@ -4219,8 +4277,9 @@ func NewUpdateAgentSwitchRequest() (request *UpdateAgentSwitchRequest) {
 func NewUpdateAgentSwitchResponse() (response *UpdateAgentSwitchResponse) {
     response = &UpdateAgentSwitchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAgentSwitch
@@ -4291,8 +4350,9 @@ func NewUpdateMonitorSwitchRequest() (request *UpdateMonitorSwitchRequest) {
 func NewUpdateMonitorSwitchResponse() (response *UpdateMonitorSwitchResponse) {
     response = &UpdateMonitorSwitchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateMonitorSwitch
@@ -4363,8 +4423,9 @@ func NewVerifyUserAccountRequest() (request *VerifyUserAccountRequest) {
 func NewVerifyUserAccountResponse() (response *VerifyUserAccountResponse) {
     response = &VerifyUserAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyUserAccount

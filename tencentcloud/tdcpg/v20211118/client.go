@@ -59,8 +59,9 @@ func NewCloneClusterToPointInTimeRequest() (request *CloneClusterToPointInTimeRe
 func NewCloneClusterToPointInTimeResponse() (response *CloneClusterToPointInTimeResponse) {
     response = &CloneClusterToPointInTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloneClusterToPointInTime
@@ -159,8 +160,9 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
 func NewCreateClusterResponse() (response *CreateClusterResponse) {
     response = &CreateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCluster
@@ -269,8 +271,9 @@ func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest)
 func NewCreateClusterInstancesResponse() (response *CreateClusterInstancesResponse) {
     response = &CreateClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateClusterInstances
@@ -351,8 +354,9 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     response = &DeleteClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCluster
@@ -409,8 +413,9 @@ func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest)
 func NewDeleteClusterInstancesResponse() (response *DeleteClusterInstancesResponse) {
     response = &DeleteClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteClusterInstances
@@ -475,8 +480,9 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
 func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     response = &DescribeAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccounts
@@ -537,8 +543,9 @@ func NewDescribeClusterBackupsRequest() (request *DescribeClusterBackupsRequest)
 func NewDescribeClusterBackupsResponse() (response *DescribeClusterBackupsResponse) {
     response = &DescribeClusterBackupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterBackups
@@ -597,8 +604,9 @@ func NewDescribeClusterEndpointsRequest() (request *DescribeClusterEndpointsRequ
 func NewDescribeClusterEndpointsResponse() (response *DescribeClusterEndpointsResponse) {
     response = &DescribeClusterEndpointsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterEndpoints
@@ -657,8 +665,9 @@ func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequ
 func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesResponse) {
     response = &DescribeClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterInstances
@@ -715,8 +724,9 @@ func NewDescribeClusterRecoveryTimeRangeRequest() (request *DescribeClusterRecov
 func NewDescribeClusterRecoveryTimeRangeResponse() (response *DescribeClusterRecoveryTimeRangeResponse) {
     response = &DescribeClusterRecoveryTimeRangeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterRecoveryTimeRange
@@ -789,8 +799,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -849,8 +860,9 @@ func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNa
 func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDealNameResponse) {
     response = &DescribeResourcesByDealNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourcesByDealName
@@ -909,8 +921,9 @@ func NewIsolateClusterRequest() (request *IsolateClusterRequest) {
 func NewIsolateClusterResponse() (response *IsolateClusterResponse) {
     response = &IsolateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateCluster
@@ -983,8 +996,9 @@ func NewIsolateClusterInstancesRequest() (request *IsolateClusterInstancesReques
 func NewIsolateClusterInstancesResponse() (response *IsolateClusterInstancesResponse) {
     response = &IsolateClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateClusterInstances
@@ -1061,8 +1075,9 @@ func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequ
 func NewModifyAccountDescriptionResponse() (response *ModifyAccountDescriptionResponse) {
     response = &ModifyAccountDescriptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccountDescription
@@ -1127,8 +1142,9 @@ func NewModifyClusterEndpointWanStatusRequest() (request *ModifyClusterEndpointW
 func NewModifyClusterEndpointWanStatusResponse() (response *ModifyClusterEndpointWanStatusResponse) {
     response = &ModifyClusterEndpointWanStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterEndpointWanStatus
@@ -1193,8 +1209,9 @@ func NewModifyClusterInstancesSpecRequest() (request *ModifyClusterInstancesSpec
 func NewModifyClusterInstancesSpecResponse() (response *ModifyClusterInstancesSpecResponse) {
     response = &ModifyClusterInstancesSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterInstancesSpec
@@ -1275,8 +1292,9 @@ func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
 func NewModifyClusterNameResponse() (response *ModifyClusterNameResponse) {
     response = &ModifyClusterNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterName
@@ -1339,8 +1357,9 @@ func NewModifyClustersAutoRenewFlagRequest() (request *ModifyClustersAutoRenewFl
 func NewModifyClustersAutoRenewFlagResponse() (response *ModifyClustersAutoRenewFlagResponse) {
     response = &ModifyClustersAutoRenewFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClustersAutoRenewFlag
@@ -1403,8 +1422,9 @@ func NewRecoverClusterRequest() (request *RecoverClusterRequest) {
 func NewRecoverClusterResponse() (response *RecoverClusterResponse) {
     response = &RecoverClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverCluster
@@ -1471,8 +1491,9 @@ func NewRecoverClusterInstancesRequest() (request *RecoverClusterInstancesReques
 func NewRecoverClusterInstancesResponse() (response *RecoverClusterInstancesResponse) {
     response = &RecoverClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverClusterInstances
@@ -1551,8 +1572,9 @@ func NewRenewClusterRequest() (request *RenewClusterRequest) {
 func NewRenewClusterResponse() (response *RenewClusterResponse) {
     response = &RenewClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewCluster
@@ -1617,8 +1639,9 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
 func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) {
     response = &ResetAccountPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetAccountPassword
@@ -1683,8 +1706,9 @@ func NewRestartClusterInstancesRequest() (request *RestartClusterInstancesReques
 func NewRestartClusterInstancesResponse() (response *RestartClusterInstancesResponse) {
     response = &RestartClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartClusterInstances
@@ -1749,8 +1773,9 @@ func NewTransformClusterPayModeRequest() (request *TransformClusterPayModeReques
 func NewTransformClusterPayModeResponse() (response *TransformClusterPayModeResponse) {
     response = &TransformClusterPayModeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransformClusterPayMode

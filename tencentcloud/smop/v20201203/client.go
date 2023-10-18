@@ -59,8 +59,9 @@ func NewSubmitTaskEventRequest() (request *SubmitTaskEventRequest) {
 func NewSubmitTaskEventResponse() (response *SubmitTaskEventResponse) {
     response = &SubmitTaskEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitTaskEvent

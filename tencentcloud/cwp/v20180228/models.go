@@ -853,7 +853,7 @@ type AssetMachineDetail struct {
 	// Cpu数量
 	CpuSize *uint64 `json:"CpuSize,omitnil" name:"CpuSize"`
 
-	// Cpu使用率百分比
+	// Cpu负载
 	CpuLoad *string `json:"CpuLoad,omitnil" name:"CpuLoad"`
 
 	// 防护级别：0基础版，1专业版，2旗舰版，3普惠版
@@ -925,6 +925,14 @@ type AssetMachineDetail struct {
 	// 主机二外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil" name:"MachineExtraInfo"`
+
+	// CpuLoadVul
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuLoadVul *string `json:"CpuLoadVul,omitnil" name:"CpuLoadVul"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTime *string `json:"FirstTime,omitnil" name:"FirstTime"`
 }
 
 type AssetNetworkCardInfo struct {

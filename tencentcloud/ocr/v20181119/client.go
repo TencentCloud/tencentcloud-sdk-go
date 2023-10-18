@@ -59,8 +59,9 @@ func NewAdvertiseOCRRequest() (request *AdvertiseOCRRequest) {
 func NewAdvertiseOCRResponse() (response *AdvertiseOCRResponse) {
     response = &AdvertiseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AdvertiseOCR
@@ -141,8 +142,9 @@ func NewArithmeticOCRRequest() (request *ArithmeticOCRRequest) {
 func NewArithmeticOCRResponse() (response *ArithmeticOCRResponse) {
     response = &ArithmeticOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ArithmeticOCR
@@ -221,8 +223,9 @@ func NewBankCardOCRRequest() (request *BankCardOCRRequest) {
 func NewBankCardOCRResponse() (response *BankCardOCRResponse) {
     response = &BankCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BankCardOCR
@@ -301,8 +304,9 @@ func NewBankSlipOCRRequest() (request *BankSlipOCRRequest) {
 func NewBankSlipOCRResponse() (response *BankSlipOCRResponse) {
     response = &BankSlipOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BankSlipOCR
@@ -375,8 +379,9 @@ func NewBizLicenseOCRRequest() (request *BizLicenseOCRRequest) {
 func NewBizLicenseOCRResponse() (response *BizLicenseOCRResponse) {
     response = &BizLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BizLicenseOCR
@@ -451,8 +456,9 @@ func NewBusInvoiceOCRRequest() (request *BusInvoiceOCRRequest) {
 func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
     response = &BusInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BusInvoiceOCR
@@ -523,8 +529,9 @@ func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
 func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
     response = &BusinessCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BusinessCardOCR
@@ -601,8 +608,9 @@ func NewCarInvoiceOCRRequest() (request *CarInvoiceOCRRequest) {
 func NewCarInvoiceOCRResponse() (response *CarInvoiceOCRResponse) {
     response = &CarInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CarInvoiceOCR
@@ -675,8 +683,9 @@ func NewClassifyDetectOCRRequest() (request *ClassifyDetectOCRRequest) {
 func NewClassifyDetectOCRResponse() (response *ClassifyDetectOCRResponse) {
     response = &ClassifyDetectOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClassifyDetectOCR
@@ -753,8 +762,9 @@ func NewCreateAIFormTaskRequest() (request *CreateAIFormTaskRequest) {
 func NewCreateAIFormTaskResponse() (response *CreateAIFormTaskResponse) {
     response = &CreateAIFormTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAIFormTask
@@ -815,8 +825,9 @@ func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
 func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
     response = &DriverLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DriverLicenseOCR
@@ -931,8 +942,9 @@ func NewDutyPaidProofOCRRequest() (request *DutyPaidProofOCRRequest) {
 func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
     response = &DutyPaidProofOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DutyPaidProofOCR
@@ -1003,8 +1015,9 @@ func NewEduPaperOCRRequest() (request *EduPaperOCRRequest) {
 func NewEduPaperOCRResponse() (response *EduPaperOCRResponse) {
     response = &EduPaperOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EduPaperOCR
@@ -1081,8 +1094,9 @@ func NewEnglishOCRRequest() (request *EnglishOCRRequest) {
 func NewEnglishOCRResponse() (response *EnglishOCRResponse) {
     response = &EnglishOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnglishOCR
@@ -1161,8 +1175,9 @@ func NewEnterpriseLicenseOCRRequest() (request *EnterpriseLicenseOCRRequest) {
 func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) {
     response = &EnterpriseLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnterpriseLicenseOCR
@@ -1233,8 +1248,9 @@ func NewEstateCertOCRRequest() (request *EstateCertOCRRequest) {
 func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
     response = &EstateCertOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EstateCertOCR
@@ -1311,8 +1327,9 @@ func NewFinanBillOCRRequest() (request *FinanBillOCRRequest) {
 func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
     response = &FinanBillOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FinanBillOCR
@@ -1385,8 +1402,9 @@ func NewFinanBillSliceOCRRequest() (request *FinanBillSliceOCRRequest) {
 func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
     response = &FinanBillSliceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FinanBillSliceOCR
@@ -1459,8 +1477,9 @@ func NewFlightInvoiceOCRRequest() (request *FlightInvoiceOCRRequest) {
 func NewFlightInvoiceOCRResponse() (response *FlightInvoiceOCRResponse) {
     response = &FlightInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FlightInvoiceOCR
@@ -1531,8 +1550,9 @@ func NewFormulaOCRRequest() (request *FormulaOCRRequest) {
 func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
     response = &FormulaOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FormulaOCR
@@ -1609,8 +1629,9 @@ func NewGeneralAccurateOCRRequest() (request *GeneralAccurateOCRRequest) {
 func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
     response = &GeneralAccurateOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GeneralAccurateOCR
@@ -1935,8 +1956,9 @@ func NewGeneralBasicOCRRequest() (request *GeneralBasicOCRRequest) {
 func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
     response = &GeneralBasicOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GeneralBasicOCR
@@ -2253,8 +2275,9 @@ func NewGeneralEfficientOCRRequest() (request *GeneralEfficientOCRRequest) {
 func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
     response = &GeneralEfficientOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GeneralEfficientOCR
@@ -2567,8 +2590,9 @@ func NewGeneralFastOCRRequest() (request *GeneralFastOCRRequest) {
 func NewGeneralFastOCRResponse() (response *GeneralFastOCRResponse) {
     response = &GeneralFastOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GeneralFastOCR
@@ -2647,8 +2671,9 @@ func NewGeneralHandwritingOCRRequest() (request *GeneralHandwritingOCRRequest) {
 func NewGeneralHandwritingOCRResponse() (response *GeneralHandwritingOCRResponse) {
     response = &GeneralHandwritingOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GeneralHandwritingOCR
@@ -2731,8 +2756,9 @@ func NewGetTaskStateRequest() (request *GetTaskStateRequest) {
 func NewGetTaskStateResponse() (response *GetTaskStateResponse) {
     response = &GetTaskStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTaskState
@@ -2781,8 +2807,9 @@ func NewHKIDCardOCRRequest() (request *HKIDCardOCRRequest) {
 func NewHKIDCardOCRResponse() (response *HKIDCardOCRResponse) {
     response = &HKIDCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // HKIDCardOCR
@@ -2853,8 +2880,9 @@ func NewHmtResidentPermitOCRRequest() (request *HmtResidentPermitOCRRequest) {
 func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) {
     response = &HmtResidentPermitOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // HmtResidentPermitOCR
@@ -2931,8 +2959,9 @@ func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
 func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
     response = &IDCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IDCardOCR
@@ -3211,8 +3240,9 @@ func NewImageEnhancementRequest() (request *ImageEnhancementRequest) {
 func NewImageEnhancementResponse() (response *ImageEnhancementResponse) {
     response = &ImageEnhancementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageEnhancement
@@ -3287,8 +3317,9 @@ func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
 func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
     response = &InstitutionOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InstitutionOCR
@@ -3361,8 +3392,9 @@ func NewInsuranceBillOCRRequest() (request *InsuranceBillOCRRequest) {
 func NewInsuranceBillOCRResponse() (response *InsuranceBillOCRResponse) {
     response = &InsuranceBillOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InsuranceBillOCR
@@ -3439,8 +3471,9 @@ func NewInvoiceGeneralOCRRequest() (request *InvoiceGeneralOCRRequest) {
 func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
     response = &InvoiceGeneralOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvoiceGeneralOCR
@@ -3511,8 +3544,9 @@ func NewLicensePlateOCRRequest() (request *LicensePlateOCRRequest) {
 func NewLicensePlateOCRResponse() (response *LicensePlateOCRResponse) {
     response = &LicensePlateOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LicensePlateOCR
@@ -3585,8 +3619,9 @@ func NewMLIDCardOCRRequest() (request *MLIDCardOCRRequest) {
 func NewMLIDCardOCRResponse() (response *MLIDCardOCRResponse) {
     response = &MLIDCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MLIDCardOCR
@@ -3655,8 +3690,9 @@ func NewMLIDPassportOCRRequest() (request *MLIDPassportOCRRequest) {
 func NewMLIDPassportOCRResponse() (response *MLIDPassportOCRResponse) {
     response = &MLIDPassportOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MLIDPassportOCR
@@ -3729,8 +3765,9 @@ func NewMainlandPermitOCRRequest() (request *MainlandPermitOCRRequest) {
 func NewMainlandPermitOCRResponse() (response *MainlandPermitOCRResponse) {
     response = &MainlandPermitOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MainlandPermitOCR
@@ -3801,8 +3838,9 @@ func NewMixedInvoiceDetectRequest() (request *MixedInvoiceDetectRequest) {
 func NewMixedInvoiceDetectResponse() (response *MixedInvoiceDetectResponse) {
     response = &MixedInvoiceDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MixedInvoiceDetect
@@ -3869,8 +3907,9 @@ func NewMixedInvoiceOCRRequest() (request *MixedInvoiceOCRRequest) {
 func NewMixedInvoiceOCRResponse() (response *MixedInvoiceOCRResponse) {
     response = &MixedInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MixedInvoiceOCR
@@ -3945,8 +3984,9 @@ func NewOrgCodeCertOCRRequest() (request *OrgCodeCertOCRRequest) {
 func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
     response = &OrgCodeCertOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OrgCodeCertOCR
@@ -4017,8 +4057,9 @@ func NewPassportOCRRequest() (request *PassportOCRRequest) {
 func NewPassportOCRResponse() (response *PassportOCRResponse) {
     response = &PassportOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PassportOCR
@@ -4093,8 +4134,9 @@ func NewPermitOCRRequest() (request *PermitOCRRequest) {
 func NewPermitOCRResponse() (response *PermitOCRResponse) {
     response = &PermitOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PermitOCR
@@ -4165,8 +4207,9 @@ func NewPropOwnerCertOCRRequest() (request *PropOwnerCertOCRRequest) {
 func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
     response = &PropOwnerCertOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PropOwnerCertOCR
@@ -4247,8 +4290,9 @@ func NewQrcodeOCRRequest() (request *QrcodeOCRRequest) {
 func NewQrcodeOCRResponse() (response *QrcodeOCRResponse) {
     response = &QrcodeOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QrcodeOCR
@@ -4331,8 +4375,9 @@ func NewQuotaInvoiceOCRRequest() (request *QuotaInvoiceOCRRequest) {
 func NewQuotaInvoiceOCRResponse() (response *QuotaInvoiceOCRResponse) {
     response = &QuotaInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QuotaInvoiceOCR
@@ -4403,8 +4448,9 @@ func NewRecognizeContainerOCRRequest() (request *RecognizeContainerOCRRequest) {
 func NewRecognizeContainerOCRResponse() (response *RecognizeContainerOCRResponse) {
     response = &RecognizeContainerOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeContainerOCR
@@ -4471,8 +4517,9 @@ func NewRecognizeGeneralInvoiceRequest() (request *RecognizeGeneralInvoiceReques
 func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResponse) {
     response = &RecognizeGeneralInvoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeGeneralInvoice
@@ -5103,8 +5150,9 @@ func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest)
 func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRResponse) {
     response = &RecognizeHealthCodeOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeHealthCodeOCR
@@ -5179,8 +5227,9 @@ func NewRecognizeIndonesiaIDCardOCRRequest() (request *RecognizeIndonesiaIDCardO
 func NewRecognizeIndonesiaIDCardOCRResponse() (response *RecognizeIndonesiaIDCardOCRResponse) {
     response = &RecognizeIndonesiaIDCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeIndonesiaIDCardOCR
@@ -5251,8 +5300,9 @@ func NewRecognizeMedicalInvoiceOCRRequest() (request *RecognizeMedicalInvoiceOCR
 func NewRecognizeMedicalInvoiceOCRResponse() (response *RecognizeMedicalInvoiceOCRResponse) {
     response = &RecognizeMedicalInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeMedicalInvoiceOCR
@@ -5327,8 +5377,9 @@ func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiIt
 func NewRecognizeOnlineTaxiItineraryOCRResponse() (response *RecognizeOnlineTaxiItineraryOCRResponse) {
     response = &RecognizeOnlineTaxiItineraryOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeOnlineTaxiItineraryOCR
@@ -5399,8 +5450,9 @@ func NewRecognizePhilippinesDrivingLicenseOCRRequest() (request *RecognizePhilip
 func NewRecognizePhilippinesDrivingLicenseOCRResponse() (response *RecognizePhilippinesDrivingLicenseOCRResponse) {
     response = &RecognizePhilippinesDrivingLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePhilippinesDrivingLicenseOCR
@@ -5463,8 +5515,9 @@ func NewRecognizePhilippinesSssIDOCRRequest() (request *RecognizePhilippinesSssI
 func NewRecognizePhilippinesSssIDOCRResponse() (response *RecognizePhilippinesSssIDOCRResponse) {
     response = &RecognizePhilippinesSssIDOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePhilippinesSssIDOCR
@@ -5527,8 +5580,9 @@ func NewRecognizePhilippinesTinIDOCRRequest() (request *RecognizePhilippinesTinI
 func NewRecognizePhilippinesTinIDOCRResponse() (response *RecognizePhilippinesTinIDOCRResponse) {
     response = &RecognizePhilippinesTinIDOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePhilippinesTinIDOCR
@@ -5591,8 +5645,9 @@ func NewRecognizePhilippinesUMIDOCRRequest() (request *RecognizePhilippinesUMIDO
 func NewRecognizePhilippinesUMIDOCRResponse() (response *RecognizePhilippinesUMIDOCRResponse) {
     response = &RecognizePhilippinesUMIDOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePhilippinesUMIDOCR
@@ -5655,8 +5710,9 @@ func NewRecognizePhilippinesVoteIDOCRRequest() (request *RecognizePhilippinesVot
 func NewRecognizePhilippinesVoteIDOCRResponse() (response *RecognizePhilippinesVoteIDOCRResponse) {
     response = &RecognizePhilippinesVoteIDOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePhilippinesVoteIDOCR
@@ -5727,8 +5783,9 @@ func NewRecognizeTableAccurateOCRRequest() (request *RecognizeTableAccurateOCRRe
 func NewRecognizeTableAccurateOCRResponse() (response *RecognizeTableAccurateOCRResponse) {
     response = &RecognizeTableAccurateOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeTableAccurateOCR
@@ -5805,8 +5862,9 @@ func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
 func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
     response = &RecognizeTableOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeTableOCR
@@ -5883,8 +5941,9 @@ func NewRecognizeThaiIDCardOCRRequest() (request *RecognizeThaiIDCardOCRRequest)
 func NewRecognizeThaiIDCardOCRResponse() (response *RecognizeThaiIDCardOCRResponse) {
     response = &RecognizeThaiIDCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeThaiIDCardOCR
@@ -5963,8 +6022,9 @@ func NewRecognizeTravelCardOCRRequest() (request *RecognizeTravelCardOCRRequest)
 func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRResponse) {
     response = &RecognizeTravelCardOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeTravelCardOCR
@@ -6041,8 +6101,9 @@ func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
 func NewResidenceBookletOCRResponse() (response *ResidenceBookletOCRResponse) {
     response = &ResidenceBookletOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResidenceBookletOCR
@@ -6121,8 +6182,9 @@ func NewRideHailingDriverLicenseOCRRequest() (request *RideHailingDriverLicenseO
 func NewRideHailingDriverLicenseOCRResponse() (response *RideHailingDriverLicenseOCRResponse) {
     response = &RideHailingDriverLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RideHailingDriverLicenseOCR
@@ -6195,8 +6257,9 @@ func NewRideHailingTransportLicenseOCRRequest() (request *RideHailingTransportLi
 func NewRideHailingTransportLicenseOCRResponse() (response *RideHailingTransportLicenseOCRResponse) {
     response = &RideHailingTransportLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RideHailingTransportLicenseOCR
@@ -6269,8 +6332,9 @@ func NewSealOCRRequest() (request *SealOCRRequest) {
 func NewSealOCRResponse() (response *SealOCRResponse) {
     response = &SealOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SealOCR
@@ -6345,8 +6409,9 @@ func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
 func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
     response = &ShipInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ShipInvoiceOCR
@@ -6417,8 +6482,9 @@ func NewSmartStructuralOCRRequest() (request *SmartStructuralOCRRequest) {
 func NewSmartStructuralOCRResponse() (response *SmartStructuralOCRResponse) {
     response = &SmartStructuralOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SmartStructuralOCR
@@ -6491,8 +6557,9 @@ func NewSmartStructuralOCRV2Request() (request *SmartStructuralOCRV2Request) {
 func NewSmartStructuralOCRV2Response() (response *SmartStructuralOCRV2Response) {
     response = &SmartStructuralOCRV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SmartStructuralOCRV2
@@ -6563,8 +6630,9 @@ func NewTableOCRRequest() (request *TableOCRRequest) {
 func NewTableOCRResponse() (response *TableOCRResponse) {
     response = &TableOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TableOCR
@@ -6651,8 +6719,9 @@ func NewTaxiInvoiceOCRRequest() (request *TaxiInvoiceOCRRequest) {
 func NewTaxiInvoiceOCRResponse() (response *TaxiInvoiceOCRResponse) {
     response = &TaxiInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TaxiInvoiceOCR
@@ -6725,8 +6794,9 @@ func NewTextDetectRequest() (request *TextDetectRequest) {
 func NewTextDetectResponse() (response *TextDetectResponse) {
     response = &TextDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextDetect
@@ -6791,8 +6861,9 @@ func NewTollInvoiceOCRRequest() (request *TollInvoiceOCRRequest) {
 func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
     response = &TollInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TollInvoiceOCR
@@ -6865,8 +6936,9 @@ func NewTrainTicketOCRRequest() (request *TrainTicketOCRRequest) {
 func NewTrainTicketOCRResponse() (response *TrainTicketOCRResponse) {
     response = &TrainTicketOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TrainTicketOCR
@@ -6941,8 +7013,9 @@ func NewVatInvoiceOCRRequest() (request *VatInvoiceOCRRequest) {
 func NewVatInvoiceOCRResponse() (response *VatInvoiceOCRResponse) {
     response = &VatInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VatInvoiceOCR
@@ -7025,8 +7098,9 @@ func NewVatInvoiceVerifyRequest() (request *VatInvoiceVerifyRequest) {
 func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
     response = &VatInvoiceVerifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VatInvoiceVerify
@@ -7103,8 +7177,9 @@ func NewVatInvoiceVerifyNewRequest() (request *VatInvoiceVerifyNewRequest) {
 func NewVatInvoiceVerifyNewResponse() (response *VatInvoiceVerifyNewResponse) {
     response = &VatInvoiceVerifyNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VatInvoiceVerifyNew
@@ -7191,8 +7266,9 @@ func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
 func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
     response = &VatRollInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VatRollInvoiceOCR
@@ -7265,8 +7341,9 @@ func NewVehicleLicenseOCRRequest() (request *VehicleLicenseOCRRequest) {
 func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
     response = &VehicleLicenseOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VehicleLicenseOCR
@@ -7373,8 +7450,9 @@ func NewVehicleRegCertOCRRequest() (request *VehicleRegCertOCRRequest) {
 func NewVehicleRegCertOCRResponse() (response *VehicleRegCertOCRResponse) {
     response = &VehicleRegCertOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VehicleRegCertOCR
@@ -7447,8 +7525,9 @@ func NewVerifyOfdVatInvoiceOCRRequest() (request *VerifyOfdVatInvoiceOCRRequest)
 func NewVerifyOfdVatInvoiceOCRResponse() (response *VerifyOfdVatInvoiceOCRResponse) {
     response = &VerifyOfdVatInvoiceOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyOfdVatInvoiceOCR
@@ -7511,8 +7590,9 @@ func NewVinOCRRequest() (request *VinOCRRequest) {
 func NewVinOCRResponse() (response *VinOCRResponse) {
     response = &VinOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VinOCR
@@ -7579,8 +7659,9 @@ func NewWaybillOCRRequest() (request *WaybillOCRRequest) {
 func NewWaybillOCRResponse() (response *WaybillOCRResponse) {
     response = &WaybillOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // WaybillOCR

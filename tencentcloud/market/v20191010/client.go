@@ -59,8 +59,9 @@ func NewFlowProductRemindRequest() (request *FlowProductRemindRequest) {
 func NewFlowProductRemindResponse() (response *FlowProductRemindResponse) {
     response = &FlowProductRemindResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FlowProductRemind
@@ -101,8 +102,9 @@ func NewGetUsagePlanUsageAmountRequest() (request *GetUsagePlanUsageAmountReques
 func NewGetUsagePlanUsageAmountResponse() (response *GetUsagePlanUsageAmountResponse) {
     response = &GetUsagePlanUsageAmountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUsagePlanUsageAmount

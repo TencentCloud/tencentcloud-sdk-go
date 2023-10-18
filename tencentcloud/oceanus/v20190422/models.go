@@ -2468,12 +2468,33 @@ type ExpertModeConfiguration struct {
 
 // Predefined struct for user
 type FetchSqlGatewayStatementResultRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
+	// Sql Gateway会话ID
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+
+	// sql的查询id
+	OperationHandleId *string `json:"OperationHandleId,omitnil" name:"OperationHandleId"`
+
+	// 下一条结果的获取url，首次获取执行结果时可以为空，当获取下一批查询结果时需要传递
+	ResultUri *string `json:"ResultUri,omitnil" name:"ResultUri"`
 }
 
 type FetchSqlGatewayStatementResultRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// Sql Gateway会话ID
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+
+	// sql的查询id
+	OperationHandleId *string `json:"OperationHandleId,omitnil" name:"OperationHandleId"`
+
+	// 下一条结果的获取url，首次获取执行结果时可以为空，当获取下一批查询结果时需要传递
+	ResultUri *string `json:"ResultUri,omitnil" name:"ResultUri"`
 }
 
 func (r *FetchSqlGatewayStatementResultRequest) ToJsonString() string {
@@ -2488,7 +2509,10 @@ func (r *FetchSqlGatewayStatementResultRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "SessionId")
+	delete(f, "OperationHandleId")
+	delete(f, "ResultUri")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchSqlGatewayStatementResultRequest has unknown keys!", "")
 	}
@@ -2497,6 +2521,30 @@ func (r *FetchSqlGatewayStatementResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchSqlGatewayStatementResultResponseParams struct {
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage []*string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
+
+	// 返回类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
+
+	// 是否DQL结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQueryResult *bool `json:"IsQueryResult,omitnil" name:"IsQueryResult"`
+
+	// 结果类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultKind *string `json:"ResultKind,omitnil" name:"ResultKind"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results *StatementResult `json:"Results,omitnil" name:"Results"`
+
+	// 下一次请求的uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextResultUri *string `json:"NextResultUri,omitnil" name:"NextResultUri"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -2838,6 +2886,20 @@ type LogContent struct {
 	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 }
 
+type LogicalType struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 是否允许为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NullAble *bool `json:"NullAble,omitnil" name:"NullAble"`
+
+	// 长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Length *int64 `json:"Length,omitnil" name:"Length"`
+}
+
 // Predefined struct for user
 type ModifyJobRequestParams struct {
 	// 作业Id
@@ -3148,6 +3210,30 @@ type ResourceRefJobInfo struct {
 	ResourceVersion *int64 `json:"ResourceVersion,omitnil" name:"ResourceVersion"`
 }
 
+type ResultColumn struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 本地类型描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicalType *LogicalType `json:"LogicalType,omitnil" name:"LogicalType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+}
+
+type ResultData struct {
+	// 操作类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *string `json:"Kind,omitnil" name:"Kind"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*string `json:"Fields,omitnil" name:"Fields"`
+}
+
 type RoleAuth struct {
 	// 用户 AppID
 	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
@@ -3280,12 +3366,27 @@ func (r *RunJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunSqlGatewayStatementRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
+	// 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 type RunSqlGatewayStatementRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 func (r *RunSqlGatewayStatementRequest) ToJsonString() string {
@@ -3300,7 +3401,9 @@ func (r *RunSqlGatewayStatementRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "Sql")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunSqlGatewayStatementRequest has unknown keys!", "")
 	}
@@ -3309,6 +3412,16 @@ func (r *RunSqlGatewayStatementRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunSqlGatewayStatementResponseParams struct {
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage []*string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
+
+	// 会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+
+	// 返回执行id，可以根据该执行id和会话id获取执行结果
+	OperationHandleId *string `json:"OperationHandleId,omitnil" name:"OperationHandleId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -3455,6 +3568,20 @@ type SqlGatewayItem struct {
 	// 配置参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil" name:"Properties"`
+}
+
+type StatementResult struct {
+	// 返回结果列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*ResultColumn `json:"Columns,omitnil" name:"Columns"`
+
+	// 格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowFormat *string `json:"RowFormat,omitnil" name:"RowFormat"`
+
+	// 结果值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ResultData `json:"Data,omitnil" name:"Data"`
 }
 
 type StopJobDescription struct {

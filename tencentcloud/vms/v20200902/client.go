@@ -59,8 +59,9 @@ func NewSendCodeVoiceRequest() (request *SendCodeVoiceRequest) {
 func NewSendCodeVoiceResponse() (response *SendCodeVoiceResponse) {
     response = &SendCodeVoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendCodeVoice
@@ -153,8 +154,9 @@ func NewSendTtsVoiceRequest() (request *SendTtsVoiceRequest) {
 func NewSendTtsVoiceResponse() (response *SendTtsVoiceResponse) {
     response = &SendTtsVoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendTtsVoice

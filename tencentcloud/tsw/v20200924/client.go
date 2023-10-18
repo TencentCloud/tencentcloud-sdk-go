@@ -59,8 +59,9 @@ func NewDescribeAgentShellRequest() (request *DescribeAgentShellRequest) {
 func NewDescribeAgentShellResponse() (response *DescribeAgentShellResponse) {
     response = &DescribeAgentShellResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentShell

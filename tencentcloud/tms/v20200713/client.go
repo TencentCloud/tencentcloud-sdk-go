@@ -59,8 +59,9 @@ func NewAccountTipoffAccessRequest() (request *AccountTipoffAccessRequest) {
 func NewAccountTipoffAccessResponse() (response *AccountTipoffAccessResponse) {
     response = &AccountTipoffAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AccountTipoffAccess
@@ -129,8 +130,9 @@ func NewDescribeTextLibRequest() (request *DescribeTextLibRequest) {
 func NewDescribeTextLibResponse() (response *DescribeTextLibResponse) {
     response = &DescribeTextLibResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTextLib
@@ -191,8 +193,9 @@ func NewDescribeTextStatRequest() (request *DescribeTextStatRequest) {
 func NewDescribeTextStatResponse() (response *DescribeTextStatResponse) {
     response = &DescribeTextStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTextStat
@@ -245,8 +248,9 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
 func NewTextModerationResponse() (response *TextModerationResponse) {
     response = &TextModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextModeration

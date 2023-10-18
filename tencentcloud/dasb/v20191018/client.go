@@ -59,8 +59,9 @@ func NewAddDeviceGroupMembersRequest() (request *AddDeviceGroupMembersRequest) {
 func NewAddDeviceGroupMembersResponse() (response *AddDeviceGroupMembersResponse) {
     response = &AddDeviceGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddDeviceGroupMembers
@@ -119,8 +120,9 @@ func NewAddUserGroupMembersRequest() (request *AddUserGroupMembersRequest) {
 func NewAddUserGroupMembersResponse() (response *AddUserGroupMembersResponse) {
     response = &AddUserGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddUserGroupMembers
@@ -177,8 +179,9 @@ func NewBindDeviceAccountPasswordRequest() (request *BindDeviceAccountPasswordRe
 func NewBindDeviceAccountPasswordResponse() (response *BindDeviceAccountPasswordResponse) {
     response = &BindDeviceAccountPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDeviceAccountPassword
@@ -231,8 +234,9 @@ func NewBindDeviceAccountPrivateKeyRequest() (request *BindDeviceAccountPrivateK
 func NewBindDeviceAccountPrivateKeyResponse() (response *BindDeviceAccountPrivateKeyResponse) {
     response = &BindDeviceAccountPrivateKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDeviceAccountPrivateKey
@@ -285,8 +289,9 @@ func NewBindDeviceResourceRequest() (request *BindDeviceResourceRequest) {
 func NewBindDeviceResourceResponse() (response *BindDeviceResourceResponse) {
     response = &BindDeviceResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDeviceResource
@@ -371,8 +376,9 @@ func NewCreateAclRequest() (request *CreateAclRequest) {
 func NewCreateAclResponse() (response *CreateAclResponse) {
     response = &CreateAclResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAcl
@@ -441,8 +447,9 @@ func NewCreateAssetSyncJobRequest() (request *CreateAssetSyncJobRequest) {
 func NewCreateAssetSyncJobResponse() (response *CreateAssetSyncJobResponse) {
     response = &CreateAssetSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAssetSyncJob
@@ -527,8 +534,9 @@ func NewCreateCmdTemplateRequest() (request *CreateCmdTemplateRequest) {
 func NewCreateCmdTemplateResponse() (response *CreateCmdTemplateResponse) {
     response = &CreateCmdTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCmdTemplate
@@ -613,8 +621,9 @@ func NewCreateDeviceAccountRequest() (request *CreateDeviceAccountRequest) {
 func NewCreateDeviceAccountResponse() (response *CreateDeviceAccountResponse) {
     response = &CreateDeviceAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDeviceAccount
@@ -689,8 +698,9 @@ func NewCreateDeviceGroupRequest() (request *CreateDeviceGroupRequest) {
 func NewCreateDeviceGroupResponse() (response *CreateDeviceGroupResponse) {
     response = &CreateDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDeviceGroup
@@ -773,8 +783,9 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
 func NewCreateResourceResponse() (response *CreateResourceResponse) {
     response = &CreateResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateResource
@@ -821,8 +832,9 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
 func NewCreateUserResponse() (response *CreateUserResponse) {
     response = &CreateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUser
@@ -907,8 +919,9 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
 func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
     response = &CreateUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserGroup
@@ -967,8 +980,9 @@ func NewDeleteAclsRequest() (request *DeleteAclsRequest) {
 func NewDeleteAclsResponse() (response *DeleteAclsResponse) {
     response = &DeleteAclsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAcls
@@ -1021,8 +1035,9 @@ func NewDeleteCmdTemplatesRequest() (request *DeleteCmdTemplatesRequest) {
 func NewDeleteCmdTemplatesResponse() (response *DeleteCmdTemplatesResponse) {
     response = &DeleteCmdTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCmdTemplates
@@ -1075,8 +1090,9 @@ func NewDeleteDeviceAccountsRequest() (request *DeleteDeviceAccountsRequest) {
 func NewDeleteDeviceAccountsResponse() (response *DeleteDeviceAccountsResponse) {
     response = &DeleteDeviceAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDeviceAccounts
@@ -1131,8 +1147,9 @@ func NewDeleteDeviceGroupMembersRequest() (request *DeleteDeviceGroupMembersRequ
 func NewDeleteDeviceGroupMembersResponse() (response *DeleteDeviceGroupMembersResponse) {
     response = &DeleteDeviceGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDeviceGroupMembers
@@ -1189,8 +1206,9 @@ func NewDeleteDeviceGroupsRequest() (request *DeleteDeviceGroupsRequest) {
 func NewDeleteDeviceGroupsResponse() (response *DeleteDeviceGroupsResponse) {
     response = &DeleteDeviceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDeviceGroups
@@ -1245,8 +1263,9 @@ func NewDeleteDevicesRequest() (request *DeleteDevicesRequest) {
 func NewDeleteDevicesResponse() (response *DeleteDevicesResponse) {
     response = &DeleteDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDevices
@@ -1301,8 +1320,9 @@ func NewDeleteUserGroupMembersRequest() (request *DeleteUserGroupMembersRequest)
 func NewDeleteUserGroupMembersResponse() (response *DeleteUserGroupMembersResponse) {
     response = &DeleteUserGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserGroupMembers
@@ -1357,8 +1377,9 @@ func NewDeleteUserGroupsRequest() (request *DeleteUserGroupsRequest) {
 func NewDeleteUserGroupsResponse() (response *DeleteUserGroupsResponse) {
     response = &DeleteUserGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserGroups
@@ -1413,8 +1434,9 @@ func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
 func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
     response = &DeleteUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUsers
@@ -1467,8 +1489,9 @@ func NewDeployResourceRequest() (request *DeployResourceRequest) {
 func NewDeployResourceResponse() (response *DeployResourceResponse) {
     response = &DeployResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeployResource
@@ -1527,8 +1550,9 @@ func NewDescribeAclsRequest() (request *DescribeAclsRequest) {
 func NewDescribeAclsResponse() (response *DescribeAclsResponse) {
     response = &DescribeAclsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAcls
@@ -1583,8 +1607,9 @@ func NewDescribeAssetSyncStatusRequest() (request *DescribeAssetSyncStatusReques
 func NewDescribeAssetSyncStatusResponse() (response *DescribeAssetSyncStatusResponse) {
     response = &DescribeAssetSyncStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetSyncStatus
@@ -1635,8 +1660,9 @@ func NewDescribeCmdTemplatesRequest() (request *DescribeCmdTemplatesRequest) {
 func NewDescribeCmdTemplatesResponse() (response *DescribeCmdTemplatesResponse) {
     response = &DescribeCmdTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmdTemplates
@@ -1689,8 +1715,9 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
 func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) {
     response = &DescribeDasbImageIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDasbImageIds
@@ -1743,8 +1770,9 @@ func NewDescribeDeviceAccountsRequest() (request *DescribeDeviceAccountsRequest)
 func NewDescribeDeviceAccountsResponse() (response *DescribeDeviceAccountsResponse) {
     response = &DescribeDeviceAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceAccounts
@@ -1797,8 +1825,9 @@ func NewDescribeDeviceGroupMembersRequest() (request *DescribeDeviceGroupMembers
 func NewDescribeDeviceGroupMembersResponse() (response *DescribeDeviceGroupMembersResponse) {
     response = &DescribeDeviceGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceGroupMembers
@@ -1857,8 +1886,9 @@ func NewDescribeDeviceGroupsRequest() (request *DescribeDeviceGroupsRequest) {
 func NewDescribeDeviceGroupsResponse() (response *DescribeDeviceGroupsResponse) {
     response = &DescribeDeviceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceGroups
@@ -1913,8 +1943,9 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
 func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     response = &DescribeDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevices
@@ -1969,8 +2000,9 @@ func NewDescribeLoginEventRequest() (request *DescribeLoginEventRequest) {
 func NewDescribeLoginEventResponse() (response *DescribeLoginEventResponse) {
     response = &DescribeLoginEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoginEvent
@@ -2023,8 +2055,9 @@ func NewDescribeOperationEventRequest() (request *DescribeOperationEventRequest)
 func NewDescribeOperationEventResponse() (response *DescribeOperationEventResponse) {
     response = &DescribeOperationEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOperationEvent
@@ -2079,8 +2112,9 @@ func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
 func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
     response = &DescribeResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResources
@@ -2131,8 +2165,9 @@ func NewDescribeUserGroupMembersRequest() (request *DescribeUserGroupMembersRequ
 func NewDescribeUserGroupMembersResponse() (response *DescribeUserGroupMembersResponse) {
     response = &DescribeUserGroupMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserGroupMembers
@@ -2187,8 +2222,9 @@ func NewDescribeUserGroupsRequest() (request *DescribeUserGroupsRequest) {
 func NewDescribeUserGroupsResponse() (response *DescribeUserGroupsResponse) {
     response = &DescribeUserGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserGroups
@@ -2243,8 +2279,9 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
 func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
     response = &DescribeUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsers
@@ -2299,8 +2336,9 @@ func NewImportExternalDeviceRequest() (request *ImportExternalDeviceRequest) {
 func NewImportExternalDeviceResponse() (response *ImportExternalDeviceResponse) {
     response = &ImportExternalDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportExternalDevice
@@ -2383,8 +2421,9 @@ func NewModifyAclRequest() (request *ModifyAclRequest) {
 func NewModifyAclResponse() (response *ModifyAclResponse) {
     response = &ModifyAclResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAcl
@@ -2459,8 +2498,9 @@ func NewModifyCmdTemplateRequest() (request *ModifyCmdTemplateRequest) {
 func NewModifyCmdTemplateResponse() (response *ModifyCmdTemplateResponse) {
     response = &ModifyCmdTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCmdTemplate
@@ -2547,8 +2587,9 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
 func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
     response = &ModifyDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDevice
@@ -2633,8 +2674,9 @@ func NewModifyDeviceGroupRequest() (request *ModifyDeviceGroupRequest) {
 func NewModifyDeviceGroupResponse() (response *ModifyDeviceGroupResponse) {
     response = &ModifyDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceGroup
@@ -2721,8 +2763,9 @@ func NewModifyResourceRequest() (request *ModifyResourceRequest) {
 func NewModifyResourceResponse() (response *ModifyResourceResponse) {
     response = &ModifyResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyResource
@@ -2779,8 +2822,9 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
 func NewModifyUserResponse() (response *ModifyUserResponse) {
     response = &ModifyUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUser
@@ -2865,8 +2909,9 @@ func NewResetDeviceAccountPasswordRequest() (request *ResetDeviceAccountPassword
 func NewResetDeviceAccountPasswordResponse() (response *ResetDeviceAccountPasswordResponse) {
     response = &ResetDeviceAccountPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetDeviceAccountPassword
@@ -2929,8 +2974,9 @@ func NewResetDeviceAccountPrivateKeyRequest() (request *ResetDeviceAccountPrivat
 func NewResetDeviceAccountPrivateKeyResponse() (response *ResetDeviceAccountPrivateKeyResponse) {
     response = &ResetDeviceAccountPrivateKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetDeviceAccountPrivateKey
@@ -2993,8 +3039,9 @@ func NewResetUserRequest() (request *ResetUserRequest) {
 func NewResetUserResponse() (response *ResetUserResponse) {
     response = &ResetUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetUser
@@ -3049,8 +3096,9 @@ func NewSearchAuditLogRequest() (request *SearchAuditLogRequest) {
 func NewSearchAuditLogResponse() (response *SearchAuditLogResponse) {
     response = &SearchAuditLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchAuditLog
@@ -3101,8 +3149,9 @@ func NewSearchCommandRequest() (request *SearchCommandRequest) {
 func NewSearchCommandResponse() (response *SearchCommandResponse) {
     response = &SearchCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchCommand
@@ -3153,8 +3202,9 @@ func NewSearchCommandBySidRequest() (request *SearchCommandBySidRequest) {
 func NewSearchCommandBySidResponse() (response *SearchCommandBySidResponse) {
     response = &SearchCommandBySidResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchCommandBySid
@@ -3205,8 +3255,9 @@ func NewSearchFileRequest() (request *SearchFileRequest) {
 func NewSearchFileResponse() (response *SearchFileResponse) {
     response = &SearchFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchFile
@@ -3257,8 +3308,9 @@ func NewSearchFileBySidRequest() (request *SearchFileBySidRequest) {
 func NewSearchFileBySidResponse() (response *SearchFileBySidResponse) {
     response = &SearchFileBySidResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchFileBySid
@@ -3309,8 +3361,9 @@ func NewSearchSessionRequest() (request *SearchSessionRequest) {
 func NewSearchSessionResponse() (response *SearchSessionResponse) {
     response = &SearchSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchSession
@@ -3361,8 +3414,9 @@ func NewSearchSessionCommandRequest() (request *SearchSessionCommandRequest) {
 func NewSearchSessionCommandResponse() (response *SearchSessionCommandResponse) {
     response = &SearchSessionCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchSessionCommand

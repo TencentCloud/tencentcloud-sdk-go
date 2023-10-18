@@ -23382,6 +23382,71 @@ type GeneralTaskParam struct {
 }
 
 // Predefined struct for user
+type GetFileInfoRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+}
+
+type GetFileInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+}
+
+func (r *GetFileInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFileInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FilePath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFileInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFileInfoResponseParams struct {
+	// 当前脚本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserFileInfo *UserFileInfo `json:"UserFileInfo,omitnil" name:"UserFileInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetFileInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFileInfoResponseParams `json:"Response"`
+}
+
+func (r *GetFileInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFileInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetIntegrationNodeColumnSchemaRequestParams struct {
 	// 字段示例（json格式）
 	ColumnContent *string `json:"ColumnContent,omitnil" name:"ColumnContent"`

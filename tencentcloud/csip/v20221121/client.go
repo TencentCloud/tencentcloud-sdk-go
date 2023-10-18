@@ -59,8 +59,9 @@ func NewAddNewBindRoleUserRequest() (request *AddNewBindRoleUserRequest) {
 func NewAddNewBindRoleUserResponse() (response *AddNewBindRoleUserResponse) {
     response = &AddNewBindRoleUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddNewBindRoleUser
@@ -101,8 +102,9 @@ func NewCreateDomainAndIpRequest() (request *CreateDomainAndIpRequest) {
 func NewCreateDomainAndIpResponse() (response *CreateDomainAndIpResponse) {
     response = &CreateDomainAndIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomainAndIp
@@ -149,8 +151,9 @@ func NewCreateRiskCenterScanTaskRequest() (request *CreateRiskCenterScanTaskRequ
 func NewCreateRiskCenterScanTaskResponse() (response *CreateRiskCenterScanTaskResponse) {
     response = &CreateRiskCenterScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRiskCenterScanTask
@@ -231,8 +234,9 @@ func NewDeleteDomainAndIpRequest() (request *DeleteDomainAndIpRequest) {
 func NewDeleteDomainAndIpResponse() (response *DeleteDomainAndIpResponse) {
     response = &DeleteDomainAndIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDomainAndIp
@@ -313,8 +317,9 @@ func NewDeleteRiskScanTaskRequest() (request *DeleteRiskScanTaskRequest) {
 func NewDeleteRiskScanTaskResponse() (response *DeleteRiskScanTaskResponse) {
     response = &DeleteRiskScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRiskScanTask
@@ -395,8 +400,9 @@ func NewDescribeCVMAssetInfoRequest() (request *DescribeCVMAssetInfoRequest) {
 func NewDescribeCVMAssetInfoResponse() (response *DescribeCVMAssetInfoResponse) {
     response = &DescribeCVMAssetInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCVMAssetInfo
@@ -477,8 +483,9 @@ func NewDescribeCVMAssetsRequest() (request *DescribeCVMAssetsRequest) {
 func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
     response = &DescribeCVMAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCVMAssets
@@ -559,8 +566,9 @@ func NewDescribeClusterPodAssetsRequest() (request *DescribeClusterPodAssetsRequ
 func NewDescribeClusterPodAssetsResponse() (response *DescribeClusterPodAssetsResponse) {
     response = &DescribeClusterPodAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterPodAssets
@@ -641,8 +649,9 @@ func NewDescribeDbAssetInfoRequest() (request *DescribeDbAssetInfoRequest) {
 func NewDescribeDbAssetInfoResponse() (response *DescribeDbAssetInfoResponse) {
     response = &DescribeDbAssetInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDbAssetInfo
@@ -723,8 +732,9 @@ func NewDescribeDbAssetsRequest() (request *DescribeDbAssetsRequest) {
 func NewDescribeDbAssetsResponse() (response *DescribeDbAssetsResponse) {
     response = &DescribeDbAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDbAssets
@@ -805,8 +815,9 @@ func NewDescribeDomainAssetsRequest() (request *DescribeDomainAssetsRequest) {
 func NewDescribeDomainAssetsResponse() (response *DescribeDomainAssetsResponse) {
     response = &DescribeDomainAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainAssets
@@ -887,8 +898,9 @@ func NewDescribeListenerListRequest() (request *DescribeListenerListRequest) {
 func NewDescribeListenerListResponse() (response *DescribeListenerListResponse) {
     response = &DescribeListenerListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeListenerList
@@ -969,8 +981,9 @@ func NewDescribePublicIpAssetsRequest() (request *DescribePublicIpAssetsRequest)
 func NewDescribePublicIpAssetsResponse() (response *DescribePublicIpAssetsResponse) {
     response = &DescribePublicIpAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicIpAssets
@@ -1051,8 +1064,9 @@ func NewDescribeRiskCenterAssetViewCFGRiskListRequest() (request *DescribeRiskCe
 func NewDescribeRiskCenterAssetViewCFGRiskListResponse() (response *DescribeRiskCenterAssetViewCFGRiskListResponse) {
     response = &DescribeRiskCenterAssetViewCFGRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterAssetViewCFGRiskList
@@ -1133,8 +1147,9 @@ func NewDescribeRiskCenterAssetViewPortRiskListRequest() (request *DescribeRiskC
 func NewDescribeRiskCenterAssetViewPortRiskListResponse() (response *DescribeRiskCenterAssetViewPortRiskListResponse) {
     response = &DescribeRiskCenterAssetViewPortRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterAssetViewPortRiskList
@@ -1215,8 +1230,9 @@ func NewDescribeRiskCenterAssetViewVULRiskListRequest() (request *DescribeRiskCe
 func NewDescribeRiskCenterAssetViewVULRiskListResponse() (response *DescribeRiskCenterAssetViewVULRiskListResponse) {
     response = &DescribeRiskCenterAssetViewVULRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterAssetViewVULRiskList
@@ -1297,8 +1313,9 @@ func NewDescribeRiskCenterAssetViewWeakPasswordRiskListRequest() (request *Descr
 func NewDescribeRiskCenterAssetViewWeakPasswordRiskListResponse() (response *DescribeRiskCenterAssetViewWeakPasswordRiskListResponse) {
     response = &DescribeRiskCenterAssetViewWeakPasswordRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterAssetViewWeakPasswordRiskList
@@ -1379,8 +1396,9 @@ func NewDescribeRiskCenterPortViewPortRiskListRequest() (request *DescribeRiskCe
 func NewDescribeRiskCenterPortViewPortRiskListResponse() (response *DescribeRiskCenterPortViewPortRiskListResponse) {
     response = &DescribeRiskCenterPortViewPortRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterPortViewPortRiskList
@@ -1461,8 +1479,9 @@ func NewDescribeRiskCenterServerRiskListRequest() (request *DescribeRiskCenterSe
 func NewDescribeRiskCenterServerRiskListResponse() (response *DescribeRiskCenterServerRiskListResponse) {
     response = &DescribeRiskCenterServerRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterServerRiskList
@@ -1543,8 +1562,9 @@ func NewDescribeRiskCenterVULViewVULRiskListRequest() (request *DescribeRiskCent
 func NewDescribeRiskCenterVULViewVULRiskListResponse() (response *DescribeRiskCenterVULViewVULRiskListResponse) {
     response = &DescribeRiskCenterVULViewVULRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterVULViewVULRiskList
@@ -1625,8 +1645,9 @@ func NewDescribeRiskCenterWebsiteRiskListRequest() (request *DescribeRiskCenterW
 func NewDescribeRiskCenterWebsiteRiskListResponse() (response *DescribeRiskCenterWebsiteRiskListResponse) {
     response = &DescribeRiskCenterWebsiteRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRiskCenterWebsiteRiskList
@@ -1707,8 +1728,9 @@ func NewDescribeScanReportListRequest() (request *DescribeScanReportListRequest)
 func NewDescribeScanReportListResponse() (response *DescribeScanReportListResponse) {
     response = &DescribeScanReportListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanReportList
@@ -1789,8 +1811,9 @@ func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
 func NewDescribeScanTaskListResponse() (response *DescribeScanTaskListResponse) {
     response = &DescribeScanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskList
@@ -1871,8 +1894,9 @@ func NewDescribeSearchBugInfoRequest() (request *DescribeSearchBugInfoRequest) {
 func NewDescribeSearchBugInfoResponse() (response *DescribeSearchBugInfoResponse) {
     response = &DescribeSearchBugInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSearchBugInfo
@@ -1953,8 +1977,9 @@ func NewDescribeSubnetAssetsRequest() (request *DescribeSubnetAssetsRequest) {
 func NewDescribeSubnetAssetsResponse() (response *DescribeSubnetAssetsResponse) {
     response = &DescribeSubnetAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnetAssets
@@ -2035,8 +2060,9 @@ func NewDescribeTaskLogListRequest() (request *DescribeTaskLogListRequest) {
 func NewDescribeTaskLogListResponse() (response *DescribeTaskLogListResponse) {
     response = &DescribeTaskLogListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskLogList
@@ -2117,8 +2143,9 @@ func NewDescribeTaskLogURLRequest() (request *DescribeTaskLogURLRequest) {
 func NewDescribeTaskLogURLResponse() (response *DescribeTaskLogURLResponse) {
     response = &DescribeTaskLogURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskLogURL
@@ -2199,8 +2226,9 @@ func NewDescribeVpcAssetsRequest() (request *DescribeVpcAssetsRequest) {
 func NewDescribeVpcAssetsResponse() (response *DescribeVpcAssetsResponse) {
     response = &DescribeVpcAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpcAssets
@@ -2281,8 +2309,9 @@ func NewModifyRiskCenterRiskStatusRequest() (request *ModifyRiskCenterRiskStatus
 func NewModifyRiskCenterRiskStatusResponse() (response *ModifyRiskCenterRiskStatusResponse) {
     response = &ModifyRiskCenterRiskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRiskCenterRiskStatus
@@ -2363,8 +2392,9 @@ func NewStopRiskCenterTaskRequest() (request *StopRiskCenterTaskRequest) {
 func NewStopRiskCenterTaskResponse() (response *StopRiskCenterTaskResponse) {
     response = &StopRiskCenterTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopRiskCenterTask

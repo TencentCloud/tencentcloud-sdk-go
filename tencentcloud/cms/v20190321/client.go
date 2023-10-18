@@ -59,8 +59,9 @@ func NewCreateKeywordsSamplesRequest() (request *CreateKeywordsSamplesRequest) {
 func NewCreateKeywordsSamplesResponse() (response *CreateKeywordsSamplesResponse) {
     response = &CreateKeywordsSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateKeywordsSamples
@@ -135,8 +136,9 @@ func NewDeleteLibSamplesRequest() (request *DeleteLibSamplesRequest) {
 func NewDeleteLibSamplesResponse() (response *DeleteLibSamplesResponse) {
     response = &DeleteLibSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLibSamples
@@ -211,8 +213,9 @@ func NewDescribeKeywordsLibsRequest() (request *DescribeKeywordsLibsRequest) {
 func NewDescribeKeywordsLibsResponse() (response *DescribeKeywordsLibsResponse) {
     response = &DescribeKeywordsLibsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKeywordsLibs
@@ -287,8 +290,9 @@ func NewDescribeLibSamplesRequest() (request *DescribeLibSamplesRequest) {
 func NewDescribeLibSamplesResponse() (response *DescribeLibSamplesResponse) {
     response = &DescribeLibSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLibSamples
@@ -363,8 +367,9 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
 func NewImageModerationResponse() (response *ImageModerationResponse) {
     response = &ImageModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageModeration
@@ -453,8 +458,9 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
 func NewTextModerationResponse() (response *TextModerationResponse) {
     response = &TextModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextModeration

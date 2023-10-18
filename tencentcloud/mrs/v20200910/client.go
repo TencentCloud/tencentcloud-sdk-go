@@ -59,8 +59,9 @@ func NewImageToClassRequest() (request *ImageToClassRequest) {
 func NewImageToClassResponse() (response *ImageToClassResponse) {
     response = &ImageToClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageToClass
@@ -151,8 +152,9 @@ func NewImageToObjectRequest() (request *ImageToObjectRequest) {
 func NewImageToObjectResponse() (response *ImageToObjectResponse) {
     response = &ImageToObjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageToObject
@@ -245,8 +247,9 @@ func NewTextToClassRequest() (request *TextToClassRequest) {
 func NewTextToClassResponse() (response *TextToClassResponse) {
     response = &TextToClassResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextToClass
@@ -335,8 +338,9 @@ func NewTextToObjectRequest() (request *TextToObjectRequest) {
 func NewTextToObjectResponse() (response *TextToObjectResponse) {
     response = &TextToObjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextToObject
@@ -435,8 +439,9 @@ func NewTurnPDFToObjectRequest() (request *TurnPDFToObjectRequest) {
 func NewTurnPDFToObjectResponse() (response *TurnPDFToObjectResponse) {
     response = &TurnPDFToObjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TurnPDFToObject

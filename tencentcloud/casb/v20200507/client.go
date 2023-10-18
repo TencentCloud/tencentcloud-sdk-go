@@ -59,8 +59,9 @@ func NewCopyCryptoColumnPolicyRequest() (request *CopyCryptoColumnPolicyRequest)
 func NewCopyCryptoColumnPolicyResponse() (response *CopyCryptoColumnPolicyResponse) {
     response = &CopyCryptoColumnPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyCryptoColumnPolicy

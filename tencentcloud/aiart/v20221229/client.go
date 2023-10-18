@@ -59,8 +59,9 @@ func NewImageToImageRequest() (request *ImageToImageRequest) {
 func NewImageToImageResponse() (response *ImageToImageResponse) {
     response = &ImageToImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageToImage
@@ -181,8 +182,9 @@ func NewTextToImageRequest() (request *TextToImageRequest) {
 func NewTextToImageResponse() (response *TextToImageResponse) {
     response = &TextToImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextToImage

@@ -59,8 +59,9 @@ func NewChangeRoomPlayerProfileRequest() (request *ChangeRoomPlayerProfileReques
 func NewChangeRoomPlayerProfileResponse() (response *ChangeRoomPlayerProfileResponse) {
     response = &ChangeRoomPlayerProfileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeRoomPlayerProfile
@@ -149,8 +150,9 @@ func NewChangeRoomPlayerStatusRequest() (request *ChangeRoomPlayerStatusRequest)
 func NewChangeRoomPlayerStatusResponse() (response *ChangeRoomPlayerStatusResponse) {
     response = &ChangeRoomPlayerStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeRoomPlayerStatus
@@ -823,8 +825,9 @@ func NewDescribePlayerRequest() (request *DescribePlayerRequest) {
 func NewDescribePlayerResponse() (response *DescribePlayerResponse) {
     response = &DescribePlayerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePlayer
@@ -1499,8 +1502,9 @@ func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
 func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
     response = &DescribeRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoom
@@ -2175,8 +2179,9 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
 func NewDismissRoomResponse() (response *DismissRoomResponse) {
     response = &DismissRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DismissRoom
@@ -2849,8 +2854,9 @@ func NewModifyRoomRequest() (request *ModifyRoomRequest) {
 func NewModifyRoomResponse() (response *ModifyRoomResponse) {
     response = &ModifyRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRoom
@@ -3523,8 +3529,9 @@ func NewRemoveRoomPlayerRequest() (request *RemoveRoomPlayerRequest) {
 func NewRemoveRoomPlayerResponse() (response *RemoveRoomPlayerResponse) {
     response = &RemoveRoomPlayerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveRoomPlayer

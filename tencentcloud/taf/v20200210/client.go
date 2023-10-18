@@ -59,8 +59,9 @@ func NewRecognizeCustomizedAudienceRequest() (request *RecognizeCustomizedAudien
 func NewRecognizeCustomizedAudienceResponse() (response *RecognizeCustomizedAudienceResponse) {
     response = &RecognizeCustomizedAudienceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeCustomizedAudience
@@ -173,8 +174,9 @@ func NewRecognizePreciseTargetAudienceRequest() (request *RecognizePreciseTarget
 func NewRecognizePreciseTargetAudienceResponse() (response *RecognizePreciseTargetAudienceResponse) {
     response = &RecognizePreciseTargetAudienceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizePreciseTargetAudience
@@ -287,8 +289,9 @@ func NewRecognizeTargetAudienceRequest() (request *RecognizeTargetAudienceReques
 func NewRecognizeTargetAudienceResponse() (response *RecognizeTargetAudienceResponse) {
     response = &RecognizeTargetAudienceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeTargetAudience

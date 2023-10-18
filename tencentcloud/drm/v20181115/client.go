@@ -59,8 +59,9 @@ func NewAddFairPlayPemRequest() (request *AddFairPlayPemRequest) {
 func NewAddFairPlayPemResponse() (response *AddFairPlayPemResponse) {
     response = &AddFairPlayPemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddFairPlayPem
@@ -121,8 +122,9 @@ func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
 func NewCreateEncryptKeysResponse() (response *CreateEncryptKeysResponse) {
     response = &CreateEncryptKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEncryptKeys
@@ -175,8 +177,9 @@ func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
 func NewCreateLicenseResponse() (response *CreateLicenseResponse) {
     response = &CreateLicenseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLicense
@@ -233,8 +236,9 @@ func NewDeleteFairPlayPemRequest() (request *DeleteFairPlayPemRequest) {
 func NewDeleteFairPlayPemResponse() (response *DeleteFairPlayPemResponse) {
     response = &DeleteFairPlayPemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFairPlayPem
@@ -295,8 +299,9 @@ func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
 func NewDescribeAllKeysResponse() (response *DescribeAllKeysResponse) {
     response = &DescribeAllKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllKeys
@@ -349,8 +354,9 @@ func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
 func NewDescribeFairPlayPemResponse() (response *DescribeFairPlayPemResponse) {
     response = &DescribeFairPlayPemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFairPlayPem
@@ -403,8 +409,9 @@ func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
 func NewDescribeKeysResponse() (response *DescribeKeysResponse) {
     response = &DescribeKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKeys
@@ -461,8 +468,9 @@ func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
 func NewModifyFairPlayPemResponse() (response *ModifyFairPlayPemResponse) {
     response = &ModifyFairPlayPemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFairPlayPem
@@ -523,8 +531,9 @@ func NewStartEncryptionRequest() (request *StartEncryptionRequest) {
 func NewStartEncryptionResponse() (response *StartEncryptionResponse) {
     response = &StartEncryptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartEncryption

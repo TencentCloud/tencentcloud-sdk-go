@@ -59,8 +59,9 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
 func NewImageModerationResponse() (response *ImageModerationResponse) {
     response = &ImageModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageModeration

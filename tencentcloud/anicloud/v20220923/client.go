@@ -59,8 +59,9 @@ func NewCheckAppidExistRequest() (request *CheckAppidExistRequest) {
 func NewCheckAppidExistResponse() (response *CheckAppidExistResponse) {
     response = &CheckAppidExistResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckAppidExist
@@ -101,8 +102,9 @@ func NewQueryResourceRequest() (request *QueryResourceRequest) {
 func NewQueryResourceResponse() (response *QueryResourceResponse) {
     response = &QueryResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryResource
@@ -149,8 +151,9 @@ func NewQueryResourceInfoRequest() (request *QueryResourceInfoRequest) {
 func NewQueryResourceInfoResponse() (response *QueryResourceInfoResponse) {
     response = &QueryResourceInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryResourceInfo

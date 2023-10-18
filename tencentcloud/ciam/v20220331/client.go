@@ -59,8 +59,9 @@ func NewCreateApiImportUserJobRequest() (request *CreateApiImportUserJobRequest)
 func NewCreateApiImportUserJobResponse() (response *CreateApiImportUserJobResponse) {
     response = &CreateApiImportUserJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApiImportUserJob
@@ -161,8 +162,9 @@ func NewCreateFileExportUserJobRequest() (request *CreateFileExportUserJobReques
 func NewCreateFileExportUserJobResponse() (response *CreateFileExportUserJobResponse) {
     response = &CreateFileExportUserJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFileExportUserJob
@@ -263,8 +265,9 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
 func NewCreateUserResponse() (response *CreateUserResponse) {
     response = &CreateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUser
@@ -381,8 +384,9 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
 func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
     response = &CreateUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserGroup
@@ -513,8 +517,9 @@ func NewCreateUserStoreRequest() (request *CreateUserStoreRequest) {
 func NewCreateUserStoreResponse() (response *CreateUserStoreResponse) {
     response = &CreateUserStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserStore
@@ -647,8 +652,9 @@ func NewDeleteUserGroupsRequest() (request *DeleteUserGroupsRequest) {
 func NewDeleteUserGroupsResponse() (response *DeleteUserGroupsResponse) {
     response = &DeleteUserGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserGroups
@@ -777,8 +783,9 @@ func NewDeleteUserStoreRequest() (request *DeleteUserStoreRequest) {
 func NewDeleteUserStoreResponse() (response *DeleteUserStoreResponse) {
     response = &DeleteUserStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserStore
@@ -911,8 +918,9 @@ func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
 func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
     response = &DeleteUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUsers
@@ -1009,8 +1017,9 @@ func NewDescribeUserRequest() (request *DescribeUserRequest) {
 func NewDescribeUserResponse() (response *DescribeUserResponse) {
     response = &DescribeUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUser
@@ -1113,8 +1122,9 @@ func NewDescribeUserByIdRequest() (request *DescribeUserByIdRequest) {
 func NewDescribeUserByIdResponse() (response *DescribeUserByIdResponse) {
     response = &DescribeUserByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserById
@@ -1211,8 +1221,9 @@ func NewLinkAccountRequest() (request *LinkAccountRequest) {
 func NewLinkAccountResponse() (response *LinkAccountResponse) {
     response = &LinkAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LinkAccount
@@ -1317,8 +1328,9 @@ func NewListJobsRequest() (request *ListJobsRequest) {
 func NewListJobsResponse() (response *ListJobsResponse) {
     response = &ListJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListJobs
@@ -1419,8 +1431,9 @@ func NewListLogMessageByConditionRequest() (request *ListLogMessageByConditionRe
 func NewListLogMessageByConditionResponse() (response *ListLogMessageByConditionResponse) {
     response = &ListLogMessageByConditionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListLogMessageByCondition
@@ -1517,8 +1530,9 @@ func NewListUserRequest() (request *ListUserRequest) {
 func NewListUserResponse() (response *ListUserResponse) {
     response = &ListUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUser
@@ -1615,8 +1629,9 @@ func NewListUserByPropertyRequest() (request *ListUserByPropertyRequest) {
 func NewListUserByPropertyResponse() (response *ListUserByPropertyResponse) {
     response = &ListUserByPropertyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUserByProperty
@@ -1713,8 +1728,9 @@ func NewListUserGroupsRequest() (request *ListUserGroupsRequest) {
 func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
     response = &ListUserGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUserGroups
@@ -1843,8 +1859,9 @@ func NewListUserStoreRequest() (request *ListUserStoreRequest) {
 func NewListUserStoreResponse() (response *ListUserStoreResponse) {
     response = &ListUserStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUserStore
@@ -1973,8 +1990,9 @@ func NewResetPasswordRequest() (request *ResetPasswordRequest) {
 func NewResetPasswordResponse() (response *ResetPasswordResponse) {
     response = &ResetPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetPassword
@@ -2075,8 +2093,9 @@ func NewSetPasswordRequest() (request *SetPasswordRequest) {
 func NewSetPasswordResponse() (response *SetPasswordResponse) {
     response = &SetPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetPassword
@@ -2179,8 +2198,9 @@ func NewUpdateUserRequest() (request *UpdateUserRequest) {
 func NewUpdateUserResponse() (response *UpdateUserResponse) {
     response = &UpdateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUser
@@ -2291,8 +2311,9 @@ func NewUpdateUserGroupRequest() (request *UpdateUserGroupRequest) {
 func NewUpdateUserGroupResponse() (response *UpdateUserGroupResponse) {
     response = &UpdateUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUserGroup
@@ -2425,8 +2446,9 @@ func NewUpdateUserStatusRequest() (request *UpdateUserStatusRequest) {
 func NewUpdateUserStatusResponse() (response *UpdateUserStatusResponse) {
     response = &UpdateUserStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUserStatus
@@ -2529,8 +2551,9 @@ func NewUpdateUserStoreRequest() (request *UpdateUserStoreRequest) {
 func NewUpdateUserStoreResponse() (response *UpdateUserStoreResponse) {
     response = &UpdateUserStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUserStore

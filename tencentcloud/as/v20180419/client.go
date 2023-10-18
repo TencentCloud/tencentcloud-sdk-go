@@ -59,8 +59,9 @@ func NewAttachInstancesRequest() (request *AttachInstancesRequest) {
 func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
     response = &AttachInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachInstances
@@ -149,8 +150,9 @@ func NewAttachLoadBalancersRequest() (request *AttachLoadBalancersRequest) {
 func NewAttachLoadBalancersResponse() (response *AttachLoadBalancersResponse) {
     response = &AttachLoadBalancersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachLoadBalancers
@@ -247,8 +249,9 @@ func NewCancelInstanceRefreshRequest() (request *CancelInstanceRefreshRequest) {
 func NewCancelInstanceRefreshResponse() (response *CancelInstanceRefreshResponse) {
     response = &CancelInstanceRefreshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelInstanceRefresh
@@ -311,8 +314,9 @@ func NewClearLaunchConfigurationAttributesRequest() (request *ClearLaunchConfigu
 func NewClearLaunchConfigurationAttributesResponse() (response *ClearLaunchConfigurationAttributesResponse) {
     response = &ClearLaunchConfigurationAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearLaunchConfigurationAttributes
@@ -361,8 +365,9 @@ func NewCompleteLifecycleActionRequest() (request *CompleteLifecycleActionReques
 func NewCompleteLifecycleActionResponse() (response *CompleteLifecycleActionResponse) {
     response = &CompleteLifecycleActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CompleteLifecycleAction
@@ -439,8 +444,9 @@ func NewCreateAutoScalingGroupRequest() (request *CreateAutoScalingGroupRequest)
 func NewCreateAutoScalingGroupResponse() (response *CreateAutoScalingGroupResponse) {
     response = &CreateAutoScalingGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAutoScalingGroup
@@ -571,8 +577,9 @@ func NewCreateAutoScalingGroupFromInstanceRequest() (request *CreateAutoScalingG
 func NewCreateAutoScalingGroupFromInstanceResponse() (response *CreateAutoScalingGroupFromInstanceResponse) {
     response = &CreateAutoScalingGroupFromInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAutoScalingGroupFromInstance
@@ -677,8 +684,9 @@ func NewCreateLaunchConfigurationRequest() (request *CreateLaunchConfigurationRe
 func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfigurationResponse) {
     response = &CreateLaunchConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLaunchConfiguration
@@ -817,8 +825,9 @@ func NewCreateLifecycleHookRequest() (request *CreateLifecycleHookRequest) {
 func NewCreateLifecycleHookResponse() (response *CreateLifecycleHookResponse) {
     response = &CreateLifecycleHookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLifecycleHook
@@ -985,8 +994,9 @@ func NewCreateNotificationConfigurationRequest() (request *CreateNotificationCon
 func NewCreateNotificationConfigurationResponse() (response *CreateNotificationConfigurationResponse) {
     response = &CreateNotificationConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNotificationConfiguration
@@ -1169,8 +1179,9 @@ func NewCreateScalingPolicyRequest() (request *CreateScalingPolicyRequest) {
 func NewCreateScalingPolicyResponse() (response *CreateScalingPolicyResponse) {
     response = &CreateScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScalingPolicy
@@ -1245,8 +1256,9 @@ func NewCreateScheduledActionRequest() (request *CreateScheduledActionRequest) {
 func NewCreateScheduledActionResponse() (response *CreateScheduledActionResponse) {
     response = &CreateScheduledActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScheduledAction
@@ -1327,8 +1339,9 @@ func NewDeleteAutoScalingGroupRequest() (request *DeleteAutoScalingGroupRequest)
 func NewDeleteAutoScalingGroupResponse() (response *DeleteAutoScalingGroupResponse) {
     response = &DeleteAutoScalingGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAutoScalingGroup
@@ -1395,8 +1408,9 @@ func NewDeleteLaunchConfigurationRequest() (request *DeleteLaunchConfigurationRe
 func NewDeleteLaunchConfigurationResponse() (response *DeleteLaunchConfigurationResponse) {
     response = &DeleteLaunchConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLaunchConfiguration
@@ -1457,8 +1471,9 @@ func NewDeleteLifecycleHookRequest() (request *DeleteLifecycleHookRequest) {
 func NewDeleteLifecycleHookResponse() (response *DeleteLifecycleHookResponse) {
     response = &DeleteLifecycleHookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLifecycleHook
@@ -1515,8 +1530,9 @@ func NewDeleteNotificationConfigurationRequest() (request *DeleteNotificationCon
 func NewDeleteNotificationConfigurationResponse() (response *DeleteNotificationConfigurationResponse) {
     response = &DeleteNotificationConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNotificationConfiguration
@@ -1567,8 +1583,9 @@ func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
 func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
     response = &DeleteScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScalingPolicy
@@ -1621,8 +1638,9 @@ func NewDeleteScheduledActionRequest() (request *DeleteScheduledActionRequest) {
 func NewDeleteScheduledActionResponse() (response *DeleteScheduledActionResponse) {
     response = &DeleteScheduledActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScheduledAction
@@ -1673,8 +1691,9 @@ func NewDescribeAccountLimitsRequest() (request *DescribeAccountLimitsRequest) {
 func NewDescribeAccountLimitsResponse() (response *DescribeAccountLimitsResponse) {
     response = &DescribeAccountLimitsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountLimits
@@ -1723,8 +1742,9 @@ func NewDescribeAutoScalingActivitiesRequest() (request *DescribeAutoScalingActi
 func NewDescribeAutoScalingActivitiesResponse() (response *DescribeAutoScalingActivitiesResponse) {
     response = &DescribeAutoScalingActivitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingActivities
@@ -1787,8 +1807,9 @@ func NewDescribeAutoScalingAdvicesRequest() (request *DescribeAutoScalingAdvices
 func NewDescribeAutoScalingAdvicesResponse() (response *DescribeAutoScalingAdvicesResponse) {
     response = &DescribeAutoScalingAdvicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingAdvices
@@ -1839,8 +1860,9 @@ func NewDescribeAutoScalingGroupLastActivitiesRequest() (request *DescribeAutoSc
 func NewDescribeAutoScalingGroupLastActivitiesResponse() (response *DescribeAutoScalingGroupLastActivitiesResponse) {
     response = &DescribeAutoScalingGroupLastActivitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingGroupLastActivities
@@ -1893,8 +1915,9 @@ func NewDescribeAutoScalingGroupsRequest() (request *DescribeAutoScalingGroupsRe
 func NewDescribeAutoScalingGroupsResponse() (response *DescribeAutoScalingGroupsResponse) {
     response = &DescribeAutoScalingGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingGroups
@@ -1975,8 +1998,9 @@ func NewDescribeAutoScalingInstancesRequest() (request *DescribeAutoScalingInsta
 func NewDescribeAutoScalingInstancesResponse() (response *DescribeAutoScalingInstancesResponse) {
     response = &DescribeAutoScalingInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoScalingInstances
@@ -2051,8 +2075,9 @@ func NewDescribeLaunchConfigurationsRequest() (request *DescribeLaunchConfigurat
 func NewDescribeLaunchConfigurationsResponse() (response *DescribeLaunchConfigurationsResponse) {
     response = &DescribeLaunchConfigurationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLaunchConfigurations
@@ -2129,8 +2154,9 @@ func NewDescribeLifecycleHooksRequest() (request *DescribeLifecycleHooksRequest)
 func NewDescribeLifecycleHooksResponse() (response *DescribeLifecycleHooksResponse) {
     response = &DescribeLifecycleHooksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLifecycleHooks
@@ -2203,8 +2229,9 @@ func NewDescribeNotificationConfigurationsRequest() (request *DescribeNotificati
 func NewDescribeNotificationConfigurationsResponse() (response *DescribeNotificationConfigurationsResponse) {
     response = &DescribeNotificationConfigurationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotificationConfigurations
@@ -2271,8 +2298,9 @@ func NewDescribeRefreshActivitiesRequest() (request *DescribeRefreshActivitiesRe
 func NewDescribeRefreshActivitiesResponse() (response *DescribeRefreshActivitiesResponse) {
     response = &DescribeRefreshActivitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRefreshActivities
@@ -2333,8 +2361,9 @@ func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesReques
 func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResponse) {
     response = &DescribeScalingPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScalingPolicies
@@ -2395,8 +2424,9 @@ func NewDescribeScheduledActionsRequest() (request *DescribeScheduledActionsRequ
 func NewDescribeScheduledActionsResponse() (response *DescribeScheduledActionsResponse) {
     response = &DescribeScheduledActionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScheduledActions
@@ -2469,8 +2499,9 @@ func NewDetachInstancesRequest() (request *DetachInstancesRequest) {
 func NewDetachInstancesResponse() (response *DetachInstancesResponse) {
     response = &DetachInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachInstances
@@ -2553,8 +2584,9 @@ func NewDetachLoadBalancersRequest() (request *DetachLoadBalancersRequest) {
 func NewDetachLoadBalancersResponse() (response *DetachLoadBalancersResponse) {
     response = &DetachLoadBalancersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachLoadBalancers
@@ -2645,8 +2677,9 @@ func NewDisableAutoScalingGroupRequest() (request *DisableAutoScalingGroupReques
 func NewDisableAutoScalingGroupResponse() (response *DisableAutoScalingGroupResponse) {
     response = &DisableAutoScalingGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableAutoScalingGroup
@@ -2751,8 +2784,9 @@ func NewEnableAutoScalingGroupRequest() (request *EnableAutoScalingGroupRequest)
 func NewEnableAutoScalingGroupResponse() (response *EnableAutoScalingGroupResponse) {
     response = &EnableAutoScalingGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableAutoScalingGroup
@@ -2807,8 +2841,9 @@ func NewExecuteScalingPolicyRequest() (request *ExecuteScalingPolicyRequest) {
 func NewExecuteScalingPolicyResponse() (response *ExecuteScalingPolicyResponse) {
     response = &ExecuteScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteScalingPolicy
@@ -2889,8 +2924,9 @@ func NewExitStandbyRequest() (request *ExitStandbyRequest) {
 func NewExitStandbyResponse() (response *ExitStandbyResponse) {
     response = &ExitStandbyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExitStandby
@@ -2969,8 +3005,9 @@ func NewModifyAutoScalingGroupRequest() (request *ModifyAutoScalingGroupRequest)
 func NewModifyAutoScalingGroupResponse() (response *ModifyAutoScalingGroupResponse) {
     response = &ModifyAutoScalingGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAutoScalingGroup
@@ -3075,8 +3112,9 @@ func NewModifyDesiredCapacityRequest() (request *ModifyDesiredCapacityRequest) {
 func NewModifyDesiredCapacityResponse() (response *ModifyDesiredCapacityResponse) {
     response = &ModifyDesiredCapacityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDesiredCapacity
@@ -3141,8 +3179,9 @@ func NewModifyLaunchConfigurationAttributesRequest() (request *ModifyLaunchConfi
 func NewModifyLaunchConfigurationAttributesResponse() (response *ModifyLaunchConfigurationAttributesResponse) {
     response = &ModifyLaunchConfigurationAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLaunchConfigurationAttributes
@@ -3269,8 +3308,9 @@ func NewModifyLifecycleHookRequest() (request *ModifyLifecycleHookRequest) {
 func NewModifyLifecycleHookResponse() (response *ModifyLifecycleHookResponse) {
     response = &ModifyLifecycleHookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLifecycleHook
@@ -3337,8 +3377,9 @@ func NewModifyLoadBalancerTargetAttributesRequest() (request *ModifyLoadBalancer
 func NewModifyLoadBalancerTargetAttributesResponse() (response *ModifyLoadBalancerTargetAttributesResponse) {
     response = &ModifyLoadBalancerTargetAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoadBalancerTargetAttributes
@@ -3435,8 +3476,9 @@ func NewModifyLoadBalancersRequest() (request *ModifyLoadBalancersRequest) {
 func NewModifyLoadBalancersResponse() (response *ModifyLoadBalancersResponse) {
     response = &ModifyLoadBalancersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoadBalancers
@@ -3545,8 +3587,9 @@ func NewModifyNotificationConfigurationRequest() (request *ModifyNotificationCon
 func NewModifyNotificationConfigurationResponse() (response *ModifyNotificationConfigurationResponse) {
     response = &ModifyNotificationConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNotificationConfiguration
@@ -3615,8 +3658,9 @@ func NewModifyScalingPolicyRequest() (request *ModifyScalingPolicyRequest) {
 func NewModifyScalingPolicyResponse() (response *ModifyScalingPolicyResponse) {
     response = &ModifyScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyScalingPolicy
@@ -3681,8 +3725,9 @@ func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
 func NewModifyScheduledActionResponse() (response *ModifyScheduledActionResponse) {
     response = &ModifyScheduledActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyScheduledAction
@@ -3759,8 +3804,9 @@ func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
 func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
     response = &RemoveInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveInstances
@@ -3839,8 +3885,9 @@ func NewResumeInstanceRefreshRequest() (request *ResumeInstanceRefreshRequest) {
 func NewResumeInstanceRefreshResponse() (response *ResumeInstanceRefreshResponse) {
     response = &ResumeInstanceRefreshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeInstanceRefresh
@@ -3891,8 +3938,9 @@ func NewRollbackInstanceRefreshRequest() (request *RollbackInstanceRefreshReques
 func NewRollbackInstanceRefreshResponse() (response *RollbackInstanceRefreshResponse) {
     response = &RollbackInstanceRefreshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RollbackInstanceRefresh
@@ -3977,8 +4025,9 @@ func NewScaleInInstancesRequest() (request *ScaleInInstancesRequest) {
 func NewScaleInInstancesResponse() (response *ScaleInInstancesResponse) {
     response = &ScaleInInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScaleInInstances
@@ -4061,8 +4110,9 @@ func NewScaleOutInstancesRequest() (request *ScaleOutInstancesRequest) {
 func NewScaleOutInstancesResponse() (response *ScaleOutInstancesResponse) {
     response = &ScaleOutInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScaleOutInstances
@@ -4141,8 +4191,9 @@ func NewSetInstancesProtectionRequest() (request *SetInstancesProtectionRequest)
 func NewSetInstancesProtectionResponse() (response *SetInstancesProtectionResponse) {
     response = &SetInstancesProtectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetInstancesProtection
@@ -4203,8 +4254,9 @@ func NewStartAutoScalingInstancesRequest() (request *StartAutoScalingInstancesRe
 func NewStartAutoScalingInstancesResponse() (response *StartAutoScalingInstancesResponse) {
     response = &StartAutoScalingInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartAutoScalingInstances
@@ -4279,8 +4331,9 @@ func NewStartInstanceRefreshRequest() (request *StartInstanceRefreshRequest) {
 func NewStartInstanceRefreshResponse() (response *StartInstanceRefreshResponse) {
     response = &StartInstanceRefreshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartInstanceRefresh
@@ -4363,8 +4416,9 @@ func NewStopAutoScalingInstancesRequest() (request *StopAutoScalingInstancesRequ
 func NewStopAutoScalingInstancesResponse() (response *StopAutoScalingInstancesResponse) {
     response = &StopAutoScalingInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopAutoScalingInstances
@@ -4455,8 +4509,9 @@ func NewStopInstanceRefreshRequest() (request *StopInstanceRefreshRequest) {
 func NewStopInstanceRefreshResponse() (response *StopInstanceRefreshResponse) {
     response = &StopInstanceRefreshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopInstanceRefresh
@@ -4515,8 +4570,9 @@ func NewUpgradeLaunchConfigurationRequest() (request *UpgradeLaunchConfiguration
 func NewUpgradeLaunchConfigurationResponse() (response *UpgradeLaunchConfigurationResponse) {
     response = &UpgradeLaunchConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeLaunchConfiguration
@@ -4639,8 +4695,9 @@ func NewUpgradeLifecycleHookRequest() (request *UpgradeLifecycleHookRequest) {
 func NewUpgradeLifecycleHookResponse() (response *UpgradeLifecycleHookResponse) {
     response = &UpgradeLifecycleHookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeLifecycleHook

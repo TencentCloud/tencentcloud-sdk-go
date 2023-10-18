@@ -59,8 +59,9 @@ func NewCreateLibraryRequest() (request *CreateLibraryRequest) {
 func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
     response = &CreateLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLibrary
@@ -131,8 +132,9 @@ func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
 func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
     response = &DeleteLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLibrary
@@ -185,8 +187,9 @@ func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
 func NewDescribeLibrariesResponse() (response *DescribeLibrariesResponse) {
     response = &DescribeLibrariesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLibraries
@@ -235,8 +238,9 @@ func NewDescribeLibrarySecretRequest() (request *DescribeLibrarySecretRequest) {
 func NewDescribeLibrarySecretResponse() (response *DescribeLibrarySecretResponse) {
     response = &DescribeLibrarySecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLibrarySecret
@@ -285,8 +289,9 @@ func NewDescribeOfficialInstancesRequest() (request *DescribeOfficialInstancesRe
 func NewDescribeOfficialInstancesResponse() (response *DescribeOfficialInstancesResponse) {
     response = &DescribeOfficialInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOfficialInstances
@@ -335,8 +340,9 @@ func NewDescribeOfficialOverviewRequest() (request *DescribeOfficialOverviewRequ
 func NewDescribeOfficialOverviewResponse() (response *DescribeOfficialOverviewResponse) {
     response = &DescribeOfficialOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOfficialOverview
@@ -383,8 +389,9 @@ func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesReques
 func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResponse) {
     response = &DescribeTrafficPackagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficPackages
@@ -433,8 +440,9 @@ func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
 func NewModifyLibraryResponse() (response *ModifyLibraryResponse) {
     response = &ModifyLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLibrary
@@ -485,8 +493,9 @@ func NewSendSmsCodeRequest() (request *SendSmsCodeRequest) {
 func NewSendSmsCodeResponse() (response *SendSmsCodeResponse) {
     response = &SendSmsCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendSmsCode
@@ -547,8 +556,9 @@ func NewVerifySmsCodeRequest() (request *VerifySmsCodeRequest) {
 func NewVerifySmsCodeResponse() (response *VerifySmsCodeResponse) {
     response = &VerifySmsCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifySmsCode

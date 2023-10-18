@@ -59,8 +59,9 @@ func NewDescribeKBComponentRequest() (request *DescribeKBComponentRequest) {
 func NewDescribeKBComponentResponse() (response *DescribeKBComponentResponse) {
     response = &DescribeKBComponentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKBComponent
@@ -113,8 +114,9 @@ func NewDescribeKBComponentVersionListRequest() (request *DescribeKBComponentVer
 func NewDescribeKBComponentVersionListResponse() (response *DescribeKBComponentVersionListResponse) {
     response = &DescribeKBComponentVersionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKBComponentVersionList
@@ -167,8 +169,9 @@ func NewDescribeKBComponentVulnerabilityRequest() (request *DescribeKBComponentV
 func NewDescribeKBComponentVulnerabilityResponse() (response *DescribeKBComponentVulnerabilityResponse) {
     response = &DescribeKBComponentVulnerabilityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKBComponentVulnerability
@@ -223,8 +226,9 @@ func NewDescribeKBLicenseRequest() (request *DescribeKBLicenseRequest) {
 func NewDescribeKBLicenseResponse() (response *DescribeKBLicenseResponse) {
     response = &DescribeKBLicenseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKBLicense
@@ -281,8 +285,9 @@ func NewDescribeKBVulnerabilityRequest() (request *DescribeKBVulnerabilityReques
 func NewDescribeKBVulnerabilityResponse() (response *DescribeKBVulnerabilityResponse) {
     response = &DescribeKBVulnerabilityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKBVulnerability
@@ -337,8 +342,9 @@ func NewMatchKBPURLListRequest() (request *MatchKBPURLListRequest) {
 func NewMatchKBPURLListResponse() (response *MatchKBPURLListResponse) {
     response = &MatchKBPURLListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MatchKBPURLList
@@ -393,8 +399,9 @@ func NewSearchKBComponentRequest() (request *SearchKBComponentRequest) {
 func NewSearchKBComponentResponse() (response *SearchKBComponentResponse) {
     response = &SearchKBComponentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchKBComponent

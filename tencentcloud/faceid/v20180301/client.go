@@ -59,8 +59,9 @@ func NewBankCard2EVerificationRequest() (request *BankCard2EVerificationRequest)
 func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationResponse) {
     response = &BankCard2EVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BankCard2EVerification
@@ -125,8 +126,9 @@ func NewBankCard4EVerificationRequest() (request *BankCard4EVerificationRequest)
 func NewBankCard4EVerificationResponse() (response *BankCard4EVerificationResponse) {
     response = &BankCard4EVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BankCard4EVerification
@@ -191,8 +193,9 @@ func NewBankCardVerificationRequest() (request *BankCardVerificationRequest) {
 func NewBankCardVerificationResponse() (response *BankCardVerificationResponse) {
     response = &BankCardVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BankCardVerification
@@ -257,8 +260,9 @@ func NewCheckBankCardInformationRequest() (request *CheckBankCardInformationRequ
 func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationResponse) {
     response = &CheckBankCardInformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBankCardInformation
@@ -323,8 +327,9 @@ func NewCheckEidTokenStatusRequest() (request *CheckEidTokenStatusRequest) {
 func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
     response = &CheckEidTokenStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckEidTokenStatus
@@ -385,8 +390,9 @@ func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest)
 func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationResponse) {
     response = &CheckIdCardInformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckIdCardInformation
@@ -495,8 +501,9 @@ func NewCheckIdNameDateRequest() (request *CheckIdNameDateRequest) {
 func NewCheckIdNameDateResponse() (response *CheckIdNameDateResponse) {
     response = &CheckIdNameDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckIdNameDate
@@ -559,8 +566,9 @@ func NewCheckPhoneAndNameRequest() (request *CheckPhoneAndNameRequest) {
 func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
     response = &CheckPhoneAndNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckPhoneAndName
@@ -623,8 +631,9 @@ func NewDetectAuthRequest() (request *DetectAuthRequest) {
 func NewDetectAuthResponse() (response *DetectAuthResponse) {
     response = &DetectAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectAuth
@@ -693,8 +702,9 @@ func NewEncryptedPhoneVerificationRequest() (request *EncryptedPhoneVerification
 func NewEncryptedPhoneVerificationResponse() (response *EncryptedPhoneVerificationResponse) {
     response = &EncryptedPhoneVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EncryptedPhoneVerification
@@ -761,8 +771,9 @@ func NewGetActionSequenceRequest() (request *GetActionSequenceRequest) {
 func NewGetActionSequenceResponse() (response *GetActionSequenceResponse) {
     response = &GetActionSequenceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetActionSequence
@@ -823,8 +834,9 @@ func NewGetDetectInfoRequest() (request *GetDetectInfoRequest) {
 func NewGetDetectInfoResponse() (response *GetDetectInfoResponse) {
     response = &GetDetectInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDetectInfo
@@ -889,8 +901,9 @@ func NewGetDetectInfoEnhancedRequest() (request *GetDetectInfoEnhancedRequest) {
 func NewGetDetectInfoEnhancedResponse() (response *GetDetectInfoEnhancedResponse) {
     response = &GetDetectInfoEnhancedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDetectInfoEnhanced
@@ -959,8 +972,9 @@ func NewGetEidResultRequest() (request *GetEidResultRequest) {
 func NewGetEidResultResponse() (response *GetEidResultResponse) {
     response = &GetEidResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetEidResult
@@ -1027,8 +1041,9 @@ func NewGetEidTokenRequest() (request *GetEidTokenRequest) {
 func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
     response = &GetEidTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetEidToken
@@ -1095,8 +1110,9 @@ func NewGetFaceIdResultRequest() (request *GetFaceIdResultRequest) {
 func NewGetFaceIdResultResponse() (response *GetFaceIdResultResponse) {
     response = &GetFaceIdResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFaceIdResult
@@ -1153,8 +1169,9 @@ func NewGetFaceIdTokenRequest() (request *GetFaceIdTokenRequest) {
 func NewGetFaceIdTokenResponse() (response *GetFaceIdTokenResponse) {
     response = &GetFaceIdTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFaceIdToken
@@ -1211,8 +1228,9 @@ func NewGetLiveCodeRequest() (request *GetLiveCodeRequest) {
 func NewGetLiveCodeResponse() (response *GetLiveCodeResponse) {
     response = &GetLiveCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLiveCode
@@ -1275,8 +1293,9 @@ func NewGetWeChatBillDetailsRequest() (request *GetWeChatBillDetailsRequest) {
 func NewGetWeChatBillDetailsResponse() (response *GetWeChatBillDetailsResponse) {
     response = &GetWeChatBillDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetWeChatBillDetails
@@ -1327,8 +1346,9 @@ func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
 func NewIdCardOCRVerificationResponse() (response *IdCardOCRVerificationResponse) {
     response = &IdCardOCRVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IdCardOCRVerification
@@ -1409,8 +1429,9 @@ func NewIdCardVerificationRequest() (request *IdCardVerificationRequest) {
 func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
     response = &IdCardVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IdCardVerification
@@ -1477,8 +1498,9 @@ func NewImageRecognitionRequest() (request *ImageRecognitionRequest) {
 func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
     response = &ImageRecognitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageRecognition
@@ -1577,8 +1599,9 @@ func NewLivenessRequest() (request *LivenessRequest) {
 func NewLivenessResponse() (response *LivenessResponse) {
     response = &LivenessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Liveness
@@ -1709,8 +1732,9 @@ func NewLivenessCompareRequest() (request *LivenessCompareRequest) {
 func NewLivenessCompareResponse() (response *LivenessCompareResponse) {
     response = &LivenessCompareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LivenessCompare
@@ -1861,8 +1885,9 @@ func NewLivenessRecognitionRequest() (request *LivenessRecognitionRequest) {
 func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
     response = &LivenessRecognitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LivenessRecognition
@@ -2017,8 +2042,9 @@ func NewMinorsVerificationRequest() (request *MinorsVerificationRequest) {
 func NewMinorsVerificationResponse() (response *MinorsVerificationResponse) {
     response = &MinorsVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MinorsVerification
@@ -2081,8 +2107,9 @@ func NewMobileNetworkTimeVerificationRequest() (request *MobileNetworkTimeVerifi
 func NewMobileNetworkTimeVerificationResponse() (response *MobileNetworkTimeVerificationResponse) {
     response = &MobileNetworkTimeVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MobileNetworkTimeVerification
@@ -2151,8 +2178,9 @@ func NewMobileStatusRequest() (request *MobileStatusRequest) {
 func NewMobileStatusResponse() (response *MobileStatusResponse) {
     response = &MobileStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MobileStatus
@@ -2217,8 +2245,9 @@ func NewParseNfcDataRequest() (request *ParseNfcDataRequest) {
 func NewParseNfcDataResponse() (response *ParseNfcDataResponse) {
     response = &ParseNfcDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ParseNfcData
@@ -2271,8 +2300,9 @@ func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
 func NewPhoneVerificationResponse() (response *PhoneVerificationResponse) {
     response = &PhoneVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PhoneVerification
@@ -2337,8 +2367,9 @@ func NewPhoneVerificationCMCCRequest() (request *PhoneVerificationCMCCRequest) {
 func NewPhoneVerificationCMCCResponse() (response *PhoneVerificationCMCCResponse) {
     response = &PhoneVerificationCMCCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PhoneVerificationCMCC
@@ -2403,8 +2434,9 @@ func NewPhoneVerificationCTCCRequest() (request *PhoneVerificationCTCCRequest) {
 func NewPhoneVerificationCTCCResponse() (response *PhoneVerificationCTCCResponse) {
     response = &PhoneVerificationCTCCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PhoneVerificationCTCC
@@ -2469,8 +2501,9 @@ func NewPhoneVerificationCUCCRequest() (request *PhoneVerificationCUCCRequest) {
 func NewPhoneVerificationCUCCResponse() (response *PhoneVerificationCUCCResponse) {
     response = &PhoneVerificationCUCCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PhoneVerificationCUCC

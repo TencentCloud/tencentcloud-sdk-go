@@ -59,8 +59,9 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
 func NewCancelTaskResponse() (response *CancelTaskResponse) {
     response = &CancelTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelTask
@@ -137,8 +138,9 @@ func NewCreateAudioModerationTaskRequest() (request *CreateAudioModerationTaskRe
 func NewCreateAudioModerationTaskResponse() (response *CreateAudioModerationTaskResponse) {
     response = &CreateAudioModerationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAudioModerationTask
@@ -309,8 +311,9 @@ func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
 func NewCreateBizConfigResponse() (response *CreateBizConfigResponse) {
     response = &CreateBizConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBizConfig
@@ -405,8 +408,9 @@ func NewDescribeAmsListRequest() (request *DescribeAmsListRequest) {
 func NewDescribeAmsListResponse() (response *DescribeAmsListResponse) {
     response = &DescribeAmsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAmsList
@@ -457,8 +461,9 @@ func NewDescribeAudioStatRequest() (request *DescribeAudioStatRequest) {
 func NewDescribeAudioStatResponse() (response *DescribeAudioStatResponse) {
     response = &DescribeAudioStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAudioStat
@@ -511,8 +516,9 @@ func NewDescribeBizConfigRequest() (request *DescribeBizConfigRequest) {
 func NewDescribeBizConfigResponse() (response *DescribeBizConfigResponse) {
     response = &DescribeBizConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBizConfig
@@ -591,8 +597,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail

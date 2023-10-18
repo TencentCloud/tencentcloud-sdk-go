@@ -59,8 +59,9 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
 func NewDismissRoomResponse() (response *DismissRoomResponse) {
     response = &DismissRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DismissRoom

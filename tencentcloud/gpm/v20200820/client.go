@@ -59,8 +59,9 @@ func NewCancelMatchingRequest() (request *CancelMatchingRequest) {
 func NewCancelMatchingResponse() (response *CancelMatchingResponse) {
     response = &CancelMatchingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelMatching
@@ -149,8 +150,9 @@ func NewCreateMatchRequest() (request *CreateMatchRequest) {
 func NewCreateMatchResponse() (response *CreateMatchResponse) {
     response = &CreateMatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMatch
@@ -263,8 +265,9 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
 func NewCreateRuleResponse() (response *CreateRuleResponse) {
     response = &CreateRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRule
@@ -373,8 +376,9 @@ func NewDeleteMatchRequest() (request *DeleteMatchRequest) {
 func NewDeleteMatchResponse() (response *DeleteMatchResponse) {
     response = &DeleteMatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMatch
@@ -481,8 +485,9 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
 func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
     response = &DeleteRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRule
@@ -587,8 +592,9 @@ func NewDescribeDataRequest() (request *DescribeDataRequest) {
 func NewDescribeDataResponse() (response *DescribeDataResponse) {
     response = &DescribeDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeData
@@ -693,8 +699,9 @@ func NewDescribeMatchRequest() (request *DescribeMatchRequest) {
 func NewDescribeMatchResponse() (response *DescribeMatchResponse) {
     response = &DescribeMatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMatch
@@ -795,8 +802,9 @@ func NewDescribeMatchCodesRequest() (request *DescribeMatchCodesRequest) {
 func NewDescribeMatchCodesResponse() (response *DescribeMatchCodesResponse) {
     response = &DescribeMatchCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMatchCodes
@@ -895,8 +903,9 @@ func NewDescribeMatchesRequest() (request *DescribeMatchesRequest) {
 func NewDescribeMatchesResponse() (response *DescribeMatchesResponse) {
     response = &DescribeMatchesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMatches
@@ -1003,8 +1012,9 @@ func NewDescribeMatchingProgressRequest() (request *DescribeMatchingProgressRequ
 func NewDescribeMatchingProgressResponse() (response *DescribeMatchingProgressResponse) {
     response = &DescribeMatchingProgressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMatchingProgress
@@ -1091,8 +1101,9 @@ func NewDescribeRuleRequest() (request *DescribeRuleRequest) {
 func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
     response = &DescribeRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRule
@@ -1191,8 +1202,9 @@ func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
 func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
     response = &DescribeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRules
@@ -1295,8 +1307,9 @@ func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
 func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
     response = &DescribeTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeToken
@@ -1357,8 +1370,9 @@ func NewModifyMatchRequest() (request *ModifyMatchRequest) {
 func NewModifyMatchResponse() (response *ModifyMatchResponse) {
     response = &ModifyMatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMatch
@@ -1469,8 +1483,9 @@ func NewModifyRuleRequest() (request *ModifyRuleRequest) {
 func NewModifyRuleResponse() (response *ModifyRuleResponse) {
     response = &ModifyRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRule
@@ -1573,8 +1588,9 @@ func NewModifyTokenRequest() (request *ModifyTokenRequest) {
 func NewModifyTokenResponse() (response *ModifyTokenResponse) {
     response = &ModifyTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyToken
@@ -1635,8 +1651,9 @@ func NewStartMatchingRequest() (request *StartMatchingRequest) {
 func NewStartMatchingResponse() (response *StartMatchingResponse) {
     response = &StartMatchingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMatching
@@ -1743,8 +1760,9 @@ func NewStartMatchingBackfillRequest() (request *StartMatchingBackfillRequest) {
 func NewStartMatchingBackfillResponse() (response *StartMatchingBackfillResponse) {
     response = &StartMatchingBackfillResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMatchingBackfill

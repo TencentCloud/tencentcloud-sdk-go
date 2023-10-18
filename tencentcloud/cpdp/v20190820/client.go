@@ -59,8 +59,9 @@ func NewAddContractRequest() (request *AddContractRequest) {
 func NewAddContractResponse() (response *AddContractResponse) {
     response = &AddContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddContract
@@ -101,8 +102,9 @@ func NewAddFlexFundingAccountRequest() (request *AddFlexFundingAccountRequest) {
 func NewAddFlexFundingAccountResponse() (response *AddFlexFundingAccountResponse) {
     response = &AddFlexFundingAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddFlexFundingAccount
@@ -149,8 +151,9 @@ func NewAddFlexIdInfoRequest() (request *AddFlexIdInfoRequest) {
 func NewAddFlexIdInfoResponse() (response *AddFlexIdInfoResponse) {
     response = &AddFlexIdInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddFlexIdInfo
@@ -197,8 +200,9 @@ func NewAddFlexPhoneNoRequest() (request *AddFlexPhoneNoRequest) {
 func NewAddFlexPhoneNoResponse() (response *AddFlexPhoneNoResponse) {
     response = &AddFlexPhoneNoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddFlexPhoneNo
@@ -245,8 +249,9 @@ func NewAddMerchantRequest() (request *AddMerchantRequest) {
 func NewAddMerchantResponse() (response *AddMerchantResponse) {
     response = &AddMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddMerchant
@@ -293,8 +298,9 @@ func NewAddShopRequest() (request *AddShopRequest) {
 func NewAddShopResponse() (response *AddShopResponse) {
     response = &AddShopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddShop
@@ -341,8 +347,9 @@ func NewApplyApplicationMaterialRequest() (request *ApplyApplicationMaterialRequ
 func NewApplyApplicationMaterialResponse() (response *ApplyApplicationMaterialResponse) {
     response = &ApplyApplicationMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyApplicationMaterial
@@ -393,8 +400,9 @@ func NewApplyFlexPaymentRequest() (request *ApplyFlexPaymentRequest) {
 func NewApplyFlexPaymentResponse() (response *ApplyFlexPaymentResponse) {
     response = &ApplyFlexPaymentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyFlexPayment
@@ -441,8 +449,9 @@ func NewApplyFlexSettlementRequest() (request *ApplyFlexSettlementRequest) {
 func NewApplyFlexSettlementResponse() (response *ApplyFlexSettlementResponse) {
     response = &ApplyFlexSettlementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyFlexSettlement
@@ -489,8 +498,9 @@ func NewApplyFlexWechatPreAuthRequest() (request *ApplyFlexWechatPreAuthRequest)
 func NewApplyFlexWechatPreAuthResponse() (response *ApplyFlexWechatPreAuthResponse) {
     response = &ApplyFlexWechatPreAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyFlexWechatPreAuth
@@ -537,8 +547,9 @@ func NewApplyOpenBankOrderDetailReceiptRequest() (request *ApplyOpenBankOrderDet
 func NewApplyOpenBankOrderDetailReceiptResponse() (response *ApplyOpenBankOrderDetailReceiptResponse) {
     response = &ApplyOpenBankOrderDetailReceiptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyOpenBankOrderDetailReceipt
@@ -585,8 +596,9 @@ func NewApplyOpenBankSettleOrderRequest() (request *ApplyOpenBankSettleOrderRequ
 func NewApplyOpenBankSettleOrderResponse() (response *ApplyOpenBankSettleOrderResponse) {
     response = &ApplyOpenBankSettleOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyOpenBankSettleOrder
@@ -633,8 +645,9 @@ func NewApplyOpenBankSubMerchantSignOnlineRequest() (request *ApplyOpenBankSubMe
 func NewApplyOpenBankSubMerchantSignOnlineResponse() (response *ApplyOpenBankSubMerchantSignOnlineResponse) {
     response = &ApplyOpenBankSubMerchantSignOnlineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyOpenBankSubMerchantSignOnline
@@ -681,8 +694,9 @@ func NewApplyOutwardOrderRequest() (request *ApplyOutwardOrderRequest) {
 func NewApplyOutwardOrderResponse() (response *ApplyOutwardOrderResponse) {
     response = &ApplyOutwardOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyOutwardOrder
@@ -733,8 +747,9 @@ func NewApplyPayerInfoRequest() (request *ApplyPayerInfoRequest) {
 func NewApplyPayerInfoResponse() (response *ApplyPayerInfoResponse) {
     response = &ApplyPayerInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyPayerInfo
@@ -785,8 +800,9 @@ func NewApplyReWithdrawalRequest() (request *ApplyReWithdrawalRequest) {
 func NewApplyReWithdrawalResponse() (response *ApplyReWithdrawalResponse) {
     response = &ApplyReWithdrawalResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyReWithdrawal
@@ -843,8 +859,9 @@ func NewApplyReconciliationFileRequest() (request *ApplyReconciliationFileReques
 func NewApplyReconciliationFileResponse() (response *ApplyReconciliationFileResponse) {
     response = &ApplyReconciliationFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyReconciliationFile
@@ -901,8 +918,9 @@ func NewApplyTradeRequest() (request *ApplyTradeRequest) {
 func NewApplyTradeResponse() (response *ApplyTradeResponse) {
     response = &ApplyTradeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyTrade
@@ -953,8 +971,9 @@ func NewApplyWithdrawalRequest() (request *ApplyWithdrawalRequest) {
 func NewApplyWithdrawalResponse() (response *ApplyWithdrawalResponse) {
     response = &ApplyWithdrawalResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyWithdrawal
@@ -1009,8 +1028,9 @@ func NewBindAccountRequest() (request *BindAccountRequest) {
 func NewBindAccountResponse() (response *BindAccountResponse) {
     response = &BindAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindAccount
@@ -1065,8 +1085,9 @@ func NewBindAcctRequest() (request *BindAcctRequest) {
 func NewBindAcctResponse() (response *BindAcctResponse) {
     response = &BindAcctResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindAcct
@@ -1121,8 +1142,9 @@ func NewBindOpenBankExternalSubMerchantBankAccountRequest() (request *BindOpenBa
 func NewBindOpenBankExternalSubMerchantBankAccountResponse() (response *BindOpenBankExternalSubMerchantBankAccountResponse) {
     response = &BindOpenBankExternalSubMerchantBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindOpenBankExternalSubMerchantBankAccount
@@ -1169,8 +1191,9 @@ func NewBindOpenBankProfitSharePayeeRequest() (request *BindOpenBankProfitShareP
 func NewBindOpenBankProfitSharePayeeResponse() (response *BindOpenBankProfitSharePayeeResponse) {
     response = &BindOpenBankProfitSharePayeeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindOpenBankProfitSharePayee
@@ -1217,8 +1240,9 @@ func NewBindRelateAccReUnionPayRequest() (request *BindRelateAccReUnionPayReques
 func NewBindRelateAccReUnionPayResponse() (response *BindRelateAccReUnionPayResponse) {
     response = &BindRelateAccReUnionPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindRelateAccReUnionPay
@@ -1281,8 +1305,9 @@ func NewBindRelateAcctSmallAmountRequest() (request *BindRelateAcctSmallAmountRe
 func NewBindRelateAcctSmallAmountResponse() (response *BindRelateAcctSmallAmountResponse) {
     response = &BindRelateAcctSmallAmountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindRelateAcctSmallAmount
@@ -1357,8 +1382,9 @@ func NewBindRelateAcctUnionPayRequest() (request *BindRelateAcctUnionPayRequest)
 func NewBindRelateAcctUnionPayResponse() (response *BindRelateAcctUnionPayResponse) {
     response = &BindRelateAcctUnionPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindRelateAcctUnionPay
@@ -1437,8 +1463,9 @@ func NewCheckAcctRequest() (request *CheckAcctRequest) {
 func NewCheckAcctResponse() (response *CheckAcctResponse) {
     response = &CheckAcctResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckAcct
@@ -1493,8 +1520,9 @@ func NewCheckAmountRequest() (request *CheckAmountRequest) {
 func NewCheckAmountResponse() (response *CheckAmountResponse) {
     response = &CheckAmountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckAmount
@@ -1557,8 +1585,9 @@ func NewCloseCloudOrderRequest() (request *CloseCloudOrderRequest) {
 func NewCloseCloudOrderResponse() (response *CloseCloudOrderResponse) {
     response = &CloseCloudOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseCloudOrder
@@ -1689,8 +1718,9 @@ func NewCloseOpenBankPaymentOrderRequest() (request *CloseOpenBankPaymentOrderRe
 func NewCloseOpenBankPaymentOrderResponse() (response *CloseOpenBankPaymentOrderResponse) {
     response = &CloseOpenBankPaymentOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseOpenBankPaymentOrder
@@ -1737,8 +1767,9 @@ func NewCloseOrderRequest() (request *CloseOrderRequest) {
 func NewCloseOrderResponse() (response *CloseOrderResponse) {
     response = &CloseOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseOrder
@@ -1797,8 +1828,9 @@ func NewConfirmOrderRequest() (request *ConfirmOrderRequest) {
 func NewConfirmOrderResponse() (response *ConfirmOrderResponse) {
     response = &ConfirmOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ConfirmOrder
@@ -1849,8 +1881,9 @@ func NewContractOrderRequest() (request *ContractOrderRequest) {
 func NewContractOrderResponse() (response *ContractOrderResponse) {
     response = &ContractOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ContractOrder
@@ -1937,8 +1970,9 @@ func NewCreateAcctRequest() (request *CreateAcctRequest) {
 func NewCreateAcctResponse() (response *CreateAcctResponse) {
     response = &CreateAcctResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAcct
@@ -1995,8 +2029,9 @@ func NewCreateAgentTaxPaymentInfosRequest() (request *CreateAgentTaxPaymentInfos
 func NewCreateAgentTaxPaymentInfosResponse() (response *CreateAgentTaxPaymentInfosResponse) {
     response = &CreateAgentTaxPaymentInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAgentTaxPaymentInfos
@@ -2053,8 +2088,9 @@ func NewCreateAnchorRequest() (request *CreateAnchorRequest) {
 func NewCreateAnchorResponse() (response *CreateAnchorResponse) {
     response = &CreateAnchorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAnchor
@@ -2109,8 +2145,9 @@ func NewCreateBatchPaymentRequest() (request *CreateBatchPaymentRequest) {
 func NewCreateBatchPaymentResponse() (response *CreateBatchPaymentResponse) {
     response = &CreateBatchPaymentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBatchPayment
@@ -2165,8 +2202,9 @@ func NewCreateCloudSubMerchantRequest() (request *CreateCloudSubMerchantRequest)
 func NewCreateCloudSubMerchantResponse() (response *CreateCloudSubMerchantResponse) {
     response = &CreateCloudSubMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudSubMerchant
@@ -2297,8 +2335,9 @@ func NewCreateCustAcctIdRequest() (request *CreateCustAcctIdRequest) {
 func NewCreateCustAcctIdResponse() (response *CreateCustAcctIdResponse) {
     response = &CreateCustAcctIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustAcctId
@@ -2367,8 +2406,9 @@ func NewCreateExternalAnchorRequest() (request *CreateExternalAnchorRequest) {
 func NewCreateExternalAnchorResponse() (response *CreateExternalAnchorResponse) {
     response = &CreateExternalAnchorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateExternalAnchor
@@ -2433,8 +2473,9 @@ func NewCreateFlexPayeeRequest() (request *CreateFlexPayeeRequest) {
 func NewCreateFlexPayeeResponse() (response *CreateFlexPayeeResponse) {
     response = &CreateFlexPayeeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlexPayee
@@ -2481,8 +2522,9 @@ func NewCreateInvoiceRequest() (request *CreateInvoiceRequest) {
 func NewCreateInvoiceResponse() (response *CreateInvoiceResponse) {
     response = &CreateInvoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInvoice
@@ -2559,8 +2601,9 @@ func NewCreateInvoiceV2Request() (request *CreateInvoiceV2Request) {
 func NewCreateInvoiceV2Response() (response *CreateInvoiceV2Response) {
     response = &CreateInvoiceV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInvoiceV2
@@ -2607,8 +2650,9 @@ func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
 func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
     response = &CreateMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMerchant
@@ -2669,8 +2713,9 @@ func NewCreateOpenBankAggregatedSubMerchantRegistrationRequest() (request *Creat
 func NewCreateOpenBankAggregatedSubMerchantRegistrationResponse() (response *CreateOpenBankAggregatedSubMerchantRegistrationResponse) {
     response = &CreateOpenBankAggregatedSubMerchantRegistrationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankAggregatedSubMerchantRegistration
@@ -2731,8 +2776,9 @@ func NewCreateOpenBankExternalSubMerchantAccountBookRequest() (request *CreateOp
 func NewCreateOpenBankExternalSubMerchantAccountBookResponse() (response *CreateOpenBankExternalSubMerchantAccountBookResponse) {
     response = &CreateOpenBankExternalSubMerchantAccountBookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankExternalSubMerchantAccountBook
@@ -2793,8 +2839,9 @@ func NewCreateOpenBankExternalSubMerchantRegistrationRequest() (request *CreateO
 func NewCreateOpenBankExternalSubMerchantRegistrationResponse() (response *CreateOpenBankExternalSubMerchantRegistrationResponse) {
     response = &CreateOpenBankExternalSubMerchantRegistrationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankExternalSubMerchantRegistration
@@ -2841,8 +2888,9 @@ func NewCreateOpenBankGlobalPaymentOrderRequest() (request *CreateOpenBankGlobal
 func NewCreateOpenBankGlobalPaymentOrderResponse() (response *CreateOpenBankGlobalPaymentOrderResponse) {
     response = &CreateOpenBankGlobalPaymentOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankGlobalPaymentOrder
@@ -2889,8 +2937,9 @@ func NewCreateOpenBankMerchantRequest() (request *CreateOpenBankMerchantRequest)
 func NewCreateOpenBankMerchantResponse() (response *CreateOpenBankMerchantResponse) {
     response = &CreateOpenBankMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankMerchant
@@ -2937,8 +2986,9 @@ func NewCreateOpenBankPaymentOrderRequest() (request *CreateOpenBankPaymentOrder
 func NewCreateOpenBankPaymentOrderResponse() (response *CreateOpenBankPaymentOrderResponse) {
     response = &CreateOpenBankPaymentOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankPaymentOrder
@@ -2985,8 +3035,9 @@ func NewCreateOpenBankRechargeOrderRequest() (request *CreateOpenBankRechargeOrd
 func NewCreateOpenBankRechargeOrderResponse() (response *CreateOpenBankRechargeOrderResponse) {
     response = &CreateOpenBankRechargeOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankRechargeOrder
@@ -3033,8 +3084,9 @@ func NewCreateOpenBankSubMerchantRateConfigureRequest() (request *CreateOpenBank
 func NewCreateOpenBankSubMerchantRateConfigureResponse() (response *CreateOpenBankSubMerchantRateConfigureResponse) {
     response = &CreateOpenBankSubMerchantRateConfigureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankSubMerchantRateConfigure
@@ -3081,8 +3133,9 @@ func NewCreateOpenBankUnifiedOrderRequest() (request *CreateOpenBankUnifiedOrder
 func NewCreateOpenBankUnifiedOrderResponse() (response *CreateOpenBankUnifiedOrderResponse) {
     response = &CreateOpenBankUnifiedOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankUnifiedOrder
@@ -3129,8 +3182,9 @@ func NewCreateOpenBankVerificationOrderRequest() (request *CreateOpenBankVerific
 func NewCreateOpenBankVerificationOrderResponse() (response *CreateOpenBankVerificationOrderResponse) {
     response = &CreateOpenBankVerificationOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOpenBankVerificationOrder
@@ -3177,8 +3231,9 @@ func NewCreateOrderRequest() (request *CreateOrderRequest) {
 func NewCreateOrderResponse() (response *CreateOrderResponse) {
     response = &CreateOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrder
@@ -3233,8 +3288,9 @@ func NewCreatePayMerchantRequest() (request *CreatePayMerchantRequest) {
 func NewCreatePayMerchantResponse() (response *CreatePayMerchantResponse) {
     response = &CreatePayMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePayMerchant
@@ -3293,8 +3349,9 @@ func NewCreatePayRollPreOrderRequest() (request *CreatePayRollPreOrderRequest) {
 func NewCreatePayRollPreOrderResponse() (response *CreatePayRollPreOrderResponse) {
     response = &CreatePayRollPreOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePayRollPreOrder
@@ -3353,8 +3410,9 @@ func NewCreatePayRollPreOrderWithAuthRequest() (request *CreatePayRollPreOrderWi
 func NewCreatePayRollPreOrderWithAuthResponse() (response *CreatePayRollPreOrderWithAuthResponse) {
     response = &CreatePayRollPreOrderWithAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePayRollPreOrderWithAuth
@@ -3413,8 +3471,9 @@ func NewCreatePayRollTokenRequest() (request *CreatePayRollTokenRequest) {
 func NewCreatePayRollTokenResponse() (response *CreatePayRollTokenResponse) {
     response = &CreatePayRollTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePayRollToken
@@ -3473,8 +3532,9 @@ func NewCreateRedInvoiceRequest() (request *CreateRedInvoiceRequest) {
 func NewCreateRedInvoiceResponse() (response *CreateRedInvoiceResponse) {
     response = &CreateRedInvoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRedInvoice
@@ -3549,8 +3609,9 @@ func NewCreateRedInvoiceV2Request() (request *CreateRedInvoiceV2Request) {
 func NewCreateRedInvoiceV2Response() (response *CreateRedInvoiceV2Response) {
     response = &CreateRedInvoiceV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRedInvoiceV2
@@ -3597,8 +3658,9 @@ func NewCreateSinglePaymentRequest() (request *CreateSinglePaymentRequest) {
 func NewCreateSinglePaymentResponse() (response *CreateSinglePaymentResponse) {
     response = &CreateSinglePaymentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSinglePayment
@@ -3645,8 +3707,9 @@ func NewCreateTransferBatchRequest() (request *CreateTransferBatchRequest) {
 func NewCreateTransferBatchResponse() (response *CreateTransferBatchResponse) {
     response = &CreateTransferBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTransferBatch
@@ -3717,8 +3780,9 @@ func NewDeduceQuotaRequest() (request *DeduceQuotaRequest) {
 func NewDeduceQuotaResponse() (response *DeduceQuotaResponse) {
     response = &DeduceQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeduceQuota
@@ -3789,8 +3853,9 @@ func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRe
 func NewDeleteAgentTaxPaymentInfoResponse() (response *DeleteAgentTaxPaymentInfoResponse) {
     response = &DeleteAgentTaxPaymentInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAgentTaxPaymentInfo
@@ -3847,8 +3912,9 @@ func NewDeleteAgentTaxPaymentInfosRequest() (request *DeleteAgentTaxPaymentInfos
 func NewDeleteAgentTaxPaymentInfosResponse() (response *DeleteAgentTaxPaymentInfosResponse) {
     response = &DeleteAgentTaxPaymentInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAgentTaxPaymentInfos
@@ -3905,8 +3971,9 @@ func NewDescribeChargeDetailRequest() (request *DescribeChargeDetailRequest) {
 func NewDescribeChargeDetailResponse() (response *DescribeChargeDetailResponse) {
     response = &DescribeChargeDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChargeDetail
@@ -3963,8 +4030,9 @@ func NewDescribeOrderStatusRequest() (request *DescribeOrderStatusRequest) {
 func NewDescribeOrderStatusResponse() (response *DescribeOrderStatusResponse) {
     response = &DescribeOrderStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrderStatus
@@ -4013,8 +4081,9 @@ func NewDistributeAccreditQueryRequest() (request *DistributeAccreditQueryReques
 func NewDistributeAccreditQueryResponse() (response *DistributeAccreditQueryResponse) {
     response = &DistributeAccreditQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeAccreditQuery
@@ -4063,8 +4132,9 @@ func NewDistributeAccreditTlinxRequest() (request *DistributeAccreditTlinxReques
 func NewDistributeAccreditTlinxResponse() (response *DistributeAccreditTlinxResponse) {
     response = &DistributeAccreditTlinxResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeAccreditTlinx
@@ -4113,8 +4183,9 @@ func NewDistributeAddReceiverRequest() (request *DistributeAddReceiverRequest) {
 func NewDistributeAddReceiverResponse() (response *DistributeAddReceiverResponse) {
     response = &DistributeAddReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeAddReceiver
@@ -4163,8 +4234,9 @@ func NewDistributeApplyRequest() (request *DistributeApplyRequest) {
 func NewDistributeApplyResponse() (response *DistributeApplyResponse) {
     response = &DistributeApplyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeApply
@@ -4213,8 +4285,9 @@ func NewDistributeCancelRequest() (request *DistributeCancelRequest) {
 func NewDistributeCancelResponse() (response *DistributeCancelResponse) {
     response = &DistributeCancelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeCancel
@@ -4263,8 +4336,9 @@ func NewDistributeQueryRequest() (request *DistributeQueryRequest) {
 func NewDistributeQueryResponse() (response *DistributeQueryResponse) {
     response = &DistributeQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeQuery
@@ -4313,8 +4387,9 @@ func NewDistributeQueryReceiverRequest() (request *DistributeQueryReceiverReques
 func NewDistributeQueryReceiverResponse() (response *DistributeQueryReceiverResponse) {
     response = &DistributeQueryReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeQueryReceiver
@@ -4363,8 +4438,9 @@ func NewDistributeRemoveReceiverRequest() (request *DistributeRemoveReceiverRequ
 func NewDistributeRemoveReceiverResponse() (response *DistributeRemoveReceiverResponse) {
     response = &DistributeRemoveReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DistributeRemoveReceiver
@@ -4413,8 +4489,9 @@ func NewDownloadBillRequest() (request *DownloadBillRequest) {
 func NewDownloadBillResponse() (response *DownloadBillResponse) {
     response = &DownloadBillResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadBill
@@ -4473,8 +4550,9 @@ func NewDownloadOrgFileRequest() (request *DownloadOrgFileRequest) {
 func NewDownloadOrgFileResponse() (response *DownloadOrgFileResponse) {
     response = &DownloadOrgFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadOrgFile
@@ -4533,8 +4611,9 @@ func NewDownloadReconciliationUrlRequest() (request *DownloadReconciliationUrlRe
 func NewDownloadReconciliationUrlResponse() (response *DownloadReconciliationUrlResponse) {
     response = &DownloadReconciliationUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadReconciliationUrl
@@ -4585,8 +4664,9 @@ func NewExecuteMemberTransactionRequest() (request *ExecuteMemberTransactionRequ
 func NewExecuteMemberTransactionResponse() (response *ExecuteMemberTransactionResponse) {
     response = &ExecuteMemberTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteMemberTransaction
@@ -4637,8 +4717,9 @@ func NewFreezeFlexBalanceRequest() (request *FreezeFlexBalanceRequest) {
 func NewFreezeFlexBalanceResponse() (response *FreezeFlexBalanceResponse) {
     response = &FreezeFlexBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FreezeFlexBalance
@@ -4689,8 +4770,9 @@ func NewGetBillDownloadUrlRequest() (request *GetBillDownloadUrlRequest) {
 func NewGetBillDownloadUrlResponse() (response *GetBillDownloadUrlResponse) {
     response = &GetBillDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetBillDownloadUrl
@@ -4745,8 +4827,9 @@ func NewGetDistributeBillDownloadUrlRequest() (request *GetDistributeBillDownloa
 func NewGetDistributeBillDownloadUrlResponse() (response *GetDistributeBillDownloadUrlResponse) {
     response = &GetDistributeBillDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDistributeBillDownloadUrl
@@ -4801,8 +4884,9 @@ func NewGetPayRollAuthRequest() (request *GetPayRollAuthRequest) {
 func NewGetPayRollAuthResponse() (response *GetPayRollAuthResponse) {
     response = &GetPayRollAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPayRollAuth
@@ -4861,8 +4945,9 @@ func NewGetPayRollAuthListRequest() (request *GetPayRollAuthListRequest) {
 func NewGetPayRollAuthListResponse() (response *GetPayRollAuthListResponse) {
     response = &GetPayRollAuthListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPayRollAuthList
@@ -4921,8 +5006,9 @@ func NewGetPayRollAuthResultRequest() (request *GetPayRollAuthResultRequest) {
 func NewGetPayRollAuthResultResponse() (response *GetPayRollAuthResultResponse) {
     response = &GetPayRollAuthResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPayRollAuthResult
@@ -4981,8 +5067,9 @@ func NewMigrateOrderRefundRequest() (request *MigrateOrderRefundRequest) {
 func NewMigrateOrderRefundResponse() (response *MigrateOrderRefundResponse) {
     response = &MigrateOrderRefundResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MigrateOrderRefund
@@ -5063,8 +5150,9 @@ func NewMigrateOrderRefundQueryRequest() (request *MigrateOrderRefundQueryReques
 func NewMigrateOrderRefundQueryResponse() (response *MigrateOrderRefundQueryResponse) {
     response = &MigrateOrderRefundQueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MigrateOrderRefundQuery
@@ -5141,8 +5229,9 @@ func NewModifyAgentTaxPaymentInfoRequest() (request *ModifyAgentTaxPaymentInfoRe
 func NewModifyAgentTaxPaymentInfoResponse() (response *ModifyAgentTaxPaymentInfoResponse) {
     response = &ModifyAgentTaxPaymentInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAgentTaxPaymentInfo
@@ -5199,8 +5288,9 @@ func NewModifyBindedAccountRequest() (request *ModifyBindedAccountRequest) {
 func NewModifyBindedAccountResponse() (response *ModifyBindedAccountResponse) {
     response = &ModifyBindedAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBindedAccount
@@ -5257,8 +5347,9 @@ func NewModifyFlexFundingAccountRequest() (request *ModifyFlexFundingAccountRequ
 func NewModifyFlexFundingAccountResponse() (response *ModifyFlexFundingAccountResponse) {
     response = &ModifyFlexFundingAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFlexFundingAccount
@@ -5305,8 +5396,9 @@ func NewModifyFlexPayeeAccountRightStatusRequest() (request *ModifyFlexPayeeAcco
 func NewModifyFlexPayeeAccountRightStatusResponse() (response *ModifyFlexPayeeAccountRightStatusResponse) {
     response = &ModifyFlexPayeeAccountRightStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFlexPayeeAccountRightStatus
@@ -5353,8 +5445,9 @@ func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
 func NewModifyMerchantResponse() (response *ModifyMerchantResponse) {
     response = &ModifyMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMerchant
@@ -5405,8 +5498,9 @@ func NewModifyMntMbrBindRelateAcctBankCodeRequest() (request *ModifyMntMbrBindRe
 func NewModifyMntMbrBindRelateAcctBankCodeResponse() (response *ModifyMntMbrBindRelateAcctBankCodeResponse) {
     response = &ModifyMntMbrBindRelateAcctBankCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMntMbrBindRelateAcctBankCode
@@ -5469,8 +5563,9 @@ func NewQueryAcctBindingRequest() (request *QueryAcctBindingRequest) {
 func NewQueryAcctBindingResponse() (response *QueryAcctBindingResponse) {
     response = &QueryAcctBindingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAcctBinding
@@ -5529,8 +5624,9 @@ func NewQueryAcctInfoRequest() (request *QueryAcctInfoRequest) {
 func NewQueryAcctInfoResponse() (response *QueryAcctInfoResponse) {
     response = &QueryAcctInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAcctInfo
@@ -5589,8 +5685,9 @@ func NewQueryAcctInfoListRequest() (request *QueryAcctInfoListRequest) {
 func NewQueryAcctInfoListResponse() (response *QueryAcctInfoListResponse) {
     response = &QueryAcctInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAcctInfoList
@@ -5647,8 +5744,9 @@ func NewQueryAgentStatementsRequest() (request *QueryAgentStatementsRequest) {
 func NewQueryAgentStatementsResponse() (response *QueryAgentStatementsResponse) {
     response = &QueryAgentStatementsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAgentStatements
@@ -5707,8 +5805,9 @@ func NewQueryAgentTaxPaymentBatchRequest() (request *QueryAgentTaxPaymentBatchRe
 func NewQueryAgentTaxPaymentBatchResponse() (response *QueryAgentTaxPaymentBatchResponse) {
     response = &QueryAgentTaxPaymentBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAgentTaxPaymentBatch
@@ -5765,8 +5864,9 @@ func NewQueryAnchorContractInfoRequest() (request *QueryAnchorContractInfoReques
 func NewQueryAnchorContractInfoResponse() (response *QueryAnchorContractInfoResponse) {
     response = &QueryAnchorContractInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAnchorContractInfo
@@ -5821,8 +5921,9 @@ func NewQueryApplicationMaterialRequest() (request *QueryApplicationMaterialRequ
 func NewQueryApplicationMaterialResponse() (response *QueryApplicationMaterialResponse) {
     response = &QueryApplicationMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryApplicationMaterial
@@ -5873,8 +5974,9 @@ func NewQueryAssignmentRequest() (request *QueryAssignmentRequest) {
 func NewQueryAssignmentResponse() (response *QueryAssignmentResponse) {
     response = &QueryAssignmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAssignment
@@ -5925,8 +6027,9 @@ func NewQueryBalanceRequest() (request *QueryBalanceRequest) {
 func NewQueryBalanceResponse() (response *QueryBalanceResponse) {
     response = &QueryBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBalance
@@ -5983,8 +6086,9 @@ func NewQueryBankClearRequest() (request *QueryBankClearRequest) {
 func NewQueryBankClearResponse() (response *QueryBankClearResponse) {
     response = &QueryBankClearResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBankClear
@@ -6047,8 +6151,9 @@ func NewQueryBankTransactionDetailsRequest() (request *QueryBankTransactionDetai
 func NewQueryBankTransactionDetailsResponse() (response *QueryBankTransactionDetailsResponse) {
     response = &QueryBankTransactionDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBankTransactionDetails
@@ -6111,8 +6216,9 @@ func NewQueryBankWithdrawCashDetailsRequest() (request *QueryBankWithdrawCashDet
 func NewQueryBankWithdrawCashDetailsResponse() (response *QueryBankWithdrawCashDetailsResponse) {
     response = &QueryBankWithdrawCashDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBankWithdrawCashDetails
@@ -6175,8 +6281,9 @@ func NewQueryBatchPaymentResultRequest() (request *QueryBatchPaymentResultReques
 func NewQueryBatchPaymentResultResponse() (response *QueryBatchPaymentResultResponse) {
     response = &QueryBatchPaymentResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBatchPaymentResult
@@ -6239,8 +6346,9 @@ func NewQueryBillDownloadURLRequest() (request *QueryBillDownloadURLRequest) {
 func NewQueryBillDownloadURLResponse() (response *QueryBillDownloadURLResponse) {
     response = &QueryBillDownloadURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBillDownloadURL
@@ -6303,8 +6411,9 @@ func NewQueryCityCodeRequest() (request *QueryCityCodeRequest) {
 func NewQueryCityCodeResponse() (response *QueryCityCodeResponse) {
     response = &QueryCityCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCityCode
@@ -6367,8 +6476,9 @@ func NewQueryCloudChannelDataRequest() (request *QueryCloudChannelDataRequest) {
 func NewQueryCloudChannelDataResponse() (response *QueryCloudChannelDataResponse) {
     response = &QueryCloudChannelDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCloudChannelData
@@ -6499,8 +6609,9 @@ func NewQueryCloudOrderRequest() (request *QueryCloudOrderRequest) {
 func NewQueryCloudOrderResponse() (response *QueryCloudOrderResponse) {
     response = &QueryCloudOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCloudOrder
@@ -6631,8 +6742,9 @@ func NewQueryCloudRefundOrderRequest() (request *QueryCloudRefundOrderRequest) {
 func NewQueryCloudRefundOrderResponse() (response *QueryCloudRefundOrderResponse) {
     response = &QueryCloudRefundOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCloudRefundOrder
@@ -6763,8 +6875,9 @@ func NewQueryCommonTransferRechargeRequest() (request *QueryCommonTransferRechar
 func NewQueryCommonTransferRechargeResponse() (response *QueryCommonTransferRechargeResponse) {
     response = &QueryCommonTransferRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCommonTransferRecharge
@@ -6827,8 +6940,9 @@ func NewQueryCompanyTitleRequest() (request *QueryCompanyTitleRequest) {
 func NewQueryCompanyTitleResponse() (response *QueryCompanyTitleResponse) {
     response = &QueryCompanyTitleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCompanyTitle
@@ -6875,8 +6989,9 @@ func NewQueryContractRequest() (request *QueryContractRequest) {
 func NewQueryContractResponse() (response *QueryContractResponse) {
     response = &QueryContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryContract
@@ -6993,8 +7108,9 @@ func NewQueryContractPayFeeRequest() (request *QueryContractPayFeeRequest) {
 func NewQueryContractPayFeeResponse() (response *QueryContractPayFeeResponse) {
     response = &QueryContractPayFeeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryContractPayFee
@@ -7111,8 +7227,9 @@ func NewQueryContractPayWayListRequest() (request *QueryContractPayWayListReques
 func NewQueryContractPayWayListResponse() (response *QueryContractPayWayListResponse) {
     response = &QueryContractPayWayListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryContractPayWayList
@@ -7229,8 +7346,9 @@ func NewQueryContractRelateShopRequest() (request *QueryContractRelateShopReques
 func NewQueryContractRelateShopResponse() (response *QueryContractRelateShopResponse) {
     response = &QueryContractRelateShopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryContractRelateShop
@@ -7347,8 +7465,9 @@ func NewQueryCustAcctIdBalanceRequest() (request *QueryCustAcctIdBalanceRequest)
 func NewQueryCustAcctIdBalanceResponse() (response *QueryCustAcctIdBalanceResponse) {
     response = &QueryCustAcctIdBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCustAcctIdBalance
@@ -7411,8 +7530,9 @@ func NewQueryDownloadBillURLRequest() (request *QueryDownloadBillURLRequest) {
 func NewQueryDownloadBillURLResponse() (response *QueryDownloadBillURLResponse) {
     response = &QueryDownloadBillURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryDownloadBillURL
@@ -7465,8 +7585,9 @@ func NewQueryExceedingInfoRequest() (request *QueryExceedingInfoRequest) {
 func NewQueryExceedingInfoResponse() (response *QueryExceedingInfoResponse) {
     response = &QueryExceedingInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExceedingInfo
@@ -7519,8 +7640,9 @@ func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
 func NewQueryExchangeRateResponse() (response *QueryExchangeRateResponse) {
     response = &QueryExchangeRateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExchangeRate
@@ -7571,8 +7693,9 @@ func NewQueryFinancialDataUrlRequest() (request *QueryFinancialDataUrlRequest) {
 func NewQueryFinancialDataUrlResponse() (response *QueryFinancialDataUrlResponse) {
     response = &QueryFinancialDataUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFinancialDataUrl
@@ -7619,8 +7742,9 @@ func NewQueryFlexAmountBeforeTaxRequest() (request *QueryFlexAmountBeforeTaxRequ
 func NewQueryFlexAmountBeforeTaxResponse() (response *QueryFlexAmountBeforeTaxResponse) {
     response = &QueryFlexAmountBeforeTaxResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexAmountBeforeTax
@@ -7667,8 +7791,9 @@ func NewQueryFlexBillDownloadUrlRequest() (request *QueryFlexBillDownloadUrlRequ
 func NewQueryFlexBillDownloadUrlResponse() (response *QueryFlexBillDownloadUrlResponse) {
     response = &QueryFlexBillDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexBillDownloadUrl
@@ -7715,8 +7840,9 @@ func NewQueryFlexFreezeOrderListRequest() (request *QueryFlexFreezeOrderListRequ
 func NewQueryFlexFreezeOrderListResponse() (response *QueryFlexFreezeOrderListResponse) {
     response = &QueryFlexFreezeOrderListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexFreezeOrderList
@@ -7763,8 +7889,9 @@ func NewQueryFlexOrderSummaryListRequest() (request *QueryFlexOrderSummaryListRe
 func NewQueryFlexOrderSummaryListResponse() (response *QueryFlexOrderSummaryListResponse) {
     response = &QueryFlexOrderSummaryListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexOrderSummaryList
@@ -7811,8 +7938,9 @@ func NewQueryFlexPayeeAccountBalanceRequest() (request *QueryFlexPayeeAccountBal
 func NewQueryFlexPayeeAccountBalanceResponse() (response *QueryFlexPayeeAccountBalanceResponse) {
     response = &QueryFlexPayeeAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPayeeAccountBalance
@@ -7859,8 +7987,9 @@ func NewQueryFlexPayeeAccountInfoRequest() (request *QueryFlexPayeeAccountInfoRe
 func NewQueryFlexPayeeAccountInfoResponse() (response *QueryFlexPayeeAccountInfoResponse) {
     response = &QueryFlexPayeeAccountInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPayeeAccountInfo
@@ -7907,8 +8036,9 @@ func NewQueryFlexPayeeAccountListRequest() (request *QueryFlexPayeeAccountListRe
 func NewQueryFlexPayeeAccountListResponse() (response *QueryFlexPayeeAccountListResponse) {
     response = &QueryFlexPayeeAccountListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPayeeAccountList
@@ -7955,8 +8085,9 @@ func NewQueryFlexPayeeInfoRequest() (request *QueryFlexPayeeInfoRequest) {
 func NewQueryFlexPayeeInfoResponse() (response *QueryFlexPayeeInfoResponse) {
     response = &QueryFlexPayeeInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPayeeInfo
@@ -8003,8 +8134,9 @@ func NewQueryFlexPaymentOrderListRequest() (request *QueryFlexPaymentOrderListRe
 func NewQueryFlexPaymentOrderListResponse() (response *QueryFlexPaymentOrderListResponse) {
     response = &QueryFlexPaymentOrderListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPaymentOrderList
@@ -8051,8 +8183,9 @@ func NewQueryFlexPaymentOrderStatusRequest() (request *QueryFlexPaymentOrderStat
 func NewQueryFlexPaymentOrderStatusResponse() (response *QueryFlexPaymentOrderStatusResponse) {
     response = &QueryFlexPaymentOrderStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPaymentOrderStatus
@@ -8099,8 +8232,9 @@ func NewQueryFlexPlatformAccountBalanceRequest() (request *QueryFlexPlatformAcco
 func NewQueryFlexPlatformAccountBalanceResponse() (response *QueryFlexPlatformAccountBalanceResponse) {
     response = &QueryFlexPlatformAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexPlatformAccountBalance
@@ -8147,8 +8281,9 @@ func NewQueryFlexServiceProviderAccountBalanceRequest() (request *QueryFlexServi
 func NewQueryFlexServiceProviderAccountBalanceResponse() (response *QueryFlexServiceProviderAccountBalanceResponse) {
     response = &QueryFlexServiceProviderAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexServiceProviderAccountBalance
@@ -8195,8 +8330,9 @@ func NewQueryFlexSettlementOrderListRequest() (request *QueryFlexSettlementOrder
 func NewQueryFlexSettlementOrderListResponse() (response *QueryFlexSettlementOrderListResponse) {
     response = &QueryFlexSettlementOrderListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexSettlementOrderList
@@ -8243,8 +8379,9 @@ func NewQueryFlexWechatAuthResultRequest() (request *QueryFlexWechatAuthResultRe
 func NewQueryFlexWechatAuthResultResponse() (response *QueryFlexWechatAuthResultResponse) {
     response = &QueryFlexWechatAuthResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFlexWechatAuthResult
@@ -8291,8 +8428,9 @@ func NewQueryFundsTransactionDetailsRequest() (request *QueryFundsTransactionDet
 func NewQueryFundsTransactionDetailsResponse() (response *QueryFundsTransactionDetailsResponse) {
     response = &QueryFundsTransactionDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFundsTransactionDetails
@@ -8339,8 +8477,9 @@ func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
 func NewQueryInvoiceResponse() (response *QueryInvoiceResponse) {
     response = &QueryInvoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryInvoice
@@ -8417,8 +8556,9 @@ func NewQueryInvoiceV2Request() (request *QueryInvoiceV2Request) {
 func NewQueryInvoiceV2Response() (response *QueryInvoiceV2Response) {
     response = &QueryInvoiceV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryInvoiceV2
@@ -8465,8 +8605,9 @@ func NewQueryMaliciousRegistrationRequest() (request *QueryMaliciousRegistration
 func NewQueryMaliciousRegistrationResponse() (response *QueryMaliciousRegistrationResponse) {
     response = &QueryMaliciousRegistrationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMaliciousRegistration
@@ -8513,8 +8654,9 @@ func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
 func NewQueryMemberBindResponse() (response *QueryMemberBindResponse) {
     response = &QueryMemberBindResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMemberBind
@@ -8581,8 +8723,9 @@ func NewQueryMemberTransactionRequest() (request *QueryMemberTransactionRequest)
 func NewQueryMemberTransactionResponse() (response *QueryMemberTransactionResponse) {
     response = &QueryMemberTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMemberTransaction
@@ -8645,8 +8788,9 @@ func NewQueryMemberTransactionDetailsRequest() (request *QueryMemberTransactionD
 func NewQueryMemberTransactionDetailsResponse() (response *QueryMemberTransactionDetailsResponse) {
     response = &QueryMemberTransactionDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMemberTransactionDetails
@@ -8709,8 +8853,9 @@ func NewQueryMerchantRequest() (request *QueryMerchantRequest) {
 func NewQueryMerchantResponse() (response *QueryMerchantResponse) {
     response = &QueryMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchant
@@ -8763,8 +8908,9 @@ func NewQueryMerchantBalanceRequest() (request *QueryMerchantBalanceRequest) {
 func NewQueryMerchantBalanceResponse() (response *QueryMerchantBalanceResponse) {
     response = &QueryMerchantBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchantBalance
@@ -8815,8 +8961,9 @@ func NewQueryMerchantClassificationRequest() (request *QueryMerchantClassificati
 func NewQueryMerchantClassificationResponse() (response *QueryMerchantClassificationResponse) {
     response = &QueryMerchantClassificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchantClassification
@@ -8867,8 +9014,9 @@ func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForMa
 func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoForManagementResponse) {
     response = &QueryMerchantInfoForManagementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchantInfoForManagement
@@ -8931,8 +9079,9 @@ func NewQueryMerchantOrderRequest() (request *QueryMerchantOrderRequest) {
 func NewQueryMerchantOrderResponse() (response *QueryMerchantOrderResponse) {
     response = &QueryMerchantOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchantOrder
@@ -8985,8 +9134,9 @@ func NewQueryMerchantPayWayListRequest() (request *QueryMerchantPayWayListReques
 func NewQueryMerchantPayWayListResponse() (response *QueryMerchantPayWayListResponse) {
     response = &QueryMerchantPayWayListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMerchantPayWayList
@@ -9039,8 +9189,9 @@ func NewQueryOpenBankBankAccountBalanceRequest() (request *QueryOpenBankBankAcco
 func NewQueryOpenBankBankAccountBalanceResponse() (response *QueryOpenBankBankAccountBalanceResponse) {
     response = &QueryOpenBankBankAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankBankAccountBalance
@@ -9087,8 +9238,9 @@ func NewQueryOpenBankBankBranchListRequest() (request *QueryOpenBankBankBranchLi
 func NewQueryOpenBankBankBranchListResponse() (response *QueryOpenBankBankBranchListResponse) {
     response = &QueryOpenBankBankBranchListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankBankBranchList
@@ -9135,8 +9287,9 @@ func NewQueryOpenBankBillDataPageRequest() (request *QueryOpenBankBillDataPageRe
 func NewQueryOpenBankBillDataPageResponse() (response *QueryOpenBankBillDataPageResponse) {
     response = &QueryOpenBankBillDataPageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankBillDataPage
@@ -9183,8 +9336,9 @@ func NewQueryOpenBankBindExternalSubMerchantBankAccountRequest() (request *Query
 func NewQueryOpenBankBindExternalSubMerchantBankAccountResponse() (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse) {
     response = &QueryOpenBankBindExternalSubMerchantBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankBindExternalSubMerchantBankAccount
@@ -9231,8 +9385,9 @@ func NewQueryOpenBankDailyReceiptDownloadUrlRequest() (request *QueryOpenBankDai
 func NewQueryOpenBankDailyReceiptDownloadUrlResponse() (response *QueryOpenBankDailyReceiptDownloadUrlResponse) {
     response = &QueryOpenBankDailyReceiptDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankDailyReceiptDownloadUrl
@@ -9279,8 +9434,9 @@ func NewQueryOpenBankDownLoadUrlRequest() (request *QueryOpenBankDownLoadUrlRequ
 func NewQueryOpenBankDownLoadUrlResponse() (response *QueryOpenBankDownLoadUrlResponse) {
     response = &QueryOpenBankDownLoadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankDownLoadUrl
@@ -9327,8 +9483,9 @@ func NewQueryOpenBankExternalSubAccountBookBalanceRequest() (request *QueryOpenB
 func NewQueryOpenBankExternalSubAccountBookBalanceResponse() (response *QueryOpenBankExternalSubAccountBookBalanceResponse) {
     response = &QueryOpenBankExternalSubAccountBookBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankExternalSubAccountBookBalance
@@ -9375,8 +9532,9 @@ func NewQueryOpenBankExternalSubMerchantBankAccountRequest() (request *QueryOpen
 func NewQueryOpenBankExternalSubMerchantBankAccountResponse() (response *QueryOpenBankExternalSubMerchantBankAccountResponse) {
     response = &QueryOpenBankExternalSubMerchantBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankExternalSubMerchantBankAccount
@@ -9423,8 +9581,9 @@ func NewQueryOpenBankExternalSubMerchantRegistrationRequest() (request *QueryOpe
 func NewQueryOpenBankExternalSubMerchantRegistrationResponse() (response *QueryOpenBankExternalSubMerchantRegistrationResponse) {
     response = &QueryOpenBankExternalSubMerchantRegistrationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankExternalSubMerchantRegistration
@@ -9471,8 +9630,9 @@ func NewQueryOpenBankOrderDetailReceiptInfoRequest() (request *QueryOpenBankOrde
 func NewQueryOpenBankOrderDetailReceiptInfoResponse() (response *QueryOpenBankOrderDetailReceiptInfoResponse) {
     response = &QueryOpenBankOrderDetailReceiptInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankOrderDetailReceiptInfo
@@ -9519,8 +9679,9 @@ func NewQueryOpenBankPaymentOrderRequest() (request *QueryOpenBankPaymentOrderRe
 func NewQueryOpenBankPaymentOrderResponse() (response *QueryOpenBankPaymentOrderResponse) {
     response = &QueryOpenBankPaymentOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankPaymentOrder
@@ -9567,8 +9728,9 @@ func NewQueryOpenBankProfitSharePayeeRequest() (request *QueryOpenBankProfitShar
 func NewQueryOpenBankProfitSharePayeeResponse() (response *QueryOpenBankProfitSharePayeeResponse) {
     response = &QueryOpenBankProfitSharePayeeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankProfitSharePayee
@@ -9615,8 +9777,9 @@ func NewQueryOpenBankRefundOrderRequest() (request *QueryOpenBankRefundOrderRequ
 func NewQueryOpenBankRefundOrderResponse() (response *QueryOpenBankRefundOrderResponse) {
     response = &QueryOpenBankRefundOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankRefundOrder
@@ -9663,8 +9826,9 @@ func NewQueryOpenBankSettleOrderRequest() (request *QueryOpenBankSettleOrderRequ
 func NewQueryOpenBankSettleOrderResponse() (response *QueryOpenBankSettleOrderResponse) {
     response = &QueryOpenBankSettleOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankSettleOrder
@@ -9711,8 +9875,9 @@ func NewQueryOpenBankSubMerchantCredentialRequest() (request *QueryOpenBankSubMe
 func NewQueryOpenBankSubMerchantCredentialResponse() (response *QueryOpenBankSubMerchantCredentialResponse) {
     response = &QueryOpenBankSubMerchantCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankSubMerchantCredential
@@ -9759,8 +9924,9 @@ func NewQueryOpenBankSubMerchantRateConfigureRequest() (request *QueryOpenBankSu
 func NewQueryOpenBankSubMerchantRateConfigureResponse() (response *QueryOpenBankSubMerchantRateConfigureResponse) {
     response = &QueryOpenBankSubMerchantRateConfigureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankSubMerchantRateConfigure
@@ -9807,8 +9973,9 @@ func NewQueryOpenBankSubMerchantSignOnlineRequest() (request *QueryOpenBankSubMe
 func NewQueryOpenBankSubMerchantSignOnlineResponse() (response *QueryOpenBankSubMerchantSignOnlineResponse) {
     response = &QueryOpenBankSubMerchantSignOnlineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankSubMerchantSignOnline
@@ -9855,8 +10022,9 @@ func NewQueryOpenBankSupportBankListRequest() (request *QueryOpenBankSupportBank
 func NewQueryOpenBankSupportBankListResponse() (response *QueryOpenBankSupportBankListResponse) {
     response = &QueryOpenBankSupportBankListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankSupportBankList
@@ -9903,8 +10071,9 @@ func NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest() (request *Que
 func NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse() (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse) {
     response = &QueryOpenBankUnbindExternalSubMerchantBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankUnbindExternalSubMerchantBankAccount
@@ -9951,8 +10120,9 @@ func NewQueryOpenBankVerificationOrderRequest() (request *QueryOpenBankVerificat
 func NewQueryOpenBankVerificationOrderResponse() (response *QueryOpenBankVerificationOrderResponse) {
     response = &QueryOpenBankVerificationOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOpenBankVerificationOrder
@@ -9999,8 +10169,9 @@ func NewQueryOrderRequest() (request *QueryOrderRequest) {
 func NewQueryOrderResponse() (response *QueryOrderResponse) {
     response = &QueryOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOrder
@@ -10059,8 +10230,9 @@ func NewQueryOrderStatusRequest() (request *QueryOrderStatusRequest) {
 func NewQueryOrderStatusResponse() (response *QueryOrderStatusResponse) {
     response = &QueryOrderStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOrderStatus
@@ -10119,8 +10291,9 @@ func NewQueryOutwardOrderRequest() (request *QueryOutwardOrderRequest) {
 func NewQueryOutwardOrderResponse() (response *QueryOutwardOrderResponse) {
     response = &QueryOutwardOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryOutwardOrder
@@ -10171,8 +10344,9 @@ func NewQueryPayerInfoRequest() (request *QueryPayerInfoRequest) {
 func NewQueryPayerInfoResponse() (response *QueryPayerInfoResponse) {
     response = &QueryPayerInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryPayerInfo
@@ -10223,8 +10397,9 @@ func NewQueryReconciliationDocumentRequest() (request *QueryReconciliationDocume
 func NewQueryReconciliationDocumentResponse() (response *QueryReconciliationDocumentResponse) {
     response = &QueryReconciliationDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryReconciliationDocument
@@ -10287,8 +10462,9 @@ func NewQueryReconciliationFileApplyInfoRequest() (request *QueryReconciliationF
 func NewQueryReconciliationFileApplyInfoResponse() (response *QueryReconciliationFileApplyInfoResponse) {
     response = &QueryReconciliationFileApplyInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryReconciliationFileApplyInfo
@@ -10351,8 +10527,9 @@ func NewQueryRefundRequest() (request *QueryRefundRequest) {
 func NewQueryRefundResponse() (response *QueryRefundResponse) {
     response = &QueryRefundResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryRefund
@@ -10409,8 +10586,9 @@ func NewQueryShopOpenIdRequest() (request *QueryShopOpenIdRequest) {
 func NewQueryShopOpenIdResponse() (response *QueryShopOpenIdResponse) {
     response = &QueryShopOpenIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryShopOpenId
@@ -10467,8 +10645,9 @@ func NewQuerySinglePaymentResultRequest() (request *QuerySinglePaymentResultRequ
 func NewQuerySinglePaymentResultResponse() (response *QuerySinglePaymentResultResponse) {
     response = &QuerySinglePaymentResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QuerySinglePaymentResult
@@ -10525,8 +10704,9 @@ func NewQuerySingleTransactionStatusRequest() (request *QuerySingleTransactionSt
 func NewQuerySingleTransactionStatusResponse() (response *QuerySingleTransactionStatusResponse) {
     response = &QuerySingleTransactionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QuerySingleTransactionStatus
@@ -10589,8 +10769,9 @@ func NewQuerySmallAmountTransferRequest() (request *QuerySmallAmountTransferRequ
 func NewQuerySmallAmountTransferResponse() (response *QuerySmallAmountTransferResponse) {
     response = &QuerySmallAmountTransferResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QuerySmallAmountTransfer
@@ -10653,8 +10834,9 @@ func NewQueryTradeRequest() (request *QueryTradeRequest) {
 func NewQueryTradeResponse() (response *QueryTradeResponse) {
     response = &QueryTradeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryTrade
@@ -10705,8 +10887,9 @@ func NewQueryTransferBatchRequest() (request *QueryTransferBatchRequest) {
 func NewQueryTransferBatchResponse() (response *QueryTransferBatchResponse) {
     response = &QueryTransferBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryTransferBatch
@@ -10777,8 +10960,9 @@ func NewQueryTransferDetailRequest() (request *QueryTransferDetailRequest) {
 func NewQueryTransferDetailResponse() (response *QueryTransferDetailResponse) {
     response = &QueryTransferDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryTransferDetail
@@ -10849,8 +11033,9 @@ func NewQueryTransferResultRequest() (request *QueryTransferResultRequest) {
 func NewQueryTransferResultResponse() (response *QueryTransferResultResponse) {
     response = &QueryTransferResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryTransferResult
@@ -10921,8 +11106,9 @@ func NewRechargeByThirdPayRequest() (request *RechargeByThirdPayRequest) {
 func NewRechargeByThirdPayResponse() (response *RechargeByThirdPayResponse) {
     response = &RechargeByThirdPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RechargeByThirdPay
@@ -10971,8 +11157,9 @@ func NewRechargeMemberThirdPayRequest() (request *RechargeMemberThirdPayRequest)
 func NewRechargeMemberThirdPayResponse() (response *RechargeMemberThirdPayResponse) {
     response = &RechargeMemberThirdPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RechargeMemberThirdPay
@@ -11035,8 +11222,9 @@ func NewRefundRequest() (request *RefundRequest) {
 func NewRefundResponse() (response *RefundResponse) {
     response = &RefundResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Refund
@@ -11125,8 +11313,9 @@ func NewRefundCloudOrderRequest() (request *RefundCloudOrderRequest) {
 func NewRefundCloudOrderResponse() (response *RefundCloudOrderResponse) {
     response = &RefundCloudOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundCloudOrder
@@ -11257,8 +11446,9 @@ func NewRefundMemberTransactionRequest() (request *RefundMemberTransactionReques
 func NewRefundMemberTransactionResponse() (response *RefundMemberTransactionResponse) {
     response = &RefundMemberTransactionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundMemberTransaction
@@ -11309,8 +11499,9 @@ func NewRefundOpenBankOrderRequest() (request *RefundOpenBankOrderRequest) {
 func NewRefundOpenBankOrderResponse() (response *RefundOpenBankOrderResponse) {
     response = &RefundOpenBankOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundOpenBankOrder
@@ -11361,8 +11552,9 @@ func NewRefundOrderRequest() (request *RefundOrderRequest) {
 func NewRefundOrderResponse() (response *RefundOrderResponse) {
     response = &RefundOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundOrder
@@ -11415,8 +11607,9 @@ func NewRefundTlinxOrderRequest() (request *RefundTlinxOrderRequest) {
 func NewRefundTlinxOrderResponse() (response *RefundTlinxOrderResponse) {
     response = &RefundTlinxOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RefundTlinxOrder
@@ -11469,8 +11662,9 @@ func NewRegisterBehaviorRequest() (request *RegisterBehaviorRequest) {
 func NewRegisterBehaviorResponse() (response *RegisterBehaviorResponse) {
     response = &RegisterBehaviorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterBehavior
@@ -11527,8 +11721,9 @@ func NewRegisterBillRequest() (request *RegisterBillRequest) {
 func NewRegisterBillResponse() (response *RegisterBillResponse) {
     response = &RegisterBillResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterBill
@@ -11583,8 +11778,9 @@ func NewRegisterBillSupportWithdrawRequest() (request *RegisterBillSupportWithdr
 func NewRegisterBillSupportWithdrawResponse() (response *RegisterBillSupportWithdrawResponse) {
     response = &RegisterBillSupportWithdrawResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterBillSupportWithdraw
@@ -11647,8 +11843,9 @@ func NewReviseMbrPropertyRequest() (request *ReviseMbrPropertyRequest) {
 func NewReviseMbrPropertyResponse() (response *ReviseMbrPropertyResponse) {
     response = &ReviseMbrPropertyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReviseMbrProperty
@@ -11711,8 +11908,9 @@ func NewRevokeMemberRechargeThirdPayRequest() (request *RevokeMemberRechargeThir
 func NewRevokeMemberRechargeThirdPayResponse() (response *RevokeMemberRechargeThirdPayResponse) {
     response = &RevokeMemberRechargeThirdPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevokeMemberRechargeThirdPay
@@ -11775,8 +11973,9 @@ func NewRevokeRechargeByThirdPayRequest() (request *RevokeRechargeByThirdPayRequ
 func NewRevokeRechargeByThirdPayResponse() (response *RevokeRechargeByThirdPayResponse) {
     response = &RevokeRechargeByThirdPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevokeRechargeByThirdPay
@@ -11825,8 +12024,9 @@ func NewSyncContractDataRequest() (request *SyncContractDataRequest) {
 func NewSyncContractDataResponse() (response *SyncContractDataResponse) {
     response = &SyncContractDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncContractData
@@ -11931,8 +12131,9 @@ func NewTerminateContractRequest() (request *TerminateContractRequest) {
 func NewTerminateContractResponse() (response *TerminateContractResponse) {
     response = &TerminateContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateContract
@@ -12045,8 +12246,9 @@ func NewTransferSinglePayRequest() (request *TransferSinglePayRequest) {
 func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
     response = &TransferSinglePayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransferSinglePay
@@ -12159,8 +12361,9 @@ func NewUnBindAcctRequest() (request *UnBindAcctRequest) {
 func NewUnBindAcctResponse() (response *UnBindAcctResponse) {
     response = &UnBindAcctResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnBindAcct
@@ -12217,8 +12420,9 @@ func NewUnbindOpenBankExternalSubMerchantBankAccountRequest() (request *UnbindOp
 func NewUnbindOpenBankExternalSubMerchantBankAccountResponse() (response *UnbindOpenBankExternalSubMerchantBankAccountResponse) {
     response = &UnbindOpenBankExternalSubMerchantBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindOpenBankExternalSubMerchantBankAccount
@@ -12275,8 +12479,9 @@ func NewUnbindRelateAcctRequest() (request *UnbindRelateAcctRequest) {
 func NewUnbindRelateAcctResponse() (response *UnbindRelateAcctResponse) {
     response = &UnbindRelateAcctResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindRelateAcct
@@ -12339,8 +12544,9 @@ func NewUnifiedCloudOrderRequest() (request *UnifiedCloudOrderRequest) {
 func NewUnifiedCloudOrderResponse() (response *UnifiedCloudOrderResponse) {
     response = &UnifiedCloudOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnifiedCloudOrder
@@ -12473,8 +12679,9 @@ func NewUnifiedOrderRequest() (request *UnifiedOrderRequest) {
 func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
     response = &UnifiedOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnifiedOrder
@@ -12545,8 +12752,9 @@ func NewUnifiedTlinxOrderRequest() (request *UnifiedTlinxOrderRequest) {
 func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
     response = &UnifiedTlinxOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnifiedTlinxOrder
@@ -12617,8 +12825,9 @@ func NewUploadExternalAnchorInfoRequest() (request *UploadExternalAnchorInfoRequ
 func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoResponse) {
     response = &UploadExternalAnchorInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadExternalAnchorInfo
@@ -12689,8 +12898,9 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
 func NewUploadFileResponse() (response *UploadFileResponse) {
     response = &UploadFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadFile
@@ -12743,8 +12953,9 @@ func NewUploadOpenBankSubMerchantCredentialRequest() (request *UploadOpenBankSub
 func NewUploadOpenBankSubMerchantCredentialResponse() (response *UploadOpenBankSubMerchantCredentialResponse) {
     response = &UploadOpenBankSubMerchantCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadOpenBankSubMerchantCredential
@@ -12797,8 +13008,9 @@ func NewUploadOrgFileRequest() (request *UploadOrgFileRequest) {
 func NewUploadOrgFileResponse() (response *UploadOrgFileResponse) {
     response = &UploadOrgFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadOrgFile
@@ -12851,8 +13063,9 @@ func NewUploadTaxListRequest() (request *UploadTaxListRequest) {
 func NewUploadTaxListResponse() (response *UploadTaxListResponse) {
     response = &UploadTaxListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadTaxList
@@ -12907,8 +13120,9 @@ func NewUploadTaxPaymentRequest() (request *UploadTaxPaymentRequest) {
 func NewUploadTaxPaymentResponse() (response *UploadTaxPaymentResponse) {
     response = &UploadTaxPaymentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadTaxPayment
@@ -12965,8 +13179,9 @@ func NewVerifyOpenBankAccountRequest() (request *VerifyOpenBankAccountRequest) {
 func NewVerifyOpenBankAccountResponse() (response *VerifyOpenBankAccountResponse) {
     response = &VerifyOpenBankAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyOpenBankAccount
@@ -13013,8 +13228,9 @@ func NewViewContractRequest() (request *ViewContractRequest) {
 func NewViewContractResponse() (response *ViewContractResponse) {
     response = &ViewContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ViewContract
@@ -13061,8 +13277,9 @@ func NewViewMerchantRequest() (request *ViewMerchantRequest) {
 func NewViewMerchantResponse() (response *ViewMerchantResponse) {
     response = &ViewMerchantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ViewMerchant
@@ -13109,8 +13326,9 @@ func NewViewShopRequest() (request *ViewShopRequest) {
 func NewViewShopResponse() (response *ViewShopResponse) {
     response = &ViewShopResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ViewShop
@@ -13157,8 +13375,9 @@ func NewWithdrawCashMembershipRequest() (request *WithdrawCashMembershipRequest)
 func NewWithdrawCashMembershipResponse() (response *WithdrawCashMembershipResponse) {
     response = &WithdrawCashMembershipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // WithdrawCashMembership

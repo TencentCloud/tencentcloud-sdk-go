@@ -59,8 +59,9 @@ func NewDescribeStrategiesRequest() (request *DescribeStrategiesRequest) {
 func NewDescribeStrategiesResponse() (response *DescribeStrategiesResponse) {
     response = &DescribeStrategiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStrategies
@@ -113,8 +114,9 @@ func NewDescribeTaskStrategyRisksRequest() (request *DescribeTaskStrategyRisksRe
 func NewDescribeTaskStrategyRisksResponse() (response *DescribeTaskStrategyRisksResponse) {
     response = &DescribeTaskStrategyRisksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskStrategyRisks

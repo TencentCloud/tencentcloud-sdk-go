@@ -71,6 +71,9 @@ const (
 	// 获取工作组信息失败。
 	FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 
+	// 数据治理错误，请重试，或者提交工单联系我们
+	FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+
 	// 授权失败。
 	FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 
@@ -146,6 +149,12 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 指定的交互式SQL任务Filter.Key不匹配，当前仅支持: task-sql-keyword/task-operator/batch-id/session-id/task-state
+	INVALIDPARAMETER_BATCHSQLFILTERSKEYTYPENOTMATH = "InvalidParameter.BatchSQLFiltersKeyTypeNotMath"
+
+	// 交互式SQL任务指定SortBy类型不匹配，当前仅支持: create-time/resource-usage
+	INVALIDPARAMETER_BATCHSQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.BatchSQLTaskSortByTypeNotMatch"
+
 	// 指定集群参数已存在
 	INVALIDPARAMETER_DATAENGINECONFIGPAIRSDUPLICATE = "InvalidParameter.DataEngineConfigPairsDuplicate"
 
@@ -155,14 +164,23 @@ const (
 	// 指定集群镜像操作不匹配，当前仅支持: InitImage/UpgradeImage/SwitchImage/RollbackImage/ModifyResource
 	INVALIDPARAMETER_DATAENGINEIMAGEOPERATENOTMATCH = "InvalidParameter.DataEngineImageOperateNotMatch"
 
+	// 当前任务仅支持Spark批作业引擎运行
+	INVALIDPARAMETER_DATAENGINEONLYSUPPORTSPARKBATCH = "InvalidParameter.DataEngineOnlySupportSparkBatch"
+
 	// 指定集群付费类型不匹配，当前仅支持: 0: 后付费, 1: 预付费
 	INVALIDPARAMETER_DATAENGINEPAYMODETYPENOTMATCH = "InvalidParameter.DataEnginePayModeTypeNotMatch"
 
 	// 指定集群类型不匹配，当前仅支持: spark/presto
 	INVALIDPARAMETER_DATAENGINETYPENOTMATCH = "InvalidParameter.DataEngineTypeNotMatch"
 
+	// 数据源连接已存在，请重试，或者提交工单联系我们
+	INVALIDPARAMETER_DATASOURCECONNECTIONNOTUNIQUE = "InvalidParameter.DatasourceConnectionNotUnique"
+
 	// 数据源类型错误。
 	INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+
+	// DescribeDataEnginesS Sort by type not match, only support create-time
+	INVALIDPARAMETER_DESCRIBEDATAENGINESSORTBYTYPENOTMATCH = "InvalidParameter.DescribeDataEnginesSortByTypeNotMatch"
 
 	// 重复的引擎名称。
 	INVALIDPARAMETER_DUPLICATEDATAENGINENAME = "InvalidParameter.DuplicateDataEngineName"
@@ -172,6 +190,9 @@ const (
 
 	// 重复的用户名。
 	INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+
+	// 指定Filter.Values参数数量超限，当前应小于等于50个
+	INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
 
 	// 指定集群镜像Cluster参数格式非JSON
 	INVALIDPARAMETER_IMAGECLUSTERPARAMETERSFORMATNOTJSON = "InvalidParameter.ImageClusterParametersFormatNotJson"
@@ -206,6 +227,24 @@ const (
 	// 无效的访问策略。
 	INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 
+	// 字段名称设置错误，字段名称必须小于等于128字节
+	INVALIDPARAMETER_INVALIDCOLUMNNAMELENGTH = "InvalidParameter.InvalidColumnNameLength"
+
+	// 字段个数设置错误，字段个数必须小于等于4096
+	INVALIDPARAMETER_INVALIDCOLUMNNUMBER = "InvalidParameter.InvalidColumnNumber"
+
+	// 字段类型设置错误，仅支持string/tinyint/smallint/int/bigint/boolean/float/double/decimal/timestamp/date/binary/array<>/map<>/struct<>/uniontype<>
+	INVALIDPARAMETER_INVALIDCOLUMNTYPE = "InvalidParameter.InvalidColumnType"
+
+	// 任务指定参数Key值不存在
+	INVALIDPARAMETER_INVALIDCONFIGKEYNOTFOUND = "InvalidParameter.InvalidConfigKeyNotFound"
+
+	// 任务指定参数Value值长度超限
+	INVALIDPARAMETER_INVALIDCONFIGVALUELENGTHOUTLIMIT = "InvalidParameter.InvalidConfigValueLengthOutLimit"
+
+	// 任务指定参数Value值不符合规则
+	INVALIDPARAMETER_INVALIDCONFIGVALUEREGEXPNOTMATCH = "InvalidParameter.InvalidConfigValueRegexpNotMatch"
+
 	// 指定集群参数无效，请校验后重试
 	INVALIDPARAMETER_INVALIDDATAENGINECONFIGPAIRS = "InvalidParameter.InvalidDataEngineConfigPairs"
 
@@ -221,20 +260,44 @@ const (
 	// 无效的数据引擎规格。
 	INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
 
+	// 数据源连接配置异常，请重试，或者提交工单联系我们
+	INVALIDPARAMETER_INVALIDDATASOURCECONNECTIONCONFIG = "InvalidParameter.InvalidDatasourceConnectionConfig"
+
+	// DecimalType设置非法，Precision必须大于等于Scale，且Precision必须小于38
+	INVALIDPARAMETER_INVALIDDECIMALTYPE = "InvalidParameter.InvalidDecimalType"
+
 	// 无效的默认数据引擎参数。
 	INVALIDPARAMETER_INVALIDDEFAULTDATAENGINE = "InvalidParameter.InvalidDefaultDataEngine"
 
 	// 无效的描述信息。
 	INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
 
+	// 当前DriverSize规格仅支持: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+
+	// 指定Excutor动态数量必须为当前最大值
+	INVALIDPARAMETER_INVALIDDYNAMICALLOCATIONMAXEXECUTORS = "InvalidParameter.InvalidDynamicAllocationMaxExecutors"
+
 	// 引擎类型不合法
 	INVALIDPARAMETER_INVALIDENGINETYPE = "InvalidParameter.InvalidEngineType"
+
+	// 当前ExecutorSize规格仅支持: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
 
 	// 任务容错类型错误，当前仅支持: Proceed/Terminate
 	INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 
+	// 指定的文件压缩格式不合规，当前仅支持: tar.gz/tar/tgz
+	INVALIDPARAMETER_INVALIDFILECOMPRESSIONFORMAT = "InvalidParameter.InvalidFileCompressionFormat"
+
+	// 指定的文件路径格式不合规，当前仅支持:cosn://或lakefs://
+	INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+
 	// 不支持此过滤条件
 	INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
+
+	// 过滤条件个数非法，当指定了过滤条件时，过滤条件的个数应该大于等于1个，且小于等于5个
+	INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
 
 	// 无效的工作组Id。
 	INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
@@ -260,8 +323,14 @@ const (
 	// SQL解析失败。
 	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 
+	// 参数校验失败，请调整参数，或者提交工单联系我们
+	INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
+
 	// 执行SQL数量错误，SQL数量要大于等于1个且小于等于50个
 	INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+
+	// 当前Session仅支持: spark/pyspark/sparkr/sql类型
+	INVALIDPARAMETER_INVALIDSESSIONKINDTYPE = "InvalidParameter.InvalidSessionKindType"
 
 	// 不支持的排序类型。
 	INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
@@ -269,14 +338,38 @@ const (
 	// SparkAppParam无效。
 	INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 
+	// 当前Statement仅支持sql类型
+	INVALIDPARAMETER_INVALIDSTATEMENTKINDTYPE = "InvalidParameter.InvalidStatementKindType"
+
 	// 存储位置错误。
 	INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+
+	// 表格式非法，当前仅支持: TextFile/CSV/Json/Parquet/ORC/AVRO
+	INVALIDPARAMETER_INVALIDTABLEFORMAT = "InvalidParameter.InvalidTableFormat"
+
+	// 表格式设置错误，只能设置一种格式
+	INVALIDPARAMETER_INVALIDTABLEFORMATSIZE = "InvalidParameter.InvalidTableFormatSize"
+
+	// 表路径设置错误，请检查并重新设置
+	INVALIDPARAMETER_INVALIDTABLELOCATION = "InvalidParameter.InvalidTableLocation"
+
+	// 表名设置错误，表名长度必须小于等于128字节
+	INVALIDPARAMETER_INVALIDTABLENAMELENGTH = "InvalidParameter.InvalidTableNameLength"
 
 	// 无效的taskid。
 	INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 
 	// 任务类型TaskType错误，Spark引擎任务类型为SparkSQLTask,Presto引擎任务类型为SQLTask
 	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+
+	// 指定的TCR Spark镜像格式不匹配，参考样例: my-image/ndf/python/latest
+	INVALIDPARAMETER_INVALIDTCRSPARKIMAGEFORMAT = "InvalidParameter.InvalidTcrSparkImageFormat"
+
+	// 指定时间格式不合规，当前仅支持: YYYY-mm-dd HH:MM:SS
+	INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+
+	// 日期参数异常，如结束时间早于开始时间
+	INVALIDPARAMETER_INVALIDTIMEPARAMETER = "InvalidParameter.InvalidTimeParameter"
 
 	// 无效的计费时长。
 	INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
@@ -299,11 +392,50 @@ const (
 	// 无效的工作组名。
 	INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
 
+	// 提交的SQL数量范围限制为1~50
+	INVALIDPARAMETER_NUMBEROFSQLEXCEEDSTHELIMIT = "InvalidParameter.NumberOfSQLExceedsTheLimit"
+
+	// 指定参数Base64解析失败
+	INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+
 	// 找不到参数或参数为空
 	INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
 
-	// 任务已经结束，不能取消。
-	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+	// SQL脚本Base64解析失败
+	INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+
+	// SQL参数预处理失败
+	INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+
+	// 指定的Filter.Key不匹配，当前仅支持: task-id/task-sql-keyword/task-kind/task-operator/batch-id/session-id/task-state
+	INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+
+	// 指定的SQL任务不存在
+	INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+
+	// SQL任务指定SortBy类型不匹配，当前仅支持: create-time/data-amount/used-time/resource-usage
+	INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+
+	// 指定的Spark任务Filter.Key不匹配，当前仅支持: spark-app-type/user-name/spark-job-name/spark-job-id/key-word
+	INVALIDPARAMETER_SPARKJOBFILTERSKEYTYPENOTMATH = "InvalidParameter.SparkJobFiltersKeyTypeNotMath"
+
+	// 指定的Spark任务IsInherit类型不匹配，当前仅支持: 0:继承, 1:不继承
+	INVALIDPARAMETER_SPARKJOBISINHERITTYPENOTMATCH = "InvalidParameter.SparkJobIsInheritTypeNotMatch"
+
+	// 指定的Spark任务不存在
+	INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+
+	// 指定的Spark任务已存在
+	INVALIDPARAMETER_SPARKJOBNOTUNIQUE = "InvalidParameter.SparkJobNotUnique"
+
+	// Spark任务仅支持使用Spark作业引擎运行
+	INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+
+	// 指定的Spark任务排序类型不匹配，当前仅支持create-time/update-time/user-name/data-engine-name
+	INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = "InvalidParameter.SparkJobSortByTypeNotMatch"
+
+	// 指定的任务状态不匹配，当前仅支持: 0:初始化, 1:运行中, 2:成功, 3:数据写入中, 4:排队中, -1:失败, -3:删除
+	INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 
 	// Vpc cidr格式错误。
 	INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
@@ -326,8 +458,17 @@ const (
 	// 有SQL任务尚未执行完成。
 	RESOURCEINUSE_UNFINISHEDSQLS = "ResourceInUse.UnfinishedSQLs"
 
+	// 指定的spark作业资源不足，请调整driver/executor规格
+	RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 指定的交互式SQL任务不存在
+	RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+
+	// 指定的交互式SQL任务不唯一
+	RESOURCENOTFOUND_BATCHSQLTASKNOTUNIQUE = "ResourceNotFound.BatchSQLTaskNotUnique"
 
 	// 指定集群配置实例不存在
 	RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTFOUND = "ResourceNotFound.DataEngineConfigInstanceNotFound"
@@ -374,8 +515,17 @@ const (
 	// 指定集群镜像版本已存在
 	RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
 
+	// 指定任务资源超过集群剩余资源限制，请调整后重试
+	RESOURCENOTFOUND_RESOURCEUSAGEOUTOFLIMIT = "ResourceNotFound.ResourceUsageOutOfLimit"
+
 	// 未找到结果路径。
 	RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
+
+	// 获取结果存储路径失败，请到控制台->数据探索页面设置
+	RESOURCENOTFOUND_RESULTSAVEPATHNOTFOUND = "ResourceNotFound.ResultSavePathNotFound"
+
+	// 指定RoleArn不存在
+	RESOURCENOTFOUND_ROLEARNRESOURCENOTFOUND = "ResourceNotFound.RoleArnResourceNotFound"
 
 	// 当前无资源创建session，请稍后重试或使用包年包月集群。
 	RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
@@ -386,14 +536,29 @@ const (
 	// session已消亡。
 	RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
 
+	// 找不到Spark Shuffle存储路径，请到控制台->数据探索页面->存储配置中设置
+	RESOURCENOTFOUND_SHUFFLEDIRNOTFOUND = "ResourceNotFound.ShuffleDirNotFound"
+
+	// 表不存在，请重试，或者提交工单联系我们
+	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+
 	// 任务已经失败
 	RESOURCENOTFOUND_TASKALREADYFAILED = "ResourceNotFound.TaskAlreadyFailed"
+
+	// 任务已经完成
+	RESOURCENOTFOUND_TASKALREADYFINISHED = "ResourceNotFound.TaskAlreadyFinished"
+
+	// 找不到Warehouse存储路径，请到控制台->数据探索页面->存储配置中设置
+	RESOURCENOTFOUND_WAREHOUSEDIRNOTFOUND = "ResourceNotFound.WarehouseDirNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 账号余额不足，无法执行SQL任务。
 	RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+
+	// 当前为白名单功能，请联系我们开通
+	RESOURCEUNAVAILABLE_WHITELISTFUNCTION = "ResourceUnavailable.WhiteListFunction"
 
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"
@@ -452,6 +617,9 @@ const (
 	// 子用户无权操作引擎。
 	UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 
+	// Prohibited operation admin
+	UNAUTHORIZEDOPERATION_PROHIBITEDOPERATIONADMIN = "UnauthorizedOperation.ProhibitedOperationAdmin"
+
 	// 子用户无权取消特定权限。
 	UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 
@@ -472,4 +640,10 @@ const (
 
 	// 无法修改主账号。
 	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+
+	// 不支持当前数据连接类型，当前仅支持: DataLakeCatalog/Mysql/HiveCos/HiveHdfs/HiveCHdfs/PostgreSql/SqlServer/ClickHouse
+	UNSUPPORTEDOPERATION_UNSUPPORTEDDATASOURCECONNECTIONTYPE = "UnsupportedOperation.UnsupportedDatasourceConnectionType"
+
+	// 不支持当前文件格式，当前仅支持: json/csv/avro/orc/parquet
+	UNSUPPORTEDOPERATION_UNSUPPORTEDFILETYPE = "UnsupportedOperation.UnsupportedFileType"
 )

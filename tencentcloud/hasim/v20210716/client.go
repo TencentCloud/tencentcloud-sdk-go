@@ -59,8 +59,9 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
 func NewCreateRuleResponse() (response *CreateRuleResponse) {
     response = &CreateRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRule
@@ -123,8 +124,9 @@ func NewCreateTacticRequest() (request *CreateTacticRequest) {
 func NewCreateTacticResponse() (response *CreateTacticResponse) {
     response = &CreateTacticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTactic
@@ -189,8 +191,9 @@ func NewCreateTagRequest() (request *CreateTagRequest) {
 func NewCreateTagResponse() (response *CreateTagResponse) {
     response = &CreateTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTag
@@ -253,8 +256,9 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
 func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
     response = &DeleteRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRule
@@ -321,8 +325,9 @@ func NewDeleteTacticRequest() (request *DeleteTacticRequest) {
 func NewDeleteTacticResponse() (response *DeleteTacticResponse) {
     response = &DeleteTacticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTactic
@@ -389,8 +394,9 @@ func NewDeleteTagRequest() (request *DeleteTagRequest) {
 func NewDeleteTagResponse() (response *DeleteTagResponse) {
     response = &DeleteTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTag
@@ -453,8 +459,9 @@ func NewDescribeLinkRequest() (request *DescribeLinkRequest) {
 func NewDescribeLinkResponse() (response *DescribeLinkResponse) {
     response = &DescribeLinkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLink
@@ -521,8 +528,9 @@ func NewDescribeLinksRequest() (request *DescribeLinksRequest) {
 func NewDescribeLinksResponse() (response *DescribeLinksResponse) {
     response = &DescribeLinksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLinks
@@ -587,8 +595,9 @@ func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
 func NewDescribeOrdersResponse() (response *DescribeOrdersResponse) {
     response = &DescribeOrdersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrders
@@ -635,8 +644,9 @@ func NewDescribeRuleRequest() (request *DescribeRuleRequest) {
 func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
     response = &DescribeRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRule
@@ -703,8 +713,9 @@ func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
 func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
     response = &DescribeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRules
@@ -771,8 +782,9 @@ func NewDescribeTacticRequest() (request *DescribeTacticRequest) {
 func NewDescribeTacticResponse() (response *DescribeTacticResponse) {
     response = &DescribeTacticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTactic
@@ -839,8 +851,9 @@ func NewDescribeTacticsRequest() (request *DescribeTacticsRequest) {
 func NewDescribeTacticsResponse() (response *DescribeTacticsResponse) {
     response = &DescribeTacticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTactics
@@ -905,8 +918,9 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
 func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
     response = &DescribeTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTags
@@ -969,8 +983,9 @@ func NewModifyLinkAdvancedLogRequest() (request *ModifyLinkAdvancedLogRequest) {
 func NewModifyLinkAdvancedLogResponse() (response *ModifyLinkAdvancedLogResponse) {
     response = &ModifyLinkAdvancedLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLinkAdvancedLog
@@ -1035,8 +1050,9 @@ func NewModifyLinkTacticRequest() (request *ModifyLinkTacticRequest) {
 func NewModifyLinkTacticResponse() (response *ModifyLinkTacticResponse) {
     response = &ModifyLinkTacticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLinkTactic
@@ -1101,8 +1117,9 @@ func NewModifyLinkTeleRequest() (request *ModifyLinkTeleRequest) {
 func NewModifyLinkTeleResponse() (response *ModifyLinkTeleResponse) {
     response = &ModifyLinkTeleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLinkTele
@@ -1167,8 +1184,9 @@ func NewModifyRuleRequest() (request *ModifyRuleRequest) {
 func NewModifyRuleResponse() (response *ModifyRuleResponse) {
     response = &ModifyRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRule
@@ -1231,8 +1249,9 @@ func NewModifyRuleStatusRequest() (request *ModifyRuleStatusRequest) {
 func NewModifyRuleStatusResponse() (response *ModifyRuleStatusResponse) {
     response = &ModifyRuleStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRuleStatus
@@ -1295,8 +1314,9 @@ func NewModifyTacticRequest() (request *ModifyTacticRequest) {
 func NewModifyTacticResponse() (response *ModifyTacticResponse) {
     response = &ModifyTacticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTactic
@@ -1361,8 +1381,9 @@ func NewModifyTagRequest() (request *ModifyTagRequest) {
 func NewModifyTagResponse() (response *ModifyTagResponse) {
     response = &ModifyTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTag
@@ -1425,8 +1446,9 @@ func NewRenewLinkInfoRequest() (request *RenewLinkInfoRequest) {
 func NewRenewLinkInfoResponse() (response *RenewLinkInfoResponse) {
     response = &RenewLinkInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewLinkInfo

@@ -59,8 +59,9 @@ func NewDeleteCertRequest() (request *DeleteCertRequest) {
 func NewDeleteCertResponse() (response *DeleteCertResponse) {
     response = &DeleteCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCert
@@ -115,8 +116,9 @@ func NewDescribeCertListRequest() (request *DescribeCertListRequest) {
 func NewDescribeCertListResponse() (response *DescribeCertListResponse) {
     response = &DescribeCertListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCertList
@@ -169,8 +171,9 @@ func NewUploadCertRequest() (request *UploadCertRequest) {
 func NewUploadCertResponse() (response *UploadCertResponse) {
     response = &UploadCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadCert

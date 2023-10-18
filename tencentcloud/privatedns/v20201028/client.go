@@ -59,8 +59,9 @@ func NewAddSpecifyPrivateZoneVpcRequest() (request *AddSpecifyPrivateZoneVpcRequ
 func NewAddSpecifyPrivateZoneVpcResponse() (response *AddSpecifyPrivateZoneVpcResponse) {
     response = &AddSpecifyPrivateZoneVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddSpecifyPrivateZoneVpc
@@ -167,8 +168,9 @@ func NewCreatePrivateDNSAccountRequest() (request *CreatePrivateDNSAccountReques
 func NewCreatePrivateDNSAccountResponse() (response *CreatePrivateDNSAccountResponse) {
     response = &CreatePrivateDNSAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePrivateDNSAccount
@@ -259,8 +261,9 @@ func NewCreatePrivateZoneRequest() (request *CreatePrivateZoneRequest) {
 func NewCreatePrivateZoneResponse() (response *CreatePrivateZoneResponse) {
     response = &CreatePrivateZoneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePrivateZone
@@ -381,8 +384,9 @@ func NewCreatePrivateZoneRecordRequest() (request *CreatePrivateZoneRecordReques
 func NewCreatePrivateZoneRecordResponse() (response *CreatePrivateZoneRecordResponse) {
     response = &CreatePrivateZoneRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePrivateZoneRecord
@@ -513,8 +517,9 @@ func NewDeleteEndPointRequest() (request *DeleteEndPointRequest) {
 func NewDeleteEndPointResponse() (response *DeleteEndPointResponse) {
     response = &DeleteEndPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEndPoint
@@ -587,8 +592,9 @@ func NewDeletePrivateDNSAccountRequest() (request *DeletePrivateDNSAccountReques
 func NewDeletePrivateDNSAccountResponse() (response *DeletePrivateDNSAccountResponse) {
     response = &DeletePrivateDNSAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePrivateDNSAccount
@@ -677,8 +683,9 @@ func NewDeletePrivateZoneRequest() (request *DeletePrivateZoneRequest) {
 func NewDeletePrivateZoneResponse() (response *DeletePrivateZoneResponse) {
     response = &DeletePrivateZoneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePrivateZone
@@ -773,8 +780,9 @@ func NewDeletePrivateZoneRecordRequest() (request *DeletePrivateZoneRecordReques
 func NewDeletePrivateZoneRecordResponse() (response *DeletePrivateZoneRecordResponse) {
     response = &DeletePrivateZoneRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePrivateZoneRecord
@@ -871,8 +879,9 @@ func NewDeleteSpecifyPrivateZoneVpcRequest() (request *DeleteSpecifyPrivateZoneV
 func NewDeleteSpecifyPrivateZoneVpcResponse() (response *DeleteSpecifyPrivateZoneVpcResponse) {
     response = &DeleteSpecifyPrivateZoneVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSpecifyPrivateZoneVpc
@@ -979,8 +988,9 @@ func NewDescribeAccountVpcListRequest() (request *DescribeAccountVpcListRequest)
 func NewDescribeAccountVpcListResponse() (response *DescribeAccountVpcListResponse) {
     response = &DescribeAccountVpcListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountVpcList
@@ -1069,8 +1079,9 @@ func NewDescribeAuditLogRequest() (request *DescribeAuditLogRequest) {
 func NewDescribeAuditLogResponse() (response *DescribeAuditLogResponse) {
     response = &DescribeAuditLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuditLog
@@ -1151,8 +1162,9 @@ func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
 func NewDescribeDashboardResponse() (response *DescribeDashboardResponse) {
     response = &DescribeDashboardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDashboard
@@ -1239,8 +1251,9 @@ func NewDescribePrivateDNSAccountListRequest() (request *DescribePrivateDNSAccou
 func NewDescribePrivateDNSAccountListResponse() (response *DescribePrivateDNSAccountListResponse) {
     response = &DescribePrivateDNSAccountListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivateDNSAccountList
@@ -1325,8 +1338,9 @@ func NewDescribePrivateZoneRequest() (request *DescribePrivateZoneRequest) {
 func NewDescribePrivateZoneResponse() (response *DescribePrivateZoneResponse) {
     response = &DescribePrivateZoneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivateZone
@@ -1415,8 +1429,9 @@ func NewDescribePrivateZoneListRequest() (request *DescribePrivateZoneListReques
 func NewDescribePrivateZoneListResponse() (response *DescribePrivateZoneListResponse) {
     response = &DescribePrivateZoneListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivateZoneList
@@ -1501,8 +1516,9 @@ func NewDescribePrivateZoneRecordListRequest() (request *DescribePrivateZoneReco
 func NewDescribePrivateZoneRecordListResponse() (response *DescribePrivateZoneRecordListResponse) {
     response = &DescribePrivateZoneRecordListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivateZoneRecordList
@@ -1571,8 +1587,9 @@ func NewDescribePrivateZoneServiceRequest() (request *DescribePrivateZoneService
 func NewDescribePrivateZoneServiceResponse() (response *DescribePrivateZoneServiceResponse) {
     response = &DescribePrivateZoneServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrivateZoneService
@@ -1655,8 +1672,9 @@ func NewDescribeQuotaUsageRequest() (request *DescribeQuotaUsageRequest) {
 func NewDescribeQuotaUsageResponse() (response *DescribeQuotaUsageResponse) {
     response = &DescribeQuotaUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQuotaUsage
@@ -1715,8 +1733,9 @@ func NewDescribeRequestDataRequest() (request *DescribeRequestDataRequest) {
 func NewDescribeRequestDataResponse() (response *DescribeRequestDataResponse) {
     response = &DescribeRequestDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRequestData
@@ -1767,8 +1786,9 @@ func NewModifyPrivateZoneRequest() (request *ModifyPrivateZoneRequest) {
 func NewModifyPrivateZoneResponse() (response *ModifyPrivateZoneResponse) {
     response = &ModifyPrivateZoneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPrivateZone
@@ -1867,8 +1887,9 @@ func NewModifyPrivateZoneRecordRequest() (request *ModifyPrivateZoneRecordReques
 func NewModifyPrivateZoneRecordResponse() (response *ModifyPrivateZoneRecordResponse) {
     response = &ModifyPrivateZoneRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPrivateZoneRecord
@@ -2005,8 +2026,9 @@ func NewModifyPrivateZoneVpcRequest() (request *ModifyPrivateZoneVpcRequest) {
 func NewModifyPrivateZoneVpcResponse() (response *ModifyPrivateZoneVpcResponse) {
     response = &ModifyPrivateZoneVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPrivateZoneVpc
@@ -2113,8 +2135,9 @@ func NewModifyRecordsStatusRequest() (request *ModifyRecordsStatusRequest) {
 func NewModifyRecordsStatusResponse() (response *ModifyRecordsStatusResponse) {
     response = &ModifyRecordsStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRecordsStatus
@@ -2179,8 +2202,9 @@ func NewSubscribePrivateZoneServiceRequest() (request *SubscribePrivateZoneServi
 func NewSubscribePrivateZoneServiceResponse() (response *SubscribePrivateZoneServiceResponse) {
     response = &SubscribePrivateZoneServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubscribePrivateZoneService

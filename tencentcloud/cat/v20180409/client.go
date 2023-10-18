@@ -59,8 +59,9 @@ func NewCreateProbeTasksRequest() (request *CreateProbeTasksRequest) {
 func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
     response = &CreateProbeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProbeTasks
@@ -145,8 +146,9 @@ func NewDeleteProbeTaskRequest() (request *DeleteProbeTaskRequest) {
 func NewDeleteProbeTaskResponse() (response *DeleteProbeTaskResponse) {
     response = &DeleteProbeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProbeTask
@@ -213,8 +215,9 @@ func NewDescribeDetailedSingleProbeDataRequest() (request *DescribeDetailedSingl
 func NewDescribeDetailedSingleProbeDataResponse() (response *DescribeDetailedSingleProbeDataResponse) {
     response = &DescribeDetailedSingleProbeDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDetailedSingleProbeData
@@ -275,8 +278,9 @@ func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
 func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
     response = &DescribeNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNodes
@@ -337,8 +341,9 @@ func NewDescribeProbeMetricDataRequest() (request *DescribeProbeMetricDataReques
 func NewDescribeProbeMetricDataResponse() (response *DescribeProbeMetricDataResponse) {
     response = &DescribeProbeMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProbeMetricData
@@ -387,8 +392,9 @@ func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
 func NewDescribeProbeNodesResponse() (response *DescribeProbeNodesResponse) {
     response = &DescribeProbeNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProbeNodes
@@ -437,8 +443,9 @@ func NewDescribeProbeTasksRequest() (request *DescribeProbeTasksRequest) {
 func NewDescribeProbeTasksResponse() (response *DescribeProbeTasksResponse) {
     response = &DescribeProbeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProbeTasks
@@ -499,8 +506,9 @@ func NewResumeProbeTaskRequest() (request *ResumeProbeTaskRequest) {
 func NewResumeProbeTaskResponse() (response *ResumeProbeTaskResponse) {
     response = &ResumeProbeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeProbeTask
@@ -569,8 +577,9 @@ func NewSuspendProbeTaskRequest() (request *SuspendProbeTaskRequest) {
 func NewSuspendProbeTaskResponse() (response *SuspendProbeTaskResponse) {
     response = &SuspendProbeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SuspendProbeTask
@@ -635,8 +644,9 @@ func NewUpdateProbeTaskAttributesRequest() (request *UpdateProbeTaskAttributesRe
 func NewUpdateProbeTaskAttributesResponse() (response *UpdateProbeTaskAttributesResponse) {
     response = &UpdateProbeTaskAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateProbeTaskAttributes
@@ -701,8 +711,9 @@ func NewUpdateProbeTaskConfigurationListRequest() (request *UpdateProbeTaskConfi
 func NewUpdateProbeTaskConfigurationListResponse() (response *UpdateProbeTaskConfigurationListResponse) {
     response = &UpdateProbeTaskConfigurationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateProbeTaskConfigurationList

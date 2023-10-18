@@ -59,8 +59,9 @@ func NewCloseAsyncRecognitionTaskRequest() (request *CloseAsyncRecognitionTaskRe
 func NewCloseAsyncRecognitionTaskResponse() (response *CloseAsyncRecognitionTaskResponse) {
     response = &CloseAsyncRecognitionTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseAsyncRecognitionTask
@@ -113,8 +114,9 @@ func NewCreateAsrVocabRequest() (request *CreateAsrVocabRequest) {
 func NewCreateAsrVocabResponse() (response *CreateAsrVocabResponse) {
     response = &CreateAsrVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAsrVocab
@@ -219,8 +221,9 @@ func NewCreateAsyncRecognitionTaskRequest() (request *CreateAsyncRecognitionTask
 func NewCreateAsyncRecognitionTaskResponse() (response *CreateAsyncRecognitionTaskResponse) {
     response = &CreateAsyncRecognitionTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAsyncRecognitionTask
@@ -305,8 +308,9 @@ func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
 func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
     response = &CreateCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomization
@@ -377,8 +381,9 @@ func NewCreateRecTaskRequest() (request *CreateRecTaskRequest) {
 func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
     response = &CreateRecTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRecTask
@@ -491,8 +496,9 @@ func NewDeleteAsrVocabRequest() (request *DeleteAsrVocabRequest) {
 func NewDeleteAsrVocabResponse() (response *DeleteAsrVocabResponse) {
     response = &DeleteAsrVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAsrVocab
@@ -561,8 +567,9 @@ func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
 func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
     response = &DeleteCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomization
@@ -629,8 +636,9 @@ func NewDescribeAsyncRecognitionTasksRequest() (request *DescribeAsyncRecognitio
 func NewDescribeAsyncRecognitionTasksResponse() (response *DescribeAsyncRecognitionTasksResponse) {
     response = &DescribeAsyncRecognitionTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAsyncRecognitionTasks
@@ -681,8 +689,9 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
 func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     response = &DescribeTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskStatus
@@ -767,8 +776,9 @@ func NewDownloadAsrVocabRequest() (request *DownloadAsrVocabRequest) {
 func NewDownloadAsrVocabResponse() (response *DownloadAsrVocabResponse) {
     response = &DownloadAsrVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadAsrVocab
@@ -827,8 +837,9 @@ func NewDownloadCustomizationRequest() (request *DownloadCustomizationRequest) {
 func NewDownloadCustomizationResponse() (response *DownloadCustomizationResponse) {
     response = &DownloadCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadCustomization
@@ -891,8 +902,9 @@ func NewGetAsrVocabRequest() (request *GetAsrVocabRequest) {
 func NewGetAsrVocabResponse() (response *GetAsrVocabResponse) {
     response = &GetAsrVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAsrVocab
@@ -947,8 +959,9 @@ func NewGetAsrVocabListRequest() (request *GetAsrVocabListRequest) {
 func NewGetAsrVocabListResponse() (response *GetAsrVocabListResponse) {
     response = &GetAsrVocabListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAsrVocabList
@@ -1013,8 +1026,9 @@ func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
 func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) {
     response = &GetCustomizationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCustomizationList
@@ -1067,8 +1081,9 @@ func NewGetModelInfoRequest() (request *GetModelInfoRequest) {
 func NewGetModelInfoResponse() (response *GetModelInfoResponse) {
     response = &GetModelInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetModelInfo
@@ -1123,8 +1138,9 @@ func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
 func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
     response = &ModifyCustomizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomization
@@ -1189,8 +1205,9 @@ func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequ
 func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateResponse) {
     response = &ModifyCustomizationStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCustomizationState
@@ -1253,8 +1270,9 @@ func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
 func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
     response = &SentenceRecognitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SentenceRecognition
@@ -1361,8 +1379,9 @@ func NewSetVocabStateRequest() (request *SetVocabStateRequest) {
 func NewSetVocabStateResponse() (response *SetVocabStateResponse) {
     response = &SetVocabStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetVocabState
@@ -1423,8 +1442,9 @@ func NewUpdateAsrVocabRequest() (request *UpdateAsrVocabRequest) {
 func NewUpdateAsrVocabResponse() (response *UpdateAsrVocabResponse) {
     response = &UpdateAsrVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAsrVocab
@@ -1495,8 +1515,9 @@ func NewVoicePrintCountRequest() (request *VoicePrintCountRequest) {
 func NewVoicePrintCountResponse() (response *VoicePrintCountResponse) {
     response = &VoicePrintCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VoicePrintCount
@@ -1545,8 +1566,9 @@ func NewVoicePrintDeleteRequest() (request *VoicePrintDeleteRequest) {
 func NewVoicePrintDeleteResponse() (response *VoicePrintDeleteResponse) {
     response = &VoicePrintDeleteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VoicePrintDelete
@@ -1613,8 +1635,9 @@ func NewVoicePrintEnrollRequest() (request *VoicePrintEnrollRequest) {
 func NewVoicePrintEnrollResponse() (response *VoicePrintEnrollResponse) {
     response = &VoicePrintEnrollResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VoicePrintEnroll
@@ -1711,8 +1734,9 @@ func NewVoicePrintUpdateRequest() (request *VoicePrintUpdateRequest) {
 func NewVoicePrintUpdateResponse() (response *VoicePrintUpdateResponse) {
     response = &VoicePrintUpdateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VoicePrintUpdate
@@ -1781,8 +1805,9 @@ func NewVoicePrintVerifyRequest() (request *VoicePrintVerifyRequest) {
 func NewVoicePrintVerifyResponse() (response *VoicePrintVerifyResponse) {
     response = &VoicePrintVerifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VoicePrintVerify

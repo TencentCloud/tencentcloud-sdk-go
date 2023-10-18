@@ -59,8 +59,9 @@ func NewCreateAllocationTagRequest() (request *CreateAllocationTagRequest) {
 func NewCreateAllocationTagResponse() (response *CreateAllocationTagResponse) {
     response = &CreateAllocationTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAllocationTag
@@ -111,8 +112,9 @@ func NewDeleteAllocationTagRequest() (request *DeleteAllocationTagRequest) {
 func NewDeleteAllocationTagResponse() (response *DeleteAllocationTagResponse) {
     response = &DeleteAllocationTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAllocationTag
@@ -163,8 +165,9 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
 func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceResponse) {
     response = &DescribeAccountBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountBalance
@@ -221,8 +224,9 @@ func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
 func NewDescribeBillDetailResponse() (response *DescribeBillDetailResponse) {
     response = &DescribeBillDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillDetail
@@ -293,8 +297,9 @@ func NewDescribeBillDetailForOrganizationRequest() (request *DescribeBillDetailF
 func NewDescribeBillDetailForOrganizationResponse() (response *DescribeBillDetailForOrganizationResponse) {
     response = &DescribeBillDetailForOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillDetailForOrganization
@@ -357,8 +362,9 @@ func NewDescribeBillDownloadUrlRequest() (request *DescribeBillDownloadUrlReques
 func NewDescribeBillDownloadUrlResponse() (response *DescribeBillDownloadUrlResponse) {
     response = &DescribeBillDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillDownloadUrl
@@ -409,8 +415,9 @@ func NewDescribeBillListRequest() (request *DescribeBillListRequest) {
 func NewDescribeBillListResponse() (response *DescribeBillListResponse) {
     response = &DescribeBillListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillList
@@ -467,8 +474,9 @@ func NewDescribeBillResourceSummaryRequest() (request *DescribeBillResourceSumma
 func NewDescribeBillResourceSummaryResponse() (response *DescribeBillResourceSummaryResponse) {
     response = &DescribeBillResourceSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillResourceSummary
@@ -519,8 +527,9 @@ func NewDescribeBillResourceSummaryForOrganizationRequest() (request *DescribeBi
 func NewDescribeBillResourceSummaryForOrganizationResponse() (response *DescribeBillResourceSummaryForOrganizationResponse) {
     response = &DescribeBillResourceSummaryForOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillResourceSummaryForOrganization
@@ -571,8 +580,9 @@ func NewDescribeBillSummaryRequest() (request *DescribeBillSummaryRequest) {
 func NewDescribeBillSummaryResponse() (response *DescribeBillSummaryResponse) {
     response = &DescribeBillSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummary
@@ -627,8 +637,9 @@ func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPay
 func NewDescribeBillSummaryByPayModeResponse() (response *DescribeBillSummaryByPayModeResponse) {
     response = &DescribeBillSummaryByPayModeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryByPayMode
@@ -683,8 +694,9 @@ func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByPro
 func NewDescribeBillSummaryByProductResponse() (response *DescribeBillSummaryByProductResponse) {
     response = &DescribeBillSummaryByProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryByProduct
@@ -741,8 +753,9 @@ func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByPro
 func NewDescribeBillSummaryByProjectResponse() (response *DescribeBillSummaryByProjectResponse) {
     response = &DescribeBillSummaryByProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryByProject
@@ -797,8 +810,9 @@ func NewDescribeBillSummaryByRegionRequest() (request *DescribeBillSummaryByRegi
 func NewDescribeBillSummaryByRegionResponse() (response *DescribeBillSummaryByRegionResponse) {
     response = &DescribeBillSummaryByRegionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryByRegion
@@ -853,8 +867,9 @@ func NewDescribeBillSummaryByTagRequest() (request *DescribeBillSummaryByTagRequ
 func NewDescribeBillSummaryByTagResponse() (response *DescribeBillSummaryByTagResponse) {
     response = &DescribeBillSummaryByTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryByTag
@@ -911,8 +926,9 @@ func NewDescribeBillSummaryForOrganizationRequest() (request *DescribeBillSummar
 func NewDescribeBillSummaryForOrganizationResponse() (response *DescribeBillSummaryForOrganizationResponse) {
     response = &DescribeBillSummaryForOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillSummaryForOrganization
@@ -967,8 +983,9 @@ func NewDescribeCostDetailRequest() (request *DescribeCostDetailRequest) {
 func NewDescribeCostDetailResponse() (response *DescribeCostDetailResponse) {
     response = &DescribeCostDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCostDetail
@@ -1015,8 +1032,9 @@ func NewDescribeCostSummaryByProductRequest() (request *DescribeCostSummaryByPro
 func NewDescribeCostSummaryByProductResponse() (response *DescribeCostSummaryByProductResponse) {
     response = &DescribeCostSummaryByProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCostSummaryByProduct
@@ -1063,8 +1081,9 @@ func NewDescribeCostSummaryByProjectRequest() (request *DescribeCostSummaryByPro
 func NewDescribeCostSummaryByProjectResponse() (response *DescribeCostSummaryByProjectResponse) {
     response = &DescribeCostSummaryByProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCostSummaryByProject
@@ -1111,8 +1130,9 @@ func NewDescribeCostSummaryByRegionRequest() (request *DescribeCostSummaryByRegi
 func NewDescribeCostSummaryByRegionResponse() (response *DescribeCostSummaryByRegionResponse) {
     response = &DescribeCostSummaryByRegionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCostSummaryByRegion
@@ -1159,8 +1179,9 @@ func NewDescribeCostSummaryByResourceRequest() (request *DescribeCostSummaryByRe
 func NewDescribeCostSummaryByResourceResponse() (response *DescribeCostSummaryByResourceResponse) {
     response = &DescribeCostSummaryByResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCostSummaryByResource
@@ -1207,8 +1228,9 @@ func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
 func NewDescribeDealsByCondResponse() (response *DescribeDealsByCondResponse) {
     response = &DescribeDealsByCondResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDealsByCond
@@ -1255,8 +1277,9 @@ func NewDescribeDosageCosDetailByDateRequest() (request *DescribeDosageCosDetail
 func NewDescribeDosageCosDetailByDateResponse() (response *DescribeDosageCosDetailByDateResponse) {
     response = &DescribeDosageCosDetailByDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDosageCosDetailByDate
@@ -1303,8 +1326,9 @@ func NewDescribeDosageDetailByDateRequest() (request *DescribeDosageDetailByDate
 func NewDescribeDosageDetailByDateResponse() (response *DescribeDosageDetailByDateResponse) {
     response = &DescribeDosageDetailByDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDosageDetailByDate
@@ -1351,8 +1375,9 @@ func NewDescribeTagListRequest() (request *DescribeTagListRequest) {
 func NewDescribeTagListResponse() (response *DescribeTagListResponse) {
     response = &DescribeTagListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTagList
@@ -1405,8 +1430,9 @@ func NewDescribeVoucherInfoRequest() (request *DescribeVoucherInfoRequest) {
 func NewDescribeVoucherInfoResponse() (response *DescribeVoucherInfoResponse) {
     response = &DescribeVoucherInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVoucherInfo
@@ -1461,8 +1487,9 @@ func NewDescribeVoucherUsageDetailsRequest() (request *DescribeVoucherUsageDetai
 func NewDescribeVoucherUsageDetailsResponse() (response *DescribeVoucherUsageDetailsResponse) {
     response = &DescribeVoucherUsageDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVoucherUsageDetails
@@ -1517,8 +1544,9 @@ func NewPayDealsRequest() (request *PayDealsRequest) {
 func NewPayDealsResponse() (response *PayDealsResponse) {
     response = &PayDealsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PayDeals

@@ -59,8 +59,9 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
 func NewCreateAccountResponse() (response *CreateAccountResponse) {
     response = &CreateAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAccount
@@ -121,8 +122,9 @@ func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
 func NewCreateFacePictureResponse() (response *CreateFacePictureResponse) {
     response = &CreateFacePictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFacePicture
@@ -183,8 +185,9 @@ func NewDeletePersonFeatureRequest() (request *DeletePersonFeatureRequest) {
 func NewDeletePersonFeatureResponse() (response *DeletePersonFeatureResponse) {
     response = &DeletePersonFeatureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePersonFeature
@@ -263,8 +266,9 @@ func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
 func NewDescribeCameraPersonResponse() (response *DescribeCameraPersonResponse) {
     response = &DescribeCameraPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCameraPerson
@@ -315,8 +319,9 @@ func NewDescribeClusterPersonArrivedMallRequest() (request *DescribeClusterPerso
 func NewDescribeClusterPersonArrivedMallResponse() (response *DescribeClusterPersonArrivedMallResponse) {
     response = &DescribeClusterPersonArrivedMallResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterPersonArrivedMall
@@ -379,8 +384,9 @@ func NewDescribeClusterPersonTraceRequest() (request *DescribeClusterPersonTrace
 func NewDescribeClusterPersonTraceResponse() (response *DescribeClusterPersonTraceResponse) {
     response = &DescribeClusterPersonTraceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterPersonTrace
@@ -443,8 +449,9 @@ func NewDescribeFaceIdByTempIdRequest() (request *DescribeFaceIdByTempIdRequest)
 func NewDescribeFaceIdByTempIdResponse() (response *DescribeFaceIdByTempIdResponse) {
     response = &DescribeFaceIdByTempIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFaceIdByTempId
@@ -515,8 +522,9 @@ func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfo
 func NewDescribeHistoryNetworkInfoResponse() (response *DescribeHistoryNetworkInfoResponse) {
     response = &DescribeHistoryNetworkInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHistoryNetworkInfo
@@ -571,8 +579,9 @@ func NewDescribeNetworkInfoRequest() (request *DescribeNetworkInfoRequest) {
 func NewDescribeNetworkInfoResponse() (response *DescribeNetworkInfoResponse) {
     response = &DescribeNetworkInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNetworkInfo
@@ -627,8 +636,9 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
 func NewDescribePersonResponse() (response *DescribePersonResponse) {
     response = &DescribePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePerson
@@ -693,8 +703,9 @@ func NewDescribePersonArrivedMallRequest() (request *DescribePersonArrivedMallRe
 func NewDescribePersonArrivedMallResponse() (response *DescribePersonArrivedMallResponse) {
     response = &DescribePersonArrivedMallResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonArrivedMall
@@ -763,8 +774,9 @@ func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
 func NewDescribePersonInfoResponse() (response *DescribePersonInfoResponse) {
     response = &DescribePersonInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonInfo
@@ -819,8 +831,9 @@ func NewDescribePersonInfoByFacePictureRequest() (request *DescribePersonInfoByF
 func NewDescribePersonInfoByFacePictureResponse() (response *DescribePersonInfoByFacePictureResponse) {
     response = &DescribePersonInfoByFacePictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonInfoByFacePicture
@@ -899,8 +912,9 @@ func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
 func NewDescribePersonTraceResponse() (response *DescribePersonTraceResponse) {
     response = &DescribePersonTraceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonTrace
@@ -965,8 +979,9 @@ func NewDescribePersonTraceDetailRequest() (request *DescribePersonTraceDetailRe
 func NewDescribePersonTraceDetailResponse() (response *DescribePersonTraceDetailResponse) {
     response = &DescribePersonTraceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonTraceDetail
@@ -1029,8 +1044,9 @@ func NewDescribePersonVisitInfoRequest() (request *DescribePersonVisitInfoReques
 func NewDescribePersonVisitInfoResponse() (response *DescribePersonVisitInfoResponse) {
     response = &DescribePersonVisitInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonVisitInfo
@@ -1083,8 +1099,9 @@ func NewDescribeShopHourTrafficInfoRequest() (request *DescribeShopHourTrafficIn
 func NewDescribeShopHourTrafficInfoResponse() (response *DescribeShopHourTrafficInfoResponse) {
     response = &DescribeShopHourTrafficInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShopHourTrafficInfo
@@ -1139,8 +1156,9 @@ func NewDescribeShopInfoRequest() (request *DescribeShopInfoRequest) {
 func NewDescribeShopInfoResponse() (response *DescribeShopInfoResponse) {
     response = &DescribeShopInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShopInfo
@@ -1195,8 +1213,9 @@ func NewDescribeShopTrafficInfoRequest() (request *DescribeShopTrafficInfoReques
 func NewDescribeShopTrafficInfoResponse() (response *DescribeShopTrafficInfoResponse) {
     response = &DescribeShopTrafficInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShopTrafficInfo
@@ -1251,8 +1270,9 @@ func NewDescribeTrajectoryDataRequest() (request *DescribeTrajectoryDataRequest)
 func NewDescribeTrajectoryDataResponse() (response *DescribeTrajectoryDataResponse) {
     response = &DescribeTrajectoryDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrajectoryData
@@ -1311,8 +1331,9 @@ func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeIn
 func NewDescribeZoneFlowAgeInfoByZoneIdResponse() (response *DescribeZoneFlowAgeInfoByZoneIdResponse) {
     response = &DescribeZoneFlowAgeInfoByZoneIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowAgeInfoByZoneId
@@ -1371,8 +1392,9 @@ func NewDescribeZoneFlowAndStayTimeRequest() (request *DescribeZoneFlowAndStayTi
 func NewDescribeZoneFlowAndStayTimeResponse() (response *DescribeZoneFlowAndStayTimeResponse) {
     response = &DescribeZoneFlowAndStayTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowAndStayTime
@@ -1431,8 +1453,9 @@ func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyBy
 func NewDescribeZoneFlowDailyByZoneIdResponse() (response *DescribeZoneFlowDailyByZoneIdResponse) {
     response = &DescribeZoneFlowDailyByZoneIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowDailyByZoneId
@@ -1491,8 +1514,9 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest() (request *DescribeZon
 func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse() (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) {
     response = &DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowGenderAvrStayTimeByZoneId
@@ -1551,8 +1575,9 @@ func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGe
 func NewDescribeZoneFlowGenderInfoByZoneIdResponse() (response *DescribeZoneFlowGenderInfoByZoneIdResponse) {
     response = &DescribeZoneFlowGenderInfoByZoneIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowGenderInfoByZoneId
@@ -1611,8 +1636,9 @@ func NewDescribeZoneFlowHourlyByZoneIdRequest() (request *DescribeZoneFlowHourly
 func NewDescribeZoneFlowHourlyByZoneIdResponse() (response *DescribeZoneFlowHourlyByZoneIdResponse) {
     response = &DescribeZoneFlowHourlyByZoneIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneFlowHourlyByZoneId
@@ -1671,8 +1697,9 @@ func NewDescribeZoneTrafficInfoRequest() (request *DescribeZoneTrafficInfoReques
 func NewDescribeZoneTrafficInfoResponse() (response *DescribeZoneTrafficInfoResponse) {
     response = &DescribeZoneTrafficInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZoneTrafficInfo
@@ -1727,8 +1754,9 @@ func NewModifyPersonFeatureInfoRequest() (request *ModifyPersonFeatureInfoReques
 func NewModifyPersonFeatureInfoResponse() (response *ModifyPersonFeatureInfoResponse) {
     response = &ModifyPersonFeatureInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonFeatureInfo
@@ -1797,8 +1825,9 @@ func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
 func NewModifyPersonTagInfoResponse() (response *ModifyPersonTagInfoResponse) {
     response = &ModifyPersonTagInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonTagInfo
@@ -1851,8 +1880,9 @@ func NewModifyPersonTypeRequest() (request *ModifyPersonTypeRequest) {
 func NewModifyPersonTypeResponse() (response *ModifyPersonTypeResponse) {
     response = &ModifyPersonTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonType
@@ -1931,8 +1961,9 @@ func NewRegisterCallbackRequest() (request *RegisterCallbackRequest) {
 func NewRegisterCallbackResponse() (response *RegisterCallbackResponse) {
     response = &RegisterCallbackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterCallback

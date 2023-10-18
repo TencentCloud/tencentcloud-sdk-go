@@ -59,8 +59,9 @@ func NewAddRealServersRequest() (request *AddRealServersRequest) {
 func NewAddRealServersResponse() (response *AddRealServersResponse) {
     response = &AddRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddRealServers
@@ -141,8 +142,9 @@ func NewBanAndRecoverProxyRequest() (request *BanAndRecoverProxyRequest) {
 func NewBanAndRecoverProxyResponse() (response *BanAndRecoverProxyResponse) {
     response = &BanAndRecoverProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BanAndRecoverProxy
@@ -217,8 +219,9 @@ func NewBindListenerRealServersRequest() (request *BindListenerRealServersReques
 func NewBindListenerRealServersResponse() (response *BindListenerRealServersResponse) {
     response = &BindListenerRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindListenerRealServers
@@ -307,8 +310,9 @@ func NewBindRuleRealServersRequest() (request *BindRuleRealServersRequest) {
 func NewBindRuleRealServersResponse() (response *BindRuleRealServersResponse) {
     response = &BindRuleRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindRuleRealServers
@@ -397,8 +401,9 @@ func NewCheckProxyCreateRequest() (request *CheckProxyCreateRequest) {
 func NewCheckProxyCreateResponse() (response *CheckProxyCreateResponse) {
     response = &CheckProxyCreateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckProxyCreate
@@ -471,8 +476,9 @@ func NewCloseProxiesRequest() (request *CloseProxiesRequest) {
 func NewCloseProxiesResponse() (response *CloseProxiesResponse) {
     response = &CloseProxiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseProxies
@@ -551,8 +557,9 @@ func NewCloseProxyGroupRequest() (request *CloseProxyGroupRequest) {
 func NewCloseProxyGroupResponse() (response *CloseProxyGroupResponse) {
     response = &CloseProxyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseProxyGroup
@@ -627,8 +634,9 @@ func NewCloseSecurityPolicyRequest() (request *CloseSecurityPolicyRequest) {
 func NewCloseSecurityPolicyResponse() (response *CloseSecurityPolicyResponse) {
     response = &CloseSecurityPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseSecurityPolicy
@@ -705,8 +713,9 @@ func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
 func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
     response = &CreateCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCertificate
@@ -781,8 +790,9 @@ func NewCreateCustomHeaderRequest() (request *CreateCustomHeaderRequest) {
 func NewCreateCustomHeaderResponse() (response *CreateCustomHeaderResponse) {
     response = &CreateCustomHeaderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomHeader
@@ -861,8 +871,9 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
 func NewCreateDomainResponse() (response *CreateDomainResponse) {
     response = &CreateDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomain
@@ -953,8 +964,9 @@ func NewCreateDomainErrorPageInfoRequest() (request *CreateDomainErrorPageInfoRe
 func NewCreateDomainErrorPageInfoResponse() (response *CreateDomainErrorPageInfoResponse) {
     response = &CreateDomainErrorPageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDomainErrorPageInfo
@@ -1029,8 +1041,9 @@ func NewCreateFirstLinkSessionRequest() (request *CreateFirstLinkSessionRequest)
 func NewCreateFirstLinkSessionResponse() (response *CreateFirstLinkSessionResponse) {
     response = &CreateFirstLinkSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFirstLinkSession
@@ -1119,8 +1132,9 @@ func NewCreateGlobalDomainRequest() (request *CreateGlobalDomainRequest) {
 func NewCreateGlobalDomainResponse() (response *CreateGlobalDomainResponse) {
     response = &CreateGlobalDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGlobalDomain
@@ -1189,8 +1203,9 @@ func NewCreateGlobalDomainDnsRequest() (request *CreateGlobalDomainDnsRequest) {
 func NewCreateGlobalDomainDnsResponse() (response *CreateGlobalDomainDnsResponse) {
     response = &CreateGlobalDomainDnsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGlobalDomainDns
@@ -1249,8 +1264,9 @@ func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
 func NewCreateHTTPListenerResponse() (response *CreateHTTPListenerResponse) {
     response = &CreateHTTPListenerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHTTPListener
@@ -1339,8 +1355,9 @@ func NewCreateHTTPSListenerRequest() (request *CreateHTTPSListenerRequest) {
 func NewCreateHTTPSListenerResponse() (response *CreateHTTPSListenerResponse) {
     response = &CreateHTTPSListenerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHTTPSListener
@@ -1429,8 +1446,9 @@ func NewCreateProxyRequest() (request *CreateProxyRequest) {
 func NewCreateProxyResponse() (response *CreateProxyResponse) {
     response = &CreateProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProxy
@@ -1533,8 +1551,9 @@ func NewCreateProxyGroupRequest() (request *CreateProxyGroupRequest) {
 func NewCreateProxyGroupResponse() (response *CreateProxyGroupResponse) {
     response = &CreateProxyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProxyGroup
@@ -1619,8 +1638,9 @@ func NewCreateProxyGroupDomainRequest() (request *CreateProxyGroupDomainRequest)
 func NewCreateProxyGroupDomainResponse() (response *CreateProxyGroupDomainResponse) {
     response = &CreateProxyGroupDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProxyGroupDomain
@@ -1693,8 +1713,9 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
 func NewCreateRuleResponse() (response *CreateRuleResponse) {
     response = &CreateRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRule
@@ -1779,8 +1800,9 @@ func NewCreateSecurityPolicyRequest() (request *CreateSecurityPolicyRequest) {
 func NewCreateSecurityPolicyResponse() (response *CreateSecurityPolicyResponse) {
     response = &CreateSecurityPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSecurityPolicy
@@ -1857,8 +1879,9 @@ func NewCreateSecurityRulesRequest() (request *CreateSecurityRulesRequest) {
 func NewCreateSecurityRulesResponse() (response *CreateSecurityRulesResponse) {
     response = &CreateSecurityRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSecurityRules
@@ -1939,8 +1962,9 @@ func NewCreateTCPListenersRequest() (request *CreateTCPListenersRequest) {
 func NewCreateTCPListenersResponse() (response *CreateTCPListenersResponse) {
     response = &CreateTCPListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTCPListeners
@@ -2033,8 +2057,9 @@ func NewCreateUDPListenersRequest() (request *CreateUDPListenersRequest) {
 func NewCreateUDPListenersResponse() (response *CreateUDPListenersResponse) {
     response = &CreateUDPListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUDPListeners
@@ -2121,8 +2146,9 @@ func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
 func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
     response = &DeleteCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCertificate
@@ -2195,8 +2221,9 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
 func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
     response = &DeleteDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDomain
@@ -2277,8 +2304,9 @@ func NewDeleteDomainErrorPageInfoRequest() (request *DeleteDomainErrorPageInfoRe
 func NewDeleteDomainErrorPageInfoResponse() (response *DeleteDomainErrorPageInfoResponse) {
     response = &DeleteDomainErrorPageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDomainErrorPageInfo
@@ -2351,8 +2379,9 @@ func NewDeleteFirstLinkSessionRequest() (request *DeleteFirstLinkSessionRequest)
 func NewDeleteFirstLinkSessionResponse() (response *DeleteFirstLinkSessionResponse) {
     response = &DeleteFirstLinkSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFirstLinkSession
@@ -2429,8 +2458,9 @@ func NewDeleteGlobalDomainRequest() (request *DeleteGlobalDomainRequest) {
 func NewDeleteGlobalDomainResponse() (response *DeleteGlobalDomainResponse) {
     response = &DeleteGlobalDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGlobalDomain
@@ -2487,8 +2517,9 @@ func NewDeleteGlobalDomainDnsRequest() (request *DeleteGlobalDomainDnsRequest) {
 func NewDeleteGlobalDomainDnsResponse() (response *DeleteGlobalDomainDnsResponse) {
     response = &DeleteGlobalDomainDnsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGlobalDomainDns
@@ -2545,8 +2576,9 @@ func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
 func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
     response = &DeleteListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteListeners
@@ -2625,8 +2657,9 @@ func NewDeleteProxyGroupRequest() (request *DeleteProxyGroupRequest) {
 func NewDeleteProxyGroupResponse() (response *DeleteProxyGroupResponse) {
     response = &DeleteProxyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProxyGroup
@@ -2707,8 +2740,9 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
 func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
     response = &DeleteRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRule
@@ -2789,8 +2823,9 @@ func NewDeleteSecurityPolicyRequest() (request *DeleteSecurityPolicyRequest) {
 func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) {
     response = &DeleteSecurityPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecurityPolicy
@@ -2865,8 +2900,9 @@ func NewDeleteSecurityRulesRequest() (request *DeleteSecurityRulesRequest) {
 func NewDeleteSecurityRulesResponse() (response *DeleteSecurityRulesResponse) {
     response = &DeleteSecurityRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecurityRules
@@ -2941,8 +2977,9 @@ func NewDescribeAccessRegionsRequest() (request *DescribeAccessRegionsRequest) {
 func NewDescribeAccessRegionsResponse() (response *DescribeAccessRegionsResponse) {
     response = &DescribeAccessRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessRegions
@@ -3013,8 +3050,9 @@ func NewDescribeAccessRegionsByDestRegionRequest() (request *DescribeAccessRegio
 func NewDescribeAccessRegionsByDestRegionResponse() (response *DescribeAccessRegionsByDestRegionResponse) {
     response = &DescribeAccessRegionsByDestRegionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessRegionsByDestRegion
@@ -3085,8 +3123,9 @@ func NewDescribeAuthSignatureRequest() (request *DescribeAuthSignatureRequest) {
 func NewDescribeAuthSignatureResponse() (response *DescribeAuthSignatureResponse) {
     response = &DescribeAuthSignatureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuthSignature
@@ -3153,8 +3192,9 @@ func NewDescribeBlackHeaderRequest() (request *DescribeBlackHeaderRequest) {
 func NewDescribeBlackHeaderResponse() (response *DescribeBlackHeaderResponse) {
     response = &DescribeBlackHeaderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBlackHeader
@@ -3223,8 +3263,9 @@ func NewDescribeCertificateDetailRequest() (request *DescribeCertificateDetailRe
 func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetailResponse) {
     response = &DescribeCertificateDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCertificateDetail
@@ -3295,8 +3336,9 @@ func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
 func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) {
     response = &DescribeCertificatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCertificates
@@ -3367,8 +3409,9 @@ func NewDescribeCountryAreaMappingRequest() (request *DescribeCountryAreaMapping
 func NewDescribeCountryAreaMappingResponse() (response *DescribeCountryAreaMappingResponse) {
     response = &DescribeCountryAreaMappingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCountryAreaMapping
@@ -3441,8 +3484,9 @@ func NewDescribeCrossBorderProxiesRequest() (request *DescribeCrossBorderProxies
 func NewDescribeCrossBorderProxiesResponse() (response *DescribeCrossBorderProxiesResponse) {
     response = &DescribeCrossBorderProxiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCrossBorderProxies
@@ -3505,8 +3549,9 @@ func NewDescribeCustomHeaderRequest() (request *DescribeCustomHeaderRequest) {
 func NewDescribeCustomHeaderResponse() (response *DescribeCustomHeaderResponse) {
     response = &DescribeCustomHeaderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomHeader
@@ -3575,8 +3620,9 @@ func NewDescribeDestRegionsRequest() (request *DescribeDestRegionsRequest) {
 func NewDescribeDestRegionsResponse() (response *DescribeDestRegionsResponse) {
     response = &DescribeDestRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDestRegions
@@ -3645,8 +3691,9 @@ func NewDescribeDomainErrorPageInfoRequest() (request *DescribeDomainErrorPageIn
 func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPageInfoResponse) {
     response = &DescribeDomainErrorPageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainErrorPageInfo
@@ -3713,8 +3760,9 @@ func NewDescribeDomainErrorPageInfoByIdsRequest() (request *DescribeDomainErrorP
 func NewDescribeDomainErrorPageInfoByIdsResponse() (response *DescribeDomainErrorPageInfoByIdsResponse) {
     response = &DescribeDomainErrorPageInfoByIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainErrorPageInfoByIds
@@ -3779,8 +3827,9 @@ func NewDescribeFirstLinkSessionRequest() (request *DescribeFirstLinkSessionRequ
 func NewDescribeFirstLinkSessionResponse() (response *DescribeFirstLinkSessionResponse) {
     response = &DescribeFirstLinkSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirstLinkSession
@@ -3853,8 +3902,9 @@ func NewDescribeGlobalDomainDnsRequest() (request *DescribeGlobalDomainDnsReques
 func NewDescribeGlobalDomainDnsResponse() (response *DescribeGlobalDomainDnsResponse) {
     response = &DescribeGlobalDomainDnsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGlobalDomainDns
@@ -3911,8 +3961,9 @@ func NewDescribeGlobalDomainsRequest() (request *DescribeGlobalDomainsRequest) {
 func NewDescribeGlobalDomainsResponse() (response *DescribeGlobalDomainsResponse) {
     response = &DescribeGlobalDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGlobalDomains
@@ -3969,8 +4020,9 @@ func NewDescribeGroupAndStatisticsProxyRequest() (request *DescribeGroupAndStati
 func NewDescribeGroupAndStatisticsProxyResponse() (response *DescribeGroupAndStatisticsProxyResponse) {
     response = &DescribeGroupAndStatisticsProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupAndStatisticsProxy
@@ -4041,8 +4093,9 @@ func NewDescribeGroupDomainConfigRequest() (request *DescribeGroupDomainConfigRe
 func NewDescribeGroupDomainConfigResponse() (response *DescribeGroupDomainConfigResponse) {
     response = &DescribeGroupDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupDomainConfig
@@ -4117,8 +4170,9 @@ func NewDescribeHTTPListenersRequest() (request *DescribeHTTPListenersRequest) {
 func NewDescribeHTTPListenersResponse() (response *DescribeHTTPListenersResponse) {
     response = &DescribeHTTPListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHTTPListeners
@@ -4193,8 +4247,9 @@ func NewDescribeHTTPSListenersRequest() (request *DescribeHTTPSListenersRequest)
 func NewDescribeHTTPSListenersResponse() (response *DescribeHTTPSListenersResponse) {
     response = &DescribeHTTPSListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHTTPSListeners
@@ -4267,8 +4322,9 @@ func NewDescribeListenerRealServersRequest() (request *DescribeListenerRealServe
 func NewDescribeListenerRealServersResponse() (response *DescribeListenerRealServersResponse) {
     response = &DescribeListenerRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeListenerRealServers
@@ -4337,8 +4393,9 @@ func NewDescribeListenerStatisticsRequest() (request *DescribeListenerStatistics
 func NewDescribeListenerStatisticsResponse() (response *DescribeListenerStatisticsResponse) {
     response = &DescribeListenerStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeListenerStatistics
@@ -4409,8 +4466,9 @@ func NewDescribeProxiesRequest() (request *DescribeProxiesRequest) {
 func NewDescribeProxiesResponse() (response *DescribeProxiesResponse) {
     response = &DescribeProxiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxies
@@ -4481,8 +4539,9 @@ func NewDescribeProxiesStatusRequest() (request *DescribeProxiesStatusRequest) {
 func NewDescribeProxiesStatusResponse() (response *DescribeProxiesStatusResponse) {
     response = &DescribeProxiesStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxiesStatus
@@ -4555,8 +4614,9 @@ func NewDescribeProxyAndStatisticsListenersRequest() (request *DescribeProxyAndS
 func NewDescribeProxyAndStatisticsListenersResponse() (response *DescribeProxyAndStatisticsListenersResponse) {
     response = &DescribeProxyAndStatisticsListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyAndStatisticsListeners
@@ -4623,8 +4683,9 @@ func NewDescribeProxyDetailRequest() (request *DescribeProxyDetailRequest) {
 func NewDescribeProxyDetailResponse() (response *DescribeProxyDetailResponse) {
     response = &DescribeProxyDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyDetail
@@ -4701,8 +4762,9 @@ func NewDescribeProxyGroupDetailsRequest() (request *DescribeProxyGroupDetailsRe
 func NewDescribeProxyGroupDetailsResponse() (response *DescribeProxyGroupDetailsResponse) {
     response = &DescribeProxyGroupDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyGroupDetails
@@ -4773,8 +4835,9 @@ func NewDescribeProxyGroupListRequest() (request *DescribeProxyGroupListRequest)
 func NewDescribeProxyGroupListResponse() (response *DescribeProxyGroupListResponse) {
     response = &DescribeProxyGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyGroupList
@@ -4847,8 +4910,9 @@ func NewDescribeProxyGroupStatisticsRequest() (request *DescribeProxyGroupStatis
 func NewDescribeProxyGroupStatisticsResponse() (response *DescribeProxyGroupStatisticsResponse) {
     response = &DescribeProxyGroupStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyGroupStatistics
@@ -4919,8 +4983,9 @@ func NewDescribeProxyStatisticsRequest() (request *DescribeProxyStatisticsReques
 func NewDescribeProxyStatisticsResponse() (response *DescribeProxyStatisticsResponse) {
     response = &DescribeProxyStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxyStatistics
@@ -4991,8 +5056,9 @@ func NewDescribeRealServerStatisticsRequest() (request *DescribeRealServerStatis
 func NewDescribeRealServerStatisticsResponse() (response *DescribeRealServerStatisticsResponse) {
     response = &DescribeRealServerStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRealServerStatistics
@@ -5059,8 +5125,9 @@ func NewDescribeRealServersRequest() (request *DescribeRealServersRequest) {
 func NewDescribeRealServersResponse() (response *DescribeRealServersResponse) {
     response = &DescribeRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRealServers
@@ -5129,8 +5196,9 @@ func NewDescribeRealServersStatusRequest() (request *DescribeRealServersStatusRe
 func NewDescribeRealServersStatusResponse() (response *DescribeRealServersStatusResponse) {
     response = &DescribeRealServersStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRealServersStatus
@@ -5201,8 +5269,9 @@ func NewDescribeRegionAndPriceRequest() (request *DescribeRegionAndPriceRequest)
 func NewDescribeRegionAndPriceResponse() (response *DescribeRegionAndPriceResponse) {
     response = &DescribeRegionAndPriceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegionAndPrice
@@ -5271,8 +5340,9 @@ func NewDescribeResourcesByTagRequest() (request *DescribeResourcesByTagRequest)
 func NewDescribeResourcesByTagResponse() (response *DescribeResourcesByTagResponse) {
     response = &DescribeResourcesByTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourcesByTag
@@ -5341,8 +5411,9 @@ func NewDescribeRuleRealServersRequest() (request *DescribeRuleRealServersReques
 func NewDescribeRuleRealServersResponse() (response *DescribeRuleRealServersResponse) {
     response = &DescribeRuleRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuleRealServers
@@ -5411,8 +5482,9 @@ func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
 func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
     response = &DescribeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRules
@@ -5481,8 +5553,9 @@ func NewDescribeRulesByRuleIdsRequest() (request *DescribeRulesByRuleIdsRequest)
 func NewDescribeRulesByRuleIdsResponse() (response *DescribeRulesByRuleIdsResponse) {
     response = &DescribeRulesByRuleIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRulesByRuleIds
@@ -5559,8 +5632,9 @@ func NewDescribeSecurityPolicyDetailRequest() (request *DescribeSecurityPolicyDe
 func NewDescribeSecurityPolicyDetailResponse() (response *DescribeSecurityPolicyDetailResponse) {
     response = &DescribeSecurityPolicyDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityPolicyDetail
@@ -5633,8 +5707,9 @@ func NewDescribeSecurityRulesRequest() (request *DescribeSecurityRulesRequest) {
 func NewDescribeSecurityRulesResponse() (response *DescribeSecurityRulesResponse) {
     response = &DescribeSecurityRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecurityRules
@@ -5711,8 +5786,9 @@ func NewDescribeTCPListenersRequest() (request *DescribeTCPListenersRequest) {
 func NewDescribeTCPListenersResponse() (response *DescribeTCPListenersResponse) {
     response = &DescribeTCPListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTCPListeners
@@ -5783,8 +5859,9 @@ func NewDescribeUDPListenersRequest() (request *DescribeUDPListenersRequest) {
 func NewDescribeUDPListenersResponse() (response *DescribeUDPListenersResponse) {
     response = &DescribeUDPListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUDPListeners
@@ -5853,8 +5930,9 @@ func NewDestroyProxiesRequest() (request *DestroyProxiesRequest) {
 func NewDestroyProxiesResponse() (response *DestroyProxiesResponse) {
     response = &DestroyProxiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyProxies
@@ -5943,8 +6021,9 @@ func NewDisableGlobalDomainRequest() (request *DisableGlobalDomainRequest) {
 func NewDisableGlobalDomainResponse() (response *DisableGlobalDomainResponse) {
     response = &DisableGlobalDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableGlobalDomain
@@ -5999,8 +6078,9 @@ func NewEnableGlobalDomainRequest() (request *EnableGlobalDomainRequest) {
 func NewEnableGlobalDomainResponse() (response *EnableGlobalDomainResponse) {
     response = &EnableGlobalDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableGlobalDomain
@@ -6055,8 +6135,9 @@ func NewInquiryPriceCreateProxyRequest() (request *InquiryPriceCreateProxyReques
 func NewInquiryPriceCreateProxyResponse() (response *InquiryPriceCreateProxyResponse) {
     response = &InquiryPriceCreateProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceCreateProxy
@@ -6139,8 +6220,9 @@ func NewModifyCertificateRequest() (request *ModifyCertificateRequest) {
 func NewModifyCertificateResponse() (response *ModifyCertificateResponse) {
     response = &ModifyCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCertificate
@@ -6223,8 +6305,9 @@ func NewModifyCertificateAttributesRequest() (request *ModifyCertificateAttribut
 func NewModifyCertificateAttributesResponse() (response *ModifyCertificateAttributesResponse) {
     response = &ModifyCertificateAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCertificateAttributes
@@ -6297,8 +6380,9 @@ func NewModifyDomainRequest() (request *ModifyDomainRequest) {
 func NewModifyDomainResponse() (response *ModifyDomainResponse) {
     response = &ModifyDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDomain
@@ -6385,8 +6469,9 @@ func NewModifyGlobalDomainAttributeRequest() (request *ModifyGlobalDomainAttribu
 func NewModifyGlobalDomainAttributeResponse() (response *ModifyGlobalDomainAttributeResponse) {
     response = &ModifyGlobalDomainAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGlobalDomainAttribute
@@ -6445,8 +6530,9 @@ func NewModifyGlobalDomainDnsRequest() (request *ModifyGlobalDomainDnsRequest) {
 func NewModifyGlobalDomainDnsResponse() (response *ModifyGlobalDomainDnsResponse) {
     response = &ModifyGlobalDomainDnsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGlobalDomainDns
@@ -6503,8 +6589,9 @@ func NewModifyGroupDomainConfigRequest() (request *ModifyGroupDomainConfigReques
 func NewModifyGroupDomainConfigResponse() (response *ModifyGroupDomainConfigResponse) {
     response = &ModifyGroupDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGroupDomainConfig
@@ -6577,8 +6664,9 @@ func NewModifyHTTPListenerAttributeRequest() (request *ModifyHTTPListenerAttribu
 func NewModifyHTTPListenerAttributeResponse() (response *ModifyHTTPListenerAttributeResponse) {
     response = &ModifyHTTPListenerAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyHTTPListenerAttribute
@@ -6657,8 +6745,9 @@ func NewModifyHTTPSListenerAttributeRequest() (request *ModifyHTTPSListenerAttri
 func NewModifyHTTPSListenerAttributeResponse() (response *ModifyHTTPSListenerAttributeResponse) {
     response = &ModifyHTTPSListenerAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyHTTPSListenerAttribute
@@ -6739,8 +6828,9 @@ func NewModifyProxiesAttributeRequest() (request *ModifyProxiesAttributeRequest)
 func NewModifyProxiesAttributeResponse() (response *ModifyProxiesAttributeResponse) {
     response = &ModifyProxiesAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProxiesAttribute
@@ -6821,8 +6911,9 @@ func NewModifyProxiesProjectRequest() (request *ModifyProxiesProjectRequest) {
 func NewModifyProxiesProjectResponse() (response *ModifyProxiesProjectResponse) {
     response = &ModifyProxiesProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProxiesProject
@@ -6901,8 +6992,9 @@ func NewModifyProxyConfigurationRequest() (request *ModifyProxyConfigurationRequ
 func NewModifyProxyConfigurationResponse() (response *ModifyProxyConfigurationResponse) {
     response = &ModifyProxyConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProxyConfiguration
@@ -6987,8 +7079,9 @@ func NewModifyProxyGroupAttributeRequest() (request *ModifyProxyGroupAttributeRe
 func NewModifyProxyGroupAttributeResponse() (response *ModifyProxyGroupAttributeResponse) {
     response = &ModifyProxyGroupAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProxyGroupAttribute
@@ -7061,8 +7154,9 @@ func NewModifyRealServerNameRequest() (request *ModifyRealServerNameRequest) {
 func NewModifyRealServerNameResponse() (response *ModifyRealServerNameResponse) {
     response = &ModifyRealServerNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRealServerName
@@ -7131,8 +7225,9 @@ func NewModifyRuleAttributeRequest() (request *ModifyRuleAttributeRequest) {
 func NewModifyRuleAttributeResponse() (response *ModifyRuleAttributeResponse) {
     response = &ModifyRuleAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRuleAttribute
@@ -7209,8 +7304,9 @@ func NewModifySecurityRuleRequest() (request *ModifySecurityRuleRequest) {
 func NewModifySecurityRuleResponse() (response *ModifySecurityRuleResponse) {
     response = &ModifySecurityRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySecurityRule
@@ -7291,8 +7387,9 @@ func NewModifyTCPListenerAttributeRequest() (request *ModifyTCPListenerAttribute
 func NewModifyTCPListenerAttributeResponse() (response *ModifyTCPListenerAttributeResponse) {
     response = &ModifyTCPListenerAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTCPListenerAttribute
@@ -7371,8 +7468,9 @@ func NewModifyUDPListenerAttributeRequest() (request *ModifyUDPListenerAttribute
 func NewModifyUDPListenerAttributeResponse() (response *ModifyUDPListenerAttributeResponse) {
     response = &ModifyUDPListenerAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUDPListenerAttribute
@@ -7451,8 +7549,9 @@ func NewOpenProxiesRequest() (request *OpenProxiesRequest) {
 func NewOpenProxiesResponse() (response *OpenProxiesResponse) {
     response = &OpenProxiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenProxies
@@ -7531,8 +7630,9 @@ func NewOpenProxyGroupRequest() (request *OpenProxyGroupRequest) {
 func NewOpenProxyGroupResponse() (response *OpenProxyGroupResponse) {
     response = &OpenProxyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenProxyGroup
@@ -7605,8 +7705,9 @@ func NewOpenSecurityPolicyRequest() (request *OpenSecurityPolicyRequest) {
 func NewOpenSecurityPolicyResponse() (response *OpenSecurityPolicyResponse) {
     response = &OpenSecurityPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenSecurityPolicy
@@ -7683,8 +7784,9 @@ func NewRemoveRealServersRequest() (request *RemoveRealServersRequest) {
 func NewRemoveRealServersResponse() (response *RemoveRealServersResponse) {
     response = &RemoveRealServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveRealServers
@@ -7759,8 +7861,9 @@ func NewSetAuthenticationRequest() (request *SetAuthenticationRequest) {
 func NewSetAuthenticationResponse() (response *SetAuthenticationResponse) {
     response = &SetAuthenticationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetAuthentication

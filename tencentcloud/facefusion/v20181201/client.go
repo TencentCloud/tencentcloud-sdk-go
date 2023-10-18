@@ -59,8 +59,9 @@ func NewDescribeMaterialListRequest() (request *DescribeMaterialListRequest) {
 func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) {
     response = &DescribeMaterialListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMaterialList
@@ -123,8 +124,9 @@ func NewFaceFusionRequest() (request *FaceFusionRequest) {
 func NewFaceFusionResponse() (response *FaceFusionResponse) {
     response = &FaceFusionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FaceFusion
@@ -271,8 +273,9 @@ func NewFaceFusionLiteRequest() (request *FaceFusionLiteRequest) {
 func NewFaceFusionLiteResponse() (response *FaceFusionLiteResponse) {
     response = &FaceFusionLiteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FaceFusionLite
@@ -401,8 +404,9 @@ func NewFuseFaceRequest() (request *FuseFaceRequest) {
 func NewFuseFaceResponse() (response *FuseFaceResponse) {
     response = &FuseFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FuseFace

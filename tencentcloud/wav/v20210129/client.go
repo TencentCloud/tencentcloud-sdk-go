@@ -59,8 +59,9 @@ func NewCreateChannelCodeRequest() (request *CreateChannelCodeRequest) {
 func NewCreateChannelCodeResponse() (response *CreateChannelCodeResponse) {
     response = &CreateChannelCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateChannelCode
@@ -101,8 +102,9 @@ func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
 func NewCreateCorpTagResponse() (response *CreateCorpTagResponse) {
     response = &CreateCorpTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCorpTag
@@ -163,8 +165,9 @@ func NewCreateLeadRequest() (request *CreateLeadRequest) {
 func NewCreateLeadResponse() (response *CreateLeadResponse) {
     response = &CreateLeadResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLead
@@ -233,8 +236,9 @@ func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
 func NewQueryActivityJoinListResponse() (response *QueryActivityJoinListResponse) {
     response = &QueryActivityJoinListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryActivityJoinList
@@ -287,8 +291,9 @@ func NewQueryActivityListRequest() (request *QueryActivityListRequest) {
 func NewQueryActivityListResponse() (response *QueryActivityListResponse) {
     response = &QueryActivityListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryActivityList
@@ -341,8 +346,9 @@ func NewQueryActivityLiveCodeListRequest() (request *QueryActivityLiveCodeListRe
 func NewQueryActivityLiveCodeListResponse() (response *QueryActivityLiveCodeListResponse) {
     response = &QueryActivityLiveCodeListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryActivityLiveCodeList
@@ -393,8 +399,9 @@ func NewQueryArrivalListRequest() (request *QueryArrivalListRequest) {
 func NewQueryArrivalListResponse() (response *QueryArrivalListResponse) {
     response = &QueryArrivalListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryArrivalList
@@ -459,8 +466,9 @@ func NewQueryChannelCodeListRequest() (request *QueryChannelCodeListRequest) {
 func NewQueryChannelCodeListResponse() (response *QueryChannelCodeListResponse) {
     response = &QueryChannelCodeListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChannelCodeList
@@ -511,8 +519,9 @@ func NewQueryChatArchivingListRequest() (request *QueryChatArchivingListRequest)
 func NewQueryChatArchivingListResponse() (response *QueryChatArchivingListResponse) {
     response = &QueryChatArchivingListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryChatArchivingList
@@ -563,8 +572,9 @@ func NewQueryClueInfoListRequest() (request *QueryClueInfoListRequest) {
 func NewQueryClueInfoListResponse() (response *QueryClueInfoListResponse) {
     response = &QueryClueInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryClueInfoList
@@ -623,8 +633,9 @@ func NewQueryCrmStatisticsRequest() (request *QueryCrmStatisticsRequest) {
 func NewQueryCrmStatisticsResponse() (response *QueryCrmStatisticsResponse) {
     response = &QueryCrmStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCrmStatistics
@@ -677,8 +688,9 @@ func NewQueryCustomerEventDetailStatisticsRequest() (request *QueryCustomerEvent
 func NewQueryCustomerEventDetailStatisticsResponse() (response *QueryCustomerEventDetailStatisticsResponse) {
     response = &QueryCustomerEventDetailStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCustomerEventDetailStatistics
@@ -731,8 +743,9 @@ func NewQueryCustomerProfileListRequest() (request *QueryCustomerProfileListRequ
 func NewQueryCustomerProfileListResponse() (response *QueryCustomerProfileListResponse) {
     response = &QueryCustomerProfileListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCustomerProfileList
@@ -797,8 +810,9 @@ func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
 func NewQueryDealerInfoListResponse() (response *QueryDealerInfoListResponse) {
     response = &QueryDealerInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryDealerInfoList
@@ -855,8 +869,9 @@ func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetail
 func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDetailResponse) {
     response = &QueryExternalContactDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExternalContactDetail
@@ -923,8 +938,9 @@ func NewQueryExternalContactDetailByDateRequest() (request *QueryExternalContact
 func NewQueryExternalContactDetailByDateResponse() (response *QueryExternalContactDetailByDateResponse) {
     response = &QueryExternalContactDetailByDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExternalContactDetailByDate
@@ -987,8 +1003,9 @@ func NewQueryExternalContactListRequest() (request *QueryExternalContactListRequ
 func NewQueryExternalContactListResponse() (response *QueryExternalContactListResponse) {
     response = &QueryExternalContactListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExternalContactList
@@ -1043,8 +1060,9 @@ func NewQueryExternalUserEventListRequest() (request *QueryExternalUserEventList
 func NewQueryExternalUserEventListResponse() (response *QueryExternalUserEventListResponse) {
     response = &QueryExternalUserEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExternalUserEventList
@@ -1109,8 +1127,9 @@ func NewQueryExternalUserMappingInfoRequest() (request *QueryExternalUserMapping
 func NewQueryExternalUserMappingInfoResponse() (response *QueryExternalUserMappingInfoResponse) {
     response = &QueryExternalUserMappingInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryExternalUserMappingInfo
@@ -1165,8 +1184,9 @@ func NewQueryFollowListRequest() (request *QueryFollowListRequest) {
 func NewQueryFollowListResponse() (response *QueryFollowListResponse) {
     response = &QueryFollowListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFollowList
@@ -1231,8 +1251,9 @@ func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
 func NewQueryLicenseInfoResponse() (response *QueryLicenseInfoResponse) {
     response = &QueryLicenseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryLicenseInfo
@@ -1285,8 +1306,9 @@ func NewQueryMaterialListRequest() (request *QueryMaterialListRequest) {
 func NewQueryMaterialListResponse() (response *QueryMaterialListResponse) {
     response = &QueryMaterialListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMaterialList
@@ -1351,8 +1373,9 @@ func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
 func NewQueryMiniAppCodeListResponse() (response *QueryMiniAppCodeListResponse) {
     response = &QueryMiniAppCodeListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMiniAppCodeList
@@ -1413,8 +1436,9 @@ func NewQueryStaffEventDetailStatisticsRequest() (request *QueryStaffEventDetail
 func NewQueryStaffEventDetailStatisticsResponse() (response *QueryStaffEventDetailStatisticsResponse) {
     response = &QueryStaffEventDetailStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryStaffEventDetailStatistics
@@ -1467,8 +1491,9 @@ func NewQueryUserInfoListRequest() (request *QueryUserInfoListRequest) {
 func NewQueryUserInfoListResponse() (response *QueryUserInfoListResponse) {
     response = &QueryUserInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryUserInfoList
@@ -1529,8 +1554,9 @@ func NewQueryVehicleInfoListRequest() (request *QueryVehicleInfoListRequest) {
 func NewQueryVehicleInfoListResponse() (response *QueryVehicleInfoListResponse) {
     response = &QueryVehicleInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryVehicleInfoList

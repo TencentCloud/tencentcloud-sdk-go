@@ -59,8 +59,9 @@ func NewCreateApmInstanceRequest() (request *CreateApmInstanceRequest) {
 func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
     response = &CreateApmInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApmInstance
@@ -111,8 +112,9 @@ func NewDescribeApmAgentRequest() (request *DescribeApmAgentRequest) {
 func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
     response = &DescribeApmAgentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApmAgent
@@ -177,8 +179,9 @@ func NewDescribeApmInstancesRequest() (request *DescribeApmInstancesRequest) {
 func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) {
     response = &DescribeApmInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApmInstances
@@ -229,8 +232,9 @@ func NewDescribeGeneralMetricDataRequest() (request *DescribeGeneralMetricDataRe
 func NewDescribeGeneralMetricDataResponse() (response *DescribeGeneralMetricDataResponse) {
     response = &DescribeGeneralMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGeneralMetricData
@@ -311,8 +315,9 @@ func NewDescribeGeneralSpanListRequest() (request *DescribeGeneralSpanListReques
 func NewDescribeGeneralSpanListResponse() (response *DescribeGeneralSpanListResponse) {
     response = &DescribeGeneralSpanListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGeneralSpanList
@@ -369,8 +374,9 @@ func NewDescribeMetricRecordsRequest() (request *DescribeMetricRecordsRequest) {
 func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse) {
     response = &DescribeMetricRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMetricRecords
@@ -431,8 +437,9 @@ func NewDescribeServiceOverviewRequest() (request *DescribeServiceOverviewReques
 func NewDescribeServiceOverviewResponse() (response *DescribeServiceOverviewResponse) {
     response = &DescribeServiceOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServiceOverview
@@ -495,8 +502,9 @@ func NewModifyApmInstanceRequest() (request *ModifyApmInstanceRequest) {
 func NewModifyApmInstanceResponse() (response *ModifyApmInstanceResponse) {
     response = &ModifyApmInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApmInstance
@@ -563,8 +571,9 @@ func NewTerminateApmInstanceRequest() (request *TerminateApmInstanceRequest) {
 func NewTerminateApmInstanceResponse() (response *TerminateApmInstanceResponse) {
     response = &TerminateApmInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateApmInstance

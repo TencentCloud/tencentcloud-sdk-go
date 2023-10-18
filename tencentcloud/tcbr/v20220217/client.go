@@ -59,8 +59,9 @@ func NewCreateCloudRunEnvRequest() (request *CreateCloudRunEnvRequest) {
 func NewCreateCloudRunEnvResponse() (response *CreateCloudRunEnvResponse) {
     response = &CreateCloudRunEnvResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudRunEnv
@@ -115,8 +116,9 @@ func NewCreateCloudRunServerRequest() (request *CreateCloudRunServerRequest) {
 func NewCreateCloudRunServerResponse() (response *CreateCloudRunServerResponse) {
     response = &CreateCloudRunServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudRunServer
@@ -167,8 +169,9 @@ func NewDescribeCloudRunEnvsRequest() (request *DescribeCloudRunEnvsRequest) {
 func NewDescribeCloudRunEnvsResponse() (response *DescribeCloudRunEnvsResponse) {
     response = &DescribeCloudRunEnvsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudRunEnvs
@@ -221,8 +224,9 @@ func NewDescribeCloudRunServerDetailRequest() (request *DescribeCloudRunServerDe
 func NewDescribeCloudRunServerDetailResponse() (response *DescribeCloudRunServerDetailResponse) {
     response = &DescribeCloudRunServerDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudRunServerDetail
@@ -269,8 +273,9 @@ func NewDescribeCloudRunServersRequest() (request *DescribeCloudRunServersReques
 func NewDescribeCloudRunServersResponse() (response *DescribeCloudRunServersResponse) {
     response = &DescribeCloudRunServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudRunServers
@@ -317,8 +322,9 @@ func NewDescribeEnvBaseInfoRequest() (request *DescribeEnvBaseInfoRequest) {
 func NewDescribeEnvBaseInfoResponse() (response *DescribeEnvBaseInfoResponse) {
     response = &DescribeEnvBaseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvBaseInfo
@@ -369,8 +375,9 @@ func NewDescribeServerManageTaskRequest() (request *DescribeServerManageTaskRequ
 func NewDescribeServerManageTaskResponse() (response *DescribeServerManageTaskResponse) {
     response = &DescribeServerManageTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServerManageTask
@@ -419,8 +426,9 @@ func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
 func NewOperateServerManageResponse() (response *OperateServerManageResponse) {
     response = &OperateServerManageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OperateServerManage
@@ -469,8 +477,9 @@ func NewReleaseGrayRequest() (request *ReleaseGrayRequest) {
 func NewReleaseGrayResponse() (response *ReleaseGrayResponse) {
     response = &ReleaseGrayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseGray
@@ -521,8 +530,9 @@ func NewUpdateCloudRunServerRequest() (request *UpdateCloudRunServerRequest) {
 func NewUpdateCloudRunServerResponse() (response *UpdateCloudRunServerResponse) {
     response = &UpdateCloudRunServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCloudRunServer

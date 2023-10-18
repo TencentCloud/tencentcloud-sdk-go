@@ -59,8 +59,9 @@ func NewDescribeDrawResourceListRequest() (request *DescribeDrawResourceListRequ
 func NewDescribeDrawResourceListResponse() (response *DescribeDrawResourceListResponse) {
     response = &DescribeDrawResourceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDrawResourceList

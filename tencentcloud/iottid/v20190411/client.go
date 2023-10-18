@@ -59,8 +59,9 @@ func NewAuthTestTidRequest() (request *AuthTestTidRequest) {
 func NewAuthTestTidResponse() (response *AuthTestTidResponse) {
     response = &AuthTestTidResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AuthTestTid
@@ -115,8 +116,9 @@ func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
 func NewBurnTidNotifyResponse() (response *BurnTidNotifyResponse) {
     response = &BurnTidNotifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BurnTidNotify
@@ -175,8 +177,9 @@ func NewDeliverTidNotifyRequest() (request *DeliverTidNotifyRequest) {
 func NewDeliverTidNotifyResponse() (response *DeliverTidNotifyResponse) {
     response = &DeliverTidNotifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeliverTidNotify
@@ -235,8 +238,9 @@ func NewDeliverTidsRequest() (request *DeliverTidsRequest) {
 func NewDeliverTidsResponse() (response *DeliverTidsResponse) {
     response = &DeliverTidsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeliverTids
@@ -293,8 +297,9 @@ func NewDescribeAvailableLibCountRequest() (request *DescribeAvailableLibCountRe
 func NewDescribeAvailableLibCountResponse() (response *DescribeAvailableLibCountResponse) {
     response = &DescribeAvailableLibCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAvailableLibCount
@@ -347,8 +352,9 @@ func NewDescribePermissionRequest() (request *DescribePermissionRequest) {
 func NewDescribePermissionResponse() (response *DescribePermissionResponse) {
     response = &DescribePermissionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePermission
@@ -401,8 +407,9 @@ func NewDownloadTidsRequest() (request *DownloadTidsRequest) {
 func NewDownloadTidsResponse() (response *DownloadTidsResponse) {
     response = &DownloadTidsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadTids
@@ -459,8 +466,9 @@ func NewUploadDeviceUniqueCodeRequest() (request *UploadDeviceUniqueCodeRequest)
 func NewUploadDeviceUniqueCodeResponse() (response *UploadDeviceUniqueCodeResponse) {
     response = &UploadDeviceUniqueCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadDeviceUniqueCode
@@ -519,8 +527,9 @@ func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
 func NewVerifyChipBurnInfoResponse() (response *VerifyChipBurnInfoResponse) {
     response = &VerifyChipBurnInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyChipBurnInfo

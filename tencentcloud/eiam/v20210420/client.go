@@ -59,8 +59,9 @@ func NewAddAccountToAccountGroupRequest() (request *AddAccountToAccountGroupRequ
 func NewAddAccountToAccountGroupResponse() (response *AddAccountToAccountGroupResponse) {
     response = &AddAccountToAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddAccountToAccountGroup
@@ -123,8 +124,9 @@ func NewAddUserToUserGroupRequest() (request *AddUserToUserGroupRequest) {
 func NewAddUserToUserGroupResponse() (response *AddUserToUserGroupResponse) {
     response = &AddUserToUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddUserToUserGroup
@@ -175,8 +177,9 @@ func NewCreateAccountGroupRequest() (request *CreateAccountGroupRequest) {
 func NewCreateAccountGroupResponse() (response *CreateAccountGroupResponse) {
     response = &CreateAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAccountGroup
@@ -229,8 +232,9 @@ func NewCreateAppAccountRequest() (request *CreateAppAccountRequest) {
 func NewCreateAppAccountResponse() (response *CreateAppAccountResponse) {
     response = &CreateAppAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppAccount
@@ -285,8 +289,9 @@ func NewCreateOrgNodeRequest() (request *CreateOrgNodeRequest) {
 func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
     response = &CreateOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrgNode
@@ -349,8 +354,9 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
 func NewCreateUserResponse() (response *CreateUserResponse) {
     response = &CreateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUser
@@ -423,8 +429,9 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
 func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
     response = &CreateUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserGroup
@@ -475,8 +482,9 @@ func NewDeleteAccountGroupRequest() (request *DeleteAccountGroupRequest) {
 func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
     response = &DeleteAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAccountGroup
@@ -533,8 +541,9 @@ func NewDeleteAppAccountRequest() (request *DeleteAppAccountRequest) {
 func NewDeleteAppAccountResponse() (response *DeleteAppAccountResponse) {
     response = &DeleteAppAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAppAccount
@@ -591,8 +600,9 @@ func NewDeleteOrgNodeRequest() (request *DeleteOrgNodeRequest) {
 func NewDeleteOrgNodeResponse() (response *DeleteOrgNodeResponse) {
     response = &DeleteOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteOrgNode
@@ -655,8 +665,9 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
 func NewDeleteUserResponse() (response *DeleteUserResponse) {
     response = &DeleteUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUser
@@ -711,8 +722,9 @@ func NewDeleteUserGroupRequest() (request *DeleteUserGroupRequest) {
 func NewDeleteUserGroupResponse() (response *DeleteUserGroupResponse) {
     response = &DeleteUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserGroup
@@ -767,8 +779,9 @@ func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
 func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
     response = &DeleteUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUsers
@@ -821,8 +834,9 @@ func NewDescribeAccountGroupRequest() (request *DescribeAccountGroupRequest) {
 func NewDescribeAccountGroupResponse() (response *DescribeAccountGroupResponse) {
     response = &DescribeAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccountGroup
@@ -873,8 +887,9 @@ func NewDescribeAppAccountRequest() (request *DescribeAppAccountRequest) {
 func NewDescribeAppAccountResponse() (response *DescribeAppAccountResponse) {
     response = &DescribeAppAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAppAccount
@@ -929,8 +944,9 @@ func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
 func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
     response = &DescribeApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplication
@@ -981,8 +997,9 @@ func NewDescribeOrgNodeRequest() (request *DescribeOrgNodeRequest) {
 func NewDescribeOrgNodeResponse() (response *DescribeOrgNodeResponse) {
     response = &DescribeOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrgNode
@@ -1037,8 +1054,9 @@ func NewDescribeOrgResourcesAuthorizationRequest() (request *DescribeOrgResource
 func NewDescribeOrgResourcesAuthorizationResponse() (response *DescribeOrgResourcesAuthorizationResponse) {
     response = &DescribeOrgResourcesAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOrgResourcesAuthorization
@@ -1093,8 +1111,9 @@ func NewDescribePublicKeyRequest() (request *DescribePublicKeyRequest) {
 func NewDescribePublicKeyResponse() (response *DescribePublicKeyResponse) {
     response = &DescribePublicKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicKey
@@ -1145,8 +1164,9 @@ func NewDescribeUserGroupRequest() (request *DescribeUserGroupRequest) {
 func NewDescribeUserGroupResponse() (response *DescribeUserGroupResponse) {
     response = &DescribeUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserGroup
@@ -1199,8 +1219,9 @@ func NewDescribeUserGroupResourcesAuthorizationRequest() (request *DescribeUserG
 func NewDescribeUserGroupResourcesAuthorizationResponse() (response *DescribeUserGroupResourcesAuthorizationResponse) {
     response = &DescribeUserGroupResourcesAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserGroupResourcesAuthorization
@@ -1255,8 +1276,9 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
 func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
     response = &DescribeUserInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserInfo
@@ -1313,8 +1335,9 @@ func NewDescribeUserResourcesAuthorizationRequest() (request *DescribeUserResour
 func NewDescribeUserResourcesAuthorizationResponse() (response *DescribeUserResourcesAuthorizationResponse) {
     response = &DescribeUserResourcesAuthorizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserResourcesAuthorization
@@ -1369,8 +1392,9 @@ func NewDescribeUserThirdPartyAccountInfoRequest() (request *DescribeUserThirdPa
 func NewDescribeUserThirdPartyAccountInfoResponse() (response *DescribeUserThirdPartyAccountInfoResponse) {
     response = &DescribeUserThirdPartyAccountInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserThirdPartyAccountInfo
@@ -1425,8 +1449,9 @@ func NewListAccountInAccountGroupRequest() (request *ListAccountInAccountGroupRe
 func NewListAccountInAccountGroupResponse() (response *ListAccountInAccountGroupResponse) {
     response = &ListAccountInAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAccountInAccountGroup
@@ -1479,8 +1504,9 @@ func NewListApplicationAuthorizationsRequest() (request *ListApplicationAuthoriz
 func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthorizationsResponse) {
     response = &ListApplicationAuthorizationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListApplicationAuthorizations
@@ -1539,8 +1565,9 @@ func NewListApplicationsRequest() (request *ListApplicationsRequest) {
 func NewListApplicationsResponse() (response *ListApplicationsResponse) {
     response = &ListApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListApplications
@@ -1597,8 +1624,9 @@ func NewListAuthorizedApplicationsToOrgNodeRequest() (request *ListAuthorizedApp
 func NewListAuthorizedApplicationsToOrgNodeResponse() (response *ListAuthorizedApplicationsToOrgNodeResponse) {
     response = &ListAuthorizedApplicationsToOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAuthorizedApplicationsToOrgNode
@@ -1651,8 +1679,9 @@ func NewListAuthorizedApplicationsToUserRequest() (request *ListAuthorizedApplic
 func NewListAuthorizedApplicationsToUserResponse() (response *ListAuthorizedApplicationsToUserResponse) {
     response = &ListAuthorizedApplicationsToUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAuthorizedApplicationsToUser
@@ -1711,8 +1740,9 @@ func NewListAuthorizedApplicationsToUserGroupRequest() (request *ListAuthorizedA
 func NewListAuthorizedApplicationsToUserGroupResponse() (response *ListAuthorizedApplicationsToUserGroupResponse) {
     response = &ListAuthorizedApplicationsToUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAuthorizedApplicationsToUserGroup
@@ -1767,8 +1797,9 @@ func NewListUserGroupsRequest() (request *ListUserGroupsRequest) {
 func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
     response = &ListUserGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUserGroups
@@ -1819,8 +1850,9 @@ func NewListUserGroupsOfUserRequest() (request *ListUserGroupsOfUserRequest) {
 func NewListUserGroupsOfUserResponse() (response *ListUserGroupsOfUserResponse) {
     response = &ListUserGroupsOfUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUserGroupsOfUser
@@ -1875,8 +1907,9 @@ func NewListUsersRequest() (request *ListUsersRequest) {
 func NewListUsersResponse() (response *ListUsersResponse) {
     response = &ListUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUsers
@@ -1933,8 +1966,9 @@ func NewListUsersInOrgNodeRequest() (request *ListUsersInOrgNodeRequest) {
 func NewListUsersInOrgNodeResponse() (response *ListUsersInOrgNodeResponse) {
     response = &ListUsersInOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUsersInOrgNode
@@ -1991,8 +2025,9 @@ func NewListUsersInUserGroupRequest() (request *ListUsersInUserGroupRequest) {
 func NewListUsersInUserGroupResponse() (response *ListUsersInUserGroupResponse) {
     response = &ListUsersInUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUsersInUserGroup
@@ -2049,8 +2084,9 @@ func NewModifyAccountGroupRequest() (request *ModifyAccountGroupRequest) {
 func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
     response = &ModifyAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccountGroup
@@ -2107,8 +2143,9 @@ func NewModifyAppAccountRequest() (request *ModifyAppAccountRequest) {
 func NewModifyAppAccountResponse() (response *ModifyAppAccountResponse) {
     response = &ModifyAppAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAppAccount
@@ -2163,8 +2200,9 @@ func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
 func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
     response = &ModifyApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplication
@@ -2219,8 +2257,9 @@ func NewModifyUserInfoRequest() (request *ModifyUserInfoRequest) {
 func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
     response = &ModifyUserInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserInfo
@@ -2315,8 +2354,9 @@ func NewRemoveAccountFromAccountGroupRequest() (request *RemoveAccountFromAccoun
 func NewRemoveAccountFromAccountGroupResponse() (response *RemoveAccountFromAccountGroupResponse) {
     response = &RemoveAccountFromAccountGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveAccountFromAccountGroup
@@ -2375,8 +2415,9 @@ func NewRemoveUserFromUserGroupRequest() (request *RemoveUserFromUserGroupReques
 func NewRemoveUserFromUserGroupResponse() (response *RemoveUserFromUserGroupResponse) {
     response = &RemoveUserFromUserGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveUserFromUserGroup
@@ -2435,8 +2476,9 @@ func NewUpdateOrgNodeRequest() (request *UpdateOrgNodeRequest) {
 func NewUpdateOrgNodeResponse() (response *UpdateOrgNodeResponse) {
     response = &UpdateOrgNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateOrgNode

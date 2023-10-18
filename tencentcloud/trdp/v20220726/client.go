@@ -59,8 +59,9 @@ func NewEvaluateUserRiskRequest() (request *EvaluateUserRiskRequest) {
 func NewEvaluateUserRiskResponse() (response *EvaluateUserRiskResponse) {
     response = &EvaluateUserRiskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EvaluateUserRisk

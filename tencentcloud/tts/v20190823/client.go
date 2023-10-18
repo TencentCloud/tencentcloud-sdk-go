@@ -59,8 +59,9 @@ func NewCreateTtsTaskRequest() (request *CreateTtsTaskRequest) {
 func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
     response = &CreateTtsTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTtsTask
@@ -251,8 +252,9 @@ func NewDescribeTtsTaskStatusRequest() (request *DescribeTtsTaskStatusRequest) {
 func NewDescribeTtsTaskStatusResponse() (response *DescribeTtsTaskStatusResponse) {
     response = &DescribeTtsTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTtsTaskStatus
@@ -387,8 +389,9 @@ func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
 func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
     response = &TextToVoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextToVoice

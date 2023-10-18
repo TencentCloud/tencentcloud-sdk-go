@@ -1095,14 +1095,14 @@ func (r *DescribeApplicationListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRealtimeScanConfigRequestParams struct {
-	// 应用ID
+	// 应用ID。
 	BizId *uint64 `json:"BizId,omitnil" name:"BizId"`
 }
 
 type DescribeRealtimeScanConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID。
 	BizId *uint64 `json:"BizId,omitnil" name:"BizId"`
 }
 
@@ -1136,10 +1136,12 @@ type DescribeRealtimeScanConfigResponseParams struct {
 	// 送检类型，0: 全量送审，1: 自定义送审
 	AuditType *int64 `json:"AuditType,omitnil" name:"AuditType"`
 
-	// 用户号正则表达式
+	// 用户号正则表达式。
+	// 符合此正则表达式规则的用户号将被送检。示例：^6.*（表示所有以6开头的用户号将被送检）
 	UserIdRegex []*string `json:"UserIdRegex,omitnil" name:"UserIdRegex"`
 
-	// 房间号正则表达式
+	// 房间号正则表达式。
+	// 符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
 	RoomIdRegex []*string `json:"RoomIdRegex,omitnil" name:"RoomIdRegex"`
 
 	// 用户号字符串，逗号分隔，示例："0001,0002,0003"

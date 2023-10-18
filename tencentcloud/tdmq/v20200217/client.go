@@ -59,8 +59,9 @@ func NewAcknowledgeMessageRequest() (request *AcknowledgeMessageRequest) {
 func NewAcknowledgeMessageResponse() (response *AcknowledgeMessageResponse) {
     response = &AcknowledgeMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AcknowledgeMessage
@@ -125,8 +126,9 @@ func NewClearCmqQueueRequest() (request *ClearCmqQueueRequest) {
 func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
     response = &ClearCmqQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearCmqQueue
@@ -177,8 +179,9 @@ func NewClearCmqSubscriptionFilterTagsRequest() (request *ClearCmqSubscriptionFi
 func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscriptionFilterTagsResponse) {
     response = &ClearCmqSubscriptionFilterTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearCmqSubscriptionFilterTags
@@ -225,8 +228,9 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
 func NewCreateClusterResponse() (response *CreateClusterResponse) {
     response = &CreateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCluster
@@ -291,8 +295,9 @@ func NewCreateCmqQueueRequest() (request *CreateCmqQueueRequest) {
 func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
     response = &CreateCmqQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCmqQueue
@@ -363,8 +368,9 @@ func NewCreateCmqSubscribeRequest() (request *CreateCmqSubscribeRequest) {
 func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
     response = &CreateCmqSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCmqSubscribe
@@ -423,8 +429,9 @@ func NewCreateCmqTopicRequest() (request *CreateCmqTopicRequest) {
 func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
     response = &CreateCmqTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCmqTopic
@@ -495,8 +502,9 @@ func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
 func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
     response = &CreateEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEnvironment
@@ -573,8 +581,9 @@ func NewCreateEnvironmentRoleRequest() (request *CreateEnvironmentRoleRequest) {
 func NewCreateEnvironmentRoleResponse() (response *CreateEnvironmentRoleResponse) {
     response = &CreateEnvironmentRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEnvironmentRole
@@ -641,8 +650,9 @@ func NewCreateRabbitMQUserRequest() (request *CreateRabbitMQUserRequest) {
 func NewCreateRabbitMQUserResponse() (response *CreateRabbitMQUserResponse) {
     response = &CreateRabbitMQUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRabbitMQUser
@@ -693,8 +703,9 @@ func NewCreateRabbitMQVipInstanceRequest() (request *CreateRabbitMQVipInstanceRe
 func NewCreateRabbitMQVipInstanceResponse() (response *CreateRabbitMQVipInstanceResponse) {
     response = &CreateRabbitMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRabbitMQVipInstance
@@ -745,8 +756,9 @@ func NewCreateRabbitMQVirtualHostRequest() (request *CreateRabbitMQVirtualHostRe
 func NewCreateRabbitMQVirtualHostResponse() (response *CreateRabbitMQVirtualHostResponse) {
     response = &CreateRabbitMQVirtualHostResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRabbitMQVirtualHost
@@ -797,8 +809,9 @@ func NewCreateRocketMQClusterRequest() (request *CreateRocketMQClusterRequest) {
 func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse) {
     response = &CreateRocketMQClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRocketMQCluster
@@ -867,8 +880,9 @@ func NewCreateRocketMQGroupRequest() (request *CreateRocketMQGroupRequest) {
 func NewCreateRocketMQGroupResponse() (response *CreateRocketMQGroupResponse) {
     response = &CreateRocketMQGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRocketMQGroup
@@ -927,8 +941,9 @@ func NewCreateRocketMQNamespaceRequest() (request *CreateRocketMQNamespaceReques
 func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResponse) {
     response = &CreateRocketMQNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRocketMQNamespace
@@ -997,8 +1012,9 @@ func NewCreateRocketMQTopicRequest() (request *CreateRocketMQTopicRequest) {
 func NewCreateRocketMQTopicResponse() (response *CreateRocketMQTopicResponse) {
     response = &CreateRocketMQTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRocketMQTopic
@@ -1067,8 +1083,9 @@ func NewCreateRocketMQVipInstanceRequest() (request *CreateRocketMQVipInstanceRe
 func NewCreateRocketMQVipInstanceResponse() (response *CreateRocketMQVipInstanceResponse) {
     response = &CreateRocketMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRocketMQVipInstance
@@ -1115,8 +1132,9 @@ func NewCreateRoleRequest() (request *CreateRoleRequest) {
 func NewCreateRoleResponse() (response *CreateRoleResponse) {
     response = &CreateRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRole
@@ -1185,8 +1203,9 @@ func NewCreateSubscriptionRequest() (request *CreateSubscriptionRequest) {
 func NewCreateSubscriptionResponse() (response *CreateSubscriptionResponse) {
     response = &CreateSubscriptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubscription
@@ -1259,8 +1278,9 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
 func NewCreateTopicResponse() (response *CreateTopicResponse) {
     response = &CreateTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTopic
@@ -1333,8 +1353,9 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     response = &DeleteClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCluster
@@ -1393,8 +1414,9 @@ func NewDeleteCmqQueueRequest() (request *DeleteCmqQueueRequest) {
 func NewDeleteCmqQueueResponse() (response *DeleteCmqQueueResponse) {
     response = &DeleteCmqQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCmqQueue
@@ -1449,8 +1471,9 @@ func NewDeleteCmqSubscribeRequest() (request *DeleteCmqSubscribeRequest) {
 func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
     response = &DeleteCmqSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCmqSubscribe
@@ -1507,8 +1530,9 @@ func NewDeleteCmqTopicRequest() (request *DeleteCmqTopicRequest) {
 func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
     response = &DeleteCmqTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCmqTopic
@@ -1561,8 +1585,9 @@ func NewDeleteEnvironmentRolesRequest() (request *DeleteEnvironmentRolesRequest)
 func NewDeleteEnvironmentRolesResponse() (response *DeleteEnvironmentRolesResponse) {
     response = &DeleteEnvironmentRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEnvironmentRoles
@@ -1621,8 +1646,9 @@ func NewDeleteEnvironmentsRequest() (request *DeleteEnvironmentsRequest) {
 func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
     response = &DeleteEnvironmentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEnvironments
@@ -1691,8 +1717,9 @@ func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
 func NewDeleteRabbitMQUserResponse() (response *DeleteRabbitMQUserResponse) {
     response = &DeleteRabbitMQUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRabbitMQUser
@@ -1743,8 +1770,9 @@ func NewDeleteRabbitMQVipInstanceRequest() (request *DeleteRabbitMQVipInstanceRe
 func NewDeleteRabbitMQVipInstanceResponse() (response *DeleteRabbitMQVipInstanceResponse) {
     response = &DeleteRabbitMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRabbitMQVipInstance
@@ -1795,8 +1823,9 @@ func NewDeleteRabbitMQVirtualHostRequest() (request *DeleteRabbitMQVirtualHostRe
 func NewDeleteRabbitMQVirtualHostResponse() (response *DeleteRabbitMQVirtualHostResponse) {
     response = &DeleteRabbitMQVirtualHostResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRabbitMQVirtualHost
@@ -1847,8 +1876,9 @@ func NewDeleteRocketMQClusterRequest() (request *DeleteRocketMQClusterRequest) {
 func NewDeleteRocketMQClusterResponse() (response *DeleteRocketMQClusterResponse) {
     response = &DeleteRocketMQClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRocketMQCluster
@@ -1905,8 +1935,9 @@ func NewDeleteRocketMQGroupRequest() (request *DeleteRocketMQGroupRequest) {
 func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
     response = &DeleteRocketMQGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRocketMQGroup
@@ -1965,8 +1996,9 @@ func NewDeleteRocketMQNamespaceRequest() (request *DeleteRocketMQNamespaceReques
 func NewDeleteRocketMQNamespaceResponse() (response *DeleteRocketMQNamespaceResponse) {
     response = &DeleteRocketMQNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRocketMQNamespace
@@ -2021,8 +2053,9 @@ func NewDeleteRocketMQTopicRequest() (request *DeleteRocketMQTopicRequest) {
 func NewDeleteRocketMQTopicResponse() (response *DeleteRocketMQTopicResponse) {
     response = &DeleteRocketMQTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRocketMQTopic
@@ -2077,8 +2110,9 @@ func NewDeleteRocketMQVipInstanceRequest() (request *DeleteRocketMQVipInstanceRe
 func NewDeleteRocketMQVipInstanceResponse() (response *DeleteRocketMQVipInstanceResponse) {
     response = &DeleteRocketMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRocketMQVipInstance
@@ -2127,8 +2161,9 @@ func NewDeleteRolesRequest() (request *DeleteRolesRequest) {
 func NewDeleteRolesResponse() (response *DeleteRolesResponse) {
     response = &DeleteRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRoles
@@ -2189,8 +2224,9 @@ func NewDeleteSubscriptionsRequest() (request *DeleteSubscriptionsRequest) {
 func NewDeleteSubscriptionsResponse() (response *DeleteSubscriptionsResponse) {
     response = &DeleteSubscriptionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSubscriptions
@@ -2261,8 +2297,9 @@ func NewDeleteTopicsRequest() (request *DeleteTopicsRequest) {
 func NewDeleteTopicsResponse() (response *DeleteTopicsResponse) {
     response = &DeleteTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTopics
@@ -2327,8 +2364,9 @@ func NewDescribeAMQPClustersRequest() (request *DescribeAMQPClustersRequest) {
 func NewDescribeAMQPClustersResponse() (response *DescribeAMQPClustersResponse) {
     response = &DescribeAMQPClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAMQPClusters
@@ -2383,8 +2421,9 @@ func NewDescribeAllTenantsRequest() (request *DescribeAllTenantsRequest) {
 func NewDescribeAllTenantsResponse() (response *DescribeAllTenantsResponse) {
     response = &DescribeAllTenantsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllTenants
@@ -2439,8 +2478,9 @@ func NewDescribeBindClustersRequest() (request *DescribeBindClustersRequest) {
 func NewDescribeBindClustersResponse() (response *DescribeBindClustersResponse) {
     response = &DescribeBindClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindClusters
@@ -2499,8 +2539,9 @@ func NewDescribeBindVpcsRequest() (request *DescribeBindVpcsRequest) {
 func NewDescribeBindVpcsResponse() (response *DescribeBindVpcsResponse) {
     response = &DescribeBindVpcsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindVpcs
@@ -2559,8 +2600,9 @@ func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
 func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse) {
     response = &DescribeClusterDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterDetail
@@ -2607,8 +2649,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -2655,8 +2698,9 @@ func NewDescribeCmqDeadLetterSourceQueuesRequest() (request *DescribeCmqDeadLett
 func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLetterSourceQueuesResponse) {
     response = &DescribeCmqDeadLetterSourceQueuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqDeadLetterSourceQueues
@@ -2703,8 +2747,9 @@ func NewDescribeCmqQueueDetailRequest() (request *DescribeCmqQueueDetailRequest)
 func NewDescribeCmqQueueDetailResponse() (response *DescribeCmqQueueDetailResponse) {
     response = &DescribeCmqQueueDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqQueueDetail
@@ -2753,8 +2798,9 @@ func NewDescribeCmqQueuesRequest() (request *DescribeCmqQueuesRequest) {
 func NewDescribeCmqQueuesResponse() (response *DescribeCmqQueuesResponse) {
     response = &DescribeCmqQueuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqQueues
@@ -2803,8 +2849,9 @@ func NewDescribeCmqSubscriptionDetailRequest() (request *DescribeCmqSubscription
 func NewDescribeCmqSubscriptionDetailResponse() (response *DescribeCmqSubscriptionDetailResponse) {
     response = &DescribeCmqSubscriptionDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqSubscriptionDetail
@@ -2853,8 +2900,9 @@ func NewDescribeCmqTopicDetailRequest() (request *DescribeCmqTopicDetailRequest)
 func NewDescribeCmqTopicDetailResponse() (response *DescribeCmqTopicDetailResponse) {
     response = &DescribeCmqTopicDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqTopicDetail
@@ -2909,8 +2957,9 @@ func NewDescribeCmqTopicsRequest() (request *DescribeCmqTopicsRequest) {
 func NewDescribeCmqTopicsResponse() (response *DescribeCmqTopicsResponse) {
     response = &DescribeCmqTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCmqTopics
@@ -2959,8 +3008,9 @@ func NewDescribeEnvironmentAttributesRequest() (request *DescribeEnvironmentAttr
 func NewDescribeEnvironmentAttributesResponse() (response *DescribeEnvironmentAttributesResponse) {
     response = &DescribeEnvironmentAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironmentAttributes
@@ -3023,8 +3073,9 @@ func NewDescribeEnvironmentRolesRequest() (request *DescribeEnvironmentRolesRequ
 func NewDescribeEnvironmentRolesResponse() (response *DescribeEnvironmentRolesResponse) {
     response = &DescribeEnvironmentRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironmentRoles
@@ -3083,8 +3134,9 @@ func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
 func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) {
     response = &DescribeEnvironmentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironments
@@ -3139,8 +3191,9 @@ func NewDescribeNamespaceBundlesOptRequest() (request *DescribeNamespaceBundlesO
 func NewDescribeNamespaceBundlesOptResponse() (response *DescribeNamespaceBundlesOptResponse) {
     response = &DescribeNamespaceBundlesOptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNamespaceBundlesOpt
@@ -3189,8 +3242,9 @@ func NewDescribeNodeHealthOptRequest() (request *DescribeNodeHealthOptRequest) {
 func NewDescribeNodeHealthOptResponse() (response *DescribeNodeHealthOptResponse) {
     response = &DescribeNodeHealthOptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNodeHealthOpt
@@ -3237,8 +3291,9 @@ func NewDescribePublisherSummaryRequest() (request *DescribePublisherSummaryRequ
 func NewDescribePublisherSummaryResponse() (response *DescribePublisherSummaryResponse) {
     response = &DescribePublisherSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublisherSummary
@@ -3285,8 +3340,9 @@ func NewDescribePublishersRequest() (request *DescribePublishersRequest) {
 func NewDescribePublishersResponse() (response *DescribePublishersResponse) {
     response = &DescribePublishersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublishers
@@ -3333,8 +3389,9 @@ func NewDescribePulsarProInstanceDetailRequest() (request *DescribePulsarProInst
 func NewDescribePulsarProInstanceDetailResponse() (response *DescribePulsarProInstanceDetailResponse) {
     response = &DescribePulsarProInstanceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePulsarProInstanceDetail
@@ -3389,8 +3446,9 @@ func NewDescribePulsarProInstancesRequest() (request *DescribePulsarProInstances
 func NewDescribePulsarProInstancesResponse() (response *DescribePulsarProInstancesResponse) {
     response = &DescribePulsarProInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePulsarProInstances
@@ -3445,8 +3503,9 @@ func NewDescribeRabbitMQNodeListRequest() (request *DescribeRabbitMQNodeListRequ
 func NewDescribeRabbitMQNodeListResponse() (response *DescribeRabbitMQNodeListResponse) {
     response = &DescribeRabbitMQNodeListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQNodeList
@@ -3495,8 +3554,9 @@ func NewDescribeRabbitMQUserRequest() (request *DescribeRabbitMQUserRequest) {
 func NewDescribeRabbitMQUserResponse() (response *DescribeRabbitMQUserResponse) {
     response = &DescribeRabbitMQUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQUser
@@ -3549,8 +3609,9 @@ func NewDescribeRabbitMQVipInstanceRequest() (request *DescribeRabbitMQVipInstan
 func NewDescribeRabbitMQVipInstanceResponse() (response *DescribeRabbitMQVipInstanceResponse) {
     response = &DescribeRabbitMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQVipInstance
@@ -3605,8 +3666,9 @@ func NewDescribeRabbitMQVipInstancesRequest() (request *DescribeRabbitMQVipInsta
 func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipInstancesResponse) {
     response = &DescribeRabbitMQVipInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQVipInstances
@@ -3661,8 +3723,9 @@ func NewDescribeRabbitMQVirtualHostRequest() (request *DescribeRabbitMQVirtualHo
 func NewDescribeRabbitMQVirtualHostResponse() (response *DescribeRabbitMQVirtualHostResponse) {
     response = &DescribeRabbitMQVirtualHostResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQVirtualHost
@@ -3715,8 +3778,9 @@ func NewDescribeRabbitMQVirtualHostListRequest() (request *DescribeRabbitMQVirtu
 func NewDescribeRabbitMQVirtualHostListResponse() (response *DescribeRabbitMQVirtualHostListResponse) {
     response = &DescribeRabbitMQVirtualHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRabbitMQVirtualHostList
@@ -3763,8 +3827,9 @@ func NewDescribeRocketMQClusterRequest() (request *DescribeRocketMQClusterReques
 func NewDescribeRocketMQClusterResponse() (response *DescribeRocketMQClusterResponse) {
     response = &DescribeRocketMQClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQCluster
@@ -3819,8 +3884,9 @@ func NewDescribeRocketMQClustersRequest() (request *DescribeRocketMQClustersRequ
 func NewDescribeRocketMQClustersResponse() (response *DescribeRocketMQClustersResponse) {
     response = &DescribeRocketMQClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQClusters
@@ -3873,8 +3939,9 @@ func NewDescribeRocketMQGroupsRequest() (request *DescribeRocketMQGroupsRequest)
 func NewDescribeRocketMQGroupsResponse() (response *DescribeRocketMQGroupsResponse) {
     response = &DescribeRocketMQGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQGroups
@@ -3919,6 +3986,67 @@ func (c *Client) DescribeRocketMQGroupsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeRocketMQMigratingTopicListRequest() (request *DescribeRocketMQMigratingTopicListRequest) {
+    request = &DescribeRocketMQMigratingTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQMigratingTopicList")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQMigratingTopicListResponse() (response *DescribeRocketMQMigratingTopicListResponse) {
+    response = &DescribeRocketMQMigratingTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQMigratingTopicList
+// 查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQMigratingTopicList(request *DescribeRocketMQMigratingTopicListRequest) (response *DescribeRocketMQMigratingTopicListResponse, err error) {
+    return c.DescribeRocketMQMigratingTopicListWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQMigratingTopicList
+// 查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQMigratingTopicListWithContext(ctx context.Context, request *DescribeRocketMQMigratingTopicListRequest) (response *DescribeRocketMQMigratingTopicListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQMigratingTopicListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQMigratingTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQMigratingTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQMsgRequest() (request *DescribeRocketMQMsgRequest) {
     request = &DescribeRocketMQMsgRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3933,8 +4061,9 @@ func NewDescribeRocketMQMsgRequest() (request *DescribeRocketMQMsgRequest) {
 func NewDescribeRocketMQMsgResponse() (response *DescribeRocketMQMsgResponse) {
     response = &DescribeRocketMQMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQMsg
@@ -3983,8 +4112,9 @@ func NewDescribeRocketMQMsgTraceRequest() (request *DescribeRocketMQMsgTraceRequ
 func NewDescribeRocketMQMsgTraceResponse() (response *DescribeRocketMQMsgTraceResponse) {
     response = &DescribeRocketMQMsgTraceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQMsgTrace
@@ -4033,8 +4163,9 @@ func NewDescribeRocketMQNamespacesRequest() (request *DescribeRocketMQNamespaces
 func NewDescribeRocketMQNamespacesResponse() (response *DescribeRocketMQNamespacesResponse) {
     response = &DescribeRocketMQNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQNamespaces
@@ -4093,8 +4224,9 @@ func NewDescribeRocketMQPublicAccessPointRequest() (request *DescribeRocketMQPub
 func NewDescribeRocketMQPublicAccessPointResponse() (response *DescribeRocketMQPublicAccessPointResponse) {
     response = &DescribeRocketMQPublicAccessPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQPublicAccessPoint
@@ -4139,6 +4271,202 @@ func (c *Client) DescribeRocketMQPublicAccessPointWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeRocketMQSmoothMigrationTaskRequest() (request *DescribeRocketMQSmoothMigrationTaskRequest) {
+    request = &DescribeRocketMQSmoothMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTask")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQSmoothMigrationTaskResponse() (response *DescribeRocketMQSmoothMigrationTaskResponse) {
+    response = &DescribeRocketMQSmoothMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQSmoothMigrationTask
+// 用于获取RocketMQ平滑迁移任务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSmoothMigrationTask(request *DescribeRocketMQSmoothMigrationTaskRequest) (response *DescribeRocketMQSmoothMigrationTaskResponse, err error) {
+    return c.DescribeRocketMQSmoothMigrationTaskWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQSmoothMigrationTask
+// 用于获取RocketMQ平滑迁移任务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSmoothMigrationTaskWithContext(ctx context.Context, request *DescribeRocketMQSmoothMigrationTaskRequest) (response *DescribeRocketMQSmoothMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQSmoothMigrationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQSmoothMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQSmoothMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQSmoothMigrationTaskListRequest() (request *DescribeRocketMQSmoothMigrationTaskListRequest) {
+    request = &DescribeRocketMQSmoothMigrationTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTaskList")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQSmoothMigrationTaskListResponse() (response *DescribeRocketMQSmoothMigrationTaskListResponse) {
+    response = &DescribeRocketMQSmoothMigrationTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQSmoothMigrationTaskList
+// 用于查询RocketMQ平滑迁移任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSmoothMigrationTaskList(request *DescribeRocketMQSmoothMigrationTaskListRequest) (response *DescribeRocketMQSmoothMigrationTaskListResponse, err error) {
+    return c.DescribeRocketMQSmoothMigrationTaskListWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQSmoothMigrationTaskList
+// 用于查询RocketMQ平滑迁移任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSmoothMigrationTaskListWithContext(ctx context.Context, request *DescribeRocketMQSmoothMigrationTaskListRequest) (response *DescribeRocketMQSmoothMigrationTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQSmoothMigrationTaskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQSmoothMigrationTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQSmoothMigrationTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQSourceClusterGroupListRequest() (request *DescribeRocketMQSourceClusterGroupListRequest) {
+    request = &DescribeRocketMQSourceClusterGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSourceClusterGroupList")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQSourceClusterGroupListResponse() (response *DescribeRocketMQSourceClusterGroupListResponse) {
+    response = &DescribeRocketMQSourceClusterGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQSourceClusterGroupList
+// 平滑迁移过程获取源集群group列表接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSourceClusterGroupList(request *DescribeRocketMQSourceClusterGroupListRequest) (response *DescribeRocketMQSourceClusterGroupListResponse, err error) {
+    return c.DescribeRocketMQSourceClusterGroupListWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQSourceClusterGroupList
+// 平滑迁移过程获取源集群group列表接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSourceClusterGroupListWithContext(ctx context.Context, request *DescribeRocketMQSourceClusterGroupListRequest) (response *DescribeRocketMQSourceClusterGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQSourceClusterGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQSourceClusterGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQSourceClusterGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQSourceClusterTopicListRequest() (request *DescribeRocketMQSourceClusterTopicListRequest) {
+    request = &DescribeRocketMQSourceClusterTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSourceClusterTopicList")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQSourceClusterTopicListResponse() (response *DescribeRocketMQSourceClusterTopicListResponse) {
+    response = &DescribeRocketMQSourceClusterTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQSourceClusterTopicList
+// 平滑迁移过程获取源集群topic列表接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSourceClusterTopicList(request *DescribeRocketMQSourceClusterTopicListRequest) (response *DescribeRocketMQSourceClusterTopicListResponse, err error) {
+    return c.DescribeRocketMQSourceClusterTopicListWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQSourceClusterTopicList
+// 平滑迁移过程获取源集群topic列表接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+func (c *Client) DescribeRocketMQSourceClusterTopicListWithContext(ctx context.Context, request *DescribeRocketMQSourceClusterTopicListRequest) (response *DescribeRocketMQSourceClusterTopicListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQSourceClusterTopicListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQSourceClusterTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQSourceClusterTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQTopicMsgsRequest() (request *DescribeRocketMQTopicMsgsRequest) {
     request = &DescribeRocketMQTopicMsgsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4153,8 +4481,9 @@ func NewDescribeRocketMQTopicMsgsRequest() (request *DescribeRocketMQTopicMsgsRe
 func NewDescribeRocketMQTopicMsgsResponse() (response *DescribeRocketMQTopicMsgsResponse) {
     response = &DescribeRocketMQTopicMsgsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQTopicMsgs
@@ -4205,8 +4534,9 @@ func NewDescribeRocketMQTopicsRequest() (request *DescribeRocketMQTopicsRequest)
 func NewDescribeRocketMQTopicsResponse() (response *DescribeRocketMQTopicsResponse) {
     response = &DescribeRocketMQTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQTopics
@@ -4267,8 +4597,9 @@ func NewDescribeRocketMQVipInstanceDetailRequest() (request *DescribeRocketMQVip
 func NewDescribeRocketMQVipInstanceDetailResponse() (response *DescribeRocketMQVipInstanceDetailResponse) {
     response = &DescribeRocketMQVipInstanceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQVipInstanceDetail
@@ -4327,8 +4658,9 @@ func NewDescribeRocketMQVipInstancesRequest() (request *DescribeRocketMQVipInsta
 func NewDescribeRocketMQVipInstancesResponse() (response *DescribeRocketMQVipInstancesResponse) {
     response = &DescribeRocketMQVipInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRocketMQVipInstances
@@ -4387,8 +4719,9 @@ func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
 func NewDescribeRolesResponse() (response *DescribeRolesResponse) {
     response = &DescribeRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoles
@@ -4445,8 +4778,9 @@ func NewDescribeSubscriptionsRequest() (request *DescribeSubscriptionsRequest) {
 func NewDescribeSubscriptionsResponse() (response *DescribeSubscriptionsResponse) {
     response = &DescribeSubscriptionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubscriptions
@@ -4511,8 +4845,9 @@ func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
 func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
     response = &DescribeTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopics
@@ -4561,6 +4896,136 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewImportRocketMQConsumerGroupsRequest() (request *ImportRocketMQConsumerGroupsRequest) {
+    request = &ImportRocketMQConsumerGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ImportRocketMQConsumerGroups")
+    
+    
+    return
+}
+
+func NewImportRocketMQConsumerGroupsResponse() (response *ImportRocketMQConsumerGroupsResponse) {
+    response = &ImportRocketMQConsumerGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportRocketMQConsumerGroups
+// 输入迁移任务id和要导入的Group，导入后台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
+    return c.ImportRocketMQConsumerGroupsWithContext(context.Background(), request)
+}
+
+// ImportRocketMQConsumerGroups
+// 输入迁移任务id和要导入的Group，导入后台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) ImportRocketMQConsumerGroupsWithContext(ctx context.Context, request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
+    if request == nil {
+        request = NewImportRocketMQConsumerGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportRocketMQConsumerGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportRocketMQConsumerGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportRocketMQTopicsRequest() (request *ImportRocketMQTopicsRequest) {
+    request = &ImportRocketMQTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ImportRocketMQTopics")
+    
+    
+    return
+}
+
+func NewImportRocketMQTopicsResponse() (response *ImportRocketMQTopicsResponse) {
+    response = &ImportRocketMQTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportRocketMQTopics
+// 导入topic列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
+    return c.ImportRocketMQTopicsWithContext(context.Background(), request)
+}
+
+// ImportRocketMQTopics
+// 导入topic列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) ImportRocketMQTopicsWithContext(ctx context.Context, request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
+    if request == nil {
+        request = NewImportRocketMQTopicsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportRocketMQTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportRocketMQTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAMQPClusterRequest() (request *ModifyAMQPClusterRequest) {
     request = &ModifyAMQPClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4575,8 +5040,9 @@ func NewModifyAMQPClusterRequest() (request *ModifyAMQPClusterRequest) {
 func NewModifyAMQPClusterResponse() (response *ModifyAMQPClusterResponse) {
     response = &ModifyAMQPClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAMQPCluster
@@ -4635,8 +5101,9 @@ func NewModifyClusterRequest() (request *ModifyClusterRequest) {
 func NewModifyClusterResponse() (response *ModifyClusterResponse) {
     response = &ModifyClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCluster
@@ -4689,8 +5156,9 @@ func NewModifyCmqQueueAttributeRequest() (request *ModifyCmqQueueAttributeReques
 func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResponse) {
     response = &ModifyCmqQueueAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCmqQueueAttribute
@@ -4749,8 +5217,9 @@ func NewModifyCmqSubscriptionAttributeRequest() (request *ModifyCmqSubscriptionA
 func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptionAttributeResponse) {
     response = &ModifyCmqSubscriptionAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCmqSubscriptionAttribute
@@ -4797,8 +5266,9 @@ func NewModifyCmqTopicAttributeRequest() (request *ModifyCmqTopicAttributeReques
 func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResponse) {
     response = &ModifyCmqTopicAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCmqTopicAttribute
@@ -4847,8 +5317,9 @@ func NewModifyEnvironmentAttributesRequest() (request *ModifyEnvironmentAttribut
 func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttributesResponse) {
     response = &ModifyEnvironmentAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEnvironmentAttributes
@@ -4925,8 +5396,9 @@ func NewModifyEnvironmentRoleRequest() (request *ModifyEnvironmentRoleRequest) {
 func NewModifyEnvironmentRoleResponse() (response *ModifyEnvironmentRoleResponse) {
     response = &ModifyEnvironmentRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEnvironmentRole
@@ -4987,8 +5459,9 @@ func NewModifyPublicNetworkAccessPointRequest() (request *ModifyPublicNetworkAcc
 func NewModifyPublicNetworkAccessPointResponse() (response *ModifyPublicNetworkAccessPointResponse) {
     response = &ModifyPublicNetworkAccessPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPublicNetworkAccessPoint
@@ -5035,8 +5508,9 @@ func NewModifyRabbitMQUserRequest() (request *ModifyRabbitMQUserRequest) {
 func NewModifyRabbitMQUserResponse() (response *ModifyRabbitMQUserResponse) {
     response = &ModifyRabbitMQUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRabbitMQUser
@@ -5087,8 +5561,9 @@ func NewModifyRabbitMQVipInstanceRequest() (request *ModifyRabbitMQVipInstanceRe
 func NewModifyRabbitMQVipInstanceResponse() (response *ModifyRabbitMQVipInstanceResponse) {
     response = &ModifyRabbitMQVipInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRabbitMQVipInstance
@@ -5139,8 +5614,9 @@ func NewModifyRabbitMQVirtualHostRequest() (request *ModifyRabbitMQVirtualHostRe
 func NewModifyRabbitMQVirtualHostResponse() (response *ModifyRabbitMQVirtualHostResponse) {
     response = &ModifyRabbitMQVirtualHostResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRabbitMQVirtualHost
@@ -5191,8 +5667,9 @@ func NewModifyRocketMQClusterRequest() (request *ModifyRocketMQClusterRequest) {
 func NewModifyRocketMQClusterResponse() (response *ModifyRocketMQClusterResponse) {
     response = &ModifyRocketMQClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRocketMQCluster
@@ -5255,8 +5732,9 @@ func NewModifyRocketMQGroupRequest() (request *ModifyRocketMQGroupRequest) {
 func NewModifyRocketMQGroupResponse() (response *ModifyRocketMQGroupResponse) {
     response = &ModifyRocketMQGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRocketMQGroup
@@ -5311,8 +5789,9 @@ func NewModifyRocketMQInstanceSpecRequest() (request *ModifyRocketMQInstanceSpec
 func NewModifyRocketMQInstanceSpecResponse() (response *ModifyRocketMQInstanceSpecResponse) {
     response = &ModifyRocketMQInstanceSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRocketMQInstanceSpec
@@ -5367,8 +5846,9 @@ func NewModifyRocketMQNamespaceRequest() (request *ModifyRocketMQNamespaceReques
 func NewModifyRocketMQNamespaceResponse() (response *ModifyRocketMQNamespaceResponse) {
     response = &ModifyRocketMQNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRocketMQNamespace
@@ -5433,8 +5913,9 @@ func NewModifyRocketMQTopicRequest() (request *ModifyRocketMQTopicRequest) {
 func NewModifyRocketMQTopicResponse() (response *ModifyRocketMQTopicResponse) {
     response = &ModifyRocketMQTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRocketMQTopic
@@ -5491,8 +5972,9 @@ func NewModifyRoleRequest() (request *ModifyRoleRequest) {
 func NewModifyRoleResponse() (response *ModifyRoleResponse) {
     response = &ModifyRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRole
@@ -5553,8 +6035,9 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
 func NewModifyTopicResponse() (response *ModifyTopicResponse) {
     response = &ModifyTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTopic
@@ -5617,8 +6100,9 @@ func NewPublishCmqMsgRequest() (request *PublishCmqMsgRequest) {
 func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
     response = &PublishCmqMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PublishCmqMsg
@@ -5667,8 +6151,9 @@ func NewReceiveMessageRequest() (request *ReceiveMessageRequest) {
 func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
     response = &ReceiveMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReceiveMessage
@@ -5811,8 +6296,9 @@ func NewResetMsgSubOffsetByTimestampRequest() (request *ResetMsgSubOffsetByTimes
 func NewResetMsgSubOffsetByTimestampResponse() (response *ResetMsgSubOffsetByTimestampResponse) {
     response = &ResetMsgSubOffsetByTimestampResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetMsgSubOffsetByTimestamp
@@ -5879,8 +6365,9 @@ func NewResetRocketMQConsumerOffSetRequest() (request *ResetRocketMQConsumerOffS
 func NewResetRocketMQConsumerOffSetResponse() (response *ResetRocketMQConsumerOffSetResponse) {
     response = &ResetRocketMQConsumerOffSetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetRocketMQConsumerOffSet
@@ -5935,8 +6422,9 @@ func NewRewindCmqQueueRequest() (request *RewindCmqQueueRequest) {
 func NewRewindCmqQueueResponse() (response *RewindCmqQueueResponse) {
     response = &RewindCmqQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RewindCmqQueue
@@ -5985,8 +6473,9 @@ func NewSendBatchMessagesRequest() (request *SendBatchMessagesRequest) {
 func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
     response = &SendBatchMessagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendBatchMessages
@@ -6061,8 +6550,9 @@ func NewSendCmqMsgRequest() (request *SendCmqMsgRequest) {
 func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
     response = &SendCmqMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendCmqMsg
@@ -6111,8 +6601,9 @@ func NewSendMessagesRequest() (request *SendMessagesRequest) {
 func NewSendMessagesResponse() (response *SendMessagesResponse) {
     response = &SendMessagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendMessages
@@ -6183,8 +6674,9 @@ func NewSendMsgRequest() (request *SendMsgRequest) {
 func NewSendMsgResponse() (response *SendMsgResponse) {
     response = &SendMsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendMsg
@@ -6249,8 +6741,9 @@ func NewSendRocketMQMessageRequest() (request *SendRocketMQMessageRequest) {
 func NewSendRocketMQMessageResponse() (response *SendRocketMQMessageResponse) {
     response = &SendRocketMQMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendRocketMQMessage
@@ -6301,8 +6794,9 @@ func NewSetRocketMQPublicAccessPointRequest() (request *SetRocketMQPublicAccessP
 func NewSetRocketMQPublicAccessPointResponse() (response *SetRocketMQPublicAccessPointResponse) {
     response = &SetRocketMQPublicAccessPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetRocketMQPublicAccessPoint
@@ -6353,8 +6847,9 @@ func NewUnbindCmqDeadLetterRequest() (request *UnbindCmqDeadLetterRequest) {
 func NewUnbindCmqDeadLetterResponse() (response *UnbindCmqDeadLetterResponse) {
     response = &UnbindCmqDeadLetterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindCmqDeadLetter

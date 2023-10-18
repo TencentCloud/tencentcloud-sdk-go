@@ -59,8 +59,9 @@ func NewFileTranslateRequest() (request *FileTranslateRequest) {
 func NewFileTranslateResponse() (response *FileTranslateResponse) {
     response = &FileTranslateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FileTranslate
@@ -117,8 +118,9 @@ func NewGetFileTranslateRequest() (request *GetFileTranslateRequest) {
 func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
     response = &GetFileTranslateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFileTranslate
@@ -175,8 +177,9 @@ func NewImageTranslateRequest() (request *ImageTranslateRequest) {
 func NewImageTranslateResponse() (response *ImageTranslateResponse) {
     response = &ImageTranslateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageTranslate
@@ -261,8 +264,9 @@ func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
 func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
     response = &LanguageDetectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LanguageDetect
@@ -357,8 +361,9 @@ func NewSpeechTranslateRequest() (request *SpeechTranslateRequest) {
 func NewSpeechTranslateResponse() (response *SpeechTranslateResponse) {
     response = &SpeechTranslateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SpeechTranslate
@@ -457,8 +462,9 @@ func NewTextTranslateRequest() (request *TextTranslateRequest) {
 func NewTextTranslateResponse() (response *TextTranslateResponse) {
     response = &TextTranslateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextTranslate
@@ -555,8 +561,9 @@ func NewTextTranslateBatchRequest() (request *TextTranslateBatchRequest) {
 func NewTextTranslateBatchResponse() (response *TextTranslateBatchResponse) {
     response = &TextTranslateBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextTranslateBatch

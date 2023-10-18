@@ -59,8 +59,9 @@ func NewBatchDeleteStreamLinkFlowRequest() (request *BatchDeleteStreamLinkFlowRe
 func NewBatchDeleteStreamLinkFlowResponse() (response *BatchDeleteStreamLinkFlowResponse) {
     response = &BatchDeleteStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeleteStreamLinkFlow
@@ -113,8 +114,9 @@ func NewBatchStartStreamLinkFlowRequest() (request *BatchStartStreamLinkFlowRequ
 func NewBatchStartStreamLinkFlowResponse() (response *BatchStartStreamLinkFlowResponse) {
     response = &BatchStartStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchStartStreamLinkFlow
@@ -167,8 +169,9 @@ func NewBatchStopStreamLinkFlowRequest() (request *BatchStopStreamLinkFlowReques
 func NewBatchStopStreamLinkFlowResponse() (response *BatchStopStreamLinkFlowResponse) {
     response = &BatchStopStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchStopStreamLinkFlow
@@ -219,8 +222,9 @@ func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequ
 func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateResponse) {
     response = &CreateAIAnalysisTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAIAnalysisTemplate
@@ -287,8 +291,9 @@ func NewCreateAIRecognitionTemplateRequest() (request *CreateAIRecognitionTempla
 func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemplateResponse) {
     response = &CreateAIRecognitionTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAIRecognitionTemplate
@@ -367,8 +372,9 @@ func NewCreateAdaptiveDynamicStreamingTemplateRequest() (request *CreateAdaptive
 func NewCreateAdaptiveDynamicStreamingTemplateResponse() (response *CreateAdaptiveDynamicStreamingTemplateResponse) {
     response = &CreateAdaptiveDynamicStreamingTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAdaptiveDynamicStreamingTemplate
@@ -451,8 +457,9 @@ func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphics
 func NewCreateAnimatedGraphicsTemplateResponse() (response *CreateAnimatedGraphicsTemplateResponse) {
     response = &CreateAnimatedGraphicsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAnimatedGraphicsTemplate
@@ -519,8 +526,9 @@ func NewCreateContentReviewTemplateRequest() (request *CreateContentReviewTempla
 func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemplateResponse) {
     response = &CreateContentReviewTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateContentReviewTemplate
@@ -585,8 +593,9 @@ func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRe
 func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplateResponse) {
     response = &CreateImageSpriteTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateImageSpriteTemplate
@@ -653,8 +662,9 @@ func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
 func NewCreatePersonSampleResponse() (response *CreatePersonSampleResponse) {
     response = &CreatePersonSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePersonSample
@@ -709,8 +719,9 @@ func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemp
 func NewCreateSampleSnapshotTemplateResponse() (response *CreateSampleSnapshotTemplateResponse) {
     response = &CreateSampleSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSampleSnapshotTemplate
@@ -777,8 +788,9 @@ func NewCreateScheduleRequest() (request *CreateScheduleRequest) {
 func NewCreateScheduleResponse() (response *CreateScheduleResponse) {
     response = &CreateScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSchedule
@@ -885,8 +897,9 @@ func NewCreateSnapshotByTimeOffsetTemplateRequest() (request *CreateSnapshotByTi
 func NewCreateSnapshotByTimeOffsetTemplateResponse() (response *CreateSnapshotByTimeOffsetTemplateResponse) {
     response = &CreateSnapshotByTimeOffsetTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSnapshotByTimeOffsetTemplate
@@ -949,8 +962,9 @@ func NewCreateStreamLinkEventRequest() (request *CreateStreamLinkEventRequest) {
 func NewCreateStreamLinkEventResponse() (response *CreateStreamLinkEventResponse) {
     response = &CreateStreamLinkEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStreamLinkEvent
@@ -1007,8 +1021,9 @@ func NewCreateStreamLinkFlowRequest() (request *CreateStreamLinkFlowRequest) {
 func NewCreateStreamLinkFlowResponse() (response *CreateStreamLinkFlowResponse) {
     response = &CreateStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStreamLinkFlow
@@ -1067,8 +1082,9 @@ func NewCreateStreamLinkInputRequest() (request *CreateStreamLinkInputRequest) {
 func NewCreateStreamLinkInputResponse() (response *CreateStreamLinkInputResponse) {
     response = &CreateStreamLinkInputResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStreamLinkInput
@@ -1129,8 +1145,9 @@ func NewCreateStreamLinkOutputInfoRequest() (request *CreateStreamLinkOutputInfo
 func NewCreateStreamLinkOutputInfoResponse() (response *CreateStreamLinkOutputInfoResponse) {
     response = &CreateStreamLinkOutputInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStreamLinkOutputInfo
@@ -1189,8 +1206,9 @@ func NewCreateTranscodeTemplateRequest() (request *CreateTranscodeTemplateReques
 func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResponse) {
     response = &CreateTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTranscodeTemplate
@@ -1275,8 +1293,9 @@ func NewCreateWatermarkTemplateRequest() (request *CreateWatermarkTemplateReques
 func NewCreateWatermarkTemplateResponse() (response *CreateWatermarkTemplateResponse) {
     response = &CreateWatermarkTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWatermarkTemplate
@@ -1363,8 +1382,9 @@ func NewCreateWordSamplesRequest() (request *CreateWordSamplesRequest) {
 func NewCreateWordSamplesResponse() (response *CreateWordSamplesResponse) {
     response = &CreateWordSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWordSamples
@@ -1415,8 +1435,9 @@ func NewCreateWorkflowRequest() (request *CreateWorkflowRequest) {
 func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
     response = &CreateWorkflowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkflow
@@ -1519,8 +1540,9 @@ func NewDeleteAIAnalysisTemplateRequest() (request *DeleteAIAnalysisTemplateRequ
 func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateResponse) {
     response = &DeleteAIAnalysisTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAIAnalysisTemplate
@@ -1581,8 +1603,9 @@ func NewDeleteAIRecognitionTemplateRequest() (request *DeleteAIRecognitionTempla
 func NewDeleteAIRecognitionTemplateResponse() (response *DeleteAIRecognitionTemplateResponse) {
     response = &DeleteAIRecognitionTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAIRecognitionTemplate
@@ -1637,8 +1660,9 @@ func NewDeleteAdaptiveDynamicStreamingTemplateRequest() (request *DeleteAdaptive
 func NewDeleteAdaptiveDynamicStreamingTemplateResponse() (response *DeleteAdaptiveDynamicStreamingTemplateResponse) {
     response = &DeleteAdaptiveDynamicStreamingTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAdaptiveDynamicStreamingTemplate
@@ -1691,8 +1715,9 @@ func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphics
 func NewDeleteAnimatedGraphicsTemplateResponse() (response *DeleteAnimatedGraphicsTemplateResponse) {
     response = &DeleteAnimatedGraphicsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAnimatedGraphicsTemplate
@@ -1743,8 +1768,9 @@ func NewDeleteContentReviewTemplateRequest() (request *DeleteContentReviewTempla
 func NewDeleteContentReviewTemplateResponse() (response *DeleteContentReviewTemplateResponse) {
     response = &DeleteContentReviewTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteContentReviewTemplate
@@ -1797,8 +1823,9 @@ func NewDeleteImageSpriteTemplateRequest() (request *DeleteImageSpriteTemplateRe
 func NewDeleteImageSpriteTemplateResponse() (response *DeleteImageSpriteTemplateResponse) {
     response = &DeleteImageSpriteTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteImageSpriteTemplate
@@ -1849,8 +1876,9 @@ func NewDeletePersonSampleRequest() (request *DeletePersonSampleRequest) {
 func NewDeletePersonSampleResponse() (response *DeletePersonSampleResponse) {
     response = &DeletePersonSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePersonSample
@@ -1901,8 +1929,9 @@ func NewDeleteSampleSnapshotTemplateRequest() (request *DeleteSampleSnapshotTemp
 func NewDeleteSampleSnapshotTemplateResponse() (response *DeleteSampleSnapshotTemplateResponse) {
     response = &DeleteSampleSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSampleSnapshotTemplate
@@ -1953,8 +1982,9 @@ func NewDeleteScheduleRequest() (request *DeleteScheduleRequest) {
 func NewDeleteScheduleResponse() (response *DeleteScheduleResponse) {
     response = &DeleteScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSchedule
@@ -2007,8 +2037,9 @@ func NewDeleteSnapshotByTimeOffsetTemplateRequest() (request *DeleteSnapshotByTi
 func NewDeleteSnapshotByTimeOffsetTemplateResponse() (response *DeleteSnapshotByTimeOffsetTemplateResponse) {
     response = &DeleteSnapshotByTimeOffsetTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSnapshotByTimeOffsetTemplate
@@ -2059,8 +2090,9 @@ func NewDeleteStreamLinkEventRequest() (request *DeleteStreamLinkEventRequest) {
 func NewDeleteStreamLinkEventResponse() (response *DeleteStreamLinkEventResponse) {
     response = &DeleteStreamLinkEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStreamLinkEvent
@@ -2109,8 +2141,9 @@ func NewDeleteStreamLinkFlowRequest() (request *DeleteStreamLinkFlowRequest) {
 func NewDeleteStreamLinkFlowResponse() (response *DeleteStreamLinkFlowResponse) {
     response = &DeleteStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStreamLinkFlow
@@ -2159,8 +2192,9 @@ func NewDeleteStreamLinkOutputRequest() (request *DeleteStreamLinkOutputRequest)
 func NewDeleteStreamLinkOutputResponse() (response *DeleteStreamLinkOutputResponse) {
     response = &DeleteStreamLinkOutputResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStreamLinkOutput
@@ -2215,8 +2249,9 @@ func NewDeleteTranscodeTemplateRequest() (request *DeleteTranscodeTemplateReques
 func NewDeleteTranscodeTemplateResponse() (response *DeleteTranscodeTemplateResponse) {
     response = &DeleteTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTranscodeTemplate
@@ -2273,8 +2308,9 @@ func NewDeleteWatermarkTemplateRequest() (request *DeleteWatermarkTemplateReques
 func NewDeleteWatermarkTemplateResponse() (response *DeleteWatermarkTemplateResponse) {
     response = &DeleteWatermarkTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWatermarkTemplate
@@ -2327,8 +2363,9 @@ func NewDeleteWordSamplesRequest() (request *DeleteWordSamplesRequest) {
 func NewDeleteWordSamplesResponse() (response *DeleteWordSamplesResponse) {
     response = &DeleteWordSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWordSamples
@@ -2377,8 +2414,9 @@ func NewDeleteWorkflowRequest() (request *DeleteWorkflowRequest) {
 func NewDeleteWorkflowResponse() (response *DeleteWorkflowResponse) {
     response = &DeleteWorkflowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWorkflow
@@ -2431,8 +2469,9 @@ func NewDescribeAIAnalysisTemplatesRequest() (request *DescribeAIAnalysisTemplat
 func NewDescribeAIAnalysisTemplatesResponse() (response *DescribeAIAnalysisTemplatesResponse) {
     response = &DescribeAIAnalysisTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIAnalysisTemplates
@@ -2489,8 +2528,9 @@ func NewDescribeAIRecognitionTemplatesRequest() (request *DescribeAIRecognitionT
 func NewDescribeAIRecognitionTemplatesResponse() (response *DescribeAIRecognitionTemplatesResponse) {
     response = &DescribeAIRecognitionTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIRecognitionTemplates
@@ -2547,8 +2587,9 @@ func NewDescribeAdaptiveDynamicStreamingTemplatesRequest() (request *DescribeAda
 func NewDescribeAdaptiveDynamicStreamingTemplatesResponse() (response *DescribeAdaptiveDynamicStreamingTemplatesResponse) {
     response = &DescribeAdaptiveDynamicStreamingTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAdaptiveDynamicStreamingTemplates
@@ -2605,8 +2646,9 @@ func NewDescribeAnimatedGraphicsTemplatesRequest() (request *DescribeAnimatedGra
 func NewDescribeAnimatedGraphicsTemplatesResponse() (response *DescribeAnimatedGraphicsTemplatesResponse) {
     response = &DescribeAnimatedGraphicsTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAnimatedGraphicsTemplates
@@ -2659,8 +2701,9 @@ func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewT
 func NewDescribeContentReviewTemplatesResponse() (response *DescribeContentReviewTemplatesResponse) {
     response = &DescribeContentReviewTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContentReviewTemplates
@@ -2717,8 +2760,9 @@ func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTempl
 func NewDescribeImageSpriteTemplatesResponse() (response *DescribeImageSpriteTemplatesResponse) {
     response = &DescribeImageSpriteTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageSpriteTemplates
@@ -2771,8 +2815,9 @@ func NewDescribeMediaMetaDataRequest() (request *DescribeMediaMetaDataRequest) {
 func NewDescribeMediaMetaDataResponse() (response *DescribeMediaMetaDataResponse) {
     response = &DescribeMediaMetaDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMediaMetaData
@@ -2825,8 +2870,9 @@ func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
 func NewDescribePersonSamplesResponse() (response *DescribePersonSamplesResponse) {
     response = &DescribePersonSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersonSamples
@@ -2877,8 +2923,9 @@ func NewDescribeSampleSnapshotTemplatesRequest() (request *DescribeSampleSnapsho
 func NewDescribeSampleSnapshotTemplatesResponse() (response *DescribeSampleSnapshotTemplatesResponse) {
     response = &DescribeSampleSnapshotTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSampleSnapshotTemplates
@@ -2931,8 +2978,9 @@ func NewDescribeSchedulesRequest() (request *DescribeSchedulesRequest) {
 func NewDescribeSchedulesResponse() (response *DescribeSchedulesResponse) {
     response = &DescribeSchedulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSchedules
@@ -2987,8 +3035,9 @@ func NewDescribeSnapshotByTimeOffsetTemplatesRequest() (request *DescribeSnapsho
 func NewDescribeSnapshotByTimeOffsetTemplatesResponse() (response *DescribeSnapshotByTimeOffsetTemplatesResponse) {
     response = &DescribeSnapshotByTimeOffsetTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSnapshotByTimeOffsetTemplates
@@ -3041,8 +3090,9 @@ func NewDescribeStreamLinkActivateStateRequest() (request *DescribeStreamLinkAct
 func NewDescribeStreamLinkActivateStateResponse() (response *DescribeStreamLinkActivateStateResponse) {
     response = &DescribeStreamLinkActivateStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkActivateState
@@ -3089,8 +3139,9 @@ func NewDescribeStreamLinkEventRequest() (request *DescribeStreamLinkEventReques
 func NewDescribeStreamLinkEventResponse() (response *DescribeStreamLinkEventResponse) {
     response = &DescribeStreamLinkEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkEvent
@@ -3143,8 +3194,9 @@ func NewDescribeStreamLinkEventAttachedFlowsRequest() (request *DescribeStreamLi
 func NewDescribeStreamLinkEventAttachedFlowsResponse() (response *DescribeStreamLinkEventAttachedFlowsResponse) {
     response = &DescribeStreamLinkEventAttachedFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkEventAttachedFlows
@@ -3197,8 +3249,9 @@ func NewDescribeStreamLinkEventsRequest() (request *DescribeStreamLinkEventsRequ
 func NewDescribeStreamLinkEventsResponse() (response *DescribeStreamLinkEventsResponse) {
     response = &DescribeStreamLinkEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkEvents
@@ -3251,8 +3304,9 @@ func NewDescribeStreamLinkFlowRequest() (request *DescribeStreamLinkFlowRequest)
 func NewDescribeStreamLinkFlowResponse() (response *DescribeStreamLinkFlowResponse) {
     response = &DescribeStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlow
@@ -3301,8 +3355,9 @@ func NewDescribeStreamLinkFlowLogsRequest() (request *DescribeStreamLinkFlowLogs
 func NewDescribeStreamLinkFlowLogsResponse() (response *DescribeStreamLinkFlowLogsResponse) {
     response = &DescribeStreamLinkFlowLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlowLogs
@@ -3367,8 +3422,9 @@ func NewDescribeStreamLinkFlowMediaStatisticsRequest() (request *DescribeStreamL
 func NewDescribeStreamLinkFlowMediaStatisticsResponse() (response *DescribeStreamLinkFlowMediaStatisticsResponse) {
     response = &DescribeStreamLinkFlowMediaStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlowMediaStatistics
@@ -3431,8 +3487,9 @@ func NewDescribeStreamLinkFlowRealtimeStatusRequest() (request *DescribeStreamLi
 func NewDescribeStreamLinkFlowRealtimeStatusResponse() (response *DescribeStreamLinkFlowRealtimeStatusResponse) {
     response = &DescribeStreamLinkFlowRealtimeStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlowRealtimeStatus
@@ -3483,8 +3540,9 @@ func NewDescribeStreamLinkFlowSRTStatisticsRequest() (request *DescribeStreamLin
 func NewDescribeStreamLinkFlowSRTStatisticsResponse() (response *DescribeStreamLinkFlowSRTStatisticsResponse) {
     response = &DescribeStreamLinkFlowSRTStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlowSRTStatistics
@@ -3547,8 +3605,9 @@ func NewDescribeStreamLinkFlowStatisticsRequest() (request *DescribeStreamLinkFl
 func NewDescribeStreamLinkFlowStatisticsResponse() (response *DescribeStreamLinkFlowStatisticsResponse) {
     response = &DescribeStreamLinkFlowStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlowStatistics
@@ -3611,8 +3670,9 @@ func NewDescribeStreamLinkFlowsRequest() (request *DescribeStreamLinkFlowsReques
 func NewDescribeStreamLinkFlowsResponse() (response *DescribeStreamLinkFlowsResponse) {
     response = &DescribeStreamLinkFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkFlows
@@ -3665,8 +3725,9 @@ func NewDescribeStreamLinkRegionsRequest() (request *DescribeStreamLinkRegionsRe
 func NewDescribeStreamLinkRegionsResponse() (response *DescribeStreamLinkRegionsResponse) {
     response = &DescribeStreamLinkRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamLinkRegions
@@ -3713,8 +3774,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail
@@ -3769,8 +3831,9 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
 func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     response = &DescribeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTasks
@@ -3831,8 +3894,9 @@ func NewDescribeTranscodeTemplatesRequest() (request *DescribeTranscodeTemplates
 func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplatesResponse) {
     response = &DescribeTranscodeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTranscodeTemplates
@@ -3897,8 +3961,9 @@ func NewDescribeWatermarkTemplatesRequest() (request *DescribeWatermarkTemplates
 func NewDescribeWatermarkTemplatesResponse() (response *DescribeWatermarkTemplatesResponse) {
     response = &DescribeWatermarkTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWatermarkTemplates
@@ -3955,8 +4020,9 @@ func NewDescribeWordSamplesRequest() (request *DescribeWordSamplesRequest) {
 func NewDescribeWordSamplesResponse() (response *DescribeWordSamplesResponse) {
     response = &DescribeWordSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWordSamples
@@ -4007,8 +4073,9 @@ func NewDescribeWorkflowsRequest() (request *DescribeWorkflowsRequest) {
 func NewDescribeWorkflowsResponse() (response *DescribeWorkflowsResponse) {
     response = &DescribeWorkflowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkflows
@@ -4059,8 +4126,9 @@ func NewDisableScheduleRequest() (request *DisableScheduleRequest) {
 func NewDisableScheduleResponse() (response *DisableScheduleResponse) {
     response = &DisableScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableSchedule
@@ -4129,8 +4197,9 @@ func NewDisableWorkflowRequest() (request *DisableWorkflowRequest) {
 func NewDisableWorkflowResponse() (response *DisableWorkflowResponse) {
     response = &DisableWorkflowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableWorkflow
@@ -4189,8 +4258,9 @@ func NewEditMediaRequest() (request *EditMediaRequest) {
 func NewEditMediaResponse() (response *EditMediaResponse) {
     response = &EditMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditMedia
@@ -4289,8 +4359,9 @@ func NewEnableScheduleRequest() (request *EnableScheduleRequest) {
 func NewEnableScheduleResponse() (response *EnableScheduleResponse) {
     response = &EnableScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableSchedule
@@ -4359,8 +4430,9 @@ func NewEnableWorkflowRequest() (request *EnableWorkflowRequest) {
 func NewEnableWorkflowResponse() (response *EnableWorkflowResponse) {
     response = &EnableWorkflowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableWorkflow
@@ -4421,8 +4493,9 @@ func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
 func NewExecuteFunctionResponse() (response *ExecuteFunctionResponse) {
     response = &ExecuteFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteFunction
@@ -4479,8 +4552,9 @@ func NewManageTaskRequest() (request *ManageTaskRequest) {
 func NewManageTaskResponse() (response *ManageTaskResponse) {
     response = &ManageTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ManageTask
@@ -4537,8 +4611,9 @@ func NewModifyAIAnalysisTemplateRequest() (request *ModifyAIAnalysisTemplateRequ
 func NewModifyAIAnalysisTemplateResponse() (response *ModifyAIAnalysisTemplateResponse) {
     response = &ModifyAIAnalysisTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAIAnalysisTemplate
@@ -4611,8 +4686,9 @@ func NewModifyAIRecognitionTemplateRequest() (request *ModifyAIRecognitionTempla
 func NewModifyAIRecognitionTemplateResponse() (response *ModifyAIRecognitionTemplateResponse) {
     response = &ModifyAIRecognitionTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAIRecognitionTemplate
@@ -4689,8 +4765,9 @@ func NewModifyAdaptiveDynamicStreamingTemplateRequest() (request *ModifyAdaptive
 func NewModifyAdaptiveDynamicStreamingTemplateResponse() (response *ModifyAdaptiveDynamicStreamingTemplateResponse) {
     response = &ModifyAdaptiveDynamicStreamingTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAdaptiveDynamicStreamingTemplate
@@ -4785,8 +4862,9 @@ func NewModifyAnimatedGraphicsTemplateRequest() (request *ModifyAnimatedGraphics
 func NewModifyAnimatedGraphicsTemplateResponse() (response *ModifyAnimatedGraphicsTemplateResponse) {
     response = &ModifyAnimatedGraphicsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAnimatedGraphicsTemplate
@@ -4853,8 +4931,9 @@ func NewModifyContentReviewTemplateRequest() (request *ModifyContentReviewTempla
 func NewModifyContentReviewTemplateResponse() (response *ModifyContentReviewTemplateResponse) {
     response = &ModifyContentReviewTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyContentReviewTemplate
@@ -4917,8 +4996,9 @@ func NewModifyImageSpriteTemplateRequest() (request *ModifyImageSpriteTemplateRe
 func NewModifyImageSpriteTemplateResponse() (response *ModifyImageSpriteTemplateResponse) {
     response = &ModifyImageSpriteTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyImageSpriteTemplate
@@ -4985,8 +5065,9 @@ func NewModifyPersonSampleRequest() (request *ModifyPersonSampleRequest) {
 func NewModifyPersonSampleResponse() (response *ModifyPersonSampleResponse) {
     response = &ModifyPersonSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonSample
@@ -5045,8 +5126,9 @@ func NewModifySampleSnapshotTemplateRequest() (request *ModifySampleSnapshotTemp
 func NewModifySampleSnapshotTemplateResponse() (response *ModifySampleSnapshotTemplateResponse) {
     response = &ModifySampleSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySampleSnapshotTemplate
@@ -5115,8 +5197,9 @@ func NewModifyScheduleRequest() (request *ModifyScheduleRequest) {
 func NewModifyScheduleResponse() (response *ModifyScheduleResponse) {
     response = &ModifyScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySchedule
@@ -5173,8 +5256,9 @@ func NewModifySnapshotByTimeOffsetTemplateRequest() (request *ModifySnapshotByTi
 func NewModifySnapshotByTimeOffsetTemplateResponse() (response *ModifySnapshotByTimeOffsetTemplateResponse) {
     response = &ModifySnapshotByTimeOffsetTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySnapshotByTimeOffsetTemplate
@@ -5237,8 +5321,9 @@ func NewModifyStreamLinkEventRequest() (request *ModifyStreamLinkEventRequest) {
 func NewModifyStreamLinkEventResponse() (response *ModifyStreamLinkEventResponse) {
     response = &ModifyStreamLinkEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStreamLinkEvent
@@ -5291,8 +5376,9 @@ func NewModifyStreamLinkFlowRequest() (request *ModifyStreamLinkFlowRequest) {
 func NewModifyStreamLinkFlowResponse() (response *ModifyStreamLinkFlowResponse) {
     response = &ModifyStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStreamLinkFlow
@@ -5345,8 +5431,9 @@ func NewModifyStreamLinkInputRequest() (request *ModifyStreamLinkInputRequest) {
 func NewModifyStreamLinkInputResponse() (response *ModifyStreamLinkInputResponse) {
     response = &ModifyStreamLinkInputResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStreamLinkInput
@@ -5403,8 +5490,9 @@ func NewModifyStreamLinkOutputInfoRequest() (request *ModifyStreamLinkOutputInfo
 func NewModifyStreamLinkOutputInfoResponse() (response *ModifyStreamLinkOutputInfoResponse) {
     response = &ModifyStreamLinkOutputInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStreamLinkOutputInfo
@@ -5465,8 +5553,9 @@ func NewModifyTranscodeTemplateRequest() (request *ModifyTranscodeTemplateReques
 func NewModifyTranscodeTemplateResponse() (response *ModifyTranscodeTemplateResponse) {
     response = &ModifyTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTranscodeTemplate
@@ -5553,8 +5642,9 @@ func NewModifyWatermarkTemplateRequest() (request *ModifyWatermarkTemplateReques
 func NewModifyWatermarkTemplateResponse() (response *ModifyWatermarkTemplateResponse) {
     response = &ModifyWatermarkTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWatermarkTemplate
@@ -5633,8 +5723,9 @@ func NewModifyWordSampleRequest() (request *ModifyWordSampleRequest) {
 func NewModifyWordSampleResponse() (response *ModifyWordSampleResponse) {
     response = &ModifyWordSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWordSample
@@ -5687,8 +5778,9 @@ func NewParseLiveStreamProcessNotificationRequest() (request *ParseLiveStreamPro
 func NewParseLiveStreamProcessNotificationResponse() (response *ParseLiveStreamProcessNotificationResponse) {
     response = &ParseLiveStreamProcessNotificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ParseLiveStreamProcessNotification
@@ -5741,8 +5833,9 @@ func NewParseNotificationRequest() (request *ParseNotificationRequest) {
 func NewParseNotificationResponse() (response *ParseNotificationResponse) {
     response = &ParseNotificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ParseNotification
@@ -5799,8 +5892,9 @@ func NewProcessLiveStreamRequest() (request *ProcessLiveStreamRequest) {
 func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
     response = &ProcessLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ProcessLiveStream
@@ -5889,8 +5983,9 @@ func NewProcessMediaRequest() (request *ProcessMediaRequest) {
 func NewProcessMediaResponse() (response *ProcessMediaResponse) {
     response = &ProcessMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ProcessMedia
@@ -5983,8 +6078,9 @@ func NewRecognizeMediaForZhiXueRequest() (request *RecognizeMediaForZhiXueReques
 func NewRecognizeMediaForZhiXueResponse() (response *RecognizeMediaForZhiXueResponse) {
     response = &RecognizeMediaForZhiXueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeMediaForZhiXue
@@ -6035,8 +6131,9 @@ func NewResetWorkflowRequest() (request *ResetWorkflowRequest) {
 func NewResetWorkflowResponse() (response *ResetWorkflowResponse) {
     response = &ResetWorkflowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetWorkflow
@@ -6089,8 +6186,9 @@ func NewStartStreamLinkFlowRequest() (request *StartStreamLinkFlowRequest) {
 func NewStartStreamLinkFlowResponse() (response *StartStreamLinkFlowResponse) {
     response = &StartStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartStreamLinkFlow
@@ -6143,8 +6241,9 @@ func NewStopStreamLinkFlowRequest() (request *StopStreamLinkFlowRequest) {
 func NewStopStreamLinkFlowResponse() (response *StopStreamLinkFlowResponse) {
     response = &StopStreamLinkFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopStreamLinkFlow
@@ -6195,8 +6294,9 @@ func NewWithdrawsWatermarkRequest() (request *WithdrawsWatermarkRequest) {
 func NewWithdrawsWatermarkResponse() (response *WithdrawsWatermarkResponse) {
     response = &WithdrawsWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // WithdrawsWatermark

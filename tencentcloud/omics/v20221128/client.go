@@ -59,8 +59,9 @@ func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
 func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
     response = &CreateEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEnvironment
@@ -121,8 +122,9 @@ func NewDeleteEnvironmentRequest() (request *DeleteEnvironmentRequest) {
 func NewDeleteEnvironmentResponse() (response *DeleteEnvironmentResponse) {
     response = &DeleteEnvironmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEnvironment
@@ -185,8 +187,9 @@ func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
 func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) {
     response = &DescribeEnvironmentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvironments
@@ -241,8 +244,9 @@ func NewDescribeRunGroupsRequest() (request *DescribeRunGroupsRequest) {
 func NewDescribeRunGroupsResponse() (response *DescribeRunGroupsResponse) {
     response = &DescribeRunGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRunGroups
@@ -301,8 +305,9 @@ func NewDescribeRunsRequest() (request *DescribeRunsRequest) {
 func NewDescribeRunsResponse() (response *DescribeRunsResponse) {
     response = &DescribeRunsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuns
@@ -361,8 +366,9 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
 func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
     response = &DescribeTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTables
@@ -421,8 +427,9 @@ func NewDescribeTablesRowsRequest() (request *DescribeTablesRowsRequest) {
 func NewDescribeTablesRowsResponse() (response *DescribeTablesRowsResponse) {
     response = &DescribeTablesRowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTablesRows
@@ -483,8 +490,9 @@ func NewGetRunCallsRequest() (request *GetRunCallsRequest) {
 func NewGetRunCallsResponse() (response *GetRunCallsResponse) {
     response = &GetRunCallsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRunCalls
@@ -545,8 +553,9 @@ func NewGetRunStatusRequest() (request *GetRunStatusRequest) {
 func NewGetRunStatusResponse() (response *GetRunStatusResponse) {
     response = &GetRunStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRunStatus
@@ -607,8 +616,9 @@ func NewImportTableFileRequest() (request *ImportTableFileRequest) {
 func NewImportTableFileResponse() (response *ImportTableFileResponse) {
     response = &ImportTableFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportTableFile
@@ -697,8 +707,9 @@ func NewRetryRunsRequest() (request *RetryRunsRequest) {
 func NewRetryRunsResponse() (response *RetryRunsResponse) {
     response = &RetryRunsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetryRuns
@@ -769,8 +780,9 @@ func NewRunApplicationRequest() (request *RunApplicationRequest) {
 func NewRunApplicationResponse() (response *RunApplicationResponse) {
     response = &RunApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunApplication

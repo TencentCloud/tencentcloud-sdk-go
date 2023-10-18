@@ -59,8 +59,9 @@ func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
 func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) {
     response = &CreateCloudRecordingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudRecording
@@ -201,8 +202,9 @@ func NewCreatePictureRequest() (request *CreatePictureRequest) {
 func NewCreatePictureResponse() (response *CreatePictureResponse) {
     response = &CreatePictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePicture
@@ -261,8 +263,9 @@ func NewDeleteCloudRecordingRequest() (request *DeleteCloudRecordingRequest) {
 func NewDeleteCloudRecordingResponse() (response *DeleteCloudRecordingResponse) {
     response = &DeleteCloudRecordingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudRecording
@@ -333,8 +336,9 @@ func NewDeletePictureRequest() (request *DeletePictureRequest) {
 func NewDeletePictureResponse() (response *DeletePictureResponse) {
     response = &DeletePictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePicture
@@ -391,8 +395,9 @@ func NewDescribeCallDetailInfoRequest() (request *DescribeCallDetailInfoRequest)
 func NewDescribeCallDetailInfoResponse() (response *DescribeCallDetailInfoResponse) {
     response = &DescribeCallDetailInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallDetailInfo
@@ -497,8 +502,9 @@ func NewDescribeCloudRecordingRequest() (request *DescribeCloudRecordingRequest)
 func NewDescribeCloudRecordingResponse() (response *DescribeCloudRecordingResponse) {
     response = &DescribeCloudRecordingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudRecording
@@ -575,8 +581,9 @@ func NewDescribeMixTranscodingUsageRequest() (request *DescribeMixTranscodingUsa
 func NewDescribeMixTranscodingUsageResponse() (response *DescribeMixTranscodingUsageResponse) {
     response = &DescribeMixTranscodingUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMixTranscodingUsage
@@ -645,8 +652,9 @@ func NewDescribePictureRequest() (request *DescribePictureRequest) {
 func NewDescribePictureResponse() (response *DescribePictureResponse) {
     response = &DescribePictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePicture
@@ -703,8 +711,9 @@ func NewDescribeRecordStatisticRequest() (request *DescribeRecordStatisticReques
 func NewDescribeRecordStatisticResponse() (response *DescribeRecordStatisticResponse) {
     response = &DescribeRecordStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordStatistic
@@ -781,8 +790,9 @@ func NewDescribeRecordingUsageRequest() (request *DescribeRecordingUsageRequest)
 func NewDescribeRecordingUsageResponse() (response *DescribeRecordingUsageResponse) {
     response = &DescribeRecordingUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordingUsage
@@ -851,8 +861,9 @@ func NewDescribeRelayUsageRequest() (request *DescribeRelayUsageRequest) {
 func NewDescribeRelayUsageResponse() (response *DescribeRelayUsageResponse) {
     response = &DescribeRelayUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRelayUsage
@@ -921,8 +932,9 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
 func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
     response = &DescribeRoomInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoomInfo
@@ -1025,8 +1037,9 @@ func NewDescribeScaleInfoRequest() (request *DescribeScaleInfoRequest) {
 func NewDescribeScaleInfoResponse() (response *DescribeScaleInfoResponse) {
     response = &DescribeScaleInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScaleInfo
@@ -1099,8 +1112,9 @@ func NewDescribeTRTCMarketQualityDataRequest() (request *DescribeTRTCMarketQuali
 func NewDescribeTRTCMarketQualityDataResponse() (response *DescribeTRTCMarketQualityDataResponse) {
     response = &DescribeTRTCMarketQualityDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCMarketQualityData
@@ -1205,8 +1219,9 @@ func NewDescribeTRTCMarketQualityMetricDataRequest() (request *DescribeTRTCMarke
 func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMarketQualityMetricDataResponse) {
     response = &DescribeTRTCMarketQualityMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCMarketQualityMetricData
@@ -1311,8 +1326,9 @@ func NewDescribeTRTCMarketScaleDataRequest() (request *DescribeTRTCMarketScaleDa
 func NewDescribeTRTCMarketScaleDataResponse() (response *DescribeTRTCMarketScaleDataResponse) {
     response = &DescribeTRTCMarketScaleDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCMarketScaleData
@@ -1413,8 +1429,9 @@ func NewDescribeTRTCMarketScaleMetricDataRequest() (request *DescribeTRTCMarketS
 func NewDescribeTRTCMarketScaleMetricDataResponse() (response *DescribeTRTCMarketScaleMetricDataResponse) {
     response = &DescribeTRTCMarketScaleMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCMarketScaleMetricData
@@ -1515,8 +1532,9 @@ func NewDescribeTRTCRealTimeQualityDataRequest() (request *DescribeTRTCRealTimeQ
 func NewDescribeTRTCRealTimeQualityDataResponse() (response *DescribeTRTCRealTimeQualityDataResponse) {
     response = &DescribeTRTCRealTimeQualityDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCRealTimeQualityData
@@ -1609,8 +1627,9 @@ func NewDescribeTRTCRealTimeQualityMetricDataRequest() (request *DescribeTRTCRea
 func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCRealTimeQualityMetricDataResponse) {
     response = &DescribeTRTCRealTimeQualityMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCRealTimeQualityMetricData
@@ -1677,8 +1696,9 @@ func NewDescribeTRTCRealTimeScaleDataRequest() (request *DescribeTRTCRealTimeSca
 func NewDescribeTRTCRealTimeScaleDataResponse() (response *DescribeTRTCRealTimeScaleDataResponse) {
     response = &DescribeTRTCRealTimeScaleDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCRealTimeScaleData
@@ -1753,8 +1773,9 @@ func NewDescribeTRTCRealTimeScaleMetricDataRequest() (request *DescribeTRTCRealT
 func NewDescribeTRTCRealTimeScaleMetricDataResponse() (response *DescribeTRTCRealTimeScaleMetricDataResponse) {
     response = &DescribeTRTCRealTimeScaleMetricDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTRTCRealTimeScaleMetricData
@@ -1829,8 +1850,9 @@ func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscode
 func NewDescribeTrtcMcuTranscodeTimeResponse() (response *DescribeTrtcMcuTranscodeTimeResponse) {
     response = &DescribeTrtcMcuTranscodeTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrtcMcuTranscodeTime
@@ -1899,8 +1921,9 @@ func NewDescribeTrtcRoomUsageRequest() (request *DescribeTrtcRoomUsageRequest) {
 func NewDescribeTrtcRoomUsageResponse() (response *DescribeTrtcRoomUsageResponse) {
     response = &DescribeTrtcRoomUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrtcRoomUsage
@@ -1967,8 +1990,9 @@ func NewDescribeTrtcUsageRequest() (request *DescribeTrtcUsageRequest) {
 func NewDescribeTrtcUsageResponse() (response *DescribeTrtcUsageResponse) {
     response = &DescribeTrtcUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrtcUsage
@@ -2037,8 +2061,9 @@ func NewDescribeUnusualEventRequest() (request *DescribeUnusualEventRequest) {
 func NewDescribeUnusualEventResponse() (response *DescribeUnusualEventResponse) {
     response = &DescribeUnusualEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnusualEvent
@@ -2123,8 +2148,9 @@ func NewDescribeUserEventRequest() (request *DescribeUserEventRequest) {
 func NewDescribeUserEventResponse() (response *DescribeUserEventResponse) {
     response = &DescribeUserEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserEvent
@@ -2209,8 +2235,9 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
 func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
     response = &DescribeUserInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserInfo
@@ -2313,8 +2340,9 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
 func NewDismissRoomResponse() (response *DismissRoomResponse) {
     response = &DismissRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DismissRoom
@@ -2379,8 +2407,9 @@ func NewDismissRoomByStrRoomIdRequest() (request *DismissRoomByStrRoomIdRequest)
 func NewDismissRoomByStrRoomIdResponse() (response *DismissRoomByStrRoomIdResponse) {
     response = &DismissRoomByStrRoomIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DismissRoomByStrRoomId
@@ -2443,8 +2472,9 @@ func NewModifyCloudRecordingRequest() (request *ModifyCloudRecordingRequest) {
 func NewModifyCloudRecordingResponse() (response *ModifyCloudRecordingResponse) {
     response = &ModifyCloudRecordingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudRecording
@@ -2515,8 +2545,9 @@ func NewModifyPictureRequest() (request *ModifyPictureRequest) {
 func NewModifyPictureResponse() (response *ModifyPictureResponse) {
     response = &ModifyPictureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPicture
@@ -2575,8 +2606,9 @@ func NewRemoveUserRequest() (request *RemoveUserRequest) {
 func NewRemoveUserResponse() (response *RemoveUserResponse) {
     response = &RemoveUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveUser
@@ -2645,8 +2677,9 @@ func NewRemoveUserByStrRoomIdRequest() (request *RemoveUserByStrRoomIdRequest) {
 func NewRemoveUserByStrRoomIdResponse() (response *RemoveUserByStrRoomIdResponse) {
     response = &RemoveUserByStrRoomIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveUserByStrRoomId
@@ -2713,8 +2746,9 @@ func NewStartMCUMixTranscodeRequest() (request *StartMCUMixTranscodeRequest) {
 func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) {
     response = &StartMCUMixTranscodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMCUMixTranscode
@@ -2917,8 +2951,9 @@ func NewStartMCUMixTranscodeByStrRoomIdRequest() (request *StartMCUMixTranscodeB
 func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscodeByStrRoomIdResponse) {
     response = &StartMCUMixTranscodeByStrRoomIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMCUMixTranscodeByStrRoomId
@@ -3113,8 +3148,9 @@ func NewStartPublishCdnStreamRequest() (request *StartPublishCdnStreamRequest) {
 func NewStartPublishCdnStreamResponse() (response *StartPublishCdnStreamResponse) {
     response = &StartPublishCdnStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartPublishCdnStream
@@ -3563,8 +3599,9 @@ func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
 func NewStopMCUMixTranscodeResponse() (response *StopMCUMixTranscodeResponse) {
     response = &StopMCUMixTranscodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMCUMixTranscode
@@ -3633,8 +3670,9 @@ func NewStopMCUMixTranscodeByStrRoomIdRequest() (request *StopMCUMixTranscodeByS
 func NewStopMCUMixTranscodeByStrRoomIdResponse() (response *StopMCUMixTranscodeByStrRoomIdResponse) {
     response = &StopMCUMixTranscodeByStrRoomIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMCUMixTranscodeByStrRoomId
@@ -3705,8 +3743,9 @@ func NewStopPublishCdnStreamRequest() (request *StopPublishCdnStreamRequest) {
 func NewStopPublishCdnStreamResponse() (response *StopPublishCdnStreamResponse) {
     response = &StopPublishCdnStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopPublishCdnStream
@@ -3769,8 +3808,9 @@ func NewUpdatePublishCdnStreamRequest() (request *UpdatePublishCdnStreamRequest)
 func NewUpdatePublishCdnStreamResponse() (response *UpdatePublishCdnStreamResponse) {
     response = &UpdatePublishCdnStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdatePublishCdnStream

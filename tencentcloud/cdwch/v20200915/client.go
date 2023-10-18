@@ -59,8 +59,9 @@ func NewActionAlterCkUserRequest() (request *ActionAlterCkUserRequest) {
 func NewActionAlterCkUserResponse() (response *ActionAlterCkUserResponse) {
     response = &ActionAlterCkUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ActionAlterCkUser
@@ -107,8 +108,9 @@ func NewCreateBackUpScheduleRequest() (request *CreateBackUpScheduleRequest) {
 func NewCreateBackUpScheduleResponse() (response *CreateBackUpScheduleResponse) {
     response = &CreateBackUpScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBackUpSchedule
@@ -155,8 +157,9 @@ func NewCreateInstanceNewRequest() (request *CreateInstanceNewRequest) {
 func NewCreateInstanceNewResponse() (response *CreateInstanceNewResponse) {
     response = &CreateInstanceNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstanceNew
@@ -203,8 +206,9 @@ func NewDeleteBackUpDataRequest() (request *DeleteBackUpDataRequest) {
 func NewDeleteBackUpDataResponse() (response *DeleteBackUpDataResponse) {
     response = &DeleteBackUpDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBackUpData
@@ -251,8 +255,9 @@ func NewDescribeBackUpJobRequest() (request *DescribeBackUpJobRequest) {
 func NewDescribeBackUpJobResponse() (response *DescribeBackUpJobResponse) {
     response = &DescribeBackUpJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackUpJob
@@ -299,8 +304,9 @@ func NewDescribeBackUpJobDetailRequest() (request *DescribeBackUpJobDetailReques
 func NewDescribeBackUpJobDetailResponse() (response *DescribeBackUpJobDetailResponse) {
     response = &DescribeBackUpJobDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackUpJobDetail
@@ -347,8 +353,9 @@ func NewDescribeBackUpScheduleRequest() (request *DescribeBackUpScheduleRequest)
 func NewDescribeBackUpScheduleResponse() (response *DescribeBackUpScheduleResponse) {
     response = &DescribeBackUpScheduleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackUpSchedule
@@ -395,8 +402,9 @@ func NewDescribeBackUpTablesRequest() (request *DescribeBackUpTablesRequest) {
 func NewDescribeBackUpTablesResponse() (response *DescribeBackUpTablesResponse) {
     response = &DescribeBackUpTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackUpTables
@@ -443,8 +451,9 @@ func NewDescribeCkSqlApisRequest() (request *DescribeCkSqlApisRequest) {
 func NewDescribeCkSqlApisResponse() (response *DescribeCkSqlApisResponse) {
     response = &DescribeCkSqlApisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCkSqlApis
@@ -491,8 +500,9 @@ func NewDescribeClusterConfigsRequest() (request *DescribeClusterConfigsRequest)
 func NewDescribeClusterConfigsResponse() (response *DescribeClusterConfigsResponse) {
     response = &DescribeClusterConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterConfigs
@@ -539,8 +549,9 @@ func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
 func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
     response = &DescribeInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstance
@@ -587,8 +598,9 @@ func NewDescribeInstanceClustersRequest() (request *DescribeInstanceClustersRequ
 func NewDescribeInstanceClustersResponse() (response *DescribeInstanceClustersResponse) {
     response = &DescribeInstanceClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceClusters
@@ -635,8 +647,9 @@ func NewDescribeInstanceKeyValConfigsRequest() (request *DescribeInstanceKeyValC
 func NewDescribeInstanceKeyValConfigsResponse() (response *DescribeInstanceKeyValConfigsResponse) {
     response = &DescribeInstanceKeyValConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceKeyValConfigs
@@ -683,8 +696,9 @@ func NewDescribeInstanceShardsRequest() (request *DescribeInstanceShardsRequest)
 func NewDescribeInstanceShardsResponse() (response *DescribeInstanceShardsResponse) {
     response = &DescribeInstanceShardsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceShards
@@ -731,8 +745,9 @@ func NewDescribeInstanceStateRequest() (request *DescribeInstanceStateRequest) {
 func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse) {
     response = &DescribeInstanceStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceState
@@ -779,8 +794,9 @@ func NewDescribeInstancesNewRequest() (request *DescribeInstancesNewRequest) {
 func NewDescribeInstancesNewResponse() (response *DescribeInstancesNewResponse) {
     response = &DescribeInstancesNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstancesNew
@@ -827,8 +843,9 @@ func NewDescribeSpecRequest() (request *DescribeSpecRequest) {
 func NewDescribeSpecResponse() (response *DescribeSpecResponse) {
     response = &DescribeSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSpec
@@ -875,8 +892,9 @@ func NewDestroyInstanceRequest() (request *DestroyInstanceRequest) {
 func NewDestroyInstanceResponse() (response *DestroyInstanceResponse) {
     response = &DestroyInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyInstance
@@ -923,8 +941,9 @@ func NewModifyClusterConfigsRequest() (request *ModifyClusterConfigsRequest) {
 func NewModifyClusterConfigsResponse() (response *ModifyClusterConfigsResponse) {
     response = &ModifyClusterConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterConfigs
@@ -971,8 +990,9 @@ func NewModifyInstanceKeyValConfigsRequest() (request *ModifyInstanceKeyValConfi
 func NewModifyInstanceKeyValConfigsResponse() (response *ModifyInstanceKeyValConfigsResponse) {
     response = &ModifyInstanceKeyValConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstanceKeyValConfigs
@@ -1019,8 +1039,9 @@ func NewModifyUserNewPrivilegeRequest() (request *ModifyUserNewPrivilegeRequest)
 func NewModifyUserNewPrivilegeResponse() (response *ModifyUserNewPrivilegeResponse) {
     response = &ModifyUserNewPrivilegeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserNewPrivilege
@@ -1067,8 +1088,9 @@ func NewOpenBackUpRequest() (request *OpenBackUpRequest) {
 func NewOpenBackUpResponse() (response *OpenBackUpResponse) {
     response = &OpenBackUpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenBackUp
@@ -1115,8 +1137,9 @@ func NewRecoverBackUpJobRequest() (request *RecoverBackUpJobRequest) {
 func NewRecoverBackUpJobResponse() (response *RecoverBackUpJobResponse) {
     response = &RecoverBackUpJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverBackUpJob
@@ -1163,8 +1186,9 @@ func NewResizeDiskRequest() (request *ResizeDiskRequest) {
 func NewResizeDiskResponse() (response *ResizeDiskResponse) {
     response = &ResizeDiskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResizeDisk
@@ -1211,8 +1235,9 @@ func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
 func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
     response = &ScaleOutInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScaleOutInstance
@@ -1259,8 +1284,9 @@ func NewScaleUpInstanceRequest() (request *ScaleUpInstanceRequest) {
 func NewScaleUpInstanceResponse() (response *ScaleUpInstanceResponse) {
     response = &ScaleUpInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScaleUpInstance

@@ -59,8 +59,9 @@ func NewClearTablesRequest() (request *ClearTablesRequest) {
 func NewClearTablesResponse() (response *ClearTablesResponse) {
     response = &ClearTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearTables
@@ -117,8 +118,9 @@ func NewCompareIdlFilesRequest() (request *CompareIdlFilesRequest) {
 func NewCompareIdlFilesResponse() (response *CompareIdlFilesResponse) {
     response = &CompareIdlFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CompareIdlFiles
@@ -173,8 +175,9 @@ func NewCreateBackupRequest() (request *CreateBackupRequest) {
 func NewCreateBackupResponse() (response *CreateBackupResponse) {
     response = &CreateBackupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBackup
@@ -229,8 +232,9 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
 func NewCreateClusterResponse() (response *CreateClusterResponse) {
     response = &CreateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCluster
@@ -293,8 +297,9 @@ func NewCreateSnapshotsRequest() (request *CreateSnapshotsRequest) {
 func NewCreateSnapshotsResponse() (response *CreateSnapshotsResponse) {
     response = &CreateSnapshotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSnapshots
@@ -357,8 +362,9 @@ func NewCreateTableGroupRequest() (request *CreateTableGroupRequest) {
 func NewCreateTableGroupResponse() (response *CreateTableGroupResponse) {
     response = &CreateTableGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTableGroup
@@ -417,8 +423,9 @@ func NewCreateTablesRequest() (request *CreateTablesRequest) {
 func NewCreateTablesResponse() (response *CreateTablesResponse) {
     response = &CreateTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTables
@@ -481,8 +488,9 @@ func NewDeleteBackupRecordsRequest() (request *DeleteBackupRecordsRequest) {
 func NewDeleteBackupRecordsResponse() (response *DeleteBackupRecordsResponse) {
     response = &DeleteBackupRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBackupRecords
@@ -539,8 +547,9 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     response = &DeleteClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCluster
@@ -593,8 +602,9 @@ func NewDeleteIdlFilesRequest() (request *DeleteIdlFilesRequest) {
 func NewDeleteIdlFilesResponse() (response *DeleteIdlFilesResponse) {
     response = &DeleteIdlFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIdlFiles
@@ -653,8 +663,9 @@ func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
 func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
     response = &DeleteSnapshotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSnapshots
@@ -717,8 +728,9 @@ func NewDeleteTableDataFlowRequest() (request *DeleteTableDataFlowRequest) {
 func NewDeleteTableDataFlowResponse() (response *DeleteTableDataFlowResponse) {
     response = &DeleteTableDataFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTableDataFlow
@@ -775,8 +787,9 @@ func NewDeleteTableGroupRequest() (request *DeleteTableGroupRequest) {
 func NewDeleteTableGroupResponse() (response *DeleteTableGroupResponse) {
     response = &DeleteTableGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTableGroup
@@ -829,8 +842,9 @@ func NewDeleteTableIndexRequest() (request *DeleteTableIndexRequest) {
 func NewDeleteTableIndexResponse() (response *DeleteTableIndexResponse) {
     response = &DeleteTableIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTableIndex
@@ -887,8 +901,9 @@ func NewDeleteTablesRequest() (request *DeleteTablesRequest) {
 func NewDeleteTablesResponse() (response *DeleteTablesResponse) {
     response = &DeleteTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTables
@@ -945,8 +960,9 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
 func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
     response = &DescribeApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplications
@@ -1003,8 +1019,9 @@ func NewDescribeBackupRecordsRequest() (request *DescribeBackupRecordsRequest) {
 func NewDescribeBackupRecordsResponse() (response *DescribeBackupRecordsResponse) {
     response = &DescribeBackupRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBackupRecords
@@ -1077,8 +1094,9 @@ func NewDescribeClusterTagsRequest() (request *DescribeClusterTagsRequest) {
 func NewDescribeClusterTagsResponse() (response *DescribeClusterTagsResponse) {
     response = &DescribeClusterTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterTags
@@ -1133,8 +1151,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -1187,8 +1206,9 @@ func NewDescribeIdlFileInfosRequest() (request *DescribeIdlFileInfosRequest) {
 func NewDescribeIdlFileInfosResponse() (response *DescribeIdlFileInfosResponse) {
     response = &DescribeIdlFileInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIdlFileInfos
@@ -1241,8 +1261,9 @@ func NewDescribeMachineRequest() (request *DescribeMachineRequest) {
 func NewDescribeMachineResponse() (response *DescribeMachineResponse) {
     response = &DescribeMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachine
@@ -1297,8 +1318,9 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
 func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     response = &DescribeRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegions
@@ -1345,8 +1367,9 @@ func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
 func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
     response = &DescribeSnapshotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSnapshots
@@ -1409,8 +1432,9 @@ func NewDescribeTableGroupTagsRequest() (request *DescribeTableGroupTagsRequest)
 func NewDescribeTableGroupTagsResponse() (response *DescribeTableGroupTagsResponse) {
     response = &DescribeTableGroupTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTableGroupTags
@@ -1465,8 +1489,9 @@ func NewDescribeTableGroupsRequest() (request *DescribeTableGroupsRequest) {
 func NewDescribeTableGroupsResponse() (response *DescribeTableGroupsResponse) {
     response = &DescribeTableGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTableGroups
@@ -1523,8 +1548,9 @@ func NewDescribeTableTagsRequest() (request *DescribeTableTagsRequest) {
 func NewDescribeTableTagsResponse() (response *DescribeTableTagsResponse) {
     response = &DescribeTableTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTableTags
@@ -1579,8 +1605,9 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
 func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
     response = &DescribeTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTables
@@ -1637,8 +1664,9 @@ func NewDescribeTablesInRecycleRequest() (request *DescribeTablesInRecycleReques
 func NewDescribeTablesInRecycleResponse() (response *DescribeTablesInRecycleResponse) {
     response = &DescribeTablesInRecycleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTablesInRecycle
@@ -1693,8 +1721,9 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
 func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     response = &DescribeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTasks
@@ -1743,8 +1772,9 @@ func NewDescribeUinInWhitelistRequest() (request *DescribeUinInWhitelistRequest)
 func NewDescribeUinInWhitelistResponse() (response *DescribeUinInWhitelistResponse) {
     response = &DescribeUinInWhitelistResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUinInWhitelist
@@ -1791,8 +1821,9 @@ func NewDisableRestProxyRequest() (request *DisableRestProxyRequest) {
 func NewDisableRestProxyResponse() (response *DisableRestProxyResponse) {
     response = &DisableRestProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableRestProxy
@@ -1847,8 +1878,9 @@ func NewEnableRestProxyRequest() (request *EnableRestProxyRequest) {
 func NewEnableRestProxyResponse() (response *EnableRestProxyResponse) {
     response = &EnableRestProxyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableRestProxy
@@ -1921,8 +1953,9 @@ func NewImportSnapshotsRequest() (request *ImportSnapshotsRequest) {
 func NewImportSnapshotsResponse() (response *ImportSnapshotsResponse) {
     response = &ImportSnapshotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportSnapshots
@@ -1987,8 +2020,9 @@ func NewMergeTablesDataRequest() (request *MergeTablesDataRequest) {
 func NewMergeTablesDataResponse() (response *MergeTablesDataResponse) {
     response = &MergeTablesDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MergeTablesData
@@ -2051,8 +2085,9 @@ func NewModifyCensorshipRequest() (request *ModifyCensorshipRequest) {
 func NewModifyCensorshipResponse() (response *ModifyCensorshipResponse) {
     response = &ModifyCensorshipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCensorship
@@ -2115,8 +2150,9 @@ func NewModifyClusterMachineRequest() (request *ModifyClusterMachineRequest) {
 func NewModifyClusterMachineResponse() (response *ModifyClusterMachineResponse) {
     response = &ModifyClusterMachineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterMachine
@@ -2173,8 +2209,9 @@ func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
 func NewModifyClusterNameResponse() (response *ModifyClusterNameResponse) {
     response = &ModifyClusterNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterName
@@ -2233,8 +2270,9 @@ func NewModifyClusterPasswordRequest() (request *ModifyClusterPasswordRequest) {
 func NewModifyClusterPasswordResponse() (response *ModifyClusterPasswordResponse) {
     response = &ModifyClusterPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterPassword
@@ -2297,8 +2335,9 @@ func NewModifyClusterTagsRequest() (request *ModifyClusterTagsRequest) {
 func NewModifyClusterTagsResponse() (response *ModifyClusterTagsResponse) {
     response = &ModifyClusterTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClusterTags
@@ -2355,8 +2394,9 @@ func NewModifySnapshotsRequest() (request *ModifySnapshotsRequest) {
 func NewModifySnapshotsResponse() (response *ModifySnapshotsResponse) {
     response = &ModifySnapshotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySnapshots
@@ -2419,8 +2459,9 @@ func NewModifyTableGroupNameRequest() (request *ModifyTableGroupNameRequest) {
 func NewModifyTableGroupNameResponse() (response *ModifyTableGroupNameResponse) {
     response = &ModifyTableGroupNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTableGroupName
@@ -2475,8 +2516,9 @@ func NewModifyTableGroupTagsRequest() (request *ModifyTableGroupTagsRequest) {
 func NewModifyTableGroupTagsResponse() (response *ModifyTableGroupTagsResponse) {
     response = &ModifyTableGroupTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTableGroupTags
@@ -2533,8 +2575,9 @@ func NewModifyTableMemosRequest() (request *ModifyTableMemosRequest) {
 func NewModifyTableMemosResponse() (response *ModifyTableMemosResponse) {
     response = &ModifyTableMemosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTableMemos
@@ -2591,8 +2634,9 @@ func NewModifyTableQuotasRequest() (request *ModifyTableQuotasRequest) {
 func NewModifyTableQuotasResponse() (response *ModifyTableQuotasResponse) {
     response = &ModifyTableQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTableQuotas
@@ -2651,8 +2695,9 @@ func NewModifyTableTagsRequest() (request *ModifyTableTagsRequest) {
 func NewModifyTableTagsResponse() (response *ModifyTableTagsResponse) {
     response = &ModifyTableTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTableTags
@@ -2711,8 +2756,9 @@ func NewModifyTablesRequest() (request *ModifyTablesRequest) {
 func NewModifyTablesResponse() (response *ModifyTablesResponse) {
     response = &ModifyTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTables
@@ -2771,8 +2817,9 @@ func NewRecoverRecycleTablesRequest() (request *RecoverRecycleTablesRequest) {
 func NewRecoverRecycleTablesResponse() (response *RecoverRecycleTablesResponse) {
     response = &RecoverRecycleTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverRecycleTables
@@ -2829,8 +2876,9 @@ func NewRollbackTablesRequest() (request *RollbackTablesRequest) {
 func NewRollbackTablesResponse() (response *RollbackTablesResponse) {
     response = &RollbackTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RollbackTables
@@ -2889,8 +2937,9 @@ func NewSetBackupExpireRuleRequest() (request *SetBackupExpireRuleRequest) {
 func NewSetBackupExpireRuleResponse() (response *SetBackupExpireRuleResponse) {
     response = &SetBackupExpireRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetBackupExpireRule
@@ -2951,8 +3000,9 @@ func NewSetTableDataFlowRequest() (request *SetTableDataFlowRequest) {
 func NewSetTableDataFlowResponse() (response *SetTableDataFlowResponse) {
     response = &SetTableDataFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetTableDataFlow
@@ -3013,8 +3063,9 @@ func NewSetTableIndexRequest() (request *SetTableIndexRequest) {
 func NewSetTableIndexResponse() (response *SetTableIndexResponse) {
     response = &SetTableIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetTableIndex
@@ -3073,8 +3124,9 @@ func NewUpdateApplyRequest() (request *UpdateApplyRequest) {
 func NewUpdateApplyResponse() (response *UpdateApplyResponse) {
     response = &UpdateApplyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateApply
@@ -3135,8 +3187,9 @@ func NewVerifyIdlFilesRequest() (request *VerifyIdlFilesRequest) {
 func NewVerifyIdlFilesResponse() (response *VerifyIdlFilesResponse) {
     response = &VerifyIdlFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyIdlFiles

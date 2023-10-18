@@ -59,8 +59,9 @@ func NewCorrectMultiImageRequest() (request *CorrectMultiImageRequest) {
 func NewCorrectMultiImageResponse() (response *CorrectMultiImageResponse) {
     response = &CorrectMultiImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CorrectMultiImage
@@ -165,8 +166,9 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
 func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     response = &DescribeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTask
@@ -263,8 +265,9 @@ func NewECCRequest() (request *ECCRequest) {
 func NewECCResponse() (response *ECCResponse) {
     response = &ECCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ECC
@@ -323,8 +326,9 @@ func NewEHOCRRequest() (request *EHOCRRequest) {
 func NewEHOCRResponse() (response *EHOCRResponse) {
     response = &EHOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EHOCR

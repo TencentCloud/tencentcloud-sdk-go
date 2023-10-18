@@ -59,8 +59,9 @@ func NewApplyAIModelRequest() (request *ApplyAIModelRequest) {
 func NewApplyAIModelResponse() (response *ApplyAIModelResponse) {
     response = &ApplyAIModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyAIModel
@@ -111,8 +112,9 @@ func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
 func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
     response = &BatchUpdateFirmwareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchUpdateFirmware
@@ -165,8 +167,9 @@ func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
 func NewBindCloudStorageUserResponse() (response *BindCloudStorageUserResponse) {
     response = &BindCloudStorageUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindCloudStorageUser
@@ -217,8 +220,9 @@ func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequ
 func NewCancelAIModelApplicationResponse() (response *CancelAIModelApplicationResponse) {
     response = &CancelAIModelApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelAIModelApplication
@@ -269,8 +273,9 @@ func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequ
 func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskResponse) {
     response = &CancelDeviceFirmwareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelDeviceFirmwareTask
@@ -321,8 +326,9 @@ func NewCheckForwardAuthRequest() (request *CheckForwardAuthRequest) {
 func NewCheckForwardAuthResponse() (response *CheckForwardAuthResponse) {
     response = &CheckForwardAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckForwardAuth
@@ -373,8 +379,9 @@ func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
 func NewControlDeviceDataResponse() (response *ControlDeviceDataResponse) {
     response = &ControlDeviceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlDeviceData
@@ -425,8 +432,9 @@ func NewCreateAIDetectionRequest() (request *CreateAIDetectionRequest) {
 func NewCreateAIDetectionResponse() (response *CreateAIDetectionResponse) {
     response = &CreateAIDetectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAIDetection
@@ -477,8 +485,9 @@ func NewCreateBatchRequest() (request *CreateBatchRequest) {
 func NewCreateBatchResponse() (response *CreateBatchResponse) {
     response = &CreateBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBatch
@@ -529,8 +538,9 @@ func NewCreateCOSCredentialsRequest() (request *CreateCOSCredentialsRequest) {
 func NewCreateCOSCredentialsResponse() (response *CreateCOSCredentialsResponse) {
     response = &CreateCOSCredentialsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCOSCredentials
@@ -581,8 +591,9 @@ func NewCreateCloudStorageRequest() (request *CreateCloudStorageRequest) {
 func NewCreateCloudStorageResponse() (response *CreateCloudStorageResponse) {
     response = &CreateCloudStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudStorage
@@ -633,8 +644,9 @@ func NewCreateDataForwardRequest() (request *CreateDataForwardRequest) {
 func NewCreateDataForwardResponse() (response *CreateDataForwardResponse) {
     response = &CreateDataForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDataForward
@@ -685,8 +697,9 @@ func NewCreateForwardRuleRequest() (request *CreateForwardRuleRequest) {
 func NewCreateForwardRuleResponse() (response *CreateForwardRuleResponse) {
     response = &CreateForwardRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateForwardRule
@@ -737,8 +750,9 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
 func NewCreateProductResponse() (response *CreateProductResponse) {
     response = &CreateProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProduct
@@ -791,8 +805,9 @@ func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
 func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
     response = &CreateTaskFileUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTaskFileUrl
@@ -841,8 +856,9 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
 func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     response = &DeleteDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDevice
@@ -893,8 +909,9 @@ func NewDeleteFirmwareRequest() (request *DeleteFirmwareRequest) {
 func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
     response = &DeleteFirmwareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFirmware
@@ -945,8 +962,9 @@ func NewDeleteForwardRuleRequest() (request *DeleteForwardRuleRequest) {
 func NewDeleteForwardRuleResponse() (response *DeleteForwardRuleResponse) {
     response = &DeleteForwardRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteForwardRule
@@ -997,8 +1015,9 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
 func NewDeleteProductResponse() (response *DeleteProductResponse) {
     response = &DeleteProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProduct
@@ -1049,8 +1068,9 @@ func NewDescribeAIModelApplicationsRequest() (request *DescribeAIModelApplicatio
 func NewDescribeAIModelApplicationsResponse() (response *DescribeAIModelApplicationsResponse) {
     response = &DescribeAIModelApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIModelApplications
@@ -1101,8 +1121,9 @@ func NewDescribeAIModelChannelRequest() (request *DescribeAIModelChannelRequest)
 func NewDescribeAIModelChannelResponse() (response *DescribeAIModelChannelResponse) {
     response = &DescribeAIModelChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIModelChannel
@@ -1153,8 +1174,9 @@ func NewDescribeAIModelUsageRequest() (request *DescribeAIModelUsageRequest) {
 func NewDescribeAIModelUsageResponse() (response *DescribeAIModelUsageResponse) {
     response = &DescribeAIModelUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIModelUsage
@@ -1205,8 +1227,9 @@ func NewDescribeAIModelsRequest() (request *DescribeAIModelsRequest) {
 func NewDescribeAIModelsResponse() (response *DescribeAIModelsResponse) {
     response = &DescribeAIModelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAIModels
@@ -1257,8 +1280,9 @@ func NewDescribeBalanceRequest() (request *DescribeBalanceRequest) {
 func NewDescribeBalanceResponse() (response *DescribeBalanceResponse) {
     response = &DescribeBalanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBalance
@@ -1309,8 +1333,9 @@ func NewDescribeBalanceTransactionsRequest() (request *DescribeBalanceTransactio
 func NewDescribeBalanceTransactionsResponse() (response *DescribeBalanceTransactionsResponse) {
     response = &DescribeBalanceTransactionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBalanceTransactions
@@ -1361,8 +1386,9 @@ func NewDescribeBatchRequest() (request *DescribeBatchRequest) {
 func NewDescribeBatchResponse() (response *DescribeBatchResponse) {
     response = &DescribeBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatch
@@ -1413,8 +1439,9 @@ func NewDescribeBatchsRequest() (request *DescribeBatchsRequest) {
 func NewDescribeBatchsResponse() (response *DescribeBatchsResponse) {
     response = &DescribeBatchsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchs
@@ -1465,8 +1492,9 @@ func NewDescribeCategoryRequest() (request *DescribeCategoryRequest) {
 func NewDescribeCategoryResponse() (response *DescribeCategoryResponse) {
     response = &DescribeCategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCategory
@@ -1517,8 +1545,9 @@ func NewDescribeCloudStorageRequest() (request *DescribeCloudStorageRequest) {
 func NewDescribeCloudStorageResponse() (response *DescribeCloudStorageResponse) {
     response = &DescribeCloudStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorage
@@ -1567,8 +1596,9 @@ func NewDescribeCloudStorageDateRequest() (request *DescribeCloudStorageDateRequ
 func NewDescribeCloudStorageDateResponse() (response *DescribeCloudStorageDateResponse) {
     response = &DescribeCloudStorageDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorageDate
@@ -1619,8 +1649,9 @@ func NewDescribeCloudStorageEventsRequest() (request *DescribeCloudStorageEvents
 func NewDescribeCloudStorageEventsResponse() (response *DescribeCloudStorageEventsResponse) {
     response = &DescribeCloudStorageEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorageEvents
@@ -1671,8 +1702,9 @@ func NewDescribeCloudStorageThumbnailRequest() (request *DescribeCloudStorageThu
 func NewDescribeCloudStorageThumbnailResponse() (response *DescribeCloudStorageThumbnailResponse) {
     response = &DescribeCloudStorageThumbnailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorageThumbnail
@@ -1723,8 +1755,9 @@ func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequ
 func NewDescribeCloudStorageTimeResponse() (response *DescribeCloudStorageTimeResponse) {
     response = &DescribeCloudStorageTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorageTime
@@ -1775,8 +1808,9 @@ func NewDescribeCloudStorageUsersRequest() (request *DescribeCloudStorageUsersRe
 func NewDescribeCloudStorageUsersResponse() (response *DescribeCloudStorageUsersResponse) {
     response = &DescribeCloudStorageUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudStorageUsers
@@ -1827,8 +1861,9 @@ func NewDescribeDataForwardListRequest() (request *DescribeDataForwardListReques
 func NewDescribeDataForwardListResponse() (response *DescribeDataForwardListResponse) {
     response = &DescribeDataForwardListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDataForwardList
@@ -1879,8 +1914,9 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
 func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     response = &DescribeDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevice
@@ -1933,8 +1969,9 @@ func NewDescribeDeviceActionHistoryRequest() (request *DescribeDeviceActionHisto
 func NewDescribeDeviceActionHistoryResponse() (response *DescribeDeviceActionHistoryResponse) {
     response = &DescribeDeviceActionHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceActionHistory
@@ -1985,8 +2022,9 @@ func NewDescribeDeviceCommLogRequest() (request *DescribeDeviceCommLogRequest) {
 func NewDescribeDeviceCommLogResponse() (response *DescribeDeviceCommLogResponse) {
     response = &DescribeDeviceCommLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceCommLog
@@ -2037,8 +2075,9 @@ func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
 func NewDescribeDeviceDataResponse() (response *DescribeDeviceDataResponse) {
     response = &DescribeDeviceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceData
@@ -2089,8 +2128,9 @@ func NewDescribeDeviceDataHistoryRequest() (request *DescribeDeviceDataHistoryRe
 func NewDescribeDeviceDataHistoryResponse() (response *DescribeDeviceDataHistoryResponse) {
     response = &DescribeDeviceDataHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceDataHistory
@@ -2141,8 +2181,9 @@ func NewDescribeDeviceEventHistoryRequest() (request *DescribeDeviceEventHistory
 func NewDescribeDeviceEventHistoryResponse() (response *DescribeDeviceEventHistoryResponse) {
     response = &DescribeDeviceEventHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceEventHistory
@@ -2193,8 +2234,9 @@ func NewDescribeDeviceStatusLogRequest() (request *DescribeDeviceStatusLogReques
 func NewDescribeDeviceStatusLogResponse() (response *DescribeDeviceStatusLogResponse) {
     response = &DescribeDeviceStatusLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceStatusLog
@@ -2245,8 +2287,9 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
 func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     response = &DescribeDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevices
@@ -2297,8 +2340,9 @@ func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
 func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
     response = &DescribeFirmwareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmware
@@ -2345,8 +2389,9 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
 func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) {
     response = &DescribeFirmwareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmwareTask
@@ -2393,8 +2438,9 @@ func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevic
 func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDevicesResponse) {
     response = &DescribeFirmwareTaskDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmwareTaskDevices
@@ -2445,8 +2491,9 @@ func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTask
 func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTaskDistributionResponse) {
     response = &DescribeFirmwareTaskDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmwareTaskDistribution
@@ -2497,8 +2544,9 @@ func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskSt
 func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTaskStatisticsResponse) {
     response = &DescribeFirmwareTaskStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmwareTaskStatistics
@@ -2549,8 +2597,9 @@ func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
 func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse) {
     response = &DescribeFirmwareTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFirmwareTasks
@@ -2601,8 +2650,9 @@ func NewDescribeForwardRuleRequest() (request *DescribeForwardRuleRequest) {
 func NewDescribeForwardRuleResponse() (response *DescribeForwardRuleResponse) {
     response = &DescribeForwardRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeForwardRule
@@ -2653,8 +2703,9 @@ func NewDescribeModelDefinitionRequest() (request *DescribeModelDefinitionReques
 func NewDescribeModelDefinitionResponse() (response *DescribeModelDefinitionResponse) {
     response = &DescribeModelDefinitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelDefinition
@@ -2705,8 +2756,9 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
 func NewDescribeProductResponse() (response *DescribeProductResponse) {
     response = &DescribeProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProduct
@@ -2757,8 +2809,9 @@ func NewDescribeProductDynamicRegisterRequest() (request *DescribeProductDynamic
 func NewDescribeProductDynamicRegisterResponse() (response *DescribeProductDynamicRegisterResponse) {
     response = &DescribeProductDynamicRegisterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProductDynamicRegister
@@ -2809,8 +2862,9 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
 func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     response = &DescribeProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProducts
@@ -2861,8 +2915,9 @@ func NewDescribeSDKLogRequest() (request *DescribeSDKLogRequest) {
 func NewDescribeSDKLogResponse() (response *DescribeSDKLogResponse) {
     response = &DescribeSDKLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSDKLog
@@ -2913,8 +2968,9 @@ func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
 func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
     response = &EditFirmwareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EditFirmware
@@ -2961,8 +3017,9 @@ func NewGenerateSignedVideoURLRequest() (request *GenerateSignedVideoURLRequest)
 func NewGenerateSignedVideoURLResponse() (response *GenerateSignedVideoURLResponse) {
     response = &GenerateSignedVideoURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateSignedVideoURL
@@ -3013,8 +3070,9 @@ func NewGetAllFirmwareVersionRequest() (request *GetAllFirmwareVersionRequest) {
 func NewGetAllFirmwareVersionResponse() (response *GetAllFirmwareVersionResponse) {
     response = &GetAllFirmwareVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAllFirmwareVersion
@@ -3065,8 +3123,9 @@ func NewGetFirmwareURLRequest() (request *GetFirmwareURLRequest) {
 func NewGetFirmwareURLResponse() (response *GetFirmwareURLResponse) {
     response = &GetFirmwareURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFirmwareURL
@@ -3115,8 +3174,9 @@ func NewImportModelDefinitionRequest() (request *ImportModelDefinitionRequest) {
 func NewImportModelDefinitionResponse() (response *ImportModelDefinitionResponse) {
     response = &ImportModelDefinitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportModelDefinition
@@ -3167,8 +3227,9 @@ func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserReques
 func NewInheritCloudStorageUserResponse() (response *InheritCloudStorageUserResponse) {
     response = &InheritCloudStorageUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InheritCloudStorageUser
@@ -3219,8 +3280,9 @@ func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
 func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
     response = &ListFirmwaresResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListFirmwares
@@ -3273,8 +3335,9 @@ func NewModifyDataForwardRequest() (request *ModifyDataForwardRequest) {
 func NewModifyDataForwardResponse() (response *ModifyDataForwardResponse) {
     response = &ModifyDataForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDataForward
@@ -3325,8 +3388,9 @@ func NewModifyDataForwardStatusRequest() (request *ModifyDataForwardStatusReques
 func NewModifyDataForwardStatusResponse() (response *ModifyDataForwardStatusResponse) {
     response = &ModifyDataForwardStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDataForwardStatus
@@ -3377,8 +3441,9 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
 func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
     response = &ModifyDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDevice
@@ -3429,8 +3494,9 @@ func NewModifyDeviceLogLevelRequest() (request *ModifyDeviceLogLevelRequest) {
 func NewModifyDeviceLogLevelResponse() (response *ModifyDeviceLogLevelResponse) {
     response = &ModifyDeviceLogLevelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceLogLevel
@@ -3481,8 +3547,9 @@ func NewModifyForwardRuleRequest() (request *ModifyForwardRuleRequest) {
 func NewModifyForwardRuleResponse() (response *ModifyForwardRuleResponse) {
     response = &ModifyForwardRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyForwardRule
@@ -3533,8 +3600,9 @@ func NewModifyModelDefinitionRequest() (request *ModifyModelDefinitionRequest) {
 func NewModifyModelDefinitionResponse() (response *ModifyModelDefinitionResponse) {
     response = &ModifyModelDefinitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyModelDefinition
@@ -3585,8 +3653,9 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
 func NewModifyProductResponse() (response *ModifyProductResponse) {
     response = &ModifyProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProduct
@@ -3637,8 +3706,9 @@ func NewModifyProductDynamicRegisterRequest() (request *ModifyProductDynamicRegi
 func NewModifyProductDynamicRegisterResponse() (response *ModifyProductDynamicRegisterResponse) {
     response = &ModifyProductDynamicRegisterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProductDynamicRegister
@@ -3689,8 +3759,9 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
 func NewPublishMessageResponse() (response *PublishMessageResponse) {
     response = &PublishMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PublishMessage
@@ -3741,8 +3812,9 @@ func NewReportAliveDeviceRequest() (request *ReportAliveDeviceRequest) {
 func NewReportAliveDeviceResponse() (response *ReportAliveDeviceResponse) {
     response = &ReportAliveDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportAliveDevice
@@ -3793,8 +3865,9 @@ func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
 func NewResetCloudStorageResponse() (response *ResetCloudStorageResponse) {
     response = &ResetCloudStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetCloudStorage
@@ -3845,8 +3918,9 @@ func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskReques
 func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResponse) {
     response = &RetryDeviceFirmwareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetryDeviceFirmwareTask
@@ -3901,8 +3975,9 @@ func NewSetForwardAuthRequest() (request *SetForwardAuthRequest) {
 func NewSetForwardAuthResponse() (response *SetForwardAuthResponse) {
     response = &SetForwardAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetForwardAuth
@@ -3953,8 +4028,9 @@ func NewTransferCloudStorageRequest() (request *TransferCloudStorageRequest) {
 func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) {
     response = &TransferCloudStorageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransferCloudStorage
@@ -4005,8 +4081,9 @@ func NewUpdateAIModelChannelRequest() (request *UpdateAIModelChannelRequest) {
 func NewUpdateAIModelChannelResponse() (response *UpdateAIModelChannelResponse) {
     response = &UpdateAIModelChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAIModelChannel
@@ -4057,8 +4134,9 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
 func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
     response = &UploadFirmwareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadFirmware
@@ -4109,8 +4187,9 @@ func NewWakeUpDeviceRequest() (request *WakeUpDeviceRequest) {
 func NewWakeUpDeviceResponse() (response *WakeUpDeviceResponse) {
     response = &WakeUpDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // WakeUpDevice

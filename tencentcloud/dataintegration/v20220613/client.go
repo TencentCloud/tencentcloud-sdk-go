@@ -59,8 +59,9 @@ func NewSendMessageRequest() (request *SendMessageRequest) {
 func NewSendMessageResponse() (response *SendMessageResponse) {
     response = &SendMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendMessage

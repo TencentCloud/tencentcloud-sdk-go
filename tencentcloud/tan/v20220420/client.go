@@ -59,8 +59,9 @@ func NewCreateBlockNodeRecordsRequest() (request *CreateBlockNodeRecordsRequest)
 func NewCreateBlockNodeRecordsResponse() (response *CreateBlockNodeRecordsResponse) {
     response = &CreateBlockNodeRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBlockNodeRecords

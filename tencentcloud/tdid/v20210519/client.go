@@ -59,8 +59,9 @@ func NewCheckChainRequest() (request *CheckChainRequest) {
 func NewCheckChainResponse() (response *CheckChainResponse) {
     response = &CheckChainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckChain
@@ -139,8 +140,9 @@ func NewCreateCredentialRequest() (request *CreateCredentialRequest) {
 func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
     response = &CreateCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCredential
@@ -207,8 +209,9 @@ func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRe
 func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredentialResponse) {
     response = &CreateSelectiveCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSelectiveCredential
@@ -287,8 +290,9 @@ func NewCreateTDidRequest() (request *CreateTDidRequest) {
 func NewCreateTDidResponse() (response *CreateTDidResponse) {
     response = &CreateTDidResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTDid
@@ -363,8 +367,9 @@ func NewCreateTDidByPrivateKeyRequest() (request *CreateTDidByPrivateKeyRequest)
 func NewCreateTDidByPrivateKeyResponse() (response *CreateTDidByPrivateKeyResponse) {
     response = &CreateTDidByPrivateKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTDidByPrivateKey
@@ -443,8 +448,9 @@ func NewCreateTDidByPublicKeyRequest() (request *CreateTDidByPublicKeyRequest) {
 func NewCreateTDidByPublicKeyResponse() (response *CreateTDidByPublicKeyResponse) {
     response = &CreateTDidByPublicKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTDidByPublicKey
@@ -523,8 +529,9 @@ func NewGetAuthorityIssuerRequest() (request *GetAuthorityIssuerRequest) {
 func NewGetAuthorityIssuerResponse() (response *GetAuthorityIssuerResponse) {
     response = &GetAuthorityIssuerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAuthorityIssuer
@@ -603,8 +610,9 @@ func NewGetCptInfoRequest() (request *GetCptInfoRequest) {
 func NewGetCptInfoResponse() (response *GetCptInfoResponse) {
     response = &GetCptInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCptInfo
@@ -683,8 +691,9 @@ func NewGetCredentialStatusRequest() (request *GetCredentialStatusRequest) {
 func NewGetCredentialStatusResponse() (response *GetCredentialStatusResponse) {
     response = &GetCredentialStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCredentialStatus
@@ -763,8 +772,9 @@ func NewGetDidDocumentRequest() (request *GetDidDocumentRequest) {
 func NewGetDidDocumentResponse() (response *GetDidDocumentResponse) {
     response = &GetDidDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDidDocument
@@ -843,8 +853,9 @@ func NewRegisterCptRequest() (request *RegisterCptRequest) {
 func NewRegisterCptResponse() (response *RegisterCptResponse) {
     response = &RegisterCptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterCpt
@@ -923,8 +934,9 @@ func NewSetCredentialStatusRequest() (request *SetCredentialStatusRequest) {
 func NewSetCredentialStatusResponse() (response *SetCredentialStatusResponse) {
     response = &SetCredentialStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetCredentialStatus
@@ -1003,8 +1015,9 @@ func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
 func NewVerifyCredentialResponse() (response *VerifyCredentialResponse) {
     response = &VerifyCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyCredential

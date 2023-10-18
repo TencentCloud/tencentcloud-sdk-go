@@ -59,8 +59,9 @@ func NewGetIndustryV1HomeMembersRequest() (request *GetIndustryV1HomeMembersRequ
 func NewGetIndustryV1HomeMembersResponse() (response *GetIndustryV1HomeMembersResponse) {
     response = &GetIndustryV1HomeMembersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetIndustryV1HomeMembers

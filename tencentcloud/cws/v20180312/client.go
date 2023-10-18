@@ -59,8 +59,9 @@ func NewCreateMonitorsRequest() (request *CreateMonitorsRequest) {
 func NewCreateMonitorsResponse() (response *CreateMonitorsResponse) {
     response = &CreateMonitorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMonitors
@@ -115,8 +116,9 @@ func NewCreateSitesRequest() (request *CreateSitesRequest) {
 func NewCreateSitesResponse() (response *CreateSitesResponse) {
     response = &CreateSitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSites
@@ -167,8 +169,9 @@ func NewCreateSitesScansRequest() (request *CreateSitesScansRequest) {
 func NewCreateSitesScansResponse() (response *CreateSitesScansResponse) {
     response = &CreateSitesScansResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSitesScans
@@ -221,8 +224,9 @@ func NewCreateVulsMisinformationRequest() (request *CreateVulsMisinformationRequ
 func NewCreateVulsMisinformationResponse() (response *CreateVulsMisinformationResponse) {
     response = &CreateVulsMisinformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVulsMisinformation
@@ -277,8 +281,9 @@ func NewCreateVulsReportRequest() (request *CreateVulsReportRequest) {
 func NewCreateVulsReportResponse() (response *CreateVulsReportResponse) {
     response = &CreateVulsReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVulsReport
@@ -327,8 +332,9 @@ func NewDeleteMonitorsRequest() (request *DeleteMonitorsRequest) {
 func NewDeleteMonitorsResponse() (response *DeleteMonitorsResponse) {
     response = &DeleteMonitorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMonitors
@@ -379,8 +385,9 @@ func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
 func NewDeleteSitesResponse() (response *DeleteSitesResponse) {
     response = &DeleteSitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSites
@@ -431,8 +438,9 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
 func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     response = &DescribeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfig
@@ -479,8 +487,9 @@ func NewDescribeMonitorsRequest() (request *DescribeMonitorsRequest) {
 func NewDescribeMonitorsResponse() (response *DescribeMonitorsResponse) {
     response = &DescribeMonitorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMonitors
@@ -531,8 +540,9 @@ func NewDescribeSiteQuotaRequest() (request *DescribeSiteQuotaRequest) {
 func NewDescribeSiteQuotaResponse() (response *DescribeSiteQuotaResponse) {
     response = &DescribeSiteQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSiteQuota
@@ -579,8 +589,9 @@ func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
 func NewDescribeSitesResponse() (response *DescribeSitesResponse) {
     response = &DescribeSitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSites
@@ -631,8 +642,9 @@ func NewDescribeSitesVerificationRequest() (request *DescribeSitesVerificationRe
 func NewDescribeSitesVerificationResponse() (response *DescribeSitesVerificationResponse) {
     response = &DescribeSitesVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSitesVerification
@@ -683,8 +695,9 @@ func NewDescribeVulsRequest() (request *DescribeVulsRequest) {
 func NewDescribeVulsResponse() (response *DescribeVulsResponse) {
     response = &DescribeVulsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVuls
@@ -737,8 +750,9 @@ func NewDescribeVulsNumberRequest() (request *DescribeVulsNumberRequest) {
 func NewDescribeVulsNumberResponse() (response *DescribeVulsNumberResponse) {
     response = &DescribeVulsNumberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulsNumber
@@ -785,8 +799,9 @@ func NewDescribeVulsNumberTimelineRequest() (request *DescribeVulsNumberTimeline
 func NewDescribeVulsNumberTimelineResponse() (response *DescribeVulsNumberTimelineResponse) {
     response = &DescribeVulsNumberTimelineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulsNumberTimeline
@@ -833,8 +848,9 @@ func NewModifyConfigAttributeRequest() (request *ModifyConfigAttributeRequest) {
 func NewModifyConfigAttributeResponse() (response *ModifyConfigAttributeResponse) {
     response = &ModifyConfigAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConfigAttribute
@@ -881,8 +897,9 @@ func NewModifyMonitorAttributeRequest() (request *ModifyMonitorAttributeRequest)
 func NewModifyMonitorAttributeResponse() (response *ModifyMonitorAttributeResponse) {
     response = &ModifyMonitorAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMonitorAttribute
@@ -935,8 +952,9 @@ func NewModifySiteAttributeRequest() (request *ModifySiteAttributeRequest) {
 func NewModifySiteAttributeResponse() (response *ModifySiteAttributeResponse) {
     response = &ModifySiteAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySiteAttribute
@@ -987,8 +1005,9 @@ func NewVerifySitesRequest() (request *VerifySitesRequest) {
 func NewVerifySitesResponse() (response *VerifySitesResponse) {
     response = &VerifySitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifySites

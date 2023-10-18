@@ -59,8 +59,9 @@ func NewQueryActivityAntiRushRequest() (request *QueryActivityAntiRushRequest) {
 func NewQueryActivityAntiRushResponse() (response *QueryActivityAntiRushResponse) {
     response = &QueryActivityAntiRushResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryActivityAntiRush

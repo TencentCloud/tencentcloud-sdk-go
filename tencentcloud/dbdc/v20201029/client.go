@@ -59,8 +59,9 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
 func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     response = &DescribeDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBInstances
@@ -119,8 +120,9 @@ func NewDescribeHostListRequest() (request *DescribeHostListRequest) {
 func NewDescribeHostListResponse() (response *DescribeHostListResponse) {
     response = &DescribeHostListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHostList
@@ -177,8 +179,9 @@ func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest)
 func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailResponse) {
     response = &DescribeInstanceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceDetail
@@ -233,8 +236,9 @@ func NewDescribeInstanceListRequest() (request *DescribeInstanceListRequest) {
 func NewDescribeInstanceListResponse() (response *DescribeInstanceListResponse) {
     response = &DescribeInstanceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceList
@@ -289,8 +293,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -341,8 +346,9 @@ func NewModifyInstanceNameRequest() (request *ModifyInstanceNameRequest) {
 func NewModifyInstanceNameResponse() (response *ModifyInstanceNameResponse) {
     response = &ModifyInstanceNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstanceName

@@ -59,8 +59,9 @@ func NewCreateCloudNativeAPIGatewayRequest() (request *CreateCloudNativeAPIGatew
 func NewCreateCloudNativeAPIGatewayResponse() (response *CreateCloudNativeAPIGatewayResponse) {
     response = &CreateCloudNativeAPIGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGateway
@@ -153,8 +154,9 @@ func NewCreateCloudNativeAPIGatewayCanaryRuleRequest() (request *CreateCloudNati
 func NewCreateCloudNativeAPIGatewayCanaryRuleResponse() (response *CreateCloudNativeAPIGatewayCanaryRuleResponse) {
     response = &CreateCloudNativeAPIGatewayCanaryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayCanaryRule
@@ -245,8 +247,9 @@ func NewCreateCloudNativeAPIGatewayCertificateRequest() (request *CreateCloudNat
 func NewCreateCloudNativeAPIGatewayCertificateResponse() (response *CreateCloudNativeAPIGatewayCertificateResponse) {
     response = &CreateCloudNativeAPIGatewayCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayCertificate
@@ -339,8 +342,9 @@ func NewCreateCloudNativeAPIGatewayRouteRequest() (request *CreateCloudNativeAPI
 func NewCreateCloudNativeAPIGatewayRouteResponse() (response *CreateCloudNativeAPIGatewayRouteResponse) {
     response = &CreateCloudNativeAPIGatewayRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayRoute
@@ -429,8 +433,9 @@ func NewCreateCloudNativeAPIGatewayRouteRateLimitRequest() (request *CreateCloud
 func NewCreateCloudNativeAPIGatewayRouteRateLimitResponse() (response *CreateCloudNativeAPIGatewayRouteRateLimitResponse) {
     response = &CreateCloudNativeAPIGatewayRouteRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayRouteRateLimit
@@ -519,8 +524,9 @@ func NewCreateCloudNativeAPIGatewayServiceRequest() (request *CreateCloudNativeA
 func NewCreateCloudNativeAPIGatewayServiceResponse() (response *CreateCloudNativeAPIGatewayServiceResponse) {
     response = &CreateCloudNativeAPIGatewayServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayService
@@ -609,8 +615,9 @@ func NewCreateCloudNativeAPIGatewayServiceRateLimitRequest() (request *CreateClo
 func NewCreateCloudNativeAPIGatewayServiceRateLimitResponse() (response *CreateCloudNativeAPIGatewayServiceRateLimitResponse) {
     response = &CreateCloudNativeAPIGatewayServiceRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudNativeAPIGatewayServiceRateLimit
@@ -701,8 +708,9 @@ func NewCreateEngineRequest() (request *CreateEngineRequest) {
 func NewCreateEngineResponse() (response *CreateEngineResponse) {
     response = &CreateEngineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEngine
@@ -777,8 +785,9 @@ func NewCreateNativeGatewayServerGroupRequest() (request *CreateNativeGatewaySer
 func NewCreateNativeGatewayServerGroupResponse() (response *CreateNativeGatewayServerGroupResponse) {
     response = &CreateNativeGatewayServerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNativeGatewayServerGroup
@@ -833,8 +842,9 @@ func NewDeleteCloudNativeAPIGatewayRequest() (request *DeleteCloudNativeAPIGatew
 func NewDeleteCloudNativeAPIGatewayResponse() (response *DeleteCloudNativeAPIGatewayResponse) {
     response = &DeleteCloudNativeAPIGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGateway
@@ -911,8 +921,9 @@ func NewDeleteCloudNativeAPIGatewayCanaryRuleRequest() (request *DeleteCloudNati
 func NewDeleteCloudNativeAPIGatewayCanaryRuleResponse() (response *DeleteCloudNativeAPIGatewayCanaryRuleResponse) {
     response = &DeleteCloudNativeAPIGatewayCanaryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayCanaryRule
@@ -1001,8 +1012,9 @@ func NewDeleteCloudNativeAPIGatewayCertificateRequest() (request *DeleteCloudNat
 func NewDeleteCloudNativeAPIGatewayCertificateResponse() (response *DeleteCloudNativeAPIGatewayCertificateResponse) {
     response = &DeleteCloudNativeAPIGatewayCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayCertificate
@@ -1091,8 +1103,9 @@ func NewDeleteCloudNativeAPIGatewayRouteRequest() (request *DeleteCloudNativeAPI
 func NewDeleteCloudNativeAPIGatewayRouteResponse() (response *DeleteCloudNativeAPIGatewayRouteResponse) {
     response = &DeleteCloudNativeAPIGatewayRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayRoute
@@ -1181,8 +1194,9 @@ func NewDeleteCloudNativeAPIGatewayRouteRateLimitRequest() (request *DeleteCloud
 func NewDeleteCloudNativeAPIGatewayRouteRateLimitResponse() (response *DeleteCloudNativeAPIGatewayRouteRateLimitResponse) {
     response = &DeleteCloudNativeAPIGatewayRouteRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayRouteRateLimit
@@ -1271,8 +1285,9 @@ func NewDeleteCloudNativeAPIGatewayServiceRequest() (request *DeleteCloudNativeA
 func NewDeleteCloudNativeAPIGatewayServiceResponse() (response *DeleteCloudNativeAPIGatewayServiceResponse) {
     response = &DeleteCloudNativeAPIGatewayServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayService
@@ -1361,8 +1376,9 @@ func NewDeleteCloudNativeAPIGatewayServiceRateLimitRequest() (request *DeleteClo
 func NewDeleteCloudNativeAPIGatewayServiceRateLimitResponse() (response *DeleteCloudNativeAPIGatewayServiceRateLimitResponse) {
     response = &DeleteCloudNativeAPIGatewayServiceRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudNativeAPIGatewayServiceRateLimit
@@ -1451,8 +1467,9 @@ func NewDeleteEngineRequest() (request *DeleteEngineRequest) {
 func NewDeleteEngineResponse() (response *DeleteEngineResponse) {
     response = &DeleteEngineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEngine
@@ -1511,8 +1528,9 @@ func NewDeleteNativeGatewayServerGroupRequest() (request *DeleteNativeGatewaySer
 func NewDeleteNativeGatewayServerGroupResponse() (response *DeleteNativeGatewayServerGroupResponse) {
     response = &DeleteNativeGatewayServerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNativeGatewayServerGroup
@@ -1571,8 +1589,9 @@ func NewDescribeCloudNativeAPIGatewayRequest() (request *DescribeCloudNativeAPIG
 func NewDescribeCloudNativeAPIGatewayResponse() (response *DescribeCloudNativeAPIGatewayResponse) {
     response = &DescribeCloudNativeAPIGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGateway
@@ -1647,8 +1666,9 @@ func NewDescribeCloudNativeAPIGatewayCanaryRulesRequest() (request *DescribeClou
 func NewDescribeCloudNativeAPIGatewayCanaryRulesResponse() (response *DescribeCloudNativeAPIGatewayCanaryRulesResponse) {
     response = &DescribeCloudNativeAPIGatewayCanaryRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayCanaryRules
@@ -1737,8 +1757,9 @@ func NewDescribeCloudNativeAPIGatewayCertificateDetailsRequest() (request *Descr
 func NewDescribeCloudNativeAPIGatewayCertificateDetailsResponse() (response *DescribeCloudNativeAPIGatewayCertificateDetailsResponse) {
     response = &DescribeCloudNativeAPIGatewayCertificateDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayCertificateDetails
@@ -1827,8 +1848,9 @@ func NewDescribeCloudNativeAPIGatewayCertificatesRequest() (request *DescribeClo
 func NewDescribeCloudNativeAPIGatewayCertificatesResponse() (response *DescribeCloudNativeAPIGatewayCertificatesResponse) {
     response = &DescribeCloudNativeAPIGatewayCertificatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayCertificates
@@ -1917,8 +1939,9 @@ func NewDescribeCloudNativeAPIGatewayConfigRequest() (request *DescribeCloudNati
 func NewDescribeCloudNativeAPIGatewayConfigResponse() (response *DescribeCloudNativeAPIGatewayConfigResponse) {
     response = &DescribeCloudNativeAPIGatewayConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayConfig
@@ -1991,8 +2014,9 @@ func NewDescribeCloudNativeAPIGatewayNodesRequest() (request *DescribeCloudNativ
 func NewDescribeCloudNativeAPIGatewayNodesResponse() (response *DescribeCloudNativeAPIGatewayNodesResponse) {
     response = &DescribeCloudNativeAPIGatewayNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayNodes
@@ -2051,8 +2075,9 @@ func NewDescribeCloudNativeAPIGatewayPortsRequest() (request *DescribeCloudNativ
 func NewDescribeCloudNativeAPIGatewayPortsResponse() (response *DescribeCloudNativeAPIGatewayPortsResponse) {
     response = &DescribeCloudNativeAPIGatewayPortsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayPorts
@@ -2109,8 +2134,9 @@ func NewDescribeCloudNativeAPIGatewayRouteRateLimitRequest() (request *DescribeC
 func NewDescribeCloudNativeAPIGatewayRouteRateLimitResponse() (response *DescribeCloudNativeAPIGatewayRouteRateLimitResponse) {
     response = &DescribeCloudNativeAPIGatewayRouteRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayRouteRateLimit
@@ -2199,8 +2225,9 @@ func NewDescribeCloudNativeAPIGatewayRoutesRequest() (request *DescribeCloudNati
 func NewDescribeCloudNativeAPIGatewayRoutesResponse() (response *DescribeCloudNativeAPIGatewayRoutesResponse) {
     response = &DescribeCloudNativeAPIGatewayRoutesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayRoutes
@@ -2289,8 +2316,9 @@ func NewDescribeCloudNativeAPIGatewayServiceRateLimitRequest() (request *Describ
 func NewDescribeCloudNativeAPIGatewayServiceRateLimitResponse() (response *DescribeCloudNativeAPIGatewayServiceRateLimitResponse) {
     response = &DescribeCloudNativeAPIGatewayServiceRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayServiceRateLimit
@@ -2379,8 +2407,9 @@ func NewDescribeCloudNativeAPIGatewayServicesRequest() (request *DescribeCloudNa
 func NewDescribeCloudNativeAPIGatewayServicesResponse() (response *DescribeCloudNativeAPIGatewayServicesResponse) {
     response = &DescribeCloudNativeAPIGatewayServicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGatewayServices
@@ -2471,8 +2500,9 @@ func NewDescribeCloudNativeAPIGatewaysRequest() (request *DescribeCloudNativeAPI
 func NewDescribeCloudNativeAPIGatewaysResponse() (response *DescribeCloudNativeAPIGatewaysResponse) {
     response = &DescribeCloudNativeAPIGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudNativeAPIGateways
@@ -2555,8 +2585,9 @@ func NewDescribeNacosReplicasRequest() (request *DescribeNacosReplicasRequest) {
 func NewDescribeNacosReplicasResponse() (response *DescribeNacosReplicasResponse) {
     response = &DescribeNacosReplicasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNacosReplicas
@@ -2611,8 +2642,9 @@ func NewDescribeNacosServerInterfacesRequest() (request *DescribeNacosServerInte
 func NewDescribeNacosServerInterfacesResponse() (response *DescribeNacosServerInterfacesResponse) {
     response = &DescribeNacosServerInterfacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNacosServerInterfaces
@@ -2665,8 +2697,9 @@ func NewDescribeNativeGatewayServerGroupsRequest() (request *DescribeNativeGatew
 func NewDescribeNativeGatewayServerGroupsResponse() (response *DescribeNativeGatewayServerGroupsResponse) {
     response = &DescribeNativeGatewayServerGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNativeGatewayServerGroups
@@ -2717,8 +2750,9 @@ func NewDescribeOneCloudNativeAPIGatewayServiceRequest() (request *DescribeOneCl
 func NewDescribeOneCloudNativeAPIGatewayServiceResponse() (response *DescribeOneCloudNativeAPIGatewayServiceResponse) {
     response = &DescribeOneCloudNativeAPIGatewayServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOneCloudNativeAPIGatewayService
@@ -2807,8 +2841,9 @@ func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceA
 func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanceAccessAddressResponse) {
     response = &DescribeSREInstanceAccessAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSREInstanceAccessAddress
@@ -2861,8 +2896,9 @@ func NewDescribeSREInstancesRequest() (request *DescribeSREInstancesRequest) {
 func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) {
     response = &DescribeSREInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSREInstances
@@ -2929,8 +2965,9 @@ func NewDescribeZookeeperReplicasRequest() (request *DescribeZookeeperReplicasRe
 func NewDescribeZookeeperReplicasResponse() (response *DescribeZookeeperReplicasResponse) {
     response = &DescribeZookeeperReplicasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZookeeperReplicas
@@ -2987,8 +3024,9 @@ func NewDescribeZookeeperServerInterfacesRequest() (request *DescribeZookeeperSe
 func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeperServerInterfacesResponse) {
     response = &DescribeZookeeperServerInterfacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZookeeperServerInterfaces
@@ -3043,8 +3081,9 @@ func NewModifyCloudNativeAPIGatewayRequest() (request *ModifyCloudNativeAPIGatew
 func NewModifyCloudNativeAPIGatewayResponse() (response *ModifyCloudNativeAPIGatewayResponse) {
     response = &ModifyCloudNativeAPIGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGateway
@@ -3117,8 +3156,9 @@ func NewModifyCloudNativeAPIGatewayCanaryRuleRequest() (request *ModifyCloudNati
 func NewModifyCloudNativeAPIGatewayCanaryRuleResponse() (response *ModifyCloudNativeAPIGatewayCanaryRuleResponse) {
     response = &ModifyCloudNativeAPIGatewayCanaryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayCanaryRule
@@ -3209,8 +3249,9 @@ func NewModifyCloudNativeAPIGatewayCertificateRequest() (request *ModifyCloudNat
 func NewModifyCloudNativeAPIGatewayCertificateResponse() (response *ModifyCloudNativeAPIGatewayCertificateResponse) {
     response = &ModifyCloudNativeAPIGatewayCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayCertificate
@@ -3301,8 +3342,9 @@ func NewModifyCloudNativeAPIGatewayRouteRequest() (request *ModifyCloudNativeAPI
 func NewModifyCloudNativeAPIGatewayRouteResponse() (response *ModifyCloudNativeAPIGatewayRouteResponse) {
     response = &ModifyCloudNativeAPIGatewayRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayRoute
@@ -3393,8 +3435,9 @@ func NewModifyCloudNativeAPIGatewayRouteRateLimitRequest() (request *ModifyCloud
 func NewModifyCloudNativeAPIGatewayRouteRateLimitResponse() (response *ModifyCloudNativeAPIGatewayRouteRateLimitResponse) {
     response = &ModifyCloudNativeAPIGatewayRouteRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayRouteRateLimit
@@ -3483,8 +3526,9 @@ func NewModifyCloudNativeAPIGatewayServiceRequest() (request *ModifyCloudNativeA
 func NewModifyCloudNativeAPIGatewayServiceResponse() (response *ModifyCloudNativeAPIGatewayServiceResponse) {
     response = &ModifyCloudNativeAPIGatewayServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayService
@@ -3573,8 +3617,9 @@ func NewModifyCloudNativeAPIGatewayServiceRateLimitRequest() (request *ModifyClo
 func NewModifyCloudNativeAPIGatewayServiceRateLimitResponse() (response *ModifyCloudNativeAPIGatewayServiceRateLimitResponse) {
     response = &ModifyCloudNativeAPIGatewayServiceRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudNativeAPIGatewayServiceRateLimit
@@ -3663,8 +3708,9 @@ func NewModifyNativeGatewayServerGroupRequest() (request *ModifyNativeGatewaySer
 func NewModifyNativeGatewayServerGroupResponse() (response *ModifyNativeGatewayServerGroupResponse) {
     response = &ModifyNativeGatewayServerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNativeGatewayServerGroup
@@ -3737,8 +3783,9 @@ func NewUpdateCloudNativeAPIGatewayCertificateInfoRequest() (request *UpdateClou
 func NewUpdateCloudNativeAPIGatewayCertificateInfoResponse() (response *UpdateCloudNativeAPIGatewayCertificateInfoResponse) {
     response = &UpdateCloudNativeAPIGatewayCertificateInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCloudNativeAPIGatewayCertificateInfo
@@ -3829,8 +3876,9 @@ func NewUpdateCloudNativeAPIGatewaySpecRequest() (request *UpdateCloudNativeAPIG
 func NewUpdateCloudNativeAPIGatewaySpecResponse() (response *UpdateCloudNativeAPIGatewaySpecResponse) {
     response = &UpdateCloudNativeAPIGatewaySpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCloudNativeAPIGatewaySpec
@@ -3897,8 +3945,9 @@ func NewUpdateEngineInternetAccessRequest() (request *UpdateEngineInternetAccess
 func NewUpdateEngineInternetAccessResponse() (response *UpdateEngineInternetAccessResponse) {
     response = &UpdateEngineInternetAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateEngineInternetAccess

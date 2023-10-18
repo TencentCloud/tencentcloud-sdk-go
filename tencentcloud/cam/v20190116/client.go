@@ -59,8 +59,9 @@ func NewAddUserRequest() (request *AddUserRequest) {
 func NewAddUserResponse() (response *AddUserResponse) {
     response = &AddUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddUser
@@ -121,8 +122,9 @@ func NewAddUserToGroupRequest() (request *AddUserToGroupRequest) {
 func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
     response = &AddUserToGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddUserToGroup
@@ -181,8 +183,9 @@ func NewAttachGroupPolicyRequest() (request *AttachGroupPolicyRequest) {
 func NewAttachGroupPolicyResponse() (response *AttachGroupPolicyResponse) {
     response = &AttachGroupPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachGroupPolicy
@@ -249,8 +252,9 @@ func NewAttachRolePolicyRequest() (request *AttachRolePolicyRequest) {
 func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
     response = &AttachRolePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachRolePolicy
@@ -311,8 +315,9 @@ func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
 func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
     response = &AttachUserPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachUserPolicy
@@ -377,8 +382,9 @@ func NewConsumeCustomMFATokenRequest() (request *ConsumeCustomMFATokenRequest) {
 func NewConsumeCustomMFATokenResponse() (response *ConsumeCustomMFATokenResponse) {
     response = &ConsumeCustomMFATokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ConsumeCustomMFAToken
@@ -425,8 +431,9 @@ func NewCreateAccessKeyRequest() (request *CreateAccessKeyRequest) {
 func NewCreateAccessKeyResponse() (response *CreateAccessKeyResponse) {
     response = &CreateAccessKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAccessKey
@@ -485,8 +492,9 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
 func NewCreateGroupResponse() (response *CreateGroupResponse) {
     response = &CreateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroup
@@ -539,8 +547,9 @@ func NewCreateMessageReceiverRequest() (request *CreateMessageReceiverRequest) {
 func NewCreateMessageReceiverResponse() (response *CreateMessageReceiverResponse) {
     response = &CreateMessageReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMessageReceiver
@@ -599,8 +608,9 @@ func NewCreateOIDCConfigRequest() (request *CreateOIDCConfigRequest) {
 func NewCreateOIDCConfigResponse() (response *CreateOIDCConfigResponse) {
     response = &CreateOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOIDCConfig
@@ -659,8 +669,9 @@ func NewCreatePolicyRequest() (request *CreatePolicyRequest) {
 func NewCreatePolicyResponse() (response *CreatePolicyResponse) {
     response = &CreatePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePolicy
@@ -775,8 +786,9 @@ func NewCreatePolicyVersionRequest() (request *CreatePolicyVersionRequest) {
 func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
     response = &CreatePolicyVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePolicyVersion
@@ -899,8 +911,9 @@ func NewCreateRoleRequest() (request *CreateRoleRequest) {
 func NewCreateRoleResponse() (response *CreateRoleResponse) {
     response = &CreateRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRole
@@ -993,8 +1006,9 @@ func NewCreateSAMLProviderRequest() (request *CreateSAMLProviderRequest) {
 func NewCreateSAMLProviderResponse() (response *CreateSAMLProviderResponse) {
     response = &CreateSAMLProviderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSAMLProvider
@@ -1049,8 +1063,9 @@ func NewCreateServiceLinkedRoleRequest() (request *CreateServiceLinkedRoleReques
 func NewCreateServiceLinkedRoleResponse() (response *CreateServiceLinkedRoleResponse) {
     response = &CreateServiceLinkedRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateServiceLinkedRole
@@ -1127,8 +1142,9 @@ func NewCreateUserOIDCConfigRequest() (request *CreateUserOIDCConfigRequest) {
 func NewCreateUserOIDCConfigResponse() (response *CreateUserOIDCConfigResponse) {
     response = &CreateUserOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserOIDCConfig
@@ -1187,8 +1203,9 @@ func NewCreateUserSAMLConfigRequest() (request *CreateUserSAMLConfigRequest) {
 func NewCreateUserSAMLConfigResponse() (response *CreateUserSAMLConfigResponse) {
     response = &CreateUserSAMLConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserSAMLConfig
@@ -1237,8 +1254,9 @@ func NewDeleteAccessKeyRequest() (request *DeleteAccessKeyRequest) {
 func NewDeleteAccessKeyResponse() (response *DeleteAccessKeyResponse) {
     response = &DeleteAccessKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAccessKey
@@ -1303,8 +1321,9 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
 func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     response = &DeleteGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroup
@@ -1353,8 +1372,9 @@ func NewDeleteOIDCConfigRequest() (request *DeleteOIDCConfigRequest) {
 func NewDeleteOIDCConfigResponse() (response *DeleteOIDCConfigResponse) {
     response = &DeleteOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteOIDCConfig
@@ -1403,8 +1423,9 @@ func NewDeletePolicyRequest() (request *DeletePolicyRequest) {
 func NewDeletePolicyResponse() (response *DeletePolicyResponse) {
     response = &DeletePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePolicy
@@ -1463,8 +1484,9 @@ func NewDeletePolicyVersionRequest() (request *DeletePolicyVersionRequest) {
 func NewDeletePolicyVersionResponse() (response *DeletePolicyVersionResponse) {
     response = &DeletePolicyVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePolicyVersion
@@ -1563,8 +1585,9 @@ func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
 func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
     response = &DeleteRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRole
@@ -1621,8 +1644,9 @@ func NewDeleteRolePermissionsBoundaryRequest() (request *DeleteRolePermissionsBo
 func NewDeleteRolePermissionsBoundaryResponse() (response *DeleteRolePermissionsBoundaryResponse) {
     response = &DeleteRolePermissionsBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRolePermissionsBoundary
@@ -1683,8 +1707,9 @@ func NewDeleteSAMLProviderRequest() (request *DeleteSAMLProviderRequest) {
 func NewDeleteSAMLProviderResponse() (response *DeleteSAMLProviderResponse) {
     response = &DeleteSAMLProviderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSAMLProvider
@@ -1733,8 +1758,9 @@ func NewDeleteServiceLinkedRoleRequest() (request *DeleteServiceLinkedRoleReques
 func NewDeleteServiceLinkedRoleResponse() (response *DeleteServiceLinkedRoleResponse) {
     response = &DeleteServiceLinkedRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteServiceLinkedRole
@@ -1785,8 +1811,9 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
 func NewDeleteUserResponse() (response *DeleteUserResponse) {
     response = &DeleteUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUser
@@ -1843,8 +1870,9 @@ func NewDeleteUserPermissionsBoundaryRequest() (request *DeleteUserPermissionsBo
 func NewDeleteUserPermissionsBoundaryResponse() (response *DeleteUserPermissionsBoundaryResponse) {
     response = &DeleteUserPermissionsBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserPermissionsBoundary
@@ -1901,8 +1929,9 @@ func NewDescribeOIDCConfigRequest() (request *DescribeOIDCConfigRequest) {
 func NewDescribeOIDCConfigResponse() (response *DescribeOIDCConfigResponse) {
     response = &DescribeOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOIDCConfig
@@ -1953,8 +1982,9 @@ func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
 func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
     response = &DescribeRoleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoleList
@@ -2005,8 +2035,9 @@ func NewDescribeSafeAuthFlagRequest() (request *DescribeSafeAuthFlagRequest) {
 func NewDescribeSafeAuthFlagResponse() (response *DescribeSafeAuthFlagResponse) {
     response = &DescribeSafeAuthFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSafeAuthFlag
@@ -2057,8 +2088,9 @@ func NewDescribeSafeAuthFlagCollRequest() (request *DescribeSafeAuthFlagCollRequ
 func NewDescribeSafeAuthFlagCollResponse() (response *DescribeSafeAuthFlagCollResponse) {
     response = &DescribeSafeAuthFlagCollResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSafeAuthFlagColl
@@ -2109,8 +2141,9 @@ func NewDescribeSafeAuthFlagIntlRequest() (request *DescribeSafeAuthFlagIntlRequ
 func NewDescribeSafeAuthFlagIntlResponse() (response *DescribeSafeAuthFlagIntlResponse) {
     response = &DescribeSafeAuthFlagIntlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSafeAuthFlagIntl
@@ -2161,8 +2194,9 @@ func NewDescribeSubAccountsRequest() (request *DescribeSubAccountsRequest) {
 func NewDescribeSubAccountsResponse() (response *DescribeSubAccountsResponse) {
     response = &DescribeSubAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubAccounts
@@ -2213,8 +2247,9 @@ func NewDescribeUserOIDCConfigRequest() (request *DescribeUserOIDCConfigRequest)
 func NewDescribeUserOIDCConfigResponse() (response *DescribeUserOIDCConfigResponse) {
     response = &DescribeUserOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserOIDCConfig
@@ -2261,8 +2296,9 @@ func NewDescribeUserSAMLConfigRequest() (request *DescribeUserSAMLConfigRequest)
 func NewDescribeUserSAMLConfigResponse() (response *DescribeUserSAMLConfigResponse) {
     response = &DescribeUserSAMLConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserSAMLConfig
@@ -2309,8 +2345,9 @@ func NewDetachGroupPolicyRequest() (request *DetachGroupPolicyRequest) {
 func NewDetachGroupPolicyResponse() (response *DetachGroupPolicyResponse) {
     response = &DetachGroupPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachGroupPolicy
@@ -2371,8 +2408,9 @@ func NewDetachRolePolicyRequest() (request *DetachRolePolicyRequest) {
 func NewDetachRolePolicyResponse() (response *DetachRolePolicyResponse) {
     response = &DetachRolePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachRolePolicy
@@ -2427,8 +2465,9 @@ func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
 func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
     response = &DetachUserPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachUserPolicy
@@ -2491,8 +2530,9 @@ func NewDisableUserSSORequest() (request *DisableUserSSORequest) {
 func NewDisableUserSSOResponse() (response *DisableUserSSOResponse) {
     response = &DisableUserSSOResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableUserSSO
@@ -2539,8 +2579,9 @@ func NewGetAccountSummaryRequest() (request *GetAccountSummaryRequest) {
 func NewGetAccountSummaryResponse() (response *GetAccountSummaryResponse) {
     response = &GetAccountSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAccountSummary
@@ -2587,8 +2628,9 @@ func NewGetCustomMFATokenInfoRequest() (request *GetCustomMFATokenInfoRequest) {
 func NewGetCustomMFATokenInfoResponse() (response *GetCustomMFATokenInfoResponse) {
     response = &GetCustomMFATokenInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCustomMFATokenInfo
@@ -2635,8 +2677,9 @@ func NewGetGroupRequest() (request *GetGroupRequest) {
 func NewGetGroupResponse() (response *GetGroupResponse) {
     response = &GetGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGroup
@@ -2685,8 +2728,9 @@ func NewGetPolicyRequest() (request *GetPolicyRequest) {
 func NewGetPolicyResponse() (response *GetPolicyResponse) {
     response = &GetPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPolicy
@@ -2739,8 +2783,9 @@ func NewGetPolicyVersionRequest() (request *GetPolicyVersionRequest) {
 func NewGetPolicyVersionResponse() (response *GetPolicyVersionResponse) {
     response = &GetPolicyVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPolicyVersion
@@ -2795,8 +2840,9 @@ func NewGetRoleRequest() (request *GetRoleRequest) {
 func NewGetRoleResponse() (response *GetRoleResponse) {
     response = &GetRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRole
@@ -2847,8 +2893,9 @@ func NewGetRolePermissionBoundaryRequest() (request *GetRolePermissionBoundaryRe
 func NewGetRolePermissionBoundaryResponse() (response *GetRolePermissionBoundaryResponse) {
     response = &GetRolePermissionBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRolePermissionBoundary
@@ -2901,8 +2948,9 @@ func NewGetSAMLProviderRequest() (request *GetSAMLProviderRequest) {
 func NewGetSAMLProviderResponse() (response *GetSAMLProviderResponse) {
     response = &GetSAMLProviderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSAMLProvider
@@ -2951,8 +2999,9 @@ func NewGetSecurityLastUsedRequest() (request *GetSecurityLastUsedRequest) {
 func NewGetSecurityLastUsedResponse() (response *GetSecurityLastUsedResponse) {
     response = &GetSecurityLastUsedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSecurityLastUsed
@@ -3001,8 +3050,9 @@ func NewGetServiceLinkedRoleDeletionStatusRequest() (request *GetServiceLinkedRo
 func NewGetServiceLinkedRoleDeletionStatusResponse() (response *GetServiceLinkedRoleDeletionStatusResponse) {
     response = &GetServiceLinkedRoleDeletionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetServiceLinkedRoleDeletionStatus
@@ -3053,8 +3103,9 @@ func NewGetUserRequest() (request *GetUserRequest) {
 func NewGetUserResponse() (response *GetUserResponse) {
     response = &GetUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUser
@@ -3105,8 +3156,9 @@ func NewGetUserAppIdRequest() (request *GetUserAppIdRequest) {
 func NewGetUserAppIdResponse() (response *GetUserAppIdResponse) {
     response = &GetUserAppIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUserAppId
@@ -3155,8 +3207,9 @@ func NewGetUserPermissionBoundaryRequest() (request *GetUserPermissionBoundaryRe
 func NewGetUserPermissionBoundaryResponse() (response *GetUserPermissionBoundaryResponse) {
     response = &GetUserPermissionBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUserPermissionBoundary
@@ -3209,8 +3262,9 @@ func NewListAccessKeysRequest() (request *ListAccessKeysRequest) {
 func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
     response = &ListAccessKeysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAccessKeys
@@ -3273,8 +3327,9 @@ func NewListAttachedGroupPoliciesRequest() (request *ListAttachedGroupPoliciesRe
 func NewListAttachedGroupPoliciesResponse() (response *ListAttachedGroupPoliciesResponse) {
     response = &ListAttachedGroupPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAttachedGroupPolicies
@@ -3325,8 +3380,9 @@ func NewListAttachedRolePoliciesRequest() (request *ListAttachedRolePoliciesRequ
 func NewListAttachedRolePoliciesResponse() (response *ListAttachedRolePoliciesResponse) {
     response = &ListAttachedRolePoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAttachedRolePolicies
@@ -3375,8 +3431,9 @@ func NewListAttachedUserAllPoliciesRequest() (request *ListAttachedUserAllPolici
 func NewListAttachedUserAllPoliciesResponse() (response *ListAttachedUserAllPoliciesResponse) {
     response = &ListAttachedUserAllPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAttachedUserAllPolicies
@@ -3427,8 +3484,9 @@ func NewListAttachedUserPoliciesRequest() (request *ListAttachedUserPoliciesRequ
 func NewListAttachedUserPoliciesResponse() (response *ListAttachedUserPoliciesResponse) {
     response = &ListAttachedUserPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAttachedUserPolicies
@@ -3477,8 +3535,9 @@ func NewListCollaboratorsRequest() (request *ListCollaboratorsRequest) {
 func NewListCollaboratorsResponse() (response *ListCollaboratorsResponse) {
     response = &ListCollaboratorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListCollaborators
@@ -3525,8 +3584,9 @@ func NewListEntitiesForPolicyRequest() (request *ListEntitiesForPolicyRequest) {
 func NewListEntitiesForPolicyResponse() (response *ListEntitiesForPolicyResponse) {
     response = &ListEntitiesForPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEntitiesForPolicy
@@ -3579,8 +3639,9 @@ func NewListGroupsRequest() (request *ListGroupsRequest) {
 func NewListGroupsResponse() (response *ListGroupsResponse) {
     response = &ListGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListGroups
@@ -3627,8 +3688,9 @@ func NewListGroupsForUserRequest() (request *ListGroupsForUserRequest) {
 func NewListGroupsForUserResponse() (response *ListGroupsForUserResponse) {
     response = &ListGroupsForUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListGroupsForUser
@@ -3679,8 +3741,9 @@ func NewListPoliciesRequest() (request *ListPoliciesRequest) {
 func NewListPoliciesResponse() (response *ListPoliciesResponse) {
     response = &ListPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPolicies
@@ -3741,8 +3804,9 @@ func NewListPoliciesGrantingServiceAccessRequest() (request *ListPoliciesGrantin
 func NewListPoliciesGrantingServiceAccessResponse() (response *ListPoliciesGrantingServiceAccessResponse) {
     response = &ListPoliciesGrantingServiceAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPoliciesGrantingServiceAccess
@@ -3795,8 +3859,9 @@ func NewListPolicyVersionsRequest() (request *ListPolicyVersionsRequest) {
 func NewListPolicyVersionsResponse() (response *ListPolicyVersionsResponse) {
     response = &ListPolicyVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPolicyVersions
@@ -3849,8 +3914,9 @@ func NewListSAMLProvidersRequest() (request *ListSAMLProvidersRequest) {
 func NewListSAMLProvidersResponse() (response *ListSAMLProvidersResponse) {
     response = &ListSAMLProvidersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListSAMLProviders
@@ -3903,8 +3969,9 @@ func NewListUsersRequest() (request *ListUsersRequest) {
 func NewListUsersResponse() (response *ListUsersResponse) {
     response = &ListUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUsers
@@ -3951,8 +4018,9 @@ func NewListUsersForGroupRequest() (request *ListUsersForGroupRequest) {
 func NewListUsersForGroupResponse() (response *ListUsersForGroupResponse) {
     response = &ListUsersForGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListUsersForGroup
@@ -4001,8 +4069,9 @@ func NewListWeChatWorkSubAccountsRequest() (request *ListWeChatWorkSubAccountsRe
 func NewListWeChatWorkSubAccountsResponse() (response *ListWeChatWorkSubAccountsResponse) {
     response = &ListWeChatWorkSubAccountsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListWeChatWorkSubAccounts
@@ -4051,8 +4120,9 @@ func NewPutRolePermissionsBoundaryRequest() (request *PutRolePermissionsBoundary
 func NewPutRolePermissionsBoundaryResponse() (response *PutRolePermissionsBoundaryResponse) {
     response = &PutRolePermissionsBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutRolePermissionsBoundary
@@ -4115,8 +4185,9 @@ func NewPutUserPermissionsBoundaryRequest() (request *PutUserPermissionsBoundary
 func NewPutUserPermissionsBoundaryResponse() (response *PutUserPermissionsBoundaryResponse) {
     response = &PutUserPermissionsBoundaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutUserPermissionsBoundary
@@ -4177,8 +4248,9 @@ func NewRemoveUserFromGroupRequest() (request *RemoveUserFromGroupRequest) {
 func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
     response = &RemoveUserFromGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveUserFromGroup
@@ -4231,8 +4303,9 @@ func NewSetDefaultPolicyVersionRequest() (request *SetDefaultPolicyVersionReques
 func NewSetDefaultPolicyVersionResponse() (response *SetDefaultPolicyVersionResponse) {
     response = &SetDefaultPolicyVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetDefaultPolicyVersion
@@ -4357,8 +4430,9 @@ func NewSetMfaFlagRequest() (request *SetMfaFlagRequest) {
 func NewSetMfaFlagResponse() (response *SetMfaFlagResponse) {
     response = &SetMfaFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetMfaFlag
@@ -4417,8 +4491,9 @@ func NewTagRoleRequest() (request *TagRoleRequest) {
 func NewTagRoleResponse() (response *TagRoleResponse) {
     response = &TagRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TagRole
@@ -4481,8 +4556,9 @@ func NewUntagRoleRequest() (request *UntagRoleRequest) {
 func NewUntagRoleResponse() (response *UntagRoleResponse) {
     response = &UntagRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UntagRole
@@ -4545,8 +4621,9 @@ func NewUpdateAccessKeyRequest() (request *UpdateAccessKeyRequest) {
 func NewUpdateAccessKeyResponse() (response *UpdateAccessKeyResponse) {
     response = &UpdateAccessKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAccessKey
@@ -4607,8 +4684,9 @@ func NewUpdateAssumeRolePolicyRequest() (request *UpdateAssumeRolePolicyRequest)
 func NewUpdateAssumeRolePolicyResponse() (response *UpdateAssumeRolePolicyResponse) {
     response = &UpdateAssumeRolePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAssumeRolePolicy
@@ -4691,8 +4769,9 @@ func NewUpdateGroupRequest() (request *UpdateGroupRequest) {
 func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
     response = &UpdateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateGroup
@@ -4747,8 +4826,9 @@ func NewUpdateOIDCConfigRequest() (request *UpdateOIDCConfigRequest) {
 func NewUpdateOIDCConfigResponse() (response *UpdateOIDCConfigResponse) {
     response = &UpdateOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateOIDCConfig
@@ -4809,8 +4889,9 @@ func NewUpdatePolicyRequest() (request *UpdatePolicyRequest) {
 func NewUpdatePolicyResponse() (response *UpdatePolicyResponse) {
     response = &UpdatePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdatePolicy
@@ -4935,8 +5016,9 @@ func NewUpdateRoleConsoleLoginRequest() (request *UpdateRoleConsoleLoginRequest)
 func NewUpdateRoleConsoleLoginResponse() (response *UpdateRoleConsoleLoginResponse) {
     response = &UpdateRoleConsoleLoginResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRoleConsoleLogin
@@ -4987,8 +5069,9 @@ func NewUpdateRoleDescriptionRequest() (request *UpdateRoleDescriptionRequest) {
 func NewUpdateRoleDescriptionResponse() (response *UpdateRoleDescriptionResponse) {
     response = &UpdateRoleDescriptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRoleDescription
@@ -5041,8 +5124,9 @@ func NewUpdateSAMLProviderRequest() (request *UpdateSAMLProviderRequest) {
 func NewUpdateSAMLProviderResponse() (response *UpdateSAMLProviderResponse) {
     response = &UpdateSAMLProviderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateSAMLProvider
@@ -5091,8 +5175,9 @@ func NewUpdateUserRequest() (request *UpdateUserRequest) {
 func NewUpdateUserResponse() (response *UpdateUserResponse) {
     response = &UpdateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUser
@@ -5147,8 +5232,9 @@ func NewUpdateUserOIDCConfigRequest() (request *UpdateUserOIDCConfigRequest) {
 func NewUpdateUserOIDCConfigResponse() (response *UpdateUserOIDCConfigResponse) {
     response = &UpdateUserOIDCConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUserOIDCConfig
@@ -5209,8 +5295,9 @@ func NewUpdateUserSAMLConfigRequest() (request *UpdateUserSAMLConfigRequest) {
 func NewUpdateUserSAMLConfigResponse() (response *UpdateUserSAMLConfigResponse) {
     response = &UpdateUserSAMLConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUserSAMLConfig

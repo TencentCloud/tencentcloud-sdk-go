@@ -59,8 +59,9 @@ func NewCreateAudioDepositRequest() (request *CreateAudioDepositRequest) {
 func NewCreateAudioDepositResponse() (response *CreateAudioDepositResponse) {
     response = &CreateAudioDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAudioDeposit
@@ -133,8 +134,9 @@ func NewCreateDataDepositRequest() (request *CreateDataDepositRequest) {
 func NewCreateDataDepositResponse() (response *CreateDataDepositResponse) {
     response = &CreateDataDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDataDeposit
@@ -211,8 +213,9 @@ func NewCreateDocDepositRequest() (request *CreateDocDepositRequest) {
 func NewCreateDocDepositResponse() (response *CreateDocDepositResponse) {
     response = &CreateDocDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDocDeposit
@@ -289,8 +292,9 @@ func NewCreateHashDepositRequest() (request *CreateHashDepositRequest) {
 func NewCreateHashDepositResponse() (response *CreateHashDepositResponse) {
     response = &CreateHashDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHashDeposit
@@ -357,8 +361,9 @@ func NewCreateHashDepositNoCertRequest() (request *CreateHashDepositNoCertReques
 func NewCreateHashDepositNoCertResponse() (response *CreateHashDepositNoCertResponse) {
     response = &CreateHashDepositNoCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHashDepositNoCert
@@ -423,8 +428,9 @@ func NewCreateHashDepositNoSealRequest() (request *CreateHashDepositNoSealReques
 func NewCreateHashDepositNoSealResponse() (response *CreateHashDepositNoSealResponse) {
     response = &CreateHashDepositNoSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHashDepositNoSeal
@@ -489,8 +495,9 @@ func NewCreateImageDepositRequest() (request *CreateImageDepositRequest) {
 func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
     response = &CreateImageDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateImageDeposit
@@ -567,8 +574,9 @@ func NewCreateVideoDepositRequest() (request *CreateVideoDepositRequest) {
 func NewCreateVideoDepositResponse() (response *CreateVideoDepositResponse) {
     response = &CreateVideoDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVideoDeposit
@@ -647,8 +655,9 @@ func NewCreateWebpageDepositRequest() (request *CreateWebpageDepositRequest) {
 func NewCreateWebpageDepositResponse() (response *CreateWebpageDepositResponse) {
     response = &CreateWebpageDepositResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWebpageDeposit
@@ -717,8 +726,9 @@ func NewGetDepositCertRequest() (request *GetDepositCertRequest) {
 func NewGetDepositCertResponse() (response *GetDepositCertResponse) {
     response = &GetDepositCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDepositCert
@@ -783,8 +793,9 @@ func NewGetDepositFileRequest() (request *GetDepositFileRequest) {
 func NewGetDepositFileResponse() (response *GetDepositFileResponse) {
     response = &GetDepositFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDepositFile
@@ -877,8 +888,9 @@ func NewGetDepositInfoRequest() (request *GetDepositInfoRequest) {
 func NewGetDepositInfoResponse() (response *GetDepositInfoResponse) {
     response = &GetDepositInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDepositInfo

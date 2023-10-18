@@ -59,8 +59,9 @@ func NewGetBpaasApproveDetailRequest() (request *GetBpaasApproveDetailRequest) {
 func NewGetBpaasApproveDetailResponse() (response *GetBpaasApproveDetailResponse) {
     response = &GetBpaasApproveDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetBpaasApproveDetail
@@ -115,8 +116,9 @@ func NewOutApproveBpaasApplicationRequest() (request *OutApproveBpaasApplication
 func NewOutApproveBpaasApplicationResponse() (response *OutApproveBpaasApplicationResponse) {
     response = &OutApproveBpaasApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OutApproveBpaasApplication

@@ -59,8 +59,9 @@ func NewDescribeVideoTaskRequest() (request *DescribeVideoTaskRequest) {
 func NewDescribeVideoTaskResponse() (response *DescribeVideoTaskResponse) {
     response = &DescribeVideoTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVideoTask
@@ -107,8 +108,9 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
 func NewImageModerationResponse() (response *ImageModerationResponse) {
     response = &ImageModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageModeration
@@ -167,8 +169,9 @@ func NewVideoModerationRequest() (request *VideoModerationRequest) {
 func NewVideoModerationResponse() (response *VideoModerationResponse) {
     response = &VideoModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VideoModeration

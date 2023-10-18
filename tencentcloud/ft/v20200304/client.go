@@ -59,8 +59,9 @@ func NewCancelFaceMorphJobRequest() (request *CancelFaceMorphJobRequest) {
 func NewCancelFaceMorphJobResponse() (response *CancelFaceMorphJobResponse) {
     response = &CancelFaceMorphJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelFaceMorphJob
@@ -127,8 +128,9 @@ func NewChangeAgePicRequest() (request *ChangeAgePicRequest) {
 func NewChangeAgePicResponse() (response *ChangeAgePicResponse) {
     response = &ChangeAgePicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeAgePic
@@ -235,8 +237,9 @@ func NewFaceCartoonPicRequest() (request *FaceCartoonPicRequest) {
 func NewFaceCartoonPicResponse() (response *FaceCartoonPicResponse) {
     response = &FaceCartoonPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FaceCartoonPic
@@ -335,8 +338,9 @@ func NewMorphFaceRequest() (request *MorphFaceRequest) {
 func NewMorphFaceResponse() (response *MorphFaceResponse) {
     response = &MorphFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MorphFace
@@ -423,8 +427,9 @@ func NewQueryFaceMorphJobRequest() (request *QueryFaceMorphJobRequest) {
 func NewQueryFaceMorphJobResponse() (response *QueryFaceMorphJobResponse) {
     response = &QueryFaceMorphJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryFaceMorphJob
@@ -493,8 +498,9 @@ func NewSwapGenderPicRequest() (request *SwapGenderPicRequest) {
 func NewSwapGenderPicResponse() (response *SwapGenderPicResponse) {
     response = &SwapGenderPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SwapGenderPic

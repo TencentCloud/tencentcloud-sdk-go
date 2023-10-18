@@ -59,8 +59,9 @@ func NewCreateDedicatedClusterRequest() (request *CreateDedicatedClusterRequest)
 func NewCreateDedicatedClusterResponse() (response *CreateDedicatedClusterResponse) {
     response = &CreateDedicatedClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDedicatedCluster
@@ -113,8 +114,9 @@ func NewCreateDedicatedClusterOrderRequest() (request *CreateDedicatedClusterOrd
 func NewCreateDedicatedClusterOrderResponse() (response *CreateDedicatedClusterOrderResponse) {
     response = &CreateDedicatedClusterOrderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDedicatedClusterOrder
@@ -173,8 +175,9 @@ func NewCreateSiteRequest() (request *CreateSiteRequest) {
 func NewCreateSiteResponse() (response *CreateSiteResponse) {
     response = &CreateSiteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSite
@@ -223,8 +226,9 @@ func NewDeleteDedicatedClustersRequest() (request *DeleteDedicatedClustersReques
 func NewDeleteDedicatedClustersResponse() (response *DeleteDedicatedClustersResponse) {
     response = &DeleteDedicatedClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDedicatedClusters
@@ -273,8 +277,9 @@ func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
 func NewDeleteSitesResponse() (response *DeleteSitesResponse) {
     response = &DeleteSitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSites
@@ -325,8 +330,9 @@ func NewDescribeDedicatedClusterCosCapacityRequest() (request *DescribeDedicated
 func NewDescribeDedicatedClusterCosCapacityResponse() (response *DescribeDedicatedClusterCosCapacityResponse) {
     response = &DescribeDedicatedClusterCosCapacityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterCosCapacity
@@ -375,8 +381,9 @@ func NewDescribeDedicatedClusterHostStatisticsRequest() (request *DescribeDedica
 func NewDescribeDedicatedClusterHostStatisticsResponse() (response *DescribeDedicatedClusterHostStatisticsResponse) {
     response = &DescribeDedicatedClusterHostStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterHostStatistics
@@ -427,8 +434,9 @@ func NewDescribeDedicatedClusterHostsRequest() (request *DescribeDedicatedCluste
 func NewDescribeDedicatedClusterHostsResponse() (response *DescribeDedicatedClusterHostsResponse) {
     response = &DescribeDedicatedClusterHostsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterHosts
@@ -479,8 +487,9 @@ func NewDescribeDedicatedClusterInstanceTypesRequest() (request *DescribeDedicat
 func NewDescribeDedicatedClusterInstanceTypesResponse() (response *DescribeDedicatedClusterInstanceTypesResponse) {
     response = &DescribeDedicatedClusterInstanceTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterInstanceTypes
@@ -529,8 +538,9 @@ func NewDescribeDedicatedClusterOrdersRequest() (request *DescribeDedicatedClust
 func NewDescribeDedicatedClusterOrdersResponse() (response *DescribeDedicatedClusterOrdersResponse) {
     response = &DescribeDedicatedClusterOrdersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterOrders
@@ -579,8 +589,9 @@ func NewDescribeDedicatedClusterOverviewRequest() (request *DescribeDedicatedClu
 func NewDescribeDedicatedClusterOverviewResponse() (response *DescribeDedicatedClusterOverviewResponse) {
     response = &DescribeDedicatedClusterOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterOverview
@@ -629,8 +640,9 @@ func NewDescribeDedicatedClusterTypesRequest() (request *DescribeDedicatedCluste
 func NewDescribeDedicatedClusterTypesResponse() (response *DescribeDedicatedClusterTypesResponse) {
     response = &DescribeDedicatedClusterTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusterTypes
@@ -679,8 +691,9 @@ func NewDescribeDedicatedClustersRequest() (request *DescribeDedicatedClustersRe
 func NewDescribeDedicatedClustersResponse() (response *DescribeDedicatedClustersResponse) {
     response = &DescribeDedicatedClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedClusters
@@ -731,8 +744,9 @@ func NewDescribeDedicatedSupportedZonesRequest() (request *DescribeDedicatedSupp
 func NewDescribeDedicatedSupportedZonesResponse() (response *DescribeDedicatedSupportedZonesResponse) {
     response = &DescribeDedicatedSupportedZonesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDedicatedSupportedZones
@@ -783,8 +797,9 @@ func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
 func NewDescribeSitesResponse() (response *DescribeSitesResponse) {
     response = &DescribeSitesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSites
@@ -835,8 +850,9 @@ func NewDescribeSitesDetailRequest() (request *DescribeSitesDetailRequest) {
 func NewDescribeSitesDetailResponse() (response *DescribeSitesDetailResponse) {
     response = &DescribeSitesDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSitesDetail
@@ -883,8 +899,9 @@ func NewModifyDedicatedClusterInfoRequest() (request *ModifyDedicatedClusterInfo
 func NewModifyDedicatedClusterInfoResponse() (response *ModifyDedicatedClusterInfoResponse) {
     response = &ModifyDedicatedClusterInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDedicatedClusterInfo
@@ -945,8 +962,9 @@ func NewModifyOrderStatusRequest() (request *ModifyOrderStatusRequest) {
 func NewModifyOrderStatusResponse() (response *ModifyOrderStatusResponse) {
     response = &ModifyOrderStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyOrderStatus
@@ -993,8 +1011,9 @@ func NewModifySiteDeviceInfoRequest() (request *ModifySiteDeviceInfoRequest) {
 func NewModifySiteDeviceInfoResponse() (response *ModifySiteDeviceInfoResponse) {
     response = &ModifySiteDeviceInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySiteDeviceInfo
@@ -1041,8 +1060,9 @@ func NewModifySiteInfoRequest() (request *ModifySiteInfoRequest) {
 func NewModifySiteInfoResponse() (response *ModifySiteInfoResponse) {
     response = &ModifySiteInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySiteInfo

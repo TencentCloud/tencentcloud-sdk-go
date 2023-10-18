@@ -59,8 +59,9 @@ func NewGetLocalEngineRequest() (request *GetLocalEngineRequest) {
 func NewGetLocalEngineResponse() (response *GetLocalEngineResponse) {
     response = &GetLocalEngineResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLocalEngine
@@ -101,8 +102,9 @@ func NewGetScanResultRequest() (request *GetScanResultRequest) {
 func NewGetScanResultResponse() (response *GetScanResultResponse) {
     response = &GetScanResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetScanResult
@@ -143,8 +145,9 @@ func NewScanFileRequest() (request *ScanFileRequest) {
 func NewScanFileResponse() (response *ScanFileResponse) {
     response = &ScanFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanFile
@@ -185,8 +188,9 @@ func NewScanFileHashRequest() (request *ScanFileHashRequest) {
 func NewScanFileHashResponse() (response *ScanFileHashResponse) {
     response = &ScanFileHashResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ScanFileHash

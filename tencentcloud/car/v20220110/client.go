@@ -59,8 +59,9 @@ func NewApplyConcurrentRequest() (request *ApplyConcurrentRequest) {
 func NewApplyConcurrentResponse() (response *ApplyConcurrentResponse) {
     response = &ApplyConcurrentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyConcurrent
@@ -121,8 +122,9 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
 func NewCreateSessionResponse() (response *CreateSessionResponse) {
     response = &CreateSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSession
@@ -195,8 +197,9 @@ func NewDestroySessionRequest() (request *DestroySessionRequest) {
 func NewDestroySessionResponse() (response *DestroySessionResponse) {
     response = &DestroySessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroySession
@@ -251,8 +254,9 @@ func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
 func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
     response = &StartPublishStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartPublishStream
@@ -309,8 +313,9 @@ func NewStartPublishStreamWithURLRequest() (request *StartPublishStreamWithURLRe
 func NewStartPublishStreamWithURLResponse() (response *StartPublishStreamWithURLResponse) {
     response = &StartPublishStreamWithURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartPublishStreamWithURL
@@ -367,8 +372,9 @@ func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
 func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
     response = &StopPublishStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopPublishStream

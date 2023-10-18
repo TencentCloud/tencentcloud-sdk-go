@@ -59,8 +59,9 @@ func NewApplyStackRequest() (request *ApplyStackRequest) {
 func NewApplyStackResponse() (response *ApplyStackResponse) {
     response = &ApplyStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyStack
@@ -131,8 +132,9 @@ func NewCreateStackRequest() (request *CreateStackRequest) {
 func NewCreateStackResponse() (response *CreateStackResponse) {
     response = &CreateStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStack
@@ -189,8 +191,9 @@ func NewCreateStackVersionRequest() (request *CreateStackVersionRequest) {
 func NewCreateStackVersionResponse() (response *CreateStackVersionResponse) {
     response = &CreateStackVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStackVersion
@@ -253,8 +256,9 @@ func NewDeleteStackRequest() (request *DeleteStackRequest) {
 func NewDeleteStackResponse() (response *DeleteStackResponse) {
     response = &DeleteStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStack
@@ -311,8 +315,9 @@ func NewDeleteStackVersionRequest() (request *DeleteStackVersionRequest) {
 func NewDeleteStackVersionResponse() (response *DeleteStackVersionResponse) {
     response = &DeleteStackVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStackVersion
@@ -371,8 +376,9 @@ func NewDescribeStackEventRequest() (request *DescribeStackEventRequest) {
 func NewDescribeStackEventResponse() (response *DescribeStackEventResponse) {
     response = &DescribeStackEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStackEvent
@@ -431,8 +437,9 @@ func NewDescribeStackEventsRequest() (request *DescribeStackEventsRequest) {
 func NewDescribeStackEventsResponse() (response *DescribeStackEventsResponse) {
     response = &DescribeStackEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStackEvents
@@ -503,8 +510,9 @@ func NewDescribeStackVersionsRequest() (request *DescribeStackVersionsRequest) {
 func NewDescribeStackVersionsResponse() (response *DescribeStackVersionsResponse) {
     response = &DescribeStackVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStackVersions
@@ -575,8 +583,9 @@ func NewDescribeStacksRequest() (request *DescribeStacksRequest) {
 func NewDescribeStacksResponse() (response *DescribeStacksResponse) {
     response = &DescribeStacksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStacks
@@ -643,8 +652,9 @@ func NewDestroyStackRequest() (request *DestroyStackRequest) {
 func NewDestroyStackResponse() (response *DestroyStackResponse) {
     response = &DestroyStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyStack
@@ -703,8 +713,9 @@ func NewPlanStackRequest() (request *PlanStackRequest) {
 func NewPlanStackResponse() (response *PlanStackResponse) {
     response = &PlanStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PlanStack
@@ -777,8 +788,9 @@ func NewUpdateStackRequest() (request *UpdateStackRequest) {
 func NewUpdateStackResponse() (response *UpdateStackResponse) {
     response = &UpdateStackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateStack
@@ -835,8 +847,9 @@ func NewUpdateStackVersionRequest() (request *UpdateStackVersionRequest) {
 func NewUpdateStackVersionResponse() (response *UpdateStackVersionResponse) {
     response = &UpdateStackVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateStackVersion

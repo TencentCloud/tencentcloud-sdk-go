@@ -59,8 +59,9 @@ func NewCreateCallBackRequest() (request *CreateCallBackRequest) {
 func NewCreateCallBackResponse() (response *CreateCallBackResponse) {
     response = &CreateCallBackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCallBack
@@ -101,8 +102,9 @@ func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
 func NewDelVirtualNumResponse() (response *DelVirtualNumResponse) {
     response = &DelVirtualNumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DelVirtualNum
@@ -143,8 +145,9 @@ func NewDeleteCallBackRequest() (request *DeleteCallBackRequest) {
 func NewDeleteCallBackResponse() (response *DeleteCallBackResponse) {
     response = &DeleteCallBackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCallBack
@@ -185,8 +188,9 @@ func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
 func NewDescribeCallBackCdrResponse() (response *DescribeCallBackCdrResponse) {
     response = &DescribeCallBackCdrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallBackCdr
@@ -227,8 +231,9 @@ func NewDescribeCallBackStatusRequest() (request *DescribeCallBackStatusRequest)
 func NewDescribeCallBackStatusResponse() (response *DescribeCallBackStatusResponse) {
     response = &DescribeCallBackStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallBackStatus
@@ -269,8 +274,9 @@ func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRe
 func NewDescribeCallerDisplayListResponse() (response *DescribeCallerDisplayListResponse) {
     response = &DescribeCallerDisplayListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallerDisplayList
@@ -311,8 +317,9 @@ func NewGet400CdrRequest() (request *Get400CdrRequest) {
 func NewGet400CdrResponse() (response *Get400CdrResponse) {
     response = &Get400CdrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Get400Cdr
@@ -353,8 +360,9 @@ func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
 func NewGetVirtualNumResponse() (response *GetVirtualNumResponse) {
     response = &GetVirtualNumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetVirtualNum

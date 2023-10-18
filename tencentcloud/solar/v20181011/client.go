@@ -59,8 +59,9 @@ func NewCheckStaffChUserRequest() (request *CheckStaffChUserRequest) {
 func NewCheckStaffChUserResponse() (response *CheckStaffChUserResponse) {
     response = &CheckStaffChUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckStaffChUser
@@ -109,8 +110,9 @@ func NewCopyActivityChannelRequest() (request *CopyActivityChannelRequest) {
 func NewCopyActivityChannelResponse() (response *CopyActivityChannelResponse) {
     response = &CopyActivityChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyActivityChannel
@@ -161,8 +163,9 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
 func NewCreateProjectResponse() (response *CreateProjectResponse) {
     response = &CreateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProject
@@ -213,8 +216,9 @@ func NewCreateSubProjectRequest() (request *CreateSubProjectRequest) {
 func NewCreateSubProjectResponse() (response *CreateSubProjectResponse) {
     response = &CreateSubProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubProject
@@ -265,8 +269,9 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
 func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
     response = &DeleteProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProject
@@ -313,8 +318,9 @@ func NewDescribeCustomerRequest() (request *DescribeCustomerRequest) {
 func NewDescribeCustomerResponse() (response *DescribeCustomerResponse) {
     response = &DescribeCustomerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomer
@@ -361,8 +367,9 @@ func NewDescribeCustomersRequest() (request *DescribeCustomersRequest) {
 func NewDescribeCustomersResponse() (response *DescribeCustomersResponse) {
     response = &DescribeCustomersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomers
@@ -409,8 +416,9 @@ func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
 func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
     response = &DescribeProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProject
@@ -457,8 +465,9 @@ func NewDescribeProjectStockRequest() (request *DescribeProjectStockRequest) {
 func NewDescribeProjectStockResponse() (response *DescribeProjectStockResponse) {
     response = &DescribeProjectStockResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectStock
@@ -505,8 +514,9 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
 func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
     response = &DescribeProjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjects
@@ -553,8 +563,9 @@ func NewDescribeResourceTemplateHeadersRequest() (request *DescribeResourceTempl
 func NewDescribeResourceTemplateHeadersResponse() (response *DescribeResourceTemplateHeadersResponse) {
     response = &DescribeResourceTemplateHeadersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTemplateHeaders
@@ -603,8 +614,9 @@ func NewDescribeSubProjectRequest() (request *DescribeSubProjectRequest) {
 func NewDescribeSubProjectResponse() (response *DescribeSubProjectResponse) {
     response = &DescribeSubProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubProject
@@ -653,8 +665,9 @@ func NewExpireFlowRequest() (request *ExpireFlowRequest) {
 func NewExpireFlowResponse() (response *ExpireFlowResponse) {
     response = &ExpireFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExpireFlow
@@ -703,8 +716,9 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
 func NewModifyProjectResponse() (response *ModifyProjectResponse) {
     response = &ModifyProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProject
@@ -753,8 +767,9 @@ func NewOffLineProjectRequest() (request *OffLineProjectRequest) {
 func NewOffLineProjectResponse() (response *OffLineProjectResponse) {
     response = &OffLineProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OffLineProject
@@ -801,8 +816,9 @@ func NewReplenishProjectStockRequest() (request *ReplenishProjectStockRequest) {
 func NewReplenishProjectStockResponse() (response *ReplenishProjectStockResponse) {
     response = &ReplenishProjectStockResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReplenishProjectStock
@@ -849,8 +865,9 @@ func NewSendWxTouchTaskRequest() (request *SendWxTouchTaskRequest) {
 func NewSendWxTouchTaskResponse() (response *SendWxTouchTaskResponse) {
     response = &SendWxTouchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendWxTouchTask

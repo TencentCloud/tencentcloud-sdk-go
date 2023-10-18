@@ -59,8 +59,9 @@ func NewApplyMarketComponentRequest() (request *ApplyMarketComponentRequest) {
 func NewApplyMarketComponentResponse() (response *ApplyMarketComponentResponse) {
     response = &ApplyMarketComponentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyMarketComponent
@@ -131,8 +132,9 @@ func NewBuildMessageRouteRequest() (request *BuildMessageRouteRequest) {
 func NewBuildMessageRouteResponse() (response *BuildMessageRouteResponse) {
     response = &BuildMessageRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BuildMessageRoute
@@ -203,8 +205,9 @@ func NewCreateApplicationVisualizationRequest() (request *CreateApplicationVisua
 func NewCreateApplicationVisualizationResponse() (response *CreateApplicationVisualizationResponse) {
     response = &CreateApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApplicationVisualization
@@ -275,8 +278,9 @@ func NewCreateConfigMapRequest() (request *CreateConfigMapRequest) {
 func NewCreateConfigMapResponse() (response *CreateConfigMapResponse) {
     response = &CreateConfigMapResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigMap
@@ -347,8 +351,9 @@ func NewCreateEdgeNodeRequest() (request *CreateEdgeNodeRequest) {
 func NewCreateEdgeNodeResponse() (response *CreateEdgeNodeResponse) {
     response = &CreateEdgeNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeNode
@@ -421,8 +426,9 @@ func NewCreateEdgeNodeBatchRequest() (request *CreateEdgeNodeBatchRequest) {
 func NewCreateEdgeNodeBatchResponse() (response *CreateEdgeNodeBatchResponse) {
     response = &CreateEdgeNodeBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeNodeBatch
@@ -507,8 +513,9 @@ func NewCreateEdgeNodeGroupRequest() (request *CreateEdgeNodeGroupRequest) {
 func NewCreateEdgeNodeGroupResponse() (response *CreateEdgeNodeGroupResponse) {
     response = &CreateEdgeNodeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeNodeGroup
@@ -579,8 +586,9 @@ func NewCreateEdgeNodeUnitTemplateRequest() (request *CreateEdgeNodeUnitTemplate
 func NewCreateEdgeNodeUnitTemplateResponse() (response *CreateEdgeNodeUnitTemplateResponse) {
     response = &CreateEdgeNodeUnitTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeNodeUnitTemplate
@@ -651,8 +659,9 @@ func NewCreateEdgeUnitApplicationVisualizationRequest() (request *CreateEdgeUnit
 func NewCreateEdgeUnitApplicationVisualizationResponse() (response *CreateEdgeUnitApplicationVisualizationResponse) {
     response = &CreateEdgeUnitApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeUnitApplicationVisualization
@@ -723,8 +732,9 @@ func NewCreateEdgeUnitApplicationYamlRequest() (request *CreateEdgeUnitApplicati
 func NewCreateEdgeUnitApplicationYamlResponse() (response *CreateEdgeUnitApplicationYamlResponse) {
     response = &CreateEdgeUnitApplicationYamlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeUnitApplicationYaml
@@ -795,8 +805,9 @@ func NewCreateEdgeUnitCloudRequest() (request *CreateEdgeUnitCloudRequest) {
 func NewCreateEdgeUnitCloudResponse() (response *CreateEdgeUnitCloudResponse) {
     response = &CreateEdgeUnitCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeUnitCloud
@@ -881,8 +892,9 @@ func NewCreateEdgeUnitDevicesRequest() (request *CreateEdgeUnitDevicesRequest) {
 func NewCreateEdgeUnitDevicesResponse() (response *CreateEdgeUnitDevicesResponse) {
     response = &CreateEdgeUnitDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgeUnitDevices
@@ -953,8 +965,9 @@ func NewCreateIotDeviceRequest() (request *CreateIotDeviceRequest) {
 func NewCreateIotDeviceResponse() (response *CreateIotDeviceResponse) {
     response = &CreateIotDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIotDevice
@@ -1025,8 +1038,9 @@ func NewCreateMessageRouteRequest() (request *CreateMessageRouteRequest) {
 func NewCreateMessageRouteResponse() (response *CreateMessageRouteResponse) {
     response = &CreateMessageRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMessageRoute
@@ -1097,8 +1111,9 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
 func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     response = &CreateNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNamespace
@@ -1169,8 +1184,9 @@ func NewCreateSecretRequest() (request *CreateSecretRequest) {
 func NewCreateSecretResponse() (response *CreateSecretResponse) {
     response = &CreateSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSecret
@@ -1241,8 +1257,9 @@ func NewCreateUpdateNodeUnitRequest() (request *CreateUpdateNodeUnitRequest) {
 func NewCreateUpdateNodeUnitResponse() (response *CreateUpdateNodeUnitResponse) {
     response = &CreateUpdateNodeUnitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUpdateNodeUnit
@@ -1313,8 +1330,9 @@ func NewCreateUserTokenRequest() (request *CreateUserTokenRequest) {
 func NewCreateUserTokenResponse() (response *CreateUserTokenResponse) {
     response = &CreateUserTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserToken
@@ -1385,8 +1403,9 @@ func NewDeleteApplicationsRequest() (request *DeleteApplicationsRequest) {
 func NewDeleteApplicationsResponse() (response *DeleteApplicationsResponse) {
     response = &DeleteApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApplications
@@ -1471,8 +1490,9 @@ func NewDeleteConfigMapRequest() (request *DeleteConfigMapRequest) {
 func NewDeleteConfigMapResponse() (response *DeleteConfigMapResponse) {
     response = &DeleteConfigMapResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfigMap
@@ -1543,8 +1563,9 @@ func NewDeleteEdgeNodeGroupRequest() (request *DeleteEdgeNodeGroupRequest) {
 func NewDeleteEdgeNodeGroupResponse() (response *DeleteEdgeNodeGroupResponse) {
     response = &DeleteEdgeNodeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeNodeGroup
@@ -1615,8 +1636,9 @@ func NewDeleteEdgeNodeUnitTemplatesRequest() (request *DeleteEdgeNodeUnitTemplat
 func NewDeleteEdgeNodeUnitTemplatesResponse() (response *DeleteEdgeNodeUnitTemplatesResponse) {
     response = &DeleteEdgeNodeUnitTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeNodeUnitTemplates
@@ -1687,8 +1709,9 @@ func NewDeleteEdgeNodesRequest() (request *DeleteEdgeNodesRequest) {
 func NewDeleteEdgeNodesResponse() (response *DeleteEdgeNodesResponse) {
     response = &DeleteEdgeNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeNodes
@@ -1759,8 +1782,9 @@ func NewDeleteEdgeUnitApplicationsRequest() (request *DeleteEdgeUnitApplications
 func NewDeleteEdgeUnitApplicationsResponse() (response *DeleteEdgeUnitApplicationsResponse) {
     response = &DeleteEdgeUnitApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeUnitApplications
@@ -1831,8 +1855,9 @@ func NewDeleteEdgeUnitCloudRequest() (request *DeleteEdgeUnitCloudRequest) {
 func NewDeleteEdgeUnitCloudResponse() (response *DeleteEdgeUnitCloudResponse) {
     response = &DeleteEdgeUnitCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeUnitCloud
@@ -1917,8 +1942,9 @@ func NewDeleteEdgeUnitDeployGridItemRequest() (request *DeleteEdgeUnitDeployGrid
 func NewDeleteEdgeUnitDeployGridItemResponse() (response *DeleteEdgeUnitDeployGridItemResponse) {
     response = &DeleteEdgeUnitDeployGridItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeUnitDeployGridItem
@@ -1989,8 +2015,9 @@ func NewDeleteEdgeUnitDevicesRequest() (request *DeleteEdgeUnitDevicesRequest) {
 func NewDeleteEdgeUnitDevicesResponse() (response *DeleteEdgeUnitDevicesResponse) {
     response = &DeleteEdgeUnitDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeUnitDevices
@@ -2061,8 +2088,9 @@ func NewDeleteEdgeUnitPodRequest() (request *DeleteEdgeUnitPodRequest) {
 func NewDeleteEdgeUnitPodResponse() (response *DeleteEdgeUnitPodResponse) {
     response = &DeleteEdgeUnitPodResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEdgeUnitPod
@@ -2133,8 +2161,9 @@ func NewDeleteIotDeviceRequest() (request *DeleteIotDeviceRequest) {
 func NewDeleteIotDeviceResponse() (response *DeleteIotDeviceResponse) {
     response = &DeleteIotDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIotDevice
@@ -2205,8 +2234,9 @@ func NewDeleteIotDeviceBatchRequest() (request *DeleteIotDeviceBatchRequest) {
 func NewDeleteIotDeviceBatchResponse() (response *DeleteIotDeviceBatchResponse) {
     response = &DeleteIotDeviceBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIotDeviceBatch
@@ -2277,8 +2307,9 @@ func NewDeleteMessageRouteRequest() (request *DeleteMessageRouteRequest) {
 func NewDeleteMessageRouteResponse() (response *DeleteMessageRouteResponse) {
     response = &DeleteMessageRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMessageRoute
@@ -2349,8 +2380,9 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
 func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     response = &DeleteNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNamespace
@@ -2421,8 +2453,9 @@ func NewDeleteNodeUnitRequest() (request *DeleteNodeUnitRequest) {
 func NewDeleteNodeUnitResponse() (response *DeleteNodeUnitResponse) {
     response = &DeleteNodeUnitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNodeUnit
@@ -2493,8 +2526,9 @@ func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
 func NewDeleteSecretResponse() (response *DeleteSecretResponse) {
     response = &DeleteSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecret
@@ -2565,8 +2599,9 @@ func NewDescribeApplicationVisualizationRequest() (request *DescribeApplicationV
 func NewDescribeApplicationVisualizationResponse() (response *DescribeApplicationVisualizationResponse) {
     response = &DescribeApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationVisualization
@@ -2637,8 +2672,9 @@ func NewDescribeApplicationYamlRequest() (request *DescribeApplicationYamlReques
 func NewDescribeApplicationYamlResponse() (response *DescribeApplicationYamlResponse) {
     response = &DescribeApplicationYamlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationYaml
@@ -2721,8 +2757,9 @@ func NewDescribeApplicationYamlErrorRequest() (request *DescribeApplicationYamlE
 func NewDescribeApplicationYamlErrorResponse() (response *DescribeApplicationYamlErrorResponse) {
     response = &DescribeApplicationYamlErrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationYamlError
@@ -2793,8 +2830,9 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
 func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
     response = &DescribeApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplications
@@ -2879,8 +2917,9 @@ func NewDescribeConfigMapRequest() (request *DescribeConfigMapRequest) {
 func NewDescribeConfigMapResponse() (response *DescribeConfigMapResponse) {
     response = &DescribeConfigMapResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigMap
@@ -2951,8 +2990,9 @@ func NewDescribeConfigMapYamlErrorRequest() (request *DescribeConfigMapYamlError
 func NewDescribeConfigMapYamlErrorResponse() (response *DescribeConfigMapYamlErrorResponse) {
     response = &DescribeConfigMapYamlErrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigMapYamlError
@@ -3023,8 +3063,9 @@ func NewDescribeConfigMapsRequest() (request *DescribeConfigMapsRequest) {
 func NewDescribeConfigMapsResponse() (response *DescribeConfigMapsResponse) {
     response = &DescribeConfigMapsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigMaps
@@ -3095,8 +3136,9 @@ func NewDescribeDracoEdgeNodeInstallerRequest() (request *DescribeDracoEdgeNodeI
 func NewDescribeDracoEdgeNodeInstallerResponse() (response *DescribeDracoEdgeNodeInstallerResponse) {
     response = &DescribeDracoEdgeNodeInstallerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDracoEdgeNodeInstaller
@@ -3177,8 +3219,9 @@ func NewDescribeEdgeAgentNodeInstallerRequest() (request *DescribeEdgeAgentNodeI
 func NewDescribeEdgeAgentNodeInstallerResponse() (response *DescribeEdgeAgentNodeInstallerResponse) {
     response = &DescribeEdgeAgentNodeInstallerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeAgentNodeInstaller
@@ -3249,8 +3292,9 @@ func NewDescribeEdgeDefaultVpcRequest() (request *DescribeEdgeDefaultVpcRequest)
 func NewDescribeEdgeDefaultVpcResponse() (response *DescribeEdgeDefaultVpcResponse) {
     response = &DescribeEdgeDefaultVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeDefaultVpc
@@ -3325,8 +3369,9 @@ func NewDescribeEdgeNodeRequest() (request *DescribeEdgeNodeRequest) {
 func NewDescribeEdgeNodeResponse() (response *DescribeEdgeNodeResponse) {
     response = &DescribeEdgeNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeNode
@@ -3397,8 +3442,9 @@ func NewDescribeEdgeNodePodContainersRequest() (request *DescribeEdgeNodePodCont
 func NewDescribeEdgeNodePodContainersResponse() (response *DescribeEdgeNodePodContainersResponse) {
     response = &DescribeEdgeNodePodContainersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeNodePodContainers
@@ -3469,8 +3515,9 @@ func NewDescribeEdgeNodePodsRequest() (request *DescribeEdgeNodePodsRequest) {
 func NewDescribeEdgeNodePodsResponse() (response *DescribeEdgeNodePodsResponse) {
     response = &DescribeEdgeNodePodsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeNodePods
@@ -3541,8 +3588,9 @@ func NewDescribeEdgeNodeRemarkListRequest() (request *DescribeEdgeNodeRemarkList
 func NewDescribeEdgeNodeRemarkListResponse() (response *DescribeEdgeNodeRemarkListResponse) {
     response = &DescribeEdgeNodeRemarkListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeNodeRemarkList
@@ -3627,8 +3675,9 @@ func NewDescribeEdgeNodesRequest() (request *DescribeEdgeNodesRequest) {
 func NewDescribeEdgeNodesResponse() (response *DescribeEdgeNodesResponse) {
     response = &DescribeEdgeNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeNodes
@@ -3699,8 +3748,9 @@ func NewDescribeEdgeOperationLogsRequest() (request *DescribeEdgeOperationLogsRe
 func NewDescribeEdgeOperationLogsResponse() (response *DescribeEdgeOperationLogsResponse) {
     response = &DescribeEdgeOperationLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeOperationLogs
@@ -3771,8 +3821,9 @@ func NewDescribeEdgePodRequest() (request *DescribeEdgePodRequest) {
 func NewDescribeEdgePodResponse() (response *DescribeEdgePodResponse) {
     response = &DescribeEdgePodResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgePod
@@ -3843,8 +3894,9 @@ func NewDescribeEdgeSnNodesRequest() (request *DescribeEdgeSnNodesRequest) {
 func NewDescribeEdgeSnNodesResponse() (response *DescribeEdgeSnNodesResponse) {
     response = &DescribeEdgeSnNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeSnNodes
@@ -3917,8 +3969,9 @@ func NewDescribeEdgeUnitApplicationEventsRequest() (request *DescribeEdgeUnitApp
 func NewDescribeEdgeUnitApplicationEventsResponse() (response *DescribeEdgeUnitApplicationEventsResponse) {
     response = &DescribeEdgeUnitApplicationEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationEvents
@@ -3989,8 +4042,9 @@ func NewDescribeEdgeUnitApplicationLogsRequest() (request *DescribeEdgeUnitAppli
 func NewDescribeEdgeUnitApplicationLogsResponse() (response *DescribeEdgeUnitApplicationLogsResponse) {
     response = &DescribeEdgeUnitApplicationLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationLogs
@@ -4061,8 +4115,9 @@ func NewDescribeEdgeUnitApplicationPodContainersRequest() (request *DescribeEdge
 func NewDescribeEdgeUnitApplicationPodContainersResponse() (response *DescribeEdgeUnitApplicationPodContainersResponse) {
     response = &DescribeEdgeUnitApplicationPodContainersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationPodContainers
@@ -4133,8 +4188,9 @@ func NewDescribeEdgeUnitApplicationPodsRequest() (request *DescribeEdgeUnitAppli
 func NewDescribeEdgeUnitApplicationPodsResponse() (response *DescribeEdgeUnitApplicationPodsResponse) {
     response = &DescribeEdgeUnitApplicationPodsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationPods
@@ -4205,8 +4261,9 @@ func NewDescribeEdgeUnitApplicationVisualizationRequest() (request *DescribeEdge
 func NewDescribeEdgeUnitApplicationVisualizationResponse() (response *DescribeEdgeUnitApplicationVisualizationResponse) {
     response = &DescribeEdgeUnitApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationVisualization
@@ -4277,8 +4334,9 @@ func NewDescribeEdgeUnitApplicationYamlRequest() (request *DescribeEdgeUnitAppli
 func NewDescribeEdgeUnitApplicationYamlResponse() (response *DescribeEdgeUnitApplicationYamlResponse) {
     response = &DescribeEdgeUnitApplicationYamlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationYaml
@@ -4349,8 +4407,9 @@ func NewDescribeEdgeUnitApplicationYamlErrorRequest() (request *DescribeEdgeUnit
 func NewDescribeEdgeUnitApplicationYamlErrorResponse() (response *DescribeEdgeUnitApplicationYamlErrorResponse) {
     response = &DescribeEdgeUnitApplicationYamlErrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplicationYamlError
@@ -4421,8 +4480,9 @@ func NewDescribeEdgeUnitApplicationsRequest() (request *DescribeEdgeUnitApplicat
 func NewDescribeEdgeUnitApplicationsResponse() (response *DescribeEdgeUnitApplicationsResponse) {
     response = &DescribeEdgeUnitApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitApplications
@@ -4493,8 +4553,9 @@ func NewDescribeEdgeUnitCloudRequest() (request *DescribeEdgeUnitCloudRequest) {
 func NewDescribeEdgeUnitCloudResponse() (response *DescribeEdgeUnitCloudResponse) {
     response = &DescribeEdgeUnitCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitCloud
@@ -4579,8 +4640,9 @@ func NewDescribeEdgeUnitDeployGridRequest() (request *DescribeEdgeUnitDeployGrid
 func NewDescribeEdgeUnitDeployGridResponse() (response *DescribeEdgeUnitDeployGridResponse) {
     response = &DescribeEdgeUnitDeployGridResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitDeployGrid
@@ -4651,8 +4713,9 @@ func NewDescribeEdgeUnitDeployGridItemRequest() (request *DescribeEdgeUnitDeploy
 func NewDescribeEdgeUnitDeployGridItemResponse() (response *DescribeEdgeUnitDeployGridItemResponse) {
     response = &DescribeEdgeUnitDeployGridItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitDeployGridItem
@@ -4723,8 +4786,9 @@ func NewDescribeEdgeUnitDeployGridItemYamlRequest() (request *DescribeEdgeUnitDe
 func NewDescribeEdgeUnitDeployGridItemYamlResponse() (response *DescribeEdgeUnitDeployGridItemYamlResponse) {
     response = &DescribeEdgeUnitDeployGridItemYamlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitDeployGridItemYaml
@@ -4795,8 +4859,9 @@ func NewDescribeEdgeUnitExtraRequest() (request *DescribeEdgeUnitExtraRequest) {
 func NewDescribeEdgeUnitExtraResponse() (response *DescribeEdgeUnitExtraResponse) {
     response = &DescribeEdgeUnitExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitExtra
@@ -4867,8 +4932,9 @@ func NewDescribeEdgeUnitGridEventsRequest() (request *DescribeEdgeUnitGridEvents
 func NewDescribeEdgeUnitGridEventsResponse() (response *DescribeEdgeUnitGridEventsResponse) {
     response = &DescribeEdgeUnitGridEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitGridEvents
@@ -4939,8 +5005,9 @@ func NewDescribeEdgeUnitGridPodsRequest() (request *DescribeEdgeUnitGridPodsRequ
 func NewDescribeEdgeUnitGridPodsResponse() (response *DescribeEdgeUnitGridPodsResponse) {
     response = &DescribeEdgeUnitGridPodsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitGridPods
@@ -5011,8 +5078,9 @@ func NewDescribeEdgeUnitMonitorStatusRequest() (request *DescribeEdgeUnitMonitor
 func NewDescribeEdgeUnitMonitorStatusResponse() (response *DescribeEdgeUnitMonitorStatusResponse) {
     response = &DescribeEdgeUnitMonitorStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitMonitorStatus
@@ -5083,8 +5151,9 @@ func NewDescribeEdgeUnitNodeGroupRequest() (request *DescribeEdgeUnitNodeGroupRe
 func NewDescribeEdgeUnitNodeGroupResponse() (response *DescribeEdgeUnitNodeGroupResponse) {
     response = &DescribeEdgeUnitNodeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitNodeGroup
@@ -5169,8 +5238,9 @@ func NewDescribeEdgeUnitNodeUnitTemplatesRequest() (request *DescribeEdgeUnitNod
 func NewDescribeEdgeUnitNodeUnitTemplatesResponse() (response *DescribeEdgeUnitNodeUnitTemplatesResponse) {
     response = &DescribeEdgeUnitNodeUnitTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitNodeUnitTemplates
@@ -5241,8 +5311,9 @@ func NewDescribeEdgeUnitsCloudRequest() (request *DescribeEdgeUnitsCloudRequest)
 func NewDescribeEdgeUnitsCloudResponse() (response *DescribeEdgeUnitsCloudResponse) {
     response = &DescribeEdgeUnitsCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeUnitsCloud
@@ -5325,8 +5396,9 @@ func NewDescribeIotDeviceRequest() (request *DescribeIotDeviceRequest) {
 func NewDescribeIotDeviceResponse() (response *DescribeIotDeviceResponse) {
     response = &DescribeIotDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIotDevice
@@ -5397,8 +5469,9 @@ func NewDescribeIotDevicesRequest() (request *DescribeIotDevicesRequest) {
 func NewDescribeIotDevicesResponse() (response *DescribeIotDevicesResponse) {
     response = &DescribeIotDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIotDevices
@@ -5469,8 +5542,9 @@ func NewDescribeMessageRouteListRequest() (request *DescribeMessageRouteListRequ
 func NewDescribeMessageRouteListResponse() (response *DescribeMessageRouteListResponse) {
     response = &DescribeMessageRouteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMessageRouteList
@@ -5541,8 +5615,9 @@ func NewDescribeMonitorMetricsRequest() (request *DescribeMonitorMetricsRequest)
 func NewDescribeMonitorMetricsResponse() (response *DescribeMonitorMetricsResponse) {
     response = &DescribeMonitorMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMonitorMetrics
@@ -5613,8 +5688,9 @@ func NewDescribeNamespaceRequest() (request *DescribeNamespaceRequest) {
 func NewDescribeNamespaceResponse() (response *DescribeNamespaceResponse) {
     response = &DescribeNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNamespace
@@ -5685,8 +5761,9 @@ func NewDescribeNamespaceResourcesRequest() (request *DescribeNamespaceResources
 func NewDescribeNamespaceResourcesResponse() (response *DescribeNamespaceResourcesResponse) {
     response = &DescribeNamespaceResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNamespaceResources
@@ -5757,8 +5834,9 @@ func NewDescribeNamespacesRequest() (request *DescribeNamespacesRequest) {
 func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
     response = &DescribeNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNamespaces
@@ -5829,8 +5907,9 @@ func NewDescribeNodeUnitRequest() (request *DescribeNodeUnitRequest) {
 func NewDescribeNodeUnitResponse() (response *DescribeNodeUnitResponse) {
     response = &DescribeNodeUnitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNodeUnit
@@ -5901,8 +5980,9 @@ func NewDescribeNodeUnitTemplateOnNodeGroupRequest() (request *DescribeNodeUnitT
 func NewDescribeNodeUnitTemplateOnNodeGroupResponse() (response *DescribeNodeUnitTemplateOnNodeGroupResponse) {
     response = &DescribeNodeUnitTemplateOnNodeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNodeUnitTemplateOnNodeGroup
@@ -5973,8 +6053,9 @@ func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
 func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
     response = &DescribeSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecret
@@ -6045,8 +6126,9 @@ func NewDescribeSecretYamlErrorRequest() (request *DescribeSecretYamlErrorReques
 func NewDescribeSecretYamlErrorResponse() (response *DescribeSecretYamlErrorResponse) {
     response = &DescribeSecretYamlErrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecretYamlError
@@ -6117,8 +6199,9 @@ func NewDescribeSecretsRequest() (request *DescribeSecretsRequest) {
 func NewDescribeSecretsResponse() (response *DescribeSecretsResponse) {
     response = &DescribeSecretsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecrets
@@ -6189,8 +6272,9 @@ func NewDescribeYeheResourceLimitRequest() (request *DescribeYeheResourceLimitRe
 func NewDescribeYeheResourceLimitResponse() (response *DescribeYeheResourceLimitResponse) {
     response = &DescribeYeheResourceLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeYeheResourceLimit
@@ -6261,8 +6345,9 @@ func NewGetMarketComponentRequest() (request *GetMarketComponentRequest) {
 func NewGetMarketComponentResponse() (response *GetMarketComponentResponse) {
     response = &GetMarketComponentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetMarketComponent
@@ -6333,8 +6418,9 @@ func NewGetMarketComponentListRequest() (request *GetMarketComponentListRequest)
 func NewGetMarketComponentListResponse() (response *GetMarketComponentListResponse) {
     response = &GetMarketComponentListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetMarketComponentList
@@ -6405,8 +6491,9 @@ func NewModifyApplicationBasicInfoRequest() (request *ModifyApplicationBasicInfo
 func NewModifyApplicationBasicInfoResponse() (response *ModifyApplicationBasicInfoResponse) {
     response = &ModifyApplicationBasicInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationBasicInfo
@@ -6491,8 +6578,9 @@ func NewModifyApplicationVisualizationRequest() (request *ModifyApplicationVisua
 func NewModifyApplicationVisualizationResponse() (response *ModifyApplicationVisualizationResponse) {
     response = &ModifyApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplicationVisualization
@@ -6563,8 +6651,9 @@ func NewModifyConfigMapRequest() (request *ModifyConfigMapRequest) {
 func NewModifyConfigMapResponse() (response *ModifyConfigMapResponse) {
     response = &ModifyConfigMapResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConfigMap
@@ -6635,8 +6724,9 @@ func NewModifyEdgeDracoNodeRequest() (request *ModifyEdgeDracoNodeRequest) {
 func NewModifyEdgeDracoNodeResponse() (response *ModifyEdgeDracoNodeResponse) {
     response = &ModifyEdgeDracoNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeDracoNode
@@ -6721,8 +6811,9 @@ func NewModifyEdgeNodeLabelsRequest() (request *ModifyEdgeNodeLabelsRequest) {
 func NewModifyEdgeNodeLabelsResponse() (response *ModifyEdgeNodeLabelsResponse) {
     response = &ModifyEdgeNodeLabelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeNodeLabels
@@ -6793,8 +6884,9 @@ func NewModifyEdgeUnitRequest() (request *ModifyEdgeUnitRequest) {
 func NewModifyEdgeUnitResponse() (response *ModifyEdgeUnitResponse) {
     response = &ModifyEdgeUnitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnit
@@ -6879,8 +6971,9 @@ func NewModifyEdgeUnitApplicationBasicInfoRequest() (request *ModifyEdgeUnitAppl
 func NewModifyEdgeUnitApplicationBasicInfoResponse() (response *ModifyEdgeUnitApplicationBasicInfoResponse) {
     response = &ModifyEdgeUnitApplicationBasicInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnitApplicationBasicInfo
@@ -6951,8 +7044,9 @@ func NewModifyEdgeUnitApplicationVisualizationRequest() (request *ModifyEdgeUnit
 func NewModifyEdgeUnitApplicationVisualizationResponse() (response *ModifyEdgeUnitApplicationVisualizationResponse) {
     response = &ModifyEdgeUnitApplicationVisualizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnitApplicationVisualization
@@ -7023,8 +7117,9 @@ func NewModifyEdgeUnitApplicationYamlRequest() (request *ModifyEdgeUnitApplicati
 func NewModifyEdgeUnitApplicationYamlResponse() (response *ModifyEdgeUnitApplicationYamlResponse) {
     response = &ModifyEdgeUnitApplicationYamlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnitApplicationYaml
@@ -7095,8 +7190,9 @@ func NewModifyEdgeUnitCloudApiRequest() (request *ModifyEdgeUnitCloudApiRequest)
 func NewModifyEdgeUnitCloudApiResponse() (response *ModifyEdgeUnitCloudApiResponse) {
     response = &ModifyEdgeUnitCloudApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnitCloudApi
@@ -7143,8 +7239,9 @@ func NewModifyEdgeUnitDeployGridItemRequest() (request *ModifyEdgeUnitDeployGrid
 func NewModifyEdgeUnitDeployGridItemResponse() (response *ModifyEdgeUnitDeployGridItemResponse) {
     response = &ModifyEdgeUnitDeployGridItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEdgeUnitDeployGridItem
@@ -7215,8 +7312,9 @@ func NewModifyIotDeviceRequest() (request *ModifyIotDeviceRequest) {
 func NewModifyIotDeviceResponse() (response *ModifyIotDeviceResponse) {
     response = &ModifyIotDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyIotDevice
@@ -7287,8 +7385,9 @@ func NewModifyNodeUnitTemplateRequest() (request *ModifyNodeUnitTemplateRequest)
 func NewModifyNodeUnitTemplateResponse() (response *ModifyNodeUnitTemplateResponse) {
     response = &ModifyNodeUnitTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNodeUnitTemplate
@@ -7359,8 +7458,9 @@ func NewModifySecretRequest() (request *ModifySecretRequest) {
 func NewModifySecretResponse() (response *ModifySecretResponse) {
     response = &ModifySecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySecret
@@ -7431,8 +7531,9 @@ func NewRedeployEdgeUnitApplicationRequest() (request *RedeployEdgeUnitApplicati
 func NewRedeployEdgeUnitApplicationResponse() (response *RedeployEdgeUnitApplicationResponse) {
     response = &RedeployEdgeUnitApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RedeployEdgeUnitApplication
@@ -7503,8 +7604,9 @@ func NewSetRouteOnOffRequest() (request *SetRouteOnOffRequest) {
 func NewSetRouteOnOffResponse() (response *SetRouteOnOffResponse) {
     response = &SetRouteOnOffResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetRouteOnOff

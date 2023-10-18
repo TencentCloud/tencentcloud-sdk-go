@@ -59,8 +59,9 @@ func NewDescribeFraudBaseRequest() (request *DescribeFraudBaseRequest) {
 func NewDescribeFraudBaseResponse() (response *DescribeFraudBaseResponse) {
     response = &DescribeFraudBaseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFraudBase
@@ -107,8 +108,9 @@ func NewDescribeFraudPremiumRequest() (request *DescribeFraudPremiumRequest) {
 func NewDescribeFraudPremiumResponse() (response *DescribeFraudPremiumResponse) {
     response = &DescribeFraudPremiumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFraudPremium
@@ -157,8 +159,9 @@ func NewDescribeFraudUltimateRequest() (request *DescribeFraudUltimateRequest) {
 func NewDescribeFraudUltimateResponse() (response *DescribeFraudUltimateResponse) {
     response = &DescribeFraudUltimateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFraudUltimate
@@ -207,8 +210,9 @@ func NewDescribeTrustedIDRequest() (request *DescribeTrustedIDRequest) {
 func NewDescribeTrustedIDResponse() (response *DescribeTrustedIDResponse) {
     response = &DescribeTrustedIDResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrustedID

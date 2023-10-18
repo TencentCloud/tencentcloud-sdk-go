@@ -9616,6 +9616,9 @@ type VerifyPdfResponseParams struct {
 	// 验签序列号, 为11为数组组成的字符串
 	VerifySerialNo *string `json:"VerifySerialNo,omitnil" name:"VerifySerialNo"`
 
+	// 合同文件MD5哈希值
+	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil" name:"PdfResourceMd5"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

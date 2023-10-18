@@ -59,8 +59,9 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
 func NewCreateGroupResponse() (response *CreateGroupResponse) {
     response = &CreateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroup
@@ -167,8 +168,9 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
 func NewCreatePersonResponse() (response *CreatePersonResponse) {
     response = &CreatePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePerson
@@ -293,8 +295,9 @@ func NewCreateSegmentationTaskRequest() (request *CreateSegmentationTaskRequest)
 func NewCreateSegmentationTaskResponse() (response *CreateSegmentationTaskResponse) {
     response = &CreateSegmentationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSegmentationTask
@@ -361,8 +364,9 @@ func NewCreateTraceRequest() (request *CreateTraceRequest) {
 func NewCreateTraceResponse() (response *CreateTraceResponse) {
     response = &CreateTraceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrace
@@ -473,8 +477,9 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
 func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     response = &DeleteGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroup
@@ -543,8 +548,9 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
 func NewDeletePersonResponse() (response *DeletePersonResponse) {
     response = &DeletePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePerson
@@ -611,8 +617,9 @@ func NewDescribeSegmentationTaskRequest() (request *DescribeSegmentationTaskRequ
 func NewDescribeSegmentationTaskResponse() (response *DescribeSegmentationTaskResponse) {
     response = &DescribeSegmentationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSegmentationTask
@@ -671,8 +678,9 @@ func NewDetectBodyRequest() (request *DetectBodyRequest) {
 func NewDetectBodyResponse() (response *DetectBodyResponse) {
     response = &DetectBodyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectBody
@@ -757,8 +765,9 @@ func NewDetectBodyJointsRequest() (request *DetectBodyJointsRequest) {
 func NewDetectBodyJointsResponse() (response *DetectBodyJointsResponse) {
     response = &DetectBodyJointsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectBodyJoints
@@ -845,8 +854,9 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
 func NewGetGroupListResponse() (response *GetGroupListResponse) {
     response = &GetGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGroupList
@@ -913,8 +923,9 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
 func NewGetPersonListResponse() (response *GetPersonListResponse) {
     response = &GetPersonListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPersonList
@@ -985,8 +996,9 @@ func NewGetSummaryInfoRequest() (request *GetSummaryInfoRequest) {
 func NewGetSummaryInfoResponse() (response *GetSummaryInfoResponse) {
     response = &GetSummaryInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSummaryInfo
@@ -1051,8 +1063,9 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
 func NewModifyGroupResponse() (response *ModifyGroupResponse) {
     response = &ModifyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGroup
@@ -1125,8 +1138,9 @@ func NewModifyPersonInfoRequest() (request *ModifyPersonInfoRequest) {
 func NewModifyPersonInfoResponse() (response *ModifyPersonInfoResponse) {
     response = &ModifyPersonInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonInfo
@@ -1195,8 +1209,9 @@ func NewSearchTraceRequest() (request *SearchTraceRequest) {
 func NewSearchTraceResponse() (response *SearchTraceResponse) {
     response = &SearchTraceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchTrace
@@ -1311,8 +1326,9 @@ func NewSegmentCustomizedPortraitPicRequest() (request *SegmentCustomizedPortrai
 func NewSegmentCustomizedPortraitPicResponse() (response *SegmentCustomizedPortraitPicResponse) {
     response = &SegmentCustomizedPortraitPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SegmentCustomizedPortraitPic
@@ -1403,8 +1419,9 @@ func NewSegmentPortraitPicRequest() (request *SegmentPortraitPicRequest) {
 func NewSegmentPortraitPicResponse() (response *SegmentPortraitPicResponse) {
     response = &SegmentPortraitPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SegmentPortraitPic
@@ -1497,8 +1514,9 @@ func NewTerminateSegmentationTaskRequest() (request *TerminateSegmentationTaskRe
 func NewTerminateSegmentationTaskResponse() (response *TerminateSegmentationTaskResponse) {
     response = &TerminateSegmentationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateSegmentationTask

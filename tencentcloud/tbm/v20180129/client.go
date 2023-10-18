@@ -59,8 +59,9 @@ func NewDescribeBrandCommentCountRequest() (request *DescribeBrandCommentCountRe
 func NewDescribeBrandCommentCountResponse() (response *DescribeBrandCommentCountResponse) {
     response = &DescribeBrandCommentCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandCommentCount
@@ -113,8 +114,9 @@ func NewDescribeBrandExposureRequest() (request *DescribeBrandExposureRequest) {
 func NewDescribeBrandExposureResponse() (response *DescribeBrandExposureResponse) {
     response = &DescribeBrandExposureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandExposure
@@ -169,8 +171,9 @@ func NewDescribeBrandMediaReportRequest() (request *DescribeBrandMediaReportRequ
 func NewDescribeBrandMediaReportResponse() (response *DescribeBrandMediaReportResponse) {
     response = &DescribeBrandMediaReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandMediaReport
@@ -225,8 +228,9 @@ func NewDescribeBrandNegCommentsRequest() (request *DescribeBrandNegCommentsRequ
 func NewDescribeBrandNegCommentsResponse() (response *DescribeBrandNegCommentsResponse) {
     response = &DescribeBrandNegCommentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandNegComments
@@ -277,8 +281,9 @@ func NewDescribeBrandPosCommentsRequest() (request *DescribeBrandPosCommentsRequ
 func NewDescribeBrandPosCommentsResponse() (response *DescribeBrandPosCommentsResponse) {
     response = &DescribeBrandPosCommentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandPosComments
@@ -329,8 +334,9 @@ func NewDescribeBrandSocialOpinionRequest() (request *DescribeBrandSocialOpinion
 func NewDescribeBrandSocialOpinionResponse() (response *DescribeBrandSocialOpinionResponse) {
     response = &DescribeBrandSocialOpinionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandSocialOpinion
@@ -385,8 +391,9 @@ func NewDescribeBrandSocialReportRequest() (request *DescribeBrandSocialReportRe
 func NewDescribeBrandSocialReportResponse() (response *DescribeBrandSocialReportResponse) {
     response = &DescribeBrandSocialReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBrandSocialReport
@@ -441,8 +448,9 @@ func NewDescribeIndustryNewsRequest() (request *DescribeIndustryNewsRequest) {
 func NewDescribeIndustryNewsResponse() (response *DescribeIndustryNewsResponse) {
     response = &DescribeIndustryNewsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndustryNews
@@ -497,8 +505,9 @@ func NewDescribeUserPortraitRequest() (request *DescribeUserPortraitRequest) {
 func NewDescribeUserPortraitResponse() (response *DescribeUserPortraitResponse) {
     response = &DescribeUserPortraitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserPortrait

@@ -59,8 +59,9 @@ func NewDescribeTransactionsRequest() (request *DescribeTransactionsRequest) {
 func NewDescribeTransactionsResponse() (response *DescribeTransactionsResponse) {
     response = &DescribeTransactionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTransactions

@@ -59,8 +59,9 @@ func NewClearQueueRequest() (request *ClearQueueRequest) {
 func NewClearQueueResponse() (response *ClearQueueResponse) {
     response = &ClearQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearQueue
@@ -125,8 +126,9 @@ func NewClearSubscriptionFilterTagsRequest() (request *ClearSubscriptionFilterTa
 func NewClearSubscriptionFilterTagsResponse() (response *ClearSubscriptionFilterTagsResponse) {
     response = &ClearSubscriptionFilterTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearSubscriptionFilterTags
@@ -191,8 +193,9 @@ func NewCreateQueueRequest() (request *CreateQueueRequest) {
 func NewCreateQueueResponse() (response *CreateQueueResponse) {
     response = &CreateQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateQueue
@@ -249,8 +252,9 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
 func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
     response = &CreateSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubscribe
@@ -315,8 +319,9 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
 func NewCreateTopicResponse() (response *CreateTopicResponse) {
     response = &CreateTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTopic
@@ -379,8 +384,9 @@ func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
 func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
     response = &DeleteQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteQueue
@@ -437,8 +443,9 @@ func NewDeleteSubscribeRequest() (request *DeleteSubscribeRequest) {
 func NewDeleteSubscribeResponse() (response *DeleteSubscribeResponse) {
     response = &DeleteSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSubscribe
@@ -501,8 +508,9 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
 func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     response = &DeleteTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTopic
@@ -565,8 +573,9 @@ func NewDescribeDeadLetterSourceQueuesRequest() (request *DescribeDeadLetterSour
 func NewDescribeDeadLetterSourceQueuesResponse() (response *DescribeDeadLetterSourceQueuesResponse) {
     response = &DescribeDeadLetterSourceQueuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeadLetterSourceQueues
@@ -629,8 +638,9 @@ func NewDescribeQueueDetailRequest() (request *DescribeQueueDetailRequest) {
 func NewDescribeQueueDetailResponse() (response *DescribeQueueDetailResponse) {
     response = &DescribeQueueDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQueueDetail
@@ -693,8 +703,9 @@ func NewDescribeSubscriptionDetailRequest() (request *DescribeSubscriptionDetail
 func NewDescribeSubscriptionDetailResponse() (response *DescribeSubscriptionDetailResponse) {
     response = &DescribeSubscriptionDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubscriptionDetail
@@ -759,8 +770,9 @@ func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
 func NewDescribeTopicDetailResponse() (response *DescribeTopicDetailResponse) {
     response = &DescribeTopicDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopicDetail
@@ -825,8 +837,9 @@ func NewModifyQueueAttributeRequest() (request *ModifyQueueAttributeRequest) {
 func NewModifyQueueAttributeResponse() (response *ModifyQueueAttributeResponse) {
     response = &ModifyQueueAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyQueueAttribute
@@ -891,8 +904,9 @@ func NewModifySubscriptionAttributeRequest() (request *ModifySubscriptionAttribu
 func NewModifySubscriptionAttributeResponse() (response *ModifySubscriptionAttributeResponse) {
     response = &ModifySubscriptionAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscriptionAttribute
@@ -957,8 +971,9 @@ func NewModifyTopicAttributeRequest() (request *ModifyTopicAttributeRequest) {
 func NewModifyTopicAttributeResponse() (response *ModifyTopicAttributeResponse) {
     response = &ModifyTopicAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTopicAttribute
@@ -1021,8 +1036,9 @@ func NewRewindQueueRequest() (request *RewindQueueRequest) {
 func NewRewindQueueResponse() (response *RewindQueueResponse) {
     response = &RewindQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RewindQueue
@@ -1085,8 +1101,9 @@ func NewUnbindDeadLetterRequest() (request *UnbindDeadLetterRequest) {
 func NewUnbindDeadLetterResponse() (response *UnbindDeadLetterResponse) {
     response = &UnbindDeadLetterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindDeadLetter

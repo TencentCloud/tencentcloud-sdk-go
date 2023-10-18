@@ -59,8 +59,9 @@ func NewAnalyzeSentimentRequest() (request *AnalyzeSentimentRequest) {
 func NewAnalyzeSentimentResponse() (response *AnalyzeSentimentResponse) {
     response = &AnalyzeSentimentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AnalyzeSentiment
@@ -155,8 +156,9 @@ func NewClassifyContentRequest() (request *ClassifyContentRequest) {
 func NewClassifyContentResponse() (response *ClassifyContentResponse) {
     response = &ClassifyContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClassifyContent
@@ -251,8 +253,9 @@ func NewComposeCoupletRequest() (request *ComposeCoupletRequest) {
 func NewComposeCoupletResponse() (response *ComposeCoupletResponse) {
     response = &ComposeCoupletResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ComposeCouplet
@@ -339,8 +342,9 @@ func NewComposePoetryRequest() (request *ComposePoetryRequest) {
 func NewComposePoetryResponse() (response *ComposePoetryResponse) {
     response = &ComposePoetryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ComposePoetry
@@ -435,8 +439,9 @@ func NewEvaluateSentenceSimilarityRequest() (request *EvaluateSentenceSimilarity
 func NewEvaluateSentenceSimilarityResponse() (response *EvaluateSentenceSimilarityResponse) {
     response = &EvaluateSentenceSimilarityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EvaluateSentenceSimilarity
@@ -533,8 +538,9 @@ func NewEvaluateWordSimilarityRequest() (request *EvaluateWordSimilarityRequest)
 func NewEvaluateWordSimilarityResponse() (response *EvaluateWordSimilarityResponse) {
     response = &EvaluateWordSimilarityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EvaluateWordSimilarity
@@ -629,8 +635,9 @@ func NewGenerateKeywordSentenceRequest() (request *GenerateKeywordSentenceReques
 func NewGenerateKeywordSentenceResponse() (response *GenerateKeywordSentenceResponse) {
     response = &GenerateKeywordSentenceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateKeywordSentence
@@ -727,8 +734,9 @@ func NewParseWordsRequest() (request *ParseWordsRequest) {
 func NewParseWordsResponse() (response *ParseWordsResponse) {
     response = &ParseWordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ParseWords
@@ -823,8 +831,9 @@ func NewRetrieveSimilarWordsRequest() (request *RetrieveSimilarWordsRequest) {
 func NewRetrieveSimilarWordsResponse() (response *RetrieveSimilarWordsResponse) {
     response = &RetrieveSimilarWordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetrieveSimilarWords
@@ -919,8 +928,9 @@ func NewSentenceCorrectionRequest() (request *SentenceCorrectionRequest) {
 func NewSentenceCorrectionResponse() (response *SentenceCorrectionResponse) {
     response = &SentenceCorrectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SentenceCorrection
@@ -1017,8 +1027,9 @@ func NewTextEmbellishRequest() (request *TextEmbellishRequest) {
 func NewTextEmbellishResponse() (response *TextEmbellishResponse) {
     response = &TextEmbellishResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextEmbellish
@@ -1107,8 +1118,9 @@ func NewTextWritingRequest() (request *TextWritingRequest) {
 func NewTextWritingResponse() (response *TextWritingResponse) {
     response = &TextWritingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextWriting

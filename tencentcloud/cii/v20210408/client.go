@@ -59,8 +59,9 @@ func NewAddSubStructureTasksRequest() (request *AddSubStructureTasksRequest) {
 func NewAddSubStructureTasksResponse() (response *AddSubStructureTasksResponse) {
     response = &AddSubStructureTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddSubStructureTasks
@@ -115,8 +116,9 @@ func NewCreateAutoClassifyStructureTaskRequest() (request *CreateAutoClassifyStr
 func NewCreateAutoClassifyStructureTaskResponse() (response *CreateAutoClassifyStructureTaskResponse) {
     response = &CreateAutoClassifyStructureTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAutoClassifyStructureTask
@@ -175,8 +177,9 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
 func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
     response = &CreateStructureTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStructureTask
@@ -237,8 +240,9 @@ func NewCreateUnderwriteTaskByIdRequest() (request *CreateUnderwriteTaskByIdRequ
 func NewCreateUnderwriteTaskByIdResponse() (response *CreateUnderwriteTaskByIdResponse) {
     response = &CreateUnderwriteTaskByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUnderwriteTaskById
@@ -297,8 +301,9 @@ func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRe
 func NewDescribeMachineUnderwriteResponse() (response *DescribeMachineUnderwriteResponse) {
     response = &DescribeMachineUnderwriteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineUnderwrite
@@ -353,8 +358,9 @@ func NewDescribeQualityScoreRequest() (request *DescribeQualityScoreRequest) {
 func NewDescribeQualityScoreResponse() (response *DescribeQualityScoreResponse) {
     response = &DescribeQualityScoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQualityScore
@@ -417,8 +423,9 @@ func NewDescribeReportClassifyRequest() (request *DescribeReportClassifyRequest)
 func NewDescribeReportClassifyResponse() (response *DescribeReportClassifyResponse) {
     response = &DescribeReportClassifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReportClassify
@@ -477,8 +484,9 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
 func NewDescribeStructCompareDataResponse() (response *DescribeStructCompareDataResponse) {
     response = &DescribeStructCompareDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructCompareData
@@ -529,8 +537,9 @@ func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferen
 func NewDescribeStructureDifferenceResponse() (response *DescribeStructureDifferenceResponse) {
     response = &DescribeStructureDifferenceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructureDifference
@@ -581,8 +590,9 @@ func NewDescribeStructureResultRequest() (request *DescribeStructureResultReques
 func NewDescribeStructureResultResponse() (response *DescribeStructureResultResponse) {
     response = &DescribeStructureResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructureResult
@@ -645,8 +655,9 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
 func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskResultResponse) {
     response = &DescribeStructureTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructureTaskResult
@@ -707,8 +718,9 @@ func NewDescribeUnderwriteTaskRequest() (request *DescribeUnderwriteTaskRequest)
 func NewDescribeUnderwriteTaskResponse() (response *DescribeUnderwriteTaskResponse) {
     response = &DescribeUnderwriteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnderwriteTask
@@ -765,8 +777,9 @@ func NewUploadMedicalFileRequest() (request *UploadMedicalFileRequest) {
 func NewUploadMedicalFileResponse() (response *UploadMedicalFileResponse) {
     response = &UploadMedicalFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadMedicalFile

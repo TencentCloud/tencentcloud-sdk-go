@@ -59,8 +59,9 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
 func NewCreateJobResponse() (response *CreateJobResponse) {
     response = &CreateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateJob
@@ -125,8 +126,9 @@ func NewCreateRsgAsGroupRequest() (request *CreateRsgAsGroupRequest) {
 func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
     response = &CreateRsgAsGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRsgAsGroup
@@ -193,8 +195,9 @@ func NewCreateRuntimeRequest() (request *CreateRuntimeRequest) {
 func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
     response = &CreateRuntimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRuntime
@@ -259,8 +262,9 @@ func NewCreateServiceRequest() (request *CreateServiceRequest) {
 func NewCreateServiceResponse() (response *CreateServiceResponse) {
     response = &CreateServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateService
@@ -325,8 +329,9 @@ func NewCreateServiceConfigRequest() (request *CreateServiceConfigRequest) {
 func NewCreateServiceConfigResponse() (response *CreateServiceConfigResponse) {
     response = &CreateServiceConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateServiceConfig
@@ -391,8 +396,9 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
 func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     response = &DeleteInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteInstance
@@ -455,8 +461,9 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
 func NewDeleteJobResponse() (response *DeleteJobResponse) {
     response = &DeleteJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteJob
@@ -515,8 +522,9 @@ func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
 func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
     response = &DeleteResourceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteResourceGroup
@@ -575,8 +583,9 @@ func NewDeleteRsgAsGroupRequest() (request *DeleteRsgAsGroupRequest) {
 func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
     response = &DeleteRsgAsGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRsgAsGroup
@@ -637,8 +646,9 @@ func NewDeleteRuntimeRequest() (request *DeleteRuntimeRequest) {
 func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
     response = &DeleteRuntimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRuntime
@@ -703,8 +713,9 @@ func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
 func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
     response = &DeleteServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteService
@@ -767,8 +778,9 @@ func NewDeleteServiceConfigRequest() (request *DeleteServiceConfigRequest) {
 func NewDeleteServiceConfigResponse() (response *DeleteServiceConfigResponse) {
     response = &DeleteServiceConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteServiceConfig
@@ -831,8 +843,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -893,8 +906,9 @@ func NewDescribeResourceGroupsRequest() (request *DescribeResourceGroupsRequest)
 func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsResponse) {
     response = &DescribeResourceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceGroups
@@ -955,8 +969,9 @@ func NewDescribeRsgAsGroupActivitiesRequest() (request *DescribeRsgAsGroupActivi
 func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActivitiesResponse) {
     response = &DescribeRsgAsGroupActivitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRsgAsGroupActivities
@@ -1019,8 +1034,9 @@ func NewDescribeRsgAsGroupsRequest() (request *DescribeRsgAsGroupsRequest) {
 func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
     response = &DescribeRsgAsGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRsgAsGroups
@@ -1083,8 +1099,9 @@ func NewDescribeRuntimesRequest() (request *DescribeRuntimesRequest) {
 func NewDescribeRuntimesResponse() (response *DescribeRuntimesResponse) {
     response = &DescribeRuntimesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuntimes
@@ -1147,8 +1164,9 @@ func NewDescribeServiceConfigsRequest() (request *DescribeServiceConfigsRequest)
 func NewDescribeServiceConfigsResponse() (response *DescribeServiceConfigsResponse) {
     response = &DescribeServiceConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServiceConfigs
@@ -1211,8 +1229,9 @@ func NewDescribeServicesRequest() (request *DescribeServicesRequest) {
 func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
     response = &DescribeServicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeServices
@@ -1277,8 +1296,9 @@ func NewDisableRsgAsGroupRequest() (request *DisableRsgAsGroupRequest) {
 func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
     response = &DisableRsgAsGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableRsgAsGroup
@@ -1341,8 +1361,9 @@ func NewEnableRsgAsGroupRequest() (request *EnableRsgAsGroupRequest) {
 func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
     response = &EnableRsgAsGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableRsgAsGroup
@@ -1405,8 +1426,9 @@ func NewExposeServiceRequest() (request *ExposeServiceRequest) {
 func NewExposeServiceResponse() (response *ExposeServiceResponse) {
     response = &ExposeServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExposeService
@@ -1471,8 +1493,9 @@ func NewUpdateJobRequest() (request *UpdateJobRequest) {
 func NewUpdateJobResponse() (response *UpdateJobResponse) {
     response = &UpdateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateJob
@@ -1535,8 +1558,9 @@ func NewUpdateRsgAsGroupRequest() (request *UpdateRsgAsGroupRequest) {
 func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
     response = &UpdateRsgAsGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRsgAsGroup
@@ -1599,8 +1623,9 @@ func NewUpdateServiceRequest() (request *UpdateServiceRequest) {
 func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
     response = &UpdateServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateService

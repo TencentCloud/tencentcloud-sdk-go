@@ -59,8 +59,9 @@ func NewBindL4BackendsRequest() (request *BindL4BackendsRequest) {
 func NewBindL4BackendsResponse() (response *BindL4BackendsResponse) {
     response = &BindL4BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindL4Backends
@@ -115,8 +116,9 @@ func NewBindL7BackendsRequest() (request *BindL7BackendsRequest) {
 func NewBindL7BackendsResponse() (response *BindL7BackendsResponse) {
     response = &BindL7BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindL7Backends
@@ -171,8 +173,9 @@ func NewBindTrafficMirrorListenersRequest() (request *BindTrafficMirrorListeners
 func NewBindTrafficMirrorListenersResponse() (response *BindTrafficMirrorListenersResponse) {
     response = &BindTrafficMirrorListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindTrafficMirrorListeners
@@ -227,8 +230,9 @@ func NewBindTrafficMirrorReceiversRequest() (request *BindTrafficMirrorReceivers
 func NewBindTrafficMirrorReceiversResponse() (response *BindTrafficMirrorReceiversResponse) {
     response = &BindTrafficMirrorReceiversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindTrafficMirrorReceivers
@@ -283,8 +287,9 @@ func NewCreateL4ListenersRequest() (request *CreateL4ListenersRequest) {
 func NewCreateL4ListenersResponse() (response *CreateL4ListenersResponse) {
     response = &CreateL4ListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateL4Listeners
@@ -339,8 +344,9 @@ func NewCreateL7ListenersRequest() (request *CreateL7ListenersRequest) {
 func NewCreateL7ListenersResponse() (response *CreateL7ListenersResponse) {
     response = &CreateL7ListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateL7Listeners
@@ -395,8 +401,9 @@ func NewCreateL7RulesRequest() (request *CreateL7RulesRequest) {
 func NewCreateL7RulesResponse() (response *CreateL7RulesResponse) {
     response = &CreateL7RulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateL7Rules
@@ -451,8 +458,9 @@ func NewCreateLoadBalancersRequest() (request *CreateLoadBalancersRequest) {
 func NewCreateLoadBalancersResponse() (response *CreateLoadBalancersResponse) {
     response = &CreateLoadBalancersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLoadBalancers
@@ -507,8 +515,9 @@ func NewCreateTrafficMirrorRequest() (request *CreateTrafficMirrorRequest) {
 func NewCreateTrafficMirrorResponse() (response *CreateTrafficMirrorResponse) {
     response = &CreateTrafficMirrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrafficMirror
@@ -563,8 +572,9 @@ func NewDeleteL7DomainsRequest() (request *DeleteL7DomainsRequest) {
 func NewDeleteL7DomainsResponse() (response *DeleteL7DomainsResponse) {
     response = &DeleteL7DomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteL7Domains
@@ -619,8 +629,9 @@ func NewDeleteL7RulesRequest() (request *DeleteL7RulesRequest) {
 func NewDeleteL7RulesResponse() (response *DeleteL7RulesResponse) {
     response = &DeleteL7RulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteL7Rules
@@ -675,8 +686,9 @@ func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
 func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
     response = &DeleteListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteListeners
@@ -731,8 +743,9 @@ func NewDeleteLoadBalancerRequest() (request *DeleteLoadBalancerRequest) {
 func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
     response = &DeleteLoadBalancerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLoadBalancer
@@ -787,8 +800,9 @@ func NewDeleteTrafficMirrorRequest() (request *DeleteTrafficMirrorRequest) {
 func NewDeleteTrafficMirrorResponse() (response *DeleteTrafficMirrorResponse) {
     response = &DeleteTrafficMirrorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTrafficMirror
@@ -843,8 +857,9 @@ func NewDescribeCertDetailRequest() (request *DescribeCertDetailRequest) {
 func NewDescribeCertDetailResponse() (response *DescribeCertDetailResponse) {
     response = &DescribeCertDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCertDetail
@@ -899,8 +914,9 @@ func NewDescribeDevicesBindInfoRequest() (request *DescribeDevicesBindInfoReques
 func NewDescribeDevicesBindInfoResponse() (response *DescribeDevicesBindInfoResponse) {
     response = &DescribeDevicesBindInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevicesBindInfo
@@ -955,8 +971,9 @@ func NewDescribeL4BackendsRequest() (request *DescribeL4BackendsRequest) {
 func NewDescribeL4BackendsResponse() (response *DescribeL4BackendsResponse) {
     response = &DescribeL4BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL4Backends
@@ -1011,8 +1028,9 @@ func NewDescribeL4ListenerInfoRequest() (request *DescribeL4ListenerInfoRequest)
 func NewDescribeL4ListenerInfoResponse() (response *DescribeL4ListenerInfoResponse) {
     response = &DescribeL4ListenerInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL4ListenerInfo
@@ -1067,8 +1085,9 @@ func NewDescribeL4ListenersRequest() (request *DescribeL4ListenersRequest) {
 func NewDescribeL4ListenersResponse() (response *DescribeL4ListenersResponse) {
     response = &DescribeL4ListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL4Listeners
@@ -1123,8 +1142,9 @@ func NewDescribeL7BackendsRequest() (request *DescribeL7BackendsRequest) {
 func NewDescribeL7BackendsResponse() (response *DescribeL7BackendsResponse) {
     response = &DescribeL7BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL7Backends
@@ -1179,8 +1199,9 @@ func NewDescribeL7ListenerInfoRequest() (request *DescribeL7ListenerInfoRequest)
 func NewDescribeL7ListenerInfoResponse() (response *DescribeL7ListenerInfoResponse) {
     response = &DescribeL7ListenerInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL7ListenerInfo
@@ -1235,8 +1256,9 @@ func NewDescribeL7ListenersRequest() (request *DescribeL7ListenersRequest) {
 func NewDescribeL7ListenersResponse() (response *DescribeL7ListenersResponse) {
     response = &DescribeL7ListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL7Listeners
@@ -1291,8 +1313,9 @@ func NewDescribeL7ListenersExRequest() (request *DescribeL7ListenersExRequest) {
 func NewDescribeL7ListenersExResponse() (response *DescribeL7ListenersExResponse) {
     response = &DescribeL7ListenersExResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL7ListenersEx
@@ -1347,8 +1370,9 @@ func NewDescribeL7RulesRequest() (request *DescribeL7RulesRequest) {
 func NewDescribeL7RulesResponse() (response *DescribeL7RulesResponse) {
     response = &DescribeL7RulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeL7Rules
@@ -1403,8 +1427,9 @@ func NewDescribeLoadBalancerPortInfoRequest() (request *DescribeLoadBalancerPort
 func NewDescribeLoadBalancerPortInfoResponse() (response *DescribeLoadBalancerPortInfoResponse) {
     response = &DescribeLoadBalancerPortInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoadBalancerPortInfo
@@ -1459,8 +1484,9 @@ func NewDescribeLoadBalancerTaskResultRequest() (request *DescribeLoadBalancerTa
 func NewDescribeLoadBalancerTaskResultResponse() (response *DescribeLoadBalancerTaskResultResponse) {
     response = &DescribeLoadBalancerTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoadBalancerTaskResult
@@ -1515,8 +1541,9 @@ func NewDescribeLoadBalancersRequest() (request *DescribeLoadBalancersRequest) {
 func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse) {
     response = &DescribeLoadBalancersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLoadBalancers
@@ -1571,8 +1598,9 @@ func NewDescribeTrafficMirrorListenersRequest() (request *DescribeTrafficMirrorL
 func NewDescribeTrafficMirrorListenersResponse() (response *DescribeTrafficMirrorListenersResponse) {
     response = &DescribeTrafficMirrorListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficMirrorListeners
@@ -1627,8 +1655,9 @@ func NewDescribeTrafficMirrorReceiverHealthStatusRequest() (request *DescribeTra
 func NewDescribeTrafficMirrorReceiverHealthStatusResponse() (response *DescribeTrafficMirrorReceiverHealthStatusResponse) {
     response = &DescribeTrafficMirrorReceiverHealthStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficMirrorReceiverHealthStatus
@@ -1683,8 +1712,9 @@ func NewDescribeTrafficMirrorReceiversRequest() (request *DescribeTrafficMirrorR
 func NewDescribeTrafficMirrorReceiversResponse() (response *DescribeTrafficMirrorReceiversResponse) {
     response = &DescribeTrafficMirrorReceiversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficMirrorReceivers
@@ -1739,8 +1769,9 @@ func NewDescribeTrafficMirrorsRequest() (request *DescribeTrafficMirrorsRequest)
 func NewDescribeTrafficMirrorsResponse() (response *DescribeTrafficMirrorsResponse) {
     response = &DescribeTrafficMirrorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficMirrors
@@ -1795,8 +1826,9 @@ func NewModifyL4BackendPortRequest() (request *ModifyL4BackendPortRequest) {
 func NewModifyL4BackendPortResponse() (response *ModifyL4BackendPortResponse) {
     response = &ModifyL4BackendPortResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL4BackendPort
@@ -1851,8 +1883,9 @@ func NewModifyL4BackendProbePortRequest() (request *ModifyL4BackendProbePortRequ
 func NewModifyL4BackendProbePortResponse() (response *ModifyL4BackendProbePortResponse) {
     response = &ModifyL4BackendProbePortResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL4BackendProbePort
@@ -1907,8 +1940,9 @@ func NewModifyL4BackendWeightRequest() (request *ModifyL4BackendWeightRequest) {
 func NewModifyL4BackendWeightResponse() (response *ModifyL4BackendWeightResponse) {
     response = &ModifyL4BackendWeightResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL4BackendWeight
@@ -1963,8 +1997,9 @@ func NewModifyL4ListenerRequest() (request *ModifyL4ListenerRequest) {
 func NewModifyL4ListenerResponse() (response *ModifyL4ListenerResponse) {
     response = &ModifyL4ListenerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL4Listener
@@ -2019,8 +2054,9 @@ func NewModifyL7BackendPortRequest() (request *ModifyL7BackendPortRequest) {
 func NewModifyL7BackendPortResponse() (response *ModifyL7BackendPortResponse) {
     response = &ModifyL7BackendPortResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL7BackendPort
@@ -2075,8 +2111,9 @@ func NewModifyL7BackendWeightRequest() (request *ModifyL7BackendWeightRequest) {
 func NewModifyL7BackendWeightResponse() (response *ModifyL7BackendWeightResponse) {
     response = &ModifyL7BackendWeightResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL7BackendWeight
@@ -2131,8 +2168,9 @@ func NewModifyL7ListenerRequest() (request *ModifyL7ListenerRequest) {
 func NewModifyL7ListenerResponse() (response *ModifyL7ListenerResponse) {
     response = &ModifyL7ListenerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL7Listener
@@ -2187,8 +2225,9 @@ func NewModifyL7LocationsRequest() (request *ModifyL7LocationsRequest) {
 func NewModifyL7LocationsResponse() (response *ModifyL7LocationsResponse) {
     response = &ModifyL7LocationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyL7Locations
@@ -2243,8 +2282,9 @@ func NewModifyLoadBalancerRequest() (request *ModifyLoadBalancerRequest) {
 func NewModifyLoadBalancerResponse() (response *ModifyLoadBalancerResponse) {
     response = &ModifyLoadBalancerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoadBalancer
@@ -2299,8 +2339,9 @@ func NewModifyLoadBalancerChargeModeRequest() (request *ModifyLoadBalancerCharge
 func NewModifyLoadBalancerChargeModeResponse() (response *ModifyLoadBalancerChargeModeResponse) {
     response = &ModifyLoadBalancerChargeModeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLoadBalancerChargeMode
@@ -2355,8 +2396,9 @@ func NewReplaceCertRequest() (request *ReplaceCertRequest) {
 func NewReplaceCertResponse() (response *ReplaceCertResponse) {
     response = &ReplaceCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReplaceCert
@@ -2411,8 +2453,9 @@ func NewSetTrafficMirrorAliasRequest() (request *SetTrafficMirrorAliasRequest) {
 func NewSetTrafficMirrorAliasResponse() (response *SetTrafficMirrorAliasResponse) {
     response = &SetTrafficMirrorAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetTrafficMirrorAlias
@@ -2467,8 +2510,9 @@ func NewSetTrafficMirrorHealthSwitchRequest() (request *SetTrafficMirrorHealthSw
 func NewSetTrafficMirrorHealthSwitchResponse() (response *SetTrafficMirrorHealthSwitchResponse) {
     response = &SetTrafficMirrorHealthSwitchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetTrafficMirrorHealthSwitch
@@ -2523,8 +2567,9 @@ func NewUnbindL4BackendsRequest() (request *UnbindL4BackendsRequest) {
 func NewUnbindL4BackendsResponse() (response *UnbindL4BackendsResponse) {
     response = &UnbindL4BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindL4Backends
@@ -2579,8 +2624,9 @@ func NewUnbindL7BackendsRequest() (request *UnbindL7BackendsRequest) {
 func NewUnbindL7BackendsResponse() (response *UnbindL7BackendsResponse) {
     response = &UnbindL7BackendsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindL7Backends
@@ -2635,8 +2681,9 @@ func NewUnbindTrafficMirrorListenersRequest() (request *UnbindTrafficMirrorListe
 func NewUnbindTrafficMirrorListenersResponse() (response *UnbindTrafficMirrorListenersResponse) {
     response = &UnbindTrafficMirrorListenersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindTrafficMirrorListeners
@@ -2691,8 +2738,9 @@ func NewUnbindTrafficMirrorReceiversRequest() (request *UnbindTrafficMirrorRecei
 func NewUnbindTrafficMirrorReceiversResponse() (response *UnbindTrafficMirrorReceiversResponse) {
     response = &UnbindTrafficMirrorReceiversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindTrafficMirrorReceivers
@@ -2747,8 +2795,9 @@ func NewUploadCertRequest() (request *UploadCertRequest) {
 func NewUploadCertResponse() (response *UploadCertResponse) {
     response = &UploadCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadCert

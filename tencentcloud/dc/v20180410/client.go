@@ -59,8 +59,9 @@ func NewAcceptDirectConnectTunnelRequest() (request *AcceptDirectConnectTunnelRe
 func NewAcceptDirectConnectTunnelResponse() (response *AcceptDirectConnectTunnelResponse) {
     response = &AcceptDirectConnectTunnelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AcceptDirectConnectTunnel
@@ -117,8 +118,9 @@ func NewApplyInternetAddressRequest() (request *ApplyInternetAddressRequest) {
 func NewApplyInternetAddressResponse() (response *ApplyInternetAddressResponse) {
     response = &ApplyInternetAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyInternetAddress
@@ -165,8 +167,9 @@ func NewCreateDirectConnectRequest() (request *CreateDirectConnectRequest) {
 func NewCreateDirectConnectResponse() (response *CreateDirectConnectResponse) {
     response = &CreateDirectConnectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDirectConnect
@@ -235,8 +238,9 @@ func NewCreateDirectConnectTunnelRequest() (request *CreateDirectConnectTunnelRe
 func NewCreateDirectConnectTunnelResponse() (response *CreateDirectConnectTunnelResponse) {
     response = &CreateDirectConnectTunnelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDirectConnectTunnel
@@ -313,8 +317,9 @@ func NewDeleteDirectConnectRequest() (request *DeleteDirectConnectRequest) {
 func NewDeleteDirectConnectResponse() (response *DeleteDirectConnectResponse) {
     response = &DeleteDirectConnectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDirectConnect
@@ -381,8 +386,9 @@ func NewDeleteDirectConnectTunnelRequest() (request *DeleteDirectConnectTunnelRe
 func NewDeleteDirectConnectTunnelResponse() (response *DeleteDirectConnectTunnelResponse) {
     response = &DeleteDirectConnectTunnelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDirectConnectTunnel
@@ -439,8 +445,9 @@ func NewDescribeAccessPointsRequest() (request *DescribeAccessPointsRequest) {
 func NewDescribeAccessPointsResponse() (response *DescribeAccessPointsResponse) {
     response = &DescribeAccessPointsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessPoints
@@ -501,8 +508,9 @@ func NewDescribeDirectConnectTunnelExtraRequest() (request *DescribeDirectConnec
 func NewDescribeDirectConnectTunnelExtraResponse() (response *DescribeDirectConnectTunnelExtraResponse) {
     response = &DescribeDirectConnectTunnelExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDirectConnectTunnelExtra
@@ -553,8 +561,9 @@ func NewDescribeDirectConnectTunnelsRequest() (request *DescribeDirectConnectTun
 func NewDescribeDirectConnectTunnelsResponse() (response *DescribeDirectConnectTunnelsResponse) {
     response = &DescribeDirectConnectTunnelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDirectConnectTunnels
@@ -609,8 +618,9 @@ func NewDescribeDirectConnectsRequest() (request *DescribeDirectConnectsRequest)
 func NewDescribeDirectConnectsResponse() (response *DescribeDirectConnectsResponse) {
     response = &DescribeDirectConnectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDirectConnects
@@ -667,8 +677,9 @@ func NewDescribeInternetAddressRequest() (request *DescribeInternetAddressReques
 func NewDescribeInternetAddressResponse() (response *DescribeInternetAddressResponse) {
     response = &DescribeInternetAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInternetAddress
@@ -725,8 +736,9 @@ func NewDescribeInternetAddressQuotaRequest() (request *DescribeInternetAddressQ
 func NewDescribeInternetAddressQuotaResponse() (response *DescribeInternetAddressQuotaResponse) {
     response = &DescribeInternetAddressQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInternetAddressQuota
@@ -783,8 +795,9 @@ func NewDescribeInternetAddressStatisticsRequest() (request *DescribeInternetAdd
 func NewDescribeInternetAddressStatisticsResponse() (response *DescribeInternetAddressStatisticsResponse) {
     response = &DescribeInternetAddressStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInternetAddressStatistics
@@ -841,8 +854,9 @@ func NewDescribePublicDirectConnectTunnelRoutesRequest() (request *DescribePubli
 func NewDescribePublicDirectConnectTunnelRoutesResponse() (response *DescribePublicDirectConnectTunnelRoutesResponse) {
     response = &DescribePublicDirectConnectTunnelRoutesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicDirectConnectTunnelRoutes
@@ -895,8 +909,9 @@ func NewDisableInternetAddressRequest() (request *DisableInternetAddressRequest)
 func NewDisableInternetAddressResponse() (response *DisableInternetAddressResponse) {
     response = &DisableInternetAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableInternetAddress
@@ -949,8 +964,9 @@ func NewEnableInternetAddressRequest() (request *EnableInternetAddressRequest) {
 func NewEnableInternetAddressResponse() (response *EnableInternetAddressResponse) {
     response = &EnableInternetAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableInternetAddress
@@ -1003,8 +1019,9 @@ func NewModifyDirectConnectAttributeRequest() (request *ModifyDirectConnectAttri
 func NewModifyDirectConnectAttributeResponse() (response *ModifyDirectConnectAttributeResponse) {
     response = &ModifyDirectConnectAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDirectConnectAttribute
@@ -1065,8 +1082,9 @@ func NewModifyDirectConnectTunnelAttributeRequest() (request *ModifyDirectConnec
 func NewModifyDirectConnectTunnelAttributeResponse() (response *ModifyDirectConnectTunnelAttributeResponse) {
     response = &ModifyDirectConnectTunnelAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDirectConnectTunnelAttribute
@@ -1123,8 +1141,9 @@ func NewModifyDirectConnectTunnelExtraRequest() (request *ModifyDirectConnectTun
 func NewModifyDirectConnectTunnelExtraResponse() (response *ModifyDirectConnectTunnelExtraResponse) {
     response = &ModifyDirectConnectTunnelExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDirectConnectTunnelExtra
@@ -1189,8 +1208,9 @@ func NewRejectDirectConnectTunnelRequest() (request *RejectDirectConnectTunnelRe
 func NewRejectDirectConnectTunnelResponse() (response *RejectDirectConnectTunnelResponse) {
     response = &RejectDirectConnectTunnelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RejectDirectConnectTunnel
@@ -1245,8 +1265,9 @@ func NewReleaseInternetAddressRequest() (request *ReleaseInternetAddressRequest)
 func NewReleaseInternetAddressResponse() (response *ReleaseInternetAddressResponse) {
     response = &ReleaseInternetAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseInternetAddress

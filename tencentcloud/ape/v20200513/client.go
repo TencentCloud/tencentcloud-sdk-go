@@ -59,8 +59,9 @@ func NewBatchDescribeOrderCertificateRequest() (request *BatchDescribeOrderCerti
 func NewBatchDescribeOrderCertificateResponse() (response *BatchDescribeOrderCertificateResponse) {
     response = &BatchDescribeOrderCertificateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDescribeOrderCertificate
@@ -115,8 +116,9 @@ func NewBatchDescribeOrderImageRequest() (request *BatchDescribeOrderImageReques
 func NewBatchDescribeOrderImageResponse() (response *BatchDescribeOrderImageResponse) {
     response = &BatchDescribeOrderImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDescribeOrderImage
@@ -173,8 +175,9 @@ func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsReques
 func NewCreateOrderAndDownloadsResponse() (response *CreateOrderAndDownloadsResponse) {
     response = &CreateOrderAndDownloadsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrderAndDownloads
@@ -229,8 +232,9 @@ func NewCreateOrderAndPayRequest() (request *CreateOrderAndPayRequest) {
 func NewCreateOrderAndPayResponse() (response *CreateOrderAndPayResponse) {
     response = &CreateOrderAndPayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrderAndPay
@@ -291,8 +295,9 @@ func NewDescribeAuthUsersRequest() (request *DescribeAuthUsersRequest) {
 func NewDescribeAuthUsersResponse() (response *DescribeAuthUsersResponse) {
     response = &DescribeAuthUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuthUsers
@@ -343,8 +348,9 @@ func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
 func NewDescribeDownloadInfosResponse() (response *DescribeDownloadInfosResponse) {
     response = &DescribeDownloadInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDownloadInfos
@@ -393,8 +399,9 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
 func NewDescribeImageResponse() (response *DescribeImageResponse) {
     response = &DescribeImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImage
@@ -455,8 +462,9 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
 func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     response = &DescribeImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImages

@@ -104,11 +104,17 @@ const (
 	// 类型只能为手机或者邮箱。
 	INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
 
+	// 自定义 DNS Host 名称未找到。
+	INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+
 	// 无权限自定义DNS。
 	INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
 
 	// 域名输入为空或者不正确。
 	INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+
+	// 自定义DNS Host 名称已经存在。
+	INVALIDPARAMETER_DUPLICATECUSTOMDNSNAME = "InvalidParameter.DuplicateCustomDnsName"
 
 	// 存在重复域名，请检查后重新提交。
 	INVALIDPARAMETER_DUPLICATEDOMAINEXISTS = "InvalidParameter.DuplicateDomainExists"
@@ -176,6 +182,9 @@ const (
 	// 邮编为空或者不合法。
 	INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 请求频率超过限制。
 	LIMITEXCEEDED_REQUESTLIMIT = "LimitExceeded.RequestLimit"
 
@@ -197,6 +206,9 @@ const (
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
+
 	// 当前正在执行中的任务过多，请稍后再提交新的任务。
 	RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 
@@ -217,6 +229,9 @@ const (
 
 	// 账户实名认证未通过。
 	UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+
+	// 创建的自定义DNS Host数量已达到最大限制。
+	UNSUPPORTEDOPERATION_CUSTOMHOSTOVERLIMIT = "UnsupportedOperation.CustomHostOverLimit"
 
 	// 当前域名未完成实名认证，无法完成该操作。
 	UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"

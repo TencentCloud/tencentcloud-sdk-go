@@ -59,8 +59,9 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
 func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) {
     response = &DescribeDasbImageIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDasbImageIds
@@ -101,8 +102,9 @@ func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTy
 func NewDescribeDbauditInstanceTypeResponse() (response *DescribeDbauditInstanceTypeResponse) {
     response = &DescribeDbauditInstanceTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDbauditInstanceType
@@ -143,8 +145,9 @@ func NewDescribeDbauditInstancesRequest() (request *DescribeDbauditInstancesRequ
 func NewDescribeDbauditInstancesResponse() (response *DescribeDbauditInstancesResponse) {
     response = &DescribeDbauditInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDbauditInstances
@@ -185,8 +188,9 @@ func NewDescribeDbauditUsedRegionsRequest() (request *DescribeDbauditUsedRegions
 func NewDescribeDbauditUsedRegionsResponse() (response *DescribeDbauditUsedRegionsResponse) {
     response = &DescribeDbauditUsedRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDbauditUsedRegions
@@ -227,8 +231,9 @@ func NewInquiryPriceDbauditInstanceRequest() (request *InquiryPriceDbauditInstan
 func NewInquiryPriceDbauditInstanceResponse() (response *InquiryPriceDbauditInstanceResponse) {
     response = &InquiryPriceDbauditInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceDbauditInstance
@@ -269,8 +274,9 @@ func NewModifyDbauditInstancesRenewFlagRequest() (request *ModifyDbauditInstance
 func NewModifyDbauditInstancesRenewFlagResponse() (response *ModifyDbauditInstancesRenewFlagResponse) {
     response = &ModifyDbauditInstancesRenewFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDbauditInstancesRenewFlag

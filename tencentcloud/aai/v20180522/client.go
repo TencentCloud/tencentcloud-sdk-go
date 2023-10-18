@@ -59,8 +59,9 @@ func NewChatRequest() (request *ChatRequest) {
 func NewChatResponse() (response *ChatResponse) {
     response = &ChatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Chat
@@ -133,8 +134,9 @@ func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
 func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
     response = &SentenceRecognitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SentenceRecognition
@@ -235,8 +237,9 @@ func NewSimultaneousInterpretingRequest() (request *SimultaneousInterpretingRequ
 func NewSimultaneousInterpretingResponse() (response *SimultaneousInterpretingResponse) {
     response = &SimultaneousInterpretingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SimultaneousInterpreting
@@ -323,8 +326,9 @@ func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
 func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
     response = &TextToVoiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextToVoice

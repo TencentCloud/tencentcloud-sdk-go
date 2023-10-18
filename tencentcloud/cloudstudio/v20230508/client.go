@@ -59,8 +59,9 @@ func NewCreateWorkspaceRequest() (request *CreateWorkspaceRequest) {
 func NewCreateWorkspaceResponse() (response *CreateWorkspaceResponse) {
     response = &CreateWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspace
@@ -113,8 +114,9 @@ func NewCreateWorkspaceTokenRequest() (request *CreateWorkspaceTokenRequest) {
 func NewCreateWorkspaceTokenResponse() (response *CreateWorkspaceTokenResponse) {
     response = &CreateWorkspaceTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWorkspaceToken
@@ -161,8 +163,9 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
 func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     response = &DescribeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfig
@@ -209,8 +212,9 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
 func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     response = &DescribeImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImages
@@ -257,8 +261,9 @@ func NewDescribeWorkspacesRequest() (request *DescribeWorkspacesRequest) {
 func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
     response = &DescribeWorkspacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaces
@@ -305,8 +310,9 @@ func NewModifyWorkspaceRequest() (request *ModifyWorkspaceRequest) {
 func NewModifyWorkspaceResponse() (response *ModifyWorkspaceResponse) {
     response = &ModifyWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyWorkspace
@@ -357,8 +363,9 @@ func NewRemoveWorkspaceRequest() (request *RemoveWorkspaceRequest) {
 func NewRemoveWorkspaceResponse() (response *RemoveWorkspaceResponse) {
     response = &RemoveWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveWorkspace
@@ -409,8 +416,9 @@ func NewRunWorkspaceRequest() (request *RunWorkspaceRequest) {
 func NewRunWorkspaceResponse() (response *RunWorkspaceResponse) {
     response = &RunWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunWorkspace
@@ -457,8 +465,9 @@ func NewStopWorkspaceRequest() (request *StopWorkspaceRequest) {
 func NewStopWorkspaceResponse() (response *StopWorkspaceResponse) {
     response = &StopWorkspaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopWorkspace

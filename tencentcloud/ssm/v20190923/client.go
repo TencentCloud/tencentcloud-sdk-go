@@ -59,8 +59,9 @@ func NewCreateProductSecretRequest() (request *CreateProductSecretRequest) {
 func NewCreateProductSecretResponse() (response *CreateProductSecretResponse) {
     response = &CreateProductSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProductSecret
@@ -159,8 +160,9 @@ func NewCreateSSHKeyPairSecretRequest() (request *CreateSSHKeyPairSecretRequest)
 func NewCreateSSHKeyPairSecretResponse() (response *CreateSSHKeyPairSecretResponse) {
     response = &CreateSSHKeyPairSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSSHKeyPairSecret
@@ -239,8 +241,9 @@ func NewCreateSecretRequest() (request *CreateSecretRequest) {
 func NewCreateSecretResponse() (response *CreateSecretResponse) {
     response = &CreateSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSecret
@@ -303,8 +306,9 @@ func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
 func NewDeleteSecretResponse() (response *DeleteSecretResponse) {
     response = &DeleteSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecret
@@ -363,8 +367,9 @@ func NewDeleteSecretVersionRequest() (request *DeleteSecretVersionRequest) {
 func NewDeleteSecretVersionResponse() (response *DeleteSecretVersionResponse) {
     response = &DeleteSecretVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSecretVersion
@@ -427,8 +432,9 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
 func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoResponse) {
     response = &DescribeAsyncRequestInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAsyncRequestInfo
@@ -531,8 +537,9 @@ func NewDescribeRotationDetailRequest() (request *DescribeRotationDetailRequest)
 func NewDescribeRotationDetailResponse() (response *DescribeRotationDetailResponse) {
     response = &DescribeRotationDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRotationDetail
@@ -639,8 +646,9 @@ func NewDescribeRotationHistoryRequest() (request *DescribeRotationHistoryReques
 func NewDescribeRotationHistoryResponse() (response *DescribeRotationHistoryResponse) {
     response = &DescribeRotationHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRotationHistory
@@ -747,8 +755,9 @@ func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
 func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
     response = &DescribeSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSecret
@@ -807,8 +816,9 @@ func NewDescribeSupportedProductsRequest() (request *DescribeSupportedProductsRe
 func NewDescribeSupportedProductsResponse() (response *DescribeSupportedProductsResponse) {
     response = &DescribeSupportedProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSupportedProducts
@@ -911,8 +921,9 @@ func NewDisableSecretRequest() (request *DisableSecretRequest) {
 func NewDisableSecretResponse() (response *DisableSecretResponse) {
     response = &DisableSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableSecret
@@ -971,8 +982,9 @@ func NewEnableSecretRequest() (request *EnableSecretRequest) {
 func NewEnableSecretResponse() (response *EnableSecretResponse) {
     response = &EnableSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableSecret
@@ -1031,8 +1043,9 @@ func NewGetRegionsRequest() (request *GetRegionsRequest) {
 func NewGetRegionsResponse() (response *GetRegionsResponse) {
     response = &GetRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRegions
@@ -1081,8 +1094,9 @@ func NewGetSSHKeyPairValueRequest() (request *GetSSHKeyPairValueRequest) {
 func NewGetSSHKeyPairValueResponse() (response *GetSSHKeyPairValueResponse) {
     response = &GetSSHKeyPairValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSSHKeyPairValue
@@ -1159,8 +1173,9 @@ func NewGetSecretValueRequest() (request *GetSecretValueRequest) {
 func NewGetSecretValueResponse() (response *GetSecretValueResponse) {
     response = &GetSecretValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSecretValue
@@ -1233,8 +1248,9 @@ func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
 func NewGetServiceStatusResponse() (response *GetServiceStatusResponse) {
     response = &GetServiceStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetServiceStatus
@@ -1283,8 +1299,9 @@ func NewListSecretVersionIdsRequest() (request *ListSecretVersionIdsRequest) {
 func NewListSecretVersionIdsResponse() (response *ListSecretVersionIdsResponse) {
     response = &ListSecretVersionIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListSecretVersionIds
@@ -1341,8 +1358,9 @@ func NewListSecretsRequest() (request *ListSecretsRequest) {
 func NewListSecretsResponse() (response *ListSecretsResponse) {
     response = &ListSecretsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListSecrets
@@ -1395,8 +1413,9 @@ func NewPutSecretValueRequest() (request *PutSecretValueRequest) {
 func NewPutSecretValueResponse() (response *PutSecretValueResponse) {
     response = &PutSecretValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutSecretValue
@@ -1465,8 +1484,9 @@ func NewRestoreSecretRequest() (request *RestoreSecretRequest) {
 func NewRestoreSecretResponse() (response *RestoreSecretResponse) {
     response = &RestoreSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestoreSecret
@@ -1523,8 +1543,9 @@ func NewRotateProductSecretRequest() (request *RotateProductSecretRequest) {
 func NewRotateProductSecretResponse() (response *RotateProductSecretResponse) {
     response = &RotateProductSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RotateProductSecret
@@ -1637,8 +1658,9 @@ func NewUpdateDescriptionRequest() (request *UpdateDescriptionRequest) {
 func NewUpdateDescriptionResponse() (response *UpdateDescriptionResponse) {
     response = &UpdateDescriptionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDescription
@@ -1693,8 +1715,9 @@ func NewUpdateRotationStatusRequest() (request *UpdateRotationStatusRequest) {
 func NewUpdateRotationStatusResponse() (response *UpdateRotationStatusResponse) {
     response = &UpdateRotationStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRotationStatus
@@ -1811,8 +1834,9 @@ func NewUpdateSecretRequest() (request *UpdateSecretRequest) {
 func NewUpdateSecretResponse() (response *UpdateSecretResponse) {
     response = &UpdateSecretResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateSecret

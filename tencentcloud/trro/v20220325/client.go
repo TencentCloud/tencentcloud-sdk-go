@@ -59,8 +59,9 @@ func NewBatchDeleteDevicesRequest() (request *BatchDeleteDevicesRequest) {
 func NewBatchDeleteDevicesResponse() (response *BatchDeleteDevicesResponse) {
     response = &BatchDeleteDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeleteDevices
@@ -117,8 +118,9 @@ func NewBatchDeletePolicyRequest() (request *BatchDeletePolicyRequest) {
 func NewBatchDeletePolicyResponse() (response *BatchDeletePolicyResponse) {
     response = &BatchDeletePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeletePolicy
@@ -175,8 +177,9 @@ func NewBoundLicensesRequest() (request *BoundLicensesRequest) {
 func NewBoundLicensesResponse() (response *BoundLicensesResponse) {
     response = &BoundLicensesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BoundLicenses
@@ -225,8 +228,9 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
 func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
     response = &CreateDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDevice
@@ -283,8 +287,9 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
 func NewCreateProjectResponse() (response *CreateProjectResponse) {
     response = &CreateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProject
@@ -339,8 +344,9 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
 func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
     response = &DeleteProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProject
@@ -397,8 +403,9 @@ func NewDescribeDeviceInfoRequest() (request *DescribeDeviceInfoRequest) {
 func NewDescribeDeviceInfoResponse() (response *DescribeDeviceInfoResponse) {
     response = &DescribeDeviceInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceInfo
@@ -455,8 +462,9 @@ func NewDescribeDeviceListRequest() (request *DescribeDeviceListRequest) {
 func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
     response = &DescribeDeviceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceList
@@ -513,8 +521,9 @@ func NewDescribeDeviceSessionDetailsRequest() (request *DescribeDeviceSessionDet
 func NewDescribeDeviceSessionDetailsResponse() (response *DescribeDeviceSessionDetailsResponse) {
     response = &DescribeDeviceSessionDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceSessionDetails
@@ -571,8 +580,9 @@ func NewDescribeDeviceSessionListRequest() (request *DescribeDeviceSessionListRe
 func NewDescribeDeviceSessionListResponse() (response *DescribeDeviceSessionListResponse) {
     response = &DescribeDeviceSessionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceSessionList
@@ -629,8 +639,9 @@ func NewDescribePolicyRequest() (request *DescribePolicyRequest) {
 func NewDescribePolicyResponse() (response *DescribePolicyResponse) {
     response = &DescribePolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePolicy
@@ -687,8 +698,9 @@ func NewDescribeProjectInfoRequest() (request *DescribeProjectInfoRequest) {
 func NewDescribeProjectInfoResponse() (response *DescribeProjectInfoResponse) {
     response = &DescribeProjectInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectInfo
@@ -745,8 +757,9 @@ func NewDescribeProjectListRequest() (request *DescribeProjectListRequest) {
 func NewDescribeProjectListResponse() (response *DescribeProjectListResponse) {
     response = &DescribeProjectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectList
@@ -803,8 +816,9 @@ func NewDescribeRecentSessionListRequest() (request *DescribeRecentSessionListRe
 func NewDescribeRecentSessionListResponse() (response *DescribeRecentSessionListResponse) {
     response = &DescribeRecentSessionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecentSessionList
@@ -861,8 +875,9 @@ func NewDescribeSessionStatisticsRequest() (request *DescribeSessionStatisticsRe
 func NewDescribeSessionStatisticsResponse() (response *DescribeSessionStatisticsResponse) {
     response = &DescribeSessionStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSessionStatistics
@@ -921,8 +936,9 @@ func NewDescribeSessionStatisticsByIntervalRequest() (request *DescribeSessionSt
 func NewDescribeSessionStatisticsByIntervalResponse() (response *DescribeSessionStatisticsByIntervalResponse) {
     response = &DescribeSessionStatisticsByIntervalResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSessionStatisticsByInterval
@@ -981,8 +997,9 @@ func NewGetDeviceLicenseRequest() (request *GetDeviceLicenseRequest) {
 func NewGetDeviceLicenseResponse() (response *GetDeviceLicenseResponse) {
     response = &GetDeviceLicenseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDeviceLicense
@@ -1033,8 +1050,9 @@ func NewGetDevicesRequest() (request *GetDevicesRequest) {
 func NewGetDevicesResponse() (response *GetDevicesResponse) {
     response = &GetDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDevices
@@ -1083,8 +1101,9 @@ func NewGetLicenseStatRequest() (request *GetLicenseStatRequest) {
 func NewGetLicenseStatResponse() (response *GetLicenseStatResponse) {
     response = &GetLicenseStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLicenseStat
@@ -1135,8 +1154,9 @@ func NewGetLicensesRequest() (request *GetLicensesRequest) {
 func NewGetLicensesResponse() (response *GetLicensesResponse) {
     response = &GetLicensesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLicenses
@@ -1185,8 +1205,9 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
 func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
     response = &ModifyDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDevice
@@ -1243,8 +1264,9 @@ func NewModifyPolicyRequest() (request *ModifyPolicyRequest) {
 func NewModifyPolicyResponse() (response *ModifyPolicyResponse) {
     response = &ModifyPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPolicy
@@ -1301,8 +1323,9 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
 func NewModifyProjectResponse() (response *ModifyProjectResponse) {
     response = &ModifyProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProject

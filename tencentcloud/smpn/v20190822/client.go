@@ -59,8 +59,9 @@ func NewCreateSmpnEpaRequest() (request *CreateSmpnEpaRequest) {
 func NewCreateSmpnEpaResponse() (response *CreateSmpnEpaResponse) {
     response = &CreateSmpnEpaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSmpnEpa
@@ -115,8 +116,9 @@ func NewDescribeSmpnChpRequest() (request *DescribeSmpnChpRequest) {
 func NewDescribeSmpnChpResponse() (response *DescribeSmpnChpResponse) {
     response = &DescribeSmpnChpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmpnChp
@@ -169,8 +171,9 @@ func NewDescribeSmpnFnrRequest() (request *DescribeSmpnFnrRequest) {
 func NewDescribeSmpnFnrResponse() (response *DescribeSmpnFnrResponse) {
     response = &DescribeSmpnFnrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmpnFnr
@@ -223,8 +226,9 @@ func NewDescribeSmpnMhmRequest() (request *DescribeSmpnMhmRequest) {
 func NewDescribeSmpnMhmResponse() (response *DescribeSmpnMhmResponse) {
     response = &DescribeSmpnMhmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmpnMhm
@@ -277,8 +281,9 @@ func NewDescribeSmpnMrlRequest() (request *DescribeSmpnMrlRequest) {
 func NewDescribeSmpnMrlResponse() (response *DescribeSmpnMrlResponse) {
     response = &DescribeSmpnMrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmpnMrl

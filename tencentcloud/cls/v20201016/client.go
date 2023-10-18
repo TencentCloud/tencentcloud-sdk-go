@@ -59,8 +59,9 @@ func NewAddMachineGroupInfoRequest() (request *AddMachineGroupInfoRequest) {
 func NewAddMachineGroupInfoResponse() (response *AddMachineGroupInfoResponse) {
     response = &AddMachineGroupInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddMachineGroupInfo
@@ -109,8 +110,9 @@ func NewApplyConfigToMachineGroupRequest() (request *ApplyConfigToMachineGroupRe
 func NewApplyConfigToMachineGroupResponse() (response *ApplyConfigToMachineGroupResponse) {
     response = &ApplyConfigToMachineGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyConfigToMachineGroup
@@ -177,8 +179,9 @@ func NewCheckRechargeKafkaServerRequest() (request *CheckRechargeKafkaServerRequ
 func NewCheckRechargeKafkaServerResponse() (response *CheckRechargeKafkaServerResponse) {
     response = &CheckRechargeKafkaServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckRechargeKafkaServer
@@ -235,8 +238,9 @@ func NewCloseKafkaConsumerRequest() (request *CloseKafkaConsumerRequest) {
 func NewCloseKafkaConsumerResponse() (response *CloseKafkaConsumerResponse) {
     response = &CloseKafkaConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CloseKafkaConsumer
@@ -301,8 +305,9 @@ func NewCreateAlarmRequest() (request *CreateAlarmRequest) {
 func NewCreateAlarmResponse() (response *CreateAlarmResponse) {
     response = &CreateAlarmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAlarm
@@ -371,8 +376,9 @@ func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
 func NewCreateAlarmNoticeResponse() (response *CreateAlarmNoticeResponse) {
     response = &CreateAlarmNoticeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAlarmNotice
@@ -433,8 +439,9 @@ func NewCreateConfigRequest() (request *CreateConfigRequest) {
 func NewCreateConfigResponse() (response *CreateConfigResponse) {
     response = &CreateConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfig
@@ -507,8 +514,9 @@ func NewCreateConfigExtraRequest() (request *CreateConfigExtraRequest) {
 func NewCreateConfigExtraResponse() (response *CreateConfigExtraResponse) {
     response = &CreateConfigExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigExtra
@@ -575,8 +583,9 @@ func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
 func NewCreateConsumerResponse() (response *CreateConsumerResponse) {
     response = &CreateConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConsumer
@@ -643,8 +652,9 @@ func NewCreateCosRechargeRequest() (request *CreateCosRechargeRequest) {
 func NewCreateCosRechargeResponse() (response *CreateCosRechargeResponse) {
     response = &CreateCosRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCosRecharge
@@ -711,8 +721,9 @@ func NewCreateDataTransformRequest() (request *CreateDataTransformRequest) {
 func NewCreateDataTransformResponse() (response *CreateDataTransformResponse) {
     response = &CreateDataTransformResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDataTransform
@@ -783,8 +794,9 @@ func NewCreateExportRequest() (request *CreateExportRequest) {
 func NewCreateExportResponse() (response *CreateExportResponse) {
     response = &CreateExportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateExport
@@ -851,8 +863,9 @@ func NewCreateIndexRequest() (request *CreateIndexRequest) {
 func NewCreateIndexResponse() (response *CreateIndexResponse) {
     response = &CreateIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIndex
@@ -929,8 +942,9 @@ func NewCreateKafkaRechargeRequest() (request *CreateKafkaRechargeRequest) {
 func NewCreateKafkaRechargeResponse() (response *CreateKafkaRechargeResponse) {
     response = &CreateKafkaRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateKafkaRecharge
@@ -995,8 +1009,9 @@ func NewCreateLogsetRequest() (request *CreateLogsetRequest) {
 func NewCreateLogsetResponse() (response *CreateLogsetResponse) {
     response = &CreateLogsetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLogset
@@ -1067,8 +1082,9 @@ func NewCreateMachineGroupRequest() (request *CreateMachineGroupRequest) {
 func NewCreateMachineGroupResponse() (response *CreateMachineGroupResponse) {
     response = &CreateMachineGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMachineGroup
@@ -1143,8 +1159,9 @@ func NewCreateScheduledSqlRequest() (request *CreateScheduledSqlRequest) {
 func NewCreateScheduledSqlResponse() (response *CreateScheduledSqlResponse) {
     response = &CreateScheduledSqlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScheduledSql
@@ -1215,8 +1232,9 @@ func NewCreateShipperRequest() (request *CreateShipperRequest) {
 func NewCreateShipperResponse() (response *CreateShipperResponse) {
     response = &CreateShipperResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateShipper
@@ -1289,8 +1307,9 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
 func NewCreateTopicResponse() (response *CreateTopicResponse) {
     response = &CreateTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTopic
@@ -1365,8 +1384,9 @@ func NewDeleteAlarmRequest() (request *DeleteAlarmRequest) {
 func NewDeleteAlarmResponse() (response *DeleteAlarmResponse) {
     response = &DeleteAlarmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAlarm
@@ -1427,8 +1447,9 @@ func NewDeleteAlarmNoticeRequest() (request *DeleteAlarmNoticeRequest) {
 func NewDeleteAlarmNoticeResponse() (response *DeleteAlarmNoticeResponse) {
     response = &DeleteAlarmNoticeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAlarmNotice
@@ -1493,8 +1514,9 @@ func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
 func NewDeleteConfigResponse() (response *DeleteConfigResponse) {
     response = &DeleteConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfig
@@ -1563,8 +1585,9 @@ func NewDeleteConfigExtraRequest() (request *DeleteConfigExtraRequest) {
 func NewDeleteConfigExtraResponse() (response *DeleteConfigExtraResponse) {
     response = &DeleteConfigExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfigExtra
@@ -1627,8 +1650,9 @@ func NewDeleteConfigFromMachineGroupRequest() (request *DeleteConfigFromMachineG
 func NewDeleteConfigFromMachineGroupResponse() (response *DeleteConfigFromMachineGroupResponse) {
     response = &DeleteConfigFromMachineGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfigFromMachineGroup
@@ -1695,8 +1719,9 @@ func NewDeleteConsumerRequest() (request *DeleteConsumerRequest) {
 func NewDeleteConsumerResponse() (response *DeleteConsumerResponse) {
     response = &DeleteConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConsumer
@@ -1759,8 +1784,9 @@ func NewDeleteDataTransformRequest() (request *DeleteDataTransformRequest) {
 func NewDeleteDataTransformResponse() (response *DeleteDataTransformResponse) {
     response = &DeleteDataTransformResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDataTransform
@@ -1829,8 +1855,9 @@ func NewDeleteExportRequest() (request *DeleteExportRequest) {
 func NewDeleteExportResponse() (response *DeleteExportResponse) {
     response = &DeleteExportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteExport
@@ -1893,8 +1920,9 @@ func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
 func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
     response = &DeleteIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteIndex
@@ -1963,8 +1991,9 @@ func NewDeleteKafkaRechargeRequest() (request *DeleteKafkaRechargeRequest) {
 func NewDeleteKafkaRechargeResponse() (response *DeleteKafkaRechargeResponse) {
     response = &DeleteKafkaRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteKafkaRecharge
@@ -2027,8 +2056,9 @@ func NewDeleteLogsetRequest() (request *DeleteLogsetRequest) {
 func NewDeleteLogsetResponse() (response *DeleteLogsetResponse) {
     response = &DeleteLogsetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLogset
@@ -2095,8 +2125,9 @@ func NewDeleteMachineGroupRequest() (request *DeleteMachineGroupRequest) {
 func NewDeleteMachineGroupResponse() (response *DeleteMachineGroupResponse) {
     response = &DeleteMachineGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMachineGroup
@@ -2163,8 +2194,9 @@ func NewDeleteMachineGroupInfoRequest() (request *DeleteMachineGroupInfoRequest)
 func NewDeleteMachineGroupInfoResponse() (response *DeleteMachineGroupInfoResponse) {
     response = &DeleteMachineGroupInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMachineGroupInfo
@@ -2211,8 +2243,9 @@ func NewDeleteScheduledSqlRequest() (request *DeleteScheduledSqlRequest) {
 func NewDeleteScheduledSqlResponse() (response *DeleteScheduledSqlResponse) {
     response = &DeleteScheduledSqlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScheduledSql
@@ -2281,8 +2314,9 @@ func NewDeleteShipperRequest() (request *DeleteShipperRequest) {
 func NewDeleteShipperResponse() (response *DeleteShipperResponse) {
     response = &DeleteShipperResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteShipper
@@ -2351,8 +2385,9 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
 func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     response = &DeleteTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTopic
@@ -2425,8 +2460,9 @@ func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
 func NewDescribeAlarmNoticesResponse() (response *DescribeAlarmNoticesResponse) {
     response = &DescribeAlarmNoticesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarmNotices
@@ -2489,8 +2525,9 @@ func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
 func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
     response = &DescribeAlarmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarms
@@ -2547,8 +2584,9 @@ func NewDescribeAlertRecordHistoryRequest() (request *DescribeAlertRecordHistory
 func NewDescribeAlertRecordHistoryResponse() (response *DescribeAlertRecordHistoryResponse) {
     response = &DescribeAlertRecordHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlertRecordHistory
@@ -2609,8 +2647,9 @@ func NewDescribeConfigExtrasRequest() (request *DescribeConfigExtrasRequest) {
 func NewDescribeConfigExtrasResponse() (response *DescribeConfigExtrasResponse) {
     response = &DescribeConfigExtrasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigExtras
@@ -2675,8 +2714,9 @@ func NewDescribeConfigMachineGroupsRequest() (request *DescribeConfigMachineGrou
 func NewDescribeConfigMachineGroupsResponse() (response *DescribeConfigMachineGroupsResponse) {
     response = &DescribeConfigMachineGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigMachineGroups
@@ -2745,8 +2785,9 @@ func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
 func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
     response = &DescribeConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigs
@@ -2813,8 +2854,9 @@ func NewDescribeConsumerRequest() (request *DescribeConsumerRequest) {
 func NewDescribeConsumerResponse() (response *DescribeConsumerResponse) {
     response = &DescribeConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConsumer
@@ -2879,8 +2921,9 @@ func NewDescribeCosRechargesRequest() (request *DescribeCosRechargesRequest) {
 func NewDescribeCosRechargesResponse() (response *DescribeCosRechargesResponse) {
     response = &DescribeCosRechargesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCosRecharges
@@ -2949,8 +2992,9 @@ func NewDescribeDashboardsRequest() (request *DescribeDashboardsRequest) {
 func NewDescribeDashboardsResponse() (response *DescribeDashboardsResponse) {
     response = &DescribeDashboardsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDashboards
@@ -3019,8 +3063,9 @@ func NewDescribeDataTransformInfoRequest() (request *DescribeDataTransformInfoRe
 func NewDescribeDataTransformInfoResponse() (response *DescribeDataTransformInfoResponse) {
     response = &DescribeDataTransformInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDataTransformInfo
@@ -3087,8 +3132,9 @@ func NewDescribeExportsRequest() (request *DescribeExportsRequest) {
 func NewDescribeExportsResponse() (response *DescribeExportsResponse) {
     response = &DescribeExportsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExports
@@ -3157,8 +3203,9 @@ func NewDescribeIndexRequest() (request *DescribeIndexRequest) {
 func NewDescribeIndexResponse() (response *DescribeIndexResponse) {
     response = &DescribeIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIndex
@@ -3227,8 +3274,9 @@ func NewDescribeKafkaConsumerRequest() (request *DescribeKafkaConsumerRequest) {
 func NewDescribeKafkaConsumerResponse() (response *DescribeKafkaConsumerResponse) {
     response = &DescribeKafkaConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKafkaConsumer
@@ -3295,8 +3343,9 @@ func NewDescribeKafkaRechargesRequest() (request *DescribeKafkaRechargesRequest)
 func NewDescribeKafkaRechargesResponse() (response *DescribeKafkaRechargesResponse) {
     response = &DescribeKafkaRechargesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKafkaRecharges
@@ -3365,8 +3414,9 @@ func NewDescribeKafkaUserRequest() (request *DescribeKafkaUserRequest) {
 func NewDescribeKafkaUserResponse() (response *DescribeKafkaUserResponse) {
     response = &DescribeKafkaUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKafkaUser
@@ -3431,8 +3481,9 @@ func NewDescribeLogContextRequest() (request *DescribeLogContextRequest) {
 func NewDescribeLogContextResponse() (response *DescribeLogContextResponse) {
     response = &DescribeLogContextResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogContext
@@ -3509,8 +3560,9 @@ func NewDescribeLogHistogramRequest() (request *DescribeLogHistogramRequest) {
 func NewDescribeLogHistogramResponse() (response *DescribeLogHistogramResponse) {
     response = &DescribeLogHistogramResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogHistogram
@@ -3589,8 +3641,9 @@ func NewDescribeLogsetsRequest() (request *DescribeLogsetsRequest) {
 func NewDescribeLogsetsResponse() (response *DescribeLogsetsResponse) {
     response = &DescribeLogsetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogsets
@@ -3659,8 +3712,9 @@ func NewDescribeMachineGroupConfigsRequest() (request *DescribeMachineGroupConfi
 func NewDescribeMachineGroupConfigsResponse() (response *DescribeMachineGroupConfigsResponse) {
     response = &DescribeMachineGroupConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineGroupConfigs
@@ -3727,8 +3781,9 @@ func NewDescribeMachineGroupsRequest() (request *DescribeMachineGroupsRequest) {
 func NewDescribeMachineGroupsResponse() (response *DescribeMachineGroupsResponse) {
     response = &DescribeMachineGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachineGroups
@@ -3795,8 +3850,9 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
 func NewDescribeMachinesResponse() (response *DescribeMachinesResponse) {
     response = &DescribeMachinesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMachines
@@ -3865,8 +3921,9 @@ func NewDescribePartitionsRequest() (request *DescribePartitionsRequest) {
 func NewDescribePartitionsResponse() (response *DescribePartitionsResponse) {
     response = &DescribePartitionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePartitions
@@ -3933,8 +3990,9 @@ func NewDescribeScheduledSqlInfoRequest() (request *DescribeScheduledSqlInfoRequ
 func NewDescribeScheduledSqlInfoResponse() (response *DescribeScheduledSqlInfoResponse) {
     response = &DescribeScheduledSqlInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScheduledSqlInfo
@@ -4001,8 +4059,9 @@ func NewDescribeShipperTasksRequest() (request *DescribeShipperTasksRequest) {
 func NewDescribeShipperTasksResponse() (response *DescribeShipperTasksResponse) {
     response = &DescribeShipperTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShipperTasks
@@ -4071,8 +4130,9 @@ func NewDescribeShippersRequest() (request *DescribeShippersRequest) {
 func NewDescribeShippersResponse() (response *DescribeShippersResponse) {
     response = &DescribeShippersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeShippers
@@ -4143,8 +4203,9 @@ func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
 func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
     response = &DescribeTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopics
@@ -4219,8 +4280,9 @@ func NewGetAlarmLogRequest() (request *GetAlarmLogRequest) {
 func NewGetAlarmLogResponse() (response *GetAlarmLogResponse) {
     response = &GetAlarmLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAlarmLog
@@ -4299,8 +4361,9 @@ func NewMergePartitionRequest() (request *MergePartitionRequest) {
 func NewMergePartitionResponse() (response *MergePartitionResponse) {
     response = &MergePartitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MergePartition
@@ -4371,8 +4434,9 @@ func NewModifyAlarmRequest() (request *ModifyAlarmRequest) {
 func NewModifyAlarmResponse() (response *ModifyAlarmResponse) {
     response = &ModifyAlarmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAlarm
@@ -4443,8 +4507,9 @@ func NewModifyAlarmNoticeRequest() (request *ModifyAlarmNoticeRequest) {
 func NewModifyAlarmNoticeResponse() (response *ModifyAlarmNoticeResponse) {
     response = &ModifyAlarmNoticeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAlarmNotice
@@ -4513,8 +4578,9 @@ func NewModifyConfigRequest() (request *ModifyConfigRequest) {
 func NewModifyConfigResponse() (response *ModifyConfigResponse) {
     response = &ModifyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConfig
@@ -4587,8 +4653,9 @@ func NewModifyConfigExtraRequest() (request *ModifyConfigExtraRequest) {
 func NewModifyConfigExtraResponse() (response *ModifyConfigExtraResponse) {
     response = &ModifyConfigExtraResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConfigExtra
@@ -4655,8 +4722,9 @@ func NewModifyConsumerRequest() (request *ModifyConsumerRequest) {
 func NewModifyConsumerResponse() (response *ModifyConsumerResponse) {
     response = &ModifyConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConsumer
@@ -4719,8 +4787,9 @@ func NewModifyCosRechargeRequest() (request *ModifyCosRechargeRequest) {
 func NewModifyCosRechargeResponse() (response *ModifyCosRechargeResponse) {
     response = &ModifyCosRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCosRecharge
@@ -4787,8 +4856,9 @@ func NewModifyDataTransformRequest() (request *ModifyDataTransformRequest) {
 func NewModifyDataTransformResponse() (response *ModifyDataTransformResponse) {
     response = &ModifyDataTransformResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDataTransform
@@ -4861,8 +4931,9 @@ func NewModifyIndexRequest() (request *ModifyIndexRequest) {
 func NewModifyIndexResponse() (response *ModifyIndexResponse) {
     response = &ModifyIndexResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyIndex
@@ -4939,8 +5010,9 @@ func NewModifyKafkaConsumerRequest() (request *ModifyKafkaConsumerRequest) {
 func NewModifyKafkaConsumerResponse() (response *ModifyKafkaConsumerResponse) {
     response = &ModifyKafkaConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyKafkaConsumer
@@ -5009,8 +5081,9 @@ func NewModifyKafkaRechargeRequest() (request *ModifyKafkaRechargeRequest) {
 func NewModifyKafkaRechargeResponse() (response *ModifyKafkaRechargeResponse) {
     response = &ModifyKafkaRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyKafkaRecharge
@@ -5071,8 +5144,9 @@ func NewModifyLogsetRequest() (request *ModifyLogsetRequest) {
 func NewModifyLogsetResponse() (response *ModifyLogsetResponse) {
     response = &ModifyLogsetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLogset
@@ -5143,8 +5217,9 @@ func NewModifyMachineGroupRequest() (request *ModifyMachineGroupRequest) {
 func NewModifyMachineGroupResponse() (response *ModifyMachineGroupResponse) {
     response = &ModifyMachineGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMachineGroup
@@ -5217,8 +5292,9 @@ func NewModifyScheduledSqlRequest() (request *ModifyScheduledSqlRequest) {
 func NewModifyScheduledSqlResponse() (response *ModifyScheduledSqlResponse) {
     response = &ModifyScheduledSqlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyScheduledSql
@@ -5289,8 +5365,9 @@ func NewModifyShipperRequest() (request *ModifyShipperRequest) {
 func NewModifyShipperResponse() (response *ModifyShipperResponse) {
     response = &ModifyShipperResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyShipper
@@ -5357,8 +5434,9 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
 func NewModifyTopicResponse() (response *ModifyTopicResponse) {
     response = &ModifyTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTopic
@@ -5435,8 +5513,9 @@ func NewOpenKafkaConsumerRequest() (request *OpenKafkaConsumerRequest) {
 func NewOpenKafkaConsumerResponse() (response *OpenKafkaConsumerResponse) {
     response = &OpenKafkaConsumerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OpenKafkaConsumer
@@ -5507,8 +5586,9 @@ func NewPreviewKafkaRechargeRequest() (request *PreviewKafkaRechargeRequest) {
 func NewPreviewKafkaRechargeResponse() (response *PreviewKafkaRechargeResponse) {
     response = &PreviewKafkaRechargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PreviewKafkaRecharge
@@ -5571,8 +5651,9 @@ func NewQueryMetricRequest() (request *QueryMetricRequest) {
 func NewQueryMetricResponse() (response *QueryMetricResponse) {
     response = &QueryMetricResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryMetric
@@ -5629,8 +5710,9 @@ func NewQueryRangeMetricRequest() (request *QueryRangeMetricRequest) {
 func NewQueryRangeMetricResponse() (response *QueryRangeMetricResponse) {
     response = &QueryRangeMetricResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryRangeMetric
@@ -5685,8 +5767,9 @@ func NewRetryShipperTaskRequest() (request *RetryShipperTaskRequest) {
 func NewRetryShipperTaskResponse() (response *RetryShipperTaskResponse) {
     response = &RetryShipperTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RetryShipperTask
@@ -5759,8 +5842,9 @@ func NewSearchCosRechargeInfoRequest() (request *SearchCosRechargeInfoRequest) {
 func NewSearchCosRechargeInfoResponse() (response *SearchCosRechargeInfoResponse) {
     response = &SearchCosRechargeInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchCosRechargeInfo
@@ -5835,8 +5919,9 @@ func NewSearchLogRequest() (request *SearchLogRequest) {
 func NewSearchLogResponse() (response *SearchLogResponse) {
     response = &SearchLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchLog
@@ -5927,8 +6012,9 @@ func NewSplitPartitionRequest() (request *SplitPartitionRequest) {
 func NewSplitPartitionResponse() (response *SplitPartitionResponse) {
     response = &SplitPartitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SplitPartition
@@ -6005,8 +6091,9 @@ func NewUploadLogRequest() (request *UploadLogRequest) {
 func NewUploadLogResponse() (response *UploadLogResponse) {
     response = &UploadLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadLog

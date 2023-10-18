@@ -1653,6 +1653,9 @@ type CreateDataEngineRequestParams struct {
 
 	// spark作业集群session资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+
+	// 自动授权
+	AutoAuthorization *bool `json:"AutoAuthorization,omitnil" name:"AutoAuthorization"`
 }
 
 type CreateDataEngineRequest struct {
@@ -1747,6 +1750,9 @@ type CreateDataEngineRequest struct {
 
 	// spark作业集群session资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+
+	// 自动授权
+	AutoAuthorization *bool `json:"AutoAuthorization,omitnil" name:"AutoAuthorization"`
 }
 
 func (r *CreateDataEngineRequest) ToJsonString() string {
@@ -1791,6 +1797,7 @@ func (r *CreateDataEngineRequest) FromJsonString(s string) error {
 	delete(f, "ElasticSwitch")
 	delete(f, "ElasticLimit")
 	delete(f, "SessionResourceTemplate")
+	delete(f, "AutoAuthorization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataEngineRequest has unknown keys!", "")
 	}
@@ -4006,6 +4013,10 @@ type DataEngineInfo struct {
 	// SessionResourceTemplate
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+
+	// 自动授权开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoAuthorization *bool `json:"AutoAuthorization,omitnil" name:"AutoAuthorization"`
 }
 
 type DataFormat struct {
@@ -5338,7 +5349,7 @@ type DescribeDataEnginesRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu/kyuubi_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH），engine-network-id - String（引擎网络Id）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
@@ -5362,7 +5373,7 @@ type DescribeDataEnginesRequestParams struct {
 	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitnil" name:"EngineExecType"`
 
-	// 引擎类型，有效值：spark/presto
+	// 引擎类型，有效值：spark/presto/kyuubi，为空时默认获取非kyuubi引擎（网关引擎）
 	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
 
 	// 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
@@ -5375,7 +5386,7 @@ type DescribeDataEnginesRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu/kyuubi_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH），engine-network-id - String（引擎网络Id）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
@@ -5399,7 +5410,7 @@ type DescribeDataEnginesRequest struct {
 	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitnil" name:"EngineExecType"`
 
-	// 引擎类型，有效值：spark/presto
+	// 引擎类型，有效值：spark/presto/kyuubi，为空时默认获取非kyuubi引擎（网关引擎）
 	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
 
 	// 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎

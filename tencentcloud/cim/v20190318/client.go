@@ -59,8 +59,9 @@ func NewDescribeSdkAppidRequest() (request *DescribeSdkAppidRequest) {
 func NewDescribeSdkAppidResponse() (response *DescribeSdkAppidResponse) {
     response = &DescribeSdkAppidResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSdkAppid

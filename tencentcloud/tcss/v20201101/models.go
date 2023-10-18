@@ -26860,20 +26860,20 @@ func (r *ModifyAssetImageScanStopResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAssetRequestParams struct {
-	// 全部同步
+	// 全部同步，俩参数必选一个 All优先
 	All *bool `json:"All,omitnil" name:"All"`
 
-	// 要同步的主机列表 两个参数必选一个 All优先
+	// 要同步的主机列表uuid ，俩参数必选一个 All优先
 	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 }
 
 type ModifyAssetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全部同步
+	// 全部同步，俩参数必选一个 All优先
 	All *bool `json:"All,omitnil" name:"All"`
 
-	// 要同步的主机列表 两个参数必选一个 All优先
+	// 要同步的主机列表uuid ，俩参数必选一个 All优先
 	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 }
 

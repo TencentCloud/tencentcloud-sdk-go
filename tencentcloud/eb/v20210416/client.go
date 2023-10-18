@@ -59,8 +59,9 @@ func NewCheckRuleRequest() (request *CheckRuleRequest) {
 func NewCheckRuleResponse() (response *CheckRuleResponse) {
     response = &CheckRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckRule
@@ -117,8 +118,9 @@ func NewCheckTransformationRequest() (request *CheckTransformationRequest) {
 func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
     response = &CheckTransformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckTransformation
@@ -175,8 +177,9 @@ func NewCreateConnectionRequest() (request *CreateConnectionRequest) {
 func NewCreateConnectionResponse() (response *CreateConnectionResponse) {
     response = &CreateConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConnection
@@ -269,8 +272,9 @@ func NewCreateEventBusRequest() (request *CreateEventBusRequest) {
 func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
     response = &CreateEventBusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEventBus
@@ -353,8 +357,9 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
 func NewCreateRuleResponse() (response *CreateRuleResponse) {
     response = &CreateRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRule
@@ -421,8 +426,9 @@ func NewCreateTargetRequest() (request *CreateTargetRequest) {
 func NewCreateTargetResponse() (response *CreateTargetResponse) {
     response = &CreateTargetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTarget
@@ -555,8 +561,9 @@ func NewCreateTransformationRequest() (request *CreateTransformationRequest) {
 func NewCreateTransformationResponse() (response *CreateTransformationResponse) {
     response = &CreateTransformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTransformation
@@ -607,8 +614,9 @@ func NewDeleteConnectionRequest() (request *DeleteConnectionRequest) {
 func NewDeleteConnectionResponse() (response *DeleteConnectionResponse) {
     response = &DeleteConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConnection
@@ -675,8 +683,9 @@ func NewDeleteEventBusRequest() (request *DeleteEventBusRequest) {
 func NewDeleteEventBusResponse() (response *DeleteEventBusResponse) {
     response = &DeleteEventBusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEventBus
@@ -735,8 +744,9 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
 func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
     response = &DeleteRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRule
@@ -799,8 +809,9 @@ func NewDeleteTargetRequest() (request *DeleteTargetRequest) {
 func NewDeleteTargetResponse() (response *DeleteTargetResponse) {
     response = &DeleteTargetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTarget
@@ -879,8 +890,9 @@ func NewDeleteTransformationRequest() (request *DeleteTransformationRequest) {
 func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) {
     response = &DeleteTransformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTransformation
@@ -931,8 +943,9 @@ func NewDescribeLogTagValueRequest() (request *DescribeLogTagValueRequest) {
 func NewDescribeLogTagValueResponse() (response *DescribeLogTagValueResponse) {
     response = &DescribeLogTagValueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogTagValue
@@ -981,8 +994,9 @@ func NewGetEventBusRequest() (request *GetEventBusRequest) {
 func NewGetEventBusResponse() (response *GetEventBusResponse) {
     response = &GetEventBusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetEventBus
@@ -1033,8 +1047,9 @@ func NewGetPlatformEventTemplateRequest() (request *GetPlatformEventTemplateRequ
 func NewGetPlatformEventTemplateResponse() (response *GetPlatformEventTemplateResponse) {
     response = &GetPlatformEventTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPlatformEventTemplate
@@ -1083,8 +1098,9 @@ func NewGetRuleRequest() (request *GetRuleRequest) {
 func NewGetRuleResponse() (response *GetRuleResponse) {
     response = &GetRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRule
@@ -1141,8 +1157,9 @@ func NewGetTransformationRequest() (request *GetTransformationRequest) {
 func NewGetTransformationResponse() (response *GetTransformationResponse) {
     response = &GetTransformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTransformation
@@ -1197,8 +1214,9 @@ func NewListConnectionsRequest() (request *ListConnectionsRequest) {
 func NewListConnectionsResponse() (response *ListConnectionsResponse) {
     response = &ListConnectionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListConnections
@@ -1257,8 +1275,9 @@ func NewListEventBusesRequest() (request *ListEventBusesRequest) {
 func NewListEventBusesResponse() (response *ListEventBusesResponse) {
     response = &ListEventBusesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEventBuses
@@ -1317,8 +1336,9 @@ func NewListPlatformEventNamesRequest() (request *ListPlatformEventNamesRequest)
 func NewListPlatformEventNamesResponse() (response *ListPlatformEventNamesResponse) {
     response = &ListPlatformEventNamesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPlatformEventNames
@@ -1365,8 +1385,9 @@ func NewListPlatformEventPatternsRequest() (request *ListPlatformEventPatternsRe
 func NewListPlatformEventPatternsResponse() (response *ListPlatformEventPatternsResponse) {
     response = &ListPlatformEventPatternsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPlatformEventPatterns
@@ -1415,8 +1436,9 @@ func NewListPlatformProductsRequest() (request *ListPlatformProductsRequest) {
 func NewListPlatformProductsResponse() (response *ListPlatformProductsResponse) {
     response = &ListPlatformProductsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListPlatformProducts
@@ -1465,8 +1487,9 @@ func NewListRulesRequest() (request *ListRulesRequest) {
 func NewListRulesResponse() (response *ListRulesResponse) {
     response = &ListRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListRules
@@ -1525,8 +1548,9 @@ func NewListTargetsRequest() (request *ListTargetsRequest) {
 func NewListTargetsResponse() (response *ListTargetsResponse) {
     response = &ListTargetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTargets
@@ -1591,8 +1615,9 @@ func NewPublishEventRequest() (request *PublishEventRequest) {
 func NewPublishEventResponse() (response *PublishEventResponse) {
     response = &PublishEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PublishEvent
@@ -1655,8 +1680,9 @@ func NewPutEventsRequest() (request *PutEventsRequest) {
 func NewPutEventsResponse() (response *PutEventsResponse) {
     response = &PutEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutEvents
@@ -1723,8 +1749,9 @@ func NewSearchLogRequest() (request *SearchLogRequest) {
 func NewSearchLogResponse() (response *SearchLogResponse) {
     response = &SearchLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchLog
@@ -1773,8 +1800,9 @@ func NewUpdateConnectionRequest() (request *UpdateConnectionRequest) {
 func NewUpdateConnectionResponse() (response *UpdateConnectionResponse) {
     response = &UpdateConnectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateConnection
@@ -1831,8 +1859,9 @@ func NewUpdateEventBusRequest() (request *UpdateEventBusRequest) {
 func NewUpdateEventBusResponse() (response *UpdateEventBusResponse) {
     response = &UpdateEventBusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateEventBus
@@ -1893,8 +1922,9 @@ func NewUpdateRuleRequest() (request *UpdateRuleRequest) {
 func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
     response = &UpdateRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRule
@@ -1961,8 +1991,9 @@ func NewUpdateTargetRequest() (request *UpdateTargetRequest) {
 func NewUpdateTargetResponse() (response *UpdateTargetResponse) {
     response = &UpdateTargetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateTarget
@@ -2039,8 +2070,9 @@ func NewUpdateTransformationRequest() (request *UpdateTransformationRequest) {
 func NewUpdateTransformationResponse() (response *UpdateTransformationResponse) {
     response = &UpdateTransformationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateTransformation

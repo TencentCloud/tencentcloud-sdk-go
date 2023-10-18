@@ -59,8 +59,9 @@ func NewCreateAccessGroupRequest() (request *CreateAccessGroupRequest) {
 func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
     response = &CreateAccessGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAccessGroup
@@ -135,8 +136,9 @@ func NewCreateAccessRulesRequest() (request *CreateAccessRulesRequest) {
 func NewCreateAccessRulesResponse() (response *CreateAccessRulesResponse) {
     response = &CreateAccessRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAccessRules
@@ -213,8 +215,9 @@ func NewCreateFileSystemRequest() (request *CreateFileSystemRequest) {
 func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
     response = &CreateFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFileSystem
@@ -291,8 +294,9 @@ func NewCreateLifeCycleRulesRequest() (request *CreateLifeCycleRulesRequest) {
 func NewCreateLifeCycleRulesResponse() (response *CreateLifeCycleRulesResponse) {
     response = &CreateLifeCycleRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLifeCycleRules
@@ -369,8 +373,9 @@ func NewCreateMountPointRequest() (request *CreateMountPointRequest) {
 func NewCreateMountPointResponse() (response *CreateMountPointResponse) {
     response = &CreateMountPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMountPoint
@@ -455,8 +460,9 @@ func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
 func NewCreateRestoreTasksResponse() (response *CreateRestoreTasksResponse) {
     response = &CreateRestoreTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRestoreTasks
@@ -533,8 +539,9 @@ func NewDeleteAccessGroupRequest() (request *DeleteAccessGroupRequest) {
 func NewDeleteAccessGroupResponse() (response *DeleteAccessGroupResponse) {
     response = &DeleteAccessGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAccessGroup
@@ -605,8 +612,9 @@ func NewDeleteAccessRulesRequest() (request *DeleteAccessRulesRequest) {
 func NewDeleteAccessRulesResponse() (response *DeleteAccessRulesResponse) {
     response = &DeleteAccessRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAccessRules
@@ -673,8 +681,9 @@ func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
 func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
     response = &DeleteFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFileSystem
@@ -747,8 +756,9 @@ func NewDeleteLifeCycleRulesRequest() (request *DeleteLifeCycleRulesRequest) {
 func NewDeleteLifeCycleRulesResponse() (response *DeleteLifeCycleRulesResponse) {
     response = &DeleteLifeCycleRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLifeCycleRules
@@ -815,8 +825,9 @@ func NewDeleteMountPointRequest() (request *DeleteMountPointRequest) {
 func NewDeleteMountPointResponse() (response *DeleteMountPointResponse) {
     response = &DeleteMountPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMountPoint
@@ -885,8 +896,9 @@ func NewDescribeAccessGroupsRequest() (request *DescribeAccessGroupsRequest) {
 func NewDescribeAccessGroupsResponse() (response *DescribeAccessGroupsResponse) {
     response = &DescribeAccessGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessGroups
@@ -951,8 +963,9 @@ func NewDescribeAccessRulesRequest() (request *DescribeAccessRulesRequest) {
 func NewDescribeAccessRulesResponse() (response *DescribeAccessRulesResponse) {
     response = &DescribeAccessRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessRules
@@ -1021,8 +1034,9 @@ func NewDescribeFileSystemRequest() (request *DescribeFileSystemRequest) {
 func NewDescribeFileSystemResponse() (response *DescribeFileSystemResponse) {
     response = &DescribeFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileSystem
@@ -1093,8 +1107,9 @@ func NewDescribeFileSystemsRequest() (request *DescribeFileSystemsRequest) {
 func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
     response = &DescribeFileSystemsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileSystems
@@ -1159,8 +1174,9 @@ func NewDescribeLifeCycleRulesRequest() (request *DescribeLifeCycleRulesRequest)
 func NewDescribeLifeCycleRulesResponse() (response *DescribeLifeCycleRulesResponse) {
     response = &DescribeLifeCycleRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLifeCycleRules
@@ -1231,8 +1247,9 @@ func NewDescribeMountPointRequest() (request *DescribeMountPointRequest) {
 func NewDescribeMountPointResponse() (response *DescribeMountPointResponse) {
     response = &DescribeMountPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMountPoint
@@ -1301,8 +1318,9 @@ func NewDescribeMountPointsRequest() (request *DescribeMountPointsRequest) {
 func NewDescribeMountPointsResponse() (response *DescribeMountPointsResponse) {
     response = &DescribeMountPointsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMountPoints
@@ -1377,8 +1395,9 @@ func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
 func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) {
     response = &DescribeResourceTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTags
@@ -1449,8 +1468,9 @@ func NewDescribeRestoreTasksRequest() (request *DescribeRestoreTasksRequest) {
 func NewDescribeRestoreTasksResponse() (response *DescribeRestoreTasksResponse) {
     response = &DescribeRestoreTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRestoreTasks
@@ -1521,8 +1541,9 @@ func NewModifyAccessGroupRequest() (request *ModifyAccessGroupRequest) {
 func NewModifyAccessGroupResponse() (response *ModifyAccessGroupResponse) {
     response = &ModifyAccessGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccessGroup
@@ -1595,8 +1616,9 @@ func NewModifyAccessRulesRequest() (request *ModifyAccessRulesRequest) {
 func NewModifyAccessRulesResponse() (response *ModifyAccessRulesResponse) {
     response = &ModifyAccessRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccessRules
@@ -1665,8 +1687,9 @@ func NewModifyFileSystemRequest() (request *ModifyFileSystemRequest) {
 func NewModifyFileSystemResponse() (response *ModifyFileSystemResponse) {
     response = &ModifyFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFileSystem
@@ -1745,8 +1768,9 @@ func NewModifyLifeCycleRulesRequest() (request *ModifyLifeCycleRulesRequest) {
 func NewModifyLifeCycleRulesResponse() (response *ModifyLifeCycleRulesResponse) {
     response = &ModifyLifeCycleRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLifeCycleRules
@@ -1815,8 +1839,9 @@ func NewModifyMountPointRequest() (request *ModifyMountPointRequest) {
 func NewModifyMountPointResponse() (response *ModifyMountPointResponse) {
     response = &ModifyMountPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMountPoint
@@ -1891,8 +1916,9 @@ func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
 func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
     response = &ModifyResourceTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyResourceTags

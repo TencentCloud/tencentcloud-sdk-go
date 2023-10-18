@@ -59,8 +59,9 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
 func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResponse) {
     response = &AssociateSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssociateSecurityGroups
@@ -115,8 +116,9 @@ func NewChangeInstanceMasterRequest() (request *ChangeInstanceMasterRequest) {
 func NewChangeInstanceMasterResponse() (response *ChangeInstanceMasterResponse) {
     response = &ChangeInstanceMasterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeInstanceMaster
@@ -169,8 +171,9 @@ func NewCleanUpInstanceRequest() (request *CleanUpInstanceRequest) {
 func NewCleanUpInstanceResponse() (response *CleanUpInstanceResponse) {
     response = &CleanUpInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CleanUpInstance
@@ -225,8 +228,9 @@ func NewClearInstanceRequest() (request *ClearInstanceRequest) {
 func NewClearInstanceResponse() (response *ClearInstanceResponse) {
     response = &ClearInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ClearInstance
@@ -283,8 +287,9 @@ func NewCreateBackupManuallyRequest() (request *CreateBackupManuallyRequest) {
 func NewCreateBackupManuallyResponse() (response *CreateBackupManuallyResponse) {
     response = &CreateBackupManuallyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBackupManually
@@ -345,8 +350,9 @@ func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
 func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
     response = &CreateInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstances
@@ -407,8 +413,9 @@ func NewDescribeAutoBackupConfigRequest() (request *DescribeAutoBackupConfigRequ
 func NewDescribeAutoBackupConfigResponse() (response *DescribeAutoBackupConfigResponse) {
     response = &DescribeAutoBackupConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoBackupConfig
@@ -463,8 +470,9 @@ func NewDescribeConnectionConfigRequest() (request *DescribeConnectionConfigRequ
 func NewDescribeConnectionConfigResponse() (response *DescribeConnectionConfigResponse) {
     response = &DescribeConnectionConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConnectionConfig
@@ -517,8 +525,9 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
 func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsResponse) {
     response = &DescribeDBSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDBSecurityGroups
@@ -589,8 +598,9 @@ func NewDescribeInstanceBackupsRequest() (request *DescribeInstanceBackupsReques
 func NewDescribeInstanceBackupsResponse() (response *DescribeInstanceBackupsResponse) {
     response = &DescribeInstanceBackupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceBackups
@@ -647,8 +657,9 @@ func NewDescribeInstanceBinlogsRequest() (request *DescribeInstanceBinlogsReques
 func NewDescribeInstanceBinlogsResponse() (response *DescribeInstanceBinlogsResponse) {
     response = &DescribeInstanceBinlogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceBinlogs
@@ -703,8 +714,9 @@ func NewDescribeInstanceDealDetailRequest() (request *DescribeInstanceDealDetail
 func NewDescribeInstanceDealDetailResponse() (response *DescribeInstanceDealDetailResponse) {
     response = &DescribeInstanceDealDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceDealDetail
@@ -753,8 +765,9 @@ func NewDescribeInstanceNodeInfoRequest() (request *DescribeInstanceNodeInfoRequ
 func NewDescribeInstanceNodeInfoResponse() (response *DescribeInstanceNodeInfoResponse) {
     response = &DescribeInstanceNodeInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceNodeInfo
@@ -807,8 +820,9 @@ func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRec
 func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamRecordsResponse) {
     response = &DescribeInstanceParamRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceParamRecords
@@ -863,8 +877,9 @@ func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest)
 func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsResponse) {
     response = &DescribeInstanceParamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceParams
@@ -927,8 +942,9 @@ func NewDescribeInstanceReplicasRequest() (request *DescribeInstanceReplicasRequ
 func NewDescribeInstanceReplicasResponse() (response *DescribeInstanceReplicasResponse) {
     response = &DescribeInstanceReplicasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceReplicas
@@ -979,8 +995,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -1041,8 +1058,9 @@ func NewDescribeMaintenanceWindowRequest() (request *DescribeMaintenanceWindowRe
 func NewDescribeMaintenanceWindowResponse() (response *DescribeMaintenanceWindowResponse) {
     response = &DescribeMaintenanceWindowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMaintenanceWindow
@@ -1093,8 +1111,9 @@ func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
 func NewDescribeProductInfoResponse() (response *DescribeProductInfoResponse) {
     response = &DescribeProductInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProductInfo
@@ -1149,8 +1168,9 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
 func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecurityGroupsResponse) {
     response = &DescribeProjectSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectSecurityGroups
@@ -1207,8 +1227,9 @@ func NewDescribeProxySlowLogRequest() (request *DescribeProxySlowLogRequest) {
 func NewDescribeProxySlowLogResponse() (response *DescribeProxySlowLogResponse) {
     response = &DescribeProxySlowLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProxySlowLog
@@ -1267,8 +1288,9 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
 func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
     response = &DescribeTaskInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskInfo
@@ -1319,8 +1341,9 @@ func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
 func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
     response = &DescribeTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskList
@@ -1375,8 +1398,9 @@ func NewDescribeTendisSlowLogRequest() (request *DescribeTendisSlowLogRequest) {
 func NewDescribeTendisSlowLogResponse() (response *DescribeTendisSlowLogResponse) {
     response = &DescribeTendisSlowLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTendisSlowLog
@@ -1433,8 +1457,9 @@ func NewDestroyPostpaidInstanceRequest() (request *DestroyPostpaidInstanceReques
 func NewDestroyPostpaidInstanceResponse() (response *DestroyPostpaidInstanceResponse) {
     response = &DestroyPostpaidInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyPostpaidInstance
@@ -1495,8 +1520,9 @@ func NewDestroyPrepaidInstanceRequest() (request *DestroyPrepaidInstanceRequest)
 func NewDestroyPrepaidInstanceResponse() (response *DestroyPrepaidInstanceResponse) {
     response = &DestroyPrepaidInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyPrepaidInstance
@@ -1559,8 +1585,9 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
 func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGroupsResponse) {
     response = &DisassociateSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisassociateSecurityGroups
@@ -1615,8 +1642,9 @@ func NewModifyAutoBackupConfigRequest() (request *ModifyAutoBackupConfigRequest)
 func NewModifyAutoBackupConfigResponse() (response *ModifyAutoBackupConfigResponse) {
     response = &ModifyAutoBackupConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAutoBackupConfig
@@ -1677,8 +1705,9 @@ func NewModifyConnectionConfigRequest() (request *ModifyConnectionConfigRequest)
 func NewModifyConnectionConfigResponse() (response *ModifyConnectionConfigResponse) {
     response = &ModifyConnectionConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConnectionConfig
@@ -1729,8 +1758,9 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
 func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecurityGroupsResponse) {
     response = &ModifyDBInstanceSecurityGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDBInstanceSecurityGroups
@@ -1795,8 +1825,9 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
 func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
     response = &ModifyInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstance
@@ -1849,8 +1880,9 @@ func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
 func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) {
     response = &ModifyInstanceParamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstanceParams
@@ -1917,8 +1949,9 @@ func NewModifyMaintenanceWindowRequest() (request *ModifyMaintenanceWindowReques
 func NewModifyMaintenanceWindowResponse() (response *ModifyMaintenanceWindowResponse) {
     response = &ModifyMaintenanceWindowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMaintenanceWindow
@@ -1969,8 +2002,9 @@ func NewModifyNetworkConfigRequest() (request *ModifyNetworkConfigRequest) {
 func NewModifyNetworkConfigResponse() (response *ModifyNetworkConfigResponse) {
     response = &ModifyNetworkConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNetworkConfig
@@ -2031,8 +2065,9 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
 func NewRenewInstanceResponse() (response *RenewInstanceResponse) {
     response = &RenewInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewInstance
@@ -2093,8 +2128,9 @@ func NewResetPasswordRequest() (request *ResetPasswordRequest) {
 func NewResetPasswordResponse() (response *ResetPasswordResponse) {
     response = &ResetPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetPassword
@@ -2153,8 +2189,9 @@ func NewStartUpInstanceRequest() (request *StartUpInstanceRequest) {
 func NewStartUpInstanceResponse() (response *StartUpInstanceResponse) {
     response = &StartUpInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartUpInstance
@@ -2215,8 +2252,9 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
 func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
     response = &UpgradeInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeInstance

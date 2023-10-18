@@ -59,8 +59,9 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
 func NewCreateJobResponse() (response *CreateJobResponse) {
     response = &CreateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateJob
@@ -119,8 +120,9 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
 func NewCreateModelResponse() (response *CreateModelResponse) {
     response = &CreateModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateModel
@@ -207,8 +209,9 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
 func NewDeleteJobResponse() (response *DeleteJobResponse) {
     response = &DeleteJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteJob
@@ -259,8 +262,9 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
 func NewDeleteModelResponse() (response *DeleteModelResponse) {
     response = &DeleteModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteModel
@@ -325,8 +329,9 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
 func NewDescribeJobResponse() (response *DescribeJobResponse) {
     response = &DescribeJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJob
@@ -385,8 +390,9 @@ func NewDescribeModelRequest() (request *DescribeModelRequest) {
 func NewDescribeModelResponse() (response *DescribeModelResponse) {
     response = &DescribeModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModel
@@ -447,8 +453,9 @@ func NewInstallAgentRequest() (request *InstallAgentRequest) {
 func NewInstallAgentResponse() (response *InstallAgentResponse) {
     response = &InstallAgentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InstallAgent
@@ -503,8 +510,9 @@ func NewListJobsRequest() (request *ListJobsRequest) {
 func NewListJobsResponse() (response *ListJobsResponse) {
     response = &ListJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListJobs
@@ -561,8 +569,9 @@ func NewListModelsRequest() (request *ListModelsRequest) {
 func NewListModelsResponse() (response *ListModelsResponse) {
     response = &ListModelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListModels
@@ -631,8 +640,9 @@ func NewQueryLogsRequest() (request *QueryLogsRequest) {
 func NewQueryLogsResponse() (response *QueryLogsResponse) {
     response = &QueryLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryLogs

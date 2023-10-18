@@ -59,8 +59,9 @@ func NewApplyEmbedIntervalRequest() (request *ApplyEmbedIntervalRequest) {
 func NewApplyEmbedIntervalResponse() (response *ApplyEmbedIntervalResponse) {
     response = &ApplyEmbedIntervalResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyEmbedInterval
@@ -137,8 +138,9 @@ func NewCreateDatasourceRequest() (request *CreateDatasourceRequest) {
 func NewCreateDatasourceResponse() (response *CreateDatasourceResponse) {
     response = &CreateDatasourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDatasource
@@ -215,8 +217,9 @@ func NewCreateDatasourceCloudRequest() (request *CreateDatasourceCloudRequest) {
 func NewCreateDatasourceCloudResponse() (response *CreateDatasourceCloudResponse) {
     response = &CreateDatasourceCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDatasourceCloud
@@ -289,8 +292,9 @@ func NewCreateEmbedTokenRequest() (request *CreateEmbedTokenRequest) {
 func NewCreateEmbedTokenResponse() (response *CreateEmbedTokenResponse) {
     response = &CreateEmbedTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEmbedToken
@@ -369,8 +373,9 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
 func NewCreateProjectResponse() (response *CreateProjectResponse) {
     response = &CreateProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProject
@@ -445,8 +450,9 @@ func NewCreateUserRoleRequest() (request *CreateUserRoleRequest) {
 func NewCreateUserRoleResponse() (response *CreateUserRoleResponse) {
     response = &CreateUserRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserRole
@@ -497,8 +503,9 @@ func NewCreateUserRoleProjectRequest() (request *CreateUserRoleProjectRequest) {
 func NewCreateUserRoleProjectResponse() (response *CreateUserRoleProjectResponse) {
     response = &CreateUserRoleProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserRoleProject
@@ -551,8 +558,9 @@ func NewDeleteDatasourceRequest() (request *DeleteDatasourceRequest) {
 func NewDeleteDatasourceResponse() (response *DeleteDatasourceResponse) {
     response = &DeleteDatasourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDatasource
@@ -629,8 +637,9 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
 func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
     response = &DeleteProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProject
@@ -677,8 +686,9 @@ func NewDeleteUserRoleRequest() (request *DeleteUserRoleRequest) {
 func NewDeleteUserRoleResponse() (response *DeleteUserRoleResponse) {
     response = &DeleteUserRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserRole
@@ -731,8 +741,9 @@ func NewDeleteUserRoleProjectRequest() (request *DeleteUserRoleProjectRequest) {
 func NewDeleteUserRoleProjectResponse() (response *DeleteUserRoleProjectResponse) {
     response = &DeleteUserRoleProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUserRoleProject
@@ -781,8 +792,9 @@ func NewDescribeDatasourceListRequest() (request *DescribeDatasourceListRequest)
 func NewDescribeDatasourceListResponse() (response *DescribeDatasourceListResponse) {
     response = &DescribeDatasourceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatasourceList
@@ -863,8 +875,9 @@ func NewDescribeProjectInfoRequest() (request *DescribeProjectInfoRequest) {
 func NewDescribeProjectInfoResponse() (response *DescribeProjectInfoResponse) {
     response = &DescribeProjectInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectInfo
@@ -917,8 +930,9 @@ func NewDescribeProjectListRequest() (request *DescribeProjectListRequest) {
 func NewDescribeProjectListResponse() (response *DescribeProjectListResponse) {
     response = &DescribeProjectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProjectList
@@ -973,8 +987,9 @@ func NewDescribeUserProjectListRequest() (request *DescribeUserProjectListReques
 func NewDescribeUserProjectListResponse() (response *DescribeUserProjectListResponse) {
     response = &DescribeUserProjectListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserProjectList
@@ -1023,8 +1038,9 @@ func NewDescribeUserRoleListRequest() (request *DescribeUserRoleListRequest) {
 func NewDescribeUserRoleListResponse() (response *DescribeUserRoleListResponse) {
     response = &DescribeUserRoleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserRoleList
@@ -1081,8 +1097,9 @@ func NewModifyDatasourceRequest() (request *ModifyDatasourceRequest) {
 func NewModifyDatasourceResponse() (response *ModifyDatasourceResponse) {
     response = &ModifyDatasourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDatasource
@@ -1159,8 +1176,9 @@ func NewModifyDatasourceCloudRequest() (request *ModifyDatasourceCloudRequest) {
 func NewModifyDatasourceCloudResponse() (response *ModifyDatasourceCloudResponse) {
     response = &ModifyDatasourceCloudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDatasourceCloud
@@ -1233,8 +1251,9 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
 func NewModifyProjectResponse() (response *ModifyProjectResponse) {
     response = &ModifyProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyProject
@@ -1283,8 +1302,9 @@ func NewModifyUserRoleRequest() (request *ModifyUserRoleRequest) {
 func NewModifyUserRoleResponse() (response *ModifyUserRoleResponse) {
     response = &ModifyUserRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserRole
@@ -1335,8 +1355,9 @@ func NewModifyUserRoleProjectRequest() (request *ModifyUserRoleProjectRequest) {
 func NewModifyUserRoleProjectResponse() (response *ModifyUserRoleProjectResponse) {
     response = &ModifyUserRoleProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserRoleProject

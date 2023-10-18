@@ -59,8 +59,9 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
 func NewCancelTaskResponse() (response *CancelTaskResponse) {
     response = &CancelTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelTask
@@ -137,8 +138,9 @@ func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
 func NewCreateBizConfigResponse() (response *CreateBizConfigResponse) {
     response = &CreateBizConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBizConfig
@@ -231,8 +233,9 @@ func NewCreateVideoModerationTaskRequest() (request *CreateVideoModerationTaskRe
 func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTaskResponse) {
     response = &CreateVideoModerationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVideoModerationTask
@@ -311,8 +314,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail
@@ -391,8 +395,9 @@ func NewDescribeVideoStatRequest() (request *DescribeVideoStatRequest) {
 func NewDescribeVideoStatResponse() (response *DescribeVideoStatResponse) {
     response = &DescribeVideoStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVideoStat

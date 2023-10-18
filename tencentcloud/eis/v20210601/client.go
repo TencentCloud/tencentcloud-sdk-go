@@ -59,8 +59,9 @@ func NewGetRuntimeMCRequest() (request *GetRuntimeMCRequest) {
 func NewGetRuntimeMCResponse() (response *GetRuntimeMCResponse) {
     response = &GetRuntimeMCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRuntimeMC
@@ -129,8 +130,9 @@ func NewGetRuntimeResourceMonitorMetricMCRequest() (request *GetRuntimeResourceM
 func NewGetRuntimeResourceMonitorMetricMCResponse() (response *GetRuntimeResourceMonitorMetricMCResponse) {
     response = &GetRuntimeResourceMonitorMetricMCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRuntimeResourceMonitorMetricMC
@@ -199,8 +201,9 @@ func NewListDeployableRuntimesMCRequest() (request *ListDeployableRuntimesMCRequ
 func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCResponse) {
     response = &ListDeployableRuntimesMCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListDeployableRuntimesMC
@@ -261,8 +264,9 @@ func NewListRuntimeDeployedInstancesMCRequest() (request *ListRuntimeDeployedIns
 func NewListRuntimeDeployedInstancesMCResponse() (response *ListRuntimeDeployedInstancesMCResponse) {
     response = &ListRuntimeDeployedInstancesMCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListRuntimeDeployedInstancesMC
@@ -325,8 +329,9 @@ func NewListRuntimesMCRequest() (request *ListRuntimesMCRequest) {
 func NewListRuntimesMCResponse() (response *ListRuntimesMCResponse) {
     response = &ListRuntimesMCResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListRuntimesMC

@@ -59,8 +59,9 @@ func NewQueryLoginProtectionRequest() (request *QueryLoginProtectionRequest) {
 func NewQueryLoginProtectionResponse() (response *QueryLoginProtectionResponse) {
     response = &QueryLoginProtectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryLoginProtection

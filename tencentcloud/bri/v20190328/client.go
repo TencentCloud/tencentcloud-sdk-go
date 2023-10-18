@@ -59,8 +59,9 @@ func NewDescribeBRIRequest() (request *DescribeBRIRequest) {
 func NewDescribeBRIResponse() (response *DescribeBRIResponse) {
     response = &DescribeBRIResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBRI

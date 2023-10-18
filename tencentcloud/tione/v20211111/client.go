@@ -59,8 +59,9 @@ func NewChatCompletionRequest() (request *ChatCompletionRequest) {
 func NewChatCompletionResponse() (response *ChatCompletionResponse) {
     response = &ChatCompletionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChatCompletion
@@ -123,8 +124,9 @@ func NewCreateBatchModelAccTasksRequest() (request *CreateBatchModelAccTasksRequ
 func NewCreateBatchModelAccTasksResponse() (response *CreateBatchModelAccTasksResponse) {
     response = &CreateBatchModelAccTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBatchModelAccTasks
@@ -195,8 +197,9 @@ func NewCreateBatchTaskRequest() (request *CreateBatchTaskRequest) {
 func NewCreateBatchTaskResponse() (response *CreateBatchTaskResponse) {
     response = &CreateBatchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBatchTask
@@ -263,8 +266,9 @@ func NewCreateDatasetRequest() (request *CreateDatasetRequest) {
 func NewCreateDatasetResponse() (response *CreateDatasetResponse) {
     response = &CreateDatasetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDataset
@@ -365,8 +369,9 @@ func NewCreateModelServiceRequest() (request *CreateModelServiceRequest) {
 func NewCreateModelServiceResponse() (response *CreateModelServiceResponse) {
     response = &CreateModelServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateModelService
@@ -457,8 +462,9 @@ func NewCreateNotebookRequest() (request *CreateNotebookRequest) {
 func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
     response = &CreateNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNotebook
@@ -567,8 +573,9 @@ func NewCreateNotebookImageRequest() (request *CreateNotebookImageRequest) {
 func NewCreateNotebookImageResponse() (response *CreateNotebookImageResponse) {
     response = &CreateNotebookImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNotebookImage
@@ -621,8 +628,9 @@ func NewCreateOptimizedModelRequest() (request *CreateOptimizedModelRequest) {
 func NewCreateOptimizedModelResponse() (response *CreateOptimizedModelResponse) {
     response = &CreateOptimizedModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOptimizedModel
@@ -685,8 +693,9 @@ func NewCreateTrainingModelRequest() (request *CreateTrainingModelRequest) {
 func NewCreateTrainingModelResponse() (response *CreateTrainingModelResponse) {
     response = &CreateTrainingModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrainingModel
@@ -763,8 +772,9 @@ func NewCreateTrainingTaskRequest() (request *CreateTrainingTaskRequest) {
 func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
     response = &CreateTrainingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrainingTask
@@ -879,8 +889,9 @@ func NewDeleteBatchTaskRequest() (request *DeleteBatchTaskRequest) {
 func NewDeleteBatchTaskResponse() (response *DeleteBatchTaskResponse) {
     response = &DeleteBatchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBatchTask
@@ -945,8 +956,9 @@ func NewDeleteDatasetRequest() (request *DeleteDatasetRequest) {
 func NewDeleteDatasetResponse() (response *DeleteDatasetResponse) {
     response = &DeleteDatasetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDataset
@@ -1047,8 +1059,9 @@ func NewDeleteModelAccelerateTaskRequest() (request *DeleteModelAccelerateTaskRe
 func NewDeleteModelAccelerateTaskResponse() (response *DeleteModelAccelerateTaskResponse) {
     response = &DeleteModelAccelerateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteModelAccelerateTask
@@ -1107,8 +1120,9 @@ func NewDeleteModelServiceRequest() (request *DeleteModelServiceRequest) {
 func NewDeleteModelServiceResponse() (response *DeleteModelServiceResponse) {
     response = &DeleteModelServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteModelService
@@ -1197,8 +1211,9 @@ func NewDeleteModelServiceGroupRequest() (request *DeleteModelServiceGroupReques
 func NewDeleteModelServiceGroupResponse() (response *DeleteModelServiceGroupResponse) {
     response = &DeleteModelServiceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteModelServiceGroup
@@ -1287,8 +1302,9 @@ func NewDeleteNotebookRequest() (request *DeleteNotebookRequest) {
 func NewDeleteNotebookResponse() (response *DeleteNotebookResponse) {
     response = &DeleteNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNotebook
@@ -1361,8 +1377,9 @@ func NewDeleteNotebookImageRecordRequest() (request *DeleteNotebookImageRecordRe
 func NewDeleteNotebookImageRecordResponse() (response *DeleteNotebookImageRecordResponse) {
     response = &DeleteNotebookImageRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNotebookImageRecord
@@ -1435,8 +1452,9 @@ func NewDeleteTrainingModelRequest() (request *DeleteTrainingModelRequest) {
 func NewDeleteTrainingModelResponse() (response *DeleteTrainingModelResponse) {
     response = &DeleteTrainingModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTrainingModel
@@ -1503,8 +1521,9 @@ func NewDeleteTrainingModelVersionRequest() (request *DeleteTrainingModelVersion
 func NewDeleteTrainingModelVersionResponse() (response *DeleteTrainingModelVersionResponse) {
     response = &DeleteTrainingModelVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTrainingModelVersion
@@ -1569,8 +1588,9 @@ func NewDeleteTrainingTaskRequest() (request *DeleteTrainingTaskRequest) {
 func NewDeleteTrainingTaskResponse() (response *DeleteTrainingTaskResponse) {
     response = &DeleteTrainingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTrainingTask
@@ -1625,8 +1645,9 @@ func NewDescribeAPIConfigsRequest() (request *DescribeAPIConfigsRequest) {
 func NewDescribeAPIConfigsResponse() (response *DescribeAPIConfigsResponse) {
     response = &DescribeAPIConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAPIConfigs
@@ -1713,8 +1734,9 @@ func NewDescribeBatchTaskRequest() (request *DescribeBatchTaskRequest) {
 func NewDescribeBatchTaskResponse() (response *DescribeBatchTaskResponse) {
     response = &DescribeBatchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchTask
@@ -1777,8 +1799,9 @@ func NewDescribeBatchTaskInstancesRequest() (request *DescribeBatchTaskInstances
 func NewDescribeBatchTaskInstancesResponse() (response *DescribeBatchTaskInstancesResponse) {
     response = &DescribeBatchTaskInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchTaskInstances
@@ -1839,8 +1862,9 @@ func NewDescribeBatchTasksRequest() (request *DescribeBatchTasksRequest) {
 func NewDescribeBatchTasksResponse() (response *DescribeBatchTasksResponse) {
     response = &DescribeBatchTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBatchTasks
@@ -1905,8 +1929,9 @@ func NewDescribeBillingResourceGroupsRequest() (request *DescribeBillingResource
 func NewDescribeBillingResourceGroupsResponse() (response *DescribeBillingResourceGroupsResponse) {
     response = &DescribeBillingResourceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillingResourceGroups
@@ -1981,8 +2006,9 @@ func NewDescribeBillingSpecsRequest() (request *DescribeBillingSpecsRequest) {
 func NewDescribeBillingSpecsResponse() (response *DescribeBillingSpecsResponse) {
     response = &DescribeBillingSpecsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillingSpecs
@@ -2041,8 +2067,9 @@ func NewDescribeBillingSpecsPriceRequest() (request *DescribeBillingSpecsPriceRe
 func NewDescribeBillingSpecsPriceResponse() (response *DescribeBillingSpecsPriceResponse) {
     response = &DescribeBillingSpecsPriceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillingSpecsPrice
@@ -2095,8 +2122,9 @@ func NewDescribeDatasetDetailStructuredRequest() (request *DescribeDatasetDetail
 func NewDescribeDatasetDetailStructuredResponse() (response *DescribeDatasetDetailStructuredResponse) {
     response = &DescribeDatasetDetailStructuredResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatasetDetailStructured
@@ -2195,8 +2223,9 @@ func NewDescribeDatasetDetailUnstructuredRequest() (request *DescribeDatasetDeta
 func NewDescribeDatasetDetailUnstructuredResponse() (response *DescribeDatasetDetailUnstructuredResponse) {
     response = &DescribeDatasetDetailUnstructuredResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatasetDetailUnstructured
@@ -2295,8 +2324,9 @@ func NewDescribeDatasetsRequest() (request *DescribeDatasetsRequest) {
 func NewDescribeDatasetsResponse() (response *DescribeDatasetsResponse) {
     response = &DescribeDatasetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatasets
@@ -2393,8 +2423,9 @@ func NewDescribeInferTemplatesRequest() (request *DescribeInferTemplatesRequest)
 func NewDescribeInferTemplatesResponse() (response *DescribeInferTemplatesResponse) {
     response = &DescribeInferTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInferTemplates
@@ -2471,8 +2502,9 @@ func NewDescribeLatestTrainingMetricsRequest() (request *DescribeLatestTrainingM
 func NewDescribeLatestTrainingMetricsResponse() (response *DescribeLatestTrainingMetricsResponse) {
     response = &DescribeLatestTrainingMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLatestTrainingMetrics
@@ -2555,8 +2587,9 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
 func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
     response = &DescribeLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogs
@@ -2605,8 +2638,9 @@ func NewDescribeModelAccEngineVersionsRequest() (request *DescribeModelAccEngine
 func NewDescribeModelAccEngineVersionsResponse() (response *DescribeModelAccEngineVersionsResponse) {
     response = &DescribeModelAccEngineVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelAccEngineVersions
@@ -2671,8 +2705,9 @@ func NewDescribeModelAccelerateTaskRequest() (request *DescribeModelAccelerateTa
 func NewDescribeModelAccelerateTaskResponse() (response *DescribeModelAccelerateTaskResponse) {
     response = &DescribeModelAccelerateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelAccelerateTask
@@ -2737,8 +2772,9 @@ func NewDescribeModelAccelerateTasksRequest() (request *DescribeModelAccelerateT
 func NewDescribeModelAccelerateTasksResponse() (response *DescribeModelAccelerateTasksResponse) {
     response = &DescribeModelAccelerateTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelAccelerateTasks
@@ -2791,8 +2827,9 @@ func NewDescribeModelServiceRequest() (request *DescribeModelServiceRequest) {
 func NewDescribeModelServiceResponse() (response *DescribeModelServiceResponse) {
     response = &DescribeModelServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelService
@@ -2897,8 +2934,9 @@ func NewDescribeModelServiceCallInfoRequest() (request *DescribeModelServiceCall
 func NewDescribeModelServiceCallInfoResponse() (response *DescribeModelServiceCallInfoResponse) {
     response = &DescribeModelServiceCallInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServiceCallInfo
@@ -2995,8 +3033,9 @@ func NewDescribeModelServiceGroupRequest() (request *DescribeModelServiceGroupRe
 func NewDescribeModelServiceGroupResponse() (response *DescribeModelServiceGroupResponse) {
     response = &DescribeModelServiceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServiceGroup
@@ -3077,8 +3116,9 @@ func NewDescribeModelServiceGroupsRequest() (request *DescribeModelServiceGroups
 func NewDescribeModelServiceGroupsResponse() (response *DescribeModelServiceGroupsResponse) {
     response = &DescribeModelServiceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServiceGroups
@@ -3173,8 +3213,9 @@ func NewDescribeModelServiceHistoryRequest() (request *DescribeModelServiceHisto
 func NewDescribeModelServiceHistoryResponse() (response *DescribeModelServiceHistoryResponse) {
     response = &DescribeModelServiceHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServiceHistory
@@ -3271,8 +3312,9 @@ func NewDescribeModelServiceHotUpdatedRequest() (request *DescribeModelServiceHo
 func NewDescribeModelServiceHotUpdatedResponse() (response *DescribeModelServiceHotUpdatedResponse) {
     response = &DescribeModelServiceHotUpdatedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServiceHotUpdated
@@ -3361,8 +3403,9 @@ func NewDescribeModelServicesRequest() (request *DescribeModelServicesRequest) {
 func NewDescribeModelServicesResponse() (response *DescribeModelServicesResponse) {
     response = &DescribeModelServicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModelServices
@@ -3451,8 +3494,9 @@ func NewDescribeNotebookRequest() (request *DescribeNotebookRequest) {
 func NewDescribeNotebookResponse() (response *DescribeNotebookResponse) {
     response = &DescribeNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebook
@@ -3519,8 +3563,9 @@ func NewDescribeNotebookImageKernelsRequest() (request *DescribeNotebookImageKer
 func NewDescribeNotebookImageKernelsResponse() (response *DescribeNotebookImageKernelsResponse) {
     response = &DescribeNotebookImageKernelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookImageKernels
@@ -3569,8 +3614,9 @@ func NewDescribeNotebookImageRecordsRequest() (request *DescribeNotebookImageRec
 func NewDescribeNotebookImageRecordsResponse() (response *DescribeNotebookImageRecordsResponse) {
     response = &DescribeNotebookImageRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookImageRecords
@@ -3617,8 +3663,9 @@ func NewDescribeNotebooksRequest() (request *DescribeNotebooksRequest) {
 func NewDescribeNotebooksResponse() (response *DescribeNotebooksResponse) {
     response = &DescribeNotebooksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebooks
@@ -3683,8 +3730,9 @@ func NewDescribeTrainingFrameworksRequest() (request *DescribeTrainingFrameworks
 func NewDescribeTrainingFrameworksResponse() (response *DescribeTrainingFrameworksResponse) {
     response = &DescribeTrainingFrameworksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingFrameworks
@@ -3737,8 +3785,9 @@ func NewDescribeTrainingMetricsRequest() (request *DescribeTrainingMetricsReques
 func NewDescribeTrainingMetricsResponse() (response *DescribeTrainingMetricsResponse) {
     response = &DescribeTrainingMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingMetrics
@@ -3791,8 +3840,9 @@ func NewDescribeTrainingModelVersionRequest() (request *DescribeTrainingModelVer
 func NewDescribeTrainingModelVersionResponse() (response *DescribeTrainingModelVersionResponse) {
     response = &DescribeTrainingModelVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingModelVersion
@@ -3857,8 +3907,9 @@ func NewDescribeTrainingModelVersionsRequest() (request *DescribeTrainingModelVe
 func NewDescribeTrainingModelVersionsResponse() (response *DescribeTrainingModelVersionsResponse) {
     response = &DescribeTrainingModelVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingModelVersions
@@ -3927,8 +3978,9 @@ func NewDescribeTrainingModelsRequest() (request *DescribeTrainingModelsRequest)
 func NewDescribeTrainingModelsResponse() (response *DescribeTrainingModelsResponse) {
     response = &DescribeTrainingModelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingModels
@@ -3999,8 +4051,9 @@ func NewDescribeTrainingTaskRequest() (request *DescribeTrainingTaskRequest) {
 func NewDescribeTrainingTaskResponse() (response *DescribeTrainingTaskResponse) {
     response = &DescribeTrainingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingTask
@@ -4055,8 +4108,9 @@ func NewDescribeTrainingTaskPodsRequest() (request *DescribeTrainingTaskPodsRequ
 func NewDescribeTrainingTaskPodsResponse() (response *DescribeTrainingTaskPodsResponse) {
     response = &DescribeTrainingTaskPodsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingTaskPods
@@ -4115,8 +4169,9 @@ func NewDescribeTrainingTasksRequest() (request *DescribeTrainingTasksRequest) {
 func NewDescribeTrainingTasksResponse() (response *DescribeTrainingTasksResponse) {
     response = &DescribeTrainingTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingTasks
@@ -4177,8 +4232,9 @@ func NewModifyModelServiceRequest() (request *ModifyModelServiceRequest) {
 func NewModifyModelServiceResponse() (response *ModifyModelServiceResponse) {
     response = &ModifyModelServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyModelService
@@ -4277,8 +4333,9 @@ func NewModifyModelServicePartialConfigRequest() (request *ModifyModelServicePar
 func NewModifyModelServicePartialConfigResponse() (response *ModifyModelServicePartialConfigResponse) {
     response = &ModifyModelServicePartialConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyModelServicePartialConfig
@@ -4343,8 +4400,9 @@ func NewModifyNotebookRequest() (request *ModifyNotebookRequest) {
 func NewModifyNotebookResponse() (response *ModifyNotebookResponse) {
     response = &ModifyNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNotebook
@@ -4429,8 +4487,9 @@ func NewModifyNotebookTagsRequest() (request *ModifyNotebookTagsRequest) {
 func NewModifyNotebookTagsResponse() (response *ModifyNotebookTagsResponse) {
     response = &ModifyNotebookTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNotebookTags
@@ -4485,8 +4544,9 @@ func NewModifyServiceGroupWeightsRequest() (request *ModifyServiceGroupWeightsRe
 func NewModifyServiceGroupWeightsResponse() (response *ModifyServiceGroupWeightsResponse) {
     response = &ModifyServiceGroupWeightsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyServiceGroupWeights
@@ -4583,8 +4643,9 @@ func NewPushTrainingMetricsRequest() (request *PushTrainingMetricsRequest) {
 func NewPushTrainingMetricsResponse() (response *PushTrainingMetricsResponse) {
     response = &PushTrainingMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PushTrainingMetrics
@@ -4639,8 +4700,9 @@ func NewRestartModelAccelerateTaskRequest() (request *RestartModelAccelerateTask
 func NewRestartModelAccelerateTaskResponse() (response *RestartModelAccelerateTaskResponse) {
     response = &RestartModelAccelerateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartModelAccelerateTask
@@ -4699,8 +4761,9 @@ func NewSendChatMessageRequest() (request *SendChatMessageRequest) {
 func NewSendChatMessageResponse() (response *SendChatMessageResponse) {
     response = &SendChatMessageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendChatMessage
@@ -4751,8 +4814,9 @@ func NewStartNotebookRequest() (request *StartNotebookRequest) {
 func NewStartNotebookResponse() (response *StartNotebookResponse) {
     response = &StartNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartNotebook
@@ -4843,8 +4907,9 @@ func NewStartTrainingTaskRequest() (request *StartTrainingTaskRequest) {
 func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
     response = &StartTrainingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartTrainingTask
@@ -4929,8 +4994,9 @@ func NewStopBatchTaskRequest() (request *StopBatchTaskRequest) {
 func NewStopBatchTaskResponse() (response *StopBatchTaskResponse) {
     response = &StopBatchTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopBatchTask
@@ -4997,8 +5063,9 @@ func NewStopCreatingImageRequest() (request *StopCreatingImageRequest) {
 func NewStopCreatingImageResponse() (response *StopCreatingImageResponse) {
     response = &StopCreatingImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopCreatingImage
@@ -5065,8 +5132,9 @@ func NewStopModelAccelerateTaskRequest() (request *StopModelAccelerateTaskReques
 func NewStopModelAccelerateTaskResponse() (response *StopModelAccelerateTaskResponse) {
     response = &StopModelAccelerateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopModelAccelerateTask
@@ -5125,8 +5193,9 @@ func NewStopNotebookRequest() (request *StopNotebookRequest) {
 func NewStopNotebookResponse() (response *StopNotebookResponse) {
     response = &StopNotebookResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopNotebook
@@ -5195,8 +5264,9 @@ func NewStopTrainingTaskRequest() (request *StopTrainingTaskRequest) {
 func NewStopTrainingTaskResponse() (response *StopTrainingTaskResponse) {
     response = &StopTrainingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopTrainingTask

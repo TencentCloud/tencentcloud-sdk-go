@@ -59,8 +59,9 @@ func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
 func NewAttachCcnInstancesResponse() (response *AttachCcnInstancesResponse) {
     response = &AttachCcnInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachCcnInstances
@@ -149,8 +150,9 @@ func NewCopyFleetRequest() (request *CopyFleetRequest) {
 func NewCopyFleetResponse() (response *CopyFleetResponse) {
     response = &CopyFleetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyFleet
@@ -239,8 +241,9 @@ func NewCreateAliasRequest() (request *CreateAliasRequest) {
 func NewCreateAliasResponse() (response *CreateAliasResponse) {
     response = &CreateAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAlias
@@ -303,8 +306,9 @@ func NewCreateAssetRequest() (request *CreateAssetRequest) {
 func NewCreateAssetResponse() (response *CreateAssetResponse) {
     response = &CreateAssetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAsset
@@ -423,8 +427,9 @@ func NewCreateAssetWithImageRequest() (request *CreateAssetWithImageRequest) {
 func NewCreateAssetWithImageResponse() (response *CreateAssetWithImageResponse) {
     response = &CreateAssetWithImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAssetWithImage
@@ -511,8 +516,9 @@ func NewCreateFleetRequest() (request *CreateFleetRequest) {
 func NewCreateFleetResponse() (response *CreateFleetResponse) {
     response = &CreateFleetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFleet
@@ -597,8 +603,9 @@ func NewCreateGameServerSessionRequest() (request *CreateGameServerSessionReques
 func NewCreateGameServerSessionResponse() (response *CreateGameServerSessionResponse) {
     response = &CreateGameServerSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGameServerSession
@@ -671,8 +678,9 @@ func NewCreateGameServerSessionQueueRequest() (request *CreateGameServerSessionQ
 func NewCreateGameServerSessionQueueResponse() (response *CreateGameServerSessionQueueResponse) {
     response = &CreateGameServerSessionQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGameServerSessionQueue
@@ -743,8 +751,9 @@ func NewDeleteAliasRequest() (request *DeleteAliasRequest) {
 func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
     response = &DeleteAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAlias
@@ -805,8 +814,9 @@ func NewDeleteAssetRequest() (request *DeleteAssetRequest) {
 func NewDeleteAssetResponse() (response *DeleteAssetResponse) {
     response = &DeleteAssetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAsset
@@ -875,8 +885,9 @@ func NewDeleteFleetRequest() (request *DeleteFleetRequest) {
 func NewDeleteFleetResponse() (response *DeleteFleetResponse) {
     response = &DeleteFleetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFleet
@@ -955,8 +966,9 @@ func NewDeleteGameServerSessionQueueRequest() (request *DeleteGameServerSessionQ
 func NewDeleteGameServerSessionQueueResponse() (response *DeleteGameServerSessionQueueResponse) {
     response = &DeleteGameServerSessionQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGameServerSessionQueue
@@ -1017,8 +1029,9 @@ func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
 func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
     response = &DeleteScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScalingPolicy
@@ -1091,8 +1104,9 @@ func NewDeleteTimerScalingPolicyRequest() (request *DeleteTimerScalingPolicyRequ
 func NewDeleteTimerScalingPolicyResponse() (response *DeleteTimerScalingPolicyResponse) {
     response = &DeleteTimerScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTimerScalingPolicy
@@ -1159,8 +1173,9 @@ func NewDescribeAliasRequest() (request *DescribeAliasRequest) {
 func NewDescribeAliasResponse() (response *DescribeAliasResponse) {
     response = &DescribeAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlias
@@ -1221,8 +1236,9 @@ func NewDescribeAssetRequest() (request *DescribeAssetRequest) {
 func NewDescribeAssetResponse() (response *DescribeAssetResponse) {
     response = &DescribeAssetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAsset
@@ -1287,8 +1303,9 @@ func NewDescribeAssetSystemsRequest() (request *DescribeAssetSystemsRequest) {
 func NewDescribeAssetSystemsResponse() (response *DescribeAssetSystemsResponse) {
     response = &DescribeAssetSystemsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetSystems
@@ -1353,8 +1370,9 @@ func NewDescribeAssetsRequest() (request *DescribeAssetsRequest) {
 func NewDescribeAssetsResponse() (response *DescribeAssetsResponse) {
     response = &DescribeAssetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssets
@@ -1421,8 +1439,9 @@ func NewDescribeCcnInstancesRequest() (request *DescribeCcnInstancesRequest) {
 func NewDescribeCcnInstancesResponse() (response *DescribeCcnInstancesResponse) {
     response = &DescribeCcnInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCcnInstances
@@ -1513,8 +1532,9 @@ func NewDescribeFleetAttributesRequest() (request *DescribeFleetAttributesReques
 func NewDescribeFleetAttributesResponse() (response *DescribeFleetAttributesResponse) {
     response = &DescribeFleetAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetAttributes
@@ -1577,8 +1597,9 @@ func NewDescribeFleetCapacityRequest() (request *DescribeFleetCapacityRequest) {
 func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse) {
     response = &DescribeFleetCapacityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetCapacity
@@ -1647,8 +1668,9 @@ func NewDescribeFleetEventsRequest() (request *DescribeFleetEventsRequest) {
 func NewDescribeFleetEventsResponse() (response *DescribeFleetEventsResponse) {
     response = &DescribeFleetEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetEvents
@@ -1713,8 +1735,9 @@ func NewDescribeFleetPortSettingsRequest() (request *DescribeFleetPortSettingsRe
 func NewDescribeFleetPortSettingsResponse() (response *DescribeFleetPortSettingsResponse) {
     response = &DescribeFleetPortSettingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetPortSettings
@@ -1783,8 +1806,9 @@ func NewDescribeFleetRelatedResourcesRequest() (request *DescribeFleetRelatedRes
 func NewDescribeFleetRelatedResourcesResponse() (response *DescribeFleetRelatedResourcesResponse) {
     response = &DescribeFleetRelatedResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetRelatedResources
@@ -1851,8 +1875,9 @@ func NewDescribeFleetStatisticDetailsRequest() (request *DescribeFleetStatisticD
 func NewDescribeFleetStatisticDetailsResponse() (response *DescribeFleetStatisticDetailsResponse) {
     response = &DescribeFleetStatisticDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetStatisticDetails
@@ -1931,8 +1956,9 @@ func NewDescribeFleetStatisticFlowsRequest() (request *DescribeFleetStatisticFlo
 func NewDescribeFleetStatisticFlowsResponse() (response *DescribeFleetStatisticFlowsResponse) {
     response = &DescribeFleetStatisticFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetStatisticFlows
@@ -2009,8 +2035,9 @@ func NewDescribeFleetStatisticSummaryRequest() (request *DescribeFleetStatisticS
 func NewDescribeFleetStatisticSummaryResponse() (response *DescribeFleetStatisticSummaryResponse) {
     response = &DescribeFleetStatisticSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetStatisticSummary
@@ -2083,8 +2110,9 @@ func NewDescribeFleetUtilizationRequest() (request *DescribeFleetUtilizationRequ
 func NewDescribeFleetUtilizationResponse() (response *DescribeFleetUtilizationResponse) {
     response = &DescribeFleetUtilizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFleetUtilization
@@ -2165,8 +2193,9 @@ func NewDescribeGameServerSessionDetailsRequest() (request *DescribeGameServerSe
 func NewDescribeGameServerSessionDetailsResponse() (response *DescribeGameServerSessionDetailsResponse) {
     response = &DescribeGameServerSessionDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGameServerSessionDetails
@@ -2235,8 +2264,9 @@ func NewDescribeGameServerSessionPlacementRequest() (request *DescribeGameServer
 func NewDescribeGameServerSessionPlacementResponse() (response *DescribeGameServerSessionPlacementResponse) {
     response = &DescribeGameServerSessionPlacementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGameServerSessionPlacement
@@ -2299,8 +2329,9 @@ func NewDescribeGameServerSessionQueuesRequest() (request *DescribeGameServerSes
 func NewDescribeGameServerSessionQueuesResponse() (response *DescribeGameServerSessionQueuesResponse) {
     response = &DescribeGameServerSessionQueuesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGameServerSessionQueues
@@ -2365,8 +2396,9 @@ func NewDescribeGameServerSessionsRequest() (request *DescribeGameServerSessions
 func NewDescribeGameServerSessionsResponse() (response *DescribeGameServerSessionsResponse) {
     response = &DescribeGameServerSessionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGameServerSessions
@@ -2435,8 +2467,9 @@ func NewDescribeInstanceLimitRequest() (request *DescribeInstanceLimitRequest) {
 func NewDescribeInstanceLimitResponse() (response *DescribeInstanceLimitResponse) {
     response = &DescribeInstanceLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceLimit
@@ -2499,8 +2532,9 @@ func NewDescribeInstanceTypesRequest() (request *DescribeInstanceTypesRequest) {
 func NewDescribeInstanceTypesResponse() (response *DescribeInstanceTypesResponse) {
     response = &DescribeInstanceTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceTypes
@@ -2563,8 +2597,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -2629,8 +2664,9 @@ func NewDescribeInstancesExtendRequest() (request *DescribeInstancesExtendReques
 func NewDescribeInstancesExtendResponse() (response *DescribeInstancesExtendResponse) {
     response = &DescribeInstancesExtendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstancesExtend
@@ -2695,8 +2731,9 @@ func NewDescribePlayerSessionsRequest() (request *DescribePlayerSessionsRequest)
 func NewDescribePlayerSessionsResponse() (response *DescribePlayerSessionsResponse) {
     response = &DescribePlayerSessionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePlayerSessions
@@ -2763,8 +2800,9 @@ func NewDescribeRuntimeConfigurationRequest() (request *DescribeRuntimeConfigura
 func NewDescribeRuntimeConfigurationResponse() (response *DescribeRuntimeConfigurationResponse) {
     response = &DescribeRuntimeConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuntimeConfiguration
@@ -2843,8 +2881,9 @@ func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesReques
 func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResponse) {
     response = &DescribeScalingPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScalingPolicies
@@ -2909,8 +2948,9 @@ func NewDescribeTimerScalingPoliciesRequest() (request *DescribeTimerScalingPoli
 func NewDescribeTimerScalingPoliciesResponse() (response *DescribeTimerScalingPoliciesResponse) {
     response = &DescribeTimerScalingPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTimerScalingPolicies
@@ -2979,8 +3019,9 @@ func NewDescribeUserQuotaRequest() (request *DescribeUserQuotaRequest) {
 func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
     response = &DescribeUserQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserQuota
@@ -3059,8 +3100,9 @@ func NewDescribeUserQuotasRequest() (request *DescribeUserQuotasRequest) {
 func NewDescribeUserQuotasResponse() (response *DescribeUserQuotasResponse) {
     response = &DescribeUserQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserQuotas
@@ -3139,8 +3181,9 @@ func NewDetachCcnInstancesRequest() (request *DetachCcnInstancesRequest) {
 func NewDetachCcnInstancesResponse() (response *DetachCcnInstancesResponse) {
     response = &DetachCcnInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachCcnInstances
@@ -3229,8 +3272,9 @@ func NewEndGameServerSessionAndProcessRequest() (request *EndGameServerSessionAn
 func NewEndGameServerSessionAndProcessResponse() (response *EndGameServerSessionAndProcessResponse) {
     response = &EndGameServerSessionAndProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EndGameServerSessionAndProcess
@@ -3291,8 +3335,9 @@ func NewGetGameServerInstanceLogUrlRequest() (request *GetGameServerInstanceLogU
 func NewGetGameServerInstanceLogUrlResponse() (response *GetGameServerInstanceLogUrlResponse) {
     response = &GetGameServerInstanceLogUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGameServerInstanceLogUrl
@@ -3359,8 +3404,9 @@ func NewGetGameServerSessionLogUrlRequest() (request *GetGameServerSessionLogUrl
 func NewGetGameServerSessionLogUrlResponse() (response *GetGameServerSessionLogUrlResponse) {
     response = &GetGameServerSessionLogUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGameServerSessionLogUrl
@@ -3427,8 +3473,9 @@ func NewGetInstanceAccessRequest() (request *GetInstanceAccessRequest) {
 func NewGetInstanceAccessResponse() (response *GetInstanceAccessResponse) {
     response = &GetInstanceAccessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetInstanceAccess
@@ -3507,8 +3554,9 @@ func NewGetUploadCredentialsRequest() (request *GetUploadCredentialsRequest) {
 func NewGetUploadCredentialsResponse() (response *GetUploadCredentialsResponse) {
     response = &GetUploadCredentialsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUploadCredentials
@@ -3573,8 +3621,9 @@ func NewGetUploadFederationTokenRequest() (request *GetUploadFederationTokenRequ
 func NewGetUploadFederationTokenResponse() (response *GetUploadFederationTokenResponse) {
     response = &GetUploadFederationTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUploadFederationToken
@@ -3633,8 +3682,9 @@ func NewJoinGameServerSessionRequest() (request *JoinGameServerSessionRequest) {
 func NewJoinGameServerSessionResponse() (response *JoinGameServerSessionResponse) {
     response = &JoinGameServerSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // JoinGameServerSession
@@ -3707,8 +3757,9 @@ func NewJoinGameServerSessionBatchRequest() (request *JoinGameServerSessionBatch
 func NewJoinGameServerSessionBatchResponse() (response *JoinGameServerSessionBatchResponse) {
     response = &JoinGameServerSessionBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // JoinGameServerSessionBatch
@@ -3779,8 +3830,9 @@ func NewListAliasesRequest() (request *ListAliasesRequest) {
 func NewListAliasesResponse() (response *ListAliasesResponse) {
     response = &ListAliasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAliases
@@ -3843,8 +3895,9 @@ func NewListFleetsRequest() (request *ListFleetsRequest) {
 func NewListFleetsResponse() (response *ListFleetsResponse) {
     response = &ListFleetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListFleets
@@ -3925,8 +3978,9 @@ func NewPutScalingPolicyRequest() (request *PutScalingPolicyRequest) {
 func NewPutScalingPolicyResponse() (response *PutScalingPolicyResponse) {
     response = &PutScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutScalingPolicy
@@ -4383,8 +4437,9 @@ func NewPutTimerScalingPolicyRequest() (request *PutTimerScalingPolicyRequest) {
 func NewPutTimerScalingPolicyResponse() (response *PutTimerScalingPolicyResponse) {
     response = &PutTimerScalingPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutTimerScalingPolicy
@@ -4461,8 +4516,9 @@ func NewResolveAliasRequest() (request *ResolveAliasRequest) {
 func NewResolveAliasResponse() (response *ResolveAliasResponse) {
     response = &ResolveAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResolveAlias
@@ -4525,8 +4581,9 @@ func NewSearchGameServerSessionsRequest() (request *SearchGameServerSessionsRequ
 func NewSearchGameServerSessionsResponse() (response *SearchGameServerSessionsResponse) {
     response = &SearchGameServerSessionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchGameServerSessions
@@ -4593,8 +4650,9 @@ func NewSetServerReservedRequest() (request *SetServerReservedRequest) {
 func NewSetServerReservedResponse() (response *SetServerReservedResponse) {
     response = &SetServerReservedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetServerReserved
@@ -4671,8 +4729,9 @@ func NewSetServerWeightRequest() (request *SetServerWeightRequest) {
 func NewSetServerWeightResponse() (response *SetServerWeightResponse) {
     response = &SetServerWeightResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SetServerWeight
@@ -4751,8 +4810,9 @@ func NewStartFleetActionsRequest() (request *StartFleetActionsRequest) {
 func NewStartFleetActionsResponse() (response *StartFleetActionsResponse) {
     response = &StartFleetActionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartFleetActions
@@ -4821,8 +4881,9 @@ func NewStartGameServerSessionPlacementRequest() (request *StartGameServerSessio
 func NewStartGameServerSessionPlacementResponse() (response *StartGameServerSessionPlacementResponse) {
     response = &StartGameServerSessionPlacementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartGameServerSessionPlacement
@@ -4889,8 +4950,9 @@ func NewStopFleetActionsRequest() (request *StopFleetActionsRequest) {
 func NewStopFleetActionsResponse() (response *StopFleetActionsResponse) {
     response = &StopFleetActionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopFleetActions
@@ -4959,8 +5021,9 @@ func NewStopGameServerSessionPlacementRequest() (request *StopGameServerSessionP
 func NewStopGameServerSessionPlacementResponse() (response *StopGameServerSessionPlacementResponse) {
     response = &StopGameServerSessionPlacementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopGameServerSessionPlacement
@@ -5021,8 +5084,9 @@ func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
 func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
     response = &UpdateAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAlias
@@ -5083,8 +5147,9 @@ func NewUpdateAssetRequest() (request *UpdateAssetRequest) {
 func NewUpdateAssetResponse() (response *UpdateAssetResponse) {
     response = &UpdateAssetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAsset
@@ -5149,8 +5214,9 @@ func NewUpdateBucketAccelerateOptRequest() (request *UpdateBucketAccelerateOptRe
 func NewUpdateBucketAccelerateOptResponse() (response *UpdateBucketAccelerateOptResponse) {
     response = &UpdateBucketAccelerateOptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateBucketAccelerateOpt
@@ -5215,8 +5281,9 @@ func NewUpdateBucketCORSOptRequest() (request *UpdateBucketCORSOptRequest) {
 func NewUpdateBucketCORSOptResponse() (response *UpdateBucketCORSOptResponse) {
     response = &UpdateBucketCORSOptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateBucketCORSOpt
@@ -5283,8 +5350,9 @@ func NewUpdateFleetAttributesRequest() (request *UpdateFleetAttributesRequest) {
 func NewUpdateFleetAttributesResponse() (response *UpdateFleetAttributesResponse) {
     response = &UpdateFleetAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFleetAttributes
@@ -5363,8 +5431,9 @@ func NewUpdateFleetCapacityRequest() (request *UpdateFleetCapacityRequest) {
 func NewUpdateFleetCapacityResponse() (response *UpdateFleetCapacityResponse) {
     response = &UpdateFleetCapacityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFleetCapacity
@@ -5435,8 +5504,9 @@ func NewUpdateFleetNameRequest() (request *UpdateFleetNameRequest) {
 func NewUpdateFleetNameResponse() (response *UpdateFleetNameResponse) {
     response = &UpdateFleetNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFleetName
@@ -5515,8 +5585,9 @@ func NewUpdateFleetPortSettingsRequest() (request *UpdateFleetPortSettingsReques
 func NewUpdateFleetPortSettingsResponse() (response *UpdateFleetPortSettingsResponse) {
     response = &UpdateFleetPortSettingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFleetPortSettings
@@ -5595,8 +5666,9 @@ func NewUpdateGameServerSessionRequest() (request *UpdateGameServerSessionReques
 func NewUpdateGameServerSessionResponse() (response *UpdateGameServerSessionResponse) {
     response = &UpdateGameServerSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateGameServerSession
@@ -5661,8 +5733,9 @@ func NewUpdateGameServerSessionQueueRequest() (request *UpdateGameServerSessionQ
 func NewUpdateGameServerSessionQueueResponse() (response *UpdateGameServerSessionQueueResponse) {
     response = &UpdateGameServerSessionQueueResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateGameServerSessionQueue
@@ -5731,8 +5804,9 @@ func NewUpdateRuntimeConfigurationRequest() (request *UpdateRuntimeConfiguration
 func NewUpdateRuntimeConfigurationResponse() (response *UpdateRuntimeConfigurationResponse) {
     response = &UpdateRuntimeConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRuntimeConfiguration

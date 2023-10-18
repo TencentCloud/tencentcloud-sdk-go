@@ -59,8 +59,9 @@ func NewDescribeHSMBySubnetIdRequest() (request *DescribeHSMBySubnetIdRequest) {
 func NewDescribeHSMBySubnetIdResponse() (response *DescribeHSMBySubnetIdResponse) {
     response = &DescribeHSMBySubnetIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHSMBySubnetId
@@ -113,8 +114,9 @@ func NewDescribeHSMByVpcIdRequest() (request *DescribeHSMByVpcIdRequest) {
 func NewDescribeHSMByVpcIdResponse() (response *DescribeHSMByVpcIdResponse) {
     response = &DescribeHSMByVpcIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHSMByVpcId
@@ -167,8 +169,9 @@ func NewDescribeSubnetRequest() (request *DescribeSubnetRequest) {
 func NewDescribeSubnetResponse() (response *DescribeSubnetResponse) {
     response = &DescribeSubnetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubnet
@@ -221,8 +224,9 @@ func NewDescribeSupportedHsmRequest() (request *DescribeSupportedHsmRequest) {
 func NewDescribeSupportedHsmResponse() (response *DescribeSupportedHsmResponse) {
     response = &DescribeSupportedHsmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSupportedHsm
@@ -273,8 +277,9 @@ func NewDescribeUsgRequest() (request *DescribeUsgRequest) {
 func NewDescribeUsgResponse() (response *DescribeUsgResponse) {
     response = &DescribeUsgResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsg
@@ -327,8 +332,9 @@ func NewDescribeUsgRuleRequest() (request *DescribeUsgRuleRequest) {
 func NewDescribeUsgRuleResponse() (response *DescribeUsgRuleResponse) {
     response = &DescribeUsgRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsgRule
@@ -381,8 +387,9 @@ func NewDescribeVpcRequest() (request *DescribeVpcRequest) {
 func NewDescribeVpcResponse() (response *DescribeVpcResponse) {
     response = &DescribeVpcResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVpc
@@ -435,8 +442,9 @@ func NewDescribeVsmAttributesRequest() (request *DescribeVsmAttributesRequest) {
 func NewDescribeVsmAttributesResponse() (response *DescribeVsmAttributesResponse) {
     response = &DescribeVsmAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVsmAttributes
@@ -489,8 +497,9 @@ func NewDescribeVsmsRequest() (request *DescribeVsmsRequest) {
 func NewDescribeVsmsResponse() (response *DescribeVsmsResponse) {
     response = &DescribeVsmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVsms
@@ -543,8 +552,9 @@ func NewGetAlarmEventRequest() (request *GetAlarmEventRequest) {
 func NewGetAlarmEventResponse() (response *GetAlarmEventResponse) {
     response = &GetAlarmEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAlarmEvent
@@ -595,8 +605,9 @@ func NewGetVsmMonitorInfoRequest() (request *GetVsmMonitorInfoRequest) {
 func NewGetVsmMonitorInfoResponse() (response *GetVsmMonitorInfoResponse) {
     response = &GetVsmMonitorInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetVsmMonitorInfo
@@ -649,8 +660,9 @@ func NewInquiryPriceBuyVsmRequest() (request *InquiryPriceBuyVsmRequest) {
 func NewInquiryPriceBuyVsmResponse() (response *InquiryPriceBuyVsmResponse) {
     response = &InquiryPriceBuyVsmResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InquiryPriceBuyVsm
@@ -703,8 +715,9 @@ func NewModifyAlarmEventRequest() (request *ModifyAlarmEventRequest) {
 func NewModifyAlarmEventResponse() (response *ModifyAlarmEventResponse) {
     response = &ModifyAlarmEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAlarmEvent
@@ -755,8 +768,9 @@ func NewModifyVsmAttributesRequest() (request *ModifyVsmAttributesRequest) {
 func NewModifyVsmAttributesResponse() (response *ModifyVsmAttributesResponse) {
     response = &ModifyVsmAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVsmAttributes

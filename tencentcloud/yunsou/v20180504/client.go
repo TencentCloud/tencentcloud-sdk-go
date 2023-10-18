@@ -59,8 +59,9 @@ func NewDataManipulationRequest() (request *DataManipulationRequest) {
 func NewDataManipulationResponse() (response *DataManipulationResponse) {
     response = &DataManipulationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DataManipulation
@@ -101,8 +102,9 @@ func NewDataSearchRequest() (request *DataSearchRequest) {
 func NewDataSearchResponse() (response *DataSearchResponse) {
     response = &DataSearchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DataSearch

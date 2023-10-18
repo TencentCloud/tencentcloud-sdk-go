@@ -59,8 +59,9 @@ func NewBindGroupDevicesRequest() (request *BindGroupDevicesRequest) {
 func NewBindGroupDevicesResponse() (response *BindGroupDevicesResponse) {
     response = &BindGroupDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindGroupDevices
@@ -109,8 +110,9 @@ func NewControlChannelLocalRecordRequest() (request *ControlChannelLocalRecordRe
 func NewControlChannelLocalRecordResponse() (response *ControlChannelLocalRecordResponse) {
     response = &ControlChannelLocalRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlChannelLocalRecord
@@ -163,8 +165,9 @@ func NewControlChannelPTZRequest() (request *ControlChannelPTZRequest) {
 func NewControlChannelPTZResponse() (response *ControlChannelPTZResponse) {
     response = &ControlChannelPTZResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlChannelPTZ
@@ -215,8 +218,9 @@ func NewControlDevicePTZRequest() (request *ControlDevicePTZRequest) {
 func NewControlDevicePTZResponse() (response *ControlDevicePTZResponse) {
     response = &ControlDevicePTZResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlDevicePTZ
@@ -273,8 +277,9 @@ func NewControlHomePositionRequest() (request *ControlHomePositionRequest) {
 func NewControlHomePositionResponse() (response *ControlHomePositionResponse) {
     response = &ControlHomePositionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlHomePosition
@@ -325,8 +330,9 @@ func NewControlPresetRequest() (request *ControlPresetRequest) {
 func NewControlPresetResponse() (response *ControlPresetResponse) {
     response = &ControlPresetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlPreset
@@ -377,8 +383,9 @@ func NewControlRecordStreamRequest() (request *ControlRecordStreamRequest) {
 func NewControlRecordStreamResponse() (response *ControlRecordStreamResponse) {
     response = &ControlRecordStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ControlRecordStream
@@ -433,8 +440,9 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
 func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
     response = &CreateDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDevice
@@ -491,8 +499,9 @@ func NewCreateDeviceGroupRequest() (request *CreateDeviceGroupRequest) {
 func NewCreateDeviceGroupResponse() (response *CreateDeviceGroupResponse) {
     response = &CreateDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDeviceGroup
@@ -545,8 +554,9 @@ func NewCreateLiveChannelRequest() (request *CreateLiveChannelRequest) {
 func NewCreateLiveChannelResponse() (response *CreateLiveChannelResponse) {
     response = &CreateLiveChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveChannel
@@ -717,8 +727,9 @@ func NewCreateLiveRecordPlanRequest() (request *CreateLiveRecordPlanRequest) {
 func NewCreateLiveRecordPlanResponse() (response *CreateLiveRecordPlanResponse) {
     response = &CreateLiveRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveRecordPlan
@@ -889,8 +900,9 @@ func NewCreateMessageForwardRequest() (request *CreateMessageForwardRequest) {
 func NewCreateMessageForwardResponse() (response *CreateMessageForwardResponse) {
     response = &CreateMessageForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMessageForward
@@ -1061,8 +1073,9 @@ func NewCreateRecordPlanRequest() (request *CreateRecordPlanRequest) {
 func NewCreateRecordPlanResponse() (response *CreateRecordPlanResponse) {
     response = &CreateRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRecordPlan
@@ -1121,8 +1134,9 @@ func NewCreateRecordingPlanRequest() (request *CreateRecordingPlanRequest) {
 func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
     response = &CreateRecordingPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRecordingPlan
@@ -1177,8 +1191,9 @@ func NewCreateSceneRequest() (request *CreateSceneRequest) {
 func NewCreateSceneResponse() (response *CreateSceneResponse) {
     response = &CreateSceneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScene
@@ -1225,8 +1240,9 @@ func NewCreateTimeTemplateRequest() (request *CreateTimeTemplateRequest) {
 func NewCreateTimeTemplateResponse() (response *CreateTimeTemplateResponse) {
     response = &CreateTimeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTimeTemplate
@@ -1275,8 +1291,9 @@ func NewDeleteChannelRequest() (request *DeleteChannelRequest) {
 func NewDeleteChannelResponse() (response *DeleteChannelResponse) {
     response = &DeleteChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteChannel
@@ -1329,8 +1346,9 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
 func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     response = &DeleteDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDevice
@@ -1377,8 +1395,9 @@ func NewDeleteDeviceGroupRequest() (request *DeleteDeviceGroupRequest) {
 func NewDeleteDeviceGroupResponse() (response *DeleteDeviceGroupResponse) {
     response = &DeleteDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDeviceGroup
@@ -1429,8 +1448,9 @@ func NewDeleteLiveChannelRequest() (request *DeleteLiveChannelRequest) {
 func NewDeleteLiveChannelResponse() (response *DeleteLiveChannelResponse) {
     response = &DeleteLiveChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveChannel
@@ -1601,8 +1621,9 @@ func NewDeleteLiveRecordPlanRequest() (request *DeleteLiveRecordPlanRequest) {
 func NewDeleteLiveRecordPlanResponse() (response *DeleteLiveRecordPlanResponse) {
     response = &DeleteLiveRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveRecordPlan
@@ -1773,8 +1794,9 @@ func NewDeleteLiveVideoListRequest() (request *DeleteLiveVideoListRequest) {
 func NewDeleteLiveVideoListResponse() (response *DeleteLiveVideoListResponse) {
     response = &DeleteLiveVideoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveVideoList
@@ -1945,8 +1967,9 @@ func NewDeleteMessageForwardRequest() (request *DeleteMessageForwardRequest) {
 func NewDeleteMessageForwardResponse() (response *DeleteMessageForwardResponse) {
     response = &DeleteMessageForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMessageForward
@@ -2117,8 +2140,9 @@ func NewDeleteRecordPlanRequest() (request *DeleteRecordPlanRequest) {
 func NewDeleteRecordPlanResponse() (response *DeleteRecordPlanResponse) {
     response = &DeleteRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRecordPlan
@@ -2173,8 +2197,9 @@ func NewDeleteRecordingPlanRequest() (request *DeleteRecordingPlanRequest) {
 func NewDeleteRecordingPlanResponse() (response *DeleteRecordingPlanResponse) {
     response = &DeleteRecordingPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRecordingPlan
@@ -2225,8 +2250,9 @@ func NewDeleteSceneRequest() (request *DeleteSceneRequest) {
 func NewDeleteSceneResponse() (response *DeleteSceneResponse) {
     response = &DeleteSceneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScene
@@ -2397,8 +2423,9 @@ func NewDeleteTimeTemplateRequest() (request *DeleteTimeTemplateRequest) {
 func NewDeleteTimeTemplateResponse() (response *DeleteTimeTemplateResponse) {
     response = &DeleteTimeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTimeTemplate
@@ -2449,8 +2476,9 @@ func NewDeleteVideoListRequest() (request *DeleteVideoListRequest) {
 func NewDeleteVideoListResponse() (response *DeleteVideoListResponse) {
     response = &DeleteVideoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVideoList
@@ -2501,8 +2529,9 @@ func NewDeleteWarningRequest() (request *DeleteWarningRequest) {
 func NewDeleteWarningResponse() (response *DeleteWarningResponse) {
     response = &DeleteWarningResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWarning
@@ -2553,8 +2582,9 @@ func NewDescribeAbnormalEventsRequest() (request *DescribeAbnormalEventsRequest)
 func NewDescribeAbnormalEventsResponse() (response *DescribeAbnormalEventsResponse) {
     response = &DescribeAbnormalEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAbnormalEvents
@@ -2725,8 +2755,9 @@ func NewDescribeAllDeviceListRequest() (request *DescribeAllDeviceListRequest) {
 func NewDescribeAllDeviceListResponse() (response *DescribeAllDeviceListResponse) {
     response = &DescribeAllDeviceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllDeviceList
@@ -2901,8 +2932,9 @@ func NewDescribeBindSceneChannelsRequest() (request *DescribeBindSceneChannelsRe
 func NewDescribeBindSceneChannelsResponse() (response *DescribeBindSceneChannelsResponse) {
     response = &DescribeBindSceneChannelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindSceneChannels
@@ -3095,8 +3127,9 @@ func NewDescribeBindSceneDevicesRequest() (request *DescribeBindSceneDevicesRequ
 func NewDescribeBindSceneDevicesResponse() (response *DescribeBindSceneDevicesResponse) {
     response = &DescribeBindSceneDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindSceneDevices
@@ -3289,8 +3322,9 @@ func NewDescribeChannelLiveStreamURLRequest() (request *DescribeChannelLiveStrea
 func NewDescribeChannelLiveStreamURLResponse() (response *DescribeChannelLiveStreamURLResponse) {
     response = &DescribeChannelLiveStreamURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelLiveStreamURL
@@ -3351,8 +3385,9 @@ func NewDescribeChannelLocalRecordURLRequest() (request *DescribeChannelLocalRec
 func NewDescribeChannelLocalRecordURLResponse() (response *DescribeChannelLocalRecordURLResponse) {
     response = &DescribeChannelLocalRecordURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelLocalRecordURL
@@ -3411,8 +3446,9 @@ func NewDescribeChannelStreamURLRequest() (request *DescribeChannelStreamURLRequ
 func NewDescribeChannelStreamURLResponse() (response *DescribeChannelStreamURLResponse) {
     response = &DescribeChannelStreamURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelStreamURL
@@ -3473,8 +3509,9 @@ func NewDescribeChannelsRequest() (request *DescribeChannelsRequest) {
 func NewDescribeChannelsResponse() (response *DescribeChannelsResponse) {
     response = &DescribeChannelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannels
@@ -3521,8 +3558,9 @@ func NewDescribeChannelsByLiveRecordPlanRequest() (request *DescribeChannelsByLi
 func NewDescribeChannelsByLiveRecordPlanResponse() (response *DescribeChannelsByLiveRecordPlanResponse) {
     response = &DescribeChannelsByLiveRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelsByLiveRecordPlan
@@ -3693,8 +3731,9 @@ func NewDescribeCurrentDeviceDataRequest() (request *DescribeCurrentDeviceDataRe
 func NewDescribeCurrentDeviceDataResponse() (response *DescribeCurrentDeviceDataResponse) {
     response = &DescribeCurrentDeviceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCurrentDeviceData
@@ -3865,8 +3904,9 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
 func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     response = &DescribeDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevice
@@ -3913,8 +3953,9 @@ func NewDescribeDeviceEventRequest() (request *DescribeDeviceEventRequest) {
 func NewDescribeDeviceEventResponse() (response *DescribeDeviceEventResponse) {
     response = &DescribeDeviceEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceEvent
@@ -4085,8 +4126,9 @@ func NewDescribeDeviceGroupRequest() (request *DescribeDeviceGroupRequest) {
 func NewDescribeDeviceGroupResponse() (response *DescribeDeviceGroupResponse) {
     response = &DescribeDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceGroup
@@ -4257,8 +4299,9 @@ func NewDescribeDeviceListRequest() (request *DescribeDeviceListRequest) {
 func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
     response = &DescribeDeviceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceList
@@ -4429,8 +4472,9 @@ func NewDescribeDeviceMonitorDataRequest() (request *DescribeDeviceMonitorDataRe
 func NewDescribeDeviceMonitorDataResponse() (response *DescribeDeviceMonitorDataResponse) {
     response = &DescribeDeviceMonitorDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceMonitorData
@@ -4603,8 +4647,9 @@ func NewDescribeDevicePassWordRequest() (request *DescribeDevicePassWordRequest)
 func NewDescribeDevicePassWordResponse() (response *DescribeDevicePassWordResponse) {
     response = &DescribeDevicePassWordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDevicePassWord
@@ -4653,8 +4698,9 @@ func NewDescribeDeviceStreamsRequest() (request *DescribeDeviceStreamsRequest) {
 func NewDescribeDeviceStreamsResponse() (response *DescribeDeviceStreamsResponse) {
     response = &DescribeDeviceStreamsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeviceStreams
@@ -4719,8 +4765,9 @@ func NewDescribeGroupByIdRequest() (request *DescribeGroupByIdRequest) {
 func NewDescribeGroupByIdResponse() (response *DescribeGroupByIdResponse) {
     response = &DescribeGroupByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupById
@@ -4767,8 +4814,9 @@ func NewDescribeGroupByPathRequest() (request *DescribeGroupByPathRequest) {
 func NewDescribeGroupByPathResponse() (response *DescribeGroupByPathResponse) {
     response = &DescribeGroupByPathResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupByPath
@@ -4815,8 +4863,9 @@ func NewDescribeGroupDevicesRequest() (request *DescribeGroupDevicesRequest) {
 func NewDescribeGroupDevicesResponse() (response *DescribeGroupDevicesResponse) {
     response = &DescribeGroupDevicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupDevices
@@ -4863,8 +4912,9 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
 func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
     response = &DescribeGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroups
@@ -4911,8 +4961,9 @@ func NewDescribeIPCChannelsRequest() (request *DescribeIPCChannelsRequest) {
 func NewDescribeIPCChannelsResponse() (response *DescribeIPCChannelsResponse) {
     response = &DescribeIPCChannelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIPCChannels
@@ -4963,8 +5014,9 @@ func NewDescribeLiveChannelRequest() (request *DescribeLiveChannelRequest) {
 func NewDescribeLiveChannelResponse() (response *DescribeLiveChannelResponse) {
     response = &DescribeLiveChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveChannel
@@ -5135,8 +5187,9 @@ func NewDescribeLiveChannelListRequest() (request *DescribeLiveChannelListReques
 func NewDescribeLiveChannelListResponse() (response *DescribeLiveChannelListResponse) {
     response = &DescribeLiveChannelListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveChannelList
@@ -5307,8 +5360,9 @@ func NewDescribeLiveRecordPlanByIdRequest() (request *DescribeLiveRecordPlanById
 func NewDescribeLiveRecordPlanByIdResponse() (response *DescribeLiveRecordPlanByIdResponse) {
     response = &DescribeLiveRecordPlanByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveRecordPlanById
@@ -5479,8 +5533,9 @@ func NewDescribeLiveRecordPlanIdsRequest() (request *DescribeLiveRecordPlanIdsRe
 func NewDescribeLiveRecordPlanIdsResponse() (response *DescribeLiveRecordPlanIdsResponse) {
     response = &DescribeLiveRecordPlanIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveRecordPlanIds
@@ -5651,8 +5706,9 @@ func NewDescribeLiveStreamRequest() (request *DescribeLiveStreamRequest) {
 func NewDescribeLiveStreamResponse() (response *DescribeLiveStreamResponse) {
     response = &DescribeLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStream
@@ -5823,8 +5879,9 @@ func NewDescribeLiveVideoListRequest() (request *DescribeLiveVideoListRequest) {
 func NewDescribeLiveVideoListResponse() (response *DescribeLiveVideoListResponse) {
     response = &DescribeLiveVideoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveVideoList
@@ -5995,8 +6052,9 @@ func NewDescribeMessageForwardRequest() (request *DescribeMessageForwardRequest)
 func NewDescribeMessageForwardResponse() (response *DescribeMessageForwardResponse) {
     response = &DescribeMessageForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMessageForward
@@ -6167,8 +6225,9 @@ func NewDescribeMessageForwardsRequest() (request *DescribeMessageForwardsReques
 func NewDescribeMessageForwardsResponse() (response *DescribeMessageForwardsResponse) {
     response = &DescribeMessageForwardsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMessageForwards
@@ -6339,8 +6398,9 @@ func NewDescribeMonitorDataByDateRequest() (request *DescribeMonitorDataByDateRe
 func NewDescribeMonitorDataByDateResponse() (response *DescribeMonitorDataByDateResponse) {
     response = &DescribeMonitorDataByDateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMonitorDataByDate
@@ -6511,8 +6571,9 @@ func NewDescribePresetListRequest() (request *DescribePresetListRequest) {
 func NewDescribePresetListResponse() (response *DescribePresetListResponse) {
     response = &DescribePresetListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePresetList
@@ -6559,8 +6620,9 @@ func NewDescribeRecordDatesByChannelRequest() (request *DescribeRecordDatesByCha
 func NewDescribeRecordDatesByChannelResponse() (response *DescribeRecordDatesByChannelResponse) {
     response = &DescribeRecordDatesByChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordDatesByChannel
@@ -6607,8 +6669,9 @@ func NewDescribeRecordDatesByLiveRequest() (request *DescribeRecordDatesByLiveRe
 func NewDescribeRecordDatesByLiveResponse() (response *DescribeRecordDatesByLiveResponse) {
     response = &DescribeRecordDatesByLiveResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordDatesByLive
@@ -6779,8 +6842,9 @@ func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
 func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) {
     response = &DescribeRecordStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordStream
@@ -6857,8 +6921,9 @@ func NewDescribeRecordingPlanByIdRequest() (request *DescribeRecordingPlanByIdRe
 func NewDescribeRecordingPlanByIdResponse() (response *DescribeRecordingPlanByIdResponse) {
     response = &DescribeRecordingPlanByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordingPlanById
@@ -6915,8 +6980,9 @@ func NewDescribeRecordingPlansRequest() (request *DescribeRecordingPlansRequest)
 func NewDescribeRecordingPlansResponse() (response *DescribeRecordingPlansResponse) {
     response = &DescribeRecordingPlansResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordingPlans
@@ -6973,8 +7039,9 @@ func NewDescribeSIPServerRequest() (request *DescribeSIPServerRequest) {
 func NewDescribeSIPServerResponse() (response *DescribeSIPServerResponse) {
     response = &DescribeSIPServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSIPServer
@@ -7031,8 +7098,9 @@ func NewDescribeSceneRequest() (request *DescribeSceneRequest) {
 func NewDescribeSceneResponse() (response *DescribeSceneResponse) {
     response = &DescribeSceneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScene
@@ -7203,8 +7271,9 @@ func NewDescribeScenesRequest() (request *DescribeScenesRequest) {
 func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
     response = &DescribeScenesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScenes
@@ -7375,8 +7444,9 @@ func NewDescribeStatisticDetailsRequest() (request *DescribeStatisticDetailsRequ
 func NewDescribeStatisticDetailsResponse() (response *DescribeStatisticDetailsResponse) {
     response = &DescribeStatisticDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStatisticDetails
@@ -7547,8 +7617,9 @@ func NewDescribeStatisticSummaryRequest() (request *DescribeStatisticSummaryRequ
 func NewDescribeStatisticSummaryResponse() (response *DescribeStatisticSummaryResponse) {
     response = &DescribeStatisticSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStatisticSummary
@@ -7719,8 +7790,9 @@ func NewDescribeSubGroupsRequest() (request *DescribeSubGroupsRequest) {
 func NewDescribeSubGroupsResponse() (response *DescribeSubGroupsResponse) {
     response = &DescribeSubGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubGroups
@@ -7767,8 +7839,9 @@ func NewDescribeSubscriptionStatusRequest() (request *DescribeSubscriptionStatus
 func NewDescribeSubscriptionStatusResponse() (response *DescribeSubscriptionStatusResponse) {
     response = &DescribeSubscriptionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubscriptionStatus
@@ -7815,8 +7888,9 @@ func NewDescribeVideoListRequest() (request *DescribeVideoListRequest) {
 func NewDescribeVideoListResponse() (response *DescribeVideoListResponse) {
     response = &DescribeVideoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVideoList
@@ -7865,8 +7939,9 @@ func NewDescribeVideoListByChannelRequest() (request *DescribeVideoListByChannel
 func NewDescribeVideoListByChannelResponse() (response *DescribeVideoListByChannelResponse) {
     response = &DescribeVideoListByChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVideoListByChannel
@@ -7919,8 +7994,9 @@ func NewDescribeWarnModRequest() (request *DescribeWarnModRequest) {
 func NewDescribeWarnModResponse() (response *DescribeWarnModResponse) {
     response = &DescribeWarnModResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWarnMod
@@ -7973,8 +8049,9 @@ func NewDescribeWarningsRequest() (request *DescribeWarningsRequest) {
 func NewDescribeWarningsResponse() (response *DescribeWarningsResponse) {
     response = &DescribeWarningsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWarnings
@@ -8027,8 +8104,9 @@ func NewDescribeXP2PDataRequest() (request *DescribeXP2PDataRequest) {
 func NewDescribeXP2PDataResponse() (response *DescribeXP2PDataResponse) {
     response = &DescribeXP2PDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeXP2PData
@@ -8081,8 +8159,9 @@ func NewGetRecordDatesByDevRequest() (request *GetRecordDatesByDevRequest) {
 func NewGetRecordDatesByDevResponse() (response *GetRecordDatesByDevResponse) {
     response = &GetRecordDatesByDevResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRecordDatesByDev
@@ -8133,8 +8212,9 @@ func NewGetRecordPlanByDevRequest() (request *GetRecordPlanByDevRequest) {
 func NewGetRecordPlanByDevResponse() (response *GetRecordPlanByDevResponse) {
     response = &GetRecordPlanByDevResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRecordPlanByDev
@@ -8249,8 +8329,9 @@ func NewGetRecordPlanByIdRequest() (request *GetRecordPlanByIdRequest) {
 func NewGetRecordPlanByIdResponse() (response *GetRecordPlanByIdResponse) {
     response = &GetRecordPlanByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRecordPlanById
@@ -8369,8 +8450,9 @@ func NewGetRecordPlansRequest() (request *GetRecordPlansRequest) {
 func NewGetRecordPlansResponse() (response *GetRecordPlansResponse) {
     response = &GetRecordPlansResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRecordPlans
@@ -8489,8 +8571,9 @@ func NewGetTimeTemplateByIdRequest() (request *GetTimeTemplateByIdRequest) {
 func NewGetTimeTemplateByIdResponse() (response *GetTimeTemplateByIdResponse) {
     response = &GetTimeTemplateByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTimeTemplateById
@@ -8539,8 +8622,9 @@ func NewGetTimeTemplatesRequest() (request *GetTimeTemplatesRequest) {
 func NewGetTimeTemplatesResponse() (response *GetTimeTemplatesResponse) {
     response = &GetTimeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTimeTemplates
@@ -8589,8 +8673,9 @@ func NewGetVideoListByConRequest() (request *GetVideoListByConRequest) {
 func NewGetVideoListByConResponse() (response *GetVideoListByConResponse) {
     response = &GetVideoListByConResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetVideoListByCon
@@ -8649,8 +8734,9 @@ func NewModifyBindPlanLiveChannelRequest() (request *ModifyBindPlanLiveChannelRe
 func NewModifyBindPlanLiveChannelResponse() (response *ModifyBindPlanLiveChannelResponse) {
     response = &ModifyBindPlanLiveChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBindPlanLiveChannel
@@ -8699,8 +8785,9 @@ func NewModifyBindRecordingPlanRequest() (request *ModifyBindRecordingPlanReques
 func NewModifyBindRecordingPlanResponse() (response *ModifyBindRecordingPlanResponse) {
     response = &ModifyBindRecordingPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBindRecordingPlan
@@ -8751,8 +8838,9 @@ func NewModifyBindSceneChannelsRequest() (request *ModifyBindSceneChannelsReques
 func NewModifyBindSceneChannelsResponse() (response *ModifyBindSceneChannelsResponse) {
     response = &ModifyBindSceneChannelsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBindSceneChannels
@@ -8799,8 +8887,9 @@ func NewModifyBindSceneDeviceRequest() (request *ModifyBindSceneDeviceRequest) {
 func NewModifyBindSceneDeviceResponse() (response *ModifyBindSceneDeviceResponse) {
     response = &ModifyBindSceneDeviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBindSceneDevice
@@ -8971,8 +9060,9 @@ func NewModifyDeviceDataRequest() (request *ModifyDeviceDataRequest) {
 func NewModifyDeviceDataResponse() (response *ModifyDeviceDataResponse) {
     response = &ModifyDeviceDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDeviceData
@@ -9021,8 +9111,9 @@ func NewModifyLiveChannelRequest() (request *ModifyLiveChannelRequest) {
 func NewModifyLiveChannelResponse() (response *ModifyLiveChannelResponse) {
     response = &ModifyLiveChannelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveChannel
@@ -9193,8 +9284,9 @@ func NewModifyLiveRecordPlanRequest() (request *ModifyLiveRecordPlanRequest) {
 func NewModifyLiveRecordPlanResponse() (response *ModifyLiveRecordPlanResponse) {
     response = &ModifyLiveRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveRecordPlan
@@ -9241,8 +9333,9 @@ func NewModifyLiveVideoRequest() (request *ModifyLiveVideoRequest) {
 func NewModifyLiveVideoResponse() (response *ModifyLiveVideoResponse) {
     response = &ModifyLiveVideoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveVideo
@@ -9413,8 +9506,9 @@ func NewModifyMessageForwardRequest() (request *ModifyMessageForwardRequest) {
 func NewModifyMessageForwardResponse() (response *ModifyMessageForwardResponse) {
     response = &ModifyMessageForwardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMessageForward
@@ -9585,8 +9679,9 @@ func NewModifyPresetRequest() (request *ModifyPresetRequest) {
 func NewModifyPresetResponse() (response *ModifyPresetResponse) {
     response = &ModifyPresetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPreset
@@ -9633,8 +9728,9 @@ func NewModifyRecordingPlanRequest() (request *ModifyRecordingPlanRequest) {
 func NewModifyRecordingPlanResponse() (response *ModifyRecordingPlanResponse) {
     response = &ModifyRecordingPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRecordingPlan
@@ -9681,8 +9777,9 @@ func NewModifySceneRequest() (request *ModifySceneRequest) {
 func NewModifySceneResponse() (response *ModifySceneResponse) {
     response = &ModifySceneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyScene
@@ -9853,8 +9950,9 @@ func NewModifySubscriptionStatusRequest() (request *ModifySubscriptionStatusRequ
 func NewModifySubscriptionStatusResponse() (response *ModifySubscriptionStatusResponse) {
     response = &ModifySubscriptionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscriptionStatus
@@ -10025,8 +10123,9 @@ func NewModifyVideoInfoRequest() (request *ModifyVideoInfoRequest) {
 func NewModifyVideoInfoResponse() (response *ModifyVideoInfoResponse) {
     response = &ModifyVideoInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyVideoInfo
@@ -10197,8 +10296,9 @@ func NewResetWarningRequest() (request *ResetWarningRequest) {
 func NewResetWarningResponse() (response *ResetWarningResponse) {
     response = &ResetWarningResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetWarning
@@ -10369,8 +10469,9 @@ func NewUpdateDeviceGroupRequest() (request *UpdateDeviceGroupRequest) {
 func NewUpdateDeviceGroupResponse() (response *UpdateDeviceGroupResponse) {
     response = &UpdateDeviceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDeviceGroup
@@ -10423,8 +10524,9 @@ func NewUpdateDevicePassWordRequest() (request *UpdateDevicePassWordRequest) {
 func NewUpdateDevicePassWordResponse() (response *UpdateDevicePassWordResponse) {
     response = &UpdateDevicePassWordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDevicePassWord
@@ -10471,8 +10573,9 @@ func NewUpdateRecordPlanRequest() (request *UpdateRecordPlanRequest) {
 func NewUpdateRecordPlanResponse() (response *UpdateRecordPlanResponse) {
     response = &UpdateRecordPlanResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRecordPlan
@@ -10529,8 +10632,9 @@ func NewUpdateTimeTemplateRequest() (request *UpdateTimeTemplateRequest) {
 func NewUpdateTimeTemplateResponse() (response *UpdateTimeTemplateResponse) {
     response = &UpdateTimeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateTimeTemplate

@@ -59,8 +59,9 @@ func NewCreateBPFakeURLRequest() (request *CreateBPFakeURLRequest) {
 func NewCreateBPFakeURLResponse() (response *CreateBPFakeURLResponse) {
     response = &CreateBPFakeURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFakeURL
@@ -143,8 +144,9 @@ func NewCreateBPFalseTicketRequest() (request *CreateBPFalseTicketRequest) {
 func NewCreateBPFalseTicketResponse() (response *CreateBPFalseTicketResponse) {
     response = &CreateBPFalseTicketResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFalseTicket
@@ -227,8 +229,9 @@ func NewCreateBPOfflineAttachmentRequest() (request *CreateBPOfflineAttachmentRe
 func NewCreateBPOfflineAttachmentResponse() (response *CreateBPOfflineAttachmentResponse) {
     response = &CreateBPOfflineAttachmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPOfflineAttachment
@@ -311,8 +314,9 @@ func NewCreateBPOfflineTicketRequest() (request *CreateBPOfflineTicketRequest) {
 func NewCreateBPOfflineTicketResponse() (response *CreateBPOfflineTicketResponse) {
     response = &CreateBPOfflineTicketResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPOfflineTicket
@@ -395,8 +399,9 @@ func NewCreateBPProtectURLsRequest() (request *CreateBPProtectURLsRequest) {
 func NewCreateBPProtectURLsResponse() (response *CreateBPProtectURLsResponse) {
     response = &CreateBPProtectURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPProtectURLs
@@ -479,8 +484,9 @@ func NewCreateCRBlockRequest() (request *CreateCRBlockRequest) {
 func NewCreateCRBlockResponse() (response *CreateCRBlockResponse) {
     response = &CreateCRBlockResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRBlock
@@ -563,8 +569,9 @@ func NewCreateCRCompanyVerifyRequest() (request *CreateCRCompanyVerifyRequest) {
 func NewCreateCRCompanyVerifyResponse() (response *CreateCRCompanyVerifyResponse) {
     response = &CreateCRCompanyVerifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRCompanyVerify
@@ -647,8 +654,9 @@ func NewCreateCRDesktopCodeRequest() (request *CreateCRDesktopCodeRequest) {
 func NewCreateCRDesktopCodeResponse() (response *CreateCRDesktopCodeResponse) {
     response = &CreateCRDesktopCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRDesktopCode
@@ -731,8 +739,9 @@ func NewCreateCRRightRequest() (request *CreateCRRightRequest) {
 func NewCreateCRRightResponse() (response *CreateCRRightResponse) {
     response = &CreateCRRightResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRRight
@@ -815,8 +824,9 @@ func NewCreateCRRightFileRequest() (request *CreateCRRightFileRequest) {
 func NewCreateCRRightFileResponse() (response *CreateCRRightFileResponse) {
     response = &CreateCRRightFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRRightFile
@@ -899,8 +909,9 @@ func NewCreateCRTortRequest() (request *CreateCRTortRequest) {
 func NewCreateCRTortResponse() (response *CreateCRTortResponse) {
     response = &CreateCRTortResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRTort
@@ -983,8 +994,9 @@ func NewCreateCRUserVerifyRequest() (request *CreateCRUserVerifyRequest) {
 func NewCreateCRUserVerifyResponse() (response *CreateCRUserVerifyResponse) {
     response = &CreateCRUserVerifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRUserVerify
@@ -1067,8 +1079,9 @@ func NewCreateCRWorkRequest() (request *CreateCRWorkRequest) {
 func NewCreateCRWorkResponse() (response *CreateCRWorkResponse) {
     response = &CreateCRWorkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCRWork
@@ -1151,8 +1164,9 @@ func NewDescribeBPCompanyInfoRequest() (request *DescribeBPCompanyInfoRequest) {
 func NewDescribeBPCompanyInfoResponse() (response *DescribeBPCompanyInfoResponse) {
     response = &DescribeBPCompanyInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPCompanyInfo
@@ -1235,8 +1249,9 @@ func NewDescribeBPFakeURLsRequest() (request *DescribeBPFakeURLsRequest) {
 func NewDescribeBPFakeURLsResponse() (response *DescribeBPFakeURLsResponse) {
     response = &DescribeBPFakeURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPFakeURLs
@@ -1283,8 +1298,9 @@ func NewDescribeBPProtectURLsRequest() (request *DescribeBPProtectURLsRequest) {
 func NewDescribeBPProtectURLsResponse() (response *DescribeBPProtectURLsResponse) {
     response = &DescribeBPProtectURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPProtectURLs
@@ -1367,8 +1383,9 @@ func NewDescribeBPReportFakeURLsRequest() (request *DescribeBPReportFakeURLsRequ
 func NewDescribeBPReportFakeURLsResponse() (response *DescribeBPReportFakeURLsResponse) {
     response = &DescribeBPReportFakeURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPReportFakeURLs
@@ -1451,8 +1468,9 @@ func NewDescribeCRMonitorDetailRequest() (request *DescribeCRMonitorDetailReques
 func NewDescribeCRMonitorDetailResponse() (response *DescribeCRMonitorDetailResponse) {
     response = &DescribeCRMonitorDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCRMonitorDetail
@@ -1535,8 +1553,9 @@ func NewDescribeCRMonitorsRequest() (request *DescribeCRMonitorsRequest) {
 func NewDescribeCRMonitorsResponse() (response *DescribeCRMonitorsResponse) {
     response = &DescribeCRMonitorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCRMonitors
@@ -1619,8 +1638,9 @@ func NewDescribeCRObtainDetailRequest() (request *DescribeCRObtainDetailRequest)
 func NewDescribeCRObtainDetailResponse() (response *DescribeCRObtainDetailResponse) {
     response = &DescribeCRObtainDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCRObtainDetail
@@ -1703,8 +1723,9 @@ func NewDescribeCRWorkInfoRequest() (request *DescribeCRWorkInfoRequest) {
 func NewDescribeCRWorkInfoResponse() (response *DescribeCRWorkInfoResponse) {
     response = &DescribeCRWorkInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCRWorkInfo
@@ -1787,8 +1808,9 @@ func NewModifyBPOfflineAttachmentRequest() (request *ModifyBPOfflineAttachmentRe
 func NewModifyBPOfflineAttachmentResponse() (response *ModifyBPOfflineAttachmentResponse) {
     response = &ModifyBPOfflineAttachmentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyBPOfflineAttachment
@@ -1871,8 +1893,9 @@ func NewModifyCRBlockStatusRequest() (request *ModifyCRBlockStatusRequest) {
 func NewModifyCRBlockStatusResponse() (response *ModifyCRBlockStatusResponse) {
     response = &ModifyCRBlockStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCRBlockStatus
@@ -1955,8 +1978,9 @@ func NewModifyCRMonitorRequest() (request *ModifyCRMonitorRequest) {
 func NewModifyCRMonitorResponse() (response *ModifyCRMonitorResponse) {
     response = &ModifyCRMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCRMonitor
@@ -2039,8 +2063,9 @@ func NewModifyCRObtainStatusRequest() (request *ModifyCRObtainStatusRequest) {
 func NewModifyCRObtainStatusResponse() (response *ModifyCRObtainStatusResponse) {
     response = &ModifyCRObtainStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCRObtainStatus
@@ -2123,8 +2148,9 @@ func NewModifyCRRightStatusRequest() (request *ModifyCRRightStatusRequest) {
 func NewModifyCRRightStatusResponse() (response *ModifyCRRightStatusResponse) {
     response = &ModifyCRRightStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCRRightStatus
@@ -2207,8 +2233,9 @@ func NewModifyCRWhiteListRequest() (request *ModifyCRWhiteListRequest) {
 func NewModifyCRWhiteListResponse() (response *ModifyCRWhiteListResponse) {
     response = &ModifyCRWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCRWhiteList
@@ -2291,8 +2318,9 @@ func NewUpdateCRWorkRequest() (request *UpdateCRWorkRequest) {
 func NewUpdateCRWorkResponse() (response *UpdateCRWorkResponse) {
     response = &UpdateCRWorkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCRWork

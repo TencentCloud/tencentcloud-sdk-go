@@ -59,8 +59,9 @@ func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
 func NewCompleteMigrateJobResponse() (response *CompleteMigrateJobResponse) {
     response = &CompleteMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CompleteMigrateJob
@@ -173,8 +174,9 @@ func NewConfigureSyncJobRequest() (request *ConfigureSyncJobRequest) {
 func NewConfigureSyncJobResponse() (response *ConfigureSyncJobResponse) {
     response = &ConfigureSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ConfigureSyncJob
@@ -227,8 +229,9 @@ func NewContinueMigrateJobRequest() (request *ContinueMigrateJobRequest) {
 func NewContinueMigrateJobResponse() (response *ContinueMigrateJobResponse) {
     response = &ContinueMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ContinueMigrateJob
@@ -283,8 +286,9 @@ func NewContinueSyncJobRequest() (request *ContinueSyncJobRequest) {
 func NewContinueSyncJobResponse() (response *ContinueSyncJobResponse) {
     response = &ContinueSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ContinueSyncJob
@@ -345,8 +349,9 @@ func NewCreateCheckSyncJobRequest() (request *CreateCheckSyncJobRequest) {
 func NewCreateCheckSyncJobResponse() (response *CreateCheckSyncJobResponse) {
     response = &CreateCheckSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCheckSyncJob
@@ -403,8 +408,9 @@ func NewCreateCompareTaskRequest() (request *CreateCompareTaskRequest) {
 func NewCreateCompareTaskResponse() (response *CreateCompareTaskResponse) {
     response = &CreateCompareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCompareTask
@@ -487,8 +493,9 @@ func NewCreateMigrateCheckJobRequest() (request *CreateMigrateCheckJobRequest) {
 func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse) {
     response = &CreateMigrateCheckJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMigrateCheckJob
@@ -613,8 +620,9 @@ func NewCreateMigrationServiceRequest() (request *CreateMigrationServiceRequest)
 func NewCreateMigrationServiceResponse() (response *CreateMigrationServiceResponse) {
     response = &CreateMigrationServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMigrationService
@@ -699,8 +707,9 @@ func NewCreateModifyCheckSyncJobRequest() (request *CreateModifyCheckSyncJobRequ
 func NewCreateModifyCheckSyncJobResponse() (response *CreateModifyCheckSyncJobResponse) {
     response = &CreateModifyCheckSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateModifyCheckSyncJob
@@ -785,8 +794,9 @@ func NewCreateSyncJobRequest() (request *CreateSyncJobRequest) {
 func NewCreateSyncJobResponse() (response *CreateSyncJobResponse) {
     response = &CreateSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSyncJob
@@ -855,8 +865,9 @@ func NewDeleteCompareTaskRequest() (request *DeleteCompareTaskRequest) {
 func NewDeleteCompareTaskResponse() (response *DeleteCompareTaskResponse) {
     response = &DeleteCompareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCompareTask
@@ -939,8 +950,9 @@ func NewDescribeCheckSyncJobResultRequest() (request *DescribeCheckSyncJobResult
 func NewDescribeCheckSyncJobResultResponse() (response *DescribeCheckSyncJobResultResponse) {
     response = &DescribeCheckSyncJobResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCheckSyncJobResult
@@ -991,8 +1003,9 @@ func NewDescribeCompareReportRequest() (request *DescribeCompareReportRequest) {
 func NewDescribeCompareReportResponse() (response *DescribeCompareReportResponse) {
     response = &DescribeCompareReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCompareReport
@@ -1073,8 +1086,9 @@ func NewDescribeCompareTasksRequest() (request *DescribeCompareTasksRequest) {
 func NewDescribeCompareTasksResponse() (response *DescribeCompareTasksResponse) {
     response = &DescribeCompareTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCompareTasks
@@ -1157,8 +1171,9 @@ func NewDescribeMigrateDBInstancesRequest() (request *DescribeMigrateDBInstances
 func NewDescribeMigrateDBInstancesResponse() (response *DescribeMigrateDBInstancesResponse) {
     response = &DescribeMigrateDBInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrateDBInstances
@@ -1263,8 +1278,9 @@ func NewDescribeMigrationCheckJobRequest() (request *DescribeMigrationCheckJobRe
 func NewDescribeMigrationCheckJobResponse() (response *DescribeMigrationCheckJobResponse) {
     response = &DescribeMigrationCheckJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrationCheckJob
@@ -1353,8 +1369,9 @@ func NewDescribeMigrationDetailRequest() (request *DescribeMigrationDetailReques
 func NewDescribeMigrationDetailResponse() (response *DescribeMigrationDetailResponse) {
     response = &DescribeMigrationDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrationDetail
@@ -1437,8 +1454,9 @@ func NewDescribeMigrationJobsRequest() (request *DescribeMigrationJobsRequest) {
 func NewDescribeMigrationJobsResponse() (response *DescribeMigrationJobsResponse) {
     response = &DescribeMigrationJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrationJobs
@@ -1521,8 +1539,9 @@ func NewDescribeModifyCheckSyncJobResultRequest() (request *DescribeModifyCheckS
 func NewDescribeModifyCheckSyncJobResultResponse() (response *DescribeModifyCheckSyncJobResultResponse) {
     response = &DescribeModifyCheckSyncJobResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeModifyCheckSyncJobResult
@@ -1569,8 +1588,9 @@ func NewDescribeSyncJobsRequest() (request *DescribeSyncJobsRequest) {
 func NewDescribeSyncJobsResponse() (response *DescribeSyncJobsResponse) {
     response = &DescribeSyncJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSyncJobs
@@ -1631,8 +1651,9 @@ func NewDestroyMigrateJobRequest() (request *DestroyMigrateJobRequest) {
 func NewDestroyMigrateJobResponse() (response *DestroyMigrateJobResponse) {
     response = &DestroyMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyMigrateJob
@@ -1713,8 +1734,9 @@ func NewDestroySyncJobRequest() (request *DestroySyncJobRequest) {
 func NewDestroySyncJobResponse() (response *DestroySyncJobResponse) {
     response = &DestroySyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroySyncJob
@@ -1763,8 +1785,9 @@ func NewIsolateMigrateJobRequest() (request *IsolateMigrateJobRequest) {
 func NewIsolateMigrateJobResponse() (response *IsolateMigrateJobResponse) {
     response = &IsolateMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateMigrateJob
@@ -1847,8 +1870,9 @@ func NewIsolateSyncJobRequest() (request *IsolateSyncJobRequest) {
 func NewIsolateSyncJobResponse() (response *IsolateSyncJobResponse) {
     response = &IsolateSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateSyncJob
@@ -1901,8 +1925,9 @@ func NewModifyCompareTaskRequest() (request *ModifyCompareTaskRequest) {
 func NewModifyCompareTaskResponse() (response *ModifyCompareTaskResponse) {
     response = &ModifyCompareTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCompareTask
@@ -1985,8 +2010,9 @@ func NewModifyCompareTaskNameRequest() (request *ModifyCompareTaskNameRequest) {
 func NewModifyCompareTaskNameResponse() (response *ModifyCompareTaskNameResponse) {
     response = &ModifyCompareTaskNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCompareTaskName
@@ -2067,8 +2093,9 @@ func NewModifyMigrateJobSpecRequest() (request *ModifyMigrateJobSpecRequest) {
 func NewModifyMigrateJobSpecResponse() (response *ModifyMigrateJobSpecResponse) {
     response = &ModifyMigrateJobSpecResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrateJobSpec
@@ -2147,8 +2174,9 @@ func NewModifyMigrateNameRequest() (request *ModifyMigrateNameRequest) {
 func NewModifyMigrateNameResponse() (response *ModifyMigrateNameResponse) {
     response = &ModifyMigrateNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrateName
@@ -2231,8 +2259,9 @@ func NewModifyMigrateRateLimitRequest() (request *ModifyMigrateRateLimitRequest)
 func NewModifyMigrateRateLimitResponse() (response *ModifyMigrateRateLimitResponse) {
     response = &ModifyMigrateRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrateRateLimit
@@ -2315,8 +2344,9 @@ func NewModifyMigrationJobRequest() (request *ModifyMigrationJobRequest) {
 func NewModifyMigrationJobResponse() (response *ModifyMigrationJobResponse) {
     response = &ModifyMigrationJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrationJob
@@ -2409,8 +2439,9 @@ func NewModifySyncJobConfigRequest() (request *ModifySyncJobConfigRequest) {
 func NewModifySyncJobConfigResponse() (response *ModifySyncJobConfigResponse) {
     response = &ModifySyncJobConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySyncJobConfig
@@ -2463,8 +2494,9 @@ func NewModifySyncRateLimitRequest() (request *ModifySyncRateLimitRequest) {
 func NewModifySyncRateLimitResponse() (response *ModifySyncRateLimitResponse) {
     response = &ModifySyncRateLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySyncRateLimit
@@ -2513,8 +2545,9 @@ func NewPauseMigrateJobRequest() (request *PauseMigrateJobRequest) {
 func NewPauseMigrateJobResponse() (response *PauseMigrateJobResponse) {
     response = &PauseMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PauseMigrateJob
@@ -2569,8 +2602,9 @@ func NewPauseSyncJobRequest() (request *PauseSyncJobRequest) {
 func NewPauseSyncJobResponse() (response *PauseSyncJobResponse) {
     response = &PauseSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PauseSyncJob
@@ -2631,8 +2665,9 @@ func NewRecoverMigrateJobRequest() (request *RecoverMigrateJobRequest) {
 func NewRecoverMigrateJobResponse() (response *RecoverMigrateJobResponse) {
     response = &RecoverMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverMigrateJob
@@ -2681,8 +2716,9 @@ func NewRecoverSyncJobRequest() (request *RecoverSyncJobRequest) {
 func NewRecoverSyncJobResponse() (response *RecoverSyncJobResponse) {
     response = &RecoverSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecoverSyncJob
@@ -2765,8 +2801,9 @@ func NewResizeSyncJobRequest() (request *ResizeSyncJobRequest) {
 func NewResizeSyncJobResponse() (response *ResizeSyncJobResponse) {
     response = &ResizeSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResizeSyncJob
@@ -2819,8 +2856,9 @@ func NewResumeMigrateJobRequest() (request *ResumeMigrateJobRequest) {
 func NewResumeMigrateJobResponse() (response *ResumeMigrateJobResponse) {
     response = &ResumeMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeMigrateJob
@@ -2911,8 +2949,9 @@ func NewResumeSyncJobRequest() (request *ResumeSyncJobRequest) {
 func NewResumeSyncJobResponse() (response *ResumeSyncJobResponse) {
     response = &ResumeSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeSyncJob
@@ -2959,8 +2998,9 @@ func NewSkipCheckItemRequest() (request *SkipCheckItemRequest) {
 func NewSkipCheckItemResponse() (response *SkipCheckItemResponse) {
     response = &SkipCheckItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SkipCheckItem
@@ -3011,8 +3051,9 @@ func NewSkipSyncCheckItemRequest() (request *SkipSyncCheckItemRequest) {
 func NewSkipSyncCheckItemResponse() (response *SkipSyncCheckItemResponse) {
     response = &SkipSyncCheckItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SkipSyncCheckItem
@@ -3079,8 +3120,9 @@ func NewStartCompareRequest() (request *StartCompareRequest) {
 func NewStartCompareResponse() (response *StartCompareResponse) {
     response = &StartCompareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartCompare
@@ -3161,8 +3203,9 @@ func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
 func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
     response = &StartMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMigrateJob
@@ -3273,8 +3316,9 @@ func NewStartModifySyncJobRequest() (request *StartModifySyncJobRequest) {
 func NewStartModifySyncJobResponse() (response *StartModifySyncJobResponse) {
     response = &StartModifySyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartModifySyncJob
@@ -3323,8 +3367,9 @@ func NewStartSyncJobRequest() (request *StartSyncJobRequest) {
 func NewStartSyncJobResponse() (response *StartSyncJobResponse) {
     response = &StartSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartSyncJob
@@ -3377,8 +3422,9 @@ func NewStopCompareRequest() (request *StopCompareRequest) {
 func NewStopCompareResponse() (response *StopCompareResponse) {
     response = &StopCompareResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopCompare
@@ -3459,8 +3505,9 @@ func NewStopMigrateJobRequest() (request *StopMigrateJobRequest) {
 func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
     response = &StopMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMigrateJob
@@ -3563,8 +3610,9 @@ func NewStopSyncJobRequest() (request *StopSyncJobRequest) {
 func NewStopSyncJobResponse() (response *StopSyncJobResponse) {
     response = &StopSyncJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopSyncJob

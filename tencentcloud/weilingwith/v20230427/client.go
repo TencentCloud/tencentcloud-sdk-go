@@ -59,8 +59,9 @@ func NewDescribeApplicationListRequest() (request *DescribeApplicationListReques
 func NewDescribeApplicationListResponse() (response *DescribeApplicationListResponse) {
     response = &DescribeApplicationListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationList
@@ -119,8 +120,9 @@ func NewDescribeEdgeApplicationTokenRequest() (request *DescribeEdgeApplicationT
 func NewDescribeEdgeApplicationTokenResponse() (response *DescribeEdgeApplicationTokenResponse) {
     response = &DescribeEdgeApplicationTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgeApplicationToken
@@ -171,8 +173,9 @@ func NewDescribeInterfaceListRequest() (request *DescribeInterfaceListRequest) {
 func NewDescribeInterfaceListResponse() (response *DescribeInterfaceListResponse) {
     response = &DescribeInterfaceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInterfaceList
@@ -223,8 +226,9 @@ func NewDescribeWorkspaceListRequest() (request *DescribeWorkspaceListRequest) {
 func NewDescribeWorkspaceListResponse() (response *DescribeWorkspaceListResponse) {
     response = &DescribeWorkspaceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceList
@@ -277,8 +281,9 @@ func NewDescribeWorkspaceUserListRequest() (request *DescribeWorkspaceUserListRe
 func NewDescribeWorkspaceUserListResponse() (response *DescribeWorkspaceUserListResponse) {
     response = &DescribeWorkspaceUserListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkspaceUserList

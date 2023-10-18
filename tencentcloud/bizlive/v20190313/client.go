@@ -59,8 +59,9 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
 func NewCreateSessionResponse() (response *CreateSessionResponse) {
     response = &CreateSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSession
@@ -113,8 +114,9 @@ func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoList
 func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoListResponse) {
     response = &DescribeStreamPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamPlayInfoList
@@ -167,8 +169,9 @@ func NewDescribeWorkersRequest() (request *DescribeWorkersRequest) {
 func NewDescribeWorkersResponse() (response *DescribeWorkersResponse) {
     response = &DescribeWorkersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkers
@@ -215,8 +218,9 @@ func NewForbidLiveStreamRequest() (request *ForbidLiveStreamRequest) {
 func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
     response = &ForbidLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ForbidLiveStream
@@ -285,8 +289,9 @@ func NewRegisterIMRequest() (request *RegisterIMRequest) {
 func NewRegisterIMResponse() (response *RegisterIMResponse) {
     response = &RegisterIMResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterIM
@@ -341,8 +346,9 @@ func NewStopGameRequest() (request *StopGameRequest) {
 func NewStopGameResponse() (response *StopGameResponse) {
     response = &StopGameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopGame

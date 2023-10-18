@@ -59,8 +59,9 @@ func NewBindNumberCallOutSkillGroupRequest() (request *BindNumberCallOutSkillGro
 func NewBindNumberCallOutSkillGroupResponse() (response *BindNumberCallOutSkillGroupResponse) {
     response = &BindNumberCallOutSkillGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindNumberCallOutSkillGroup
@@ -107,8 +108,9 @@ func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListReques
 func NewBindStaffSkillGroupListResponse() (response *BindStaffSkillGroupListResponse) {
     response = &BindStaffSkillGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindStaffSkillGroupList
@@ -161,8 +163,9 @@ func NewCreateAdminURLRequest() (request *CreateAdminURLRequest) {
 func NewCreateAdminURLResponse() (response *CreateAdminURLResponse) {
     response = &CreateAdminURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAdminURL
@@ -215,8 +218,9 @@ func NewCreateAutoCalloutTaskRequest() (request *CreateAutoCalloutTaskRequest) {
 func NewCreateAutoCalloutTaskResponse() (response *CreateAutoCalloutTaskResponse) {
     response = &CreateAutoCalloutTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAutoCalloutTask
@@ -271,8 +275,9 @@ func NewCreateCCCSkillGroupRequest() (request *CreateCCCSkillGroupRequest) {
 func NewCreateCCCSkillGroupResponse() (response *CreateCCCSkillGroupResponse) {
     response = &CreateCCCSkillGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCCCSkillGroup
@@ -325,8 +330,9 @@ func NewCreateCallOutSessionRequest() (request *CreateCallOutSessionRequest) {
 func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) {
     response = &CreateCallOutSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCallOutSession
@@ -393,8 +399,9 @@ func NewCreateCarrierPrivilegeNumberApplicantRequest() (request *CreateCarrierPr
 func NewCreateCarrierPrivilegeNumberApplicantResponse() (response *CreateCarrierPrivilegeNumberApplicantResponse) {
     response = &CreateCarrierPrivilegeNumberApplicantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCarrierPrivilegeNumberApplicant
@@ -461,8 +468,9 @@ func NewCreateExtensionRequest() (request *CreateExtensionRequest) {
 func NewCreateExtensionResponse() (response *CreateExtensionResponse) {
     response = &CreateExtensionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateExtension
@@ -509,8 +517,9 @@ func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
 func NewCreateSDKLoginTokenResponse() (response *CreateSDKLoginTokenResponse) {
     response = &CreateSDKLoginTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSDKLoginToken
@@ -565,8 +574,9 @@ func NewCreateStaffRequest() (request *CreateStaffRequest) {
 func NewCreateStaffResponse() (response *CreateStaffResponse) {
     response = &CreateStaffResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStaff
@@ -625,8 +635,9 @@ func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
 func NewCreateUserSigResponse() (response *CreateUserSigResponse) {
     response = &CreateUserSigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserSig
@@ -679,8 +690,9 @@ func NewDeleteExtensionRequest() (request *DeleteExtensionRequest) {
 func NewDeleteExtensionResponse() (response *DeleteExtensionResponse) {
     response = &DeleteExtensionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteExtension
@@ -733,8 +745,9 @@ func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
 func NewDeleteStaffResponse() (response *DeleteStaffResponse) {
     response = &DeleteStaffResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteStaff
@@ -785,8 +798,9 @@ func NewDescribeActiveCarrierPrivilegeNumberRequest() (request *DescribeActiveCa
 func NewDescribeActiveCarrierPrivilegeNumberResponse() (response *DescribeActiveCarrierPrivilegeNumberResponse) {
     response = &DescribeActiveCarrierPrivilegeNumberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeActiveCarrierPrivilegeNumber
@@ -837,8 +851,9 @@ func NewDescribeAutoCalloutTaskRequest() (request *DescribeAutoCalloutTaskReques
 func NewDescribeAutoCalloutTaskResponse() (response *DescribeAutoCalloutTaskResponse) {
     response = &DescribeAutoCalloutTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoCalloutTask
@@ -889,8 +904,9 @@ func NewDescribeAutoCalloutTasksRequest() (request *DescribeAutoCalloutTasksRequ
 func NewDescribeAutoCalloutTasksResponse() (response *DescribeAutoCalloutTasksResponse) {
     response = &DescribeAutoCalloutTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutoCalloutTasks
@@ -941,8 +957,9 @@ func NewDescribeCCCBuyInfoListRequest() (request *DescribeCCCBuyInfoListRequest)
 func NewDescribeCCCBuyInfoListResponse() (response *DescribeCCCBuyInfoListResponse) {
     response = &DescribeCCCBuyInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCCCBuyInfoList
@@ -997,8 +1014,9 @@ func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
 func NewDescribeCallInMetricsResponse() (response *DescribeCallInMetricsResponse) {
     response = &DescribeCallInMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallInMetrics
@@ -1053,8 +1071,9 @@ func NewDescribeCarrierPrivilegeNumberApplicantsRequest() (request *DescribeCarr
 func NewDescribeCarrierPrivilegeNumberApplicantsResponse() (response *DescribeCarrierPrivilegeNumberApplicantsResponse) {
     response = &DescribeCarrierPrivilegeNumberApplicantsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCarrierPrivilegeNumberApplicants
@@ -1109,8 +1128,9 @@ func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
 func NewDescribeChatMessagesResponse() (response *DescribeChatMessagesResponse) {
     response = &DescribeChatMessagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChatMessages
@@ -1173,8 +1193,9 @@ func NewDescribeExtensionRequest() (request *DescribeExtensionRequest) {
 func NewDescribeExtensionResponse() (response *DescribeExtensionResponse) {
     response = &DescribeExtensionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExtension
@@ -1221,8 +1242,9 @@ func NewDescribeExtensionsRequest() (request *DescribeExtensionsRequest) {
 func NewDescribeExtensionsResponse() (response *DescribeExtensionsResponse) {
     response = &DescribeExtensionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExtensions
@@ -1271,8 +1293,9 @@ func NewDescribeIMCdrListRequest() (request *DescribeIMCdrListRequest) {
 func NewDescribeIMCdrListResponse() (response *DescribeIMCdrListResponse) {
     response = &DescribeIMCdrListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIMCdrList
@@ -1325,8 +1348,9 @@ func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
 func NewDescribeIMCdrsResponse() (response *DescribeIMCdrsResponse) {
     response = &DescribeIMCdrsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIMCdrs
@@ -1379,8 +1403,9 @@ func NewDescribeNumbersRequest() (request *DescribeNumbersRequest) {
 func NewDescribeNumbersResponse() (response *DescribeNumbersResponse) {
     response = &DescribeNumbersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNumbers
@@ -1433,8 +1458,9 @@ func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessi
 func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSessionListResponse) {
     response = &DescribePSTNActiveSessionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePSTNActiveSessionList
@@ -1485,8 +1511,9 @@ func NewDescribeProtectedTelCdrRequest() (request *DescribeProtectedTelCdrReques
 func NewDescribeProtectedTelCdrResponse() (response *DescribeProtectedTelCdrResponse) {
     response = &DescribeProtectedTelCdrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProtectedTelCdr
@@ -1541,8 +1568,9 @@ func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoList
 func NewDescribeSkillGroupInfoListResponse() (response *DescribeSkillGroupInfoListResponse) {
     response = &DescribeSkillGroupInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSkillGroupInfoList
@@ -1597,8 +1625,9 @@ func NewDescribeStaffInfoListRequest() (request *DescribeStaffInfoListRequest) {
 func NewDescribeStaffInfoListResponse() (response *DescribeStaffInfoListResponse) {
     response = &DescribeStaffInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStaffInfoList
@@ -1651,8 +1680,9 @@ func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetrics
 func NewDescribeStaffStatusMetricsResponse() (response *DescribeStaffStatusMetricsResponse) {
     response = &DescribeStaffStatusMetricsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStaffStatusMetrics
@@ -1707,8 +1737,9 @@ func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
 func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
     response = &DescribeTelCallInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTelCallInfo
@@ -1765,8 +1796,9 @@ func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
 func NewDescribeTelCdrResponse() (response *DescribeTelCdrResponse) {
     response = &DescribeTelCdrResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTelCdr
@@ -1821,8 +1853,9 @@ func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
 func NewDescribeTelSessionResponse() (response *DescribeTelSessionResponse) {
     response = &DescribeTelSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTelSession
@@ -1873,8 +1906,9 @@ func NewDisableCCCPhoneNumberRequest() (request *DisableCCCPhoneNumberRequest) {
 func NewDisableCCCPhoneNumberResponse() (response *DisableCCCPhoneNumberResponse) {
     response = &DisableCCCPhoneNumberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableCCCPhoneNumber
@@ -1951,8 +1985,9 @@ func NewHangUpCallRequest() (request *HangUpCallRequest) {
 func NewHangUpCallResponse() (response *HangUpCallResponse) {
     response = &HangUpCallResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // HangUpCall
@@ -1999,8 +2034,9 @@ func NewModifyExtensionRequest() (request *ModifyExtensionRequest) {
 func NewModifyExtensionResponse() (response *ModifyExtensionResponse) {
     response = &ModifyExtensionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyExtension
@@ -2049,8 +2085,9 @@ func NewModifyStaffRequest() (request *ModifyStaffRequest) {
 func NewModifyStaffResponse() (response *ModifyStaffResponse) {
     response = &ModifyStaffResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStaff
@@ -2111,8 +2148,9 @@ func NewResetExtensionPasswordRequest() (request *ResetExtensionPasswordRequest)
 func NewResetExtensionPasswordResponse() (response *ResetExtensionPasswordResponse) {
     response = &ResetExtensionPasswordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetExtensionPassword
@@ -2173,8 +2211,9 @@ func NewStopAutoCalloutTaskRequest() (request *StopAutoCalloutTaskRequest) {
 func NewStopAutoCalloutTaskResponse() (response *StopAutoCalloutTaskResponse) {
     response = &StopAutoCalloutTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopAutoCalloutTask
@@ -2227,8 +2266,9 @@ func NewUnbindNumberCallOutSkillGroupRequest() (request *UnbindNumberCallOutSkil
 func NewUnbindNumberCallOutSkillGroupResponse() (response *UnbindNumberCallOutSkillGroupResponse) {
     response = &UnbindNumberCallOutSkillGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindNumberCallOutSkillGroup
@@ -2281,8 +2321,9 @@ func NewUnbindStaffSkillGroupListRequest() (request *UnbindStaffSkillGroupListRe
 func NewUnbindStaffSkillGroupListResponse() (response *UnbindStaffSkillGroupListResponse) {
     response = &UnbindStaffSkillGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindStaffSkillGroupList

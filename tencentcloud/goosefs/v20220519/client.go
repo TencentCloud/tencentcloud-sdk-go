@@ -59,8 +59,9 @@ func NewAddCrossVpcSubnetSupportForClientNodeRequest() (request *AddCrossVpcSubn
 func NewAddCrossVpcSubnetSupportForClientNodeResponse() (response *AddCrossVpcSubnetSupportForClientNodeResponse) {
     response = &AddCrossVpcSubnetSupportForClientNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddCrossVpcSubnetSupportForClientNode
@@ -101,8 +102,9 @@ func NewAttachFileSystemBucketRequest() (request *AttachFileSystemBucketRequest)
 func NewAttachFileSystemBucketResponse() (response *AttachFileSystemBucketResponse) {
     response = &AttachFileSystemBucketResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AttachFileSystemBucket
@@ -143,8 +145,9 @@ func NewBatchAddClientNodesRequest() (request *BatchAddClientNodesRequest) {
 func NewBatchAddClientNodesResponse() (response *BatchAddClientNodesResponse) {
     response = &BatchAddClientNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchAddClientNodes
@@ -185,8 +188,9 @@ func NewBatchDeleteClientNodesRequest() (request *BatchDeleteClientNodesRequest)
 func NewBatchDeleteClientNodesResponse() (response *BatchDeleteClientNodesResponse) {
     response = &BatchDeleteClientNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDeleteClientNodes
@@ -227,8 +231,9 @@ func NewCreateDataRepositoryTaskRequest() (request *CreateDataRepositoryTaskRequ
 func NewCreateDataRepositoryTaskResponse() (response *CreateDataRepositoryTaskResponse) {
     response = &CreateDataRepositoryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDataRepositoryTask
@@ -269,8 +274,9 @@ func NewCreateFileSystemRequest() (request *CreateFileSystemRequest) {
 func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
     response = &CreateFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFileSystem
@@ -311,8 +317,9 @@ func NewDeleteCrossVpcSubnetSupportForClientNodeRequest() (request *DeleteCrossV
 func NewDeleteCrossVpcSubnetSupportForClientNodeResponse() (response *DeleteCrossVpcSubnetSupportForClientNodeResponse) {
     response = &DeleteCrossVpcSubnetSupportForClientNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCrossVpcSubnetSupportForClientNode
@@ -353,8 +360,9 @@ func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
 func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
     response = &DeleteFileSystemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFileSystem
@@ -395,8 +403,9 @@ func NewDescribeClientNodesRequest() (request *DescribeClientNodesRequest) {
 func NewDescribeClientNodesResponse() (response *DescribeClientNodesResponse) {
     response = &DescribeClientNodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClientNodes
@@ -437,8 +446,9 @@ func NewDescribeClusterClientTokenRequest() (request *DescribeClusterClientToken
 func NewDescribeClusterClientTokenResponse() (response *DescribeClusterClientTokenResponse) {
     response = &DescribeClusterClientTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterClientToken
@@ -479,8 +489,9 @@ func NewDescribeClusterRoleTokenRequest() (request *DescribeClusterRoleTokenRequ
 func NewDescribeClusterRoleTokenResponse() (response *DescribeClusterRoleTokenResponse) {
     response = &DescribeClusterRoleTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterRoleToken
@@ -521,8 +532,9 @@ func NewDescribeClusterRolesRequest() (request *DescribeClusterRolesRequest) {
 func NewDescribeClusterRolesResponse() (response *DescribeClusterRolesResponse) {
     response = &DescribeClusterRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterRoles
@@ -563,8 +575,9 @@ func NewDescribeDataRepositoryTaskStatusRequest() (request *DescribeDataReposito
 func NewDescribeDataRepositoryTaskStatusResponse() (response *DescribeDataRepositoryTaskStatusResponse) {
     response = &DescribeDataRepositoryTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDataRepositoryTaskStatus
@@ -605,8 +618,9 @@ func NewDescribeFileSystemBucketsRequest() (request *DescribeFileSystemBucketsRe
 func NewDescribeFileSystemBucketsResponse() (response *DescribeFileSystemBucketsResponse) {
     response = &DescribeFileSystemBucketsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileSystemBuckets
@@ -647,8 +661,9 @@ func NewDescribeFileSystemsRequest() (request *DescribeFileSystemsRequest) {
 func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
     response = &DescribeFileSystemsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileSystems
@@ -689,8 +704,9 @@ func NewDetachFileSystemBucketRequest() (request *DetachFileSystemBucketRequest)
 func NewDetachFileSystemBucketResponse() (response *DetachFileSystemBucketResponse) {
     response = &DetachFileSystemBucketResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetachFileSystemBucket
@@ -731,8 +747,9 @@ func NewExpandCapacityRequest() (request *ExpandCapacityRequest) {
 func NewExpandCapacityResponse() (response *ExpandCapacityResponse) {
     response = &ExpandCapacityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExpandCapacity
@@ -773,8 +790,9 @@ func NewModifyDataRepositoryBandwidthRequest() (request *ModifyDataRepositoryBan
 func NewModifyDataRepositoryBandwidthResponse() (response *ModifyDataRepositoryBandwidthResponse) {
     response = &ModifyDataRepositoryBandwidthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDataRepositoryBandwidth
@@ -815,8 +833,9 @@ func NewQueryCrossVpcSubnetSupportForClientNodeRequest() (request *QueryCrossVpc
 func NewQueryCrossVpcSubnetSupportForClientNodeResponse() (response *QueryCrossVpcSubnetSupportForClientNodeResponse) {
     response = &QueryCrossVpcSubnetSupportForClientNodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCrossVpcSubnetSupportForClientNode
@@ -857,8 +876,9 @@ func NewQueryDataRepositoryBandwidthRequest() (request *QueryDataRepositoryBandw
 func NewQueryDataRepositoryBandwidthResponse() (response *QueryDataRepositoryBandwidthResponse) {
     response = &QueryDataRepositoryBandwidthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryDataRepositoryBandwidth

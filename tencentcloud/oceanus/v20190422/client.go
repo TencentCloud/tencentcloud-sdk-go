@@ -59,8 +59,9 @@ func NewCheckSavepointRequest() (request *CheckSavepointRequest) {
 func NewCheckSavepointResponse() (response *CheckSavepointResponse) {
     response = &CheckSavepointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckSavepoint
@@ -109,8 +110,9 @@ func NewCopyJobsRequest() (request *CopyJobsRequest) {
 func NewCopyJobsResponse() (response *CopyJobsResponse) {
     response = &CopyJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyJobs
@@ -177,8 +179,9 @@ func NewCreateFolderRequest() (request *CreateFolderRequest) {
 func NewCreateFolderResponse() (response *CreateFolderResponse) {
     response = &CreateFolderResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFolder
@@ -231,8 +234,9 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
 func NewCreateJobResponse() (response *CreateJobResponse) {
     response = &CreateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateJob
@@ -321,8 +325,9 @@ func NewCreateJobConfigRequest() (request *CreateJobConfigRequest) {
 func NewCreateJobConfigResponse() (response *CreateJobConfigResponse) {
     response = &CreateJobConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateJobConfig
@@ -419,8 +424,9 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
 func NewCreateResourceResponse() (response *CreateResourceResponse) {
     response = &CreateResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateResource
@@ -491,8 +497,9 @@ func NewCreateResourceConfigRequest() (request *CreateResourceConfigRequest) {
 func NewCreateResourceConfigResponse() (response *CreateResourceConfigResponse) {
     response = &CreateResourceConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateResourceConfig
@@ -555,8 +562,9 @@ func NewDeleteJobsRequest() (request *DeleteJobsRequest) {
 func NewDeleteJobsResponse() (response *DeleteJobsResponse) {
     response = &DeleteJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteJobs
@@ -627,8 +635,9 @@ func NewDeleteResourceConfigsRequest() (request *DeleteResourceConfigsRequest) {
 func NewDeleteResourceConfigsResponse() (response *DeleteResourceConfigsResponse) {
     response = &DeleteResourceConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteResourceConfigs
@@ -699,8 +708,9 @@ func NewDeleteResourcesRequest() (request *DeleteResourcesRequest) {
 func NewDeleteResourcesResponse() (response *DeleteResourcesResponse) {
     response = &DeleteResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteResources
@@ -765,8 +775,9 @@ func NewDeleteTableConfigRequest() (request *DeleteTableConfigRequest) {
 func NewDeleteTableConfigResponse() (response *DeleteTableConfigResponse) {
     response = &DeleteTableConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTableConfig
@@ -819,8 +830,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -885,8 +897,9 @@ func NewDescribeJobConfigsRequest() (request *DescribeJobConfigsRequest) {
 func NewDescribeJobConfigsResponse() (response *DescribeJobConfigsResponse) {
     response = &DescribeJobConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobConfigs
@@ -953,8 +966,9 @@ func NewDescribeJobSavepointRequest() (request *DescribeJobSavepointRequest) {
 func NewDescribeJobSavepointResponse() (response *DescribeJobSavepointResponse) {
     response = &DescribeJobSavepointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobSavepoint
@@ -1007,8 +1021,9 @@ func NewDescribeJobSubmissionLogRequest() (request *DescribeJobSubmissionLogRequ
 func NewDescribeJobSubmissionLogResponse() (response *DescribeJobSubmissionLogResponse) {
     response = &DescribeJobSubmissionLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobSubmissionLog
@@ -1077,8 +1092,9 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
 func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
     response = &DescribeJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJobs
@@ -1143,8 +1159,9 @@ func NewDescribeResourceConfigsRequest() (request *DescribeResourceConfigsReques
 func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResponse) {
     response = &DescribeResourceConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceConfigs
@@ -1215,8 +1232,9 @@ func NewDescribeResourceRelatedJobsRequest() (request *DescribeResourceRelatedJo
 func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelatedJobsResponse) {
     response = &DescribeResourceRelatedJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceRelatedJobs
@@ -1277,8 +1295,9 @@ func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
 func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
     response = &DescribeResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResources
@@ -1343,8 +1362,9 @@ func NewDescribeSystemResourcesRequest() (request *DescribeSystemResourcesReques
 func NewDescribeSystemResourcesResponse() (response *DescribeSystemResourcesResponse) {
     response = &DescribeSystemResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSystemResources
@@ -1407,8 +1427,9 @@ func NewDescribeTreeJobsRequest() (request *DescribeTreeJobsRequest) {
 func NewDescribeTreeJobsResponse() (response *DescribeTreeJobsResponse) {
     response = &DescribeTreeJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTreeJobs
@@ -1461,8 +1482,9 @@ func NewDescribeTreeResourcesRequest() (request *DescribeTreeResourcesRequest) {
 func NewDescribeTreeResourcesResponse() (response *DescribeTreeResourcesResponse) {
     response = &DescribeTreeResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTreeResources
@@ -1521,8 +1543,9 @@ func NewDescribeWorkSpacesRequest() (request *DescribeWorkSpacesRequest) {
 func NewDescribeWorkSpacesResponse() (response *DescribeWorkSpacesResponse) {
     response = &DescribeWorkSpacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWorkSpaces
@@ -1577,8 +1600,9 @@ func NewFetchSqlGatewayStatementResultRequest() (request *FetchSqlGatewayStateme
 func NewFetchSqlGatewayStatementResultResponse() (response *FetchSqlGatewayStatementResultResponse) {
     response = &FetchSqlGatewayStatementResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FetchSqlGatewayStatementResult
@@ -1625,8 +1649,9 @@ func NewModifyJobRequest() (request *ModifyJobRequest) {
 func NewModifyJobResponse() (response *ModifyJobResponse) {
     response = &ModifyJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyJob
@@ -1723,8 +1748,9 @@ func NewRunJobsRequest() (request *RunJobsRequest) {
 func NewRunJobsResponse() (response *RunJobsResponse) {
     response = &RunJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunJobs
@@ -1823,8 +1849,9 @@ func NewRunSqlGatewayStatementRequest() (request *RunSqlGatewayStatementRequest)
 func NewRunSqlGatewayStatementResponse() (response *RunSqlGatewayStatementResponse) {
     response = &RunSqlGatewayStatementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunSqlGatewayStatement
@@ -1871,8 +1898,9 @@ func NewStopJobsRequest() (request *StopJobsRequest) {
 func NewStopJobsResponse() (response *StopJobsResponse) {
     response = &StopJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopJobs
@@ -1947,8 +1975,9 @@ func NewTriggerJobSavepointRequest() (request *TriggerJobSavepointRequest) {
 func NewTriggerJobSavepointResponse() (response *TriggerJobSavepointResponse) {
     response = &TriggerJobSavepointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TriggerJobSavepoint

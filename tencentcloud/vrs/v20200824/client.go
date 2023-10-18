@@ -59,8 +59,9 @@ func NewCancelVRSTaskRequest() (request *CancelVRSTaskRequest) {
 func NewCancelVRSTaskResponse() (response *CancelVRSTaskResponse) {
     response = &CancelVRSTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelVRSTask
@@ -111,8 +112,9 @@ func NewCreateVRSTaskRequest() (request *CreateVRSTaskRequest) {
 func NewCreateVRSTaskResponse() (response *CreateVRSTaskResponse) {
     response = &CreateVRSTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVRSTask
@@ -181,8 +183,9 @@ func NewDescribeVRSTaskStatusRequest() (request *DescribeVRSTaskStatusRequest) {
 func NewDescribeVRSTaskStatusResponse() (response *DescribeVRSTaskStatusResponse) {
     response = &DescribeVRSTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVRSTaskStatus
@@ -245,8 +248,9 @@ func NewDetectEnvAndSoundQualityRequest() (request *DetectEnvAndSoundQualityRequ
 func NewDetectEnvAndSoundQualityResponse() (response *DetectEnvAndSoundQualityResponse) {
     response = &DetectEnvAndSoundQualityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectEnvAndSoundQuality
@@ -311,8 +315,9 @@ func NewDownloadVRSModelRequest() (request *DownloadVRSModelRequest) {
 func NewDownloadVRSModelResponse() (response *DownloadVRSModelResponse) {
     response = &DownloadVRSModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadVRSModel
@@ -365,8 +370,9 @@ func NewGetTrainingTextRequest() (request *GetTrainingTextRequest) {
 func NewGetTrainingTextResponse() (response *GetTrainingTextResponse) {
     response = &GetTrainingTextResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTrainingText

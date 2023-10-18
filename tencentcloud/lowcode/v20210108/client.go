@@ -59,8 +59,9 @@ func NewDescribeDataSourceListRequest() (request *DescribeDataSourceListRequest)
 func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListResponse) {
     response = &DescribeDataSourceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDataSourceList

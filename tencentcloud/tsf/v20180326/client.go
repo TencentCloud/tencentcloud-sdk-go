@@ -59,8 +59,9 @@ func NewAddClusterInstancesRequest() (request *AddClusterInstancesRequest) {
 func NewAddClusterInstancesResponse() (response *AddClusterInstancesResponse) {
     response = &AddClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddClusterInstances
@@ -137,8 +138,9 @@ func NewAddInstancesRequest() (request *AddInstancesRequest) {
 func NewAddInstancesResponse() (response *AddInstancesResponse) {
     response = &AddInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddInstances
@@ -199,8 +201,9 @@ func NewAssociateBusinessLogConfigRequest() (request *AssociateBusinessLogConfig
 func NewAssociateBusinessLogConfigResponse() (response *AssociateBusinessLogConfigResponse) {
     response = &AssociateBusinessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssociateBusinessLogConfig
@@ -261,8 +264,9 @@ func NewAssociateConfigWithGroupRequest() (request *AssociateConfigWithGroupRequ
 func NewAssociateConfigWithGroupResponse() (response *AssociateConfigWithGroupResponse) {
     response = &AssociateConfigWithGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssociateConfigWithGroup
@@ -313,8 +317,9 @@ func NewBindApiGroupRequest() (request *BindApiGroupRequest) {
 func NewBindApiGroupResponse() (response *BindApiGroupResponse) {
     response = &BindApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindApiGroup
@@ -365,8 +370,9 @@ func NewBindPluginRequest() (request *BindPluginRequest) {
 func NewBindPluginResponse() (response *BindPluginResponse) {
     response = &BindPluginResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindPlugin
@@ -417,8 +423,9 @@ func NewChangeApiUsableStatusRequest() (request *ChangeApiUsableStatusRequest) {
 func NewChangeApiUsableStatusResponse() (response *ChangeApiUsableStatusResponse) {
     response = &ChangeApiUsableStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChangeApiUsableStatus
@@ -467,8 +474,9 @@ func NewContinueRunFailedTaskBatchRequest() (request *ContinueRunFailedTaskBatch
 func NewContinueRunFailedTaskBatchResponse() (response *ContinueRunFailedTaskBatchResponse) {
     response = &ContinueRunFailedTaskBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ContinueRunFailedTaskBatch
@@ -541,8 +549,9 @@ func NewCreateAllGatewayApiAsyncRequest() (request *CreateAllGatewayApiAsyncRequ
 func NewCreateAllGatewayApiAsyncResponse() (response *CreateAllGatewayApiAsyncResponse) {
     response = &CreateAllGatewayApiAsyncResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAllGatewayApiAsync
@@ -589,8 +598,9 @@ func NewCreateApiGroupRequest() (request *CreateApiGroupRequest) {
 func NewCreateApiGroupResponse() (response *CreateApiGroupResponse) {
     response = &CreateApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApiGroup
@@ -645,8 +655,9 @@ func NewCreateApiRateLimitRuleRequest() (request *CreateApiRateLimitRuleRequest)
 func NewCreateApiRateLimitRuleResponse() (response *CreateApiRateLimitRuleResponse) {
     response = &CreateApiRateLimitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApiRateLimitRule
@@ -699,8 +710,9 @@ func NewCreateApiRateLimitRuleWithDetailRespRequest() (request *CreateApiRateLim
 func NewCreateApiRateLimitRuleWithDetailRespResponse() (response *CreateApiRateLimitRuleWithDetailRespResponse) {
     response = &CreateApiRateLimitRuleWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApiRateLimitRuleWithDetailResp
@@ -753,8 +765,9 @@ func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
 func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
     response = &CreateApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateApplication
@@ -841,8 +854,9 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
 func NewCreateClusterResponse() (response *CreateClusterResponse) {
     response = &CreateClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCluster
@@ -931,8 +945,9 @@ func NewCreateConfigRequest() (request *CreateConfigRequest) {
 func NewCreateConfigResponse() (response *CreateConfigResponse) {
     response = &CreateConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfig
@@ -1009,8 +1024,9 @@ func NewCreateConfigTemplateRequest() (request *CreateConfigTemplateRequest) {
 func NewCreateConfigTemplateResponse() (response *CreateConfigTemplateResponse) {
     response = &CreateConfigTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigTemplate
@@ -1083,8 +1099,9 @@ func NewCreateConfigTemplateWithDetailRespRequest() (request *CreateConfigTempla
 func NewCreateConfigTemplateWithDetailRespResponse() (response *CreateConfigTemplateWithDetailRespResponse) {
     response = &CreateConfigTemplateWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigTemplateWithDetailResp
@@ -1157,8 +1174,9 @@ func NewCreateConfigWithDetailRespRequest() (request *CreateConfigWithDetailResp
 func NewCreateConfigWithDetailRespResponse() (response *CreateConfigWithDetailRespResponse) {
     response = &CreateConfigWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConfigWithDetailResp
@@ -1235,8 +1253,9 @@ func NewCreateContainGroupRequest() (request *CreateContainGroupRequest) {
 func NewCreateContainGroupResponse() (response *CreateContainGroupResponse) {
     response = &CreateContainGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateContainGroup
@@ -1325,8 +1344,9 @@ func NewCreateFileConfigRequest() (request *CreateFileConfigRequest) {
 func NewCreateFileConfigResponse() (response *CreateFileConfigResponse) {
     response = &CreateFileConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFileConfig
@@ -1405,8 +1425,9 @@ func NewCreateFileConfigWithDetailRespRequest() (request *CreateFileConfigWithDe
 func NewCreateFileConfigWithDetailRespResponse() (response *CreateFileConfigWithDetailRespResponse) {
     response = &CreateFileConfigWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFileConfigWithDetailResp
@@ -1477,8 +1498,9 @@ func NewCreateGatewayApiRequest() (request *CreateGatewayApiRequest) {
 func NewCreateGatewayApiResponse() (response *CreateGatewayApiResponse) {
     response = &CreateGatewayApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGatewayApi
@@ -1533,8 +1555,9 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
 func NewCreateGroupResponse() (response *CreateGroupResponse) {
     response = &CreateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroup
@@ -1605,8 +1628,9 @@ func NewCreateLaneRequest() (request *CreateLaneRequest) {
 func NewCreateLaneResponse() (response *CreateLaneResponse) {
     response = &CreateLaneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLane
@@ -1749,8 +1773,9 @@ func NewCreateLaneRuleRequest() (request *CreateLaneRuleRequest) {
 func NewCreateLaneRuleResponse() (response *CreateLaneRuleResponse) {
     response = &CreateLaneRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLaneRule
@@ -1889,8 +1914,9 @@ func NewCreateMicroserviceRequest() (request *CreateMicroserviceRequest) {
 func NewCreateMicroserviceResponse() (response *CreateMicroserviceResponse) {
     response = &CreateMicroserviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMicroservice
@@ -1943,8 +1969,9 @@ func NewCreateMicroserviceWithDetailRespRequest() (request *CreateMicroserviceWi
 func NewCreateMicroserviceWithDetailRespResponse() (response *CreateMicroserviceWithDetailRespResponse) {
     response = &CreateMicroserviceWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMicroserviceWithDetailResp
@@ -1993,8 +2020,9 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
 func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     response = &CreateNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNamespace
@@ -2065,8 +2093,9 @@ func NewCreatePathRewritesRequest() (request *CreatePathRewritesRequest) {
 func NewCreatePathRewritesResponse() (response *CreatePathRewritesResponse) {
     response = &CreatePathRewritesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePathRewrites
@@ -2117,8 +2146,9 @@ func NewCreatePathRewritesWithDetailRespRequest() (request *CreatePathRewritesWi
 func NewCreatePathRewritesWithDetailRespResponse() (response *CreatePathRewritesWithDetailRespResponse) {
     response = &CreatePathRewritesWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePathRewritesWithDetailResp
@@ -2169,8 +2199,9 @@ func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
 func NewCreatePublicConfigResponse() (response *CreatePublicConfigResponse) {
     response = &CreatePublicConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePublicConfig
@@ -2225,8 +2256,9 @@ func NewCreatePublicConfigWithDetailRespRequest() (request *CreatePublicConfigWi
 func NewCreatePublicConfigWithDetailRespResponse() (response *CreatePublicConfigWithDetailRespResponse) {
     response = &CreatePublicConfigWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePublicConfigWithDetailResp
@@ -2281,8 +2313,9 @@ func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
 func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
     response = &CreateRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRepository
@@ -2335,8 +2368,9 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
 func NewCreateTaskResponse() (response *CreateTaskResponse) {
     response = &CreateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTask
@@ -2411,8 +2445,9 @@ func NewCreateTaskFlowRequest() (request *CreateTaskFlowRequest) {
 func NewCreateTaskFlowResponse() (response *CreateTaskFlowResponse) {
     response = &CreateTaskFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTaskFlow
@@ -2481,8 +2516,9 @@ func NewCreateUnitNamespacesRequest() (request *CreateUnitNamespacesRequest) {
 func NewCreateUnitNamespacesResponse() (response *CreateUnitNamespacesResponse) {
     response = &CreateUnitNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUnitNamespaces
@@ -2533,8 +2569,9 @@ func NewCreateUnitRuleRequest() (request *CreateUnitRuleRequest) {
 func NewCreateUnitRuleResponse() (response *CreateUnitRuleResponse) {
     response = &CreateUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUnitRule
@@ -2585,8 +2622,9 @@ func NewCreateUnitRuleWithDetailRespRequest() (request *CreateUnitRuleWithDetail
 func NewCreateUnitRuleWithDetailRespResponse() (response *CreateUnitRuleWithDetailRespResponse) {
     response = &CreateUnitRuleWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUnitRuleWithDetailResp
@@ -2637,8 +2675,9 @@ func NewDeleteApiGroupRequest() (request *DeleteApiGroupRequest) {
 func NewDeleteApiGroupResponse() (response *DeleteApiGroupResponse) {
     response = &DeleteApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApiGroup
@@ -2685,8 +2724,9 @@ func NewDeleteApiRateLimitRuleRequest() (request *DeleteApiRateLimitRuleRequest)
 func NewDeleteApiRateLimitRuleResponse() (response *DeleteApiRateLimitRuleResponse) {
     response = &DeleteApiRateLimitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApiRateLimitRule
@@ -2739,8 +2779,9 @@ func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
 func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
     response = &DeleteApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteApplication
@@ -2799,8 +2840,9 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     response = &DeleteClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCluster
@@ -2875,8 +2917,9 @@ func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
 func NewDeleteConfigResponse() (response *DeleteConfigResponse) {
     response = &DeleteConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfig
@@ -2927,8 +2970,9 @@ func NewDeleteConfigTemplateRequest() (request *DeleteConfigTemplateRequest) {
 func NewDeleteConfigTemplateResponse() (response *DeleteConfigTemplateResponse) {
     response = &DeleteConfigTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConfigTemplate
@@ -2997,8 +3041,9 @@ func NewDeleteContainerGroupRequest() (request *DeleteContainerGroupRequest) {
 func NewDeleteContainerGroupResponse() (response *DeleteContainerGroupResponse) {
     response = &DeleteContainerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteContainerGroup
@@ -3071,8 +3116,9 @@ func NewDeleteFileConfigRequest() (request *DeleteFileConfigRequest) {
 func NewDeleteFileConfigResponse() (response *DeleteFileConfigResponse) {
     response = &DeleteFileConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFileConfig
@@ -3121,8 +3167,9 @@ func NewDeleteGatewayApiRequest() (request *DeleteGatewayApiRequest) {
 func NewDeleteGatewayApiResponse() (response *DeleteGatewayApiResponse) {
     response = &DeleteGatewayApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGatewayApi
@@ -3169,8 +3216,9 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
 func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     response = &DeleteGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroup
@@ -3223,8 +3271,9 @@ func NewDeleteImageTagsRequest() (request *DeleteImageTagsRequest) {
 func NewDeleteImageTagsResponse() (response *DeleteImageTagsResponse) {
     response = &DeleteImageTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteImageTags
@@ -3275,8 +3324,9 @@ func NewDeleteLaneRequest() (request *DeleteLaneRequest) {
 func NewDeleteLaneResponse() (response *DeleteLaneResponse) {
     response = &DeleteLaneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLane
@@ -3411,8 +3461,9 @@ func NewDeleteLaneRuleRequest() (request *DeleteLaneRuleRequest) {
 func NewDeleteLaneRuleResponse() (response *DeleteLaneRuleResponse) {
     response = &DeleteLaneRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLaneRule
@@ -3547,8 +3598,9 @@ func NewDeleteMicroserviceRequest() (request *DeleteMicroserviceRequest) {
 func NewDeleteMicroserviceResponse() (response *DeleteMicroserviceResponse) {
     response = &DeleteMicroserviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMicroservice
@@ -3601,8 +3653,9 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
 func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     response = &DeleteNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNamespace
@@ -3751,8 +3804,9 @@ func NewDeletePathRewritesRequest() (request *DeletePathRewritesRequest) {
 func NewDeletePathRewritesResponse() (response *DeletePathRewritesResponse) {
     response = &DeletePathRewritesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePathRewrites
@@ -3801,8 +3855,9 @@ func NewDeletePkgsRequest() (request *DeletePkgsRequest) {
 func NewDeletePkgsResponse() (response *DeletePkgsResponse) {
     response = &DeletePkgsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePkgs
@@ -3863,8 +3918,9 @@ func NewDeletePublicConfigRequest() (request *DeletePublicConfigRequest) {
 func NewDeletePublicConfigResponse() (response *DeletePublicConfigResponse) {
     response = &DeletePublicConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePublicConfig
@@ -3915,8 +3971,9 @@ func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
 func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
     response = &DeleteRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRepository
@@ -3971,8 +4028,9 @@ func NewDeleteServerlessGroupRequest() (request *DeleteServerlessGroupRequest) {
 func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse) {
     response = &DeleteServerlessGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteServerlessGroup
@@ -4027,8 +4085,9 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
 func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
     response = &DeleteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTask
@@ -4091,8 +4150,9 @@ func NewDeleteUnitNamespacesRequest() (request *DeleteUnitNamespacesRequest) {
 func NewDeleteUnitNamespacesResponse() (response *DeleteUnitNamespacesResponse) {
     response = &DeleteUnitNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUnitNamespaces
@@ -4143,8 +4203,9 @@ func NewDeleteUnitRuleRequest() (request *DeleteUnitRuleRequest) {
 func NewDeleteUnitRuleResponse() (response *DeleteUnitRuleResponse) {
     response = &DeleteUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteUnitRule
@@ -4195,8 +4256,9 @@ func NewDeployContainerGroupRequest() (request *DeployContainerGroupRequest) {
 func NewDeployContainerGroupResponse() (response *DeployContainerGroupResponse) {
     response = &DeployContainerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeployContainerGroup
@@ -4329,8 +4391,9 @@ func NewDeployGroupRequest() (request *DeployGroupRequest) {
 func NewDeployGroupResponse() (response *DeployGroupResponse) {
     response = &DeployGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeployGroup
@@ -4403,8 +4466,9 @@ func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
 func NewDescribeApiDetailResponse() (response *DescribeApiDetailResponse) {
     response = &DescribeApiDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiDetail
@@ -4459,8 +4523,9 @@ func NewDescribeApiGroupRequest() (request *DescribeApiGroupRequest) {
 func NewDescribeApiGroupResponse() (response *DescribeApiGroupResponse) {
     response = &DescribeApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiGroup
@@ -4511,8 +4576,9 @@ func NewDescribeApiGroupsRequest() (request *DescribeApiGroupsRequest) {
 func NewDescribeApiGroupsResponse() (response *DescribeApiGroupsResponse) {
     response = &DescribeApiGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiGroups
@@ -4565,8 +4631,9 @@ func NewDescribeApiRateLimitRulesRequest() (request *DescribeApiRateLimitRulesRe
 func NewDescribeApiRateLimitRulesResponse() (response *DescribeApiRateLimitRulesResponse) {
     response = &DescribeApiRateLimitRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiRateLimitRules
@@ -4615,8 +4682,9 @@ func NewDescribeApiUseDetailRequest() (request *DescribeApiUseDetailRequest) {
 func NewDescribeApiUseDetailResponse() (response *DescribeApiUseDetailResponse) {
     response = &DescribeApiUseDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiUseDetail
@@ -4671,8 +4739,9 @@ func NewDescribeApiVersionsRequest() (request *DescribeApiVersionsRequest) {
 func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
     response = &DescribeApiVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApiVersions
@@ -4727,8 +4796,9 @@ func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
 func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
     response = &DescribeApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplication
@@ -4789,8 +4859,9 @@ func NewDescribeApplicationAttributeRequest() (request *DescribeApplicationAttri
 func NewDescribeApplicationAttributeResponse() (response *DescribeApplicationAttributeResponse) {
     response = &DescribeApplicationAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationAttribute
@@ -4869,8 +4940,9 @@ func NewDescribeApplicationBusinessLogConfigRequest() (request *DescribeApplicat
 func NewDescribeApplicationBusinessLogConfigResponse() (response *DescribeApplicationBusinessLogConfigResponse) {
     response = &DescribeApplicationBusinessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplicationBusinessLogConfig
@@ -4917,8 +4989,9 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
 func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
     response = &DescribeApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApplications
@@ -4985,8 +5058,9 @@ func NewDescribeBasicResourceUsageRequest() (request *DescribeBasicResourceUsage
 func NewDescribeBasicResourceUsageResponse() (response *DescribeBasicResourceUsageResponse) {
     response = &DescribeBasicResourceUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBasicResourceUsage
@@ -5049,8 +5123,9 @@ func NewDescribeBusinessLogConfigRequest() (request *DescribeBusinessLogConfigRe
 func NewDescribeBusinessLogConfigResponse() (response *DescribeBusinessLogConfigResponse) {
     response = &DescribeBusinessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBusinessLogConfig
@@ -5107,8 +5182,9 @@ func NewDescribeBusinessLogConfigsRequest() (request *DescribeBusinessLogConfigs
 func NewDescribeBusinessLogConfigsResponse() (response *DescribeBusinessLogConfigsResponse) {
     response = &DescribeBusinessLogConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBusinessLogConfigs
@@ -5171,8 +5247,9 @@ func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequ
 func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesResponse) {
     response = &DescribeClusterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusterInstances
@@ -5257,8 +5334,9 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
 func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     response = &DescribeClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClusters
@@ -5325,8 +5403,9 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
 func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     response = &DescribeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfig
@@ -5377,8 +5456,9 @@ func NewDescribeConfigReleaseLogsRequest() (request *DescribeConfigReleaseLogsRe
 func NewDescribeConfigReleaseLogsResponse() (response *DescribeConfigReleaseLogsResponse) {
     response = &DescribeConfigReleaseLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigReleaseLogs
@@ -5425,8 +5505,9 @@ func NewDescribeConfigReleasesRequest() (request *DescribeConfigReleasesRequest)
 func NewDescribeConfigReleasesResponse() (response *DescribeConfigReleasesResponse) {
     response = &DescribeConfigReleasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigReleases
@@ -5487,8 +5568,9 @@ func NewDescribeConfigSummaryRequest() (request *DescribeConfigSummaryRequest) {
 func NewDescribeConfigSummaryResponse() (response *DescribeConfigSummaryResponse) {
     response = &DescribeConfigSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigSummary
@@ -5543,8 +5625,9 @@ func NewDescribeConfigTemplateRequest() (request *DescribeConfigTemplateRequest)
 func NewDescribeConfigTemplateResponse() (response *DescribeConfigTemplateResponse) {
     response = &DescribeConfigTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigTemplate
@@ -5615,8 +5698,9 @@ func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
 func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
     response = &DescribeConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigs
@@ -5679,8 +5763,9 @@ func NewDescribeContainerEventsRequest() (request *DescribeContainerEventsReques
 func NewDescribeContainerEventsResponse() (response *DescribeContainerEventsResponse) {
     response = &DescribeContainerEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerEvents
@@ -5749,8 +5834,9 @@ func NewDescribeContainerGroupAttributeRequest() (request *DescribeContainerGrou
 func NewDescribeContainerGroupAttributeResponse() (response *DescribeContainerGroupAttributeResponse) {
     response = &DescribeContainerGroupAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerGroupAttribute
@@ -5823,8 +5909,9 @@ func NewDescribeContainerGroupDeployInfoRequest() (request *DescribeContainerGro
 func NewDescribeContainerGroupDeployInfoResponse() (response *DescribeContainerGroupDeployInfoResponse) {
     response = &DescribeContainerGroupDeployInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerGroupDeployInfo
@@ -5889,8 +5976,9 @@ func NewDescribeContainerGroupDetailRequest() (request *DescribeContainerGroupDe
 func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroupDetailResponse) {
     response = &DescribeContainerGroupDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerGroupDetail
@@ -5965,8 +6053,9 @@ func NewDescribeContainerGroupsRequest() (request *DescribeContainerGroupsReques
 func NewDescribeContainerGroupsResponse() (response *DescribeContainerGroupsResponse) {
     response = &DescribeContainerGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeContainerGroups
@@ -6025,8 +6114,9 @@ func NewDescribeCreateGatewayApiStatusRequest() (request *DescribeCreateGatewayA
 func NewDescribeCreateGatewayApiStatusResponse() (response *DescribeCreateGatewayApiStatusResponse) {
     response = &DescribeCreateGatewayApiStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCreateGatewayApiStatus
@@ -6073,8 +6163,9 @@ func NewDescribeDeliveryConfigRequest() (request *DescribeDeliveryConfigRequest)
 func NewDescribeDeliveryConfigResponse() (response *DescribeDeliveryConfigResponse) {
     response = &DescribeDeliveryConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeliveryConfig
@@ -6123,8 +6214,9 @@ func NewDescribeDeliveryConfigByGroupIdRequest() (request *DescribeDeliveryConfi
 func NewDescribeDeliveryConfigByGroupIdResponse() (response *DescribeDeliveryConfigByGroupIdResponse) {
     response = &DescribeDeliveryConfigByGroupIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeliveryConfigByGroupId
@@ -6171,8 +6263,9 @@ func NewDescribeDeliveryConfigsRequest() (request *DescribeDeliveryConfigsReques
 func NewDescribeDeliveryConfigsResponse() (response *DescribeDeliveryConfigsResponse) {
     response = &DescribeDeliveryConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeliveryConfigs
@@ -6225,8 +6318,9 @@ func NewDescribeDownloadInfoRequest() (request *DescribeDownloadInfoRequest) {
 func NewDescribeDownloadInfoResponse() (response *DescribeDownloadInfoResponse) {
     response = &DescribeDownloadInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDownloadInfo
@@ -6281,8 +6375,9 @@ func NewDescribeEnabledUnitRuleRequest() (request *DescribeEnabledUnitRuleReques
 func NewDescribeEnabledUnitRuleResponse() (response *DescribeEnabledUnitRuleResponse) {
     response = &DescribeEnabledUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnabledUnitRule
@@ -6333,8 +6428,9 @@ func NewDescribeFileConfigReleasesRequest() (request *DescribeFileConfigReleases
 func NewDescribeFileConfigReleasesResponse() (response *DescribeFileConfigReleasesResponse) {
     response = &DescribeFileConfigReleasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileConfigReleases
@@ -6383,8 +6479,9 @@ func NewDescribeFileConfigsRequest() (request *DescribeFileConfigsRequest) {
 func NewDescribeFileConfigsResponse() (response *DescribeFileConfigsResponse) {
     response = &DescribeFileConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileConfigs
@@ -6431,8 +6528,9 @@ func NewDescribeFlowLastBatchStateRequest() (request *DescribeFlowLastBatchState
 func NewDescribeFlowLastBatchStateResponse() (response *DescribeFlowLastBatchStateResponse) {
     response = &DescribeFlowLastBatchStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowLastBatchState
@@ -6495,8 +6593,9 @@ func NewDescribeGatewayAllGroupApisRequest() (request *DescribeGatewayAllGroupAp
 func NewDescribeGatewayAllGroupApisResponse() (response *DescribeGatewayAllGroupApisResponse) {
     response = &DescribeGatewayAllGroupApisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGatewayAllGroupApis
@@ -6547,8 +6646,9 @@ func NewDescribeGatewayApisRequest() (request *DescribeGatewayApisRequest) {
 func NewDescribeGatewayApisResponse() (response *DescribeGatewayApisResponse) {
     response = &DescribeGatewayApisResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGatewayApis
@@ -6603,8 +6703,9 @@ func NewDescribeGatewayMonitorOverviewRequest() (request *DescribeGatewayMonitor
 func NewDescribeGatewayMonitorOverviewResponse() (response *DescribeGatewayMonitorOverviewResponse) {
     response = &DescribeGatewayMonitorOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGatewayMonitorOverview
@@ -6663,8 +6764,9 @@ func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
 func NewDescribeGroupResponse() (response *DescribeGroupResponse) {
     response = &DescribeGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroup
@@ -6737,8 +6839,9 @@ func NewDescribeGroupAttributeRequest() (request *DescribeGroupAttributeRequest)
 func NewDescribeGroupAttributeResponse() (response *DescribeGroupAttributeResponse) {
     response = &DescribeGroupAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupAttribute
@@ -6807,8 +6910,9 @@ func NewDescribeGroupBindedGatewaysRequest() (request *DescribeGroupBindedGatewa
 func NewDescribeGroupBindedGatewaysResponse() (response *DescribeGroupBindedGatewaysResponse) {
     response = &DescribeGroupBindedGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupBindedGateways
@@ -6859,8 +6963,9 @@ func NewDescribeGroupBusinessLogConfigsRequest() (request *DescribeGroupBusiness
 func NewDescribeGroupBusinessLogConfigsResponse() (response *DescribeGroupBusinessLogConfigsResponse) {
     response = &DescribeGroupBusinessLogConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupBusinessLogConfigs
@@ -6913,8 +7018,9 @@ func NewDescribeGroupGatewaysRequest() (request *DescribeGroupGatewaysRequest) {
 func NewDescribeGroupGatewaysResponse() (response *DescribeGroupGatewaysResponse) {
     response = &DescribeGroupGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupGateways
@@ -6967,8 +7073,9 @@ func NewDescribeGroupInstancesRequest() (request *DescribeGroupInstancesRequest)
 func NewDescribeGroupInstancesResponse() (response *DescribeGroupInstancesResponse) {
     response = &DescribeGroupInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupInstances
@@ -7043,8 +7150,9 @@ func NewDescribeGroupReleaseRequest() (request *DescribeGroupReleaseRequest) {
 func NewDescribeGroupReleaseResponse() (response *DescribeGroupReleaseResponse) {
     response = &DescribeGroupReleaseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupRelease
@@ -7097,8 +7205,9 @@ func NewDescribeGroupUseDetailRequest() (request *DescribeGroupUseDetailRequest)
 func NewDescribeGroupUseDetailResponse() (response *DescribeGroupUseDetailResponse) {
     response = &DescribeGroupUseDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupUseDetail
@@ -7149,8 +7258,9 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
 func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
     response = &DescribeGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroups
@@ -7221,8 +7331,9 @@ func NewDescribeGroupsWithPluginRequest() (request *DescribeGroupsWithPluginRequ
 func NewDescribeGroupsWithPluginResponse() (response *DescribeGroupsWithPluginResponse) {
     response = &DescribeGroupsWithPluginResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupsWithPlugin
@@ -7293,8 +7404,9 @@ func NewDescribeImageRepositoryRequest() (request *DescribeImageRepositoryReques
 func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResponse) {
     response = &DescribeImageRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageRepository
@@ -7351,8 +7463,9 @@ func NewDescribeImageTagsRequest() (request *DescribeImageTagsRequest) {
 func NewDescribeImageTagsResponse() (response *DescribeImageTagsResponse) {
     response = &DescribeImageTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageTags
@@ -7423,8 +7536,9 @@ func NewDescribeInovcationIndicatorsRequest() (request *DescribeInovcationIndica
 func NewDescribeInovcationIndicatorsResponse() (response *DescribeInovcationIndicatorsResponse) {
     response = &DescribeInovcationIndicatorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInovcationIndicators
@@ -7481,8 +7595,9 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
 func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     response = &DescribeInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstances
@@ -7537,8 +7652,9 @@ func NewDescribeInvocationMetricDataCurveRequest() (request *DescribeInvocationM
 func NewDescribeInvocationMetricDataCurveResponse() (response *DescribeInvocationMetricDataCurveResponse) {
     response = &DescribeInvocationMetricDataCurveResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationMetricDataCurve
@@ -7591,8 +7707,9 @@ func NewDescribeInvocationMetricDataDimensionRequest() (request *DescribeInvocat
 func NewDescribeInvocationMetricDataDimensionResponse() (response *DescribeInvocationMetricDataDimensionResponse) {
     response = &DescribeInvocationMetricDataDimensionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationMetricDataDimension
@@ -7639,8 +7756,9 @@ func NewDescribeInvocationMetricDataPointRequest() (request *DescribeInvocationM
 func NewDescribeInvocationMetricDataPointResponse() (response *DescribeInvocationMetricDataPointResponse) {
     response = &DescribeInvocationMetricDataPointResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationMetricDataPoint
@@ -7691,8 +7809,9 @@ func NewDescribeInvocationMetricScatterPlotRequest() (request *DescribeInvocatio
 func NewDescribeInvocationMetricScatterPlotResponse() (response *DescribeInvocationMetricScatterPlotResponse) {
     response = &DescribeInvocationMetricScatterPlotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationMetricScatterPlot
@@ -7745,8 +7864,9 @@ func NewDescribeJvmMonitorRequest() (request *DescribeJvmMonitorRequest) {
 func NewDescribeJvmMonitorResponse() (response *DescribeJvmMonitorResponse) {
     response = &DescribeJvmMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeJvmMonitor
@@ -7811,8 +7931,9 @@ func NewDescribeLaneRulesRequest() (request *DescribeLaneRulesRequest) {
 func NewDescribeLaneRulesResponse() (response *DescribeLaneRulesResponse) {
     response = &DescribeLaneRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLaneRules
@@ -7959,8 +8080,9 @@ func NewDescribeLanesRequest() (request *DescribeLanesRequest) {
 func NewDescribeLanesResponse() (response *DescribeLanesResponse) {
     response = &DescribeLanesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLanes
@@ -8099,8 +8221,9 @@ func NewDescribeMicroserviceRequest() (request *DescribeMicroserviceRequest) {
 func NewDescribeMicroserviceResponse() (response *DescribeMicroserviceResponse) {
     response = &DescribeMicroserviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMicroservice
@@ -8167,8 +8290,9 @@ func NewDescribeMicroservicesRequest() (request *DescribeMicroservicesRequest) {
 func NewDescribeMicroservicesResponse() (response *DescribeMicroservicesResponse) {
     response = &DescribeMicroservicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMicroservices
@@ -8237,8 +8361,9 @@ func NewDescribeMsApiListRequest() (request *DescribeMsApiListRequest) {
 func NewDescribeMsApiListResponse() (response *DescribeMsApiListResponse) {
     response = &DescribeMsApiListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMsApiList
@@ -8295,8 +8420,9 @@ func NewDescribeOverviewInvocationRequest() (request *DescribeOverviewInvocation
 func NewDescribeOverviewInvocationResponse() (response *DescribeOverviewInvocationResponse) {
     response = &DescribeOverviewInvocationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOverviewInvocation
@@ -8351,8 +8477,9 @@ func NewDescribePathRewriteRequest() (request *DescribePathRewriteRequest) {
 func NewDescribePathRewriteResponse() (response *DescribePathRewriteResponse) {
     response = &DescribePathRewriteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePathRewrite
@@ -8401,8 +8528,9 @@ func NewDescribePathRewritesRequest() (request *DescribePathRewritesRequest) {
 func NewDescribePathRewritesResponse() (response *DescribePathRewritesResponse) {
     response = &DescribePathRewritesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePathRewrites
@@ -8453,8 +8581,9 @@ func NewDescribePkgsRequest() (request *DescribePkgsRequest) {
 func NewDescribePkgsResponse() (response *DescribePkgsResponse) {
     response = &DescribePkgsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePkgs
@@ -8507,8 +8636,9 @@ func NewDescribePluginInstancesRequest() (request *DescribePluginInstancesReques
 func NewDescribePluginInstancesResponse() (response *DescribePluginInstancesResponse) {
     response = &DescribePluginInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePluginInstances
@@ -8561,8 +8691,9 @@ func NewDescribePodInstancesRequest() (request *DescribePodInstancesRequest) {
 func NewDescribePodInstancesResponse() (response *DescribePodInstancesResponse) {
     response = &DescribePodInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePodInstances
@@ -8637,8 +8768,9 @@ func NewDescribeProgramsRequest() (request *DescribeProgramsRequest) {
 func NewDescribeProgramsResponse() (response *DescribeProgramsResponse) {
     response = &DescribeProgramsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePrograms
@@ -8685,8 +8817,9 @@ func NewDescribePublicConfigRequest() (request *DescribePublicConfigRequest) {
 func NewDescribePublicConfigResponse() (response *DescribePublicConfigResponse) {
     response = &DescribePublicConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicConfig
@@ -8737,8 +8870,9 @@ func NewDescribePublicConfigReleaseLogsRequest() (request *DescribePublicConfigR
 func NewDescribePublicConfigReleaseLogsResponse() (response *DescribePublicConfigReleaseLogsResponse) {
     response = &DescribePublicConfigReleaseLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicConfigReleaseLogs
@@ -8789,8 +8923,9 @@ func NewDescribePublicConfigReleasesRequest() (request *DescribePublicConfigRele
 func NewDescribePublicConfigReleasesResponse() (response *DescribePublicConfigReleasesResponse) {
     response = &DescribePublicConfigReleasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicConfigReleases
@@ -8847,8 +8982,9 @@ func NewDescribePublicConfigSummaryRequest() (request *DescribePublicConfigSumma
 func NewDescribePublicConfigSummaryResponse() (response *DescribePublicConfigSummaryResponse) {
     response = &DescribePublicConfigSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicConfigSummary
@@ -8897,8 +9033,9 @@ func NewDescribePublicConfigsRequest() (request *DescribePublicConfigsRequest) {
 func NewDescribePublicConfigsResponse() (response *DescribePublicConfigsResponse) {
     response = &DescribePublicConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePublicConfigs
@@ -8947,8 +9084,9 @@ func NewDescribeReleasedConfigRequest() (request *DescribeReleasedConfigRequest)
 func NewDescribeReleasedConfigResponse() (response *DescribeReleasedConfigResponse) {
     response = &DescribeReleasedConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReleasedConfig
@@ -9003,8 +9141,9 @@ func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
 func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) {
     response = &DescribeRepositoriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRepositories
@@ -9055,8 +9194,9 @@ func NewDescribeRepositoryRequest() (request *DescribeRepositoryRequest) {
 func NewDescribeRepositoryResponse() (response *DescribeRepositoryResponse) {
     response = &DescribeRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRepository
@@ -9109,8 +9249,9 @@ func NewDescribeResourceTaskStatusRequest() (request *DescribeResourceTaskStatus
 func NewDescribeResourceTaskStatusResponse() (response *DescribeResourceTaskStatusResponse) {
     response = &DescribeResourceTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceTaskStatus
@@ -9167,8 +9308,9 @@ func NewDescribeSimpleApplicationsRequest() (request *DescribeSimpleApplications
 func NewDescribeSimpleApplicationsResponse() (response *DescribeSimpleApplicationsResponse) {
     response = &DescribeSimpleApplicationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSimpleApplications
@@ -9225,8 +9367,9 @@ func NewDescribeSimpleClustersRequest() (request *DescribeSimpleClustersRequest)
 func NewDescribeSimpleClustersResponse() (response *DescribeSimpleClustersResponse) {
     response = &DescribeSimpleClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSimpleClusters
@@ -9281,8 +9424,9 @@ func NewDescribeSimpleGroupsRequest() (request *DescribeSimpleGroupsRequest) {
 func NewDescribeSimpleGroupsResponse() (response *DescribeSimpleGroupsResponse) {
     response = &DescribeSimpleGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSimpleGroups
@@ -9341,8 +9485,9 @@ func NewDescribeSimpleNamespacesRequest() (request *DescribeSimpleNamespacesRequ
 func NewDescribeSimpleNamespacesResponse() (response *DescribeSimpleNamespacesResponse) {
     response = &DescribeSimpleNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSimpleNamespaces
@@ -9405,8 +9550,9 @@ func NewDescribeStatisticsRequest() (request *DescribeStatisticsRequest) {
 func NewDescribeStatisticsResponse() (response *DescribeStatisticsResponse) {
     response = &DescribeStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStatistics
@@ -9475,8 +9621,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail
@@ -9543,8 +9690,9 @@ func NewDescribeTaskLastStatusRequest() (request *DescribeTaskLastStatusRequest)
 func NewDescribeTaskLastStatusResponse() (response *DescribeTaskLastStatusResponse) {
     response = &DescribeTaskLastStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskLastStatus
@@ -9603,8 +9751,9 @@ func NewDescribeTaskRecordsRequest() (request *DescribeTaskRecordsRequest) {
 func NewDescribeTaskRecordsResponse() (response *DescribeTaskRecordsResponse) {
     response = &DescribeTaskRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskRecords
@@ -9667,8 +9816,9 @@ func NewDescribeUnitApiUseDetailRequest() (request *DescribeUnitApiUseDetailRequ
 func NewDescribeUnitApiUseDetailResponse() (response *DescribeUnitApiUseDetailResponse) {
     response = &DescribeUnitApiUseDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnitApiUseDetail
@@ -9721,8 +9871,9 @@ func NewDescribeUnitNamespacesRequest() (request *DescribeUnitNamespacesRequest)
 func NewDescribeUnitNamespacesResponse() (response *DescribeUnitNamespacesResponse) {
     response = &DescribeUnitNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnitNamespaces
@@ -9773,8 +9924,9 @@ func NewDescribeUnitRuleRequest() (request *DescribeUnitRuleRequest) {
 func NewDescribeUnitRuleResponse() (response *DescribeUnitRuleResponse) {
     response = &DescribeUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnitRule
@@ -9825,8 +9977,9 @@ func NewDescribeUnitRulesRequest() (request *DescribeUnitRulesRequest) {
 func NewDescribeUnitRulesResponse() (response *DescribeUnitRulesResponse) {
     response = &DescribeUnitRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnitRules
@@ -9877,8 +10030,9 @@ func NewDescribeUnitRulesV2Request() (request *DescribeUnitRulesV2Request) {
 func NewDescribeUnitRulesV2Response() (response *DescribeUnitRulesV2Response) {
     response = &DescribeUnitRulesV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnitRulesV2
@@ -9929,8 +10083,9 @@ func NewDescribeUploadInfoRequest() (request *DescribeUploadInfoRequest) {
 func NewDescribeUploadInfoResponse() (response *DescribeUploadInfoResponse) {
     response = &DescribeUploadInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUploadInfo
@@ -9993,8 +10148,9 @@ func NewDescribeUsableUnitNamespacesRequest() (request *DescribeUsableUnitNamesp
 func NewDescribeUsableUnitNamespacesResponse() (response *DescribeUsableUnitNamespacesResponse) {
     response = &DescribeUsableUnitNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsableUnitNamespaces
@@ -10045,8 +10201,9 @@ func NewDisableTaskRequest() (request *DisableTaskRequest) {
 func NewDisableTaskResponse() (response *DisableTaskResponse) {
     response = &DisableTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableTask
@@ -10107,8 +10264,9 @@ func NewDisableTaskFlowRequest() (request *DisableTaskFlowRequest) {
 func NewDisableTaskFlowResponse() (response *DisableTaskFlowResponse) {
     response = &DisableTaskFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableTaskFlow
@@ -10169,8 +10327,9 @@ func NewDisableUnitRouteRequest() (request *DisableUnitRouteRequest) {
 func NewDisableUnitRouteResponse() (response *DisableUnitRouteResponse) {
     response = &DisableUnitRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableUnitRoute
@@ -10219,8 +10378,9 @@ func NewDisableUnitRuleRequest() (request *DisableUnitRuleRequest) {
 func NewDisableUnitRuleResponse() (response *DisableUnitRuleResponse) {
     response = &DisableUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableUnitRule
@@ -10271,8 +10431,9 @@ func NewDisassociateBusinessLogConfigRequest() (request *DisassociateBusinessLog
 func NewDisassociateBusinessLogConfigResponse() (response *DisassociateBusinessLogConfigResponse) {
     response = &DisassociateBusinessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisassociateBusinessLogConfig
@@ -10319,8 +10480,9 @@ func NewDisassociateKafkaConfigRequest() (request *DisassociateKafkaConfigReques
 func NewDisassociateKafkaConfigResponse() (response *DisassociateKafkaConfigResponse) {
     response = &DisassociateKafkaConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisassociateKafkaConfig
@@ -10369,8 +10531,9 @@ func NewDraftApiGroupRequest() (request *DraftApiGroupRequest) {
 func NewDraftApiGroupResponse() (response *DraftApiGroupResponse) {
     response = &DraftApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DraftApiGroup
@@ -10417,8 +10580,9 @@ func NewEnableTaskRequest() (request *EnableTaskRequest) {
 func NewEnableTaskResponse() (response *EnableTaskResponse) {
     response = &EnableTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableTask
@@ -10483,8 +10647,9 @@ func NewEnableTaskFlowRequest() (request *EnableTaskFlowRequest) {
 func NewEnableTaskFlowResponse() (response *EnableTaskFlowResponse) {
     response = &EnableTaskFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableTaskFlow
@@ -10547,8 +10712,9 @@ func NewEnableUnitRouteRequest() (request *EnableUnitRouteRequest) {
 func NewEnableUnitRouteResponse() (response *EnableUnitRouteResponse) {
     response = &EnableUnitRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableUnitRoute
@@ -10599,8 +10765,9 @@ func NewEnableUnitRuleRequest() (request *EnableUnitRuleRequest) {
 func NewEnableUnitRuleResponse() (response *EnableUnitRuleResponse) {
     response = &EnableUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableUnitRule
@@ -10651,8 +10818,9 @@ func NewExecuteTaskRequest() (request *ExecuteTaskRequest) {
 func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
     response = &ExecuteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteTask
@@ -10719,8 +10887,9 @@ func NewExecuteTaskFlowRequest() (request *ExecuteTaskFlowRequest) {
 func NewExecuteTaskFlowResponse() (response *ExecuteTaskFlowResponse) {
     response = &ExecuteTaskFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteTaskFlow
@@ -10787,8 +10956,9 @@ func NewExpandGroupRequest() (request *ExpandGroupRequest) {
 func NewExpandGroupResponse() (response *ExpandGroupResponse) {
     response = &ExpandGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExpandGroup
@@ -10845,8 +11015,9 @@ func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
 func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
     response = &ModifyApplicationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyApplication
@@ -10899,8 +11070,9 @@ func NewModifyClusterRequest() (request *ModifyClusterRequest) {
 func NewModifyClusterResponse() (response *ModifyClusterResponse) {
     response = &ModifyClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCluster
@@ -10951,8 +11123,9 @@ func NewModifyContainerGroupRequest() (request *ModifyContainerGroupRequest) {
 func NewModifyContainerGroupResponse() (response *ModifyContainerGroupResponse) {
     response = &ModifyContainerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyContainerGroup
@@ -11003,8 +11176,9 @@ func NewModifyContainerReplicasRequest() (request *ModifyContainerReplicasReques
 func NewModifyContainerReplicasResponse() (response *ModifyContainerReplicasResponse) {
     response = &ModifyContainerReplicasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyContainerReplicas
@@ -11067,8 +11241,9 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
 func NewModifyGroupResponse() (response *ModifyGroupResponse) {
     response = &ModifyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGroup
@@ -11115,8 +11290,9 @@ func NewModifyLaneRequest() (request *ModifyLaneRequest) {
 func NewModifyLaneResponse() (response *ModifyLaneResponse) {
     response = &ModifyLaneResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLane
@@ -11253,8 +11429,9 @@ func NewModifyLaneRuleRequest() (request *ModifyLaneRuleRequest) {
 func NewModifyLaneRuleResponse() (response *ModifyLaneRuleResponse) {
     response = &ModifyLaneRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLaneRule
@@ -11389,8 +11566,9 @@ func NewModifyMicroserviceRequest() (request *ModifyMicroserviceRequest) {
 func NewModifyMicroserviceResponse() (response *ModifyMicroserviceResponse) {
     response = &ModifyMicroserviceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMicroservice
@@ -11437,8 +11615,9 @@ func NewModifyNamespaceRequest() (request *ModifyNamespaceRequest) {
 func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
     response = &ModifyNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNamespace
@@ -11485,8 +11664,9 @@ func NewModifyPathRewriteRequest() (request *ModifyPathRewriteRequest) {
 func NewModifyPathRewriteResponse() (response *ModifyPathRewriteResponse) {
     response = &ModifyPathRewriteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPathRewrite
@@ -11535,8 +11715,9 @@ func NewModifyTaskRequest() (request *ModifyTaskRequest) {
 func NewModifyTaskResponse() (response *ModifyTaskResponse) {
     response = &ModifyTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTask
@@ -11603,8 +11784,9 @@ func NewModifyUploadInfoRequest() (request *ModifyUploadInfoRequest) {
 func NewModifyUploadInfoResponse() (response *ModifyUploadInfoResponse) {
     response = &ModifyUploadInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUploadInfo
@@ -11661,8 +11843,9 @@ func NewOperateApplicationTcrBindingRequest() (request *OperateApplicationTcrBin
 func NewOperateApplicationTcrBindingResponse() (response *OperateApplicationTcrBindingResponse) {
     response = &OperateApplicationTcrBindingResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OperateApplicationTcrBinding
@@ -11723,8 +11906,9 @@ func NewReassociateBusinessLogConfigRequest() (request *ReassociateBusinessLogCo
 func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLogConfigResponse) {
     response = &ReassociateBusinessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReassociateBusinessLogConfig
@@ -11771,8 +11955,9 @@ func NewRedoTaskRequest() (request *RedoTaskRequest) {
 func NewRedoTaskResponse() (response *RedoTaskResponse) {
     response = &RedoTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RedoTask
@@ -11845,8 +12030,9 @@ func NewRedoTaskBatchRequest() (request *RedoTaskBatchRequest) {
 func NewRedoTaskBatchResponse() (response *RedoTaskBatchResponse) {
     response = &RedoTaskBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RedoTaskBatch
@@ -11911,8 +12097,9 @@ func NewRedoTaskExecuteRequest() (request *RedoTaskExecuteRequest) {
 func NewRedoTaskExecuteResponse() (response *RedoTaskExecuteResponse) {
     response = &RedoTaskExecuteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RedoTaskExecute
@@ -11979,8 +12166,9 @@ func NewRedoTaskFlowBatchRequest() (request *RedoTaskFlowBatchRequest) {
 func NewRedoTaskFlowBatchResponse() (response *RedoTaskFlowBatchResponse) {
     response = &RedoTaskFlowBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RedoTaskFlowBatch
@@ -12047,8 +12235,9 @@ func NewReleaseApiGroupRequest() (request *ReleaseApiGroupRequest) {
 func NewReleaseApiGroupResponse() (response *ReleaseApiGroupResponse) {
     response = &ReleaseApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseApiGroup
@@ -12099,8 +12288,9 @@ func NewReleaseConfigRequest() (request *ReleaseConfigRequest) {
 func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
     response = &ReleaseConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseConfig
@@ -12173,8 +12363,9 @@ func NewReleaseConfigWithDetailRespRequest() (request *ReleaseConfigWithDetailRe
 func NewReleaseConfigWithDetailRespResponse() (response *ReleaseConfigWithDetailRespResponse) {
     response = &ReleaseConfigWithDetailRespResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseConfigWithDetailResp
@@ -12247,8 +12438,9 @@ func NewReleaseFileConfigRequest() (request *ReleaseFileConfigRequest) {
 func NewReleaseFileConfigResponse() (response *ReleaseFileConfigResponse) {
     response = &ReleaseFileConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleaseFileConfig
@@ -12307,8 +12499,9 @@ func NewReleasePublicConfigRequest() (request *ReleasePublicConfigRequest) {
 func NewReleasePublicConfigResponse() (response *ReleasePublicConfigResponse) {
     response = &ReleasePublicConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReleasePublicConfig
@@ -12371,8 +12564,9 @@ func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
 func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
     response = &RemoveInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemoveInstances
@@ -12429,8 +12623,9 @@ func NewRevocationConfigRequest() (request *RevocationConfigRequest) {
 func NewRevocationConfigResponse() (response *RevocationConfigResponse) {
     response = &RevocationConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevocationConfig
@@ -12483,8 +12678,9 @@ func NewRevocationPublicConfigRequest() (request *RevocationPublicConfigRequest)
 func NewRevocationPublicConfigResponse() (response *RevocationPublicConfigResponse) {
     response = &RevocationPublicConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevocationPublicConfig
@@ -12533,8 +12729,9 @@ func NewRevokeFileConfigRequest() (request *RevokeFileConfigRequest) {
 func NewRevokeFileConfigResponse() (response *RevokeFileConfigResponse) {
     response = &RevokeFileConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevokeFileConfig
@@ -12585,8 +12782,9 @@ func NewRollbackConfigRequest() (request *RollbackConfigRequest) {
 func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
     response = &RollbackConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RollbackConfig
@@ -12641,8 +12839,9 @@ func NewSearchBusinessLogRequest() (request *SearchBusinessLogRequest) {
 func NewSearchBusinessLogResponse() (response *SearchBusinessLogResponse) {
     response = &SearchBusinessLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchBusinessLog
@@ -12703,8 +12902,9 @@ func NewSearchStdoutLogRequest() (request *SearchStdoutLogRequest) {
 func NewSearchStdoutLogResponse() (response *SearchStdoutLogResponse) {
     response = &SearchStdoutLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchStdoutLog
@@ -12759,8 +12959,9 @@ func NewShrinkGroupRequest() (request *ShrinkGroupRequest) {
 func NewShrinkGroupResponse() (response *ShrinkGroupResponse) {
     response = &ShrinkGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ShrinkGroup
@@ -12807,8 +13008,9 @@ func NewShrinkInstancesRequest() (request *ShrinkInstancesRequest) {
 func NewShrinkInstancesResponse() (response *ShrinkInstancesResponse) {
     response = &ShrinkInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ShrinkInstances
@@ -12867,8 +13069,9 @@ func NewStartContainerGroupRequest() (request *StartContainerGroupRequest) {
 func NewStartContainerGroupResponse() (response *StartContainerGroupResponse) {
     response = &StartContainerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartContainerGroup
@@ -12933,8 +13136,9 @@ func NewStartGroupRequest() (request *StartGroupRequest) {
 func NewStartGroupResponse() (response *StartGroupResponse) {
     response = &StartGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartGroup
@@ -12987,8 +13191,9 @@ func NewStopContainerGroupRequest() (request *StopContainerGroupRequest) {
 func NewStopContainerGroupResponse() (response *StopContainerGroupResponse) {
     response = &StopContainerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopContainerGroup
@@ -13047,8 +13252,9 @@ func NewStopGroupRequest() (request *StopGroupRequest) {
 func NewStopGroupResponse() (response *StopGroupResponse) {
     response = &StopGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopGroup
@@ -13105,8 +13311,9 @@ func NewStopTaskBatchRequest() (request *StopTaskBatchRequest) {
 func NewStopTaskBatchResponse() (response *StopTaskBatchResponse) {
     response = &StopTaskBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopTaskBatch
@@ -13175,8 +13382,9 @@ func NewStopTaskExecuteRequest() (request *StopTaskExecuteRequest) {
 func NewStopTaskExecuteResponse() (response *StopTaskExecuteResponse) {
     response = &StopTaskExecuteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopTaskExecute
@@ -13247,8 +13455,9 @@ func NewTerminateTaskFlowBatchRequest() (request *TerminateTaskFlowBatchRequest)
 func NewTerminateTaskFlowBatchResponse() (response *TerminateTaskFlowBatchResponse) {
     response = &TerminateTaskFlowBatchResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateTaskFlowBatch
@@ -13313,8 +13522,9 @@ func NewUnbindApiGroupRequest() (request *UnbindApiGroupRequest) {
 func NewUnbindApiGroupResponse() (response *UnbindApiGroupResponse) {
     response = &UnbindApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindApiGroup
@@ -13361,8 +13571,9 @@ func NewUpdateApiGroupRequest() (request *UpdateApiGroupRequest) {
 func NewUpdateApiGroupResponse() (response *UpdateApiGroupResponse) {
     response = &UpdateApiGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateApiGroup
@@ -13411,8 +13622,9 @@ func NewUpdateApiRateLimitRuleRequest() (request *UpdateApiRateLimitRuleRequest)
 func NewUpdateApiRateLimitRuleResponse() (response *UpdateApiRateLimitRuleResponse) {
     response = &UpdateApiRateLimitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateApiRateLimitRule
@@ -13465,8 +13677,9 @@ func NewUpdateApiRateLimitRulesRequest() (request *UpdateApiRateLimitRulesReques
 func NewUpdateApiRateLimitRulesResponse() (response *UpdateApiRateLimitRulesResponse) {
     response = &UpdateApiRateLimitRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateApiRateLimitRules
@@ -13521,8 +13734,9 @@ func NewUpdateApiTimeoutsRequest() (request *UpdateApiTimeoutsRequest) {
 func NewUpdateApiTimeoutsResponse() (response *UpdateApiTimeoutsResponse) {
     response = &UpdateApiTimeoutsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateApiTimeouts
@@ -13573,8 +13787,9 @@ func NewUpdateConfigTemplateRequest() (request *UpdateConfigTemplateRequest) {
 func NewUpdateConfigTemplateResponse() (response *UpdateConfigTemplateResponse) {
     response = &UpdateConfigTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateConfigTemplate
@@ -13641,8 +13856,9 @@ func NewUpdateGatewayApiRequest() (request *UpdateGatewayApiRequest) {
 func NewUpdateGatewayApiResponse() (response *UpdateGatewayApiResponse) {
     response = &UpdateGatewayApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateGatewayApi
@@ -13691,8 +13907,9 @@ func NewUpdateHealthCheckSettingsRequest() (request *UpdateHealthCheckSettingsRe
 func NewUpdateHealthCheckSettingsResponse() (response *UpdateHealthCheckSettingsResponse) {
     response = &UpdateHealthCheckSettingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateHealthCheckSettings
@@ -13743,8 +13960,9 @@ func NewUpdateRepositoryRequest() (request *UpdateRepositoryRequest) {
 func NewUpdateRepositoryResponse() (response *UpdateRepositoryResponse) {
     response = &UpdateRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateRepository
@@ -13795,8 +14013,9 @@ func NewUpdateUnitRuleRequest() (request *UpdateUnitRuleRequest) {
 func NewUpdateUnitRuleResponse() (response *UpdateUnitRuleResponse) {
     response = &UpdateUnitRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateUnitRule

@@ -59,8 +59,9 @@ func NewDescribeAlarmStatRequest() (request *DescribeAlarmStatRequest) {
 func NewDescribeAlarmStatResponse() (response *DescribeAlarmStatResponse) {
     response = &DescribeAlarmStatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAlarmStat
@@ -101,8 +102,9 @@ func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
 func NewDescribeAssetDetailResponse() (response *DescribeAssetDetailResponse) {
     response = &DescribeAssetDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDetail
@@ -151,8 +153,9 @@ func NewDescribeAssetDetailListRequest() (request *DescribeAssetDetailListReques
 func NewDescribeAssetDetailListResponse() (response *DescribeAssetDetailListResponse) {
     response = &DescribeAssetDetailListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDetailList
@@ -201,8 +204,9 @@ func NewDescribeAssetListRequest() (request *DescribeAssetListRequest) {
 func NewDescribeAssetListResponse() (response *DescribeAssetListResponse) {
     response = &DescribeAssetListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetList
@@ -253,8 +257,9 @@ func NewDescribeAssetsMappingListRequest() (request *DescribeAssetsMappingListRe
 func NewDescribeAssetsMappingListResponse() (response *DescribeAssetsMappingListResponse) {
     response = &DescribeAssetsMappingListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetsMappingList
@@ -307,8 +312,9 @@ func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAsset
 func NewDescribeCheckConfigAssetListResponse() (response *DescribeCheckConfigAssetListResponse) {
     response = &DescribeCheckConfigAssetListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCheckConfigAssetList
@@ -361,8 +367,9 @@ func NewDescribeCheckConfigDetailRequest() (request *DescribeCheckConfigDetailRe
 func NewDescribeCheckConfigDetailResponse() (response *DescribeCheckConfigDetailResponse) {
     response = &DescribeCheckConfigDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCheckConfigDetail
@@ -417,8 +424,9 @@ func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetLi
 func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAssetListResponse) {
     response = &DescribeComplianceAssetListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeComplianceAssetList
@@ -471,8 +479,9 @@ func NewDescribeComplianceDetailRequest() (request *DescribeComplianceDetailRequ
 func NewDescribeComplianceDetailResponse() (response *DescribeComplianceDetailResponse) {
     response = &DescribeComplianceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeComplianceDetail
@@ -527,8 +536,9 @@ func NewDescribeComplianceListRequest() (request *DescribeComplianceListRequest)
 func NewDescribeComplianceListResponse() (response *DescribeComplianceListResponse) {
     response = &DescribeComplianceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeComplianceList
@@ -583,8 +593,9 @@ func NewDescribeConfigListRequest() (request *DescribeConfigListRequest) {
 func NewDescribeConfigListResponse() (response *DescribeConfigListResponse) {
     response = &DescribeConfigListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfigList
@@ -635,8 +646,9 @@ func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
 func NewDescribeDomainListResponse() (response *DescribeDomainListResponse) {
     response = &DescribeDomainListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainList
@@ -687,8 +699,9 @@ func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
 func NewDescribeEventDetailResponse() (response *DescribeEventDetailResponse) {
     response = &DescribeEventDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEventDetail
@@ -735,8 +748,9 @@ func NewDescribeLeakDetectionListRequest() (request *DescribeLeakDetectionListRe
 func NewDescribeLeakDetectionListResponse() (response *DescribeLeakDetectionListResponse) {
     response = &DescribeLeakDetectionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLeakDetectionList
@@ -785,8 +799,9 @@ func NewDescribeMappingResultsRequest() (request *DescribeMappingResultsRequest)
 func NewDescribeMappingResultsResponse() (response *DescribeMappingResultsResponse) {
     response = &DescribeMappingResultsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMappingResults
@@ -835,8 +850,9 @@ func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListReques
 func NewDescribeSafetyEventListResponse() (response *DescribeSafetyEventListResponse) {
     response = &DescribeSafetyEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSafetyEventList
@@ -887,8 +903,9 @@ func NewDescribeSocAlertDetailsRequest() (request *DescribeSocAlertDetailsReques
 func NewDescribeSocAlertDetailsResponse() (response *DescribeSocAlertDetailsResponse) {
     response = &DescribeSocAlertDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSocAlertDetails
@@ -939,8 +956,9 @@ func NewDescribeSocAlertListRequest() (request *DescribeSocAlertListRequest) {
 func NewDescribeSocAlertListResponse() (response *DescribeSocAlertListResponse) {
     response = &DescribeSocAlertListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSocAlertList
@@ -987,8 +1005,9 @@ func NewDescribeSocCheckItemListRequest() (request *DescribeSocCheckItemListRequ
 func NewDescribeSocCheckItemListResponse() (response *DescribeSocCheckItemListResponse) {
     response = &DescribeSocCheckItemListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSocCheckItemList
@@ -1039,8 +1058,9 @@ func NewDescribeSocCheckResultListRequest() (request *DescribeSocCheckResultList
 func NewDescribeSocCheckResultListResponse() (response *DescribeSocCheckResultListResponse) {
     response = &DescribeSocCheckResultListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSocCheckResultList
@@ -1091,8 +1111,9 @@ func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRe
 func NewDescribeSocCspmComplianceResponse() (response *DescribeSocCspmComplianceResponse) {
     response = &DescribeSocCspmComplianceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSocCspmCompliance
@@ -1179,8 +1200,9 @@ func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
 func NewDescribeVulDetailResponse() (response *DescribeVulDetailResponse) {
     response = &DescribeVulDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulDetail
@@ -1227,8 +1249,9 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
 func NewDescribeVulListResponse() (response *DescribeVulListResponse) {
     response = &DescribeVulListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVulList
@@ -1279,8 +1302,9 @@ func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
 func NewSaDivulgeDataQueryPubResponse() (response *SaDivulgeDataQueryPubResponse) {
     response = &SaDivulgeDataQueryPubResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SaDivulgeDataQueryPub
@@ -1331,8 +1355,9 @@ func NewSaDivulgeScanRuleMutateRequest() (request *SaDivulgeScanRuleMutateReques
 func NewSaDivulgeScanRuleMutateResponse() (response *SaDivulgeScanRuleMutateResponse) {
     response = &SaDivulgeScanRuleMutateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SaDivulgeScanRuleMutate
@@ -1379,8 +1404,9 @@ func NewSaEventPubRequest() (request *SaEventPubRequest) {
 func NewSaEventPubResponse() (response *SaEventPubResponse) {
     response = &SaEventPubResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SaEventPub

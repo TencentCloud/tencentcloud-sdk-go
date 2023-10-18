@@ -59,8 +59,9 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
 func NewCreateSessionResponse() (response *CreateSessionResponse) {
     response = &CreateSessionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSession
@@ -135,8 +136,9 @@ func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest)
 func NewDescribeInstancesCountResponse() (response *DescribeInstancesCountResponse) {
     response = &DescribeInstancesCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstancesCount
@@ -187,8 +189,9 @@ func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
 func NewSaveGameArchiveResponse() (response *SaveGameArchiveResponse) {
     response = &SaveGameArchiveResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SaveGameArchive
@@ -249,8 +252,9 @@ func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
 func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
     response = &StartPublishStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartPublishStream
@@ -309,8 +313,9 @@ func NewStopGameRequest() (request *StopGameRequest) {
 func NewStopGameResponse() (response *StopGameResponse) {
     response = &StopGameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopGame
@@ -365,8 +370,9 @@ func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
 func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
     response = &StopPublishStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopPublishStream
@@ -425,8 +431,9 @@ func NewSwitchGameArchiveRequest() (request *SwitchGameArchiveRequest) {
 func NewSwitchGameArchiveResponse() (response *SwitchGameArchiveResponse) {
     response = &SwitchGameArchiveResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SwitchGameArchive
@@ -487,8 +494,9 @@ func NewTrylockWorkerRequest() (request *TrylockWorkerRequest) {
 func NewTrylockWorkerResponse() (response *TrylockWorkerResponse) {
     response = &TrylockWorkerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TrylockWorker

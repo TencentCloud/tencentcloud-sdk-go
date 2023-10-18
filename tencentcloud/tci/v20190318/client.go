@@ -59,8 +59,9 @@ func NewAIAssistantRequest() (request *AIAssistantRequest) {
 func NewAIAssistantResponse() (response *AIAssistantResponse) {
     response = &AIAssistantResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AIAssistant
@@ -115,8 +116,9 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
 func NewCancelTaskResponse() (response *CancelTaskResponse) {
     response = &CancelTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelTask
@@ -165,8 +167,9 @@ func NewCheckFacePhotoRequest() (request *CheckFacePhotoRequest) {
 func NewCheckFacePhotoResponse() (response *CheckFacePhotoResponse) {
     response = &CheckFacePhotoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckFacePhoto
@@ -215,8 +218,9 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
 func NewCreateFaceResponse() (response *CreateFaceResponse) {
     response = &CreateFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFace
@@ -265,8 +269,9 @@ func NewCreateLibraryRequest() (request *CreateLibraryRequest) {
 func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
     response = &CreateLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLibrary
@@ -315,8 +320,9 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
 func NewCreatePersonResponse() (response *CreatePersonResponse) {
     response = &CreatePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePerson
@@ -365,8 +371,9 @@ func NewCreateVocabRequest() (request *CreateVocabRequest) {
 func NewCreateVocabResponse() (response *CreateVocabResponse) {
     response = &CreateVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVocab
@@ -419,8 +426,9 @@ func NewCreateVocabLibRequest() (request *CreateVocabLibRequest) {
 func NewCreateVocabLibResponse() (response *CreateVocabLibResponse) {
     response = &CreateVocabLibResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVocabLib
@@ -473,8 +481,9 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
 func NewDeleteFaceResponse() (response *DeleteFaceResponse) {
     response = &DeleteFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFace
@@ -525,8 +534,9 @@ func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
 func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
     response = &DeleteLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLibrary
@@ -577,8 +587,9 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
 func NewDeletePersonResponse() (response *DeletePersonResponse) {
     response = &DeletePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePerson
@@ -629,8 +640,9 @@ func NewDeleteVocabRequest() (request *DeleteVocabRequest) {
 func NewDeleteVocabResponse() (response *DeleteVocabResponse) {
     response = &DeleteVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVocab
@@ -683,8 +695,9 @@ func NewDeleteVocabLibRequest() (request *DeleteVocabLibRequest) {
 func NewDeleteVocabLibResponse() (response *DeleteVocabLibResponse) {
     response = &DeleteVocabLibResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteVocabLib
@@ -737,8 +750,9 @@ func NewDescribeAITaskResultRequest() (request *DescribeAITaskResultRequest) {
 func NewDescribeAITaskResultResponse() (response *DescribeAITaskResultResponse) {
     response = &DescribeAITaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAITaskResult
@@ -791,8 +805,9 @@ func NewDescribeAttendanceResultRequest() (request *DescribeAttendanceResultRequ
 func NewDescribeAttendanceResultResponse() (response *DescribeAttendanceResultResponse) {
     response = &DescribeAttendanceResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAttendanceResult
@@ -857,8 +872,9 @@ func NewDescribeAudioTaskRequest() (request *DescribeAudioTaskRequest) {
 func NewDescribeAudioTaskResponse() (response *DescribeAudioTaskResponse) {
     response = &DescribeAudioTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAudioTask
@@ -909,8 +925,9 @@ func NewDescribeConversationTaskRequest() (request *DescribeConversationTaskRequ
 func NewDescribeConversationTaskResponse() (response *DescribeConversationTaskResponse) {
     response = &DescribeConversationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConversationTask
@@ -961,8 +978,9 @@ func NewDescribeHighlightResultRequest() (request *DescribeHighlightResultReques
 func NewDescribeHighlightResultResponse() (response *DescribeHighlightResultResponse) {
     response = &DescribeHighlightResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHighlightResult
@@ -1117,8 +1135,9 @@ func NewDescribeImageTaskRequest() (request *DescribeImageTaskRequest) {
 func NewDescribeImageTaskResponse() (response *DescribeImageTaskResponse) {
     response = &DescribeImageTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageTask
@@ -1169,8 +1188,9 @@ func NewDescribeImageTaskStatisticRequest() (request *DescribeImageTaskStatistic
 func NewDescribeImageTaskStatisticResponse() (response *DescribeImageTaskStatisticResponse) {
     response = &DescribeImageTaskStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageTaskStatistic
@@ -1221,8 +1241,9 @@ func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
 func NewDescribeLibrariesResponse() (response *DescribeLibrariesResponse) {
     response = &DescribeLibrariesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLibraries
@@ -1271,8 +1292,9 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
 func NewDescribePersonResponse() (response *DescribePersonResponse) {
     response = &DescribePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePerson
@@ -1323,8 +1345,9 @@ func NewDescribePersonsRequest() (request *DescribePersonsRequest) {
 func NewDescribePersonsResponse() (response *DescribePersonsResponse) {
     response = &DescribePersonsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePersons
@@ -1375,8 +1398,9 @@ func NewDescribeVocabRequest() (request *DescribeVocabRequest) {
 func NewDescribeVocabResponse() (response *DescribeVocabResponse) {
     response = &DescribeVocabResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVocab
@@ -1429,8 +1453,9 @@ func NewDescribeVocabLibRequest() (request *DescribeVocabLibRequest) {
 func NewDescribeVocabLibResponse() (response *DescribeVocabLibResponse) {
     response = &DescribeVocabLibResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVocabLib
@@ -1483,8 +1508,9 @@ func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
 func NewModifyLibraryResponse() (response *ModifyLibraryResponse) {
     response = &ModifyLibraryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLibrary
@@ -1535,8 +1561,9 @@ func NewModifyPersonRequest() (request *ModifyPersonRequest) {
 func NewModifyPersonResponse() (response *ModifyPersonResponse) {
     response = &ModifyPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPerson
@@ -1587,8 +1614,9 @@ func NewSubmitAudioTaskRequest() (request *SubmitAudioTaskRequest) {
 func NewSubmitAudioTaskResponse() (response *SubmitAudioTaskResponse) {
     response = &SubmitAudioTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitAudioTask
@@ -1639,8 +1667,9 @@ func NewSubmitCheckAttendanceTaskRequest() (request *SubmitCheckAttendanceTaskRe
 func NewSubmitCheckAttendanceTaskResponse() (response *SubmitCheckAttendanceTaskResponse) {
     response = &SubmitCheckAttendanceTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitCheckAttendanceTask
@@ -1757,8 +1786,9 @@ func NewSubmitCheckAttendanceTaskPlusRequest() (request *SubmitCheckAttendanceTa
 func NewSubmitCheckAttendanceTaskPlusResponse() (response *SubmitCheckAttendanceTaskPlusResponse) {
     response = &SubmitCheckAttendanceTaskPlusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitCheckAttendanceTaskPlus
@@ -1821,8 +1851,9 @@ func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest)
 func NewSubmitConversationTaskResponse() (response *SubmitConversationTaskResponse) {
     response = &SubmitConversationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitConversationTask
@@ -1873,8 +1904,9 @@ func NewSubmitDoubleVideoHighlightsRequest() (request *SubmitDoubleVideoHighligh
 func NewSubmitDoubleVideoHighlightsResponse() (response *SubmitDoubleVideoHighlightsResponse) {
     response = &SubmitDoubleVideoHighlightsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitDoubleVideoHighlights
@@ -1953,8 +1985,9 @@ func NewSubmitFullBodyClassTaskRequest() (request *SubmitFullBodyClassTaskReques
 func NewSubmitFullBodyClassTaskResponse() (response *SubmitFullBodyClassTaskResponse) {
     response = &SubmitFullBodyClassTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitFullBodyClassTask
@@ -2143,8 +2176,9 @@ func NewSubmitHighlightsRequest() (request *SubmitHighlightsRequest) {
 func NewSubmitHighlightsResponse() (response *SubmitHighlightsResponse) {
     response = &SubmitHighlightsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitHighlights
@@ -2295,8 +2329,9 @@ func NewSubmitImageTaskRequest() (request *SubmitImageTaskRequest) {
 func NewSubmitImageTaskResponse() (response *SubmitImageTaskResponse) {
     response = &SubmitImageTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitImageTask
@@ -2347,8 +2382,9 @@ func NewSubmitImageTaskPlusRequest() (request *SubmitImageTaskPlusRequest) {
 func NewSubmitImageTaskPlusResponse() (response *SubmitImageTaskPlusResponse) {
     response = &SubmitImageTaskPlusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitImageTaskPlus
@@ -2535,8 +2571,9 @@ func NewSubmitOneByOneClassTaskRequest() (request *SubmitOneByOneClassTaskReques
 func NewSubmitOneByOneClassTaskResponse() (response *SubmitOneByOneClassTaskResponse) {
     response = &SubmitOneByOneClassTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitOneByOneClassTask
@@ -2729,8 +2766,9 @@ func NewSubmitOpenClassTaskRequest() (request *SubmitOpenClassTaskRequest) {
 func NewSubmitOpenClassTaskResponse() (response *SubmitOpenClassTaskResponse) {
     response = &SubmitOpenClassTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitOpenClassTask
@@ -2921,8 +2959,9 @@ func NewSubmitPartialBodyClassTaskRequest() (request *SubmitPartialBodyClassTask
 func NewSubmitPartialBodyClassTaskResponse() (response *SubmitPartialBodyClassTaskResponse) {
     response = &SubmitPartialBodyClassTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitPartialBodyClassTask
@@ -3113,8 +3152,9 @@ func NewSubmitTraditionalClassTaskRequest() (request *SubmitTraditionalClassTask
 func NewSubmitTraditionalClassTaskResponse() (response *SubmitTraditionalClassTaskResponse) {
     response = &SubmitTraditionalClassTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SubmitTraditionalClassTask
@@ -3311,8 +3351,9 @@ func NewTransmitAudioStreamRequest() (request *TransmitAudioStreamRequest) {
 func NewTransmitAudioStreamResponse() (response *TransmitAudioStreamResponse) {
     response = &TransmitAudioStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransmitAudioStream

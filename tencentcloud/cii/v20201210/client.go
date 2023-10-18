@@ -59,8 +59,9 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
 func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
     response = &CreateStructureTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStructureTask
@@ -117,8 +118,9 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
 func NewDescribeStructCompareDataResponse() (response *DescribeStructCompareDataResponse) {
     response = &DescribeStructCompareDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructCompareData
@@ -169,8 +171,9 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
 func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskResultResponse) {
     response = &DescribeStructureTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStructureTaskResult

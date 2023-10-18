@@ -59,8 +59,9 @@ func NewCreateAppScanTaskRequest() (request *CreateAppScanTaskRequest) {
 func NewCreateAppScanTaskResponse() (response *CreateAppScanTaskResponse) {
     response = &CreateAppScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppScanTask
@@ -109,8 +110,9 @@ func NewCreateAppScanTaskRepeatRequest() (request *CreateAppScanTaskRepeatReques
 func NewCreateAppScanTaskRepeatResponse() (response *CreateAppScanTaskRepeatResponse) {
     response = &CreateAppScanTaskRepeatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppScanTaskRepeat
@@ -159,8 +161,9 @@ func NewCreateFlySecMiniAppProfessionalScanTaskRequest() (request *CreateFlySecM
 func NewCreateFlySecMiniAppProfessionalScanTaskResponse() (response *CreateFlySecMiniAppProfessionalScanTaskResponse) {
     response = &CreateFlySecMiniAppProfessionalScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlySecMiniAppProfessionalScanTask
@@ -209,8 +212,9 @@ func NewCreateFlySecMiniAppScanTaskRequest() (request *CreateFlySecMiniAppScanTa
 func NewCreateFlySecMiniAppScanTaskResponse() (response *CreateFlySecMiniAppScanTaskResponse) {
     response = &CreateFlySecMiniAppScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlySecMiniAppScanTask
@@ -259,8 +263,9 @@ func NewCreateFlySecMiniAppScanTaskRepeatRequest() (request *CreateFlySecMiniApp
 func NewCreateFlySecMiniAppScanTaskRepeatResponse() (response *CreateFlySecMiniAppScanTaskRepeatResponse) {
     response = &CreateFlySecMiniAppScanTaskRepeatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlySecMiniAppScanTaskRepeat
@@ -309,8 +314,9 @@ func NewDescribeBasicDiagnosisResourceUsageInfoRequest() (request *DescribeBasic
 func NewDescribeBasicDiagnosisResourceUsageInfoResponse() (response *DescribeBasicDiagnosisResourceUsageInfoResponse) {
     response = &DescribeBasicDiagnosisResourceUsageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBasicDiagnosisResourceUsageInfo
@@ -359,8 +365,9 @@ func NewDescribeFlySecMiniAppReportUrlRequest() (request *DescribeFlySecMiniAppR
 func NewDescribeFlySecMiniAppReportUrlResponse() (response *DescribeFlySecMiniAppReportUrlResponse) {
     response = &DescribeFlySecMiniAppReportUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlySecMiniAppReportUrl
@@ -409,8 +416,9 @@ func NewDescribeFlySecMiniAppScanReportListRequest() (request *DescribeFlySecMin
 func NewDescribeFlySecMiniAppScanReportListResponse() (response *DescribeFlySecMiniAppScanReportListResponse) {
     response = &DescribeFlySecMiniAppScanReportListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlySecMiniAppScanReportList
@@ -459,8 +467,9 @@ func NewDescribeFlySecMiniAppScanTaskListRequest() (request *DescribeFlySecMiniA
 func NewDescribeFlySecMiniAppScanTaskListResponse() (response *DescribeFlySecMiniAppScanTaskListResponse) {
     response = &DescribeFlySecMiniAppScanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlySecMiniAppScanTaskList
@@ -509,8 +518,9 @@ func NewDescribeFlySecMiniAppScanTaskParamRequest() (request *DescribeFlySecMini
 func NewDescribeFlySecMiniAppScanTaskParamResponse() (response *DescribeFlySecMiniAppScanTaskParamResponse) {
     response = &DescribeFlySecMiniAppScanTaskParamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlySecMiniAppScanTaskParam
@@ -559,8 +569,9 @@ func NewDescribeFlySecMiniAppScanTaskStatusRequest() (request *DescribeFlySecMin
 func NewDescribeFlySecMiniAppScanTaskStatusResponse() (response *DescribeFlySecMiniAppScanTaskStatusResponse) {
     response = &DescribeFlySecMiniAppScanTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlySecMiniAppScanTaskStatus
@@ -609,8 +620,9 @@ func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRe
 func NewDescribeResourceUsageInfoResponse() (response *DescribeResourceUsageInfoResponse) {
     response = &DescribeResourceUsageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceUsageInfo
@@ -659,8 +671,9 @@ func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
 func NewDescribeScanTaskListResponse() (response *DescribeScanTaskListResponse) {
     response = &DescribeScanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskList
@@ -707,8 +720,9 @@ func NewDescribeScanTaskReportUrlRequest() (request *DescribeScanTaskReportUrlRe
 func NewDescribeScanTaskReportUrlResponse() (response *DescribeScanTaskReportUrlResponse) {
     response = &DescribeScanTaskReportUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskReportUrl
@@ -755,8 +769,9 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
 func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusResponse) {
     response = &DescribeScanTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskStatus

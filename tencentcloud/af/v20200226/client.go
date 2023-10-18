@@ -59,8 +59,9 @@ func NewDescribeAntiFraudRequest() (request *DescribeAntiFraudRequest) {
 func NewDescribeAntiFraudResponse() (response *DescribeAntiFraudResponse) {
     response = &DescribeAntiFraudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAntiFraud
@@ -201,8 +202,9 @@ func NewGetAntiFraudRequest() (request *GetAntiFraudRequest) {
 func NewGetAntiFraudResponse() (response *GetAntiFraudResponse) {
     response = &GetAntiFraudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAntiFraud
@@ -335,8 +337,9 @@ func NewQueryAntiFraudRequest() (request *QueryAntiFraudRequest) {
 func NewQueryAntiFraudResponse() (response *QueryAntiFraudResponse) {
     response = &QueryAntiFraudResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryAntiFraud

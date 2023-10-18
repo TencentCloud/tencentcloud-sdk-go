@@ -59,8 +59,9 @@ func NewMarketingValueJudgementRequest() (request *MarketingValueJudgementReques
 func NewMarketingValueJudgementResponse() (response *MarketingValueJudgementResponse) {
     response = &MarketingValueJudgementResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // MarketingValueJudgement

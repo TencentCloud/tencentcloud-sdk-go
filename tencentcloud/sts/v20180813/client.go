@@ -59,8 +59,9 @@ func NewAssumeRoleRequest() (request *AssumeRoleRequest) {
 func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
     response = &AssumeRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssumeRole
@@ -151,8 +152,9 @@ func NewAssumeRoleWithSAMLRequest() (request *AssumeRoleWithSAMLRequest) {
 func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
     response = &AssumeRoleWithSAMLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssumeRoleWithSAML
@@ -247,8 +249,9 @@ func NewAssumeRoleWithWebIdentityRequest() (request *AssumeRoleWithWebIdentityRe
 func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentityResponse) {
     response = &AssumeRoleWithWebIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssumeRoleWithWebIdentity
@@ -313,8 +316,9 @@ func NewGetCallerIdentityRequest() (request *GetCallerIdentityRequest) {
 func NewGetCallerIdentityResponse() (response *GetCallerIdentityResponse) {
     response = &GetCallerIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetCallerIdentity
@@ -373,8 +377,9 @@ func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
 func NewGetFederationTokenResponse() (response *GetFederationTokenResponse) {
     response = &GetFederationTokenResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFederationToken
@@ -487,8 +492,9 @@ func NewQueryApiKeyRequest() (request *QueryApiKeyRequest) {
 func NewQueryApiKeyResponse() (response *QueryApiKeyResponse) {
     response = &QueryApiKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryApiKey

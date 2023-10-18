@@ -59,8 +59,9 @@ func NewDescribeInvocationResultRequest() (request *DescribeInvocationResultRequ
 func NewDescribeInvocationResultResponse() (response *DescribeInvocationResultResponse) {
     response = &DescribeInvocationResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationResult
@@ -125,8 +126,9 @@ func NewInvokeServiceRequest() (request *InvokeServiceRequest) {
 func NewInvokeServiceResponse() (response *InvokeServiceResponse) {
     response = &InvokeServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvokeService

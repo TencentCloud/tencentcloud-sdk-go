@@ -59,8 +59,9 @@ func NewDescribeMaterialListRequest() (request *DescribeMaterialListRequest) {
 func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) {
     response = &DescribeMaterialListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMaterialList
@@ -127,8 +128,9 @@ func NewFuseFaceRequest() (request *FuseFaceRequest) {
 func NewFuseFaceResponse() (response *FuseFaceResponse) {
     response = &FuseFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FuseFace

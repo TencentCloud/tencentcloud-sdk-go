@@ -59,8 +59,9 @@ func NewBeautifyPicRequest() (request *BeautifyPicRequest) {
 func NewBeautifyPicResponse() (response *BeautifyPicResponse) {
     response = &BeautifyPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BeautifyPic
@@ -173,8 +174,9 @@ func NewBeautifyVideoRequest() (request *BeautifyVideoRequest) {
 func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
     response = &BeautifyVideoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BeautifyVideo
@@ -239,8 +241,9 @@ func NewCancelBeautifyVideoJobRequest() (request *CancelBeautifyVideoJobRequest)
 func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobResponse) {
     response = &CancelBeautifyVideoJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelBeautifyVideoJob
@@ -299,8 +302,9 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
 func NewCreateModelResponse() (response *CreateModelResponse) {
     response = &CreateModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateModel
@@ -379,8 +383,9 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
 func NewDeleteModelResponse() (response *DeleteModelResponse) {
     response = &DeleteModelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteModel
@@ -437,8 +442,9 @@ func NewGetModelListRequest() (request *GetModelListRequest) {
 func NewGetModelListResponse() (response *GetModelListResponse) {
     response = &GetModelListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetModelList
@@ -493,8 +499,9 @@ func NewQueryBeautifyVideoJobRequest() (request *QueryBeautifyVideoJobRequest) {
 func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse) {
     response = &QueryBeautifyVideoJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryBeautifyVideoJob
@@ -559,8 +566,9 @@ func NewStyleImageRequest() (request *StyleImageRequest) {
 func NewStyleImageResponse() (response *StyleImageResponse) {
     response = &StyleImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StyleImage
@@ -641,8 +649,9 @@ func NewStyleImageProRequest() (request *StyleImageProRequest) {
 func NewStyleImageProResponse() (response *StyleImageProResponse) {
     response = &StyleImageProResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StyleImagePro
@@ -725,8 +734,9 @@ func NewTryLipstickPicRequest() (request *TryLipstickPicRequest) {
 func NewTryLipstickPicResponse() (response *TryLipstickPicResponse) {
     response = &TryLipstickPicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TryLipstickPic

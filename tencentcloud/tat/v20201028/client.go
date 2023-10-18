@@ -59,8 +59,9 @@ func NewCancelInvocationRequest() (request *CancelInvocationRequest) {
 func NewCancelInvocationResponse() (response *CancelInvocationResponse) {
     response = &CancelInvocationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelInvocation
@@ -149,8 +150,9 @@ func NewCreateCommandRequest() (request *CreateCommandRequest) {
 func NewCreateCommandResponse() (response *CreateCommandResponse) {
     response = &CreateCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCommand
@@ -249,8 +251,9 @@ func NewCreateInvokerRequest() (request *CreateInvokerRequest) {
 func NewCreateInvokerResponse() (response *CreateInvokerResponse) {
     response = &CreateInvokerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInvoker
@@ -321,8 +324,9 @@ func NewCreateRegisterCodeRequest() (request *CreateRegisterCodeRequest) {
 func NewCreateRegisterCodeResponse() (response *CreateRegisterCodeResponse) {
     response = &CreateRegisterCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRegisterCode
@@ -375,8 +379,9 @@ func NewDeleteCommandRequest() (request *DeleteCommandRequest) {
 func NewDeleteCommandResponse() (response *DeleteCommandResponse) {
     response = &DeleteCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCommand
@@ -445,8 +450,9 @@ func NewDeleteCommandsRequest() (request *DeleteCommandsRequest) {
 func NewDeleteCommandsResponse() (response *DeleteCommandsResponse) {
     response = &DeleteCommandsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCommands
@@ -511,8 +517,9 @@ func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
 func NewDeleteInvokerResponse() (response *DeleteInvokerResponse) {
     response = &DeleteInvokerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteInvoker
@@ -563,8 +570,9 @@ func NewDeleteRegisterCodesRequest() (request *DeleteRegisterCodesRequest) {
 func NewDeleteRegisterCodesResponse() (response *DeleteRegisterCodesResponse) {
     response = &DeleteRegisterCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRegisterCodes
@@ -621,8 +629,9 @@ func NewDeleteRegisterInstanceRequest() (request *DeleteRegisterInstanceRequest)
 func NewDeleteRegisterInstanceResponse() (response *DeleteRegisterInstanceResponse) {
     response = &DeleteRegisterInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRegisterInstance
@@ -677,8 +686,9 @@ func NewDescribeAutomationAgentStatusRequest() (request *DescribeAutomationAgent
 func NewDescribeAutomationAgentStatusResponse() (response *DescribeAutomationAgentStatusResponse) {
     response = &DescribeAutomationAgentStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAutomationAgentStatus
@@ -747,8 +757,9 @@ func NewDescribeCommandsRequest() (request *DescribeCommandsRequest) {
 func NewDescribeCommandsResponse() (response *DescribeCommandsResponse) {
     response = &DescribeCommandsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCommands
@@ -813,8 +824,9 @@ func NewDescribeInvocationTasksRequest() (request *DescribeInvocationTasksReques
 func NewDescribeInvocationTasksResponse() (response *DescribeInvocationTasksResponse) {
     response = &DescribeInvocationTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocationTasks
@@ -887,8 +899,9 @@ func NewDescribeInvocationsRequest() (request *DescribeInvocationsRequest) {
 func NewDescribeInvocationsResponse() (response *DescribeInvocationsResponse) {
     response = &DescribeInvocationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvocations
@@ -957,8 +970,9 @@ func NewDescribeInvokerRecordsRequest() (request *DescribeInvokerRecordsRequest)
 func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsResponse) {
     response = &DescribeInvokerRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvokerRecords
@@ -1011,8 +1025,9 @@ func NewDescribeInvokersRequest() (request *DescribeInvokersRequest) {
 func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
     response = &DescribeInvokersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInvokers
@@ -1067,8 +1082,9 @@ func NewDescribeQuotasRequest() (request *DescribeQuotasRequest) {
 func NewDescribeQuotasResponse() (response *DescribeQuotasResponse) {
     response = &DescribeQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQuotas
@@ -1117,8 +1133,9 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
 func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     response = &DescribeRegionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegions
@@ -1177,8 +1194,9 @@ func NewDescribeRegisterCodesRequest() (request *DescribeRegisterCodesRequest) {
 func NewDescribeRegisterCodesResponse() (response *DescribeRegisterCodesResponse) {
     response = &DescribeRegisterCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegisterCodes
@@ -1233,8 +1251,9 @@ func NewDescribeRegisterInstancesRequest() (request *DescribeRegisterInstancesRe
 func NewDescribeRegisterInstancesResponse() (response *DescribeRegisterInstancesResponse) {
     response = &DescribeRegisterInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegisterInstances
@@ -1287,8 +1306,9 @@ func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
 func NewDisableInvokerResponse() (response *DisableInvokerResponse) {
     response = &DisableInvokerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableInvoker
@@ -1339,8 +1359,9 @@ func NewDisableRegisterCodesRequest() (request *DisableRegisterCodesRequest) {
 func NewDisableRegisterCodesResponse() (response *DisableRegisterCodesResponse) {
     response = &DisableRegisterCodesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableRegisterCodes
@@ -1397,8 +1418,9 @@ func NewEnableInvokerRequest() (request *EnableInvokerRequest) {
 func NewEnableInvokerResponse() (response *EnableInvokerResponse) {
     response = &EnableInvokerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableInvoker
@@ -1449,8 +1471,9 @@ func NewInvokeCommandRequest() (request *InvokeCommandRequest) {
 func NewInvokeCommandResponse() (response *InvokeCommandResponse) {
     response = &InvokeCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvokeCommand
@@ -1589,8 +1612,9 @@ func NewModifyCommandRequest() (request *ModifyCommandRequest) {
 func NewModifyCommandResponse() (response *ModifyCommandResponse) {
     response = &ModifyCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCommand
@@ -1683,8 +1707,9 @@ func NewModifyInvokerRequest() (request *ModifyInvokerRequest) {
 func NewModifyInvokerResponse() (response *ModifyInvokerResponse) {
     response = &ModifyInvokerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInvoker
@@ -1749,8 +1774,9 @@ func NewModifyRegisterInstanceRequest() (request *ModifyRegisterInstanceRequest)
 func NewModifyRegisterInstanceResponse() (response *ModifyRegisterInstanceResponse) {
     response = &ModifyRegisterInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRegisterInstance
@@ -1803,8 +1829,9 @@ func NewPreviewReplacedCommandContentRequest() (request *PreviewReplacedCommandC
 func NewPreviewReplacedCommandContentResponse() (response *PreviewReplacedCommandContentResponse) {
     response = &PreviewReplacedCommandContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PreviewReplacedCommandContent
@@ -1891,8 +1918,9 @@ func NewRunCommandRequest() (request *RunCommandRequest) {
 func NewRunCommandResponse() (response *RunCommandResponse) {
     response = &RunCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RunCommand

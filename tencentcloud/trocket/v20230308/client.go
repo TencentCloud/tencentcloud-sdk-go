@@ -59,8 +59,9 @@ func NewCreateConsumerGroupRequest() (request *CreateConsumerGroupRequest) {
 func NewCreateConsumerGroupResponse() (response *CreateConsumerGroupResponse) {
     response = &CreateConsumerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConsumerGroup
@@ -113,8 +114,9 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
 func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
     response = &CreateInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateInstance
@@ -161,8 +163,9 @@ func NewCreateRoleRequest() (request *CreateRoleRequest) {
 func NewCreateRoleResponse() (response *CreateRoleResponse) {
     response = &CreateRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRole
@@ -217,8 +220,9 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
 func NewCreateTopicResponse() (response *CreateTopicResponse) {
     response = &CreateTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTopic
@@ -275,8 +279,9 @@ func NewDeleteConsumerGroupRequest() (request *DeleteConsumerGroupRequest) {
 func NewDeleteConsumerGroupResponse() (response *DeleteConsumerGroupResponse) {
     response = &DeleteConsumerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteConsumerGroup
@@ -325,8 +330,9 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
 func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     response = &DeleteInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteInstance
@@ -377,8 +383,9 @@ func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
 func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
     response = &DeleteRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRole
@@ -429,8 +436,9 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
 func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     response = &DeleteTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTopic
@@ -477,8 +485,9 @@ func NewDescribeConsumerGroupRequest() (request *DescribeConsumerGroupRequest) {
 func NewDescribeConsumerGroupResponse() (response *DescribeConsumerGroupResponse) {
     response = &DescribeConsumerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConsumerGroup
@@ -525,8 +534,9 @@ func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
 func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
     response = &DescribeInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstance
@@ -573,8 +583,9 @@ func NewDescribeInstanceListRequest() (request *DescribeInstanceListRequest) {
 func NewDescribeInstanceListResponse() (response *DescribeInstanceListResponse) {
     response = &DescribeInstanceListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeInstanceList
@@ -645,8 +656,9 @@ func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
 func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
     response = &DescribeRoleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRoleList
@@ -701,8 +713,9 @@ func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
 func NewDescribeTopicResponse() (response *DescribeTopicResponse) {
     response = &DescribeTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopic
@@ -759,8 +772,9 @@ func NewDescribeTopicListRequest() (request *DescribeTopicListRequest) {
 func NewDescribeTopicListResponse() (response *DescribeTopicListResponse) {
     response = &DescribeTopicListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopicList
@@ -819,8 +833,9 @@ func NewDescribeTopicStatsOpRequest() (request *DescribeTopicStatsOpRequest) {
 func NewDescribeTopicStatsOpResponse() (response *DescribeTopicStatsOpResponse) {
     response = &DescribeTopicStatsOpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopicStatsOp
@@ -867,8 +882,9 @@ func NewModifyConsumerGroupRequest() (request *ModifyConsumerGroupRequest) {
 func NewModifyConsumerGroupResponse() (response *ModifyConsumerGroupResponse) {
     response = &ModifyConsumerGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyConsumerGroup
@@ -915,8 +931,9 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
 func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
     response = &ModifyInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyInstance
@@ -967,8 +984,9 @@ func NewModifyRoleRequest() (request *ModifyRoleRequest) {
 func NewModifyRoleResponse() (response *ModifyRoleResponse) {
     response = &ModifyRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyRole
@@ -1015,8 +1033,9 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
 func NewModifyTopicResponse() (response *ModifyTopicResponse) {
     response = &ModifyTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTopic

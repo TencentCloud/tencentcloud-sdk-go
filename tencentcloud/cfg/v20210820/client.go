@@ -59,8 +59,9 @@ func NewCreateTaskFromTemplateRequest() (request *CreateTaskFromTemplateRequest)
 func NewCreateTaskFromTemplateResponse() (response *CreateTaskFromTemplateResponse) {
     response = &CreateTaskFromTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTaskFromTemplate
@@ -121,8 +122,9 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
 func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
     response = &DeleteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTask
@@ -177,8 +179,9 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
 func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     response = &DescribeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTask
@@ -259,8 +262,9 @@ func NewDescribeTaskExecuteLogsRequest() (request *DescribeTaskExecuteLogsReques
 func NewDescribeTaskExecuteLogsResponse() (response *DescribeTaskExecuteLogsResponse) {
     response = &DescribeTaskExecuteLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskExecuteLogs
@@ -317,8 +321,9 @@ func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
 func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
     response = &DescribeTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskList
@@ -375,8 +380,9 @@ func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
 func NewDescribeTemplateResponse() (response *DescribeTemplateResponse) {
     response = &DescribeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTemplate
@@ -445,8 +451,9 @@ func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
 func NewDescribeTemplateListResponse() (response *DescribeTemplateListResponse) {
     response = &DescribeTemplateListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTemplateList
@@ -503,8 +510,9 @@ func NewExecuteTaskRequest() (request *ExecuteTaskRequest) {
 func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
     response = &ExecuteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteTask
@@ -559,8 +567,9 @@ func NewExecuteTaskInstanceRequest() (request *ExecuteTaskInstanceRequest) {
 func NewExecuteTaskInstanceResponse() (response *ExecuteTaskInstanceResponse) {
     response = &ExecuteTaskInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExecuteTaskInstance
@@ -629,8 +638,9 @@ func NewModifyTaskRunStatusRequest() (request *ModifyTaskRunStatusRequest) {
 func NewModifyTaskRunStatusResponse() (response *ModifyTaskRunStatusResponse) {
     response = &ModifyTaskRunStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTaskRunStatus

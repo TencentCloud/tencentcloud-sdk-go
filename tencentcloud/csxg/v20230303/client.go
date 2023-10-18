@@ -59,8 +59,9 @@ func NewCreate5GInstanceRequest() (request *Create5GInstanceRequest) {
 func NewCreate5GInstanceResponse() (response *Create5GInstanceResponse) {
     response = &Create5GInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Create5GInstance
@@ -109,8 +110,9 @@ func NewDelete5GInstanceRequest() (request *Delete5GInstanceRequest) {
 func NewDelete5GInstanceResponse() (response *Delete5GInstanceResponse) {
     response = &Delete5GInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Delete5GInstance
@@ -159,8 +161,9 @@ func NewDescribe5GAPNsRequest() (request *Describe5GAPNsRequest) {
 func NewDescribe5GAPNsResponse() (response *Describe5GAPNsResponse) {
     response = &Describe5GAPNsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Describe5GAPNs
@@ -209,8 +212,9 @@ func NewDescribe5GInstancesRequest() (request *Describe5GInstancesRequest) {
 func NewDescribe5GInstancesResponse() (response *Describe5GInstancesResponse) {
     response = &Describe5GInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Describe5GInstances
@@ -259,8 +263,9 @@ func NewModify5GInstanceAttributeRequest() (request *Modify5GInstanceAttributeRe
 func NewModify5GInstanceAttributeResponse() (response *Modify5GInstanceAttributeResponse) {
     response = &Modify5GInstanceAttributeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Modify5GInstanceAttribute

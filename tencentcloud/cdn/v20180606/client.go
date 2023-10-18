@@ -59,8 +59,9 @@ func NewAddCLSTopicDomainsRequest() (request *AddCLSTopicDomainsRequest) {
 func NewAddCLSTopicDomainsResponse() (response *AddCLSTopicDomainsResponse) {
     response = &AddCLSTopicDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddCLSTopicDomains
@@ -177,8 +178,9 @@ func NewAddCdnDomainRequest() (request *AddCdnDomainRequest) {
 func NewAddCdnDomainResponse() (response *AddCdnDomainResponse) {
     response = &AddCdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddCdnDomain
@@ -339,8 +341,9 @@ func NewCreateClsLogTopicRequest() (request *CreateClsLogTopicRequest) {
 func NewCreateClsLogTopicResponse() (response *CreateClsLogTopicResponse) {
     response = &CreateClsLogTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateClsLogTopic
@@ -455,8 +458,9 @@ func NewCreateDiagnoseUrlRequest() (request *CreateDiagnoseUrlRequest) {
 func NewCreateDiagnoseUrlResponse() (response *CreateDiagnoseUrlResponse) {
     response = &CreateDiagnoseUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDiagnoseUrl
@@ -535,8 +539,9 @@ func NewCreateEdgePackTaskRequest() (request *CreateEdgePackTaskRequest) {
 func NewCreateEdgePackTaskResponse() (response *CreateEdgePackTaskResponse) {
     response = &CreateEdgePackTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEdgePackTask
@@ -601,8 +606,9 @@ func NewCreateScdnDomainRequest() (request *CreateScdnDomainRequest) {
 func NewCreateScdnDomainResponse() (response *CreateScdnDomainResponse) {
     response = &CreateScdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScdnDomain
@@ -701,8 +707,9 @@ func NewCreateScdnFailedLogTaskRequest() (request *CreateScdnFailedLogTaskReques
 func NewCreateScdnFailedLogTaskResponse() (response *CreateScdnFailedLogTaskResponse) {
     response = &CreateScdnFailedLogTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScdnFailedLogTask
@@ -769,8 +776,9 @@ func NewCreateScdnLogTaskRequest() (request *CreateScdnLogTaskRequest) {
 func NewCreateScdnLogTaskResponse() (response *CreateScdnLogTaskResponse) {
     response = &CreateScdnLogTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScdnLogTask
@@ -845,8 +853,9 @@ func NewCreateVerifyRecordRequest() (request *CreateVerifyRecordRequest) {
 func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
     response = &CreateVerifyRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVerifyRecord
@@ -925,8 +934,9 @@ func NewDeleteCdnDomainRequest() (request *DeleteCdnDomainRequest) {
 func NewDeleteCdnDomainResponse() (response *DeleteCdnDomainResponse) {
     response = &DeleteCdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCdnDomain
@@ -1013,8 +1023,9 @@ func NewDeleteClsLogTopicRequest() (request *DeleteClsLogTopicRequest) {
 func NewDeleteClsLogTopicResponse() (response *DeleteClsLogTopicResponse) {
     response = &DeleteClsLogTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteClsLogTopic
@@ -1115,8 +1126,9 @@ func NewDeleteScdnDomainRequest() (request *DeleteScdnDomainRequest) {
 func NewDeleteScdnDomainResponse() (response *DeleteScdnDomainResponse) {
     response = &DeleteScdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScdnDomain
@@ -1193,8 +1205,9 @@ func NewDescribeBillingDataRequest() (request *DescribeBillingDataRequest) {
 func NewDescribeBillingDataResponse() (response *DescribeBillingDataResponse) {
     response = &DescribeBillingDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillingData
@@ -1295,8 +1308,9 @@ func NewDescribeCcDataRequest() (request *DescribeCcDataRequest) {
 func NewDescribeCcDataResponse() (response *DescribeCcDataResponse) {
     response = &DescribeCcDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCcData
@@ -1353,8 +1367,9 @@ func NewDescribeCdnDataRequest() (request *DescribeCdnDataRequest) {
 func NewDescribeCdnDataResponse() (response *DescribeCdnDataResponse) {
     response = &DescribeCdnDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCdnData
@@ -1519,8 +1534,9 @@ func NewDescribeCdnDomainLogsRequest() (request *DescribeCdnDomainLogsRequest) {
 func NewDescribeCdnDomainLogsResponse() (response *DescribeCdnDomainLogsResponse) {
     response = &DescribeCdnDomainLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCdnDomainLogs
@@ -1611,8 +1627,9 @@ func NewDescribeCdnIpRequest() (request *DescribeCdnIpRequest) {
 func NewDescribeCdnIpResponse() (response *DescribeCdnIpResponse) {
     response = &DescribeCdnIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCdnIp
@@ -1683,8 +1700,9 @@ func NewDescribeCdnOriginIpRequest() (request *DescribeCdnOriginIpRequest) {
 func NewDescribeCdnOriginIpResponse() (response *DescribeCdnOriginIpResponse) {
     response = &DescribeCdnOriginIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCdnOriginIp
@@ -1755,8 +1773,9 @@ func NewDescribeCertDomainsRequest() (request *DescribeCertDomainsRequest) {
 func NewDescribeCertDomainsResponse() (response *DescribeCertDomainsResponse) {
     response = &DescribeCertDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCertDomains
@@ -1839,8 +1858,9 @@ func NewDescribeDDoSDataRequest() (request *DescribeDDoSDataRequest) {
 func NewDescribeDDoSDataResponse() (response *DescribeDDoSDataResponse) {
     response = &DescribeDDoSDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDDoSData
@@ -1913,8 +1933,9 @@ func NewDescribeDiagnoseReportRequest() (request *DescribeDiagnoseReportRequest)
 func NewDescribeDiagnoseReportResponse() (response *DescribeDiagnoseReportResponse) {
     response = &DescribeDiagnoseReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDiagnoseReport
@@ -1973,8 +1994,9 @@ func NewDescribeDistrictIspDataRequest() (request *DescribeDistrictIspDataReques
 func NewDescribeDistrictIspDataResponse() (response *DescribeDistrictIspDataResponse) {
     response = &DescribeDistrictIspDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDistrictIspData
@@ -2057,8 +2079,9 @@ func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
 func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
     response = &DescribeDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomains
@@ -2151,8 +2174,9 @@ func NewDescribeDomainsConfigRequest() (request *DescribeDomainsConfigRequest) {
 func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse) {
     response = &DescribeDomainsConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainsConfig
@@ -2247,8 +2271,9 @@ func NewDescribeEdgePackTaskStatusRequest() (request *DescribeEdgePackTaskStatus
 func NewDescribeEdgePackTaskStatusResponse() (response *DescribeEdgePackTaskStatusResponse) {
     response = &DescribeEdgePackTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEdgePackTaskStatus
@@ -2303,8 +2328,9 @@ func NewDescribeEventLogDataRequest() (request *DescribeEventLogDataRequest) {
 func NewDescribeEventLogDataResponse() (response *DescribeEventLogDataResponse) {
     response = &DescribeEventLogDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEventLogData
@@ -2361,8 +2387,9 @@ func NewDescribeHttpsPackagesRequest() (request *DescribeHttpsPackagesRequest) {
 func NewDescribeHttpsPackagesResponse() (response *DescribeHttpsPackagesResponse) {
     response = &DescribeHttpsPackagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHttpsPackages
@@ -2425,8 +2452,9 @@ func NewDescribeImageConfigRequest() (request *DescribeImageConfigRequest) {
 func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
     response = &DescribeImageConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImageConfig
@@ -2493,8 +2521,9 @@ func NewDescribeIpStatusRequest() (request *DescribeIpStatusRequest) {
 func NewDescribeIpStatusResponse() (response *DescribeIpStatusResponse) {
     response = &DescribeIpStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIpStatus
@@ -2577,8 +2606,9 @@ func NewDescribeIpVisitRequest() (request *DescribeIpVisitRequest) {
 func NewDescribeIpVisitResponse() (response *DescribeIpVisitResponse) {
     response = &DescribeIpVisitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIpVisit
@@ -2681,8 +2711,9 @@ func NewDescribeMapInfoRequest() (request *DescribeMapInfoRequest) {
 func NewDescribeMapInfoResponse() (response *DescribeMapInfoResponse) {
     response = &DescribeMapInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMapInfo
@@ -2755,8 +2786,9 @@ func NewDescribeOriginDataRequest() (request *DescribeOriginDataRequest) {
 func NewDescribeOriginDataResponse() (response *DescribeOriginDataResponse) {
     response = &DescribeOriginDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeOriginData
@@ -2905,8 +2937,9 @@ func NewDescribePayTypeRequest() (request *DescribePayTypeRequest) {
 func NewDescribePayTypeResponse() (response *DescribePayTypeResponse) {
     response = &DescribePayTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePayType
@@ -2973,8 +3006,9 @@ func NewDescribePurgeQuotaRequest() (request *DescribePurgeQuotaRequest) {
 func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
     response = &DescribePurgeQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePurgeQuota
@@ -3031,8 +3065,9 @@ func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
 func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
     response = &DescribePurgeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePurgeTasks
@@ -3103,8 +3138,9 @@ func NewDescribePushQuotaRequest() (request *DescribePushQuotaRequest) {
 func NewDescribePushQuotaResponse() (response *DescribePushQuotaResponse) {
     response = &DescribePushQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePushQuota
@@ -3163,8 +3199,9 @@ func NewDescribePushTasksRequest() (request *DescribePushTasksRequest) {
 func NewDescribePushTasksResponse() (response *DescribePushTasksResponse) {
     response = &DescribePushTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePushTasks
@@ -3257,8 +3294,9 @@ func NewDescribeReportDataRequest() (request *DescribeReportDataRequest) {
 func NewDescribeReportDataResponse() (response *DescribeReportDataResponse) {
     response = &DescribeReportDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReportData
@@ -3323,8 +3361,9 @@ func NewDescribeScdnBotDataRequest() (request *DescribeScdnBotDataRequest) {
 func NewDescribeScdnBotDataResponse() (response *DescribeScdnBotDataResponse) {
     response = &DescribeScdnBotDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScdnBotData
@@ -3393,8 +3432,9 @@ func NewDescribeScdnBotRecordsRequest() (request *DescribeScdnBotRecordsRequest)
 func NewDescribeScdnBotRecordsResponse() (response *DescribeScdnBotRecordsResponse) {
     response = &DescribeScdnBotRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScdnBotRecords
@@ -3451,8 +3491,9 @@ func NewDescribeScdnConfigRequest() (request *DescribeScdnConfigRequest) {
 func NewDescribeScdnConfigResponse() (response *DescribeScdnConfigResponse) {
     response = &DescribeScdnConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScdnConfig
@@ -3515,8 +3556,9 @@ func NewDescribeScdnIpStrategyRequest() (request *DescribeScdnIpStrategyRequest)
 func NewDescribeScdnIpStrategyResponse() (response *DescribeScdnIpStrategyResponse) {
     response = &DescribeScdnIpStrategyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScdnIpStrategy
@@ -3573,8 +3615,9 @@ func NewDescribeScdnTopDataRequest() (request *DescribeScdnTopDataRequest) {
 func NewDescribeScdnTopDataResponse() (response *DescribeScdnTopDataResponse) {
     response = &DescribeScdnTopDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScdnTopData
@@ -3643,8 +3686,9 @@ func NewDescribeTopDataRequest() (request *DescribeTopDataRequest) {
 func NewDescribeTopDataResponse() (response *DescribeTopDataResponse) {
     response = &DescribeTopDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopData
@@ -3787,8 +3831,9 @@ func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesReques
 func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResponse) {
     response = &DescribeTrafficPackagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrafficPackages
@@ -3851,8 +3896,9 @@ func NewDescribeUrlViolationsRequest() (request *DescribeUrlViolationsRequest) {
 func NewDescribeUrlViolationsResponse() (response *DescribeUrlViolationsResponse) {
     response = &DescribeUrlViolationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUrlViolations
@@ -3919,8 +3965,9 @@ func NewDescribeWafDataRequest() (request *DescribeWafDataRequest) {
 func NewDescribeWafDataResponse() (response *DescribeWafDataResponse) {
     response = &DescribeWafDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWafData
@@ -4005,8 +4052,9 @@ func NewDisableCachesRequest() (request *DisableCachesRequest) {
 func NewDisableCachesResponse() (response *DisableCachesResponse) {
     response = &DisableCachesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableCaches
@@ -4097,8 +4145,9 @@ func NewDisableClsLogTopicRequest() (request *DisableClsLogTopicRequest) {
 func NewDisableClsLogTopicResponse() (response *DisableClsLogTopicResponse) {
     response = &DisableClsLogTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableClsLogTopic
@@ -4203,8 +4252,9 @@ func NewDuplicateDomainConfigRequest() (request *DuplicateDomainConfigRequest) {
 func NewDuplicateDomainConfigResponse() (response *DuplicateDomainConfigResponse) {
     response = &DuplicateDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DuplicateDomainConfig
@@ -4339,8 +4389,9 @@ func NewEnableCachesRequest() (request *EnableCachesRequest) {
 func NewEnableCachesResponse() (response *EnableCachesResponse) {
     response = &EnableCachesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableCaches
@@ -4423,8 +4474,9 @@ func NewEnableClsLogTopicRequest() (request *EnableClsLogTopicRequest) {
 func NewEnableClsLogTopicResponse() (response *EnableClsLogTopicResponse) {
     response = &EnableClsLogTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableClsLogTopic
@@ -4529,8 +4581,9 @@ func NewGetDisableRecordsRequest() (request *GetDisableRecordsRequest) {
 func NewGetDisableRecordsResponse() (response *GetDisableRecordsResponse) {
     response = &GetDisableRecordsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDisableRecords
@@ -4613,8 +4666,9 @@ func NewListClsLogTopicsRequest() (request *ListClsLogTopicsRequest) {
 func NewListClsLogTopicsResponse() (response *ListClsLogTopicsResponse) {
     response = &ListClsLogTopicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListClsLogTopics
@@ -4729,8 +4783,9 @@ func NewListClsTopicDomainsRequest() (request *ListClsTopicDomainsRequest) {
 func NewListClsTopicDomainsResponse() (response *ListClsTopicDomainsResponse) {
     response = &ListClsTopicDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListClsTopicDomains
@@ -4839,8 +4894,9 @@ func NewListDiagnoseReportRequest() (request *ListDiagnoseReportRequest) {
 func NewListDiagnoseReportResponse() (response *ListDiagnoseReportResponse) {
     response = &ListDiagnoseReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListDiagnoseReport
@@ -4901,8 +4957,9 @@ func NewListScdnDomainsRequest() (request *ListScdnDomainsRequest) {
 func NewListScdnDomainsResponse() (response *ListScdnDomainsResponse) {
     response = &ListScdnDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListScdnDomains
@@ -4965,8 +5022,9 @@ func NewListScdnLogTasksRequest() (request *ListScdnLogTasksRequest) {
 func NewListScdnLogTasksResponse() (response *ListScdnLogTasksResponse) {
     response = &ListScdnLogTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListScdnLogTasks
@@ -5029,8 +5087,9 @@ func NewListScdnTopBotDataRequest() (request *ListScdnTopBotDataRequest) {
 func NewListScdnTopBotDataResponse() (response *ListScdnTopBotDataResponse) {
     response = &ListScdnTopBotDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListScdnTopBotData
@@ -5091,8 +5150,9 @@ func NewListTopBotDataRequest() (request *ListTopBotDataRequest) {
 func NewListTopBotDataResponse() (response *ListTopBotDataResponse) {
     response = &ListTopBotDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopBotData
@@ -5149,8 +5209,9 @@ func NewListTopCcDataRequest() (request *ListTopCcDataRequest) {
 func NewListTopCcDataResponse() (response *ListTopCcDataResponse) {
     response = &ListTopCcDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopCcData
@@ -5209,8 +5270,9 @@ func NewListTopClsLogDataRequest() (request *ListTopClsLogDataRequest) {
 func NewListTopClsLogDataResponse() (response *ListTopClsLogDataResponse) {
     response = &ListTopClsLogDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopClsLogData
@@ -5325,8 +5387,9 @@ func NewListTopDDoSDataRequest() (request *ListTopDDoSDataRequest) {
 func NewListTopDDoSDataResponse() (response *ListTopDDoSDataResponse) {
     response = &ListTopDDoSDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopDDoSData
@@ -5397,8 +5460,9 @@ func NewListTopDataRequest() (request *ListTopDataRequest) {
 func NewListTopDataResponse() (response *ListTopDataResponse) {
     response = &ListTopDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopData
@@ -5535,8 +5599,9 @@ func NewListTopWafDataRequest() (request *ListTopWafDataRequest) {
 func NewListTopWafDataResponse() (response *ListTopWafDataResponse) {
     response = &ListTopWafDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTopWafData
@@ -5615,8 +5680,9 @@ func NewManageClsTopicDomainsRequest() (request *ManageClsTopicDomainsRequest) {
 func NewManageClsTopicDomainsResponse() (response *ManageClsTopicDomainsResponse) {
     response = &ManageClsTopicDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ManageClsTopicDomains
@@ -5723,8 +5789,9 @@ func NewModifyDomainConfigRequest() (request *ModifyDomainConfigRequest) {
 func NewModifyDomainConfigResponse() (response *ModifyDomainConfigResponse) {
     response = &ModifyDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDomainConfig
@@ -5887,8 +5954,9 @@ func NewModifyPurgeFetchTaskStatusRequest() (request *ModifyPurgeFetchTaskStatus
 func NewModifyPurgeFetchTaskStatusResponse() (response *ModifyPurgeFetchTaskStatusResponse) {
     response = &ModifyPurgeFetchTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPurgeFetchTaskStatus
@@ -5945,8 +6013,9 @@ func NewPurgePathCacheRequest() (request *PurgePathCacheRequest) {
 func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
     response = &PurgePathCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PurgePathCache
@@ -6053,8 +6122,9 @@ func NewPurgeUrlsCacheRequest() (request *PurgeUrlsCacheRequest) {
 func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
     response = &PurgeUrlsCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PurgeUrlsCache
@@ -6167,8 +6237,9 @@ func NewPushUrlsCacheRequest() (request *PushUrlsCacheRequest) {
 func NewPushUrlsCacheResponse() (response *PushUrlsCacheResponse) {
     response = &PushUrlsCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PushUrlsCache
@@ -6283,8 +6354,9 @@ func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
 func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
     response = &SearchClsLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchClsLog
@@ -6395,8 +6467,9 @@ func NewStartCdnDomainRequest() (request *StartCdnDomainRequest) {
 func NewStartCdnDomainResponse() (response *StartCdnDomainResponse) {
     response = &StartCdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartCdnDomain
@@ -6493,8 +6566,9 @@ func NewStartScdnDomainRequest() (request *StartScdnDomainRequest) {
 func NewStartScdnDomainResponse() (response *StartScdnDomainResponse) {
     response = &StartScdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartScdnDomain
@@ -6577,8 +6651,9 @@ func NewStopCdnDomainRequest() (request *StopCdnDomainRequest) {
 func NewStopCdnDomainResponse() (response *StopCdnDomainResponse) {
     response = &StopCdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopCdnDomain
@@ -6671,8 +6746,9 @@ func NewStopScdnDomainRequest() (request *StopScdnDomainRequest) {
 func NewStopScdnDomainResponse() (response *StopScdnDomainResponse) {
     response = &StopScdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopScdnDomain
@@ -6755,8 +6831,9 @@ func NewUpdateDomainConfigRequest() (request *UpdateDomainConfigRequest) {
 func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
     response = &UpdateDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDomainConfig
@@ -6913,8 +6990,9 @@ func NewUpdateImageConfigRequest() (request *UpdateImageConfigRequest) {
 func NewUpdateImageConfigResponse() (response *UpdateImageConfigResponse) {
     response = &UpdateImageConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateImageConfig
@@ -6987,8 +7065,9 @@ func NewUpdatePayTypeRequest() (request *UpdatePayTypeRequest) {
 func NewUpdatePayTypeResponse() (response *UpdatePayTypeResponse) {
     response = &UpdatePayTypeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdatePayType
@@ -7051,8 +7130,9 @@ func NewUpdateScdnDomainRequest() (request *UpdateScdnDomainRequest) {
 func NewUpdateScdnDomainResponse() (response *UpdateScdnDomainResponse) {
     response = &UpdateScdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateScdnDomain
@@ -7141,8 +7221,9 @@ func NewVerifyDomainRecordRequest() (request *VerifyDomainRecordRequest) {
 func NewVerifyDomainRecordResponse() (response *VerifyDomainRecordResponse) {
     response = &VerifyDomainRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyDomainRecord

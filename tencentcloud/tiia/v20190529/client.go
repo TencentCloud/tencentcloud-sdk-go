@@ -59,8 +59,9 @@ func NewAssessQualityRequest() (request *AssessQualityRequest) {
 func NewAssessQualityResponse() (response *AssessQualityResponse) {
     response = &AssessQualityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssessQuality
@@ -151,8 +152,9 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
 func NewCreateGroupResponse() (response *CreateGroupResponse) {
     response = &CreateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroup
@@ -363,8 +365,9 @@ func NewCreateImageRequest() (request *CreateImageRequest) {
 func NewCreateImageResponse() (response *CreateImageResponse) {
     response = &CreateImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateImage
@@ -497,8 +500,9 @@ func NewCropImageRequest() (request *CropImageRequest) {
 func NewCropImageResponse() (response *CropImageResponse) {
     response = &CropImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CropImage
@@ -589,8 +593,9 @@ func NewDeleteImagesRequest() (request *DeleteImagesRequest) {
 func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
     response = &DeleteImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteImages
@@ -679,8 +684,9 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
 func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
     response = &DescribeGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroups
@@ -755,8 +761,9 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
 func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     response = &DescribeImagesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImages
@@ -843,8 +850,9 @@ func NewDetectChefDressRequest() (request *DetectChefDressRequest) {
 func NewDetectChefDressResponse() (response *DetectChefDressResponse) {
     response = &DetectChefDressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectChefDress
@@ -961,8 +969,9 @@ func NewDetectDisgustRequest() (request *DetectDisgustRequest) {
 func NewDetectDisgustResponse() (response *DetectDisgustResponse) {
     response = &DetectDisgustResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectDisgust
@@ -1049,8 +1058,9 @@ func NewDetectEnvelopeRequest() (request *DetectEnvelopeRequest) {
 func NewDetectEnvelopeResponse() (response *DetectEnvelopeResponse) {
     response = &DetectEnvelopeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectEnvelope
@@ -1133,8 +1143,9 @@ func NewDetectLabelRequest() (request *DetectLabelRequest) {
 func NewDetectLabelResponse() (response *DetectLabelResponse) {
     response = &DetectLabelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectLabel
@@ -1299,8 +1310,9 @@ func NewDetectLabelBetaRequest() (request *DetectLabelBetaRequest) {
 func NewDetectLabelBetaResponse() (response *DetectLabelBetaResponse) {
     response = &DetectLabelBetaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectLabelBeta
@@ -1383,8 +1395,9 @@ func NewDetectLabelProRequest() (request *DetectLabelProRequest) {
 func NewDetectLabelProResponse() (response *DetectLabelProResponse) {
     response = &DetectLabelProResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectLabelPro
@@ -1477,8 +1490,9 @@ func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
 func NewDetectMisbehaviorResponse() (response *DetectMisbehaviorResponse) {
     response = &DetectMisbehaviorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectMisbehavior
@@ -1559,8 +1573,9 @@ func NewDetectPetRequest() (request *DetectPetRequest) {
 func NewDetectPetResponse() (response *DetectPetResponse) {
     response = &DetectPetResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectPet
@@ -1649,8 +1664,9 @@ func NewDetectProductRequest() (request *DetectProductRequest) {
 func NewDetectProductResponse() (response *DetectProductResponse) {
     response = &DetectProductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectProduct
@@ -1731,8 +1747,9 @@ func NewDetectProductBetaRequest() (request *DetectProductBetaRequest) {
 func NewDetectProductBetaResponse() (response *DetectProductBetaResponse) {
     response = &DetectProductBetaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectProductBeta
@@ -1825,8 +1842,9 @@ func NewDetectSecurityRequest() (request *DetectSecurityRequest) {
 func NewDetectSecurityResponse() (response *DetectSecurityResponse) {
     response = &DetectSecurityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectSecurity
@@ -1951,8 +1969,9 @@ func NewEnhanceImageRequest() (request *EnhanceImageRequest) {
 func NewEnhanceImageResponse() (response *EnhanceImageResponse) {
     response = &EnhanceImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnhanceImage
@@ -2051,8 +2070,9 @@ func NewRecognizeCarRequest() (request *RecognizeCarRequest) {
 func NewRecognizeCarResponse() (response *RecognizeCarResponse) {
     response = &RecognizeCarResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeCar
@@ -2145,8 +2165,9 @@ func NewRecognizeCarProRequest() (request *RecognizeCarProRequest) {
 func NewRecognizeCarProResponse() (response *RecognizeCarProResponse) {
     response = &RecognizeCarProResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecognizeCarPro
@@ -2239,8 +2260,9 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
 func NewSearchImageResponse() (response *SearchImageResponse) {
     response = &SearchImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchImage
@@ -2365,8 +2387,9 @@ func NewUpdateImageRequest() (request *UpdateImageRequest) {
 func NewUpdateImageResponse() (response *UpdateImageResponse) {
     response = &UpdateImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateImage

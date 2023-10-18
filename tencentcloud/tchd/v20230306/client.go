@@ -59,8 +59,9 @@ func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
 func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
     response = &DescribeEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEvents

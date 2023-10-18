@@ -7318,9 +7318,6 @@ type MicroServiceReq struct {
 
 // Predefined struct for user
 type ModifyAPIDocRequestParams struct {
-	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
-
 	// API文档名称
 	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
@@ -7332,14 +7329,14 @@ type ModifyAPIDocRequestParams struct {
 
 	// 生成文档的API列表
 	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 type ModifyAPIDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
-
 	// API文档名称
 	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
@@ -7351,6 +7348,9 @@ type ModifyAPIDocRequest struct {
 
 	// 生成文档的API列表
 	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 func (r *ModifyAPIDocRequest) ToJsonString() string {
@@ -7365,11 +7365,11 @@ func (r *ModifyAPIDocRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ApiDocId")
 	delete(f, "ApiDocName")
 	delete(f, "ServiceId")
 	delete(f, "Environment")
 	delete(f, "ApiIds")
+	delete(f, "ApiDocId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAPIDocRequest has unknown keys!", "")
 	}

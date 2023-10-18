@@ -59,8 +59,9 @@ func NewCreateBPBrandRequest() (request *CreateBPBrandRequest) {
 func NewCreateBPBrandResponse() (response *CreateBPBrandResponse) {
     response = &CreateBPBrandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPBrand
@@ -143,8 +144,9 @@ func NewCreateBPFakeAPPRequest() (request *CreateBPFakeAPPRequest) {
 func NewCreateBPFakeAPPResponse() (response *CreateBPFakeAPPResponse) {
     response = &CreateBPFakeAPPResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFakeAPP
@@ -253,8 +255,9 @@ func NewCreateBPFakeAPPListRequest() (request *CreateBPFakeAPPListRequest) {
 func NewCreateBPFakeAPPListResponse() (response *CreateBPFakeAPPListResponse) {
     response = &CreateBPFakeAPPListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFakeAPPList
@@ -363,8 +366,9 @@ func NewCreateBPFakeURLRequest() (request *CreateBPFakeURLRequest) {
 func NewCreateBPFakeURLResponse() (response *CreateBPFakeURLResponse) {
     response = &CreateBPFakeURLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFakeURL
@@ -473,8 +477,9 @@ func NewCreateBPFakeURLsRequest() (request *CreateBPFakeURLsRequest) {
 func NewCreateBPFakeURLsResponse() (response *CreateBPFakeURLsResponse) {
     response = &CreateBPFakeURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPFakeURLs
@@ -583,8 +588,9 @@ func NewCreateBPWhiteListRequest() (request *CreateBPWhiteListRequest) {
 func NewCreateBPWhiteListResponse() (response *CreateBPWhiteListResponse) {
     response = &CreateBPWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateBPWhiteList
@@ -693,8 +699,9 @@ func NewDeleteBPWhiteListRequest() (request *DeleteBPWhiteListRequest) {
 func NewDeleteBPWhiteListResponse() (response *DeleteBPWhiteListResponse) {
     response = &DeleteBPWhiteListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBPWhiteList
@@ -803,8 +810,9 @@ func NewDescribeBPBrandsRequest() (request *DescribeBPBrandsRequest) {
 func NewDescribeBPBrandsResponse() (response *DescribeBPBrandsResponse) {
     response = &DescribeBPBrandsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPBrands
@@ -887,8 +895,9 @@ func NewDescribeBPFakeAPPListRequest() (request *DescribeBPFakeAPPListRequest) {
 func NewDescribeBPFakeAPPListResponse() (response *DescribeBPFakeAPPListResponse) {
     response = &DescribeBPFakeAPPListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPFakeAPPList
@@ -997,8 +1006,9 @@ func NewDescribeBPFakeURLsRequest() (request *DescribeBPFakeURLsRequest) {
 func NewDescribeBPFakeURLsResponse() (response *DescribeBPFakeURLsResponse) {
     response = &DescribeBPFakeURLsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPFakeURLs
@@ -1107,8 +1117,9 @@ func NewDescribeBPWhiteListsRequest() (request *DescribeBPWhiteListsRequest) {
 func NewDescribeBPWhiteListsResponse() (response *DescribeBPWhiteListsResponse) {
     response = &DescribeBPWhiteListsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBPWhiteLists

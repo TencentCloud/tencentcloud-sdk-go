@@ -59,8 +59,9 @@ func NewCreateAppScanTaskRequest() (request *CreateAppScanTaskRequest) {
 func NewCreateAppScanTaskResponse() (response *CreateAppScanTaskResponse) {
     response = &CreateAppScanTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppScanTask
@@ -107,8 +108,9 @@ func NewCreateAppScanTaskRepeatRequest() (request *CreateAppScanTaskRepeatReques
 func NewCreateAppScanTaskRepeatResponse() (response *CreateAppScanTaskRepeatResponse) {
     response = &CreateAppScanTaskRepeatResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAppScanTaskRepeat
@@ -155,8 +157,9 @@ func NewDescribeChannelTaskReportUrlRequest() (request *DescribeChannelTaskRepor
 func NewDescribeChannelTaskReportUrlResponse() (response *DescribeChannelTaskReportUrlResponse) {
     response = &DescribeChannelTaskReportUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelTaskReportUrl
@@ -205,8 +208,9 @@ func NewDescribeFileTicketRequest() (request *DescribeFileTicketRequest) {
 func NewDescribeFileTicketResponse() (response *DescribeFileTicketResponse) {
     response = &DescribeFileTicketResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileTicket
@@ -253,8 +257,9 @@ func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRe
 func NewDescribeResourceUsageInfoResponse() (response *DescribeResourceUsageInfoResponse) {
     response = &DescribeResourceUsageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceUsageInfo
@@ -301,8 +306,9 @@ func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
 func NewDescribeScanTaskListResponse() (response *DescribeScanTaskListResponse) {
     response = &DescribeScanTaskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskList
@@ -349,8 +355,9 @@ func NewDescribeScanTaskReportUrlRequest() (request *DescribeScanTaskReportUrlRe
 func NewDescribeScanTaskReportUrlResponse() (response *DescribeScanTaskReportUrlResponse) {
     response = &DescribeScanTaskReportUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskReportUrl
@@ -399,8 +406,9 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
 func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusResponse) {
     response = &DescribeScanTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScanTaskStatus

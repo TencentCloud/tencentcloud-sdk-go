@@ -59,8 +59,9 @@ func NewDescribeEntityRequest() (request *DescribeEntityRequest) {
 func NewDescribeEntityResponse() (response *DescribeEntityResponse) {
     response = &DescribeEntityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEntity
@@ -127,8 +128,9 @@ func NewDescribeRelationRequest() (request *DescribeRelationRequest) {
 func NewDescribeRelationResponse() (response *DescribeRelationResponse) {
     response = &DescribeRelationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRelation
@@ -195,8 +197,9 @@ func NewDescribeTripleRequest() (request *DescribeTripleRequest) {
 func NewDescribeTripleResponse() (response *DescribeTripleResponse) {
     response = &DescribeTripleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTriple

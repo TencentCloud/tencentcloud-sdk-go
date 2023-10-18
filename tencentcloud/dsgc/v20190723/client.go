@@ -59,8 +59,9 @@ func NewAuthorizeDSPAMetaResourcesRequest() (request *AuthorizeDSPAMetaResources
 func NewAuthorizeDSPAMetaResourcesResponse() (response *AuthorizeDSPAMetaResourcesResponse) {
     response = &AuthorizeDSPAMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AuthorizeDSPAMetaResources
@@ -111,8 +112,9 @@ func NewBindDSPAResourceCosBucketsRequest() (request *BindDSPAResourceCosBuckets
 func NewBindDSPAResourceCosBucketsResponse() (response *BindDSPAResourceCosBucketsResponse) {
     response = &BindDSPAResourceCosBucketsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDSPAResourceCosBuckets
@@ -167,8 +169,9 @@ func NewBindDSPAResourceDatabasesRequest() (request *BindDSPAResourceDatabasesRe
 func NewBindDSPAResourceDatabasesResponse() (response *BindDSPAResourceDatabasesResponse) {
     response = &BindDSPAResourceDatabasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindDSPAResourceDatabases
@@ -225,8 +228,9 @@ func NewCopyDSPATemplateRequest() (request *CopyDSPATemplateRequest) {
 func NewCopyDSPATemplateResponse() (response *CopyDSPATemplateResponse) {
     response = &CopyDSPATemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyDSPATemplate
@@ -285,8 +289,9 @@ func NewCreateAssetSortingReportRetryTaskRequest() (request *CreateAssetSortingR
 func NewCreateAssetSortingReportRetryTaskResponse() (response *CreateAssetSortingReportRetryTaskResponse) {
     response = &CreateAssetSortingReportRetryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAssetSortingReportRetryTask
@@ -345,8 +350,9 @@ func NewCreateAssetSortingReportTaskRequest() (request *CreateAssetSortingReport
 func NewCreateAssetSortingReportTaskResponse() (response *CreateAssetSortingReportTaskResponse) {
     response = &CreateAssetSortingReportTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAssetSortingReportTask
@@ -405,8 +411,9 @@ func NewCreateClassificationRuleRequest() (request *CreateClassificationRuleRequ
 func NewCreateClassificationRuleResponse() (response *CreateClassificationRuleResponse) {
     response = &CreateClassificationRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateClassificationRule
@@ -453,8 +460,9 @@ func NewCreateDSPAAssessmentRiskLevelRequest() (request *CreateDSPAAssessmentRis
 func NewCreateDSPAAssessmentRiskLevelResponse() (response *CreateDSPAAssessmentRiskLevelResponse) {
     response = &CreateDSPAAssessmentRiskLevelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAAssessmentRiskLevel
@@ -501,8 +509,9 @@ func NewCreateDSPAAssessmentRiskTemplateRequest() (request *CreateDSPAAssessment
 func NewCreateDSPAAssessmentRiskTemplateResponse() (response *CreateDSPAAssessmentRiskTemplateResponse) {
     response = &CreateDSPAAssessmentRiskTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAAssessmentRiskTemplate
@@ -549,8 +558,9 @@ func NewCreateDSPAAssessmentTaskRequest() (request *CreateDSPAAssessmentTaskRequ
 func NewCreateDSPAAssessmentTaskResponse() (response *CreateDSPAAssessmentTaskResponse) {
     response = &CreateDSPAAssessmentTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAAssessmentTask
@@ -611,8 +621,9 @@ func NewCreateDSPACOSDiscoveryTaskRequest() (request *CreateDSPACOSDiscoveryTask
 func NewCreateDSPACOSDiscoveryTaskResponse() (response *CreateDSPACOSDiscoveryTaskResponse) {
     response = &CreateDSPACOSDiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPACOSDiscoveryTask
@@ -677,8 +688,9 @@ func NewCreateDSPACategoryRequest() (request *CreateDSPACategoryRequest) {
 func NewCreateDSPACategoryResponse() (response *CreateDSPACategoryResponse) {
     response = &CreateDSPACategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPACategory
@@ -739,8 +751,9 @@ func NewCreateDSPACategoryRelationRequest() (request *CreateDSPACategoryRelation
 func NewCreateDSPACategoryRelationResponse() (response *CreateDSPACategoryRelationResponse) {
     response = &CreateDSPACategoryRelationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPACategoryRelation
@@ -791,8 +804,9 @@ func NewCreateDSPAComplianceGroupRequest() (request *CreateDSPAComplianceGroupRe
 func NewCreateDSPAComplianceGroupResponse() (response *CreateDSPAComplianceGroupResponse) {
     response = &CreateDSPAComplianceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAComplianceGroup
@@ -855,8 +869,9 @@ func NewCreateDSPAComplianceRulesRequest() (request *CreateDSPAComplianceRulesRe
 func NewCreateDSPAComplianceRulesResponse() (response *CreateDSPAComplianceRulesResponse) {
     response = &CreateDSPAComplianceRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAComplianceRules
@@ -907,8 +922,9 @@ func NewCreateDSPACosMetaResourcesRequest() (request *CreateDSPACosMetaResources
 func NewCreateDSPACosMetaResourcesResponse() (response *CreateDSPACosMetaResourcesResponse) {
     response = &CreateDSPACosMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPACosMetaResources
@@ -957,8 +973,9 @@ func NewCreateDSPADbMetaResourcesRequest() (request *CreateDSPADbMetaResourcesRe
 func NewCreateDSPADbMetaResourcesResponse() (response *CreateDSPADbMetaResourcesResponse) {
     response = &CreateDSPADbMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPADbMetaResources
@@ -1013,8 +1030,9 @@ func NewCreateDSPADiscoveryRuleRequest() (request *CreateDSPADiscoveryRuleReques
 func NewCreateDSPADiscoveryRuleResponse() (response *CreateDSPADiscoveryRuleResponse) {
     response = &CreateDSPADiscoveryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPADiscoveryRule
@@ -1077,8 +1095,9 @@ func NewCreateDSPADiscoveryTaskRequest() (request *CreateDSPADiscoveryTaskReques
 func NewCreateDSPADiscoveryTaskResponse() (response *CreateDSPADiscoveryTaskResponse) {
     response = &CreateDSPADiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPADiscoveryTask
@@ -1141,8 +1160,9 @@ func NewCreateDSPALevelGroupRequest() (request *CreateDSPALevelGroupRequest) {
 func NewCreateDSPALevelGroupResponse() (response *CreateDSPALevelGroupResponse) {
     response = &CreateDSPALevelGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPALevelGroup
@@ -1203,8 +1223,9 @@ func NewCreateDSPAMetaResourcesRequest() (request *CreateDSPAMetaResourcesReques
 func NewCreateDSPAMetaResourcesResponse() (response *CreateDSPAMetaResourcesResponse) {
     response = &CreateDSPAMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPAMetaResources
@@ -1255,8 +1276,9 @@ func NewCreateDSPASelfBuildMetaResourceRequest() (request *CreateDSPASelfBuildMe
 func NewCreateDSPASelfBuildMetaResourceResponse() (response *CreateDSPASelfBuildMetaResourceResponse) {
     response = &CreateDSPASelfBuildMetaResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDSPASelfBuildMetaResource
@@ -1307,8 +1329,9 @@ func NewCreateIdentifyRuleAnotherNameRequest() (request *CreateIdentifyRuleAnoth
 func NewCreateIdentifyRuleAnotherNameResponse() (response *CreateIdentifyRuleAnotherNameResponse) {
     response = &CreateIdentifyRuleAnotherNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateIdentifyRuleAnotherName
@@ -1367,8 +1390,9 @@ func NewCreateNewClassificationRequest() (request *CreateNewClassificationReques
 func NewCreateNewClassificationResponse() (response *CreateNewClassificationResponse) {
     response = &CreateNewClassificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNewClassification
@@ -1415,8 +1439,9 @@ func NewCreateOrCopyStandardRequest() (request *CreateOrCopyStandardRequest) {
 func NewCreateOrCopyStandardResponse() (response *CreateOrCopyStandardResponse) {
     response = &CreateOrCopyStandardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateOrCopyStandard
@@ -1463,8 +1488,9 @@ func NewDecribeSuggestRiskLevelMatrixRequest() (request *DecribeSuggestRiskLevel
 func NewDecribeSuggestRiskLevelMatrixResponse() (response *DecribeSuggestRiskLevelMatrixResponse) {
     response = &DecribeSuggestRiskLevelMatrixResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DecribeSuggestRiskLevelMatrix
@@ -1511,8 +1537,9 @@ func NewDeleteCosMetaResourceRequest() (request *DeleteCosMetaResourceRequest) {
 func NewDeleteCosMetaResourceResponse() (response *DeleteCosMetaResourceResponse) {
     response = &DeleteCosMetaResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCosMetaResource
@@ -1575,8 +1602,9 @@ func NewDeleteDSPAAssessmentTaskRequest() (request *DeleteDSPAAssessmentTaskRequ
 func NewDeleteDSPAAssessmentTaskResponse() (response *DeleteDSPAAssessmentTaskResponse) {
     response = &DeleteDSPAAssessmentTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPAAssessmentTask
@@ -1637,8 +1665,9 @@ func NewDeleteDSPACOSDiscoveryTaskRequest() (request *DeleteDSPACOSDiscoveryTask
 func NewDeleteDSPACOSDiscoveryTaskResponse() (response *DeleteDSPACOSDiscoveryTaskResponse) {
     response = &DeleteDSPACOSDiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPACOSDiscoveryTask
@@ -1715,8 +1744,9 @@ func NewDeleteDSPACOSDiscoveryTaskResultRequest() (request *DeleteDSPACOSDiscove
 func NewDeleteDSPACOSDiscoveryTaskResultResponse() (response *DeleteDSPACOSDiscoveryTaskResultResponse) {
     response = &DeleteDSPACOSDiscoveryTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPACOSDiscoveryTaskResult
@@ -1775,8 +1805,9 @@ func NewDeleteDSPADiscoveryTaskRequest() (request *DeleteDSPADiscoveryTaskReques
 func NewDeleteDSPADiscoveryTaskResponse() (response *DeleteDSPADiscoveryTaskResponse) {
     response = &DeleteDSPADiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPADiscoveryTask
@@ -1853,8 +1884,9 @@ func NewDeleteDSPADiscoveryTaskResultRequest() (request *DeleteDSPADiscoveryTask
 func NewDeleteDSPADiscoveryTaskResultResponse() (response *DeleteDSPADiscoveryTaskResultResponse) {
     response = &DeleteDSPADiscoveryTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPADiscoveryTaskResult
@@ -1913,8 +1945,9 @@ func NewDeleteDSPAMetaResourceRequest() (request *DeleteDSPAMetaResourceRequest)
 func NewDeleteDSPAMetaResourceResponse() (response *DeleteDSPAMetaResourceResponse) {
     response = &DeleteDSPAMetaResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteDSPAMetaResource
@@ -1963,8 +1996,9 @@ func NewDescribeAssetDetailDataExportResultRequest() (request *DescribeAssetDeta
 func NewDescribeAssetDetailDataExportResultResponse() (response *DescribeAssetDetailDataExportResultResponse) {
     response = &DescribeAssetDetailDataExportResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetDetailDataExportResult
@@ -2011,8 +2045,9 @@ func NewDescribeAssetOverviewRequest() (request *DescribeAssetOverviewRequest) {
 func NewDescribeAssetOverviewResponse() (response *DescribeAssetOverviewResponse) {
     response = &DescribeAssetOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAssetOverview
@@ -2059,8 +2094,9 @@ func NewDescribeBindDBListRequest() (request *DescribeBindDBListRequest) {
 func NewDescribeBindDBListResponse() (response *DescribeBindDBListResponse) {
     response = &DescribeBindDBListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBindDBList
@@ -2107,8 +2143,9 @@ func NewDescribeCOSAssetSensitiveDistributionRequest() (request *DescribeCOSAsse
 func NewDescribeCOSAssetSensitiveDistributionResponse() (response *DescribeCOSAssetSensitiveDistributionResponse) {
     response = &DescribeCOSAssetSensitiveDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCOSAssetSensitiveDistribution
@@ -2155,8 +2192,9 @@ func NewDescribeClassificationInfoRequest() (request *DescribeClassificationInfo
 func NewDescribeClassificationInfoResponse() (response *DescribeClassificationInfoResponse) {
     response = &DescribeClassificationInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClassificationInfo
@@ -2203,8 +2241,9 @@ func NewDescribeClassificationRuleCountRequest() (request *DescribeClassificatio
 func NewDescribeClassificationRuleCountResponse() (response *DescribeClassificationRuleCountResponse) {
     response = &DescribeClassificationRuleCountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClassificationRuleCount
@@ -2251,8 +2290,9 @@ func NewDescribeDSPAAssessmentHighRiskTop10OverviewRequest() (request *DescribeD
 func NewDescribeDSPAAssessmentHighRiskTop10OverviewResponse() (response *DescribeDSPAAssessmentHighRiskTop10OverviewResponse) {
     response = &DescribeDSPAAssessmentHighRiskTop10OverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentHighRiskTop10Overview
@@ -2299,8 +2339,9 @@ func NewDescribeDSPAAssessmentLatestRiskDetailInfoRequest() (request *DescribeDS
 func NewDescribeDSPAAssessmentLatestRiskDetailInfoResponse() (response *DescribeDSPAAssessmentLatestRiskDetailInfoResponse) {
     response = &DescribeDSPAAssessmentLatestRiskDetailInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentLatestRiskDetailInfo
@@ -2347,8 +2388,9 @@ func NewDescribeDSPAAssessmentLatestRiskListRequest() (request *DescribeDSPAAsse
 func NewDescribeDSPAAssessmentLatestRiskListResponse() (response *DescribeDSPAAssessmentLatestRiskListResponse) {
     response = &DescribeDSPAAssessmentLatestRiskListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentLatestRiskList
@@ -2395,8 +2437,9 @@ func NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest() (request *Descr
 func NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse() (response *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse) {
     response = &DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentNewDiscoveredRiskOverview
@@ -2443,8 +2486,9 @@ func NewDescribeDSPAAssessmentPendingRiskOverviewRequest() (request *DescribeDSP
 func NewDescribeDSPAAssessmentPendingRiskOverviewResponse() (response *DescribeDSPAAssessmentPendingRiskOverviewResponse) {
     response = &DescribeDSPAAssessmentPendingRiskOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentPendingRiskOverview
@@ -2491,8 +2535,9 @@ func NewDescribeDSPAAssessmentProcessingRiskOverviewRequest() (request *Describe
 func NewDescribeDSPAAssessmentProcessingRiskOverviewResponse() (response *DescribeDSPAAssessmentProcessingRiskOverviewResponse) {
     response = &DescribeDSPAAssessmentProcessingRiskOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentProcessingRiskOverview
@@ -2539,8 +2584,9 @@ func NewDescribeDSPAAssessmentRiskAmountOverviewRequest() (request *DescribeDSPA
 func NewDescribeDSPAAssessmentRiskAmountOverviewResponse() (response *DescribeDSPAAssessmentRiskAmountOverviewResponse) {
     response = &DescribeDSPAAssessmentRiskAmountOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskAmountOverview
@@ -2587,8 +2633,9 @@ func NewDescribeDSPAAssessmentRiskDatasourceTop5Request() (request *DescribeDSPA
 func NewDescribeDSPAAssessmentRiskDatasourceTop5Response() (response *DescribeDSPAAssessmentRiskDatasourceTop5Response) {
     response = &DescribeDSPAAssessmentRiskDatasourceTop5Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskDatasourceTop5
@@ -2635,8 +2682,9 @@ func NewDescribeDSPAAssessmentRiskDealedOverviewRequest() (request *DescribeDSPA
 func NewDescribeDSPAAssessmentRiskDealedOverviewResponse() (response *DescribeDSPAAssessmentRiskDealedOverviewResponse) {
     response = &DescribeDSPAAssessmentRiskDealedOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskDealedOverview
@@ -2683,8 +2731,9 @@ func NewDescribeDSPAAssessmentRiskDealedTrendRequest() (request *DescribeDSPAAss
 func NewDescribeDSPAAssessmentRiskDealedTrendResponse() (response *DescribeDSPAAssessmentRiskDealedTrendResponse) {
     response = &DescribeDSPAAssessmentRiskDealedTrendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskDealedTrend
@@ -2731,8 +2780,9 @@ func NewDescribeDSPAAssessmentRiskDistributionOverviewRequest() (request *Descri
 func NewDescribeDSPAAssessmentRiskDistributionOverviewResponse() (response *DescribeDSPAAssessmentRiskDistributionOverviewResponse) {
     response = &DescribeDSPAAssessmentRiskDistributionOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskDistributionOverview
@@ -2779,8 +2829,9 @@ func NewDescribeDSPAAssessmentRiskItemTop5Request() (request *DescribeDSPAAssess
 func NewDescribeDSPAAssessmentRiskItemTop5Response() (response *DescribeDSPAAssessmentRiskItemTop5Response) {
     response = &DescribeDSPAAssessmentRiskItemTop5Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskItemTop5
@@ -2827,8 +2878,9 @@ func NewDescribeDSPAAssessmentRiskLevelDetailRequest() (request *DescribeDSPAAss
 func NewDescribeDSPAAssessmentRiskLevelDetailResponse() (response *DescribeDSPAAssessmentRiskLevelDetailResponse) {
     response = &DescribeDSPAAssessmentRiskLevelDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskLevelDetail
@@ -2875,8 +2927,9 @@ func NewDescribeDSPAAssessmentRiskLevelListRequest() (request *DescribeDSPAAsses
 func NewDescribeDSPAAssessmentRiskLevelListResponse() (response *DescribeDSPAAssessmentRiskLevelListResponse) {
     response = &DescribeDSPAAssessmentRiskLevelListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskLevelList
@@ -2923,8 +2976,9 @@ func NewDescribeDSPAAssessmentRiskLevelTrendRequest() (request *DescribeDSPAAsse
 func NewDescribeDSPAAssessmentRiskLevelTrendResponse() (response *DescribeDSPAAssessmentRiskLevelTrendResponse) {
     response = &DescribeDSPAAssessmentRiskLevelTrendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskLevelTrend
@@ -2971,8 +3025,9 @@ func NewDescribeDSPAAssessmentRiskOverviewRequest() (request *DescribeDSPAAssess
 func NewDescribeDSPAAssessmentRiskOverviewResponse() (response *DescribeDSPAAssessmentRiskOverviewResponse) {
     response = &DescribeDSPAAssessmentRiskOverviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskOverview
@@ -3019,8 +3074,9 @@ func NewDescribeDSPAAssessmentRiskProcessHistoryRequest() (request *DescribeDSPA
 func NewDescribeDSPAAssessmentRiskProcessHistoryResponse() (response *DescribeDSPAAssessmentRiskProcessHistoryResponse) {
     response = &DescribeDSPAAssessmentRiskProcessHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskProcessHistory
@@ -3067,8 +3123,9 @@ func NewDescribeDSPAAssessmentRiskSideDistributedRequest() (request *DescribeDSP
 func NewDescribeDSPAAssessmentRiskSideDistributedResponse() (response *DescribeDSPAAssessmentRiskSideDistributedResponse) {
     response = &DescribeDSPAAssessmentRiskSideDistributedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskSideDistributed
@@ -3129,8 +3186,9 @@ func NewDescribeDSPAAssessmentRiskSideListRequest() (request *DescribeDSPAAssess
 func NewDescribeDSPAAssessmentRiskSideListResponse() (response *DescribeDSPAAssessmentRiskSideListResponse) {
     response = &DescribeDSPAAssessmentRiskSideListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskSideList
@@ -3191,8 +3249,9 @@ func NewDescribeDSPAAssessmentRiskTemplateDetailRequest() (request *DescribeDSPA
 func NewDescribeDSPAAssessmentRiskTemplateDetailResponse() (response *DescribeDSPAAssessmentRiskTemplateDetailResponse) {
     response = &DescribeDSPAAssessmentRiskTemplateDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskTemplateDetail
@@ -3253,8 +3312,9 @@ func NewDescribeDSPAAssessmentRiskTemplateVulnerableListRequest() (request *Desc
 func NewDescribeDSPAAssessmentRiskTemplateVulnerableListResponse() (response *DescribeDSPAAssessmentRiskTemplateVulnerableListResponse) {
     response = &DescribeDSPAAssessmentRiskTemplateVulnerableListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRiskTemplateVulnerableList
@@ -3315,8 +3375,9 @@ func NewDescribeDSPAAssessmentRisksRequest() (request *DescribeDSPAAssessmentRis
 func NewDescribeDSPAAssessmentRisksResponse() (response *DescribeDSPAAssessmentRisksResponse) {
     response = &DescribeDSPAAssessmentRisksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentRisks
@@ -3377,8 +3438,9 @@ func NewDescribeDSPAAssessmentTasksRequest() (request *DescribeDSPAAssessmentTas
 func NewDescribeDSPAAssessmentTasksResponse() (response *DescribeDSPAAssessmentTasksResponse) {
     response = &DescribeDSPAAssessmentTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentTasks
@@ -3439,8 +3501,9 @@ func NewDescribeDSPAAssessmentTemplateControlItemsRequest() (request *DescribeDS
 func NewDescribeDSPAAssessmentTemplateControlItemsResponse() (response *DescribeDSPAAssessmentTemplateControlItemsResponse) {
     response = &DescribeDSPAAssessmentTemplateControlItemsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentTemplateControlItems
@@ -3501,8 +3564,9 @@ func NewDescribeDSPAAssessmentTemplatesRequest() (request *DescribeDSPAAssessmen
 func NewDescribeDSPAAssessmentTemplatesResponse() (response *DescribeDSPAAssessmentTemplatesResponse) {
     response = &DescribeDSPAAssessmentTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAAssessmentTemplates
@@ -3563,8 +3627,9 @@ func NewDescribeDSPACOSDataAssetBucketsRequest() (request *DescribeDSPACOSDataAs
 func NewDescribeDSPACOSDataAssetBucketsResponse() (response *DescribeDSPACOSDataAssetBucketsResponse) {
     response = &DescribeDSPACOSDataAssetBucketsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDataAssetBuckets
@@ -3621,8 +3686,9 @@ func NewDescribeDSPACOSDataAssetByComplianceIdRequest() (request *DescribeDSPACO
 func NewDescribeDSPACOSDataAssetByComplianceIdResponse() (response *DescribeDSPACOSDataAssetByComplianceIdResponse) {
     response = &DescribeDSPACOSDataAssetByComplianceIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDataAssetByComplianceId
@@ -3679,8 +3745,9 @@ func NewDescribeDSPACOSDataAssetDetailRequest() (request *DescribeDSPACOSDataAss
 func NewDescribeDSPACOSDataAssetDetailResponse() (response *DescribeDSPACOSDataAssetDetailResponse) {
     response = &DescribeDSPACOSDataAssetDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDataAssetDetail
@@ -3737,8 +3804,9 @@ func NewDescribeDSPACOSDiscoveryTaskDetailRequest() (request *DescribeDSPACOSDis
 func NewDescribeDSPACOSDiscoveryTaskDetailResponse() (response *DescribeDSPACOSDiscoveryTaskDetailResponse) {
     response = &DescribeDSPACOSDiscoveryTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDiscoveryTaskDetail
@@ -3797,8 +3865,9 @@ func NewDescribeDSPACOSDiscoveryTaskFilesRequest() (request *DescribeDSPACOSDisc
 func NewDescribeDSPACOSDiscoveryTaskFilesResponse() (response *DescribeDSPACOSDiscoveryTaskFilesResponse) {
     response = &DescribeDSPACOSDiscoveryTaskFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDiscoveryTaskFiles
@@ -3855,8 +3924,9 @@ func NewDescribeDSPACOSDiscoveryTaskResultRequest() (request *DescribeDSPACOSDis
 func NewDescribeDSPACOSDiscoveryTaskResultResponse() (response *DescribeDSPACOSDiscoveryTaskResultResponse) {
     response = &DescribeDSPACOSDiscoveryTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDiscoveryTaskResult
@@ -3925,8 +3995,9 @@ func NewDescribeDSPACOSDiscoveryTasksRequest() (request *DescribeDSPACOSDiscover
 func NewDescribeDSPACOSDiscoveryTasksResponse() (response *DescribeDSPACOSDiscoveryTasksResponse) {
     response = &DescribeDSPACOSDiscoveryTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSDiscoveryTasks
@@ -3985,8 +4056,9 @@ func NewDescribeDSPACOSTaskResultDetailRequest() (request *DescribeDSPACOSTaskRe
 func NewDescribeDSPACOSTaskResultDetailResponse() (response *DescribeDSPACOSTaskResultDetailResponse) {
     response = &DescribeDSPACOSTaskResultDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACOSTaskResultDetail
@@ -4051,8 +4123,9 @@ func NewDescribeDSPACategoriesRequest() (request *DescribeDSPACategoriesRequest)
 func NewDescribeDSPACategoriesResponse() (response *DescribeDSPACategoriesResponse) {
     response = &DescribeDSPACategoriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACategories
@@ -4111,8 +4184,9 @@ func NewDescribeDSPACategoryRuleStatisticRequest() (request *DescribeDSPACategor
 func NewDescribeDSPACategoryRuleStatisticResponse() (response *DescribeDSPACategoryRuleStatisticResponse) {
     response = &DescribeDSPACategoryRuleStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACategoryRuleStatistic
@@ -4159,8 +4233,9 @@ func NewDescribeDSPACategoryRulesRequest() (request *DescribeDSPACategoryRulesRe
 func NewDescribeDSPACategoryRulesResponse() (response *DescribeDSPACategoryRulesResponse) {
     response = &DescribeDSPACategoryRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACategoryRules
@@ -4207,8 +4282,9 @@ func NewDescribeDSPACategoryTreeRequest() (request *DescribeDSPACategoryTreeRequ
 func NewDescribeDSPACategoryTreeResponse() (response *DescribeDSPACategoryTreeResponse) {
     response = &DescribeDSPACategoryTreeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACategoryTree
@@ -4255,8 +4331,9 @@ func NewDescribeDSPACategoryTreeWithRulesRequest() (request *DescribeDSPACategor
 func NewDescribeDSPACategoryTreeWithRulesResponse() (response *DescribeDSPACategoryTreeWithRulesResponse) {
     response = &DescribeDSPACategoryTreeWithRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPACategoryTreeWithRules
@@ -4303,8 +4380,9 @@ func NewDescribeDSPAComplianceGroupDetailRequest() (request *DescribeDSPAComplia
 func NewDescribeDSPAComplianceGroupDetailResponse() (response *DescribeDSPAComplianceGroupDetailResponse) {
     response = &DescribeDSPAComplianceGroupDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAComplianceGroupDetail
@@ -4351,8 +4429,9 @@ func NewDescribeDSPAComplianceGroupsRequest() (request *DescribeDSPAComplianceGr
 func NewDescribeDSPAComplianceGroupsResponse() (response *DescribeDSPAComplianceGroupsResponse) {
     response = &DescribeDSPAComplianceGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAComplianceGroups
@@ -4411,8 +4490,9 @@ func NewDescribeDSPAComplianceUpdateNotificationRequest() (request *DescribeDSPA
 func NewDescribeDSPAComplianceUpdateNotificationResponse() (response *DescribeDSPAComplianceUpdateNotificationResponse) {
     response = &DescribeDSPAComplianceUpdateNotificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAComplianceUpdateNotification
@@ -4459,8 +4539,9 @@ func NewDescribeDSPADataSourceDbInfoRequest() (request *DescribeDSPADataSourceDb
 func NewDescribeDSPADataSourceDbInfoResponse() (response *DescribeDSPADataSourceDbInfoResponse) {
     response = &DescribeDSPADataSourceDbInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADataSourceDbInfo
@@ -4519,8 +4600,9 @@ func NewDescribeDSPADiscoveryRulesRequest() (request *DescribeDSPADiscoveryRules
 func NewDescribeDSPADiscoveryRulesResponse() (response *DescribeDSPADiscoveryRulesResponse) {
     response = &DescribeDSPADiscoveryRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryRules
@@ -4583,8 +4665,9 @@ func NewDescribeDSPADiscoveryServiceStatusRequest() (request *DescribeDSPADiscov
 func NewDescribeDSPADiscoveryServiceStatusResponse() (response *DescribeDSPADiscoveryServiceStatusResponse) {
     response = &DescribeDSPADiscoveryServiceStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryServiceStatus
@@ -4639,8 +4722,9 @@ func NewDescribeDSPADiscoveryTaskDetailRequest() (request *DescribeDSPADiscovery
 func NewDescribeDSPADiscoveryTaskDetailResponse() (response *DescribeDSPADiscoveryTaskDetailResponse) {
     response = &DescribeDSPADiscoveryTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryTaskDetail
@@ -4699,8 +4783,9 @@ func NewDescribeDSPADiscoveryTaskResultRequest() (request *DescribeDSPADiscovery
 func NewDescribeDSPADiscoveryTaskResultResponse() (response *DescribeDSPADiscoveryTaskResultResponse) {
     response = &DescribeDSPADiscoveryTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryTaskResult
@@ -4769,8 +4854,9 @@ func NewDescribeDSPADiscoveryTaskResultDetailRequest() (request *DescribeDSPADis
 func NewDescribeDSPADiscoveryTaskResultDetailResponse() (response *DescribeDSPADiscoveryTaskResultDetailResponse) {
     response = &DescribeDSPADiscoveryTaskResultDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryTaskResultDetail
@@ -4835,8 +4921,9 @@ func NewDescribeDSPADiscoveryTaskTablesRequest() (request *DescribeDSPADiscovery
 func NewDescribeDSPADiscoveryTaskTablesResponse() (response *DescribeDSPADiscoveryTaskTablesResponse) {
     response = &DescribeDSPADiscoveryTaskTablesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPADiscoveryTaskTables
@@ -4895,8 +4982,9 @@ func NewDescribeDSPAESDataAssetByComplianceIdRequest() (request *DescribeDSPAESD
 func NewDescribeDSPAESDataAssetByComplianceIdResponse() (response *DescribeDSPAESDataAssetByComplianceIdResponse) {
     response = &DescribeDSPAESDataAssetByComplianceIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAESDataAssetByComplianceId
@@ -4955,8 +5043,9 @@ func NewDescribeDSPAESDataAssetDetailRequest() (request *DescribeDSPAESDataAsset
 func NewDescribeDSPAESDataAssetDetailResponse() (response *DescribeDSPAESDataAssetDetailResponse) {
     response = &DescribeDSPAESDataAssetDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAESDataAssetDetail
@@ -5015,8 +5104,9 @@ func NewDescribeDSPAESDataSampleRequest() (request *DescribeDSPAESDataSampleRequ
 func NewDescribeDSPAESDataSampleResponse() (response *DescribeDSPAESDataSampleResponse) {
     response = &DescribeDSPAESDataSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAESDataSample
@@ -5075,8 +5165,9 @@ func NewDescribeDSPAESDiscoveryTaskResultDetailRequest() (request *DescribeDSPAE
 func NewDescribeDSPAESDiscoveryTaskResultDetailResponse() (response *DescribeDSPAESDiscoveryTaskResultDetailResponse) {
     response = &DescribeDSPAESDiscoveryTaskResultDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPAESDiscoveryTaskResultDetail
@@ -5141,8 +5232,9 @@ func NewDescribeDSPALevelDetailRequest() (request *DescribeDSPALevelDetailReques
 func NewDescribeDSPALevelDetailResponse() (response *DescribeDSPALevelDetailResponse) {
     response = &DescribeDSPALevelDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPALevelDetail
@@ -5199,8 +5291,9 @@ func NewDescribeDSPALevelGroupsRequest() (request *DescribeDSPALevelGroupsReques
 func NewDescribeDSPALevelGroupsResponse() (response *DescribeDSPALevelGroupsResponse) {
     response = &DescribeDSPALevelGroupsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPALevelGroups
@@ -5257,8 +5350,9 @@ func NewDescribeDSPARDBDataAssetByComplianceIdRequest() (request *DescribeDSPARD
 func NewDescribeDSPARDBDataAssetByComplianceIdResponse() (response *DescribeDSPARDBDataAssetByComplianceIdResponse) {
     response = &DescribeDSPARDBDataAssetByComplianceIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPARDBDataAssetByComplianceId
@@ -5315,8 +5409,9 @@ func NewDescribeDSPARDBDataAssetDetailRequest() (request *DescribeDSPARDBDataAss
 func NewDescribeDSPARDBDataAssetDetailResponse() (response *DescribeDSPARDBDataAssetDetailResponse) {
     response = &DescribeDSPARDBDataAssetDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPARDBDataAssetDetail
@@ -5373,8 +5468,9 @@ func NewDescribeDSPASupportedMetasRequest() (request *DescribeDSPASupportedMetas
 func NewDescribeDSPASupportedMetasResponse() (response *DescribeDSPASupportedMetasResponse) {
     response = &DescribeDSPASupportedMetasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPASupportedMetas
@@ -5425,8 +5521,9 @@ func NewDescribeDSPATaskResultDataSampleRequest() (request *DescribeDSPATaskResu
 func NewDescribeDSPATaskResultDataSampleResponse() (response *DescribeDSPATaskResultDataSampleResponse) {
     response = &DescribeDSPATaskResultDataSampleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDSPATaskResultDataSample
@@ -5485,8 +5582,9 @@ func NewDescribeESAssetSensitiveDistributionRequest() (request *DescribeESAssetS
 func NewDescribeESAssetSensitiveDistributionResponse() (response *DescribeESAssetSensitiveDistributionResponse) {
     response = &DescribeESAssetSensitiveDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeESAssetSensitiveDistribution
@@ -5545,8 +5643,9 @@ func NewDescribeExportTaskResultRequest() (request *DescribeExportTaskResultRequ
 func NewDescribeExportTaskResultResponse() (response *DescribeExportTaskResultResponse) {
     response = &DescribeExportTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExportTaskResult
@@ -5605,8 +5704,9 @@ func NewDescribeLeafClassificationRequest() (request *DescribeLeafClassification
 func NewDescribeLeafClassificationResponse() (response *DescribeLeafClassificationResponse) {
     response = &DescribeLeafClassificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLeafClassification
@@ -5653,8 +5753,9 @@ func NewDescribeMongoAssetSensitiveDistributionRequest() (request *DescribeMongo
 func NewDescribeMongoAssetSensitiveDistributionResponse() (response *DescribeMongoAssetSensitiveDistributionResponse) {
     response = &DescribeMongoAssetSensitiveDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMongoAssetSensitiveDistribution
@@ -5701,8 +5802,9 @@ func NewDescribeRDBAssetSensitiveDistributionRequest() (request *DescribeRDBAsse
 func NewDescribeRDBAssetSensitiveDistributionResponse() (response *DescribeRDBAssetSensitiveDistributionResponse) {
     response = &DescribeRDBAssetSensitiveDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRDBAssetSensitiveDistribution
@@ -5749,8 +5851,9 @@ func NewDescribeReportTaskDownloadUrlRequest() (request *DescribeReportTaskDownl
 func NewDescribeReportTaskDownloadUrlResponse() (response *DescribeReportTaskDownloadUrlResponse) {
     response = &DescribeReportTaskDownloadUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReportTaskDownloadUrl
@@ -5797,8 +5900,9 @@ func NewDescribeReportTasksRequest() (request *DescribeReportTasksRequest) {
 func NewDescribeReportTasksResponse() (response *DescribeReportTasksResponse) {
     response = &DescribeReportTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeReportTasks
@@ -5845,8 +5949,9 @@ func NewDescribeRuleDetailRequest() (request *DescribeRuleDetailRequest) {
 func NewDescribeRuleDetailResponse() (response *DescribeRuleDetailResponse) {
     response = &DescribeRuleDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuleDetail
@@ -5893,8 +5998,9 @@ func NewDescribeRuleListRequest() (request *DescribeRuleListRequest) {
 func NewDescribeRuleListResponse() (response *DescribeRuleListResponse) {
     response = &DescribeRuleListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRuleList
@@ -5945,8 +6051,9 @@ func NewDescribeSensitiveCOSDataDistributionRequest() (request *DescribeSensitiv
 func NewDescribeSensitiveCOSDataDistributionResponse() (response *DescribeSensitiveCOSDataDistributionResponse) {
     response = &DescribeSensitiveCOSDataDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSensitiveCOSDataDistribution
@@ -5997,8 +6104,9 @@ func NewDescribeSensitiveRDBDataDistributionRequest() (request *DescribeSensitiv
 func NewDescribeSensitiveRDBDataDistributionResponse() (response *DescribeSensitiveRDBDataDistributionResponse) {
     response = &DescribeSensitiveRDBDataDistributionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSensitiveRDBDataDistribution
@@ -6049,8 +6157,9 @@ func NewDisableDSPAMetaResourceAuthRequest() (request *DisableDSPAMetaResourceAu
 func NewDisableDSPAMetaResourceAuthResponse() (response *DisableDSPAMetaResourceAuthResponse) {
     response = &DisableDSPAMetaResourceAuthResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DisableDSPAMetaResourceAuth
@@ -6099,8 +6208,9 @@ func NewEnableDSPADiscoveryRuleRequest() (request *EnableDSPADiscoveryRuleReques
 func NewEnableDSPADiscoveryRuleResponse() (response *EnableDSPADiscoveryRuleResponse) {
     response = &EnableDSPADiscoveryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableDSPADiscoveryRule
@@ -6171,8 +6281,9 @@ func NewEnableTrialVersionRequest() (request *EnableTrialVersionRequest) {
 func NewEnableTrialVersionResponse() (response *EnableTrialVersionResponse) {
     response = &EnableTrialVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableTrialVersion
@@ -6225,8 +6336,9 @@ func NewExportAssetDetailDataRequest() (request *ExportAssetDetailDataRequest) {
 func NewExportAssetDetailDataResponse() (response *ExportAssetDetailDataResponse) {
     response = &ExportAssetDetailDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ExportAssetDetailData
@@ -6273,8 +6385,9 @@ func NewGetResourceConnectionStatusRequest() (request *GetResourceConnectionStat
 func NewGetResourceConnectionStatusResponse() (response *GetResourceConnectionStatusResponse) {
     response = &GetResourceConnectionStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetResourceConnectionStatus
@@ -6323,8 +6436,9 @@ func NewGetTrialVersionRequest() (request *GetTrialVersionRequest) {
 func NewGetTrialVersionResponse() (response *GetTrialVersionResponse) {
     response = &GetTrialVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTrialVersion
@@ -6377,8 +6491,9 @@ func NewGetUserQuotaInfoRequest() (request *GetUserQuotaInfoRequest) {
 func NewGetUserQuotaInfoResponse() (response *GetUserQuotaInfoResponse) {
     response = &GetUserQuotaInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUserQuotaInfo
@@ -6433,8 +6548,9 @@ func NewListDSPAClustersRequest() (request *ListDSPAClustersRequest) {
 func NewListDSPAClustersResponse() (response *ListDSPAClustersResponse) {
     response = &ListDSPAClustersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListDSPAClusters
@@ -6489,8 +6605,9 @@ func NewListDSPACosMetaResourcesRequest() (request *ListDSPACosMetaResourcesRequ
 func NewListDSPACosMetaResourcesResponse() (response *ListDSPACosMetaResourcesResponse) {
     response = &ListDSPACosMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListDSPACosMetaResources
@@ -6551,8 +6668,9 @@ func NewListDSPAMetaResourcesRequest() (request *ListDSPAMetaResourcesRequest) {
 func NewListDSPAMetaResourcesResponse() (response *ListDSPAMetaResourcesResponse) {
     response = &ListDSPAMetaResourcesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListDSPAMetaResources
@@ -6613,8 +6731,9 @@ func NewModifyClassificationRuleRequest() (request *ModifyClassificationRuleRequ
 func NewModifyClassificationRuleResponse() (response *ModifyClassificationRuleResponse) {
     response = &ModifyClassificationRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClassificationRule
@@ -6661,8 +6780,9 @@ func NewModifyClassificationRuleStateRequest() (request *ModifyClassificationRul
 func NewModifyClassificationRuleStateResponse() (response *ModifyClassificationRuleStateResponse) {
     response = &ModifyClassificationRuleStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClassificationRuleState
@@ -6709,8 +6829,9 @@ func NewModifyDSPAAssessmentRiskRequest() (request *ModifyDSPAAssessmentRiskRequ
 func NewModifyDSPAAssessmentRiskResponse() (response *ModifyDSPAAssessmentRiskResponse) {
     response = &ModifyDSPAAssessmentRiskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAAssessmentRisk
@@ -6771,8 +6892,9 @@ func NewModifyDSPAAssessmentRiskLatestRequest() (request *ModifyDSPAAssessmentRi
 func NewModifyDSPAAssessmentRiskLatestResponse() (response *ModifyDSPAAssessmentRiskLatestResponse) {
     response = &ModifyDSPAAssessmentRiskLatestResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAAssessmentRiskLatest
@@ -6819,8 +6941,9 @@ func NewModifyDSPAAssessmentRiskLevelRequest() (request *ModifyDSPAAssessmentRis
 func NewModifyDSPAAssessmentRiskLevelResponse() (response *ModifyDSPAAssessmentRiskLevelResponse) {
     response = &ModifyDSPAAssessmentRiskLevelResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAAssessmentRiskLevel
@@ -6867,8 +6990,9 @@ func NewModifyDSPAAssessmentRiskTemplateRequest() (request *ModifyDSPAAssessment
 func NewModifyDSPAAssessmentRiskTemplateResponse() (response *ModifyDSPAAssessmentRiskTemplateResponse) {
     response = &ModifyDSPAAssessmentRiskTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAAssessmentRiskTemplate
@@ -6915,8 +7039,9 @@ func NewModifyDSPACOSDiscoveryTaskRequest() (request *ModifyDSPACOSDiscoveryTask
 func NewModifyDSPACOSDiscoveryTaskResponse() (response *ModifyDSPACOSDiscoveryTaskResponse) {
     response = &ModifyDSPACOSDiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPACOSDiscoveryTask
@@ -6997,8 +7122,9 @@ func NewModifyDSPACOSTaskResultRequest() (request *ModifyDSPACOSTaskResultReques
 func NewModifyDSPACOSTaskResultResponse() (response *ModifyDSPACOSTaskResultResponse) {
     response = &ModifyDSPACOSTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPACOSTaskResult
@@ -7057,8 +7183,9 @@ func NewModifyDSPACategoryRequest() (request *ModifyDSPACategoryRequest) {
 func NewModifyDSPACategoryResponse() (response *ModifyDSPACategoryResponse) {
     response = &ModifyDSPACategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPACategory
@@ -7121,8 +7248,9 @@ func NewModifyDSPACategoryRelationRequest() (request *ModifyDSPACategoryRelation
 func NewModifyDSPACategoryRelationResponse() (response *ModifyDSPACategoryRelationResponse) {
     response = &ModifyDSPACategoryRelationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPACategoryRelation
@@ -7175,8 +7303,9 @@ func NewModifyDSPAClusterInfoRequest() (request *ModifyDSPAClusterInfoRequest) {
 func NewModifyDSPAClusterInfoResponse() (response *ModifyDSPAClusterInfoResponse) {
     response = &ModifyDSPAClusterInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAClusterInfo
@@ -7225,8 +7354,9 @@ func NewModifyDSPAComplianceGroupRequest() (request *ModifyDSPAComplianceGroupRe
 func NewModifyDSPAComplianceGroupResponse() (response *ModifyDSPAComplianceGroupResponse) {
     response = &ModifyDSPAComplianceGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAComplianceGroup
@@ -7289,8 +7419,9 @@ func NewModifyDSPADiscoveryRuleRequest() (request *ModifyDSPADiscoveryRuleReques
 func NewModifyDSPADiscoveryRuleResponse() (response *ModifyDSPADiscoveryRuleResponse) {
     response = &ModifyDSPADiscoveryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPADiscoveryRule
@@ -7357,8 +7488,9 @@ func NewModifyDSPADiscoveryTaskRequest() (request *ModifyDSPADiscoveryTaskReques
 func NewModifyDSPADiscoveryTaskResponse() (response *ModifyDSPADiscoveryTaskResponse) {
     response = &ModifyDSPADiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPADiscoveryTask
@@ -7439,8 +7571,9 @@ func NewModifyDSPAESTaskResultRequest() (request *ModifyDSPAESTaskResultRequest)
 func NewModifyDSPAESTaskResultResponse() (response *ModifyDSPAESTaskResultResponse) {
     response = &ModifyDSPAESTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPAESTaskResult
@@ -7499,8 +7632,9 @@ func NewModifyDSPATaskResultRequest() (request *ModifyDSPATaskResultRequest) {
 func NewModifyDSPATaskResultResponse() (response *ModifyDSPATaskResultResponse) {
     response = &ModifyDSPATaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDSPATaskResult
@@ -7559,8 +7693,9 @@ func NewModifyLevelInfoRequest() (request *ModifyLevelInfoRequest) {
 func NewModifyLevelInfoResponse() (response *ModifyLevelInfoResponse) {
     response = &ModifyLevelInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLevelInfo
@@ -7607,8 +7742,9 @@ func NewModifyLevelNameRequest() (request *ModifyLevelNameRequest) {
 func NewModifyLevelNameResponse() (response *ModifyLevelNameResponse) {
     response = &ModifyLevelNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLevelName
@@ -7655,8 +7791,9 @@ func NewModifyLevelStateRequest() (request *ModifyLevelStateRequest) {
 func NewModifyLevelStateResponse() (response *ModifyLevelStateResponse) {
     response = &ModifyLevelStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLevelState
@@ -7703,8 +7840,9 @@ func NewModifyMergeClassificationRequest() (request *ModifyMergeClassificationRe
 func NewModifyMergeClassificationResponse() (response *ModifyMergeClassificationResponse) {
     response = &ModifyMergeClassificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMergeClassification
@@ -7751,8 +7889,9 @@ func NewModifyNewClassificationRequest() (request *ModifyNewClassificationReques
 func NewModifyNewClassificationResponse() (response *ModifyNewClassificationResponse) {
     response = &ModifyNewClassificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyNewClassification
@@ -7799,8 +7938,9 @@ func NewModifyStandardInfoRequest() (request *ModifyStandardInfoRequest) {
 func NewModifyStandardInfoResponse() (response *ModifyStandardInfoResponse) {
     response = &ModifyStandardInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyStandardInfo
@@ -7847,8 +7987,9 @@ func NewQueryDSPAMetaResourceDbListRequest() (request *QueryDSPAMetaResourceDbLi
 func NewQueryDSPAMetaResourceDbListResponse() (response *QueryDSPAMetaResourceDbListResponse) {
     response = &QueryDSPAMetaResourceDbListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryDSPAMetaResourceDbList
@@ -7903,8 +8044,9 @@ func NewQueryResourceDbBindStatusRequest() (request *QueryResourceDbBindStatusRe
 func NewQueryResourceDbBindStatusResponse() (response *QueryResourceDbBindStatusResponse) {
     response = &QueryResourceDbBindStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryResourceDbBindStatus
@@ -7959,8 +8101,9 @@ func NewRestartDSPAAssessmentTaskRequest() (request *RestartDSPAAssessmentTaskRe
 func NewRestartDSPAAssessmentTaskResponse() (response *RestartDSPAAssessmentTaskResponse) {
     response = &RestartDSPAAssessmentTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartDSPAAssessmentTask
@@ -8021,8 +8164,9 @@ func NewStartDSPADiscoveryTaskRequest() (request *StartDSPADiscoveryTaskRequest)
 func NewStartDSPADiscoveryTaskResponse() (response *StartDSPADiscoveryTaskResponse) {
     response = &StartDSPADiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartDSPADiscoveryTask
@@ -8101,8 +8245,9 @@ func NewStopDSPADiscoveryTaskRequest() (request *StopDSPADiscoveryTaskRequest) {
 func NewStopDSPADiscoveryTaskResponse() (response *StopDSPADiscoveryTaskResponse) {
     response = &StopDSPADiscoveryTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopDSPADiscoveryTask
@@ -8167,8 +8312,9 @@ func NewUpdateDSPASelfBuildResourceRequest() (request *UpdateDSPASelfBuildResour
 func NewUpdateDSPASelfBuildResourceResponse() (response *UpdateDSPASelfBuildResourceResponse) {
     response = &UpdateDSPASelfBuildResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDSPASelfBuildResource
@@ -8233,8 +8379,9 @@ func NewVerifyDSPACOSRuleRequest() (request *VerifyDSPACOSRuleRequest) {
 func NewVerifyDSPACOSRuleResponse() (response *VerifyDSPACOSRuleResponse) {
     response = &VerifyDSPACOSRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyDSPACOSRule
@@ -8293,8 +8440,9 @@ func NewVerifyDSPADiscoveryRuleRequest() (request *VerifyDSPADiscoveryRuleReques
 func NewVerifyDSPADiscoveryRuleResponse() (response *VerifyDSPADiscoveryRuleResponse) {
     response = &VerifyDSPADiscoveryRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyDSPADiscoveryRule

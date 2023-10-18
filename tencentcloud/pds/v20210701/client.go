@@ -59,8 +59,9 @@ func NewDescribeNewUserAcquisitionRequest() (request *DescribeNewUserAcquisition
 func NewDescribeNewUserAcquisitionResponse() (response *DescribeNewUserAcquisitionResponse) {
     response = &DescribeNewUserAcquisitionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNewUserAcquisition
@@ -127,8 +128,9 @@ func NewDescribeStockEstimationRequest() (request *DescribeStockEstimationReques
 func NewDescribeStockEstimationResponse() (response *DescribeStockEstimationResponse) {
     response = &DescribeStockEstimationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStockEstimation

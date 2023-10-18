@@ -59,8 +59,9 @@ func NewDescribeCaptchaAppIdInfoRequest() (request *DescribeCaptchaAppIdInfoRequ
 func NewDescribeCaptchaAppIdInfoResponse() (response *DescribeCaptchaAppIdInfoResponse) {
     response = &DescribeCaptchaAppIdInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaAppIdInfo
@@ -113,8 +114,9 @@ func NewDescribeCaptchaDataRequest() (request *DescribeCaptchaDataRequest) {
 func NewDescribeCaptchaDataResponse() (response *DescribeCaptchaDataResponse) {
     response = &DescribeCaptchaDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaData
@@ -167,8 +169,9 @@ func NewDescribeCaptchaDataSumRequest() (request *DescribeCaptchaDataSumRequest)
 func NewDescribeCaptchaDataSumResponse() (response *DescribeCaptchaDataSumResponse) {
     response = &DescribeCaptchaDataSumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaDataSum
@@ -221,8 +224,9 @@ func NewDescribeCaptchaMiniDataRequest() (request *DescribeCaptchaMiniDataReques
 func NewDescribeCaptchaMiniDataResponse() (response *DescribeCaptchaMiniDataResponse) {
     response = &DescribeCaptchaMiniDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaMiniData
@@ -275,8 +279,9 @@ func NewDescribeCaptchaMiniDataSumRequest() (request *DescribeCaptchaMiniDataSum
 func NewDescribeCaptchaMiniDataSumResponse() (response *DescribeCaptchaMiniDataSumResponse) {
     response = &DescribeCaptchaMiniDataSumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaMiniDataSum
@@ -329,8 +334,9 @@ func NewDescribeCaptchaMiniOperDataRequest() (request *DescribeCaptchaMiniOperDa
 func NewDescribeCaptchaMiniOperDataResponse() (response *DescribeCaptchaMiniOperDataResponse) {
     response = &DescribeCaptchaMiniOperDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaMiniOperData
@@ -383,8 +389,9 @@ func NewDescribeCaptchaMiniResultRequest() (request *DescribeCaptchaMiniResultRe
 func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResultResponse) {
     response = &DescribeCaptchaMiniResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaMiniResult
@@ -437,8 +444,9 @@ func NewDescribeCaptchaMiniRiskResultRequest() (request *DescribeCaptchaMiniRisk
 func NewDescribeCaptchaMiniRiskResultResponse() (response *DescribeCaptchaMiniRiskResultResponse) {
     response = &DescribeCaptchaMiniRiskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaMiniRiskResult
@@ -491,8 +499,9 @@ func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataReques
 func NewDescribeCaptchaOperDataResponse() (response *DescribeCaptchaOperDataResponse) {
     response = &DescribeCaptchaOperDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaOperData
@@ -545,8 +554,9 @@ func NewDescribeCaptchaResultRequest() (request *DescribeCaptchaResultRequest) {
 func NewDescribeCaptchaResultResponse() (response *DescribeCaptchaResultResponse) {
     response = &DescribeCaptchaResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaResult
@@ -599,8 +609,9 @@ func NewDescribeCaptchaTicketDataRequest() (request *DescribeCaptchaTicketDataRe
 func NewDescribeCaptchaTicketDataResponse() (response *DescribeCaptchaTicketDataResponse) {
     response = &DescribeCaptchaTicketDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaTicketData
@@ -653,8 +664,9 @@ func NewDescribeCaptchaUserAllAppIdRequest() (request *DescribeCaptchaUserAllApp
 func NewDescribeCaptchaUserAllAppIdResponse() (response *DescribeCaptchaUserAllAppIdResponse) {
     response = &DescribeCaptchaUserAllAppIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCaptchaUserAllAppId
@@ -707,8 +719,9 @@ func NewGetRequestStatisticsRequest() (request *GetRequestStatisticsRequest) {
 func NewGetRequestStatisticsResponse() (response *GetRequestStatisticsResponse) {
     response = &GetRequestStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRequestStatistics
@@ -761,8 +774,9 @@ func NewGetTicketStatisticsRequest() (request *GetTicketStatisticsRequest) {
 func NewGetTicketStatisticsResponse() (response *GetTicketStatisticsResponse) {
     response = &GetTicketStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTicketStatistics
@@ -815,8 +829,9 @@ func NewGetTotalRequestStatisticsRequest() (request *GetTotalRequestStatisticsRe
 func NewGetTotalRequestStatisticsResponse() (response *GetTotalRequestStatisticsResponse) {
     response = &GetTotalRequestStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTotalRequestStatistics
@@ -869,8 +884,9 @@ func NewGetTotalTicketStatisticsRequest() (request *GetTotalTicketStatisticsRequ
 func NewGetTotalTicketStatisticsResponse() (response *GetTotalTicketStatisticsResponse) {
     response = &GetTotalTicketStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetTotalTicketStatistics
@@ -923,8 +939,9 @@ func NewUpdateCaptchaAppIdInfoRequest() (request *UpdateCaptchaAppIdInfoRequest)
 func NewUpdateCaptchaAppIdInfoResponse() (response *UpdateCaptchaAppIdInfoResponse) {
     response = &UpdateCaptchaAppIdInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCaptchaAppIdInfo

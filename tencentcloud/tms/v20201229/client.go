@@ -59,8 +59,9 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
 func NewTextModerationResponse() (response *TextModerationResponse) {
     response = &TextModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TextModeration

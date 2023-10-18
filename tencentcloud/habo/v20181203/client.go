@@ -59,8 +59,9 @@ func NewDescribeStatusRequest() (request *DescribeStatusRequest) {
 func NewDescribeStatusResponse() (response *DescribeStatusResponse) {
     response = &DescribeStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStatus
@@ -101,8 +102,9 @@ func NewStartAnalyseRequest() (request *StartAnalyseRequest) {
 func NewStartAnalyseResponse() (response *StartAnalyseResponse) {
     response = &StartAnalyseResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartAnalyse

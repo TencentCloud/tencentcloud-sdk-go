@@ -59,8 +59,9 @@ func NewBindEipAclsRequest() (request *BindEipAclsRequest) {
 func NewBindEipAclsResponse() (response *BindEipAclsResponse) {
     response = &BindEipAclsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindEipAcls
@@ -107,8 +108,9 @@ func NewBindHostedRequest() (request *BindHostedRequest) {
 func NewBindHostedResponse() (response *BindHostedResponse) {
     response = &BindHostedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindHosted
@@ -159,8 +161,9 @@ func NewBindRsRequest() (request *BindRsRequest) {
 func NewBindRsResponse() (response *BindRsResponse) {
     response = &BindRsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindRs
@@ -207,8 +210,9 @@ func NewBindVpcIpRequest() (request *BindVpcIpRequest) {
 func NewBindVpcIpResponse() (response *BindVpcIpResponse) {
     response = &BindVpcIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindVpcIp
@@ -255,8 +259,9 @@ func NewCreateEipRequest() (request *CreateEipRequest) {
 func NewCreateEipResponse() (response *CreateEipResponse) {
     response = &CreateEipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEip
@@ -305,8 +310,9 @@ func NewCreateEipAclRequest() (request *CreateEipAclRequest) {
 func NewCreateEipAclResponse() (response *CreateEipAclResponse) {
     response = &CreateEipAclResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEipAcl
@@ -355,8 +361,9 @@ func NewDeleteEipRequest() (request *DeleteEipRequest) {
 func NewDeleteEipResponse() (response *DeleteEipResponse) {
     response = &DeleteEipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEip
@@ -407,8 +414,9 @@ func NewDeleteEipAclRequest() (request *DeleteEipAclRequest) {
 func NewDeleteEipAclResponse() (response *DeleteEipAclResponse) {
     response = &DeleteEipAclResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEipAcl
@@ -457,8 +465,9 @@ func NewDescribeEipAclsRequest() (request *DescribeEipAclsRequest) {
 func NewDescribeEipAclsResponse() (response *DescribeEipAclsResponse) {
     response = &DescribeEipAclsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEipAcls
@@ -507,8 +516,9 @@ func NewDescribeEipQuotaRequest() (request *DescribeEipQuotaRequest) {
 func NewDescribeEipQuotaResponse() (response *DescribeEipQuotaResponse) {
     response = &DescribeEipQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEipQuota
@@ -555,8 +565,9 @@ func NewDescribeEipTaskRequest() (request *DescribeEipTaskRequest) {
 func NewDescribeEipTaskResponse() (response *DescribeEipTaskResponse) {
     response = &DescribeEipTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEipTask
@@ -603,8 +614,9 @@ func NewDescribeEipsRequest() (request *DescribeEipsRequest) {
 func NewDescribeEipsResponse() (response *DescribeEipsResponse) {
     response = &DescribeEipsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEips
@@ -651,8 +663,9 @@ func NewModifyEipAclRequest() (request *ModifyEipAclRequest) {
 func NewModifyEipAclResponse() (response *ModifyEipAclResponse) {
     response = &ModifyEipAclResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEipAcl
@@ -701,8 +714,9 @@ func NewModifyEipChargeRequest() (request *ModifyEipChargeRequest) {
 func NewModifyEipChargeResponse() (response *ModifyEipChargeResponse) {
     response = &ModifyEipChargeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEipCharge
@@ -751,8 +765,9 @@ func NewModifyEipNameRequest() (request *ModifyEipNameRequest) {
 func NewModifyEipNameResponse() (response *ModifyEipNameResponse) {
     response = &ModifyEipNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEipName
@@ -801,8 +816,9 @@ func NewUnbindEipAclsRequest() (request *UnbindEipAclsRequest) {
 func NewUnbindEipAclsResponse() (response *UnbindEipAclsResponse) {
     response = &UnbindEipAclsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindEipAcls
@@ -853,8 +869,9 @@ func NewUnbindHostedRequest() (request *UnbindHostedRequest) {
 func NewUnbindHostedResponse() (response *UnbindHostedResponse) {
     response = &UnbindHostedResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindHosted
@@ -905,8 +922,9 @@ func NewUnbindRsRequest() (request *UnbindRsRequest) {
 func NewUnbindRsResponse() (response *UnbindRsResponse) {
     response = &UnbindRsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindRs
@@ -953,8 +971,9 @@ func NewUnbindRsListRequest() (request *UnbindRsListRequest) {
 func NewUnbindRsListResponse() (response *UnbindRsListResponse) {
     response = &UnbindRsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindRsList
@@ -1003,8 +1022,9 @@ func NewUnbindVpcIpRequest() (request *UnbindVpcIpRequest) {
 func NewUnbindVpcIpResponse() (response *UnbindVpcIpResponse) {
     response = &UnbindVpcIpResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnbindVpcIp

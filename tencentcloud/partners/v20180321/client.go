@@ -59,8 +59,9 @@ func NewAgentPayDealsRequest() (request *AgentPayDealsRequest) {
 func NewAgentPayDealsResponse() (response *AgentPayDealsResponse) {
     response = &AgentPayDealsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AgentPayDeals
@@ -113,8 +114,9 @@ func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
 func NewAgentTransferMoneyResponse() (response *AgentTransferMoneyResponse) {
     response = &AgentTransferMoneyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AgentTransferMoney
@@ -167,8 +169,9 @@ func NewAssignClientsToSalesRequest() (request *AssignClientsToSalesRequest) {
 func NewAssignClientsToSalesResponse() (response *AssignClientsToSalesResponse) {
     response = &AssignClientsToSalesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AssignClientsToSales
@@ -233,8 +236,9 @@ func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
 func NewAuditApplyClientResponse() (response *AuditApplyClientResponse) {
     response = &AuditApplyClientResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AuditApplyClient
@@ -285,8 +289,9 @@ func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClient
 func NewCreatePayRelationForClientResponse() (response *CreatePayRelationForClientResponse) {
     response = &CreatePayRelationForClientResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePayRelationForClient
@@ -333,8 +338,9 @@ func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClien
 func NewDescribeAgentAuditedClientsResponse() (response *DescribeAgentAuditedClientsResponse) {
     response = &DescribeAgentAuditedClientsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentAuditedClients
@@ -385,8 +391,9 @@ func NewDescribeAgentBillsRequest() (request *DescribeAgentBillsRequest) {
 func NewDescribeAgentBillsResponse() (response *DescribeAgentBillsResponse) {
     response = &DescribeAgentBillsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentBills
@@ -435,8 +442,9 @@ func NewDescribeAgentClientGradeRequest() (request *DescribeAgentClientGradeRequ
 func NewDescribeAgentClientGradeResponse() (response *DescribeAgentClientGradeResponse) {
     response = &DescribeAgentClientGradeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentClientGrade
@@ -489,8 +497,9 @@ func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
 func NewDescribeAgentClientsResponse() (response *DescribeAgentClientsResponse) {
     response = &DescribeAgentClientsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentClients
@@ -539,8 +548,9 @@ func NewDescribeAgentDealsByCacheRequest() (request *DescribeAgentDealsByCacheRe
 func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCacheResponse) {
     response = &DescribeAgentDealsByCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentDealsByCache
@@ -593,8 +603,9 @@ func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Reques
 func NewDescribeAgentPayDealsV2Response() (response *DescribeAgentPayDealsV2Response) {
     response = &DescribeAgentPayDealsV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentPayDealsV2
@@ -647,8 +658,9 @@ func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDeals
 func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDealsV2Response) {
     response = &DescribeAgentSelfPayDealsV2Response{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAgentSelfPayDealsV2
@@ -701,8 +713,9 @@ func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequ
 func NewDescribeClientBalanceNewResponse() (response *DescribeClientBalanceNewResponse) {
     response = &DescribeClientBalanceNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeClientBalanceNew
@@ -755,8 +768,9 @@ func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
 func NewDescribeRebateInfosResponse() (response *DescribeRebateInfosResponse) {
     response = &DescribeRebateInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRebateInfos
@@ -807,8 +821,9 @@ func NewDescribeRebateInfosNewRequest() (request *DescribeRebateInfosNewRequest)
 func NewDescribeRebateInfosNewResponse() (response *DescribeRebateInfosNewResponse) {
     response = &DescribeRebateInfosNewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRebateInfosNew
@@ -857,8 +872,9 @@ func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
 func NewDescribeSalesmansResponse() (response *DescribeSalesmansResponse) {
     response = &DescribeSalesmansResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSalesmans
@@ -911,8 +927,9 @@ func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequ
 func NewDescribeUnbindClientListResponse() (response *DescribeUnbindClientListResponse) {
     response = &DescribeUnbindClientListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUnbindClientList
@@ -965,8 +982,9 @@ func NewModifyClientRemarkRequest() (request *ModifyClientRemarkRequest) {
 func NewModifyClientRemarkResponse() (response *ModifyClientRemarkResponse) {
     response = &ModifyClientRemarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClientRemark
@@ -1015,8 +1033,9 @@ func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClient
 func NewRemovePayRelationForClientResponse() (response *RemovePayRelationForClientResponse) {
     response = &RemovePayRelationForClientResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RemovePayRelationForClient

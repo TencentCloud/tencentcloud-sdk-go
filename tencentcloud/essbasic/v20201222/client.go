@@ -59,8 +59,9 @@ func NewArchiveFlowRequest() (request *ArchiveFlowRequest) {
 func NewArchiveFlowResponse() (response *ArchiveFlowResponse) {
     response = &ArchiveFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ArchiveFlow
@@ -123,8 +124,9 @@ func NewCancelFlowRequest() (request *CancelFlowRequest) {
 func NewCancelFlowResponse() (response *CancelFlowResponse) {
     response = &CancelFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelFlow
@@ -189,8 +191,9 @@ func NewCheckBankCard2EVerificationRequest() (request *CheckBankCard2EVerificati
 func NewCheckBankCard2EVerificationResponse() (response *CheckBankCard2EVerificationResponse) {
     response = &CheckBankCard2EVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBankCard2EVerification
@@ -243,8 +246,9 @@ func NewCheckBankCard3EVerificationRequest() (request *CheckBankCard3EVerificati
 func NewCheckBankCard3EVerificationResponse() (response *CheckBankCard3EVerificationResponse) {
     response = &CheckBankCard3EVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBankCard3EVerification
@@ -297,8 +301,9 @@ func NewCheckBankCard4EVerificationRequest() (request *CheckBankCard4EVerificati
 func NewCheckBankCard4EVerificationResponse() (response *CheckBankCard4EVerificationResponse) {
     response = &CheckBankCard4EVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBankCard4EVerification
@@ -351,8 +356,9 @@ func NewCheckBankCardVerificationRequest() (request *CheckBankCardVerificationRe
 func NewCheckBankCardVerificationResponse() (response *CheckBankCardVerificationResponse) {
     response = &CheckBankCardVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckBankCardVerification
@@ -417,8 +423,9 @@ func NewCheckFaceIdentifyRequest() (request *CheckFaceIdentifyRequest) {
 func NewCheckFaceIdentifyResponse() (response *CheckFaceIdentifyResponse) {
     response = &CheckFaceIdentifyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckFaceIdentify
@@ -475,8 +482,9 @@ func NewCheckIdCardVerificationRequest() (request *CheckIdCardVerificationReques
 func NewCheckIdCardVerificationResponse() (response *CheckIdCardVerificationResponse) {
     response = &CheckIdCardVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckIdCardVerification
@@ -529,8 +537,9 @@ func NewCheckMobileAndNameRequest() (request *CheckMobileAndNameRequest) {
 func NewCheckMobileAndNameResponse() (response *CheckMobileAndNameResponse) {
     response = &CheckMobileAndNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckMobileAndName
@@ -583,8 +592,9 @@ func NewCheckMobileVerificationRequest() (request *CheckMobileVerificationReques
 func NewCheckMobileVerificationResponse() (response *CheckMobileVerificationResponse) {
     response = &CheckMobileVerificationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckMobileVerification
@@ -637,8 +647,9 @@ func NewCheckVerifyCodeMatchFlowIdRequest() (request *CheckVerifyCodeMatchFlowId
 func NewCheckVerifyCodeMatchFlowIdResponse() (response *CheckVerifyCodeMatchFlowIdResponse) {
     response = &CheckVerifyCodeMatchFlowIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckVerifyCodeMatchFlowId
@@ -701,8 +712,9 @@ func NewCreateFaceIdSignRequest() (request *CreateFaceIdSignRequest) {
 func NewCreateFaceIdSignResponse() (response *CreateFaceIdSignResponse) {
     response = &CreateFaceIdSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFaceIdSign
@@ -757,8 +769,9 @@ func NewCreateFlowByFilesRequest() (request *CreateFlowByFilesRequest) {
 func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
     response = &CreateFlowByFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlowByFiles
@@ -823,8 +836,9 @@ func NewCreateH5FaceIdUrlRequest() (request *CreateH5FaceIdUrlRequest) {
 func NewCreateH5FaceIdUrlResponse() (response *CreateH5FaceIdUrlResponse) {
     response = &CreateH5FaceIdUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateH5FaceIdUrl
@@ -879,8 +893,9 @@ func NewCreatePreviewSignUrlRequest() (request *CreatePreviewSignUrlRequest) {
 func NewCreatePreviewSignUrlResponse() (response *CreatePreviewSignUrlResponse) {
     response = &CreatePreviewSignUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePreviewSignUrl
@@ -1029,8 +1044,9 @@ func NewCreateSealRequest() (request *CreateSealRequest) {
 func NewCreateSealResponse() (response *CreateSealResponse) {
     response = &CreateSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSeal
@@ -1103,8 +1119,9 @@ func NewCreateServerFlowSignRequest() (request *CreateServerFlowSignRequest) {
 func NewCreateServerFlowSignResponse() (response *CreateServerFlowSignResponse) {
     response = &CreateServerFlowSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateServerFlowSign
@@ -1181,8 +1198,9 @@ func NewCreateSignUrlRequest() (request *CreateSignUrlRequest) {
 func NewCreateSignUrlResponse() (response *CreateSignUrlResponse) {
     response = &CreateSignUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSignUrl
@@ -1331,8 +1349,9 @@ func NewCreateSubOrganizationRequest() (request *CreateSubOrganizationRequest) {
 func NewCreateSubOrganizationResponse() (response *CreateSubOrganizationResponse) {
     response = &CreateSubOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubOrganization
@@ -1477,8 +1496,9 @@ func NewCreateSubOrganizationAndSealRequest() (request *CreateSubOrganizationAnd
 func NewCreateSubOrganizationAndSealResponse() (response *CreateSubOrganizationAndSealResponse) {
     response = &CreateSubOrganizationAndSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubOrganizationAndSeal
@@ -1637,8 +1657,9 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
 func NewCreateUserResponse() (response *CreateUserResponse) {
     response = &CreateUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUser
@@ -1787,8 +1808,9 @@ func NewCreateUserAndSealRequest() (request *CreateUserAndSealRequest) {
 func NewCreateUserAndSealResponse() (response *CreateUserAndSealResponse) {
     response = &CreateUserAndSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateUserAndSeal
@@ -1953,8 +1975,9 @@ func NewDeleteSealRequest() (request *DeleteSealRequest) {
 func NewDeleteSealResponse() (response *DeleteSealResponse) {
     response = &DeleteSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSeal
@@ -2025,8 +2048,9 @@ func NewDescribeCatalogApproversRequest() (request *DescribeCatalogApproversRequ
 func NewDescribeCatalogApproversResponse() (response *DescribeCatalogApproversResponse) {
     response = &DescribeCatalogApproversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCatalogApprovers
@@ -2081,8 +2105,9 @@ func NewDescribeCatalogSignComponentsRequest() (request *DescribeCatalogSignComp
 func NewDescribeCatalogSignComponentsResponse() (response *DescribeCatalogSignComponentsResponse) {
     response = &DescribeCatalogSignComponentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCatalogSignComponents
@@ -2231,8 +2256,9 @@ func NewDescribeCustomFlowIdsRequest() (request *DescribeCustomFlowIdsRequest) {
 func NewDescribeCustomFlowIdsResponse() (response *DescribeCustomFlowIdsResponse) {
     response = &DescribeCustomFlowIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomFlowIds
@@ -2291,8 +2317,9 @@ func NewDescribeCustomFlowIdsByFlowIdRequest() (request *DescribeCustomFlowIdsBy
 func NewDescribeCustomFlowIdsByFlowIdResponse() (response *DescribeCustomFlowIdsByFlowIdResponse) {
     response = &DescribeCustomFlowIdsByFlowIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomFlowIdsByFlowId
@@ -2351,8 +2378,9 @@ func NewDescribeFaceIdPhotosRequest() (request *DescribeFaceIdPhotosRequest) {
 func NewDescribeFaceIdPhotosResponse() (response *DescribeFaceIdPhotosResponse) {
     response = &DescribeFaceIdPhotosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFaceIdPhotos
@@ -2409,8 +2437,9 @@ func NewDescribeFaceIdResultsRequest() (request *DescribeFaceIdResultsRequest) {
 func NewDescribeFaceIdResultsResponse() (response *DescribeFaceIdResultsResponse) {
     response = &DescribeFaceIdResultsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFaceIdResults
@@ -2467,8 +2496,9 @@ func NewDescribeFileIdsByCustomIdsRequest() (request *DescribeFileIdsByCustomIds
 func NewDescribeFileIdsByCustomIdsResponse() (response *DescribeFileIdsByCustomIdsResponse) {
     response = &DescribeFileIdsByCustomIdsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileIdsByCustomIds
@@ -2529,8 +2559,9 @@ func NewDescribeFileUrlsRequest() (request *DescribeFileUrlsRequest) {
 func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
     response = &DescribeFileUrlsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFileUrls
@@ -2585,8 +2616,9 @@ func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
 func NewDescribeFlowResponse() (response *DescribeFlowResponse) {
     response = &DescribeFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlow
@@ -2639,8 +2671,9 @@ func NewDescribeFlowApproversRequest() (request *DescribeFlowApproversRequest) {
 func NewDescribeFlowApproversResponse() (response *DescribeFlowApproversResponse) {
     response = &DescribeFlowApproversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowApprovers
@@ -2691,8 +2724,9 @@ func NewDescribeFlowFilesRequest() (request *DescribeFlowFilesRequest) {
 func NewDescribeFlowFilesResponse() (response *DescribeFlowFilesResponse) {
     response = &DescribeFlowFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowFiles
@@ -2743,8 +2777,9 @@ func NewDescribeSealsRequest() (request *DescribeSealsRequest) {
 func NewDescribeSealsResponse() (response *DescribeSealsResponse) {
     response = &DescribeSealsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSeals
@@ -2805,8 +2840,9 @@ func NewDescribeSubOrganizationsRequest() (request *DescribeSubOrganizationsRequ
 func NewDescribeSubOrganizationsResponse() (response *DescribeSubOrganizationsResponse) {
     response = &DescribeSubOrganizationsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubOrganizations
@@ -2955,8 +2991,9 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
 func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
     response = &DescribeUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsers
@@ -3015,8 +3052,9 @@ func NewDestroyFlowFileRequest() (request *DestroyFlowFileRequest) {
 func NewDestroyFlowFileResponse() (response *DestroyFlowFileResponse) {
     response = &DestroyFlowFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyFlowFile
@@ -3075,8 +3113,9 @@ func NewGenerateOrganizationSealRequest() (request *GenerateOrganizationSealRequ
 func NewGenerateOrganizationSealResponse() (response *GenerateOrganizationSealResponse) {
     response = &GenerateOrganizationSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateOrganizationSeal
@@ -3145,8 +3184,9 @@ func NewGenerateUserSealRequest() (request *GenerateUserSealRequest) {
 func NewGenerateUserSealResponse() (response *GenerateUserSealResponse) {
     response = &GenerateUserSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GenerateUserSeal
@@ -3231,8 +3271,9 @@ func NewModifyOrganizationDefaultSealRequest() (request *ModifyOrganizationDefau
 func NewModifyOrganizationDefaultSealResponse() (response *ModifyOrganizationDefaultSealResponse) {
     response = &ModifyOrganizationDefaultSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyOrganizationDefaultSeal
@@ -3295,8 +3336,9 @@ func NewModifySealRequest() (request *ModifySealRequest) {
 func NewModifySealResponse() (response *ModifySealResponse) {
     response = &ModifySealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySeal
@@ -3367,8 +3409,9 @@ func NewModifySubOrganizationInfoRequest() (request *ModifySubOrganizationInfoRe
 func NewModifySubOrganizationInfoResponse() (response *ModifySubOrganizationInfoResponse) {
     response = &ModifySubOrganizationInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubOrganizationInfo
@@ -3521,8 +3564,9 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
 func NewModifyUserResponse() (response *ModifyUserResponse) {
     response = &ModifyUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUser
@@ -3679,8 +3723,9 @@ func NewModifyUserDefaultSealRequest() (request *ModifyUserDefaultSealRequest) {
 func NewModifyUserDefaultSealResponse() (response *ModifyUserDefaultSealResponse) {
     response = &ModifyUserDefaultSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserDefaultSeal
@@ -3743,8 +3788,9 @@ func NewRejectFlowRequest() (request *RejectFlowRequest) {
 func NewRejectFlowResponse() (response *RejectFlowResponse) {
     response = &RejectFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RejectFlow
@@ -3893,8 +3939,9 @@ func NewSendFlowRequest() (request *SendFlowRequest) {
 func NewSendFlowResponse() (response *SendFlowResponse) {
     response = &SendFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendFlow
@@ -3955,8 +4002,9 @@ func NewSendFlowUrlRequest() (request *SendFlowUrlRequest) {
 func NewSendFlowUrlResponse() (response *SendFlowUrlResponse) {
     response = &SendFlowUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendFlowUrl
@@ -4023,8 +4071,9 @@ func NewSendSignInnerVerifyCodeRequest() (request *SendSignInnerVerifyCodeReques
 func NewSendSignInnerVerifyCodeResponse() (response *SendSignInnerVerifyCodeResponse) {
     response = &SendSignInnerVerifyCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendSignInnerVerifyCode
@@ -4097,8 +4146,9 @@ func NewSignFlowRequest() (request *SignFlowRequest) {
 func NewSignFlowResponse() (response *SignFlowResponse) {
     response = &SignFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SignFlow
@@ -4155,8 +4205,9 @@ func NewUploadFilesRequest() (request *UploadFilesRequest) {
 func NewUploadFilesResponse() (response *UploadFilesResponse) {
     response = &UploadFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadFiles
@@ -4213,8 +4264,9 @@ func NewVerifySubOrganizationRequest() (request *VerifySubOrganizationRequest) {
 func NewVerifySubOrganizationResponse() (response *VerifySubOrganizationResponse) {
     response = &VerifySubOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifySubOrganization
@@ -4363,8 +4415,9 @@ func NewVerifyUserRequest() (request *VerifyUserRequest) {
 func NewVerifyUserResponse() (response *VerifyUserResponse) {
     response = &VerifyUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyUser

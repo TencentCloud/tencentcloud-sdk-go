@@ -59,8 +59,9 @@ func NewDescribeGoodsRecommendRequest() (request *DescribeGoodsRecommendRequest)
 func NewDescribeGoodsRecommendResponse() (response *DescribeGoodsRecommendResponse) {
     response = &DescribeGoodsRecommendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGoodsRecommend
@@ -117,8 +118,9 @@ func NewFeedRecommendRequest() (request *FeedRecommendRequest) {
 func NewFeedRecommendResponse() (response *FeedRecommendResponse) {
     response = &FeedRecommendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FeedRecommend
@@ -175,8 +177,9 @@ func NewReportFeedBehaviorRequest() (request *ReportFeedBehaviorRequest) {
 func NewReportFeedBehaviorResponse() (response *ReportFeedBehaviorResponse) {
     response = &ReportFeedBehaviorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportFeedBehavior
@@ -233,8 +236,9 @@ func NewReportFeedItemRequest() (request *ReportFeedItemRequest) {
 func NewReportFeedItemResponse() (response *ReportFeedItemResponse) {
     response = &ReportFeedItemResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportFeedItem
@@ -291,8 +295,9 @@ func NewReportFeedUserRequest() (request *ReportFeedUserRequest) {
 func NewReportFeedUserResponse() (response *ReportFeedUserResponse) {
     response = &ReportFeedUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportFeedUser
@@ -349,8 +354,9 @@ func NewReportGoodsBehaviorRequest() (request *ReportGoodsBehaviorRequest) {
 func NewReportGoodsBehaviorResponse() (response *ReportGoodsBehaviorResponse) {
     response = &ReportGoodsBehaviorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportGoodsBehavior
@@ -407,8 +413,9 @@ func NewReportGoodsInfoRequest() (request *ReportGoodsInfoRequest) {
 func NewReportGoodsInfoResponse() (response *ReportGoodsInfoResponse) {
     response = &ReportGoodsInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportGoodsInfo

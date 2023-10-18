@@ -59,8 +59,9 @@ func NewAddEcdnDomainRequest() (request *AddEcdnDomainRequest) {
 func NewAddEcdnDomainResponse() (response *AddEcdnDomainResponse) {
     response = &AddEcdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddEcdnDomain
@@ -171,8 +172,9 @@ func NewCreateVerifyRecordRequest() (request *CreateVerifyRecordRequest) {
 func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
     response = &CreateVerifyRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateVerifyRecord
@@ -253,8 +255,9 @@ func NewDeleteEcdnDomainRequest() (request *DeleteEcdnDomainRequest) {
 func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
     response = &DeleteEcdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEcdnDomain
@@ -343,8 +346,9 @@ func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
 func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
     response = &DescribeDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomains
@@ -423,8 +427,9 @@ func NewDescribeDomainsConfigRequest() (request *DescribeDomainsConfigRequest) {
 func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse) {
     response = &DescribeDomainsConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDomainsConfig
@@ -507,8 +512,9 @@ func NewDescribeEcdnDomainLogsRequest() (request *DescribeEcdnDomainLogsRequest)
 func NewDescribeEcdnDomainLogsResponse() (response *DescribeEcdnDomainLogsResponse) {
     response = &DescribeEcdnDomainLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEcdnDomainLogs
@@ -579,8 +585,9 @@ func NewDescribeEcdnDomainStatisticsRequest() (request *DescribeEcdnDomainStatis
 func NewDescribeEcdnDomainStatisticsResponse() (response *DescribeEcdnDomainStatisticsResponse) {
     response = &DescribeEcdnDomainStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEcdnDomainStatistics
@@ -687,8 +694,9 @@ func NewDescribeEcdnStatisticsRequest() (request *DescribeEcdnStatisticsRequest)
 func NewDescribeEcdnStatisticsResponse() (response *DescribeEcdnStatisticsResponse) {
     response = &DescribeEcdnStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEcdnStatistics
@@ -829,8 +837,9 @@ func NewDescribeIpStatusRequest() (request *DescribeIpStatusRequest) {
 func NewDescribeIpStatusResponse() (response *DescribeIpStatusResponse) {
     response = &DescribeIpStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeIpStatus
@@ -907,8 +916,9 @@ func NewDescribePurgeQuotaRequest() (request *DescribePurgeQuotaRequest) {
 func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
     response = &DescribePurgeQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePurgeQuota
@@ -987,8 +997,9 @@ func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
 func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
     response = &DescribePurgeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePurgeTasks
@@ -1057,8 +1068,9 @@ func NewPurgePathCacheRequest() (request *PurgePathCacheRequest) {
 func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
     response = &PurgePathCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PurgePathCache
@@ -1153,8 +1165,9 @@ func NewPurgeUrlsCacheRequest() (request *PurgeUrlsCacheRequest) {
 func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
     response = &PurgeUrlsCacheResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PurgeUrlsCache
@@ -1241,8 +1254,9 @@ func NewStartEcdnDomainRequest() (request *StartEcdnDomainRequest) {
 func NewStartEcdnDomainResponse() (response *StartEcdnDomainResponse) {
     response = &StartEcdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartEcdnDomain
@@ -1329,8 +1343,9 @@ func NewStopEcdnDomainRequest() (request *StopEcdnDomainRequest) {
 func NewStopEcdnDomainResponse() (response *StopEcdnDomainResponse) {
     response = &StopEcdnDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopEcdnDomain
@@ -1417,8 +1432,9 @@ func NewUpdateDomainConfigRequest() (request *UpdateDomainConfigRequest) {
 func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
     response = &UpdateDomainConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateDomainConfig

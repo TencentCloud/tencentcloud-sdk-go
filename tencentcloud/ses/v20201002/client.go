@@ -59,8 +59,9 @@ func NewBatchSendEmailRequest() (request *BatchSendEmailRequest) {
 func NewBatchSendEmailResponse() (response *BatchSendEmailResponse) {
     response = &BatchSendEmailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchSendEmail
@@ -133,8 +134,9 @@ func NewCreateEmailAddressRequest() (request *CreateEmailAddressRequest) {
 func NewCreateEmailAddressResponse() (response *CreateEmailAddressResponse) {
     response = &CreateEmailAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEmailAddress
@@ -203,8 +205,9 @@ func NewCreateEmailIdentityRequest() (request *CreateEmailIdentityRequest) {
 func NewCreateEmailIdentityResponse() (response *CreateEmailIdentityResponse) {
     response = &CreateEmailIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEmailIdentity
@@ -271,8 +274,9 @@ func NewCreateEmailTemplateRequest() (request *CreateEmailTemplateRequest) {
 func NewCreateEmailTemplateResponse() (response *CreateEmailTemplateResponse) {
     response = &CreateEmailTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEmailTemplate
@@ -343,8 +347,9 @@ func NewCreateReceiverRequest() (request *CreateReceiverRequest) {
 func NewCreateReceiverResponse() (response *CreateReceiverResponse) {
     response = &CreateReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReceiver
@@ -399,8 +404,9 @@ func NewCreateReceiverDetailRequest() (request *CreateReceiverDetailRequest) {
 func NewCreateReceiverDetailResponse() (response *CreateReceiverDetailResponse) {
     response = &CreateReceiverDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReceiverDetail
@@ -467,8 +473,9 @@ func NewCreateReceiverDetailWithDataRequest() (request *CreateReceiverDetailWith
 func NewCreateReceiverDetailWithDataResponse() (response *CreateReceiverDetailWithDataResponse) {
     response = &CreateReceiverDetailWithDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateReceiverDetailWithData
@@ -535,8 +542,9 @@ func NewDeleteBlackListRequest() (request *DeleteBlackListRequest) {
 func NewDeleteBlackListResponse() (response *DeleteBlackListResponse) {
     response = &DeleteBlackListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteBlackList
@@ -589,8 +597,9 @@ func NewDeleteEmailAddressRequest() (request *DeleteEmailAddressRequest) {
 func NewDeleteEmailAddressResponse() (response *DeleteEmailAddressResponse) {
     response = &DeleteEmailAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEmailAddress
@@ -651,8 +660,9 @@ func NewDeleteEmailIdentityRequest() (request *DeleteEmailIdentityRequest) {
 func NewDeleteEmailIdentityResponse() (response *DeleteEmailIdentityResponse) {
     response = &DeleteEmailIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEmailIdentity
@@ -711,8 +721,9 @@ func NewDeleteEmailTemplateRequest() (request *DeleteEmailTemplateRequest) {
 func NewDeleteEmailTemplateResponse() (response *DeleteEmailTemplateResponse) {
     response = &DeleteEmailTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEmailTemplate
@@ -771,8 +782,9 @@ func NewDeleteReceiverRequest() (request *DeleteReceiverRequest) {
 func NewDeleteReceiverResponse() (response *DeleteReceiverResponse) {
     response = &DeleteReceiverResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReceiver
@@ -823,8 +835,9 @@ func NewGetEmailIdentityRequest() (request *GetEmailIdentityRequest) {
 func NewGetEmailIdentityResponse() (response *GetEmailIdentityResponse) {
     response = &GetEmailIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetEmailIdentity
@@ -885,8 +898,9 @@ func NewGetEmailTemplateRequest() (request *GetEmailTemplateRequest) {
 func NewGetEmailTemplateResponse() (response *GetEmailTemplateResponse) {
     response = &GetEmailTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetEmailTemplate
@@ -947,8 +961,9 @@ func NewGetSendEmailStatusRequest() (request *GetSendEmailStatusRequest) {
 func NewGetSendEmailStatusResponse() (response *GetSendEmailStatusResponse) {
     response = &GetSendEmailStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetSendEmailStatus
@@ -1061,8 +1076,9 @@ func NewGetStatisticsReportRequest() (request *GetStatisticsReportRequest) {
 func NewGetStatisticsReportResponse() (response *GetStatisticsReportResponse) {
     response = &GetStatisticsReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetStatisticsReport
@@ -1119,8 +1135,9 @@ func NewListBlackEmailAddressRequest() (request *ListBlackEmailAddressRequest) {
 func NewListBlackEmailAddressResponse() (response *ListBlackEmailAddressResponse) {
     response = &ListBlackEmailAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListBlackEmailAddress
@@ -1177,8 +1194,9 @@ func NewListEmailAddressRequest() (request *ListEmailAddressRequest) {
 func NewListEmailAddressResponse() (response *ListEmailAddressResponse) {
     response = &ListEmailAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEmailAddress
@@ -1237,8 +1255,9 @@ func NewListEmailIdentitiesRequest() (request *ListEmailIdentitiesRequest) {
 func NewListEmailIdentitiesResponse() (response *ListEmailIdentitiesResponse) {
     response = &ListEmailIdentitiesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEmailIdentities
@@ -1297,8 +1316,9 @@ func NewListEmailTemplatesRequest() (request *ListEmailTemplatesRequest) {
 func NewListEmailTemplatesResponse() (response *ListEmailTemplatesResponse) {
     response = &ListEmailTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListEmailTemplates
@@ -1357,8 +1377,9 @@ func NewListReceiverDetailsRequest() (request *ListReceiverDetailsRequest) {
 func NewListReceiverDetailsResponse() (response *ListReceiverDetailsResponse) {
     response = &ListReceiverDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListReceiverDetails
@@ -1409,8 +1430,9 @@ func NewListReceiversRequest() (request *ListReceiversRequest) {
 func NewListReceiversResponse() (response *ListReceiversResponse) {
     response = &ListReceiversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListReceivers
@@ -1459,8 +1481,9 @@ func NewListSendTasksRequest() (request *ListSendTasksRequest) {
 func NewListSendTasksResponse() (response *ListSendTasksResponse) {
     response = &ListSendTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListSendTasks
@@ -1507,8 +1530,9 @@ func NewSendEmailRequest() (request *SendEmailRequest) {
 func NewSendEmailResponse() (response *SendEmailResponse) {
     response = &SendEmailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendEmail
@@ -1635,8 +1659,9 @@ func NewUpdateEmailIdentityRequest() (request *UpdateEmailIdentityRequest) {
 func NewUpdateEmailIdentityResponse() (response *UpdateEmailIdentityResponse) {
     response = &UpdateEmailIdentityResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateEmailIdentity
@@ -1699,8 +1724,9 @@ func NewUpdateEmailSmtpPassWordRequest() (request *UpdateEmailSmtpPassWordReques
 func NewUpdateEmailSmtpPassWordResponse() (response *UpdateEmailSmtpPassWordResponse) {
     response = &UpdateEmailSmtpPassWordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateEmailSmtpPassWord
@@ -1753,8 +1779,9 @@ func NewUpdateEmailTemplateRequest() (request *UpdateEmailTemplateRequest) {
 func NewUpdateEmailTemplateResponse() (response *UpdateEmailTemplateResponse) {
     response = &UpdateEmailTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateEmailTemplate

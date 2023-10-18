@@ -59,8 +59,9 @@ func NewCopyFunctionRequest() (request *CopyFunctionRequest) {
 func NewCopyFunctionResponse() (response *CopyFunctionResponse) {
     response = &CopyFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyFunction
@@ -175,8 +176,9 @@ func NewCreateAliasRequest() (request *CreateAliasRequest) {
 func NewCreateAliasResponse() (response *CreateAliasResponse) {
     response = &CreateAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAlias
@@ -257,8 +259,9 @@ func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
 func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
     response = &CreateFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFunction
@@ -537,8 +540,9 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
 func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     response = &CreateNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNamespace
@@ -613,8 +617,9 @@ func NewCreateTriggerRequest() (request *CreateTriggerRequest) {
 func NewCreateTriggerResponse() (response *CreateTriggerResponse) {
     response = &CreateTriggerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrigger
@@ -767,8 +772,9 @@ func NewDeleteAliasRequest() (request *DeleteAliasRequest) {
 func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
     response = &DeleteAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAlias
@@ -827,8 +833,9 @@ func NewDeleteFunctionRequest() (request *DeleteFunctionRequest) {
 func NewDeleteFunctionResponse() (response *DeleteFunctionResponse) {
     response = &DeleteFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFunction
@@ -917,8 +924,9 @@ func NewDeleteLayerVersionRequest() (request *DeleteLayerVersionRequest) {
 func NewDeleteLayerVersionResponse() (response *DeleteLayerVersionResponse) {
     response = &DeleteLayerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLayerVersion
@@ -977,8 +985,9 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
 func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     response = &DeleteNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNamespace
@@ -1043,8 +1052,9 @@ func NewDeleteProvisionedConcurrencyConfigRequest() (request *DeleteProvisionedC
 func NewDeleteProvisionedConcurrencyConfigResponse() (response *DeleteProvisionedConcurrencyConfigResponse) {
     response = &DeleteProvisionedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteProvisionedConcurrencyConfig
@@ -1109,8 +1119,9 @@ func NewDeleteReservedConcurrencyConfigRequest() (request *DeleteReservedConcurr
 func NewDeleteReservedConcurrencyConfigResponse() (response *DeleteReservedConcurrencyConfigResponse) {
     response = &DeleteReservedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteReservedConcurrencyConfig
@@ -1167,8 +1178,9 @@ func NewDeleteTriggerRequest() (request *DeleteTriggerRequest) {
 func NewDeleteTriggerResponse() (response *DeleteTriggerResponse) {
     response = &DeleteTriggerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTrigger
@@ -1267,8 +1279,9 @@ func NewGetAccountRequest() (request *GetAccountRequest) {
 func NewGetAccountResponse() (response *GetAccountResponse) {
     response = &GetAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAccount
@@ -1317,8 +1330,9 @@ func NewGetAliasRequest() (request *GetAliasRequest) {
 func NewGetAliasResponse() (response *GetAliasResponse) {
     response = &GetAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAlias
@@ -1385,8 +1399,9 @@ func NewGetAsyncEventStatusRequest() (request *GetAsyncEventStatusRequest) {
 func NewGetAsyncEventStatusResponse() (response *GetAsyncEventStatusResponse) {
     response = &GetAsyncEventStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetAsyncEventStatus
@@ -1439,8 +1454,9 @@ func NewGetFunctionRequest() (request *GetFunctionRequest) {
 func NewGetFunctionResponse() (response *GetFunctionResponse) {
     response = &GetFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFunction
@@ -1521,8 +1537,9 @@ func NewGetFunctionAddressRequest() (request *GetFunctionAddressRequest) {
 func NewGetFunctionAddressResponse() (response *GetFunctionAddressResponse) {
     response = &GetFunctionAddressResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFunctionAddress
@@ -1601,8 +1618,9 @@ func NewGetFunctionEventInvokeConfigRequest() (request *GetFunctionEventInvokeCo
 func NewGetFunctionEventInvokeConfigResponse() (response *GetFunctionEventInvokeConfigResponse) {
     response = &GetFunctionEventInvokeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFunctionEventInvokeConfig
@@ -1679,8 +1697,9 @@ func NewGetFunctionLogsRequest() (request *GetFunctionLogsRequest) {
 func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
     response = &GetFunctionLogsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetFunctionLogs
@@ -1779,8 +1798,9 @@ func NewGetLayerVersionRequest() (request *GetLayerVersionRequest) {
 func NewGetLayerVersionResponse() (response *GetLayerVersionResponse) {
     response = &GetLayerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetLayerVersion
@@ -1833,8 +1853,9 @@ func NewGetProvisionedConcurrencyConfigRequest() (request *GetProvisionedConcurr
 func NewGetProvisionedConcurrencyConfigResponse() (response *GetProvisionedConcurrencyConfigResponse) {
     response = &GetProvisionedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetProvisionedConcurrencyConfig
@@ -1901,8 +1922,9 @@ func NewGetRequestStatusRequest() (request *GetRequestStatusRequest) {
 func NewGetRequestStatusResponse() (response *GetRequestStatusResponse) {
     response = &GetRequestStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetRequestStatus
@@ -1981,8 +2003,9 @@ func NewGetReservedConcurrencyConfigRequest() (request *GetReservedConcurrencyCo
 func NewGetReservedConcurrencyConfigResponse() (response *GetReservedConcurrencyConfigResponse) {
     response = &GetReservedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetReservedConcurrencyConfig
@@ -2043,8 +2066,9 @@ func NewInvokeRequest() (request *InvokeRequest) {
 func NewInvokeResponse() (response *InvokeResponse) {
     response = &InvokeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // Invoke
@@ -2111,8 +2135,9 @@ func NewInvokeFunctionRequest() (request *InvokeFunctionRequest) {
 func NewInvokeFunctionResponse() (response *InvokeFunctionResponse) {
     response = &InvokeFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InvokeFunction
@@ -2191,8 +2216,9 @@ func NewListAliasesRequest() (request *ListAliasesRequest) {
 func NewListAliasesResponse() (response *ListAliasesResponse) {
     response = &ListAliasesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAliases
@@ -2251,8 +2277,9 @@ func NewListAsyncEventsRequest() (request *ListAsyncEventsRequest) {
 func NewListAsyncEventsResponse() (response *ListAsyncEventsResponse) {
     response = &ListAsyncEventsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListAsyncEvents
@@ -2315,8 +2342,9 @@ func NewListFunctionsRequest() (request *ListFunctionsRequest) {
 func NewListFunctionsResponse() (response *ListFunctionsResponse) {
     response = &ListFunctionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListFunctions
@@ -2389,8 +2417,9 @@ func NewListLayerVersionsRequest() (request *ListLayerVersionsRequest) {
 func NewListLayerVersionsResponse() (response *ListLayerVersionsResponse) {
     response = &ListLayerVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListLayerVersions
@@ -2447,8 +2476,9 @@ func NewListLayersRequest() (request *ListLayersRequest) {
 func NewListLayersResponse() (response *ListLayersResponse) {
     response = &ListLayersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListLayers
@@ -2505,8 +2535,9 @@ func NewListNamespacesRequest() (request *ListNamespacesRequest) {
 func NewListNamespacesResponse() (response *ListNamespacesResponse) {
     response = &ListNamespacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListNamespaces
@@ -2559,8 +2590,9 @@ func NewListTriggersRequest() (request *ListTriggersRequest) {
 func NewListTriggersResponse() (response *ListTriggersResponse) {
     response = &ListTriggersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListTriggers
@@ -2613,8 +2645,9 @@ func NewListVersionByFunctionRequest() (request *ListVersionByFunctionRequest) {
 func NewListVersionByFunctionResponse() (response *ListVersionByFunctionResponse) {
     response = &ListVersionByFunctionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListVersionByFunction
@@ -2677,8 +2710,9 @@ func NewPublishLayerVersionRequest() (request *PublishLayerVersionRequest) {
 func NewPublishLayerVersionResponse() (response *PublishLayerVersionResponse) {
     response = &PublishLayerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PublishLayerVersion
@@ -2767,8 +2801,9 @@ func NewPublishVersionRequest() (request *PublishVersionRequest) {
 func NewPublishVersionResponse() (response *PublishVersionResponse) {
     response = &PublishVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PublishVersion
@@ -2845,8 +2880,9 @@ func NewPutProvisionedConcurrencyConfigRequest() (request *PutProvisionedConcurr
 func NewPutProvisionedConcurrencyConfigResponse() (response *PutProvisionedConcurrencyConfigResponse) {
     response = &PutProvisionedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutProvisionedConcurrencyConfig
@@ -2963,8 +2999,9 @@ func NewPutReservedConcurrencyConfigRequest() (request *PutReservedConcurrencyCo
 func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrencyConfigResponse) {
     response = &PutReservedConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutReservedConcurrencyConfig
@@ -3043,8 +3080,9 @@ func NewPutTotalConcurrencyConfigRequest() (request *PutTotalConcurrencyConfigRe
 func NewPutTotalConcurrencyConfigResponse() (response *PutTotalConcurrencyConfigResponse) {
     response = &PutTotalConcurrencyConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PutTotalConcurrencyConfig
@@ -3113,8 +3151,9 @@ func NewTerminateAsyncEventRequest() (request *TerminateAsyncEventRequest) {
 func NewTerminateAsyncEventResponse() (response *TerminateAsyncEventResponse) {
     response = &TerminateAsyncEventResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TerminateAsyncEvent
@@ -3169,8 +3208,9 @@ func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
 func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
     response = &UpdateAliasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateAlias
@@ -3251,8 +3291,9 @@ func NewUpdateFunctionCodeRequest() (request *UpdateFunctionCodeRequest) {
 func NewUpdateFunctionCodeResponse() (response *UpdateFunctionCodeResponse) {
     response = &UpdateFunctionCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFunctionCode
@@ -3389,8 +3430,9 @@ func NewUpdateFunctionConfigurationRequest() (request *UpdateFunctionConfigurati
 func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigurationResponse) {
     response = &UpdateFunctionConfigurationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFunctionConfiguration
@@ -3587,8 +3629,9 @@ func NewUpdateFunctionEventInvokeConfigRequest() (request *UpdateFunctionEventIn
 func NewUpdateFunctionEventInvokeConfigResponse() (response *UpdateFunctionEventInvokeConfigResponse) {
     response = &UpdateFunctionEventInvokeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateFunctionEventInvokeConfig
@@ -3673,8 +3716,9 @@ func NewUpdateNamespaceRequest() (request *UpdateNamespaceRequest) {
 func NewUpdateNamespaceResponse() (response *UpdateNamespaceResponse) {
     response = &UpdateNamespaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateNamespace
@@ -3723,8 +3767,9 @@ func NewUpdateTriggerRequest() (request *UpdateTriggerRequest) {
 func NewUpdateTriggerResponse() (response *UpdateTriggerResponse) {
     response = &UpdateTriggerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateTrigger
@@ -3867,8 +3912,9 @@ func NewUpdateTriggerStatusRequest() (request *UpdateTriggerStatusRequest) {
 func NewUpdateTriggerStatusResponse() (response *UpdateTriggerStatusResponse) {
     response = &UpdateTriggerStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateTriggerStatus

@@ -59,8 +59,9 @@ func NewCheckVcodeRequest() (request *CheckVcodeRequest) {
 func NewCheckVcodeResponse() (response *CheckVcodeResponse) {
     response = &CheckVcodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckVcode
@@ -141,8 +142,9 @@ func NewCreateContractByUploadRequest() (request *CreateContractByUploadRequest)
 func NewCreateContractByUploadResponse() (response *CreateContractByUploadResponse) {
     response = &CreateContractByUploadResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateContractByUpload
@@ -217,8 +219,9 @@ func NewCreateEnterpriseAccountRequest() (request *CreateEnterpriseAccountReques
 func NewCreateEnterpriseAccountResponse() (response *CreateEnterpriseAccountResponse) {
     response = &CreateEnterpriseAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEnterpriseAccount
@@ -301,8 +304,9 @@ func NewCreatePersonalAccountRequest() (request *CreatePersonalAccountRequest) {
 func NewCreatePersonalAccountResponse() (response *CreatePersonalAccountResponse) {
     response = &CreatePersonalAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePersonalAccount
@@ -375,8 +379,9 @@ func NewCreateSealRequest() (request *CreateSealRequest) {
 func NewCreateSealResponse() (response *CreateSealResponse) {
     response = &CreateSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSeal
@@ -455,8 +460,9 @@ func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
 func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
     response = &DeleteAccountResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteAccount
@@ -515,8 +521,9 @@ func NewDeleteSealRequest() (request *DeleteSealRequest) {
 func NewDeleteSealResponse() (response *DeleteSealResponse) {
     response = &DeleteSealResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSeal
@@ -583,8 +590,9 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
 func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     response = &DescribeTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskStatus
@@ -641,8 +649,9 @@ func NewDownloadContractRequest() (request *DownloadContractRequest) {
 func NewDownloadContractResponse() (response *DownloadContractResponse) {
     response = &DownloadContractResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DownloadContract
@@ -701,8 +710,9 @@ func NewSendVcodeRequest() (request *SendVcodeRequest) {
 func NewSendVcodeResponse() (response *SendVcodeResponse) {
     response = &SendVcodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendVcode
@@ -775,8 +785,9 @@ func NewSignContractByCoordinateRequest() (request *SignContractByCoordinateRequ
 func NewSignContractByCoordinateResponse() (response *SignContractByCoordinateResponse) {
     response = &SignContractByCoordinateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SignContractByCoordinate
@@ -873,8 +884,9 @@ func NewSignContractByKeywordRequest() (request *SignContractByKeywordRequest) {
 func NewSignContractByKeywordResponse() (response *SignContractByKeywordResponse) {
     response = &SignContractByKeywordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SignContractByKeyword

@@ -59,8 +59,9 @@ func NewInitOralProcessRequest() (request *InitOralProcessRequest) {
 func NewInitOralProcessResponse() (response *InitOralProcessResponse) {
     response = &InitOralProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // InitOralProcess
@@ -275,8 +276,9 @@ func NewKeywordEvaluateRequest() (request *KeywordEvaluateRequest) {
 func NewKeywordEvaluateResponse() (response *KeywordEvaluateResponse) {
     response = &KeywordEvaluateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // KeywordEvaluate
@@ -463,8 +465,9 @@ func NewTransmitOralProcessRequest() (request *TransmitOralProcessRequest) {
 func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
     response = &TransmitOralProcessResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransmitOralProcess
@@ -709,8 +712,9 @@ func NewTransmitOralProcessWithInitRequest() (request *TransmitOralProcessWithIn
 func NewTransmitOralProcessWithInitResponse() (response *TransmitOralProcessWithInitResponse) {
     response = &TransmitOralProcessWithInitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TransmitOralProcessWithInit

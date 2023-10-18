@@ -809,6 +809,20 @@ type AuditRuleFilters struct {
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
 }
 
+type AutoStrategy struct {
+	// 自动扩容阈值，可选值70、80、90，代表CPU利用率达到70%、80%、90%时后台进行自动扩容
+	ExpandThreshold *int64 `json:"ExpandThreshold,omitnil" name:"ExpandThreshold"`
+
+	// 自动扩容观测周期，单位s，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
+	ExpandPeriod *int64 `json:"ExpandPeriod,omitnil" name:"ExpandPeriod"`
+
+	// 自动缩容阈值，可选值10、20、30，代表CPU利用率达到10%、20%、30%时后台进行自动缩容
+	ShrinkThreshold *int64 `json:"ShrinkThreshold,omitnil" name:"ShrinkThreshold"`
+
+	// 自动缩容观测周期，单位s，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
+	ShrinkPeriod *int64 `json:"ShrinkPeriod,omitnil" name:"ShrinkPeriod"`
+}
+
 type BackupConfig struct {
 	// 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
 	ReplicationMode *string `json:"ReplicationMode,omitnil" name:"ReplicationMode"`
@@ -13240,12 +13254,35 @@ func (r *StartBatchRollbackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartCpuExpandRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
+	// 扩容类型。可选值：auto：代表进行自动扩容
+	// manual：代表进行手动扩容
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 手动扩容时，扩容的CPU核心数。Type 为 manual 时必传。
+	ExpandCpu *int64 `json:"ExpandCpu,omitnil" name:"ExpandCpu"`
+
+	// 自动扩容策略。Type 为 auto 时必传。
+	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil" name:"AutoStrategy"`
 }
 
 type StartCpuExpandRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 扩容类型。可选值：auto：代表进行自动扩容
+	// manual：代表进行手动扩容
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 手动扩容时，扩容的CPU核心数。Type 为 manual 时必传。
+	ExpandCpu *int64 `json:"ExpandCpu,omitnil" name:"ExpandCpu"`
+
+	// 自动扩容策略。Type 为 auto 时必传。
+	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil" name:"AutoStrategy"`
 }
 
 func (r *StartCpuExpandRequest) ToJsonString() string {
@@ -13260,7 +13297,10 @@ func (r *StartCpuExpandRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "ExpandCpu")
+	delete(f, "AutoStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartCpuExpandRequest has unknown keys!", "")
 	}

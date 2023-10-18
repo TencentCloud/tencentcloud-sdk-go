@@ -59,8 +59,9 @@ func NewDeregisterMigrationTaskRequest() (request *DeregisterMigrationTaskReques
 func NewDeregisterMigrationTaskResponse() (response *DeregisterMigrationTaskResponse) {
     response = &DeregisterMigrationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeregisterMigrationTask
@@ -109,8 +110,9 @@ func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
 func NewDescribeMigrationTaskResponse() (response *DescribeMigrationTaskResponse) {
     response = &DescribeMigrationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrationTask
@@ -157,8 +159,9 @@ func NewListMigrationProjectRequest() (request *ListMigrationProjectRequest) {
 func NewListMigrationProjectResponse() (response *ListMigrationProjectResponse) {
     response = &ListMigrationProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListMigrationProject
@@ -205,8 +208,9 @@ func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
 func NewListMigrationTaskResponse() (response *ListMigrationTaskResponse) {
     response = &ListMigrationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ListMigrationTask
@@ -253,8 +257,9 @@ func NewModifyMigrationTaskBelongToProjectRequest() (request *ModifyMigrationTas
 func NewModifyMigrationTaskBelongToProjectResponse() (response *ModifyMigrationTaskBelongToProjectResponse) {
     response = &ModifyMigrationTaskBelongToProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrationTaskBelongToProject
@@ -303,8 +308,9 @@ func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRe
 func NewModifyMigrationTaskStatusResponse() (response *ModifyMigrationTaskStatusResponse) {
     response = &ModifyMigrationTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrationTaskStatus
@@ -351,8 +357,9 @@ func NewRegisterMigrationTaskRequest() (request *RegisterMigrationTaskRequest) {
 func NewRegisterMigrationTaskResponse() (response *RegisterMigrationTaskResponse) {
     response = &RegisterMigrationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RegisterMigrationTask

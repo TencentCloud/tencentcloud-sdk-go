@@ -59,8 +59,9 @@ func NewAddDelayLiveStreamRequest() (request *AddDelayLiveStreamRequest) {
 func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
     response = &AddDelayLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddDelayLiveStream
@@ -151,8 +152,9 @@ func NewAddLiveDomainRequest() (request *AddLiveDomainRequest) {
 func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
     response = &AddLiveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddLiveDomain
@@ -275,8 +277,9 @@ func NewAddLiveWatermarkRequest() (request *AddLiveWatermarkRequest) {
 func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
     response = &AddLiveWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddLiveWatermark
@@ -339,8 +342,9 @@ func NewAuthenticateDomainOwnerRequest() (request *AuthenticateDomainOwnerReques
 func NewAuthenticateDomainOwnerResponse() (response *AuthenticateDomainOwnerResponse) {
     response = &AuthenticateDomainOwnerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AuthenticateDomainOwner
@@ -391,8 +395,9 @@ func NewCancelCommonMixStreamRequest() (request *CancelCommonMixStreamRequest) {
 func NewCancelCommonMixStreamResponse() (response *CancelCommonMixStreamResponse) {
     response = &CancelCommonMixStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CancelCommonMixStream
@@ -461,8 +466,9 @@ func NewCreateCommonMixStreamRequest() (request *CreateCommonMixStreamRequest) {
 func NewCreateCommonMixStreamResponse() (response *CreateCommonMixStreamResponse) {
     response = &CreateCommonMixStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCommonMixStream
@@ -571,8 +577,9 @@ func NewCreateLiveCallbackRuleRequest() (request *CreateLiveCallbackRuleRequest)
 func NewCreateLiveCallbackRuleResponse() (response *CreateLiveCallbackRuleResponse) {
     response = &CreateLiveCallbackRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveCallbackRule
@@ -645,8 +652,9 @@ func NewCreateLiveCallbackTemplateRequest() (request *CreateLiveCallbackTemplate
 func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTemplateResponse) {
     response = &CreateLiveCallbackTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveCallbackTemplate
@@ -747,8 +755,9 @@ func NewCreateLivePadRuleRequest() (request *CreateLivePadRuleRequest) {
 func NewCreateLivePadRuleResponse() (response *CreateLivePadRuleResponse) {
     response = &CreateLivePadRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLivePadRule
@@ -829,8 +838,9 @@ func NewCreateLivePadTemplateRequest() (request *CreateLivePadTemplateRequest) {
 func NewCreateLivePadTemplateResponse() (response *CreateLivePadTemplateResponse) {
     response = &CreateLivePadTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLivePadTemplate
@@ -907,8 +917,9 @@ func NewCreateLivePullStreamTaskRequest() (request *CreateLivePullStreamTaskRequ
 func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskResponse) {
     response = &CreateLivePullStreamTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLivePullStreamTask
@@ -1021,8 +1032,9 @@ func NewCreateLiveRecordRequest() (request *CreateLiveRecordRequest) {
 func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
     response = &CreateLiveRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveRecord
@@ -1155,8 +1167,9 @@ func NewCreateLiveRecordRuleRequest() (request *CreateLiveRecordRuleRequest) {
 func NewCreateLiveRecordRuleResponse() (response *CreateLiveRecordRuleResponse) {
     response = &CreateLiveRecordRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveRecordRule
@@ -1241,8 +1254,9 @@ func NewCreateLiveRecordTemplateRequest() (request *CreateLiveRecordTemplateRequ
 func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateResponse) {
     response = &CreateLiveRecordTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveRecordTemplate
@@ -1331,8 +1345,9 @@ func NewCreateLiveSnapshotRuleRequest() (request *CreateLiveSnapshotRuleRequest)
 func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleResponse) {
     response = &CreateLiveSnapshotRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveSnapshotRule
@@ -1423,8 +1438,9 @@ func NewCreateLiveSnapshotTemplateRequest() (request *CreateLiveSnapshotTemplate
 func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTemplateResponse) {
     response = &CreateLiveSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveSnapshotTemplate
@@ -1519,8 +1535,9 @@ func NewCreateLiveStreamMonitorRequest() (request *CreateLiveStreamMonitorReques
 func NewCreateLiveStreamMonitorResponse() (response *CreateLiveStreamMonitorResponse) {
     response = &CreateLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveStreamMonitor
@@ -1601,8 +1618,9 @@ func NewCreateLiveTimeShiftRuleRequest() (request *CreateLiveTimeShiftRuleReques
 func NewCreateLiveTimeShiftRuleResponse() (response *CreateLiveTimeShiftRuleResponse) {
     response = &CreateLiveTimeShiftRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveTimeShiftRule
@@ -1685,8 +1703,9 @@ func NewCreateLiveTimeShiftTemplateRequest() (request *CreateLiveTimeShiftTempla
 func NewCreateLiveTimeShiftTemplateResponse() (response *CreateLiveTimeShiftTemplateResponse) {
     response = &CreateLiveTimeShiftTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveTimeShiftTemplate
@@ -1763,8 +1782,9 @@ func NewCreateLiveTranscodeRuleRequest() (request *CreateLiveTranscodeRuleReques
 func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResponse) {
     response = &CreateLiveTranscodeRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveTranscodeRule
@@ -1855,8 +1875,9 @@ func NewCreateLiveTranscodeTemplateRequest() (request *CreateLiveTranscodeTempla
 func NewCreateLiveTranscodeTemplateResponse() (response *CreateLiveTranscodeTemplateResponse) {
     response = &CreateLiveTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveTranscodeTemplate
@@ -1953,8 +1974,9 @@ func NewCreateLiveWatermarkRuleRequest() (request *CreateLiveWatermarkRuleReques
 func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResponse) {
     response = &CreateLiveWatermarkRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateLiveWatermarkRule
@@ -2039,8 +2061,9 @@ func NewCreatePullStreamConfigRequest() (request *CreatePullStreamConfigRequest)
 func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigResponse) {
     response = &CreatePullStreamConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePullStreamConfig
@@ -2131,8 +2154,9 @@ func NewCreateRecordTaskRequest() (request *CreateRecordTaskRequest) {
 func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
     response = &CreateRecordTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateRecordTask
@@ -2235,8 +2259,9 @@ func NewCreateScreenshotTaskRequest() (request *CreateScreenshotTaskRequest) {
 func NewCreateScreenshotTaskResponse() (response *CreateScreenshotTaskResponse) {
     response = &CreateScreenshotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateScreenshotTask
@@ -2325,8 +2350,9 @@ func NewDeleteLiveCallbackRuleRequest() (request *DeleteLiveCallbackRuleRequest)
 func NewDeleteLiveCallbackRuleResponse() (response *DeleteLiveCallbackRuleResponse) {
     response = &DeleteLiveCallbackRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveCallbackRule
@@ -2391,8 +2417,9 @@ func NewDeleteLiveCallbackTemplateRequest() (request *DeleteLiveCallbackTemplate
 func NewDeleteLiveCallbackTemplateResponse() (response *DeleteLiveCallbackTemplateResponse) {
     response = &DeleteLiveCallbackTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveCallbackTemplate
@@ -2477,8 +2504,9 @@ func NewDeleteLiveDomainRequest() (request *DeleteLiveDomainRequest) {
 func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
     response = &DeleteLiveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveDomain
@@ -2557,8 +2585,9 @@ func NewDeleteLivePadRuleRequest() (request *DeleteLivePadRuleRequest) {
 func NewDeleteLivePadRuleResponse() (response *DeleteLivePadRuleResponse) {
     response = &DeleteLivePadRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLivePadRule
@@ -2639,8 +2668,9 @@ func NewDeleteLivePadTemplateRequest() (request *DeleteLivePadTemplateRequest) {
 func NewDeleteLivePadTemplateResponse() (response *DeleteLivePadTemplateResponse) {
     response = &DeleteLivePadTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLivePadTemplate
@@ -2723,8 +2753,9 @@ func NewDeleteLivePullStreamTaskRequest() (request *DeleteLivePullStreamTaskRequ
 func NewDeleteLivePullStreamTaskResponse() (response *DeleteLivePullStreamTaskResponse) {
     response = &DeleteLivePullStreamTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLivePullStreamTask
@@ -2801,8 +2832,9 @@ func NewDeleteLiveRecordRequest() (request *DeleteLiveRecordRequest) {
 func NewDeleteLiveRecordResponse() (response *DeleteLiveRecordResponse) {
     response = &DeleteLiveRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveRecord
@@ -2873,8 +2905,9 @@ func NewDeleteLiveRecordRuleRequest() (request *DeleteLiveRecordRuleRequest) {
 func NewDeleteLiveRecordRuleResponse() (response *DeleteLiveRecordRuleResponse) {
     response = &DeleteLiveRecordRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveRecordRule
@@ -2955,8 +2988,9 @@ func NewDeleteLiveRecordTemplateRequest() (request *DeleteLiveRecordTemplateRequ
 func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateResponse) {
     response = &DeleteLiveRecordTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveRecordTemplate
@@ -3035,8 +3069,9 @@ func NewDeleteLiveSnapshotRuleRequest() (request *DeleteLiveSnapshotRuleRequest)
 func NewDeleteLiveSnapshotRuleResponse() (response *DeleteLiveSnapshotRuleResponse) {
     response = &DeleteLiveSnapshotRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveSnapshotRule
@@ -3117,8 +3152,9 @@ func NewDeleteLiveSnapshotTemplateRequest() (request *DeleteLiveSnapshotTemplate
 func NewDeleteLiveSnapshotTemplateResponse() (response *DeleteLiveSnapshotTemplateResponse) {
     response = &DeleteLiveSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveSnapshotTemplate
@@ -3197,8 +3233,9 @@ func NewDeleteLiveStreamMonitorRequest() (request *DeleteLiveStreamMonitorReques
 func NewDeleteLiveStreamMonitorResponse() (response *DeleteLiveStreamMonitorResponse) {
     response = &DeleteLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveStreamMonitor
@@ -3273,8 +3310,9 @@ func NewDeleteLiveTimeShiftRuleRequest() (request *DeleteLiveTimeShiftRuleReques
 func NewDeleteLiveTimeShiftRuleResponse() (response *DeleteLiveTimeShiftRuleResponse) {
     response = &DeleteLiveTimeShiftRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveTimeShiftRule
@@ -3355,8 +3393,9 @@ func NewDeleteLiveTimeShiftTemplateRequest() (request *DeleteLiveTimeShiftTempla
 func NewDeleteLiveTimeShiftTemplateResponse() (response *DeleteLiveTimeShiftTemplateResponse) {
     response = &DeleteLiveTimeShiftTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveTimeShiftTemplate
@@ -3439,8 +3478,9 @@ func NewDeleteLiveTranscodeRuleRequest() (request *DeleteLiveTranscodeRuleReques
 func NewDeleteLiveTranscodeRuleResponse() (response *DeleteLiveTranscodeRuleResponse) {
     response = &DeleteLiveTranscodeRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveTranscodeRule
@@ -3527,8 +3567,9 @@ func NewDeleteLiveTranscodeTemplateRequest() (request *DeleteLiveTranscodeTempla
 func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemplateResponse) {
     response = &DeleteLiveTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveTranscodeTemplate
@@ -3611,8 +3652,9 @@ func NewDeleteLiveWatermarkRequest() (request *DeleteLiveWatermarkRequest) {
 func NewDeleteLiveWatermarkResponse() (response *DeleteLiveWatermarkResponse) {
     response = &DeleteLiveWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveWatermark
@@ -3679,8 +3721,9 @@ func NewDeleteLiveWatermarkRuleRequest() (request *DeleteLiveWatermarkRuleReques
 func NewDeleteLiveWatermarkRuleResponse() (response *DeleteLiveWatermarkRuleResponse) {
     response = &DeleteLiveWatermarkRuleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteLiveWatermarkRule
@@ -3761,8 +3804,9 @@ func NewDeletePullStreamConfigRequest() (request *DeletePullStreamConfigRequest)
 func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigResponse) {
     response = &DeletePullStreamConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePullStreamConfig
@@ -3829,8 +3873,9 @@ func NewDeleteRecordTaskRequest() (request *DeleteRecordTaskRequest) {
 func NewDeleteRecordTaskResponse() (response *DeleteRecordTaskResponse) {
     response = &DeleteRecordTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteRecordTask
@@ -3895,8 +3940,9 @@ func NewDeleteScreenshotTaskRequest() (request *DeleteScreenshotTaskRequest) {
 func NewDeleteScreenshotTaskResponse() (response *DeleteScreenshotTaskResponse) {
     response = &DeleteScreenshotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteScreenshotTask
@@ -3959,8 +4005,9 @@ func NewDescribeAllStreamPlayInfoListRequest() (request *DescribeAllStreamPlayIn
 func NewDescribeAllStreamPlayInfoListResponse() (response *DescribeAllStreamPlayInfoListResponse) {
     response = &DescribeAllStreamPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAllStreamPlayInfoList
@@ -4025,8 +4072,9 @@ func NewDescribeAreaBillBandwidthAndFluxListRequest() (request *DescribeAreaBill
 func NewDescribeAreaBillBandwidthAndFluxListResponse() (response *DescribeAreaBillBandwidthAndFluxListResponse) {
     response = &DescribeAreaBillBandwidthAndFluxListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAreaBillBandwidthAndFluxList
@@ -4071,6 +4119,105 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Con
     return
 }
 
+func NewDescribeBackupStreamListRequest() (request *DescribeBackupStreamListRequest) {
+    request = &DescribeBackupStreamListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeBackupStreamList")
+    
+    
+    return
+}
+
+func NewDescribeBackupStreamListResponse() (response *DescribeBackupStreamListResponse) {
+    response = &DescribeBackupStreamListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupStreamList
+// 返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+//
+// 
+//
+// 注意：
+//
+// 1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
+//
+// 2. 该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeBackupStreamList(request *DescribeBackupStreamListRequest) (response *DescribeBackupStreamListResponse, err error) {
+    return c.DescribeBackupStreamListWithContext(context.Background(), request)
+}
+
+// DescribeBackupStreamList
+// 返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+//
+// 
+//
+// 注意：
+//
+// 1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
+//
+// 2. 该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeBackupStreamListWithContext(ctx context.Context, request *DescribeBackupStreamListRequest) (response *DescribeBackupStreamListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupStreamListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupStreamList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupStreamListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
     request = &DescribeBillBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4085,8 +4232,9 @@ func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidt
 func NewDescribeBillBandwidthAndFluxListResponse() (response *DescribeBillBandwidthAndFluxListResponse) {
     response = &DescribeBillBandwidthAndFluxListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillBandwidthAndFluxList
@@ -4145,8 +4293,9 @@ func NewDescribeCallbackRecordsListRequest() (request *DescribeCallbackRecordsLi
 func NewDescribeCallbackRecordsListResponse() (response *DescribeCallbackRecordsListResponse) {
     response = &DescribeCallbackRecordsListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCallbackRecordsList
@@ -4209,8 +4358,9 @@ func NewDescribeConcurrentRecordStreamNumRequest() (request *DescribeConcurrentR
 func NewDescribeConcurrentRecordStreamNumResponse() (response *DescribeConcurrentRecordStreamNumResponse) {
     response = &DescribeConcurrentRecordStreamNumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConcurrentRecordStreamNum
@@ -4271,8 +4421,9 @@ func NewDescribeDeliverBandwidthListRequest() (request *DescribeDeliverBandwidth
 func NewDescribeDeliverBandwidthListResponse() (response *DescribeDeliverBandwidthListResponse) {
     response = &DescribeDeliverBandwidthListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeliverBandwidthList
@@ -4333,8 +4484,9 @@ func NewDescribeDeliverLogDownListRequest() (request *DescribeDeliverLogDownList
 func NewDescribeDeliverLogDownListResponse() (response *DescribeDeliverLogDownListResponse) {
     response = &DescribeDeliverLogDownListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDeliverLogDownList
@@ -4405,8 +4557,9 @@ func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPl
 func NewDescribeGroupProIspPlayInfoListResponse() (response *DescribeGroupProIspPlayInfoListResponse) {
     response = &DescribeGroupProIspPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGroupProIspPlayInfoList
@@ -4471,8 +4624,9 @@ func NewDescribeHttpStatusInfoListRequest() (request *DescribeHttpStatusInfoList
 func NewDescribeHttpStatusInfoListResponse() (response *DescribeHttpStatusInfoListResponse) {
     response = &DescribeHttpStatusInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHttpStatusInfoList
@@ -4539,8 +4693,9 @@ func NewDescribeLiveCallbackRulesRequest() (request *DescribeLiveCallbackRulesRe
 func NewDescribeLiveCallbackRulesResponse() (response *DescribeLiveCallbackRulesResponse) {
     response = &DescribeLiveCallbackRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveCallbackRules
@@ -4603,8 +4758,9 @@ func NewDescribeLiveCallbackTemplateRequest() (request *DescribeLiveCallbackTemp
 func NewDescribeLiveCallbackTemplateResponse() (response *DescribeLiveCallbackTemplateResponse) {
     response = &DescribeLiveCallbackTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveCallbackTemplate
@@ -4689,8 +4845,9 @@ func NewDescribeLiveCallbackTemplatesRequest() (request *DescribeLiveCallbackTem
 func NewDescribeLiveCallbackTemplatesResponse() (response *DescribeLiveCallbackTemplatesResponse) {
     response = &DescribeLiveCallbackTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveCallbackTemplates
@@ -4777,8 +4934,9 @@ func NewDescribeLiveCertRequest() (request *DescribeLiveCertRequest) {
 func NewDescribeLiveCertResponse() (response *DescribeLiveCertResponse) {
     response = &DescribeLiveCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveCert
@@ -4843,8 +5001,9 @@ func NewDescribeLiveCertsRequest() (request *DescribeLiveCertsRequest) {
 func NewDescribeLiveCertsResponse() (response *DescribeLiveCertsResponse) {
     response = &DescribeLiveCertsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveCerts
@@ -4909,8 +5068,9 @@ func NewDescribeLiveDelayInfoListRequest() (request *DescribeLiveDelayInfoListRe
 func NewDescribeLiveDelayInfoListResponse() (response *DescribeLiveDelayInfoListResponse) {
     response = &DescribeLiveDelayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDelayInfoList
@@ -4975,8 +5135,9 @@ func NewDescribeLiveDomainRequest() (request *DescribeLiveDomainRequest) {
 func NewDescribeLiveDomainResponse() (response *DescribeLiveDomainResponse) {
     response = &DescribeLiveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomain
@@ -5045,8 +5206,9 @@ func NewDescribeLiveDomainCertRequest() (request *DescribeLiveDomainCertRequest)
 func NewDescribeLiveDomainCertResponse() (response *DescribeLiveDomainCertResponse) {
     response = &DescribeLiveDomainCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomainCert
@@ -5111,8 +5273,9 @@ func NewDescribeLiveDomainCertBindingsRequest() (request *DescribeLiveDomainCert
 func NewDescribeLiveDomainCertBindingsResponse() (response *DescribeLiveDomainCertBindingsResponse) {
     response = &DescribeLiveDomainCertBindingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomainCertBindings
@@ -5175,8 +5338,9 @@ func NewDescribeLiveDomainPlayInfoListRequest() (request *DescribeLiveDomainPlay
 func NewDescribeLiveDomainPlayInfoListResponse() (response *DescribeLiveDomainPlayInfoListResponse) {
     response = &DescribeLiveDomainPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomainPlayInfoList
@@ -5239,8 +5403,9 @@ func NewDescribeLiveDomainRefererRequest() (request *DescribeLiveDomainRefererRe
 func NewDescribeLiveDomainRefererResponse() (response *DescribeLiveDomainRefererResponse) {
     response = &DescribeLiveDomainRefererResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomainReferer
@@ -5313,8 +5478,9 @@ func NewDescribeLiveDomainsRequest() (request *DescribeLiveDomainsRequest) {
 func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
     response = &DescribeLiveDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveDomains
@@ -5381,8 +5547,9 @@ func NewDescribeLiveForbidStreamListRequest() (request *DescribeLiveForbidStream
 func NewDescribeLiveForbidStreamListResponse() (response *DescribeLiveForbidStreamListResponse) {
     response = &DescribeLiveForbidStreamListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveForbidStreamList
@@ -5455,8 +5622,9 @@ func NewDescribeLivePackageInfoRequest() (request *DescribeLivePackageInfoReques
 func NewDescribeLivePackageInfoResponse() (response *DescribeLivePackageInfoResponse) {
     response = &DescribeLivePackageInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePackageInfo
@@ -5521,8 +5689,9 @@ func NewDescribeLivePadRulesRequest() (request *DescribeLivePadRulesRequest) {
 func NewDescribeLivePadRulesResponse() (response *DescribeLivePadRulesResponse) {
     response = &DescribeLivePadRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePadRules
@@ -5585,8 +5754,9 @@ func NewDescribeLivePadTemplateRequest() (request *DescribeLivePadTemplateReques
 func NewDescribeLivePadTemplateResponse() (response *DescribeLivePadTemplateResponse) {
     response = &DescribeLivePadTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePadTemplate
@@ -5675,8 +5845,9 @@ func NewDescribeLivePadTemplatesRequest() (request *DescribeLivePadTemplatesRequ
 func NewDescribeLivePadTemplatesResponse() (response *DescribeLivePadTemplatesResponse) {
     response = &DescribeLivePadTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePadTemplates
@@ -5767,8 +5938,9 @@ func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyReques
 func NewDescribeLivePlayAuthKeyResponse() (response *DescribeLivePlayAuthKeyResponse) {
     response = &DescribeLivePlayAuthKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePlayAuthKey
@@ -5837,8 +6009,9 @@ func NewDescribeLivePullStreamTaskStatusRequest() (request *DescribeLivePullStre
 func NewDescribeLivePullStreamTaskStatusResponse() (response *DescribeLivePullStreamTaskStatusResponse) {
     response = &DescribeLivePullStreamTaskStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePullStreamTaskStatus
@@ -5893,8 +6066,9 @@ func NewDescribeLivePullStreamTasksRequest() (request *DescribeLivePullStreamTas
 func NewDescribeLivePullStreamTasksResponse() (response *DescribeLivePullStreamTasksResponse) {
     response = &DescribeLivePullStreamTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePullStreamTasks
@@ -5959,8 +6133,9 @@ func NewDescribeLivePushAuthKeyRequest() (request *DescribeLivePushAuthKeyReques
 func NewDescribeLivePushAuthKeyResponse() (response *DescribeLivePushAuthKeyResponse) {
     response = &DescribeLivePushAuthKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLivePushAuthKey
@@ -6029,8 +6204,9 @@ func NewDescribeLiveRecordRulesRequest() (request *DescribeLiveRecordRulesReques
 func NewDescribeLiveRecordRulesResponse() (response *DescribeLiveRecordRulesResponse) {
     response = &DescribeLiveRecordRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveRecordRules
@@ -6107,8 +6283,9 @@ func NewDescribeLiveRecordTemplateRequest() (request *DescribeLiveRecordTemplate
 func NewDescribeLiveRecordTemplateResponse() (response *DescribeLiveRecordTemplateResponse) {
     response = &DescribeLiveRecordTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveRecordTemplate
@@ -6187,8 +6364,9 @@ func NewDescribeLiveRecordTemplatesRequest() (request *DescribeLiveRecordTemplat
 func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTemplatesResponse) {
     response = &DescribeLiveRecordTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveRecordTemplates
@@ -6265,8 +6443,9 @@ func NewDescribeLiveSnapshotRulesRequest() (request *DescribeLiveSnapshotRulesRe
 func NewDescribeLiveSnapshotRulesResponse() (response *DescribeLiveSnapshotRulesResponse) {
     response = &DescribeLiveSnapshotRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveSnapshotRules
@@ -6343,8 +6522,9 @@ func NewDescribeLiveSnapshotTemplateRequest() (request *DescribeLiveSnapshotTemp
 func NewDescribeLiveSnapshotTemplateResponse() (response *DescribeLiveSnapshotTemplateResponse) {
     response = &DescribeLiveSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveSnapshotTemplate
@@ -6429,8 +6609,9 @@ func NewDescribeLiveSnapshotTemplatesRequest() (request *DescribeLiveSnapshotTem
 func NewDescribeLiveSnapshotTemplatesResponse() (response *DescribeLiveSnapshotTemplatesResponse) {
     response = &DescribeLiveSnapshotTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveSnapshotTemplates
@@ -6509,8 +6690,9 @@ func NewDescribeLiveStreamEventListRequest() (request *DescribeLiveStreamEventLi
 func NewDescribeLiveStreamEventListResponse() (response *DescribeLiveStreamEventListResponse) {
     response = &DescribeLiveStreamEventListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamEventList
@@ -6591,8 +6773,9 @@ func NewDescribeLiveStreamMonitorRequest() (request *DescribeLiveStreamMonitorRe
 func NewDescribeLiveStreamMonitorResponse() (response *DescribeLiveStreamMonitorResponse) {
     response = &DescribeLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamMonitor
@@ -6667,8 +6850,9 @@ func NewDescribeLiveStreamMonitorListRequest() (request *DescribeLiveStreamMonit
 func NewDescribeLiveStreamMonitorListResponse() (response *DescribeLiveStreamMonitorListResponse) {
     response = &DescribeLiveStreamMonitorListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamMonitorList
@@ -6725,8 +6909,9 @@ func NewDescribeLiveStreamOnlineListRequest() (request *DescribeLiveStreamOnline
 func NewDescribeLiveStreamOnlineListResponse() (response *DescribeLiveStreamOnlineListResponse) {
     response = &DescribeLiveStreamOnlineListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamOnlineList
@@ -6823,8 +7008,9 @@ func NewDescribeLiveStreamPublishedListRequest() (request *DescribeLiveStreamPub
 func NewDescribeLiveStreamPublishedListResponse() (response *DescribeLiveStreamPublishedListResponse) {
     response = &DescribeLiveStreamPublishedListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamPublishedList
@@ -6911,8 +7097,9 @@ func NewDescribeLiveStreamPushInfoListRequest() (request *DescribeLiveStreamPush
 func NewDescribeLiveStreamPushInfoListResponse() (response *DescribeLiveStreamPushInfoListResponse) {
     response = &DescribeLiveStreamPushInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamPushInfoList
@@ -6985,8 +7172,9 @@ func NewDescribeLiveStreamStateRequest() (request *DescribeLiveStreamStateReques
 func NewDescribeLiveStreamStateResponse() (response *DescribeLiveStreamStateResponse) {
     response = &DescribeLiveStreamStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveStreamState
@@ -7105,8 +7293,9 @@ func NewDescribeLiveTimeShiftBillInfoListRequest() (request *DescribeLiveTimeShi
 func NewDescribeLiveTimeShiftBillInfoListResponse() (response *DescribeLiveTimeShiftBillInfoListResponse) {
     response = &DescribeLiveTimeShiftBillInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTimeShiftBillInfoList
@@ -7167,8 +7356,9 @@ func NewDescribeLiveTimeShiftRulesRequest() (request *DescribeLiveTimeShiftRules
 func NewDescribeLiveTimeShiftRulesResponse() (response *DescribeLiveTimeShiftRulesResponse) {
     response = &DescribeLiveTimeShiftRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTimeShiftRules
@@ -7231,8 +7421,9 @@ func NewDescribeLiveTimeShiftTemplatesRequest() (request *DescribeLiveTimeShiftT
 func NewDescribeLiveTimeShiftTemplatesResponse() (response *DescribeLiveTimeShiftTemplatesResponse) {
     response = &DescribeLiveTimeShiftTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTimeShiftTemplates
@@ -7323,8 +7514,9 @@ func NewDescribeLiveTranscodeDetailInfoRequest() (request *DescribeLiveTranscode
 func NewDescribeLiveTranscodeDetailInfoResponse() (response *DescribeLiveTranscodeDetailInfoResponse) {
     response = &DescribeLiveTranscodeDetailInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTranscodeDetailInfo
@@ -7387,8 +7579,9 @@ func NewDescribeLiveTranscodeRulesRequest() (request *DescribeLiveTranscodeRules
 func NewDescribeLiveTranscodeRulesResponse() (response *DescribeLiveTranscodeRulesResponse) {
     response = &DescribeLiveTranscodeRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTranscodeRules
@@ -7465,8 +7658,9 @@ func NewDescribeLiveTranscodeTemplateRequest() (request *DescribeLiveTranscodeTe
 func NewDescribeLiveTranscodeTemplateResponse() (response *DescribeLiveTranscodeTemplateResponse) {
     response = &DescribeLiveTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTranscodeTemplate
@@ -7547,8 +7741,9 @@ func NewDescribeLiveTranscodeTemplatesRequest() (request *DescribeLiveTranscodeT
 func NewDescribeLiveTranscodeTemplatesResponse() (response *DescribeLiveTranscodeTemplatesResponse) {
     response = &DescribeLiveTranscodeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTranscodeTemplates
@@ -7627,8 +7822,9 @@ func NewDescribeLiveTranscodeTotalInfoRequest() (request *DescribeLiveTranscodeT
 func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscodeTotalInfoResponse) {
     response = &DescribeLiveTranscodeTotalInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveTranscodeTotalInfo
@@ -7701,8 +7897,9 @@ func NewDescribeLiveWatermarkRequest() (request *DescribeLiveWatermarkRequest) {
 func NewDescribeLiveWatermarkResponse() (response *DescribeLiveWatermarkResponse) {
     response = &DescribeLiveWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveWatermark
@@ -7781,8 +7978,9 @@ func NewDescribeLiveWatermarkRulesRequest() (request *DescribeLiveWatermarkRules
 func NewDescribeLiveWatermarkRulesResponse() (response *DescribeLiveWatermarkRulesResponse) {
     response = &DescribeLiveWatermarkRulesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveWatermarkRules
@@ -7859,8 +8057,9 @@ func NewDescribeLiveWatermarksRequest() (request *DescribeLiveWatermarksRequest)
 func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksResponse) {
     response = &DescribeLiveWatermarksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveWatermarks
@@ -7913,8 +8112,9 @@ func NewDescribeLiveXP2PDetailInfoListRequest() (request *DescribeLiveXP2PDetail
 func NewDescribeLiveXP2PDetailInfoListResponse() (response *DescribeLiveXP2PDetailInfoListResponse) {
     response = &DescribeLiveXP2PDetailInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveXP2PDetailInfoList
@@ -7975,8 +8175,9 @@ func NewDescribeLogDownloadListRequest() (request *DescribeLogDownloadListReques
 func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResponse) {
     response = &DescribeLogDownloadListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLogDownloadList
@@ -8047,8 +8248,9 @@ func NewDescribeMonitorReportRequest() (request *DescribeMonitorReportRequest) {
 func NewDescribeMonitorReportResponse() (response *DescribeMonitorReportResponse) {
     response = &DescribeMonitorReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMonitorReport
@@ -8115,8 +8317,9 @@ func NewDescribePlayErrorCodeDetailInfoListRequest() (request *DescribePlayError
 func NewDescribePlayErrorCodeDetailInfoListResponse() (response *DescribePlayErrorCodeDetailInfoListResponse) {
     response = &DescribePlayErrorCodeDetailInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePlayErrorCodeDetailInfoList
@@ -8179,8 +8382,9 @@ func NewDescribePlayErrorCodeSumInfoListRequest() (request *DescribePlayErrorCod
 func NewDescribePlayErrorCodeSumInfoListResponse() (response *DescribePlayErrorCodeSumInfoListResponse) {
     response = &DescribePlayErrorCodeSumInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePlayErrorCodeSumInfoList
@@ -8243,8 +8447,9 @@ func NewDescribeProIspPlaySumInfoListRequest() (request *DescribeProIspPlaySumIn
 func NewDescribeProIspPlaySumInfoListResponse() (response *DescribeProIspPlaySumInfoListResponse) {
     response = &DescribeProIspPlaySumInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProIspPlaySumInfoList
@@ -8307,8 +8512,9 @@ func NewDescribeProvinceIspPlayInfoListRequest() (request *DescribeProvinceIspPl
 func NewDescribeProvinceIspPlayInfoListResponse() (response *DescribeProvinceIspPlayInfoListResponse) {
     response = &DescribeProvinceIspPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeProvinceIspPlayInfoList
@@ -8381,8 +8587,9 @@ func NewDescribePullStreamConfigsRequest() (request *DescribePullStreamConfigsRe
 func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigsResponse) {
     response = &DescribePullStreamConfigsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePullStreamConfigs
@@ -8453,8 +8660,9 @@ func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidt
 func NewDescribePushBandwidthAndFluxListResponse() (response *DescribePushBandwidthAndFluxListResponse) {
     response = &DescribePushBandwidthAndFluxListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePushBandwidthAndFluxList
@@ -8517,8 +8725,9 @@ func NewDescribeRecordTaskRequest() (request *DescribeRecordTaskRequest) {
 func NewDescribeRecordTaskResponse() (response *DescribeRecordTaskResponse) {
     response = &DescribeRecordTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRecordTask
@@ -8593,8 +8802,9 @@ func NewDescribeScreenShotSheetNumListRequest() (request *DescribeScreenShotShee
 func NewDescribeScreenShotSheetNumListResponse() (response *DescribeScreenShotSheetNumListResponse) {
     response = &DescribeScreenShotSheetNumListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenShotSheetNumList
@@ -8657,8 +8867,9 @@ func NewDescribeScreenshotTaskRequest() (request *DescribeScreenshotTaskRequest)
 func NewDescribeScreenshotTaskResponse() (response *DescribeScreenshotTaskResponse) {
     response = &DescribeScreenshotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeScreenshotTask
@@ -8733,8 +8944,9 @@ func NewDescribeStreamDayPlayInfoListRequest() (request *DescribeStreamDayPlayIn
 func NewDescribeStreamDayPlayInfoListResponse() (response *DescribeStreamDayPlayInfoListResponse) {
     response = &DescribeStreamDayPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamDayPlayInfoList
@@ -8799,8 +9011,9 @@ func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoList
 func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoListResponse) {
     response = &DescribeStreamPlayInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamPlayInfoList
@@ -8867,8 +9080,9 @@ func NewDescribeStreamPushInfoListRequest() (request *DescribeStreamPushInfoList
 func NewDescribeStreamPushInfoListResponse() (response *DescribeStreamPushInfoListResponse) {
     response = &DescribeStreamPushInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStreamPushInfoList
@@ -8931,8 +9145,9 @@ func NewDescribeTimeShiftRecordDetailRequest() (request *DescribeTimeShiftRecord
 func NewDescribeTimeShiftRecordDetailResponse() (response *DescribeTimeShiftRecordDetailResponse) {
     response = &DescribeTimeShiftRecordDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTimeShiftRecordDetail
@@ -8995,8 +9210,9 @@ func NewDescribeTimeShiftStreamListRequest() (request *DescribeTimeShiftStreamLi
 func NewDescribeTimeShiftStreamListResponse() (response *DescribeTimeShiftStreamListResponse) {
     response = &DescribeTimeShiftStreamListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTimeShiftStreamList
@@ -9059,8 +9275,9 @@ func NewDescribeTopClientIpSumInfoListRequest() (request *DescribeTopClientIpSum
 func NewDescribeTopClientIpSumInfoListResponse() (response *DescribeTopClientIpSumInfoListResponse) {
     response = &DescribeTopClientIpSumInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTopClientIpSumInfoList
@@ -9123,8 +9340,9 @@ func NewDescribeTranscodeTaskNumRequest() (request *DescribeTranscodeTaskNumRequ
 func NewDescribeTranscodeTaskNumResponse() (response *DescribeTranscodeTaskNumResponse) {
     response = &DescribeTranscodeTaskNumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTranscodeTaskNum
@@ -9177,8 +9395,9 @@ func NewDescribeUploadStreamNumsRequest() (request *DescribeUploadStreamNumsRequ
 func NewDescribeUploadStreamNumsResponse() (response *DescribeUploadStreamNumsResponse) {
     response = &DescribeUploadStreamNumsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUploadStreamNums
@@ -9237,8 +9456,9 @@ func NewDescribeVisitTopSumInfoListRequest() (request *DescribeVisitTopSumInfoLi
 func NewDescribeVisitTopSumInfoListResponse() (response *DescribeVisitTopSumInfoListResponse) {
     response = &DescribeVisitTopSumInfoListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeVisitTopSumInfoList
@@ -9299,8 +9519,9 @@ func NewDropLiveStreamRequest() (request *DropLiveStreamRequest) {
 func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
     response = &DropLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DropLiveStream
@@ -9387,8 +9608,9 @@ func NewEnableLiveDomainRequest() (request *EnableLiveDomainRequest) {
 func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
     response = &EnableLiveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EnableLiveDomain
@@ -9447,6 +9669,85 @@ func (c *Client) EnableLiveDomainWithContext(ctx context.Context, request *Enabl
     return
 }
 
+func NewEnableOptimalSwitchingRequest() (request *EnableOptimalSwitchingRequest) {
+    request = &EnableOptimalSwitchingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "EnableOptimalSwitching")
+    
+    
+    return
+}
+
+func NewEnableOptimalSwitchingResponse() (response *EnableOptimalSwitchingResponse) {
+    response = &EnableOptimalSwitchingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableOptimalSwitching
+// 启用择优调度。
+//
+// 注意：流维度的择优调度，当主备流结束后自动失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKNOPACKAGE = "FailedOperation.SdkNoPackage"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) EnableOptimalSwitching(request *EnableOptimalSwitchingRequest) (response *EnableOptimalSwitchingResponse, err error) {
+    return c.EnableOptimalSwitchingWithContext(context.Background(), request)
+}
+
+// EnableOptimalSwitching
+// 启用择优调度。
+//
+// 注意：流维度的择优调度，当主备流结束后自动失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKNOPACKAGE = "FailedOperation.SdkNoPackage"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) EnableOptimalSwitchingWithContext(ctx context.Context, request *EnableOptimalSwitchingRequest) (response *EnableOptimalSwitchingResponse, err error) {
+    if request == nil {
+        request = NewEnableOptimalSwitchingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableOptimalSwitching require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableOptimalSwitchingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewForbidLiveDomainRequest() (request *ForbidLiveDomainRequest) {
     request = &ForbidLiveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9461,8 +9762,9 @@ func NewForbidLiveDomainRequest() (request *ForbidLiveDomainRequest) {
 func NewForbidLiveDomainResponse() (response *ForbidLiveDomainResponse) {
     response = &ForbidLiveDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ForbidLiveDomain
@@ -9523,8 +9825,9 @@ func NewForbidLiveStreamRequest() (request *ForbidLiveStreamRequest) {
 func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
     response = &ForbidLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ForbidLiveStream
@@ -9623,8 +9926,9 @@ func NewModifyLiveCallbackTemplateRequest() (request *ModifyLiveCallbackTemplate
 func NewModifyLiveCallbackTemplateResponse() (response *ModifyLiveCallbackTemplateResponse) {
     response = &ModifyLiveCallbackTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveCallbackTemplate
@@ -9715,8 +10019,9 @@ func NewModifyLiveDomainCertBindingsRequest() (request *ModifyLiveDomainCertBind
 func NewModifyLiveDomainCertBindingsResponse() (response *ModifyLiveDomainCertBindingsResponse) {
     response = &ModifyLiveDomainCertBindingsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveDomainCertBindings
@@ -9849,8 +10154,9 @@ func NewModifyLiveDomainRefererRequest() (request *ModifyLiveDomainRefererReques
 func NewModifyLiveDomainRefererResponse() (response *ModifyLiveDomainRefererResponse) {
     response = &ModifyLiveDomainRefererResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveDomainReferer
@@ -9923,8 +10229,9 @@ func NewModifyLivePadTemplateRequest() (request *ModifyLivePadTemplateRequest) {
 func NewModifyLivePadTemplateResponse() (response *ModifyLivePadTemplateResponse) {
     response = &ModifyLivePadTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLivePadTemplate
@@ -10011,8 +10318,9 @@ func NewModifyLivePlayAuthKeyRequest() (request *ModifyLivePlayAuthKeyRequest) {
 func NewModifyLivePlayAuthKeyResponse() (response *ModifyLivePlayAuthKeyResponse) {
     response = &ModifyLivePlayAuthKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLivePlayAuthKey
@@ -10079,8 +10387,9 @@ func NewModifyLivePlayDomainRequest() (request *ModifyLivePlayDomainRequest) {
 func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) {
     response = &ModifyLivePlayDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLivePlayDomain
@@ -10153,8 +10462,9 @@ func NewModifyLivePullStreamTaskRequest() (request *ModifyLivePullStreamTaskRequ
 func NewModifyLivePullStreamTaskResponse() (response *ModifyLivePullStreamTaskResponse) {
     response = &ModifyLivePullStreamTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLivePullStreamTask
@@ -10237,8 +10547,9 @@ func NewModifyLivePushAuthKeyRequest() (request *ModifyLivePushAuthKeyRequest) {
 func NewModifyLivePushAuthKeyResponse() (response *ModifyLivePushAuthKeyResponse) {
     response = &ModifyLivePushAuthKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLivePushAuthKey
@@ -10307,8 +10618,9 @@ func NewModifyLiveRecordTemplateRequest() (request *ModifyLiveRecordTemplateRequ
 func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateResponse) {
     response = &ModifyLiveRecordTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveRecordTemplate
@@ -10389,8 +10701,9 @@ func NewModifyLiveSnapshotTemplateRequest() (request *ModifyLiveSnapshotTemplate
 func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTemplateResponse) {
     response = &ModifyLiveSnapshotTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveSnapshotTemplate
@@ -10481,8 +10794,9 @@ func NewModifyLiveStreamMonitorRequest() (request *ModifyLiveStreamMonitorReques
 func NewModifyLiveStreamMonitorResponse() (response *ModifyLiveStreamMonitorResponse) {
     response = &ModifyLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveStreamMonitor
@@ -10561,8 +10875,9 @@ func NewModifyLiveTimeShiftTemplateRequest() (request *ModifyLiveTimeShiftTempla
 func NewModifyLiveTimeShiftTemplateResponse() (response *ModifyLiveTimeShiftTemplateResponse) {
     response = &ModifyLiveTimeShiftTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveTimeShiftTemplate
@@ -10639,8 +10954,9 @@ func NewModifyLiveTranscodeTemplateRequest() (request *ModifyLiveTranscodeTempla
 func NewModifyLiveTranscodeTemplateResponse() (response *ModifyLiveTranscodeTemplateResponse) {
     response = &ModifyLiveTranscodeTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyLiveTranscodeTemplate
@@ -10729,8 +11045,9 @@ func NewModifyPullStreamConfigRequest() (request *ModifyPullStreamConfigRequest)
 func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigResponse) {
     response = &ModifyPullStreamConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPullStreamConfig
@@ -10801,8 +11118,9 @@ func NewModifyPullStreamStatusRequest() (request *ModifyPullStreamStatusRequest)
 func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusResponse) {
     response = &ModifyPullStreamStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPullStreamStatus
@@ -10871,8 +11189,9 @@ func NewRestartLivePullStreamTaskRequest() (request *RestartLivePullStreamTaskRe
 func NewRestartLivePullStreamTaskResponse() (response *RestartLivePullStreamTaskResponse) {
     response = &RestartLivePullStreamTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RestartLivePullStreamTask
@@ -10945,8 +11264,9 @@ func NewResumeDelayLiveStreamRequest() (request *ResumeDelayLiveStreamRequest) {
 func NewResumeDelayLiveStreamResponse() (response *ResumeDelayLiveStreamResponse) {
     response = &ResumeDelayLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeDelayLiveStream
@@ -11047,8 +11367,9 @@ func NewResumeLiveStreamRequest() (request *ResumeLiveStreamRequest) {
 func NewResumeLiveStreamResponse() (response *ResumeLiveStreamResponse) {
     response = &ResumeLiveStreamResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResumeLiveStream
@@ -11131,8 +11452,9 @@ func NewStartLiveStreamMonitorRequest() (request *StartLiveStreamMonitorRequest)
 func NewStartLiveStreamMonitorResponse() (response *StartLiveStreamMonitorResponse) {
     response = &StartLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartLiveStreamMonitor
@@ -11209,8 +11531,9 @@ func NewStopLiveRecordRequest() (request *StopLiveRecordRequest) {
 func NewStopLiveRecordResponse() (response *StopLiveRecordResponse) {
     response = &StopLiveRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopLiveRecord
@@ -11279,8 +11602,9 @@ func NewStopLiveStreamMonitorRequest() (request *StopLiveStreamMonitorRequest) {
 func NewStopLiveStreamMonitorResponse() (response *StopLiveStreamMonitorResponse) {
     response = &StopLiveStreamMonitorResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopLiveStreamMonitor
@@ -11355,8 +11679,9 @@ func NewStopRecordTaskRequest() (request *StopRecordTaskRequest) {
 func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
     response = &StopRecordTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopRecordTask
@@ -11423,8 +11748,9 @@ func NewStopScreenshotTaskRequest() (request *StopScreenshotTaskRequest) {
 func NewStopScreenshotTaskResponse() (response *StopScreenshotTaskResponse) {
     response = &StopScreenshotTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopScreenshotTask
@@ -11475,6 +11801,65 @@ func (c *Client) StopScreenshotTaskWithContext(ctx context.Context, request *Sto
     return
 }
 
+func NewSwitchBackupStreamRequest() (request *SwitchBackupStreamRequest) {
+    request = &SwitchBackupStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "SwitchBackupStream")
+    
+    
+    return
+}
+
+func NewSwitchBackupStreamResponse() (response *SwitchBackupStreamResponse) {
+    response = &SwitchBackupStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchBackupStream
+// 调用该接口实现切换当前播放所使用的主备流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) SwitchBackupStream(request *SwitchBackupStreamRequest) (response *SwitchBackupStreamResponse, err error) {
+    return c.SwitchBackupStreamWithContext(context.Background(), request)
+}
+
+// SwitchBackupStream
+// 调用该接口实现切换当前播放所使用的主备流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) SwitchBackupStreamWithContext(ctx context.Context, request *SwitchBackupStreamRequest) (response *SwitchBackupStreamResponse, err error) {
+    if request == nil {
+        request = NewSwitchBackupStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchBackupStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchBackupStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnBindLiveDomainCertRequest() (request *UnBindLiveDomainCertRequest) {
     request = &UnBindLiveDomainCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11489,8 +11874,9 @@ func NewUnBindLiveDomainCertRequest() (request *UnBindLiveDomainCertRequest) {
 func NewUnBindLiveDomainCertResponse() (response *UnBindLiveDomainCertResponse) {
     response = &UnBindLiveDomainCertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnBindLiveDomainCert
@@ -11551,8 +11937,9 @@ func NewUpdateLiveWatermarkRequest() (request *UpdateLiveWatermarkRequest) {
 func NewUpdateLiveWatermarkResponse() (response *UpdateLiveWatermarkResponse) {
     response = &UpdateLiveWatermarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateLiveWatermark

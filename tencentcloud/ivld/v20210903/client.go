@@ -59,8 +59,9 @@ func NewAddCustomPersonImageRequest() (request *AddCustomPersonImageRequest) {
 func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) {
     response = &AddCustomPersonImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddCustomPersonImage
@@ -151,8 +152,9 @@ func NewCreateCustomCategoryRequest() (request *CreateCustomCategoryRequest) {
 func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) {
     response = &CreateCustomCategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomCategory
@@ -231,8 +233,9 @@ func NewCreateCustomGroupRequest() (request *CreateCustomGroupRequest) {
 func NewCreateCustomGroupResponse() (response *CreateCustomGroupResponse) {
     response = &CreateCustomGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomGroup
@@ -335,8 +338,9 @@ func NewCreateCustomPersonRequest() (request *CreateCustomPersonRequest) {
 func NewCreateCustomPersonResponse() (response *CreateCustomPersonResponse) {
     response = &CreateCustomPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCustomPerson
@@ -451,8 +455,9 @@ func NewCreateDefaultCategoriesRequest() (request *CreateDefaultCategoriesReques
 func NewCreateDefaultCategoriesResponse() (response *CreateDefaultCategoriesResponse) {
     response = &CreateDefaultCategoriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateDefaultCategories
@@ -513,8 +518,9 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
 func NewCreateTaskResponse() (response *CreateTaskResponse) {
     response = &CreateTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTask
@@ -613,8 +619,9 @@ func NewDeleteCustomCategoryRequest() (request *DeleteCustomCategoryRequest) {
 func NewDeleteCustomCategoryResponse() (response *DeleteCustomCategoryResponse) {
     response = &DeleteCustomCategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomCategory
@@ -679,8 +686,9 @@ func NewDeleteCustomPersonRequest() (request *DeleteCustomPersonRequest) {
 func NewDeleteCustomPersonResponse() (response *DeleteCustomPersonResponse) {
     response = &DeleteCustomPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomPerson
@@ -741,8 +749,9 @@ func NewDeleteCustomPersonImageRequest() (request *DeleteCustomPersonImageReques
 func NewDeleteCustomPersonImageResponse() (response *DeleteCustomPersonImageResponse) {
     response = &DeleteCustomPersonImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCustomPersonImage
@@ -809,8 +818,9 @@ func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
 func NewDeleteMediaResponse() (response *DeleteMediaResponse) {
     response = &DeleteMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMedia
@@ -889,8 +899,9 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
 func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
     response = &DeleteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTask
@@ -967,8 +978,9 @@ func NewDescribeCustomCategoriesRequest() (request *DescribeCustomCategoriesRequ
 func NewDescribeCustomCategoriesResponse() (response *DescribeCustomCategoriesResponse) {
     response = &DescribeCustomCategoriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomCategories
@@ -1025,8 +1037,9 @@ func NewDescribeCustomGroupRequest() (request *DescribeCustomGroupRequest) {
 func NewDescribeCustomGroupResponse() (response *DescribeCustomGroupResponse) {
     response = &DescribeCustomGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomGroup
@@ -1089,8 +1102,9 @@ func NewDescribeCustomPersonDetailRequest() (request *DescribeCustomPersonDetail
 func NewDescribeCustomPersonDetailResponse() (response *DescribeCustomPersonDetailResponse) {
     response = &DescribeCustomPersonDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomPersonDetail
@@ -1151,8 +1165,9 @@ func NewDescribeCustomPersonsRequest() (request *DescribeCustomPersonsRequest) {
 func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse) {
     response = &DescribeCustomPersonsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCustomPersons
@@ -1231,8 +1246,9 @@ func NewDescribeMediaRequest() (request *DescribeMediaRequest) {
 func NewDescribeMediaResponse() (response *DescribeMediaResponse) {
     response = &DescribeMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMedia
@@ -1309,8 +1325,9 @@ func NewDescribeMediasRequest() (request *DescribeMediasRequest) {
 func NewDescribeMediasResponse() (response *DescribeMediasResponse) {
     response = &DescribeMediasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMedias
@@ -1413,8 +1430,9 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
 func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     response = &DescribeTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTask
@@ -1487,8 +1505,9 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
 func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     response = &DescribeTaskDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTaskDetail
@@ -1553,8 +1572,9 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
 func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     response = &DescribeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTasks
@@ -1635,8 +1655,9 @@ func NewImportMediaRequest() (request *ImportMediaRequest) {
 func NewImportMediaResponse() (response *ImportMediaResponse) {
     response = &ImportMediaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImportMedia
@@ -1887,8 +1908,9 @@ func NewModifyCallbackRequest() (request *ModifyCallbackRequest) {
 func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
     response = &ModifyCallbackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCallback
@@ -2097,8 +2119,9 @@ func NewQueryCallbackRequest() (request *QueryCallbackRequest) {
 func NewQueryCallbackResponse() (response *QueryCallbackResponse) {
     response = &QueryCallbackResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryCallback
@@ -2159,8 +2182,9 @@ func NewUpdateCustomCategoryRequest() (request *UpdateCustomCategoryRequest) {
 func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) {
     response = &UpdateCustomCategoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCustomCategory
@@ -2247,8 +2271,9 @@ func NewUpdateCustomPersonRequest() (request *UpdateCustomPersonRequest) {
 func NewUpdateCustomPersonResponse() (response *UpdateCustomPersonResponse) {
     response = &UpdateCustomPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCustomPerson

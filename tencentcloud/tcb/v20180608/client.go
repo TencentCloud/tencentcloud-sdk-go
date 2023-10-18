@@ -59,8 +59,9 @@ func NewBindEnvGatewayRequest() (request *BindEnvGatewayRequest) {
 func NewBindEnvGatewayResponse() (response *BindEnvGatewayResponse) {
     response = &BindEnvGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BindEnvGateway
@@ -115,8 +116,9 @@ func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
 func NewCheckTcbServiceResponse() (response *CheckTcbServiceResponse) {
     response = &CheckTcbServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CheckTcbService
@@ -169,8 +171,9 @@ func NewCommonServiceAPIRequest() (request *CommonServiceAPIRequest) {
 func NewCommonServiceAPIResponse() (response *CommonServiceAPIResponse) {
     response = &CommonServiceAPIResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CommonServiceAPI
@@ -221,8 +224,9 @@ func NewCreateAndDeployCloudBaseProjectRequest() (request *CreateAndDeployCloudB
 func NewCreateAndDeployCloudBaseProjectResponse() (response *CreateAndDeployCloudBaseProjectResponse) {
     response = &CreateAndDeployCloudBaseProjectResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAndDeployCloudBaseProject
@@ -283,8 +287,9 @@ func NewCreateAuthDomainRequest() (request *CreateAuthDomainRequest) {
 func NewCreateAuthDomainResponse() (response *CreateAuthDomainResponse) {
     response = &CreateAuthDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateAuthDomain
@@ -341,8 +346,9 @@ func NewCreateCloudBaseRunResourceRequest() (request *CreateCloudBaseRunResource
 func NewCreateCloudBaseRunResourceResponse() (response *CreateCloudBaseRunResourceResponse) {
     response = &CreateCloudBaseRunResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudBaseRunResource
@@ -395,8 +401,9 @@ func NewCreateCloudBaseRunServerVersionRequest() (request *CreateCloudBaseRunSer
 func NewCreateCloudBaseRunServerVersionResponse() (response *CreateCloudBaseRunServerVersionResponse) {
     response = &CreateCloudBaseRunServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCloudBaseRunServerVersion
@@ -455,8 +462,9 @@ func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
 func NewCreateHostingDomainResponse() (response *CreateHostingDomainResponse) {
     response = &CreateHostingDomainResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateHostingDomain
@@ -517,8 +525,9 @@ func NewCreatePostpayPackageRequest() (request *CreatePostpayPackageRequest) {
 func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) {
     response = &CreatePostpayPackageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePostpayPackage
@@ -575,8 +584,9 @@ func NewCreateStandaloneGatewayRequest() (request *CreateStandaloneGatewayReques
 func NewCreateStandaloneGatewayResponse() (response *CreateStandaloneGatewayResponse) {
     response = &CreateStandaloneGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStandaloneGateway
@@ -639,8 +649,9 @@ func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
 func NewCreateStaticStoreResponse() (response *CreateStaticStoreResponse) {
     response = &CreateStaticStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateStaticStore
@@ -691,8 +702,9 @@ func NewCreateWxCloudBaseRunEnvRequest() (request *CreateWxCloudBaseRunEnvReques
 func NewCreateWxCloudBaseRunEnvResponse() (response *CreateWxCloudBaseRunEnvResponse) {
     response = &CreateWxCloudBaseRunEnvResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWxCloudBaseRunEnv
@@ -757,8 +769,9 @@ func NewCreateWxCloudBaseRunServerDBClusterRequest() (request *CreateWxCloudBase
 func NewCreateWxCloudBaseRunServerDBClusterResponse() (response *CreateWxCloudBaseRunServerDBClusterResponse) {
     response = &CreateWxCloudBaseRunServerDBClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateWxCloudBaseRunServerDBCluster
@@ -825,8 +838,9 @@ func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBasePr
 func NewDeleteCloudBaseProjectLatestVersionResponse() (response *DeleteCloudBaseProjectLatestVersionResponse) {
     response = &DeleteCloudBaseProjectLatestVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudBaseProjectLatestVersion
@@ -877,8 +891,9 @@ func NewDeleteCloudBaseRunServerVersionRequest() (request *DeleteCloudBaseRunSer
 func NewDeleteCloudBaseRunServerVersionResponse() (response *DeleteCloudBaseRunServerVersionResponse) {
     response = &DeleteCloudBaseRunServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCloudBaseRunServerVersion
@@ -933,8 +948,9 @@ func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
 func NewDeleteEndUserResponse() (response *DeleteEndUserResponse) {
     response = &DeleteEndUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteEndUser
@@ -987,8 +1003,9 @@ func NewDeleteGatewayVersionRequest() (request *DeleteGatewayVersionRequest) {
 func NewDeleteGatewayVersionResponse() (response *DeleteGatewayVersionResponse) {
     response = &DeleteGatewayVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGatewayVersion
@@ -1045,8 +1062,9 @@ func NewDeleteWxGatewayRouteRequest() (request *DeleteWxGatewayRouteRequest) {
 func NewDeleteWxGatewayRouteResponse() (response *DeleteWxGatewayRouteResponse) {
     response = &DeleteWxGatewayRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteWxGatewayRoute
@@ -1103,8 +1121,9 @@ func NewDescribeActivityInfoRequest() (request *DescribeActivityInfoRequest) {
 func NewDescribeActivityInfoResponse() (response *DescribeActivityInfoResponse) {
     response = &DescribeActivityInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeActivityInfo
@@ -1157,8 +1176,9 @@ func NewDescribeActivityRecordRequest() (request *DescribeActivityRecordRequest)
 func NewDescribeActivityRecordResponse() (response *DescribeActivityRecordResponse) {
     response = &DescribeActivityRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeActivityRecord
@@ -1211,8 +1231,9 @@ func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
 func NewDescribeAuthDomainsResponse() (response *DescribeAuthDomainsResponse) {
     response = &DescribeAuthDomainsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAuthDomains
@@ -1263,8 +1284,9 @@ func NewDescribeBaasPackageListRequest() (request *DescribeBaasPackageListReques
 func NewDescribeBaasPackageListResponse() (response *DescribeBaasPackageListResponse) {
     response = &DescribeBaasPackageListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBaasPackageList
@@ -1319,8 +1341,9 @@ func NewDescribeBillingInfoRequest() (request *DescribeBillingInfoRequest) {
 func NewDescribeBillingInfoResponse() (response *DescribeBillingInfoResponse) {
     response = &DescribeBillingInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeBillingInfo
@@ -1375,8 +1398,9 @@ func NewDescribeCbrServerVersionRequest() (request *DescribeCbrServerVersionRequ
 func NewDescribeCbrServerVersionResponse() (response *DescribeCbrServerVersionResponse) {
     response = &DescribeCbrServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCbrServerVersion
@@ -1433,8 +1457,9 @@ func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildS
 func NewDescribeCloudBaseBuildServiceResponse() (response *DescribeCloudBaseBuildServiceResponse) {
     response = &DescribeCloudBaseBuildServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseBuildService
@@ -1487,8 +1512,9 @@ func NewDescribeCloudBaseProjectLatestVersionListRequest() (request *DescribeClo
 func NewDescribeCloudBaseProjectLatestVersionListResponse() (response *DescribeCloudBaseProjectLatestVersionListResponse) {
     response = &DescribeCloudBaseProjectLatestVersionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseProjectLatestVersionList
@@ -1541,8 +1567,9 @@ func NewDescribeCloudBaseProjectVersionListRequest() (request *DescribeCloudBase
 func NewDescribeCloudBaseProjectVersionListResponse() (response *DescribeCloudBaseProjectVersionListResponse) {
     response = &DescribeCloudBaseProjectVersionListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseProjectVersionList
@@ -1589,8 +1616,9 @@ func NewDescribeCloudBaseRunAllVpcsRequest() (request *DescribeCloudBaseRunAllVp
 func NewDescribeCloudBaseRunAllVpcsResponse() (response *DescribeCloudBaseRunAllVpcsResponse) {
     response = &DescribeCloudBaseRunAllVpcsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunAllVpcs
@@ -1639,8 +1667,9 @@ func NewDescribeCloudBaseRunConfForGateWayRequest() (request *DescribeCloudBaseR
 func NewDescribeCloudBaseRunConfForGateWayResponse() (response *DescribeCloudBaseRunConfForGateWayResponse) {
     response = &DescribeCloudBaseRunConfForGateWayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunConfForGateWay
@@ -1693,8 +1722,9 @@ func NewDescribeCloudBaseRunOneClickTaskExternalRequest() (request *DescribeClou
 func NewDescribeCloudBaseRunOneClickTaskExternalResponse() (response *DescribeCloudBaseRunOneClickTaskExternalResponse) {
     response = &DescribeCloudBaseRunOneClickTaskExternalResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunOneClickTaskExternal
@@ -1749,8 +1779,9 @@ func NewDescribeCloudBaseRunOperationTypesRequest() (request *DescribeCloudBaseR
 func NewDescribeCloudBaseRunOperationTypesResponse() (response *DescribeCloudBaseRunOperationTypesResponse) {
     response = &DescribeCloudBaseRunOperationTypesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunOperationTypes
@@ -1801,8 +1832,9 @@ func NewDescribeCloudBaseRunPodListRequest() (request *DescribeCloudBaseRunPodLi
 func NewDescribeCloudBaseRunPodListResponse() (response *DescribeCloudBaseRunPodListResponse) {
     response = &DescribeCloudBaseRunPodListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunPodList
@@ -1859,8 +1891,9 @@ func NewDescribeCloudBaseRunResourceRequest() (request *DescribeCloudBaseRunReso
 func NewDescribeCloudBaseRunResourceResponse() (response *DescribeCloudBaseRunResourceResponse) {
     response = &DescribeCloudBaseRunResourceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunResource
@@ -1911,8 +1944,9 @@ func NewDescribeCloudBaseRunResourceForExtendRequest() (request *DescribeCloudBa
 func NewDescribeCloudBaseRunResourceForExtendResponse() (response *DescribeCloudBaseRunResourceForExtendResponse) {
     response = &DescribeCloudBaseRunResourceForExtendResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunResourceForExtend
@@ -1961,8 +1995,9 @@ func NewDescribeCloudBaseRunServerRequest() (request *DescribeCloudBaseRunServer
 func NewDescribeCloudBaseRunServerResponse() (response *DescribeCloudBaseRunServerResponse) {
     response = &DescribeCloudBaseRunServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunServer
@@ -2015,8 +2050,9 @@ func NewDescribeCloudBaseRunServerDomainNameRequest() (request *DescribeCloudBas
 func NewDescribeCloudBaseRunServerDomainNameResponse() (response *DescribeCloudBaseRunServerDomainNameResponse) {
     response = &DescribeCloudBaseRunServerDomainNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunServerDomainName
@@ -2069,8 +2105,9 @@ func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRu
 func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBaseRunServerVersionResponse) {
     response = &DescribeCloudBaseRunServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunServerVersion
@@ -2127,8 +2164,9 @@ func NewDescribeCloudBaseRunVersionRequest() (request *DescribeCloudBaseRunVersi
 func NewDescribeCloudBaseRunVersionResponse() (response *DescribeCloudBaseRunVersionResponse) {
     response = &DescribeCloudBaseRunVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunVersion
@@ -2183,8 +2221,9 @@ func NewDescribeCloudBaseRunVersionRsByConditionRequest() (request *DescribeClou
 func NewDescribeCloudBaseRunVersionRsByConditionResponse() (response *DescribeCloudBaseRunVersionRsByConditionResponse) {
     response = &DescribeCloudBaseRunVersionRsByConditionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunVersionRsByCondition
@@ -2237,8 +2276,9 @@ func NewDescribeCloudBaseRunVersionSnapshotRequest() (request *DescribeCloudBase
 func NewDescribeCloudBaseRunVersionSnapshotResponse() (response *DescribeCloudBaseRunVersionSnapshotResponse) {
     response = &DescribeCloudBaseRunVersionSnapshotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCloudBaseRunVersionSnapshot
@@ -2291,8 +2331,9 @@ func NewDescribeCurveDataRequest() (request *DescribeCurveDataRequest) {
 func NewDescribeCurveDataResponse() (response *DescribeCurveDataResponse) {
     response = &DescribeCurveDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCurveData
@@ -2351,8 +2392,9 @@ func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
 func NewDescribeDatabaseACLResponse() (response *DescribeDatabaseACLResponse) {
     response = &DescribeDatabaseACLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDatabaseACL
@@ -2405,8 +2447,9 @@ func NewDescribeDownloadFileRequest() (request *DescribeDownloadFileRequest) {
 func NewDescribeDownloadFileResponse() (response *DescribeDownloadFileResponse) {
     response = &DescribeDownloadFileResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeDownloadFile
@@ -2461,8 +2504,9 @@ func NewDescribeEndUserLoginStatisticRequest() (request *DescribeEndUserLoginSta
 func NewDescribeEndUserLoginStatisticResponse() (response *DescribeEndUserLoginStatisticResponse) {
     response = &DescribeEndUserLoginStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEndUserLoginStatistic
@@ -2525,8 +2569,9 @@ func NewDescribeEndUserStatisticRequest() (request *DescribeEndUserStatisticRequ
 func NewDescribeEndUserStatisticResponse() (response *DescribeEndUserStatisticResponse) {
     response = &DescribeEndUserStatisticResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEndUserStatistic
@@ -2589,8 +2634,9 @@ func NewDescribeEndUsersRequest() (request *DescribeEndUsersRequest) {
 func NewDescribeEndUsersResponse() (response *DescribeEndUsersResponse) {
     response = &DescribeEndUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEndUsers
@@ -2641,8 +2687,9 @@ func NewDescribeEnvDealRegionRequest() (request *DescribeEnvDealRegionRequest) {
 func NewDescribeEnvDealRegionResponse() (response *DescribeEnvDealRegionResponse) {
     response = &DescribeEnvDealRegionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvDealRegion
@@ -2705,8 +2752,9 @@ func NewDescribeEnvFreeQuotaRequest() (request *DescribeEnvFreeQuotaRequest) {
 func NewDescribeEnvFreeQuotaResponse() (response *DescribeEnvFreeQuotaResponse) {
     response = &DescribeEnvFreeQuotaResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvFreeQuota
@@ -2761,8 +2809,9 @@ func NewDescribeEnvLimitRequest() (request *DescribeEnvLimitRequest) {
 func NewDescribeEnvLimitResponse() (response *DescribeEnvLimitResponse) {
     response = &DescribeEnvLimitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvLimit
@@ -2815,8 +2864,9 @@ func NewDescribeEnvPostpaidDeductRequest() (request *DescribeEnvPostpaidDeductRe
 func NewDescribeEnvPostpaidDeductResponse() (response *DescribeEnvPostpaidDeductResponse) {
     response = &DescribeEnvPostpaidDeductResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvPostpaidDeduct
@@ -2869,8 +2919,9 @@ func NewDescribeEnvsRequest() (request *DescribeEnvsRequest) {
 func NewDescribeEnvsResponse() (response *DescribeEnvsResponse) {
     response = &DescribeEnvsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEnvs
@@ -2931,8 +2982,9 @@ func NewDescribeExtensionUploadInfoRequest() (request *DescribeExtensionUploadIn
 func NewDescribeExtensionUploadInfoResponse() (response *DescribeExtensionUploadInfoResponse) {
     response = &DescribeExtensionUploadInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExtensionUploadInfo
@@ -2981,8 +3033,9 @@ func NewDescribeExtraPkgBillingInfoRequest() (request *DescribeExtraPkgBillingIn
 func NewDescribeExtraPkgBillingInfoResponse() (response *DescribeExtraPkgBillingInfoResponse) {
     response = &DescribeExtraPkgBillingInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExtraPkgBillingInfo
@@ -3037,8 +3090,9 @@ func NewDescribeGatewayCurveDataRequest() (request *DescribeGatewayCurveDataRequ
 func NewDescribeGatewayCurveDataResponse() (response *DescribeGatewayCurveDataResponse) {
     response = &DescribeGatewayCurveDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGatewayCurveData
@@ -3097,8 +3151,9 @@ func NewDescribeGatewayVersionsRequest() (request *DescribeGatewayVersionsReques
 func NewDescribeGatewayVersionsResponse() (response *DescribeGatewayVersionsResponse) {
     response = &DescribeGatewayVersionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGatewayVersions
@@ -3157,8 +3212,9 @@ func NewDescribeGraphDataRequest() (request *DescribeGraphDataRequest) {
 func NewDescribeGraphDataResponse() (response *DescribeGraphDataResponse) {
     response = &DescribeGraphDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeGraphData
@@ -3217,8 +3273,9 @@ func NewDescribeHostingDomainTaskRequest() (request *DescribeHostingDomainTaskRe
 func NewDescribeHostingDomainTaskResponse() (response *DescribeHostingDomainTaskResponse) {
     response = &DescribeHostingDomainTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeHostingDomainTask
@@ -3277,8 +3334,9 @@ func NewDescribePostpayFreeQuotasRequest() (request *DescribePostpayFreeQuotasRe
 func NewDescribePostpayFreeQuotasResponse() (response *DescribePostpayFreeQuotasResponse) {
     response = &DescribePostpayFreeQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePostpayFreeQuotas
@@ -3331,8 +3389,9 @@ func NewDescribePostpayPackageFreeQuotasRequest() (request *DescribePostpayPacka
 func NewDescribePostpayPackageFreeQuotasResponse() (response *DescribePostpayPackageFreeQuotasResponse) {
     response = &DescribePostpayPackageFreeQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribePostpayPackageFreeQuotas
@@ -3397,8 +3456,9 @@ func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
 func NewDescribeQuotaDataResponse() (response *DescribeQuotaDataResponse) {
     response = &DescribeQuotaDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQuotaData
@@ -3457,8 +3517,9 @@ func NewDescribeSmsQuotasRequest() (request *DescribeSmsQuotasRequest) {
 func NewDescribeSmsQuotasResponse() (response *DescribeSmsQuotasResponse) {
     response = &DescribeSmsQuotasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmsQuotas
@@ -3523,8 +3584,9 @@ func NewDescribeSpecialCostItemsRequest() (request *DescribeSpecialCostItemsRequ
 func NewDescribeSpecialCostItemsResponse() (response *DescribeSpecialCostItemsResponse) {
     response = &DescribeSpecialCostItemsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSpecialCostItems
@@ -3577,8 +3639,9 @@ func NewDescribeStandaloneGatewayRequest() (request *DescribeStandaloneGatewayRe
 func NewDescribeStandaloneGatewayResponse() (response *DescribeStandaloneGatewayResponse) {
     response = &DescribeStandaloneGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStandaloneGateway
@@ -3639,8 +3702,9 @@ func NewDescribeStandaloneGatewayPackageRequest() (request *DescribeStandaloneGa
 func NewDescribeStandaloneGatewayPackageResponse() (response *DescribeStandaloneGatewayPackageResponse) {
     response = &DescribeStandaloneGatewayPackageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeStandaloneGatewayPackage
@@ -3699,8 +3763,9 @@ func NewDescribeUserActivityInfoRequest() (request *DescribeUserActivityInfoRequ
 func NewDescribeUserActivityInfoResponse() (response *DescribeUserActivityInfoResponse) {
     response = &DescribeUserActivityInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserActivityInfo
@@ -3753,8 +3818,9 @@ func NewDescribeWxCloudBaseRunEnvsRequest() (request *DescribeWxCloudBaseRunEnvs
 func NewDescribeWxCloudBaseRunEnvsResponse() (response *DescribeWxCloudBaseRunEnvsResponse) {
     response = &DescribeWxCloudBaseRunEnvsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWxCloudBaseRunEnvs
@@ -3819,8 +3885,9 @@ func NewDescribeWxCloudBaseRunSubNetsRequest() (request *DescribeWxCloudBaseRunS
 func NewDescribeWxCloudBaseRunSubNetsResponse() (response *DescribeWxCloudBaseRunSubNetsResponse) {
     response = &DescribeWxCloudBaseRunSubNetsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWxCloudBaseRunSubNets
@@ -3883,8 +3950,9 @@ func NewDescribeWxGatewayRoutesRequest() (request *DescribeWxGatewayRoutesReques
 func NewDescribeWxGatewayRoutesResponse() (response *DescribeWxGatewayRoutesResponse) {
     response = &DescribeWxGatewayRoutesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWxGatewayRoutes
@@ -3935,8 +4003,9 @@ func NewDescribeWxGatewaysRequest() (request *DescribeWxGatewaysRequest) {
 func NewDescribeWxGatewaysResponse() (response *DescribeWxGatewaysResponse) {
     response = &DescribeWxGatewaysResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeWxGateways
@@ -3985,8 +4054,9 @@ func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
 func NewDestroyEnvResponse() (response *DestroyEnvResponse) {
     response = &DestroyEnvResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyEnv
@@ -4047,8 +4117,9 @@ func NewDestroyStandaloneGatewayRequest() (request *DestroyStandaloneGatewayRequ
 func NewDestroyStandaloneGatewayResponse() (response *DestroyStandaloneGatewayResponse) {
     response = &DestroyStandaloneGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyStandaloneGateway
@@ -4105,8 +4176,9 @@ func NewDestroyStaticStoreRequest() (request *DestroyStaticStoreRequest) {
 func NewDestroyStaticStoreResponse() (response *DestroyStaticStoreResponse) {
     response = &DestroyStaticStoreResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyStaticStore
@@ -4155,8 +4227,9 @@ func NewEstablishCloudBaseRunServerRequest() (request *EstablishCloudBaseRunServ
 func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunServerResponse) {
     response = &EstablishCloudBaseRunServerResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EstablishCloudBaseRunServer
@@ -4219,8 +4292,9 @@ func NewEstablishWxGatewayRouteRequest() (request *EstablishWxGatewayRouteReques
 func NewEstablishWxGatewayRouteResponse() (response *EstablishWxGatewayRouteResponse) {
     response = &EstablishWxGatewayRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // EstablishWxGatewayRoute
@@ -4279,8 +4353,9 @@ func NewFreezeCloudBaseRunServersRequest() (request *FreezeCloudBaseRunServersRe
 func NewFreezeCloudBaseRunServersResponse() (response *FreezeCloudBaseRunServersResponse) {
     response = &FreezeCloudBaseRunServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // FreezeCloudBaseRunServers
@@ -4333,8 +4408,9 @@ func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunSe
 func NewModifyCloudBaseRunServerFlowConfResponse() (response *ModifyCloudBaseRunServerFlowConfResponse) {
     response = &ModifyCloudBaseRunServerFlowConfResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudBaseRunServerFlowConf
@@ -4385,8 +4461,9 @@ func NewModifyCloudBaseRunServerVersionRequest() (request *ModifyCloudBaseRunSer
 func NewModifyCloudBaseRunServerVersionResponse() (response *ModifyCloudBaseRunServerVersionResponse) {
     response = &ModifyCloudBaseRunServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyCloudBaseRunServerVersion
@@ -4439,8 +4516,9 @@ func NewModifyClsTopicRequest() (request *ModifyClsTopicRequest) {
 func NewModifyClsTopicResponse() (response *ModifyClsTopicResponse) {
     response = &ModifyClsTopicResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyClsTopic
@@ -4503,8 +4581,9 @@ func NewModifyDatabaseACLRequest() (request *ModifyDatabaseACLRequest) {
 func NewModifyDatabaseACLResponse() (response *ModifyDatabaseACLResponse) {
     response = &ModifyDatabaseACLResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyDatabaseACL
@@ -4557,8 +4636,9 @@ func NewModifyEndUserRequest() (request *ModifyEndUserRequest) {
 func NewModifyEndUserResponse() (response *ModifyEndUserResponse) {
     response = &ModifyEndUserResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEndUser
@@ -4611,8 +4691,9 @@ func NewModifyEnvRequest() (request *ModifyEnvRequest) {
 func NewModifyEnvResponse() (response *ModifyEnvResponse) {
     response = &ModifyEnvResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyEnv
@@ -4667,8 +4748,9 @@ func NewModifyGatewayVersionTrafficRequest() (request *ModifyGatewayVersionTraff
 func NewModifyGatewayVersionTrafficResponse() (response *ModifyGatewayVersionTrafficResponse) {
     response = &ModifyGatewayVersionTrafficResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGatewayVersionTraffic
@@ -4721,8 +4803,9 @@ func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
 func NewReinstateEnvResponse() (response *ReinstateEnvResponse) {
     response = &ReinstateEnvResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReinstateEnv
@@ -4779,8 +4862,9 @@ func NewReplaceActivityRecordRequest() (request *ReplaceActivityRecordRequest) {
 func NewReplaceActivityRecordResponse() (response *ReplaceActivityRecordResponse) {
     response = &ReplaceActivityRecordResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReplaceActivityRecord
@@ -4835,8 +4919,9 @@ func NewRollUpdateCloudBaseRunServerVersionRequest() (request *RollUpdateCloudBa
 func NewRollUpdateCloudBaseRunServerVersionResponse() (response *RollUpdateCloudBaseRunServerVersionResponse) {
     response = &RollUpdateCloudBaseRunServerVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RollUpdateCloudBaseRunServerVersion
@@ -4887,8 +4972,9 @@ func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
 func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
     response = &SearchClsLogResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchClsLog
@@ -4941,8 +5027,9 @@ func NewTurnOffStandaloneGatewayRequest() (request *TurnOffStandaloneGatewayRequ
 func NewTurnOffStandaloneGatewayResponse() (response *TurnOffStandaloneGatewayResponse) {
     response = &TurnOffStandaloneGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TurnOffStandaloneGateway
@@ -5003,8 +5090,9 @@ func NewTurnOnStandaloneGatewayRequest() (request *TurnOnStandaloneGatewayReques
 func NewTurnOnStandaloneGatewayResponse() (response *TurnOnStandaloneGatewayResponse) {
     response = &TurnOnStandaloneGatewayResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // TurnOnStandaloneGateway
@@ -5063,8 +5151,9 @@ func NewUnfreezeCloudBaseRunServersRequest() (request *UnfreezeCloudBaseRunServe
 func NewUnfreezeCloudBaseRunServersResponse() (response *UnfreezeCloudBaseRunServersResponse) {
     response = &UnfreezeCloudBaseRunServersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnfreezeCloudBaseRunServers

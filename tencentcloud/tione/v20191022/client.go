@@ -59,8 +59,9 @@ func NewCreateCodeRepositoryRequest() (request *CreateCodeRepositoryRequest) {
 func NewCreateCodeRepositoryResponse() (response *CreateCodeRepositoryResponse) {
     response = &CreateCodeRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCodeRepository
@@ -127,8 +128,9 @@ func NewCreateNotebookInstanceRequest() (request *CreateNotebookInstanceRequest)
 func NewCreateNotebookInstanceResponse() (response *CreateNotebookInstanceResponse) {
     response = &CreateNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNotebookInstance
@@ -209,8 +211,9 @@ func NewCreateNotebookLifecycleScriptRequest() (request *CreateNotebookLifecycle
 func NewCreateNotebookLifecycleScriptResponse() (response *CreateNotebookLifecycleScriptResponse) {
     response = &CreateNotebookLifecycleScriptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateNotebookLifecycleScript
@@ -267,8 +270,9 @@ func NewCreatePresignedNotebookInstanceUrlRequest() (request *CreatePresignedNot
 func NewCreatePresignedNotebookInstanceUrlResponse() (response *CreatePresignedNotebookInstanceUrlResponse) {
     response = &CreatePresignedNotebookInstanceUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePresignedNotebookInstanceUrl
@@ -325,8 +329,9 @@ func NewCreateTrainingJobRequest() (request *CreateTrainingJobRequest) {
 func NewCreateTrainingJobResponse() (response *CreateTrainingJobResponse) {
     response = &CreateTrainingJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateTrainingJob
@@ -407,8 +412,9 @@ func NewDeleteCodeRepositoryRequest() (request *DeleteCodeRepositoryRequest) {
 func NewDeleteCodeRepositoryResponse() (response *DeleteCodeRepositoryResponse) {
     response = &DeleteCodeRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteCodeRepository
@@ -469,8 +475,9 @@ func NewDeleteNotebookInstanceRequest() (request *DeleteNotebookInstanceRequest)
 func NewDeleteNotebookInstanceResponse() (response *DeleteNotebookInstanceResponse) {
     response = &DeleteNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNotebookInstance
@@ -525,8 +532,9 @@ func NewDeleteNotebookLifecycleScriptRequest() (request *DeleteNotebookLifecycle
 func NewDeleteNotebookLifecycleScriptResponse() (response *DeleteNotebookLifecycleScriptResponse) {
     response = &DeleteNotebookLifecycleScriptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteNotebookLifecycleScript
@@ -583,8 +591,9 @@ func NewDescribeCodeRepositoriesRequest() (request *DescribeCodeRepositoriesRequ
 func NewDescribeCodeRepositoriesResponse() (response *DescribeCodeRepositoriesResponse) {
     response = &DescribeCodeRepositoriesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodeRepositories
@@ -643,8 +652,9 @@ func NewDescribeCodeRepositoryRequest() (request *DescribeCodeRepositoryRequest)
 func NewDescribeCodeRepositoryResponse() (response *DescribeCodeRepositoryResponse) {
     response = &DescribeCodeRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCodeRepository
@@ -705,8 +715,9 @@ func NewDescribeNotebookInstanceRequest() (request *DescribeNotebookInstanceRequ
 func NewDescribeNotebookInstanceResponse() (response *DescribeNotebookInstanceResponse) {
     response = &DescribeNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookInstance
@@ -765,8 +776,9 @@ func NewDescribeNotebookInstancesRequest() (request *DescribeNotebookInstancesRe
 func NewDescribeNotebookInstancesResponse() (response *DescribeNotebookInstancesResponse) {
     response = &DescribeNotebookInstancesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookInstances
@@ -821,8 +833,9 @@ func NewDescribeNotebookLifecycleScriptRequest() (request *DescribeNotebookLifec
 func NewDescribeNotebookLifecycleScriptResponse() (response *DescribeNotebookLifecycleScriptResponse) {
     response = &DescribeNotebookLifecycleScriptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookLifecycleScript
@@ -875,8 +888,9 @@ func NewDescribeNotebookLifecycleScriptsRequest() (request *DescribeNotebookLife
 func NewDescribeNotebookLifecycleScriptsResponse() (response *DescribeNotebookLifecycleScriptsResponse) {
     response = &DescribeNotebookLifecycleScriptsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookLifecycleScripts
@@ -929,8 +943,9 @@ func NewDescribeNotebookSummaryRequest() (request *DescribeNotebookSummaryReques
 func NewDescribeNotebookSummaryResponse() (response *DescribeNotebookSummaryResponse) {
     response = &DescribeNotebookSummaryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeNotebookSummary
@@ -977,8 +992,9 @@ func NewDescribeTrainingJobRequest() (request *DescribeTrainingJobRequest) {
 func NewDescribeTrainingJobResponse() (response *DescribeTrainingJobResponse) {
     response = &DescribeTrainingJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingJob
@@ -1031,8 +1047,9 @@ func NewDescribeTrainingJobsRequest() (request *DescribeTrainingJobsRequest) {
 func NewDescribeTrainingJobsResponse() (response *DescribeTrainingJobsResponse) {
     response = &DescribeTrainingJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTrainingJobs
@@ -1085,8 +1102,9 @@ func NewStartNotebookInstanceRequest() (request *StartNotebookInstanceRequest) {
 func NewStartNotebookInstanceResponse() (response *StartNotebookInstanceResponse) {
     response = &StartNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartNotebookInstance
@@ -1139,8 +1157,9 @@ func NewStopNotebookInstanceRequest() (request *StopNotebookInstanceRequest) {
 func NewStopNotebookInstanceResponse() (response *StopNotebookInstanceResponse) {
     response = &StopNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopNotebookInstance
@@ -1195,8 +1214,9 @@ func NewStopTrainingJobRequest() (request *StopTrainingJobRequest) {
 func NewStopTrainingJobResponse() (response *StopTrainingJobResponse) {
     response = &StopTrainingJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopTrainingJob
@@ -1247,8 +1267,9 @@ func NewUpdateCodeRepositoryRequest() (request *UpdateCodeRepositoryRequest) {
 func NewUpdateCodeRepositoryResponse() (response *UpdateCodeRepositoryResponse) {
     response = &UpdateCodeRepositoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateCodeRepository
@@ -1309,8 +1330,9 @@ func NewUpdateNotebookInstanceRequest() (request *UpdateNotebookInstanceRequest)
 func NewUpdateNotebookInstanceResponse() (response *UpdateNotebookInstanceResponse) {
     response = &UpdateNotebookInstanceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateNotebookInstance
@@ -1383,8 +1405,9 @@ func NewUpdateNotebookLifecycleScriptRequest() (request *UpdateNotebookLifecycle
 func NewUpdateNotebookLifecycleScriptResponse() (response *UpdateNotebookLifecycleScriptResponse) {
     response = &UpdateNotebookLifecycleScriptResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpdateNotebookLifecycleScript

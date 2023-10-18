@@ -59,8 +59,9 @@ func NewDescribeAppRequest() (request *DescribeAppRequest) {
 func NewDescribeAppResponse() (response *DescribeAppResponse) {
     response = &DescribeAppResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeApp
@@ -111,8 +112,9 @@ func NewDescribeCardRequest() (request *DescribeCardRequest) {
 func NewDescribeCardResponse() (response *DescribeCardResponse) {
     response = &DescribeCardResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCard
@@ -163,8 +165,9 @@ func NewDescribeCardsRequest() (request *DescribeCardsRequest) {
 func NewDescribeCardsResponse() (response *DescribeCardsResponse) {
     response = &DescribeCardsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCards
@@ -211,8 +214,9 @@ func NewDescribeSmsRequest() (request *DescribeSmsRequest) {
 func NewDescribeSmsResponse() (response *DescribeSmsResponse) {
     response = &DescribeSmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSms
@@ -265,8 +269,9 @@ func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
 func NewModifyUserCardRemarkResponse() (response *ModifyUserCardRemarkResponse) {
     response = &ModifyUserCardRemarkResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyUserCardRemark
@@ -319,8 +324,9 @@ func NewPayForExtendDataRequest() (request *PayForExtendDataRequest) {
 func NewPayForExtendDataResponse() (response *PayForExtendDataResponse) {
     response = &PayForExtendDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PayForExtendData
@@ -373,8 +379,9 @@ func NewRenewCardsRequest() (request *RenewCardsRequest) {
 func NewRenewCardsResponse() (response *RenewCardsResponse) {
     response = &RenewCardsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RenewCards
@@ -447,8 +454,9 @@ func NewSendMultiSmsRequest() (request *SendMultiSmsRequest) {
 func NewSendMultiSmsResponse() (response *SendMultiSmsResponse) {
     response = &SendMultiSmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendMultiSms
@@ -499,8 +507,9 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
 func NewSendSmsResponse() (response *SendSmsResponse) {
     response = &SendSmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendSms

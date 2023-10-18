@@ -59,8 +59,9 @@ func NewRecommendContentRequest() (request *RecommendContentRequest) {
 func NewRecommendContentResponse() (response *RecommendContentResponse) {
     response = &RecommendContentResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RecommendContent
@@ -115,8 +116,9 @@ func NewReportActionRequest() (request *ReportActionRequest) {
 func NewReportActionResponse() (response *ReportActionResponse) {
     response = &ReportActionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportAction
@@ -171,8 +173,9 @@ func NewReportMaterialRequest() (request *ReportMaterialRequest) {
 func NewReportMaterialResponse() (response *ReportMaterialResponse) {
     response = &ReportMaterialResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportMaterial
@@ -227,8 +230,9 @@ func NewReportPortraitRequest() (request *ReportPortraitRequest) {
 func NewReportPortraitResponse() (response *ReportPortraitResponse) {
     response = &ReportPortraitResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportPortrait

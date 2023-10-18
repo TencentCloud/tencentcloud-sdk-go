@@ -59,8 +59,9 @@ func NewCreateMeshRequest() (request *CreateMeshRequest) {
 func NewCreateMeshResponse() (response *CreateMeshResponse) {
     response = &CreateMeshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMesh
@@ -119,8 +120,9 @@ func NewDeleteMeshRequest() (request *DeleteMeshRequest) {
 func NewDeleteMeshResponse() (response *DeleteMeshResponse) {
     response = &DeleteMeshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMesh
@@ -177,8 +179,9 @@ func NewDescribeAccessLogConfigRequest() (request *DescribeAccessLogConfigReques
 func NewDescribeAccessLogConfigResponse() (response *DescribeAccessLogConfigResponse) {
     response = &DescribeAccessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAccessLogConfig
@@ -231,8 +234,9 @@ func NewDescribeMeshRequest() (request *DescribeMeshRequest) {
 func NewDescribeMeshResponse() (response *DescribeMeshResponse) {
     response = &DescribeMeshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMesh
@@ -287,8 +291,9 @@ func NewDescribeMeshListRequest() (request *DescribeMeshListRequest) {
 func NewDescribeMeshListResponse() (response *DescribeMeshListResponse) {
     response = &DescribeMeshListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMeshList
@@ -341,8 +346,9 @@ func NewLinkClusterListRequest() (request *LinkClusterListRequest) {
 func NewLinkClusterListResponse() (response *LinkClusterListResponse) {
     response = &LinkClusterListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LinkClusterList
@@ -401,8 +407,9 @@ func NewLinkPrometheusRequest() (request *LinkPrometheusRequest) {
 func NewLinkPrometheusResponse() (response *LinkPrometheusResponse) {
     response = &LinkPrometheusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // LinkPrometheus
@@ -463,8 +470,9 @@ func NewModifyAccessLogConfigRequest() (request *ModifyAccessLogConfigRequest) {
 func NewModifyAccessLogConfigResponse() (response *ModifyAccessLogConfigResponse) {
     response = &ModifyAccessLogConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyAccessLogConfig
@@ -521,8 +529,9 @@ func NewModifyMeshRequest() (request *ModifyMeshRequest) {
 func NewModifyMeshResponse() (response *ModifyMeshResponse) {
     response = &ModifyMeshResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMesh
@@ -579,8 +588,9 @@ func NewModifyTracingConfigRequest() (request *ModifyTracingConfigRequest) {
 func NewModifyTracingConfigResponse() (response *ModifyTracingConfigResponse) {
     response = &ModifyTracingConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyTracingConfig
@@ -637,8 +647,9 @@ func NewUnlinkClusterRequest() (request *UnlinkClusterRequest) {
 func NewUnlinkClusterResponse() (response *UnlinkClusterResponse) {
     response = &UnlinkClusterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnlinkCluster
@@ -695,8 +706,9 @@ func NewUnlinkPrometheusRequest() (request *UnlinkPrometheusRequest) {
 func NewUnlinkPrometheusResponse() (response *UnlinkPrometheusResponse) {
     response = &UnlinkPrometheusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UnlinkPrometheus

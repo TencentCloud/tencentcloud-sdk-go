@@ -59,8 +59,9 @@ func NewCreateFlowServiceRequest() (request *CreateFlowServiceRequest) {
 func NewCreateFlowServiceResponse() (response *CreateFlowServiceResponse) {
     response = &CreateFlowServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlowService
@@ -113,8 +114,9 @@ func NewDescribeExecutionRequest() (request *DescribeExecutionRequest) {
 func NewDescribeExecutionResponse() (response *DescribeExecutionResponse) {
     response = &DescribeExecutionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExecution
@@ -169,8 +171,9 @@ func NewDescribeExecutionHistoryRequest() (request *DescribeExecutionHistoryRequ
 func NewDescribeExecutionHistoryResponse() (response *DescribeExecutionHistoryResponse) {
     response = &DescribeExecutionHistoryResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExecutionHistory
@@ -223,8 +226,9 @@ func NewDescribeExecutionsRequest() (request *DescribeExecutionsRequest) {
 func NewDescribeExecutionsResponse() (response *DescribeExecutionsResponse) {
     response = &DescribeExecutionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExecutions
@@ -275,8 +279,9 @@ func NewDescribeFlowServiceDetailRequest() (request *DescribeFlowServiceDetailRe
 func NewDescribeFlowServiceDetailResponse() (response *DescribeFlowServiceDetailResponse) {
     response = &DescribeFlowServiceDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowServiceDetail
@@ -331,8 +336,9 @@ func NewDescribeFlowServicesRequest() (request *DescribeFlowServicesRequest) {
 func NewDescribeFlowServicesResponse() (response *DescribeFlowServicesResponse) {
     response = &DescribeFlowServicesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowServices
@@ -385,8 +391,9 @@ func NewModifyFlowServiceRequest() (request *ModifyFlowServiceRequest) {
 func NewModifyFlowServiceResponse() (response *ModifyFlowServiceResponse) {
     response = &ModifyFlowServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyFlowService
@@ -439,8 +446,9 @@ func NewStartExecutionRequest() (request *StartExecutionRequest) {
 func NewStartExecutionResponse() (response *StartExecutionResponse) {
     response = &StartExecutionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartExecution
@@ -493,8 +501,9 @@ func NewStopExecutionRequest() (request *StopExecutionRequest) {
 func NewStopExecutionResponse() (response *StopExecutionResponse) {
     response = &StopExecutionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopExecution

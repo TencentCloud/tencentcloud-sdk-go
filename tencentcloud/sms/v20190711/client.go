@@ -59,8 +59,9 @@ func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
 func NewAddSmsSignResponse() (response *AddSmsSignResponse) {
     response = &AddSmsSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddSmsSign
@@ -173,8 +174,9 @@ func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
 func NewAddSmsTemplateResponse() (response *AddSmsTemplateResponse) {
     response = &AddSmsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AddSmsTemplate
@@ -279,8 +281,9 @@ func NewCallbackStatusStatisticsRequest() (request *CallbackStatusStatisticsRequ
 func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsResponse) {
     response = &CallbackStatusStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CallbackStatusStatistics
@@ -383,8 +386,9 @@ func NewDeleteSmsSignRequest() (request *DeleteSmsSignRequest) {
 func NewDeleteSmsSignResponse() (response *DeleteSmsSignResponse) {
     response = &DeleteSmsSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSmsSign
@@ -473,8 +477,9 @@ func NewDeleteSmsTemplateRequest() (request *DeleteSmsTemplateRequest) {
 func NewDeleteSmsTemplateResponse() (response *DeleteSmsTemplateResponse) {
     response = &DeleteSmsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteSmsTemplate
@@ -565,8 +570,9 @@ func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
 func NewDescribeSmsSignListResponse() (response *DescribeSmsSignListResponse) {
     response = &DescribeSmsSignListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmsSignList
@@ -657,8 +663,9 @@ func NewDescribeSmsTemplateListRequest() (request *DescribeSmsTemplateListReques
 func NewDescribeSmsTemplateListResponse() (response *DescribeSmsTemplateListResponse) {
     response = &DescribeSmsTemplateListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSmsTemplateList
@@ -747,8 +754,9 @@ func NewModifySmsSignRequest() (request *ModifySmsSignRequest) {
 func NewModifySmsSignResponse() (response *ModifySmsSignResponse) {
     response = &ModifySmsSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySmsSign
@@ -865,8 +873,9 @@ func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
 func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
     response = &ModifySmsTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySmsTemplate
@@ -967,8 +976,9 @@ func NewPullSmsReplyStatusRequest() (request *PullSmsReplyStatusRequest) {
 func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
     response = &PullSmsReplyStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PullSmsReplyStatus
@@ -1071,8 +1081,9 @@ func NewPullSmsReplyStatusByPhoneNumberRequest() (request *PullSmsReplyStatusByP
 func NewPullSmsReplyStatusByPhoneNumberResponse() (response *PullSmsReplyStatusByPhoneNumberResponse) {
     response = &PullSmsReplyStatusByPhoneNumberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PullSmsReplyStatusByPhoneNumber
@@ -1175,8 +1186,9 @@ func NewPullSmsSendStatusRequest() (request *PullSmsSendStatusRequest) {
 func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
     response = &PullSmsSendStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PullSmsSendStatus
@@ -1279,8 +1291,9 @@ func NewPullSmsSendStatusByPhoneNumberRequest() (request *PullSmsSendStatusByPho
 func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByPhoneNumberResponse) {
     response = &PullSmsSendStatusByPhoneNumberResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PullSmsSendStatusByPhoneNumber
@@ -1385,8 +1398,9 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
 func NewSendSmsResponse() (response *SendSmsResponse) {
     response = &SendSmsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendSms
@@ -1535,8 +1549,9 @@ func NewSendStatusStatisticsRequest() (request *SendStatusStatisticsRequest) {
 func NewSendStatusStatisticsResponse() (response *SendStatusStatisticsResponse) {
     response = &SendStatusStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SendStatusStatistics
@@ -1637,8 +1652,9 @@ func NewSmsPackagesStatisticsRequest() (request *SmsPackagesStatisticsRequest) {
 func NewSmsPackagesStatisticsResponse() (response *SmsPackagesStatisticsResponse) {
     response = &SmsPackagesStatisticsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SmsPackagesStatistics

@@ -59,8 +59,9 @@ func NewCreateImageModerationAsyncTaskRequest() (request *CreateImageModerationA
 func NewCreateImageModerationAsyncTaskResponse() (response *CreateImageModerationAsyncTaskResponse) {
     response = &CreateImageModerationAsyncTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateImageModerationAsyncTask
@@ -243,8 +244,9 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
 func NewImageModerationResponse() (response *ImageModerationResponse) {
     response = &ImageModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ImageModeration

@@ -59,8 +59,9 @@ func NewCreateCameraAlertsRequest() (request *CreateCameraAlertsRequest) {
 func NewCreateCameraAlertsResponse() (response *CreateCameraAlertsResponse) {
     response = &CreateCameraAlertsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCameraAlerts
@@ -137,8 +138,9 @@ func NewCreateCameraStateRequest() (request *CreateCameraStateRequest) {
 func NewCreateCameraStateResponse() (response *CreateCameraStateResponse) {
     response = &CreateCameraStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCameraState
@@ -211,8 +213,9 @@ func NewCreateCaptureRequest() (request *CreateCaptureRequest) {
 func NewCreateCaptureResponse() (response *CreateCaptureResponse) {
     response = &CreateCaptureResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateCapture
@@ -285,8 +288,9 @@ func NewCreateMultiBizAlertRequest() (request *CreateMultiBizAlertRequest) {
 func NewCreateMultiBizAlertResponse() (response *CreateMultiBizAlertResponse) {
     response = &CreateMultiBizAlertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMultiBizAlert
@@ -359,8 +363,9 @@ func NewCreateProgramStateRequest() (request *CreateProgramStateRequest) {
 func NewCreateProgramStateResponse() (response *CreateProgramStateResponse) {
     response = &CreateProgramStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateProgramState
@@ -433,8 +438,9 @@ func NewCreateServerStateRequest() (request *CreateServerStateRequest) {
 func NewCreateServerStateResponse() (response *CreateServerStateResponse) {
     response = &CreateServerStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateServerState
@@ -507,8 +513,9 @@ func NewDeleteMultiBizAlertRequest() (request *DeleteMultiBizAlertRequest) {
 func NewDeleteMultiBizAlertResponse() (response *DeleteMultiBizAlertResponse) {
     response = &DeleteMultiBizAlertResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMultiBizAlert
@@ -581,8 +588,9 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
 func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
     response = &DeleteTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteTask
@@ -655,8 +663,9 @@ func NewDescribeCamerasRequest() (request *DescribeCamerasRequest) {
 func NewDescribeCamerasResponse() (response *DescribeCamerasResponse) {
     response = &DescribeCamerasResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeCameras
@@ -729,8 +738,9 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
 func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     response = &DescribeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeConfig
@@ -811,8 +821,9 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
 func NewDescribeImageResponse() (response *DescribeImageResponse) {
     response = &DescribeImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeImage
@@ -885,8 +896,9 @@ func NewDescribeMultiBizBaseImageRequest() (request *DescribeMultiBizBaseImageRe
 func NewDescribeMultiBizBaseImageResponse() (response *DescribeMultiBizBaseImageResponse) {
     response = &DescribeMultiBizBaseImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMultiBizBaseImage
@@ -959,8 +971,9 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
 func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     response = &DescribeTasksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTasks
@@ -1033,8 +1046,9 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
 func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
     response = &DescribeZonesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeZones
@@ -1107,8 +1121,9 @@ func NewModifyMultiBizConfigRequest() (request *ModifyMultiBizConfigRequest) {
 func NewModifyMultiBizConfigResponse() (response *ModifyMultiBizConfigResponse) {
     response = &ModifyMultiBizConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMultiBizConfig
@@ -1181,8 +1196,9 @@ func NewReportServiceRegisterRequest() (request *ReportServiceRegisterRequest) {
 func NewReportServiceRegisterResponse() (response *ReportServiceRegisterResponse) {
     response = &ReportServiceRegisterResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ReportServiceRegister
@@ -1255,8 +1271,9 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
 func NewSearchImageResponse() (response *SearchImageResponse) {
     response = &SearchImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchImage

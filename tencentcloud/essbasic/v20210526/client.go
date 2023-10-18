@@ -59,8 +59,9 @@ func NewChannelBatchCancelFlowsRequest() (request *ChannelBatchCancelFlowsReques
 func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResponse) {
     response = &ChannelBatchCancelFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelBatchCancelFlows
@@ -169,8 +170,9 @@ func NewChannelCancelFlowRequest() (request *ChannelCancelFlowRequest) {
 func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
     response = &ChannelCancelFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCancelFlow
@@ -259,8 +261,9 @@ func NewChannelCancelMultiFlowSignQRCodeRequest() (request *ChannelCancelMultiFl
 func NewChannelCancelMultiFlowSignQRCodeResponse() (response *ChannelCancelMultiFlowSignQRCodeResponse) {
     response = &ChannelCancelMultiFlowSignQRCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCancelMultiFlowSignQRCode
@@ -319,8 +322,9 @@ func NewChannelCancelUserAutoSignEnableUrlRequest() (request *ChannelCancelUserA
 func NewChannelCancelUserAutoSignEnableUrlResponse() (response *ChannelCancelUserAutoSignEnableUrlResponse) {
     response = &ChannelCancelUserAutoSignEnableUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCancelUserAutoSignEnableUrl
@@ -379,8 +383,9 @@ func NewChannelCreateBatchCancelFlowUrlRequest() (request *ChannelCreateBatchCan
 func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchCancelFlowUrlResponse) {
     response = &ChannelCreateBatchCancelFlowUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateBatchCancelFlowUrl
@@ -465,8 +470,9 @@ func NewChannelCreateBatchSignUrlRequest() (request *ChannelCreateBatchSignUrlRe
 func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrlResponse) {
     response = &ChannelCreateBatchSignUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateBatchSignUrl
@@ -549,8 +555,9 @@ func NewChannelCreateBoundFlowsRequest() (request *ChannelCreateBoundFlowsReques
 func NewChannelCreateBoundFlowsResponse() (response *ChannelCreateBoundFlowsResponse) {
     response = &ChannelCreateBoundFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateBoundFlows
@@ -657,8 +664,9 @@ func NewChannelCreateConvertTaskApiRequest() (request *ChannelCreateConvertTaskA
 func NewChannelCreateConvertTaskApiResponse() (response *ChannelCreateConvertTaskApiResponse) {
     response = &ChannelCreateConvertTaskApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateConvertTaskApi
@@ -717,8 +725,9 @@ func NewChannelCreateEmbedWebUrlRequest() (request *ChannelCreateEmbedWebUrlRequ
 func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlResponse) {
     response = &ChannelCreateEmbedWebUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateEmbedWebUrl
@@ -787,8 +796,9 @@ func NewChannelCreateFlowApproversRequest() (request *ChannelCreateFlowApprovers
 func NewChannelCreateFlowApproversResponse() (response *ChannelCreateFlowApproversResponse) {
     response = &ChannelCreateFlowApproversResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowApprovers
@@ -865,8 +875,9 @@ func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequ
 func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesResponse) {
     response = &ChannelCreateFlowByFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowByFiles
@@ -1043,8 +1054,9 @@ func NewChannelCreateFlowGroupByFilesRequest() (request *ChannelCreateFlowGroupB
 func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGroupByFilesResponse) {
     response = &ChannelCreateFlowGroupByFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowGroupByFiles
@@ -1191,8 +1203,9 @@ func NewChannelCreateFlowGroupByTemplatesRequest() (request *ChannelCreateFlowGr
 func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlowGroupByTemplatesResponse) {
     response = &ChannelCreateFlowGroupByTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowGroupByTemplates
@@ -1297,8 +1310,9 @@ func NewChannelCreateFlowRemindsRequest() (request *ChannelCreateFlowRemindsRequ
 func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsResponse) {
     response = &ChannelCreateFlowRemindsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowReminds
@@ -1363,8 +1377,9 @@ func NewChannelCreateFlowSignReviewRequest() (request *ChannelCreateFlowSignRevi
 func NewChannelCreateFlowSignReviewResponse() (response *ChannelCreateFlowSignReviewResponse) {
     response = &ChannelCreateFlowSignReviewResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowSignReview
@@ -1455,8 +1470,9 @@ func NewChannelCreateFlowSignUrlRequest() (request *ChannelCreateFlowSignUrlRequ
 func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlResponse) {
     response = &ChannelCreateFlowSignUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateFlowSignUrl
@@ -1533,8 +1549,9 @@ func NewChannelCreateMultiFlowSignQRCodeRequest() (request *ChannelCreateMultiFl
 func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMultiFlowSignQRCodeResponse) {
     response = &ChannelCreateMultiFlowSignQRCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateMultiFlowSignQRCode
@@ -1657,8 +1674,9 @@ func NewChannelCreateOrganizationBatchSignUrlRequest() (request *ChannelCreateOr
 func NewChannelCreateOrganizationBatchSignUrlResponse() (response *ChannelCreateOrganizationBatchSignUrlResponse) {
     response = &ChannelCreateOrganizationBatchSignUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateOrganizationBatchSignUrl
@@ -1737,8 +1755,9 @@ func NewChannelCreateOrganizationModifyQrCodeRequest() (request *ChannelCreateOr
 func NewChannelCreateOrganizationModifyQrCodeResponse() (response *ChannelCreateOrganizationModifyQrCodeResponse) {
     response = &ChannelCreateOrganizationModifyQrCodeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateOrganizationModifyQrCode
@@ -1785,8 +1804,9 @@ func NewChannelCreatePrepareFlowRequest() (request *ChannelCreatePrepareFlowRequ
 func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowResponse) {
     response = &ChannelCreatePrepareFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreatePrepareFlow
@@ -1865,8 +1885,9 @@ func NewChannelCreatePreparedPersonalEsignRequest() (request *ChannelCreatePrepa
 func NewChannelCreatePreparedPersonalEsignResponse() (response *ChannelCreatePreparedPersonalEsignResponse) {
     response = &ChannelCreatePreparedPersonalEsignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreatePreparedPersonalEsign
@@ -1929,8 +1950,9 @@ func NewChannelCreateReleaseFlowRequest() (request *ChannelCreateReleaseFlowRequ
 func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowResponse) {
     response = &ChannelCreateReleaseFlowResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateReleaseFlow
@@ -2015,8 +2037,9 @@ func NewChannelCreateRoleRequest() (request *ChannelCreateRoleRequest) {
 func NewChannelCreateRoleResponse() (response *ChannelCreateRoleResponse) {
     response = &ChannelCreateRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateRole
@@ -2091,8 +2114,9 @@ func NewChannelCreateSealPolicyRequest() (request *ChannelCreateSealPolicyReques
 func NewChannelCreateSealPolicyResponse() (response *ChannelCreateSealPolicyResponse) {
     response = &ChannelCreateSealPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateSealPolicy
@@ -2143,8 +2167,9 @@ func NewChannelCreateUserAutoSignEnableUrlRequest() (request *ChannelCreateUserA
 func NewChannelCreateUserAutoSignEnableUrlResponse() (response *ChannelCreateUserAutoSignEnableUrlResponse) {
     response = &ChannelCreateUserAutoSignEnableUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateUserAutoSignEnableUrl
@@ -2213,8 +2238,9 @@ func NewChannelCreateUserAutoSignSealUrlRequest() (request *ChannelCreateUserAut
 func NewChannelCreateUserAutoSignSealUrlResponse() (response *ChannelCreateUserAutoSignSealUrlResponse) {
     response = &ChannelCreateUserAutoSignSealUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateUserAutoSignSealUrl
@@ -2303,8 +2329,9 @@ func NewChannelCreateUserRolesRequest() (request *ChannelCreateUserRolesRequest)
 func NewChannelCreateUserRolesResponse() (response *ChannelCreateUserRolesResponse) {
     response = &ChannelCreateUserRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateUserRoles
@@ -2363,8 +2390,9 @@ func NewChannelCreateWebThemeConfigRequest() (request *ChannelCreateWebThemeConf
 func NewChannelCreateWebThemeConfigResponse() (response *ChannelCreateWebThemeConfigResponse) {
     response = &ChannelCreateWebThemeConfigResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelCreateWebThemeConfig
@@ -2417,8 +2445,9 @@ func NewChannelDeleteRoleRequest() (request *ChannelDeleteRoleRequest) {
 func NewChannelDeleteRoleResponse() (response *ChannelDeleteRoleResponse) {
     response = &ChannelDeleteRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDeleteRole
@@ -2485,8 +2514,9 @@ func NewChannelDeleteRoleUsersRequest() (request *ChannelDeleteRoleUsersRequest)
 func NewChannelDeleteRoleUsersResponse() (response *ChannelDeleteRoleUsersResponse) {
     response = &ChannelDeleteRoleUsersResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDeleteRoleUsers
@@ -2543,8 +2573,9 @@ func NewChannelDeleteSealPoliciesRequest() (request *ChannelDeleteSealPoliciesRe
 func NewChannelDeleteSealPoliciesResponse() (response *ChannelDeleteSealPoliciesResponse) {
     response = &ChannelDeleteSealPoliciesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDeleteSealPolicies
@@ -2595,8 +2626,9 @@ func NewChannelDescribeEmployeesRequest() (request *ChannelDescribeEmployeesRequ
 func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesResponse) {
     response = &ChannelDescribeEmployeesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDescribeEmployees
@@ -2673,8 +2705,9 @@ func NewChannelDescribeFlowComponentsRequest() (request *ChannelDescribeFlowComp
 func NewChannelDescribeFlowComponentsResponse() (response *ChannelDescribeFlowComponentsResponse) {
     response = &ChannelDescribeFlowComponentsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDescribeFlowComponents
@@ -2729,8 +2762,9 @@ func NewChannelDescribeOrganizationSealsRequest() (request *ChannelDescribeOrgan
 func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrganizationSealsResponse) {
     response = &ChannelDescribeOrganizationSealsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDescribeOrganizationSeals
@@ -2797,8 +2831,9 @@ func NewChannelDescribeRolesRequest() (request *ChannelDescribeRolesRequest) {
 func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) {
     response = &ChannelDescribeRolesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDescribeRoles
@@ -2869,8 +2904,9 @@ func NewChannelDescribeUserAutoSignStatusRequest() (request *ChannelDescribeUser
 func NewChannelDescribeUserAutoSignStatusResponse() (response *ChannelDescribeUserAutoSignStatusResponse) {
     response = &ChannelDescribeUserAutoSignStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDescribeUserAutoSignStatus
@@ -2933,8 +2969,9 @@ func NewChannelDisableUserAutoSignRequest() (request *ChannelDisableUserAutoSign
 func NewChannelDisableUserAutoSignResponse() (response *ChannelDisableUserAutoSignResponse) {
     response = &ChannelDisableUserAutoSignResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelDisableUserAutoSign
@@ -2999,8 +3036,9 @@ func NewChannelGetTaskResultApiRequest() (request *ChannelGetTaskResultApiReques
 func NewChannelGetTaskResultApiResponse() (response *ChannelGetTaskResultApiResponse) {
     response = &ChannelGetTaskResultApiResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelGetTaskResultApi
@@ -3053,8 +3091,9 @@ func NewChannelModifyRoleRequest() (request *ChannelModifyRoleRequest) {
 func NewChannelModifyRoleResponse() (response *ChannelModifyRoleResponse) {
     response = &ChannelModifyRoleResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelModifyRole
@@ -3129,8 +3168,9 @@ func NewChannelUpdateSealStatusRequest() (request *ChannelUpdateSealStatusReques
 func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResponse) {
     response = &ChannelUpdateSealStatusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelUpdateSealStatus
@@ -3179,12 +3219,13 @@ func NewChannelVerifyPdfRequest() (request *ChannelVerifyPdfRequest) {
 func NewChannelVerifyPdfResponse() (response *ChannelVerifyPdfResponse) {
     response = &ChannelVerifyPdfResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ChannelVerifyPdf
-// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
+// 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3198,7 +3239,7 @@ func (c *Client) ChannelVerifyPdf(request *ChannelVerifyPdfRequest) (response *C
 }
 
 // ChannelVerifyPdf
-// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
+// 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3237,8 +3278,9 @@ func NewCreateChannelFlowEvidenceReportRequest() (request *CreateChannelFlowEvid
 func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEvidenceReportResponse) {
     response = &CreateChannelFlowEvidenceReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateChannelFlowEvidenceReport
@@ -3311,8 +3353,9 @@ func NewCreateChannelOrganizationInfoChangeUrlRequest() (request *CreateChannelO
 func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChannelOrganizationInfoChangeUrlResponse) {
     response = &CreateChannelOrganizationInfoChangeUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateChannelOrganizationInfoChangeUrl
@@ -3363,8 +3406,9 @@ func NewCreateConsoleLoginUrlRequest() (request *CreateConsoleLoginUrlRequest) {
 func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse) {
     response = &CreateConsoleLoginUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateConsoleLoginUrl
@@ -3511,8 +3555,9 @@ func NewCreateFlowsByTemplatesRequest() (request *CreateFlowsByTemplatesRequest)
 func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesResponse) {
     response = &CreateFlowsByTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFlowsByTemplates
@@ -3617,8 +3662,9 @@ func NewCreateSealByImageRequest() (request *CreateSealByImageRequest) {
 func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
     response = &CreateSealByImageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSealByImage
@@ -3695,8 +3741,9 @@ func NewCreateSignUrlsRequest() (request *CreateSignUrlsRequest) {
 func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
     response = &CreateSignUrlsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSignUrls
@@ -3899,8 +3946,9 @@ func NewDescribeChannelFlowEvidenceReportRequest() (request *DescribeChannelFlow
 func NewDescribeChannelFlowEvidenceReportResponse() (response *DescribeChannelFlowEvidenceReportResponse) {
     response = &DescribeChannelFlowEvidenceReportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeChannelFlowEvidenceReport
@@ -3971,8 +4019,9 @@ func NewDescribeExtendedServiceAuthInfoRequest() (request *DescribeExtendedServi
 func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedServiceAuthInfoResponse) {
     response = &DescribeExtendedServiceAuthInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeExtendedServiceAuthInfo
@@ -4033,8 +4082,9 @@ func NewDescribeFlowDetailInfoRequest() (request *DescribeFlowDetailInfoRequest)
 func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoResponse) {
     response = &DescribeFlowDetailInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeFlowDetailInfo
@@ -4123,8 +4173,9 @@ func NewDescribeResourceUrlsByFlowsRequest() (request *DescribeResourceUrlsByFlo
 func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByFlowsResponse) {
     response = &DescribeResourceUrlsByFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeResourceUrlsByFlows
@@ -4221,8 +4272,9 @@ func NewDescribeTemplatesRequest() (request *DescribeTemplatesRequest) {
 func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
     response = &DescribeTemplatesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeTemplates
@@ -4349,8 +4401,9 @@ func NewDescribeUsageRequest() (request *DescribeUsageRequest) {
 func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
     response = &DescribeUsageResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUsage
@@ -4435,8 +4488,9 @@ func NewGetDownloadFlowUrlRequest() (request *GetDownloadFlowUrlRequest) {
 func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
     response = &GetDownloadFlowUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetDownloadFlowUrl
@@ -4545,8 +4599,9 @@ func NewModifyExtendedServiceRequest() (request *ModifyExtendedServiceRequest) {
 func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse) {
     response = &ModifyExtendedServiceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyExtendedService
@@ -4709,8 +4764,9 @@ func NewOperateChannelTemplateRequest() (request *OperateChannelTemplateRequest)
 func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateResponse) {
     response = &OperateChannelTemplateResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OperateChannelTemplate
@@ -4875,8 +4931,9 @@ func NewPrepareFlowsRequest() (request *PrepareFlowsRequest) {
 func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
     response = &PrepareFlowsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // PrepareFlows
@@ -4963,8 +5020,9 @@ func NewSyncProxyOrganizationRequest() (request *SyncProxyOrganizationRequest) {
 func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse) {
     response = &SyncProxyOrganizationResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncProxyOrganization
@@ -5067,8 +5125,9 @@ func NewSyncProxyOrganizationOperatorsRequest() (request *SyncProxyOrganizationO
 func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizationOperatorsResponse) {
     response = &SyncProxyOrganizationOperatorsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncProxyOrganizationOperators
@@ -5163,8 +5222,9 @@ func NewUploadFilesRequest() (request *UploadFilesRequest) {
 func NewUploadFilesResponse() (response *UploadFilesResponse) {
     response = &UploadFilesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UploadFiles

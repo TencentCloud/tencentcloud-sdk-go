@@ -59,8 +59,9 @@ func NewApplyChorusRequest() (request *ApplyChorusRequest) {
 func NewApplyChorusResponse() (response *ApplyChorusResponse) {
     response = &ApplyChorusResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ApplyChorus
@@ -101,8 +102,9 @@ func NewBatchDescribeKTVMusicDetailsRequest() (request *BatchDescribeKTVMusicDet
 func NewBatchDescribeKTVMusicDetailsResponse() (response *BatchDescribeKTVMusicDetailsResponse) {
     response = &BatchDescribeKTVMusicDetailsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // BatchDescribeKTVMusicDetails
@@ -153,8 +155,9 @@ func NewCreateKTVRobotRequest() (request *CreateKTVRobotRequest) {
 func NewCreateKTVRobotResponse() (response *CreateKTVRobotResponse) {
     response = &CreateKTVRobotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateKTVRobot
@@ -213,8 +216,9 @@ func NewDescribeKTVMatchMusicsRequest() (request *DescribeKTVMatchMusicsRequest)
 func NewDescribeKTVMatchMusicsResponse() (response *DescribeKTVMatchMusicsResponse) {
     response = &DescribeKTVMatchMusicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVMatchMusics
@@ -273,8 +277,9 @@ func NewDescribeKTVMusicAccompanySegmentUrlRequest() (request *DescribeKTVMusicA
 func NewDescribeKTVMusicAccompanySegmentUrlResponse() (response *DescribeKTVMusicAccompanySegmentUrlResponse) {
     response = &DescribeKTVMusicAccompanySegmentUrlResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVMusicAccompanySegmentUrl
@@ -325,8 +330,9 @@ func NewDescribeKTVMusicsByTagRequest() (request *DescribeKTVMusicsByTagRequest)
 func NewDescribeKTVMusicsByTagResponse() (response *DescribeKTVMusicsByTagResponse) {
     response = &DescribeKTVMusicsByTagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVMusicsByTag
@@ -377,8 +383,9 @@ func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRe
 func NewDescribeKTVPlaylistDetailResponse() (response *DescribeKTVPlaylistDetailResponse) {
     response = &DescribeKTVPlaylistDetailResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVPlaylistDetail
@@ -425,8 +432,9 @@ func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
 func NewDescribeKTVPlaylistsResponse() (response *DescribeKTVPlaylistsResponse) {
     response = &DescribeKTVPlaylistsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVPlaylists
@@ -473,8 +481,9 @@ func NewDescribeKTVRobotsRequest() (request *DescribeKTVRobotsRequest) {
 func NewDescribeKTVRobotsResponse() (response *DescribeKTVRobotsResponse) {
     response = &DescribeKTVRobotsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVRobots
@@ -533,8 +542,9 @@ func NewDescribeKTVSuggestionsRequest() (request *DescribeKTVSuggestionsRequest)
 func NewDescribeKTVSuggestionsResponse() (response *DescribeKTVSuggestionsResponse) {
     response = &DescribeKTVSuggestionsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVSuggestions
@@ -593,8 +603,9 @@ func NewDescribeKTVTagsRequest() (request *DescribeKTVTagsRequest) {
 func NewDescribeKTVTagsResponse() (response *DescribeKTVTagsResponse) {
     response = &DescribeKTVTagsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeKTVTags
@@ -653,8 +664,9 @@ func NewDescribeLiveVipTradeInfosRequest() (request *DescribeLiveVipTradeInfosRe
 func NewDescribeLiveVipTradeInfosResponse() (response *DescribeLiveVipTradeInfosResponse) {
     response = &DescribeLiveVipTradeInfosResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeLiveVipTradeInfos
@@ -709,8 +721,9 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
 func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
     response = &DescribeUserInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeUserInfo
@@ -765,8 +778,9 @@ func NewDestroyKTVRobotRequest() (request *DestroyKTVRobotRequest) {
 func NewDestroyKTVRobotResponse() (response *DestroyKTVRobotResponse) {
     response = &DestroyKTVRobotResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DestroyKTVRobot
@@ -825,8 +839,9 @@ func NewRechargeLiveVipRequest() (request *RechargeLiveVipRequest) {
 func NewRechargeLiveVipResponse() (response *RechargeLiveVipResponse) {
     response = &RechargeLiveVipResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RechargeLiveVip
@@ -885,8 +900,9 @@ func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
 func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
     response = &SearchKTVMusicsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchKTVMusics
@@ -945,8 +961,9 @@ func NewSyncKTVRobotCommandRequest() (request *SyncKTVRobotCommandRequest) {
 func NewSyncKTVRobotCommandResponse() (response *SyncKTVRobotCommandResponse) {
     response = &SyncKTVRobotCommandResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SyncKTVRobotCommand

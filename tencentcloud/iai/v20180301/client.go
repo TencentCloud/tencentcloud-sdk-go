@@ -59,8 +59,9 @@ func NewAnalyzeDenseLandmarksRequest() (request *AnalyzeDenseLandmarksRequest) {
 func NewAnalyzeDenseLandmarksResponse() (response *AnalyzeDenseLandmarksResponse) {
     response = &AnalyzeDenseLandmarksResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AnalyzeDenseLandmarks
@@ -153,8 +154,9 @@ func NewAnalyzeFaceRequest() (request *AnalyzeFaceRequest) {
 func NewAnalyzeFaceResponse() (response *AnalyzeFaceResponse) {
     response = &AnalyzeFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // AnalyzeFace
@@ -355,8 +357,9 @@ func NewCompareFaceRequest() (request *CompareFaceRequest) {
 func NewCompareFaceResponse() (response *CompareFaceResponse) {
     response = &CompareFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CompareFace
@@ -571,8 +574,9 @@ func NewCopyPersonRequest() (request *CopyPersonRequest) {
 func NewCopyPersonResponse() (response *CopyPersonResponse) {
     response = &CopyPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CopyPerson
@@ -759,8 +763,9 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
 func NewCreateFaceResponse() (response *CreateFaceResponse) {
     response = &CreateFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateFace
@@ -961,8 +966,9 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
 func NewCreateGroupResponse() (response *CreateGroupResponse) {
     response = &CreateGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateGroup
@@ -1161,8 +1167,9 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
 func NewCreatePersonResponse() (response *CreatePersonResponse) {
     response = &CreatePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreatePerson
@@ -1363,8 +1370,9 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
 func NewDeleteFaceResponse() (response *DeleteFaceResponse) {
     response = &DeleteFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteFace
@@ -1541,8 +1549,9 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
 func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     response = &DeleteGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteGroup
@@ -1717,8 +1726,9 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
 func NewDeletePersonResponse() (response *DeletePersonResponse) {
     response = &DeletePersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePerson
@@ -1895,8 +1905,9 @@ func NewDeletePersonFromGroupRequest() (request *DeletePersonFromGroupRequest) {
 func NewDeletePersonFromGroupResponse() (response *DeletePersonFromGroupResponse) {
     response = &DeletePersonFromGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeletePersonFromGroup
@@ -2073,8 +2084,9 @@ func NewDetectFaceRequest() (request *DetectFaceRequest) {
 func NewDetectFaceResponse() (response *DetectFaceResponse) {
     response = &DetectFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectFace
@@ -2325,8 +2337,9 @@ func NewDetectFaceAttributesRequest() (request *DetectFaceAttributesRequest) {
 func NewDetectFaceAttributesResponse() (response *DetectFaceAttributesResponse) {
     response = &DetectFaceAttributesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectFaceAttributes
@@ -2515,8 +2528,9 @@ func NewDetectLiveFaceRequest() (request *DetectLiveFaceRequest) {
 func NewDetectLiveFaceResponse() (response *DetectLiveFaceResponse) {
     response = &DetectLiveFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DetectLiveFace
@@ -2787,8 +2801,9 @@ func NewGetGroupInfoRequest() (request *GetGroupInfoRequest) {
 func NewGetGroupInfoResponse() (response *GetGroupInfoResponse) {
     response = &GetGroupInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGroupInfo
@@ -2849,8 +2864,9 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
 func NewGetGroupListResponse() (response *GetGroupListResponse) {
     response = &GetGroupListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetGroupList
@@ -3027,8 +3043,9 @@ func NewGetPersonBaseInfoRequest() (request *GetPersonBaseInfoRequest) {
 func NewGetPersonBaseInfoResponse() (response *GetPersonBaseInfoResponse) {
     response = &GetPersonBaseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPersonBaseInfo
@@ -3203,8 +3220,9 @@ func NewGetPersonGroupInfoRequest() (request *GetPersonGroupInfoRequest) {
 func NewGetPersonGroupInfoResponse() (response *GetPersonGroupInfoResponse) {
     response = &GetPersonGroupInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPersonGroupInfo
@@ -3379,8 +3397,9 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
 func NewGetPersonListResponse() (response *GetPersonListResponse) {
     response = &GetPersonListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPersonList
@@ -3555,8 +3574,9 @@ func NewGetPersonListNumRequest() (request *GetPersonListNumRequest) {
 func NewGetPersonListNumResponse() (response *GetPersonListNumResponse) {
     response = &GetPersonListNumResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetPersonListNum
@@ -3731,8 +3751,9 @@ func NewGetUpgradeGroupFaceModelVersionJobListRequest() (request *GetUpgradeGrou
 func NewGetUpgradeGroupFaceModelVersionJobListResponse() (response *GetUpgradeGroupFaceModelVersionJobListResponse) {
     response = &GetUpgradeGroupFaceModelVersionJobListResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUpgradeGroupFaceModelVersionJobList
@@ -3801,8 +3822,9 @@ func NewGetUpgradeGroupFaceModelVersionResultRequest() (request *GetUpgradeGroup
 func NewGetUpgradeGroupFaceModelVersionResultResponse() (response *GetUpgradeGroupFaceModelVersionResultResponse) {
     response = &GetUpgradeGroupFaceModelVersionResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // GetUpgradeGroupFaceModelVersionResult
@@ -3869,8 +3891,9 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
 func NewModifyGroupResponse() (response *ModifyGroupResponse) {
     response = &ModifyGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyGroup
@@ -4045,8 +4068,9 @@ func NewModifyPersonBaseInfoRequest() (request *ModifyPersonBaseInfoRequest) {
 func NewModifyPersonBaseInfoResponse() (response *ModifyPersonBaseInfoResponse) {
     response = &ModifyPersonBaseInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonBaseInfo
@@ -4221,8 +4245,9 @@ func NewModifyPersonGroupInfoRequest() (request *ModifyPersonGroupInfoRequest) {
 func NewModifyPersonGroupInfoResponse() (response *ModifyPersonGroupInfoResponse) {
     response = &ModifyPersonGroupInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyPersonGroupInfo
@@ -4397,8 +4422,9 @@ func NewRevertGroupFaceModelVersionRequest() (request *RevertGroupFaceModelVersi
 func NewRevertGroupFaceModelVersionResponse() (response *RevertGroupFaceModelVersionResponse) {
     response = &RevertGroupFaceModelVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // RevertGroupFaceModelVersion
@@ -4475,8 +4501,9 @@ func NewSearchFacesRequest() (request *SearchFacesRequest) {
 func NewSearchFacesResponse() (response *SearchFacesResponse) {
     response = &SearchFacesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchFaces
@@ -4713,8 +4740,9 @@ func NewSearchFacesReturnsByGroupRequest() (request *SearchFacesReturnsByGroupRe
 func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroupResponse) {
     response = &SearchFacesReturnsByGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchFacesReturnsByGroup
@@ -4951,8 +4979,9 @@ func NewSearchPersonsRequest() (request *SearchPersonsRequest) {
 func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
     response = &SearchPersonsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchPersons
@@ -5117,8 +5146,9 @@ func NewSearchPersonsReturnsByGroupRequest() (request *SearchPersonsReturnsByGro
 func NewSearchPersonsReturnsByGroupResponse() (response *SearchPersonsReturnsByGroupResponse) {
     response = &SearchPersonsReturnsByGroupResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // SearchPersonsReturnsByGroup
@@ -5273,8 +5303,9 @@ func NewUpgradeGroupFaceModelVersionRequest() (request *UpgradeGroupFaceModelVer
 func NewUpgradeGroupFaceModelVersionResponse() (response *UpgradeGroupFaceModelVersionResponse) {
     response = &UpgradeGroupFaceModelVersionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // UpgradeGroupFaceModelVersion
@@ -5353,8 +5384,9 @@ func NewVerifyFaceRequest() (request *VerifyFaceRequest) {
 func NewVerifyFaceResponse() (response *VerifyFaceResponse) {
     response = &VerifyFaceResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyFace
@@ -5569,8 +5601,9 @@ func NewVerifyPersonRequest() (request *VerifyPersonRequest) {
 func NewVerifyPersonResponse() (response *VerifyPersonResponse) {
     response = &VerifyPersonResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // VerifyPerson

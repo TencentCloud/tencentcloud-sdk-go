@@ -59,8 +59,9 @@ func NewQueryRegisterProtectionRequest() (request *QueryRegisterProtectionReques
 func NewQueryRegisterProtectionResponse() (response *QueryRegisterProtectionResponse) {
     response = &QueryRegisterProtectionResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // QueryRegisterProtection

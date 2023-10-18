@@ -59,8 +59,9 @@ func NewCreateEditingTaskRequest() (request *CreateEditingTaskRequest) {
 func NewCreateEditingTaskResponse() (response *CreateEditingTaskResponse) {
     response = &CreateEditingTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateEditingTask
@@ -147,8 +148,9 @@ func NewCreateMediaProcessTaskRequest() (request *CreateMediaProcessTaskRequest)
 func NewCreateMediaProcessTaskResponse() (response *CreateMediaProcessTaskResponse) {
     response = &CreateMediaProcessTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMediaProcessTask
@@ -231,8 +233,9 @@ func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityR
 func NewCreateMediaQualityRestorationTaskResponse() (response *CreateMediaQualityRestorationTaskResponse) {
     response = &CreateMediaQualityRestorationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMediaQualityRestorationTask
@@ -303,8 +306,9 @@ func NewCreateQualityControlTaskRequest() (request *CreateQualityControlTaskRequ
 func NewCreateQualityControlTaskResponse() (response *CreateQualityControlTaskResponse) {
     response = &CreateQualityControlTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateQualityControlTask
@@ -373,8 +377,9 @@ func NewDescribeEditingTaskResultRequest() (request *DescribeEditingTaskResultRe
 func NewDescribeEditingTaskResultResponse() (response *DescribeEditingTaskResultResponse) {
     response = &DescribeEditingTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeEditingTaskResult
@@ -429,8 +434,9 @@ func NewDescribeMediaProcessTaskResultRequest() (request *DescribeMediaProcessTa
 func NewDescribeMediaProcessTaskResultResponse() (response *DescribeMediaProcessTaskResultResponse) {
     response = &DescribeMediaProcessTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMediaProcessTaskResult
@@ -477,8 +483,9 @@ func NewDescribeMediaQualityRestorationTaskRusultRequest() (request *DescribeMed
 func NewDescribeMediaQualityRestorationTaskRusultResponse() (response *DescribeMediaQualityRestorationTaskRusultResponse) {
     response = &DescribeMediaQualityRestorationTaskRusultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMediaQualityRestorationTaskRusult
@@ -557,8 +564,9 @@ func NewDescribeQualityControlTaskResultRequest() (request *DescribeQualityContr
 func NewDescribeQualityControlTaskResultResponse() (response *DescribeQualityControlTaskResultResponse) {
     response = &DescribeQualityControlTaskResultResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeQualityControlTaskResult
@@ -629,8 +637,9 @@ func NewStopMediaProcessTaskRequest() (request *StopMediaProcessTaskRequest) {
 func NewStopMediaProcessTaskResponse() (response *StopMediaProcessTaskResponse) {
     response = &StopMediaProcessTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMediaProcessTask
@@ -685,8 +694,9 @@ func NewStopMediaQualityRestorationTaskRequest() (request *StopMediaQualityResto
 func NewStopMediaQualityRestorationTaskResponse() (response *StopMediaQualityRestorationTaskResponse) {
     response = &StopMediaQualityRestorationTaskResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMediaQualityRestorationTask

@@ -59,8 +59,9 @@ func NewActivateSubscribeRequest() (request *ActivateSubscribeRequest) {
 func NewActivateSubscribeResponse() (response *ActivateSubscribeResponse) {
     response = &ActivateSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ActivateSubscribe
@@ -127,8 +128,9 @@ func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
 func NewCompleteMigrateJobResponse() (response *CompleteMigrateJobResponse) {
     response = &CompleteMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CompleteMigrateJob
@@ -207,8 +209,9 @@ func NewCreateMigrateCheckJobRequest() (request *CreateMigrateCheckJobRequest) {
 func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse) {
     response = &CreateMigrateCheckJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMigrateCheckJob
@@ -311,8 +314,9 @@ func NewCreateMigrateJobRequest() (request *CreateMigrateJobRequest) {
 func NewCreateMigrateJobResponse() (response *CreateMigrateJobResponse) {
     response = &CreateMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateMigrateJob
@@ -405,8 +409,9 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
 func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
     response = &CreateSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // CreateSubscribe
@@ -463,8 +468,9 @@ func NewDeleteMigrateJobRequest() (request *DeleteMigrateJobRequest) {
 func NewDeleteMigrateJobResponse() (response *DeleteMigrateJobResponse) {
     response = &DeleteMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DeleteMigrateJob
@@ -545,8 +551,9 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
 func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoResponse) {
     response = &DescribeAsyncRequestInfoResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeAsyncRequestInfo
@@ -605,8 +612,9 @@ func NewDescribeMigrateCheckJobRequest() (request *DescribeMigrateCheckJobReques
 func NewDescribeMigrateCheckJobResponse() (response *DescribeMigrateCheckJobResponse) {
     response = &DescribeMigrateCheckJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrateCheckJob
@@ -671,8 +679,9 @@ func NewDescribeMigrateJobsRequest() (request *DescribeMigrateJobsRequest) {
 func NewDescribeMigrateJobsResponse() (response *DescribeMigrateJobsResponse) {
     response = &DescribeMigrateJobsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeMigrateJobs
@@ -751,8 +760,9 @@ func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
 func NewDescribeRegionConfResponse() (response *DescribeRegionConfResponse) {
     response = &DescribeRegionConfResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeRegionConf
@@ -803,8 +813,9 @@ func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
 func NewDescribeSubscribeConfResponse() (response *DescribeSubscribeConfResponse) {
     response = &DescribeSubscribeConfResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubscribeConf
@@ -865,8 +876,9 @@ func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
 func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
     response = &DescribeSubscribesResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // DescribeSubscribes
@@ -923,8 +935,9 @@ func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
 func NewIsolateSubscribeResponse() (response *IsolateSubscribeResponse) {
     response = &IsolateSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // IsolateSubscribe
@@ -985,8 +998,9 @@ func NewModifyMigrateJobRequest() (request *ModifyMigrateJobRequest) {
 func NewModifyMigrateJobResponse() (response *ModifyMigrateJobResponse) {
     response = &ModifyMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifyMigrateJob
@@ -1063,8 +1077,9 @@ func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenew
 func NewModifySubscribeAutoRenewFlagResponse() (response *ModifySubscribeAutoRenewFlagResponse) {
     response = &ModifySubscribeAutoRenewFlagResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscribeAutoRenewFlag
@@ -1115,8 +1130,9 @@ func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTime
 func NewModifySubscribeConsumeTimeResponse() (response *ModifySubscribeConsumeTimeResponse) {
     response = &ModifySubscribeConsumeTimeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscribeConsumeTime
@@ -1173,8 +1189,9 @@ func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
 func NewModifySubscribeNameResponse() (response *ModifySubscribeNameResponse) {
     response = &ModifySubscribeNameResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscribeName
@@ -1227,8 +1244,9 @@ func NewModifySubscribeObjectsRequest() (request *ModifySubscribeObjectsRequest)
 func NewModifySubscribeObjectsResponse() (response *ModifySubscribeObjectsResponse) {
     response = &ModifySubscribeObjectsResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscribeObjects
@@ -1287,8 +1305,9 @@ func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportReques
 func NewModifySubscribeVipVportResponse() (response *ModifySubscribeVipVportResponse) {
     response = &ModifySubscribeVipVportResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ModifySubscribeVipVport
@@ -1341,8 +1360,9 @@ func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequ
 func NewOfflineIsolatedSubscribeResponse() (response *OfflineIsolatedSubscribeResponse) {
     response = &OfflineIsolatedSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // OfflineIsolatedSubscribe
@@ -1399,8 +1419,9 @@ func NewResetSubscribeRequest() (request *ResetSubscribeRequest) {
 func NewResetSubscribeResponse() (response *ResetSubscribeResponse) {
     response = &ResetSubscribeResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // ResetSubscribe
@@ -1455,8 +1476,9 @@ func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
 func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
     response = &StartMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StartMigrateJob
@@ -1541,8 +1563,9 @@ func NewStopMigrateJobRequest() (request *StopMigrateJobRequest) {
 func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
     response = &StopMigrateJobResponse{
         BaseResponse: &tchttp.BaseResponse{},
-    }
+    } 
     return
+
 }
 
 // StopMigrateJob
