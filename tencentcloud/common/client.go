@@ -436,6 +436,11 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 
 // send http request
 func (c *Client) sendHttp(request *http.Request) (response *http.Response, err error) {
+	if len(c.httpProfile.ApigwEndpoint) > 0 {
+		request.URL.Host = c.httpProfile.ApigwEndpoint
+		request.Host = c.httpProfile.ApigwEndpoint
+	}
+
 	if c.debug && request != nil {
 		outBytes, err := httputil.DumpRequest(request, true)
 		if err != nil {
