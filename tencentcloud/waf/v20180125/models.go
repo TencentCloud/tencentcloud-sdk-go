@@ -1454,6 +1454,24 @@ type ClbObject struct {
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil" name:"PostCKafkaStatus"`
 }
 
+type ClbWafRegionItem struct {
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 地域中文说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil" name:"Text"`
+
+	// 地域英文全拼
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 地域编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
+}
+
 // Predefined struct for user
 type CreateAccessExportRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
@@ -6184,6 +6202,153 @@ func (r *DescribeSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSpartaProtectionInfoRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 版本
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 实例
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type DescribeSpartaProtectionInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 版本
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 实例
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+func (r *DescribeSpartaProtectionInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpartaProtectionInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpartaProtectionInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSpartaProtectionInfoResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// cname取值
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
+
+	// 状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 源IP地址列表
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
+
+	// 证书类型
+	CertType *string `json:"CertType,omitnil" name:"CertType"`
+
+	// 证书
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
+
+	// 私有密钥
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
+
+	// ssl的id
+	Sslid *string `json:"Sslid,omitnil" name:"Sslid"`
+
+	// 是否是cdn
+	IsCdn *string `json:"IsCdn,omitnil" name:"IsCdn"`
+
+	// 灰度区域列表
+	GrayAreas []*string `json:"GrayAreas,omitnil" name:"GrayAreas"`
+
+	// 引擎
+	Engine *string `json:"Engine,omitnil" name:"Engine"`
+
+	// HTTPS重写
+	HttpsRewrite *string `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
+
+	// upstreamType取值
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
+
+	// upstreamDomain取值
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
+
+	// upstreamScheme取值
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
+
+	// 是否是HTTP2
+	IsHttp2 *string `json:"IsHttp2,omitnil" name:"IsHttp2"`
+
+	// 是否含有websocket
+	IsWebsocket *string `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
+
+	// loadBalance信息
+	LoadBalance *string `json:"LoadBalance,omitnil" name:"LoadBalance"`
+
+	// httpsUpstreamPort取值
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
+
+	// port信息
+	Ports []*PortItem `json:"Ports,omitnil" name:"Ports"`
+
+	// 是否灰度
+	IsGray *string `json:"IsGray,omitnil" name:"IsGray"`
+
+	// 模式
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
+
+	// 防御等级,100,200,300
+	Level *string `json:"Level,omitnil" name:"Level"`
+
+	// 与源站是否保持长连接
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
+
+	// 0：BGP 1：Anycast
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Anycast *string `json:"Anycast,omitnil" name:"Anycast"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSpartaProtectionInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSpartaProtectionInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSpartaProtectionInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpartaProtectionInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTlsVersionRequestParams struct {
 
 }
@@ -6415,6 +6580,10 @@ type DescribeUserClbWafRegionsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*string `json:"Data,omitnil" name:"Data"`
 
+	// 包含详细属性的地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RichDatas []*ClbWafRegionItem `json:"RichDatas,omitnil" name:"RichDatas"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -6486,6 +6655,63 @@ func (r *DescribeUserDomainInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserDomainInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserLevelRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DescribeUserLevelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DescribeUserLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserLevelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserLevelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserLevelResponseParams struct {
+	// 300:正常 400:严格
+	Level *uint64 `json:"Level,omitnil" name:"Level"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserLevelResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserLevelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6886,6 +7112,66 @@ func (r *DescribeWafThreatenIntelligenceResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWebshellStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DescribeWebshellStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DescribeWebshellStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebshellStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebshellStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebshellStatusResponseParams struct {
+	// webshell域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 开关状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeWebshellStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWebshellStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeWebshellStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebshellStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DomainInfo struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -7012,6 +7298,10 @@ type DomainURI struct {
 
 	// 版本
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type DomainsPartInfo struct {

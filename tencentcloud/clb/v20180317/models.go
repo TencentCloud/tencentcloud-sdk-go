@@ -295,6 +295,67 @@ func (r *BatchDeregisterTargetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchModifyTargetTagRequestParams struct {
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 要批量修改标签的列表。
+	ModifyList []*RsTagRule `json:"ModifyList,omitnil" name:"ModifyList"`
+}
+
+type BatchModifyTargetTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 要批量修改标签的列表。
+	ModifyList []*RsTagRule `json:"ModifyList,omitnil" name:"ModifyList"`
+}
+
+func (r *BatchModifyTargetTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyTargetTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ModifyList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchModifyTargetTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchModifyTargetTagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type BatchModifyTargetTagResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchModifyTargetTagResponseParams `json:"Response"`
+}
+
+func (r *BatchModifyTargetTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyTargetTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchModifyTargetWeightRequestParams struct {
 	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
@@ -439,6 +500,9 @@ type BatchTarget struct {
 
 	// 七层规则 ID。
 	LocationId *string `json:"LocationId,omitnil" name:"LocationId"`
+
+	// 标签。
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
 }
 
 type BindDetailItem struct {
@@ -3073,7 +3137,7 @@ type DescribeClusterResourcesRequestParams struct {
 	// 查询集群中资源列表条件，详细的过滤条件如下：
 	// <li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
 	// <li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
-	// <li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
+	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
 	// <li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
@@ -3090,7 +3154,7 @@ type DescribeClusterResourcesRequest struct {
 	// 查询集群中资源列表条件，详细的过滤条件如下：
 	// <li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
 	// <li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
-	// <li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
+	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
 	// <li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
@@ -7979,6 +8043,20 @@ type RewriteTarget struct {
 	RewriteType *string `json:"RewriteType,omitnil" name:"RewriteType"`
 }
 
+type RsTagRule struct {
+	// 负载均衡监听器 ID。
+	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
+
+	// 要修改标签的后端机器列表。
+	Targets []*Target `json:"Targets,omitnil" name:"Targets"`
+
+	// 转发规则的ID，七层规则时需要此参数，4层规则不需要。
+	LocationId *string `json:"LocationId,omitnil" name:"LocationId"`
+
+	// 后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Weight参数为空时，才以RsTagRule中的Tag参数为准。
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
+}
+
 type RsWeightRule struct {
 	// 负载均衡监听器 ID。
 	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
@@ -8549,6 +8627,10 @@ type Target struct {
 	// 注意：参数 InstanceId、EniIp 有且只能传入其中一个参数。如果绑定双栈IPV6子机，则必须传该参数。如果是跨地域绑定，则必须传该参数，不支持传InstanceId参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIp *string `json:"EniIp,omitnil" name:"EniIp"`
+
+	// 标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
 }
 
 type TargetGroupAssociation struct {

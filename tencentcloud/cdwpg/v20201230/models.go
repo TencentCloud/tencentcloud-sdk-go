@@ -306,6 +306,100 @@ func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancesRequestParams struct {
+	// 搜索的集群id名称
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
+
+	// 搜索的集群name
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索标签列表
+	SearchTags []*SearchTags `json:"SearchTags,omitnil" name:"SearchTags"`
+}
+
+type DescribeInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索的集群id名称
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
+
+	// 搜索的集群name
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索标签列表
+	SearchTags []*SearchTags `json:"SearchTags,omitnil" name:"SearchTags"`
+}
+
+func (r *DescribeInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchInstanceId")
+	delete(f, "SearchInstanceName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesResponseParams struct {
+	// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 实例数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancesList []*InstanceInfo `json:"InstancesList,omitnil" name:"InstancesList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSimpleInstancesRequestParams struct {
 	// 11
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
@@ -734,6 +828,17 @@ type ResourceSpecNew struct {
 
 	// 资源类型，DATA
 	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type SearchTags struct {
+	// 标签的键
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+
+	// 标签的值
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+
+	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+	AllValue *int64 `json:"AllValue,omitnil" name:"AllValue"`
 }
 
 type Tag struct {

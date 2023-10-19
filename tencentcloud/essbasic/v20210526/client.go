@@ -885,7 +885,117 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //
 // 
 //
-// 注: `此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。`
+// 适用场景：适用非制式的合同文件签署，开发者有每个签署流程的PDF，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。整体的逻辑如下图</li>
+//
+// </ul>
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/ChannelCreateFlowByFiles.png)
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -959,7 +1069,117 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //
 // 
 //
-// 注: `此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。`
+// 适用场景：适用非制式的合同文件签署，开发者有每个签署流程的PDF，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。整体的逻辑如下图</li>
+//
+// </ul>
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/ChannelCreateFlowByFiles.png)
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3284,9 +3504,23 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+// 提交申请出证报告任务并返回报告ID。
 //
-// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeChannelFlowEvidenceReport进行查询。
+// 
+//
+// 注意：
+//
+// <ul><li>使用此功能`需搭配出证套餐` ，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>操作人必须是`发起方或者签署方企业的(非走授权书认证)法人或者超管`。</li>
+//
+// <li>合同流程必须所有参与方`已经签署完成`。</li>
+//
+// <li>出证过程需一定时间，建议在`提交出证任务后的24小时之后`，通过<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>接口进行查询执行结果和出证报告的下载URL。</li></ul>
+//
+// 
+//
+// <svg id="SvgjsSvg1006" width="262" height="229" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1007"><pattern patternUnits="userSpaceOnUse" id="pattern_mark_0" width="300" height="300"><text x="150" y="100" fill="rgba(229,229,229,0.8)" font-size="18" transform="rotate(-45, 150, 150)" style="dominant-baseline: middle; text-anchor: middle;"></text></pattern><pattern patternUnits="userSpaceOnUse" id="pattern_mark_1" width="300" height="300"><text x="150" y="200" fill="rgba(229,229,229,0.8)" font-size="18" transform="rotate(-45, 150, 150)" style="dominant-baseline: middle; text-anchor: middle;"></text></pattern><marker id="SvgjsMarker1021" markerWidth="12" markerHeight="8" refX="9" refY="4" viewBox="0 0 12 8" orient="auto" markerUnits="userSpaceOnUse" stroke-dasharray="0,0"><path id="SvgjsPath1022" d="M0,0 L12,4 L0,8 L0,0" fill="#323232" stroke="#323232" stroke-width="1"></path></marker></defs><rect id="svgbackgroundid" width="262" height="229" fill="transparent"></rect><rect id="SvgjsRect1009" width="262" height="229" fill="url(#pattern_mark_0)"></rect><rect id="SvgjsRect1010" width="262" height="229" fill="url(#pattern_mark_1)"></rect><g id="SvgjsG1011" transform="translate(31.75,25)"><path id="SvgjsPath1012" d="M 0 0L 198 0L 198 59L 0 59Z" stroke="rgba(86,146,48,1)" stroke-width="1" fill-opacity="1" fill="#e7ebed"></path><g id="SvgjsG1013"><text id="SvgjsText1014" font-family="微软雅黑" text-anchor="middle" font-size="13px" width="178px" fill="#323232" font-weight="400" align="middle" lineHeight="125%" anchor="middle" family="微软雅黑" size="13px" weight="400" font-style="" opacity="1" y="10.375" transform="rotate(0)"><tspan id="SvgjsTspan1015" dy="16" x="99"><tspan id="SvgjsTspan1016" style="text-decoration:;fill: rgb(28, 30, 33);">CreateFlowEvidenceReport</tspan></tspan><tspan id="SvgjsTspan1017" dy="16" x="99"><tspan id="SvgjsTspan1018" style="text-decoration:;fill: rgb(51, 51, 51);">提交申请出证报告任务</tspan></tspan></text></g></g><g id="SvgjsG1019"><path id="SvgjsPath1020" d="M130.75 84.5L130.75 114.5L130.75 114.5L130.75 143.2" stroke="#323232" stroke-width="1" fill="none" marker-end="url(#SvgjsMarker1021)"></path></g><g id="SvgjsG1023" transform="translate(25,145)"><path id="SvgjsPath1024" d="M 0 0L 211.5 0L 211.5 59L 0 59Z" stroke="rgba(86,146,48,1)" stroke-width="1" fill-opacity="1" fill="#e7ebed"></path><g id="SvgjsG1025"><text id="SvgjsText1026" font-family="微软雅黑" text-anchor="middle" font-size="13px" width="192px" fill="#323232" font-weight="400" align="middle" lineHeight="125%" anchor="middle" family="微软雅黑" size="13px" weight="400" font-style="" opacity="1" y="10.375" transform="rotate(0)"><tspan id="SvgjsTspan1027" dy="16" x="106"><tspan id="SvgjsTspan1028" style="text-decoration:;fill: rgb(28, 30, 33);">DescribeFlowEvidenceReport</tspan></tspan><tspan id="SvgjsTspan1029" dy="16" x="106"><tspan id="SvgjsTspan1030" style="text-decoration:;fill: rgb(51, 51, 51);">获取出证报告任务执行结果</tspan></tspan></text></g></g></svg>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3306,9 +3540,23 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+// 提交申请出证报告任务并返回报告ID。
 //
-// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeChannelFlowEvidenceReport进行查询。
+// 
+//
+// 注意：
+//
+// <ul><li>使用此功能`需搭配出证套餐` ，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>操作人必须是`发起方或者签署方企业的(非走授权书认证)法人或者超管`。</li>
+//
+// <li>合同流程必须所有参与方`已经签署完成`。</li>
+//
+// <li>出证过程需一定时间，建议在`提交出证任务后的24小时之后`，通过<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>接口进行查询执行结果和出证报告的下载URL。</li></ul>
+//
+// 
+//
+// <svg id="SvgjsSvg1006" width="262" height="229" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1007"><pattern patternUnits="userSpaceOnUse" id="pattern_mark_0" width="300" height="300"><text x="150" y="100" fill="rgba(229,229,229,0.8)" font-size="18" transform="rotate(-45, 150, 150)" style="dominant-baseline: middle; text-anchor: middle;"></text></pattern><pattern patternUnits="userSpaceOnUse" id="pattern_mark_1" width="300" height="300"><text x="150" y="200" fill="rgba(229,229,229,0.8)" font-size="18" transform="rotate(-45, 150, 150)" style="dominant-baseline: middle; text-anchor: middle;"></text></pattern><marker id="SvgjsMarker1021" markerWidth="12" markerHeight="8" refX="9" refY="4" viewBox="0 0 12 8" orient="auto" markerUnits="userSpaceOnUse" stroke-dasharray="0,0"><path id="SvgjsPath1022" d="M0,0 L12,4 L0,8 L0,0" fill="#323232" stroke="#323232" stroke-width="1"></path></marker></defs><rect id="svgbackgroundid" width="262" height="229" fill="transparent"></rect><rect id="SvgjsRect1009" width="262" height="229" fill="url(#pattern_mark_0)"></rect><rect id="SvgjsRect1010" width="262" height="229" fill="url(#pattern_mark_1)"></rect><g id="SvgjsG1011" transform="translate(31.75,25)"><path id="SvgjsPath1012" d="M 0 0L 198 0L 198 59L 0 59Z" stroke="rgba(86,146,48,1)" stroke-width="1" fill-opacity="1" fill="#e7ebed"></path><g id="SvgjsG1013"><text id="SvgjsText1014" font-family="微软雅黑" text-anchor="middle" font-size="13px" width="178px" fill="#323232" font-weight="400" align="middle" lineHeight="125%" anchor="middle" family="微软雅黑" size="13px" weight="400" font-style="" opacity="1" y="10.375" transform="rotate(0)"><tspan id="SvgjsTspan1015" dy="16" x="99"><tspan id="SvgjsTspan1016" style="text-decoration:;fill: rgb(28, 30, 33);">CreateFlowEvidenceReport</tspan></tspan><tspan id="SvgjsTspan1017" dy="16" x="99"><tspan id="SvgjsTspan1018" style="text-decoration:;fill: rgb(51, 51, 51);">提交申请出证报告任务</tspan></tspan></text></g></g><g id="SvgjsG1019"><path id="SvgjsPath1020" d="M130.75 84.5L130.75 114.5L130.75 114.5L130.75 143.2" stroke="#323232" stroke-width="1" fill="none" marker-end="url(#SvgjsMarker1021)"></path></g><g id="SvgjsG1023" transform="translate(25,145)"><path id="SvgjsPath1024" d="M 0 0L 211.5 0L 211.5 59L 0 59Z" stroke="rgba(86,146,48,1)" stroke-width="1" fill-opacity="1" fill="#e7ebed"></path><g id="SvgjsG1025"><text id="SvgjsText1026" font-family="微软雅黑" text-anchor="middle" font-size="13px" width="192px" fill="#323232" font-weight="400" align="middle" lineHeight="125%" anchor="middle" family="微软雅黑" size="13px" weight="400" font-style="" opacity="1" y="10.375" transform="rotate(0)"><tspan id="SvgjsTspan1027" dy="16" x="106"><tspan id="SvgjsTspan1028" style="text-decoration:;fill: rgb(28, 30, 33);">DescribeFlowEvidenceReport</tspan></tspan><tspan id="SvgjsTspan1029" dy="16" x="106"><tspan id="SvgjsTspan1030" style="text-decoration:;fill: rgb(51, 51, 51);">获取出证报告任务执行结果</tspan></tspan></text></g></g></svg>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3359,7 +3607,73 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 }
 
 // CreateChannelOrganizationInfoChangeUrl
-// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接（需要在移动端打开，会跳转到微信小程序），支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。
+//
+// 
+//
+// 
+//
+// <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+//
+// 
+//
+// <p>换成企业的其他员工来当超管</p>
+//
+// 
+//
+// <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+//
+// 
+//
+// <h4 id="可以变动">可以变动</h4>
+//
+// 
+//
+// <ul>
+//
+// <li>企业名称<br>
+//
+// </li>
+//
+// <li>法定代表人姓名(新法人有邀请链接)<br>
+//
+// </li>
+//
+// <li>企业地址和所在地</li>
+//
+// </ul>
+//
+// 
+//
+// <h4 id="不可变动">不可变动</h4>
+//
+// 
+//
+// <ul>
+//
+// <li>统一社会信用代码<br>
+//
+// </li>
+//
+// <li>企业主体类型</li>
+//
+// </ul>
+//
+// 
+//
+// <p>如果企业名称变动会引起下面的变动</p>
+//
+// 
+//
+// <ul>
+//
+// <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
+//
+// <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
+//
+// <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3370,7 +3684,73 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 }
 
 // CreateChannelOrganizationInfoChangeUrl
-// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接（需要在移动端打开，会跳转到微信小程序），支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。
+//
+// 
+//
+// 
+//
+// <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+//
+// 
+//
+// <p>换成企业的其他员工来当超管</p>
+//
+// 
+//
+// <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+//
+// 
+//
+// <h4 id="可以变动">可以变动</h4>
+//
+// 
+//
+// <ul>
+//
+// <li>企业名称<br>
+//
+// </li>
+//
+// <li>法定代表人姓名(新法人有邀请链接)<br>
+//
+// </li>
+//
+// <li>企业地址和所在地</li>
+//
+// </ul>
+//
+// 
+//
+// <h4 id="不可变动">不可变动</h4>
+//
+// 
+//
+// <ul>
+//
+// <li>统一社会信用代码<br>
+//
+// </li>
+//
+// <li>企业主体类型</li>
+//
+// </ul>
+//
+// 
+//
+// <p>如果企业名称变动会引起下面的变动</p>
+//
+// 
+//
+// <ul>
+//
+// <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
+//
+// <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
+//
+// <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3563,9 +3943,111 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 // CreateFlowsByTemplates
 // 接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
 //
-// 如若在模板中配置了动态表格, 上传的附件必须为A4大小
+// 如若在模板中配置了动态表格, 上传的附件必须为A4大小 
 //
 // 合同发起人必须在电子签已经进行实名。
+//
+// 
+//
+// **整体的逻辑如下**
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateFlowsByTemplates.png)
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3601,9 +4083,111 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 // CreateFlowsByTemplates
 // 接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
 //
-// 如若在模板中配置了动态表格, 上传的附件必须为A4大小
+// 如若在模板中配置了动态表格, 上传的附件必须为A4大小 
 //
 // 合同发起人必须在电子签已经进行实名。
+//
+// 
+//
+// **整体的逻辑如下**
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateFlowsByTemplates.png)
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4025,7 +4609,21 @@ func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedSer
 }
 
 // DescribeExtendedServiceAuthInfo
-// 查询企业扩展服务授权信息，企业经办人需要是企业超管或者法人
+// 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+//
+// 1. 企业自动签
+//
+// 2. 企业与港澳台居民签署合同
+//
+// 3. 使用手机号验证签署方身份
+//
+// 4. 骑缝章
+//
+// 5. 拓宽签署方年龄限制
+//
+// 
+//
+// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4041,7 +4639,21 @@ func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServic
 }
 
 // DescribeExtendedServiceAuthInfo
-// 查询企业扩展服务授权信息，企业经办人需要是企业超管或者法人
+// 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+//
+// 1. 企业自动签
+//
+// 2. 企业与港澳台居民签署合同
+//
+// 3. 使用手机号验证签署方身份
+//
+// 4. 骑缝章
+//
+// 5. 拓宽签署方年龄限制
+//
+// 
+//
+// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

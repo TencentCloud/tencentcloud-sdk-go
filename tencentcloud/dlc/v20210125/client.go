@@ -2334,6 +2334,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  FAILEDOPERATION_SQLTASKPARSEFAILED = "FailedOperation.SQLTaskParseFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
@@ -2376,6 +2377,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  FAILEDOPERATION_SQLTASKPARSEFAILED = "FailedOperation.SQLTaskParseFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
@@ -2449,6 +2451,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  FAILEDOPERATION_SQLTASKPARSEFAILED = "FailedOperation.SQLTaskParseFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
@@ -2489,6 +2492,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  FAILEDOPERATION_SQLTASKPARSEFAILED = "FailedOperation.SQLTaskParseFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
@@ -3996,6 +4000,63 @@ func (c *Client) DescribeLakeFsInfoWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeLakeFsInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLakeFsTaskResultRequest() (request *DescribeLakeFsTaskResultRequest) {
+    request = &DescribeLakeFsTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeLakeFsTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeLakeFsTaskResultResponse() (response *DescribeLakeFsTaskResultResponse) {
+    response = &DescribeLakeFsTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLakeFsTaskResult
+// 获取LakeFs上task执行结果访问信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeLakeFsTaskResult(request *DescribeLakeFsTaskResultRequest) (response *DescribeLakeFsTaskResultResponse, err error) {
+    return c.DescribeLakeFsTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeLakeFsTaskResult
+// 获取LakeFs上task执行结果访问信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeLakeFsTaskResultWithContext(ctx context.Context, request *DescribeLakeFsTaskResultRequest) (response *DescribeLakeFsTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeLakeFsTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLakeFsTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLakeFsTaskResultResponse()
     err = c.Send(request, response)
     return
 }

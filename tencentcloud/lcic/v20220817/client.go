@@ -3651,6 +3651,132 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, request *RegisterU
     return
 }
 
+func NewSendRoomNormalMessageRequest() (request *SendRoomNormalMessageRequest) {
+    request = &SendRoomNormalMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SendRoomNormalMessage")
+    
+    
+    return
+}
+
+func NewSendRoomNormalMessageResponse() (response *SendRoomNormalMessageResponse) {
+    response = &SendRoomNormalMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendRoomNormalMessage
+// 1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendRoomNormalMessage(request *SendRoomNormalMessageRequest) (response *SendRoomNormalMessageResponse, err error) {
+    return c.SendRoomNormalMessageWithContext(context.Background(), request)
+}
+
+// SendRoomNormalMessage
+// 1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendRoomNormalMessageWithContext(ctx context.Context, request *SendRoomNormalMessageRequest) (response *SendRoomNormalMessageResponse, err error) {
+    if request == nil {
+        request = NewSendRoomNormalMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendRoomNormalMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendRoomNormalMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendRoomNotificationMessageRequest() (request *SendRoomNotificationMessageRequest) {
+    request = &SendRoomNotificationMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SendRoomNotificationMessage")
+    
+    
+    return
+}
+
+func NewSendRoomNotificationMessageResponse() (response *SendRoomNotificationMessageResponse) {
+    response = &SendRoomNotificationMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendRoomNotificationMessage
+// App 管理员可以通过该接口在群组中发送通知、公告等。目前仅支持文本消息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendRoomNotificationMessage(request *SendRoomNotificationMessageRequest) (response *SendRoomNotificationMessageResponse, err error) {
+    return c.SendRoomNotificationMessageWithContext(context.Background(), request)
+}
+
+// SendRoomNotificationMessage
+// App 管理员可以通过该接口在群组中发送通知、公告等。目前仅支持文本消息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendRoomNotificationMessageWithContext(ctx context.Context, request *SendRoomNotificationMessageRequest) (response *SendRoomNotificationMessageResponse, err error) {
+    if request == nil {
+        request = NewSendRoomNotificationMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendRoomNotificationMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendRoomNotificationMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetAppCustomContentRequest() (request *SetAppCustomContentRequest) {
     request = &SetAppCustomContentRequest{
         BaseRequest: &tchttp.BaseRequest{},

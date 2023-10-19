@@ -1068,6 +1068,206 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateWorkSpaceRequestParams struct {
+	// 工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil" name:"WorkSpaceName"`
+
+	// 项目空间备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type CreateWorkSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil" name:"WorkSpaceName"`
+
+	// 项目空间备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *CreateWorkSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkSpaceResponseParams struct {
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateWorkSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkSpaceResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFoldersRequestParams struct {
+	// 需删除的文件夹唯一ID
+	FolderIds []*string `json:"FolderIds,omitnil" name:"FolderIds"`
+
+	// 文件夹类型，0是任务文件夹，1是依赖文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+type DeleteFoldersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需删除的文件夹唯一ID
+	FolderIds []*string `json:"FolderIds,omitnil" name:"FolderIds"`
+
+	// 文件夹类型，0是任务文件夹，1是依赖文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+func (r *DeleteFoldersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFoldersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FolderIds")
+	delete(f, "FolderType")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFoldersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFoldersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteFoldersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFoldersResponseParams `json:"Response"`
+}
+
+func (r *DeleteFoldersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFoldersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJobConfigsRequestParams struct {
+	// 作业ID
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
+
+	// 作业配置版本数组
+	JobConfigVersions []*int64 `json:"JobConfigVersions,omitnil" name:"JobConfigVersions"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+type DeleteJobConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业ID
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
+
+	// 作业配置版本数组
+	JobConfigVersions []*int64 `json:"JobConfigVersions,omitnil" name:"JobConfigVersions"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+func (r *DeleteJobConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "JobConfigVersions")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJobConfigsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteJobConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteJobConfigsResponseParams `json:"Response"`
+}
+
+func (r *DeleteJobConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteJobsRequestParams struct {
 	// 作业Id列表
 	JobIds []*string `json:"JobIds,omitnil" name:"JobIds"`
@@ -2901,6 +3101,95 @@ type LogicalType struct {
 }
 
 // Predefined struct for user
+type ModifyFolderRequestParams struct {
+	// 文件夹ID（必填）
+	SourceFolderId *string `json:"SourceFolderId,omitnil" name:"SourceFolderId"`
+
+	// 如需拖拽文件夹，需传入目标文件夹ID
+	TargetFolderId *string `json:"TargetFolderId,omitnil" name:"TargetFolderId"`
+
+	// 如需修改文件夹名，需传入FolderName字段
+	FolderName *string `json:"FolderName,omitnil" name:"FolderName"`
+
+	// 文件夹类型，0是任务文件夹，1是依赖文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+
+	// 批量移动的作业serial id 列表
+	SourceJobIds []*string `json:"SourceJobIds,omitnil" name:"SourceJobIds"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+type ModifyFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件夹ID（必填）
+	SourceFolderId *string `json:"SourceFolderId,omitnil" name:"SourceFolderId"`
+
+	// 如需拖拽文件夹，需传入目标文件夹ID
+	TargetFolderId *string `json:"TargetFolderId,omitnil" name:"TargetFolderId"`
+
+	// 如需修改文件夹名，需传入FolderName字段
+	FolderName *string `json:"FolderName,omitnil" name:"FolderName"`
+
+	// 文件夹类型，0是任务文件夹，1是依赖文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+
+	// 批量移动的作业serial id 列表
+	SourceJobIds []*string `json:"SourceJobIds,omitnil" name:"SourceJobIds"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+func (r *ModifyFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceFolderId")
+	delete(f, "TargetFolderId")
+	delete(f, "FolderName")
+	delete(f, "FolderType")
+	delete(f, "SourceJobIds")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFolderResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFolderResponseParams `json:"Response"`
+}
+
+func (r *ModifyFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyJobRequestParams struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -2979,6 +3268,74 @@ func (r *ModifyJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkSpaceRequestParams struct {
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 待修改的工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil" name:"WorkSpaceName"`
+
+	// 待修改的工作空间备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type ModifyWorkSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 待修改的工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil" name:"WorkSpaceName"`
+
+	// 待修改的工作空间备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *ModifyWorkSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	delete(f, "WorkSpaceName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWorkSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkSpaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyWorkSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWorkSpaceResponseParams `json:"Response"`
+}
+
+func (r *ModifyWorkSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

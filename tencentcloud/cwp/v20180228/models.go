@@ -5331,12 +5331,45 @@ type CreateVulFixTaskQuuids struct {
 
 // Predefined struct for user
 type CreateWhiteListOrderRequestParams struct {
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitnil" name:"LicenseType"`
 
+	// 授权数量,最小为1 最大99999
+	LicenseNum *uint64 `json:"LicenseNum,omitnil" name:"LicenseNum"`
+
+	// 到期时间,最小为1
+	Deadline *uint64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 规则名称,大资产中心:asset_center
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
+	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 额外参数,json字符串,包含ResourceId 资源ID,LicenseType 授权类型
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 }
 
 type CreateWhiteListOrderRequest struct {
 	*tchttp.BaseRequest
 	
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitnil" name:"LicenseType"`
+
+	// 授权数量,最小为1 最大99999
+	LicenseNum *uint64 `json:"LicenseNum,omitnil" name:"LicenseNum"`
+
+	// 到期时间,最小为1
+	Deadline *uint64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 规则名称,大资产中心:asset_center
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
+	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 额外参数,json字符串,包含ResourceId 资源ID,LicenseType 授权类型
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 }
 
 func (r *CreateWhiteListOrderRequest) ToJsonString() string {
@@ -5351,7 +5384,12 @@ func (r *CreateWhiteListOrderRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "LicenseType")
+	delete(f, "LicenseNum")
+	delete(f, "Deadline")
+	delete(f, "RuleName")
+	delete(f, "RegionId")
+	delete(f, "ExtraParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWhiteListOrderRequest has unknown keys!", "")
 	}
@@ -19717,12 +19755,15 @@ func (r *DescribeLicenseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseWhiteConfigRequestParams struct {
-
+	// 规则名称,例如: cwp
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 }
 
 type DescribeLicenseWhiteConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// 规则名称,例如: cwp
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 }
 
 func (r *DescribeLicenseWhiteConfigRequest) ToJsonString() string {
@@ -19737,7 +19778,7 @@ func (r *DescribeLicenseWhiteConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseWhiteConfigRequest has unknown keys!", "")
 	}

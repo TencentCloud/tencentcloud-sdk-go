@@ -272,6 +272,67 @@ func (c *Client) BatchDeregisterTargetsWithContext(ctx context.Context, request 
     return
 }
 
+func NewBatchModifyTargetTagRequest() (request *BatchModifyTargetTagRequest) {
+    request = &BatchModifyTargetTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "BatchModifyTargetTag")
+    
+    
+    return
+}
+
+func NewBatchModifyTargetTagResponse() (response *BatchModifyTargetTagResponse) {
+    response = &BatchModifyTargetTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchModifyTargetTag
+// BatchModifyTargetTag 接口用于批量修改负载均衡监听器绑定的后端机器的标签。批量修改的资源数量上限为500。本接口为同步接口。<br/>负载均衡的4层和7层监听器支持此接口，传统型负载均衡不支持。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BatchModifyTargetTag(request *BatchModifyTargetTagRequest) (response *BatchModifyTargetTagResponse, err error) {
+    return c.BatchModifyTargetTagWithContext(context.Background(), request)
+}
+
+// BatchModifyTargetTag
+// BatchModifyTargetTag 接口用于批量修改负载均衡监听器绑定的后端机器的标签。批量修改的资源数量上限为500。本接口为同步接口。<br/>负载均衡的4层和7层监听器支持此接口，传统型负载均衡不支持。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BatchModifyTargetTagWithContext(ctx context.Context, request *BatchModifyTargetTagRequest) (response *BatchModifyTargetTagResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyTargetTagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyTargetTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyTargetTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchModifyTargetWeightRequest() (request *BatchModifyTargetWeightRequest) {
     request = &BatchModifyTargetWeightRequest{
         BaseRequest: &tchttp.BaseRequest{},

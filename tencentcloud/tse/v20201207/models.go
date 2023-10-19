@@ -247,9 +247,13 @@ type CloudNativeAPIGatewayConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 负载均衡的规格类型，传 "SLA" 表示性能容量型，返回空为共享型
+	// 负载均衡的规格类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaType *string `json:"SlaType,omitnil" name:"SlaType"`
+
+	// clb规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaName *string `json:"SlaName,omitnil" name:"SlaName"`
 
 	// clb vip
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1303,6 +1307,10 @@ func (r *CreateCloudNativeAPIGatewayServiceRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayServiceResponseParams struct {
+	// 网关服务创建结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateGatewayServiceResult `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1595,6 +1603,12 @@ func (r *CreateEngineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateGatewayServiceResult struct {
+	// 网关服务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 }
 
 // Predefined struct for user
@@ -4117,7 +4131,7 @@ type InternetConfig struct {
 	// 负载均衡描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 负载均衡的规格类型，传 "SLA" 表示性能容量型，不传为共享型。
+	// 负载均衡的规格类型，支持clb.c2.medium、clb.c3.small、clb.c3.medium、clb.c4.small、clb.c4.medium、clb.c4.large、clb.c4.xlarge，不传为共享型。
 	SlaType *string `json:"SlaType,omitnil" name:"SlaType"`
 
 	// 负载均衡是否多可用区
@@ -5840,6 +5854,78 @@ func (r *UpdateEngineInternetAccessResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateEngineInternetAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUpstreamTargetsRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 服务名称或ID
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 实例列表
+	Targets []*KongTarget `json:"Targets,omitnil" name:"Targets"`
+}
+
+type UpdateUpstreamTargetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 服务名称或ID
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 实例列表
+	Targets []*KongTarget `json:"Targets,omitnil" name:"Targets"`
+}
+
+func (r *UpdateUpstreamTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUpstreamTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Name")
+	delete(f, "Targets")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUpstreamTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUpstreamTargetsResponseParams struct {
+	// 是否更新成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateUpstreamTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateUpstreamTargetsResponseParams `json:"Response"`
+}
+
+func (r *UpdateUpstreamTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUpstreamTargetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

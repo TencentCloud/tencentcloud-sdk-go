@@ -3987,3 +3987,60 @@ func (c *Client) UpdateEngineInternetAccessWithContext(ctx context.Context, requ
     err = c.Send(request, response)
     return
 }
+
+func NewUpdateUpstreamTargetsRequest() (request *UpdateUpstreamTargetsRequest) {
+    request = &UpdateUpstreamTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "UpdateUpstreamTargets")
+    
+    
+    return
+}
+
+func NewUpdateUpstreamTargetsResponse() (response *UpdateUpstreamTargetsResponse) {
+    response = &UpdateUpstreamTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUpstreamTargets
+// 更新网关上游实例列表，仅支持IPList服务类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateUpstreamTargets(request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
+    return c.UpdateUpstreamTargetsWithContext(context.Background(), request)
+}
+
+// UpdateUpstreamTargets
+// 更新网关上游实例列表，仅支持IPList服务类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateUpstreamTargetsWithContext(ctx context.Context, request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
+    if request == nil {
+        request = NewUpdateUpstreamTargetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUpstreamTargets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUpstreamTargetsResponse()
+    err = c.Send(request, response)
+    return
+}

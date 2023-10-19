@@ -29,6 +29,9 @@ const (
 	// 数据库连接失败，请检查参数是否填写正确。
 	FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
 
+	// 作业的草稿不允许删除。
+	FAILEDOPERATION_DRAFTCONFIGCANNOTDELETE = "FailedOperation.DraftConfigCanNotDelete"
+
 	// 重复的作业名。
 	FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 
@@ -43,6 +46,9 @@ const (
 
 	// 语法检查失败。
 	FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
+
+	// 作业配置在使用中。
+	FAILEDOPERATION_JOBCONFIGONPUBLISH = "FailedOperation.JobConfigOnPublish"
 
 	// SQL解析失败。
 	FAILEDOPERATION_PARSESQL = "FailedOperation.ParseSql"
@@ -98,6 +104,9 @@ const (
 	// AppId资源不匹配。
 	INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"
 
+	// 空间命名重复。
+	INVALIDPARAMETER_DUPLICATEDSPACENAME = "InvalidParameter.DuplicatedSpaceName"
+
 	// 非法的 MaxParallelism 参数。
 	INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
 
@@ -109,6 +118,9 @@ const (
 
 	// 无效集群id。
 	INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+
+	// 空间命名不规范。
+	INVALIDPARAMETER_INVALIDITEMSPACENAME = "InvalidParameter.InvalidItemSpaceName"
 
 	// 名字不符合规范。
 	INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
@@ -191,11 +203,17 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 项目空间数量超出限制。
+	LIMITEXCEEDED_ITEMSPACELIMITEXCEEDED = "LimitExceeded.ItemSpaceLimitExceeded"
+
 	// Job个数超过限额。
 	LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 
 	// 作业配置超出限制。
 	LIMITEXCEEDED_JOBCONFIG = "LimitExceeded.JobConfig"
+
+	// 工作空间超阈值。
+	LIMITEXCEEDED_WORKSPACELIMITEXCEEDED = "LimitExceeded.WorkSpaceLimitExceeded"
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"

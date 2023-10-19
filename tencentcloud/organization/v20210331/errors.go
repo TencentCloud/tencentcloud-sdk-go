@@ -80,6 +80,9 @@ const (
 	// 查询实名信息出错。
 	FAILEDOPERATION_GETAUTHINFO = "FailedOperation.GetAuthInfo"
 
+	// 查询策略失败。
+	FAILEDOPERATION_GETPOLICYDETAIL = "FailedOperation.GetPolicyDetail"
+
 	// 邮箱绑定失败。
 	FAILEDOPERATION_MEMBERBINDEMAILERROR = "FailedOperation.MemberBindEmailError"
 
@@ -121,6 +124,12 @@ const (
 
 	// 企业组织已经存在。
 	FAILEDOPERATION_ORGANIZATIONEXISTALREADY = "FailedOperation.OrganizationExistAlready"
+
+	// 组织身份在使用中。
+	FAILEDOPERATION_ORGANIZATIONIDENTITYINUSED = "FailedOperation.OrganizationIdentityInUsed"
+
+	// 组织身份名称被使用。
+	FAILEDOPERATION_ORGANIZATIONIDENTITYNAMEUSED = "FailedOperation.OrganizationIdentityNameUsed"
 
 	// 组织身份策略不合法。
 	FAILEDOPERATION_ORGANIZATIONIDENTITYPOLICYERROR = "FailedOperation.OrganizationIdentityPolicyError"
@@ -212,6 +221,9 @@ const (
 	// 配置邮箱超过当日上限。
 	LIMITEXCEEDED_EMAILBINDOVERLIMIT = "LimitExceeded.EmailBindOverLimit"
 
+	// 组织身份超过最大限制。
+	LIMITEXCEEDED_IDENTITYEXCEEDLIMIT = "LimitExceeded.IdentityExceedLimit"
+
 	// 企业组织单元层级太多。
 	LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
 
@@ -253,6 +265,9 @@ const (
 
 	// 集团服务不存在。
 	RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+
+	// 策略不存在。
+	RESOURCENOTFOUND_POLICYNOTEXIST = "ResourceNotFound.PolicyNotExist"
 
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"

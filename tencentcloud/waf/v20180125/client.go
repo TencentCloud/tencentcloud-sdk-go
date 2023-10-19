@@ -4334,6 +4334,55 @@ func (c *Client) DescribeSessionWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeSpartaProtectionInfoRequest() (request *DescribeSpartaProtectionInfoRequest) {
+    request = &DescribeSpartaProtectionInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeSpartaProtectionInfo")
+    
+    
+    return
+}
+
+func NewDescribeSpartaProtectionInfoResponse() (response *DescribeSpartaProtectionInfoResponse) {
+    response = &DescribeSpartaProtectionInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSpartaProtectionInfo
+// waf斯巴达-获取防护域名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSpartaProtectionInfo(request *DescribeSpartaProtectionInfoRequest) (response *DescribeSpartaProtectionInfoResponse, err error) {
+    return c.DescribeSpartaProtectionInfoWithContext(context.Background(), request)
+}
+
+// DescribeSpartaProtectionInfo
+// waf斯巴达-获取防护域名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSpartaProtectionInfoWithContext(ctx context.Context, request *DescribeSpartaProtectionInfoRequest) (response *DescribeSpartaProtectionInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpartaProtectionInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpartaProtectionInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpartaProtectionInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTlsVersionRequest() (request *DescribeTlsVersionRequest) {
     request = &DescribeTlsVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4685,6 +4734,69 @@ func (c *Client) DescribeUserDomainInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeUserDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserLevelRequest() (request *DescribeUserLevelRequest) {
+    request = &DescribeUserLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeUserLevel")
+    
+    
+    return
+}
+
+func NewDescribeUserLevelResponse() (response *DescribeUserLevelResponse) {
+    response = &DescribeUserLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserLevel
+// 获取用户防护规则等级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeUserLevel(request *DescribeUserLevelRequest) (response *DescribeUserLevelResponse, err error) {
+    return c.DescribeUserLevelWithContext(context.Background(), request)
+}
+
+// DescribeUserLevel
+// 获取用户防护规则等级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeUserLevelWithContext(ctx context.Context, request *DescribeUserLevelRequest) (response *DescribeUserLevelResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserLevelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserLevel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserLevelResponse()
     err = c.Send(request, response)
     return
 }
@@ -5093,6 +5205,81 @@ func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeWafThreatenIntelligenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebshellStatusRequest() (request *DescribeWebshellStatusRequest) {
+    request = &DescribeWebshellStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeWebshellStatus")
+    
+    
+    return
+}
+
+func NewDescribeWebshellStatusResponse() (response *DescribeWebshellStatusResponse) {
+    response = &DescribeWebshellStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWebshellStatus
+// 获取域名的webshell状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWebshellStatus(request *DescribeWebshellStatusRequest) (response *DescribeWebshellStatusResponse, err error) {
+    return c.DescribeWebshellStatusWithContext(context.Background(), request)
+}
+
+// DescribeWebshellStatus
+// 获取域名的webshell状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWebshellStatusWithContext(ctx context.Context, request *DescribeWebshellStatusRequest) (response *DescribeWebshellStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebshellStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebshellStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebshellStatusResponse()
     err = c.Send(request, response)
     return
 }

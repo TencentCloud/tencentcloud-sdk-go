@@ -2261,6 +2261,10 @@ type BooleanResponse struct {
 	// 失败返回提示信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 基线Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaselineId *int64 `json:"BaselineId,omitnil" name:"BaselineId"`
 }
 
 type BytesSpeed struct {
@@ -4172,7 +4176,7 @@ type CreateHiveTableRequestParams struct {
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
 
-	// 数据库
+	// 数据库名称
 	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// base64转码之后的建表语句
@@ -4194,7 +4198,7 @@ type CreateHiveTableRequest struct {
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
 
-	// 数据库
+	// 数据库名称
 	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// base64转码之后的建表语句

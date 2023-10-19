@@ -5959,6 +5959,112 @@ func (r *DescribeRocketMQClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQConsumerConnectionsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 对查询结果排序，此为排序字段，目前支持Accumulative（消息堆积量）
+	SortedBy *string `json:"SortedBy,omitnil" name:"SortedBy"`
+
+	// 查询结果排序规则，ASC为升序，DESC为降序
+	SortOrder *string `json:"SortOrder,omitnil" name:"SortOrder"`
+}
+
+type DescribeRocketMQConsumerConnectionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 对查询结果排序，此为排序字段，目前支持Accumulative（消息堆积量）
+	SortedBy *string `json:"SortedBy,omitnil" name:"SortedBy"`
+
+	// 查询结果排序规则，ASC为升序，DESC为降序
+	SortOrder *string `json:"SortOrder,omitnil" name:"SortOrder"`
+}
+
+func (r *DescribeRocketMQConsumerConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumerConnectionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SortedBy")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQConsumerConnectionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQConsumerConnectionsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 在线消费者信息
+	Connections []*RocketMQConsumerConnection `json:"Connections,omitnil" name:"Connections"`
+
+	// 订阅组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupDetail *RocketMQGroup `json:"GroupDetail,omitnil" name:"GroupDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQConsumerConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQConsumerConnectionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQConsumerConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumerConnectionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQGroupsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -10745,6 +10851,23 @@ type RocketMQClusterRecentStats struct {
 
 	// 消息堆积数
 	AccumulativeMsgNum *uint64 `json:"AccumulativeMsgNum,omitnil" name:"AccumulativeMsgNum"`
+}
+
+type RocketMQConsumerConnection struct {
+	// 消费者实例ID
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// 消费者实例的地址和端口
+	ClientAddr *string `json:"ClientAddr,omitnil" name:"ClientAddr"`
+
+	// 消费者应用的语言版本
+	Language *string `json:"Language,omitnil" name:"Language"`
+
+	// 消息堆积量
+	Accumulative *int64 `json:"Accumulative,omitnil" name:"Accumulative"`
+
+	// 消费端版本
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type RocketMQGroup struct {

@@ -92,7 +92,7 @@ const (
 	// 库中无此号照片，请到户籍所在地进行核实。
 	FAILEDOPERATION_IDPHOTONOEXIST = "FailedOperation.IdPhotoNoExist"
 
-	// 证件图片分辨率太低，请重新上传。
+	// 证件图片质量差，请更新后重试。
 	FAILEDOPERATION_IDPHOTOPOORQUALITY = "FailedOperation.IdPhotoPoorQuality"
 
 	// 客户库自建库或认证中心返照失败，请稍后再试。

@@ -58,11 +58,13 @@ type ApproverComponentLimitType struct {
 type ApproverItem struct {
 	// 签署方唯一编号
 	// 
-	// 在动态签署人场景下，可以用此编号确定参与方
+	// 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
 	// 签署方角色编号
+	// 
+	// 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
@@ -1107,8 +1109,7 @@ type ChannelCreateFlowApproversRequestParams struct {
 
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
-	// <li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	// <ul><li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
 }
 
@@ -1133,8 +1134,7 @@ type ChannelCreateFlowApproversRequest struct {
 
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
-	// <li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	// <ul><li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
 }
 
@@ -1240,9 +1240,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 合同流程的签署顺序类型：
 	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
-	// 
-	// 注
-	// `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
+	// **注**: `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
@@ -1287,9 +1285,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署方签署控件（印章/签名等）的生成方式：
 	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
 	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
-	// 
-	// 注:
-	// `发起后添加控件功能不支持添加签批控件`
+	// **注**: `发起后添加控件功能不支持添加签批控件`
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
@@ -1364,9 +1360,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 合同流程的签署顺序类型：
 	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
-	// 
-	// 注
-	// `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
+	// **注**: `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
@@ -1411,9 +1405,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署方签署控件（印章/签名等）的生成方式：
 	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
 	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
-	// 
-	// 注:
-	// `发起后添加控件功能不支持添加签批控件`
+	// **注**: `发起后添加控件功能不支持添加签批控件`
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
@@ -1472,7 +1464,8 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowByFilesResponseParams struct {
-	// 合同签署流程ID
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
@@ -4676,10 +4669,18 @@ type ComponentLimit struct {
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 暂未开放
@@ -4691,10 +4692,18 @@ type CreateChannelFlowEvidenceReportRequestParams struct {
 type CreateChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 暂未开放
@@ -4724,16 +4733,15 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportResponseParams struct {
-	// 出证报告 ID，可用户DescribeChannelFlowEvidenceReport接口查询出证PDF的下载地址
-	// 
+	// 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
-	// 出征任务的执行状态,状态列表如下
+	// 出证任务执行的状态, 状态含义如下：
 	// 
-	// - EvidenceStatusExecuting : 出征任务正在执行中
-	// - EvidenceStatusSuccess : 出征任务执行成功
-	// - EvidenceStatusFailed : 出征任务执行失败
+	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
+	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
+	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 废除，字段无效
@@ -4762,22 +4770,38 @@ func (r *CreateChannelFlowEvidenceReportResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
-	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
+	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
 	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
 }
 
 type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
-	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
+	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
 	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
 }
 
@@ -4803,7 +4827,7 @@ func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateChannelOrganizationInfoChangeUrlResponseParams struct {
-	// 创建的企业信息变更链接。
+	// 创建的企业信息变更链接。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 链接过期时间。链接7天有效。
@@ -5073,18 +5097,32 @@ type CreateFlowOption struct {
 
 // Predefined struct for user
 type CreateFlowsByTemplatesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要创建的合同信息列表，最多支持一次创建20个合同
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
-	// 预览链接有效期300秒；
-	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
+	// 是否为预览模式，取值如下：
+	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
+	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+	// 
+	// 注:
+	// 
+	// `如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
-	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	// 预览模式下产生的预览链接类型 
+	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
+	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
 
 	// 操作者的信息，不用传
@@ -5096,18 +5134,32 @@ type CreateFlowsByTemplatesRequestParams struct {
 type CreateFlowsByTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要创建的合同信息列表，最多支持一次创建20个合同
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
-	// 预览链接有效期300秒；
-	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
+	// 是否为预览模式，取值如下：
+	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
+	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+	// 
+	// 注:
+	// 
+	// `如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
-	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	// 预览模式下产生的预览链接类型 
+	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
+	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
 
 	// 操作者的信息，不用传
@@ -5139,7 +5191,8 @@ func (r *CreateFlowsByTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowsByTemplatesResponseParams struct {
-	// 多个合同ID
+	// 生成的合同流程ID数组，合同流程ID为32位字符串。
+	// 建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
@@ -5149,7 +5202,9 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 成功为“”,创建失败则对应失败消息
 	ErrorMessages []*string `json:"ErrorMessages,omitnil" name:"ErrorMessages"`
 
-	// 预览模式下返回的预览文件url数组
+	// 合同预览链接URL数组。
+	// 
+	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
 	PreviewUrls []*string `json:"PreviewUrls,omitnil" name:"PreviewUrls"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
@@ -5621,18 +5676,28 @@ func (r *DescribeChannelFlowEvidenceReportResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeExtendedServiceAuthInfoRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
-	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DescribeExtendedServiceAuthInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
-	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -5657,7 +5722,7 @@ func (r *DescribeExtendedServiceAuthInfoRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeExtendedServiceAuthInfoResponseParams struct {
-	// 企业扩展服务授权信息
+	// 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthInfo []*ExtentServiceAuthInfo `json:"AuthInfo,omitnil" name:"AuthInfo"`
 
@@ -6139,7 +6204,7 @@ type DownloadFlowInfo struct {
 type ExtentServiceAuthInfo struct {
 	// 扩展服务类型
 	// <ul>
-	//   <li>AUTO_SIGN             企业静默签（自动签署）</li>
+	//   <li>AUTO_SIGN             企业自动签（自动签署）</li>
 	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
 	//  <li> PAGING_SEAL           骑缝章</li>
@@ -6151,16 +6216,14 @@ type ExtentServiceAuthInfo struct {
 	// 扩展服务名称 
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 服务状态 
-	// ENABLE 开启 
-	// DISABLE 关闭
+	// 扩展服务的开通状态： ENABLE：开通 DISABLE：未开通	
 	Status *string `json:"Status,omitnil" name:"Status"`
 
-	// 最近操作人第三方应用平台的用户openid
+	// 操作扩展服务的操作人第三方应用平台的用户openid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorOpenId *string `json:"OperatorOpenId,omitnil" name:"OperatorOpenId"`
 
-	// 最近操作时间戳，单位秒
+	// 扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateOn *int64 `json:"OperateOn,omitnil" name:"OperateOn"`
 }

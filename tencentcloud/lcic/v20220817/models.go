@@ -3449,6 +3449,14 @@ type EventInfo struct {
 	EventData *EventDataInfo `json:"EventData,omitnil" name:"EventData"`
 }
 
+type FaceMsgContent struct {
+	// 表情索引，用户自定义。
+	Index *int64 `json:"Index,omitnil" name:"Index"`
+
+	// 额外数据。
+	Data *string `json:"Data,omitnil" name:"Data"`
+}
+
 // Predefined struct for user
 type GetRoomEventRequestParams struct {
 	// 房间Id。
@@ -3837,6 +3845,42 @@ type GroupInfo struct {
 	// 子群组ID列表，如有。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGroupIds *string `json:"SubGroupIds,omitnil" name:"SubGroupIds"`
+}
+
+type ImageInfo struct {
+	// 图片类型：
+	// 1-原图
+	// 2-大图
+	// 3-缩略图
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 图片数据大小，单位：字节。
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
+
+	// 图片宽度，单位为像素。
+	Width *uint64 `json:"Width,omitnil" name:"Width"`
+
+	// 图片高度，单位为像素。
+	Height *uint64 `json:"Height,omitnil" name:"Height"`
+
+	// 图片下载地址。
+	URL *string `json:"URL,omitnil" name:"URL"`
+}
+
+type ImageMsgContent struct {
+	// 图片的唯一标识，客户端用于索引图片的键值。
+	UUID *string `json:"UUID,omitnil" name:"UUID"`
+
+	// 图片格式。
+	// JPG = 1
+	// GIF = 2
+	// PNG = 3
+	// BMP = 4
+	// 其他 = 255
+	ImageFormat *uint64 `json:"ImageFormat,omitnil" name:"ImageFormat"`
+
+	// 图片信息
+	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitnil" name:"ImageInfoList"`
 }
 
 // Predefined struct for user
@@ -4595,6 +4639,23 @@ func (r *ModifyUserProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MsgBody struct {
+	// TIM 消息对象类型，目前支持的消息对象包括：
+	// TIMTextElem（文本消息）
+	// TIMFaceElem（表情消息）
+	// TIMImageElem（图像消息）
+	MsgType *string `json:"MsgType,omitnil" name:"MsgType"`
+
+	// 文本消息，当MsgType 为TIMTextElem（文本消息）必选。
+	TextMsgContent *TextMsgContent `json:"TextMsgContent,omitnil" name:"TextMsgContent"`
+
+	// 表情消息，当MsgType 为TIMFaceElem（表情消息）必选。
+	FaceMsgContent *FaceMsgContent `json:"FaceMsgContent,omitnil" name:"FaceMsgContent"`
+
+	// 图像消息，当MsgType为TIMImageElem（图像消息）必选。
+	ImageMsgContent *ImageMsgContent `json:"ImageMsgContent,omitnil" name:"ImageMsgContent"`
+}
+
 type QuestionInfo struct {
 	// 问题ID
 	QuestionId *string `json:"QuestionId,omitnil" name:"QuestionId"`
@@ -4840,6 +4901,156 @@ type RoomItem struct {
 
 type SceneItem struct {
 
+}
+
+// Predefined struct for user
+type SendRoomNormalMessageRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 管理员指定消息发送方账号（若需设置 FromAccount 信息，则该参数取值不能为空）
+	FromAccount *string `json:"FromAccount,omitnil" name:"FromAccount"`
+
+	// 自定义消息
+	MsgBody []*MsgBody `json:"MsgBody,omitnil" name:"MsgBody"`
+
+	// 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
+	CloudCustomData *string `json:"CloudCustomData,omitnil" name:"CloudCustomData"`
+}
+
+type SendRoomNormalMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 管理员指定消息发送方账号（若需设置 FromAccount 信息，则该参数取值不能为空）
+	FromAccount *string `json:"FromAccount,omitnil" name:"FromAccount"`
+
+	// 自定义消息
+	MsgBody []*MsgBody `json:"MsgBody,omitnil" name:"MsgBody"`
+
+	// 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
+	CloudCustomData *string `json:"CloudCustomData,omitnil" name:"CloudCustomData"`
+}
+
+func (r *SendRoomNormalMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRoomNormalMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "FromAccount")
+	delete(f, "MsgBody")
+	delete(f, "CloudCustomData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendRoomNormalMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendRoomNormalMessageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SendRoomNormalMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *SendRoomNormalMessageResponseParams `json:"Response"`
+}
+
+func (r *SendRoomNormalMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRoomNormalMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendRoomNotificationMessageRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 消息。
+	MsgContent *string `json:"MsgContent,omitnil" name:"MsgContent"`
+}
+
+type SendRoomNotificationMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 消息。
+	MsgContent *string `json:"MsgContent,omitnil" name:"MsgContent"`
+}
+
+func (r *SendRoomNotificationMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRoomNotificationMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "MsgContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendRoomNotificationMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendRoomNotificationMessageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SendRoomNotificationMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *SendRoomNotificationMessageResponseParams `json:"Response"`
+}
+
+func (r *SendRoomNotificationMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRoomNotificationMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5110,6 +5321,11 @@ type TextMarkConfig struct {
 	// 文字水印颜色
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitnil" name:"Color"`
+}
+
+type TextMsgContent struct {
+	// 文本消息。
+	Text *string `json:"Text,omitnil" name:"Text"`
 }
 
 // Predefined struct for user

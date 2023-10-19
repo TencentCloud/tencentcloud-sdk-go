@@ -119,6 +119,9 @@ const (
 	// 取消授权失败。
 	FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 
+	// 语法解析失败，请校验后重试
+	FAILEDOPERATION_SQLTASKPARSEFAILED = "FailedOperation.SQLTaskParseFailed"
+
 	// 资源已经绑定了同名标签键。
 	FAILEDOPERATION_TAGALREADYATTACHED = "FailedOperation.TagAlreadyAttached"
 
