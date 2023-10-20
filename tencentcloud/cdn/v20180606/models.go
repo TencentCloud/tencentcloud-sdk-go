@@ -591,7 +591,7 @@ type AdvancedAuthenticationTypeA struct {
 	// 是否必须提供过期时间参数。
 	ExpireTimeRequired *bool `json:"ExpireTimeRequired,omitnil" name:"ExpireTimeRequired"`
 
-	// Url组成格式，如：${private_key}${schema}${host}${full_uri。
+	// URL 组成格式，如：${private_key}${schema}${host}${full_uri}。
 	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 时间格式，dec，hex分别表示十进制，十六进制。
@@ -798,24 +798,24 @@ type AdvancedScdnAclGroup struct {
 }
 
 type AdvancedScdnAclRule struct {
-	// 匹配关键字：
-	// protocol：HTTP协议
-	// httpVersion：HTTP版本
-	// method：请求方法
-	// ip：请求源IP
-	// ipAsn：请求源IP自治域号
-	// ipCountry：请求源IP所在国家
-	// ipArea：请求源IP所在大区
-	// xForwardFor：请求头X-Forward-For
-	// directory：路径
-	// index：首页
-	// path：文件全路径
-	// file：文件扩展名
-	// param：请求参数
-	// referer：请求头Referer
-	// cookie：请求头Cookie
-	// userAgent：请求头User-Agent
-	// head：自定义请求头
+	// 匹配关键字，可取值有：
+	// <li>protocol：HTTP协议</li>
+	// <li>httpVersion：HTTP版本</li>
+	// <li>method：请求方法</li>
+	// <li>ip：请求源IP</li>
+	// <li>ipAsn：请求源IP自治域号</li>
+	// <li>ipCountry：请求源IP所在国家</li>
+	// <li>ipArea：请求源IP所在大区</li>
+	// <li>xForwardFor：请求头X-Forwarded-For</li>
+	// <li>directory：路径</li>
+	// <li>index：首页</li>
+	// <li>path：文件全路径</li>
+	// <li>file：文件扩展名</li>
+	// <li>param：请求参数</li>
+	// <li>referer：请求头Referer</li>
+	// <li>cookie：请求头Cookie</li>
+	// <li>userAgent：请求头User-Agent</li>
+	// <li>head：自定义请求头</li>
 	MatchKey *string `json:"MatchKey,omitnil" name:"MatchKey"`
 
 	// 逻辑操作符，取值如下：

@@ -870,7 +870,7 @@ type DetectAuthRequestParams struct {
 	TerminalType *string `json:"TerminalType,omitnil" name:"TerminalType"`
 
 	// 身份标识（未使用OCR服务时，必须传入）。
-	// 规则：a-zA-Z0-9组合。最长长度32位。
+	// 规则：a-z，A-Z，0-9组合。最长长度32位。
 	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
 
 	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
@@ -912,7 +912,7 @@ type DetectAuthRequest struct {
 	TerminalType *string `json:"TerminalType,omitnil" name:"TerminalType"`
 
 	// 身份标识（未使用OCR服务时，必须传入）。
-	// 规则：a-zA-Z0-9组合。最长长度32位。
+	// 规则：a-z，A-Z，0-9组合。最长长度32位。
 	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
 
 	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
@@ -1858,7 +1858,7 @@ type GetEidTokenRequestParams struct {
 	MerchantId *string `json:"MerchantId,omitnil" name:"MerchantId"`
 
 	// 身份标识（未使用OCR服务时，必须传入）。
-	// 规则：a-zA-Z0-9组合。最长长度32位。
+	// 规则：a-z，A-Z，0-9组合。最长长度32位。
 	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
 
 	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
@@ -1884,7 +1884,7 @@ type GetEidTokenRequest struct {
 	MerchantId *string `json:"MerchantId,omitnil" name:"MerchantId"`
 
 	// 身份标识（未使用OCR服务时，必须传入）。
-	// 规则：a-zA-Z0-9组合。最长长度32位。
+	// 规则：a-z，A-Z，0-9组合。最长长度32位。
 	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
 
 	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。

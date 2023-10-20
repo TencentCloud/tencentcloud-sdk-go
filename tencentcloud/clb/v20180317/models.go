@@ -189,7 +189,7 @@ func (r *AutoRewriteResponse) FromJsonString(s string) error {
 }
 
 type Backend struct {
-	// 后端服务的类型，可取：CVM、ENI
+	// 后端服务的类型，可取：CVM、ENI、CCN
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 后端服务的唯一 ID，如 ins-abcd1234
@@ -220,6 +220,10 @@ type Backend struct {
 	// 弹性网卡唯一ID，如 eni-1234abcd
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniId *string `json:"EniId,omitnil" name:"EniId"`
+
+	// 标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
 }
 
 type BasicTargetGroupInfo struct {

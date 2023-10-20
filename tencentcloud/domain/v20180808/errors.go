@@ -89,8 +89,35 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// IP格式错误。
+	INTERNALERROR_DNSHOSTIPCHECKERR = "InternalError.DNSHostIPCheckErr"
+
+	// 数据库报错。
+	INTERNALERROR_DBERROR = "InternalError.DbError"
+
+	// 查询域名信息失败。
+	INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
+
 	// 网络报错，请稍后重试。
 	INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+
+	// 禁止请求。
+	INTERNALERROR_FORBIDDENREQUEST = "InternalError.ForbiddenRequest"
+
+	// 转json错误。
+	INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+
+	// method不匹配。
+	INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+
+	// 修改DNSHost失败。
+	INTERNALERROR_MODIFYDNSHOSTERR = "InternalError.ModifyDNSHostErr"
+
+	// 需要登陆。
+	INTERNALERROR_NEEDLOGIN = "InternalError.NeedLogin"
+
+	// 读取body失败。
+	INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -109,6 +136,9 @@ const (
 
 	// 无权限自定义DNS。
 	INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+
+	// 域名输入不规范。
+	INVALIDPARAMETER_DOMAINISINVALID = "InvalidParameter.DomainIsInvalid"
 
 	// 域名输入为空或者不正确。
 	INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
@@ -182,6 +212,9 @@ const (
 	// 邮编为空或者不合法。
 	INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
 
+	// 表单参数取值错误。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -190,6 +223,9 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 未定义路由。
+	MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
 
 	// 域名不能为空。
 	MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"

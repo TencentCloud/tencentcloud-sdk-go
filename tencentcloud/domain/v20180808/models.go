@@ -789,6 +789,78 @@ func (r *CreateTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomDnsHost struct {
+	// DNS名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址列表
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+// Predefined struct for user
+type DeleteCustomDnsHostRequestParams struct {
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+}
+
+type DeleteCustomDnsHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+}
+
+func (r *DeleteCustomDnsHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomDnsHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "DnsName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomDnsHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomDnsHostResponseParams struct {
+	// 异步任务ID
+	LogId *uint64 `json:"LogId,omitnil" name:"LogId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteCustomDnsHostResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomDnsHostResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomDnsHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomDnsHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DeletePhoneEmailRequestParams struct {
 	// 手机或者邮箱
@@ -1044,6 +1116,81 @@ func (r *DescribeBatchOperationLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomDnsHostSetRequestParams struct {
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// 返回数量，默认为20，取值范围[1,100]
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeCustomDnsHostSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// 返回数量，默认为20，取值范围[1,100]
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeCustomDnsHostSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomDnsHostSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomDnsHostSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomDnsHostSetResponseParams struct {
+	// 自定义DNS Host 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DnsHostSet []*CustomDnsHost `json:"DnsHostSet,omitnil" name:"DnsHostSet"`
+
+	// 自定义DNS Host总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCustomDnsHostSetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCustomDnsHostSetResponseParams `json:"Response"`
+}
+
+func (r *DescribeCustomDnsHostSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomDnsHostSetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1811,6 +1958,77 @@ type DomainSimpleInfo struct {
 }
 
 // Predefined struct for user
+type ModifyCustomDnsHostRequestParams struct {
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址列表
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+type ModifyCustomDnsHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS名称
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址列表
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+func (r *ModifyCustomDnsHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomDnsHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "DnsName")
+	delete(f, "IpSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomDnsHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomDnsHostResponseParams struct {
+	// 异步任务ID
+	LogId *uint64 `json:"LogId,omitnil" name:"LogId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyCustomDnsHostResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomDnsHostResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomDnsHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomDnsHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDomainDNSBatchRequestParams struct {
 	// 批量操作的域名。
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
@@ -1949,6 +2167,77 @@ func (r *ModifyDomainOwnerBatchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDomainOwnerBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntlCustomDnsHostRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS Host
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+type ModifyIntlCustomDnsHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+
+	// DNS Host
+	DnsName *string `json:"DnsName,omitnil" name:"DnsName"`
+
+	// IP地址
+	IpSet []*string `json:"IpSet,omitnil" name:"IpSet"`
+}
+
+func (r *ModifyIntlCustomDnsHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntlCustomDnsHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "DnsName")
+	delete(f, "IpSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntlCustomDnsHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntlCustomDnsHostResponseParams struct {
+	// 任务ID
+	LogId *int64 `json:"LogId,omitnil" name:"LogId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyIntlCustomDnsHostResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntlCustomDnsHostResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntlCustomDnsHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntlCustomDnsHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2220,6 +2509,63 @@ func (r *SetDomainAutoRenewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetDomainAutoRenewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncCustomDnsHostRequestParams struct {
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+type SyncCustomDnsHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名实例ID
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+func (r *SyncCustomDnsHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncCustomDnsHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncCustomDnsHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncCustomDnsHostResponseParams struct {
+	// 异步任务ID
+	LogId *uint64 `json:"LogId,omitnil" name:"LogId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SyncCustomDnsHostResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncCustomDnsHostResponseParams `json:"Response"`
+}
+
+func (r *SyncCustomDnsHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncCustomDnsHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

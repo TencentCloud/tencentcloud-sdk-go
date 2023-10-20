@@ -1838,6 +1838,86 @@ func (r *DescribeUserRoleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserRoleProjectListRequestParams struct {
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+type DescribeUserRoleProjectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+func (r *DescribeUserRoleProjectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRoleProjectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleProjectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserRoleProjectListResponseParams struct {
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UserRoleListData `json:"Data,omitnil" name:"Data"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserRoleProjectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserRoleProjectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserRoleProjectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRoleProjectListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EmbedTokenInfo struct {
 	// 信息标识
 	// 注意：此字段可能返回 null，表示取不到有效值。

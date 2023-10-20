@@ -4108,6 +4108,14 @@ type InstancePort struct {
 	// 监听的 https 端口范围。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsPort *string `json:"HttpsPort,omitnil" name:"HttpsPort"`
+
+	// 监听的 tcp 端口范围。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcpPort *string `json:"TcpPort,omitnil" name:"TcpPort"`
+
+	// 监听的 udp 端口范围。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UdpPort *string `json:"UdpPort,omitnil" name:"UdpPort"`
 }
 
 type InstanceTagInfo struct {

@@ -339,7 +339,6 @@ type CFSTurbo struct {
 // Predefined struct for user
 type ChatCompletionRequestParams struct {
 	// 对话的目标模型ID。
-	// 多行业多场景大模型在线体验聊天：tj_llm_clm-v1。
 	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
 	Model *string `json:"Model,omitnil" name:"Model"`
 
@@ -360,7 +359,6 @@ type ChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 对话的目标模型ID。
-	// 多行业多场景大模型在线体验聊天：tj_llm_clm-v1。
 	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
 	Model *string `json:"Model,omitnil" name:"Model"`
 
@@ -7971,7 +7969,6 @@ type SendChatMessageRequestParams struct {
 	Question *string `json:"Question,omitnil" name:"Question"`
 
 	// 会话模型版本。
-	// 多行业多场景大模型：填写 tj_llm_clm-v1。
 	// 多行业客服大模型：填写demo_big_model_version_id。
 	// 默认为demo_big_model_version_id，即多行业客服大模型。
 	ModelVersion *string `json:"ModelVersion,omitnil" name:"ModelVersion"`
@@ -7997,7 +7994,6 @@ type SendChatMessageRequest struct {
 	Question *string `json:"Question,omitnil" name:"Question"`
 
 	// 会话模型版本。
-	// 多行业多场景大模型：填写 tj_llm_clm-v1。
 	// 多行业客服大模型：填写demo_big_model_version_id。
 	// 默认为demo_big_model_version_id，即多行业客服大模型。
 	ModelVersion *string `json:"ModelVersion,omitnil" name:"ModelVersion"`

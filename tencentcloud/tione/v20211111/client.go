@@ -65,16 +65,13 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 }
 
 // ChatCompletion
-// 该接口支持与两种类型大模型的聊天。
-//
-// 1. 与多行业多场景大模型的在线体验聊天
-//
-// 2. 与自行部署的开源大模型的聊天
+// 该接口支持与自行部署的大模型的聊天。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 //  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
@@ -82,16 +79,13 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 }
 
 // ChatCompletion
-// 该接口支持与两种类型大模型的聊天。
-//
-// 1. 与多行业多场景大模型的在线体验聊天
-//
-// 2. 与自行部署的开源大模型的聊天
+// 该接口支持与自行部署的大模型的聊天。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 //  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
@@ -4773,6 +4767,7 @@ func NewSendChatMessageResponse() (response *SendChatMessageResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 func (c *Client) SendChatMessage(request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
     return c.SendChatMessageWithContext(context.Background(), request)
 }
@@ -4784,6 +4779,7 @@ func (c *Client) SendChatMessage(request *SendChatMessageRequest) (response *Sen
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 func (c *Client) SendChatMessageWithContext(ctx context.Context, request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
     if request == nil {
         request = NewSendChatMessageRequest()
@@ -4833,6 +4829,7 @@ func NewStartNotebookResponse() (response *StartNotebookResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
@@ -4864,6 +4861,7 @@ func (c *Client) StartNotebook(request *StartNotebookRequest) (response *StartNo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"

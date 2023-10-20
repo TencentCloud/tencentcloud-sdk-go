@@ -5914,12 +5914,15 @@ func (r *DescribeLakeFsInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLakeFsTaskResultRequestParams struct {
-
+	// 需要访问的任务结果路径
+	FsPath *string `json:"FsPath,omitnil" name:"FsPath"`
 }
 
 type DescribeLakeFsTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
+	// 需要访问的任务结果路径
+	FsPath *string `json:"FsPath,omitnil" name:"FsPath"`
 }
 
 func (r *DescribeLakeFsTaskResultRequest) ToJsonString() string {
@@ -5934,7 +5937,7 @@ func (r *DescribeLakeFsTaskResultRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "FsPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLakeFsTaskResultRequest has unknown keys!", "")
 	}
@@ -5943,6 +5946,9 @@ func (r *DescribeLakeFsTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLakeFsTaskResultResponseParams struct {
+	// 路径的访问实例
+	AccessToken *LakeFileSystemToken `json:"AccessToken,omitnil" name:"AccessToken"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -8959,6 +8965,23 @@ type KerberosInfo struct {
 
 	// 服务主体
 	ServicePrincipal *string `json:"ServicePrincipal,omitnil" name:"ServicePrincipal"`
+}
+
+type LakeFileSystemToken struct {
+	// Token使用的临时秘钥的ID
+	SecretId *string `json:"SecretId,omitnil" name:"SecretId"`
+
+	// Token使用的临时秘钥
+	SecretKey *string `json:"SecretKey,omitnil" name:"SecretKey"`
+
+	// Token信息
+	Token *string `json:"Token,omitnil" name:"Token"`
+
+	// 过期时间
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+
+	// 颁布时间
+	IssueTime *int64 `json:"IssueTime,omitnil" name:"IssueTime"`
 }
 
 // Predefined struct for user

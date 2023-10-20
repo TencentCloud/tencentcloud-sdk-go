@@ -228,6 +228,16 @@ type ApproverOption struct {
 	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
 	// </ul>
 	FillType *int64 `json:"FillType,omitnil" name:"FillType"`
+
+	// 签署人阅读合同限制参数
+	//  <br/>取值：
+	// <ul>
+	// <li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+	// <li> LimitReadTime，阅读合同仅限制阅读时长</li>
+	// <li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+	// <li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+	// </ul>
+	FlowReadLimit *string `json:"FlowReadLimit,omitnil" name:"FlowReadLimit"`
 }
 
 type ApproverRestriction struct {

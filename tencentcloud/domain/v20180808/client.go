@@ -599,6 +599,75 @@ func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateT
     return
 }
 
+func NewDeleteCustomDnsHostRequest() (request *DeleteCustomDnsHostRequest) {
+    request = &DeleteCustomDnsHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DeleteCustomDnsHost")
+    
+    
+    return
+}
+
+func NewDeleteCustomDnsHostResponse() (response *DeleteCustomDnsHostResponse) {
+    response = &DeleteCustomDnsHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomDnsHost
+// 删除自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  INVALIDPARAMETER_DOMAINISINVALID = "InvalidParameter.DomainIsInvalid"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) DeleteCustomDnsHost(request *DeleteCustomDnsHostRequest) (response *DeleteCustomDnsHostResponse, err error) {
+    return c.DeleteCustomDnsHostWithContext(context.Background(), request)
+}
+
+// DeleteCustomDnsHost
+// 删除自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  INVALIDPARAMETER_DOMAINISINVALID = "InvalidParameter.DomainIsInvalid"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) DeleteCustomDnsHostWithContext(ctx context.Context, request *DeleteCustomDnsHostRequest) (response *DeleteCustomDnsHostResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomDnsHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomDnsHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomDnsHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
     request = &DeletePhoneEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -819,6 +888,63 @@ func (c *Client) DescribeBatchOperationLogsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeBatchOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomDnsHostSetRequest() (request *DescribeCustomDnsHostSetRequest) {
+    request = &DescribeCustomDnsHostSetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeCustomDnsHostSet")
+    
+    
+    return
+}
+
+func NewDescribeCustomDnsHostSetResponse() (response *DescribeCustomDnsHostSetResponse) {
+    response = &DescribeCustomDnsHostSetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCustomDnsHostSet
+// 查询自定义DNS Host
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribeCustomDnsHostSet(request *DescribeCustomDnsHostSetRequest) (response *DescribeCustomDnsHostSetResponse, err error) {
+    return c.DescribeCustomDnsHostSetWithContext(context.Background(), request)
+}
+
+// DescribeCustomDnsHostSet
+// 查询自定义DNS Host
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribeCustomDnsHostSetWithContext(ctx context.Context, request *DescribeCustomDnsHostSetRequest) (response *DescribeCustomDnsHostSetResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomDnsHostSetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomDnsHostSet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomDnsHostSetResponse()
     err = c.Send(request, response)
     return
 }
@@ -1222,6 +1348,79 @@ func (c *Client) DescribeTemplateListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewModifyCustomDnsHostRequest() (request *ModifyCustomDnsHostRequest) {
+    request = &ModifyCustomDnsHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "ModifyCustomDnsHost")
+    
+    
+    return
+}
+
+func NewModifyCustomDnsHostResponse() (response *ModifyCustomDnsHostResponse) {
+    response = &ModifyCustomDnsHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCustomDnsHost
+// 修改自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_DOMAINISINVALID = "InvalidParameter.DomainIsInvalid"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) ModifyCustomDnsHost(request *ModifyCustomDnsHostRequest) (response *ModifyCustomDnsHostResponse, err error) {
+    return c.ModifyCustomDnsHostWithContext(context.Background(), request)
+}
+
+// ModifyCustomDnsHost
+// 修改自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_DOMAINISINVALID = "InvalidParameter.DomainIsInvalid"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) ModifyCustomDnsHostWithContext(ctx context.Context, request *ModifyCustomDnsHostRequest) (response *ModifyCustomDnsHostResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomDnsHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomDnsHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomDnsHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainDNSBatchRequest() (request *ModifyDomainDNSBatchRequest) {
     request = &ModifyDomainDNSBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1358,6 +1557,73 @@ func (c *Client) ModifyDomainOwnerBatchWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyDomainOwnerBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIntlCustomDnsHostRequest() (request *ModifyIntlCustomDnsHostRequest) {
+    request = &ModifyIntlCustomDnsHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "ModifyIntlCustomDnsHost")
+    
+    
+    return
+}
+
+func NewModifyIntlCustomDnsHostResponse() (response *ModifyIntlCustomDnsHostResponse) {
+    response = &ModifyIntlCustomDnsHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIntlCustomDnsHost
+// 国际站-修改DNS Host
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DNSHOSTIPCHECKERR = "InternalError.DNSHostIPCheckErr"
+//  INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
+//  INTERNALERROR_FORBIDDENREQUEST = "InternalError.ForbiddenRequest"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_MODIFYDNSHOSTERR = "InternalError.ModifyDNSHostErr"
+//  INTERNALERROR_NEEDLOGIN = "InternalError.NeedLogin"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) ModifyIntlCustomDnsHost(request *ModifyIntlCustomDnsHostRequest) (response *ModifyIntlCustomDnsHostResponse, err error) {
+    return c.ModifyIntlCustomDnsHostWithContext(context.Background(), request)
+}
+
+// ModifyIntlCustomDnsHost
+// 国际站-修改DNS Host
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DNSHOSTIPCHECKERR = "InternalError.DNSHostIPCheckErr"
+//  INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
+//  INTERNALERROR_FORBIDDENREQUEST = "InternalError.ForbiddenRequest"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_MODIFYDNSHOSTERR = "InternalError.ModifyDNSHostErr"
+//  INTERNALERROR_NEEDLOGIN = "InternalError.NeedLogin"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) ModifyIntlCustomDnsHostWithContext(ctx context.Context, request *ModifyIntlCustomDnsHostRequest) (response *ModifyIntlCustomDnsHostResponse, err error) {
+    if request == nil {
+        request = NewModifyIntlCustomDnsHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIntlCustomDnsHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIntlCustomDnsHostResponse()
     err = c.Send(request, response)
     return
 }
@@ -1563,6 +1829,77 @@ func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *Set
     request.SetContext(ctx)
     
     response = NewSetDomainAutoRenewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncCustomDnsHostRequest() (request *SyncCustomDnsHostRequest) {
+    request = &SyncCustomDnsHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "SyncCustomDnsHost")
+    
+    
+    return
+}
+
+func NewSyncCustomDnsHostResponse() (response *SyncCustomDnsHostResponse) {
+    response = &SyncCustomDnsHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncCustomDnsHost
+// 同步自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) SyncCustomDnsHost(request *SyncCustomDnsHostRequest) (response *SyncCustomDnsHostResponse, err error) {
+    return c.SyncCustomDnsHostWithContext(context.Background(), request)
+}
+
+// SyncCustomDnsHost
+// 同步自定义DNS Host
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+func (c *Client) SyncCustomDnsHostWithContext(ctx context.Context, request *SyncCustomDnsHostRequest) (response *SyncCustomDnsHostResponse, err error) {
+    if request == nil {
+        request = NewSyncCustomDnsHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncCustomDnsHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncCustomDnsHostResponse()
     err = c.Send(request, response)
     return
 }

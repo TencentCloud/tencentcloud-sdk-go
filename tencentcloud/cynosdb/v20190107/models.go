@@ -5355,14 +5355,14 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSecurityGroupsRequestParams struct {
-	// 实例组ID
+	// 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeDBSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例组ID
+	// 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 

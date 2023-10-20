@@ -1083,6 +1083,65 @@ func (c *Client) DescribeUserRoleListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeUserRoleProjectListRequest() (request *DescribeUserRoleProjectListRequest) {
+    request = &DescribeUserRoleProjectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeUserRoleProjectList")
+    
+    
+    return
+}
+
+func NewDescribeUserRoleProjectListResponse() (response *DescribeUserRoleProjectListResponse) {
+    response = &DescribeUserRoleProjectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserRoleProjectList
+// 项目内-用户角色列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserRoleProjectList(request *DescribeUserRoleProjectListRequest) (response *DescribeUserRoleProjectListResponse, err error) {
+    return c.DescribeUserRoleProjectListWithContext(context.Background(), request)
+}
+
+// DescribeUserRoleProjectList
+// 项目内-用户角色列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserRoleProjectListWithContext(ctx context.Context, request *DescribeUserRoleProjectListRequest) (response *DescribeUserRoleProjectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserRoleProjectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserRoleProjectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserRoleProjectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDatasourceRequest() (request *ModifyDatasourceRequest) {
     request = &ModifyDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

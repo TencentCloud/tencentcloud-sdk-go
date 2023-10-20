@@ -1,3 +1,150 @@
+# Release v1.0.770
+
+## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 6 次发布
+
+发布时间：2023-10-20 01:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 98 次发布
+
+发布时间：2023-10-20 01:09:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Backend](https://cloud.tencent.com/document/api/214/30694#Backend)
+
+	* 新增成员：Tag
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 69 次发布
+
+发布时间：2023-10-20 01:13:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLakeFsTaskResult](https://cloud.tencent.com/document/api/1342/100446)
+
+	* 新增入参：FsPath
+
+	* 新增出参：AccessToken
+
+
+新增数据结构：
+
+* [LakeFileSystemToken](https://cloud.tencent.com/document/api/1342/53778#LakeFileSystemToken)
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 27 次发布
+
+发布时间：2023-10-20 01:14:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCustomDnsHost](https://cloud.tencent.com/document/api/242/100536)
+* [DescribeCustomDnsHostSet](https://cloud.tencent.com/document/api/242/100535)
+* [ModifyCustomDnsHost](https://cloud.tencent.com/document/api/242/100534)
+* [ModifyIntlCustomDnsHost](https://cloud.tencent.com/document/api/242/100537)
+* [SyncCustomDnsHost](https://cloud.tencent.com/document/api/242/100533)
+
+新增数据结构：
+
+* [CustomDnsHost](https://cloud.tencent.com/document/api/242/38895#CustomDnsHost)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 129 次发布
+
+发布时间：2023-10-20 01:15:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)
+
+	* 新增成员：FlowReadLimit
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 123 次发布
+
+发布时间：2023-10-20 01:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
+
+	* 新增成员：FlowReadLimit
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 50 次发布
+
+发布时间：2023-10-20 01:26:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstancePort](https://cloud.tencent.com/document/api/1364/54942#InstancePort)
+
+	* 新增成员：TcpPort, UdpPort
+
+
+
+
 # Release v1.0.769
 
 ## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
