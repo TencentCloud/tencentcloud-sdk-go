@@ -1168,7 +1168,7 @@ func typeFields(t reflect.Type) []field {
 						tag:       tagged,
 						index:     index,
 						typ:       ft,
-						omitEmpty: opts.Contains("omitempty"),
+						omitEmpty: false, // omitempty is invisible to common/json
 						omitNil:   opts.Contains("omitnil"),
 						quoted:    quoted,
 					}))

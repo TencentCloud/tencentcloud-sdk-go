@@ -40,6 +40,8 @@ type ClientProfile struct {
 	NetworkFailureRetryDuration    DurationFunc
 	RateLimitExceededMaxRetries    int
 	RateLimitExceededRetryDuration DurationFunc
+
+	OmitNil bool
 }
 
 func NewClientProfile() *ClientProfile {

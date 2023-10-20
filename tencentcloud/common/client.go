@@ -3,6 +3,7 @@ package common
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -16,7 +17,6 @@ import (
 
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
@@ -166,7 +166,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 
 	if !isOctetStream && request.GetContentType() == octetStream {
 		isOctetStream = true
-		b, _ := json.Marshal(request)
+		b, _ := marshalFunc(c.profile.OmitNil)(request)
 		var m map[string]string
 		_ = json.Unmarshal(b, &m)
 		for k, v := range m {
@@ -205,7 +205,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 			// todo Conversion comparison between string and []byte affects performance much
 			requestPayload = string(octetStreamBody)
 		} else {
-			b, err := json.Marshal(request)
+			b, err := marshalFunc(c.profile.OmitNil)(request)
 			if err != nil {
 				return err
 			}
@@ -316,7 +316,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 
 	if !isOctetStream && request.GetContentType() == octetStream {
 		isOctetStream = true
-		b, _ := json.Marshal(request)
+		b, _ := marshalFunc(c.profile.OmitNil)(request)
 		var m map[string]string
 		_ = json.Unmarshal(b, &m)
 		for k, v := range m {
@@ -358,7 +358,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 			// todo Conversion comparison between string and []byte affects performance much
 			requestPayload = string(octetStreamBody)
 		} else {
-			b, err := json.Marshal(request)
+			b, err := marshalFunc(c.profile.OmitNil)(request)
 			if err != nil {
 				return err
 			}

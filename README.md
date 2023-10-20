@@ -610,9 +610,9 @@ func main() {
 在 v1.0.738 以及之前的版本, SDK使用`omitempty`标签来序列化请求, 这会导致 nil 数组和 长度为0的空数组 都无法被序列化。
 这在您希望发送一个空数组的时候会造成不便, 在之前您需要使用 CommonClient 来解决这个问题。
 
-在 >= v1.0.739 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送。
+在 >= v1.0.739 的版本, SDK新增了 OmitNil 功能, 当开启此功能时, 请求体中只有nil数组会被忽略掉, 而空数组可以被正常发送。
 
-需要注意的是这个改动在大部分情况下对于用户是无感知的, 但是在特殊情况下依然可能会造成行为不一致。
+开启方式 `ClientProfile.OmitNil = true`
 
 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
 
