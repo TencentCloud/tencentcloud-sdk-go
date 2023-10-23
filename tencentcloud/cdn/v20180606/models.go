@@ -3334,10 +3334,10 @@ type DescribeCdnDomainLogsRequestParams struct {
 	// 指定域名查询
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 开始时间，如 2019-09-04 00:00:00
+	// 开始时间
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 结束时间，如 2019-09-04 12:00:00
+	// 结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为 0
@@ -3346,15 +3346,14 @@ type DescribeCdnDomainLogsRequestParams struct {
 	// 分页查询限制数目，默认为 100，最大为 1000
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 指定区域下载日志
-	// mainland：获取境内加速日志包下载链接
-	// overseas：获取境外加速日志包下载链接
-	// global：同时获取境内、境外加速日志包下载链接（分开打包）
-	// 不指定时默认为 mainland
+	// 指定区域下载日志，默认为 mainland，可取值有：
+	// <li>mainland：获取境内加速日志包下载链接</li>
+	// <li>overseas：获取境外加速日志包下载链接</li>
+	// <li>global：同时获取境内、境外加速日志包下载链接（分开打包）</li>
 	Area *string `json:"Area,omitnil" name:"Area"`
 
-	// 指定下载日志的类型，目前仅支持访问日志（access）。
-	// access：访问日志
+	// 指定下载日志的类型，可取值有：
+	// <li>access：访问日志</li>
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 }
 
@@ -3364,10 +3363,10 @@ type DescribeCdnDomainLogsRequest struct {
 	// 指定域名查询
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 开始时间，如 2019-09-04 00:00:00
+	// 开始时间
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 结束时间，如 2019-09-04 12:00:00
+	// 结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为 0
@@ -3376,15 +3375,14 @@ type DescribeCdnDomainLogsRequest struct {
 	// 分页查询限制数目，默认为 100，最大为 1000
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 指定区域下载日志
-	// mainland：获取境内加速日志包下载链接
-	// overseas：获取境外加速日志包下载链接
-	// global：同时获取境内、境外加速日志包下载链接（分开打包）
-	// 不指定时默认为 mainland
+	// 指定区域下载日志，默认为 mainland，可取值有：
+	// <li>mainland：获取境内加速日志包下载链接</li>
+	// <li>overseas：获取境外加速日志包下载链接</li>
+	// <li>global：同时获取境内、境外加速日志包下载链接（分开打包）</li>
 	Area *string `json:"Area,omitnil" name:"Area"`
 
-	// 指定下载日志的类型，目前仅支持访问日志（access）。
-	// access：访问日志
+	// 指定下载日志的类型，可取值有：
+	// <li>access：访问日志</li>
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 }
 

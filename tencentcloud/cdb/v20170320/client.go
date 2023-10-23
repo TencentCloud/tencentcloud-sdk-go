@@ -4104,6 +4104,69 @@ func (c *Client) DescribeDBInstanceInfoWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDBInstanceLogToCLSRequest() (request *DescribeDBInstanceLogToCLSRequest) {
+    request = &DescribeDBInstanceLogToCLSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceLogToCLS")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceLogToCLSResponse() (response *DescribeDBInstanceLogToCLSResponse) {
+    response = &DescribeDBInstanceLogToCLSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceLogToCLS
+// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过appId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
+func (c *Client) DescribeDBInstanceLogToCLS(request *DescribeDBInstanceLogToCLSRequest) (response *DescribeDBInstanceLogToCLSResponse, err error) {
+    return c.DescribeDBInstanceLogToCLSWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceLogToCLS
+// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过appId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
+func (c *Client) DescribeDBInstanceLogToCLSWithContext(ctx context.Context, request *DescribeDBInstanceLogToCLSRequest) (response *DescribeDBInstanceLogToCLSResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceLogToCLSRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceLogToCLS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceLogToCLSResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceRebootTimeRequest() (request *DescribeDBInstanceRebootTimeRequest) {
     request = &DescribeDBInstanceRebootTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7480,6 +7543,59 @@ func (c *Client) ModifyCdbProxyParamWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyCdbProxyParamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceLogToCLSRequest() (request *ModifyDBInstanceLogToCLSRequest) {
+    request = &ModifyDBInstanceLogToCLSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceLogToCLS")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceLogToCLSResponse() (response *ModifyDBInstanceLogToCLSResponse) {
+    response = &ModifyDBInstanceLogToCLSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceLogToCLS
+// 开启/关闭CDB慢日志、错误日志投递CLS
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) ModifyDBInstanceLogToCLS(request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
+    return c.ModifyDBInstanceLogToCLSWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceLogToCLS
+// 开启/关闭CDB慢日志、错误日志投递CLS
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) ModifyDBInstanceLogToCLSWithContext(ctx context.Context, request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceLogToCLSRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceLogToCLS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceLogToCLSResponse()
     err = c.Send(request, response)
     return
 }

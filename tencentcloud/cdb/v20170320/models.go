@@ -6044,6 +6044,68 @@ func (r *DescribeDBInstanceInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceLogToCLSRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeDBInstanceLogToCLSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstanceLogToCLSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceLogToCLSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceLogToCLSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceLogToCLSResponseParams struct {
+	// 错误日志投递CLS配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorLog *LogToCLSConfig `json:"ErrorLog,omitnil" name:"ErrorLog"`
+
+	// 慢日志投递CLS配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlowLog *LogToCLSConfig `json:"SlowLog,omitnil" name:"SlowLog"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDBInstanceLogToCLSResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceLogToCLSResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceLogToCLSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceLogToCLSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstanceRebootTimeRequestParams struct {
 	// 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
@@ -9572,6 +9634,20 @@ type LogRuleTemplateInfo struct {
 	RuleTemplateStatus *int64 `json:"RuleTemplateStatus,omitnil" name:"RuleTemplateStatus"`
 }
 
+type LogToCLSConfig struct {
+	// 投递状态打开或者关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// CLS日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSetId *string `json:"LogSetId,omitnil" name:"LogSetId"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+}
+
 type MasterInfo struct {
 	// 地域信息
 	Region *string `json:"Region,omitnil" name:"Region"`
@@ -10831,6 +10907,116 @@ func (r *ModifyCdbProxyParamResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCdbProxyParamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceLogToCLSRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 日志类型：errorLog/slowLog
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
+
+	// 投递状态：ON/OFF
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 是否需要创建日志集
+	CreateLogset *bool `json:"CreateLogset,omitnil" name:"CreateLogset"`
+
+	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+	Logset *string `json:"Logset,omitnil" name:"Logset"`
+
+	// 是否需要创建日志主题
+	CreateLogTopic *bool `json:"CreateLogTopic,omitnil" name:"CreateLogTopic"`
+
+	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+	LogTopic *string `json:"LogTopic,omitnil" name:"LogTopic"`
+
+	// 日志主题有效期，不填写时，默认30天
+	Period *int64 `json:"Period,omitnil" name:"Period"`
+
+	// 创建日志主题时，是否创建索引
+	CreateIndex *bool `json:"CreateIndex,omitnil" name:"CreateIndex"`
+}
+
+type ModifyDBInstanceLogToCLSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 日志类型：errorLog/slowLog
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
+
+	// 投递状态：ON/OFF
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 是否需要创建日志集
+	CreateLogset *bool `json:"CreateLogset,omitnil" name:"CreateLogset"`
+
+	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+	Logset *string `json:"Logset,omitnil" name:"Logset"`
+
+	// 是否需要创建日志主题
+	CreateLogTopic *bool `json:"CreateLogTopic,omitnil" name:"CreateLogTopic"`
+
+	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+	LogTopic *string `json:"LogTopic,omitnil" name:"LogTopic"`
+
+	// 日志主题有效期，不填写时，默认30天
+	Period *int64 `json:"Period,omitnil" name:"Period"`
+
+	// 创建日志主题时，是否创建索引
+	CreateIndex *bool `json:"CreateIndex,omitnil" name:"CreateIndex"`
+}
+
+func (r *ModifyDBInstanceLogToCLSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceLogToCLSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "Status")
+	delete(f, "CreateLogset")
+	delete(f, "Logset")
+	delete(f, "CreateLogTopic")
+	delete(f, "LogTopic")
+	delete(f, "Period")
+	delete(f, "CreateIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceLogToCLSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceLogToCLSResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDBInstanceLogToCLSResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceLogToCLSResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceLogToCLSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceLogToCLSResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

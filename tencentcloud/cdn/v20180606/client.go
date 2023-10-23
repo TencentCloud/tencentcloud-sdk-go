@@ -1635,7 +1635,7 @@ func NewDescribeCdnIpResponse() (response *DescribeCdnIpResponse) {
 // DescribeCdnIp
 // DescribeCdnIp 用于查询 CDN IP 归属。
 //
-// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）  
+// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -1656,7 +1656,7 @@ func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *Describ
 // DescribeCdnIp
 // DescribeCdnIp 用于查询 CDN IP 归属。
 //
-// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）  
+// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"

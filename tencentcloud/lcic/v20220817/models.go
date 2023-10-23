@@ -1131,6 +1131,15 @@ type CreateRoomRequestParams struct {
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 type CreateRoomRequest struct {
@@ -1222,6 +1231,15 @@ type CreateRoomRequest struct {
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1259,6 +1277,9 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "IsGradingRequiredPostClass")
 	delete(f, "RoomType")
 	delete(f, "EndDelayTime")
+	delete(f, "LiveType")
+	delete(f, "RecordLiveUrl")
+	delete(f, "EnableAutoStart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2856,6 +2877,15 @@ type DescribeRoomResponseParams struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4422,6 +4452,15 @@ type ModifyRoomRequestParams struct {
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 type ModifyRoomRequest struct {
@@ -4508,6 +4547,15 @@ type ModifyRoomRequest struct {
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4543,6 +4591,9 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "RoomType")
 	delete(f, "RecordLayout")
 	delete(f, "EndDelayTime")
+	delete(f, "LiveType")
+	delete(f, "RecordLiveUrl")
+	delete(f, "EnableAutoStart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -4821,6 +4872,15 @@ type RoomInfo struct {
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播回放链接
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 type RoomItem struct {
@@ -4897,6 +4957,18 @@ type RoomItem struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
+	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveType *uint64 `json:"LiveType,omitnil" name:"LiveType"`
+
+	// 伪直播回放链接	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil" name:"RecordLiveUrl"`
+
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
 }
 
 type SceneItem struct {

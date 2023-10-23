@@ -690,6 +690,12 @@ type AiRecognitionResult struct {
 	// TransTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransTextTask *AiRecognitionTaskTransTextResult `json:"TransTextTask,omitnil" name:"TransTextTask"`
+
+	// 物体识别结果，当Type 为
+	// 
+	// ObjectRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectTask *AiRecognitionTaskObjectResult `json:"ObjectTask,omitnil" name:"ObjectTask"`
 }
 
 type AiRecognitionTaskAsrFullTextResult struct {
@@ -901,6 +907,56 @@ type AiRecognitionTaskFaceSegmentItem struct {
 type AiRecognitionTaskInput struct {
 	// 视频智能识别模板 ID 。
 	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type AiRecognitionTaskObjectResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 物体识别任务输入信息。
+	Input *AiRecognitionTaskObjectResultInput `json:"Input,omitnil" name:"Input"`
+
+	// 物体识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskObjectResultOutput `json:"Output,omitnil" name:"Output"`
+}
+
+type AiRecognitionTaskObjectResultInput struct {
+	// 物体识别模板 ID。
+	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type AiRecognitionTaskObjectResultItem struct {
+	// 识别的物体名称。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 物体出现的片段列表。
+	SegmentSet []*AiRecognitionTaskObjectSeqmentItem `json:"SegmentSet,omitnil" name:"SegmentSet"`
+}
+
+type AiRecognitionTaskObjectResultOutput struct {
+	// 智能物体识别结果集。
+	ResultSet []*AiRecognitionTaskObjectResultItem `json:"ResultSet,omitnil" name:"ResultSet"`
+}
+
+type AiRecognitionTaskObjectSeqmentItem struct {
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskOcrFullTextResult struct {

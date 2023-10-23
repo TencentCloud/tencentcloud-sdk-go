@@ -365,6 +365,20 @@ type BlockInfoV2 struct {
 	Code *string `json:"Code,omitnil" name:"Code"`
 }
 
+type BlockTitle struct {
+	// name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// src
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *string `json:"Src,omitnil" name:"Src"`
+
+	// value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
 type BloodPressureBlock struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -469,6 +483,10 @@ type Check struct {
 	// 结论
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *Summary `json:"Summary,omitnil" name:"Summary"`
+
+	// 检查报告块标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockTitle []*BlockTitle `json:"BlockTitle,omitnil" name:"BlockTitle"`
 }
 
 type ChestCircumferenceItem struct {
@@ -2083,6 +2101,10 @@ type Indicator struct {
 	// 检验指标项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Indicators []*IndicatorItem `json:"Indicators,omitnil" name:"Indicators"`
+
+	// 检验报告块标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockTitle []*BlockTitle `json:"BlockTitle,omitnil" name:"BlockTitle"`
 }
 
 type IndicatorItem struct {

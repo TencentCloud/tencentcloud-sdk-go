@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 6 次发布
+### 第 146 次发布
 
-发布时间：2023-10-20 01:06:54
+发布时间：2023-10-23 00:03:18
 
 本次发布包含了以下内容：
 
@@ -12,15 +12,20 @@
 
 新增接口：
 
-* [DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)
+* [DescribeDBInstanceLogToCLS](https://cloud.tencent.com/document/api/236/100576)
+* [ModifyDBInstanceLogToCLS](https://cloud.tencent.com/document/api/236/100575)
+
+新增数据结构：
+
+* [LogToCLSConfig](https://cloud.tencent.com/document/api/236/15878#LogToCLSConfig)
 
 
 
-## 负载均衡(clb) 版本：2018-03-17
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 98 次发布
+### 第 73 次发布
 
-发布时间：2023-10-20 01:09:37
+发布时间：2023-10-23 00:08:10
 
 本次发布包含了以下内容：
 
@@ -28,18 +33,56 @@
 
 修改数据结构：
 
-* [Backend](https://cloud.tencent.com/document/api/214/30694#Backend)
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
 
-	* 新增成员：Tag
+	* 新增成员：InstanceIndexMode
+
+	* <font color="#dd0000">**修改成员**：</font>DbMode, MasterZone, SlaveZones, InstanceNetInfo, ResourcePackages
 
 
 
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 69 次发布
+### 第 70 次发布
 
-发布时间：2023-10-20 01:13:30
+发布时间：2023-10-23 00:09:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAdvancedStoreLocation](https://cloud.tencent.com/document/api/1342/100578)
+* [ModifyAdvancedStoreLocation](https://cloud.tencent.com/document/api/1342/100577)
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 72 次发布
+
+发布时间：2023-10-23 00:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ISPCounter](https://cloud.tencent.com/document/api/1108/42574#ISPCounter)
+
+	* 新增成员：ProviderInstanceNum
+
+
+
+
+## 实时互动-教育版(lcic) 版本：2022-08-17
+
+### 第 45 次发布
+
+发布时间：2023-10-23 00:14:04
 
 本次发布包含了以下内容：
 
@@ -47,24 +90,91 @@
 
 修改接口：
 
-* [DescribeLakeFsTaskResult](https://cloud.tencent.com/document/api/1342/100446)
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
 
-	* 新增入参：FsPath
+	* 新增入参：LiveType, RecordLiveUrl, EnableAutoStart
 
-	* 新增出参：AccessToken
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
 
+	* 新增出参：LiveType, RecordLiveUrl, EnableAutoStart
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：LiveType, RecordLiveUrl, EnableAutoStart
+
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：LiveType, RecordLiveUrl, EnableAutoStart
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：LiveType, RecordLiveUrl, EnableAutoStart
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 76 次发布
+
+发布时间：2023-10-23 09:46:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [LakeFileSystemToken](https://cloud.tencent.com/document/api/1342/53778#LakeFileSystemToken)
+* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult)
+* [AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput)
+* [AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem)
+* [AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput)
+* [AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem)
+
+修改数据结构：
+
+* [AiRecognitionResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionResult)
+
+	* 新增成员：ObjectTask
 
 
 
-## 域名注册(domain) 版本：2018-08-08
 
-### 第 27 次发布
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
-发布时间：2023-10-20 01:14:01
+### 第 18 次发布
+
+发布时间：2023-10-23 00:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [BlockTitle](https://cloud.tencent.com/document/api/1314/56230#BlockTitle)
+
+修改数据结构：
+
+* [Check](https://cloud.tencent.com/document/api/1314/56230#Check)
+
+	* 新增成员：BlockTitle
+
+* [Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator)
+
+	* 新增成员：BlockTitle
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 43 次发布
+
+发布时间：2023-10-23 00:16:17
 
 本次发布包含了以下内容：
 
@@ -72,76 +182,39 @@
 
 新增接口：
 
-* [DeleteCustomDnsHost](https://cloud.tencent.com/document/api/242/100536)
-* [DescribeCustomDnsHostSet](https://cloud.tencent.com/document/api/242/100535)
-* [ModifyCustomDnsHost](https://cloud.tencent.com/document/api/242/100534)
-* [ModifyIntlCustomDnsHost](https://cloud.tencent.com/document/api/242/100537)
-* [SyncCustomDnsHost](https://cloud.tencent.com/document/api/242/100533)
+* [DeleteWorkSpace](https://cloud.tencent.com/document/api/849/100579)
+
+修改数据结构：
+
+* [ClusterSession](https://cloud.tencent.com/document/api/849/52010#ClusterSession)
+
+	* 新增成员：ClusterGroupSerialId, AppId, OwnerUin, CreatorUin, Region, Zone, Status, CuNum, FlinkVersion, WebUIUrl, Properties, JobManagerCuSpec, TaskManagerCuSpec, TaskManagerNum, CreateTime, UpdateTime
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 47 次发布
+
+发布时间：2023-10-23 00:18:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateBindResourceTaskDetail](https://cloud.tencent.com/document/api/400/97758)
+
+	* 新增出参：TSE
+
 
 新增数据结构：
 
-* [CustomDnsHost](https://cloud.tencent.com/document/api/242/38895#CustomDnsHost)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 129 次发布
-
-发布时间：2023-10-20 01:15:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)
-
-	* 新增成员：FlowReadLimit
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 123 次发布
-
-发布时间：2023-10-20 01:15:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
-
-	* 新增成员：FlowReadLimit
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 微服务引擎 TSE(tse) 版本：2020-12-07
-
-### 第 50 次发布
-
-发布时间：2023-10-20 01:26:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstancePort](https://cloud.tencent.com/document/api/1364/54942#InstancePort)
-
-	* 新增成员：TcpPort, UdpPort
-
+* [GatewayCertificate](https://cloud.tencent.com/document/api/400/41679#GatewayCertificate)
+* [TSEInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TSEInstanceDetail)
+* [TSEInstanceList](https://cloud.tencent.com/document/api/400/41679#TSEInstanceList)
 
 
 
@@ -8267,7 +8340,7 @@
 
 新增接口：
 
-* [[DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)
 
 ### 第 5 次发布
 
@@ -15062,6 +15135,23 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 146 次发布
+
+发布时间：2023-10-23 00:03:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstanceLogToCLS](https://cloud.tencent.com/document/api/236/100576)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceLogToCLS](https://cloud.tencent.com/document/api/236/100575)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LogToCLSConfig](https://cloud.tencent.com/document/api/236/15878#LogToCLSConfig)](https://cloud.tencent.com/document/api/236/15878#[LogToCLSConfig](https://cloud.tencent.com/document/api/236/15878#LogToCLSConfig))
 
 ### 第 145 次发布
 
@@ -40465,6 +40555,23 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 73 次发布
+
+发布时间：2023-10-23 00:08:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：InstanceIndexMode
+
+	* <font color="#dd0000">**修改成员**：</font>DbMode, MasterZone, SlaveZones, InstanceNetInfo, ResourcePackages
+
+
 ### 第 72 次发布
 
 发布时间：2023-10-13 01:13:55
@@ -45638,6 +45745,19 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 70 次发布
+
+发布时间：2023-10-23 00:09:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAdvancedStoreLocation](https://cloud.tencent.com/document/api/1342/100578)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAdvancedStoreLocation](https://cloud.tencent.com/document/api/1342/100577)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 69 次发布
 
 发布时间：2023-10-20 01:13:30
@@ -45657,7 +45777,7 @@
 
 新增数据结构：
 
-* [[LakeFileSystemToken](https://cloud.tencent.com/document/api/1342/53778#LakeFileSystemToken)](https://cloud.tencent.com/document/api/1342/53778#[LakeFileSystemToken](https://cloud.tencent.com/document/api/1342/53778#LakeFileSystemToken))
+* [LakeFileSystemToken](https://cloud.tencent.com/document/api/1342/53778#LakeFileSystemToken)
 
 ### 第 68 次发布
 
@@ -47753,15 +47873,15 @@
 
 新增接口：
 
-* [[DeleteCustomDnsHost](https://cloud.tencent.com/document/api/242/100536)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCustomDnsHostSet](https://cloud.tencent.com/document/api/242/100535)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomDnsHost](https://cloud.tencent.com/document/api/242/100534)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIntlCustomDnsHost](https://cloud.tencent.com/document/api/242/100537)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncCustomDnsHost](https://cloud.tencent.com/document/api/242/100533)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteCustomDnsHost](https://cloud.tencent.com/document/api/242/100536)
+* [DescribeCustomDnsHostSet](https://cloud.tencent.com/document/api/242/100535)
+* [ModifyCustomDnsHost](https://cloud.tencent.com/document/api/242/100534)
+* [ModifyIntlCustomDnsHost](https://cloud.tencent.com/document/api/242/100537)
+* [SyncCustomDnsHost](https://cloud.tencent.com/document/api/242/100533)
 
 新增数据结构：
 
-* [[CustomDnsHost](https://cloud.tencent.com/document/api/242/38895#CustomDnsHost)](https://cloud.tencent.com/document/api/242/38895#[CustomDnsHost](https://cloud.tencent.com/document/api/242/38895#CustomDnsHost))
+* [CustomDnsHost](https://cloud.tencent.com/document/api/242/38895#CustomDnsHost)
 
 ### 第 26 次发布
 
@@ -50385,6 +50505,21 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 72 次发布
+
+发布时间：2023-10-23 00:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ISPCounter](https://cloud.tencent.com/document/api/1108/42574#ISPCounter)
+
+	* 新增成员：ProviderInstanceNum
+
 
 ### 第 71 次发布
 
@@ -71818,6 +71953,40 @@
 
 ## 实时互动-教育版(lcic) 版本：2022-08-17
 
+### 第 45 次发布
+
+发布时间：2023-10-23 00:14:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：LiveType, RecordLiveUrl, EnableAutoStart
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：LiveType, RecordLiveUrl, EnableAutoStart
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：LiveType, RecordLiveUrl, EnableAutoStart
+
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：LiveType, RecordLiveUrl, EnableAutoStart
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：LiveType, RecordLiveUrl, EnableAutoStart
+
+
 ### 第 44 次发布
 
 发布时间：2023-10-19 16:09:49
@@ -80590,6 +80759,29 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 76 次发布
+
+发布时间：2023-10-23 09:46:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult))
+* [[AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput))
+* [[AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem))
+* [[AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput))
+* [[AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem))
+
+修改数据结构：
+
+* [AiRecognitionResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionResult)
+
+	* 新增成员：ObjectTask
+
+
 ### 第 75 次发布
 
 发布时间：2023-10-11 02:08:20
@@ -82972,6 +83164,29 @@
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
 
+### 第 18 次发布
+
+发布时间：2023-10-23 00:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BlockTitle](https://cloud.tencent.com/document/api/1314/56230#BlockTitle)](https://cloud.tencent.com/document/api/1314/56230#[BlockTitle](https://cloud.tencent.com/document/api/1314/56230#BlockTitle))
+
+修改数据结构：
+
+* [Check](https://cloud.tencent.com/document/api/1314/56230#Check)
+
+	* 新增成员：BlockTitle
+
+* [Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator)
+
+	* 新增成员：BlockTitle
+
+
 ### 第 17 次发布
 
 发布时间：2023-09-11 11:36:02
@@ -84674,6 +84889,25 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 43 次发布
+
+发布时间：2023-10-23 00:16:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteWorkSpace](https://cloud.tencent.com/document/api/849/100579)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [ClusterSession](https://cloud.tencent.com/document/api/849/52010#ClusterSession)
+
+	* 新增成员：ClusterGroupSerialId, AppId, OwnerUin, CreatorUin, Region, Zone, Status, CuNum, FlinkVersion, WebUIUrl, Properties, JobManagerCuSpec, TaskManagerCuSpec, TaskManagerNum, CreateTime, UpdateTime
+
 
 ### 第 42 次发布
 
@@ -96573,6 +96807,27 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 47 次发布
+
+发布时间：2023-10-23 00:18:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateBindResourceTaskDetail](https://cloud.tencent.com/document/api/400/97758)
+
+	* 新增出参：TSE
+
+
+新增数据结构：
+
+* [[GatewayCertificate](https://cloud.tencent.com/document/api/400/41679#GatewayCertificate)](https://cloud.tencent.com/document/api/400/41679#[GatewayCertificate](https://cloud.tencent.com/document/api/400/41679#GatewayCertificate))
+* [[TSEInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TSEInstanceDetail)](https://cloud.tencent.com/document/api/400/41679#[TSEInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TSEInstanceDetail))
+* [[TSEInstanceList](https://cloud.tencent.com/document/api/400/41679#TSEInstanceList)](https://cloud.tencent.com/document/api/400/41679#[TSEInstanceList](https://cloud.tencent.com/document/api/400/41679#TSEInstanceList))
 
 ### 第 46 次发布
 

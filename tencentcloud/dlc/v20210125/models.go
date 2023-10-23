@@ -4636,6 +4636,70 @@ func (r *DeleteWorkGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAdvancedStoreLocationRequestParams struct {
+
+}
+
+type DescribeAdvancedStoreLocationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAdvancedStoreLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAdvancedStoreLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAdvancedStoreLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAdvancedStoreLocationResponseParams struct {
+	// 是否启用高级设置：0-否，1-是
+	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+
+	// 查询结果保存cos路径
+	StoreLocation *string `json:"StoreLocation,omitnil" name:"StoreLocation"`
+
+	// 是否有托管存储权限
+	HasLakeFs *bool `json:"HasLakeFs,omitnil" name:"HasLakeFs"`
+
+	// 托管存储状态，HasLakeFs等于true时，该值才有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LakeFsStatus *string `json:"LakeFsStatus,omitnil" name:"LakeFsStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAdvancedStoreLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAdvancedStoreLocationResponseParams `json:"Response"`
+}
+
+func (r *DescribeAdvancedStoreLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAdvancedStoreLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDMSDatabaseRequestParams struct {
 	// 数据库名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -9214,6 +9278,67 @@ func (r *LockMetaDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *LockMetaDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAdvancedStoreLocationRequestParams struct {
+	// 查询结果保存cos路径
+	StoreLocation *string `json:"StoreLocation,omitnil" name:"StoreLocation"`
+
+	// 是否启用高级设置：0-否，1-是
+	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+}
+
+type ModifyAdvancedStoreLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询结果保存cos路径
+	StoreLocation *string `json:"StoreLocation,omitnil" name:"StoreLocation"`
+
+	// 是否启用高级设置：0-否，1-是
+	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+}
+
+func (r *ModifyAdvancedStoreLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAdvancedStoreLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StoreLocation")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAdvancedStoreLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAdvancedStoreLocationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAdvancedStoreLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAdvancedStoreLocationResponseParams `json:"Response"`
+}
+
+func (r *ModifyAdvancedStoreLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAdvancedStoreLocationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

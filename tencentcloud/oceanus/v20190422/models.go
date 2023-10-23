@@ -334,7 +334,54 @@ type ClusterGroupSetItem struct {
 }
 
 type ClusterSession struct {
+	// 集群SerialId
+	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil" name:"ClusterGroupSerialId"`
 
+	// 创建者appId
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
+
+	// 创建者主账号
+	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+
+	// 创建者账号
+	CreatorUin *string `json:"CreatorUin,omitnil" name:"CreatorUin"`
+
+	// 区域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// zone
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// Session集群状态
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// Session集群消耗的cu数量
+	CuNum *float64 `json:"CuNum,omitnil" name:"CuNum"`
+
+	// Session集群的Flink版本
+	FlinkVersion *string `json:"FlinkVersion,omitnil" name:"FlinkVersion"`
+
+	// session集群FlinkUi地址
+	WebUIUrl *string `json:"WebUIUrl,omitnil" name:"WebUIUrl"`
+
+	// session集群高级参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*Property `json:"Properties,omitnil" name:"Properties"`
+
+	// JobManager的规格
+	JobManagerCuSpec *float64 `json:"JobManagerCuSpec,omitnil" name:"JobManagerCuSpec"`
+
+	// TaskManager的规格
+	TaskManagerCuSpec *float64 `json:"TaskManagerCuSpec,omitnil" name:"TaskManagerCuSpec"`
+
+	// TaskManager启动的数量
+	TaskManagerNum *int64 `json:"TaskManagerNum,omitnil" name:"TaskManagerNum"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 }
 
 type ClusterVersion struct {
@@ -1529,6 +1576,63 @@ func (r *DeleteTableConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTableConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWorkSpaceRequestParams struct {
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+type DeleteWorkSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+func (r *DeleteWorkSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWorkSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWorkSpaceResponseParams struct {
+	// 是否删除
+	Delete *bool `json:"Delete,omitnil" name:"Delete"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteWorkSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWorkSpaceResponseParams `json:"Response"`
+}
+
+func (r *DeleteWorkSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

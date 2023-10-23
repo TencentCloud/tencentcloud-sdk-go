@@ -7393,10 +7393,16 @@ type ISPCounter struct {
 	ProviderNodeNum *int64 `json:"ProviderNodeNum,omitnil" name:"ProviderNodeNum"`
 
 	// 实例数量
+	//
+	// Deprecated: ProvederInstanceNum is deprecated.
 	ProvederInstanceNum *int64 `json:"ProvederInstanceNum,omitnil" name:"ProvederInstanceNum"`
 
 	// Zone实例信息结构体数组
 	ZoneInstanceInfoSet []*ZoneInstanceInfo `json:"ZoneInstanceInfoSet,omitnil" name:"ZoneInstanceInfoSet"`
+
+	// 实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProviderInstanceNum *int64 `json:"ProviderInstanceNum,omitnil" name:"ProviderInstanceNum"`
 }
 
 type ISPIPv6CidrBlock struct {

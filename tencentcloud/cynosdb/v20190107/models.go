@@ -3054,6 +3054,10 @@ type CynosdbInstance struct {
 	// 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitnil" name:"ResourcePackages"`
+
+	// 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIndexMode *string `json:"InstanceIndexMode,omitnil" name:"InstanceIndexMode"`
 }
 
 type CynosdbInstanceDetail struct {

@@ -3182,6 +3182,63 @@ func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, request *Delete
     return
 }
 
+func NewDescribeAdvancedStoreLocationRequest() (request *DescribeAdvancedStoreLocationRequest) {
+    request = &DescribeAdvancedStoreLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeAdvancedStoreLocation")
+    
+    
+    return
+}
+
+func NewDescribeAdvancedStoreLocationResponse() (response *DescribeAdvancedStoreLocationResponse) {
+    response = &DescribeAdvancedStoreLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAdvancedStoreLocation
+// 查询sql查询界面高级设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAdvancedStoreLocation(request *DescribeAdvancedStoreLocationRequest) (response *DescribeAdvancedStoreLocationResponse, err error) {
+    return c.DescribeAdvancedStoreLocationWithContext(context.Background(), request)
+}
+
+// DescribeAdvancedStoreLocation
+// 查询sql查询界面高级设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAdvancedStoreLocationWithContext(ctx context.Context, request *DescribeAdvancedStoreLocationRequest) (response *DescribeAdvancedStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeAdvancedStoreLocationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAdvancedStoreLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAdvancedStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDMSDatabaseRequest() (request *DescribeDMSDatabaseRequest) {
     request = &DescribeDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6218,6 +6275,59 @@ func (c *Client) LockMetaDataWithContext(ctx context.Context, request *LockMetaD
     request.SetContext(ctx)
     
     response = NewLockMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAdvancedStoreLocationRequest() (request *ModifyAdvancedStoreLocationRequest) {
+    request = &ModifyAdvancedStoreLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyAdvancedStoreLocation")
+    
+    
+    return
+}
+
+func NewModifyAdvancedStoreLocationResponse() (response *ModifyAdvancedStoreLocationResponse) {
+    response = &ModifyAdvancedStoreLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAdvancedStoreLocation
+// 修改sql查询界面高级设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) ModifyAdvancedStoreLocation(request *ModifyAdvancedStoreLocationRequest) (response *ModifyAdvancedStoreLocationResponse, err error) {
+    return c.ModifyAdvancedStoreLocationWithContext(context.Background(), request)
+}
+
+// ModifyAdvancedStoreLocation
+// 修改sql查询界面高级设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) ModifyAdvancedStoreLocationWithContext(ctx context.Context, request *ModifyAdvancedStoreLocationRequest) (response *ModifyAdvancedStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewModifyAdvancedStoreLocationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAdvancedStoreLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAdvancedStoreLocationResponse()
     err = c.Send(request, response)
     return
 }

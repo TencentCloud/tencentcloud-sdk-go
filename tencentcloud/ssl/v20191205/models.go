@@ -1780,6 +1780,10 @@ type DescribeCertificateBindResourceTaskDetailResponseParams struct {
 	// 当前结果缓存时间
 	CacheTime *string `json:"CacheTime,omitnil" name:"CacheTime"`
 
+	// 关联tse资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TSE []*TSEInstanceList `json:"TSE,omitnil" name:"TSE"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4552,6 +4556,28 @@ type Filter struct {
 	FilterValue *string `json:"FilterValue,omitnil" name:"FilterValue"`
 }
 
+type GatewayCertificate struct {
+	// 网关证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 网关证书名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 绑定域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// 证书来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertSource *string `json:"CertSource,omitnil" name:"CertSource"`
+
+	// 当前绑定的SSL证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+}
+
 // Predefined struct for user
 type HostCertificateRequestParams struct {
 	// 证书ID
@@ -5812,6 +5838,32 @@ type TCBInstanceList struct {
 	// tcb环境实例详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Environments []*TCBEnvironments `json:"Environments,omitnil" name:"Environments"`
+}
+
+type TSEInstanceDetail struct {
+	// 网关ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网关名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayName *string `json:"GatewayName,omitnil" name:"GatewayName"`
+
+	// 网关证书列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateList []*GatewayCertificate `json:"CertificateList,omitnil" name:"CertificateList"`
+}
+
+type TSEInstanceList struct {
+	// TSE实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TSEInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下TSE实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 地域	
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type Tags struct {

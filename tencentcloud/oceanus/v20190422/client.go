@@ -1001,6 +1001,65 @@ func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteWorkSpaceRequest() (request *DeleteWorkSpaceRequest) {
+    request = &DeleteWorkSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DeleteWorkSpace")
+    
+    
+    return
+}
+
+func NewDeleteWorkSpaceResponse() (response *DeleteWorkSpaceResponse) {
+    response = &DeleteWorkSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteWorkSpace
+// 删除工作空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_CANNOTDELETE = "UnsupportedOperation.CanNotDelete"
+func (c *Client) DeleteWorkSpace(request *DeleteWorkSpaceRequest) (response *DeleteWorkSpaceResponse, err error) {
+    return c.DeleteWorkSpaceWithContext(context.Background(), request)
+}
+
+// DeleteWorkSpace
+// 删除工作空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_CANNOTDELETE = "UnsupportedOperation.CanNotDelete"
+func (c *Client) DeleteWorkSpaceWithContext(ctx context.Context, request *DeleteWorkSpaceRequest) (response *DeleteWorkSpaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteWorkSpaceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWorkSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteWorkSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
