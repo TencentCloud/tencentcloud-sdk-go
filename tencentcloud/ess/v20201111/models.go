@@ -865,9 +865,10 @@ type Component struct {
 	//   同单行文本控件约束，填写选择值中的字符串
 	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
 
-	// NORMAL 正常模式，使用坐标制定签署控件位置
-	// FIELD 表单域，需使用ComponentName指定表单域名称
-	// KEYWORD 关键字，使用ComponentId指定关键字
+	// 控件生成的方式：
+	// NORMAL - 普通控件
+	// FIELD - 表单域
+	// KEYWORD - 关键字（设置关键字时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找）
 	GenerateMode *string `json:"GenerateMode,omitnil" name:"GenerateMode"`
 
 	// 日期签署控件的字号，默认为 12
@@ -6261,6 +6262,9 @@ type DescribeFlowTemplatesRequestParams struct {
 	//
 	// Deprecated: GenerateSource is deprecated.
 	GenerateSource *uint64 `json:"GenerateSource,omitnil" name:"GenerateSource"`
+
+	// 是否获取模板预览链接
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
 }
 
 type DescribeFlowTemplatesRequest struct {
@@ -6309,6 +6313,9 @@ type DescribeFlowTemplatesRequest struct {
 
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitnil" name:"GenerateSource"`
+
+	// 是否获取模板预览链接
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
 }
 
 func (r *DescribeFlowTemplatesRequest) ToJsonString() string {
@@ -6333,6 +6340,7 @@ func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "IsChannel")
 	delete(f, "Organization")
 	delete(f, "GenerateSource")
+	delete(f, "WithPreviewUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTemplatesRequest has unknown keys!", "")
 	}

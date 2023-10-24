@@ -7822,6 +7822,7 @@ func NewDescribeInvocationMetricScatterPlotResponse() (response *DescribeInvocat
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricScatterPlot(request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
     return c.DescribeInvocationMetricScatterPlotWithContext(context.Background(), request)
 }
@@ -7834,6 +7835,7 @@ func (c *Client) DescribeInvocationMetricScatterPlot(request *DescribeInvocation
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricScatterPlotWithContext(ctx context.Context, request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
     if request == nil {
         request = NewDescribeInvocationMetricScatterPlotRequest()

@@ -19050,12 +19050,7 @@ func NewStopVulScanTaskResponse() (response *StopVulScanTaskResponse) {
 // 停止漏洞扫描任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) StopVulScanTask(request *StopVulScanTaskRequest) (response *StopVulScanTaskResponse, err error) {
     return c.StopVulScanTaskWithContext(context.Background(), request)
 }
@@ -19064,12 +19059,7 @@ func (c *Client) StopVulScanTask(request *StopVulScanTaskRequest) (response *Sto
 // 停止漏洞扫描任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) StopVulScanTaskWithContext(ctx context.Context, request *StopVulScanTaskRequest) (response *StopVulScanTaskResponse, err error) {
     if request == nil {
         request = NewStopVulScanTaskRequest()

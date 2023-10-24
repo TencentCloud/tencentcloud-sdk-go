@@ -531,6 +531,7 @@ func NewCreateSDKLoginTokenResponse() (response *CreateSDKLoginTokenResponse) {
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  OPERATIONDENIED_UINDISABLED = "OperationDenied.UinDisabled"
 func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
     return c.CreateSDKLoginTokenWithContext(context.Background(), request)
 }
@@ -544,6 +545,7 @@ func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (respo
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  OPERATIONDENIED_UINDISABLED = "OperationDenied.UinDisabled"
 func (c *Client) CreateSDKLoginTokenWithContext(ctx context.Context, request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
     if request == nil {
         request = NewCreateSDKLoginTokenRequest()

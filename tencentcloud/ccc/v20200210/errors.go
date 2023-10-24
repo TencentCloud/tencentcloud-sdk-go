@@ -122,6 +122,9 @@ const (
 	// 不在白名单中。
 	OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 
+	// 账号已被禁用。
+	OPERATIONDENIED_UINDISABLED = "OperationDenied.UinDisabled"
+
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
 

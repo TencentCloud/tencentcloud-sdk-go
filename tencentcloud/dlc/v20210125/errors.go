@@ -158,6 +158,9 @@ const (
 	// 交互式SQL任务指定SortBy类型不匹配，当前仅支持: create-time/resource-usage
 	INVALIDPARAMETER_BATCHSQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.BatchSQLTaskSortByTypeNotMatch"
 
+	// 指定集群资源类型不匹配，当前仅支持: spark_cu（对应Spark集群）,presto_cu(对应Presto集群)
+	INVALIDPARAMETER_DATAENGINECLUSTERTYPENOTMATCH = "InvalidParameter.DataEngineClusterTypeNotMatch"
+
 	// 指定集群参数已存在
 	INVALIDPARAMETER_DATAENGINECONFIGPAIRSDUPLICATE = "InvalidParameter.DataEngineConfigPairsDuplicate"
 
@@ -166,6 +169,9 @@ const (
 
 	// 指定集群镜像操作不匹配，当前仅支持: InitImage/UpgradeImage/SwitchImage/RollbackImage/ModifyResource
 	INVALIDPARAMETER_DATAENGINEIMAGEOPERATENOTMATCH = "InvalidParameter.DataEngineImageOperateNotMatch"
+
+	// 指定集群计费模式不匹配，当前仅支持: 1: 按量计费, 2: 包年包月
+	INVALIDPARAMETER_DATAENGINEMODENOTMATCH = "InvalidParameter.DataEngineModeNotMatch"
 
 	// 当前任务仅支持Spark批作业引擎运行
 	INVALIDPARAMETER_DATAENGINEONLYSUPPORTSPARKBATCH = "InvalidParameter.DataEngineOnlySupportSparkBatch"
@@ -434,8 +440,14 @@ const (
 	// Spark任务仅支持使用Spark作业引擎运行
 	INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
 
+	// 指定的Spark任务RoleArn不存在
+	INVALIDPARAMETER_SPARKJOBROLEARNNOTFOUND = "InvalidParameter.SparkJobRoleArnNotFound"
+
 	// 指定的Spark任务排序类型不匹配，当前仅支持create-time/update-time/user-name/data-engine-name
 	INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = "InvalidParameter.SparkJobSortByTypeNotMatch"
+
+	// 任务已经结束，不能取消。
+	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
 
 	// 指定的任务状态不匹配，当前仅支持: 0:初始化, 1:运行中, 2:成功, 3:数据写入中, 4:排队中, -1:失败, -3:删除
 	INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"

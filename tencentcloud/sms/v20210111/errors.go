@@ -173,6 +173,9 @@ const (
 	// 参数 Limit 校验失败。
 	INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = "InvalidParameterValue.LimitVerifyFail"
 
+	// 营销短信必须包含退订方式，请在短信模板尾部添加“拒收请回复R”后提交。可参考 [关于营销短信退订标识修改的公告](https://cloud.tencent.com/document/product/382/100568)。
+	INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = "InvalidParameterValue.MarketingTemplateWithoutUnsubscribe"
+
 	// 参数 Offset 校验失败。
 	INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"
 

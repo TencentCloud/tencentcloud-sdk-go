@@ -766,7 +766,8 @@ type CloneLoadBalancerRequestParams struct {
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
 
-	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。如果指定运营商，则网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
+	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
+	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
 
 	// 指定Vip申请负载均衡。
@@ -830,7 +831,8 @@ type CloneLoadBalancerRequest struct {
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
 
-	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。如果指定运营商，则网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
+	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
+	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
 
 	// 指定Vip申请负载均衡。
@@ -1386,7 +1388,7 @@ type CreateLoadBalancerRequestParams struct {
 	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
+	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。当AddressIPVersion为IPv6FullChain时 ，不支持指定具体带宽包id。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil" name:"BandwidthPackageId"`
 
 	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
@@ -1474,7 +1476,7 @@ type CreateLoadBalancerRequest struct {
 	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
+	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。当AddressIPVersion为IPv6FullChain时 ，不支持指定具体带宽包id。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil" name:"BandwidthPackageId"`
 
 	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
@@ -5170,7 +5172,8 @@ type InquiryPriceCreateLoadBalancerRequestParams struct {
 	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil" name:"AddressIPVersion"`
 
-	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。
+	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
+	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
 }
 
@@ -5201,7 +5204,8 @@ type InquiryPriceCreateLoadBalancerRequest struct {
 	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil" name:"AddressIPVersion"`
 
-	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。
+	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
+	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
 }
 

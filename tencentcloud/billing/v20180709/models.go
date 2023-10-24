@@ -4024,6 +4024,12 @@ type DescribeVoucherInfoRequestParams struct {
 
 	// 操作人，默认就是用户uin
 	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+	VoucherMainType *string `json:"VoucherMainType,omitnil" name:"VoucherMainType"`
+
+	// 代金券副类型 discount 为折扣券 deduct 为抵扣券
+	VoucherSubType *string `json:"VoucherSubType,omitnil" name:"VoucherSubType"`
 }
 
 type DescribeVoucherInfoRequest struct {
@@ -4073,6 +4079,12 @@ type DescribeVoucherInfoRequest struct {
 
 	// 操作人，默认就是用户uin
 	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+	VoucherMainType *string `json:"VoucherMainType,omitnil" name:"VoucherMainType"`
+
+	// 代金券副类型 discount 为折扣券 deduct 为抵扣券
+	VoucherSubType *string `json:"VoucherSubType,omitnil" name:"VoucherSubType"`
 }
 
 func (r *DescribeVoucherInfoRequest) ToJsonString() string {
@@ -4102,6 +4114,8 @@ func (r *DescribeVoucherInfoRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "PayScene")
 	delete(f, "Operator")
+	delete(f, "VoucherMainType")
+	delete(f, "VoucherSubType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoucherInfoRequest has unknown keys!", "")
 	}

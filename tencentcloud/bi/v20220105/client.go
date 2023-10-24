@@ -462,6 +462,7 @@ func NewCreateUserRoleResponse() (response *CreateUserRoleResponse) {
 //  INTERNALERROR_INTERNAL = "InternalError.Internal"
 //  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
 //  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateUserRole(request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
     return c.CreateUserRoleWithContext(context.Background(), request)
 }
@@ -473,6 +474,7 @@ func (c *Client) CreateUserRole(request *CreateUserRoleRequest) (response *Creat
 //  INTERNALERROR_INTERNAL = "InternalError.Internal"
 //  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
 //  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateUserRoleWithContext(ctx context.Context, request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
     if request == nil {
         request = NewCreateUserRoleRequest()

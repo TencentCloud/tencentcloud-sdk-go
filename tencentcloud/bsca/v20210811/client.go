@@ -123,6 +123,7 @@ func NewDescribeKBComponentVersionListResponse() (response *DescribeKBComponentV
 // 查询特定组件的版本列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -135,6 +136,7 @@ func (c *Client) DescribeKBComponentVersionList(request *DescribeKBComponentVers
 // 查询特定组件的版本列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -291,7 +293,7 @@ func NewDescribeKBVulnerabilityResponse() (response *DescribeKBVulnerabilityResp
 }
 
 // DescribeKBVulnerability
-// 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
+// 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE、Vul ID、CNVD ID、CNNVD ID查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
@@ -304,7 +306,7 @@ func (c *Client) DescribeKBVulnerability(request *DescribeKBVulnerabilityRequest
 }
 
 // DescribeKBVulnerability
-// 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
+// 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE、Vul ID、CNVD ID、CNNVD ID查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"

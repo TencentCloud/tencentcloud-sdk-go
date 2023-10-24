@@ -3286,7 +3286,7 @@ type DeletePolicyGroupRequestParams struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitnil" name:"Module"`
 
-	// 策略组id
+	// 策略组id,即1.0的告警策略id,可以从策略详情获取
 	GroupId []*int64 `json:"GroupId,omitnil" name:"GroupId"`
 }
 
@@ -3296,7 +3296,7 @@ type DeletePolicyGroupRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitnil" name:"Module"`
 
-	// 策略组id
+	// 策略组id,即1.0的告警策略id,可以从策略详情获取
 	GroupId []*int64 `json:"GroupId,omitnil" name:"GroupId"`
 }
 

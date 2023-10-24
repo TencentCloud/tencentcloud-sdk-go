@@ -1244,20 +1244,7 @@ func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMar
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
     return c.DescribeTRTCMarketQualityMetricDataWithContext(context.Background(), request)
 }
@@ -1282,20 +1269,7 @@ func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarket
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketQualityMetricDataRequest()
@@ -1349,20 +1323,7 @@ func NewDescribeTRTCMarketScaleDataResponse() (response *DescribeTRTCMarketScale
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     return c.DescribeTRTCMarketScaleDataWithContext(context.Background(), request)
 }
@@ -1385,20 +1346,7 @@ func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDat
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketScaleDataWithContext(ctx context.Context, request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketScaleDataRequest()
@@ -1452,20 +1400,7 @@ func NewDescribeTRTCMarketScaleMetricDataResponse() (response *DescribeTRTCMarke
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketScaleMetricData(request *DescribeTRTCMarketScaleMetricDataRequest) (response *DescribeTRTCMarketScaleMetricDataResponse, err error) {
     return c.DescribeTRTCMarketScaleMetricDataWithContext(context.Background(), request)
 }
@@ -1488,20 +1423,7 @@ func (c *Client) DescribeTRTCMarketScaleMetricData(request *DescribeTRTCMarketSc
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCMarketScaleMetricDataWithContext(ctx context.Context, request *DescribeTRTCMarketScaleMetricDataRequest) (response *DescribeTRTCMarketScaleMetricDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketScaleMetricDataRequest()
@@ -1551,20 +1473,7 @@ func NewDescribeTRTCRealTimeQualityDataResponse() (response *DescribeTRTCRealTim
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeQualityData(request *DescribeTRTCRealTimeQualityDataRequest) (response *DescribeTRTCRealTimeQualityDataResponse, err error) {
     return c.DescribeTRTCRealTimeQualityDataWithContext(context.Background(), request)
 }
@@ -1583,20 +1492,7 @@ func (c *Client) DescribeTRTCRealTimeQualityData(request *DescribeTRTCRealTimeQu
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeQualityDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeQualityDataRequest) (response *DescribeTRTCRealTimeQualityDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCRealTimeQualityDataRequest()
@@ -3619,6 +3515,7 @@ func NewStopMCUMixTranscodeResponse() (response *StopMCUMixTranscodeResponse) {
 //  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StopMCUMixTranscode(request *StopMCUMixTranscodeRequest) (response *StopMCUMixTranscodeResponse, err error) {
     return c.StopMCUMixTranscodeWithContext(context.Background(), request)
@@ -3639,6 +3536,7 @@ func (c *Client) StopMCUMixTranscode(request *StopMCUMixTranscodeRequest) (respo
 //  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StopMCUMixTranscodeWithContext(ctx context.Context, request *StopMCUMixTranscodeRequest) (response *StopMCUMixTranscodeResponse, err error) {
     if request == nil {

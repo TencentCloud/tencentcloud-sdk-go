@@ -1881,6 +1881,7 @@ func NewIsolateSyncJobResponse() (response *IsolateSyncJobResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) IsolateSyncJob(request *IsolateSyncJobRequest) (response *IsolateSyncJobResponse, err error) {
@@ -1893,6 +1894,7 @@ func (c *Client) IsolateSyncJob(request *IsolateSyncJobRequest) (response *Isola
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) IsolateSyncJobWithContext(ctx context.Context, request *IsolateSyncJobRequest) (response *IsolateSyncJobResponse, err error) {
@@ -2326,6 +2328,69 @@ func (c *Client) ModifyMigrateRateLimitWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyMigrateRateLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMigrateRuntimeAttributeRequest() (request *ModifyMigrateRuntimeAttributeRequest) {
+    request = &ModifyMigrateRuntimeAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "ModifyMigrateRuntimeAttribute")
+    
+    
+    return
+}
+
+func NewModifyMigrateRuntimeAttributeResponse() (response *ModifyMigrateRuntimeAttributeResponse) {
+    response = &ModifyMigrateRuntimeAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMigrateRuntimeAttribute
+// 修改任务运行时属性，此接口不同于配置类接口，不会进行状态机判断。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+func (c *Client) ModifyMigrateRuntimeAttribute(request *ModifyMigrateRuntimeAttributeRequest) (response *ModifyMigrateRuntimeAttributeResponse, err error) {
+    return c.ModifyMigrateRuntimeAttributeWithContext(context.Background(), request)
+}
+
+// ModifyMigrateRuntimeAttribute
+// 修改任务运行时属性，此接口不同于配置类接口，不会进行状态机判断。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+func (c *Client) ModifyMigrateRuntimeAttributeWithContext(ctx context.Context, request *ModifyMigrateRuntimeAttributeRequest) (response *ModifyMigrateRuntimeAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyMigrateRuntimeAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMigrateRuntimeAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMigrateRuntimeAttributeResponse()
     err = c.Send(request, response)
     return
 }

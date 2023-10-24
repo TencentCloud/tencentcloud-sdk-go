@@ -2850,6 +2850,7 @@ func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanc
 // 查询引擎实例访问地址
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
@@ -2862,6 +2863,7 @@ func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAc
 // 查询引擎实例访问地址
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"

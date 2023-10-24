@@ -7175,6 +7175,7 @@ func NewInspectMediaQualityResponse() (response *InspectMediaQualityResponse) {
 // 对点播中的音视频媒体发起音画质检测任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -7189,6 +7190,7 @@ func (c *Client) InspectMediaQuality(request *InspectMediaQualityRequest) (respo
 // 对点播中的音视频媒体发起音画质检测任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -1775,7 +1775,11 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 }
 
 // ChannelCreateMultiFlowSignQRCode
-// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
+//
+// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+//
+// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
@@ -1822,7 +1826,11 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 }
 
 // ChannelCreateMultiFlowSignQRCode
-// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
+//
+// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+//
+// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //

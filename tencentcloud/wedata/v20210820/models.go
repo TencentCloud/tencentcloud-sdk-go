@@ -13897,10 +13897,12 @@ type DescribeIntegrationVersionNodesInfoRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// task version path
+	// 该任务选定版本的存储路径：
+	// DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 TaskInfo.TaskExt.Properties 下 Base64.encode($region | $bucket | $ftp.file.name) 值
 	TaskVersionPath *string `json:"TaskVersionPath,omitnil" name:"TaskVersionPath"`
 
-	// task version
+	// 该任务选定版本id：
+	// DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 VersionId 取值
 	TaskVersion *string `json:"TaskVersion,omitnil" name:"TaskVersion"`
 }
 
@@ -13913,10 +13915,12 @@ type DescribeIntegrationVersionNodesInfoRequest struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// task version path
+	// 该任务选定版本的存储路径：
+	// DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 TaskInfo.TaskExt.Properties 下 Base64.encode($region | $bucket | $ftp.file.name) 值
 	TaskVersionPath *string `json:"TaskVersionPath,omitnil" name:"TaskVersionPath"`
 
-	// task version
+	// 该任务选定版本id：
+	// DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 VersionId 取值
 	TaskVersion *string `json:"TaskVersion,omitnil" name:"TaskVersion"`
 }
 

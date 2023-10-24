@@ -3029,6 +3029,10 @@ type CreateSparkSessionBatchSQLResponseParams struct {
 	// 批任务唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
 
+	// Statement任务列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statements []*StatementInformation `json:"Statements,omitnil" name:"Statements"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -11100,6 +11104,16 @@ type SparkSessionBatchLogOperate struct {
 	// 补充信息：如：taskid、sessionid、sparkui等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Supplement []*KVPair `json:"Supplement,omitnil" name:"Supplement"`
+}
+
+type StatementInformation struct {
+	// SQL任务唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// SQL内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SQL *string `json:"SQL,omitnil" name:"SQL"`
 }
 
 type StatementOutput struct {

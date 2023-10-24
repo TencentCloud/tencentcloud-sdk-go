@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AffectedComponent struct {
+	// 受漏洞影响的组件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 受漏洞影响的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedVersionList []*string `json:"AffectedVersionList,omitnil" name:"AffectedVersionList"`
+
+	// 修复此漏洞的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixedVersionList []*string `json:"FixedVersionList,omitnil" name:"FixedVersionList"`
+}
+
 type CVSSV2Info struct {
 	// CVE评分。
 	CVSS *float64 `json:"CVSS,omitnil" name:"CVSS"`
@@ -426,21 +440,33 @@ func (r *DescribeKBLicenseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKBVulnerabilityRequestParams struct {
-	// CVE ID列表（不能与Vul ID同时存在）
+	// 根据CVE ID查询（不能与其他参数同时存在）
 	CVEID []*string `json:"CVEID,omitnil" name:"CVEID"`
 
-	// Vul ID列表（不能与CVE ID 同时存在）
+	// 根据Vul ID查询（不能与其他参数同时存在）
 	VulID []*string `json:"VulID,omitnil" name:"VulID"`
+
+	// 根据CNVD ID查询（不能与其他参数同时存在）
+	CNVDID []*string `json:"CNVDID,omitnil" name:"CNVDID"`
+
+	// 根据CNNVD ID查询（不能与其他参数同时存在）
+	CNNVDID []*string `json:"CNNVDID,omitnil" name:"CNNVDID"`
 }
 
 type DescribeKBVulnerabilityRequest struct {
 	*tchttp.BaseRequest
 	
-	// CVE ID列表（不能与Vul ID同时存在）
+	// 根据CVE ID查询（不能与其他参数同时存在）
 	CVEID []*string `json:"CVEID,omitnil" name:"CVEID"`
 
-	// Vul ID列表（不能与CVE ID 同时存在）
+	// 根据Vul ID查询（不能与其他参数同时存在）
 	VulID []*string `json:"VulID,omitnil" name:"VulID"`
+
+	// 根据CNVD ID查询（不能与其他参数同时存在）
+	CNVDID []*string `json:"CNVDID,omitnil" name:"CNVDID"`
+
+	// 根据CNNVD ID查询（不能与其他参数同时存在）
+	CNNVDID []*string `json:"CNNVDID,omitnil" name:"CNNVDID"`
 }
 
 func (r *DescribeKBVulnerabilityRequest) ToJsonString() string {
@@ -457,6 +483,8 @@ func (r *DescribeKBVulnerabilityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CVEID")
 	delete(f, "VulID")
+	delete(f, "CNVDID")
+	delete(f, "CNNVDID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBVulnerabilityRequest has unknown keys!", "")
 	}
@@ -751,6 +779,9 @@ type VulnerabilityDetail struct {
 
 	// 漏洞CVSSv3向量
 	CVSSv3Vector *string `json:"CVSSv3Vector,omitnil" name:"CVSSv3Vector"`
+
+	// 漏洞影响的组件列表，仅当查询单个漏洞时有效
+	AffectedComponentList []*AffectedComponent `json:"AffectedComponentList,omitnil" name:"AffectedComponentList"`
 }
 
 type VulnerabilitySummary struct {

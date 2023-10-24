@@ -7108,6 +7108,7 @@ func NewDescribeLiveStreamPushInfoListResponse() (response *DescribeLiveStreamPu
 // 查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDATAFAILED = "FailedOperation.GetDataFailed"
 //  FAILEDOPERATION_HASNOTLIVINGSTREAM = "FailedOperation.HasNotLivingStream"
 //  FAILEDOPERATION_QUERYUPLOADINFOFAILED = "FailedOperation.QueryUploadInfoFailed"
 //  INTERNALERROR = "InternalError"
@@ -7130,6 +7131,7 @@ func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushI
 // 查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDATAFAILED = "FailedOperation.GetDataFailed"
 //  FAILEDOPERATION_HASNOTLIVINGSTREAM = "FailedOperation.HasNotLivingStream"
 //  FAILEDOPERATION_QUERYUPLOADINFOFAILED = "FailedOperation.QueryUploadInfoFailed"
 //  INTERNALERROR = "InternalError"

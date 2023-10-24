@@ -1244,6 +1244,7 @@ func NewDescribeCertificateOperateLogsResponse() (response *DescribeCertificateO
 // 获取用户账号下有关证书的操作日志。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
@@ -1257,6 +1258,7 @@ func (c *Client) DescribeCertificateOperateLogs(request *DescribeCertificateOper
 // 获取用户账号下有关证书的操作日志。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"

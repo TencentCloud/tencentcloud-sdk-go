@@ -76,7 +76,7 @@ type ApplyCertificateRequestParams struct {
 	// 加密算法，支持 RSA及ECC。
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil" name:"CsrEncryptAlgo"`
 
-	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1
+	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。
@@ -122,7 +122,7 @@ type ApplyCertificateRequest struct {
 	// 加密算法，支持 RSA及ECC。
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil" name:"CsrEncryptAlgo"`
 
-	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1
+	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。

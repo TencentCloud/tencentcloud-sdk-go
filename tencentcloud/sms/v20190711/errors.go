@@ -155,6 +155,9 @@ const (
 	// UsedMethod 字段校验错误，请参照 API 接口说明中对该字段的说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	INVALIDPARAMETERVALUE_INVALIDUSEDMETHOD = "InvalidParameterValue.InvalidUsedMethod"
 
+	// 营销短信必须包含退订方式，请在短信模板尾部添加“拒收请回复R”后提交。可参考 [关于营销短信退订标识修改的公告](https://cloud.tencent.com/document/product/382/100568)。
+	INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = "InvalidParameterValue.MarketingTemplateWithoutUnsubscribe"
+
 	// 无法识别签名，请确认是否已有签名通过申请，一般是签名未通过申请，可以查看 [签名审核](https://cloud.tencent.com/document/product/382/37745#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E7.AD.89.E5.BE.85.E5.AE.A1.E6.A0.B8) 。
 	INVALIDPARAMETERVALUE_MISSINGSIGNATURELIST = "InvalidParameterValue.MissingSignatureList"
 

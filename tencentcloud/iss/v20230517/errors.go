@@ -404,6 +404,9 @@ const (
 	// 链接数受限
 	OPERATIONDENIED_CONNECTSLIMITZERO = "OperationDenied.ConnectsLimitZero"
 
+	// 新增组织树失败，超出组织树的最大深度
+	OPERATIONDENIED_EXCEEDEDMAXIMUMDEPTH = "OperationDenied.ExceededMaximumDepth"
+
 	// 资源不可达，该资源不属于该地域
 	REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 

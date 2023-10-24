@@ -789,6 +789,7 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -820,6 +821,7 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3002,6 +3004,7 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
     return c.CreateMultiFlowSignQRCodeWithContext(context.Background(), request)
@@ -3063,6 +3066,7 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
     if request == nil {

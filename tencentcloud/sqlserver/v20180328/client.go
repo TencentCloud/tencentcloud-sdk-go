@@ -7306,6 +7306,7 @@ func NewSwitchCloudInstanceHAResponse() (response *SwitchCloudInstanceHAResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {
@@ -7317,6 +7318,7 @@ func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHAWithContext(ctx context.Context, request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {

@@ -9347,6 +9347,7 @@ func NewStopCpuExpandResponse() (response *StopCpuExpandResponse) {
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 func (c *Client) StopCpuExpand(request *StopCpuExpandRequest) (response *StopCpuExpandResponse, err error) {
     return c.StopCpuExpandWithContext(context.Background(), request)
 }
@@ -9359,6 +9360,7 @@ func (c *Client) StopCpuExpand(request *StopCpuExpandRequest) (response *StopCpu
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 func (c *Client) StopCpuExpandWithContext(ctx context.Context, request *StopCpuExpandRequest) (response *StopCpuExpandResponse, err error) {
     if request == nil {
         request = NewStopCpuExpandRequest()

@@ -272,6 +272,10 @@ type Cluster struct {
 	// Gateway信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlGateways []*SqlGatewayItem `json:"SqlGateways,omitnil" name:"SqlGateways"`
+
+	// 0 公网访问 // 1 内网访问	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebUIType *int64 `json:"WebUIType,omitnil" name:"WebUIType"`
 }
 
 type ClusterGroupSetItem struct {
@@ -670,6 +674,18 @@ type CreateJobConfigRequestParams struct {
 
 	// 专家模式的配置
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil" name:"ExpertModeConfiguration"`
+
+	// trace链路
+	TraceModeOn *bool `json:"TraceModeOn,omitnil" name:"TraceModeOn"`
+
+	// trace链路配置
+	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil" name:"TraceModeConfiguration"`
+
+	// checkpoint保留个数
+	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil" name:"CheckpointRetainedNum"`
+
+	// 算子拓扑图
+	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
 }
 
 type CreateJobConfigRequest struct {
@@ -740,6 +756,18 @@ type CreateJobConfigRequest struct {
 
 	// 专家模式的配置
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil" name:"ExpertModeConfiguration"`
+
+	// trace链路
+	TraceModeOn *bool `json:"TraceModeOn,omitnil" name:"TraceModeOn"`
+
+	// trace链路配置
+	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil" name:"TraceModeConfiguration"`
+
+	// checkpoint保留个数
+	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil" name:"CheckpointRetainedNum"`
+
+	// 算子拓扑图
+	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -776,6 +804,10 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "ClazzLevels")
 	delete(f, "ExpertModeOn")
 	delete(f, "ExpertModeConfiguration")
+	delete(f, "TraceModeOn")
+	delete(f, "TraceModeConfiguration")
+	delete(f, "CheckpointRetainedNum")
+	delete(f, "JobGraph")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -1846,6 +1878,11 @@ type DescribeJobSavepointRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 2 是checkpoint
+	// 1 是触发savepoint
+	// 3 停止触发的savepoint
+	RecordTypes []*int64 `json:"RecordTypes,omitnil" name:"RecordTypes"`
 }
 
 type DescribeJobSavepointRequest struct {
@@ -1862,6 +1899,11 @@ type DescribeJobSavepointRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 2 是checkpoint
+	// 1 是触发savepoint
+	// 3 停止触发的savepoint
+	RecordTypes []*int64 `json:"RecordTypes,omitnil" name:"RecordTypes"`
 }
 
 func (r *DescribeJobSavepointRequest) ToJsonString() string {
@@ -1880,6 +1922,7 @@ func (r *DescribeJobSavepointRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "WorkSpaceId")
+	delete(f, "RecordTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobSavepointRequest has unknown keys!", "")
 	}
@@ -2521,6 +2564,9 @@ func (r *DescribeSystemResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeJobsRequestParams struct {
+	// 筛选条件字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 工作空间 Serialid
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
 }
@@ -2528,6 +2574,9 @@ type DescribeTreeJobsRequestParams struct {
 type DescribeTreeJobsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 筛选条件字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 工作空间 Serialid
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
 }
@@ -2544,6 +2593,7 @@ func (r *DescribeTreeJobsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filters")
 	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTreeJobsRequest has unknown keys!", "")
@@ -2553,6 +2603,26 @@ func (r *DescribeTreeJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeJobsResponseParams struct {
+	// 父节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitnil" name:"ParentId"`
+
+	// 当前文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 当前文件夹名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 当前文件夹下的作业列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobSet []*TreeJobSets `json:"JobSet,omitnil" name:"JobSet"`
+
+	// 迭代子目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*DescribeTreeJobsRsp `json:"Children,omitnil" name:"Children"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -2571,6 +2641,32 @@ func (r *DescribeTreeJobsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTreeJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTreeJobsRsp struct {
+	// 父节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitnil" name:"ParentId"`
+
+	// 当前文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 当前文件夹名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 当前文件夹下的作业集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobSet []*TreeJobSets `json:"JobSet,omitnil" name:"JobSet"`
+
+	// 迭代子目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*DescribeTreeJobsRsp `json:"Children,omitnil" name:"Children"`
+
+	// 请求ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 // Predefined struct for user
@@ -2988,6 +3084,22 @@ type JobConfig struct {
 	// 专家模式的配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil" name:"ExpertModeConfiguration"`
+
+	// trace链路
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceModeOn *bool `json:"TraceModeOn,omitnil" name:"TraceModeOn"`
+
+	// trace链路配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil" name:"TraceModeConfiguration"`
+
+	// checkpoint保留个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil" name:"CheckpointRetainedNum"`
+
+	// 算子拓扑图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
 }
 
 type JobGraph struct {
@@ -4142,6 +4254,38 @@ type Tag struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+}
+
+type TraceModeConfiguration struct {
+	// 如1%转换为0.01
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rate *string `json:"Rate,omitnil" name:"Rate"`
+
+	// 按照算子ID顺序配置，可以对每个算子配置IN、OUT、IN_AND_OUT三个值，分别表示采集输入数据、采集输出数据、同时采集输入和输出数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
+}
+
+type TreeJobSets struct {
+	// 作业Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
+
+	// 作业名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 作业类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *int64 `json:"JobType,omitnil" name:"JobType"`
+
+	// 作业占用资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCu *float64 `json:"RunningCu,omitnil" name:"RunningCu"`
+
+	// 作业状态 启动或者停止或者暂停
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type TreeResourceItem struct {

@@ -153,6 +153,7 @@ func NewAddOrganizationResponse() (response *AddOrganizationResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDORGNAME = "InvalidParameterValue.InvalidOrgName"
 //  INVALIDPARAMETERVALUE_ORGNAMEREPEAT = "InvalidParameterValue.OrgNameRepeat"
+//  OPERATIONDENIED_EXCEEDEDMAXIMUMDEPTH = "OperationDenied.ExceededMaximumDepth"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddOrganization(request *AddOrganizationRequest) (response *AddOrganizationResponse, err error) {
     return c.AddOrganizationWithContext(context.Background(), request)
@@ -166,6 +167,7 @@ func (c *Client) AddOrganization(request *AddOrganizationRequest) (response *Add
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDORGNAME = "InvalidParameterValue.InvalidOrgName"
 //  INVALIDPARAMETERVALUE_ORGNAMEREPEAT = "InvalidParameterValue.OrgNameRepeat"
+//  OPERATIONDENIED_EXCEEDEDMAXIMUMDEPTH = "OperationDenied.ExceededMaximumDepth"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddOrganizationWithContext(ctx context.Context, request *AddOrganizationRequest) (response *AddOrganizationResponse, err error) {
     if request == nil {

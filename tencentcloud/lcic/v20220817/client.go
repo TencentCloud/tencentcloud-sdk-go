@@ -3674,6 +3674,7 @@ func NewSendRoomNormalMessageResponse() (response *SendRoomNormalMessageResponse
 // 1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3689,6 +3690,7 @@ func (c *Client) SendRoomNormalMessage(request *SendRoomNormalMessageRequest) (r
 // 1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

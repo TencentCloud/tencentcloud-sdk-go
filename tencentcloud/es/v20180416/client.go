@@ -883,6 +883,7 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
 // 查询用户该地域下符合条件的ES集群的日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
@@ -902,6 +903,7 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
 // 查询用户该地域下符合条件的ES集群的日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
@@ -1741,6 +1743,7 @@ func NewRestartNodesResponse() (response *RestartNodesResponse) {
 // 用于重启集群节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
@@ -1750,6 +1753,7 @@ func NewRestartNodesResponse() (response *RestartNodesResponse) {
 //  INVALIDPARAMETER_INVALIDSUBNETUIDLIST = "InvalidParameter.InvalidSubnetUidList"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
@@ -1765,6 +1769,7 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
 // 用于重启集群节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
@@ -1774,6 +1779,7 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
 //  INVALIDPARAMETER_INVALIDSUBNETUIDLIST = "InvalidParameter.InvalidSubnetUidList"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
@@ -2603,6 +2609,7 @@ func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
 //  INVALIDPARAMETERVALUE_PLUGINTYPE = "InvalidParameterValue.PluginType"
 //  LIMITEXCEEDED_PLUGININSTALL = "LimitExceeded.PluginInstall"
 //  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
@@ -2628,6 +2635,7 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
 //  INVALIDPARAMETERVALUE_PLUGINTYPE = "InvalidParameterValue.PluginType"
 //  LIMITEXCEEDED_PLUGININSTALL = "LimitExceeded.PluginInstall"
 //  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"

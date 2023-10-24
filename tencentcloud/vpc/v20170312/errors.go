@@ -1061,6 +1061,9 @@ const (
 	// 当前通道为非可用状态，不支持该操作。
 	UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = "UnsupportedOperation.VpnConnInvalidState"
 
+	// SPD本端网段冲突，请检查后重试。
+	UNSUPPORTEDOPERATION_VPNCONNSPDOVERLAP = "UnsupportedOperation.VpnConnSPDOverlap"
+
 	// VPC类型VPN网关必须携带VpcId。
 	UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
 

@@ -122,6 +122,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// InvalidRequest
+	INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

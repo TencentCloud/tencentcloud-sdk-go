@@ -467,6 +467,9 @@ const (
 	// 入参中的域名与站点参数不匹配，请更正后重试。
 	INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = "InvalidParameterValue.DomainNotMatchZone"
 
+	// 无效的别称域名后缀（该域名为内部接入域名，暂不支持作为别称域名接入）。
+	INVALIDPARAMETERVALUE_INVALIDALIASNAMESUFFIX = "InvalidParameterValue.InvalidAliasNameSuffix"
+
 	// DNS 记录内容错误。
 	INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
 

@@ -93,6 +93,7 @@ func NewAnalyzeSentimentResponse() (response *AnalyzeSentimentResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) AnalyzeSentiment(request *AnalyzeSentimentRequest) (response *AnalyzeSentimentResponse, err error) {
     return c.AnalyzeSentimentWithContext(context.Background(), request)
 }
@@ -126,6 +127,7 @@ func (c *Client) AnalyzeSentiment(request *AnalyzeSentimentRequest) (response *A
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) AnalyzeSentimentWithContext(ctx context.Context, request *AnalyzeSentimentRequest) (response *AnalyzeSentimentResponse, err error) {
     if request == nil {
         request = NewAnalyzeSentimentRequest()
@@ -376,6 +378,7 @@ func NewComposePoetryResponse() (response *ComposePoetryResponse) {
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ComposePoetry(request *ComposePoetryRequest) (response *ComposePoetryResponse, err error) {
     return c.ComposePoetryWithContext(context.Background(), request)
 }
@@ -409,6 +412,7 @@ func (c *Client) ComposePoetry(request *ComposePoetryRequest) (response *Compose
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ComposePoetryWithContext(ctx context.Context, request *ComposePoetryRequest) (response *ComposePoetryResponse, err error) {
     if request == nil {
         request = NewComposePoetryRequest()
@@ -474,6 +478,7 @@ func NewEvaluateSentenceSimilarityResponse() (response *EvaluateSentenceSimilari
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) EvaluateSentenceSimilarity(request *EvaluateSentenceSimilarityRequest) (response *EvaluateSentenceSimilarityResponse, err error) {
     return c.EvaluateSentenceSimilarityWithContext(context.Background(), request)
 }
@@ -508,6 +513,7 @@ func (c *Client) EvaluateSentenceSimilarity(request *EvaluateSentenceSimilarityR
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) EvaluateSentenceSimilarityWithContext(ctx context.Context, request *EvaluateSentenceSimilarityRequest) (response *EvaluateSentenceSimilarityResponse, err error) {
     if request == nil {
         request = NewEvaluateSentenceSimilarityRequest()
@@ -768,6 +774,7 @@ func NewParseWordsResponse() (response *ParseWordsResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ParseWords(request *ParseWordsRequest) (response *ParseWordsResponse, err error) {
     return c.ParseWordsWithContext(context.Background(), request)
 }
@@ -801,6 +808,7 @@ func (c *Client) ParseWords(request *ParseWordsRequest) (response *ParseWordsRes
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ParseWordsWithContext(ctx context.Context, request *ParseWordsRequest) (response *ParseWordsResponse, err error) {
     if request == nil {
         request = NewParseWordsRequest()
@@ -963,6 +971,7 @@ func NewSentenceCorrectionResponse() (response *SentenceCorrectionResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) SentenceCorrection(request *SentenceCorrectionRequest) (response *SentenceCorrectionResponse, err error) {
     return c.SentenceCorrectionWithContext(context.Background(), request)
 }
@@ -997,6 +1006,7 @@ func (c *Client) SentenceCorrection(request *SentenceCorrectionRequest) (respons
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) SentenceCorrectionWithContext(ctx context.Context, request *SentenceCorrectionRequest) (response *SentenceCorrectionResponse, err error) {
     if request == nil {
         request = NewSentenceCorrectionRequest()

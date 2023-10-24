@@ -7345,6 +7345,7 @@ func NewUpgradeDBInstanceMajorVersionResponse() (response *UpgradeDBInstanceMajo
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) UpgradeDBInstanceMajorVersion(request *UpgradeDBInstanceMajorVersionRequest) (response *UpgradeDBInstanceMajorVersionResponse, err error) {
     return c.UpgradeDBInstanceMajorVersionWithContext(context.Background(), request)
@@ -7356,6 +7357,7 @@ func (c *Client) UpgradeDBInstanceMajorVersion(request *UpgradeDBInstanceMajorVe
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) UpgradeDBInstanceMajorVersionWithContext(ctx context.Context, request *UpgradeDBInstanceMajorVersionRequest) (response *UpgradeDBInstanceMajorVersionResponse, err error) {
     if request == nil {

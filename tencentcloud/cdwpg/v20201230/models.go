@@ -31,20 +31,39 @@ type CBSSpec struct {
 	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
 }
 
+type CBSSpecInfo struct {
+	// 盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
+
+	// 大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
+
+	// 个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
+}
+
 type ChargeProperties struct {
 	// 1-需要自动续期
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 订单时间范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
 
 	// 时间单位，一般为h和m
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
 
 	// 计费类型0-按量计费，1-包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
 
 	// PREPAID、POSTPAID_BY_HOUR
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
 }
 
@@ -160,6 +179,66 @@ func (r *CreateInstanceByApiResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateInstanceByApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceInfoRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeInstanceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceInfoResponseParams struct {
+	// 1
+	SimpleInstanceInfo *SimpleInstanceInfo `json:"SimpleInstanceInfo,omitnil" name:"SimpleInstanceInfo"`
+
+	// 1
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -816,6 +895,24 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceInfo struct {
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
+
+	// 资源数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 磁盘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSpec *CBSSpecInfo `json:"DiskSpec,omitnil" name:"DiskSpec"`
+
+	// 资源类型，DATA
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
 type ResourceSpecNew struct {
 	// 资源名称
 	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
@@ -839,6 +936,72 @@ type SearchTags struct {
 
 	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
 	AllValue *int64 `json:"AllValue,omitnil" name:"AllValue"`
+}
+
+type SimpleInstanceInfo struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitnil" name:"ID"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserVPCID *string `json:"UserVPCID,omitnil" name:"UserVPCID"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSubnetID *string `json:"UserSubnetID,omitnil" name:"UserSubnetID"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessInfo *string `json:"AccessInfo,omitnil" name:"AccessInfo"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil" name:"ChargeProperties"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*ResourceInfo `json:"Resources,omitnil" name:"Resources"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type Tag struct {
