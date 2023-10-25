@@ -519,7 +519,7 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 }
 
 // CreateConvertTaskApi
-// 此接口（CreateConvertTaskApi）用来将word、excel、图片、txt类型文件转换为PDF文件。<br />
+// 此接口（CreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
 //
 // 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
 //
@@ -531,7 +531,7 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 //
 // 注: 
 //
-// 1. `支持的文件类型有doc、docx、xls、xlsx、jpg、jpeg、png、bmp、txt`
+// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
 //
 // 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
 //
@@ -549,7 +549,7 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 }
 
 // CreateConvertTaskApi
-// 此接口（CreateConvertTaskApi）用来将word、excel、图片、txt类型文件转换为PDF文件。<br />
+// 此接口（CreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
 //
 // 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
 //
@@ -561,7 +561,7 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 //
 // 注: 
 //
-// 1. `支持的文件类型有doc、docx、xls、xlsx、jpg、jpeg、png、bmp、txt`
+// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
 //
 // 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
 //
@@ -842,6 +842,67 @@ func (c *Client) CreateEmbedWebUrlWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateEmbedWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateExtendedServiceAuthInfosRequest() (request *CreateExtendedServiceAuthInfosRequest) {
+    request = &CreateExtendedServiceAuthInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateExtendedServiceAuthInfos")
+    
+    
+    return
+}
+
+func NewCreateExtendedServiceAuthInfosResponse() (response *CreateExtendedServiceAuthInfosResponse) {
+    response = &CreateExtendedServiceAuthInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExtendedServiceAuthInfos
+// 创建企业扩展服务授权，当前仅支持授权 “企业自动签” 给企业员工。
+//
+// 
+//
+// 注：支持集团代子企业操作，请联系运营开通此功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateExtendedServiceAuthInfos(request *CreateExtendedServiceAuthInfosRequest) (response *CreateExtendedServiceAuthInfosResponse, err error) {
+    return c.CreateExtendedServiceAuthInfosWithContext(context.Background(), request)
+}
+
+// CreateExtendedServiceAuthInfos
+// 创建企业扩展服务授权，当前仅支持授权 “企业自动签” 给企业员工。
+//
+// 
+//
+// 注：支持集团代子企业操作，请联系运营开通此功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateExtendedServiceAuthInfosWithContext(ctx context.Context, request *CreateExtendedServiceAuthInfosRequest) (response *CreateExtendedServiceAuthInfosResponse, err error) {
+    if request == nil {
+        request = NewCreateExtendedServiceAuthInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExtendedServiceAuthInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExtendedServiceAuthInfosResponse()
     err = c.Send(request, response)
     return
 }
@@ -4436,6 +4497,67 @@ func (c *Client) CreateWebThemeConfigWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateWebThemeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteExtendedServiceAuthInfosRequest() (request *DeleteExtendedServiceAuthInfosRequest) {
+    request = &DeleteExtendedServiceAuthInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteExtendedServiceAuthInfos")
+    
+    
+    return
+}
+
+func NewDeleteExtendedServiceAuthInfosResponse() (response *DeleteExtendedServiceAuthInfosResponse) {
+    response = &DeleteExtendedServiceAuthInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteExtendedServiceAuthInfos
+// 删除企业扩展服务授权，当前仅支持 “企业自动签” 取消授权。
+//
+// 
+//
+// 注：支持集团代子企业操作，请联系运营开通此功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteExtendedServiceAuthInfos(request *DeleteExtendedServiceAuthInfosRequest) (response *DeleteExtendedServiceAuthInfosResponse, err error) {
+    return c.DeleteExtendedServiceAuthInfosWithContext(context.Background(), request)
+}
+
+// DeleteExtendedServiceAuthInfos
+// 删除企业扩展服务授权，当前仅支持 “企业自动签” 取消授权。
+//
+// 
+//
+// 注：支持集团代子企业操作，请联系运营开通此功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteExtendedServiceAuthInfosWithContext(ctx context.Context, request *DeleteExtendedServiceAuthInfosRequest) (response *DeleteExtendedServiceAuthInfosResponse, err error) {
+    if request == nil {
+        request = NewDeleteExtendedServiceAuthInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExtendedServiceAuthInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExtendedServiceAuthInfosResponse()
     err = c.Send(request, response)
     return
 }

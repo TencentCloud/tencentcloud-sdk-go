@@ -283,6 +283,9 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 	// 首尔
 	// 多伦多
 	City []*string `json:"City,omitnil" name:"City"`
+
+	// es scroll查询id
+	ScrollID *string `json:"ScrollID,omitnil" name:"ScrollID"`
 }
 
 type DescribeDetailedSingleProbeDataRequest struct {
@@ -353,6 +356,9 @@ type DescribeDetailedSingleProbeDataRequest struct {
 	// 首尔
 	// 多伦多
 	City []*string `json:"City,omitnil" name:"City"`
+
+	// es scroll查询id
+	ScrollID *string `json:"ScrollID,omitnil" name:"ScrollID"`
 }
 
 func (r *DescribeDetailedSingleProbeDataRequest) ToJsonString() string {
@@ -380,6 +386,7 @@ func (r *DescribeDetailedSingleProbeDataRequest) FromJsonString(s string) error 
 	delete(f, "Districts")
 	delete(f, "ErrorTypes")
 	delete(f, "City")
+	delete(f, "ScrollID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailedSingleProbeDataRequest has unknown keys!", "")
 	}
@@ -393,6 +400,9 @@ type DescribeDetailedSingleProbeDataResponseParams struct {
 
 	// 符合条件的数据总数
 	TotalNumber *int64 `json:"TotalNumber,omitnil" name:"TotalNumber"`
+
+	// es scroll查询的id
+	ScrollID *string `json:"ScrollID,omitnil" name:"ScrollID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

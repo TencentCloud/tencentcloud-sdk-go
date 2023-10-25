@@ -400,10 +400,17 @@ func (r *ChannelCancelFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 二维码id
+	// 二维码ID，为32位字符串。
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -415,10 +422,17 @@ type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 二维码id
+	// 二维码ID，为32位字符串。
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -1507,22 +1521,33 @@ func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowGroupByFilesRequestParams struct {
-	// 每个子合同的发起所需的信息，数量限制2-50
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
 	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil" name:"FlowFileInfos"`
 
-	// 合同组名称，长度不超过200个字符
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
+	// 
+	// 子客企业和子客企业中的员工比较走完创建和实名过程
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署人校验方式
-	// VerifyCheck: 人脸识别（默认）
-	// MobileCheck：手机号验证
-	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
+	// 合同组中签署人校验和认证的方式：
+	// <ul><li>**VerifyCheck**：人脸识别（默认）</li>
+	// <li>**MobileCheck**：手机号验证</li></ul>
+	// 注意：
+	// `1. MobileCheck 方式，未实名的个人/自然人签署方无需进行人脸识别实名认证即可查看合同（但签署合同时仍然需要人脸实名），企业签署方需经过人脸认证。`
+	// `2. 合同组的校验和认证的方式会优先使用，会覆盖合同组中单个合同和合同签署方认证方式的限制配置。`
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
 
-	// 合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+	// 合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 
 	// 操作者的信息，此参数不用传
@@ -1534,22 +1559,33 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 type ChannelCreateFlowGroupByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每个子合同的发起所需的信息，数量限制2-50
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
 	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil" name:"FlowFileInfos"`
 
-	// 合同组名称，长度不超过200个字符
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
+	// 
+	// 子客企业和子客企业中的员工比较走完创建和实名过程
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署人校验方式
-	// VerifyCheck: 人脸识别（默认）
-	// MobileCheck：手机号验证
-	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
+	// 合同组中签署人校验和认证的方式：
+	// <ul><li>**VerifyCheck**：人脸识别（默认）</li>
+	// <li>**MobileCheck**：手机号验证</li></ul>
+	// 注意：
+	// `1. MobileCheck 方式，未实名的个人/自然人签署方无需进行人脸识别实名认证即可查看合同（但签署合同时仍然需要人脸实名），企业签署方需经过人脸认证。`
+	// `2. 合同组的校验和认证的方式会优先使用，会覆盖合同组中单个合同和合同签署方认证方式的限制配置。`
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
 
-	// 合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+	// 合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 
 	// 操作者的信息，此参数不用传
@@ -1582,11 +1618,15 @@ func (r *ChannelCreateFlowGroupByFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowGroupByFilesResponseParams struct {
-	// 合同组ID
+	// 合同组ID，为32位字符串。
+	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
-	// 子合同ID列表
+	// 合同组中每个合同流程ID，每个ID均为32位字符串。
+	// 
+	// 注:
+	// `此数组的顺序和入参中的FlowGroupInfos顺序回不一致`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
@@ -1612,26 +1652,44 @@ func (r *ChannelCreateFlowGroupByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowGroupByTemplatesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
+	// 
+	// 子客企业和子客企业中的员工比较走完创建和实名过程
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 每个子合同的发起所需的信息，数量限制2-50（合同组暂不支持抄送功能）
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
 
-	// 合同组名称，长度不超过200个字符
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 }
 
 type ChannelCreateFlowGroupByTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
+	// 
+	// 子客企业和子客企业中的员工比较走完创建和实名过程
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 每个子合同的发起所需的信息，数量限制2-50（合同组暂不支持抄送功能）
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
 
-	// 合同组名称，长度不超过200个字符
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 }
 
@@ -1658,10 +1716,14 @@ func (r *ChannelCreateFlowGroupByTemplatesRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateFlowGroupByTemplatesResponseParams struct {
-	// 合同组ID
+	// 合同组ID，为32位字符串。
+	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
-	// 子合同ID列表
+	// 合同组中每个合同流程ID，每个ID均为32位字符串。
+	// 
+	// 注:
+	// `此数组的顺序和入参中的FlowInfos顺序回不一致`
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
@@ -1690,20 +1752,34 @@ func (r *ChannelCreateFlowGroupByTemplatesResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ChannelCreateFlowRemindsRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程Id数组，最多100个，超过100不处理
+	// 需执行催办的签署流程ID数组，最多包含100个。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 }
 
 type ChannelCreateFlowRemindsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程Id数组，最多100个，超过100不处理
+	// 需执行催办的签署流程ID数组，最多包含100个。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 }
 
@@ -1729,7 +1805,7 @@ func (r *ChannelCreateFlowRemindsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowRemindsResponseParams struct {
-	// 合同催办详情信息
+	// 合同催办结果的详细信息列表。
 	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitnil" name:"RemindFlowRecords"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5271,7 +5347,7 @@ type CreateSealByImageRequestParams struct {
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传请传字段 SealImage
+	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传，此字段置空并且传字段 SealImage
 	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
 
 	// 电子印章类型：
@@ -5317,7 +5393,7 @@ type CreateSealByImageRequest struct {
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传请传字段 SealImage
+	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传，此字段置空并且传字段 SealImage
 	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
 
 	// 电子印章类型：
@@ -6621,16 +6697,14 @@ type FlowFileInfo struct {
 }
 
 type FlowGroupOptions struct {
-	// 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认：
-	// fasle：发起方企业经办人签署时对所有子合同进行统一的意愿确认
-	// true：发起方企业经办人签署时需要对子合同进行独立的意愿确认
-	// 默认为fasle。
+	// 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
+	// <ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
+	// <li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
 	SelfOrganizationApproverSignEach *bool `json:"SelfOrganizationApproverSignEach,omitnil" name:"SelfOrganizationApproverSignEach"`
 
-	// 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认：
-	// fasle：非发起方企业经办人签署时对所有子合同进行统一的意愿确认
-	// true：非发起方企业经办人签署时需要对子合同进行独立的意愿确认
-	// 默认为false。
+	// 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
+	// <ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
+	// <li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
 	OtherApproverSignEach *bool `json:"OtherApproverSignEach,omitnil" name:"OtherApproverSignEach"`
 }
 
@@ -7471,13 +7545,13 @@ type RelieveInfo struct {
 }
 
 type RemindFlowRecords struct {
-	// 是否能够催办，true-是，false-否
+	// 合同流程是否可以催办： true - 可以，false - 不可以。 若无法催办，将返回RemindMessage以解释原因。	
 	CanRemind *bool `json:"CanRemind,omitnil" name:"CanRemind"`
 
-	// 合同id
+	// 合同流程ID，为32位字符串。	
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 催办详情信息
+	// 在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。	
 	RemindMessage *string `json:"RemindMessage,omitnil" name:"RemindMessage"`
 }
 

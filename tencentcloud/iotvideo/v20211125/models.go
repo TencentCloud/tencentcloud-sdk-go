@@ -3311,6 +3311,9 @@ type DescribeCloudStorageRequestParams struct {
 
 	// 云存用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type DescribeCloudStorageRequest struct {
@@ -3324,6 +3327,9 @@ type DescribeCloudStorageRequest struct {
 
 	// 云存用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 func (r *DescribeCloudStorageRequest) ToJsonString() string {
@@ -3341,6 +3347,7 @@ func (r *DescribeCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageRequest has unknown keys!", "")
 	}

@@ -12712,6 +12712,12 @@ type DescribeNetworkAclsRequestParams struct {
 
 	// 返回数量，默认为20，最小值为1，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方法。顺序：ASC，倒序：DESC。
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
 }
 
 type DescribeNetworkAclsRequest struct {
@@ -12731,6 +12737,12 @@ type DescribeNetworkAclsRequest struct {
 
 	// 返回数量，默认为20，最小值为1，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方法。顺序：ASC，倒序：DESC。
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
 }
 
 func (r *DescribeNetworkAclsRequest) ToJsonString() string {
@@ -12749,6 +12761,8 @@ func (r *DescribeNetworkAclsRequest) FromJsonString(s string) error {
 	delete(f, "NetworkAclIds")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNetworkAclsRequest has unknown keys!", "")
 	}
@@ -22975,10 +22989,10 @@ type NetworkAcl struct {
 	// 网络ACL关联的子网数组。
 	SubnetSet []*Subnet `json:"SubnetSet,omitnil" name:"SubnetSet"`
 
-	// 网络ACl入站规则。
+	// 该参数仅对三元组ACL有效，网络ACl入站规则。
 	IngressEntries []*NetworkAclEntry `json:"IngressEntries,omitnil" name:"IngressEntries"`
 
-	// 网络ACL出站规则。
+	// 该参数仅对三元组ACL有效，网络ACL出站规则。
 	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitnil" name:"EgressEntries"`
 
 	// 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'

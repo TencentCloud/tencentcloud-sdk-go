@@ -1,3 +1,162 @@
+# Release v1.0.773
+
+## 云拨测(cat) 版本：2018-04-09
+
+### 第 14 次发布
+
+发布时间：2023-10-25 01:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDetailedSingleProbeData](https://cloud.tencent.com/document/api/280/66205)
+
+	* 新增入参：ScrollID
+
+	* 新增出参：ScrollID
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 73 次发布
+
+发布时间：2023-10-25 01:11:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScheduledSqlInfo](https://cloud.tencent.com/document/api/614/95519)
+
+	* 新增入参：Filters
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 101 次发布
+
+发布时间：2023-10-25 01:12:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWhiteListOrder](https://cloud.tencent.com/document/api/296/99541)
+
+	* 新增入参：SourceType
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 131 次发布
+
+发布时间：2023-10-25 01:16:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100676)
+* [DeleteExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100675)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 21 次发布
+
+发布时间：2023-10-25 01:19:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/77504)
+
+	* 新增入参：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 7 次发布
+
+发布时间：2023-10-25 01:27:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [HitInfo](https://cloud.tencent.com/document/api/1124/51861#HitInfo)
+* [Positions](https://cloud.tencent.com/document/api/1124/51861#Positions)
+
+修改数据结构：
+
+* [DetailResults](https://cloud.tencent.com/document/api/1124/51861#DetailResults)
+
+	* 新增成员：HitInfos
+
+
+
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 175 次发布
+
+发布时间：2023-10-25 01:29:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetworkAcls](https://cloud.tencent.com/document/api/215/42160)
+
+	* 新增入参：OrderField, OrderDirection
+
+
+修改数据结构：
+
+* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
+
+
+
+
 # Release v1.0.772
 
 ## 费用中心(billing) 版本：2018-07-09

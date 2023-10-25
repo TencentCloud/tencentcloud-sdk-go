@@ -830,7 +830,7 @@ type ImportTableFileRequestParams struct {
 	// 表格关联的项目ID。
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 表格名称，支持20个字符内的英文字符、数字和下划线。
+	// 表格名称。最多支持200个字符。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 表格文件Cos对象路径。
@@ -839,7 +839,7 @@ type ImportTableFileRequestParams struct {
 	// 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
 	DataType []*string `json:"DataType,omitnil" name:"DataType"`
 
-	// 表格描述。
+	// 表格描述。最多支持500个字符。
 	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
@@ -849,7 +849,7 @@ type ImportTableFileRequest struct {
 	// 表格关联的项目ID。
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 表格名称，支持20个字符内的英文字符、数字和下划线。
+	// 表格名称。最多支持200个字符。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 表格文件Cos对象路径。
@@ -858,7 +858,7 @@ type ImportTableFileRequest struct {
 	// 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
 	DataType []*string `json:"DataType,omitnil" name:"DataType"`
 
-	// 表格描述。
+	// 表格描述。最多支持500个字符。
 	Description *string `json:"Description,omitnil" name:"Description"`
 }
 

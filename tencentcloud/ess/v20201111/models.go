@@ -1379,13 +1379,14 @@ type CreateDocumentRequestParams struct {
 	// 是否为预览模式，取值如下：
 	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
 	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
-	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
+	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
 	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
-	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
-	// 注: `此参数在NeedPreview 为true时有效`
+	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>
+	// 注: `1.此参数在NeedPreview 为true时有效`
+	// `2.动态表格控件不支持H5链接方式预览`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
 
 	// 代理企业和员工的信息。
@@ -1419,13 +1420,14 @@ type CreateDocumentRequest struct {
 	// 是否为预览模式，取值如下：
 	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
 	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
-	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
+	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
 	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
-	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
-	// 注: `此参数在NeedPreview 为true时有效`
+	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>
+	// 注: `1.此参数在NeedPreview 为true时有效`
+	// `2.动态表格控件不支持H5链接方式预览`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
 
 	// 代理企业和员工的信息。
@@ -1620,6 +1622,93 @@ func (r *CreateEmbedWebUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEmbedWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExtendedServiceAuthInfosRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本企业员工的id，需要已实名，正常在职员工
+	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+
+	// 要查询的扩展服务类型。
+	// 默认为空，即查询当前支持的所有扩展服务信息。
+	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+type CreateExtendedServiceAuthInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本企业员工的id，需要已实名，正常在职员工
+	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+
+	// 要查询的扩展服务类型。
+	// 默认为空，即查询当前支持的所有扩展服务信息。
+	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+func (r *CreateExtendedServiceAuthInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExtendedServiceAuthInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserIds")
+	delete(f, "ExtendServiceType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExtendedServiceAuthInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExtendedServiceAuthInfosResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateExtendedServiceAuthInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExtendedServiceAuthInfosResponseParams `json:"Response"`
+}
+
+func (r *CreateExtendedServiceAuthInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExtendedServiceAuthInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5258,6 +5347,93 @@ func (r *CreateWebThemeConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateWebThemeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExtendedServiceAuthInfosRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本企业员工的id，需要已实名，正常在职员工
+	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+
+	// 要查询的扩展服务类型。
+	// 默认为空，即查询当前支持的所有扩展服务信息。
+	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+type DeleteExtendedServiceAuthInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本企业员工的id，需要已实名，正常在职员工
+	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+
+	// 要查询的扩展服务类型。
+	// 默认为空，即查询当前支持的所有扩展服务信息。
+	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+func (r *DeleteExtendedServiceAuthInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExtendedServiceAuthInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserIds")
+	delete(f, "ExtendServiceType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteExtendedServiceAuthInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExtendedServiceAuthInfosResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteExtendedServiceAuthInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteExtendedServiceAuthInfosResponseParams `json:"Response"`
+}
+
+func (r *DeleteExtendedServiceAuthInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExtendedServiceAuthInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

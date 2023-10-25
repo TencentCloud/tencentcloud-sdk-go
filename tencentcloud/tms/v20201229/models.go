@@ -55,6 +55,10 @@ type DetailResults struct {
 	// 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 该字段用于返回违规文本命中信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitInfos []*HitInfo `json:"HitInfos,omitnil" name:"HitInfos"`
 }
 
 type Device struct {
@@ -80,6 +84,34 @@ type Device struct {
 
 	// **iOS设备专用**，该字段表示业务用户对应的**IDFV**(应用开发商标识符),这是由苹果公司提供的用于标注应用开发商的标识符，由一串16进制的32位数字和字母组成，可被用于唯一标识设备。
 	IDFV *string `json:"IDFV,omitnil" name:"IDFV"`
+}
+
+type HitInfo struct {
+	// 标识模型命中还是关键词命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 命中关键词
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 自定义词库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibName *string `json:"LibName,omitnil" name:"LibName"`
+
+	// 位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Positions []*Positions `json:"Positions,omitnil" name:"Positions"`
+}
+
+type Positions struct {
+	// 关键词起始位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Start *int64 `json:"Start,omitnil" name:"Start"`
+
+	// 关键词结束位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 type RiskDetails struct {

@@ -11739,6 +11739,7 @@ type GroupProIspDataInfo struct {
 type HlsSpecialParam struct {
 	// HLS续流超时时间。
 	// 取值范围[0，1800]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowContinueDuration *uint64 `json:"FlowContinueDuration,omitnil" name:"FlowContinueDuration"`
 }
 

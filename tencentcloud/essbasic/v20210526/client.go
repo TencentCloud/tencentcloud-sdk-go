@@ -267,7 +267,11 @@ func NewChannelCancelMultiFlowSignQRCodeResponse() (response *ChannelCancelMulti
 }
 
 // ChannelCancelMultiFlowSignQRCode
-// 此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+//
+// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
+//
+// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -282,7 +286,11 @@ func (c *Client) ChannelCancelMultiFlowSignQRCode(request *ChannelCancelMultiFlo
 }
 
 // ChannelCancelMultiFlowSignQRCode
-// 此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+//
+// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
+//
+// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1280,7 +1288,125 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 }
 
 // ChannelCreateFlowGroupByFiles
-// 接口（ChannelCreateFlowGroupByFiles）用于通过多文件创建合同组签署流程。
+// 接口（ChannelCreateFlowGroupByFiles）用于使用 PDF 文件创建合同组签署流程。
+//
+// 
+//
+// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+//
+// 
+//
+// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
+//
+// </ul>
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1339,7 +1465,125 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 }
 
 // ChannelCreateFlowGroupByFiles
-// 接口（ChannelCreateFlowGroupByFiles）用于通过多文件创建合同组签署流程。
+// 接口（ChannelCreateFlowGroupByFiles）用于使用 PDF 文件创建合同组签署流程。
+//
+// 
+//
+// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+//
+// 
+//
+// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
+//
+// </ul>
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1431,6 +1675,122 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 // ChannelCreateFlowGroupByTemplates
 // 接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
 //
+// 
+//
+// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+//
+// 
+//
+// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>合同组暂不支持抄送功能</li>
+//
+// </ul>
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// 
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -1468,6 +1828,122 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 
 // ChannelCreateFlowGroupByTemplates
 // 接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
+//
+// 
+//
+// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+//
+// 
+//
+// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>合同组暂不支持抄送功能</li>
+//
+// </ul>
+//
+// 
+//
+// **可以作为发起方和签署方的角色列表**
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为发起方类型</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B(不指定经办人)</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>个人/自然人</td>
+//
+// </tr>
+//
+// 
+//
+// <tr>
+//
+// <td>场景五</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
+// **注**: 
+//
+// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// 
+//
+// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1536,13 +2012,17 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 }
 
 // ChannelCreateFlowReminds
-// 指定需要批量催办的签署流程Id，批量催办合同，最多100个；接口失败后返回错误信息
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
 //
-// 注意:
+// 
 //
-// 该接口不可直接调用，请联系客户经理申请使用
+// 1. 合同中当前状态为“待签署”的签署人是催办的对象
 //
-// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+// 2. 每个合同只能催办一次
+//
+// 
+//
+// 注意：该接口无法直接调用，请联系客户经理申请使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1554,13 +2034,17 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 }
 
 // ChannelCreateFlowReminds
-// 指定需要批量催办的签署流程Id，批量催办合同，最多100个；接口失败后返回错误信息
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
 //
-// 注意:
+// 
 //
-// 该接口不可直接调用，请联系客户经理申请使用
+// 1. 合同中当前状态为“待签署”的签署人是催办的对象
 //
-// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+// 2. 每个合同只能催办一次
+//
+// 
+//
+// 注意：该接口无法直接调用，请联系客户经理申请使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4629,6 +5113,8 @@ func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedSer
 //
 // 5. 拓宽签署方年龄限制
 //
+// 6. 下载企业合同/文件
+//
 // 
 //
 // 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
@@ -4658,6 +5144,8 @@ func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServic
 // 4. 骑缝章
 //
 // 5. 拓宽签署方年龄限制
+//
+// 6. 下载企业合同/文件
 //
 // 
 //

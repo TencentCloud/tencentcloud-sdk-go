@@ -67,6 +67,32 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
 // AssumeRole
 // 申请扮演角色临时访问凭证。
 //
+// 
+//
+// 1、角色策略组成
+//
+// 
+//
+// （1）角色信任策略：指定谁可以扮演该角色；
+//
+// 
+//
+// （2）角色权限策略：指定扮演角色后可以执行哪些操作。
+//
+// 
+//
+// 
+//
+// 2、角色可扮演条件
+//
+// 
+//
+// （1）给用户绑定允许调用AssumeRole的策略 ；
+//
+// 
+//
+// （2）将用户添加为角色信任策略中的主体。
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
@@ -97,6 +123,32 @@ func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleRes
 
 // AssumeRole
 // 申请扮演角色临时访问凭证。
+//
+// 
+//
+// 1、角色策略组成
+//
+// 
+//
+// （1）角色信任策略：指定谁可以扮演该角色；
+//
+// 
+//
+// （2）角色权限策略：指定扮演角色后可以执行哪些操作。
+//
+// 
+//
+// 
+//
+// 2、角色可扮演条件
+//
+// 
+//
+// （1）给用户绑定允许调用AssumeRole的策略 ；
+//
+// 
+//
+// （2）将用户添加为角色信任策略中的主体。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"

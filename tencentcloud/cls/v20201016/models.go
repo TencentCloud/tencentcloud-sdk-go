@@ -5636,6 +5636,9 @@ type DescribeScheduledSqlInfoRequestParams struct {
 
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>srcTopicId按照【源日志主题ID】进行过滤。类型：String必选：否<br><li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String必选：否<br><li>bizType按照【主题类型】进行过滤,0日志主题1指标主题,，。类型：String必选：否<br><li>status按照【任务状态】进行过滤。类型：String必选：否<br><li>taskName按照【任务名称】进行过滤，模糊匹配，。类型：String必选：否<br><li>taskId按照【任务ID】进行过滤，模糊匹配，。类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeScheduledSqlInfoRequest struct {
@@ -5652,6 +5655,9 @@ type DescribeScheduledSqlInfoRequest struct {
 
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>srcTopicId按照【源日志主题ID】进行过滤。类型：String必选：否<br><li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String必选：否<br><li>bizType按照【主题类型】进行过滤,0日志主题1指标主题,，。类型：String必选：否<br><li>status按照【任务状态】进行过滤。类型：String必选：否<br><li>taskName按照【任务名称】进行过滤，模糊匹配，。类型：String必选：否<br><li>taskId按照【任务ID】进行过滤，模糊匹配，。类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeScheduledSqlInfoRequest) ToJsonString() string {
@@ -5670,6 +5676,7 @@ func (r *DescribeScheduledSqlInfoRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Name")
 	delete(f, "TaskId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledSqlInfoRequest has unknown keys!", "")
 	}

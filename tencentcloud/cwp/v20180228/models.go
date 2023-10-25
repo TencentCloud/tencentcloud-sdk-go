@@ -5343,6 +5343,9 @@ type CreateWhiteListOrderRequestParams struct {
 	// 规则名称,大资产中心:asset_center
 	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
+	// 订单类型, 1 试用 2 赠送 3 体验 4 SSL-证书赠送 5 cvm赠送
+	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
+
 	// 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
 	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
 
@@ -5364,6 +5367,9 @@ type CreateWhiteListOrderRequest struct {
 
 	// 规则名称,大资产中心:asset_center
 	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 订单类型, 1 试用 2 赠送 3 体验 4 SSL-证书赠送 5 cvm赠送
+	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
 	// 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
 	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
@@ -5388,6 +5394,7 @@ func (r *CreateWhiteListOrderRequest) FromJsonString(s string) error {
 	delete(f, "LicenseNum")
 	delete(f, "Deadline")
 	delete(f, "RuleName")
+	delete(f, "SourceType")
 	delete(f, "RegionId")
 	delete(f, "ExtraParam")
 	if len(f) > 0 {

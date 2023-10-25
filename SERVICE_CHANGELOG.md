@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 费用中心(billing) 版本：2018-07-09
+## 云拨测(cat) 版本：2018-04-09
 
-### 第 48 次发布
+### 第 14 次发布
 
-发布时间：2023-10-24 01:07:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
-
-	* 新增入参：VoucherMainType, VoucherSubType
-
-
-
-
-## 二进制软件成分分析(bsca) 版本：2021-08-11
-
-### 第 5 次发布
-
-发布时间：2023-10-24 01:07:40
+发布时间：2023-10-25 01:08:41
 
 本次发布包含了以下内容：
 
@@ -31,29 +12,58 @@
 
 修改接口：
 
-* [DescribeKBVulnerability](https://cloud.tencent.com/document/api/1483/72070)
+* [DescribeDetailedSingleProbeData](https://cloud.tencent.com/document/api/280/66205)
 
-	* 新增入参：CNVDID, CNNVDID
+	* 新增入参：ScrollID
 
-
-新增数据结构：
-
-* [AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent)
-
-修改数据结构：
-
-* [VulnerabilityDetail](https://cloud.tencent.com/document/api/1483/72074#VulnerabilityDetail)
-
-	* 新增成员：AffectedComponentList
+	* 新增出参：ScrollID
 
 
 
 
-## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 6 次发布
+### 第 73 次发布
 
-发布时间：2023-10-24 01:08:56
+发布时间：2023-10-25 01:11:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScheduledSqlInfo](https://cloud.tencent.com/document/api/614/95519)
+
+	* 新增入参：Filters
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 101 次发布
+
+发布时间：2023-10-25 01:12:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWhiteListOrder](https://cloud.tencent.com/document/api/296/99541)
+
+	* 新增入参：SourceType
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 131 次发布
+
+发布时间：2023-10-25 01:16:49
 
 本次发布包含了以下内容：
 
@@ -61,21 +71,16 @@
 
 新增接口：
 
-* [DescribeInstanceInfo](https://cloud.tencent.com/document/api/878/100615)
-
-新增数据结构：
-
-* [CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo)
-* [ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo)
-* [SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo)
+* [CreateExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100676)
+* [DeleteExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100675)
 
 
 
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
-### 第 71 次发布
+### 第 21 次发布
 
-发布时间：2023-10-24 01:13:16
+发布时间：2023-10-25 01:19:12
 
 本次发布包含了以下内容：
 
@@ -83,61 +88,71 @@
 
 修改接口：
 
-* [CreateSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92838)
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/77504)
 
-	* 新增出参：Statements
-
-
-新增数据结构：
-
-* [StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation)
+	* 新增入参：ChannelId
 
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 44 次发布
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-发布时间：2023-10-24 01:20:07
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 7 次发布
+
+发布时间：2023-10-25 01:27:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
-
-	* 新增入参：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
-
-* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
-
-	* 新增入参：RecordTypes
-
-* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
-
-	* 新增入参：Filters
-
-	* 新增出参：ParentId, Id, Name, JobSet, Children
-
-
 新增数据结构：
 
-* [DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp)
-* [TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration)
-* [TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets)
+* [HitInfo](https://cloud.tencent.com/document/api/1124/51861#HitInfo)
+* [Positions](https://cloud.tencent.com/document/api/1124/51861#Positions)
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+* [DetailResults](https://cloud.tencent.com/document/api/1124/51861#DetailResults)
 
-	* 新增成员：WebUIType
+	* 新增成员：HitInfos
 
-* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
 
-	* 新增成员：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
 
-	* <font color="#dd0000">**修改成员**：</font>ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 175 次发布
+
+发布时间：2023-10-25 01:29:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetworkAcls](https://cloud.tencent.com/document/api/215/42160)
+
+	* 新增入参：OrderField, OrderDirection
+
+
+修改数据结构：
+
+* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
 
 
 
@@ -11080,7 +11095,7 @@
 
 新增数据结构：
 
-* [[AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent)](https://cloud.tencent.com/document/api/1483/72074#[AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent))
+* [AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent)
 
 修改数据结构：
 
@@ -12675,6 +12690,23 @@
 
 
 ## 云拨测(cat) 版本：2018-04-09
+
+### 第 14 次发布
+
+发布时间：2023-10-25 01:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDetailedSingleProbeData](https://cloud.tencent.com/document/api/280/66205)
+
+	* 新增入参：ScrollID
+
+	* 新增出参：ScrollID
+
 
 ### 第 13 次发布
 
@@ -21330,13 +21362,13 @@
 
 新增接口：
 
-* [[DescribeInstanceInfo](https://cloud.tencent.com/document/api/878/100615)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstanceInfo](https://cloud.tencent.com/document/api/878/100615)
 
 新增数据结构：
 
-* [[CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo)](https://cloud.tencent.com/document/api/878/98895#[CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo))
-* [[ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo)](https://cloud.tencent.com/document/api/878/98895#[ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo))
-* [[SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo)](https://cloud.tencent.com/document/api/878/98895#[SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo))
+* [CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo)
+* [ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo)
+* [SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo)
 
 ### 第 5 次发布
 
@@ -28672,6 +28704,21 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 73 次发布
+
+发布时间：2023-10-25 01:11:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScheduledSqlInfo](https://cloud.tencent.com/document/api/614/95519)
+
+	* 新增入参：Filters
+
 
 ### 第 72 次发布
 
@@ -37241,6 +37288,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 101 次发布
+
+发布时间：2023-10-25 01:12:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWhiteListOrder](https://cloud.tencent.com/document/api/296/99541)
+
+	* 新增入参：SourceType
+
+
 ### 第 100 次发布
 
 发布时间：2023-10-19 16:01:46
@@ -45745,7 +45807,7 @@
 
 新增数据结构：
 
-* [[StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation)](https://cloud.tencent.com/document/api/1342/53778#[StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation))
+* [StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation)
 
 ### 第 70 次发布
 
@@ -55006,6 +55068,19 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 131 次发布
+
+发布时间：2023-10-25 01:16:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100676)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/100675)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 130 次发布
 
@@ -69601,6 +69676,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 21 次发布
+
+发布时间：2023-10-25 01:19:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/77504)
+
+	* 新增入参：ChannelId
+
 
 ### 第 20 次发布
 
@@ -84946,9 +85036,9 @@
 
 新增数据结构：
 
-* [[DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp)](https://cloud.tencent.com/document/api/849/52010#[DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp))
-* [[TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration)](https://cloud.tencent.com/document/api/849/52010#[TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration))
-* [[TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets)](https://cloud.tencent.com/document/api/849/52010#[TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets))
+* [DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp)
+* [TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration)
+* [TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets)
 
 修改数据结构：
 
@@ -119753,6 +119843,26 @@
 
 ## 文本内容安全(tms) 版本：2020-12-29
 
+### 第 7 次发布
+
+发布时间：2023-10-25 01:27:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[HitInfo](https://cloud.tencent.com/document/api/1124/51861#HitInfo)](https://cloud.tencent.com/document/api/1124/51861#[HitInfo](https://cloud.tencent.com/document/api/1124/51861#HitInfo))
+* [[Positions](https://cloud.tencent.com/document/api/1124/51861#Positions)](https://cloud.tencent.com/document/api/1124/51861#[Positions](https://cloud.tencent.com/document/api/1124/51861#Positions))
+
+修改数据结构：
+
+* [DetailResults](https://cloud.tencent.com/document/api/1124/51861#DetailResults)
+
+	* 新增成员：HitInfos
+
+
 ### 第 6 次发布
 
 发布时间：2022-11-18 06:55:59
@@ -130943,6 +131053,28 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 175 次发布
+
+发布时间：2023-10-25 01:29:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetworkAcls](https://cloud.tencent.com/document/api/215/42160)
+
+	* 新增入参：OrderField, OrderDirection
+
+
+修改数据结构：
+
+* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
+
 
 ### 第 174 次发布
 
