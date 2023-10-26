@@ -107,7 +107,7 @@ const (
 	// 成员授权策略名已存在。
 	FAILEDOPERATION_MEMBERPOLICYNAMEEXIST = "FailedOperation.MemberPolicyNameExist"
 
-	// 成员正在共享资源。
+	// 成员正在共享资源，不允许退出组织。
 	FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
 
 	// 企业组织单元成员不为空。
@@ -119,7 +119,7 @@ const (
 	// 操作策略失败。
 	FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
 
-	// 成员是主体管理账号不允许删除。
+	// 成员是主体管理账号，不允许退出组织。
 	FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
 
 	// 企业组织已经存在。
@@ -284,7 +284,7 @@ const (
 	// 创建的成员不允许创建组织。
 	UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.CreateMemberNotAllowCreateOrganization"
 
-	// 创建的成员不允许删除。
+	// 创建的成员不允许移除组织。
 	UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWDELETE = "UnsupportedOperation.CreateMemberNotAllowDelete"
 
 	// 创建的成员不允许退出。
@@ -317,7 +317,7 @@ const (
 	// 成员设置了操作审批,不允许删除。
 	UNSUPPORTEDOPERATION_MEMBEREXISTOPERATEPROCESSNOTALLOWDELETE = "UnsupportedOperation.MemberExistOperateProcessNotAllowDelete"
 
-	// 组织成员被委派集团服务，不允许退出。
+	// 成员是集团服务委派管理员，不允许退出组织。
 	UNSUPPORTEDOPERATION_MEMBEREXISTSERVICENOTALLOWDELETE = "UnsupportedOperation.MemberExistServiceNotAllowDelete"
 
 	// 账号是代理商或代客。

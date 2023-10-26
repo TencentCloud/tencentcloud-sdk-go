@@ -575,7 +575,7 @@ type CallBackTemplateInfo struct {
 	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitnil" name:"StreamEndNotifyUrl"`
 
-	// 录制回调 URL。
+	// 录制文件回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitnil" name:"RecordNotifyUrl"`
 
 	// 截图回调 URL。
@@ -1087,9 +1087,13 @@ type CreateLiveCallbackTemplateRequestParams struct {
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitnil" name:"StreamEndNotifyUrl"`
 
-	// 录制回调 URL，
+	// 录制文件回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitnil" name:"RecordNotifyUrl"`
+
+	// 录制状态回调 URL ，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
+	RecordStatusNotifyUrl *string `json:"RecordStatusNotifyUrl,omitnil" name:"RecordStatusNotifyUrl"`
 
 	// 截图回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
@@ -1134,9 +1138,13 @@ type CreateLiveCallbackTemplateRequest struct {
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitnil" name:"StreamEndNotifyUrl"`
 
-	// 录制回调 URL，
+	// 录制文件回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitnil" name:"RecordNotifyUrl"`
+
+	// 录制状态回调 URL ，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
+	RecordStatusNotifyUrl *string `json:"RecordStatusNotifyUrl,omitnil" name:"RecordStatusNotifyUrl"`
 
 	// 截图回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
@@ -1177,6 +1185,7 @@ func (r *CreateLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "StreamBeginNotifyUrl")
 	delete(f, "StreamEndNotifyUrl")
 	delete(f, "RecordNotifyUrl")
+	delete(f, "RecordStatusNotifyUrl")
 	delete(f, "SnapshotNotifyUrl")
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")
@@ -12082,8 +12091,11 @@ type ModifyLiveCallbackTemplateRequestParams struct {
 	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitnil" name:"StreamEndNotifyUrl"`
 
-	// 录制回调 URL。
+	// 录制文件回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitnil" name:"RecordNotifyUrl"`
+
+	// 录制状态回调 URL 。
+	RecordStatusNotifyUrl *string `json:"RecordStatusNotifyUrl,omitnil" name:"RecordStatusNotifyUrl"`
 
 	// 截图回调 URL。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitnil" name:"SnapshotNotifyUrl"`
@@ -12120,8 +12132,11 @@ type ModifyLiveCallbackTemplateRequest struct {
 	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitnil" name:"StreamEndNotifyUrl"`
 
-	// 录制回调 URL。
+	// 录制文件回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitnil" name:"RecordNotifyUrl"`
+
+	// 录制状态回调 URL 。
+	RecordStatusNotifyUrl *string `json:"RecordStatusNotifyUrl,omitnil" name:"RecordStatusNotifyUrl"`
 
 	// 截图回调 URL。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitnil" name:"SnapshotNotifyUrl"`
@@ -12158,6 +12173,7 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "StreamBeginNotifyUrl")
 	delete(f, "StreamEndNotifyUrl")
 	delete(f, "RecordNotifyUrl")
+	delete(f, "RecordStatusNotifyUrl")
 	delete(f, "SnapshotNotifyUrl")
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")

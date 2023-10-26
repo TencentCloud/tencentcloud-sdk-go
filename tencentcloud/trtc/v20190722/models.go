@@ -485,7 +485,7 @@ type DescribeCallDetailInfoRequestParams struct {
 	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
+	// 注意：查询起止时间需小于1小时，超过则返回null，即与StartTime间隔时间不超过1小时。
 	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 用户SdkAppId（如：1400xxxxxx）。
@@ -532,7 +532,7 @@ type DescribeCallDetailInfoRequest struct {
 	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
+	// 注意：查询起止时间需小于1小时，超过则返回null，即与StartTime间隔时间不超过1小时。
 	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 用户SdkAppId（如：1400xxxxxx）。

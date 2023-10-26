@@ -1310,6 +1310,8 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
 //
+// <li>合同组暂不支持抄送功能</li>
+//
 // <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
 //
 // </ul>
@@ -1405,6 +1407,8 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 // **注**: 
 //
 // `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// 
 //
 // `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
@@ -1487,6 +1491,8 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
 //
+// <li>合同组暂不支持抄送功能</li>
+//
 // <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
 //
 // </ul>
@@ -1582,6 +1588,8 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 // **注**: 
 //
 // `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//
+// 
 //
 // `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
 //
@@ -4744,7 +4752,15 @@ func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
 }
 
 // CreateSealByImage
-// 通过图片为子客企业代创建印章，图片最大5MB
+// 1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
+//
+// 
+//
+// 2. 可以**系统创建**子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage.png)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4768,7 +4784,15 @@ func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response 
 }
 
 // CreateSealByImage
-// 通过图片为子客企业代创建印章，图片最大5MB
+// 1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
+//
+// 
+//
+// 2. 可以**系统创建**子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage.png)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -53,6 +53,28 @@ type AccelerationDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginDetail *OriginDetail `json:"OriginDetail,omitnil" name:"OriginDetail"`
 
+	// 回源协议，取值有：
+	// <li>FOLLOW: 协议跟随；</li>
+	// <li>HTTP: HTTP协议回源；</li>
+	// <li>HTTPS: HTTPS协议回源。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginProtocol *string `json:"OriginProtocol,omitnil" name:"OriginProtocol"`
+
+	// HTTP回源端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil" name:"HttpOriginPort"`
+
+	// HTTPS回源端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil" name:"HttpsOriginPort"`
+
+	// IPv6状态，取值有：
+	// <li>follow：遵循站点IPv6配置；</li>
+	// <li>on：开启状态；</li>
+	// <li>off：关闭状态。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6Status *string `json:"IPv6Status,omitnil" name:"IPv6Status"`
+
 	// CNAME 地址。
 	Cname *string `json:"Cname,omitnil" name:"Cname"`
 
@@ -999,6 +1021,26 @@ type CreateAccelerationDomainRequestParams struct {
 
 	// 源站信息。
 	OriginInfo *OriginInfo `json:"OriginInfo,omitnil" name:"OriginInfo"`
+
+	// 回源协议，取值有：
+	// <li>FOLLOW: 协议跟随；</li>
+	// <li>HTTP: HTTP协议回源；</li>
+	// <li>HTTPS: HTTPS协议回源。</li>
+	// <li>不填默认为： FOLLOW。</li>
+	OriginProtocol *string `json:"OriginProtocol,omitnil" name:"OriginProtocol"`
+
+	// HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填默认为80。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil" name:"HttpOriginPort"`
+
+	// HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填默认为443。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil" name:"HttpsOriginPort"`
+
+	// IPv6状态，取值有：
+	// <li>follow：遵循站点IPv6配置；</li>
+	// <li>on：开启状态；</li>
+	// <li>off：关闭状态。</li>
+	// <li>不填默认为：follow。</li>
+	IPv6Status *string `json:"IPv6Status,omitnil" name:"IPv6Status"`
 }
 
 type CreateAccelerationDomainRequest struct {
@@ -1012,6 +1054,26 @@ type CreateAccelerationDomainRequest struct {
 
 	// 源站信息。
 	OriginInfo *OriginInfo `json:"OriginInfo,omitnil" name:"OriginInfo"`
+
+	// 回源协议，取值有：
+	// <li>FOLLOW: 协议跟随；</li>
+	// <li>HTTP: HTTP协议回源；</li>
+	// <li>HTTPS: HTTPS协议回源。</li>
+	// <li>不填默认为： FOLLOW。</li>
+	OriginProtocol *string `json:"OriginProtocol,omitnil" name:"OriginProtocol"`
+
+	// HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填默认为80。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil" name:"HttpOriginPort"`
+
+	// HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填默认为443。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil" name:"HttpsOriginPort"`
+
+	// IPv6状态，取值有：
+	// <li>follow：遵循站点IPv6配置；</li>
+	// <li>on：开启状态；</li>
+	// <li>off：关闭状态。</li>
+	// <li>不填默认为：follow。</li>
+	IPv6Status *string `json:"IPv6Status,omitnil" name:"IPv6Status"`
 }
 
 func (r *CreateAccelerationDomainRequest) ToJsonString() string {
@@ -1029,6 +1091,10 @@ func (r *CreateAccelerationDomainRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "DomainName")
 	delete(f, "OriginInfo")
+	delete(f, "OriginProtocol")
+	delete(f, "HttpOriginPort")
+	delete(f, "HttpsOriginPort")
+	delete(f, "IPv6Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccelerationDomainRequest has unknown keys!", "")
 	}
@@ -1447,6 +1513,88 @@ func (r *CreateApplicationProxyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateApplicationProxyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOriginGroupRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 源站组类型，此参数必填，取值有：
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+}
+
+type CreateOriginGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 源站组类型，此参数必填，取值有：
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+}
+
+func (r *CreateOriginGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOriginGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Records")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOriginGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOriginGroupResponseParams struct {
+	// 源站组ID。
+	OriginGroupId *string `json:"OriginGroupId,omitnil" name:"OriginGroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateOriginGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOriginGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateOriginGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOriginGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1889,8 +2037,10 @@ type CreateSharedCNAMERequestParams struct {
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
-	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
-	// 示例值：example.com
+	// 
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。
+	// 
+	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.eo.dnse2.com
 	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
 
 	// 描述。可输入 1-50 个任意字符。
@@ -1904,8 +2054,10 @@ type CreateSharedCNAMERequest struct {
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
-	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
-	// 示例值：example.com
+	// 
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。
+	// 
+	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.eo.dnse2.com
 	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
 
 	// 描述。可输入 1-50 个任意字符。
@@ -2460,6 +2612,67 @@ func (r *DeleteApplicationProxyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteApplicationProxyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOriginGroupRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组ID，此参数必填。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+}
+
+type DeleteOriginGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组ID，此参数必填。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+}
+
+func (r *DeleteOriginGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOriginGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOriginGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOriginGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteOriginGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOriginGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteOriginGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOriginGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3691,28 +3904,34 @@ func (r *DescribeIdentificationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOriginGroupRequestParams struct {
-	// 分页查询偏移量，默认为0。
+	// 站点ID，此参数必填。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 分页查询偏移量，不填默认为0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询限制数目，默认为10，取值：1-1000。
+	// 分页查询限制数目，不填默认为20，取值：1-1000。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-20hzkd4rdmy0<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   类型：String<br>   必选：否<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
+	// <li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeOriginGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页查询偏移量，默认为0。
+	// 站点ID，此参数必填。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 分页查询偏移量，不填默认为0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询限制数目，默认为10，取值：1-1000。
+	// 分页查询限制数目，不填默认为20，取值：1-1000。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-20hzkd4rdmy0<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   类型：String<br>   必选：否<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
+	// <li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
@@ -3728,6 +3947,7 @@ func (r *DescribeOriginGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ZoneId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
@@ -6161,6 +6381,26 @@ type ModifyAccelerationDomainRequestParams struct {
 
 	// 源站信息。
 	OriginInfo *OriginInfo `json:"OriginInfo,omitnil" name:"OriginInfo"`
+
+	// 回源协议，取值有：
+	// <li>FOLLOW: 协议跟随；</li>
+	// <li>HTTP: HTTP协议回源；</li>
+	// <li>HTTPS: HTTPS协议回源。</li>
+	// <li>不填保持原有配置。</li>
+	OriginProtocol *string `json:"OriginProtocol,omitnil" name:"OriginProtocol"`
+
+	// HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填保持原有配置。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil" name:"HttpOriginPort"`
+
+	// HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填保持原有配置。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil" name:"HttpsOriginPort"`
+
+	// IPv6状态，取值有：
+	// <li>follow：遵循站点IPv6配置；</li>
+	// <li>on：开启状态；</li>
+	// <li>off：关闭状态。</li>
+	// <li>不填保持原有配置。</li>
+	IPv6Status *string `json:"IPv6Status,omitnil" name:"IPv6Status"`
 }
 
 type ModifyAccelerationDomainRequest struct {
@@ -6174,6 +6414,26 @@ type ModifyAccelerationDomainRequest struct {
 
 	// 源站信息。
 	OriginInfo *OriginInfo `json:"OriginInfo,omitnil" name:"OriginInfo"`
+
+	// 回源协议，取值有：
+	// <li>FOLLOW: 协议跟随；</li>
+	// <li>HTTP: HTTP协议回源；</li>
+	// <li>HTTPS: HTTPS协议回源。</li>
+	// <li>不填保持原有配置。</li>
+	OriginProtocol *string `json:"OriginProtocol,omitnil" name:"OriginProtocol"`
+
+	// HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填保持原有配置。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil" name:"HttpOriginPort"`
+
+	// HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填保持原有配置。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil" name:"HttpsOriginPort"`
+
+	// IPv6状态，取值有：
+	// <li>follow：遵循站点IPv6配置；</li>
+	// <li>on：开启状态；</li>
+	// <li>off：关闭状态。</li>
+	// <li>不填保持原有配置。</li>
+	IPv6Status *string `json:"IPv6Status,omitnil" name:"IPv6Status"`
 }
 
 func (r *ModifyAccelerationDomainRequest) ToJsonString() string {
@@ -6191,6 +6451,10 @@ func (r *ModifyAccelerationDomainRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "DomainName")
 	delete(f, "OriginInfo")
+	delete(f, "OriginProtocol")
+	delete(f, "HttpOriginPort")
+	delete(f, "HttpsOriginPort")
+	delete(f, "IPv6Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccelerationDomainRequest has unknown keys!", "")
 	}
@@ -6981,6 +7245,92 @@ func (r *ModifyHostsCertificateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOriginGroupRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组ID，此参数必填。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 源站组类型，取值有：
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>不填保持原有配置。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 源站记录信息，不填保持原有配置。
+	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+}
+
+type ModifyOriginGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 源站组ID，此参数必填。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 源站组类型，取值有：
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>不填保持原有配置。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 源站记录信息，不填保持原有配置。
+	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+}
+
+func (r *ModifyOriginGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOriginGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Records")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOriginGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOriginGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyOriginGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOriginGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyOriginGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOriginGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRuleRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
@@ -7703,39 +8053,43 @@ type OriginDetail struct {
 }
 
 type OriginGroup struct {
-	// 站点ID。
-	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
-
-	// 站点名称。
-	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
-
 	// 源站组ID。
-	OriginGroupId *string `json:"OriginGroupId,omitnil" name:"OriginGroupId"`
-
-	// 源站类型，取值有：
-	// <li>self：自有源站；</li>
-	// <li>third_party：第三方源站；</li>
-	// <li>cos：腾讯云COS源站。</li>
-	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 源站组名称。
-	OriginGroupName *string `json:"OriginGroupName,omitnil" name:"OriginGroupName"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 源站配置类型，当OriginType=self时，取值有：
-	// <li>area：按区域配置；</li>
-	// <li>weight： 按权重配置。</li>
-	// <li>proto： 按HTTP协议配置。</li>当OriginType=third_party/cos时放空。
-	ConfigurationType *string `json:"ConfigurationType,omitnil" name:"ConfigurationType"`
+	// 源站组类型，取值有：
+	// <li>GENERAL：通用型源站组；</li>
+	// <li>HTTP： HTTP专用型源站组。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 源站记录信息。
-	OriginRecords []*OriginRecord `json:"OriginRecords,omitnil" name:"OriginRecords"`
+	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+
+	// 源站组被引用实例列表。	
+	References []*OriginGroupReference `json:"References,omitnil" name:"References"`
+
+	// 源站组创建时间。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 源站组更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
 
-	// 当OriginType=self时，表示回源Host。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
+type OriginGroupReference struct {
+	// 引用服务类型，取值有：
+	// <li>AccelerationDomain: 加速域名；</li>
+	// <li>RuleEngine: 规则引擎；</li>
+	// <li>Loadbalance: 负载均衡；</li>
+	// <li>ApplicationProxy: 四层代理。</li>
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 引用类型的实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 应用类型的实例名称。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 }
 
 type OriginInfo struct {
@@ -7802,40 +8156,25 @@ type OriginRecord struct {
 	// 源站记录值，不包含端口信息，可以为：IPv4，IPv6，域名格式。
 	Record *string `json:"Record,omitnil" name:"Record"`
 
+	// 源站类型，取值有：
+	// <li>IP_DOMAIN：IPV4、IPV6、域名类型源站；</li>
+	// <li>COS：COS源。</li>
+	// <li>AWS_S3：AWS S3对象存储源站。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
 	// 源站记录ID。
 	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
-	// 源站端口，取值范围：[1-65535]。
-	Port *uint64 `json:"Port,omitnil" name:"Port"`
-
-	// 当源站配置类型ConfigurationType=weight时，表示权重。
-	// 不配置权重信息时，所有源站组记录统一填写为0或者不填写，表示多个源站轮询回源。
-	// 配置权重信息时，取值为[1-100]，多个源站权重总和应为100，表示多个源站按照权重回源。
-	// 当源站配置类型ConfigurationType=proto时，表示权重。
-	// 不配置权重信息时，所有源站组记录统一填写为0或者不填写，表示多个源站轮询回源。
-	// 配置权重信息时，取值为[1-100]，源站组内Proto相同的多个源站权重总和应为100，表示多个源站按照权重回源。
+	// 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil" name:"Weight"`
 
-	// 当源站配置类型ConfigurationType=proto时，表示源站的协议类型，将按照客户端请求协议回到相应的源站，取值有：
-	// <li>http：HTTP协议源站；</li>
-	// <li>https：HTTPS协议源站。</li>
-	Proto *string `json:"Proto,omitnil" name:"Proto"`
-
-	// 当源站配置类型ConfigurationType=area时，表示区域，为空表示全部地区。取值为iso-3166中alpha-2编码或者大洲区域代码。大洲区域代码取值为：
-	// <li>Asia：亚洲；</li>
-	// <li>Europe：欧洲；</li>
-	// <li>Africa：非洲；</li>
-	// <li>Oceania：大洋洲；</li>
-	// <li>Americas：美洲。</li>源站组记录中，至少需要有一项为全部地区。
-	Area []*string `json:"Area,omitnil" name:"Area"`
-
-	// 当源站类型OriginType=third_part时有效
-	// 是否私有鉴权，取值有：
+	// 是否私有鉴权，当源站类型 RecordType=COS/AWS_S3 时生效，取值有：
 	// <li>true：使用私有鉴权；</li>
 	// <li>false：不使用私有鉴权。</li>不填写，默认值为：false。
 	Private *bool `json:"Private,omitnil" name:"Private"`
 
-	// 当源站类型Private=true时有效，表示私有鉴权使用参数。
+	// 私有鉴权参数，当源站类型Private=true时有效。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil" name:"PrivateParameters"`
 }
 
@@ -7927,7 +8266,9 @@ type PostMaxSize struct {
 type PrivateParameter struct {
 	// 私有鉴权参数名称，取值有：
 	// <li>AccessKeyId：鉴权参数Access Key ID；</li>
-	// <li>SecretAccessKey：鉴权参数Secret Access Key。</li>
+	// <li>SecretAccessKey：鉴权参数Secret Access Key；</li>
+	// <li>SignatureVersion：鉴权版本，v2或者v4；</li>
+	// <li>Region：存储桶地域。</li>
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 私有鉴权参数值。

@@ -1,3 +1,218 @@
+# Release v1.0.774
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 74 次发布
+
+发布时间：2023-10-26 01:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarm](https://cloud.tencent.com/document/api/614/56466)
+
+	* 新增入参：AlarmLevel, GroupTriggerStatus, GroupTriggerCondition, Tags, MonitorObjectType
+
+* [ModifyAlarm](https://cloud.tencent.com/document/api/614/56459)
+
+	* 新增入参：GroupTriggerStatus, GroupTriggerCondition, MonitorObjectType
+
+
+修改数据结构：
+
+* [AlarmInfo](https://cloud.tencent.com/document/api/614/56471#AlarmInfo)
+
+	* 新增成员：GroupTriggerStatus, GroupTriggerCondition, MonitorObjectType, AlarmLevel
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 102 次发布
+
+发布时间：2023-10-26 01:11:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScanMalwareSetting](https://cloud.tencent.com/document/api/296/58241)
+
+	* 新增出参：TaskId
+
+* [DescribeLicenseWhiteConfig](https://cloud.tencent.com/document/api/296/99627)
+
+	* 新增出参：FlagShip, Professional, PrattWhitney
+
+
+新增数据结构：
+
+* [VersionWhiteConfig](https://cloud.tencent.com/document/api/296/19867#VersionWhiteConfig)
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 25 次发布
+
+发布时间：2023-10-26 01:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WhoisInfo](https://cloud.tencent.com/document/api/1427/56185#WhoisInfo)
+
+	* 新增成员：Dnssec
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 115 次发布
+
+发布时间：2023-10-26 01:18:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32637)
+
+	* 新增入参：RecordStatusNotifyUrl
+
+* [ModifyLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32631)
+
+	* 新增入参：RecordStatusNotifyUrl
+
+
+修改数据结构：
+
+* [CallBackTemplateInfo](https://cloud.tencent.com/document/api/267/20474#CallBackTemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>AudioAuditNotifyUrl
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 59 次发布
+
+发布时间：2023-10-26 01:24:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAccelerationDomain](https://cloud.tencent.com/document/api/1552/86338)
+
+	* 新增入参：IPv6Status
+
+* [ModifyAccelerationDomain](https://cloud.tencent.com/document/api/1552/86335)
+
+	* 新增入参：IPv6Status
+
+	* <font color="#dd0000">**修改入参**：</font>OriginInfo
+
+
+### 第 58 次发布
+
+发布时间：2023-10-25 15:06:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOriginGroup](https://cloud.tencent.com/document/api/1552/80598)
+* [DeleteOriginGroup](https://cloud.tencent.com/document/api/1552/80596)
+* [ModifyOriginGroup](https://cloud.tencent.com/document/api/1552/80592)
+
+修改接口：
+
+* [CreateAccelerationDomain](https://cloud.tencent.com/document/api/1552/86338)
+
+	* 新增入参：OriginProtocol, HttpOriginPort, HttpsOriginPort
+
+* [DescribeOriginGroup](https://cloud.tencent.com/document/api/1552/80594)
+
+	* 新增入参：ZoneId
+
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
+
+* [ModifyAccelerationDomain](https://cloud.tencent.com/document/api/1552/86335)
+
+	* 新增入参：OriginProtocol, HttpOriginPort, HttpsOriginPort
+
+
+新增数据结构：
+
+* [OriginGroupReference](https://cloud.tencent.com/document/api/1552/80721#OriginGroupReference)
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：OriginProtocol, HttpOriginPort, HttpsOriginPort, IPv6Status
+
+* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
+
+	* 新增成员：GroupId, Name, Type, Records, References, CreateTime
+
+	* <font color="#dd0000">**删除成员**：</font>ZoneId, ZoneName, OriginGroupId, OriginType, OriginGroupName, ConfigurationType, OriginRecords, HostHeader
+
+	* <font color="#dd0000">**修改成员**：</font>UpdateTime
+
+* [OriginRecord](https://cloud.tencent.com/document/api/1552/80721#OriginRecord)
+
+	* 新增成员：Type
+
+	* <font color="#dd0000">**删除成员**：</font>Port, Proto, Area
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 66 次发布
+
+发布时间：2023-10-26 01:28:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyGenerateDeals](https://cloud.tencent.com/document/api/627/100753)
+
+新增数据结构：
+
+* [Goods](https://cloud.tencent.com/document/api/627/53609#Goods)
+* [GoodsDetail](https://cloud.tencent.com/document/api/627/53609#GoodsDetail)
+* [ProductInfo](https://cloud.tencent.com/document/api/627/53609#ProductInfo)
+
+
+
 # Release v1.0.773
 
 ## 云拨测(cat) 版本：2018-04-09

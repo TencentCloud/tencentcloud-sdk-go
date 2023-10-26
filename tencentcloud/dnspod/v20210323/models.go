@@ -6654,4 +6654,8 @@ type WhoisInfo struct {
 	// 更新日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedDate *string `json:"UpdatedDate,omitnil" name:"UpdatedDate"`
+
+	// dnssec
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dnssec *string `json:"Dnssec,omitnil" name:"Dnssec"`
 }

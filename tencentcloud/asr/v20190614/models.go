@@ -512,7 +512,7 @@ type CreateRecTaskRequestParams struct {
 	// 点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
 	CustomizationId *string `json:"CustomizationId,omitnil" name:"CustomizationId"`
 
-	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
+	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh,8k_zh）
 	// 0：不开启；
 	// 1：开启情绪识别，但不在文本展示情绪标签；
 	// 2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
@@ -690,7 +690,7 @@ type CreateRecTaskRequest struct {
 	// 点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
 	CustomizationId *string `json:"CustomizationId,omitnil" name:"CustomizationId"`
 
-	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
+	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh,8k_zh）
 	// 0：不开启；
 	// 1：开启情绪识别，但不在文本展示情绪标签；
 	// 2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）

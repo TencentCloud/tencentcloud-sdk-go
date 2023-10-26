@@ -275,7 +275,7 @@ const (
 	// 失败的目标资源。
 	RESOURCEUNAVAILABLE_FAILEDTOBESCRIBERESOURCES = "ResourceUnavailable.FailedToBescribeResources"
 
-	// 获取发布的作业作业配置错误。
+	// 获取发布的作业配置错误。
 	RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
 
 	// 作业资源配置未就绪。

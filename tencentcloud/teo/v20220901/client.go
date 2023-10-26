@@ -521,6 +521,65 @@ func (c *Client) CreateApplicationProxyRuleWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateOriginGroupRequest() (request *CreateOriginGroupRequest) {
+    request = &CreateOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateOriginGroup")
+    
+    
+    return
+}
+
+func NewCreateOriginGroupResponse() (response *CreateOriginGroupResponse) {
+    response = &CreateOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOriginGroup
+// 创建源站组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
+    return c.CreateOriginGroupWithContext(context.Background(), request)
+}
+
+// CreateOriginGroup
+// 创建源站组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOriginGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePlanForZoneRequest() (request *CreatePlanForZoneRequest) {
     request = &CreatePlanForZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1366,6 +1425,61 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteApplicationProxyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOriginGroupRequest() (request *DeleteOriginGroupRequest) {
+    request = &DeleteOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteOriginGroup")
+    
+    
+    return
+}
+
+func NewDeleteOriginGroupResponse() (response *DeleteOriginGroupResponse) {
+    response = &DeleteOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOriginGroup
+// 删除源站组，若源站组仍然被服务（例如：四层代理，域名服务，负载均衡，规则引起）引用，将不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
+    return c.DeleteOriginGroupWithContext(context.Background(), request)
+}
+
+// DeleteOriginGroup
+// 删除源站组，若源站组仍然被服务（例如：四层代理，域名服务，负载均衡，规则引起）引用，将不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOriginGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -3778,6 +3892,67 @@ func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyHostsCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOriginGroupRequest() (request *ModifyOriginGroupRequest) {
+    request = &ModifyOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyOriginGroup")
+    
+    
+    return
+}
+
+func NewModifyOriginGroupResponse() (response *ModifyOriginGroupResponse) {
+    response = &ModifyOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOriginGroup
+// 修改源站组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) ModifyOriginGroup(request *ModifyOriginGroupRequest) (response *ModifyOriginGroupResponse, err error) {
+    return c.ModifyOriginGroupWithContext(context.Background(), request)
+}
+
+// ModifyOriginGroup
+// 修改源站组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) ModifyOriginGroupWithContext(ctx context.Context, request *ModifyOriginGroupRequest) (response *ModifyOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOriginGroupResponse()
     err = c.Send(request, response)
     return
 }

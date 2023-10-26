@@ -139,6 +139,22 @@ type AlarmInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
 
+	// 分组触发状态。1：开启，0：关闭（默认）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+
+	// 分组触发条件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+
+	// 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+
+	// 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
 	// 多触发条件。
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -990,7 +1006,11 @@ type CreateAlarmRequestParams struct {
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
 
-	// 告警重复的周期。单位是分钟。取值范围是0~1440。
+	// 告警重复的周期。
+	// 
+	// 单位是分钟。
+	// 
+	// 取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
@@ -1003,15 +1023,26 @@ type CreateAlarmRequestParams struct {
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
+	// 告警级别。
+	// 
+	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+	// 
+	// 注意:  
+	// - 不填则默认为0。
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
 	// 多触发条件。
 	// 
 	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
 	// 
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
 
-	// 是否开启告警策略。默认值为true
+	// 是否开启告警策略。
+	// 
+	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 用户自定义告警内容
@@ -1022,6 +1053,26 @@ type CreateAlarmRequestParams struct {
 
 	// 多维分析
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+
+	// 分组触发状态。
+	// 
+	// 默认值false
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+
+	// 分组触发条件。
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
+	// 
+	// 最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+	// 
+	// 不填则默认为0。
+	// 
+	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 }
 
 type CreateAlarmRequest struct {
@@ -1039,7 +1090,11 @@ type CreateAlarmRequest struct {
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
 
-	// 告警重复的周期。单位是分钟。取值范围是0~1440。
+	// 告警重复的周期。
+	// 
+	// 单位是分钟。
+	// 
+	// 取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
@@ -1052,15 +1107,26 @@ type CreateAlarmRequest struct {
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
+	// 告警级别。
+	// 
+	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+	// 
+	// 注意:  
+	// - 不填则默认为0。
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
 	// 多触发条件。
 	// 
 	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
 	// 
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
 
-	// 是否开启告警策略。默认值为true
+	// 是否开启告警策略。
+	// 
+	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 用户自定义告警内容
@@ -1071,6 +1137,26 @@ type CreateAlarmRequest struct {
 
 	// 多维分析
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+
+	// 分组触发状态。
+	// 
+	// 默认值false
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+
+	// 分组触发条件。
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
+	// 
+	// 最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+	// 
+	// 不填则默认为0。
+	// 
+	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 }
 
 func (r *CreateAlarmRequest) ToJsonString() string {
@@ -1092,11 +1178,16 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "AlarmPeriod")
 	delete(f, "AlarmNoticeIds")
 	delete(f, "Condition")
+	delete(f, "AlarmLevel")
 	delete(f, "MultiConditions")
 	delete(f, "Status")
 	delete(f, "MessageTemplate")
 	delete(f, "CallBack")
 	delete(f, "Analysis")
+	delete(f, "GroupTriggerStatus")
+	delete(f, "GroupTriggerCondition")
+	delete(f, "Tags")
+	delete(f, "MonitorObjectType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmRequest has unknown keys!", "")
 	}
@@ -6930,6 +7021,16 @@ type ModifyAlarmRequestParams struct {
 
 	// 多维分析
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+
+	// 分组触发状态。true：开启，false：关闭（默认）
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+
+	// 分组触发条件。
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+
+	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+	// <li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 }
 
 type ModifyAlarmRequest struct {
@@ -6987,6 +7088,16 @@ type ModifyAlarmRequest struct {
 
 	// 多维分析
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+
+	// 分组触发状态。true：开启，false：关闭（默认）
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+
+	// 分组触发条件。
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+
+	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+	// <li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 }
 
 func (r *ModifyAlarmRequest) ToJsonString() string {
@@ -7015,6 +7126,9 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "MessageTemplate")
 	delete(f, "CallBack")
 	delete(f, "Analysis")
+	delete(f, "GroupTriggerStatus")
+	delete(f, "GroupTriggerCondition")
+	delete(f, "MonitorObjectType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmRequest has unknown keys!", "")
 	}

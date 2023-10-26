@@ -5116,6 +5116,10 @@ func (r *CreateScanMalwareSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScanMalwareSettingResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -19810,6 +19814,15 @@ func (r *DescribeLicenseWhiteConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseWhiteConfigResponseParams struct {
+	// 旗舰版 配置信息
+	FlagShip *VersionWhiteConfig `json:"FlagShip,omitnil" name:"FlagShip"`
+
+	// 专业版 配置信息
+	Professional *VersionWhiteConfig `json:"Professional,omitnil" name:"Professional"`
+
+	// 普惠版 配置信息
+	PrattWhitney *VersionWhiteConfig `json:"PrattWhitney,omitnil" name:"PrattWhitney"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -46932,6 +46945,20 @@ type ValueInfo struct {
 
 	// 是否包含中文
 	ContainZH *bool `json:"ContainZH,omitnil" name:"ContainZH"`
+}
+
+type VersionWhiteConfig struct {
+	// 到期天数
+	Deadline *uint64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 授权数量
+	LicenseNum *uint64 `json:"LicenseNum,omitnil" name:"LicenseNum"`
+
+	// 是否可申请
+	IsApplyFor *bool `json:"IsApplyFor,omitnil" name:"IsApplyFor"`
+
+	// 类型
+	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 type VertexDetail struct {

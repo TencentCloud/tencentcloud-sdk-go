@@ -563,6 +563,9 @@ const (
 	// 存在四层代理实例处于停用中状态，暂不支持停用站点。
 	OPERATIONDENIED_L4PROXYINSTOPPINGSTATUS = "OperationDenied.L4ProxyInStoppingStatus"
 
+	// 绑定4层实例有处于非运行中的状态，禁止操作。
+	OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
+
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
