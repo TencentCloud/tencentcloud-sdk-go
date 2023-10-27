@@ -1266,6 +1266,10 @@ type Span struct {
 	// 产生时间戳(毫秒)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeMillis *int64 `json:"StartTimeMillis,omitnil" name:"StartTimeMillis"`
+
+	// Parent Span Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpanID *string `json:"ParentSpanID,omitnil" name:"ParentSpanID"`
 }
 
 type SpanLog struct {

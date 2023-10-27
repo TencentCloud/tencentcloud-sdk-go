@@ -18203,7 +18203,7 @@ func (r *RunPrometheusInstanceResponse) FromJsonString(s string) error {
 }
 
 type RunSecurityServiceEnabled struct {
-	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>true：表示开启云安全服务<br><li>false：表示不开启云安全服务<br><br>默认取值：true。
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }
 

@@ -3540,6 +3540,112 @@ func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRabbitMQQueueDetailRequest() (request *DescribeRabbitMQQueueDetailRequest) {
+    request = &DescribeRabbitMQQueueDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQQueueDetail")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQQueueDetailResponse() (response *DescribeRabbitMQQueueDetailResponse) {
+    response = &DescribeRabbitMQQueueDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRabbitMQQueueDetail
+// 查询RabbitMQ队列详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQQueueDetail(request *DescribeRabbitMQQueueDetailRequest) (response *DescribeRabbitMQQueueDetailResponse, err error) {
+    return c.DescribeRabbitMQQueueDetailWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQQueueDetail
+// 查询RabbitMQ队列详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQQueueDetailWithContext(ctx context.Context, request *DescribeRabbitMQQueueDetailRequest) (response *DescribeRabbitMQQueueDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQQueueDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQQueueDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQQueueDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQQueuesRequest() (request *DescribeRabbitMQQueuesRequest) {
+    request = &DescribeRabbitMQQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQQueues")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQQueuesResponse() (response *DescribeRabbitMQQueuesResponse) {
+    response = &DescribeRabbitMQQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRabbitMQQueues
+// 查询RabbitMQ队列列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQQueues(request *DescribeRabbitMQQueuesRequest) (response *DescribeRabbitMQQueuesResponse, err error) {
+    return c.DescribeRabbitMQQueuesWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQQueues
+// 查询RabbitMQ队列列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQQueuesWithContext(ctx context.Context, request *DescribeRabbitMQQueuesRequest) (response *DescribeRabbitMQQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQQueuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQQueues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRabbitMQUserRequest() (request *DescribeRabbitMQUserRequest) {
     request = &DescribeRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

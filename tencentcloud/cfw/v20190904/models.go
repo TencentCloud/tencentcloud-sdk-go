@@ -952,6 +952,336 @@ func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAlertCenterIsolateRequestParams struct {
+	// 处置对象,资产列表
+	HandleAssetList []*string `json:"HandleAssetList,omitnil" name:"HandleAssetList"`
+
+	// 处置时间
+	// 1  1天
+	// 7   7天
+	// -2 永久
+	HandleTime *int64 `json:"HandleTime,omitnil" name:"HandleTime"`
+
+	// 当前日志方向： 0 出向 1 入向
+	AlertDirection *int64 `json:"AlertDirection,omitnil" name:"AlertDirection"`
+
+	// 隔离类型 
+	// 1 互联网入站
+	// 2 互联网出站
+	// 4 内网访问
+	IsolateType []*int64 `json:"IsolateType,omitnil" name:"IsolateType"`
+
+	// 运维模式 1 IP白名单 2 身份认证
+	OmMode *int64 `json:"OmMode,omitnil" name:"OmMode"`
+}
+
+type CreateAlertCenterIsolateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 处置对象,资产列表
+	HandleAssetList []*string `json:"HandleAssetList,omitnil" name:"HandleAssetList"`
+
+	// 处置时间
+	// 1  1天
+	// 7   7天
+	// -2 永久
+	HandleTime *int64 `json:"HandleTime,omitnil" name:"HandleTime"`
+
+	// 当前日志方向： 0 出向 1 入向
+	AlertDirection *int64 `json:"AlertDirection,omitnil" name:"AlertDirection"`
+
+	// 隔离类型 
+	// 1 互联网入站
+	// 2 互联网出站
+	// 4 内网访问
+	IsolateType []*int64 `json:"IsolateType,omitnil" name:"IsolateType"`
+
+	// 运维模式 1 IP白名单 2 身份认证
+	OmMode *int64 `json:"OmMode,omitnil" name:"OmMode"`
+}
+
+func (r *CreateAlertCenterIsolateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterIsolateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HandleAssetList")
+	delete(f, "HandleTime")
+	delete(f, "AlertDirection")
+	delete(f, "IsolateType")
+	delete(f, "OmMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterIsolateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterIsolateResponseParams struct {
+	// 返回状态码：
+	// 0 成功
+	// 非0 失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息：
+	// success 成功
+	// 其他
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 处置状态码：
+	// 0  处置成功
+	// -1 通用错误，不用处理
+	// -3 表示重复，需重新刷新列表
+	// 其他
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAlertCenterIsolateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlertCenterIsolateResponseParams `json:"Response"`
+}
+
+func (r *CreateAlertCenterIsolateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterIsolateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterOmitRequestParams struct {
+	// 处置对象,ID列表，  IdLists和IpList二选一
+	HandleIdList []*string `json:"HandleIdList,omitnil" name:"HandleIdList"`
+
+	// 忽略数据来源：
+	// AlertTable 告警中心  InterceptionTable拦截列表
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+}
+
+type CreateAlertCenterOmitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 处置对象,ID列表，  IdLists和IpList二选一
+	HandleIdList []*string `json:"HandleIdList,omitnil" name:"HandleIdList"`
+
+	// 忽略数据来源：
+	// AlertTable 告警中心  InterceptionTable拦截列表
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+}
+
+func (r *CreateAlertCenterOmitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterOmitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HandleIdList")
+	delete(f, "TableType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterOmitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterOmitResponseParams struct {
+	// 返回状态码：
+	// 0 成功
+	// 非0 失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息：
+	// success 成功
+	// 其他
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 处置状态码：
+	// 0  处置成功
+	// -1 通用错误，不用处理
+	// -3 表示重复，需重新刷新列表
+	// 其他
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAlertCenterOmitResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlertCenterOmitResponseParams `json:"Response"`
+}
+
+func (r *CreateAlertCenterOmitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterOmitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterRuleRequestParams struct {
+	// 处置时间
+	// 1  1天
+	// 7   7天
+	// -2 永久
+	HandleTime *int64 `json:"HandleTime,omitnil" name:"HandleTime"`
+
+	// 处置类型
+	// 当HandleIdList 不为空时：1封禁 2放通  
+	// 当HandleIpList 不为空时：3放通 4封禁
+	HandleType *int64 `json:"HandleType,omitnil" name:"HandleType"`
+
+	// 当前日志方向： 0 出向 1 入向
+	AlertDirection *int64 `json:"AlertDirection,omitnil" name:"AlertDirection"`
+
+	// 处置方向： 0出向 1入向 0,1出入向 3内网
+	HandleDirection *string `json:"HandleDirection,omitnil" name:"HandleDirection"`
+
+	// 处置对象,ID列表，  IdLists和IpList二选一
+	HandleIdList []*string `json:"HandleIdList,omitnil" name:"HandleIdList"`
+
+	// 处置对象,IP列表，  IdLists和IpList二选一
+	HandleIpList []*string `json:"HandleIpList,omitnil" name:"HandleIpList"`
+
+	// 处置描述
+	HandleComment *string `json:"HandleComment,omitnil" name:"HandleComment"`
+
+	// 放通原因:
+	// 0默认 1重复 2误报 3紧急放通
+	IgnoreReason *int64 `json:"IgnoreReason,omitnil" name:"IgnoreReason"`
+
+	// 封禁域名-保留字段
+	BlockDomain *string `json:"BlockDomain,omitnil" name:"BlockDomain"`
+}
+
+type CreateAlertCenterRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 处置时间
+	// 1  1天
+	// 7   7天
+	// -2 永久
+	HandleTime *int64 `json:"HandleTime,omitnil" name:"HandleTime"`
+
+	// 处置类型
+	// 当HandleIdList 不为空时：1封禁 2放通  
+	// 当HandleIpList 不为空时：3放通 4封禁
+	HandleType *int64 `json:"HandleType,omitnil" name:"HandleType"`
+
+	// 当前日志方向： 0 出向 1 入向
+	AlertDirection *int64 `json:"AlertDirection,omitnil" name:"AlertDirection"`
+
+	// 处置方向： 0出向 1入向 0,1出入向 3内网
+	HandleDirection *string `json:"HandleDirection,omitnil" name:"HandleDirection"`
+
+	// 处置对象,ID列表，  IdLists和IpList二选一
+	HandleIdList []*string `json:"HandleIdList,omitnil" name:"HandleIdList"`
+
+	// 处置对象,IP列表，  IdLists和IpList二选一
+	HandleIpList []*string `json:"HandleIpList,omitnil" name:"HandleIpList"`
+
+	// 处置描述
+	HandleComment *string `json:"HandleComment,omitnil" name:"HandleComment"`
+
+	// 放通原因:
+	// 0默认 1重复 2误报 3紧急放通
+	IgnoreReason *int64 `json:"IgnoreReason,omitnil" name:"IgnoreReason"`
+
+	// 封禁域名-保留字段
+	BlockDomain *string `json:"BlockDomain,omitnil" name:"BlockDomain"`
+}
+
+func (r *CreateAlertCenterRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HandleTime")
+	delete(f, "HandleType")
+	delete(f, "AlertDirection")
+	delete(f, "HandleDirection")
+	delete(f, "HandleIdList")
+	delete(f, "HandleIpList")
+	delete(f, "HandleComment")
+	delete(f, "IgnoreReason")
+	delete(f, "BlockDomain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterRuleResponseParams struct {
+	// 返回状态码：
+	// 0 成功
+	// 非0 失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息：
+	// success 成功
+	// 其他
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 处置状态码：
+	// 0  处置成功
+	// -1 通用错误，不用处理
+	// -3 表示重复，需重新刷新列表
+	// 其他
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAlertCenterRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlertCenterRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAlertCenterRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBlockIgnoreRuleListRequestParams struct {
 	// 规则列表
 	Rules []*IntrusionDefenseRule `json:"Rules,omitnil" name:"Rules"`
@@ -6044,7 +6374,7 @@ type FwGroupSwitchShow struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsRegion []*string `json:"FwInsRegion,omitnil" name:"FwInsRegion"`
 
-	// 0 观察 1 拦截 2 严格 3 关闭
+	// 0 观察 1 拦截 2 严格 3 关闭 4 不支持ips 前端展示tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpsAction *int64 `json:"IpsAction,omitnil" name:"IpsAction"`
 
@@ -8768,6 +9098,18 @@ type NatInstanceInfo struct {
 	// 是的需要升级引擎 支持 nat拨测 1需要 0不需要
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NeedProbeEngineUpdate *int64 `json:"NeedProbeEngineUpdate,omitnil" name:"NeedProbeEngineUpdate"`
+
+	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficMode *string `json:"TrafficMode,omitnil" name:"TrafficMode"`
+
+	// 实例主所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 实例备所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneBak *string `json:"ZoneBak,omitnil" name:"ZoneBak"`
 }
 
 type NatSwitchListData struct {
@@ -10077,6 +10419,14 @@ type VpcFwCvmInsInfo struct {
 	// 防火墙CVM带宽值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandWidth *int64 `json:"BandWidth,omitnil" name:"BandWidth"`
+
+	// 实例主机所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 实例备机所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneBak *string `json:"ZoneBak,omitnil" name:"ZoneBak"`
 }
 
 type VpcFwGroupInfo struct {
@@ -10234,6 +10584,10 @@ type VpcFwInstanceInfo struct {
 	// 引擎是否可升级：0，不可升级；1，可升级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil" name:"UpdateEnable"`
+
+	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficMode *string `json:"TrafficMode,omitnil" name:"TrafficMode"`
 }
 
 type VpcFwInstanceShow struct {

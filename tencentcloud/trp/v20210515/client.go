@@ -1641,6 +1641,65 @@ func (c *Client) DescribeMerchantsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribePlanQRCodesRequest() (request *DescribePlanQRCodesRequest) {
+    request = &DescribePlanQRCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribePlanQRCodes")
+    
+    
+    return
+}
+
+func NewDescribePlanQRCodesResponse() (response *DescribePlanQRCodesResponse) {
+    response = &DescribePlanQRCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlanQRCodes
+// 查询安心计划二维码列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlanQRCodes(request *DescribePlanQRCodesRequest) (response *DescribePlanQRCodesResponse, err error) {
+    return c.DescribePlanQRCodesWithContext(context.Background(), request)
+}
+
+// DescribePlanQRCodes
+// 查询安心计划二维码列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlanQRCodesWithContext(ctx context.Context, request *DescribePlanQRCodesRequest) (response *DescribePlanQRCodesResponse, err error) {
+    if request == nil {
+        request = NewDescribePlanQRCodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlanQRCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlanQRCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductByIdRequest() (request *DescribeProductByIdRequest) {
     request = &DescribeProductByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

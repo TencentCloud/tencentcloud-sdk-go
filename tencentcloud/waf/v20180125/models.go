@@ -3159,6 +3159,19 @@ type DescribeAntiInfoLeakRulesStrategyItem struct {
 type DescribeAntiInfoLeakageRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 翻页支持，读取偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 翻页支持，读取长度限制
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方式，asc或者desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 过滤器,可以允许如下的值：
+	// RuleId,Match_field,Name,Action,Status
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAntiInfoLeakageRulesRequest struct {
@@ -3166,6 +3179,19 @@ type DescribeAntiInfoLeakageRulesRequest struct {
 	
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 翻页支持，读取偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 翻页支持，读取长度限制
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方式，asc或者desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 过滤器,可以允许如下的值：
+	// RuleId,Match_field,Name,Action,Status
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAntiInfoLeakageRulesRequest) ToJsonString() string {
@@ -3181,6 +3207,10 @@ func (r *DescribeAntiInfoLeakageRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAntiInfoLeakageRulesRequest has unknown keys!", "")
 	}

@@ -5641,7 +5641,7 @@ type InquiryPriceRunInstancesRequestParams struct {
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 
 	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 30]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
@@ -5655,6 +5655,9 @@ type InquiryPriceRunInstancesRequestParams struct {
 
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil" name:"HpcClusterId"`
+
+	// 实例启动模板。
+	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil" name:"LaunchTemplate"`
 }
 
 type InquiryPriceRunInstancesRequest struct {
@@ -5704,7 +5707,7 @@ type InquiryPriceRunInstancesRequest struct {
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 
 	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 30]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
@@ -5718,6 +5721,9 @@ type InquiryPriceRunInstancesRequest struct {
 
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil" name:"HpcClusterId"`
+
+	// 实例启动模板。
+	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil" name:"LaunchTemplate"`
 }
 
 func (r *InquiryPriceRunInstancesRequest) ToJsonString() string {
@@ -5751,6 +5757,7 @@ func (r *InquiryPriceRunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagSpecification")
 	delete(f, "InstanceMarketOptions")
 	delete(f, "HpcClusterId")
+	delete(f, "LaunchTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRunInstancesRequest has unknown keys!", "")
 	}
@@ -6148,7 +6155,7 @@ type InternetAccessible struct {
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/12523)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
 
-	// 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
+	// 是否分配公网IP。取值范围：<br><li>true：表示分配公网IP<br><li>false：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
 	PublicIpAssigned *bool `json:"PublicIpAssigned,omitnil" name:"PublicIpAssigned"`
 
 	// 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
@@ -8478,7 +8485,7 @@ type ResetInstanceRequestParams struct {
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	// <br>默认取值：默认使用当前镜像。
+	// 默认取值：默认使用当前镜像。
 	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 实例系统盘配置信息。系统盘为云盘的实例可以通过该参数指定重装后的系统盘大小来实现对系统盘的扩容操作。系统盘大小只支持扩容不支持缩容；重装只支持修改系统盘的大小，不能修改系统盘的类型。
@@ -8504,7 +8511,7 @@ type ResetInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	// <br>默认取值：默认使用当前镜像。
+	// 默认取值：默认使用当前镜像。
 	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 实例系统盘配置信息。系统盘为云盘的实例可以通过该参数指定重装后的系统盘大小来实现对系统盘的扩容操作。系统盘大小只支持扩容不支持缩容；重装只支持修改系统盘的大小，不能修改系统盘的类型。
@@ -9146,7 +9153,7 @@ type RunMonitorServiceEnabled struct {
 }
 
 type RunSecurityServiceEnabled struct {
-	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>true：表示开启云安全服务<br><li>false：表示不开启云安全服务<br><br>默认取值：true。
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }
 
@@ -9173,9 +9180,11 @@ type Snapshot struct {
 
 type SpotMarketOptions struct {
 	// 竞价出价
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPrice *string `json:"MaxPrice,omitnil" name:"MaxPrice"`
 
 	// 竞价请求类型，当前仅支持类型：one-time
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotInstanceType *string `json:"SpotInstanceType,omitnil" name:"SpotInstanceType"`
 }
 

@@ -541,7 +541,7 @@ func NewCreateOriginGroupResponse() (response *CreateOriginGroupResponse) {
 }
 
 // CreateOriginGroup
-// 创建源站组
+// 创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
@@ -555,7 +555,7 @@ func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response 
 }
 
 // CreateOriginGroup
-// 创建源站组
+// 创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
@@ -2701,6 +2701,61 @@ func (c *Client) DescribeRulesSettingWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeSecurityTemplateBindingsRequest() (request *DescribeSecurityTemplateBindingsRequest) {
+    request = &DescribeSecurityTemplateBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityTemplateBindings")
+    
+    
+    return
+}
+
+func NewDescribeSecurityTemplateBindingsResponse() (response *DescribeSecurityTemplateBindingsResponse) {
+    response = &DescribeSecurityTemplateBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecurityTemplateBindings
+// 查询指定策略模板的绑定关系列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSecurityTemplateBindings(request *DescribeSecurityTemplateBindingsRequest) (response *DescribeSecurityTemplateBindingsResponse, err error) {
+    return c.DescribeSecurityTemplateBindingsWithContext(context.Background(), request)
+}
+
+// DescribeSecurityTemplateBindings
+// 查询指定策略模板的绑定关系列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSecurityTemplateBindingsWithContext(ctx context.Context, request *DescribeSecurityTemplateBindingsRequest) (response *DescribeSecurityTemplateBindingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityTemplateBindingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityTemplateBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityTemplateBindingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTimingL4DataRequest() (request *DescribeTimingL4DataRequest) {
     request = &DescribeTimingL4DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3916,7 +3971,7 @@ func NewModifyOriginGroupResponse() (response *ModifyOriginGroupResponse) {
 }
 
 // ModifyOriginGroup
-// 修改源站组
+// 修改源站组配置，新提交的源站记录将会覆盖原有源站组中的源站记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3931,7 +3986,7 @@ func (c *Client) ModifyOriginGroup(request *ModifyOriginGroupRequest) (response 
 }
 
 // ModifyOriginGroup
-// 修改源站组
+// 修改源站组配置，新提交的源站记录将会覆盖原有源站组中的源站记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

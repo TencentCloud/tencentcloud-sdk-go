@@ -1518,37 +1518,43 @@ func (r *CreateApplicationProxyRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOriginGroupRequestParams struct {
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 源站组类型，此参数必填，取值有：
-	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
-	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
+	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 源站记录信息，此参数必填。
 	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+
+	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
 }
 
 type CreateOriginGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 源站组类型，此参数必填，取值有：
-	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
-	// <li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
+	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 源站记录信息，此参数必填。
 	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+
+	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
 }
 
 func (r *CreateOriginGroupRequest) ToJsonString() string {
@@ -1567,6 +1573,7 @@ func (r *CreateOriginGroupRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "Records")
+	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOriginGroupRequest has unknown keys!", "")
 	}
@@ -4540,6 +4547,76 @@ func (r *DescribeRulesSettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSecurityTemplateBindingsRequestParams struct {
+	// 要查询的站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 要查询的策略模板 ID。
+	TemplateId []*string `json:"TemplateId,omitnil" name:"TemplateId"`
+}
+
+type DescribeSecurityTemplateBindingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 要查询的策略模板 ID。
+	TemplateId []*string `json:"TemplateId,omitnil" name:"TemplateId"`
+}
+
+func (r *DescribeSecurityTemplateBindingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityTemplateBindingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityTemplateBindingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecurityTemplateBindingsResponseParams struct {
+	// 指定策略模板的绑定关系列表。
+	// 
+	// 当某个站点中的域名包含在指定策略模板的绑定关系中时，绑定关系列表 `TemplateScope` 中会包含该站点的 `ZoneId`，和该站点下的和该策略模板有关的域名绑定关系。
+	// 
+	// 注意：当没有任何域名正在绑定或已经绑定到指定策略模板时，绑定关系为空。即：返回结构体中，`TemplateScope` 数组长度为 0。
+	// 
+	// 绑定关系中，同一域名可能在 `EntityStatus` 列表中重复出现，并标记为不同 `Status` 。例如，正在被绑定到其他策略模板的域名，会同时标记为 `online` 和 `pending` 。
+	SecurityTemplate []*SecurityTemplateBinding `json:"SecurityTemplate,omitnil" name:"SecurityTemplate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSecurityTemplateBindingsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSecurityTemplateBindingsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSecurityTemplateBindingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityTemplateBindingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTimingL4DataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
@@ -5830,6 +5907,18 @@ type DropPageDetail struct {
 
 	// 自定义响应 Id。该 Id 可通过查询自定义错误页列表接口获取。默认值为default，使用系统默认页面。Type 类型是 page 时必填，且不能为空。
 	CustomResponseId *string `json:"CustomResponseId,omitnil" name:"CustomResponseId"`
+}
+
+type EntityStatus struct {
+	// 实例名，现在只有子域名。
+	Entity *string `json:"Entity,omitnil" name:"Entity"`
+
+	// 实例配置下发状态，取值有：
+	// <li>online：配置已生效；</li><li>fail：配置失败；</li><li> process：配置下发中。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 实例配置下发信息提示。
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 type ExceptConfig struct {
@@ -7246,13 +7335,13 @@ func (r *ModifyHostsCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyOriginGroupRequestParams struct {
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组ID，此参数必填。
+	// 源站组 ID，此参数必填。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
-	// 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+	// 源站组名称，不填保持原有配置，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。	
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 源站组类型，取值有：
@@ -7262,18 +7351,21 @@ type ModifyOriginGroupRequestParams struct {
 
 	// 源站记录信息，不填保持原有配置。
 	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+
+	// 回源 Host Header，仅 Type = HTTP 时生效， 不填或者填空表示不配置回源Host，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
 }
 
 type ModifyOriginGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组ID，此参数必填。
+	// 源站组 ID，此参数必填。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
-	// 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+	// 源站组名称，不填保持原有配置，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。	
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 源站组类型，取值有：
@@ -7283,6 +7375,9 @@ type ModifyOriginGroupRequest struct {
 
 	// 源站记录信息，不填保持原有配置。
 	Records []*OriginRecord `json:"Records,omitnil" name:"Records"`
+
+	// 回源 Host Header，仅 Type = HTTP 时生效， 不填或者填空表示不配置回源Host，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
 }
 
 func (r *ModifyOriginGroupRequest) ToJsonString() string {
@@ -7302,6 +7397,7 @@ func (r *ModifyOriginGroupRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "Records")
+	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOriginGroupRequest has unknown keys!", "")
 	}
@@ -8848,6 +8944,14 @@ type SecurityConfig struct {
 	SlowPostConfig *SlowPostConfig `json:"SlowPostConfig,omitnil" name:"SlowPostConfig"`
 }
 
+type SecurityTemplateBinding struct {
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 模板绑定状态。
+	TemplateScope []*TemplateScope `json:"TemplateScope,omitnil" name:"TemplateScope"`
+}
+
 type SecurityType struct {
 	// 安全类型开关，取值为：
 	// <li> on：开启；</li>
@@ -9072,6 +9176,16 @@ type TemplateConfig struct {
 
 	// 模板名称。
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+}
+
+type TemplateScope struct {
+	// 站点ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 实例状态列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntityStatus []*EntityStatus `json:"EntityStatus,omitnil" name:"EntityStatus"`
 }
 
 type TimingDataItem struct {

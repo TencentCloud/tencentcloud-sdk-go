@@ -546,6 +546,171 @@ func (c *Client) CreateAddressTemplateWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateAlertCenterIsolateRequest() (request *CreateAlertCenterIsolateRequest) {
+    request = &CreateAlertCenterIsolateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateAlertCenterIsolate")
+    
+    
+    return
+}
+
+func NewCreateAlertCenterIsolateResponse() (response *CreateAlertCenterIsolateResponse) {
+    response = &CreateAlertCenterIsolateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlertCenterIsolate
+// 用户告警中心-封隔离处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterIsolate(request *CreateAlertCenterIsolateRequest) (response *CreateAlertCenterIsolateResponse, err error) {
+    return c.CreateAlertCenterIsolateWithContext(context.Background(), request)
+}
+
+// CreateAlertCenterIsolate
+// 用户告警中心-封隔离处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterIsolateWithContext(ctx context.Context, request *CreateAlertCenterIsolateRequest) (response *CreateAlertCenterIsolateResponse, err error) {
+    if request == nil {
+        request = NewCreateAlertCenterIsolateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlertCenterIsolate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlertCenterIsolateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAlertCenterOmitRequest() (request *CreateAlertCenterOmitRequest) {
+    request = &CreateAlertCenterOmitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateAlertCenterOmit")
+    
+    
+    return
+}
+
+func NewCreateAlertCenterOmitResponse() (response *CreateAlertCenterOmitResponse) {
+    response = &CreateAlertCenterOmitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlertCenterOmit
+// 用户告警中心-忽略处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterOmit(request *CreateAlertCenterOmitRequest) (response *CreateAlertCenterOmitResponse, err error) {
+    return c.CreateAlertCenterOmitWithContext(context.Background(), request)
+}
+
+// CreateAlertCenterOmit
+// 用户告警中心-忽略处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterOmitWithContext(ctx context.Context, request *CreateAlertCenterOmitRequest) (response *CreateAlertCenterOmitResponse, err error) {
+    if request == nil {
+        request = NewCreateAlertCenterOmitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlertCenterOmit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlertCenterOmitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAlertCenterRuleRequest() (request *CreateAlertCenterRuleRequest) {
+    request = &CreateAlertCenterRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateAlertCenterRule")
+    
+    
+    return
+}
+
+func NewCreateAlertCenterRuleResponse() (response *CreateAlertCenterRuleResponse) {
+    response = &CreateAlertCenterRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlertCenterRule
+// 用户告警中心-封禁、放通处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterRule(request *CreateAlertCenterRuleRequest) (response *CreateAlertCenterRuleResponse, err error) {
+    return c.CreateAlertCenterRuleWithContext(context.Background(), request)
+}
+
+// CreateAlertCenterRule
+// 用户告警中心-封禁、放通处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterRuleWithContext(ctx context.Context, request *CreateAlertCenterRuleRequest) (response *CreateAlertCenterRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAlertCenterRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlertCenterRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlertCenterRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlockIgnoreRuleListRequest() (request *CreateBlockIgnoreRuleListRequest) {
     request = &CreateBlockIgnoreRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},

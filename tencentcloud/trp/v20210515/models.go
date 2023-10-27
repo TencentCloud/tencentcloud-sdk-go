@@ -2903,6 +2903,97 @@ func (r *DescribeMerchantsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePlanQRCodesRequestParams struct {
+	// 计划ID
+	PlanId *int64 `json:"PlanId,omitnil" name:"PlanId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+type DescribePlanQRCodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 计划ID
+	PlanId *int64 `json:"PlanId,omitnil" name:"PlanId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+func (r *DescribePlanQRCodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlanQRCodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlanId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlanQRCodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlanQRCodesResponseParams struct {
+	// 返回码
+	Ret *int64 `json:"Ret,omitnil" name:"Ret"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 数据
+	Data []*PlanQRCode `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePlanQRCodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlanQRCodesResponseParams `json:"Response"`
+}
+
+func (r *DescribePlanQRCodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlanQRCodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductByIdRequestParams struct {
 	// 商品ID
 	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
@@ -4765,6 +4856,16 @@ type PhaseData struct {
 	// 小程序名称AppName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil" name:"AppName"`
+}
+
+type PlanQRCode struct {
+	// 二维码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 状态，0:未激活 1:已激活 2:已冻结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type Product struct {

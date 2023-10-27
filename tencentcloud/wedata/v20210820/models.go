@@ -14399,6 +14399,9 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 资源组id,多个资源组id之间以英文字符逗号分隔
 	ExecutorGroupIdList *string `json:"ExecutorGroupIdList,omitnil" name:"ExecutorGroupIdList"`
+
+	// 任务标签
+	TaskTags []*TaskTag `json:"TaskTags,omitnil" name:"TaskTags"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -14466,6 +14469,9 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 资源组id,多个资源组id之间以英文字符逗号分隔
 	ExecutorGroupIdList *string `json:"ExecutorGroupIdList,omitnil" name:"ExecutorGroupIdList"`
+
+	// 任务标签
+	TaskTags []*TaskTag `json:"TaskTags,omitnil" name:"TaskTags"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -14501,6 +14507,7 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "TargetServiceType")
 	delete(f, "AlarmType")
 	delete(f, "ExecutorGroupIdList")
+	delete(f, "TaskTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -34303,6 +34310,14 @@ type TaskScriptContent struct {
 	// 脚本内容 base64编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptContent *string `json:"ScriptContent,omitnil" name:"ScriptContent"`
+}
+
+type TaskTag struct {
+	// 标签名称
+	TagName *string `json:"TagName,omitnil" name:"TagName"`
+
+	// 标签值列表
+	TagValues []*string `json:"TagValues,omitnil" name:"TagValues"`
 }
 
 type TaskTypeCnt struct {

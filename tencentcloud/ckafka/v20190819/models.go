@@ -9496,82 +9496,116 @@ type MySQLModifyConnectParam struct {
 
 type MySQLParam struct {
 	// MySQL的数据库名称，"*"为全数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"数据库名\\.数据表名"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil" name:"Table"`
 
 	// 该MySQL在连接管理内的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil" name:"Resource"`
 
 	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil" name:"SnapshotMode"`
 
 	// 存放MySQL的Ddl信息的Topic，为空则默认不存放
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlTopic *string `json:"DdlTopic,omitnil" name:"DdlTopic"`
 
 	// "TABLE" 表示读取项为 table，"QUERY" 表示读取项为 query
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceMonitorMode *string `json:"DataSourceMonitorMode,omitnil" name:"DataSourceMonitorMode"`
 
 	// 当 "DataMonitorMode"="TABLE" 时，传入需要读取的 Table；当 "DataMonitorMode"="QUERY" 时，传入需要读取的查询 sql 语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceMonitorResource *string `json:"DataSourceMonitorResource,omitnil" name:"DataSourceMonitorResource"`
 
 	// "TIMESTAMP" 表示增量列为时间戳类型，"INCREMENT" 表示增量列为自增 id 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceIncrementMode *string `json:"DataSourceIncrementMode,omitnil" name:"DataSourceIncrementMode"`
 
 	// 传入需要监听的列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceIncrementColumn *string `json:"DataSourceIncrementColumn,omitnil" name:"DataSourceIncrementColumn"`
 
 	// "HEAD" 表示复制存量 + 增量数据，"TAIL" 表示只复制增量数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceStartFrom *string `json:"DataSourceStartFrom,omitnil" name:"DataSourceStartFrom"`
 
 	// "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetInsertMode *string `json:"DataTargetInsertMode,omitnil" name:"DataTargetInsertMode"`
 
 	// 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetPrimaryKeyField *string `json:"DataTargetPrimaryKeyField,omitnil" name:"DataTargetPrimaryKeyField"`
 
 	// 表与消息间的映射关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetRecordMapping []*RecordMapping `json:"DataTargetRecordMapping,omitnil" name:"DataTargetRecordMapping"`
 
 	// 事件路由到特定主题的正则表达式，默认为(.*)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicRegex *string `json:"TopicRegex,omitnil" name:"TopicRegex"`
 
 	// TopicRegex的引用组，指定$1、$2等
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicReplacement *string `json:"TopicReplacement,omitnil" name:"TopicReplacement"`
 
 	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyColumns *string `json:"KeyColumns,omitnil" name:"KeyColumns"`
 
 	// Mysql 是否抛弃解析失败的消息，默认为true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitnil" name:"DropInvalidMessage"`
 
 	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropCls *DropCls `json:"DropCls,omitnil" name:"DropCls"`
 
 	// 输出格式，DEFAULT、CANAL_1、CANAL_2
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputFormat *string `json:"OutputFormat,omitnil" name:"OutputFormat"`
 
 	// 当Table输入的是前缀时，该项值为true，否则为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsTablePrefix *bool `json:"IsTablePrefix,omitnil" name:"IsTablePrefix"`
 
 	// 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeContentChanges *string `json:"IncludeContentChanges,omitnil" name:"IncludeContentChanges"`
 
 	// 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeQuery *bool `json:"IncludeQuery,omitnil" name:"IncludeQuery"`
 
 	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordWithSchema *bool `json:"RecordWithSchema,omitnil" name:"RecordWithSchema"`
 
 	// 存放信令表的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignalDatabase *string `json:"SignalDatabase,omitnil" name:"SignalDatabase"`
 
 	// 输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsTableRegular *bool `json:"IsTableRegular,omitnil" name:"IsTableRegular"`
 
 	// 信号表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignalTable *string `json:"SignalTable,omitnil" name:"SignalTable"`
+
+	// datetime 类型字段转换为时间戳的时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateTimeZone *string `json:"DateTimeZone,omitnil" name:"DateTimeZone"`
+
+	// 自建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitnil" name:"SelfBuilt"`
 }
 
 type OperateResponseData struct {

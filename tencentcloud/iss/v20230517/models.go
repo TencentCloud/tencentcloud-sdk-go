@@ -6638,7 +6638,7 @@ type UpdateDeviceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
-	// 设备编码（即我们为设备生成的20位国标编码）
+	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil" name:"Code"`
 
@@ -7452,6 +7452,9 @@ type UpdateUserDeviceRequestParams struct {
 
 	// 设备用户名（仅网关接入支持）
 	Username *string `json:"Username,omitnil" name:"Username"`
+
+	// 网关设备接入协议（仅网关接入支持）
+	ProtocolType *int64 `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 type UpdateUserDeviceRequest struct {
@@ -7480,6 +7483,9 @@ type UpdateUserDeviceRequest struct {
 
 	// 设备用户名（仅网关接入支持）
 	Username *string `json:"Username,omitnil" name:"Username"`
+
+	// 网关设备接入协议（仅网关接入支持）
+	ProtocolType *int64 `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 func (r *UpdateUserDeviceRequest) ToJsonString() string {
@@ -7502,6 +7508,7 @@ func (r *UpdateUserDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Ip")
 	delete(f, "Port")
 	delete(f, "Username")
+	delete(f, "ProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserDeviceRequest has unknown keys!", "")
 	}

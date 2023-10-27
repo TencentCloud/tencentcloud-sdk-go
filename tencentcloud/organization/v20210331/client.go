@@ -737,6 +737,73 @@ func (c *Client) CreateOrganizationMembersPolicyWithContext(ctx context.Context,
     return
 }
 
+func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
+    request = &DeleteAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteAccount")
+    
+    
+    return
+}
+
+func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
+    response = &DeleteAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccount
+// 删除成员账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
+//  FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION_DELETEACCOUNTDISABLED = "UnsupportedOperation.DeleteAccountDisabled"
+//  UNSUPPORTEDOPERATION_INVITEACCOUNTNOTALLOWDELETE = "UnsupportedOperation.InviteAccountNotAllowDelete"
+//  UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTRESOURCE = "UnsupportedOperation.MemberAccountExistResource"
+//  UNSUPPORTEDOPERATION_MEMBEREXISTSERVICENOTALLOWDELETE = "UnsupportedOperation.MemberExistServiceNotAllowDelete"
+func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    return c.DeleteAccountWithContext(context.Background(), request)
+}
+
+// DeleteAccount
+// 删除成员账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
+//  FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION_DELETEACCOUNTDISABLED = "UnsupportedOperation.DeleteAccountDisabled"
+//  UNSUPPORTEDOPERATION_INVITEACCOUNTNOTALLOWDELETE = "UnsupportedOperation.InviteAccountNotAllowDelete"
+//  UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTRESOURCE = "UnsupportedOperation.MemberAccountExistResource"
+//  UNSUPPORTEDOPERATION_MEMBEREXISTSERVICENOTALLOWDELETE = "UnsupportedOperation.MemberExistServiceNotAllowDelete"
+func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOrganizationRequest() (request *DeleteOrganizationRequest) {
     request = &DeleteOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

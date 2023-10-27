@@ -311,6 +311,16 @@ type AssetInfoDetail struct {
 	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 }
 
+type AssetTag struct {
+	// 标签的key值,可以是字母、数字、下划线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+
+	// 标签的vale值,可以是字母、数字、下划线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+}
+
 type AssetViewCFGRisk struct {
 	// 唯一id
 	Id *string `json:"Id,omitnil" name:"Id"`
@@ -951,15 +961,21 @@ type ClbListenerListInfo struct {
 
 // Predefined struct for user
 type CreateDomainAndIpRequestParams struct {
-	// -
+	// 公网IP/域名
 	Content []*string `json:"Content,omitnil" name:"Content"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateDomainAndIpRequest struct {
 	*tchttp.BaseRequest
 	
-	// -
+	// 公网IP/域名
 	Content []*string `json:"Content,omitnil" name:"Content"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateDomainAndIpRequest) ToJsonString() string {
@@ -975,6 +991,7 @@ func (r *CreateDomainAndIpRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Content")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainAndIpRequest has unknown keys!", "")
 	}
@@ -1037,6 +1054,9 @@ type CreateRiskCenterScanTaskRequestParams struct {
 
 	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
 	TaskMode *int64 `json:"TaskMode,omitnil" name:"TaskMode"`
+
+	// 资产标签
+	Tags *AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateRiskCenterScanTaskRequest struct {
@@ -1071,6 +1091,9 @@ type CreateRiskCenterScanTaskRequest struct {
 
 	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
 	TaskMode *int64 `json:"TaskMode,omitnil" name:"TaskMode"`
+
+	// 资产标签
+	Tags *AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateRiskCenterScanTaskRequest) ToJsonString() string {
@@ -1095,6 +1118,7 @@ func (r *CreateRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanFrom")
 	delete(f, "TaskAdvanceCFG")
 	delete(f, "TaskMode")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRiskCenterScanTaskRequest has unknown keys!", "")
 	}
@@ -1315,6 +1339,12 @@ type DeleteDomainAndIpRequestParams struct {
 
 	// 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
 	IgnoreAsset *int64 `json:"IgnoreAsset,omitnil" name:"IgnoreAsset"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
+
+	// 删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type DeleteDomainAndIpRequest struct {
@@ -1328,6 +1358,12 @@ type DeleteDomainAndIpRequest struct {
 
 	// 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
 	IgnoreAsset *int64 `json:"IgnoreAsset,omitnil" name:"IgnoreAsset"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
+
+	// 删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *DeleteDomainAndIpRequest) ToJsonString() string {
@@ -1345,6 +1381,8 @@ func (r *DeleteDomainAndIpRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "RetainPath")
 	delete(f, "IgnoreAsset")
+	delete(f, "Tags")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDomainAndIpRequest has unknown keys!", "")
 	}
@@ -1805,6 +1843,9 @@ func (r *DescribeDbAssetsResponse) FromJsonString(s string) error {
 type DescribeDomainAssetsRequestParams struct {
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 安全中心自定义标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeDomainAssetsRequest struct {
@@ -1812,6 +1853,9 @@ type DescribeDomainAssetsRequest struct {
 	
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 安全中心自定义标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeDomainAssetsRequest) ToJsonString() string {
@@ -1827,6 +1871,7 @@ func (r *DescribeDomainAssetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainAssetsRequest has unknown keys!", "")
 	}
@@ -1945,6 +1990,9 @@ func (r *DescribeListenerListResponse) FromJsonString(s string) error {
 type DescribePublicIpAssetsRequestParams struct {
 	// filte过滤条件
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 安全中心自定义标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribePublicIpAssetsRequest struct {
@@ -1952,6 +2000,9 @@ type DescribePublicIpAssetsRequest struct {
 	
 	// filte过滤条件
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 安全中心自定义标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribePublicIpAssetsRequest) ToJsonString() string {
@@ -1967,6 +2018,7 @@ func (r *DescribePublicIpAssetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicIpAssetsRequest has unknown keys!", "")
 	}
@@ -2030,6 +2082,9 @@ func (r *DescribePublicIpAssetsResponse) FromJsonString(s string) error {
 type DescribeRiskCenterAssetViewCFGRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterAssetViewCFGRiskListRequest struct {
@@ -2037,6 +2092,9 @@ type DescribeRiskCenterAssetViewCFGRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterAssetViewCFGRiskListRequest) ToJsonString() string {
@@ -2052,6 +2110,7 @@ func (r *DescribeRiskCenterAssetViewCFGRiskListRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterAssetViewCFGRiskListRequest has unknown keys!", "")
 	}
@@ -2108,6 +2167,9 @@ func (r *DescribeRiskCenterAssetViewCFGRiskListResponse) FromJsonString(s string
 type DescribeRiskCenterAssetViewPortRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterAssetViewPortRiskListRequest struct {
@@ -2115,6 +2177,9 @@ type DescribeRiskCenterAssetViewPortRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterAssetViewPortRiskListRequest) ToJsonString() string {
@@ -2130,6 +2195,7 @@ func (r *DescribeRiskCenterAssetViewPortRiskListRequest) FromJsonString(s string
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterAssetViewPortRiskListRequest has unknown keys!", "")
 	}
@@ -2183,6 +2249,9 @@ func (r *DescribeRiskCenterAssetViewPortRiskListResponse) FromJsonString(s strin
 type DescribeRiskCenterAssetViewVULRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterAssetViewVULRiskListRequest struct {
@@ -2190,6 +2259,9 @@ type DescribeRiskCenterAssetViewVULRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterAssetViewVULRiskListRequest) ToJsonString() string {
@@ -2205,6 +2277,7 @@ func (r *DescribeRiskCenterAssetViewVULRiskListRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterAssetViewVULRiskListRequest has unknown keys!", "")
 	}
@@ -2258,6 +2331,9 @@ func (r *DescribeRiskCenterAssetViewVULRiskListResponse) FromJsonString(s string
 type DescribeRiskCenterAssetViewWeakPasswordRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterAssetViewWeakPasswordRiskListRequest struct {
@@ -2265,6 +2341,9 @@ type DescribeRiskCenterAssetViewWeakPasswordRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListRequest) ToJsonString() string {
@@ -2280,6 +2359,7 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListRequest) FromJsonString(
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterAssetViewWeakPasswordRiskListRequest has unknown keys!", "")
 	}
@@ -2333,6 +2413,9 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListResponse) FromJsonString
 type DescribeRiskCenterPortViewPortRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterPortViewPortRiskListRequest struct {
@@ -2340,6 +2423,9 @@ type DescribeRiskCenterPortViewPortRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterPortViewPortRiskListRequest) ToJsonString() string {
@@ -2355,6 +2441,7 @@ func (r *DescribeRiskCenterPortViewPortRiskListRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterPortViewPortRiskListRequest has unknown keys!", "")
 	}
@@ -2402,6 +2489,9 @@ func (r *DescribeRiskCenterPortViewPortRiskListResponse) FromJsonString(s string
 type DescribeRiskCenterServerRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterServerRiskListRequest struct {
@@ -2409,6 +2499,9 @@ type DescribeRiskCenterServerRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterServerRiskListRequest) ToJsonString() string {
@@ -2424,6 +2517,7 @@ func (r *DescribeRiskCenterServerRiskListRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterServerRiskListRequest has unknown keys!", "")
 	}
@@ -2465,6 +2559,9 @@ func (r *DescribeRiskCenterServerRiskListResponse) FromJsonString(s string) erro
 type DescribeRiskCenterVULViewVULRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterVULViewVULRiskListRequest struct {
@@ -2472,6 +2569,9 @@ type DescribeRiskCenterVULViewVULRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterVULViewVULRiskListRequest) ToJsonString() string {
@@ -2487,6 +2587,7 @@ func (r *DescribeRiskCenterVULViewVULRiskListRequest) FromJsonString(s string) e
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterVULViewVULRiskListRequest has unknown keys!", "")
 	}
@@ -2534,6 +2635,9 @@ func (r *DescribeRiskCenterVULViewVULRiskListResponse) FromJsonString(s string) 
 type DescribeRiskCenterWebsiteRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeRiskCenterWebsiteRiskListRequest struct {
@@ -2541,6 +2645,9 @@ type DescribeRiskCenterWebsiteRiskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeRiskCenterWebsiteRiskListRequest) ToJsonString() string {
@@ -2556,6 +2663,7 @@ func (r *DescribeRiskCenterWebsiteRiskListRequest) FromJsonString(s string) erro
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterWebsiteRiskListRequest has unknown keys!", "")
 	}
@@ -2671,6 +2779,9 @@ func (r *DescribeScanReportListResponse) FromJsonString(s string) error {
 type DescribeScanTaskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 标签
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
 }
 
 type DescribeScanTaskListRequest struct {
@@ -2678,6 +2789,9 @@ type DescribeScanTaskListRequest struct {
 	
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 标签
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *DescribeScanTaskListRequest) ToJsonString() string {
@@ -2693,6 +2807,7 @@ func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanTaskListRequest has unknown keys!", "")
 	}
@@ -2948,21 +3063,27 @@ func (r *DescribeTaskLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskLogURLRequestParams struct {
+	// 0: 预览， 1: 下载
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+
 	// 任务报告Id 列表
 	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitnil" name:"ReportItemKeyList"`
 
-	// 0: 预览， 1: 下载
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	// 报告中任务id列表
+	ReportTaskIdList []*ReportTaskIdList `json:"ReportTaskIdList,omitnil" name:"ReportTaskIdList"`
 }
 
 type DescribeTaskLogURLRequest struct {
 	*tchttp.BaseRequest
 	
+	// 0: 预览， 1: 下载
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+
 	// 任务报告Id 列表
 	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitnil" name:"ReportItemKeyList"`
 
-	// 0: 预览， 1: 下载
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	// 报告中任务id列表
+	ReportTaskIdList []*ReportTaskIdList `json:"ReportTaskIdList,omitnil" name:"ReportTaskIdList"`
 }
 
 func (r *DescribeTaskLogURLRequest) ToJsonString() string {
@@ -2977,8 +3098,9 @@ func (r *DescribeTaskLogURLRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ReportItemKeyList")
 	delete(f, "Type")
+	delete(f, "ReportItemKeyList")
+	delete(f, "ReportTaskIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLogURLRequest has unknown keys!", "")
 	}
@@ -3540,6 +3662,14 @@ type ReportItemKey struct {
 	TaskLogList []*string `json:"TaskLogList,omitnil" name:"TaskLogList"`
 }
 
+type ReportTaskIdList struct {
+	// 任务id列表
+	TaskIdList []*string `json:"TaskIdList,omitnil" name:"TaskIdList"`
+
+	// 租户ID
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+}
+
 type RiskCenterStatusKey struct {
 	// 风险ID
 	Id *string `json:"Id,omitnil" name:"Id"`
@@ -3988,6 +4118,16 @@ type Tag struct {
 
 	// 标签内容
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type Tags struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type TaskAdvanceCFG struct {

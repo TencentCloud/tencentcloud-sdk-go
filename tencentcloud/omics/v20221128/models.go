@@ -20,12 +20,64 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ApplicationVersion struct {
+	// 版本类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 版本ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil" name:"ApplicationVersionId"`
+
+	// 发布名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 发布描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 入口文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Entrypoint *string `json:"Entrypoint,omitnil" name:"Entrypoint"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 创建者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorName *string `json:"CreatorName,omitnil" name:"CreatorName"`
+
+	// 创建者ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorId *string `json:"CreatorId,omitnil" name:"CreatorId"`
+
+	// Git信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GitInfo *string `json:"GitInfo,omitnil" name:"GitInfo"`
+}
+
 type CVMOption struct {
 	// 云服务器可用区。
 	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 云服务器实例规格。
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+}
+
+type CacheInfo struct {
+	// 缓存清理时间(小时)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
+
+	// 缓存清理计划时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheClearTime *string `json:"CacheClearTime,omitnil" name:"CacheClearTime"`
+
+	// 缓存是否已被清理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheCleared *bool `json:"CacheCleared,omitnil" name:"CacheCleared"`
 }
 
 type ClusterOption struct {
@@ -695,11 +747,11 @@ type GetRunCallsRequestParams struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
-	// 项目ID。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
 	// 作业路径
 	Path *string `json:"Path,omitnil" name:"Path"`
+
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 type GetRunCallsRequest struct {
@@ -708,11 +760,11 @@ type GetRunCallsRequest struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
-	// 项目ID。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
 	// 作业路径
 	Path *string `json:"Path,omitnil" name:"Path"`
+
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 func (r *GetRunCallsRequest) ToJsonString() string {
@@ -728,8 +780,8 @@ func (r *GetRunCallsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RunUuid")
-	delete(f, "ProjectId")
 	delete(f, "Path")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRunCallsRequest has unknown keys!", "")
 	}
@@ -910,6 +962,24 @@ func (r *ImportTableFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NFOption struct {
+	// Config。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config *string `json:"Config,omitnil" name:"Config"`
+
+	// Profile。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Profile *string `json:"Profile,omitnil" name:"Profile"`
+
+	// Report。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Report *bool `json:"Report,omitnil" name:"Report"`
+
+	// Resume。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resume *bool `json:"Resume,omitnil" name:"Resume"`
+}
+
 type ResourceIds struct {
 	// 私有网络ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1048,6 +1118,10 @@ type Run struct {
 
 	// 执行时间。
 	ExecutionTime *ExecutionTime `json:"ExecutionTime,omitnil" name:"ExecutionTime"`
+
+	// 缓存信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cache *CacheInfo `json:"Cache,omitnil" name:"Cache"`
 
 	// 错误信息。
 	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
@@ -1227,8 +1301,12 @@ type RunGroup struct {
 	// 任务输入。
 	Input *string `json:"Input,omitnil" name:"Input"`
 
-	// 运行选项。
+	// WDL运行选项。
 	Option *RunOption `json:"Option,omitnil" name:"Option"`
+
+	// Nextflow运行选项。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
 
 	// 任务总数量。
 	TotalRun *uint64 `json:"TotalRun,omitnil" name:"TotalRun"`
@@ -1247,6 +1325,22 @@ type RunGroup struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 创建者。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil" name:"Creator"`
+
+	// 创建者ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorId *string `json:"CreatorId,omitnil" name:"CreatorId"`
+
+	// 运行结果通知方式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultNotify *string `json:"ResultNotify,omitnil" name:"ResultNotify"`
+
+	// 应用版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationVersion *ApplicationVersion `json:"ApplicationVersion,omitnil" name:"ApplicationVersion"`
 }
 
 type RunMetadata struct {
@@ -1329,6 +1423,10 @@ type RunMetadata struct {
 	// 错误输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stderr *string `json:"Stderr,omitnil" name:"Stderr"`
+
+	// 其他信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Meta *string `json:"Meta,omitnil" name:"Meta"`
 }
 
 type RunOption struct {

@@ -5361,6 +5361,289 @@ func (r *DescribeRabbitMQNodeListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRabbitMQQueueDetailRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil" name:"VirtualHost"`
+
+	// 队列名称
+	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
+}
+
+type DescribeRabbitMQQueueDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil" name:"VirtualHost"`
+
+	// 队列名称
+	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
+}
+
+func (r *DescribeRabbitMQQueueDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQQueueDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualHost")
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQQueueDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQQueueDetailResponseParams struct {
+	// 队列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// Vhost参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualHost *string `json:"VirtualHost,omitnil" name:"VirtualHost"`
+
+	// 队列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
+
+	// 队列类型,取值classic或quorum
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueType *string `json:"QueueType,omitnil" name:"QueueType"`
+
+	// 在线消费者数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consumers *int64 `json:"Consumers,omitnil" name:"Consumers"`
+
+	// 持久标记
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Durable *bool `json:"Durable,omitnil" name:"Durable"`
+
+	// 自动清除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoDelete *bool `json:"AutoDelete,omitnil" name:"AutoDelete"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// MessageTTL参数,classic类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageTTL *int64 `json:"MessageTTL,omitnil" name:"MessageTTL"`
+
+	// AutoExpire参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoExpire *int64 `json:"AutoExpire,omitnil" name:"AutoExpire"`
+
+	// MaxLength参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxLength *int64 `json:"MaxLength,omitnil" name:"MaxLength"`
+
+	// MaxLengthBytes参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxLengthBytes *int64 `json:"MaxLengthBytes,omitnil" name:"MaxLengthBytes"`
+
+	// DeliveryLimit参数,quorum类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliveryLimit *int64 `json:"DeliveryLimit,omitnil" name:"DeliveryLimit"`
+
+	// OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverflowBehaviour *string `json:"OverflowBehaviour,omitnil" name:"OverflowBehaviour"`
+
+	// DeadLetterExchange参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitnil" name:"DeadLetterExchange"`
+
+	// DeadLetterRoutingKey参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitnil" name:"DeadLetterRoutingKey"`
+
+	// SingleActiveConsumer参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SingleActiveConsumer *bool `json:"SingleActiveConsumer,omitnil" name:"SingleActiveConsumer"`
+
+	// MaximumPriority参数,classic类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaximumPriority *int64 `json:"MaximumPriority,omitnil" name:"MaximumPriority"`
+
+	// LazyMode参数,classic类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LazyMode *bool `json:"LazyMode,omitnil" name:"LazyMode"`
+
+	// MasterLocator参数,classic类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterLocator *string `json:"MasterLocator,omitnil" name:"MasterLocator"`
+
+	// MaxInMemoryLength参数,quorum类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxInMemoryLength *int64 `json:"MaxInMemoryLength,omitnil" name:"MaxInMemoryLength"`
+
+	// MaxInMemoryBytes参数,quorum类型专用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxInMemoryBytes *int64 `json:"MaxInMemoryBytes,omitnil" name:"MaxInMemoryBytes"`
+
+	// 创建时间戳,单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Node *string `json:"Node,omitnil" name:"Node"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRabbitMQQueueDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQQueueDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQQueueDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQQueueDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQQueuesRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil" name:"VirtualHost"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键词
+	SearchWord *string `json:"SearchWord,omitnil" name:"SearchWord"`
+
+	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	QueueType *string `json:"QueueType,omitnil" name:"QueueType"`
+
+	// 排序依据的字段：
+	// MessageHeapCount - 消息堆积数；
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitnil" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitnil" name:"SortOrder"`
+}
+
+type DescribeRabbitMQQueuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil" name:"VirtualHost"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键词
+	SearchWord *string `json:"SearchWord,omitnil" name:"SearchWord"`
+
+	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	QueueType *string `json:"QueueType,omitnil" name:"QueueType"`
+
+	// 排序依据的字段：
+	// MessageHeapCount - 消息堆积数；
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitnil" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitnil" name:"SortOrder"`
+}
+
+func (r *DescribeRabbitMQQueuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQQueuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualHost")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchWord")
+	delete(f, "QueueType")
+	delete(f, "SortElement")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQQueuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQQueuesResponseParams struct {
+	// 列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueInfoList []*RabbitMQQueueListInfo `json:"QueueInfoList,omitnil" name:"QueueInfoList"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRabbitMQQueuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQQueuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQQueuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQQueuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -10220,6 +10503,41 @@ type RabbitMQPrivateVirtualHost struct {
 	// 虚拟主机的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type RabbitMQQueueListConsumerDetailInfo struct {
+	// 消费者数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumersNumber *int64 `json:"ConsumersNumber,omitnil" name:"ConsumersNumber"`
+}
+
+type RabbitMQQueueListInfo struct {
+	// 队列名
+	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
+
+	// 备注说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 消费者信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerDetail *RabbitMQQueueListConsumerDetailInfo `json:"ConsumerDetail,omitnil" name:"ConsumerDetail"`
+
+	// 队列类型，取值 "classic"，"quorum"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueType *string `json:"QueueType,omitnil" name:"QueueType"`
+
+	// 消息堆积数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageHeapCount *int64 `json:"MessageHeapCount,omitnil" name:"MessageHeapCount"`
+
+	// 消息生产速率，每秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateIn *float64 `json:"MessageRateIn,omitnil" name:"MessageRateIn"`
+
+	// 消息消费速率，每秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateOut *float64 `json:"MessageRateOut,omitnil" name:"MessageRateOut"`
 }
 
 type RabbitMQUser struct {

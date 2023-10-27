@@ -5377,8 +5377,8 @@ type CreateSealByImageRequestParams struct {
 	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
 
 	// 印章样式, 可以选择的样式如下: 
-	// <ul><li>**cycle**:(默认)圆形印章</li>
-	// <li>**ellipse**:椭圆印章</li>
+	// <ul><li>**circle**:(默认)圆形印章</li>
+	// <li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
 
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 
@@ -5438,8 +5438,8 @@ type CreateSealByImageRequest struct {
 	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
 
 	// 印章样式, 可以选择的样式如下: 
-	// <ul><li>**cycle**:(默认)圆形印章</li>
-	// <li>**ellipse**:椭圆印章</li>
+	// <ul><li>**circle**:(默认)圆形印章</li>
+	// <li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
 
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 

@@ -7636,6 +7636,9 @@ type ModifyDataTransformRequestParams struct {
 
 	// 加工任务目的topic_id以及别名
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+
+	// 是否开启投递服务日志。1关闭，2开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil" name:"HasServicesLog"`
 }
 
 type ModifyDataTransformRequest struct {
@@ -7655,6 +7658,9 @@ type ModifyDataTransformRequest struct {
 
 	// 加工任务目的topic_id以及别名
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+
+	// 是否开启投递服务日志。1关闭，2开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil" name:"HasServicesLog"`
 }
 
 func (r *ModifyDataTransformRequest) ToJsonString() string {
@@ -7674,6 +7680,7 @@ func (r *ModifyDataTransformRequest) FromJsonString(s string) error {
 	delete(f, "EtlContent")
 	delete(f, "EnableFlag")
 	delete(f, "DstResources")
+	delete(f, "HasServicesLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataTransformRequest has unknown keys!", "")
 	}

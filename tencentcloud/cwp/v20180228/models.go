@@ -3137,6 +3137,10 @@ type BruteAttackInfo struct {
 	// 地理位置中文名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil" name:"Location"`
+
+	// 威胁等级：0低危，1中危，2高危
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *uint64 `json:"RiskLevel,omitnil" name:"RiskLevel"`
 }
 
 type BruteAttackRule struct {
@@ -44210,7 +44214,7 @@ type ReverseShell struct {
 	// 进程树
 	ProcTree *string `json:"ProcTree,omitnil" name:"ProcTree"`
 
-	// 检测方法
+	// 检测方法: 0行为分析; 1命令特征检测
 	DetectBy *uint64 `json:"DetectBy,omitnil" name:"DetectBy"`
 
 	//  主机额外信息
@@ -44220,6 +44224,10 @@ type ReverseShell struct {
 	// 进程id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pid *int64 `json:"Pid,omitnil" name:"Pid"`
+
+	// 威胁等级：0中危，1高危
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *uint64 `json:"RiskLevel,omitnil" name:"RiskLevel"`
 }
 
 type ReverseShellEventInfo struct {

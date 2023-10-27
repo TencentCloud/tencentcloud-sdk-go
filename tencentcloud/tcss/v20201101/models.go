@@ -13319,7 +13319,13 @@ type DescribeCheckItemListRequestParams struct {
 	// 每次查询的最大记录数量
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// Name 可取值：risk_level风险等级, risk_target检查对象，风险对象,risk_type风险类别,risk_attri检测项所属的风险类型
+	// Name 可取值：
+	// Name: 检查项名称
+	// RiskType: 风险类别
+	// RiskLevel: 风险等级
+	// RiskTarget: 检查对象
+	// RiskAttribute: 检测项所属分型线类型
+	// Enable: 检查项是否开启(0:关闭 1:开启)
 	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
@@ -13332,7 +13338,13 @@ type DescribeCheckItemListRequest struct {
 	// 每次查询的最大记录数量
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// Name 可取值：risk_level风险等级, risk_target检查对象，风险对象,risk_type风险类别,risk_attri检测项所属的风险类型
+	// Name 可取值：
+	// Name: 检查项名称
+	// RiskType: 风险类别
+	// RiskLevel: 风险等级
+	// RiskTarget: 检查对象
+	// RiskAttribute: 检测项所属分型线类型
+	// Enable: 检查项是否开启(0:关闭 1:开启)
 	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 

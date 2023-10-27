@@ -7217,13 +7217,11 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //
 // * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
 //
-// * `Linux`和`Windows`系统互相切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
+// * 系统切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
 //
 // * 密码不指定将会通过站内信下发随机密码。
 //
-// * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换。
-//
-// * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换。
+// * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`、`CLOUD_BSSD`类型的实例使用该接口实现操作系统切换。
 //
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
@@ -7305,13 +7303,11 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 //
 // * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
 //
-// * `Linux`和`Windows`系统互相切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
+// * 系统切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
 //
 // * 密码不指定将会通过站内信下发随机密码。
 //
-// * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换。
-//
-// * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换。
+// * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`、`CLOUD_BSSD`类型的实例使用该接口实现操作系统切换。
 //
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //

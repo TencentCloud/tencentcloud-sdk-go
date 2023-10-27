@@ -5671,6 +5671,9 @@ type DescribeDatasourceConnectionRequestParams struct {
 
 	// 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
 	DatasourceConnectionTypes []*string `json:"DatasourceConnectionTypes,omitnil" name:"DatasourceConnectionTypes"`
+
+	// 返回指定hive版本的数据源，该参数指定后，会过滤掉该参数指定版本以外的hive数据源，非hive数据源正常返回
+	HiveVersion []*string `json:"HiveVersion,omitnil" name:"HiveVersion"`
 }
 
 type DescribeDatasourceConnectionRequest struct {
@@ -5706,6 +5709,9 @@ type DescribeDatasourceConnectionRequest struct {
 
 	// 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
 	DatasourceConnectionTypes []*string `json:"DatasourceConnectionTypes,omitnil" name:"DatasourceConnectionTypes"`
+
+	// 返回指定hive版本的数据源，该参数指定后，会过滤掉该参数指定版本以外的hive数据源，非hive数据源正常返回
+	HiveVersion []*string `json:"HiveVersion,omitnil" name:"HiveVersion"`
 }
 
 func (r *DescribeDatasourceConnectionRequest) ToJsonString() string {
@@ -5730,6 +5736,7 @@ func (r *DescribeDatasourceConnectionRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "DatasourceConnectionNames")
 	delete(f, "DatasourceConnectionTypes")
+	delete(f, "HiveVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatasourceConnectionRequest has unknown keys!", "")
 	}
