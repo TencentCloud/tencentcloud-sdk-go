@@ -23051,6 +23051,7 @@ type StatDataItem struct {
 	// <li>带宽数据，单位是比特每秒。</li>
 	// <li>直播剪辑数据，单位是秒。</li>
 	// <li>轮播数据，单位是秒。</li>
+	// <li>子应用数量数据，单位是个。</li>
 	Value *int64 `json:"Value,omitnil" name:"Value"`
 }
 

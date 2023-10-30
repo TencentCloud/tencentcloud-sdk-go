@@ -19084,6 +19084,61 @@ func (c *Client) ModifyVpnGatewayRoutesWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyVpnGatewaySslServerRequest() (request *ModifyVpnGatewaySslServerRequest) {
+    request = &ModifyVpnGatewaySslServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewaySslServer")
+    
+    
+    return
+}
+
+func NewModifyVpnGatewaySslServerResponse() (response *ModifyVpnGatewaySslServerResponse) {
+    response = &ModifyVpnGatewaySslServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVpnGatewaySslServer
+// 本接口用于修改 SSL-VPN 服务端属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpnGatewaySslServer(request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {
+    return c.ModifyVpnGatewaySslServerWithContext(context.Background(), request)
+}
+
+// ModifyVpnGatewaySslServer
+// 本接口用于修改 SSL-VPN 服务端属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpnGatewaySslServerWithContext(ctx context.Context, request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnGatewaySslServerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpnGatewaySslServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpnGatewaySslServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewNotifyRoutesRequest() (request *NotifyRoutesRequest) {
     request = &NotifyRoutesRequest{
         BaseRequest: &tchttp.BaseRequest{},

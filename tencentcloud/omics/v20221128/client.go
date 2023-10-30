@@ -539,6 +539,69 @@ func (c *Client) GetRunCallsWithContext(ctx context.Context, request *GetRunCall
     return
 }
 
+func NewGetRunMetadataFileRequest() (request *GetRunMetadataFileRequest) {
+    request = &GetRunMetadataFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "GetRunMetadataFile")
+    
+    
+    return
+}
+
+func NewGetRunMetadataFileResponse() (response *GetRunMetadataFileResponse) {
+    response = &GetRunMetadataFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRunMetadataFile
+// 查询任务详情文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) GetRunMetadataFile(request *GetRunMetadataFileRequest) (response *GetRunMetadataFileResponse, err error) {
+    return c.GetRunMetadataFileWithContext(context.Background(), request)
+}
+
+// GetRunMetadataFile
+// 查询任务详情文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) GetRunMetadataFileWithContext(ctx context.Context, request *GetRunMetadataFileRequest) (response *GetRunMetadataFileResponse, err error) {
+    if request == nil {
+        request = NewGetRunMetadataFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRunMetadataFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRunMetadataFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRunStatusRequest() (request *GetRunStatusRequest) {
     request = &GetRunStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -853,6 +916,160 @@ func (c *Client) RunApplicationWithContext(ctx context.Context, request *RunAppl
     request.SetContext(ctx)
     
     response = NewRunApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunWorkflowRequest() (request *RunWorkflowRequest) {
+    request = &RunWorkflowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "RunWorkflow")
+    
+    
+    return
+}
+
+func NewRunWorkflowResponse() (response *RunWorkflowResponse) {
+    response = &RunWorkflowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunWorkflow
+// 运行工作流。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_VERSIONNOTRELEASED = "FailedOperation.VersionNotReleased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_ENTRYPOINTNOTSET = "InvalidParameterValue.EntrypointNotSet"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTNOTAVAILABLE = "InvalidParameterValue.EnvironmentNotAvailable"
+//  INVALIDPARAMETERVALUE_INVALIDBASE64ENCODE = "InvalidParameterValue.InvalidBase64Encode"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = "InvalidParameterValue.InvalidInputJsonFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINPUTPLACEHOLDER = "InvalidParameterValue.InvalidInputPlaceholder"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRUNOPTION = "InvalidParameterValue.InvalidRunOption"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
+//  RESOURCENOTFOUND_APPLICATIONVERSIONNOTEXIST = "ResourceNotFound.ApplicationVersionNotExist"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_TABLENOTEXIST = "ResourceNotFound.TableNotExist"
+//  RESOURCENOTFOUND_TABLEROWNOTEXIST = "ResourceNotFound.TableRowNotExist"
+func (c *Client) RunWorkflow(request *RunWorkflowRequest) (response *RunWorkflowResponse, err error) {
+    return c.RunWorkflowWithContext(context.Background(), request)
+}
+
+// RunWorkflow
+// 运行工作流。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_VERSIONNOTRELEASED = "FailedOperation.VersionNotReleased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_ENTRYPOINTNOTSET = "InvalidParameterValue.EntrypointNotSet"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTNOTAVAILABLE = "InvalidParameterValue.EnvironmentNotAvailable"
+//  INVALIDPARAMETERVALUE_INVALIDBASE64ENCODE = "InvalidParameterValue.InvalidBase64Encode"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = "InvalidParameterValue.InvalidInputJsonFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINPUTPLACEHOLDER = "InvalidParameterValue.InvalidInputPlaceholder"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRUNOPTION = "InvalidParameterValue.InvalidRunOption"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
+//  RESOURCENOTFOUND_APPLICATIONVERSIONNOTEXIST = "ResourceNotFound.ApplicationVersionNotExist"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_TABLENOTEXIST = "ResourceNotFound.TableNotExist"
+//  RESOURCENOTFOUND_TABLEROWNOTEXIST = "ResourceNotFound.TableRowNotExist"
+func (c *Client) RunWorkflowWithContext(ctx context.Context, request *RunWorkflowRequest) (response *RunWorkflowResponse, err error) {
+    if request == nil {
+        request = NewRunWorkflowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunWorkflow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateRunGroupRequest() (request *TerminateRunGroupRequest) {
+    request = &TerminateRunGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "TerminateRunGroup")
+    
+    
+    return
+}
+
+func NewTerminateRunGroupResponse() (response *TerminateRunGroupResponse) {
+    response = &TerminateRunGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateRunGroup
+// 终止任务批次。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) TerminateRunGroup(request *TerminateRunGroupRequest) (response *TerminateRunGroupResponse, err error) {
+    return c.TerminateRunGroupWithContext(context.Background(), request)
+}
+
+// TerminateRunGroup
+// 终止任务批次。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) TerminateRunGroupWithContext(ctx context.Context, request *TerminateRunGroupRequest) (response *TerminateRunGroupResponse, err error) {
+    if request == nil {
+        request = NewTerminateRunGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateRunGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateRunGroupResponse()
     err = c.Send(request, response)
     return
 }

@@ -512,6 +512,9 @@ const (
 	// 该可用区目前不支持预热功能
 	INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDZONE = "InvalidParameterValue.PreheatNotSupportedZone"
 
+	// 预热地域不可用，请检查预热地域是否正确。
+	INVALIDPARAMETERVALUE_PREHEATUNAVAILABLEZONES = "InvalidParameterValue.PreheatUnavailableZones"
+
 	//  无效参数值。参数值取值范围不合法。
 	INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 

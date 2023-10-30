@@ -22744,6 +22744,133 @@ func (r *ModifyVpnGatewayRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVpnGatewaySslServerRequestParams struct {
+	// SSL-VPN SERVER 实例ID
+	SslVpnServerId *string `json:"SslVpnServerId,omitnil" name:"SslVpnServerId"`
+
+	// SSL-VPN SERVER NAME
+	SslVpnServerName *string `json:"SslVpnServerName,omitnil" name:"SslVpnServerName"`
+
+	// 本端地址
+	LocalAddress []*string `json:"LocalAddress,omitnil" name:"LocalAddress"`
+
+	// 客户端地址
+	RemoteAddress *string `json:"RemoteAddress,omitnil" name:"RemoteAddress"`
+
+	// SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+	SslVpnProtocol *string `json:"SslVpnProtocol,omitnil" name:"SslVpnProtocol"`
+
+	// SSL VPN服务端监听协议端口。
+	SslVpnPort *int64 `json:"SslVpnPort,omitnil" name:"SslVpnPort"`
+
+	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil" name:"EncryptAlgorithm"`
+
+	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil" name:"IntegrityAlgorithm"`
+
+	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	Compress *bool `json:"Compress,omitnil" name:"Compress"`
+
+	// 是否开启SSO认证，默认False
+	SsoEnabled *bool `json:"SsoEnabled,omitnil" name:"SsoEnabled"`
+
+	// SAML-DATA
+	SamlData *string `json:"SamlData,omitnil" name:"SamlData"`
+}
+
+type ModifyVpnGatewaySslServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// SSL-VPN SERVER 实例ID
+	SslVpnServerId *string `json:"SslVpnServerId,omitnil" name:"SslVpnServerId"`
+
+	// SSL-VPN SERVER NAME
+	SslVpnServerName *string `json:"SslVpnServerName,omitnil" name:"SslVpnServerName"`
+
+	// 本端地址
+	LocalAddress []*string `json:"LocalAddress,omitnil" name:"LocalAddress"`
+
+	// 客户端地址
+	RemoteAddress *string `json:"RemoteAddress,omitnil" name:"RemoteAddress"`
+
+	// SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+	SslVpnProtocol *string `json:"SslVpnProtocol,omitnil" name:"SslVpnProtocol"`
+
+	// SSL VPN服务端监听协议端口。
+	SslVpnPort *int64 `json:"SslVpnPort,omitnil" name:"SslVpnPort"`
+
+	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil" name:"EncryptAlgorithm"`
+
+	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil" name:"IntegrityAlgorithm"`
+
+	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	Compress *bool `json:"Compress,omitnil" name:"Compress"`
+
+	// 是否开启SSO认证，默认False
+	SsoEnabled *bool `json:"SsoEnabled,omitnil" name:"SsoEnabled"`
+
+	// SAML-DATA
+	SamlData *string `json:"SamlData,omitnil" name:"SamlData"`
+}
+
+func (r *ModifyVpnGatewaySslServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpnGatewaySslServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnServerId")
+	delete(f, "SslVpnServerName")
+	delete(f, "LocalAddress")
+	delete(f, "RemoteAddress")
+	delete(f, "SslVpnProtocol")
+	delete(f, "SslVpnPort")
+	delete(f, "EncryptAlgorithm")
+	delete(f, "IntegrityAlgorithm")
+	delete(f, "Compress")
+	delete(f, "SsoEnabled")
+	delete(f, "SamlData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnGatewaySslServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVpnGatewaySslServerResponseParams struct {
+	// 异步任务TASKID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyVpnGatewaySslServerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVpnGatewaySslServerResponseParams `json:"Response"`
+}
+
+func (r *ModifyVpnGatewaySslServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpnGatewaySslServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NatDirectConnectGatewayRoute struct {
 	// 子网的 `IPv4` `CIDR`
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil" name:"DestinationCidrBlock"`

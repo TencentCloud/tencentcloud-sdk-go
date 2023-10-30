@@ -611,7 +611,7 @@ func (r *CreateAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstanceRequestParams struct {
-	// 实例节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 实例节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitnil" name:"Zones"`
 
 	// 节点个数大小，可以通过 DescribeDBInstanceSpecs
@@ -673,12 +673,15 @@ type CreateDBInstanceRequestParams struct {
 
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitnil" name:"DcnInstanceId"`
+
+	// DCN同步模式，0：异步， 1：强同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
 type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 实例节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitnil" name:"Zones"`
 
 	// 节点个数大小，可以通过 DescribeDBInstanceSpecs
@@ -740,6 +743,9 @@ type CreateDBInstanceRequest struct {
 
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitnil" name:"DcnInstanceId"`
+
+	// DCN同步模式，0：异步， 1：强同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -774,6 +780,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InitParams")
 	delete(f, "DcnRegion")
 	delete(f, "DcnInstanceId")
+	delete(f, "DcnSyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -886,6 +893,9 @@ type CreateDedicatedClusterDBInstanceRequestParams struct {
 
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitnil" name:"RollbackTime"`
+
+	// DCN同步模式，0：异步， 1：强同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
 type CreateDedicatedClusterDBInstanceRequest struct {
@@ -965,6 +975,9 @@ type CreateDedicatedClusterDBInstanceRequest struct {
 
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitnil" name:"RollbackTime"`
+
+	// DCN同步模式，0：异步， 1：强同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
 func (r *CreateDedicatedClusterDBInstanceRequest) ToJsonString() string {
@@ -1004,6 +1017,7 @@ func (r *CreateDedicatedClusterDBInstanceRequest) FromJsonString(s string) error
 	delete(f, "SlaveHostIds")
 	delete(f, "RollbackInstanceId")
 	delete(f, "RollbackTime")
+	delete(f, "DcnSyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDedicatedClusterDBInstanceRequest has unknown keys!", "")
 	}
@@ -1096,7 +1110,7 @@ type CreateHourDBInstanceRequestParams struct {
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitnil" name:"RollbackTime"`
 
-	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
@@ -1159,7 +1173,7 @@ type CreateHourDBInstanceRequest struct {
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitnil" name:"RollbackTime"`
 
-	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil" name:"DcnSyncMode"`
 }
 
@@ -1646,6 +1660,33 @@ type DcnDetailItem struct {
 
 	// 是否开启了 kms
 	EncryptStatus *int64 `json:"EncryptStatus,omitnil" name:"EncryptStatus"`
+
+	// 实例DCN状态描述信息
+	DcnStatusDesc *string `json:"DcnStatusDesc,omitnil" name:"DcnStatusDesc"`
+
+	// DCN实例绑定的北极星服务所属的北极星实例Id，若未绑定则为空
+	PolarisInstanceId *string `json:"PolarisInstanceId,omitnil" name:"PolarisInstanceId"`
+
+	// DCN实例绑定的北极星服务所属的北极星实例名，若未绑定则为空
+	PolarisInstanceName *string `json:"PolarisInstanceName,omitnil" name:"PolarisInstanceName"`
+
+	// DCN实例绑定的北极星服务所属的北极星命名空间，若未绑定则为空
+	PolarisNamespace *string `json:"PolarisNamespace,omitnil" name:"PolarisNamespace"`
+
+	// DCN实例绑定的北极星服务，若未绑定则为空
+	PolarisService *string `json:"PolarisService,omitnil" name:"PolarisService"`
+
+	// DCN实例在北极星服务中的状态 0:未开启; 1:已开启; 2:已隔离; 3:切换中
+	PolarisServiceStatus *int64 `json:"PolarisServiceStatus,omitnil" name:"PolarisServiceStatus"`
+
+	// DCN实例在北极星服务中的状态的描述信息
+	PolarisServiceStatusDesc *string `json:"PolarisServiceStatusDesc,omitnil" name:"PolarisServiceStatusDesc"`
+
+	// 北极星管控地址
+	PolarisRegion *string `json:"PolarisRegion,omitnil" name:"PolarisRegion"`
+
+	// 是否支持DCN切换
+	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil" name:"IsDcnSwitchSupported"`
 }
 
 type Deal struct {
@@ -2361,6 +2402,12 @@ type DescribeDBInstanceDetailResponseParams struct {
 
 	// 是否支持物理复制
 	IsPhysicalReplicationSupported *bool `json:"IsPhysicalReplicationSupported,omitnil" name:"IsPhysicalReplicationSupported"`
+
+	// 是否支持强同步DCN
+	IsDcnStrongSyncSupported *int64 `json:"IsDcnStrongSyncSupported,omitnil" name:"IsDcnStrongSyncSupported"`
+
+	// 是否支持DCN切换
+	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil" name:"IsDcnSwitchSupported"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

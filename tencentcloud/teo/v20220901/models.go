@@ -561,6 +561,98 @@ type AscriptionInfo struct {
 }
 
 // Predefined struct for user
+type BindSecurityTemplateToEntityRequestParams struct {
+	// 需要绑定或解绑的策略模板所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 绑定至策略模板（或者从策略模板解绑）的域名列表。
+	Entities []*string `json:"Entities,omitnil" name:"Entities"`
+
+	// 绑定或解绑操作选项，取值有：
+	// <li>bind：绑定域名至策略模板；</li>
+	// <li>unbind-keep-policy：将域名从策略模板解绑，解绑时保留当前策略；</li>
+	// <li>unbind-use-default：将域名从策略模板解绑，并使用默认空白策略。</li>注意：解绑操作当前仅支持单个域名解绑。即：当 Operate 参数取值为 unbind-keep-policy 或 unbind-use-default 时，Entities 参数列表仅支持填写一个域名。
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 指定绑定或解绑的策略模板 ID 。
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 如指定的域名已经绑定了策略模板，是否替换该模板。支持下列取值：
+	// <li>true： 替换域名当前绑定的模板；</li>
+	// <li>false：不替换域名当前绑定的模板。</li>注意：当选择不替换已有策略模板时，若指定域名已经绑定策略模板，API 将返回错误。
+	OverWrite *bool `json:"OverWrite,omitnil" name:"OverWrite"`
+}
+
+type BindSecurityTemplateToEntityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要绑定或解绑的策略模板所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 绑定至策略模板（或者从策略模板解绑）的域名列表。
+	Entities []*string `json:"Entities,omitnil" name:"Entities"`
+
+	// 绑定或解绑操作选项，取值有：
+	// <li>bind：绑定域名至策略模板；</li>
+	// <li>unbind-keep-policy：将域名从策略模板解绑，解绑时保留当前策略；</li>
+	// <li>unbind-use-default：将域名从策略模板解绑，并使用默认空白策略。</li>注意：解绑操作当前仅支持单个域名解绑。即：当 Operate 参数取值为 unbind-keep-policy 或 unbind-use-default 时，Entities 参数列表仅支持填写一个域名。
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 指定绑定或解绑的策略模板 ID 。
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 如指定的域名已经绑定了策略模板，是否替换该模板。支持下列取值：
+	// <li>true： 替换域名当前绑定的模板；</li>
+	// <li>false：不替换域名当前绑定的模板。</li>注意：当选择不替换已有策略模板时，若指定域名已经绑定策略模板，API 将返回错误。
+	OverWrite *bool `json:"OverWrite,omitnil" name:"OverWrite"`
+}
+
+func (r *BindSecurityTemplateToEntityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindSecurityTemplateToEntityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Entities")
+	delete(f, "Operate")
+	delete(f, "TemplateId")
+	delete(f, "OverWrite")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindSecurityTemplateToEntityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindSecurityTemplateToEntityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type BindSecurityTemplateToEntityResponse struct {
+	*tchttp.BaseResponse
+	Response *BindSecurityTemplateToEntityResponseParams `json:"Response"`
+}
+
+func (r *BindSecurityTemplateToEntityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindSecurityTemplateToEntityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindZoneToPlanRequestParams struct {
 	// 未绑定套餐的站点ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`

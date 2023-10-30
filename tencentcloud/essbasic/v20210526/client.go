@@ -176,16 +176,25 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 }
 
 // ChannelCancelFlow
-// 撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+// 撤销签署流程接口
 //
-// 注意:
+// 
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
+//
+// <ul><li> `可撤回合同状态` ：未全部签署完成</li>
+//
+// <li> `不撤回合同状态` ：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。</li></ul>
+//
+// 注:
+//
+// <ul><li>能撤回合同的只能是 `合同的发起人或者发起方企业的超管、法人`  </li>
+//
+// <li>签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
@@ -206,16 +215,25 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 }
 
 // ChannelCancelFlow
-// 撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+// 撤销签署流程接口
 //
-// 注意:
+// 
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
+//
+// <ul><li> `可撤回合同状态` ：未全部签署完成</li>
+//
+// <li> `不撤回合同状态` ：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。</li></ul>
+//
+// 注:
+//
+// <ul><li>能撤回合同的只能是 `合同的发起人或者发起方企业的超管、法人`  </li>
+//
+// <li>签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
@@ -4292,25 +4310,71 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客控制台的唯一入口。
-//
-// 链接访问后，会根据企业的和员工的状态（企业根据ProxyOrganizationOpenId参数，员工根据OpenId参数判断），进入不同的流程，主要情况分类如下：
-//
-// 1. 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。
-//
-// 2. 若子客企业已激活，员工未激活，则会进入经办人激活流程。
-//
-// 3. 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客web企业控制台的唯一入口。
 //
 // 
+//
+// Web链接访问后，会根据子客企业(**Agent中ProxyOrganizationOpenId表示**)和员工(**Agent中OpenId表示**)的状态，进入不同的流程，主要情况分类如下：
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>子客企业状态</th>
+//
+// <th>子客企业员工状态</th>
+//
+// <th>点击链接进入的流程</th>
+//
+// </tr>
+//
+// </thead>
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>企业未激活</td>
+//
+// <td>员工未认证</td>
+//
+// <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>企业已激活</td>
+//
+// <td>员工未认证</td>
+//
+// <td>进入员认证并加入企业流程</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>企业已激活</td>
+//
+// <td>员工已认证</td>
+//
+// <td>进入子客企业Web控制台</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
 //
 // 如果是企业激活流程，需要注意如下情况：
 //
 // 
 //
-// 1. 若在激活过程中，更换用户OpenID重新生成链接，之前的认证会被清理。因此不要在认证过程中多人同时操作，导致认证过程互相影响。
+// 1. 若在激活过程中，**更换用户OpenID重新生成链接，之前的认证会被清理**。因此不要在企业认证过程生成多个链接给多人同时操作，会导致认证过程互相影响。
 //
-// 2. 若您认证中发现信息有误需要重新认证，可以通过更换OpenID重新生成链接的方式，来清理掉已有的流程。
+// 2. 若您认证中发现信息有误需要重新认证，**可通过更换用户OpenID重新生成链接的方式，来清理掉已有的流程**。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4351,25 +4415,71 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客控制台的唯一入口。
-//
-// 链接访问后，会根据企业的和员工的状态（企业根据ProxyOrganizationOpenId参数，员工根据OpenId参数判断），进入不同的流程，主要情况分类如下：
-//
-// 1. 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。
-//
-// 2. 若子客企业已激活，员工未激活，则会进入经办人激活流程。
-//
-// 3. 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客web企业控制台的唯一入口。
 //
 // 
+//
+// Web链接访问后，会根据子客企业(**Agent中ProxyOrganizationOpenId表示**)和员工(**Agent中OpenId表示**)的状态，进入不同的流程，主要情况分类如下：
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>子客企业状态</th>
+//
+// <th>子客企业员工状态</th>
+//
+// <th>点击链接进入的流程</th>
+//
+// </tr>
+//
+// </thead>
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>企业未激活</td>
+//
+// <td>员工未认证</td>
+//
+// <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>企业已激活</td>
+//
+// <td>员工未认证</td>
+//
+// <td>进入员认证并加入企业流程</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>企业已激活</td>
+//
+// <td>员工已认证</td>
+//
+// <td>进入子客企业Web控制台</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
 //
 // 如果是企业激活流程，需要注意如下情况：
 //
 // 
 //
-// 1. 若在激活过程中，更换用户OpenID重新生成链接，之前的认证会被清理。因此不要在认证过程中多人同时操作，导致认证过程互相影响。
+// 1. 若在激活过程中，**更换用户OpenID重新生成链接，之前的认证会被清理**。因此不要在企业认证过程生成多个链接给多人同时操作，会导致认证过程互相影响。
 //
-// 2. 若您认证中发现信息有误需要重新认证，可以通过更换OpenID重新生成链接的方式，来清理掉已有的流程。
+// 2. 若您认证中发现信息有误需要重新认证，**可通过更换用户OpenID重新生成链接的方式，来清理掉已有的流程**。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4847,55 +4957,11 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接。
+// 创建跳转小程序查看或签署的链接
 //
 // 
 //
-// 跳转小程序的几种方式：主要是设置不同的EndPoint
-//
-// 1. 通过链接Url直接跳转到小程序，不需要返回
-//
-// 设置EndPoint为WEIXINAPP，得到链接打开即可。（与短信提醒用户签署形式一样）。
-//
-// 
-//
-// 2. 通过链接Url打开H5引导页-->点击跳转到小程序-->签署完退出小程序-->回到H5引导页-->跳转到指定JumpUrl
-//
-// 设置EndPoint为CHANNEL，指定JumpUrl，得到链接打开即可。
-//
-// 
-//
-// 3. 客户App直接跳转到小程序-->小程序签署完成-->返回App
-//
-// 跳转到小程序的实现，参考官方文档
-//
-// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
-//
-// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
-//
-// 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 
-//
-// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
-//
-// 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
-//
-// 全屏方式：
-//
-// （https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html ）
-//
-// 半屏方式：
-//
-// （https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html ）
-//
-// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
-//
-// 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 
-//
-// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+// **腾讯电子签小程序的的AppID 和 原始Id如下:**
 //
 // 
 //
@@ -4906,6 +4972,26 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 // | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
 //
 // | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 
+//
+// **主要使用场景可以更加EndPoint分类如下**
+//
+// 
+//
+// |EndPoint| 场景| 说明和示例|
+//
+// |  ----  | ----  | --- |
+//
+// |  WEIXINAPP  | 短链跳转腾讯电子签签署场景  |  点击链接打开电子签小程序（与腾讯电子签官方短信提醒用户签署形式一样）<br> 示例: https://essurl.cn/x9nvWU8fTg|
+//
+// |  LONGURL2WEIXINAPP  | 长链跳转腾讯电子签签署场景  |  点击链接打开电子签小程序, 是WEIXINAPP生成短链代表的那个长链|
+//
+// |  CHANNEL  | 带有H5引导页的跳转腾讯电子签小程序签署场景 |  点击链接打开一个H5引导页面, 页面中有个"前往小程序"的按钮, 点击后会跳转到腾讯电子签小程序签署场景;  签署完成会回到H5引导页面, 然后跳转到指定创建链接指定的JumpUrl<br>示例: https://res.ess.tencent.cn/cdn/h5-activity-beta/jump-mp.html?use=channel-guide&type=warning&token=uIFKIU8fTd |
+//
+// |APP| 贵方APP跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方App的场景<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> <br> 示例: pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3 |
+//
+// |APP| 贵方小程序跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方小程序的场景<br>跳转到腾讯电子签小程序的实现可以参考微信官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html" target="_blank">全屏方式</a>和<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html " target="_blank">半屏方式</a><br>此时返回的SignUrl就是官方文档中的path<br> 示例:pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3  |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4934,55 +5020,11 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接。
+// 创建跳转小程序查看或签署的链接
 //
 // 
 //
-// 跳转小程序的几种方式：主要是设置不同的EndPoint
-//
-// 1. 通过链接Url直接跳转到小程序，不需要返回
-//
-// 设置EndPoint为WEIXINAPP，得到链接打开即可。（与短信提醒用户签署形式一样）。
-//
-// 
-//
-// 2. 通过链接Url打开H5引导页-->点击跳转到小程序-->签署完退出小程序-->回到H5引导页-->跳转到指定JumpUrl
-//
-// 设置EndPoint为CHANNEL，指定JumpUrl，得到链接打开即可。
-//
-// 
-//
-// 3. 客户App直接跳转到小程序-->小程序签署完成-->返回App
-//
-// 跳转到小程序的实现，参考官方文档
-//
-// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
-//
-// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
-//
-// 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 
-//
-// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
-//
-// 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
-//
-// 全屏方式：
-//
-// （https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html ）
-//
-// 半屏方式：
-//
-// （https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html ）
-//
-// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
-//
-// 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 
-//
-// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+// **腾讯电子签小程序的的AppID 和 原始Id如下:**
 //
 // 
 //
@@ -4993,6 +5035,26 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 // | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
 //
 // | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 
+//
+// **主要使用场景可以更加EndPoint分类如下**
+//
+// 
+//
+// |EndPoint| 场景| 说明和示例|
+//
+// |  ----  | ----  | --- |
+//
+// |  WEIXINAPP  | 短链跳转腾讯电子签签署场景  |  点击链接打开电子签小程序（与腾讯电子签官方短信提醒用户签署形式一样）<br> 示例: https://essurl.cn/x9nvWU8fTg|
+//
+// |  LONGURL2WEIXINAPP  | 长链跳转腾讯电子签签署场景  |  点击链接打开电子签小程序, 是WEIXINAPP生成短链代表的那个长链|
+//
+// |  CHANNEL  | 带有H5引导页的跳转腾讯电子签小程序签署场景 |  点击链接打开一个H5引导页面, 页面中有个"前往小程序"的按钮, 点击后会跳转到腾讯电子签小程序签署场景;  签署完成会回到H5引导页面, 然后跳转到指定创建链接指定的JumpUrl<br>示例: https://res.ess.tencent.cn/cdn/h5-activity-beta/jump-mp.html?use=channel-guide&type=warning&token=uIFKIU8fTd |
+//
+// |APP| 贵方APP跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方App的场景<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> <br> 示例: pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3 |
+//
+// |APP| 贵方小程序跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方小程序的场景<br>跳转到腾讯电子签小程序的实现可以参考微信官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html" target="_blank">全屏方式</a>和<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html " target="_blank">半屏方式</a><br>此时返回的SignUrl就是官方文档中的path<br> 示例:pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3  |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5311,9 +5373,29 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 }
 
 // DescribeResourceUrlsByFlows
-// 根据签署流程信息批量获取资源下载链接，可以下载签署中、签署完的合同，需合作企业先进行授权。
+// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同
 //
-// 此接口直接返回下载的资源的url，与接口GetDownloadFlowUrl跳转到控制台的下载方式不同。
+// 
+//
+// **注意**:   
+//
+// 有两种开通权限的途径
+//
+// 
+//
+// **第一种**:   需第三方应用的子企业登录控制台进行授权,  授权在**企业中心**的**授权管理**区域,  界面如下图
+//
+// 授权过程需要**子企业超管**扫描跳转到电子签小程序签署<<渠道端下载渠道子客合同功能授权委托书>>
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeResourceUrlsByFlows2.png)
+//
+// 
+//
+// **第二种**: 第三方应用的配置接口打开全第三个应用下的所有自己起开通, 需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5345,9 +5427,29 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 }
 
 // DescribeResourceUrlsByFlows
-// 根据签署流程信息批量获取资源下载链接，可以下载签署中、签署完的合同，需合作企业先进行授权。
+// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同
 //
-// 此接口直接返回下载的资源的url，与接口GetDownloadFlowUrl跳转到控制台的下载方式不同。
+// 
+//
+// **注意**:   
+//
+// 有两种开通权限的途径
+//
+// 
+//
+// **第一种**:   需第三方应用的子企业登录控制台进行授权,  授权在**企业中心**的**授权管理**区域,  界面如下图
+//
+// 授权过程需要**子企业超管**扫描跳转到电子签小程序签署<<渠道端下载渠道子客合同功能授权委托书>>
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeResourceUrlsByFlows2.png)
+//
+// 
+//
+// **第二种**: 第三方应用的配置接口打开全第三个应用下的所有自己起开通, 需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5626,11 +5728,21 @@ func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
 }
 
 // GetDownloadFlowUrl
-// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载地址，让合作企业进入控制台直接下载，支持客户合同（流程）按照自定义文件夹形式 分类下载。
+// 此接口（GetDownloadFlowUrl）用户获取合同控制台下载页面链接,  点击链接后会跳转至本企业合同管理控制台(会筛选出传入的合同列表), 点击**下载**按钮后就会下载传入的合同列表, 下载页面如下图
 //
-// 当前接口限制最多合同（流程）50个.
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl.png)
 //
-// 返回的链接只能使用一次
+// 
+//
+// 注:
+//
+// <ul>
+//
+// <li>仅支持下载 **本企业** 下合同，链接会 **登录企业控制台** </li>
+//
+// <li> **链接仅可使用一次**，不可重复使用</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5666,11 +5778,21 @@ func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (respons
 }
 
 // GetDownloadFlowUrl
-// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载地址，让合作企业进入控制台直接下载，支持客户合同（流程）按照自定义文件夹形式 分类下载。
+// 此接口（GetDownloadFlowUrl）用户获取合同控制台下载页面链接,  点击链接后会跳转至本企业合同管理控制台(会筛选出传入的合同列表), 点击**下载**按钮后就会下载传入的合同列表, 下载页面如下图
 //
-// 当前接口限制最多合同（流程）50个.
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl.png)
 //
-// 返回的链接只能使用一次
+// 
+//
+// 注:
+//
+// <ul>
+//
+// <li>仅支持下载 **本企业** 下合同，链接会 **登录企业控制台** </li>
+//
+// <li> **链接仅可使用一次**，不可重复使用</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6360,17 +6482,31 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。
+// 此接口（UploadFiles）文件上传。<br/>
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
+// 
 //
-// 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
+// 适用场景：用于合同，印章的文件上传。文件上传以后，
 //
-// 代码示例：
+// 如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起
+//
+// 如果是其他类型可以配合<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务</a>接口转换成PDF文件
+//
+// 
+//
+// 注: 
+//
+// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+//
+// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+//
+// ```
 //
 // HttpProfile httpProfile = new HttpProfile();
 //
 // httpProfile.setEndpoint("file.test.ess.tencent.cn");
+//
+// ```
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6385,17 +6521,31 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。
+// 此接口（UploadFiles）文件上传。<br/>
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
+// 
 //
-// 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
+// 适用场景：用于合同，印章的文件上传。文件上传以后，
 //
-// 代码示例：
+// 如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起
+//
+// 如果是其他类型可以配合<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务</a>接口转换成PDF文件
+//
+// 
+//
+// 注: 
+//
+// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+//
+// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+//
+// ```
 //
 // HttpProfile httpProfile = new HttpProfile();
 //
 // httpProfile.setEndpoint("file.test.ess.tencent.cn");
+//
+// ```
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

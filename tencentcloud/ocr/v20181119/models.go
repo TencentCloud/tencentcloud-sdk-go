@@ -1337,6 +1337,7 @@ type DriverLicenseOCRRequestParams struct {
 
 	// FRONT 为驾驶证主页正面（有红色印章的一面），
 	// BACK 为驾驶证副页正面（有档案编号的一面）。
+	// DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitnil" name:"CardSide"`
 }
@@ -1354,6 +1355,7 @@ type DriverLicenseOCRRequest struct {
 
 	// FRONT 为驾驶证主页正面（有红色印章的一面），
 	// BACK 为驾驶证副页正面（有档案编号的一面）。
+	// DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitnil" name:"CardSide"`
 }
@@ -1381,7 +1383,7 @@ func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DriverLicenseOCRResponseParams struct {
-	// 姓名
+	// 驾驶证正页姓名
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 性别
@@ -1409,7 +1411,7 @@ type DriverLicenseOCRResponseParams struct {
 	// 老版驾驶证返回有效期限 X年）
 	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
-	// 证号
+	// 驾驶证正页证号
 	CardCode *string `json:"CardCode,omitnil" name:"CardCode"`
 
 	// 档案编号
@@ -1444,6 +1446,12 @@ type DriverLicenseOCRResponseParams struct {
 
 	// 生成时间（仅电子驾驶证支持返回该字段）
 	GenerateTime *string `json:"GenerateTime,omitnil" name:"GenerateTime"`
+
+	// 驾驶证副页姓名
+	BackPageName *string `json:"BackPageName,omitnil" name:"BackPageName"`
+
+	// 驾驶证副页证号
+	BackPageCardCode *string `json:"BackPageCardCode,omitnil" name:"BackPageCardCode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

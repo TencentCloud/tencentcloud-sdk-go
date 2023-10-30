@@ -1,3 +1,251 @@
+# Release v1.0.776
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 49 次发布
+
+发布时间：2023-10-27 15:51:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSavingPlanOrder](https://cloud.tencent.com/document/api/555/100825)
+* [DescribeSavingPlanCoverage](https://cloud.tencent.com/document/api/555/100824)
+* [DescribeSavingPlanOverview](https://cloud.tencent.com/document/api/555/100823)
+* [DescribeSavingPlanUsage](https://cloud.tencent.com/document/api/555/100822)
+
+新增数据结构：
+
+* [SavingPlanCoverageDetail](https://cloud.tencent.com/document/api/555/19183#SavingPlanCoverageDetail)
+* [SavingPlanCoverageRate](https://cloud.tencent.com/document/api/555/19183#SavingPlanCoverageRate)
+* [SavingPlanOverviewDetail](https://cloud.tencent.com/document/api/555/19183#SavingPlanOverviewDetail)
+* [SavingPlanUsageDetail](https://cloud.tencent.com/document/api/555/19183#SavingPlanUsageDetail)
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 18 次发布
+
+发布时间：2023-10-30 00:24:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/100951)
+
+新增数据结构：
+
+* [VULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/90825#VULRiskAdvanceCFGList)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 119 次发布
+
+发布时间：2023-10-30 00:24:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImportKeyPair](https://cloud.tencent.com/document/api/213/15703)
+
+	* <font color="#dd0000">**修改出参**：</font>KeyId
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 67 次发布
+
+发布时间：2023-10-30 00:33:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDCDBInstance](https://cloud.tencent.com/document/api/557/16135)
+
+	* 新增入参：DcnSyncMode
+
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+
+	* 新增入参：DcnSyncMode
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+	* 新增出参：IsDcnStrongSyncSupported, IsDcnSwitchSupported
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)
+
+	* 新增成员：DcnStatusDesc, PolarisInstanceId, PolarisInstanceName, PolarisNamespace, PolarisService, PolarisServiceStatus, PolarisServiceStatusDesc, PolarisRegion, IsDcnSwitchSupported
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 49 次发布
+
+发布时间：2023-10-30 00:42:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDiagnose](https://cloud.tencent.com/document/api/845/100954)
+* [DescribeInstancePluginList](https://cloud.tencent.com/document/api/845/100953)
+* [GetDiagnoseSettings](https://cloud.tencent.com/document/api/845/100952)
+
+新增数据结构：
+
+* [DescribeInstancePluginInfo](https://cloud.tencent.com/document/api/845/30634#DescribeInstancePluginInfo)
+* [DiagnoseJobMeta](https://cloud.tencent.com/document/api/845/30634#DiagnoseJobMeta)
+* [DiagnoseJobResult](https://cloud.tencent.com/document/api/845/30634#DiagnoseJobResult)
+* [DiagnoseResult](https://cloud.tencent.com/document/api/845/30634#DiagnoseResult)
+* [Dimension](https://cloud.tencent.com/document/api/845/30634#Dimension)
+* [JobParam](https://cloud.tencent.com/document/api/845/30634#JobParam)
+* [LogDetail](https://cloud.tencent.com/document/api/845/30634#LogDetail)
+* [Metric](https://cloud.tencent.com/document/api/845/30634#Metric)
+* [MetricDetail](https://cloud.tencent.com/document/api/845/30634#MetricDetail)
+* [SettingDetail](https://cloud.tencent.com/document/api/845/30634#SettingDetail)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 59 次发布
+
+发布时间：2023-10-30 00:58:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/237/16180)
+
+	* 新增入参：DcnSyncMode
+
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
+
+	* 新增入参：DcnSyncMode
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：IsDcnStrongSyncSupported, IsDcnSwitchSupported
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)
+
+	* 新增成员：DcnStatusDesc, PolarisInstanceId, PolarisInstanceName, PolarisNamespace, PolarisService, PolarisServiceStatus, PolarisServiceStatusDesc, PolarisRegion, IsDcnSwitchSupported
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 114 次发布
+
+发布时间：2023-10-30 01:04:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DriverLicenseOCR](https://cloud.tencent.com/document/api/866/36213)
+
+	* 新增出参：BackPageName, BackPageCardCode
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 7 次发布
+
+发布时间：2023-10-27 16:07:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRunMetadataFile](https://cloud.tencent.com/document/api/1643/100858)
+* [RunWorkflow](https://cloud.tencent.com/document/api/1643/100857)
+* [TerminateRunGroup](https://cloud.tencent.com/document/api/1643/100856)
+
+新增数据结构：
+
+* [GitInfo](https://cloud.tencent.com/document/api/1643/89100#GitInfo)
+
+修改数据结构：
+
+* [Run](https://cloud.tencent.com/document/api/1643/89100#Run)
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 61 次发布
+
+发布时间：2023-10-27 10:26:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindSecurityTemplateToEntity](https://cloud.tencent.com/document/api/1552/100814)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 176 次发布
+
+发布时间：2023-10-30 01:36:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/100955)
+
+
+
 # Release v1.0.775
 
 ## 应用性能监控(apm) 版本：2021-06-22

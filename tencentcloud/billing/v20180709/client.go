@@ -98,6 +98,59 @@ func (c *Client) CreateAllocationTagWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateSavingPlanOrderRequest() (request *CreateSavingPlanOrderRequest) {
+    request = &CreateSavingPlanOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateSavingPlanOrder")
+    
+    
+    return
+}
+
+func NewCreateSavingPlanOrderResponse() (response *CreateSavingPlanOrderResponse) {
+    response = &CreateSavingPlanOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSavingPlanOrder
+// 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSavingPlanOrder(request *CreateSavingPlanOrderRequest) (response *CreateSavingPlanOrderResponse, err error) {
+    return c.CreateSavingPlanOrderWithContext(context.Background(), request)
+}
+
+// CreateSavingPlanOrder
+// 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSavingPlanOrderWithContext(ctx context.Context, request *CreateSavingPlanOrderRequest) (response *CreateSavingPlanOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateSavingPlanOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSavingPlanOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSavingPlanOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAllocationTagRequest() (request *DeleteAllocationTagRequest) {
     request = &DeleteAllocationTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1357,6 +1410,155 @@ func (c *Client) DescribeDosageDetailByDateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDosageDetailByDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSavingPlanCoverageRequest() (request *DescribeSavingPlanCoverageRequest) {
+    request = &DescribeSavingPlanCoverageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeSavingPlanCoverage")
+    
+    
+    return
+}
+
+func NewDescribeSavingPlanCoverageResponse() (response *DescribeSavingPlanCoverageResponse) {
+    response = &DescribeSavingPlanCoverageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSavingPlanCoverage
+// 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanCoverage(request *DescribeSavingPlanCoverageRequest) (response *DescribeSavingPlanCoverageResponse, err error) {
+    return c.DescribeSavingPlanCoverageWithContext(context.Background(), request)
+}
+
+// DescribeSavingPlanCoverage
+// 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanCoverageWithContext(ctx context.Context, request *DescribeSavingPlanCoverageRequest) (response *DescribeSavingPlanCoverageResponse, err error) {
+    if request == nil {
+        request = NewDescribeSavingPlanCoverageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSavingPlanCoverage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSavingPlanCoverageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSavingPlanOverviewRequest() (request *DescribeSavingPlanOverviewRequest) {
+    request = &DescribeSavingPlanOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeSavingPlanOverview")
+    
+    
+    return
+}
+
+func NewDescribeSavingPlanOverviewResponse() (response *DescribeSavingPlanOverviewResponse) {
+    response = &DescribeSavingPlanOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSavingPlanOverview
+// 查用当前用户明细节省计划总览查询时段内的使用情况
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanOverview(request *DescribeSavingPlanOverviewRequest) (response *DescribeSavingPlanOverviewResponse, err error) {
+    return c.DescribeSavingPlanOverviewWithContext(context.Background(), request)
+}
+
+// DescribeSavingPlanOverview
+// 查用当前用户明细节省计划总览查询时段内的使用情况
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanOverviewWithContext(ctx context.Context, request *DescribeSavingPlanOverviewRequest) (response *DescribeSavingPlanOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeSavingPlanOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSavingPlanOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSavingPlanOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSavingPlanUsageRequest() (request *DescribeSavingPlanUsageRequest) {
+    request = &DescribeSavingPlanUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeSavingPlanUsage")
+    
+    
+    return
+}
+
+func NewDescribeSavingPlanUsageResponse() (response *DescribeSavingPlanUsageResponse) {
+    response = &DescribeSavingPlanUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSavingPlanUsage
+// 查用当前用户明细节省计划查询时段内的使用情况
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanUsage(request *DescribeSavingPlanUsageRequest) (response *DescribeSavingPlanUsageResponse, err error) {
+    return c.DescribeSavingPlanUsageWithContext(context.Background(), request)
+}
+
+// DescribeSavingPlanUsage
+// 查用当前用户明细节省计划查询时段内的使用情况
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanUsageWithContext(ctx context.Context, request *DescribeSavingPlanUsageRequest) (response *DescribeSavingPlanUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeSavingPlanUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSavingPlanUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSavingPlanUsageResponse()
     err = c.Send(request, response)
     return
 }

@@ -3133,6 +3133,86 @@ func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVULRiskAdvanceCFGListRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+type DescribeVULRiskAdvanceCFGListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+func (r *DescribeVULRiskAdvanceCFGListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVULRiskAdvanceCFGListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVULRiskAdvanceCFGListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVULRiskAdvanceCFGListResponseParams struct {
+	// 配置项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*VULRiskAdvanceCFGList `json:"Data,omitnil" name:"Data"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 风险等级过滤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevelLists []*FilterDataObject `json:"RiskLevelLists,omitnil" name:"RiskLevelLists"`
+
+	// 漏洞类型过滤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VULTypeLists []*FilterDataObject `json:"VULTypeLists,omitnil" name:"VULTypeLists"`
+
+	// 识别来源过滤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckFromLists []*FilterDataObject `json:"CheckFromLists,omitnil" name:"CheckFromLists"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeVULRiskAdvanceCFGListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVULRiskAdvanceCFGListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVULRiskAdvanceCFGListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVULRiskAdvanceCFGListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVpcAssetsRequestParams struct {
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
@@ -4263,6 +4343,54 @@ type TaskLogURL struct {
 	// APP ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
+}
+
+type VULRiskAdvanceCFGList struct {
+	// 漏洞名称
+	VULName *string `json:"VULName,omitnil" name:"VULName"`
+
+	// 风险等级
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
+
+	// 识别来源
+	CheckFrom *string `json:"CheckFrom,omitnil" name:"CheckFrom"`
+
+	// 是否启用，1-启用，0-禁用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+
+	// 风险类型
+	VULType *string `json:"VULType,omitnil" name:"VULType"`
+
+	// 影响版本
+	ImpactVersion *string `json:"ImpactVersion,omitnil" name:"ImpactVersion"`
+
+	// CVE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVE *string `json:"CVE,omitnil" name:"CVE"`
+
+	// 漏洞标签
+	VULTag []*string `json:"VULTag,omitnil" name:"VULTag"`
+
+	// 修复方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixMethod []*string `json:"FixMethod,omitnil" name:"FixMethod"`
+
+	// 披露时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitnil" name:"ReleaseTime"`
+
+	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EMGCVulType *int64 `json:"EMGCVulType,omitnil" name:"EMGCVulType"`
+
+	// 漏洞描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VULDescribe *string `json:"VULDescribe,omitnil" name:"VULDescribe"`
+
+	// 影响组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImpactComponent *string `json:"ImpactComponent,omitnil" name:"ImpactComponent"`
 }
 
 type VULViewVULRisk struct {

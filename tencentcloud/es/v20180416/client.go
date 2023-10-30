@@ -736,6 +736,69 @@ func (c *Client) DeleteLogstashPipelinesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDiagnoseRequest() (request *DescribeDiagnoseRequest) {
+    request = &DescribeDiagnoseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeDiagnose")
+    
+    
+    return
+}
+
+func NewDescribeDiagnoseResponse() (response *DescribeDiagnoseResponse) {
+    response = &DescribeDiagnoseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDiagnose
+// 查询智能运维诊断结果报告
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DIAGNOSENOTFOUND = "ResourceNotFound.DiagnoseNotFound"
+//  UNSUPPORTEDOPERATION_DIAGNOSENOTOPEN = "UnsupportedOperation.DiagnoseNotOpen"
+func (c *Client) DescribeDiagnose(request *DescribeDiagnoseRequest) (response *DescribeDiagnoseResponse, err error) {
+    return c.DescribeDiagnoseWithContext(context.Background(), request)
+}
+
+// DescribeDiagnose
+// 查询智能运维诊断结果报告
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DIAGNOSENOTFOUND = "ResourceNotFound.DiagnoseNotFound"
+//  UNSUPPORTEDOPERATION_DIAGNOSENOTOPEN = "UnsupportedOperation.DiagnoseNotOpen"
+func (c *Client) DescribeDiagnoseWithContext(ctx context.Context, request *DescribeDiagnoseRequest) (response *DescribeDiagnoseResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiagnoseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiagnose require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiagnoseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
     request = &DescribeIndexListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -986,6 +1049,63 @@ func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeInstanceOperationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancePluginListRequest() (request *DescribeInstancePluginListRequest) {
+    request = &DescribeInstancePluginListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeInstancePluginList")
+    
+    
+    return
+}
+
+func NewDescribeInstancePluginListResponse() (response *DescribeInstancePluginListResponse) {
+    response = &DescribeInstancePluginListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancePluginList
+// 查询实例插件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeInstancePluginList(request *DescribeInstancePluginListRequest) (response *DescribeInstancePluginListResponse, err error) {
+    return c.DescribeInstancePluginListWithContext(context.Background(), request)
+}
+
+// DescribeInstancePluginList
+// 查询实例插件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeInstancePluginListWithContext(ctx context.Context, request *DescribeInstancePluginListRequest) (response *DescribeInstancePluginListResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancePluginListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancePluginList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancePluginListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1407,6 +1527,65 @@ func (c *Client) DiagnoseInstanceWithContext(ctx context.Context, request *Diagn
     request.SetContext(ctx)
     
     response = NewDiagnoseInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDiagnoseSettingsRequest() (request *GetDiagnoseSettingsRequest) {
+    request = &GetDiagnoseSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "GetDiagnoseSettings")
+    
+    
+    return
+}
+
+func NewGetDiagnoseSettingsResponse() (response *GetDiagnoseSettingsResponse) {
+    response = &GetDiagnoseSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDiagnoseSettings
+// 查看智能运维配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetDiagnoseSettings(request *GetDiagnoseSettingsRequest) (response *GetDiagnoseSettingsResponse, err error) {
+    return c.GetDiagnoseSettingsWithContext(context.Background(), request)
+}
+
+// GetDiagnoseSettings
+// 查看智能运维配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetDiagnoseSettingsWithContext(ctx context.Context, request *GetDiagnoseSettingsRequest) (response *GetDiagnoseSettingsResponse, err error) {
+    if request == nil {
+        request = NewGetDiagnoseSettingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDiagnoseSettings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDiagnoseSettingsResponse()
     err = c.Send(request, response)
     return
 }

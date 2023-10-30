@@ -1105,6 +1105,112 @@ func (r *CreateAllocationTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSavingPlanOrderRequestParams struct {
+	// 地域编码
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 区域编码
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 预付费类型
+	PrePayType *string `json:"PrePayType,omitnil" name:"PrePayType"`
+
+	// 时长
+	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 时长单位
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 商品唯一标识
+	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
+
+	// 承诺时长内的小额金额（单位：分）
+	PromiseUseAmount *uint64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
+
+	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+}
+
+type CreateSavingPlanOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地域编码
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 区域编码
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 预付费类型
+	PrePayType *string `json:"PrePayType,omitnil" name:"PrePayType"`
+
+	// 时长
+	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 时长单位
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 商品唯一标识
+	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
+
+	// 承诺时长内的小额金额（单位：分）
+	PromiseUseAmount *uint64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
+
+	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+}
+
+func (r *CreateSavingPlanOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSavingPlanOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegionId")
+	delete(f, "ZoneId")
+	delete(f, "PrePayType")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	delete(f, "CommodityCode")
+	delete(f, "PromiseUseAmount")
+	delete(f, "SpecifyEffectTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSavingPlanOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSavingPlanOrderResponseParams struct {
+	// 订单号
+	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateSavingPlanOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSavingPlanOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateSavingPlanOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSavingPlanOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Deal struct {
 	// 订单号
 	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
@@ -3891,6 +3997,266 @@ func (r *DescribeDosageDetailByDateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSavingPlanCoverageRequestParams struct {
+	// 费用起始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 费用结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 取值包括1（缺省值）和2，1表示按天统计覆盖率，2表示按月统计覆盖率，此参数仅影响返回的RateSet聚合粒度，不影响返回的DetailSet
+	PeriodType *uint64 `json:"PeriodType,omitnil" name:"PeriodType"`
+}
+
+type DescribeSavingPlanCoverageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 费用起始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 费用结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 取值包括1（缺省值）和2，1表示按天统计覆盖率，2表示按月统计覆盖率，此参数仅影响返回的RateSet聚合粒度，不影响返回的DetailSet
+	PeriodType *uint64 `json:"PeriodType,omitnil" name:"PeriodType"`
+}
+
+func (r *DescribeSavingPlanCoverageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanCoverageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "PeriodType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSavingPlanCoverageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanCoverageResponseParams struct {
+	// 节省计划覆盖率明细数据
+	DetailSet []*SavingPlanCoverageDetail `json:"DetailSet,omitnil" name:"DetailSet"`
+
+	// 节省计划覆盖率聚合数据
+	RateSet []*SavingPlanCoverageRate `json:"RateSet,omitnil" name:"RateSet"`
+
+	// 查询命中的节省计划覆盖率明细数据总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSavingPlanCoverageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSavingPlanCoverageResponseParams `json:"Response"`
+}
+
+func (r *DescribeSavingPlanCoverageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanCoverageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanOverviewRequestParams struct {
+	// 开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 结束时间，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeSavingPlanOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 结束时间，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeSavingPlanOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSavingPlanOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanOverviewResponseParams struct {
+	// 节省计划总览明细数据	
+	Overviews []*SavingPlanOverviewDetail `json:"Overviews,omitnil" name:"Overviews"`
+
+	// 查询命中的节省计划总览明细数据总条数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSavingPlanOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSavingPlanOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeSavingPlanOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanUsageRequestParams struct {
+	// 开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 结束时间，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果数据的时间间隔
+	TimeInterval *string `json:"TimeInterval,omitnil" name:"TimeInterval"`
+}
+
+type DescribeSavingPlanUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 结束时间，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，最大值为200
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果数据的时间间隔
+	TimeInterval *string `json:"TimeInterval,omitnil" name:"TimeInterval"`
+}
+
+func (r *DescribeSavingPlanUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TimeInterval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSavingPlanUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanUsageResponseParams struct {
+	// 节省计划使用率数据
+	Usages []*SavingPlanUsageDetail `json:"Usages,omitnil" name:"Usages"`
+
+	// 查询命中的节省计划总览明细数据总条数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSavingPlanUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSavingPlanUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeSavingPlanUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTagListRequestParams struct {
 	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
@@ -4546,6 +4912,114 @@ type RegionSummaryOverviewItem struct {
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitnil" name:"TotalCost"`
+}
+
+type SavingPlanCoverageDetail struct {
+	// 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 子产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCode *string `json:"SubProductCode,omitnil" name:"SubProductCode"`
+
+	// 费用起始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+
+	// 费用结束日期，格式yyyy-MM-dd，目前与StartDate相等
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+
+	// 节省计划覆盖金额（即节省计划支付金额）
+	SpCoveredAmount *float64 `json:"SpCoveredAmount,omitnil" name:"SpCoveredAmount"`
+
+	// 节省计划未覆盖金额（即优惠后总价）
+	SpUncoveredAmount *float64 `json:"SpUncoveredAmount,omitnil" name:"SpUncoveredAmount"`
+
+	// 总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）
+	TotalRealAmount *float64 `json:"TotalRealAmount,omitnil" name:"TotalRealAmount"`
+
+	// 按量计费预期金额（即折前价 * 折扣）
+	ExpectedAmount *float64 `json:"ExpectedAmount,omitnil" name:"ExpectedAmount"`
+
+	// 覆盖率结果，取值[0, 100]
+	SpCoverage *float64 `json:"SpCoverage,omitnil" name:"SpCoverage"`
+}
+
+type SavingPlanCoverageRate struct {
+	// 聚合时间维度，按天聚合格式为yyyy-MM-dd，按月聚合格式为yyyy-MM
+	DatePoint *string `json:"DatePoint,omitnil" name:"DatePoint"`
+
+	// 覆盖率结果，取值[0, 100]
+	Rate *float64 `json:"Rate,omitnil" name:"Rate"`
+}
+
+type SavingPlanOverviewDetail struct {
+	// 节省计划类型
+	SpType *string `json:"SpType,omitnil" name:"SpType"`
+
+	// 支付类型
+	PayType *uint64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 支付金额（单位：元）
+	PayAmount *string `json:"PayAmount,omitnil" name:"PayAmount"`
+
+	// 开始时间 yyyy-mm-dd HH:mm:ss格式
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间 yyyy-mm-dd HH:mm:ss格式
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 购买时间 yyyy-mm-dd HH:mm:ss格式
+	BuyTime *string `json:"BuyTime,omitnil" name:"BuyTime"`
+
+	// 状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 累计节省金额（单位：元）
+	SavingAmount *string `json:"SavingAmount,omitnil" name:"SavingAmount"`
+
+	// 地域
+	Region []*string `json:"Region,omitnil" name:"Region"`
+}
+
+type SavingPlanUsageDetail struct {
+	// 节省计划类型
+	SpType *string `json:"SpType,omitnil" name:"SpType"`
+
+	// 节省计划状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 累计抵扣的金额（单位：元）
+	DeductAmount *string `json:"DeductAmount,omitnil" name:"DeductAmount"`
+
+	// 累计承诺消费金额（单位：元）
+	PromiseAmount *string `json:"PromiseAmount,omitnil" name:"PromiseAmount"`
+
+	// 累计净节省金额（单位：元）
+	NetSavings *string `json:"NetSavings,omitnil" name:"NetSavings"`
+
+	// 使用率
+	UtilizationRate *float64 `json:"UtilizationRate,omitnil" name:"UtilizationRate"`
+
+	// 累计流失金额（单位：元）
+	LossAmount *string `json:"LossAmount,omitnil" name:"LossAmount"`
+
+	// 累计按量计费预期金额（单位：元）
+	DosageAmount *string `json:"DosageAmount,omitnil" name:"DosageAmount"`
+
+	// 累计成本金额（单位：元）
+	CostAmount *string `json:"CostAmount,omitnil" name:"CostAmount"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region []*string `json:"Region,omitnil" name:"Region"`
 }
 
 type SummaryDetail struct {

@@ -959,6 +959,80 @@ func (r *DeleteLogstashPipelinesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDiagnoseRequestParams struct {
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 报告日期，格式20210301
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 报告返回份数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeDiagnoseRequest struct {
+	*tchttp.BaseRequest
+	
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 报告日期，格式20210301
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 报告返回份数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeDiagnoseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiagnoseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Date")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiagnoseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDiagnoseResponseParams struct {
+	// 诊断报告个数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 诊断报告列表
+	DiagnoseResults []*DiagnoseResult `json:"DiagnoseResults,omitnil" name:"DiagnoseResults"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDiagnoseResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDiagnoseResponseParams `json:"Response"`
+}
+
+func (r *DescribeDiagnoseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiagnoseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIndexListRequestParams struct {
 	// 索引类型。auto：自治索引；normal：普通索引
 	IndexType *string `json:"IndexType,omitnil" name:"IndexType"`
@@ -1375,6 +1449,124 @@ func (r *DescribeInstanceOperationsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceOperationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancePluginInfo struct {
+	// 插件名
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
+
+	// 插件版本
+	PluginVersion *string `json:"PluginVersion,omitnil" name:"PluginVersion"`
+
+	// 插件描述
+	PluginDesc *string `json:"PluginDesc,omitnil" name:"PluginDesc"`
+
+	// 插件状态：-2 已卸载 -1 卸载中 0 安装中 1 已安装
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 插件是否可卸载
+	Removable *bool `json:"Removable,omitnil" name:"Removable"`
+
+	// 0：系统插件
+	PluginType *int64 `json:"PluginType,omitnil" name:"PluginType"`
+
+	// 插件变更时间
+	PluginUpdateTime *string `json:"PluginUpdateTime,omitnil" name:"PluginUpdateTime"`
+}
+
+// Predefined struct for user
+type DescribeInstancePluginListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 分页起始值, 默认值0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页大小，默认值10
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段<li>1：插件名 pluginName
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+
+	// 0：系统插件
+	PluginType *int64 `json:"PluginType,omitnil" name:"PluginType"`
+}
+
+type DescribeInstancePluginListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 分页起始值, 默认值0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页大小，默认值10
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段<li>1：插件名 pluginName
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+
+	// 0：系统插件
+	PluginType *int64 `json:"PluginType,omitnil" name:"PluginType"`
+}
+
+func (r *DescribeInstancePluginListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePluginListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "PluginType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancePluginListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancePluginListResponseParams struct {
+	// 返回的插件个数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 插件信息列表
+	PluginList []*DescribeInstancePluginInfo `json:"PluginList,omitnil" name:"PluginList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstancePluginListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancePluginListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancePluginListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePluginListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2032,6 +2224,75 @@ func (r *DiagnoseInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiagnoseJobMeta struct {
+	// 智能运维诊断项英文名
+	JobName *string `json:"JobName,omitnil" name:"JobName"`
+
+	// 智能运维诊断项中文名
+	JobZhName *string `json:"JobZhName,omitnil" name:"JobZhName"`
+
+	// 智能运维诊断项描述
+	JobDescription *string `json:"JobDescription,omitnil" name:"JobDescription"`
+}
+
+type DiagnoseJobResult struct {
+	// 诊断项名
+	JobName *string `json:"JobName,omitnil" name:"JobName"`
+
+	// 诊断项状态：-2失败，-1待重试，0运行中，1成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 诊断项得分
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 诊断摘要
+	Summary *string `json:"Summary,omitnil" name:"Summary"`
+
+	// 诊断建议
+	Advise *string `json:"Advise,omitnil" name:"Advise"`
+
+	// 诊断详情
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// 诊断指标详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDetails []*MetricDetail `json:"MetricDetails,omitnil" name:"MetricDetails"`
+
+	// 诊断日志详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogDetails []*LogDetail `json:"LogDetails,omitnil" name:"LogDetails"`
+
+	// 诊断配置详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettingDetails []*SettingDetail `json:"SettingDetails,omitnil" name:"SettingDetails"`
+}
+
+type DiagnoseResult struct {
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 诊断报告ID
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+
+	// 诊断触发时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 诊断是否完成
+	Completed *bool `json:"Completed,omitnil" name:"Completed"`
+
+	// 诊断总得分
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 诊断类型，2 定时诊断，3 客户手动触发诊断
+	JobType *int64 `json:"JobType,omitnil" name:"JobType"`
+
+	// 诊断参数，如诊断时间，诊断索引等
+	JobParam *JobParam `json:"JobParam,omitnil" name:"JobParam"`
+
+	// 诊断项结果列表
+	JobResults []*DiagnoseJobResult `json:"JobResults,omitnil" name:"JobResults"`
+}
+
 type DictInfo struct {
 	// 词典键值
 	Key *string `json:"Key,omitnil" name:"Key"`
@@ -2041,6 +2302,14 @@ type DictInfo struct {
 
 	// 词典大小，单位B
 	Size *uint64 `json:"Size,omitnil" name:"Size"`
+}
+
+type Dimension struct {
+	// 智能运维指标维度Key
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 智能运维指标维度值
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type EsAcl struct {
@@ -2082,6 +2351,75 @@ type EsPublicAcl struct {
 
 	// 访问白名单
 	WhiteIpList []*string `json:"WhiteIpList,omitnil" name:"WhiteIpList"`
+}
+
+// Predefined struct for user
+type GetDiagnoseSettingsRequestParams struct {
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type GetDiagnoseSettingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *GetDiagnoseSettingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDiagnoseSettingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDiagnoseSettingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDiagnoseSettingsResponseParams struct {
+	// 智能运维诊断项和元信息
+	DiagnoseJobMetas []*DiagnoseJobMeta `json:"DiagnoseJobMetas,omitnil" name:"DiagnoseJobMetas"`
+
+	// 0：开启智能运维；-1：关闭智能运维
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 智能运维每天定时巡检时间
+	CronTime *string `json:"CronTime,omitnil" name:"CronTime"`
+
+	// 智能运维当天已手动触发诊断次数
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 智能运维每天最大可手动触发次数
+	MaxCount *int64 `json:"MaxCount,omitnil" name:"MaxCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetDiagnoseSettingsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDiagnoseSettingsResponseParams `json:"Response"`
+}
+
+func (r *GetDiagnoseSettingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDiagnoseSettingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2597,6 +2935,18 @@ type InstanceLog struct {
 	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 }
 
+type JobParam struct {
+	// 诊断项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Jobs []*string `json:"Jobs,omitnil" name:"Jobs"`
+
+	// 诊断索引
+	Indices *string `json:"Indices,omitnil" name:"Indices"`
+
+	// 历史诊断时间
+	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+}
+
 type KeyValue struct {
 	// 键
 	Key *string `json:"Key,omitnil" name:"Key"`
@@ -2663,6 +3013,17 @@ type LocalDiskInfo struct {
 
 	// 本地盘块数
 	LocalDiskCount *uint64 `json:"LocalDiskCount,omitnil" name:"LocalDiskCount"`
+}
+
+type LogDetail struct {
+	// 日志异常名
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 日志异常处理建议
+	Advise *string `json:"Advise,omitnil" name:"Advise"`
+
+	// 日志异常名出现次数
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type LogstashBindedES struct {
@@ -2887,6 +3248,22 @@ type MasterNodeInfo struct {
 
 	// 专用主节点磁盘类型
 	MasterNodeDiskType *string `json:"MasterNodeDiskType,omitnil" name:"MasterNodeDiskType"`
+}
+
+type Metric struct {
+	// 指标维度族
+	Dimensions []*Dimension `json:"Dimensions,omitnil" name:"Dimensions"`
+
+	// 指标值
+	Value *float64 `json:"Value,omitnil" name:"Value"`
+}
+
+type MetricDetail struct {
+	// 指标详情名
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 指标详情值
+	Metrics []*Metric `json:"Metrics,omitnil" name:"Metrics"`
 }
 
 // Predefined struct for user
@@ -3497,6 +3874,17 @@ func (r *SaveAndDeployLogstashPipelineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SaveAndDeployLogstashPipelineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SettingDetail struct {
+	// 配置key
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 配置当前值
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 配置处理建议
+	Advise *string `json:"Advise,omitnil" name:"Advise"`
 }
 
 // Predefined struct for user

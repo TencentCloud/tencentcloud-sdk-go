@@ -45,6 +45,63 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindSecurityTemplateToEntityRequest() (request *BindSecurityTemplateToEntityRequest) {
+    request = &BindSecurityTemplateToEntityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "BindSecurityTemplateToEntity")
+    
+    
+    return
+}
+
+func NewBindSecurityTemplateToEntityResponse() (response *BindSecurityTemplateToEntityResponse) {
+    response = &BindSecurityTemplateToEntityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindSecurityTemplateToEntity
+// 操作安全策略模板，支持将域名绑定或换绑到指定的策略模板，或者从指定的策略模板解绑。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindSecurityTemplateToEntity(request *BindSecurityTemplateToEntityRequest) (response *BindSecurityTemplateToEntityResponse, err error) {
+    return c.BindSecurityTemplateToEntityWithContext(context.Background(), request)
+}
+
+// BindSecurityTemplateToEntity
+// 操作安全策略模板，支持将域名绑定或换绑到指定的策略模板，或者从指定的策略模板解绑。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindSecurityTemplateToEntityWithContext(ctx context.Context, request *BindSecurityTemplateToEntityRequest) (response *BindSecurityTemplateToEntityResponse, err error) {
+    if request == nil {
+        request = NewBindSecurityTemplateToEntityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindSecurityTemplateToEntity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindSecurityTemplateToEntityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindZoneToPlanRequest() (request *BindZoneToPlanRequest) {
     request = &BindZoneToPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},

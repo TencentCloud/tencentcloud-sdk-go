@@ -308,6 +308,7 @@ func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRunGroupsRequestParams struct {
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 返回数量，默认为10，最大值为100。
@@ -327,6 +328,7 @@ type DescribeRunGroupsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 返回数量，默认为10，最大值为100。
@@ -395,6 +397,7 @@ func (r *DescribeRunGroupsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRunsRequestParams struct {
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 返回数量，默认为10，最大值为100。
@@ -415,6 +418,7 @@ type DescribeRunsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 返回数量，默认为10，最大值为100。
@@ -751,6 +755,7 @@ type GetRunCallsRequestParams struct {
 	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
@@ -764,6 +769,7 @@ type GetRunCallsRequest struct {
 	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
@@ -814,11 +820,103 @@ func (r *GetRunCallsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetRunMetadataFileRequestParams struct {
+	// 任务Uuid。
+	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
+
+	// 需要获取的文件名。
+	// 
+	// 默认支持以下文件：
+	// - nextflow.log
+	// 
+	// 提交时NFOption中report指定为true时，额外支持以下文件：
+	// - execution_report.html
+	// - execution_timeline.html
+	// - execution_trace.txt
+	// - pipeline_dag.html
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+type GetRunMetadataFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Uuid。
+	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
+
+	// 需要获取的文件名。
+	// 
+	// 默认支持以下文件：
+	// - nextflow.log
+	// 
+	// 提交时NFOption中report指定为true时，额外支持以下文件：
+	// - execution_report.html
+	// - execution_timeline.html
+	// - execution_trace.txt
+	// - pipeline_dag.html
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+func (r *GetRunMetadataFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRunMetadataFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RunUuid")
+	delete(f, "Key")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRunMetadataFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRunMetadataFileResponseParams struct {
+	// 文件预签名链接，一分钟内有效。
+	CosSignedUrl *string `json:"CosSignedUrl,omitnil" name:"CosSignedUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetRunMetadataFileResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRunMetadataFileResponseParams `json:"Response"`
+}
+
+func (r *GetRunMetadataFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRunMetadataFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetRunStatusRequestParams struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
@@ -829,6 +927,7 @@ type GetRunStatusRequest struct {
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
 	// 项目ID。
+	// （不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
@@ -875,6 +974,23 @@ func (r *GetRunStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetRunStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GitInfo struct {
+	// Git地址。
+	GitHttpPath *string `json:"GitHttpPath,omitnil" name:"GitHttpPath"`
+
+	// Git用户名。
+	GitUserName *string `json:"GitUserName,omitnil" name:"GitUserName"`
+
+	// Git密码或者Token。
+	GitTokenOrPassword *string `json:"GitTokenOrPassword,omitnil" name:"GitTokenOrPassword"`
+
+	// 分支。
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
+
+	// 标签。
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
 }
 
 // Predefined struct for user
@@ -1114,6 +1230,8 @@ type Run struct {
 	Input *string `json:"Input,omitnil" name:"Input"`
 
 	// 运行选项。
+	//
+	// Deprecated: Option is deprecated.
 	Option *RunOption `json:"Option,omitnil" name:"Option"`
 
 	// 执行时间。
@@ -1458,6 +1576,138 @@ type RunStatusCount struct {
 	Count *uint64 `json:"Count,omitnil" name:"Count"`
 }
 
+// Predefined struct for user
+type RunWorkflowRequestParams struct {
+	// 任务批次名称。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 投递环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 工作流Git仓库信息。
+	GitSource *GitInfo `json:"GitSource,omitnil" name:"GitSource"`
+
+	// 工作流类型。
+	// 
+	// 支持类型：
+	// - NEXTFLOW
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// Nextflow选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 任务批次描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 任务输入JSON。需要进行base64编码。
+	// （InputBase64和InputCosUri必选其一）
+	InputBase64 *string `json:"InputBase64,omitnil" name:"InputBase64"`
+
+	// 任务输入COS地址。
+	// （InputBase64和InputCosUri必选其一）
+	InputCosUri *string `json:"InputCosUri,omitnil" name:"InputCosUri"`
+
+	// 任务缓存清理时间。不填表示不清理。
+	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
+}
+
+type RunWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务批次名称。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 投递环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 工作流Git仓库信息。
+	GitSource *GitInfo `json:"GitSource,omitnil" name:"GitSource"`
+
+	// 工作流类型。
+	// 
+	// 支持类型：
+	// - NEXTFLOW
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// Nextflow选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 任务批次描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 任务输入JSON。需要进行base64编码。
+	// （InputBase64和InputCosUri必选其一）
+	InputBase64 *string `json:"InputBase64,omitnil" name:"InputBase64"`
+
+	// 任务输入COS地址。
+	// （InputBase64和InputCosUri必选其一）
+	InputCosUri *string `json:"InputCosUri,omitnil" name:"InputCosUri"`
+
+	// 任务缓存清理时间。不填表示不清理。
+	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
+}
+
+func (r *RunWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "EnvironmentId")
+	delete(f, "GitSource")
+	delete(f, "Type")
+	delete(f, "NFOption")
+	delete(f, "ProjectId")
+	delete(f, "Description")
+	delete(f, "InputBase64")
+	delete(f, "InputCosUri")
+	delete(f, "CacheClearDelay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunWorkflowResponseParams struct {
+	// 任务批次ID。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RunWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *RunWorkflowResponseParams `json:"Response"`
+}
+
+func (r *RunWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StorageOption struct {
 	// 文件存储类型，取值范围：
 	// - SD：通用标准型
@@ -1523,6 +1773,69 @@ type TableRow struct {
 	// 表格行内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*string `json:"Content,omitnil" name:"Content"`
+}
+
+// Predefined struct for user
+type TerminateRunGroupRequestParams struct {
+	// 任务批次ID。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+type TerminateRunGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务批次ID。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+}
+
+func (r *TerminateRunGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateRunGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RunGroupId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateRunGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateRunGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type TerminateRunGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateRunGroupResponseParams `json:"Response"`
+}
+
+func (r *TerminateRunGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateRunGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VPCOption struct {
