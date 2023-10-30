@@ -446,6 +446,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     return c.DeleteTopicWithContext(context.Background(), request)
 }
@@ -455,6 +456,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {
         request = NewDeleteTopicRequest()

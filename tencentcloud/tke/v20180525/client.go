@@ -8295,6 +8295,7 @@ func NewDescribePrometheusAlertHistoryResponse() (response *DescribePrometheusAl
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -8313,6 +8314,7 @@ func (c *Client) DescribePrometheusAlertHistory(request *DescribePrometheusAlert
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -10389,6 +10391,7 @@ func NewDisableEventPersistenceResponse() (response *DisableEventPersistenceResp
 //  FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
 //  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
 //  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 //  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
@@ -10410,6 +10413,7 @@ func (c *Client) DisableEventPersistence(request *DisableEventPersistenceRequest
 //  FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
 //  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
 //  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 //  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"

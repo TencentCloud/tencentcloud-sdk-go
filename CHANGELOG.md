@@ -1,3 +1,243 @@
+# Release v1.0.777
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 99 次发布
+
+发布时间：2023-10-31 01:23:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLoadBalancerSla](https://cloud.tencent.com/document/api/214/63892)
+
+	* 新增入参：Force
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 19 次发布
+
+发布时间：2023-10-31 01:30:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/90825#VULRiskAdvanceCFGList)
+
+	* 新增成员：RiskId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 22 次发布
+
+发布时间：2023-10-31 01:58:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GenerateSignedVideoURL](https://cloud.tencent.com/document/api/1131/77494)
+
+	* 新增入参：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 115 次发布
+
+发布时间：2023-10-31 02:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeGeneralInvoice](https://cloud.tencent.com/document/api/866/90802)
+
+	* 新增入参：EnableItemPolygon
+
+
+新增数据结构：
+
+* [ItemPolygonInfo](https://cloud.tencent.com/document/api/866/33527#ItemPolygonInfo)
+
+修改数据结构：
+
+* [InvoiceItem](https://cloud.tencent.com/document/api/866/33527#InvoiceItem)
+
+	* 新增成员：ItemPolygon
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 8 次发布
+
+发布时间：2023-10-31 02:15:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputManageMarketingRiskValue)
+
+	* 新增成员：RiskInformation
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 53 次发布
+
+发布时间：2023-10-31 02:25:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEscapeEventDetail](https://cloud.tencent.com/document/api/1285/65538)
+
+	* 新增入参：EventType
+
+
+修改数据结构：
+
+* [CompliancePolicyItemSummary](https://cloud.tencent.com/document/api/1285/65614#CompliancePolicyItemSummary)
+
+	* 新增成员：Description, AuditProcedure
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 83 次发布
+
+发布时间：2023-10-31 02:29:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRocketMQSubscriptions](https://cloud.tencent.com/document/api/1179/100975)
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 35 次发布
+
+发布时间：2023-10-31 02:34:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
+
+	* 新增入参：TRTCRoomId, TRTCRoomIdStr
+
+* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+
+	* 新增入参：GroupId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 177 次发布
+
+发布时间：2023-10-31 02:45:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCustomerGateway](https://cloud.tencent.com/document/api/215/17523)
+
+	* 新增入参：BgpAsn
+
+* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+
+	* 新增入参：Route, BgpConfig
+
+
+新增数据结构：
+
+* [BgpConfig](https://cloud.tencent.com/document/api/215/15824#BgpConfig)
+* [BgpConfigAndAsn](https://cloud.tencent.com/document/api/215/15824#BgpConfigAndAsn)
+* [CreateVpnConnRoute](https://cloud.tencent.com/document/api/215/15824#CreateVpnConnRoute)
+
+修改数据结构：
+
+* [CustomerGateway](https://cloud.tencent.com/document/api/215/15824#CustomerGateway)
+
+	* 新增成员：BgpAsn
+
+* [VpnConnection](https://cloud.tencent.com/document/api/215/15824#VpnConnection)
+
+	* 新增成员：BgpConfig
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 53 次发布
+
+发布时间：2023-10-31 02:51:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SubmitSqlTask](https://cloud.tencent.com/document/api/1267/95149)
+
+	* 新增入参：ScriptEncryption
+
+
+
+
 # Release v1.0.776
 
 ## 费用中心(billing) 版本：2018-07-09

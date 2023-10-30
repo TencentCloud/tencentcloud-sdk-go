@@ -298,6 +298,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  INTERNALERROR_RESOURCENOTMATCH = "InternalError.ResourceNotMatch"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     return c.AssociateSecurityGroupsWithContext(context.Background(), request)
@@ -313,6 +314,7 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
 //  INTERNALERROR_RESOURCENOTMATCH = "InternalError.ResourceNotMatch"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
@@ -705,6 +707,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -731,6 +734,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -2499,6 +2503,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -2545,6 +2550,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -2993,6 +2999,7 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -3009,6 +3016,7 @@ func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (res
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -3342,6 +3350,7 @@ func NewDescribeBackupsResponse() (response *DescribeBackupsResponse) {
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -3367,6 +3376,7 @@ func (c *Client) DescribeBackups(request *DescribeBackupsRequest) (response *Des
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -3881,6 +3891,7 @@ func NewDescribeDBInstanceCharsetResponse() (response *DescribeDBInstanceCharset
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceCharset(request *DescribeDBInstanceCharsetRequest) (response *DescribeDBInstanceCharsetResponse, err error) {
@@ -3899,6 +3910,7 @@ func (c *Client) DescribeDBInstanceCharset(request *DescribeDBInstanceCharsetReq
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceCharsetWithContext(ctx context.Context, request *DescribeDBInstanceCharsetRequest) (response *DescribeDBInstanceCharsetResponse, err error) {
@@ -3948,6 +3960,7 @@ func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigRe
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3967,6 +3980,7 @@ func (c *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigReque
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4012,6 +4026,7 @@ func NewDescribeDBInstanceGTIDResponse() (response *DescribeDBInstanceGTIDRespon
 //  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4026,6 +4041,7 @@ func (c *Client) DescribeDBInstanceGTID(request *DescribeDBInstanceGTIDRequest) 
 //  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4073,6 +4089,7 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
     return c.DescribeDBInstanceInfoWithContext(context.Background(), request)
@@ -4087,6 +4104,7 @@ func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) 
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) DescribeDBInstanceInfoWithContext(ctx context.Context, request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
     if request == nil {
@@ -4405,6 +4423,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
@@ -4427,6 +4446,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
@@ -4594,6 +4614,7 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4615,6 +4636,7 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4996,6 +5018,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
@@ -5014,6 +5037,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
@@ -5452,6 +5476,7 @@ func NewDescribeRoGroupsResponse() (response *DescribeRoGroupsResponse) {
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *DescribeRoGroupsResponse, err error) {
@@ -5468,6 +5493,7 @@ func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *D
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) DescribeRoGroupsWithContext(ctx context.Context, request *DescribeRoGroupsRequest) (response *DescribeRoGroupsResponse, err error) {
@@ -6141,6 +6167,7 @@ func NewDescribeTimeWindowResponse() (response *DescribeTimeWindowResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeTimeWindow(request *DescribeTimeWindowRequest) (response *DescribeTimeWindowResponse, err error) {
     return c.DescribeTimeWindowWithContext(context.Background(), request)
@@ -6153,6 +6180,7 @@ func (c *Client) DescribeTimeWindow(request *DescribeTimeWindowRequest) (respons
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeTimeWindowWithContext(ctx context.Context, request *DescribeTimeWindowRequest) (response *DescribeTimeWindowResponse, err error) {
     if request == nil {
@@ -6256,6 +6284,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     return c.DisassociateSecurityGroupsWithContext(context.Background(), request)
 }
@@ -6272,6 +6301,7 @@ func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsR
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
@@ -6444,6 +6474,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
@@ -6469,6 +6500,7 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
@@ -7684,6 +7716,7 @@ func NewModifyDBInstanceProjectResponse() (response *ModifyDBInstanceProjectResp
 //  INTERNALERROR_TAGERROR = "InternalError.TagError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyDBInstanceProject(request *ModifyDBInstanceProjectRequest) (response *ModifyDBInstanceProjectResponse, err error) {
@@ -7698,6 +7731,7 @@ func (c *Client) ModifyDBInstanceProject(request *ModifyDBInstanceProjectRequest
 //  INTERNALERROR_TAGERROR = "InternalError.TagError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyDBInstanceProjectWithContext(ctx context.Context, request *ModifyDBInstanceProjectRequest) (response *ModifyDBInstanceProjectResponse, err error) {
@@ -7744,6 +7778,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
@@ -7758,6 +7793,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
@@ -8848,6 +8884,7 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
@@ -8867,6 +8904,7 @@ func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesR
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"

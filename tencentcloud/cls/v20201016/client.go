@@ -2394,6 +2394,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 // 本接口用于删除日志主题。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2416,6 +2417,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 // 本接口用于删除日志主题。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"

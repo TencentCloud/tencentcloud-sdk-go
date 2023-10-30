@@ -6350,6 +6350,9 @@ type GenerateSignedVideoURLRequestParams struct {
 
 	// 播放链接过期时间
 	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type GenerateSignedVideoURLRequest struct {
@@ -6360,6 +6363,9 @@ type GenerateSignedVideoURLRequest struct {
 
 	// 播放链接过期时间
 	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 func (r *GenerateSignedVideoURLRequest) ToJsonString() string {
@@ -6376,6 +6382,7 @@ func (r *GenerateSignedVideoURLRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VideoURL")
 	delete(f, "ExpireTime")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateSignedVideoURLRequest has unknown keys!", "")
 	}

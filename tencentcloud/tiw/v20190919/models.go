@@ -4894,17 +4894,22 @@ type StartOnlineRecordRequestParams struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 需要录制的房间号，取值范围: (1, 4294967295)
+	// 需要录制的白板房间号，取值范围: (1, 4294967295)。
+	// 
+	// 1. 在没有指定`GroupId`的情况下，实时录制默认以`RoomId`的字符串表达形式作为同步白板信令的IM群组ID（比如`RoomId`为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始录制前确保相应IM群组已创建完成，否则会导致录制失败。
+	// 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为TRTC房间号进房拉流进行录制。
 	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
 	// 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
 	RecordUserId *string `json:"RecordUserId,omitnil" name:"RecordUserId"`
 
-	// 与RecordUserId对应的签名
+	// 与`RecordUserId`对应的IM签名
 	RecordUserSig *string `json:"RecordUserSig,omitnil" name:"RecordUserSig"`
 
-	// （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
+	// 白板进行信令同步的 IM 群组 ID。
+	// 在没有指定`GroupId`的情况下，实时录制服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+	// 在指定了`GroupId`的情况下，实时录制将优先使用`GroupId`作为同步白板信令的群组ID。请在开始录制前确保相应的IM群组已创建完成，否则会导致录制失败。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 录制视频拼接参数
@@ -4948,6 +4953,18 @@ type StartOnlineRecordRequestParams struct {
 
 	// 内部参数，可忽略
 	ExtraData *string `json:"ExtraData,omitnil" name:"ExtraData"`
+
+	// TRTC数字类型房间号，取值范围: (1, 4294967295)。
+	// 
+	// 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为实时录制拉TRTC流的TRTC房间号。
+	// 
+	// 当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
+	TRTCRoomId *int64 `json:"TRTCRoomId,omitnil" name:"TRTCRoomId"`
+
+	// TRTC字符串类型房间号。
+	// 
+	// 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为实时录制拉TRTC流的TRTC房间号。
+	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitnil" name:"TRTCRoomIdStr"`
 }
 
 type StartOnlineRecordRequest struct {
@@ -4956,17 +4973,22 @@ type StartOnlineRecordRequest struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 需要录制的房间号，取值范围: (1, 4294967295)
+	// 需要录制的白板房间号，取值范围: (1, 4294967295)。
+	// 
+	// 1. 在没有指定`GroupId`的情况下，实时录制默认以`RoomId`的字符串表达形式作为同步白板信令的IM群组ID（比如`RoomId`为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始录制前确保相应IM群组已创建完成，否则会导致录制失败。
+	// 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为TRTC房间号进房拉流进行录制。
 	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
 	// 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
 	RecordUserId *string `json:"RecordUserId,omitnil" name:"RecordUserId"`
 
-	// 与RecordUserId对应的签名
+	// 与`RecordUserId`对应的IM签名
 	RecordUserSig *string `json:"RecordUserSig,omitnil" name:"RecordUserSig"`
 
-	// （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
+	// 白板进行信令同步的 IM 群组 ID。
+	// 在没有指定`GroupId`的情况下，实时录制服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+	// 在指定了`GroupId`的情况下，实时录制将优先使用`GroupId`作为同步白板信令的群组ID。请在开始录制前确保相应的IM群组已创建完成，否则会导致录制失败。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 录制视频拼接参数
@@ -5010,6 +5032,18 @@ type StartOnlineRecordRequest struct {
 
 	// 内部参数，可忽略
 	ExtraData *string `json:"ExtraData,omitnil" name:"ExtraData"`
+
+	// TRTC数字类型房间号，取值范围: (1, 4294967295)。
+	// 
+	// 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为实时录制拉TRTC流的TRTC房间号。
+	// 
+	// 当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
+	TRTCRoomId *int64 `json:"TRTCRoomId,omitnil" name:"TRTCRoomId"`
+
+	// TRTC字符串类型房间号。
+	// 
+	// 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为实时录制拉TRTC流的TRTC房间号。
+	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitnil" name:"TRTCRoomIdStr"`
 }
 
 func (r *StartOnlineRecordRequest) ToJsonString() string {
@@ -5039,6 +5073,8 @@ func (r *StartOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "ChatGroupId")
 	delete(f, "AutoStopTimeout")
 	delete(f, "ExtraData")
+	delete(f, "TRTCRoomId")
+	delete(f, "TRTCRoomIdStr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartOnlineRecordRequest has unknown keys!", "")
 	}
@@ -5077,15 +5113,15 @@ type StartWhiteboardPushRequestParams struct {
 
 	// 需要推流的白板房间号，取值范围: (1, 4294967295)。
 	// 
-	// 1. 白板推流默认以RoomId的字符串表达形式作为IM群组的GroupID（比如RoomId为1234，则IM群组的GroupID为"1234"）加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
-	// 2. 在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
+	// 1. 在没有指定`GroupId`的情况下，白板推流默认以`RoomId`的字符串表达形式作为IM群组ID（比如RoomId为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
+	// 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为白板流进行推流的TRTC房间号。
 	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 用于白板推流服务进入白板房间的用户ID。在没有额外指定`IMAuthParam`和`TRTCAuthParam`的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
 	// 用户ID最大长度不能大于60个字节，该用户ID必须是一个单独的未同时在其他地方使用的用户ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该用户ID和其他地方同时在使用的用户ID重复，会导致白板推流服务与其他使用场景帐号互踢，影响正常推流。
 	PushUserId *string `json:"PushUserId,omitnil" name:"PushUserId"`
 
-	// 与PushUserId对应的IM签名(usersig)。
+	// 与`PushUserId`对应的IM签名(usersig)。
 	PushUserSig *string `json:"PushUserSig,omitnil" name:"PushUserSig"`
 
 	// 白板参数，例如白板宽高、背景颜色等
@@ -5122,7 +5158,7 @@ type StartWhiteboardPushRequestParams struct {
 	// 如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
 	AutoRecord *bool `json:"AutoRecord,omitnil" name:"AutoRecord"`
 
-	// 指定白板推流录制的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
+	// 指定白板推流这路流在音视频云端录制中的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
 	// 
 	// 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 	// 
@@ -5143,7 +5179,7 @@ type StartWhiteboardPushRequestParams struct {
 	// 如果实时音视频的旁路推流模式选择为 `全局自动旁路` 模式，可忽略此参数。
 	AutoPublish *bool `json:"AutoPublish,omitnil" name:"AutoPublish"`
 
-	// 指定实时音视频在旁路白板推流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
+	// 指定实时音视频在旁路白板推流这路流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
 	// 
 	// 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 	// 
@@ -5162,14 +5198,14 @@ type StartWhiteboardPushRequestParams struct {
 
 	// TRTC数字类型房间号，取值范围: (1, 4294967295)。
 	// 
-	// 在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
+	// 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为白板流进行推流的TRTC房间号。
 	// 
-	// 当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
+	// 当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
 	TRTCRoomId *int64 `json:"TRTCRoomId,omitnil" name:"TRTCRoomId"`
 
 	// TRTC字符串类型房间号。
 	// 
-	// 在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
+	// 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为白板流进行推流的TRTC房间号。
 	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitnil" name:"TRTCRoomIdStr"`
 
 	// IM鉴权信息参数，用于IM鉴权。
@@ -5189,6 +5225,11 @@ type StartWhiteboardPushRequestParams struct {
 	// TRTCAppSceneVideoCall - 视频通话场景，即绝大多数时间都是两人或两人以上视频通话的场景，内部编码器和网络协议优化侧重流畅性，降低通话延迟和卡顿率。
 	// TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶尔有多人视频互动的场景，内部编码器和网络协议优化侧重性能和兼容性，性能和清晰度表现更佳。
 	TRTCEnterRoomMode *string `json:"TRTCEnterRoomMode,omitnil" name:"TRTCEnterRoomMode"`
+
+	// 白板进行信令同步的 IM 群组 ID。
+	// 在没有指定`GroupId`的情况下，白板推流服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+	// 在指定了`GroupId`的情况下，白板推流将优先`GroupId`作为同步白板信令的群组ID。请在开始推流前确保指定的IM群组已创建完成，否则会导致推流失败。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 }
 
 type StartWhiteboardPushRequest struct {
@@ -5199,15 +5240,15 @@ type StartWhiteboardPushRequest struct {
 
 	// 需要推流的白板房间号，取值范围: (1, 4294967295)。
 	// 
-	// 1. 白板推流默认以RoomId的字符串表达形式作为IM群组的GroupID（比如RoomId为1234，则IM群组的GroupID为"1234"）加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
-	// 2. 在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
+	// 1. 在没有指定`GroupId`的情况下，白板推流默认以`RoomId`的字符串表达形式作为IM群组ID（比如RoomId为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
+	// 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为白板流进行推流的TRTC房间号。
 	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 用于白板推流服务进入白板房间的用户ID。在没有额外指定`IMAuthParam`和`TRTCAuthParam`的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
 	// 用户ID最大长度不能大于60个字节，该用户ID必须是一个单独的未同时在其他地方使用的用户ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该用户ID和其他地方同时在使用的用户ID重复，会导致白板推流服务与其他使用场景帐号互踢，影响正常推流。
 	PushUserId *string `json:"PushUserId,omitnil" name:"PushUserId"`
 
-	// 与PushUserId对应的IM签名(usersig)。
+	// 与`PushUserId`对应的IM签名(usersig)。
 	PushUserSig *string `json:"PushUserSig,omitnil" name:"PushUserSig"`
 
 	// 白板参数，例如白板宽高、背景颜色等
@@ -5244,7 +5285,7 @@ type StartWhiteboardPushRequest struct {
 	// 如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
 	AutoRecord *bool `json:"AutoRecord,omitnil" name:"AutoRecord"`
 
-	// 指定白板推流录制的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
+	// 指定白板推流这路流在音视频云端录制中的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
 	// 
 	// 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 	// 
@@ -5265,7 +5306,7 @@ type StartWhiteboardPushRequest struct {
 	// 如果实时音视频的旁路推流模式选择为 `全局自动旁路` 模式，可忽略此参数。
 	AutoPublish *bool `json:"AutoPublish,omitnil" name:"AutoPublish"`
 
-	// 指定实时音视频在旁路白板推流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
+	// 指定实时音视频在旁路白板推流这路流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
 	// 
 	// 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 	// 
@@ -5284,14 +5325,14 @@ type StartWhiteboardPushRequest struct {
 
 	// TRTC数字类型房间号，取值范围: (1, 4294967295)。
 	// 
-	// 在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
+	// 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为白板流进行推流的TRTC房间号。
 	// 
-	// 当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
+	// 当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
 	TRTCRoomId *int64 `json:"TRTCRoomId,omitnil" name:"TRTCRoomId"`
 
 	// TRTC字符串类型房间号。
 	// 
-	// 在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
+	// 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为白板流进行推流的TRTC房间号。
 	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitnil" name:"TRTCRoomIdStr"`
 
 	// IM鉴权信息参数，用于IM鉴权。
@@ -5311,6 +5352,11 @@ type StartWhiteboardPushRequest struct {
 	// TRTCAppSceneVideoCall - 视频通话场景，即绝大多数时间都是两人或两人以上视频通话的场景，内部编码器和网络协议优化侧重流畅性，降低通话延迟和卡顿率。
 	// TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶尔有多人视频互动的场景，内部编码器和网络协议优化侧重性能和兼容性，性能和清晰度表现更佳。
 	TRTCEnterRoomMode *string `json:"TRTCEnterRoomMode,omitnil" name:"TRTCEnterRoomMode"`
+
+	// 白板进行信令同步的 IM 群组 ID。
+	// 在没有指定`GroupId`的情况下，白板推流服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+	// 在指定了`GroupId`的情况下，白板推流将优先`GroupId`作为同步白板信令的群组ID。请在开始推流前确保指定的IM群组已创建完成，否则会导致推流失败。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 }
 
 func (r *StartWhiteboardPushRequest) ToJsonString() string {
@@ -5346,6 +5392,7 @@ func (r *StartWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "IMAuthParam")
 	delete(f, "TRTCAuthParam")
 	delete(f, "TRTCEnterRoomMode")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWhiteboardPushRequest has unknown keys!", "")
 	}

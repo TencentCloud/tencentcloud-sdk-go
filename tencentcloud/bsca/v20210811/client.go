@@ -128,6 +128,7 @@ func NewDescribeKBComponentVersionListResponse() (response *DescribeKBComponentV
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeKBComponentVersionList(request *DescribeKBComponentVersionListRequest) (response *DescribeKBComponentVersionListResponse, err error) {
     return c.DescribeKBComponentVersionListWithContext(context.Background(), request)
 }
@@ -141,6 +142,7 @@ func (c *Client) DescribeKBComponentVersionList(request *DescribeKBComponentVers
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeKBComponentVersionListWithContext(ctx context.Context, request *DescribeKBComponentVersionListRequest) (response *DescribeKBComponentVersionListResponse, err error) {
     if request == nil {
         request = NewDescribeKBComponentVersionListRequest()
@@ -410,6 +412,7 @@ func NewSearchKBComponentResponse() (response *SearchKBComponentResponse) {
 // 根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -422,6 +425,7 @@ func (c *Client) SearchKBComponent(request *SearchKBComponentRequest) (response 
 // 根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

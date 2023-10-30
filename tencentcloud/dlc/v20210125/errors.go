@@ -179,6 +179,9 @@ const (
 	// 指定集群付费类型不匹配，当前仅支持: 0: 后付费, 1: 预付费
 	INVALIDPARAMETER_DATAENGINEPAYMODETYPENOTMATCH = "InvalidParameter.DataEnginePayModeTypeNotMatch"
 
+	// 指定集群规格不符合规范
+	INVALIDPARAMETER_DATAENGINESIZENOTMATCH = "InvalidParameter.DataEngineSizeNotMatch"
+
 	// 指定集群类型不匹配，当前仅支持: spark/presto
 	INVALIDPARAMETER_DATAENGINETYPENOTMATCH = "InvalidParameter.DataEngineTypeNotMatch"
 
@@ -236,6 +239,9 @@ const (
 	// 无效的访问策略。
 	INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 
+	// 指定的Spark任务程序包文件格式不匹配，当前仅支持.jar或.py
+	INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+
 	// 字段名称设置错误，字段名称必须小于等于128字节
 	INVALIDPARAMETER_INVALIDCOLUMNNAMELENGTH = "InvalidParameter.InvalidColumnNameLength"
 
@@ -254,6 +260,9 @@ const (
 	// 任务指定参数Value值不符合规则
 	INVALIDPARAMETER_INVALIDCONFIGVALUEREGEXPNOTMATCH = "InvalidParameter.InvalidConfigValueRegexpNotMatch"
 
+	// 指定集群CIDR格式不匹配，参考样式: 192.0.2.1/24
+	INVALIDPARAMETER_INVALIDDATAENGINECIDRFORMAT = "InvalidParameter.InvalidDataEngineCidrFormat"
+
 	// 指定集群参数无效，请校验后重试
 	INVALIDPARAMETER_INVALIDDATAENGINECONFIGPAIRS = "InvalidParameter.InvalidDataEngineConfigPairs"
 
@@ -268,6 +277,12 @@ const (
 
 	// 无效的数据引擎规格。
 	INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
+
+	// 指定集群资源使用时长，后付费：固定填3600，预付费：最少填1，代表购买资源一个月，最长不超过120。默认3600
+	INVALIDPARAMETER_INVALIDDATAENGINETIMESPAN = "InvalidParameter.InvalidDataEngineTimeSpan"
+
+	// 指定集群资源使用时长的单位不匹配，后付费：h，预付费：m。默认为h
+	INVALIDPARAMETER_INVALIDDATAENGINETIMEUNIT = "InvalidParameter.InvalidDataEngineTimeUnit"
 
 	// 数据源连接配置异常，请重试，或者提交工单联系我们
 	INVALIDPARAMETER_INVALIDDATASOURCECONNECTIONCONFIG = "InvalidParameter.InvalidDatasourceConnectionConfig"
@@ -337,6 +352,9 @@ const (
 
 	// 执行SQL数量错误，SQL数量要大于等于1个且小于等于50个
 	INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+
+	// 单次获取SQL任务结果数量需大于0条，小于1000条
+	INVALIDPARAMETER_INVALIDSQLTASKMAXRESULTS = "InvalidParameter.InvalidSQLTaskMaxResults"
 
 	// 当前Session仅支持: spark/pyspark/sparkr/sql类型
 	INVALIDPARAMETER_INVALIDSESSIONKINDTYPE = "InvalidParameter.InvalidSessionKindType"
@@ -634,6 +652,9 @@ const (
 
 	// Prohibited operation admin
 	UNAUTHORIZEDOPERATION_PROHIBITEDOPERATIONADMIN = "UnauthorizedOperation.ProhibitedOperationAdmin"
+
+	// 子用户无权续费计算引擎。
+	UNAUTHORIZEDOPERATION_RENEWCOMPUTINGENGINE = "UnauthorizedOperation.RenewComputingEngine"
 
 	// 子用户无权取消特定权限。
 	UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"

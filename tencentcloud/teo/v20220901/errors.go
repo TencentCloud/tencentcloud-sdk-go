@@ -194,6 +194,9 @@ const (
 	// 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
 	INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
 
+	// 回源Host错误。
+	INVALIDPARAMETER_HOSTHEADERINVALID = "InvalidParameter.HostHeaderInvalid"
+
 	// 域名不存在。
 	INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
 
@@ -401,8 +404,14 @@ const (
 	// 源站是内网IP。
 	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"
 
+	// 源站组名称已经存在。
+	INVALIDPARAMETER_ORIGINNAMEEXISTS = "InvalidParameter.OriginNameExists"
+
 	// 修改源站操作中源站组Id必填。
 	INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
+
+	// 源站格式错误。
+	INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 
 	// 参数错误: 无效 "结束时间", 不在允许的查询范围内: [开始时间, 开始+ 7天]
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
@@ -412,6 +421,18 @@ const (
 
 	// 最大上传大小超出限制
 	INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
+
+	// 实例名称重复。
+	INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
+
+	// 规则源站不支持多域名。
+	INVALIDPARAMETER_RULEORIGINMULTIDOMAIN = "InvalidParameter.RuleOriginMultiDomain"
+
+	// 规则源站端口应为整数。
+	INVALIDPARAMETER_RULEORIGINPORTINTEGER = "InvalidParameter.RuleOriginPortInteger"
+
+	// 规则端口重复。
+	INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
 
 	// 参数错误
 	INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
@@ -527,6 +548,9 @@ const (
 	// 中国大陆加速与IPv6冲突，不能同时配置。
 	OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
 
+	// 引用源站组的7层域名服务正在部署中，请稍后再编辑。
+	OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = "OperationDenied.AccelerationDomainStatusNotInOnline"
+
 	// 配置已被锁定，请解除配置锁定之后在重试。
 	OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
 
@@ -569,6 +593,9 @@ const (
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
+	// 站点状态不支持操作负载均衡。
+	OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = "OperationDenied.LoadBalancingZoneIsNotActive"
+
 	// 已存在多个Cname接入站点，不允许切换至NS。
 	OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
 
@@ -581,8 +608,14 @@ const (
 	// 无域名接入站点不支持除切换为CNAME接入类型以外的任何修改动作。
 	OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = "OperationDenied.NoDomainAccessZoneOnlySupportModifyType"
 
+	// 加速域名使用中，无法删除。
+	OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
+
 	// 套餐不支持变更站点的服务区域。
 	OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
+
+	// Anycast IP调度模式不支持开启中国大陆加速。
+	OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = "OperationDenied.PlatTypeIPAccelerateMainlandNotSupport"
 
 	// DNS 记录不允许添加。
 	OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"

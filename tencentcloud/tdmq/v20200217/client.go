@@ -4632,6 +4632,59 @@ func (c *Client) DescribeRocketMQSourceClusterTopicListWithContext(ctx context.C
     return
 }
 
+func NewDescribeRocketMQSubscriptionsRequest() (request *DescribeRocketMQSubscriptionsRequest) {
+    request = &DescribeRocketMQSubscriptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSubscriptions")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQSubscriptionsResponse() (response *DescribeRocketMQSubscriptionsResponse) {
+    response = &DescribeRocketMQSubscriptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQSubscriptions
+// 用于获取RocketMQ消费组订阅关系数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQSubscriptions(request *DescribeRocketMQSubscriptionsRequest) (response *DescribeRocketMQSubscriptionsResponse, err error) {
+    return c.DescribeRocketMQSubscriptionsWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQSubscriptions
+// 用于获取RocketMQ消费组订阅关系数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQSubscriptionsWithContext(ctx context.Context, request *DescribeRocketMQSubscriptionsRequest) (response *DescribeRocketMQSubscriptionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQSubscriptionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQSubscriptions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQSubscriptionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQTopicMsgsRequest() (request *DescribeRocketMQTopicMsgsRequest) {
     request = &DescribeRocketMQTopicMsgsRequest{
         BaseRequest: &tchttp.BaseRequest{},

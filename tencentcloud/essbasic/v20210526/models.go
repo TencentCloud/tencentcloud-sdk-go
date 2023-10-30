@@ -220,12 +220,19 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 撤销理由,不超过200个字符
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
-	// 撤销理由自定义格式；选项：
+	// 撤销理由自定义格式，支持以下格式
+	// <ul><li>0 : 默认值</li>
+	// <li>1 : 只保留身份信息</li>
+	// <li>2 : 保留身份信息+企业名称</li>
+	// <li>3 : 保留身份信息+企业名称+经办人名称</li></ul>
+	// 例如,假设合同的发起方是典子谦示例企业的经办人张三，撤销理由是"合同内容错误，需要修正",合同撤销后，各签署方看到的撤销理由是会是
 	// 
-	// - 0 默认格式
-	// - 1 只保留身份信息：展示为【发起方】
-	// - 2 保留身份信息+企业名称：展示为【发起方xxx公司】
-	// - 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	// 0: 发起方-典子谦示例企业-张三以"合同内容错误，需要修正"的理由撤销当前合同
+	// 1: 发起方以"合同内容错误，需要修正"的理由撤销当前合同
+	// 2: 发起方-典子谦示例企业以"合同内容错误，需要修正"的理由撤销当前合同
+	// 3: 发起方-典子谦示例企业-张三以"合同内容错误，需要修正"的理由撤销当前合同</br>
+	// 
+	// 备注:`如果不传递撤销理由，那么默认撤销理由是 "自动撤销（通过接口实现）"`
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
 
 	// 暂未开放
@@ -246,12 +253,19 @@ type ChannelBatchCancelFlowsRequest struct {
 	// 撤销理由,不超过200个字符
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
-	// 撤销理由自定义格式；选项：
+	// 撤销理由自定义格式，支持以下格式
+	// <ul><li>0 : 默认值</li>
+	// <li>1 : 只保留身份信息</li>
+	// <li>2 : 保留身份信息+企业名称</li>
+	// <li>3 : 保留身份信息+企业名称+经办人名称</li></ul>
+	// 例如,假设合同的发起方是典子谦示例企业的经办人张三，撤销理由是"合同内容错误，需要修正",合同撤销后，各签署方看到的撤销理由是会是
 	// 
-	// - 0 默认格式
-	// - 1 只保留身份信息：展示为【发起方】
-	// - 2 保留身份信息+企业名称：展示为【发起方xxx公司】
-	// - 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	// 0: 发起方-典子谦示例企业-张三以"合同内容错误，需要修正"的理由撤销当前合同
+	// 1: 发起方以"合同内容错误，需要修正"的理由撤销当前合同
+	// 2: 发起方-典子谦示例企业以"合同内容错误，需要修正"的理由撤销当前合同
+	// 3: 发起方-典子谦示例企业-张三以"合同内容错误，需要修正"的理由撤销当前合同</br>
+	// 
+	// 备注:`如果不传递撤销理由，那么默认撤销理由是 "自动撤销（通过接口实现）"`
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
 
 	// 暂未开放
@@ -1650,7 +1664,7 @@ type ChannelCreateFlowGroupByFilesResponseParams struct {
 	// 合同组中每个合同流程ID，每个ID均为32位字符串。
 	// 
 	// 注:
-	// `此数组的顺序和入参中的FlowGroupInfos顺序回不一致`
+	// `此数组的顺序和入参中的FlowGroupInfos顺序一致`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
@@ -1745,7 +1759,7 @@ type ChannelCreateFlowGroupByTemplatesResponseParams struct {
 	// 合同组中每个合同流程ID，每个ID均为32位字符串。
 	// 
 	// 注:
-	// `此数组的顺序和入参中的FlowInfos顺序回不一致`
+	// `此数组的顺序和入参中的FlowInfos顺序一致`
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
@@ -3897,34 +3911,40 @@ func (r *ChannelDescribeRolesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeUserAutoSignStatusRequestParams struct {
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 自动签场景:
-	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
+	// 
+	// 注: `现在仅支持电子处方场景`
 	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 
-	// 查询开启状态的用户信息
+	// 要查询状态的用户信息, 包括名字,身份证等
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
 type ChannelDescribeUserAutoSignStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 自动签场景:
-	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
+	// 
+	// 注: `现在仅支持电子处方场景`
 	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 
-	// 查询开启状态的用户信息
+	// 要查询状态的用户信息, 包括名字,身份证等
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
@@ -3952,16 +3972,22 @@ func (r *ChannelDescribeUserAutoSignStatusRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelDescribeUserAutoSignStatusResponseParams struct {
-	// 是否开通
+	// 查询用户是否已开通自动签
 	IsOpen *bool `json:"IsOpen,omitnil" name:"IsOpen"`
 
-	// 自动签许可生效时间。当且仅当已开通自动签时有值。
+	// 自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
+	// 
+	// 值为unix时间戳,单位为秒。
 	LicenseFrom *int64 `json:"LicenseFrom,omitnil" name:"LicenseFrom"`
 
-	// 自动签许可到期时间。当且仅当已开通自动签时有值。
+	// 自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+	// 
+	// 值为unix时间戳,单位为秒。
 	LicenseTo *int64 `json:"LicenseTo,omitnil" name:"LicenseTo"`
 
-	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次
+	// 设置用户开通自动签时是否绑定个人自动签账号许可。
+	// 
+	// <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3986,34 +4012,36 @@ func (r *ChannelDescribeUserAutoSignStatusResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ChannelDisableUserAutoSignRequestParams struct {
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 自动签场景:
-	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** 电子处方</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 
-	// 关闭自动签的个人的三要素
+	// 需要关闭自动签的个人的信息，如姓名，证件信息等。
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
 type ChannelDisableUserAutoSignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 自动签场景:
-	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** 电子处方</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 
-	// 关闭自动签的个人的三要素
+	// 需要关闭自动签的个人的信息，如姓名，证件信息等。
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
@@ -8317,16 +8345,20 @@ type UserInfo struct {
 }
 
 type UserThreeFactor struct {
-	// 姓名
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 证件类型: 
-	// ID_CARD 身份证
-	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
-	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	// 证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
-	// 证件号，如果有 X 请大写
+	// 证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 }
 

@@ -1977,6 +1977,7 @@ func NewModifyJobResponse() (response *ModifyJobResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 //  INTERNALERROR_JOBINSTANCENOTFOUND = "InternalError.JobInstanceNotFound"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2011,6 +2012,7 @@ func (c *Client) ModifyJob(request *ModifyJobRequest) (response *ModifyJobRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 //  INTERNALERROR_JOBINSTANCENOTFOUND = "InternalError.JobInstanceNotFound"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

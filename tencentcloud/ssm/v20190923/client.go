@@ -1367,6 +1367,7 @@ func NewListSecretsResponse() (response *ListSecretsResponse) {
 // 该接口用于获取所有凭据的详细列表，可以指定过滤字段、排序方式等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
@@ -1379,6 +1380,7 @@ func (c *Client) ListSecrets(request *ListSecretsRequest) (response *ListSecrets
 // 该接口用于获取所有凭据的详细列表，可以指定过滤字段、排序方式等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"

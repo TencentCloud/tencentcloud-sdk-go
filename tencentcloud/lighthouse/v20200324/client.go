@@ -6893,6 +6893,9 @@ func NewResetFirewallTemplateRulesResponse() (response *ResetFirewallTemplateRul
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
     return c.ResetFirewallTemplateRulesWithContext(context.Background(), request)
 }
@@ -6904,6 +6907,9 @@ func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesR
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ResetFirewallTemplateRulesWithContext(ctx context.Context, request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
     if request == nil {
         request = NewResetFirewallTemplateRulesRequest()

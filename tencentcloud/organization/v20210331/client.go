@@ -1585,6 +1585,7 @@ func NewDescribeOrganizationMemberEmailBindResponse() (response *DescribeOrganiz
 //  INVALIDPARAMETER_CODEEXPIRED = "InvalidParameter.CodeExpired"
 //  INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
 //  INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeOrganizationMemberEmailBind(request *DescribeOrganizationMemberEmailBindRequest) (response *DescribeOrganizationMemberEmailBindResponse, err error) {
     return c.DescribeOrganizationMemberEmailBindWithContext(context.Background(), request)
@@ -1607,6 +1608,7 @@ func (c *Client) DescribeOrganizationMemberEmailBind(request *DescribeOrganizati
 //  INVALIDPARAMETER_CODEEXPIRED = "InvalidParameter.CodeExpired"
 //  INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
 //  INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeOrganizationMemberEmailBindWithContext(ctx context.Context, request *DescribeOrganizationMemberEmailBindRequest) (response *DescribeOrganizationMemberEmailBindResponse, err error) {
     if request == nil {

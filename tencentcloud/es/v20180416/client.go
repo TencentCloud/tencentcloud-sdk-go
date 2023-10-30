@@ -133,6 +133,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 创建指定规格的ES集群实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
@@ -181,6 +182,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 创建指定规格的ES集群实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
@@ -2235,6 +2237,7 @@ func NewUpdateDictionariesResponse() (response *UpdateDictionariesResponse) {
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) UpdateDictionaries(request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
     return c.UpdateDictionariesWithContext(context.Background(), request)
@@ -2258,6 +2261,7 @@ func (c *Client) UpdateDictionaries(request *UpdateDictionariesRequest) (respons
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) UpdateDictionariesWithContext(ctx context.Context, request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
     if request == nil {
@@ -2422,6 +2426,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_CVM = "ResourceInsufficient.CVM"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
@@ -2507,6 +2512,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_CVM = "ResourceInsufficient.CVM"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
@@ -2923,6 +2929,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 // 升级ES集群版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
@@ -2953,6 +2960,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
 // 升级ES集群版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"

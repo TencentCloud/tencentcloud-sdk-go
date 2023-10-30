@@ -738,6 +738,7 @@ func NewDescribeHiveQueriesResponse() (response *DescribeHiveQueriesResponse) {
 // 获取hive查询信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBQUERYEXCEPTION = "InternalError.DBQueryException"
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
@@ -749,6 +750,7 @@ func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (respo
 // 获取hive查询信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBQUERYEXCEPTION = "InternalError.DBQueryException"
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"

@@ -1825,6 +1825,7 @@ func NewDeleteExporterIntegrationResponse() (response *DeleteExporterIntegration
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
@@ -1847,6 +1848,7 @@ func (c *Client) DeleteExporterIntegration(request *DeleteExporterIntegrationReq
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
@@ -2230,6 +2232,7 @@ func NewDeletePrometheusClusterAgentResponse() (response *DeletePrometheusCluste
 // 解除TMP实例的集群关联
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_KUBECLIENTCONF = "FailedOperation.KubeClientConf"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -2250,6 +2253,7 @@ func (c *Client) DeletePrometheusClusterAgent(request *DeletePrometheusClusterAg
 // 解除TMP实例的集群关联
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_KUBECLIENTCONF = "FailedOperation.KubeClientConf"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"

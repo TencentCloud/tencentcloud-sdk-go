@@ -1188,6 +1188,7 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDRESPONSEEMPTY = "InternalError.BackendResponseEmpty"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     return c.DescribeCertificateDetailWithContext(context.Background(), request)
 }
@@ -1205,6 +1206,7 @@ func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailReq
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDRESPONSEEMPTY = "InternalError.BackendResponseEmpty"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateDetailRequest()

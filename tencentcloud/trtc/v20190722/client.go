@@ -3589,6 +3589,7 @@ func NewStopMCUMixTranscodeByStrRoomIdResponse() (response *StopMCUMixTranscodeB
 //  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StopMCUMixTranscodeByStrRoomId(request *StopMCUMixTranscodeByStrRoomIdRequest) (response *StopMCUMixTranscodeByStrRoomIdResponse, err error) {
     return c.StopMCUMixTranscodeByStrRoomIdWithContext(context.Background(), request)
@@ -3610,6 +3611,7 @@ func (c *Client) StopMCUMixTranscodeByStrRoomId(request *StopMCUMixTranscodeBySt
 //  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StopMCUMixTranscodeByStrRoomIdWithContext(ctx context.Context, request *StopMCUMixTranscodeByStrRoomIdRequest) (response *StopMCUMixTranscodeByStrRoomIdResponse, err error) {
     if request == nil {

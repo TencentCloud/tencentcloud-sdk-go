@@ -32298,6 +32298,9 @@ type SubmitSqlTaskRequestParams struct {
 
 	// 高级设置
 	ConfParams *string `json:"ConfParams,omitnil" name:"ConfParams"`
+
+	// 脚本内容是否base64加密
+	ScriptEncryption *bool `json:"ScriptEncryption,omitnil" name:"ScriptEncryption"`
 }
 
 type SubmitSqlTaskRequest struct {
@@ -32341,6 +32344,9 @@ type SubmitSqlTaskRequest struct {
 
 	// 高级设置
 	ConfParams *string `json:"ConfParams,omitnil" name:"ConfParams"`
+
+	// 脚本内容是否base64加密
+	ScriptEncryption *bool `json:"ScriptEncryption,omitnil" name:"ScriptEncryption"`
 }
 
 func (r *SubmitSqlTaskRequest) ToJsonString() string {
@@ -32368,6 +32374,7 @@ func (r *SubmitSqlTaskRequest) FromJsonString(s string) error {
 	delete(f, "ComputeResource")
 	delete(f, "RunParams")
 	delete(f, "ConfParams")
+	delete(f, "ScriptEncryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitSqlTaskRequest has unknown keys!", "")
 	}

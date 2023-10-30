@@ -6972,6 +6972,9 @@ func (r *ModifyLoadBalancerMixIpTargetResponse) FromJsonString(s string) error {
 type ModifyLoadBalancerSlaRequestParams struct {
 	// 负载均衡实例信息。
 	LoadBalancerSla []*SlaUpdateParam `json:"LoadBalancerSla,omitnil" name:"LoadBalancerSla"`
+
+	// 是否强制升级，默认否。
+	Force *bool `json:"Force,omitnil" name:"Force"`
 }
 
 type ModifyLoadBalancerSlaRequest struct {
@@ -6979,6 +6982,9 @@ type ModifyLoadBalancerSlaRequest struct {
 	
 	// 负载均衡实例信息。
 	LoadBalancerSla []*SlaUpdateParam `json:"LoadBalancerSla,omitnil" name:"LoadBalancerSla"`
+
+	// 是否强制升级，默认否。
+	Force *bool `json:"Force,omitnil" name:"Force"`
 }
 
 func (r *ModifyLoadBalancerSlaRequest) ToJsonString() string {
@@ -6994,6 +7000,7 @@ func (r *ModifyLoadBalancerSlaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "LoadBalancerSla")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerSlaRequest has unknown keys!", "")
 	}

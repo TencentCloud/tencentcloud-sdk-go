@@ -1662,6 +1662,7 @@ func NewCreateWhiteListOrderResponse() (response *CreateWhiteListOrderResponse) 
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateWhiteListOrder(request *CreateWhiteListOrderRequest) (response *CreateWhiteListOrderResponse, err error) {
     return c.CreateWhiteListOrderWithContext(context.Background(), request)
 }
@@ -1671,6 +1672,7 @@ func (c *Client) CreateWhiteListOrder(request *CreateWhiteListOrderRequest) (res
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateWhiteListOrderWithContext(ctx context.Context, request *CreateWhiteListOrderRequest) (response *CreateWhiteListOrderResponse, err error) {
     if request == nil {
         request = NewCreateWhiteListOrderRequest()

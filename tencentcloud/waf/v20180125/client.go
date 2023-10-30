@@ -270,6 +270,7 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -282,6 +283,7 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

@@ -3954,10 +3954,10 @@ type InvoiceItem struct {
 	// 发票处于识别图片或PDF文件中的页教，默认从1开始。
 	Page *int64 `json:"Page,omitnil" name:"Page"`
 
-	// 发票详细类型，详见上方 SubType 返回值说明
+	// 发票详细类型，详见票据识别（高级版）接口文档说明中 SubType 返回值说明
 	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
-	// 发票类型描述，详见上方 TypeDescription  返回值说明
+	// 发票类型描述，详见票据识别（高级版）接口文档说明中 TypeDescription  返回值说明
 	TypeDescription *string `json:"TypeDescription,omitnil" name:"TypeDescription"`
 
 	// 切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
@@ -3965,6 +3965,9 @@ type InvoiceItem struct {
 
 	// 发票详细类型描述，详见上方 SubType 返回值说明
 	SubTypeDescription *string `json:"SubTypeDescription,omitnil" name:"SubTypeDescription"`
+
+	// 该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
+	ItemPolygon []*ItemPolygonInfo `json:"ItemPolygon,omitnil" name:"ItemPolygon"`
 }
 
 type ItemCoord struct {
@@ -3989,6 +3992,17 @@ type ItemInfo struct {
 	// Value信息组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *Value `json:"Value,omitnil" name:"Value"`
+}
+
+type ItemPolygonInfo struct {
+	// 发票的英文字段名称（如Title）
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 字段值所在位置的四点坐标
+	Polygon *Polygon `json:"Polygon,omitnil" name:"Polygon"`
+
+	// 字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
+	Row *int64 `json:"Row,omitnil" name:"Row"`
 }
 
 type Key struct {
@@ -6047,6 +6061,9 @@ type RecognizeGeneralInvoiceRequestParams struct {
 
 	// 是否返回切割图片base64，默认值为false。
 	EnableCutImage *bool `json:"EnableCutImage,omitnil" name:"EnableCutImage"`
+
+	// 是否打开字段坐标返回。默认为false。
+	EnableItemPolygon *bool `json:"EnableItemPolygon,omitnil" name:"EnableItemPolygon"`
 }
 
 type RecognizeGeneralInvoiceRequest struct {
@@ -6100,6 +6117,9 @@ type RecognizeGeneralInvoiceRequest struct {
 
 	// 是否返回切割图片base64，默认值为false。
 	EnableCutImage *bool `json:"EnableCutImage,omitnil" name:"EnableCutImage"`
+
+	// 是否打开字段坐标返回。默认为false。
+	EnableItemPolygon *bool `json:"EnableItemPolygon,omitnil" name:"EnableItemPolygon"`
 }
 
 func (r *RecognizeGeneralInvoiceRequest) ToJsonString() string {
@@ -6122,6 +6142,7 @@ func (r *RecognizeGeneralInvoiceRequest) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableMultiplePage")
 	delete(f, "EnableCutImage")
+	delete(f, "EnableItemPolygon")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralInvoiceRequest has unknown keys!", "")
 	}

@@ -1996,6 +1996,39 @@ type BatchModifySnapshotPolicy struct {
 	KeepTime *uint64 `json:"KeepTime,omitnil" name:"KeepTime"`
 }
 
+type BgpConfig struct {
+	// BGP隧道网段。
+	TunnelCidr *string `json:"TunnelCidr,omitnil" name:"TunnelCidr"`
+
+	// 云端BGP地址。必须从BGP隧道网段内分配。
+	LocalBgpIp *string `json:"LocalBgpIp,omitnil" name:"LocalBgpIp"`
+
+	// 用户端BGP地址。必须从BGP隧道网段内分配。
+	RemoteBgpIp *string `json:"RemoteBgpIp,omitnil" name:"RemoteBgpIp"`
+}
+
+type BgpConfigAndAsn struct {
+	// BGP通道CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TunnelCidr *string `json:"TunnelCidr,omitnil" name:"TunnelCidr"`
+
+	// 本端BGP IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalBgpIp *string `json:"LocalBgpIp,omitnil" name:"LocalBgpIp"`
+
+	// 对端BGP IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteBgpIp *string `json:"RemoteBgpIp,omitnil" name:"RemoteBgpIp"`
+
+	// 本端BGP ASN号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalBgpAsn *string `json:"LocalBgpAsn,omitnil" name:"LocalBgpAsn"`
+
+	// 对端BGP ASN号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteBgpAsn *string `json:"RemoteBgpAsn,omitnil" name:"RemoteBgpAsn"`
+}
+
 type CCN struct {
 	// 云联网唯一ID
 	CcnId *string `json:"CcnId,omitnil" name:"CcnId"`
@@ -3250,6 +3283,9 @@ type CreateCustomerGatewayRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// BGP ASN。ASN取值范围为1- 4294967295，其中139341、45090和58835不可用。
+	BgpAsn *int64 `json:"BgpAsn,omitnil" name:"BgpAsn"`
 }
 
 type CreateCustomerGatewayRequest struct {
@@ -3263,6 +3299,9 @@ type CreateCustomerGatewayRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// BGP ASN。ASN取值范围为1- 4294967295，其中139341、45090和58835不可用。
+	BgpAsn *int64 `json:"BgpAsn,omitnil" name:"BgpAsn"`
 }
 
 func (r *CreateCustomerGatewayRequest) ToJsonString() string {
@@ -3280,6 +3319,7 @@ func (r *CreateCustomerGatewayRequest) FromJsonString(s string) error {
 	delete(f, "CustomerGatewayName")
 	delete(f, "IpAddress")
 	delete(f, "Tags")
+	delete(f, "BgpAsn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomerGatewayRequest has unknown keys!", "")
 	}
@@ -6021,6 +6061,14 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVpnConnRoute struct {
+	// 目的端IDC网段
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil" name:"DestinationCidrBlock"`
+
+	// 优先级；可选值0，100。
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
+}
+
 // Predefined struct for user
 type CreateVpnConnectionRequestParams struct {
 	// VPN网关实例ID。
@@ -6074,6 +6122,12 @@ type CreateVpnConnectionRequestParams struct {
 
 	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
 	DpdAction *string `json:"DpdAction,omitnil" name:"DpdAction"`
+
+	// 创建通道路由信息。
+	Route *CreateVpnConnRoute `json:"Route,omitnil" name:"Route"`
+
+	// BGP配置。
+	BgpConfig *BgpConfig `json:"BgpConfig,omitnil" name:"BgpConfig"`
 }
 
 type CreateVpnConnectionRequest struct {
@@ -6130,6 +6184,12 @@ type CreateVpnConnectionRequest struct {
 
 	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
 	DpdAction *string `json:"DpdAction,omitnil" name:"DpdAction"`
+
+	// 创建通道路由信息。
+	Route *CreateVpnConnRoute `json:"Route,omitnil" name:"Route"`
+
+	// BGP配置。
+	BgpConfig *BgpConfig `json:"BgpConfig,omitnil" name:"BgpConfig"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -6161,6 +6221,8 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	delete(f, "DpdEnable")
 	delete(f, "DpdTimeout")
 	delete(f, "DpdAction")
+	delete(f, "Route")
+	delete(f, "BgpConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnConnectionRequest has unknown keys!", "")
 	}
@@ -6681,6 +6743,9 @@ type CustomerGateway struct {
 
 	// 创建时间
 	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+
+	// BGP ASN。
+	BgpAsn *uint64 `json:"BgpAsn,omitnil" name:"BgpAsn"`
 }
 
 type CustomerGatewayVendor struct {
@@ -18491,56 +18556,73 @@ func (r *HaVipDisassociateAddressIpResponse) FromJsonString(s string) error {
 
 type IKEOptionsSpecification struct {
 	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropoEncryAlgorithm *string `json:"PropoEncryAlgorithm,omitnil" name:"PropoEncryAlgorithm"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropoAuthenAlgorithm *string `json:"PropoAuthenAlgorithm,omitnil" name:"PropoAuthenAlgorithm"`
 
 	// 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeMode *string `json:"ExchangeMode,omitnil" name:"ExchangeMode"`
 
 	// 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIdentity *string `json:"LocalIdentity,omitnil" name:"LocalIdentity"`
 
 	// 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteIdentity *string `json:"RemoteIdentity,omitnil" name:"RemoteIdentity"`
 
 	// 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalAddress *string `json:"LocalAddress,omitnil" name:"LocalAddress"`
 
 	// 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteAddress *string `json:"RemoteAddress,omitnil" name:"RemoteAddress"`
 
 	// 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalFqdnName *string `json:"LocalFqdnName,omitnil" name:"LocalFqdnName"`
 
 	// 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteFqdnName *string `json:"RemoteFqdnName,omitnil" name:"RemoteFqdnName"`
 
 	// DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DhGroupName *string `json:"DhGroupName,omitnil" name:"DhGroupName"`
 
 	// IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IKESaLifetimeSeconds *uint64 `json:"IKESaLifetimeSeconds,omitnil" name:"IKESaLifetimeSeconds"`
 
 	// IKE版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IKEVersion *string `json:"IKEVersion,omitnil" name:"IKEVersion"`
 }
 
 type IPSECOptionsSpecification struct {
 	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil" name:"EncryptAlgorithm"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntegrityAlgorith *string `json:"IntegrityAlgorith,omitnil" name:"IntegrityAlgorith"`
 
 	// IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPSECSaLifetimeSeconds *uint64 `json:"IPSECSaLifetimeSeconds,omitnil" name:"IPSECSaLifetimeSeconds"`
 
 	// PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PfsDhGroup *string `json:"PfsDhGroup,omitnil" name:"PfsDhGroup"`
 
 	// IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPSECSaLifetimeTraffic *uint64 `json:"IPSECSaLifetimeTraffic,omitnil" name:"IPSECSaLifetimeTraffic"`
 }
 
@@ -25223,9 +25305,11 @@ type SecurityGroupPolicySet struct {
 
 type SecurityPolicyDatabase struct {
 	// 本端网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalCidrBlock *string `json:"LocalCidrBlock,omitnil" name:"LocalCidrBlock"`
 
 	// 对端网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitnil" name:"RemoteCidrBlock"`
 }
 
@@ -26414,6 +26498,10 @@ type VpnConnection struct {
 	// 协商类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NegotiationType *string `json:"NegotiationType,omitnil" name:"NegotiationType"`
+
+	// Bgp配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BgpConfig *BgpConfigAndAsn `json:"BgpConfig,omitnil" name:"BgpConfig"`
 }
 
 type VpnGateway struct {

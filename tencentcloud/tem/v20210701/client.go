@@ -3203,6 +3203,7 @@ func NewStopApplicationResponse() (response *StopApplicationResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) StopApplication(request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
@@ -3215,6 +3216,7 @@ func (c *Client) StopApplication(request *StopApplicationRequest) (response *Sto
 // 可能返回的错误码:
 //  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) StopApplicationWithContext(ctx context.Context, request *StopApplicationRequest) (response *StopApplicationResponse, err error) {

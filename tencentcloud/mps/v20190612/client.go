@@ -605,6 +605,7 @@ func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplate
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
@@ -624,6 +625,7 @@ func (c *Client) CreateImageSpriteTemplate(request *CreateImageSpriteTemplateReq
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
@@ -4135,6 +4137,7 @@ func NewDisableScheduleResponse() (response *DisableScheduleResponse) {
 // 禁用自动化触发编排任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
@@ -4155,6 +4158,7 @@ func (c *Client) DisableSchedule(request *DisableScheduleRequest) (response *Dis
 // 禁用自动化触发编排任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
@@ -4368,6 +4372,7 @@ func NewEnableScheduleResponse() (response *EnableScheduleResponse) {
 // 启用自动化触发编排任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
@@ -4388,6 +4393,7 @@ func (c *Client) EnableSchedule(request *EnableScheduleRequest) (response *Enabl
 // 启用自动化触发编排任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"

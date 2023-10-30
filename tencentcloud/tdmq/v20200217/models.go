@@ -7340,6 +7340,95 @@ func (r *DescribeRocketMQSourceClusterTopicListResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type DescribeRocketMQSubscriptionsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 消费组名称
+	Group *string `json:"Group,omitnil" name:"Group"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeRocketMQSubscriptionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 消费组名称
+	Group *string `json:"Group,omitnil" name:"Group"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeRocketMQSubscriptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQSubscriptionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Namespace")
+	delete(f, "Group")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQSubscriptionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQSubscriptionsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 订阅关系列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subscriptions []*RocketMQSubscription `json:"Subscriptions,omitnil" name:"Subscriptions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQSubscriptionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQSubscriptionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQSubscriptionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQSubscriptionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQTopicMsgsRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`

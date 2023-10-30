@@ -1223,17 +1223,22 @@ func NewCreateDataEngineResponse() (response *CreateDataEngineResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_DATAENGINEMODENOTMATCH = "InvalidParameter.DataEngineModeNotMatch"
+//  INVALIDPARAMETER_DATAENGINESIZENOTMATCH = "InvalidParameter.DataEngineSizeNotMatch"
 //  INVALIDPARAMETER_DUPLICATEDATAENGINENAME = "InvalidParameter.DuplicateDataEngineName"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
+//  INVALIDPARAMETER_INVALIDDATAENGINECIDRFORMAT = "InvalidParameter.InvalidDataEngineCidrFormat"
 //  INVALIDPARAMETER_INVALIDDATAENGINEMODE = "InvalidParameter.InvalidDataEngineMode"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
+//  INVALIDPARAMETER_INVALIDDATAENGINETIMESPAN = "InvalidParameter.InvalidDataEngineTimeSpan"
+//  INVALIDPARAMETER_INVALIDDATAENGINETIMEUNIT = "InvalidParameter.InvalidDataEngineTimeUnit"
 //  INVALIDPARAMETER_INVALIDENGINETYPE = "InvalidParameter.InvalidEngineType"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPayMode"
 //  INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
 //  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
 //  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 func (c *Client) CreateDataEngine(request *CreateDataEngineRequest) (response *CreateDataEngineResponse, err error) {
     return c.CreateDataEngineWithContext(context.Background(), request)
@@ -1274,17 +1279,22 @@ func (c *Client) CreateDataEngine(request *CreateDataEngineRequest) (response *C
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_DATAENGINEMODENOTMATCH = "InvalidParameter.DataEngineModeNotMatch"
+//  INVALIDPARAMETER_DATAENGINESIZENOTMATCH = "InvalidParameter.DataEngineSizeNotMatch"
 //  INVALIDPARAMETER_DUPLICATEDATAENGINENAME = "InvalidParameter.DuplicateDataEngineName"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
+//  INVALIDPARAMETER_INVALIDDATAENGINECIDRFORMAT = "InvalidParameter.InvalidDataEngineCidrFormat"
 //  INVALIDPARAMETER_INVALIDDATAENGINEMODE = "InvalidParameter.InvalidDataEngineMode"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
+//  INVALIDPARAMETER_INVALIDDATAENGINETIMESPAN = "InvalidParameter.InvalidDataEngineTimeSpan"
+//  INVALIDPARAMETER_INVALIDDATAENGINETIMEUNIT = "InvalidParameter.InvalidDataEngineTimeUnit"
 //  INVALIDPARAMETER_INVALIDENGINETYPE = "InvalidParameter.InvalidEngineType"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPayMode"
 //  INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
 //  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
 //  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 func (c *Client) CreateDataEngineWithContext(ctx context.Context, request *CreateDataEngineRequest) (response *CreateDataEngineResponse, err error) {
     if request == nil {
@@ -1914,6 +1924,7 @@ func NewCreateSparkAppResponse() (response *CreateSparkAppResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
 //  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
 //  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
 //  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
@@ -1932,6 +1943,7 @@ func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
 //  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
 //  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
 //  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
@@ -3166,6 +3178,7 @@ func NewDeleteWorkGroupResponse() (response *DeleteWorkGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
@@ -3178,6 +3191,7 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
 // 可能返回的错误码:
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
@@ -5162,6 +5176,7 @@ func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDMAXRESULTS = "InvalidParameter.InvalidMaxResults"
+//  INVALIDPARAMETER_INVALIDSQLTASKMAXRESULTS = "InvalidParameter.InvalidSQLTaskMaxResults"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
     return c.DescribeTaskResultWithContext(context.Background(), request)
@@ -5176,6 +5191,7 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDMAXRESULTS = "InvalidParameter.InvalidMaxResults"
+//  INVALIDPARAMETER_INVALIDSQLTASKMAXRESULTS = "InvalidParameter.InvalidSQLTaskMaxResults"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
     if request == nil {
@@ -5354,6 +5370,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
 //  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
@@ -5373,6 +5390,7 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
 //  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
@@ -6499,6 +6517,7 @@ func NewModifySparkAppResponse() (response *ModifySparkAppResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
 //  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
@@ -6518,6 +6537,7 @@ func (c *Client) ModifySparkApp(request *ModifySparkAppRequest) (response *Modif
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
 //  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
@@ -6868,6 +6888,8 @@ func NewRenewDataEngineResponse() (response *RenewDataEngineResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_RENEWCOMPUTINGENGINE = "UnauthorizedOperation.RenewComputingEngine"
 func (c *Client) RenewDataEngine(request *RenewDataEngineRequest) (response *RenewDataEngineResponse, err error) {
     return c.RenewDataEngineWithContext(context.Background(), request)
 }
@@ -6877,6 +6899,8 @@ func (c *Client) RenewDataEngine(request *RenewDataEngineRequest) (response *Ren
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_RENEWCOMPUTINGENGINE = "UnauthorizedOperation.RenewComputingEngine"
 func (c *Client) RenewDataEngineWithContext(ctx context.Context, request *RenewDataEngineRequest) (response *RenewDataEngineResponse, err error) {
     if request == nil {
         request = NewRenewDataEngineRequest()

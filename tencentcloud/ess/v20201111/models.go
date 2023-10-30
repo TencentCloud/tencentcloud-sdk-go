@@ -4380,7 +4380,8 @@ type CreateReleaseFlowRequestParams struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
@@ -4416,7 +4417,8 @@ type CreateReleaseFlowRequest struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>

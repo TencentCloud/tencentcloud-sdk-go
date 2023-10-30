@@ -2751,6 +2751,7 @@ func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 //  VPCLIMITEXCEEDED = "VpcLimitExceeded"
 func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
     return c.CreateCustomerGatewayWithContext(context.Background(), request)
@@ -2786,6 +2787,7 @@ func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (r
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 //  VPCLIMITEXCEEDED = "VpcLimitExceeded"
 func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
     if request == nil {
@@ -3052,6 +3054,7 @@ func NewCreateDirectConnectGatewayResponse() (response *CreateDirectConnectGatew
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_VPGHAGROUPNOTFOUND = "InvalidParameter.VpgHaGroupNotFound"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3068,6 +3071,7 @@ func (c *Client) CreateDirectConnectGateway(request *CreateDirectConnectGatewayR
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_VPGHAGROUPNOTFOUND = "InvalidParameter.VpgHaGroupNotFound"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -4130,6 +4134,7 @@ func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceRespon
 //  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
 //  LIMITEXCEEDED_TAGKEYEXCEEDED = "LimitExceeded.TagKeyExceeded"
 //  LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = "LimitExceeded.TagKeyPerResourceExceeded"
 //  LIMITEXCEEDED_TAGNOTENOUGHQUOTA = "LimitExceeded.TagNotEnoughQuota"
@@ -4193,6 +4198,7 @@ func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) 
 //  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
 //  LIMITEXCEEDED_TAGKEYEXCEEDED = "LimitExceeded.TagKeyExceeded"
 //  LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = "LimitExceeded.TagKeyPerResourceExceeded"
 //  LIMITEXCEEDED_TAGNOTENOUGHQUOTA = "LimitExceeded.TagNotEnoughQuota"
@@ -5837,6 +5843,9 @@ func NewCreateVpnConnectionResponse() (response *CreateVpnConnectionResponse) {
 //  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRCONFLICT = "InvalidParameterValue.VpnConnBgpTunnelCidrConflict"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRMASK = "InvalidParameterValue.VpnConnBgpTunnelCidrMask"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRNOTSUPPORTED = "InvalidParameterValue.VpnConnBgpTunnelCidrNotSupported"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -5854,6 +5863,9 @@ func NewCreateVpnConnectionResponse() (response *CreateVpnConnectionResponse) {
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = "UnsupportedOperation.VpnUnsupportedBgpAsnEqual"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDNOTEXISTBGPASN = "UnsupportedOperation.VpnUnsupportedNotExistBgpAsn"
 func (c *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (response *CreateVpnConnectionResponse, err error) {
     return c.CreateVpnConnectionWithContext(context.Background(), request)
 }
@@ -5884,6 +5896,9 @@ func (c *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (respo
 //  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRCONFLICT = "InvalidParameterValue.VpnConnBgpTunnelCidrConflict"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRMASK = "InvalidParameterValue.VpnConnBgpTunnelCidrMask"
+//  INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRNOTSUPPORTED = "InvalidParameterValue.VpnConnBgpTunnelCidrNotSupported"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -5901,6 +5916,9 @@ func (c *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (respo
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = "UnsupportedOperation.VpnUnsupportedBgpAsnEqual"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDNOTEXISTBGPASN = "UnsupportedOperation.VpnUnsupportedNotExistBgpAsn"
 func (c *Client) CreateVpnConnectionWithContext(ctx context.Context, request *CreateVpnConnectionRequest) (response *CreateVpnConnectionResponse, err error) {
     if request == nil {
         request = NewCreateVpnConnectionRequest()
@@ -5976,6 +5994,7 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 //  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     return c.CreateVpnGatewayWithContext(context.Background(), request)
 }
@@ -6020,6 +6039,7 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 //  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     if request == nil {
         request = NewCreateVpnGatewayRequest()
@@ -13567,6 +13587,7 @@ func NewDescribeVpnGatewayRoutesResponse() (response *DescribeVpnGatewayRoutesRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -13584,6 +13605,7 @@ func (c *Client) DescribeVpnGatewayRoutes(request *DescribeVpnGatewayRoutesReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -14625,6 +14647,7 @@ func NewDisassociateNatGatewayAddressResponse() (response *DisassociateNatGatewa
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
 //  UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = "UnsupportedOperation.PublicIpAddressDisassociate"
 func (c *Client) DisassociateNatGatewayAddress(request *DisassociateNatGatewayAddressRequest) (response *DisassociateNatGatewayAddressResponse, err error) {
     return c.DisassociateNatGatewayAddressWithContext(context.Background(), request)
@@ -14637,6 +14660,7 @@ func (c *Client) DisassociateNatGatewayAddress(request *DisassociateNatGatewayAd
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
 //  UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = "UnsupportedOperation.PublicIpAddressDisassociate"
 func (c *Client) DisassociateNatGatewayAddressWithContext(ctx context.Context, request *DisassociateNatGatewayAddressRequest) (response *DisassociateNatGatewayAddressResponse, err error) {
     if request == nil {
@@ -15946,6 +15970,7 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
@@ -15961,6 +15986,7 @@ func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) MigrateNetworkInterfaceWithContext(ctx context.Context, request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
@@ -18877,6 +18903,7 @@ func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAtt
 // 本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
@@ -18892,6 +18919,7 @@ func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttrib
 // 本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"

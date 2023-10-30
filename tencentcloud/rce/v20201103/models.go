@@ -490,6 +490,10 @@ type OutputManageMarketingRiskValue struct {
 	// 唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConstId *string `json:"ConstId,omitnil" name:"ConstId"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskInformation *string `json:"RiskInformation,omitnil" name:"RiskInformation"`
 }
 
 type QQAccountInfo struct {

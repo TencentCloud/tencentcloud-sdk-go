@@ -437,6 +437,15 @@ const (
 	// 当前功能不支持此专线网关。
 	INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = "InvalidParameterValue.VpgTypeNotMatch"
 
+	// 当前BGP隧道网段：`%(key)s`和已有BGP隧道网段：`%(value)s`重叠。
+	INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRCONFLICT = "InvalidParameterValue.VpnConnBgpTunnelCidrConflict"
+
+	// BGP隧道网段必须为掩码为30的网段。
+	INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRMASK = "InvalidParameterValue.VpnConnBgpTunnelCidrMask"
+
+	// 云端或用户端BGP地址：`%(value)s`必须在BGP隧道网段`%(key)s`内。
+	INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRNOTSUPPORTED = "InvalidParameterValue.VpnConnBgpTunnelCidrNotSupported"
+
 	// 目的网段和当前VPN通道的CIDR冲突。
 	INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 
@@ -857,6 +866,9 @@ const (
 	// NAT网关存在未解绑的IP。
 	UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = "UnsupportedOperation.NatGatewayHadEipUnassociate"
 
+	// NAT网关已被封禁，不支持此操作。
+	UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
+
 	// SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
 	UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 
@@ -1066,6 +1078,15 @@ const (
 
 	// VPC类型VPN网关必须携带VpcId。
 	UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+
+	// VPN不支持BGP
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
+
+	// 对端网关BGP ASN和已有的通道对端或云上VPN的BGP ASN相同。
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = "UnsupportedOperation.VpnUnsupportedBgpAsnEqual"
+
+	// VPN未配置BGP ASN。
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDNOTEXISTBGPASN = "UnsupportedOperation.VpnUnsupportedNotExistBgpAsn"
 
 	// 指定资源在不同的可用区。
 	UNSUPPORTEDOPERATION_ZONEMISMATCH = "UnsupportedOperation.ZoneMismatch"

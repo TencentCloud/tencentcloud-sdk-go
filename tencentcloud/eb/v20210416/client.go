@@ -71,6 +71,7 @@ func NewCheckRuleResponse() (response *CheckRuleResponse) {
 //  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
 //  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
@@ -85,6 +86,7 @@ func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleRespon
 //  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
 //  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
@@ -130,6 +132,7 @@ func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
 //  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
 //  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
@@ -144,6 +147,7 @@ func (c *Client) CheckTransformation(request *CheckTransformationRequest) (respo
 //  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
 //  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
@@ -954,6 +958,7 @@ func NewDescribeLogTagValueResponse() (response *DescribeLogTagValueResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogTagValue(request *DescribeLogTagValueRequest) (response *DescribeLogTagValueResponse, err error) {
     return c.DescribeLogTagValueWithContext(context.Background(), request)
 }
@@ -964,6 +969,7 @@ func (c *Client) DescribeLogTagValue(request *DescribeLogTagValueRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogTagValueWithContext(ctx context.Context, request *DescribeLogTagValueRequest) (response *DescribeLogTagValueResponse, err error) {
     if request == nil {
         request = NewDescribeLogTagValueRequest()
@@ -1760,6 +1766,7 @@ func NewSearchLogResponse() (response *SearchLogResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogResponse, err error) {
     return c.SearchLogWithContext(context.Background(), request)
 }
@@ -1770,6 +1777,7 @@ func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogRequest) (response *SearchLogResponse, err error) {
     if request == nil {
         request = NewSearchLogRequest()
@@ -1942,6 +1950,7 @@ func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleResponse, err error) {
@@ -1961,6 +1970,7 @@ func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleRes
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleRequest) (response *UpdateRuleResponse, err error) {

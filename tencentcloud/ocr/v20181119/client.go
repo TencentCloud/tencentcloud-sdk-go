@@ -6820,6 +6820,7 @@ func NewTextDetectResponse() (response *TextDetectResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectResponse, err error) {
     return c.TextDetectWithContext(context.Background(), request)
@@ -6838,6 +6839,7 @@ func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectRes
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TextDetectWithContext(ctx context.Context, request *TextDetectRequest) (response *TextDetectResponse, err error) {
     if request == nil {
@@ -7129,6 +7131,7 @@ func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
 //  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
 //  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
 //  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
@@ -7153,6 +7156,7 @@ func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *V
 //  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
 //  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
 //  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceVerifyWithContext(ctx context.Context, request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {

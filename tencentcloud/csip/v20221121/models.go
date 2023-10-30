@@ -4346,6 +4346,9 @@ type TaskLogURL struct {
 }
 
 type VULRiskAdvanceCFGList struct {
+	// 风险ID
+	RiskId *string `json:"RiskId,omitnil" name:"RiskId"`
+
 	// 漏洞名称
 	VULName *string `json:"VULName,omitnil" name:"VULName"`
 

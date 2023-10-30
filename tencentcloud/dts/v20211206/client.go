@@ -2362,6 +2362,7 @@ func NewModifyMigrateRuntimeAttributeResponse() (response *ModifyMigrateRuntimeA
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 //  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
 func (c *Client) ModifyMigrateRuntimeAttribute(request *ModifyMigrateRuntimeAttributeRequest) (response *ModifyMigrateRuntimeAttributeResponse, err error) {
     return c.ModifyMigrateRuntimeAttributeWithContext(context.Background(), request)
@@ -2378,6 +2379,7 @@ func (c *Client) ModifyMigrateRuntimeAttribute(request *ModifyMigrateRuntimeAttr
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 //  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
 func (c *Client) ModifyMigrateRuntimeAttributeWithContext(ctx context.Context, request *ModifyMigrateRuntimeAttributeRequest) (response *ModifyMigrateRuntimeAttributeResponse, err error) {
     if request == nil {

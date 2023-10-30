@@ -873,6 +873,7 @@ func NewRetrieveSimilarWordsResponse() (response *RetrieveSimilarWordsResponse) 
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) RetrieveSimilarWords(request *RetrieveSimilarWordsRequest) (response *RetrieveSimilarWordsResponse, err error) {
     return c.RetrieveSimilarWordsWithContext(context.Background(), request)
 }
@@ -906,6 +907,7 @@ func (c *Client) RetrieveSimilarWords(request *RetrieveSimilarWordsRequest) (res
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) RetrieveSimilarWordsWithContext(ctx context.Context, request *RetrieveSimilarWordsRequest) (response *RetrieveSimilarWordsResponse, err error) {
     if request == nil {
         request = NewRetrieveSimilarWordsRequest()

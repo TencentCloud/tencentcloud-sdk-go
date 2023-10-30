@@ -2516,6 +2516,7 @@ func NewDescribeCloudNativeAPIGatewaysResponse() (response *DescribeCloudNativeA
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -2543,6 +2544,7 @@ func (c *Client) DescribeCloudNativeAPIGateways(request *DescribeCloudNativeAPIG
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -4013,11 +4015,7 @@ func NewUpdateUpstreamTargetsResponse() (response *UpdateUpstreamTargetsResponse
 // 更新网关上游实例列表，仅支持IPList服务类型
 //
 // 可能返回的错误码:
-//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
-//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
-//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 func (c *Client) UpdateUpstreamTargets(request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
     return c.UpdateUpstreamTargetsWithContext(context.Background(), request)
 }
@@ -4026,11 +4024,7 @@ func (c *Client) UpdateUpstreamTargets(request *UpdateUpstreamTargetsRequest) (r
 // 更新网关上游实例列表，仅支持IPList服务类型
 //
 // 可能返回的错误码:
-//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
-//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
-//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 func (c *Client) UpdateUpstreamTargetsWithContext(ctx context.Context, request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
     if request == nil {
         request = NewUpdateUpstreamTargetsRequest()

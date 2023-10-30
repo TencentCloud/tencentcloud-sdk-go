@@ -260,6 +260,7 @@ func NewCreateAccelerationDomainResponse() (response *CreateAccelerationDomainRe
 //  INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = "InvalidParameter.InvalidPrivateAccessParams"
 //  INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = "InvalidParameter.InvalidPrivateAccessSwitch"
 //  INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
+//  INVALIDPARAMETER_INVALIDSERVERNAME = "InvalidParameter.InvalidServerName"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
 //  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
 //  INVALIDPARAMETER_SPACENOTBINDORIGIN = "InvalidParameter.SpaceNotBindOrigin"
@@ -281,6 +282,7 @@ func NewCreateAccelerationDomainResponse() (response *CreateAccelerationDomainRe
 //  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
 //  OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = "OperationDenied.InvalidAdvancedDefenseZoneArea"
+//  OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
@@ -315,6 +317,7 @@ func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainReque
 //  INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = "InvalidParameter.InvalidPrivateAccessParams"
 //  INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = "InvalidParameter.InvalidPrivateAccessSwitch"
 //  INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
+//  INVALIDPARAMETER_INVALIDSERVERNAME = "InvalidParameter.InvalidServerName"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
 //  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
 //  INVALIDPARAMETER_SPACENOTBINDORIGIN = "InvalidParameter.SpaceNotBindOrigin"
@@ -336,6 +339,7 @@ func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainReque
 //  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
 //  OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = "OperationDenied.InvalidAdvancedDefenseZoneArea"
+//  OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
@@ -480,9 +484,11 @@ func NewCreateApplicationProxyResponse() (response *CreateApplicationProxyRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = "OperationDenied.PlatTypeIPAccelerateMainlandNotSupport"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxy(request *CreateApplicationProxyRequest) (response *CreateApplicationProxyResponse, err error) {
@@ -496,9 +502,11 @@ func (c *Client) CreateApplicationProxy(request *CreateApplicationProxyRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = "OperationDenied.PlatTypeIPAccelerateMainlandNotSupport"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxyWithContext(ctx context.Context, request *CreateApplicationProxyRequest) (response *CreateApplicationProxyResponse, err error) {
@@ -544,6 +552,9 @@ func NewCreateApplicationProxyRuleResponse() (response *CreateApplicationProxyRu
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_RULEORIGINMULTIDOMAIN = "InvalidParameter.RuleOriginMultiDomain"
+//  INVALIDPARAMETER_RULEORIGINPORTINTEGER = "InvalidParameter.RuleOriginPortInteger"
+//  INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -559,6 +570,9 @@ func (c *Client) CreateApplicationProxyRule(request *CreateApplicationProxyRuleR
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_RULEORIGINMULTIDOMAIN = "InvalidParameter.RuleOriginMultiDomain"
+//  INVALIDPARAMETER_RULEORIGINPORTINTEGER = "InvalidParameter.RuleOriginPortInteger"
+//  INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -602,9 +616,13 @@ func NewCreateOriginGroupResponse() (response *CreateOriginGroupResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_HOSTHEADERINVALID = "InvalidParameter.HostHeaderInvalid"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_ORIGINNAMEEXISTS = "InvalidParameter.OriginNameExists"
+//  INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = "OperationDenied.LoadBalancingZoneIsNotActive"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
@@ -616,9 +634,13 @@ func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_HOSTHEADERINVALID = "InvalidParameter.HostHeaderInvalid"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_ORIGINNAMEEXISTS = "InvalidParameter.OriginNameExists"
+//  INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = "OperationDenied.LoadBalancingZoneIsNotActive"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
@@ -917,6 +939,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
 //  INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = "InvalidParameter.InvalidHttpsHstsMaxAge"
 //  INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+//  INVALIDPARAMETER_INVALIDMAXAGETIME = "InvalidParameter.InvalidMaxAgeTime"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = "InvalidParameter.InvalidPostSizeValue"
@@ -937,6 +960,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  INVALIDPARAMETER_INVALIDURLREDIRECTHOST = "InvalidParameter.InvalidUrlRedirectHost"
 //  INVALIDPARAMETER_INVALIDURLREDIRECTURL = "InvalidParameter.InvalidUrlRedirectUrl"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
+//  INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.KeyRulesInvalidQueryStringValue"
 //  INVALIDPARAMETER_NOTSUPPORTTHISPRESET = "InvalidParameter.NotSupportThisPreset"
 //  INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
 //  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
@@ -997,6 +1021,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 //  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
 //  INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = "InvalidParameter.InvalidHttpsHstsMaxAge"
 //  INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+//  INVALIDPARAMETER_INVALIDMAXAGETIME = "InvalidParameter.InvalidMaxAgeTime"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = "InvalidParameter.InvalidPostSizeValue"
@@ -1017,6 +1042,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 //  INVALIDPARAMETER_INVALIDURLREDIRECTHOST = "InvalidParameter.InvalidUrlRedirectHost"
 //  INVALIDPARAMETER_INVALIDURLREDIRECTURL = "InvalidParameter.InvalidUrlRedirectUrl"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
+//  INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.KeyRulesInvalidQueryStringValue"
 //  INVALIDPARAMETER_NOTSUPPORTTHISPRESET = "InvalidParameter.NotSupportThisPreset"
 //  INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
 //  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
@@ -1511,6 +1537,7 @@ func NewDeleteOriginGroupResponse() (response *DeleteOriginGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
@@ -1523,6 +1550,7 @@ func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
@@ -1569,6 +1597,7 @@ func NewDeleteRulesResponse() (response *DeleteRulesResponse) {
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMVALUE = "InvalidParameter.ErrInvalidActionParamValue"
 //  INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
 //  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
@@ -1594,6 +1623,7 @@ func (c *Client) DeleteRules(request *DeleteRulesRequest) (response *DeleteRules
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMVALUE = "InvalidParameter.ErrInvalidActionParamValue"
 //  INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
 //  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
@@ -1646,6 +1676,7 @@ func NewDeleteSecurityIPGroupResponse() (response *DeleteSecurityIPGroupResponse
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteSecurityIPGroup(request *DeleteSecurityIPGroupRequest) (response *DeleteSecurityIPGroupResponse, err error) {
     return c.DeleteSecurityIPGroupWithContext(context.Background(), request)
@@ -1656,6 +1687,7 @@ func (c *Client) DeleteSecurityIPGroup(request *DeleteSecurityIPGroupRequest) (r
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteSecurityIPGroupWithContext(ctx context.Context, request *DeleteSecurityIPGroupRequest) (response *DeleteSecurityIPGroupResponse, err error) {
     if request == nil {
@@ -4032,8 +4064,12 @@ func NewModifyOriginGroupResponse() (response *ModifyOriginGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_HOSTHEADERINVALID = "InvalidParameter.HostHeaderInvalid"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_ORIGINNAMEEXISTS = "InvalidParameter.OriginNameExists"
+//  INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = "OperationDenied.AccelerationDomainStatusNotInOnline"
 //  OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -4047,8 +4083,12 @@ func (c *Client) ModifyOriginGroup(request *ModifyOriginGroupRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_HOSTHEADERINVALID = "InvalidParameter.HostHeaderInvalid"
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_ORIGINNAMEEXISTS = "InvalidParameter.OriginNameExists"
+//  INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = "OperationDenied.AccelerationDomainStatusNotInOnline"
 //  OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -4101,8 +4141,10 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMACTION = "InvalidParameter.ErrInvalidActionParamAction"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = "InvalidParameter.ErrInvalidActionParamDuplicateName"
+//  INVALIDPARAMETER_ERRINVALIDACTIONPARAMNAME = "InvalidParameter.ErrInvalidActionParamName"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMVALUE = "InvalidParameter.ErrInvalidActionParamValue"
+//  INVALIDPARAMETER_ERRINVALIDACTIONTYPE = "InvalidParameter.ErrInvalidActionType"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = "InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONNAMEBADNAME = "InvalidParameter.ErrInvalidConditionNameBadName"
@@ -4175,8 +4217,10 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMACTION = "InvalidParameter.ErrInvalidActionParamAction"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = "InvalidParameter.ErrInvalidActionParamDuplicateName"
+//  INVALIDPARAMETER_ERRINVALIDACTIONPARAMNAME = "InvalidParameter.ErrInvalidActionParamName"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMVALUE = "InvalidParameter.ErrInvalidActionParamValue"
+//  INVALIDPARAMETER_ERRINVALIDACTIONTYPE = "InvalidParameter.ErrInvalidActionType"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = "InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONNAMEBADNAME = "InvalidParameter.ErrInvalidConditionNameBadName"
@@ -4412,6 +4456,7 @@ func NewModifyZoneResponse() (response *ModifyZoneResponse) {
 //  OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 //  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
+//  RESOURCEINUSE_GENERICHOST = "ResourceInUse.GenericHost"
 //  RESOURCEINUSE_NS = "ResourceInUse.NS"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 //  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
@@ -4451,6 +4496,7 @@ func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneRes
 //  OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 //  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
+//  RESOURCEINUSE_GENERICHOST = "ResourceInUse.GenericHost"
 //  RESOURCEINUSE_NS = "ResourceInUse.NS"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 //  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"

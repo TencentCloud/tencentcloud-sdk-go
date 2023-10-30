@@ -7453,6 +7453,7 @@ func NewResetInstancesInternetMaxBandwidthResponse() (response *ResetInstancesIn
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_EDGEZONEINSTANCE = "UnsupportedOperation.EdgeZoneInstance"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 //  UNSUPPORTEDOPERATION_INSTANCEREINSTALLFAILED = "UnsupportedOperation.InstanceReinstallFailed"
 //  UNSUPPORTEDOPERATION_INSTANCESTATEBANNING = "UnsupportedOperation.InstanceStateBanning"
@@ -7511,6 +7512,7 @@ func (c *Client) ResetInstancesInternetMaxBandwidth(request *ResetInstancesInter
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_EDGEZONEINSTANCE = "UnsupportedOperation.EdgeZoneInstance"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 //  UNSUPPORTEDOPERATION_INSTANCEREINSTALLFAILED = "UnsupportedOperation.InstanceReinstallFailed"
 //  UNSUPPORTEDOPERATION_INSTANCESTATEBANNING = "UnsupportedOperation.InstanceStateBanning"
@@ -8735,6 +8737,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 // * 批量操作时，所有实例的付费类型必须一致。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"
 //  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
 //  FAILEDOPERATION_UNRETURNABLE = "FailedOperation.Unreturnable"
 //  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
@@ -8801,6 +8804,7 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
 // * 批量操作时，所有实例的付费类型必须一致。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"
 //  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
 //  FAILEDOPERATION_UNRETURNABLE = "FailedOperation.Unreturnable"
 //  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
