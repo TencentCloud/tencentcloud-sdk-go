@@ -3397,6 +3397,71 @@ func (r *DescribeBillingResourceGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillingResourceInstanceRunningJobsRequestParams struct {
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
+
+	// 资源组节点id
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil" name:"ResourceInstanceId"`
+}
+
+type DescribeBillingResourceInstanceRunningJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
+
+	// 资源组节点id
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil" name:"ResourceInstanceId"`
+}
+
+func (r *DescribeBillingResourceInstanceRunningJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingResourceInstanceRunningJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	delete(f, "ResourceInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingResourceInstanceRunningJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingResourceInstanceRunningJobsResponseParams struct {
+	// 资源组节点运行中的任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceInstanceRunningJobInfos []*ResourceInstanceRunningJobInfo `json:"ResourceInstanceRunningJobInfos,omitnil" name:"ResourceInstanceRunningJobInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillingResourceInstanceRunningJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingResourceInstanceRunningJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingResourceInstanceRunningJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingResourceInstanceRunningJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillingSpecsPriceRequestParams struct {
 	// 询价参数，支持批量询价
 	SpecsParam []*SpecUnit `json:"SpecsParam,omitnil" name:"SpecsParam"`
@@ -7704,6 +7769,24 @@ type ResourceInfo struct {
 
 	// 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
 	RealGpuDetailSet []*GpuDetail `json:"RealGpuDetailSet,omitnil" name:"RealGpuDetailSet"`
+}
+
+type ResourceInstanceRunningJobInfo struct {
+	// pod名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 任务自定义名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 }
 
 // Predefined struct for user

@@ -5146,6 +5146,63 @@ func (c *Client) DescribeDatabaseInfoListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeDatabaseMetasRequest() (request *DescribeDatabaseMetasRequest) {
+    request = &DescribeDatabaseMetasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDatabaseMetas")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseMetasResponse() (response *DescribeDatabaseMetasResponse) {
+    response = &DescribeDatabaseMetasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabaseMetas
+// 查询数据库列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDatabaseMetas(request *DescribeDatabaseMetasRequest) (response *DescribeDatabaseMetasResponse, err error) {
+    return c.DescribeDatabaseMetasWithContext(context.Background(), request)
+}
+
+// DescribeDatabaseMetas
+// 查询数据库列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDatabaseMetasWithContext(ctx context.Context, request *DescribeDatabaseMetasRequest) (response *DescribeDatabaseMetasResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseMetasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseMetas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseMetasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatasourceRequest() (request *DescribeDatasourceRequest) {
     request = &DescribeDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

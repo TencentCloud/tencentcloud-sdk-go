@@ -1882,7 +1882,7 @@ type CreateModuleRequestParams struct {
 	// 模块名称，如视频直播模块。限制：模块名称不得以空格开头，长度不得超过60个字符。
 	ModuleName *string `json:"ModuleName,omitnil" name:"ModuleName"`
 
-	// 默认带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
+	// 默认带宽，单位：Mbps。范围不得超过带宽上下限，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultBandWidth *int64 `json:"DefaultBandWidth,omitnil" name:"DefaultBandWidth"`
 
 	// 默认镜像。
@@ -1891,10 +1891,10 @@ type CreateModuleRequestParams struct {
 	// 机型ID。
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
-	// 默认系统盘大小，单位：GB，默认大小为50GB。范围不得超过系统盘上下限制，详看DescribeConfig。
+	// 默认系统盘大小，单位：GB，默认大小为50GB。范围不得超过系统盘上下限制，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultSystemDiskSize *int64 `json:"DefaultSystemDiskSize,omitnil" name:"DefaultSystemDiskSize"`
 
-	// 默认数据盘大小，单位：GB。范围不得超过数据盘范围大小，详看DescribeConfig。
+	// 默认数据盘大小，单位：GB。范围不得超过数据盘范围大小，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitnil" name:"DefaultDataDiskSize"`
 
 	// 是否关闭IP直通。取值范围：
@@ -1908,7 +1908,7 @@ type CreateModuleRequestParams struct {
 	// 模块默认安全组列表
 	SecurityGroups []*string `json:"SecurityGroups,omitnil" name:"SecurityGroups"`
 
-	// 默认入带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
+	// 默认入带宽，单位：Mbps。范围不得超过带宽上下限，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultBandWidthIn *int64 `json:"DefaultBandWidthIn,omitnil" name:"DefaultBandWidthIn"`
 
 	// 是否禁止分配外网IP
@@ -1927,7 +1927,7 @@ type CreateModuleRequest struct {
 	// 模块名称，如视频直播模块。限制：模块名称不得以空格开头，长度不得超过60个字符。
 	ModuleName *string `json:"ModuleName,omitnil" name:"ModuleName"`
 
-	// 默认带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
+	// 默认带宽，单位：Mbps。范围不得超过带宽上下限，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultBandWidth *int64 `json:"DefaultBandWidth,omitnil" name:"DefaultBandWidth"`
 
 	// 默认镜像。
@@ -1936,10 +1936,10 @@ type CreateModuleRequest struct {
 	// 机型ID。
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
-	// 默认系统盘大小，单位：GB，默认大小为50GB。范围不得超过系统盘上下限制，详看DescribeConfig。
+	// 默认系统盘大小，单位：GB，默认大小为50GB。范围不得超过系统盘上下限制，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultSystemDiskSize *int64 `json:"DefaultSystemDiskSize,omitnil" name:"DefaultSystemDiskSize"`
 
-	// 默认数据盘大小，单位：GB。范围不得超过数据盘范围大小，详看DescribeConfig。
+	// 默认数据盘大小，单位：GB。范围不得超过数据盘范围大小，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitnil" name:"DefaultDataDiskSize"`
 
 	// 是否关闭IP直通。取值范围：
@@ -1953,7 +1953,7 @@ type CreateModuleRequest struct {
 	// 模块默认安全组列表
 	SecurityGroups []*string `json:"SecurityGroups,omitnil" name:"SecurityGroups"`
 
-	// 默认入带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
+	// 默认入带宽，单位：Mbps。范围不得超过带宽上下限，详看[DescribeConfig](https://cloud.tencent.com/document/product/1108/42572)。
 	DefaultBandWidthIn *int64 `json:"DefaultBandWidthIn,omitnil" name:"DefaultBandWidthIn"`
 
 	// 是否禁止分配外网IP

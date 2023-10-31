@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 获取结果为空,请检查任务ID是否正确。
+	FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
+
 	// 用量消息推送失败。
 	FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
 

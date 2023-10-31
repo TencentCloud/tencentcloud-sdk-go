@@ -1988,6 +1988,65 @@ func (c *Client) DescribeBillingResourceGroupsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeBillingResourceInstanceRunningJobsRequest() (request *DescribeBillingResourceInstanceRunningJobsRequest) {
+    request = &DescribeBillingResourceInstanceRunningJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingResourceInstanceRunningJobs")
+    
+    
+    return
+}
+
+func NewDescribeBillingResourceInstanceRunningJobsResponse() (response *DescribeBillingResourceInstanceRunningJobsResponse) {
+    response = &DescribeBillingResourceInstanceRunningJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingResourceInstanceRunningJobs
+// 查询资源组节点运行中的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingResourceInstanceRunningJobs(request *DescribeBillingResourceInstanceRunningJobsRequest) (response *DescribeBillingResourceInstanceRunningJobsResponse, err error) {
+    return c.DescribeBillingResourceInstanceRunningJobsWithContext(context.Background(), request)
+}
+
+// DescribeBillingResourceInstanceRunningJobs
+// 查询资源组节点运行中的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingResourceInstanceRunningJobsWithContext(ctx context.Context, request *DescribeBillingResourceInstanceRunningJobsRequest) (response *DescribeBillingResourceInstanceRunningJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingResourceInstanceRunningJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingResourceInstanceRunningJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingResourceInstanceRunningJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingSpecsRequest() (request *DescribeBillingSpecsRequest) {
     request = &DescribeBillingSpecsRequest{
         BaseRequest: &tchttp.BaseRequest{},

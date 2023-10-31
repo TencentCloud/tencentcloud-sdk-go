@@ -1569,6 +1569,10 @@ type DescribePPTCheckResponseParams struct {
 	// 当前进度,取值范围为0~100
 	Progress *int64 `json:"Progress,omitnil" name:"Progress"`
 
+	// 错误列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errs []*PPTErr `json:"Errs,omitnil" name:"Errs"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

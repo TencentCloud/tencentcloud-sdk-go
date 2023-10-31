@@ -1374,6 +1374,9 @@ type DescribeDiskConfigQuotaRequestParams struct {
 
 	// 实例CPU核数。
 	CPU *uint64 `json:"CPU,omitnil" name:"CPU"`
+
+	// 专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil" name:"DedicatedClusterId"`
 }
 
 type DescribeDiskConfigQuotaRequest struct {
@@ -1402,6 +1405,9 @@ type DescribeDiskConfigQuotaRequest struct {
 
 	// 实例CPU核数。
 	CPU *uint64 `json:"CPU,omitnil" name:"CPU"`
+
+	// 专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil" name:"DedicatedClusterId"`
 }
 
 func (r *DescribeDiskConfigQuotaRequest) ToJsonString() string {
@@ -1424,6 +1430,7 @@ func (r *DescribeDiskConfigQuotaRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "DiskUsage")
 	delete(f, "CPU")
+	delete(f, "DedicatedClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskConfigQuotaRequest has unknown keys!", "")
 	}

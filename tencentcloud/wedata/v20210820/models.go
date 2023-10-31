@@ -5985,6 +5985,84 @@ type DatabaseInfo struct {
 	OriginSchemaName *string `json:"OriginSchemaName,omitnil" name:"OriginSchemaName"`
 }
 
+type DatabaseMeta struct {
+	// 项目Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 技术类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitnil" name:"MetastoreType"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
+
+	// 数据源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *int64 `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 项目英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 数据源类别：绑定引擎、绑定数据库,可用值:DB,ENGINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil" name:"Category"`
+
+	// 数据源描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 数据源引擎的实例ID，如CDB实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *string `json:"Instance,omitnil" name:"Instance"`
+
+	// 数据源引擎所属区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 数据源数据源的可见性，1为可见、0为不可见。默认为1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// db名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 项目中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil" name:"ProjectDisplayName"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerAccountName *string `json:"OwnerAccountName,omitnil" name:"OwnerAccountName"`
+
+	// 数据来源展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
+
+	// 数据库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+
+	// 数据来源类型：hive/mysql/hbase等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// 存储量大小,单位为 byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitnil" name:"StorageSize"`
+
+	// 格式化后的存储量大小，带单位，如 12B
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil" name:"StorageSizeWithUnit"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
 type DatasourceBaseInfo struct {
 	// 若数据源列表为绑定数据库，则为db名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9639,6 +9717,71 @@ func (r *DescribeDatabaseInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabaseInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseMetasRequestParams struct {
+	// 过滤字段，projectIds/msTypes/createTime/modifiedTime
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段，如name
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+type DescribeDatabaseMetasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤字段，projectIds/msTypes/createTime/modifiedTime
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段，如name
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+func (r *DescribeDatabaseMetasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseMetasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseMetasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseMetasResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseMeta []*DatabaseMeta `json:"DatabaseMeta,omitnil" name:"DatabaseMeta"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatabaseMetasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseMetasResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseMetasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseMetasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

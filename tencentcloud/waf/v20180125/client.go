@@ -1243,6 +1243,10 @@ func NewDeleteDownloadRecordResponse() (response *DeleteDownloadRecordResponse) 
 }
 
 // DeleteDownloadRecord
+// 废弃接口，无有效调用
+//
+// 
+//
 // 删除访问日志下载记录
 //
 // 可能返回的错误码:
@@ -1252,6 +1256,10 @@ func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (res
 }
 
 // DeleteDownloadRecord
+// 废弃接口，无有效调用
+//
+// 
+//
 // 删除访问日志下载记录
 //
 // 可能返回的错误码:

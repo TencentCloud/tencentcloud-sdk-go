@@ -479,3 +479,107 @@ func (c *Client) TurnPDFToObjectWithContext(ctx context.Context, request *TurnPD
     err = c.Send(request, response)
     return
 }
+
+func NewTurnPDFToObjectAsyncRequest() (request *TurnPDFToObjectAsyncRequest) {
+    request = &TurnPDFToObjectAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "TurnPDFToObjectAsync")
+    
+    
+    return
+}
+
+func NewTurnPDFToObjectAsyncResponse() (response *TurnPDFToObjectAsyncResponse) {
+    response = &TurnPDFToObjectAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TurnPDFToObjectAsync
+// 体检报告PDF文件结构化-异步接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObjectAsync(request *TurnPDFToObjectAsyncRequest) (response *TurnPDFToObjectAsyncResponse, err error) {
+    return c.TurnPDFToObjectAsyncWithContext(context.Background(), request)
+}
+
+// TurnPDFToObjectAsync
+// 体检报告PDF文件结构化-异步接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObjectAsyncWithContext(ctx context.Context, request *TurnPDFToObjectAsyncRequest) (response *TurnPDFToObjectAsyncResponse, err error) {
+    if request == nil {
+        request = NewTurnPDFToObjectAsyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TurnPDFToObjectAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTurnPDFToObjectAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTurnPDFToObjectAsyncGetResultRequest() (request *TurnPDFToObjectAsyncGetResultRequest) {
+    request = &TurnPDFToObjectAsyncGetResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "TurnPDFToObjectAsyncGetResult")
+    
+    
+    return
+}
+
+func NewTurnPDFToObjectAsyncGetResultResponse() (response *TurnPDFToObjectAsyncGetResultResponse) {
+    response = &TurnPDFToObjectAsyncGetResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TurnPDFToObjectAsyncGetResult
+// 体检报告PDF文件结构化异步获取结果接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObjectAsyncGetResult(request *TurnPDFToObjectAsyncGetResultRequest) (response *TurnPDFToObjectAsyncGetResultResponse, err error) {
+    return c.TurnPDFToObjectAsyncGetResultWithContext(context.Background(), request)
+}
+
+// TurnPDFToObjectAsyncGetResult
+// 体检报告PDF文件结构化异步获取结果接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObjectAsyncGetResultWithContext(ctx context.Context, request *TurnPDFToObjectAsyncGetResultRequest) (response *TurnPDFToObjectAsyncGetResultResponse, err error) {
+    if request == nil {
+        request = NewTurnPDFToObjectAsyncGetResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TurnPDFToObjectAsyncGetResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTurnPDFToObjectAsyncGetResultResponse()
+    err = c.Send(request, response)
+    return
+}

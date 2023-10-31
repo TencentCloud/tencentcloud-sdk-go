@@ -10514,6 +10514,14 @@ type RabbitMQClusterInfo struct {
 
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
+
+	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 是否开启镜像队列策略。1表示开启，0表示没开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MirrorQueuePolicyFlag *int64 `json:"MirrorQueuePolicyFlag,omitnil" name:"MirrorQueuePolicyFlag"`
 }
 
 type RabbitMQClusterSpecInfo struct {
