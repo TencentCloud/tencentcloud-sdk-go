@@ -1,84 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 53 次发布
+### 第 62 次发布
 
-发布时间：2023-11-01 01:07:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDiskConfigQuota](https://cloud.tencent.com/document/api/362/16318)
-
-	* 新增入参：DedicatedClusterId
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 100 次发布
-
-发布时间：2023-11-01 01:09:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
-
-	* 新增入参：ClusterIds
-
-
-
-
-## 医疗报告结构化(mrs) 版本：2020-09-10
-
-### 第 19 次发布
-
-发布时间：2023-11-01 01:18:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [TurnPDFToObjectAsync](https://cloud.tencent.com/document/api/1314/101007)
-* [TurnPDFToObjectAsyncGetResult](https://cloud.tencent.com/document/api/1314/101006)
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 54 次发布
-
-发布时间：2023-11-01 01:21:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
-
-	* 新增出参：Id
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 84 次发布
-
-发布时间：2023-11-01 01:22:25
+发布时间：2023-11-01 11:21:19
 
 本次发布包含了以下内容：
 
@@ -86,96 +12,14 @@
 
 修改数据结构：
 
-* [RabbitMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterInfo)
+* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
 
-	* 新增成员：AutoRenewFlag, MirrorQueuePolicyFlag
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2021-11-11
-
-### 第 39 次发布
-
-发布时间：2023-11-01 01:23:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBillingResourceInstanceRunningJobs](https://cloud.tencent.com/document/api/851/101008)
-
-新增数据结构：
-
-* [ResourceInstanceRunningJobInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInstanceRunningJobInfo)
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 36 次发布
-
-发布时间：2023-11-01 01:23:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribePPTCheck](https://cloud.tencent.com/document/api/1137/90053)
-
-	* 新增出参：Errs
-
-
-修改数据结构：
-
-* [PPTErr](https://cloud.tencent.com/document/api/1137/40068#PPTErr)
-
-	* <font color="#dd0000">**修改成员**：</font>Name, Type, Detail
+	* 新增成员：HostHeader
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 68 次发布
-
-发布时间：2023-11-01 01:26:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* DeleteDownloadRecord
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 54 次发布
-
-发布时间：2023-11-01 01:26:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDatabaseMetas](https://cloud.tencent.com/document/api/1267/101009)
-
-新增数据结构：
-
-* [DatabaseMeta](https://cloud.tencent.com/document/api/1267/76336#DatabaseMeta)
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -83862,8 +83706,8 @@
 
 新增接口：
 
-* [[TurnPDFToObjectAsync](https://cloud.tencent.com/document/api/1314/101007)](https://cloud.tencent.com/document/api/#/#)
-* [[TurnPDFToObjectAsyncGetResult](https://cloud.tencent.com/document/api/1314/101006)](https://cloud.tencent.com/document/api/#/#)
+* [TurnPDFToObjectAsync](https://cloud.tencent.com/document/api/1314/101007)
+* [TurnPDFToObjectAsyncGetResult](https://cloud.tencent.com/document/api/1314/101006)
 
 ### 第 18 次发布
 
@@ -111807,6 +111651,21 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 62 次发布
+
+发布时间：2023-11-01 11:21:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
+
+	* 新增成员：HostHeader
+
+
 ### 第 61 次发布
 
 发布时间：2023-10-27 10:26:11
@@ -115709,11 +115568,11 @@
 
 新增接口：
 
-* [[DescribeBillingResourceInstanceRunningJobs](https://cloud.tencent.com/document/api/851/101008)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBillingResourceInstanceRunningJobs](https://cloud.tencent.com/document/api/851/101008)
 
 新增数据结构：
 
-* [[ResourceInstanceRunningJobInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInstanceRunningJobInfo)](https://cloud.tencent.com/document/api/851/75051#[ResourceInstanceRunningJobInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInstanceRunningJobInfo))
+* [ResourceInstanceRunningJobInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInstanceRunningJobInfo)
 
 ### 第 38 次发布
 
@@ -137902,11 +137761,11 @@
 
 新增接口：
 
-* [[DescribeDatabaseMetas](https://cloud.tencent.com/document/api/1267/101009)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDatabaseMetas](https://cloud.tencent.com/document/api/1267/101009)
 
 新增数据结构：
 
-* [[DatabaseMeta](https://cloud.tencent.com/document/api/1267/76336#DatabaseMeta)](https://cloud.tencent.com/document/api/1267/76336#[DatabaseMeta](https://cloud.tencent.com/document/api/1267/76336#DatabaseMeta))
+* [DatabaseMeta](https://cloud.tencent.com/document/api/1267/76336#DatabaseMeta)
 
 ### 第 53 次发布
 

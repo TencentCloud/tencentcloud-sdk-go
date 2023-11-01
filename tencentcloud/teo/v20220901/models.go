@@ -8263,6 +8263,10 @@ type OriginGroup struct {
 
 	// 源站组更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 回源Host Header。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostHeader *string `json:"HostHeader,omitnil" name:"HostHeader"`
 }
 
 type OriginGroupReference struct {
