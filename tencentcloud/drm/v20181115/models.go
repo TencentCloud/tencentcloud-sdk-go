@@ -440,6 +440,87 @@ func (r *DescribeAllKeysResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDRMLicenseRequestParams struct {
+	// 使用的DRM方案类型，接口取值 NORMALAES 。
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
+
+	// 加密的track列表，接口取值 SD 。
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 内容类型。接口取值 LiveVideo 。
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
+}
+
+type DescribeDRMLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 使用的DRM方案类型，接口取值 NORMALAES 。
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
+
+	// 加密的track列表，接口取值 SD 。
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 内容类型。接口取值 LiveVideo 。
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
+}
+
+func (r *DescribeDRMLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDRMLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "Tracks")
+	delete(f, "ContentId")
+	delete(f, "ContentType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDRMLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDRMLicenseResponseParams struct {
+	// 内容ID。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 加密密钥。
+	TXEncryptionToken *string `json:"TXEncryptionToken,omitnil" name:"TXEncryptionToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDRMLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDRMLicenseResponseParams `json:"Response"`
+}
+
+func (r *DescribeDRMLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDRMLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFairPlayPemRequestParams struct {
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
 	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`

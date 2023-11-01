@@ -125,7 +125,9 @@ type ApproverInfo struct {
 	// 注: `收据场景为白名单功能，使用前请联系对接的客户经理沟通。`
 	ApproverRole *int64 `json:"ApproverRole,omitnil" name:"ApproverRole"`
 
-	// 自定义签署人角色名：收款人、开具人、见证人
+	// 可以自定义签署人角色名：收款人、开具人、见证人等，长度不能超过20，只能由中文、字母、数字和下划线组成。
+	// 
+	// 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
 
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
@@ -165,7 +167,7 @@ type ApproverInfo struct {
 	// </li></ul>
 	// 注: 
 	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-	// <li>此字段不可传多个校验方式</li></ul>
+	// <li>此字段可传多个校验方式</li></ul>
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
 
 	// 您可以指定签署方签署合同的认证校验方式，可传递以下值：
@@ -1030,6 +1032,139 @@ func (r *CreateBatchCancelFlowUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchQuickSignUrlRequestParams struct {
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
+	// 注:
+	// `1. ApproverType目前只支持个人类型的签署人。`
+	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `3. 当需要通过短信验证码签署时，手机号ApproverMobile需要与发起合同时填写的用户手机号一致。`
+	FlowApproverInfo *FlowCreateApprover `json:"FlowApproverInfo,omitnil" name:"FlowApproverInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId(子企业的组织ID)为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+
+	// 指定批量签署合同的签名类型，可传递以下值：
+	// <ul><li>**0**：手写签名(默认)</li>
+	// <li>**1**：OCR楷体</li></ul>
+	// 注：
+	// <ul><li>默认情况下，签名类型为手写签名</li>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
+
+	// 指定批量签署合同的认证校验方式，可传递以下值：
+	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
+	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
+	// 注：
+	// <ul><li>默认情况下，认证校验方式为人脸认证</li>
+	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+}
+
+type CreateBatchQuickSignUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
+	// 注:
+	// `1. ApproverType目前只支持个人类型的签署人。`
+	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `3. 当需要通过短信验证码签署时，手机号ApproverMobile需要与发起合同时填写的用户手机号一致。`
+	FlowApproverInfo *FlowCreateApprover `json:"FlowApproverInfo,omitnil" name:"FlowApproverInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId(子企业的组织ID)为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+
+	// 指定批量签署合同的签名类型，可传递以下值：
+	// <ul><li>**0**：手写签名(默认)</li>
+	// <li>**1**：OCR楷体</li></ul>
+	// 注：
+	// <ul><li>默认情况下，签名类型为手写签名</li>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
+
+	// 指定批量签署合同的认证校验方式，可传递以下值：
+	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
+	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
+	// 注：
+	// <ul><li>默认情况下，认证校验方式为人脸认证</li>
+	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+}
+
+func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowIds")
+	delete(f, "FlowApproverInfo")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "JumpUrl")
+	delete(f, "SignatureTypes")
+	delete(f, "ApproverSignTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchQuickSignUrlResponseParams struct {
+	// 签署人签署链接信息
+	FlowApproverUrlInfo *FlowApproverUrlInfo `json:"FlowApproverUrlInfo,omitnil" name:"FlowApproverUrlInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateBatchQuickSignUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchQuickSignUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchQuickSignUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchQuickSignUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8023,7 +8158,7 @@ type FlowCreateApprover struct {
 	// </li></ul>
 	// 注: 
 	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-	// <li>此字段不可传多个校验方式</li></ul>
+	// <li>此字段可传多个校验方式</li></ul>
 	// 
 	// `此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主`
 	// 

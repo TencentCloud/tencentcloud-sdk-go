@@ -340,6 +340,61 @@ func (c *Client) DescribeAllKeysWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDRMLicenseRequest() (request *DescribeDRMLicenseRequest) {
+    request = &DescribeDRMLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("drm", APIVersion, "DescribeDRMLicense")
+    
+    
+    return
+}
+
+func NewDescribeDRMLicenseResponse() (response *DescribeDRMLicenseResponse) {
+    response = &DescribeDRMLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDRMLicense
+// 开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDRMLicense(request *DescribeDRMLicenseRequest) (response *DescribeDRMLicenseResponse, err error) {
+    return c.DescribeDRMLicenseWithContext(context.Background(), request)
+}
+
+// DescribeDRMLicense
+// 开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDRMLicenseWithContext(ctx context.Context, request *DescribeDRMLicenseRequest) (response *DescribeDRMLicenseResponse, err error) {
+    if request == nil {
+        request = NewDescribeDRMLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDRMLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDRMLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
     request = &DescribeFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -700,6 +700,40 @@ type Consumer struct {
 	Partition *int64 `json:"Partition,omitnil" name:"Partition"`
 }
 
+type ConsumerStats struct {
+	// 主题名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 所属Broker
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerName *string `json:"BrokerName,omitnil" name:"BrokerName"`
+
+	// 队列编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueId *int64 `json:"QueueId,omitnil" name:"QueueId"`
+
+	// 消费者ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerClientId *string `json:"ConsumerClientId,omitnil" name:"ConsumerClientId"`
+
+	// 消费位点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerOffset *int64 `json:"ConsumerOffset,omitnil" name:"ConsumerOffset"`
+
+	// 服务端位点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerOffset *int64 `json:"BrokerOffset,omitnil" name:"BrokerOffset"`
+
+	// 消息堆积条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiffTotal *int64 `json:"DiffTotal,omitnil" name:"DiffTotal"`
+
+	// 最近消费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTimestamp *int64 `json:"LastTimestamp,omitnil" name:"LastTimestamp"`
+}
+
 type ConsumersSchedule struct {
 	// 当前分区id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6238,6 +6272,77 @@ func (r *DescribeRocketMQClustersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRocketMQClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQConsumeStatsRequestParams struct {
+	// 实例ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil" name:"ConsumerGroup"`
+}
+
+type DescribeRocketMQConsumeStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil" name:"ConsumerGroup"`
+}
+
+func (r *DescribeRocketMQConsumeStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumeStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "ConsumerGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQConsumeStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQConsumeStatsResponseParams struct {
+	// 消费详情列表
+	ConsumerStatsList []*ConsumerStats `json:"ConsumerStatsList,omitnil" name:"ConsumerStatsList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQConsumeStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQConsumeStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQConsumeStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumeStatsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12598,6 +12703,95 @@ func (r *UnbindCmqDeadLetterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindCmqDeadLetterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyRocketMQConsumeRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+}
+
+type VerifyRocketMQConsumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+}
+
+func (r *VerifyRocketMQConsumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyRocketMQConsumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupId")
+	delete(f, "MsgId")
+	delete(f, "ClientId")
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyRocketMQConsumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyRocketMQConsumeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type VerifyRocketMQConsumeResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyRocketMQConsumeResponseParams `json:"Response"`
+}
+
+func (r *VerifyRocketMQConsumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyRocketMQConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

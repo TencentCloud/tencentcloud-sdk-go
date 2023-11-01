@@ -1,3 +1,111 @@
+# Release v1.0.780
+
+## 数字版权管理(drm) 版本：2018-11-15
+
+### 第 5 次发布
+
+发布时间：2023-11-02 01:38:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDRMLicense](https://cloud.tencent.com/document/api/1000/101057)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 132 次发布
+
+发布时间：2023-11-02 01:44:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1323/101058)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 124 次发布
+
+发布时间：2023-11-02 01:45:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1420/101059)
+
+修改接口：
+
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+
+	* 新增入参：TemplateIds
+
+
+修改数据结构：
+
+* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
+
+	* 新增成员：NoRefuse
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 85 次发布
+
+发布时间：2023-11-02 02:24:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRocketMQConsumeStats](https://cloud.tencent.com/document/api/1179/101060)
+* [VerifyRocketMQConsume](https://cloud.tencent.com/document/api/1179/101061)
+
+新增数据结构：
+
+* [ConsumerStats](https://cloud.tencent.com/document/api/1179/46089#ConsumerStats)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 178 次发布
+
+发布时间：2023-11-02 02:40:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)
+
+	* 新增成员：Deadline
+
+
+
+
 # Release v1.0.779
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01

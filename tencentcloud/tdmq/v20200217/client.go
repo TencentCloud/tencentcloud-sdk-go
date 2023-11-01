@@ -4031,6 +4031,61 @@ func (c *Client) DescribeRocketMQClustersWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRocketMQConsumeStatsRequest() (request *DescribeRocketMQConsumeStatsRequest) {
+    request = &DescribeRocketMQConsumeStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQConsumeStats")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQConsumeStatsResponse() (response *DescribeRocketMQConsumeStatsResponse) {
+    response = &DescribeRocketMQConsumeStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQConsumeStats
+// 获取消费详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQConsumeStats(request *DescribeRocketMQConsumeStatsRequest) (response *DescribeRocketMQConsumeStatsResponse, err error) {
+    return c.DescribeRocketMQConsumeStatsWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQConsumeStats
+// 获取消费详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQConsumeStatsWithContext(ctx context.Context, request *DescribeRocketMQConsumeStatsRequest) (response *DescribeRocketMQConsumeStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQConsumeStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQConsumeStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQConsumeStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQConsumerConnectionsRequest() (request *DescribeRocketMQConsumerConnectionsRequest) {
     request = &DescribeRocketMQConsumerConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7096,6 +7151,57 @@ func (c *Client) UnbindCmqDeadLetterWithContext(ctx context.Context, request *Un
     request.SetContext(ctx)
     
     response = NewUnbindCmqDeadLetterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyRocketMQConsumeRequest() (request *VerifyRocketMQConsumeRequest) {
+    request = &VerifyRocketMQConsumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "VerifyRocketMQConsume")
+    
+    
+    return
+}
+
+func NewVerifyRocketMQConsumeResponse() (response *VerifyRocketMQConsumeResponse) {
+    response = &VerifyRocketMQConsumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyRocketMQConsume
+// Rocketmq消费验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) VerifyRocketMQConsume(request *VerifyRocketMQConsumeRequest) (response *VerifyRocketMQConsumeResponse, err error) {
+    return c.VerifyRocketMQConsumeWithContext(context.Background(), request)
+}
+
+// VerifyRocketMQConsume
+// Rocketmq消费验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) VerifyRocketMQConsumeWithContext(ctx context.Context, request *VerifyRocketMQConsumeRequest) (response *VerifyRocketMQConsumeResponse, err error) {
+    if request == nil {
+        request = NewVerifyRocketMQConsumeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyRocketMQConsume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyRocketMQConsumeResponse()
     err = c.Send(request, response)
     return
 }
