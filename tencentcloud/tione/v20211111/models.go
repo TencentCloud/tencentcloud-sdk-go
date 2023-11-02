@@ -2102,6 +2102,16 @@ type CronScaleJob struct {
 	ExcludeDates []*string `json:"ExcludeDates,omitnil" name:"ExcludeDates"`
 }
 
+type CrossTenantENIInfo struct {
+	// Pod IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrimaryIP *string `json:"PrimaryIP,omitnil" name:"PrimaryIP"`
+
+	// Pod Port
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitnil" name:"Port"`
+}
+
 type CustomTrainingData struct {
 	// 指标名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7512,6 +7522,10 @@ type Pod struct {
 	// 容器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerInfos []*Container `json:"ContainerInfos,omitnil" name:"ContainerInfos"`
+
+	// 容器调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossTenantENIInfo *CrossTenantENIInfo `json:"CrossTenantENIInfo,omitnil" name:"CrossTenantENIInfo"`
 }
 
 type PodInfo struct {

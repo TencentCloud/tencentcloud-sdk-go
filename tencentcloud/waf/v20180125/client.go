@@ -1953,6 +1953,10 @@ func NewDescribeAntiFakeUrlResponse() (response *DescribeAntiFakeUrlResponse) {
 }
 
 // DescribeAntiFakeUrl
+// 废弃接口
+//
+// 
+//
 // 获取防篡改url
 //
 // 可能返回的错误码:
@@ -1962,6 +1966,10 @@ func (c *Client) DescribeAntiFakeUrl(request *DescribeAntiFakeUrlRequest) (respo
 }
 
 // DescribeAntiFakeUrl
+// 废弃接口
+//
+// 
+//
 // 获取防篡改url
 //
 // 可能返回的错误码:
@@ -2453,6 +2461,10 @@ func NewDescribeCCRuleResponse() (response *DescribeCCRuleResponse) {
 }
 
 // DescribeCCRule
+// 没有在使用。
+//
+// 
+//
 // Waf  CC V2 Query接口
 //
 // 可能返回的错误码:
@@ -2462,6 +2474,10 @@ func (c *Client) DescribeCCRule(request *DescribeCCRuleRequest) (response *Descr
 }
 
 // DescribeCCRule
+// 没有在使用。
+//
+// 
+//
 // Waf  CC V2 Query接口
 //
 // 可能返回的错误码:

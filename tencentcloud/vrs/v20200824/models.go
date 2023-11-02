@@ -116,8 +116,15 @@ type CreateVRSTaskRequestParams struct {
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 任务类型 1:在线 2:离线  默认为1
+	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil" name:"ModelType"`
+
+	// 任务类型 0:默认类型 1:轻量级复刻
+	// 默认为0
+	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 校验音频ID
+	VPRAudioId *string `json:"VPRAudioId,omitnil" name:"VPRAudioId"`
 }
 
 type CreateVRSTaskRequest struct {
@@ -156,8 +163,15 @@ type CreateVRSTaskRequest struct {
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 任务类型 1:在线 2:离线  默认为1
+	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil" name:"ModelType"`
+
+	// 任务类型 0:默认类型 1:轻量级复刻
+	// 默认为0
+	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 校验音频ID
+	VPRAudioId *string `json:"VPRAudioId,omitnil" name:"VPRAudioId"`
 }
 
 func (r *CreateVRSTaskRequest) ToJsonString() string {
@@ -181,6 +195,8 @@ func (r *CreateVRSTaskRequest) FromJsonString(s string) error {
 	delete(f, "AudioIdList")
 	delete(f, "CallbackUrl")
 	delete(f, "ModelType")
+	delete(f, "TaskType")
+	delete(f, "VPRAudioId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVRSTaskRequest has unknown keys!", "")
 	}

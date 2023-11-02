@@ -35,6 +35,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 为确保资源不泄露，保证创建的资源ID幂等性。通过ClientToken创建资源，当订单流程已结束且发货失败，或订单流程长时间未更新时，提示当前ClientToken已经超时过期。
+	INVALIDPARAMETER_CLIENTTOKENLIMITEXCEEDED = "InvalidParameter.ClientTokenLimitExceeded"
+
 	// 参数格式错误。
 	INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 

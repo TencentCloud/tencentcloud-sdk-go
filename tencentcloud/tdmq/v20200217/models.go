@@ -8120,6 +8120,115 @@ func (r *DescribeSubscriptionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTopicMsgsRequestParams struct {
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题名。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+type DescribeTopicMsgsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题名。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+func (r *DescribeTopicMsgsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicMsgsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "MsgId")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicMsgsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicMsgsResponseParams struct {
+	// 总记录数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消息日志列表。
+	TopicMsgLogSets []*MsgLog `json:"TopicMsgLogSets,omitnil" name:"TopicMsgLogSets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTopicMsgsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopicMsgsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopicMsgsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicMsgsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicsRequestParams struct {
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
@@ -10183,6 +10292,20 @@ func (r *ModifyTopicResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MsgLog struct {
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 生产者名称。
+	ProducerName *string `json:"ProducerName,omitnil" name:"ProducerName"`
+
+	// 生产时间。
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
+
+	// 生产客户端地址。
+	ProducerAddr *string `json:"ProducerAddr,omitnil" name:"ProducerAddr"`
 }
 
 type PartitionsTopic struct {

@@ -3669,6 +3669,13 @@ type SeatUserInfo struct {
 	// 坐席关联的技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitnil" name:"SkillGroupNameList"`
+
+	// 1:管理员
+	// 2:质检员
+	// 3:普通座席
+	// else:自定义角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *int64 `json:"Role,omitnil" name:"Role"`
 }
 
 type ServeParticipant struct {
@@ -3981,6 +3988,10 @@ type TelCdrInfo struct {
 
 	// 录音信息
 	RecordURL *string `json:"RecordURL,omitnil" name:"RecordURL"`
+
+	// 录音 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 坐席信息
 	SeatUser *SeatUserInfo `json:"SeatUser,omitnil" name:"SeatUser"`

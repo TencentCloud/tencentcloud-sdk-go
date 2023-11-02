@@ -9180,7 +9180,7 @@ type StandardDebug struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
-	// 允许的客户端来源。支持填写 IPV4 以及 IPV6 的 IP/IP 段，不填则表示允许任意客户端 IP。
+	// 允许的客户端来源。支持填写 IPV4 以及 IPV6 的 IP/IP 段。
 	AllowClientIPList []*string `json:"AllowClientIPList,omitnil" name:"AllowClientIPList"`
 
 	// Debug 功能到期时间。超出设置的时间，则功能失效。

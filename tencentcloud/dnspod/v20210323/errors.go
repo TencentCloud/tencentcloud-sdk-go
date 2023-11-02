@@ -314,6 +314,9 @@ const (
 	// 请输入正确的订单号。
 	INVALIDPARAMETER_INVALIDDEALNAME = "InvalidParameter.InvalidDealName"
 
+	// 不是合法的IP段。
+	INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
+
 	// 无效密钥 ID。
 	INVALIDPARAMETER_INVALIDSECRETID = "InvalidParameter.InvalidSecretId"
 
@@ -326,11 +329,29 @@ const (
 	// 权重不合法。请输入0~100的整数。
 	INVALIDPARAMETER_INVALIDWEIGHT = "InvalidParameter.InvalidWeight"
 
+	// IP已经存在。
+	INVALIDPARAMETER_IPALREADYEXIST = "InvalidParameter.IpAlreadyExist"
+
+	// 删除自定义线路失败，原因：线路不存在或者已删除。
+	INVALIDPARAMETER_IPAREA = "InvalidParameter.IpArea"
+
 	// ips 过长。
 	INVALIDPARAMETER_IPSEXCEEDLIMIT = "InvalidParameter.IpsExceedLimit"
 
 	// 单次任务数量超过上限。
 	INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+
+	// 线路正在使用当中，无法修改名称。
+	INVALIDPARAMETER_LINEINUSE = "InvalidParameter.LineInUse"
+
+	// 线路名称的长度不能超过17个字符。
+	INVALIDPARAMETER_LINENAMEINVALID = "InvalidParameter.LineNameInvalid"
+
+	// 线路名称包含不被接受的字符。
+	INVALIDPARAMETER_LINENAMEINVALIDCHARACTER = "InvalidParameter.LineNameInvalidCharacter"
+
+	// 线路名是系统内置线路或用户自定义分组线路，无法使用该名称。
+	INVALIDPARAMETER_LINENAMEOCCUPIED = "InvalidParameter.LineNameOccupied"
 
 	// 锁定天数不正确。
 	INVALIDPARAMETER_LOCKDAYSINVALID = "InvalidParameter.LockDaysInvalid"
@@ -482,6 +503,12 @@ const (
 	// 当前域名有误，请返回重新操作。
 	INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 
+	// 自定义线路IP段不能为空。
+	INVALIDPARAMETERVALUE_IPAREAEMPTYIP = "InvalidParameterValue.IpAreaEmptyIp"
+
+	// 自定义线路名称不能为空。
+	INVALIDPARAMETERVALUE_IPAREAEMPTYLINENAME = "InvalidParameterValue.IpAreaEmptyLineName"
+
 	// 分页长度数量错误。
 	INVALIDPARAMETERVALUE_LIMITINVALID = "InvalidParameterValue.LimitInvalid"
 
@@ -499,6 +526,9 @@ const (
 
 	// @的NS记录只能设置为默认线路。
 	LIMITEXCEEDED_ATNSRECORDLIMIT = "LimitExceeded.AtNsRecordLimit"
+
+	// 抱歉，自定义线路个数超过限制，请联系销售进行购买。
+	LIMITEXCEEDED_CUSTOMLINELIMITED = "LimitExceeded.CustomLineLimited"
 
 	// 别名数量已经达到限制。
 	LIMITEXCEEDED_DOMAINALIASCOUNTEXCEEDED = "LimitExceeded.DomainAliasCountExceeded"
@@ -562,6 +592,9 @@ const (
 
 	// 仅域名所有者可进行此操作。
 	OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+
+	// 该线路正在使用当中，不能编辑。
+	OPERATIONDENIED_EDITUSINGRECORDLINENOTALLOWED = "OperationDenied.EditUsingRecordLineNotAllowed"
 
 	// 抱歉，不允许添加黑名单中的IP。
 	OPERATIONDENIED_IPINBLACKLISTNOTALLOWED = "OperationDenied.IPInBlacklistNotAllowed"

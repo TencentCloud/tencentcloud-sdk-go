@@ -3041,6 +3041,10 @@ type DescribeTaskLogListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotViewNumber *int64 `json:"NotViewNumber,omitnil" name:"NotViewNumber"`
 
+	// 报告模板数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTemplateNumber *int64 `json:"ReportTemplateNumber,omitnil" name:"ReportTemplateNumber"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4325,6 +4329,14 @@ type TaskLogInfo struct {
 	// 用户名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 报告类型： 1安全体检 2日报 3周报 4月报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+
+	// 报告模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type TaskLogURL struct {

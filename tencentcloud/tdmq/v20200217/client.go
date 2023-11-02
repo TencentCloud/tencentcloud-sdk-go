@@ -5104,6 +5104,65 @@ func (c *Client) DescribeSubscriptionsWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTopicMsgsRequest() (request *DescribeTopicMsgsRequest) {
+    request = &DescribeTopicMsgsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeTopicMsgs")
+    
+    
+    return
+}
+
+func NewDescribeTopicMsgsResponse() (response *DescribeTopicMsgsResponse) {
+    response = &DescribeTopicMsgsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopicMsgs
+// 消息查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeTopicMsgs(request *DescribeTopicMsgsRequest) (response *DescribeTopicMsgsResponse, err error) {
+    return c.DescribeTopicMsgsWithContext(context.Background(), request)
+}
+
+// DescribeTopicMsgs
+// 消息查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeTopicMsgsWithContext(ctx context.Context, request *DescribeTopicMsgsRequest) (response *DescribeTopicMsgsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicMsgsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicMsgs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicMsgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
     request = &DescribeTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},

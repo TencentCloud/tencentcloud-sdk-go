@@ -65,37 +65,25 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 }
 
 // ChannelBatchCancelFlows
-// 用于批量撤销合同流程<br/>
-//
-// 适用场景：
-//
-// 如果某些合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
-//
-// 通过签署流程编号批量撤销合同，单次最多支持撤销100份合同。只有合同的发起人或者发起方企业的超管/法人才能进行合同撤销。需要注意的是，若合同处于以下已终止状态，则不可撤销：<br/>
-//
-// - 已全部签署完成
-//
-// - 已拒签
-//
-// - 已过期
-//
-// - 已撤回
-//
-// - 拒绝填写
-//
-// - 已解除
+// 通过合同编号批量撤销合同，单次最多支持撤销100份合同。
 //
 // 
 //
-// <br/>
+// 适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
-// 满足撤销条件的合同会发起异步撤销流程，而不满足撤销条件的合同将返回失败原因。合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方。具体的回调消息内容可参考 <a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">合同状态变更回调消息</a>。
+// 
 //
-// <br/><br/>
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注:
 //
-// `如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，`签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -113,37 +101,25 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 }
 
 // ChannelBatchCancelFlows
-// 用于批量撤销合同流程<br/>
-//
-// 适用场景：
-//
-// 如果某些合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
-//
-// 通过签署流程编号批量撤销合同，单次最多支持撤销100份合同。只有合同的发起人或者发起方企业的超管/法人才能进行合同撤销。需要注意的是，若合同处于以下已终止状态，则不可撤销：<br/>
-//
-// - 已全部签署完成
-//
-// - 已拒签
-//
-// - 已过期
-//
-// - 已撤回
-//
-// - 拒绝填写
-//
-// - 已解除
+// 通过合同编号批量撤销合同，单次最多支持撤销100份合同。
 //
 // 
 //
-// <br/>
+// 适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
-// 满足撤销条件的合同会发起异步撤销流程，而不满足撤销条件的合同将返回失败原因。合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方。具体的回调消息内容可参考 <a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">合同状态变更回调消息</a>。
+// 
 //
-// <br/><br/>
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注:
 //
-// `如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，`签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -198,15 +174,19 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //
 // 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
-// <ul><li> `可撤回合同状态` ：未全部签署完成</li>
+// 
 //
-// <li> `不撤回合同状态` ：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。</li></ul>
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注:
 //
-// <ul><li>能撤回合同的只能是 `合同的发起人或者发起方企业的超管、法人`  </li>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
 //
-// <li>签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>。</li></ul>
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -237,15 +217,19 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //
 // 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
-// <ul><li> `可撤回合同状态` ：未全部签署完成</li>
+// 
 //
-// <li> `不撤回合同状态` ：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。</li></ul>
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注:
 //
-// <ul><li>能撤回合同的只能是 `合同的发起人或者发起方企业的超管、法人`  </li>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
 //
-// <li>签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>。</li></ul>
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -431,23 +415,23 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 }
 
 // ChannelCreateBatchCancelFlowUrl
-// 指定需要批量撤销的签署流程Id，获取批量撤销链接 - 不建议使用此接口，可使用ChannelBatchCancelFlows
-//
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
-//
-// 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
 //
 // 
 //
-// 可以撤回：未全部签署完成
-//
-//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+// 适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
 // 
 //
-// 注意:
+// - **可撤回合同状态**：未全部签署完成
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
+//
+// 注:
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -459,23 +443,23 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 }
 
 // ChannelCreateBatchCancelFlowUrl
-// 指定需要批量撤销的签署流程Id，获取批量撤销链接 - 不建议使用此接口，可使用ChannelBatchCancelFlows
-//
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
-//
-// 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
 //
 // 
 //
-// 可以撤回：未全部签署完成
-//
-//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+// 适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 //
 // 
 //
-// 注意:
+// - **可撤回合同状态**：未全部签署完成
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
+//
+// 注:
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2823,9 +2807,25 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 }
 
 // ChannelCreateReleaseFlow
-// 发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+// 发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
 //
-// 合同发起人必须在电子签已经进行实名。
+// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。
+//
+// 
+//
+// 注意：
+//
+// <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
+//
+// <li>只有原合同企业类型的参与人才能发起解除协议，<code>个人参与方不能发起解除协议</code>。</li>
+//
+// <li>原合同个人类型参与人必须是解除协议的参与人，<code>不能更换其他第三方个人</code>参与解除协议。</li>
+//
+// <li>如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的<code>企业员工代为处理</code>。</li>
+//
+// <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
+//
+// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2851,9 +2851,25 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 }
 
 // ChannelCreateReleaseFlow
-// 发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+// 发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
 //
-// 合同发起人必须在电子签已经进行实名。
+// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。
+//
+// 
+//
+// 注意：
+//
+// <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
+//
+// <li>只有原合同企业类型的参与人才能发起解除协议，<code>个人参与方不能发起解除协议</code>。</li>
+//
+// <li>原合同个人类型参与人必须是解除协议的参与人，<code>不能更换其他第三方个人</code>参与解除协议。</li>
+//
+// <li>如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的<code>企业员工代为处理</code>。</li>
+//
+// <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
+//
+// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3040,7 +3056,11 @@ func NewChannelCreateUserAutoSignEnableUrlResponse() (response *ChannelCreateUse
 }
 
 // ChannelCreateUserAutoSignEnableUrl
-// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+// 获取个人用户自动签的开通链接。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3060,7 +3080,11 @@ func (c *Client) ChannelCreateUserAutoSignEnableUrl(request *ChannelCreateUserAu
 }
 
 // ChannelCreateUserAutoSignEnableUrl
-// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+// 获取个人用户自动签的开通链接。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5695,27 +5719,41 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 // 
 //
-// > **适用场景** 
-//
-// >
-//
-// >  该接口常用来配合“使用模板创建签署流程”接口作为前置的接口使用。 
-//
-// >  一个模板通常会包含以下结构信息
-//
-// >- 模板基本信息
-//
-// >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
-//
-// >- 填写控件 Components
-//
-// >- 签署控件 SignComponents
-//
-// >- 生成模板的文件基础信息 FileInfos
+// **一个模板通常会包含以下结构信息** 
 //
 // 
 //
-// 注意：
+// - 模板模版ID, 模板名字等基本信息
+//
+// - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+//
+// - 发起方和签署方的填写控件 Components
+//
+// - 签署方的签署控件 SignComponents
+//
+// 
+//
+// **适用场景**
+//
+//  该接口常用来配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates" target="_blank">用模板创建签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>接口，作为创建合同的前置接口使用。 
+//
+// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的的创建。
+//
+// 
+//
+// **模版的来源**
+//
+// 子客企业的模板有两种途径获取
+//
+// - 渠道方(平台方)配置完成后, 分发给同应用的各个子企业
+//
+// - 子客企业通过CreateConsoleLoginUrl创建的链接登录子客控制台自己创建
+//
+// 
+//
+// 
+//
+// **注意**
 //
 // 
 //
@@ -5754,27 +5792,41 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 // 
 //
-// > **适用场景** 
-//
-// >
-//
-// >  该接口常用来配合“使用模板创建签署流程”接口作为前置的接口使用。 
-//
-// >  一个模板通常会包含以下结构信息
-//
-// >- 模板基本信息
-//
-// >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
-//
-// >- 填写控件 Components
-//
-// >- 签署控件 SignComponents
-//
-// >- 生成模板的文件基础信息 FileInfos
+// **一个模板通常会包含以下结构信息** 
 //
 // 
 //
-// 注意：
+// - 模板模版ID, 模板名字等基本信息
+//
+// - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+//
+// - 发起方和签署方的填写控件 Components
+//
+// - 签署方的签署控件 SignComponents
+//
+// 
+//
+// **适用场景**
+//
+//  该接口常用来配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates" target="_blank">用模板创建签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>接口，作为创建合同的前置接口使用。 
+//
+// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的的创建。
+//
+// 
+//
+// **模版的来源**
+//
+// 子客企业的模板有两种途径获取
+//
+// - 渠道方(平台方)配置完成后, 分发给同应用的各个子企业
+//
+// - 子客企业通过CreateConsoleLoginUrl创建的链接登录子客控制台自己创建
+//
+// 
+//
+// 
+//
+// **注意**
 //
 // 
 //
@@ -6394,7 +6446,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //
 // 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
 //
-// 目前该接口只支持B2C，不建议使用，将会**废弃**。
+// 目前该接口只支持B2C，<font color='red'> **不建议使用，将会废弃**</font>。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6424,7 +6476,7 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 //
 // 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
 //
-// 目前该接口只支持B2C，不建议使用，将会**废弃**。
+// 目前该接口只支持B2C，<font color='red'> **不建议使用，将会废弃**</font>。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

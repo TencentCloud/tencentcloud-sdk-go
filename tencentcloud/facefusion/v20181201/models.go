@@ -511,16 +511,17 @@ type MaterialFaceList struct {
 }
 
 type MergeInfo struct {
-	// 输入图片base64
+	// 输入图片base64。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
-	// 输入图片url
+	// 输入图片url。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 上传的图片人脸位置信息（人脸框）
+	// 输入图片人脸位置信息（人脸框）。不填默认取输入图中最大人脸。
 	InputImageFaceRect *FaceRect `json:"InputImageFaceRect,omitnil" name:"InputImageFaceRect"`
 
-	// 控制台上传的素材人脸ID，不填默认取最大人脸
+	// 素材人脸ID，不填默认取素材中最大人脸。
 	TemplateFaceID *string `json:"TemplateFaceID,omitnil" name:"TemplateFaceID"`
 }
 

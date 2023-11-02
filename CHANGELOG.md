@@ -1,3 +1,193 @@
+# Release v1.0.781
+
+## 云联络中心(ccc) 版本：2020-02-10
+
+### 第 58 次发布
+
+发布时间：2023-11-03 01:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
+
+	* 新增成员：Role
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：RecordId
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 20 次发布
+
+发布时间：2023-11-03 01:10:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskLogList](https://cloud.tencent.com/document/api/664/97682)
+
+	* 新增出参：ReportTemplateNumber
+
+
+修改数据结构：
+
+* [TaskLogInfo](https://cloud.tencent.com/document/api/664/90825#TaskLogInfo)
+
+	* 新增成员：ReportType, TemplateId
+
+	* <font color="#dd0000">**修改成员**：</font>TaskLogName, TaskLogId, AssetsNumber, RiskNumber, Time, Status, TaskName, StartTime, TaskCenterTaskId, AppId, UIN, UserName
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 26 次发布
+
+发布时间：2023-11-03 01:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDomainCustomLine](https://cloud.tencent.com/document/api/1427/101085)
+* [DeleteDomainCustomLine](https://cloud.tencent.com/document/api/1427/101084)
+* [DescribeDomainCustomLineList](https://cloud.tencent.com/document/api/1427/101083)
+* [ModifyDomainCustomLine](https://cloud.tencent.com/document/api/1427/101082)
+
+新增数据结构：
+
+* [CustomLineInfo](https://cloud.tencent.com/document/api/1427/56185#CustomLineInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 125 次发布
+
+发布时间：2023-11-03 01:15:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
+
+	* 新增入参：UserData
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 86 次发布
+
+发布时间：2023-11-03 01:22:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTopicMsgs](https://cloud.tencent.com/document/api/1179/101086)
+
+新增数据结构：
+
+* [MsgLog](https://cloud.tencent.com/document/api/1179/46089#MsgLog)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 40 次发布
+
+发布时间：2023-11-03 01:24:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CrossTenantENIInfo](https://cloud.tencent.com/document/api/851/75051#CrossTenantENIInfo)
+
+修改数据结构：
+
+* [Container](https://cloud.tencent.com/document/api/851/75051#Container)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, ContainerId, Image, Status
+
+* [ContainerStatus](https://cloud.tencent.com/document/api/851/75051#ContainerStatus)
+
+	* <font color="#dd0000">**修改成员**：</font>RestartCount, State, Ready, Reason, Message
+
+* [Pod](https://cloud.tencent.com/document/api/851/75051#Pod)
+
+	* 新增成员：CrossTenantENIInfo
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 声音复刻(vrs) 版本：2020-08-24
+
+### 第 3 次发布
+
+发布时间：2023-11-03 01:27:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVRSTask](https://cloud.tencent.com/document/api/1283/90064)
+
+	* 新增入参：TaskType, VPRAudioId
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 69 次发布
+
+发布时间：2023-11-03 01:27:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeAntiFakeUrl
+* DescribeCCRule
+
+
+
 # Release v1.0.780
 
 ## 数字版权管理(drm) 版本：2018-11-15

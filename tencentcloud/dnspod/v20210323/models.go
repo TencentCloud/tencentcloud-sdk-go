@@ -622,6 +622,81 @@ func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDomainCustomLineRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 自定义线路名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 自定义线路IP段，用-分割
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+type CreateDomainCustomLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 自定义线路名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 自定义线路IP段，用-分割
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+func (r *CreateDomainCustomLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainCustomLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Name")
+	delete(f, "Area")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainCustomLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainCustomLineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateDomainCustomLineResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainCustomLineResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainCustomLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainCustomLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDomainGroupRequestParams struct {
 	// 域名分组
 	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
@@ -1174,6 +1249,23 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomLineInfo struct {
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+
+	// 自定义线路名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 自定义线路IP段
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 已使用IP段个数
+	UseCount *uint64 `json:"UseCount,omitnil" name:"UseCount"`
+
+	// 允许使用IP段最大个数
+	MaxCount *uint64 `json:"MaxCount,omitnil" name:"MaxCount"`
+}
+
 type Deals struct {
 	// 子订单ID
 	DealId *string `json:"DealId,omitnil" name:"DealId"`
@@ -1325,6 +1417,74 @@ func (r *DeleteDomainBatchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDomainBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainCustomLineRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 自定义线路名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+type DeleteDomainCustomLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 自定义线路名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+func (r *DeleteDomainCustomLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainCustomLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Name")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDomainCustomLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainCustomLineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteDomainCustomLineResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDomainCustomLineResponseParams `json:"Response"`
+}
+
+func (r *DeleteDomainCustomLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainCustomLineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1999,6 +2159,73 @@ func (r *DescribeDomainAnalyticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainAnalyticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainCustomLineListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+type DescribeDomainCustomLineListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+func (r *DescribeDomainCustomLineListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainCustomLineListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainCustomLineListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainCustomLineListResponseParams struct {
+	// 自定义线路列表
+	LineList []*CustomLineInfo `json:"LineList,omitnil" name:"LineList"`
+
+	// 可添加的自定义线路条数
+	AvailableCount *uint64 `json:"AvailableCount,omitnil" name:"AvailableCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDomainCustomLineListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainCustomLineListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainCustomLineListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainCustomLineListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4578,6 +4805,88 @@ type LockInfo struct {
 
 	// 域名自动解锁日期
 	LockEnd *string `json:"LockEnd,omitnil" name:"LockEnd"`
+}
+
+// Predefined struct for user
+type ModifyDomainCustomLineRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 修改后的自定义线路名称，如果不修改名称，需要和PreName保持一致
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 自定义线路IP段，用-分割
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 修改前的自定义线路名称
+	PreName *string `json:"PreName,omitnil" name:"PreName"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+type ModifyDomainCustomLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 修改后的自定义线路名称，如果不修改名称，需要和PreName保持一致
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 自定义线路IP段，用-分割
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 修改前的自定义线路名称
+	PreName *string `json:"PreName,omitnil" name:"PreName"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil" name:"DomainId"`
+}
+
+func (r *ModifyDomainCustomLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainCustomLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Name")
+	delete(f, "Area")
+	delete(f, "PreName")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainCustomLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDomainCustomLineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDomainCustomLineResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDomainCustomLineResponseParams `json:"Response"`
+}
+
+func (r *ModifyDomainCustomLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainCustomLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
