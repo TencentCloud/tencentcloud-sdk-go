@@ -3177,6 +3177,65 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMsgTraceRequest() (request *DescribeMsgTraceRequest) {
+    request = &DescribeMsgTraceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeMsgTrace")
+    
+    
+    return
+}
+
+func NewDescribeMsgTraceResponse() (response *DescribeMsgTraceResponse) {
+    response = &DescribeMsgTraceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMsgTrace
+// 查询消息轨迹
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_MSGPRODUCELOG = "ResourceNotFound.MsgProduceLog"
+func (c *Client) DescribeMsgTrace(request *DescribeMsgTraceRequest) (response *DescribeMsgTraceResponse, err error) {
+    return c.DescribeMsgTraceWithContext(context.Background(), request)
+}
+
+// DescribeMsgTrace
+// 查询消息轨迹
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_MSGPRODUCELOG = "ResourceNotFound.MsgProduceLog"
+func (c *Client) DescribeMsgTraceWithContext(ctx context.Context, request *DescribeMsgTraceRequest) (response *DescribeMsgTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMsgTraceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMsgTrace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMsgTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNamespaceBundlesOptRequest() (request *DescribeNamespaceBundlesOptRequest) {
     request = &DescribeNamespaceBundlesOptRequest{
         BaseRequest: &tchttp.BaseRequest{},

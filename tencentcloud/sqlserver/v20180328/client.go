@@ -2800,7 +2800,7 @@ func NewDescribeDBsResponse() (response *DescribeDBsResponse) {
 }
 
 // DescribeDBs
-// 本接口（DescribeDBs）用于查询数据库列表。
+// 本接口（DescribeDBs）用于查询数据库列表。**已废弃，请使用接口DescribeDatabases**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -2815,7 +2815,7 @@ func (c *Client) DescribeDBs(request *DescribeDBsRequest) (response *DescribeDBs
 }
 
 // DescribeDBs
-// 本接口（DescribeDBs）用于查询数据库列表。
+// 本接口（DescribeDBs）用于查询数据库列表。**已废弃，请使用接口DescribeDatabases**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -2861,7 +2861,7 @@ func NewDescribeDBsNormalResponse() (response *DescribeDBsNormalResponse) {
 }
 
 // DescribeDBsNormal
-// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号。**此接口已废弃，请使用DescribeDatabasesNormal。**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -2878,7 +2878,7 @@ func (c *Client) DescribeDBsNormal(request *DescribeDBsNormalRequest) (response 
 }
 
 // DescribeDBsNormal
-// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号。**此接口已废弃，请使用DescribeDatabasesNormal。**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -5671,7 +5671,7 @@ func NewModifyDatabaseMdfResponse() (response *ModifyDatabaseMdfResponse) {
 }
 
 // ModifyDatabaseMdf
-// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)
+// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)。**本接口已废弃，请使用接口ModifyDatabaseShrinkMDF**。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -5687,7 +5687,7 @@ func (c *Client) ModifyDatabaseMdf(request *ModifyDatabaseMdfRequest) (response 
 }
 
 // ModifyDatabaseMdf
-// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)
+// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)。**本接口已废弃，请使用接口ModifyDatabaseShrinkMDF**。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

@@ -1,94 +1,24 @@
 # 本版本更新包含以下内容：
 
-## 云联络中心(ccc) 版本：2020-02-10
-
-### 第 58 次发布
-
-发布时间：2023-11-03 01:08:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
-
-	* 新增成员：Role
-
-* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
-
-	* 新增成员：RecordId
-
-
-
-
-## 云安全一体化平台(csip) 版本：2022-11-21
-
-### 第 20 次发布
-
-发布时间：2023-11-03 01:10:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTaskLogList](https://cloud.tencent.com/document/api/664/97682)
-
-	* 新增出参：ReportTemplateNumber
-
-
-修改数据结构：
-
-* [TaskLogInfo](https://cloud.tencent.com/document/api/664/90825#TaskLogInfo)
-
-	* 新增成员：ReportType, TemplateId
-
-	* <font color="#dd0000">**修改成员**：</font>TaskLogName, TaskLogId, AssetsNumber, RiskNumber, Time, Status, TaskName, StartTime, TaskCenterTaskId, AppId, UIN, UserName
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 26 次发布
-
-发布时间：2023-11-03 01:13:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDomainCustomLine](https://cloud.tencent.com/document/api/1427/101085)
-* [DeleteDomainCustomLine](https://cloud.tencent.com/document/api/1427/101084)
-* [DescribeDomainCustomLineList](https://cloud.tencent.com/document/api/1427/101083)
-* [ModifyDomainCustomLine](https://cloud.tencent.com/document/api/1427/101082)
-
-新增数据结构：
-
-* [CustomLineInfo](https://cloud.tencent.com/document/api/1427/56185#CustomLineInfo)
-
-
-
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 125 次发布
+### 第 126 次发布
 
-发布时间：2023-11-03 01:15:04
+发布时间：2023-11-06 00:09:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
 
-	* 新增入参：UserData
+	* <font color="#dd0000">**修改成员**：</font>CcInfos, NeedCreateReview
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* <font color="#dd0000">**修改成员**：</font>OrganizationName
 
 
 
@@ -97,66 +27,11 @@
 
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
-### 第 86 次发布
+### 第 53 次发布
 
-发布时间：2023-11-03 01:22:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTopicMsgs](https://cloud.tencent.com/document/api/1179/101086)
-
-新增数据结构：
-
-* [MsgLog](https://cloud.tencent.com/document/api/1179/46089#MsgLog)
-
-
-
-## TI-ONE 训练平台(tione) 版本：2021-11-11
-
-### 第 40 次发布
-
-发布时间：2023-11-03 01:24:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [CrossTenantENIInfo](https://cloud.tencent.com/document/api/851/75051#CrossTenantENIInfo)
-
-修改数据结构：
-
-* [Container](https://cloud.tencent.com/document/api/851/75051#Container)
-
-	* <font color="#dd0000">**修改成员**：</font>Name, ContainerId, Image, Status
-
-* [ContainerStatus](https://cloud.tencent.com/document/api/851/75051#ContainerStatus)
-
-	* <font color="#dd0000">**修改成员**：</font>RestartCount, State, Ready, Reason, Message
-
-* [Pod](https://cloud.tencent.com/document/api/851/75051#Pod)
-
-	* 新增成员：CrossTenantENIInfo
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 声音复刻(vrs) 版本：2020-08-24
-
-### 第 3 次发布
-
-发布时间：2023-11-03 01:27:03
+发布时间：2023-11-06 00:18:16
 
 本次发布包含了以下内容：
 
@@ -164,27 +39,85 @@
 
 修改接口：
 
-* [CreateVRSTask](https://cloud.tencent.com/document/api/1283/90064)
+* [DescribeSlowlogs](https://cloud.tencent.com/document/api/238/19936)
 
-	* 新增入参：TaskType, VPRAudioId
+	* 新增出参：SlowLogs
+
+* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
+
+	* 新增出参：CosSecurityToken
+
+* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
+
+	* 新增出参：CosSecurityToken
+
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+
+	* 新增出参：Code
+
+
+新增数据结构：
+
+* [SlowLog](https://cloud.tencent.com/document/api/238/19976#SlowLog)
+
+修改数据结构：
+
+* [DbNormalDetail](https://cloud.tencent.com/document/api/238/19976#DbNormalDetail)
+
+	* 新增成员：IsFullTextEnabled
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 69 次发布
+### 第 87 次发布
 
-发布时间：2023-11-03 01:27:06
+发布时间：2023-11-06 00:20:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+新增接口：
 
-* DescribeAntiFakeUrl
-* DescribeCCRule
+* [DescribeMsgTrace](https://cloud.tencent.com/document/api/1179/101114)
+
+新增数据结构：
+
+* [ConsumerLog](https://cloud.tencent.com/document/api/1179/46089#ConsumerLog)
+* [ConsumerLogs](https://cloud.tencent.com/document/api/1179/46089#ConsumerLogs)
+* [ProducerLog](https://cloud.tencent.com/document/api/1179/46089#ProducerLog)
+* [ServerLog](https://cloud.tencent.com/document/api/1179/46089#ServerLog)
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 13 次发布
+
+发布时间：2023-11-06 00:21:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ManagerNode](https://cloud.tencent.com/document/api/1527/89579#ManagerNode)
+
+	* 新增成员：EnhancedService
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
 
 
 
@@ -47939,14 +47872,14 @@
 
 新增接口：
 
-* [[CreateDomainCustomLine](https://cloud.tencent.com/document/api/1427/101085)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDomainCustomLine](https://cloud.tencent.com/document/api/1427/101084)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDomainCustomLineList](https://cloud.tencent.com/document/api/1427/101083)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDomainCustomLine](https://cloud.tencent.com/document/api/1427/101082)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDomainCustomLine](https://cloud.tencent.com/document/api/1427/101085)
+* [DeleteDomainCustomLine](https://cloud.tencent.com/document/api/1427/101084)
+* [DescribeDomainCustomLineList](https://cloud.tencent.com/document/api/1427/101083)
+* [ModifyDomainCustomLine](https://cloud.tencent.com/document/api/1427/101082)
 
 新增数据结构：
 
-* [[CustomLineInfo](https://cloud.tencent.com/document/api/1427/56185#CustomLineInfo)](https://cloud.tencent.com/document/api/1427/56185#[CustomLineInfo](https://cloud.tencent.com/document/api/1427/56185#CustomLineInfo))
+* [CustomLineInfo](https://cloud.tencent.com/document/api/1427/56185#CustomLineInfo)
 
 ### 第 25 次发布
 
@@ -58215,6 +58148,25 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 126 次发布
+
+发布时间：2023-11-06 00:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CcInfos, NeedCreateReview
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* <font color="#dd0000">**修改成员**：</font>OrganizationName
+
 
 ### 第 125 次发布
 
@@ -96181,6 +96133,46 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 53 次发布
+
+发布时间：2023-11-06 00:18:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowlogs](https://cloud.tencent.com/document/api/238/19936)
+
+	* 新增出参：SlowLogs
+
+* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
+
+	* 新增出参：CosSecurityToken
+
+* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
+
+	* 新增出参：CosSecurityToken
+
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+
+	* 新增出参：Code
+
+
+新增数据结构：
+
+* [[SlowLog](https://cloud.tencent.com/document/api/238/19976#SlowLog)](https://cloud.tencent.com/document/api/238/19976#[SlowLog](https://cloud.tencent.com/document/api/238/19976#SlowLog))
+
+修改数据结构：
+
+* [DbNormalDetail](https://cloud.tencent.com/document/api/238/19976#DbNormalDetail)
+
+	* 新增成员：IsFullTextEnabled
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
+
+
 ### 第 52 次发布
 
 发布时间：2023-09-25 01:24:51
@@ -107773,6 +107765,25 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 87 次发布
+
+发布时间：2023-11-06 00:20:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMsgTrace](https://cloud.tencent.com/document/api/1179/101114)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ConsumerLog](https://cloud.tencent.com/document/api/1179/46089#ConsumerLog)](https://cloud.tencent.com/document/api/1179/46089#[ConsumerLog](https://cloud.tencent.com/document/api/1179/46089#ConsumerLog))
+* [[ConsumerLogs](https://cloud.tencent.com/document/api/1179/46089#ConsumerLogs)](https://cloud.tencent.com/document/api/1179/46089#[ConsumerLogs](https://cloud.tencent.com/document/api/1179/46089#ConsumerLogs))
+* [[ProducerLog](https://cloud.tencent.com/document/api/1179/46089#ProducerLog)](https://cloud.tencent.com/document/api/1179/46089#[ProducerLog](https://cloud.tencent.com/document/api/1179/46089#ProducerLog))
+* [[ServerLog](https://cloud.tencent.com/document/api/1179/46089#ServerLog)](https://cloud.tencent.com/document/api/1179/46089#[ServerLog](https://cloud.tencent.com/document/api/1179/46089#ServerLog))
+
 ### 第 86 次发布
 
 发布时间：2023-11-03 01:22:53
@@ -107783,11 +107794,11 @@
 
 新增接口：
 
-* [[DescribeTopicMsgs](https://cloud.tencent.com/document/api/1179/101086)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTopicMsgs](https://cloud.tencent.com/document/api/1179/101086)
 
 新增数据结构：
 
-* [[MsgLog](https://cloud.tencent.com/document/api/1179/46089#MsgLog)](https://cloud.tencent.com/document/api/1179/46089#[MsgLog](https://cloud.tencent.com/document/api/1179/46089#MsgLog))
+* [MsgLog](https://cloud.tencent.com/document/api/1179/46089#MsgLog)
 
 ### 第 85 次发布
 
@@ -114225,6 +114236,21 @@
 
 ## 高性能计算平台(thpc) 版本：2023-03-21
 
+### 第 13 次发布
+
+发布时间：2023-11-06 00:21:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ManagerNode](https://cloud.tencent.com/document/api/1527/89579#ManagerNode)
+
+	* 新增成员：EnhancedService
+
+
 ### 第 12 次发布
 
 发布时间：2023-09-21 06:17:00
@@ -115893,7 +115919,7 @@
 
 新增数据结构：
 
-* [[CrossTenantENIInfo](https://cloud.tencent.com/document/api/851/75051#CrossTenantENIInfo)](https://cloud.tencent.com/document/api/851/75051#[CrossTenantENIInfo](https://cloud.tencent.com/document/api/851/75051#CrossTenantENIInfo))
+* [CrossTenantENIInfo](https://cloud.tencent.com/document/api/851/75051#CrossTenantENIInfo)
 
 修改数据结构：
 

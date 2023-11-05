@@ -1,3 +1,126 @@
+# Release v1.0.782
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 126 次发布
+
+发布时间：2023-11-06 00:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CcInfos, NeedCreateReview
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* <font color="#dd0000">**修改成员**：</font>OrganizationName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 53 次发布
+
+发布时间：2023-11-06 00:18:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowlogs](https://cloud.tencent.com/document/api/238/19936)
+
+	* 新增出参：SlowLogs
+
+* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
+
+	* 新增出参：CosSecurityToken
+
+* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
+
+	* 新增出参：CosSecurityToken
+
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+
+	* 新增出参：Code
+
+
+新增数据结构：
+
+* [SlowLog](https://cloud.tencent.com/document/api/238/19976#SlowLog)
+
+修改数据结构：
+
+* [DbNormalDetail](https://cloud.tencent.com/document/api/238/19976#DbNormalDetail)
+
+	* 新增成员：IsFullTextEnabled
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 87 次发布
+
+发布时间：2023-11-06 00:20:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMsgTrace](https://cloud.tencent.com/document/api/1179/101114)
+
+新增数据结构：
+
+* [ConsumerLog](https://cloud.tencent.com/document/api/1179/46089#ConsumerLog)
+* [ConsumerLogs](https://cloud.tencent.com/document/api/1179/46089#ConsumerLogs)
+* [ProducerLog](https://cloud.tencent.com/document/api/1179/46089#ProducerLog)
+* [ServerLog](https://cloud.tencent.com/document/api/1179/46089#ServerLog)
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 13 次发布
+
+发布时间：2023-11-06 00:21:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ManagerNode](https://cloud.tencent.com/document/api/1527/89579#ManagerNode)
+
+	* 新增成员：EnhancedService
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
 # Release v1.0.781
 
 ## 云联络中心(ccc) 版本：2020-02-10

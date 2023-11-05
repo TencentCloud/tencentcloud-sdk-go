@@ -5485,7 +5485,15 @@ func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoRespon
 }
 
 // DescribeFlowDetailInfo
-// 此接口（DescribeFlowDetailInfo）用于查询合同(签署流程)的详细信息。
+// 此接口用于查询合同或者合同组的详情信息，支持查询多个（数量不能超过100）。
+//
+// 
+//
+// 适用场景：可用于主动查询某个合同或者合同组的详情信息。
+//
+// 
+//
+// 注:  `只能查询本企业创建的合同(创建合同用的Agent和此接口用的Agent数据最好一致) `
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5515,7 +5523,15 @@ func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) 
 }
 
 // DescribeFlowDetailInfo
-// 此接口（DescribeFlowDetailInfo）用于查询合同(签署流程)的详细信息。
+// 此接口用于查询合同或者合同组的详情信息，支持查询多个（数量不能超过100）。
+//
+// 
+//
+// 适用场景：可用于主动查询某个合同或者合同组的详情信息。
+//
+// 
+//
+// 注:  `只能查询本企业创建的合同(创建合同用的Agent和此接口用的Agent数据最好一致) `
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6640,7 +6656,27 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 // SyncProxyOrganizationOperators
 // 此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于第三方应用平台的，无法针对员工做新增/更新/离职等操作。 
 //
-// 若经办人信息有误，或者需要修改，也可以先将之前的经办人做离职操作，然后重新使用控制台链接CreateConsoleLoginUrl让经办人重新实名。
+// 
+//
+// - **新增员工的的场景**:    提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
+//
+// 
+//
+// - **员工离职的场景**: 将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_SyncProxyOrganizationOperators.png)
+//
+// 
+//
+// **注**:    
+//
+// -  新增员工可以配置白名单限制注册使用对应openid的员工必须满足SyncProxyOrganizationOperators导入的(默认生成子客登录链接生成的链接可以任意员工点击注册绑定对应的openid), 此白名单需要咨询接入经理
+//
+// -  <font color='red'>超管和法人无法通过此接口离职</font>,  需要超管和法人将权限转移给其他人后才可通过此接口离职
+//
+// - 新增员工的的场景同ID不同员工会覆盖掉上一个同ID的员工, 如果上一个员工已经实名则不会被覆盖
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6673,7 +6709,27 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
 // SyncProxyOrganizationOperators
 // 此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于第三方应用平台的，无法针对员工做新增/更新/离职等操作。 
 //
-// 若经办人信息有误，或者需要修改，也可以先将之前的经办人做离职操作，然后重新使用控制台链接CreateConsoleLoginUrl让经办人重新实名。
+// 
+//
+// - **新增员工的的场景**:    提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
+//
+// 
+//
+// - **员工离职的场景**: 将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_SyncProxyOrganizationOperators.png)
+//
+// 
+//
+// **注**:    
+//
+// -  新增员工可以配置白名单限制注册使用对应openid的员工必须满足SyncProxyOrganizationOperators导入的(默认生成子客登录链接生成的链接可以任意员工点击注册绑定对应的openid), 此白名单需要咨询接入经理
+//
+// -  <font color='red'>超管和法人无法通过此接口离职</font>,  需要超管和法人将权限转移给其他人后才可通过此接口离职
+//
+// - 新增员工的的场景同ID不同员工会覆盖掉上一个同ID的员工, 如果上一个员工已经实名则不会被覆盖
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6749,9 +6805,9 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //
 // 注: 
 //
-// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+// 1. 图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下
 //
-// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+// 2. <font color='red'>此接口调用时需要单独设置Domain请求域名 </font>,  联调开发环境为 **file.test.ess.tencent.cn**，正式环境需要设置为**file.ess.tencent.cn**，代码示例
 //
 // ```
 //
@@ -6788,9 +6844,9 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 //
 // 注: 
 //
-// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+// 1. 图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下
 //
-// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+// 2. <font color='red'>此接口调用时需要单独设置Domain请求域名 </font>,  联调开发环境为 **file.test.ess.tencent.cn**，正式环境需要设置为**file.ess.tencent.cn**，代码示例
 //
 // ```
 //

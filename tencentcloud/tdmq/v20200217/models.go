@@ -700,6 +700,39 @@ type Consumer struct {
 	Partition *int64 `json:"Partition,omitnil" name:"Partition"`
 }
 
+type ConsumerLog struct {
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消费组。
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil" name:"ConsumerGroup"`
+
+	// 消费组名称。
+	ConsumerName *string `json:"ConsumerName,omitnil" name:"ConsumerName"`
+
+	// 消费时间。
+	ConsumeTime *string `json:"ConsumeTime,omitnil" name:"ConsumeTime"`
+
+	// 消费者客户端地址。
+	ConsumerAddr *string `json:"ConsumerAddr,omitnil" name:"ConsumerAddr"`
+
+	// 消费耗时（毫秒）。
+	ConsumeUseTime *uint64 `json:"ConsumeUseTime,omitnil" name:"ConsumeUseTime"`
+
+	// 消费状态。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type ConsumerLogs struct {
+	// 记录数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消费日志。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerLogSets []*ConsumerLog `json:"ConsumerLogSets,omitnil" name:"ConsumerLogSets"`
+}
+
 type ConsumerStats struct {
 	// 主题名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4783,6 +4816,114 @@ func (r *DescribeEnvironmentsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgTraceRequestParams struct {
+	// 环境（命名空间）。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息生产时间。
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 消费组名称模糊匹配。
+	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+type DescribeMsgTraceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境（命名空间）。
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息生产时间。
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 消费组名称模糊匹配。
+	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+func (r *DescribeMsgTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgTraceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "MsgId")
+	delete(f, "ProduceTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SubscriptionName")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMsgTraceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgTraceResponseParams struct {
+	// 生产信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerLog *ProducerLog `json:"ProducerLog,omitnil" name:"ProducerLog"`
+
+	// 服务方信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerLog *ServerLog `json:"ServerLog,omitnil" name:"ServerLog"`
+
+	// 消费信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerLogs *ConsumerLogs `json:"ConsumerLogs,omitnil" name:"ConsumerLogs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeMsgTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMsgTraceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMsgTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgTraceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10362,6 +10503,26 @@ type PartitionsTopic struct {
 	TopicType *uint64 `json:"TopicType,omitnil" name:"TopicType"`
 }
 
+type ProducerLog struct {
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 生产者名称。
+	ProducerName *string `json:"ProducerName,omitnil" name:"ProducerName"`
+
+	// 消息生产时间。
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
+
+	// 生产者客户端。
+	ProducerAddr *string `json:"ProducerAddr,omitnil" name:"ProducerAddr"`
+
+	// 生产耗时（秒）。
+	ProduceUseTime *uint64 `json:"ProduceUseTime,omitnil" name:"ProduceUseTime"`
+
+	// 状态。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
 type PrometheusEndpointInfo struct {
 	// Prometheus开关的状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12464,6 +12625,14 @@ func (r *SendRocketMQMessageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SendRocketMQMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ServerLog struct {
+	// 存储时间。
+	SaveTime *string `json:"SaveTime,omitnil" name:"SaveTime"`
+
+	// 状态。
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 // Predefined struct for user

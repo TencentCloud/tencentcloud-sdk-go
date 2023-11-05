@@ -2705,6 +2705,8 @@ type DbNormalDetail struct {
 	IsEncrypted *string `json:"IsEncrypted,omitnil" name:"IsEncrypted"`
 
 	// 是否全文启用 0：否 1：是
+	//
+	// Deprecated: IsFulltextEnabled is deprecated.
 	IsFulltextEnabled *string `json:"IsFulltextEnabled,omitnil" name:"IsFulltextEnabled"`
 
 	// 是否是镜像 0：否 1：是
@@ -2739,6 +2741,10 @@ type DbNormalDetail struct {
 
 	// 数据库创建时间
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 是否全文启用 0：否 1：是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFullTextEnabled *string `json:"IsFullTextEnabled,omitnil" name:"IsFullTextEnabled"`
 }
 
 type DbRollbackTimeInfo struct {
@@ -6328,7 +6334,12 @@ type DescribeSlowlogsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 慢查询日志信息列表
+	//
+	// Deprecated: Slowlogs is deprecated.
 	Slowlogs []*SlowlogInfo `json:"Slowlogs,omitnil" name:"Slowlogs"`
+
+	// 慢查询日志信息列表
+	SlowLogs []*SlowLog `json:"SlowLogs,omitnil" name:"SlowLogs"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -6407,6 +6418,8 @@ type DescribeUploadBackupInfoResponseParams struct {
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil" name:"TmpSecretKey"`
 
 	// 临时密钥Token
+	//
+	// Deprecated: XCosSecurityToken is deprecated.
 	XCosSecurityToken *string `json:"XCosSecurityToken,omitnil" name:"XCosSecurityToken"`
 
 	// 临时密钥开始时间
@@ -6414,6 +6427,9 @@ type DescribeUploadBackupInfoResponseParams struct {
 
 	// 临时密钥到期时间
 	ExpiredTime *string `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+
+	// 临时密钥Token
+	CosSecurityToken *string `json:"CosSecurityToken,omitnil" name:"CosSecurityToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -6499,6 +6515,8 @@ type DescribeUploadIncrementalInfoResponseParams struct {
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil" name:"TmpSecretKey"`
 
 	// 临时密钥Token
+	//
+	// Deprecated: XCosSecurityToken is deprecated.
 	XCosSecurityToken *string `json:"XCosSecurityToken,omitnil" name:"XCosSecurityToken"`
 
 	// 临时密钥开始时间
@@ -6506,6 +6524,9 @@ type DescribeUploadIncrementalInfoResponseParams struct {
 
 	// 临时密钥到期时间
 	ExpiredTime *string `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+
+	// 临时密钥Token
+	CosSecurityToken *string `json:"CosSecurityToken,omitnil" name:"CosSecurityToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -7733,10 +7754,15 @@ func (r *ModifyBackupStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyBackupStrategyResponseParams struct {
 	// 返回错误码
+	//
+	// Deprecated: Errno is deprecated.
 	Errno *int64 `json:"Errno,omitnil" name:"Errno"`
 
 	// 返回错误信息
 	Msg *string `json:"Msg,omitnil" name:"Msg"`
+
+	// 返回错误码
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -10194,6 +10220,33 @@ type SlaveZones struct {
 
 	// 备可用区
 	SlaveZoneName *string `json:"SlaveZoneName,omitnil" name:"SlaveZoneName"`
+}
+
+type SlowLog struct {
+	// 慢查询日志文件唯一标识
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 文件生成的开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 文件生成的结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 文件大小（KB）
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+
+	// 文件中log条数
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 内网下载地址
+	InternalAddr *string `json:"InternalAddr,omitnil" name:"InternalAddr"`
+
+	// 外网下载地址
+	ExternalAddr *string `json:"ExternalAddr,omitnil" name:"ExternalAddr"`
+
+	// 状态（1成功 2失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type SlowlogInfo struct {

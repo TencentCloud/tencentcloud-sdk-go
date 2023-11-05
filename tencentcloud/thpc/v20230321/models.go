@@ -1661,6 +1661,9 @@ type ManagerNode struct {
 
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 }
 
 type ManagerNodeOverview struct {

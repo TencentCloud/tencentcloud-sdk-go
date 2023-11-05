@@ -14426,8 +14426,6 @@ func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
 //
 // * 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
 //
-// * EIP 如果被封堵，则不能进行解绑定操作。
-//
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED_DAILYALLOCATE = "AddressQuotaLimitExceeded.DailyAllocate"
 //  FAILEDOPERATION_ADDRESSENIINFONOTFOUND = "FailedOperation.AddressEniInfoNotFound"
@@ -14461,8 +14459,6 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
 // * 不支持NAT上的EIP解绑。NAT上的EIP解绑请参考[DisassociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36716)
 //
 // * 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
-//
-// * EIP 如果被封堵，则不能进行解绑定操作。
 //
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED_DAILYALLOCATE = "AddressQuotaLimitExceeded.DailyAllocate"
