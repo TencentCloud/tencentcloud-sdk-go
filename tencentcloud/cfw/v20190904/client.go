@@ -5191,6 +5191,7 @@ func NewModifyEdgeIpSwitchResponse() (response *ModifyEdgeIpSwitchResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     return c.ModifyEdgeIpSwitchWithContext(context.Background(), request)
 }
@@ -5200,6 +5201,7 @@ func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (respons
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeIpSwitchWithContext(ctx context.Context, request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     if request == nil {
         request = NewModifyEdgeIpSwitchRequest()

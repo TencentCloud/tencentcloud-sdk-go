@@ -6167,6 +6167,7 @@ func NewDisableDSPAMetaResourceAuthResponse() (response *DisableDSPAMetaResource
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableDSPAMetaResourceAuth(request *DisableDSPAMetaResourceAuthRequest) (response *DisableDSPAMetaResourceAuthResponse, err error) {
     return c.DisableDSPAMetaResourceAuthWithContext(context.Background(), request)
@@ -6177,6 +6178,7 @@ func (c *Client) DisableDSPAMetaResourceAuth(request *DisableDSPAMetaResourceAut
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableDSPAMetaResourceAuthWithContext(ctx context.Context, request *DisableDSPAMetaResourceAuthRequest) (response *DisableDSPAMetaResourceAuthResponse, err error) {
     if request == nil {

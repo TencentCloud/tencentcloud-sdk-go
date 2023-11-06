@@ -3575,7 +3575,7 @@ func NewDescribeInstanceAttributesResponse() (response *DescribeInstanceAttribut
 }
 
 // DescribeInstanceAttributes
-// 获取实例属性 
+// 获取实例属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3598,7 +3598,7 @@ func (c *Client) DescribeInstanceAttributes(request *DescribeInstanceAttributesR
 }
 
 // DescribeInstanceAttributes
-// 获取实例属性 
+// 获取实例属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

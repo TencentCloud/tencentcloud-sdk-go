@@ -332,6 +332,8 @@ func (r *ChannelBatchCancelFlowsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelBatchCancelFlowsResponseParams struct {
 	// 签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+	// 
+	// 注:  `如果全部撤销成功, 此数组为空数组`
 	FailMessages []*string `json:"FailMessages,omitnil" name:"FailMessages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2188,13 +2190,26 @@ func (r *ChannelCreateFlowSignReviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowSignUrlRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 流程签署人，其中Name和Mobile必传，其他可不传，ApproverType目前只支持PERSON类型的签署人，如果不传默认为该值。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	// 流程签署人列表，其中结构体的Name，Mobile和ApproverType必传，其他可不传。
+	// 注:
+	// `1. ApproverType目前只支持个人(PERSON)类型的签署人。`
+	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
 
 	// 用户信息，暂未开放
@@ -2207,20 +2222,33 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
 
-	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
 type ChannelCreateFlowSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 流程签署人，其中Name和Mobile必传，其他可不传，ApproverType目前只支持PERSON类型的签署人，如果不传默认为该值。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	// 流程签署人列表，其中结构体的Name，Mobile和ApproverType必传，其他可不传。
+	// 注:
+	// `1. ApproverType目前只支持个人(PERSON)类型的签署人。`
+	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
 
 	// 用户信息，暂未开放
@@ -2229,7 +2257,7 @@ type ChannelCreateFlowSignUrlRequest struct {
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
 
-	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
@@ -3018,7 +3046,7 @@ type ChannelCreateRoleRequestParams struct {
 	// 角色描述，最大长度为50个字符
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
 
@@ -3034,7 +3062,7 @@ type ChannelCreateRoleRequest struct {
 	// 角色描述，最大长度为50个字符
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
 
@@ -4541,7 +4569,7 @@ type ChannelModifyRoleRequestParams struct {
 	// 角色描述，最大长度为50个字符
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
 
@@ -4560,7 +4588,7 @@ type ChannelModifyRoleRequest struct {
 	// 角色描述，最大长度为50个字符
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
 
@@ -4717,11 +4745,17 @@ func (r *ChannelUpdateSealStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelVerifyPdfRequestParams struct {
 	// 合同流程ID，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -4734,11 +4768,17 @@ type ChannelVerifyPdfRequest struct {
 	*tchttp.BaseRequest
 	
 	// 合同流程ID，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -4773,16 +4813,11 @@ type ChannelVerifyPdfResponseParams struct {
 	// <ul><li>**1**：文件未被篡改，全部签名在腾讯电子签完成。</li>
 	// <li>**2**：文件未被篡改，部分签名在腾讯电子签完成。</li>
 	// <li>**3**：文件被篡改。</li>
-	// <li>**4**：异常：文件内没有签名域。</li>
+	// <li>**4**：异常：文件内没有签名域。(如果合同还没有签署也会返回此代码)</li>
 	// <li>**5**：异常：文件签名格式错误。</li></ul>
 	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
-	// 验签结果详情，每个签名域对应的验签结果。状态值如下
-	// <ul><li> **1** :验签成功，在电子签签署</li>
-	// <li> **2** :验签成功，在其他平台签署</li>
-	// <li> **3** :验签失败</li>
-	// <li> **4** :pdf文件没有签名域</li>
-	// <li> **5** :文件签名格式错误</li></ul>
+	// 验签结果详情，所有签署区(包括签名区, 印章区, 日期签署区,骑缝章等)的签署验签结果
 	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitnil" name:"PdfVerifyResults"`
 
 	// 验签序列号, 为11为数组组成的字符串
@@ -5143,14 +5178,15 @@ type ComponentLimit struct {
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportRequestParams struct {
-	// 员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
@@ -5166,14 +5202,15 @@ type CreateChannelFlowEvidenceReportRequestParams struct {
 type CreateChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
@@ -6152,10 +6189,18 @@ type Department struct {
 
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 出证报告编号
+	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
 	// 暂未开放
@@ -6167,10 +6212,18 @@ type DescribeChannelFlowEvidenceReportRequestParams struct {
 type DescribeChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 出证报告编号
+	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
 	// 暂未开放
@@ -6200,15 +6253,15 @@ func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportResponseParams struct {
-	// 出证报告下载 URL
+	// 出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
 
-	// 出征任务的执行状态,状态列表如下
+	// 出证任务执行的状态, 状态含义如下：
 	// 
-	// - EvidenceStatusExecuting : 出征任务正在执行中
-	// - EvidenceStatusSuccess : 出征任务执行成功
-	// - EvidenceStatusFailed : 出征任务执行失败
+	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
+	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
+	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7170,19 +7223,26 @@ type FlowApproverItem struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署短链接，不支持小程序嵌入，只支持移动端浏览器打开。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署短链接。</br>
+	// 注意:
+	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
 
-	// 签署人类型 PERSON-个人
+	// 签署人类型。
+	// - **PERSON**: 个人
 	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
 
-	// 签署人姓名
+	// 签署人姓名。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 签署人手机号
+	// 签署人手机号。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 签署长链接，支持小程序嵌入。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署长链接。</br>
+	// 注意:
+	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongUrl *string `json:"LongUrl,omitnil" name:"LongUrl"`
 }
@@ -7865,31 +7925,47 @@ type OrganizationInfo struct {
 }
 
 type PdfVerifyResult struct {
-	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
+	// 验签结果详情，每个签名域对应的验签结果。状态值如下
+	// <ul><li> **1** :验签成功，在电子签签署</li>
+	// <li> **2** :验签成功，在其他平台签署</li>
+	// <li> **3** :验签失败</li>
+	// <li> **4** :pdf文件没有签名域</li>
+	// <li> **5** :文件签名格式错误</li></ul>
 	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
-	// 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
+	// 签署平台
+	// 如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
+	// 如果文件不在腾讯电子签平台签署，则为**其他平台**。
 	SignPlatform *string `json:"SignPlatform,omitnil" name:"SignPlatform"`
 
-	// 签署人名称
+	// 申请证书的主体的名字
+	// 
+	// 如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+	// **企业**:  ESS@企业名称@编码
+	// **个人**: ESS@个人姓名@证件号@808854
+	// 
+	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
 	SignerName *string `json:"SignerName,omitnil" name:"SignerName"`
 
-	// 签署时间戳，单位秒
+	// 签署时间的Unix时间戳，单位毫秒
 	SignTime *int64 `json:"SignTime,omitnil" name:"SignTime"`
 
-	// 签名算法
+	// 证书签名算法,  如SHA1withRSA等算法
 	SignAlgorithm *string `json:"SignAlgorithm,omitnil" name:"SignAlgorithm"`
 
-	// 签名证书序列号
+	// CA供应商下发给用户的证书编号
+	// 
+	// 注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
 	CertSn *string `json:"CertSn,omitnil" name:"CertSn"`
 
-	// 证书起始时间戳，单位秒
+	// 证书起始时间的Unix时间戳，单位毫秒
 	CertNotBefore *int64 `json:"CertNotBefore,omitnil" name:"CertNotBefore"`
 
-	// 证书过期时间戳，单位秒
+	// 证书过期时间的时间戳，单位毫秒
 	CertNotAfter *int64 `json:"CertNotAfter,omitnil" name:"CertNotAfter"`
 
-	// 签名类型
+	// 签名类型, 保留字段, 现在全部为0
+	// 
 	SignType *int64 `json:"SignType,omitnil" name:"SignType"`
 
 	// 签名域横坐标，单位px
@@ -8063,7 +8139,7 @@ type ProxyOrganizationOperator struct {
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
 	// 经办人证件号
@@ -8149,7 +8225,7 @@ type ReleasedApprover struct {
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则

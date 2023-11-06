@@ -77,6 +77,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 正则表达式非标准RE2格式。
+	INVALIDPARAMETER_ACCESSREDIRECTREGEXERROR = "InvalidParameter.AccessRedirectRegexError"
+
 	// 操作频繁，请稍后重试。
 	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
@@ -121,6 +124,9 @@ const (
 
 	// 非法操作。
 	INVALIDPARAMETER_ERRINVALIDACTION = "InvalidParameter.ErrInvalidAction"
+
+	// 非法操作-操作配置重复。
+	INVALIDPARAMETER_ERRINVALIDACTIONDUPLICATEACTION = "InvalidParameter.ErrInvalidActionDuplicateAction"
 
 	// 非法操作-非法参数。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
@@ -224,6 +230,9 @@ const (
 	// 无效的第三方对象存储。
 	INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = "InvalidParameter.InvalidAwsPrivateAccess"
 
+	// 请正确填写地域作为第三方对象存储私有访问参数。
+	INVALIDPARAMETER_INVALIDAWSREGION = "InvalidParameter.InvalidAwsRegion"
+
 	// 无效的第三方对象存储。
 	INVALIDPARAMETER_INVALIDAWSSECRETKEY = "InvalidParameter.InvalidAwsSecretKey"
 
@@ -265,6 +274,9 @@ const (
 
 	// 分区域回源的源站无效。
 	INVALIDPARAMETER_INVALIDCLIENTIPORIGIN = "InvalidParameter.InvalidClientIpOrigin"
+
+	// 无效的回源配置，源站类型为对象存储时，源站地址必须为对象存储域名。
+	INVALIDPARAMETER_INVALIDCOSDOMAIN = "InvalidParameter.InvalidCosDomain"
 
 	// 无效的智能加速。
 	INVALIDPARAMETER_INVALIDDYNAMICROUTINE = "InvalidParameter.InvalidDynamicRoutine"
@@ -431,6 +443,9 @@ const (
 	// 规则源站端口应为整数。
 	INVALIDPARAMETER_RULEORIGINPORTINTEGER = "InvalidParameter.RuleOriginPortInteger"
 
+	// 规则源站错误。
+	INVALIDPARAMETER_RULEORIGINVALUEERROR = "InvalidParameter.RuleOriginValueError"
+
 	// 规则端口重复。
 	INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
 
@@ -536,6 +551,9 @@ const (
 	// 单位时间内接口请求频率达到限制。
 	LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 
+	// 超出功能限制。
+	LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
+
 	// 套餐可绑定的站点数量超过配额。
 	LIMITEXCEEDED_ZONEBINDPLAN = "LimitExceeded.ZoneBindPlan"
 
@@ -628,6 +646,9 @@ const (
 
 	// 绑定在共享 CNAME 中的域名不允许变更 IPv6 访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
 	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = "OperationDenied.SharedCNAMEUnsupportedIPv6"
+
+	// 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
+	OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
 
 	// 共享CNAME已被其他站点绑定，请先解绑才能删除站点
 	OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"

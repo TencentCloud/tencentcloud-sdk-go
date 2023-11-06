@@ -578,6 +578,67 @@ type Bundle struct {
 	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitnil" name:"BundleDisplayLabel"`
 }
 
+// Predefined struct for user
+type CancelShareBlueprintAcrossAccountsRequestParams struct {
+	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 接收共享镜像的账号ID列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+	AccountIds []*string `json:"AccountIds,omitnil" name:"AccountIds"`
+}
+
+type CancelShareBlueprintAcrossAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 接收共享镜像的账号ID列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+	AccountIds []*string `json:"AccountIds,omitnil" name:"AccountIds"`
+}
+
+func (r *CancelShareBlueprintAcrossAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelShareBlueprintAcrossAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintId")
+	delete(f, "AccountIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelShareBlueprintAcrossAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelShareBlueprintAcrossAccountsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CancelShareBlueprintAcrossAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelShareBlueprintAcrossAccountsResponseParams `json:"Response"`
+}
+
+func (r *CancelShareBlueprintAcrossAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelShareBlueprintAcrossAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CcnAttachedInstance struct {
 	// 云联网ID。
 	CcnId *string `json:"CcnId,omitnil" name:"CcnId"`
@@ -8260,6 +8321,67 @@ type SceneInfo struct {
 
 	// 使用场景描述信息。
 	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+// Predefined struct for user
+type ShareBlueprintAcrossAccountsRequestParams struct {
+	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 接收共享镜像的账号Id列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+	AccountIds []*string `json:"AccountIds,omitnil" name:"AccountIds"`
+}
+
+type ShareBlueprintAcrossAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 接收共享镜像的账号Id列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+	AccountIds []*string `json:"AccountIds,omitnil" name:"AccountIds"`
+}
+
+func (r *ShareBlueprintAcrossAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ShareBlueprintAcrossAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintId")
+	delete(f, "AccountIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShareBlueprintAcrossAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ShareBlueprintAcrossAccountsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ShareBlueprintAcrossAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *ShareBlueprintAcrossAccountsResponseParams `json:"Response"`
+}
+
+func (r *ShareBlueprintAcrossAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ShareBlueprintAcrossAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Snapshot struct {

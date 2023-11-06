@@ -6258,6 +6258,9 @@ func (r *DeleteCustomFunctionResponse) FromJsonString(s string) error {
 type DeleteDataSourcesRequestParams struct {
 	// id列表
 	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 type DeleteDataSourcesRequest struct {
@@ -6265,6 +6268,9 @@ type DeleteDataSourcesRequest struct {
 	
 	// id列表
 	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 func (r *DeleteDataSourcesRequest) ToJsonString() string {
@@ -6280,6 +6286,7 @@ func (r *DeleteDataSourcesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Ids")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataSourcesRequest has unknown keys!", "")
 	}
@@ -10608,6 +10615,9 @@ type DescribeDsFolderTreeRequestParams struct {
 
 	// 是否包含任务
 	IncludeTask *bool `json:"IncludeTask,omitnil" name:"IncludeTask"`
+
+	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
+	IncludeVirtualTask *bool `json:"IncludeVirtualTask,omitnil" name:"IncludeVirtualTask"`
 }
 
 type DescribeDsFolderTreeRequest struct {
@@ -10633,6 +10643,9 @@ type DescribeDsFolderTreeRequest struct {
 
 	// 是否包含任务
 	IncludeTask *bool `json:"IncludeTask,omitnil" name:"IncludeTask"`
+
+	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
+	IncludeVirtualTask *bool `json:"IncludeVirtualTask,omitnil" name:"IncludeVirtualTask"`
 }
 
 func (r *DescribeDsFolderTreeRequest) ToJsonString() string {
@@ -10654,6 +10667,7 @@ func (r *DescribeDsFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "IncludeWorkflow")
 	delete(f, "IncludeTask")
+	delete(f, "IncludeVirtualTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsFolderTreeRequest has unknown keys!", "")
 	}
@@ -26223,6 +26237,9 @@ type ModifyDataSourceRequestParams struct {
 
 	// cos region
 	COSRegion *string `json:"COSRegion,omitnil" name:"COSRegion"`
+
+	// 操作项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 type ModifyDataSourceRequest struct {
@@ -26281,6 +26298,9 @@ type ModifyDataSourceRequest struct {
 
 	// cos region
 	COSRegion *string `json:"COSRegion,omitnil" name:"COSRegion"`
+
+	// 操作项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 func (r *ModifyDataSourceRequest) ToJsonString() string {
@@ -26313,6 +26333,7 @@ func (r *ModifyDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "OwnerProjectIdent")
 	delete(f, "COSBucket")
 	delete(f, "COSRegion")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataSourceRequest has unknown keys!", "")
 	}

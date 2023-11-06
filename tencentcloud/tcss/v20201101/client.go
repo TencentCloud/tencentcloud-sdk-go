@@ -17170,6 +17170,7 @@ func NewModifyEscapeEventStatusResponse() (response *ModifyEscapeEventStatusResp
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyEscapeEventStatus(request *ModifyEscapeEventStatusRequest) (response *ModifyEscapeEventStatusResponse, err error) {
     return c.ModifyEscapeEventStatusWithContext(context.Background(), request)
 }
@@ -17181,6 +17182,7 @@ func (c *Client) ModifyEscapeEventStatus(request *ModifyEscapeEventStatusRequest
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyEscapeEventStatusWithContext(ctx context.Context, request *ModifyEscapeEventStatusRequest) (response *ModifyEscapeEventStatusResponse, err error) {
     if request == nil {
         request = NewModifyEscapeEventStatusRequest()

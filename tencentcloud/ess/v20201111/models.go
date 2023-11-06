@@ -1769,10 +1769,9 @@ type CreateExtendedServiceAuthInfosRequestParams struct {
 	// 本企业员工的id，需要已实名，正常在职员工
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 要查询的扩展服务类型。
-	// 默认为空，即查询当前支持的所有扩展服务信息。
-	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// 取值
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
@@ -1791,10 +1790,9 @@ type CreateExtendedServiceAuthInfosRequest struct {
 	// 本企业员工的id，需要已实名，正常在职员工
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 要查询的扩展服务类型。
-	// 默认为空，即查询当前支持的所有扩展服务信息。
-	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// 取值
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
@@ -5500,10 +5498,9 @@ type DeleteExtendedServiceAuthInfosRequestParams struct {
 	// 本企业员工的id，需要已实名，正常在职员工
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 要查询的扩展服务类型。
-	// 默认为空，即查询当前支持的所有扩展服务信息。
-	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// 取值如下所示：
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
@@ -5522,10 +5519,9 @@ type DeleteExtendedServiceAuthInfosRequest struct {
 	// 本企业员工的id，需要已实名，正常在职员工
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 要查询的扩展服务类型。
-	// 默认为空，即查询当前支持的所有扩展服务信息。
-	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+	// 取值如下所示：
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
@@ -7940,28 +7936,30 @@ type FlowApproverDetail struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署链接(短链形式呈现)。请注意保密，不要将其外泄给无关用户。
-	// 注: `注意该链接有效期为30分钟`
+	// 签署短链接。</br>
+	// 注意:
+	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
 
-	// 签署参与人类型 
-	// <ul><li> **1** :个人参与方</li></ul>
-	// 
-	// 注: `现在仅支持个人参与方`
+	// 签署人类型。
+	// - **1**: 个人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverType *int64 `json:"ApproverType,omitnil" name:"ApproverType"`
 
-	// 签署人姓名
+	// 签署人姓名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
 
-	// 签署人手机号
+	// 签署人手机号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
 
-	// 签署链接(长链形式呈现)。请注意保密，不要将其外泄给无关用户。
-	// 注: `注意该链接有效期为30分钟`
+	// 签署长链接。</br>
+	// 注意:
+	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongUrl *string `json:"LongUrl,omitnil" name:"LongUrl"`
 }
@@ -8902,37 +8900,47 @@ type PdfVerifyResult struct {
 	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
 	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
-	// 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
+	// 签署平台
+	// 如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
+	// 如果文件不在腾讯电子签平台签署，则为**其他平台**。
 	SignPlatform *string `json:"SignPlatform,omitnil" name:"SignPlatform"`
 
-	// 签署人名称
+	// 申请证书的主体的名字
+	// 
+	// 如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+	// **企业**:  ESS@企业名称@编码
+	// **个人**: ESS@个人姓名@证件号@808854
+	// 
+	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
 	SignerName *string `json:"SignerName,omitnil" name:"SignerName"`
 
-	// 签署时间戳，单位秒
+	// 签署时间的Unix时间戳，单位毫秒
 	SignTime *int64 `json:"SignTime,omitnil" name:"SignTime"`
 
-	// 签名算法
+	// 证书签名算法,  如SHA1withRSA等算法
 	SignAlgorithm *string `json:"SignAlgorithm,omitnil" name:"SignAlgorithm"`
 
-	// 签名证书序列号
+	// CA供应商下发给用户的证书编号
+	// 
+	// 注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
 	CertSn *string `json:"CertSn,omitnil" name:"CertSn"`
 
-	// 证书起始时间戳，单位毫秒
+	// 证书起始时间的Unix时间戳，单位毫秒
 	CertNotBefore *int64 `json:"CertNotBefore,omitnil" name:"CertNotBefore"`
 
-	// 证书过期时间戳，单位毫秒
+	// 证书过期时间的时间戳，单位毫秒
 	CertNotAfter *int64 `json:"CertNotAfter,omitnil" name:"CertNotAfter"`
 
-	// 签名域横坐标，单位pt
+	// 签名域横坐标，单位px
 	ComponentPosX *float64 `json:"ComponentPosX,omitnil" name:"ComponentPosX"`
 
-	// 签名域纵坐标，单位pt
+	// 签名域纵坐标，单位px
 	ComponentPosY *float64 `json:"ComponentPosY,omitnil" name:"ComponentPosY"`
 
-	// 签名域宽度，单位pt
+	// 签名域宽度，单位px
 	ComponentWidth *float64 `json:"ComponentWidth,omitnil" name:"ComponentWidth"`
 
-	// 签名域高度，单位pt
+	// 签名域高度，单位px
 	ComponentHeight *float64 `json:"ComponentHeight,omitnil" name:"ComponentHeight"`
 
 	// 签名域所在页码，1～N

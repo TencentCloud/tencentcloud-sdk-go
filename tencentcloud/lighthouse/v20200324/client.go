@@ -563,6 +563,81 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     return
 }
 
+func NewCancelShareBlueprintAcrossAccountsRequest() (request *CancelShareBlueprintAcrossAccountsRequest) {
+    request = &CancelShareBlueprintAcrossAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CancelShareBlueprintAcrossAccounts")
+    
+    
+    return
+}
+
+func NewCancelShareBlueprintAcrossAccountsResponse() (response *CancelShareBlueprintAcrossAccountsResponse) {
+    response = &CancelShareBlueprintAcrossAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelShareBlueprintAcrossAccounts
+// 本接口（CancelShareBlueprintAcrossAccounts）用于取消镜像跨账号共享。
+//
+// 指定的镜像ID必须为自定义镜像，且指定账号ID必须已进行共享。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTHASNOTSHARED = "UnsupportedOperation.BlueprintHasNotShared"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+func (c *Client) CancelShareBlueprintAcrossAccounts(request *CancelShareBlueprintAcrossAccountsRequest) (response *CancelShareBlueprintAcrossAccountsResponse, err error) {
+    return c.CancelShareBlueprintAcrossAccountsWithContext(context.Background(), request)
+}
+
+// CancelShareBlueprintAcrossAccounts
+// 本接口（CancelShareBlueprintAcrossAccounts）用于取消镜像跨账号共享。
+//
+// 指定的镜像ID必须为自定义镜像，且指定账号ID必须已进行共享。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTHASNOTSHARED = "UnsupportedOperation.BlueprintHasNotShared"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+func (c *Client) CancelShareBlueprintAcrossAccountsWithContext(ctx context.Context, request *CancelShareBlueprintAcrossAccountsRequest) (response *CancelShareBlueprintAcrossAccountsResponse, err error) {
+    if request == nil {
+        request = NewCancelShareBlueprintAcrossAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelShareBlueprintAcrossAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelShareBlueprintAcrossAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlueprintRequest() (request *CreateBlueprintRequest) {
     request = &CreateBlueprintRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3282,6 +3357,7 @@ func NewDescribeFirewallTemplatesResponse() (response *DescribeFirewallTemplates
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERNAME = "InvalidParameter.InvalidFilterName"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeFirewallTemplates(request *DescribeFirewallTemplatesRequest) (response *DescribeFirewallTemplatesResponse, err error) {
     return c.DescribeFirewallTemplatesWithContext(context.Background(), request)
@@ -3292,6 +3368,7 @@ func (c *Client) DescribeFirewallTemplates(request *DescribeFirewallTemplatesReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERNAME = "InvalidParameter.InvalidFilterName"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeFirewallTemplatesWithContext(ctx context.Context, request *DescribeFirewallTemplatesRequest) (response *DescribeFirewallTemplatesResponse, err error) {
     if request == nil {
@@ -7300,6 +7377,95 @@ func (c *Client) RunDockerContainersWithContext(ctx context.Context, request *Ru
     request.SetContext(ctx)
     
     response = NewRunDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewShareBlueprintAcrossAccountsRequest() (request *ShareBlueprintAcrossAccountsRequest) {
+    request = &ShareBlueprintAcrossAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ShareBlueprintAcrossAccounts")
+    
+    
+    return
+}
+
+func NewShareBlueprintAcrossAccountsResponse() (response *ShareBlueprintAcrossAccountsResponse) {
+    response = &ShareBlueprintAcrossAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ShareBlueprintAcrossAccounts
+// 本接口（ShareBlueprintAcrossAccounts）用于跨账号共享镜像。
+//
+// 仅支持共享自定义镜像， 且用于共享的镜像状态必须为NORMAL。
+//
+// 共享的账号必须为主账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SHAREBLUEPRINTACROSSACCOUNTFAILED = "FailedOperation.ShareBlueprintAcrossAccountFailed"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDINVALIDACCOUNTAREA = "InvalidParameterValue.AccountIdInvalidAccountArea"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDSNOTEXIST = "InvalidParameterValue.AccountIdsNotExist"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDSNOTOWNERACCOUNT = "InvalidParameterValue.AccountIdsNotOwnerAccount"
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
+//  LIMITEXCEEDED_SHAREBLUEPRINTACROSSACCOUNTQUOTALIMITEXCEEDED = "LimitExceeded.ShareBlueprintAcrossAccountQuotaLimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTALREADYSHARED = "UnsupportedOperation.BlueprintAlreadyShared"
+//  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+func (c *Client) ShareBlueprintAcrossAccounts(request *ShareBlueprintAcrossAccountsRequest) (response *ShareBlueprintAcrossAccountsResponse, err error) {
+    return c.ShareBlueprintAcrossAccountsWithContext(context.Background(), request)
+}
+
+// ShareBlueprintAcrossAccounts
+// 本接口（ShareBlueprintAcrossAccounts）用于跨账号共享镜像。
+//
+// 仅支持共享自定义镜像， 且用于共享的镜像状态必须为NORMAL。
+//
+// 共享的账号必须为主账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SHAREBLUEPRINTACROSSACCOUNTFAILED = "FailedOperation.ShareBlueprintAcrossAccountFailed"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDINVALIDACCOUNTAREA = "InvalidParameterValue.AccountIdInvalidAccountArea"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDSNOTEXIST = "InvalidParameterValue.AccountIdsNotExist"
+//  INVALIDPARAMETERVALUE_ACCOUNTIDSNOTOWNERACCOUNT = "InvalidParameterValue.AccountIdsNotOwnerAccount"
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
+//  LIMITEXCEEDED_SHAREBLUEPRINTACROSSACCOUNTQUOTALIMITEXCEEDED = "LimitExceeded.ShareBlueprintAcrossAccountQuotaLimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTALREADYSHARED = "UnsupportedOperation.BlueprintAlreadyShared"
+//  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+func (c *Client) ShareBlueprintAcrossAccountsWithContext(ctx context.Context, request *ShareBlueprintAcrossAccountsRequest) (response *ShareBlueprintAcrossAccountsResponse, err error) {
+    if request == nil {
+        request = NewShareBlueprintAcrossAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ShareBlueprintAcrossAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewShareBlueprintAcrossAccountsResponse()
     err = c.Send(request, response)
     return
 }

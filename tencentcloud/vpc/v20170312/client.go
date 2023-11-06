@@ -3521,6 +3521,7 @@ func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
 //  LIMITEXCEEDED_TAGQUOTAEXCEEDED = "LimitExceeded.TagQuotaExceeded"
 //  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
 //  RESOURCEINUSE_ADDRESS = "ResourceInUse.Address"
+//  RESOURCEINSUFFICIENT_INSTANCE = "ResourceInsufficient.Instance"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3582,6 +3583,7 @@ func (c *Client) CreateNatGateway(request *CreateNatGatewayRequest) (response *C
 //  LIMITEXCEEDED_TAGQUOTAEXCEEDED = "LimitExceeded.TagQuotaExceeded"
 //  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
 //  RESOURCEINUSE_ADDRESS = "ResourceInUse.Address"
+//  RESOURCEINSUFFICIENT_INSTANCE = "ResourceInsufficient.Instance"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -6204,6 +6206,7 @@ func NewCreateVpnGatewaySslServerResponse() (response *CreateVpnGatewaySslServer
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SSLCCNVPNSERVERCIDRCONFLICT = "InvalidParameterValue.SslCcnVpnServerCidrConflict"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
@@ -6219,6 +6222,7 @@ func (c *Client) CreateVpnGatewaySslServer(request *CreateVpnGatewaySslServerReq
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SSLCCNVPNSERVERCIDRCONFLICT = "InvalidParameterValue.SslCcnVpnServerCidrConflict"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
@@ -20098,6 +20102,7 @@ func NewReplaceSecurityGroupPolicyResponse() (response *ReplaceSecurityGroupPoli
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONIDMISMATCH = "InvalidParameterValue.MemberApprovalApplicationIdMismatch"
@@ -20128,6 +20133,7 @@ func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyR
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONIDMISMATCH = "InvalidParameterValue.MemberApprovalApplicationIdMismatch"

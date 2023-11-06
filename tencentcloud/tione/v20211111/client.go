@@ -2012,6 +2012,7 @@ func NewDescribeBillingResourceInstanceRunningJobsResponse() (response *Describe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
 //  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2026,6 +2027,7 @@ func (c *Client) DescribeBillingResourceInstanceRunningJobs(request *DescribeBil
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
 //  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

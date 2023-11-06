@@ -1,3 +1,126 @@
+# Release v1.0.783
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 127 次发布
+
+发布时间：2023-11-07 01:42:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>LongUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 55 次发布
+
+发布时间：2023-11-07 01:54:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelShareBlueprintAcrossAccounts](https://cloud.tencent.com/document/api/1207/101339)
+* [ShareBlueprintAcrossAccounts](https://cloud.tencent.com/document/api/1207/101338)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 41 次发布
+
+发布时间：2023-11-07 02:22:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrainingTaskPods](https://cloud.tencent.com/document/api/851/75088)
+
+	* <font color="#dd0000">**修改出参**：</font>PodInfoList
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 70 次发布
+
+发布时间：2023-11-07 02:47:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeModuleStatus](https://cloud.tencent.com/document/api/627/101340)
+
+新增数据结构：
+
+* [ApiPkg](https://cloud.tencent.com/document/api/627/53609#ApiPkg)
+
+修改数据结构：
+
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+
+	* 新增成员：IsBotTrial
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：ApiPkg
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 55 次发布
+
+发布时间：2023-11-07 02:48:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteDataSources](https://cloud.tencent.com/document/api/1267/80761)
+
+	* 新增入参：ProjectId
+
+* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
+
+	* 新增入参：IncludeVirtualTask
+
+* [ModifyDataSource](https://cloud.tencent.com/document/api/1267/80760)
+
+	* 新增入参：ProjectId
+
+
+
+
 # Release v1.0.782
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26

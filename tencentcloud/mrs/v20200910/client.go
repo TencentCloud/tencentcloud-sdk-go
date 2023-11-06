@@ -503,7 +503,6 @@ func NewTurnPDFToObjectAsyncResponse() (response *TurnPDFToObjectAsyncResponse) 
 // 体检报告PDF文件结构化-异步接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 //  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) TurnPDFToObjectAsync(request *TurnPDFToObjectAsyncRequest) (response *TurnPDFToObjectAsyncResponse, err error) {
     return c.TurnPDFToObjectAsyncWithContext(context.Background(), request)
@@ -513,7 +512,6 @@ func (c *Client) TurnPDFToObjectAsync(request *TurnPDFToObjectAsyncRequest) (res
 // 体检报告PDF文件结构化-异步接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 //  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) TurnPDFToObjectAsyncWithContext(ctx context.Context, request *TurnPDFToObjectAsyncRequest) (response *TurnPDFToObjectAsyncResponse, err error) {
     if request == nil {

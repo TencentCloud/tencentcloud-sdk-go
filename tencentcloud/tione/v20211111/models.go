@@ -5664,7 +5664,7 @@ type DescribeTrainingTaskPodsResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// pod详细信息
-	PodInfoList *PodInfo `json:"PodInfoList,omitnil" name:"PodInfoList"`
+	PodInfoList []*PodInfo `json:"PodInfoList,omitnil" name:"PodInfoList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

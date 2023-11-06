@@ -497,6 +497,7 @@ func NewDescribeConsumerGroupResponse() (response *DescribeConsumerGroupResponse
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (response *DescribeConsumerGroupResponse, err error) {
     return c.DescribeConsumerGroupWithContext(context.Background(), request)
 }
@@ -506,6 +507,7 @@ func (c *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (r
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *DescribeConsumerGroupRequest) (response *DescribeConsumerGroupResponse, err error) {
     if request == nil {
         request = NewDescribeConsumerGroupRequest()

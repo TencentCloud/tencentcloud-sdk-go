@@ -4306,6 +4306,7 @@ func NewDescribeUpstreamsResponse() (response *DescribeUpstreamsResponse) {
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response *DescribeUpstreamsResponse, err error) {
     return c.DescribeUpstreamsWithContext(context.Background(), request)
 }
@@ -4327,6 +4328,7 @@ func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response 
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeUpstreamsWithContext(ctx context.Context, request *DescribeUpstreamsRequest) (response *DescribeUpstreamsResponse, err error) {
     if request == nil {
         request = NewDescribeUpstreamsRequest()
@@ -5356,6 +5358,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
@@ -5397,6 +5400,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"

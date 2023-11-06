@@ -242,6 +242,7 @@ func NewAnalyzeAuditLogsResponse() (response *AnalyzeAuditLogsResponse) {
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
     return c.AnalyzeAuditLogsWithContext(context.Background(), request)
 }
@@ -253,6 +254,7 @@ func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *A
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AnalyzeAuditLogsWithContext(ctx context.Context, request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
     if request == nil {
         request = NewAnalyzeAuditLogsRequest()
@@ -7602,9 +7604,11 @@ func NewModifyDBInstanceLogToCLSResponse() (response *ModifyDBInstanceLogToCLSRe
 // 开启/关闭CDB慢日志、错误日志投递CLS
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 func (c *Client) ModifyDBInstanceLogToCLS(request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
     return c.ModifyDBInstanceLogToCLSWithContext(context.Background(), request)
 }
@@ -7613,9 +7617,11 @@ func (c *Client) ModifyDBInstanceLogToCLS(request *ModifyDBInstanceLogToCLSReque
 // 开启/关闭CDB慢日志、错误日志投递CLS
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 func (c *Client) ModifyDBInstanceLogToCLSWithContext(ctx context.Context, request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceLogToCLSRequest()
@@ -9270,6 +9276,7 @@ func NewStartCpuExpandResponse() (response *StartCpuExpandResponse) {
 //  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"
 func (c *Client) StartCpuExpand(request *StartCpuExpandRequest) (response *StartCpuExpandResponse, err error) {
     return c.StartCpuExpandWithContext(context.Background(), request)
@@ -9282,6 +9289,7 @@ func (c *Client) StartCpuExpand(request *StartCpuExpandRequest) (response *Start
 //  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"
 func (c *Client) StartCpuExpandWithContext(ctx context.Context, request *StartCpuExpandRequest) (response *StartCpuExpandResponse, err error) {
     if request == nil {

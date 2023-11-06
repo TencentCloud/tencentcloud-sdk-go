@@ -1078,6 +1078,57 @@ func (r *AddSpartaProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ApiPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitnil" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 申请数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireNum *int64 `json:"InquireNum,omitnil" name:"InquireNum"`
+
+	// 使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitnil" name:"UsedNum"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItem *string `json:"BillingItem,omitnil" name:"BillingItem"`
+
+	// 1 API安全6折
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	APICPWaf *int64 `json:"APICPWaf,omitnil" name:"APICPWaf"`
+
+	// 1 表示5折折扣
+	// 2 表示4折折扣
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	APINPWaf *int64 `json:"APINPWaf,omitnil" name:"APINPWaf"`
+
+	// api安全7天试用标识。1试用。0没试用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil" name:"IsAPISecurityTrial"`
+}
+
 type AttackLogInfo struct {
 	// 攻击日志的详情内容
 	Content *string `json:"Content,omitnil" name:"Content"`
@@ -1191,6 +1242,10 @@ type BotPkg struct {
 	// 控制台买bot5折
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotNPWaf *int64 `json:"BotNPWaf,omitnil" name:"BotNPWaf"`
+
+	// 7天bot试用标识 1 试用 0 没有试用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBotTrial *int64 `json:"IsBotTrial,omitnil" name:"IsBotTrial"`
 }
 
 type BotQPS struct {
@@ -5672,6 +5727,57 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModuleStatusRequestParams struct {
+
+}
+
+type DescribeModuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeModuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModuleStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeModuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModuleStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeModuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModuleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeObjectsRequestParams struct {
 	// 支持的过滤器:
 	// 	ObjectId: clb实例ID
@@ -8470,6 +8576,10 @@ type InstanceInfo struct {
 	// 混合云子节点包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HybridPkg *HybridPkg `json:"HybridPkg,omitnil" name:"HybridPkg"`
+
+	// API安全资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiPkg *ApiPkg `json:"ApiPkg,omitnil" name:"ApiPkg"`
 }
 
 type IpAccessControlData struct {

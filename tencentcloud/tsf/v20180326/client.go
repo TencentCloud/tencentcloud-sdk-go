@@ -2926,6 +2926,7 @@ func NewDeleteConfigResponse() (response *DeleteConfigResponse) {
 // 删除配置项
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -2937,6 +2938,7 @@ func (c *Client) DeleteConfig(request *DeleteConfigRequest) (response *DeleteCon
 // 删除配置项
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -4806,6 +4808,7 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -4822,6 +4825,7 @@ func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -4999,6 +5003,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5018,6 +5023,7 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5344,6 +5350,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5363,6 +5370,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5709,6 +5717,7 @@ func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5726,6 +5735,7 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -6437,6 +6447,7 @@ func NewDescribeFileConfigReleasesResponse() (response *DescribeFileConfigReleas
 // 查询文件配置项发布信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeFileConfigReleases(request *DescribeFileConfigReleasesRequest) (response *DescribeFileConfigReleasesResponse, err error) {
@@ -6447,6 +6458,7 @@ func (c *Client) DescribeFileConfigReleases(request *DescribeFileConfigReleasesR
 // 查询文件配置项发布信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeFileConfigReleasesWithContext(ctx context.Context, request *DescribeFileConfigReleasesRequest) (response *DescribeFileConfigReleasesResponse, err error) {
@@ -6489,6 +6501,7 @@ func NewDescribeFileConfigsResponse() (response *DescribeFileConfigsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 func (c *Client) DescribeFileConfigs(request *DescribeFileConfigsRequest) (response *DescribeFileConfigsResponse, err error) {
     return c.DescribeFileConfigsWithContext(context.Background(), request)
 }
@@ -6498,6 +6511,7 @@ func (c *Client) DescribeFileConfigs(request *DescribeFileConfigsRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 func (c *Client) DescribeFileConfigsWithContext(ctx context.Context, request *DescribeFileConfigsRequest) (response *DescribeFileConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeFileConfigsRequest()
@@ -9320,6 +9334,7 @@ func NewDescribeSimpleApplicationsResponse() (response *DescribeSimpleApplicatio
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -9334,6 +9349,7 @@ func (c *Client) DescribeSimpleApplications(request *DescribeSimpleApplicationsR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -9435,6 +9451,7 @@ func NewDescribeSimpleGroupsResponse() (response *DescribeSimpleGroupsResponse) 
 // 查询简单部署组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
@@ -9450,6 +9467,7 @@ func (c *Client) DescribeSimpleGroups(request *DescribeSimpleGroupsRequest) (res
 // 查询简单部署组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
@@ -11626,6 +11644,7 @@ func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
 // 修改命名空间
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
     return c.ModifyNamespaceWithContext(context.Background(), request)
@@ -11635,6 +11654,7 @@ func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *Mod
 // 修改命名空间
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
     if request == nil {
@@ -11855,6 +11875,7 @@ func NewOperateApplicationTcrBindingResponse() (response *OperateApplicationTcrB
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -11871,6 +11892,7 @@ func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBind
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -12634,6 +12656,7 @@ func NewRevocationConfigResponse() (response *RevocationConfigResponse) {
 // 撤回已发布的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
@@ -12646,6 +12669,7 @@ func (c *Client) RevocationConfig(request *RevocationConfigRequest) (response *R
 // 撤回已发布的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"

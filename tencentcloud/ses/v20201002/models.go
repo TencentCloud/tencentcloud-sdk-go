@@ -48,9 +48,11 @@ type BatchSendEmailRequestParams struct {
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil" name:"ReplyToAddresses"`
 
 	// 使用模板发送时，填写的模板相关参数
+	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil" name:"Template"`
 
 	// 已废弃
+	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数（暂未支持）
@@ -90,9 +92,11 @@ type BatchSendEmailRequest struct {
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil" name:"ReplyToAddresses"`
 
 	// 使用模板发送时，填写的模板相关参数
+	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil" name:"Template"`
 
 	// 已废弃
+	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数（暂未支持）
@@ -1763,10 +1767,12 @@ type SendEmailRequestParams struct {
 	// 密送人邮箱地址，最多支持抄送20人。
 	Bcc []*string `json:"Bcc,omitnil" name:"Bcc"`
 
-	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
+	// 使用模板发送时，填写模板相关参数。
+	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil" name:"Template"`
 
 	// 已废弃
+	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
@@ -1802,10 +1808,12 @@ type SendEmailRequest struct {
 	// 密送人邮箱地址，最多支持抄送20人。
 	Bcc []*string `json:"Bcc,omitnil" name:"Bcc"`
 
-	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
+	// 使用模板发送时，填写模板相关参数。
+	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil" name:"Template"`
 
 	// 已废弃
+	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误

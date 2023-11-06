@@ -599,6 +599,9 @@ const (
 	// 网段资源不足。
 	RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
 
+	// 指定实例类型已售罄。
+	RESOURCEINSUFFICIENT_INSTANCE = "ResourceInsufficient.Instance"
+
 	// 子网IP资源不足, 无法分配IP。
 	RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 

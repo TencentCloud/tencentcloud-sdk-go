@@ -1296,6 +1296,7 @@ func NewDetachResourcesTagResponse() (response *DetachResourcesTagResponse) {
 //  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 //  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
@@ -1317,6 +1318,7 @@ func (c *Client) DetachResourcesTag(request *DetachResourcesTagRequest) (respons
 //  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 //  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
@@ -1928,6 +1930,7 @@ func NewUpdateProjectResponse() (response *UpdateProjectResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PROJECTDISABLED = "FailedOperation.ProjectDisabled"
+//  FAILEDOPERATION_PROJECTNUMEXCEED = "FailedOperation.ProjectNumExceed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
@@ -1940,6 +1943,7 @@ func (c *Client) UpdateProject(request *UpdateProjectRequest) (response *UpdateP
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PROJECTDISABLED = "FailedOperation.ProjectDisabled"
+//  FAILEDOPERATION_PROJECTNUMEXCEED = "FailedOperation.ProjectNumExceed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"

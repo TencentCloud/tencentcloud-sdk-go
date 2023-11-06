@@ -3008,6 +3008,7 @@ func NewDescribeDomainDetailsSaasResponse() (response *DescribeDomainDetailsSaas
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
@@ -3036,6 +3037,7 @@ func (c *Client) DescribeDomainDetailsSaas(request *DescribeDomainDetailsSaasReq
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
@@ -3939,6 +3941,57 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeModuleStatusRequest() (request *DescribeModuleStatusRequest) {
+    request = &DescribeModuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeModuleStatus")
+    
+    
+    return
+}
+
+func NewDescribeModuleStatusResponse() (response *DescribeModuleStatusResponse) {
+    response = &DescribeModuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModuleStatus
+// 查询各个waf基础安全模块的开关状态，看每个模块是否开启
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeModuleStatus(request *DescribeModuleStatusRequest) (response *DescribeModuleStatusResponse, err error) {
+    return c.DescribeModuleStatusWithContext(context.Background(), request)
+}
+
+// DescribeModuleStatus
+// 查询各个waf基础安全模块的开关状态，看每个模块是否开启
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeModuleStatusWithContext(ctx context.Context, request *DescribeModuleStatusRequest) (response *DescribeModuleStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeModuleStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeObjectsRequest() (request *DescribeObjectsRequest) {
     request = &DescribeObjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3963,7 +4016,6 @@ func NewDescribeObjectsResponse() (response *DescribeObjectsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {
     return c.DescribeObjectsWithContext(context.Background(), request)
@@ -3974,7 +4026,6 @@ func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {
     if request == nil {
