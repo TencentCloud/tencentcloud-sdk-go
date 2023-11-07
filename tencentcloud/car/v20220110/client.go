@@ -203,7 +203,7 @@ func NewDestroySessionResponse() (response *DestroySessionResponse) {
 }
 
 // DestroySession
-// 销毁会话
+// 销毁会话。如果该会话开启了云端推流，那么销毁会话时会结束云端推流。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -216,7 +216,7 @@ func (c *Client) DestroySession(request *DestroySessionRequest) (response *Destr
 }
 
 // DestroySession
-// 销毁会话
+// 销毁会话。如果该会话开启了云端推流，那么销毁会话时会结束云端推流。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

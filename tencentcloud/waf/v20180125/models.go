@@ -3851,12 +3851,45 @@ func (r *DescribeBatchIpAccessControlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCRuleListRequestParams struct {
+	// 需要查询的API所属的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
+	// 偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 目前支持根据ts_version排序
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 过滤数组,name可以是如下的值： RuleID,ParamName,Url,Action,Method,Source,Status
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeCCRuleListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 需要查询的API所属的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 目前支持根据ts_version排序
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 过滤数组,name可以是如下的值： RuleID,ParamName,Url,Action,Method,Source,Status
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeCCRuleListRequest) ToJsonString() string {
@@ -3871,7 +3904,12 @@ func (r *DescribeCCRuleListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Filters")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCRuleListRequest has unknown keys!", "")
 	}

@@ -303,6 +303,55 @@ type AutoSignConfig struct {
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
 }
 
+type BillUsageDetail struct {
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 经办人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
+
+	// 发起方组织机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil" name:"CreateOrganizationName"`
+
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 该名称还将用于合同签署完成后的下载文件名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 0 还没有发起 1等待签署 2部分签署 3拒签 4已签署 5已过期 6已撤销 7还没有预发起 8等待填写 9部分填写 10拒填 11已解除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 套餐类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 合同使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
+
+	// 消耗的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
+
+	// 套餐名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
+
+	//  消耗类型	1.扣费 2.撤销返还
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
 // Predefined struct for user
 type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
@@ -4946,7 +4995,7 @@ type CreateSealRequestParams struct {
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
 	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 合财务专用章;</li>
+	// <li>**FINANCE**: 财务专用章;</li>
 	// <li>**PERSONNEL**: 人事专用章</li>
 	// </ul>
 	// 注: `同企业下只能有一个公章, 重复创建会报错`
@@ -5026,7 +5075,7 @@ type CreateSealRequest struct {
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
 	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 合财务专用章;</li>
+	// <li>**FINANCE**: 财务专用章;</li>
 	// <li>**PERSONNEL**: 人事专用章</li>
 	// </ul>
 	// 注: `同企业下只能有一个公章, 重复创建会报错`
@@ -5927,6 +5976,133 @@ type Department struct {
 }
 
 // Predefined struct for user
+type DescribeBillUsageDetailRequestParams struct {
+	// 查询开始时间，时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间，时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 非必填，查询某个渠道企业的消耗情况。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+type DescribeBillUsageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间，时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 非必填，查询某个渠道企业的消耗情况。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+func (r *DescribeBillUsageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "QuotaType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillUsageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillUsageDetailResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 消耗详情
+	Details []*BillUsageDetail `json:"Details,omitnil" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillUsageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillUsageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillUsageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -6806,6 +6982,7 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	//   <li>Key:**"UserId"**，根据用户ID查询员工，Values为指定的用户ID：**["UserId"]**</li>
 	//   <li>Key:**"UserWeWorkOpenId"**，根据用户企微账号ID查询员工，Values为指定用户的企微账号ID：**["UserWeWorkOpenId"]**</li>
 	//   <li>Key:**"StaffOpenId"**，根据第三方系统用户OpenId查询员工，Values为第三方系统用户OpenId列表：**["OpenId1","OpenId2",...]**</li>
+	//   <li>Key:**"RoleId"**，根据电子签角色ID查询员工，Values为指定的角色ID，满足其中任意一个角色即可：**["RoleId1","RoleId2",...]**</li>
 	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
@@ -6835,6 +7012,7 @@ type DescribeIntegrationEmployeesRequest struct {
 	//   <li>Key:**"UserId"**，根据用户ID查询员工，Values为指定的用户ID：**["UserId"]**</li>
 	//   <li>Key:**"UserWeWorkOpenId"**，根据用户企微账号ID查询员工，Values为指定用户的企微账号ID：**["UserWeWorkOpenId"]**</li>
 	//   <li>Key:**"StaffOpenId"**，根据第三方系统用户OpenId查询员工，Values为第三方系统用户OpenId列表：**["OpenId1","OpenId2",...]**</li>
+	//   <li>Key:**"RoleId"**，根据电子签角色ID查询员工，Values为指定的角色ID，满足其中任意一个角色即可：**["RoleId1","RoleId2",...]**</li>
 	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 

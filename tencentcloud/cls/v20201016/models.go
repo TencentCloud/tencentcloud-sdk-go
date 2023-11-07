@@ -405,6 +405,80 @@ type CallBackInfo struct {
 }
 
 // Predefined struct for user
+type CheckFunctionRequestParams struct {
+	// 用户输入的加工语句
+	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+
+	// 加工任务目的topic_id以及别名
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+
+	// 数据加工目标主题的类型. 1 固定主题 2动态创建
+	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+}
+
+type CheckFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户输入的加工语句
+	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+
+	// 加工任务目的topic_id以及别名
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+
+	// 数据加工目标主题的类型. 1 固定主题 2动态创建
+	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+}
+
+func (r *CheckFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EtlContent")
+	delete(f, "DstResources")
+	delete(f, "FuncType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckFunctionResponseParams struct {
+	// 失败错误码
+	ErrorCode *int64 `json:"ErrorCode,omitnil" name:"ErrorCode"`
+
+	// 失败错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CheckFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckFunctionResponseParams `json:"Response"`
+}
+
+func (r *CheckFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckRechargeKafkaServerRequestParams struct {
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
 	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`

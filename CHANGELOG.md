@@ -1,3 +1,150 @@
+# Release v1.0.784
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 76 次发布
+
+发布时间：2023-11-08 01:21:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckFunction](https://cloud.tencent.com/document/api/614/101381)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 133 次发布
+
+发布时间：2023-11-08 01:38:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1323/101383)
+
+新增数据结构：
+
+* [BillUsageDetail](https://cloud.tencent.com/document/api/1323/70369#BillUsageDetail)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 128 次发布
+
+发布时间：2023-11-08 01:39:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncProxyOrganization](https://cloud.tencent.com/document/api/1420/61518)
+
+	* 新增入参：ProxyAddress
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 13 次发布
+
+发布时间：2023-11-08 01:53:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetNetMonitor](https://cloud.tencent.com/document/api/1385/101384)
+
+新增数据结构：
+
+* [MonitorData](https://cloud.tencent.com/document/api/1385/55846#MonitorData)
+* [SlotNetInfo](https://cloud.tencent.com/document/api/1385/55846#SlotNetInfo)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 116 次发布
+
+发布时间：2023-11-08 01:58:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：RedLetterInvoiceMark, IssuingTypeMark, SellerAgentName, SellerAgentTaxID
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 88 次发布
+
+发布时间：2023-11-08 02:14:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
+
+	* 新增成员：TopicDistribution
+
+	* <font color="#dd0000">**修改成员**：</font>MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime, MaxQueuesPerTopic
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：AclEnabled, PublicClbId, Vip, VpcId, SupportMigration, InstanceStatus
+
+	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint, SupportNamespaceEndpoint, Vpcs, IsVip, RocketMQFlag, Status, IsolateTime, HttpPublicEndpoint, HttpVpcEndpoint, InternalEndpoint, HttpInternalEndpoint
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 71 次发布
+
+发布时间：2023-11-08 02:29:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
+
+	* 新增入参：Domain, Offset, Limit, By, Filters, Order
+
+
+
+
 # Release v1.0.783
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26

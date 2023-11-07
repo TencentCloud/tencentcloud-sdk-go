@@ -1019,6 +1019,85 @@ func (r *GetMultiFlowStatisticResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetNetMonitorRequestParams struct {
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	Metrics *string `json:"Metrics,omitnil" name:"Metrics"`
+}
+
+type GetNetMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	Metrics *string `json:"Metrics,omitnil" name:"Metrics"`
+}
+
+func (r *GetNetMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNetMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Metrics")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetNetMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetNetMonitorResponseParams struct {
+	// 监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorData []*MonitorData `json:"MonitorData,omitnil" name:"MonitorData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetNetMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *GetNetMonitorResponseParams `json:"Response"`
+}
+
+func (r *GetNetMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNetMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetPublicKeyRequestParams struct {
 
 }
@@ -1154,6 +1233,19 @@ func (r *GetStatisticDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MonitorData struct {
+	// 时间点：s
+	Time *string `json:"Time,omitnil" name:"Time"`
+
+	// 业务指标（bps/ms/%）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessMetrics *float64 `json:"BusinessMetrics,omitnil" name:"BusinessMetrics"`
+
+	// 网卡状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlotNetInfo []*SlotNetInfo `json:"SlotNetInfo,omitnil" name:"SlotNetInfo"`
+}
+
 type NetDetails struct {
 	// 流量值（bit）
 	Current *float64 `json:"Current,omitnil" name:"Current"`
@@ -1174,6 +1266,20 @@ type NetworkData struct {
 
 	// 10位秒级时间戳
 	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
+}
+
+type SlotNetInfo struct {
+	// 网卡名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetInfoName *string `json:"NetInfoName,omitnil" name:"NetInfoName"`
+
+	// 公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
+
+	// 指标数据（bps/ms/%）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Current *float64 `json:"Current,omitnil" name:"Current"`
 }
 
 type SrcAddressInfo struct {

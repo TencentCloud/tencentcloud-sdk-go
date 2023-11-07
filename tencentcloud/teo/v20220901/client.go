@@ -102,6 +102,57 @@ func (c *Client) BindSecurityTemplateToEntityWithContext(ctx context.Context, re
     return
 }
 
+func NewBindSharedCNAMERequest() (request *BindSharedCNAMERequest) {
+    request = &BindSharedCNAMERequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "BindSharedCNAME")
+    
+    
+    return
+}
+
+func NewBindSharedCNAMEResponse() (response *BindSharedCNAMEResponse) {
+    response = &BindSharedCNAMEResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindSharedCNAME
+// 用于加速域名绑定或解绑共享 CNAME，该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindSharedCNAME(request *BindSharedCNAMERequest) (response *BindSharedCNAMEResponse, err error) {
+    return c.BindSharedCNAMEWithContext(context.Background(), request)
+}
+
+// BindSharedCNAME
+// 用于加速域名绑定或解绑共享 CNAME，该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindSharedCNAMEWithContext(ctx context.Context, request *BindSharedCNAMERequest) (response *BindSharedCNAMEResponse, err error) {
+    if request == nil {
+        request = NewBindSharedCNAMERequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindSharedCNAME require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindSharedCNAMEResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindZoneToPlanRequest() (request *BindZoneToPlanRequest) {
     request = &BindZoneToPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1152,7 +1203,7 @@ func NewCreateSharedCNAMEResponse() (response *CreateSharedCNAMEResponse) {
 }
 
 // CreateSharedCNAME
-// 创建共享 CNAME
+// 用于创建共享 CNAME，该功能白名单内测中。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
@@ -1165,7 +1216,7 @@ func (c *Client) CreateSharedCNAME(request *CreateSharedCNAMERequest) (response 
 }
 
 // CreateSharedCNAME
-// 创建共享 CNAME
+// 用于创建共享 CNAME，该功能白名单内测中。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
@@ -1717,6 +1768,55 @@ func (c *Client) DeleteSecurityIPGroupWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteSecurityIPGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSharedCNAMERequest() (request *DeleteSharedCNAMERequest) {
+    request = &DeleteSharedCNAMERequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteSharedCNAME")
+    
+    
+    return
+}
+
+func NewDeleteSharedCNAMEResponse() (response *DeleteSharedCNAMEResponse) {
+    response = &DeleteSharedCNAMEResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSharedCNAME
+// 用于删除共享 CNAME，该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_SHAREDCNAME = "ResourceInUse.SharedCNAME"
+func (c *Client) DeleteSharedCNAME(request *DeleteSharedCNAMERequest) (response *DeleteSharedCNAMEResponse, err error) {
+    return c.DeleteSharedCNAMEWithContext(context.Background(), request)
+}
+
+// DeleteSharedCNAME
+// 用于删除共享 CNAME，该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_SHAREDCNAME = "ResourceInUse.SharedCNAME"
+func (c *Client) DeleteSharedCNAMEWithContext(ctx context.Context, request *DeleteSharedCNAMERequest) (response *DeleteSharedCNAMEResponse, err error) {
+    if request == nil {
+        request = NewDeleteSharedCNAMERequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSharedCNAME require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSharedCNAMEResponse()
     err = c.Send(request, response)
     return
 }

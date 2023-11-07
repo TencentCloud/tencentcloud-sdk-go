@@ -10007,6 +10007,20 @@ type VatInvoice struct {
 
 	// 通行费标志:Y、是;N、否
 	TrafficFreeFlag *string `json:"TrafficFreeFlag,omitnil" name:"TrafficFreeFlag"`
+
+	// 是否为红票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedLetterInvoiceMark *bool `json:"RedLetterInvoiceMark,omitnil" name:"RedLetterInvoiceMark"`
+
+	// 开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IssuingTypeMark *int64 `json:"IssuingTypeMark,omitnil" name:"IssuingTypeMark"`
+
+	// 代开销售方名称
+	SellerAgentName *string `json:"SellerAgentName,omitnil" name:"SellerAgentName"`
+
+	// 代开销售方税号
+	SellerAgentTaxID *string `json:"SellerAgentTaxID,omitnil" name:"SellerAgentTaxID"`
 }
 
 type VatInvoiceGoodsInfo struct {

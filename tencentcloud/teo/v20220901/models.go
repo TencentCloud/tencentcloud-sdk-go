@@ -652,6 +652,86 @@ func (r *BindSecurityTemplateToEntityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BindSharedCNAMEMap struct {
+	// 需要绑定或解绑的共享 CNAME。
+	SharedCNAME *string `json:"SharedCNAME,omitnil" name:"SharedCNAME"`
+
+	// 加速域名，可传递多个，最多20个。
+	DomainNames []*string `json:"DomainNames,omitnil" name:"DomainNames"`
+}
+
+// Predefined struct for user
+type BindSharedCNAMERequestParams struct {
+	// 加速域名所属站点 ID。	
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 绑定类型，取值有：
+	// <li>bind：绑定；</li>
+	// <li>unbind：解绑。</li>
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
+
+	// 接入域名与共享 CNAME 的绑定关系。
+	BindSharedCNAMEMaps []*BindSharedCNAMEMap `json:"BindSharedCNAMEMaps,omitnil" name:"BindSharedCNAMEMaps"`
+}
+
+type BindSharedCNAMERequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点 ID。	
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 绑定类型，取值有：
+	// <li>bind：绑定；</li>
+	// <li>unbind：解绑。</li>
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
+
+	// 接入域名与共享 CNAME 的绑定关系。
+	BindSharedCNAMEMaps []*BindSharedCNAMEMap `json:"BindSharedCNAMEMaps,omitnil" name:"BindSharedCNAMEMaps"`
+}
+
+func (r *BindSharedCNAMERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindSharedCNAMERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "BindType")
+	delete(f, "BindSharedCNAMEMaps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindSharedCNAMERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindSharedCNAMEResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type BindSharedCNAMEResponse struct {
+	*tchttp.BaseResponse
+	Response *BindSharedCNAMEResponseParams `json:"Response"`
+}
+
+func (r *BindSharedCNAMEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindSharedCNAMEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type BindZoneToPlanRequestParams struct {
 	// 未绑定套餐的站点ID。
@@ -2137,9 +2217,9 @@ type CreateSharedCNAMERequestParams struct {
 
 	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
 	// 
-	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.dnse[0-5].com"。
 	// 
-	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.eo.dnse2.com
+	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.dnse2.com。
 	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
 
 	// 描述。可输入 1-50 个任意字符。
@@ -2154,9 +2234,9 @@ type CreateSharedCNAMERequest struct {
 
 	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
 	// 
-	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.dnse[0-5].com"。
 	// 
-	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.eo.dnse2.com
+	// 例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.dnse2.com。
 	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
 
 	// 描述。可输入 1-50 个任意字符。
@@ -2186,7 +2266,7 @@ func (r *CreateSharedCNAMERequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSharedCNAMEResponseParams struct {
-	// 共享 CNAME。格式为：<自定义前缀>+<ZoneId中的12位随机字符串>+"share.eo.dnse[0-5].com"
+	// 共享 CNAME。格式为：<自定义前缀>+<ZoneId中的12位随机字符串>+"share.dnse[0-5].com"。
 	SharedCNAME *string `json:"SharedCNAME,omitnil" name:"SharedCNAME"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2894,6 +2974,67 @@ func (r *DeleteSecurityIPGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSecurityIPGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSharedCNAMERequestParams struct {
+	// 共享 CNAME 所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 需要删除的共享 CNAME。
+	SharedCNAME *string `json:"SharedCNAME,omitnil" name:"SharedCNAME"`
+}
+
+type DeleteSharedCNAMERequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享 CNAME 所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 需要删除的共享 CNAME。
+	SharedCNAME *string `json:"SharedCNAME,omitnil" name:"SharedCNAME"`
+}
+
+func (r *DeleteSharedCNAMERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSharedCNAMERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SharedCNAME")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSharedCNAMERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSharedCNAMEResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteSharedCNAMEResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSharedCNAMEResponseParams `json:"Response"`
+}
+
+func (r *DeleteSharedCNAMEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSharedCNAMEResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

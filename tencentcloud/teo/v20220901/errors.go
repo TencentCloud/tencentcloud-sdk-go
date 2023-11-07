@@ -704,6 +704,9 @@ const (
 	// 资源被本账号和其他账号同时Cname接入占用。
 	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
 
+	// 该共享 CNAME 已绑定加速域名，禁止删除。如您需要删除，请先将对应域名解绑。
+	RESOURCEINUSE_SHAREDCNAME = "ResourceInUse.SharedCNAME"
+
 	// 别称域名已站点接入。
 	RESOURCEINUSE_ZONE = "ResourceInUse.Zone"
 

@@ -165,6 +165,71 @@ func (c *Client) ApplyConfigToMachineGroupWithContext(ctx context.Context, reque
     return
 }
 
+func NewCheckFunctionRequest() (request *CheckFunctionRequest) {
+    request = &CheckFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CheckFunction")
+    
+    
+    return
+}
+
+func NewCheckFunctionResponse() (response *CheckFunctionResponse) {
+    response = &CheckFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckFunction
+// 本接口用于数据加工DSL函数的语法校验。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CheckFunction(request *CheckFunctionRequest) (response *CheckFunctionResponse, err error) {
+    return c.CheckFunctionWithContext(context.Background(), request)
+}
+
+// CheckFunction
+// 本接口用于数据加工DSL函数的语法校验。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CheckFunctionWithContext(ctx context.Context, request *CheckFunctionRequest) (response *CheckFunctionResponse, err error) {
+    if request == nil {
+        request = NewCheckFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckRechargeKafkaServerRequest() (request *CheckRechargeKafkaServerRequest) {
     request = &CheckRechargeKafkaServerRequest{
         BaseRequest: &tchttp.BaseRequest{},

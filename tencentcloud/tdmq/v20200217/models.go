@@ -6289,7 +6289,7 @@ type DescribeRocketMQClusterResponseParams struct {
 	// 集群配置
 	ClusterConfig *RocketMQClusterConfig `json:"ClusterConfig,omitnil" name:"ClusterConfig"`
 
-	// 集群最近使用量
+	// 集群最近使用量，即将废弃，请使用云监控获取相关数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStats *RocketMQClusterRecentStats `json:"ClusterStats,omitnil" name:"ClusterStats"`
 
@@ -11565,6 +11565,10 @@ type RocketMQClusterConfig struct {
 	// 单个主题最大队列数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQueuesPerTopic *uint64 `json:"MaxQueuesPerTopic,omitnil" name:"MaxQueuesPerTopic"`
+
+	// topic分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicDistribution []*RocketMQTopicDistribution `json:"TopicDistribution,omitnil" name:"TopicDistribution"`
 }
 
 type RocketMQClusterDetail struct {
@@ -11641,6 +11645,30 @@ type RocketMQClusterInfo struct {
 	// HTTP协议内部接入地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpInternalEndpoint *string `json:"HttpInternalEndpoint,omitnil" name:"HttpInternalEndpoint"`
+
+	// 是否开启ACL鉴权，专享实例支持关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclEnabled *bool `json:"AclEnabled,omitnil" name:"AclEnabled"`
+
+	// 公网CLB实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicClbId *string `json:"PublicClbId,omitnil" name:"PublicClbId"`
+
+	// vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 所属VPC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 是否支持迁移
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportMigration *bool `json:"SupportMigration,omitnil" name:"SupportMigration"`
+
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *int64 `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -12818,9 +12846,11 @@ type SubscriptionTopic struct {
 
 type Tag struct {
 	// 标签的key的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签的Value的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
