@@ -4335,6 +4335,9 @@ type CreatePrepareFlowResponseParams struct {
 	// 发起流程的web页面链接，有效期5分钟
 	Url *string `json:"Url,omitnil" name:"Url"`
 
+	// 创建的合同id（还未实际发起），每次调用会生成新的id，用户可以记录此字段对应后续页面发起的合同，若在页面上未成功发起，则此字段无效。
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

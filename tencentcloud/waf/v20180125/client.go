@@ -2351,10 +2351,6 @@ func NewDescribeAutoDenyIPResponse() (response *DescribeAutoDenyIPResponse) {
 }
 
 // DescribeAutoDenyIP
-// 接口已废弃
-//
-// 
-//
 // 描述WAF自动封禁IP详情,对齐自动封堵状态
 //
 // 可能返回的错误码:
@@ -2365,10 +2361,6 @@ func (c *Client) DescribeAutoDenyIP(request *DescribeAutoDenyIPRequest) (respons
 }
 
 // DescribeAutoDenyIP
-// 接口已废弃
-//
-// 
-//
 // 描述WAF自动封禁IP详情,对齐自动封堵状态
 //
 // 可能返回的错误码:

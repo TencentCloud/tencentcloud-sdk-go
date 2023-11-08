@@ -5766,12 +5766,15 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModuleStatusRequestParams struct {
-
+	// 要查询状态的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type DescribeModuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 要查询状态的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *DescribeModuleStatusRequest) ToJsonString() string {
@@ -5786,7 +5789,7 @@ func (r *DescribeModuleStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModuleStatusRequest has unknown keys!", "")
 	}
@@ -5795,6 +5798,24 @@ func (r *DescribeModuleStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModuleStatusResponseParams struct {
+	// WEB安全规则是否开启
+	WebSecurity *uint64 `json:"WebSecurity,omitnil" name:"WebSecurity"`
+
+	// 访问控制规则是否开启
+	AccessControl *int64 `json:"AccessControl,omitnil" name:"AccessControl"`
+
+	// CC防护是否开启
+	CcProtection *uint64 `json:"CcProtection,omitnil" name:"CcProtection"`
+
+	// 网页防篡改是否开启
+	AntiTamper *uint64 `json:"AntiTamper,omitnil" name:"AntiTamper"`
+
+	// 信息防泄漏是否开启
+	AntiLeakage *uint64 `json:"AntiLeakage,omitnil" name:"AntiLeakage"`
+
+	// API安全是否开启
+	ApiProtection *uint64 `json:"ApiProtection,omitnil" name:"ApiProtection"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -10734,12 +10755,51 @@ func (r *ModifyInstanceRenewFlagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModuleStatusRequestParams struct {
+	// 需要设置的domain
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
+	// WEB 安全模块开关，0或1
+	WebSecurity *uint64 `json:"WebSecurity,omitnil" name:"WebSecurity"`
+
+	// 访问控制模块开关，0或者1
+	AccessControl *uint64 `json:"AccessControl,omitnil" name:"AccessControl"`
+
+	// CC模块开关，0或者1
+	CcProtection *uint64 `json:"CcProtection,omitnil" name:"CcProtection"`
+
+	// API安全模块开关，0或者1
+	ApiProtection *uint64 `json:"ApiProtection,omitnil" name:"ApiProtection"`
+
+	// 防篡改模块开关，0或者1
+	AntiTamper *uint64 `json:"AntiTamper,omitnil" name:"AntiTamper"`
+
+	// 防泄漏模块开关，0或者1
+	AntiLeakage *uint64 `json:"AntiLeakage,omitnil" name:"AntiLeakage"`
 }
 
 type ModifyModuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 需要设置的domain
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// WEB 安全模块开关，0或1
+	WebSecurity *uint64 `json:"WebSecurity,omitnil" name:"WebSecurity"`
+
+	// 访问控制模块开关，0或者1
+	AccessControl *uint64 `json:"AccessControl,omitnil" name:"AccessControl"`
+
+	// CC模块开关，0或者1
+	CcProtection *uint64 `json:"CcProtection,omitnil" name:"CcProtection"`
+
+	// API安全模块开关，0或者1
+	ApiProtection *uint64 `json:"ApiProtection,omitnil" name:"ApiProtection"`
+
+	// 防篡改模块开关，0或者1
+	AntiTamper *uint64 `json:"AntiTamper,omitnil" name:"AntiTamper"`
+
+	// 防泄漏模块开关，0或者1
+	AntiLeakage *uint64 `json:"AntiLeakage,omitnil" name:"AntiLeakage"`
 }
 
 func (r *ModifyModuleStatusRequest) ToJsonString() string {
@@ -10754,7 +10814,13 @@ func (r *ModifyModuleStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Domain")
+	delete(f, "WebSecurity")
+	delete(f, "AccessControl")
+	delete(f, "CcProtection")
+	delete(f, "ApiProtection")
+	delete(f, "AntiTamper")
+	delete(f, "AntiLeakage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModuleStatusRequest has unknown keys!", "")
 	}

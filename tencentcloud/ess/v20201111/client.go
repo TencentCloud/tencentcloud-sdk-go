@@ -5847,10 +5847,6 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 // DescribeIntegrationRoles
 // 此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
 //
-// 
-//
-// 注：`法人角色是系统保留角色，因此返回列表中不含法人角色。`
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -5870,10 +5866,6 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 
 // DescribeIntegrationRoles
 // 此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
-//
-// 
-//
-// 注：`法人角色是系统保留角色，因此返回列表中不含法人角色。`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -1,3 +1,29 @@
+# Release v1.0.786
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 129 次发布
+
+发布时间：2023-11-08 14:25:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1420/101386)
+
+新增数据结构：
+
+* [BillUsageDetail](https://cloud.tencent.com/document/api/1420/61525#BillUsageDetail)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
 # Release v1.0.785
 
 ## 日志服务(cls) 版本：2020-10-16

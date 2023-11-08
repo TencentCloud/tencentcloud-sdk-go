@@ -1,26 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 76 次发布
+### 第 129 次发布
 
-发布时间：2023-11-08 01:21:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CheckFunction](https://cloud.tencent.com/document/api/614/101381)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 133 次发布
-
-发布时间：2023-11-08 01:38:53
+发布时间：2023-11-08 14:25:55
 
 本次发布包含了以下内容：
 
@@ -28,120 +12,15 @@
 
 新增接口：
 
-* [DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1323/101383)
+* [DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1420/101386)
 
 新增数据结构：
 
-* [BillUsageDetail](https://cloud.tencent.com/document/api/1323/70369#BillUsageDetail)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 128 次发布
-
-发布时间：2023-11-08 01:39:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SyncProxyOrganization](https://cloud.tencent.com/document/api/1420/61518)
-
-	* 新增入参：ProxyAddress
-
+* [BillUsageDetail](https://cloud.tencent.com/document/api/1420/61525#BillUsageDetail)
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 多网聚合加速(mna) 版本：2021-01-19
-
-### 第 13 次发布
-
-发布时间：2023-11-08 01:53:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetNetMonitor](https://cloud.tencent.com/document/api/1385/101384)
-
-新增数据结构：
-
-* [MonitorData](https://cloud.tencent.com/document/api/1385/55846#MonitorData)
-* [SlotNetInfo](https://cloud.tencent.com/document/api/1385/55846#SlotNetInfo)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 116 次发布
-
-发布时间：2023-11-08 01:58:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
-
-	* 新增成员：RedLetterInvoiceMark, IssuingTypeMark, SellerAgentName, SellerAgentTaxID
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 88 次发布
-
-发布时间：2023-11-08 02:14:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
-
-	* 新增成员：TopicDistribution
-
-	* <font color="#dd0000">**修改成员**：</font>MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime, MaxQueuesPerTopic
-
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
-
-	* 新增成员：AclEnabled, PublicClbId, Vip, VpcId, SupportMigration, InstanceStatus
-
-	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint, SupportNamespaceEndpoint, Vpcs, IsVip, RocketMQFlag, Status, IsolateTime, HttpPublicEndpoint, HttpVpcEndpoint, InternalEndpoint, HttpInternalEndpoint
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 71 次发布
-
-发布时间：2023-11-08 02:29:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
-
-	* 新增入参：Domain, Offset, Limit, By, Filters, Order
-
 
 
 
@@ -28860,7 +28739,7 @@
 
 新增接口：
 
-* [[CheckFunction](https://cloud.tencent.com/document/api/614/101381)](https://cloud.tencent.com/document/api/#/#)
+* [CheckFunction](https://cloud.tencent.com/document/api/614/101381)
 
 ### 第 75 次发布
 
@@ -55604,6 +55483,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 134 次发布
+
+发布时间：2023-11-08 11:36:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增出参：FlowId
+
+
 ### 第 133 次发布
 
 发布时间：2023-11-08 01:38:53
@@ -55614,11 +55508,11 @@
 
 新增接口：
 
-* [[DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1323/101383)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1323/101383)
 
 新增数据结构：
 
-* [[BillUsageDetail](https://cloud.tencent.com/document/api/1323/70369#BillUsageDetail)](https://cloud.tencent.com/document/api/1323/70369#[BillUsageDetail](https://cloud.tencent.com/document/api/1323/70369#BillUsageDetail))
+* [BillUsageDetail](https://cloud.tencent.com/document/api/1323/70369#BillUsageDetail)
 
 ### 第 132 次发布
 
@@ -58200,6 +58094,22 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 129 次发布
+
+发布时间：2023-11-08 14:25:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBillUsageDetail](https://cloud.tencent.com/document/api/1420/101386)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BillUsageDetail](https://cloud.tencent.com/document/api/1420/61525#BillUsageDetail)](https://cloud.tencent.com/document/api/1420/61525#[BillUsageDetail](https://cloud.tencent.com/document/api/1420/61525#BillUsageDetail))
 
 ### 第 128 次发布
 
@@ -78746,12 +78656,12 @@
 
 新增接口：
 
-* [[GetNetMonitor](https://cloud.tencent.com/document/api/1385/101384)](https://cloud.tencent.com/document/api/#/#)
+* [GetNetMonitor](https://cloud.tencent.com/document/api/1385/101384)
 
 新增数据结构：
 
-* [[MonitorData](https://cloud.tencent.com/document/api/1385/55846#MonitorData)](https://cloud.tencent.com/document/api/1385/55846#[MonitorData](https://cloud.tencent.com/document/api/1385/55846#MonitorData))
-* [[SlotNetInfo](https://cloud.tencent.com/document/api/1385/55846#SlotNetInfo)](https://cloud.tencent.com/document/api/1385/55846#[SlotNetInfo](https://cloud.tencent.com/document/api/1385/55846#SlotNetInfo))
+* [MonitorData](https://cloud.tencent.com/document/api/1385/55846#MonitorData)
+* [SlotNetInfo](https://cloud.tencent.com/document/api/1385/55846#SlotNetInfo)
 
 ### 第 12 次发布
 
@@ -136544,6 +136454,27 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 72 次发布
+
+发布时间：2023-11-08 10:49:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeModuleStatus](https://cloud.tencent.com/document/api/627/101340)
+
+	* 新增入参：Domain
+
+	* 新增出参：WebSecurity, AccessControl, CcProtection, AntiTamper, AntiLeakage, ApiProtection
+
+* [ModifyModuleStatus](https://cloud.tencent.com/document/api/627/99699)
+
+	* 新增入参：Domain, WebSecurity, AccessControl, CcProtection, ApiProtection, AntiTamper, AntiLeakage
+
 
 ### 第 71 次发布
 

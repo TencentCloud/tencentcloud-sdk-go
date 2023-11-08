@@ -95,8 +95,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2023-10-16 01:15:50 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2023-10-30 00:42:05 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-11-08 01:38:53 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-11-08 01:39:50 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-11-08 11:36:14 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-11-08 14:25:55 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-09-18 01:48:33 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2023-10-20 01:16:02 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-08-17 03:12:49 |
@@ -230,7 +230,7 @@
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2023-11-07 02:30:32 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2023-11-06 00:23:58 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-11-03 01:27:03 |
-| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-08 02:29:51 |
+| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-08 10:49:05 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-07-18 01:59:28 |
 | wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2023-11-07 02:48:57 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2023-09-12 09:30:48 |

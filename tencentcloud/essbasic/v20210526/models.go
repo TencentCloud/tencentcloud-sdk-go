@@ -21,7 +21,9 @@ import (
 )
 
 type Agent struct {
-	// 应用的唯一标识。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。
+	// 应用的唯一标识(由电子签平台自动生成)。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。位置如下:
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/fac77e0d3f28aaec56669f67e65c8db8.png)
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
 
 	// 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
@@ -30,7 +32,7 @@ type Agent struct {
 	// 第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
 	ProxyOperator *UserInfo `json:"ProxyOperator,omitnil" name:"ProxyOperator"`
 
-	// 非必需参数，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
+	// **不用填写**，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
 	ProxyAppId *string `json:"ProxyAppId,omitnil" name:"ProxyAppId"`
 
 	// 内部参数，暂未开放使用
@@ -208,6 +210,83 @@ type BaseFlowInfo struct {
 
 	// 填写控件：文件发起使用
 	Components []*Component `json:"Components,omitnil" name:"Components"`
+}
+
+type BillUsageDetail struct {
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 合同经办人名称
+	// 如果有多个经办人用分号隔开。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
+
+	// 发起方组织机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil" name:"CreateOrganizationName"`
+
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 该名称还将用于合同签署完成后的下载文件名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 当前合同状态,如下是状态码对应的状态。
+	// 0-还没有发起
+	// 1-等待签署
+	// 2-部分签署 
+	// 3-拒签
+	// 4-已签署 
+	// 5-已过期 
+	// 6-已撤销 
+	// 7-还没有预发起
+	// 8-等待填写
+	// 9-部分填写 
+	// 10-拒填
+	// 11-已解除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 套餐类型
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 合同使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
+
+	// 消耗的时间戳，格式为Unix标准时间戳（秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
+
+	// 消耗的套餐名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
+
+	// 消耗类型
+	// 1.扣费 2.撤销返还
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type CcInfo struct {
@@ -2751,25 +2830,37 @@ func (r *ChannelCreatePrepareFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePreparedPersonalEsignRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 个人用户姓名
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
-	// 身份证件号码
+	// 证件号码, 应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
-	// 印章名称
+	// 电子印章名字，1-50个中文字符
+	// 注:`同一企业下电子印章名字不能相同`
 	SealName *string `json:"SealName,omitnil" name:"SealName"`
 
-	// 印章图片的base64，最大不超过 8M
+	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
+	// 
 	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
 
-	// 操作者信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 身份证件类型
+	// 证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>OTHER_CARD_TYPE : 其他</li></ul>
+	// 
+	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
@@ -2788,25 +2879,37 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 type ChannelCreatePreparedPersonalEsignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 个人用户姓名
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
-	// 身份证件号码
+	// 证件号码, 应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
-	// 印章名称
+	// 电子印章名字，1-50个中文字符
+	// 注:`同一企业下电子印章名字不能相同`
 	SealName *string `json:"SealName,omitnil" name:"SealName"`
 
-	// 印章图片的base64，最大不超过 8M
+	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
+	// 
 	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
 
-	// 操作者信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 身份证件类型
+	// 证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>OTHER_CARD_TYPE : 其他</li></ul>
+	// 
+	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
@@ -2853,7 +2956,9 @@ func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ChannelCreatePreparedPersonalEsignResponseParams struct {
-	// 导入的印章 ID
+	// 电子印章ID，为32位字符串。
+	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil" name:"SealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2895,13 +3000,13 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
-	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
-	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
+	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
 	// 
 	// 注意：
 	// <ul>
-	// <li>只能更换自己企业的签署人, 不支持更换个人类型或者其他企业的签署人</li>
-	// <li>可以不指定替换签署人, 使用原流程的签署人</li>
+	// <li>只能更换自己企业的签署人，不支持更换个人类型或者其他企业的签署人</li>
+	// <li>可以不指定替换签署人，使用原流程的签署人</li>
 	// </ul>
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
 
@@ -2952,13 +3057,13 @@ type ChannelCreateReleaseFlowRequest struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
-	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
-	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
+	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
 	// 
 	// 注意：
 	// <ul>
-	// <li>只能更换自己企业的签署人, 不支持更换个人类型或者其他企业的签署人</li>
-	// <li>可以不指定替换签署人, 使用原流程的签署人</li>
+	// <li>只能更换自己企业的签署人，不支持更换个人类型或者其他企业的签署人</li>
+	// <li>可以不指定替换签署人，使用原流程的签署人</li>
 	// </ul>
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
 
@@ -3115,12 +3220,26 @@ func (r *ChannelCreateRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateSealPolicyRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 指定印章ID
+	// 电子印章ID，为32位字符串。
+	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil" name:"SealId"`
 
+	// 
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
+	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	// 指定待授权的用户ID数组,电子签的用户ID
 	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
@@ -3139,12 +3258,26 @@ type ChannelCreateSealPolicyRequestParams struct {
 type ChannelCreateSealPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 指定印章ID
+	// 电子印章ID，为32位字符串。
+	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil" name:"SealId"`
 
+	// 
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
+	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	// 指定待授权的用户ID数组,电子签的用户ID
 	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
@@ -6192,6 +6325,131 @@ type Department struct {
 }
 
 // Predefined struct for user
+type DescribeBillUsageDetailRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeBillUsageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeBillUsageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QuotaType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillUsageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillUsageDetailResponseParams struct {
+	// 返回查询记录总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 消耗记录详情
+	Details []*BillUsageDetail `json:"Details,omitnil" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillUsageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillUsageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillUsageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeChannelFlowEvidenceReportRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -8219,7 +8477,7 @@ type ReleasedApprover struct {
 	ApproverNumber *uint64 `json:"ApproverNumber,omitnil" name:"ApproverNumber"`
 
 	// 指定签署人类型，目前支持
-	// <ul><li> **ORGANIZATION**：企业（默认值）</li>
+	// <ul><li> **ORGANIZATION**：企业(默认值)</li>
 	// <li> **ENTERPRISESERVER**：企业静默签</li></ul>
 	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
 
@@ -8227,14 +8485,14 @@ type ReleasedApprover struct {
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <ul><li>ID_CARD : 居民身份证(默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
@@ -8592,7 +8850,7 @@ type SyncProxyOrganizationRequestParams struct {
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil" name:"ProxyLegalIdCardType"`
 
 	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
 	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil" name:"ProxyLegalIdCardNumber"`
 
 	// 第三方平台子客企业详细住所，最大长度500个字符
@@ -8635,7 +8893,7 @@ type SyncProxyOrganizationRequest struct {
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil" name:"ProxyLegalIdCardType"`
 
 	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
 	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil" name:"ProxyLegalIdCardNumber"`
 
 	// 第三方平台子客企业详细住所，最大长度500个字符
@@ -8916,7 +9174,14 @@ type UsageDetail struct {
 }
 
 type UserInfo struct {
-	// 第三方应用平台自定义，对应第三方平台子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
+	// 第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
+	// 
+	// 
+	// 注意:
+	// 1. OpenId在子客企业对应一个真实员工，**本应用唯一, 不可重复使用**，最大64位字符串
+	// 2. 可使用用户在贵方企业系统中的Userid或者hash值作为子客企业的员工OpenId
+	// 3. **员工加入企业后**, 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录子客控制台后, 在**组织架构**模块查看员工们的OpenId, 样式如下图
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb67fb66c926759df3a0af5838fdafd5.png)
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
 	// 内部参数，暂未开放使用

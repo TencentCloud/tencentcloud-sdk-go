@@ -5329,6 +5329,63 @@ func (c *Client) CreateSignUrlsWithContext(ctx context.Context, request *CreateS
     return
 }
 
+func NewDescribeBillUsageDetailRequest() (request *DescribeBillUsageDetailRequest) {
+    request = &DescribeBillUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeBillUsageDetail")
+    
+    
+    return
+}
+
+func NewDescribeBillUsageDetailResponse() (response *DescribeBillUsageDetailResponse) {
+    response = &DescribeBillUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillUsageDetail
+// 通过此接口（DescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_NOTEXISTAPPLICATION = "ResourceNotFound.NotExistApplication"
+func (c *Client) DescribeBillUsageDetail(request *DescribeBillUsageDetailRequest) (response *DescribeBillUsageDetailResponse, err error) {
+    return c.DescribeBillUsageDetailWithContext(context.Background(), request)
+}
+
+// DescribeBillUsageDetail
+// 通过此接口（DescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_NOTEXISTAPPLICATION = "ResourceNotFound.NotExistApplication"
+func (c *Client) DescribeBillUsageDetailWithContext(ctx context.Context, request *DescribeBillUsageDetailRequest) (response *DescribeBillUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillUsageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillUsageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChannelFlowEvidenceReportRequest() (request *DescribeChannelFlowEvidenceReportRequest) {
     request = &DescribeChannelFlowEvidenceReportRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -287,6 +287,12 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 非法的套餐类型
+	INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+
+	// 非法的时间参数
+	INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -484,6 +490,9 @@ const (
 
 	// 合同组不存在。
 	RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
+
+	// 应用号不存在
+	RESOURCENOTFOUND_NOTEXISTAPPLICATION = "ResourceNotFound.NotExistApplication"
 
 	// 机构不存在。
 	RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
