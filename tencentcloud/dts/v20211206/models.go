@@ -157,7 +157,7 @@ type CompareObject struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectItems []*CompareObjectItem `json:"ObjectItems,omitnil" name:"ObjectItems"`
 
-	// 高级对象类型，如account(账号),index(索引),shardkey(片建，后面可能会调整),schema(库表结构)
+	// 高级对象类型，如account(账号),index(索引),shardkey(片键，后面可能会调整),schema(库表结构)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitnil" name:"AdvancedObjects"`
 }

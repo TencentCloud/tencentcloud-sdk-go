@@ -29,6 +29,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 调整频率超限
+	FAILEDOPERATION_ADJUSTFREQUENCYLIMIT = "FailedOperation.AdjustFrequencyLimit"
+
 	// 文件系统绑定资源包失败。
 	FAILEDOPERATION_BINDRESOURCEPKGFAILED = "FailedOperation.BindResourcePkgFailed"
 

@@ -18970,6 +18970,7 @@ func NewModifyVpnGatewayAttributeResponse() (response *ModifyVpnGatewayAttribute
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBGPASN = "UnsupportedOperation.VpnUnsupportedModifyBgpAsn"
 func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeRequest) (response *ModifyVpnGatewayAttributeResponse, err error) {
     return c.ModifyVpnGatewayAttributeWithContext(context.Background(), request)
 }
@@ -18982,6 +18983,7 @@ func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeReq
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBGPASN = "UnsupportedOperation.VpnUnsupportedModifyBgpAsn"
 func (c *Client) ModifyVpnGatewayAttributeWithContext(ctx context.Context, request *ModifyVpnGatewayAttributeRequest) (response *ModifyVpnGatewayAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpnGatewayAttributeRequest()

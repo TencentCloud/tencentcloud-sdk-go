@@ -310,7 +310,8 @@ type BillUsageDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 经办人名称
+	// 合同经办人名称
+	// 如果有多个经办人用分号隔开。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
 
@@ -323,11 +324,38 @@ type BillUsageDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
-	// 0 还没有发起 1等待签署 2部分签署 3拒签 4已签署 5已过期 6已撤销 7还没有预发起 8等待填写 9部分填写 10拒填 11已解除
+	// 当前合同状态,如下是状态码对应的状态。
+	// 0-还没有发起
+	// 1-等待签署
+	// 2-部分签署 
+	// 3-拒签
+	// 4-已签署 
+	// 5-已过期 
+	// 6-已撤销 
+	// 7-还没有预发起
+	// 8-等待填写
+	// 9-部分填写 
+	// 10-拒填
+	// 11-已解除
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 套餐类型
+	// 对应关系如下
+	// CloudEnterprise-企业版合同
+	// SingleSignature-单方签章
+	// CloudProve-签署报告
+	// CloudOnlineSign-腾讯会议在线签约
+	// ChannelWeCard-微工卡
+	// SignFlow-合同套餐
+	// SignFace-签署意愿（人脸识别）
+	// SignPassword-签署意愿（密码）
+	// SignSMS-签署意愿（短信）
+	// PersonalEssAuth-签署人实名（腾讯电子签认证）
+	// PersonalThirdAuth-签署人实名（信任第三方认证）
+	// OrgEssAuth-签署企业实名
+	// FlowNotify-短信通知
+	// AuthService-企业工商信息查询
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 
@@ -335,15 +363,16 @@ type BillUsageDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
 
-	// 消耗的时间戳
+	// 消耗的时间戳，格式为Unix标准时间戳（秒）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
 
-	// 套餐名称
+	// 消耗的套餐名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
 
-	//  消耗类型	1.扣费 2.撤销返还
+	// 消耗类型
+	// 1.扣费 2.撤销返还
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
 
@@ -5980,10 +6009,10 @@ type Department struct {
 
 // Predefined struct for user
 type DescribeBillUsageDetailRequestParams struct {
-	// 查询开始时间，时间跨度不能大于31天
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间，时间跨度不能大于31天
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
@@ -6010,18 +6039,18 @@ type DescribeBillUsageDetailRequestParams struct {
 	// AuthService-企业工商信息查询
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 
-	// 非必填，查询某个渠道企业的消耗情况。
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DescribeBillUsageDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询开始时间，时间跨度不能大于31天
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间，时间跨度不能大于31天
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
@@ -6048,8 +6077,8 @@ type DescribeBillUsageDetailRequest struct {
 	// AuthService-企业工商信息查询
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 
-	// 非必填，查询某个渠道企业的消耗情况。
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 

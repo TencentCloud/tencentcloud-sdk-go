@@ -1923,6 +1923,18 @@ type ContainerGroupDeploy struct {
 	// Envoy网关服务配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil" name:"GatewayConfig"`
+
+	// 容器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
+
+	// 附加容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalContainerList []*GroupContainerInfo `json:"AdditionalContainerList,omitnil" name:"AdditionalContainerList"`
+
+	// 内部容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalContainerList []*GroupContainerInfo `json:"InternalContainerList,omitnil" name:"InternalContainerList"`
 }
 
 type ContainerGroupDetail struct {
@@ -10938,6 +10950,9 @@ type DescribeImageRepositoryRequestParams struct {
 
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil" name:"TcrRepoInfo"`
+
+	// 镜像仓库
+	RepoName *string `json:"RepoName,omitnil" name:"RepoName"`
 }
 
 type DescribeImageRepositoryRequest struct {
@@ -10960,6 +10975,9 @@ type DescribeImageRepositoryRequest struct {
 
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil" name:"TcrRepoInfo"`
+
+	// 镜像仓库
+	RepoName *string `json:"RepoName,omitnil" name:"RepoName"`
 }
 
 func (r *DescribeImageRepositoryRequest) ToJsonString() string {
@@ -10980,6 +10998,7 @@ func (r *DescribeImageRepositoryRequest) FromJsonString(s string) error {
 	delete(f, "RepoType")
 	delete(f, "ApplicationId")
 	delete(f, "TcrRepoInfo")
+	delete(f, "RepoName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageRepositoryRequest has unknown keys!", "")
 	}
@@ -11033,6 +11052,9 @@ type DescribeImageTagsRequestParams struct {
 
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil" name:"TcrRepoInfo"`
+
+	// 仓库名
+	RepoName *string `json:"RepoName,omitnil" name:"RepoName"`
 }
 
 type DescribeImageTagsRequest struct {
@@ -11058,6 +11080,9 @@ type DescribeImageTagsRequest struct {
 
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil" name:"TcrRepoInfo"`
+
+	// 仓库名
+	RepoName *string `json:"RepoName,omitnil" name:"RepoName"`
 }
 
 func (r *DescribeImageTagsRequest) ToJsonString() string {
@@ -11079,6 +11104,7 @@ func (r *DescribeImageTagsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "RepoType")
 	delete(f, "TcrRepoInfo")
+	delete(f, "RepoName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTagsRequest has unknown keys!", "")
 	}
@@ -16038,6 +16064,71 @@ type GroupApiUseStatistics struct {
 	// 分位值对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quantile *QuantileEntity `json:"Quantile,omitnil" name:"Quantile"`
+}
+
+type GroupContainerInfo struct {
+	// 镜像版本名称
+	TagName *string `json:"TagName,omitnil" name:"TagName"`
+
+	// 容器名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
+
+	// 镜像名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitnil" name:"RepoName"`
+
+	// 仓库类型,tcr，address，personal，默认personal
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *string `json:"RepoType,omitnil" name:"RepoType"`
+
+	// tcr仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil" name:"TcrRepoInfo"`
+
+	// 镜像server
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server *string `json:"Server,omitnil" name:"Server"`
+
+	// 凭证名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
+
+	// jvm 参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JvmOpts *string `json:"JvmOpts,omitnil" name:"JvmOpts"`
+
+	// 容器最大的 CPU 核数，对应 K8S 的 limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuLimit *string `json:"CpuLimit,omitnil" name:"CpuLimit"`
+
+	// 容器分配的 CPU 核数，对应 K8S 的 request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuRequest *string `json:"CpuRequest,omitnil" name:"CpuRequest"`
+
+	// 容器分配的内存 MiB 数，对应 K8S 的 request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemRequest *string `json:"MemRequest,omitnil" name:"MemRequest"`
+
+	// 容器最大的内存 MiB 数，对应 K8S 的 limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemLimit *string `json:"MemLimit,omitnil" name:"MemLimit"`
+
+	// 健康检查配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil" name:"HealthCheckSettings"`
+
+	// 环境变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Envs []*Env `json:"Envs,omitnil" name:"Envs"`
+
+	// 环境变量,作为入参时不用填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserEnvs []*Env `json:"UserEnvs,omitnil" name:"UserEnvs"`
+
+	// 数据卷挂载点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil" name:"VolumeMountInfoList"`
 }
 
 type GroupDailyUseStatistics struct {

@@ -7424,7 +7424,7 @@ func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResp
 }
 
 // DescribeImageRepository
-// 镜像仓库列表 
+// 查询镜像仓库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -7438,7 +7438,7 @@ func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest
 }
 
 // DescribeImageRepository
-// 镜像仓库列表 
+// 查询镜像仓库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"

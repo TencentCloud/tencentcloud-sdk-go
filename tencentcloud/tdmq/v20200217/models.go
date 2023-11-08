@@ -1421,6 +1421,140 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateProClusterRequestParams struct {
+	// 多可用区部署选择三个可用区，示例"200002","200003","200004"
+	// 
+	// 单可用区部署选择一个可用区，示例"200002"
+	ZoneIds *string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+
+	// 集群规格代号
+	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
+
+	// 存储规格
+	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	StorageSize *int64 `json:"StorageSize,omitnil" name:"StorageSize"`
+
+	// 1: true，开启自动按月续费
+	// 
+	// 0: false，关闭自动按月续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 购买时长，取值范围：1～50
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 集群的标签列表(已废弃)
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 是否自动选择代金券 1是 0否 默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
+
+	// vpc网络标签
+	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+}
+
+type CreateProClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多可用区部署选择三个可用区，示例"200002","200003","200004"
+	// 
+	// 单可用区部署选择一个可用区，示例"200002"
+	ZoneIds *string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+
+	// 集群规格代号
+	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
+
+	// 存储规格
+	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	StorageSize *int64 `json:"StorageSize,omitnil" name:"StorageSize"`
+
+	// 1: true，开启自动按月续费
+	// 
+	// 0: false，关闭自动按月续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 购买时长，取值范围：1～50
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 集群的标签列表(已废弃)
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 是否自动选择代金券 1是 0否 默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
+
+	// vpc网络标签
+	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+}
+
+func (r *CreateProClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "ProductName")
+	delete(f, "StorageSize")
+	delete(f, "AutoRenewFlag")
+	delete(f, "TimeSpan")
+	delete(f, "Tags")
+	delete(f, "ClusterName")
+	delete(f, "AutoVoucher")
+	delete(f, "Vpcs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProClusterResponseParams struct {
+	// 子订单号
+	DealName *string `json:"DealName,omitnil" name:"DealName"`
+
+	// 订单号
+	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateProClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProClusterResponseParams `json:"Response"`
+}
+
+func (r *CreateProClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`

@@ -532,6 +532,12 @@ type Command struct {
 
 	// 该命令所属会话的会话开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionTime *string `json:"SessionTime,omitnil" name:"SessionTime"`
+
+	// 该命令所属会话的会话开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SessTime is deprecated.
 	SessTime *string `json:"SessTime,omitnil" name:"SessTime"`
 
 	// 复核时间
@@ -1152,6 +1158,10 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceResponseParams struct {
+	// 实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -3513,6 +3523,10 @@ func (r *ImportExternalDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportExternalDeviceResponseParams struct {
+	// 资产ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil" name:"DeviceIdSet"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4894,6 +4908,12 @@ type SearchCommandResult struct {
 
 	// 该命令所属会话的会话开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionTime *string `json:"SessionTime,omitnil" name:"SessionTime"`
+
+	// 该命令所属会话的会话开始时间（废弃，使用SessionTime）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SessTime is deprecated.
 	SessTime *string `json:"SessTime,omitnil" name:"SessTime"`
 
 	// 复核时间

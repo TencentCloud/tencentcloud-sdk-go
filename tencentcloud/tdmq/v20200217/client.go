@@ -636,6 +636,75 @@ func (c *Client) CreateEnvironmentRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateProClusterRequest() (request *CreateProClusterRequest) {
+    request = &CreateProClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateProCluster")
+    
+    
+    return
+}
+
+func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
+    response = &CreateProClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProCluster
+// 创建专业集群——预付费，仅通过api调用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
+    return c.CreateProClusterWithContext(context.Background(), request)
+}
+
+// CreateProCluster
+// 创建专业集群——预付费，仅通过api调用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) CreateProClusterWithContext(ctx context.Context, request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateProClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRabbitMQUserRequest() (request *CreateRabbitMQUserRequest) {
     request = &CreateRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

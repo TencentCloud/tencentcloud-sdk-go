@@ -2960,3 +2960,58 @@ func (c *Client) UpdateCfsSnapshotAttributeWithContext(ctx context.Context, requ
     err = c.Send(request, response)
     return
 }
+
+func NewUpdateFileSystemBandwidthLimitRequest() (request *UpdateFileSystemBandwidthLimitRequest) {
+    request = &UpdateFileSystemBandwidthLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "UpdateFileSystemBandwidthLimit")
+    
+    
+    return
+}
+
+func NewUpdateFileSystemBandwidthLimitResponse() (response *UpdateFileSystemBandwidthLimitResponse) {
+    response = &UpdateFileSystemBandwidthLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFileSystemBandwidthLimit
+// 更新文件系统带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ADJUSTFREQUENCYLIMIT = "FailedOperation.AdjustFrequencyLimit"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateFileSystemBandwidthLimit(request *UpdateFileSystemBandwidthLimitRequest) (response *UpdateFileSystemBandwidthLimitResponse, err error) {
+    return c.UpdateFileSystemBandwidthLimitWithContext(context.Background(), request)
+}
+
+// UpdateFileSystemBandwidthLimit
+// 更新文件系统带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ADJUSTFREQUENCYLIMIT = "FailedOperation.AdjustFrequencyLimit"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateFileSystemBandwidthLimitWithContext(ctx context.Context, request *UpdateFileSystemBandwidthLimitRequest) (response *UpdateFileSystemBandwidthLimitResponse, err error) {
+    if request == nil {
+        request = NewUpdateFileSystemBandwidthLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFileSystemBandwidthLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFileSystemBandwidthLimitResponse()
+    err = c.Send(request, response)
+    return
+}

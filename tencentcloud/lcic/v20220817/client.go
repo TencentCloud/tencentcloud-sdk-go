@@ -2427,6 +2427,61 @@ func (c *Client) DescribeRoomWithContext(ctx context.Context, request *DescribeR
     return
 }
 
+func NewDescribeRoomForbiddenUserRequest() (request *DescribeRoomForbiddenUserRequest) {
+    request = &DescribeRoomForbiddenUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeRoomForbiddenUser")
+    
+    
+    return
+}
+
+func NewDescribeRoomForbiddenUserResponse() (response *DescribeRoomForbiddenUserResponse) {
+    response = &DescribeRoomForbiddenUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRoomForbiddenUser
+// 根据房间ID获取群组中被禁言的用户列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRoomForbiddenUser(request *DescribeRoomForbiddenUserRequest) (response *DescribeRoomForbiddenUserResponse, err error) {
+    return c.DescribeRoomForbiddenUserWithContext(context.Background(), request)
+}
+
+// DescribeRoomForbiddenUser
+// 根据房间ID获取群组中被禁言的用户列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRoomForbiddenUserWithContext(ctx context.Context, request *DescribeRoomForbiddenUserRequest) (response *DescribeRoomForbiddenUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomForbiddenUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoomForbiddenUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoomForbiddenUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomStatisticsRequest() (request *DescribeRoomStatisticsRequest) {
     request = &DescribeRoomStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2843,6 +2898,69 @@ func (c *Client) EndRoomWithContext(ctx context.Context, request *EndRoomRequest
     request.SetContext(ctx)
     
     response = NewEndRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewForbidSendMsgRequest() (request *ForbidSendMsgRequest) {
+    request = &ForbidSendMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "ForbidSendMsg")
+    
+    
+    return
+}
+
+func NewForbidSendMsgResponse() (response *ForbidSendMsgResponse) {
+    response = &ForbidSendMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ForbidSendMsg
+// 禁止指定房间中某些用户在一段时间内发言。
+//
+// 取消对某些用户的禁言。
+//
+// 被禁言用户退出房间之后再进入同一房间，禁言仍然有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) ForbidSendMsg(request *ForbidSendMsgRequest) (response *ForbidSendMsgResponse, err error) {
+    return c.ForbidSendMsgWithContext(context.Background(), request)
+}
+
+// ForbidSendMsg
+// 禁止指定房间中某些用户在一段时间内发言。
+//
+// 取消对某些用户的禁言。
+//
+// 被禁言用户退出房间之后再进入同一房间，禁言仍然有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) ForbidSendMsgWithContext(ctx context.Context, request *ForbidSendMsgRequest) (response *ForbidSendMsgResponse, err error) {
+    if request == nil {
+        request = NewForbidSendMsgRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForbidSendMsg require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewForbidSendMsgResponse()
     err = c.Send(request, response)
     return
 }

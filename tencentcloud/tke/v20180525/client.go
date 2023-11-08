@@ -1506,7 +1506,7 @@ func NewCreateClusterVirtualNodeResponse() (response *CreateClusterVirtualNodeRe
 }
 
 // CreateClusterVirtualNode
-// 创建虚拟节点
+// 创建按量计费超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -1521,7 +1521,7 @@ func (c *Client) CreateClusterVirtualNode(request *CreateClusterVirtualNodeReque
 }
 
 // CreateClusterVirtualNode
-// 创建虚拟节点
+// 创建按量计费超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -1567,7 +1567,7 @@ func NewCreateClusterVirtualNodePoolResponse() (response *CreateClusterVirtualNo
 }
 
 // CreateClusterVirtualNodePool
-// 创建虚拟节点池
+// 创建超级节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -1584,7 +1584,7 @@ func (c *Client) CreateClusterVirtualNodePool(request *CreateClusterVirtualNodeP
 }
 
 // CreateClusterVirtualNodePool
-// 创建虚拟节点池
+// 创建超级节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -3433,7 +3433,7 @@ func NewDeleteClusterVirtualNodeResponse() (response *DeleteClusterVirtualNodeRe
 }
 
 // DeleteClusterVirtualNode
-// 删除虚拟节点
+// 删除超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -3445,7 +3445,7 @@ func (c *Client) DeleteClusterVirtualNode(request *DeleteClusterVirtualNodeReque
 }
 
 // DeleteClusterVirtualNode
-// 删除虚拟节点
+// 删除超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -3488,7 +3488,7 @@ func NewDeleteClusterVirtualNodePoolResponse() (response *DeleteClusterVirtualNo
 }
 
 // DeleteClusterVirtualNodePool
-// 删除虚拟节点池
+// 删除超级节点池
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
@@ -3501,7 +3501,7 @@ func (c *Client) DeleteClusterVirtualNodePool(request *DeleteClusterVirtualNodeP
 }
 
 // DeleteClusterVirtualNodePool
-// 删除虚拟节点池
+// 删除超级节点池
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
@@ -6570,7 +6570,7 @@ func NewDescribeClusterVirtualNodeResponse() (response *DescribeClusterVirtualNo
 }
 
 // DescribeClusterVirtualNode
-// 查看虚拟节点列表
+// 查看超级节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -6584,7 +6584,7 @@ func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeR
 }
 
 // DescribeClusterVirtualNode
-// 查看虚拟节点列表
+// 查看超级节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -6629,7 +6629,7 @@ func NewDescribeClusterVirtualNodePoolsResponse() (response *DescribeClusterVirt
 }
 
 // DescribeClusterVirtualNodePools
-// 查看虚拟节点池列表
+// 查看超级节点池列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -6642,7 +6642,7 @@ func (c *Client) DescribeClusterVirtualNodePools(request *DescribeClusterVirtual
 }
 
 // DescribeClusterVirtualNodePools
-// 查看虚拟节点池列表
+// 查看超级节点池列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10523,7 +10523,7 @@ func NewDrainClusterVirtualNodeResponse() (response *DrainClusterVirtualNodeResp
 }
 
 // DrainClusterVirtualNode
-// 驱逐虚拟节点
+// 驱逐超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10534,7 +10534,7 @@ func (c *Client) DrainClusterVirtualNode(request *DrainClusterVirtualNodeRequest
 }
 
 // DrainClusterVirtualNode
-// 驱逐虚拟节点
+// 驱逐超级节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -12026,7 +12026,7 @@ func NewModifyClusterVirtualNodePoolResponse() (response *ModifyClusterVirtualNo
 }
 
 // ModifyClusterVirtualNodePool
-// 修改虚拟节点池
+// 修改超级节点池
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
@@ -12039,7 +12039,7 @@ func (c *Client) ModifyClusterVirtualNodePool(request *ModifyClusterVirtualNodeP
 }
 
 // ModifyClusterVirtualNodePool
-// 修改虚拟节点池
+// 修改超级节点池
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"

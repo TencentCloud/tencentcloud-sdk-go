@@ -3770,6 +3770,67 @@ func (r *UpdateCfsSnapshotAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateFileSystemBandwidthLimitRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+
+	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
+	BandwidthLimit *int64 `json:"BandwidthLimit,omitnil" name:"BandwidthLimit"`
+}
+
+type UpdateFileSystemBandwidthLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+
+	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
+	BandwidthLimit *int64 `json:"BandwidthLimit,omitnil" name:"BandwidthLimit"`
+}
+
+func (r *UpdateFileSystemBandwidthLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFileSystemBandwidthLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "BandwidthLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFileSystemBandwidthLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFileSystemBandwidthLimitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateFileSystemBandwidthLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFileSystemBandwidthLimitResponseParams `json:"Response"`
+}
+
+func (r *UpdateFileSystemBandwidthLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFileSystemBandwidthLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserQuota struct {
 	// 指定配额类型，包括Uid、Gid
 	UserType *string `json:"UserType,omitnil" name:"UserType"`

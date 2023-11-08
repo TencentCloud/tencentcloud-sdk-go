@@ -2090,13 +2090,14 @@ type ChannelCreateFlowRemindsRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 需执行催办的签署流程ID数组，最多包含100个。
+	// 需执行催办的合同流程ID数组，最多支持100个。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 }
 
@@ -2107,13 +2108,14 @@ type ChannelCreateFlowRemindsRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 需执行催办的签署流程ID数组，最多包含100个。
+	// 需执行催办的合同流程ID数组，最多支持100个。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 }
 
@@ -7274,47 +7276,47 @@ type Filter struct {
 }
 
 type FlowApproverDetail struct {
-	// 模板配置时候的签署人id,与控件绑定
+	// 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
 	ReceiptId *string `json:"ReceiptId,omitnil" name:"ReceiptId"`
 
-	// 平台企业的第三方id
+	// 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
 
-	// 平台企业操作人的第三方id
+	// 第三方平台子客企业员工的唯一标识
 	ProxyOperatorOpenId *string `json:"ProxyOperatorOpenId,omitnil" name:"ProxyOperatorOpenId"`
 
-	// 平台企业名称
+	// 第三方平台子客企业名称，与企业营业执照中注册的名称一致。
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
 
 	// 签署人手机号
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 签署人签署顺序
+	// 签署顺序，如果是有序签署，签署顺序从小到大
 	SignOrder *int64 `json:"SignOrder,omitnil" name:"SignOrder"`
 
-	// 签署人姓名
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveName *string `json:"ApproveName,omitnil" name:"ApproveName"`
 
 	// 当前签署人的状态, 状态如下
-	// <br/>PENDING 待签署	
-	// <br/>FILLPENDING 待填写
-	// <br/>FILLACCEPT 填写完成	
-	// <br/>FILLREJECT 拒绝填写	
-	// <br/>WAITPICKUP 待领取	
-	// <br/>ACCEPT 已签署	
-	// <br/>REJECT 拒签 
-	// <br/>DEADLINE 过期没人处理 
-	// <br/>CANCEL 流程已撤回	
-	// <br/>FORWARD 已经转他人处理
-	// <br/>STOP 流程已终止	
-	// <br/>RELIEVED 解除协议（已解除）
-	// 
+	// <ul><li> **PENDING** :待签署</li>
+	// <li> **FILLPENDING** :待填写</li>
+	// <li> **FILLACCEPT** :填写完成</li>
+	// <li> **FILLREJECT** :拒绝填写</li>
+	// <li> **WAITPICKUP** :待领取</li>
+	// <li> **ACCEPT** :已签署</li>
+	// <li> **REJECT** :拒签</li>
+	// <li> **DEADLINE** :过期没人处理</li>
+	// <li> **CANCEL** :流程已撤回</li>
+	// <li> **FORWARD** :已经转他人处理</li>
+	// <li> **STOP** :流程已终止</li>
+	// <li> **RELIEVED** :解除协议（已解除）</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveStatus *string `json:"ApproveStatus,omitnil" name:"ApproveStatus"`
 
-	// 签署人自定义信息
+	// 签署人拒签等情况的时候填写的原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveMessage *string `json:"ApproveMessage,omitnil" name:"ApproveMessage"`
 
@@ -7322,12 +7324,12 @@ type FlowApproverDetail struct {
 	ApproveTime *int64 `json:"ApproveTime,omitnil" name:"ApproveTime"`
 
 	// 参与者类型 
-	// <br/>ORGANIZATION：企业签署人
-	// <br/>PERSON：个人签署人
+	// <ul><li> **ORGANIZATION** :企业签署人</li>
+	// <li> **PERSON** :个人签署人</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveType *string `json:"ApproveType,omitnil" name:"ApproveType"`
 
-	// 自定义签署人角色
+	// 自定义签署人的角色名, 如: 收款人、开具人、见证人等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
 }

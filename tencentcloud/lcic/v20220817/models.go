@@ -2757,6 +2757,71 @@ func (r *DescribeQuestionListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRoomForbiddenUserRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+}
+
+type DescribeRoomForbiddenUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+}
+
+func (r *DescribeRoomForbiddenUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoomForbiddenUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomForbiddenUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoomForbiddenUserResponseParams struct {
+	// 禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MutedAccountList []*MutedAccountList `json:"MutedAccountList,omitnil" name:"MutedAccountList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRoomForbiddenUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoomForbiddenUserResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoomForbiddenUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoomForbiddenUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
@@ -3485,6 +3550,81 @@ type FaceMsgContent struct {
 
 	// 额外数据。
 	Data *string `json:"Data,omitnil" name:"Data"`
+}
+
+// Predefined struct for user
+type ForbidSendMsgRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 需要禁言的用户账号，最多支持500个账号
+	MembersAccount []*string `json:"MembersAccount,omitnil" name:"MembersAccount"`
+
+	// 需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+	MuteTime *uint64 `json:"MuteTime,omitnil" name:"MuteTime"`
+}
+
+type ForbidSendMsgRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 需要禁言的用户账号，最多支持500个账号
+	MembersAccount []*string `json:"MembersAccount,omitnil" name:"MembersAccount"`
+
+	// 需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+	MuteTime *uint64 `json:"MuteTime,omitnil" name:"MuteTime"`
+}
+
+func (r *ForbidSendMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForbidSendMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "MembersAccount")
+	delete(f, "MuteTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForbidSendMsgRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ForbidSendMsgResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ForbidSendMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *ForbidSendMsgResponseParams `json:"Response"`
+}
+
+func (r *ForbidSendMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForbidSendMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4707,6 +4847,16 @@ type MsgBody struct {
 	ImageMsgContent *ImageMsgContent `json:"ImageMsgContent,omitnil" name:"ImageMsgContent"`
 }
 
+type MutedAccountList struct {
+	// 用户 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberAccount *string `json:"MemberAccount,omitnil" name:"MemberAccount"`
+
+	// 禁言到的时间（使用 UTC 时间，即世界协调时间）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MutedUntil *uint64 `json:"MutedUntil,omitnil" name:"MutedUntil"`
+}
+
 type QuestionInfo struct {
 	// 问题ID
 	QuestionId *string `json:"QuestionId,omitnil" name:"QuestionId"`
@@ -4991,6 +5141,9 @@ type SendRoomNormalMessageRequestParams struct {
 
 	// 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
 	CloudCustomData *string `json:"CloudCustomData,omitnil" name:"CloudCustomData"`
+
+	// 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
+	NickName *string `json:"NickName,omitnil" name:"NickName"`
 }
 
 type SendRoomNormalMessageRequest struct {
@@ -5010,6 +5163,9 @@ type SendRoomNormalMessageRequest struct {
 
 	// 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
 	CloudCustomData *string `json:"CloudCustomData,omitnil" name:"CloudCustomData"`
+
+	// 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
+	NickName *string `json:"NickName,omitnil" name:"NickName"`
 }
 
 func (r *SendRoomNormalMessageRequest) ToJsonString() string {
@@ -5029,6 +5185,7 @@ func (r *SendRoomNormalMessageRequest) FromJsonString(s string) error {
 	delete(f, "FromAccount")
 	delete(f, "MsgBody")
 	delete(f, "CloudCustomData")
+	delete(f, "NickName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendRoomNormalMessageRequest has unknown keys!", "")
 	}
