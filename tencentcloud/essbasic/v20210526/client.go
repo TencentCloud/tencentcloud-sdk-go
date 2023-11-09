@@ -672,7 +672,43 @@ func NewChannelCreateBoundFlowsResponse() (response *ChannelCreateBoundFlowsResp
 }
 
 // ChannelCreateBoundFlows
-// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，合同不能重复领取。
+// 此接口（ChannelCreateBoundFlows）用于子客企业领取未归属给员工的合同，将合同领取给当前员工，合同不能重复领取。
+//
+// 
+//
+// 
+//
+// **未归属合同发起方式**
+//
+//  指定对应企业的OrganizationOpenId和OrganizationName而不指定具体的参与人(OpenId/名字/手机号等),  则合同进入待领取状态, 示例代码如下
+//
+// ```
+//
+// 		FlowApprovers: []*essbasic.FlowApproverInfo{
+//
+// 			{
+//
+// 				ApproverType:       common.StringPtr("ORGANIZATION"),
+//
+// 				OrganizationOpenId: common.StringPtr("org_dianziqian"),
+//
+// 				OrganizationName:   common.StringPtr("典子谦示例企业"),
+//
+// 			}
+//
+// 		},
+//
+// ```
+//
+// 
+//
+// 可以<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录控制台查看带领取的合同
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a34d0cc56ec871613e94dfc6252bc072.png)
+//
+// 
+//
+// 注: `支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -711,7 +747,43 @@ func (c *Client) ChannelCreateBoundFlows(request *ChannelCreateBoundFlowsRequest
 }
 
 // ChannelCreateBoundFlows
-// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，合同不能重复领取。
+// 此接口（ChannelCreateBoundFlows）用于子客企业领取未归属给员工的合同，将合同领取给当前员工，合同不能重复领取。
+//
+// 
+//
+// 
+//
+// **未归属合同发起方式**
+//
+//  指定对应企业的OrganizationOpenId和OrganizationName而不指定具体的参与人(OpenId/名字/手机号等),  则合同进入待领取状态, 示例代码如下
+//
+// ```
+//
+// 		FlowApprovers: []*essbasic.FlowApproverInfo{
+//
+// 			{
+//
+// 				ApproverType:       common.StringPtr("ORGANIZATION"),
+//
+// 				OrganizationOpenId: common.StringPtr("org_dianziqian"),
+//
+// 				OrganizationName:   common.StringPtr("典子谦示例企业"),
+//
+// 			}
+//
+// 		},
+//
+// ```
+//
+// 
+//
+// 可以<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录控制台查看带领取的合同
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a34d0cc56ec871613e94dfc6252bc072.png)
+//
+// 
+//
+// 注: `支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2161,7 +2233,9 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 //
 // 
 //
-// **催办的效果**: 对方会受到如下的短信通知
+// **催办的效果**: 对方会收到如下的短信通知
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
 //
@@ -2189,7 +2263,9 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 //
 // 
 //
-// **催办的效果**: 对方会受到如下的短信通知
+// **催办的效果**: 对方会收到如下的短信通知
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
 //
@@ -2426,35 +2502,35 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 // ChannelCreateMultiFlowSignQRCode
 // 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+// 
 //
-// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// **适用场景**:
+//
+// 签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
-// **本接口适用于发起方没有填写控件的 B2C或者单C模板**
+// **注意**:
 //
-// 
+// 1. 本接口适用于**发起方没有填写控件的 B2C或者单C模板**,  若是B2C模板,还要满足以下任意一个条件
 //
-// **若是B2C模板,还要满足以下任意一个条件**
+//     - 模板中配置的签署顺序是无序
 //
-// 
+//     - B端企业的签署方式是静默签署
 //
-// - 模板中配置的签署顺序是无序
+//     - B端企业是非首位签署
 //
-// - B端企业的签署方式是静默签署
-//
-// - B端企业是非首位签署
-//
-// 
-//
-// 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
 //
 // ]( https://qian.tencent.com/developers/partner/callback_types_contracts_sign)
 //
+// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+//
 // 
 //
-// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// 二维码的样式如下图:
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2477,35 +2553,35 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 // ChannelCreateMultiFlowSignQRCode
 // 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+// 
 //
-// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// **适用场景**:
+//
+// 签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
-// **本接口适用于发起方没有填写控件的 B2C或者单C模板**
+// **注意**:
 //
-// 
+// 1. 本接口适用于**发起方没有填写控件的 B2C或者单C模板**,  若是B2C模板,还要满足以下任意一个条件
 //
-// **若是B2C模板,还要满足以下任意一个条件**
+//     - 模板中配置的签署顺序是无序
 //
-// 
+//     - B端企业的签署方式是静默签署
 //
-// - 模板中配置的签署顺序是无序
+//     - B端企业是非首位签署
 //
-// - B端企业的签署方式是静默签署
-//
-// - B端企业是非首位签署
-//
-// 
-//
-// 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
 //
 // ]( https://qian.tencent.com/developers/partner/callback_types_contracts_sign)
 //
+// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+//
 // 
 //
-// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// 二维码的样式如下图:
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3533,6 +3609,63 @@ func (c *Client) ChannelDeleteSealPoliciesWithContext(ctx context.Context, reque
     return
 }
 
+func NewChannelDescribeBillUsageDetailRequest() (request *ChannelDescribeBillUsageDetailRequest) {
+    request = &ChannelDescribeBillUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeBillUsageDetail")
+    
+    
+    return
+}
+
+func NewChannelDescribeBillUsageDetailResponse() (response *ChannelDescribeBillUsageDetailResponse) {
+    response = &ChannelDescribeBillUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChannelDescribeBillUsageDetail
+// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_NOTEXISTAPPLICATION = "ResourceNotFound.NotExistApplication"
+func (c *Client) ChannelDescribeBillUsageDetail(request *ChannelDescribeBillUsageDetailRequest) (response *ChannelDescribeBillUsageDetailResponse, err error) {
+    return c.ChannelDescribeBillUsageDetailWithContext(context.Background(), request)
+}
+
+// ChannelDescribeBillUsageDetail
+// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_NOTEXISTAPPLICATION = "ResourceNotFound.NotExistApplication"
+func (c *Client) ChannelDescribeBillUsageDetailWithContext(ctx context.Context, request *ChannelDescribeBillUsageDetailRequest) (response *ChannelDescribeBillUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeBillUsageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeBillUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeBillUsageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDescribeEmployeesRequest() (request *ChannelDescribeEmployeesRequest) {
     request = &ChannelDescribeEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3640,7 +3773,35 @@ func NewChannelDescribeFlowComponentsResponse() (response *ChannelDescribeFlowCo
 }
 
 // ChannelDescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
+// 用于获取合同中填写控件填写状态和填写的内容。 
+//
+// 
+//
+// **注意**: `附件控件不会出现在结果列表中`
+//
+// 
+//
+// 
+//
+// **授权**:   
+//
+// 此接口需要授权,  有两种开通权限的途径
+//
+// 
+//
+// **第一种**:   需第三方应用的子企业登录控制台进行授权,  授权在**企业中心**的**授权管理**区域,  界面如下图
+//
+// 授权过程需要**子企业超管**扫描跳转到电子签小程序签署<<渠道端下载渠道子客合同功能授权委托书>>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/8b483dfebdeafac85051279406944048.png)
+//
+// 
+//
+// **第二种**: 第三方应用的配置接口打开全第三个应用下的所有自己起开通, 需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3653,7 +3814,35 @@ func (c *Client) ChannelDescribeFlowComponents(request *ChannelDescribeFlowCompo
 }
 
 // ChannelDescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
+// 用于获取合同中填写控件填写状态和填写的内容。 
+//
+// 
+//
+// **注意**: `附件控件不会出现在结果列表中`
+//
+// 
+//
+// 
+//
+// **授权**:   
+//
+// 此接口需要授权,  有两种开通权限的途径
+//
+// 
+//
+// **第一种**:   需第三方应用的子企业登录控制台进行授权,  授权在**企业中心**的**授权管理**区域,  界面如下图
+//
+// 授权过程需要**子企业超管**扫描跳转到电子签小程序签署<<渠道端下载渠道子客合同功能授权委托书>>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/8b483dfebdeafac85051279406944048.png)
+//
+// 
+//
+// **第二种**: 第三方应用的配置接口打开全第三个应用下的所有自己起开通, 需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5914,6 +6103,8 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 // 模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/45c638bd93f9c8024763add9ab47c27f.png)
 //
 // 
@@ -5997,6 +6188,8 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 // 模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/45c638bd93f9c8024763add9ab47c27f.png)
 //
 // 
@@ -6069,9 +6262,11 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 }
 
 // DescribeUsage
-// 此接口（DescribeUsage）用于获取第三方平台所有合作企业流量消耗情况。
+// 此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 //
-//  注: 此接口每日限频50次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
+// 
+//
+// 注: 此接口**每日限频50次**，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6097,9 +6292,11 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
 }
 
 // DescribeUsage
-// 此接口（DescribeUsage）用于获取第三方平台所有合作企业流量消耗情况。
+// 此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 //
-//  注: 此接口每日限频50次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
+// 
+//
+// 注: 此接口**每日限频50次**，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6166,9 +6363,9 @@ func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
 //
 // <ul>
 //
-// <li>仅支持下载 **本企业** 下合同，链接会 **登录企业控制台** </li>
+// <li>仅支持下载 <b>本企业</b> 下合同，链接会 <b>登录企业控制台</b> </li>
 //
-// <li> **链接仅可使用一次**，不可重复使用</li>
+// <li> <b>链接仅可使用一次</b>，不可重复使用</li>
 //
 // </ul>
 //
@@ -6216,9 +6413,9 @@ func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (respons
 //
 // <ul>
 //
-// <li>仅支持下载 **本企业** 下合同，链接会 **登录企业控制台** </li>
+// <li>仅支持下载 <b>本企业</b> 下合同，链接会 <b>登录企业控制台</b> </li>
 //
-// <li> **链接仅可使用一次**，不可重复使用</li>
+// <li> <b>链接仅可使用一次</b>，不可重复使用</li>
 //
 // </ul>
 //

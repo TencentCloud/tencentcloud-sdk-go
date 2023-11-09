@@ -3101,31 +3101,35 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+// 
 //
-// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// **适用场景**:
+//
+// 签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
-// **本接口适用于发起方没有填写控件的 B2C或者单C模板**
+// **注意**:
+//
+// 1. 本接口适用于**发起方没有填写控件的 B2C或者单C模板**,  若是B2C模板,还要满足以下任意一个条件
+//
+//     - 模板中配置的签署顺序是无序
+//
+//     - B端企业的签署方式是静默签署
+//
+//     - B端企业是非首位签署
+//
+// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+//
+// ]( https://qian.tencent.com/developers/company/callback_types_contracts_sign)
+//
+// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 //
 // 
 //
-// **若是B2C模板,还要满足以下任意一个条件**
+// 二维码的样式如下图:
 //
-// - 模板中配置的签署顺序是无序
-//
-// - B端企业的签署方式是静默签署
-//
-// - B端企业是非首位签署
-//
-// 
-//
-//  通过一码多扫二维码发起的合同，涉及到的合同回调消息可参考文档[合同发起以及签署相关回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)
-//
-// 
-//
-// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3163,31 +3167,35 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+// 
 //
-// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// **适用场景**:
+//
+// 签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
-// **本接口适用于发起方没有填写控件的 B2C或者单C模板**
+// **注意**:
+//
+// 1. 本接口适用于**发起方没有填写控件的 B2C或者单C模板**,  若是B2C模板,还要满足以下任意一个条件
+//
+//     - 模板中配置的签署顺序是无序
+//
+//     - B端企业的签署方式是静默签署
+//
+//     - B端企业是非首位签署
+//
+// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+//
+// ]( https://qian.tencent.com/developers/company/callback_types_contracts_sign)
+//
+// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 //
 // 
 //
-// **若是B2C模板,还要满足以下任意一个条件**
+// 二维码的样式如下图:
 //
-// - 模板中配置的签署顺序是无序
-//
-// - B端企业的签署方式是静默签署
-//
-// - B端企业是非首位签署
-//
-// 
-//
-//  通过一码多扫二维码发起的合同，涉及到的合同回调消息可参考文档[合同发起以及签署相关回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)
-//
-// 
-//
-// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

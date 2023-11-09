@@ -369,6 +369,10 @@ type AutoScalingGroup struct {
 	// <br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
 	// <br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil" name:"CapacityRebalance"`
+
+	// 实例名称序号相关设置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil" name:"InstanceNameIndexSettings"`
 }
 
 type AutoScalingGroupAbstract struct {
@@ -817,6 +821,9 @@ type CreateAutoScalingGroupRequestParams struct {
 	// 
 	// 默认取 FALSE。
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil" name:"CapacityRebalance"`
+
+	// 实例名称序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil" name:"InstanceNameIndexSettings"`
 }
 
 type CreateAutoScalingGroupRequest struct {
@@ -917,6 +924,9 @@ type CreateAutoScalingGroupRequest struct {
 	// 
 	// 默认取 FALSE。
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil" name:"CapacityRebalance"`
+
+	// 实例名称序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil" name:"InstanceNameIndexSettings"`
 }
 
 func (r *CreateAutoScalingGroupRequest) ToJsonString() string {
@@ -955,6 +965,7 @@ func (r *CreateAutoScalingGroupRequest) FromJsonString(s string) error {
 	delete(f, "InstanceAllocationPolicy")
 	delete(f, "SpotMixedAllocationPolicy")
 	delete(f, "CapacityRebalance")
+	delete(f, "InstanceNameIndexSettings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoScalingGroupRequest has unknown keys!", "")
 	}
@@ -3646,6 +3657,16 @@ type InstanceMarketOptionsRequest struct {
 	MarketType *string `json:"MarketType,omitnil" name:"MarketType"`
 }
 
+type InstanceNameIndexSettings struct {
+	// 是否开启实例创建序号，默认不开启。取值范围：<li>TRUE：表示开启实例创建序号<li>FALSE：表示不开启实例创建序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
+
+	// 初始序号，取值范围为 [0, 99999999]。当序号递增后超出取值范围时，扩容活动会失败。<li>首次开启实例名称序号：默认值为 0。<li>非首次开启实例名称序号：若不指定该参数，沿用历史序号。下调初始序号可能会造成伸缩组内实例名称序号重复。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginIndex *int64 `json:"BeginIndex,omitnil" name:"BeginIndex"`
+}
+
 type InstanceNameSettings struct {
 	// 云服务器的实例名。字符长度为[2, 108]。
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
@@ -4026,6 +4047,9 @@ type ModifyAutoScalingGroupRequestParams struct {
 	// <br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
 	// <br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil" name:"CapacityRebalance"`
+
+	// 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil" name:"InstanceNameIndexSettings"`
 }
 
 type ModifyAutoScalingGroupRequest struct {
@@ -4120,6 +4144,9 @@ type ModifyAutoScalingGroupRequest struct {
 	// <br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
 	// <br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil" name:"CapacityRebalance"`
+
+	// 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil" name:"InstanceNameIndexSettings"`
 }
 
 func (r *ModifyAutoScalingGroupRequest) ToJsonString() string {
@@ -4156,6 +4183,7 @@ func (r *ModifyAutoScalingGroupRequest) FromJsonString(s string) error {
 	delete(f, "InstanceAllocationPolicy")
 	delete(f, "SpotMixedAllocationPolicy")
 	delete(f, "CapacityRebalance")
+	delete(f, "InstanceNameIndexSettings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoScalingGroupRequest has unknown keys!", "")
 	}

@@ -2983,6 +2983,8 @@ func NewUpdateFileSystemBandwidthLimitResponse() (response *UpdateFileSystemBand
 // UpdateFileSystemBandwidthLimit
 // 更新文件系统带宽
 //
+// 仅吞吐型支持此接口
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADJUSTFREQUENCYLIMIT = "FailedOperation.AdjustFrequencyLimit"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2994,6 +2996,8 @@ func (c *Client) UpdateFileSystemBandwidthLimit(request *UpdateFileSystemBandwid
 
 // UpdateFileSystemBandwidthLimit
 // 更新文件系统带宽
+//
+// 仅吞吐型支持此接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADJUSTFREQUENCYLIMIT = "FailedOperation.AdjustFrequencyLimit"

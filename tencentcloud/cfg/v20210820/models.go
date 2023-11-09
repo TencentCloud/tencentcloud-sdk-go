@@ -269,6 +269,9 @@ type DescribeTaskListRequestParams struct {
 	// 结束时间，固定格式%Y-%m-%d %H:%M:%S
 	TaskEndTime *string `json:"TaskEndTime,omitnil" name:"TaskEndTime"`
 
+	// 更新时间，固定格式%Y-%m-%d %H:%M:%S
+	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil" name:"TaskUpdateTime"`
+
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
@@ -283,6 +286,9 @@ type DescribeTaskListRequestParams struct {
 
 	// 关联应用筛选
 	ApplicationName []*string `json:"ApplicationName,omitnil" name:"ApplicationName"`
+
+	// 任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
+	TaskStatusList []*uint64 `json:"TaskStatusList,omitnil" name:"TaskStatusList"`
 }
 
 type DescribeTaskListRequest struct {
@@ -309,6 +315,9 @@ type DescribeTaskListRequest struct {
 	// 结束时间，固定格式%Y-%m-%d %H:%M:%S
 	TaskEndTime *string `json:"TaskEndTime,omitnil" name:"TaskEndTime"`
 
+	// 更新时间，固定格式%Y-%m-%d %H:%M:%S
+	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil" name:"TaskUpdateTime"`
+
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
@@ -323,6 +332,9 @@ type DescribeTaskListRequest struct {
 
 	// 关联应用筛选
 	ApplicationName []*string `json:"ApplicationName,omitnil" name:"ApplicationName"`
+
+	// 任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
+	TaskStatusList []*uint64 `json:"TaskStatusList,omitnil" name:"TaskStatusList"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -344,11 +356,13 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 	delete(f, "TaskStatus")
 	delete(f, "TaskStartTime")
 	delete(f, "TaskEndTime")
+	delete(f, "TaskUpdateTime")
 	delete(f, "Tags")
 	delete(f, "Filters")
 	delete(f, "TaskId")
 	delete(f, "ApplicationId")
 	delete(f, "ApplicationName")
+	delete(f, "TaskStatusList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
 	}
@@ -948,6 +962,10 @@ type Task struct {
 	// 关联的APM服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApmServiceList []*ApmServiceInfo `json:"ApmServiceList,omitnil" name:"ApmServiceList"`
+
+	// 关联的隐患验证项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyId *uint64 `json:"VerifyId,omitnil" name:"VerifyId"`
 }
 
 type TaskConfig struct {
@@ -1212,6 +1230,14 @@ type TaskListItem struct {
 	// 关联应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil" name:"ApplicationName"`
+
+	// 验证项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyId *uint64 `json:"VerifyId,omitnil" name:"VerifyId"`
+
+	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatusType *uint64 `json:"TaskStatusType,omitnil" name:"TaskStatusType"`
 }
 
 type TaskMonitor struct {

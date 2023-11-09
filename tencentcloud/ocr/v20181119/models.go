@@ -107,6 +107,83 @@ type AdvertiseTextDetection struct {
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil" name:"AdvancedInfo"`
 }
 
+type AirTicketInfo struct {
+	// 旅客姓名
+	PassengerName *string `json:"PassengerName,omitnil" name:"PassengerName"`
+
+	// 有效身份证件号码
+	ValidIdNumber *string `json:"ValidIdNumber,omitnil" name:"ValidIdNumber"`
+
+	// 签注
+	Endorsement *string `json:"Endorsement,omitnil" name:"Endorsement"`
+
+	// GP单号
+	NumberOfGPOrder *string `json:"NumberOfGPOrder,omitnil" name:"NumberOfGPOrder"`
+
+	// 发票号码
+	ElectronicInvoiceAirTransportReceiptNumber *string `json:"ElectronicInvoiceAirTransportReceiptNumber,omitnil" name:"ElectronicInvoiceAirTransportReceiptNumber"`
+
+	// 机票详细信息元组
+	DetailInformationOfAirTicketTuple []*DetailInformationOfAirTicketTupleList `json:"DetailInformationOfAirTicketTuple,omitnil" name:"DetailInformationOfAirTicketTuple"`
+
+	// 票价
+	Fare *string `json:"Fare,omitnil" name:"Fare"`
+
+	// 燃油附加费
+	FuelSurcharge *string `json:"FuelSurcharge,omitnil" name:"FuelSurcharge"`
+
+	// 增值税税率
+	VatRate *string `json:"VatRate,omitnil" name:"VatRate"`
+
+	// 增值税税额
+	VatTaxAmount *string `json:"VatTaxAmount,omitnil" name:"VatTaxAmount"`
+
+	// 民航发展基金
+	CivilAviationDevelopmentFund *string `json:"CivilAviationDevelopmentFund,omitnil" name:"CivilAviationDevelopmentFund"`
+
+	// 其他税费
+	OtherTaxes *string `json:"OtherTaxes,omitnil" name:"OtherTaxes"`
+
+	// 合计
+	TotalAmount *string `json:"TotalAmount,omitnil" name:"TotalAmount"`
+
+	// 电子客票号码
+	ElectronicTicketNum *string `json:"ElectronicTicketNum,omitnil" name:"ElectronicTicketNum"`
+
+	// 验证码
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
+
+	// 提示信息
+	PromptInformation *string `json:"PromptInformation,omitnil" name:"PromptInformation"`
+
+	// 保险费
+	Insurance *string `json:"Insurance,omitnil" name:"Insurance"`
+
+	// 销售网点代号
+	AgentCode *string `json:"AgentCode,omitnil" name:"AgentCode"`
+
+	// 填开单位
+	IssueParty *string `json:"IssueParty,omitnil" name:"IssueParty"`
+
+	// 填开时间
+	IssueDate *string `json:"IssueDate,omitnil" name:"IssueDate"`
+
+	// 开具状态
+	IssuingStatus *string `json:"IssuingStatus,omitnil" name:"IssuingStatus"`
+
+	// 国内国际标识
+	MarkingOfDomesticOrInternational *string `json:"MarkingOfDomesticOrInternational,omitnil" name:"MarkingOfDomesticOrInternational"`
+
+	// 购买方名称
+	NameOfPurchaser *string `json:"NameOfPurchaser,omitnil" name:"NameOfPurchaser"`
+
+	// 销售方名称
+	NameOfSeller *string `json:"NameOfSeller,omitnil" name:"NameOfSeller"`
+
+	// 统一社会信用代码
+	UnifiedSocialCreditCodeOfPurchaser *string `json:"UnifiedSocialCreditCodeOfPurchaser,omitnil" name:"UnifiedSocialCreditCodeOfPurchaser"`
+}
+
 type AirTransport struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil" name:"Title"`
@@ -1310,6 +1387,44 @@ func (r *CreateAIFormTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateAIFormTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetailInformationOfAirTicketTupleList struct {
+	// 出发站（自）
+	DepartureStation *string `json:"DepartureStation,omitnil" name:"DepartureStation"`
+
+	// 目的地（至）
+	DestinationStation *string `json:"DestinationStation,omitnil" name:"DestinationStation"`
+
+	// 航班
+	FlightSegment *string `json:"FlightSegment,omitnil" name:"FlightSegment"`
+
+	// 航班
+	Carrier *string `json:"Carrier,omitnil" name:"Carrier"`
+
+	// 航班号
+	Flight *string `json:"Flight,omitnil" name:"Flight"`
+
+	// 座位等级
+	SeatClass *string `json:"SeatClass,omitnil" name:"SeatClass"`
+
+	// 日期
+	CarrierDate *string `json:"CarrierDate,omitnil" name:"CarrierDate"`
+
+	// 时间
+	DepartureTime *string `json:"DepartureTime,omitnil" name:"DepartureTime"`
+
+	// 客票级别/客票类别
+	FareBasis *string `json:"FareBasis,omitnil" name:"FareBasis"`
+
+	// 客票生效日期
+	EffectiveDate *string `json:"EffectiveDate,omitnil" name:"EffectiveDate"`
+
+	// 有效截止日期
+	ExpirationDate *string `json:"ExpirationDate,omitnil" name:"ExpirationDate"`
+
+	// 免费行李
+	FreeBaggageAllowance *string `json:"FreeBaggageAllowance,omitnil" name:"FreeBaggageAllowance"`
 }
 
 type DetectedWordCoordPoint struct {
@@ -5899,6 +6014,83 @@ func (r *QuotaInvoiceOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RailwayTicketInfo struct {
+	// 电子发票类型
+	TypeOfVoucher *string `json:"TypeOfVoucher,omitnil" name:"TypeOfVoucher"`
+
+	// 电子客票号
+	ElectronicTicketNum *string `json:"ElectronicTicketNum,omitnil" name:"ElectronicTicketNum"`
+
+	// 开票日期
+	DateOfIssue *string `json:"DateOfIssue,omitnil" name:"DateOfIssue"`
+
+	// 售票或退票类型
+	TypeOfBusiness *string `json:"TypeOfBusiness,omitnil" name:"TypeOfBusiness"`
+
+	// 始发站
+	DepartureStation *string `json:"DepartureStation,omitnil" name:"DepartureStation"`
+
+	// 始发站英文
+	PhonicsOfDepartureStation *string `json:"PhonicsOfDepartureStation,omitnil" name:"PhonicsOfDepartureStation"`
+
+	// 到达站
+	DestinationStation *string `json:"DestinationStation,omitnil" name:"DestinationStation"`
+
+	// 到达站英文
+	PhonicsOfDestinationStation *string `json:"PhonicsOfDestinationStation,omitnil" name:"PhonicsOfDestinationStation"`
+
+	// 火车号
+	TrainNumber *string `json:"TrainNumber,omitnil" name:"TrainNumber"`
+
+	// 火车出发日期
+	TravelDate *string `json:"TravelDate,omitnil" name:"TravelDate"`
+
+	// 始发时间
+	DepartureTime *string `json:"DepartureTime,omitnil" name:"DepartureTime"`
+
+	// 空调特点
+	AirConditioningCharacteristics *string `json:"AirConditioningCharacteristics,omitnil" name:"AirConditioningCharacteristics"`
+
+	// 座位类型
+	SeatLevel *string `json:"SeatLevel,omitnil" name:"SeatLevel"`
+
+	// 火车第几车
+	Carriage *string `json:"Carriage,omitnil" name:"Carriage"`
+
+	// 座位号
+	Seat *string `json:"Seat,omitnil" name:"Seat"`
+
+	// 票价
+	Fare *string `json:"Fare,omitnil" name:"Fare"`
+
+	// 发票号码
+	ElectronicInvoiceRailwayETicketNumber *string `json:"ElectronicInvoiceRailwayETicketNumber,omitnil" name:"ElectronicInvoiceRailwayETicketNumber"`
+
+	// 身份证号
+	IdNumber *string `json:"IdNumber,omitnil" name:"IdNumber"`
+
+	// 姓名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 金额
+	TotalAmountExcludingTax *string `json:"TotalAmountExcludingTax,omitnil" name:"TotalAmountExcludingTax"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitnil" name:"TaxRate"`
+
+	// 税额
+	TaxAmount *string `json:"TaxAmount,omitnil" name:"TaxAmount"`
+
+	// 购买方名称
+	NameOfPurchaser *string `json:"NameOfPurchaser,omitnil" name:"NameOfPurchaser"`
+
+	// 统一社会信用代码
+	UnifiedSocialCreditCodeOfPurchaser *string `json:"UnifiedSocialCreditCodeOfPurchaser,omitnil" name:"UnifiedSocialCreditCodeOfPurchaser"`
+
+	// 原发票号码
+	NumberOfOriginalInvoice *string `json:"NumberOfOriginalInvoice,omitnil" name:"NumberOfOriginalInvoice"`
 }
 
 // Predefined struct for user
@@ -11176,6 +11368,12 @@ type VerifyOfdVatInvoiceOCRResponseParams struct {
 
 	// 货物或服务清单
 	GoodsInfos []*VatInvoiceGoodsInfo `json:"GoodsInfos,omitnil" name:"GoodsInfos"`
+
+	// 航空运输电子客票行程单信息
+	AirTicketInfo *AirTicketInfo `json:"AirTicketInfo,omitnil" name:"AirTicketInfo"`
+
+	// 铁路电子客票
+	RailwayTicketInfo *RailwayTicketInfo `json:"RailwayTicketInfo,omitnil" name:"RailwayTicketInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

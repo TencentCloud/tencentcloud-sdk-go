@@ -235,7 +235,8 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVideoModerationTaskRequestParams struct {
-	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
+	// 该字段表示策略的具体编号，用于接口调度，在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
@@ -257,7 +258,8 @@ type CreateVideoModerationTaskRequestParams struct {
 type CreateVideoModerationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
+	// 该字段表示策略的具体编号，用于接口调度，在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
@@ -428,9 +430,14 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil" name:"AudioSegments"`
 
-	// 当任务状态为Error时，返回对应错误的类型，取值：**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
+	// 当任务状态为Error时，返回对应错误的类型，取值：
+	// **DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
 	// **URL_ERROR**：下载地址验证失败。
-	// **TIMEOUT_ERROR**：处理超时。任务状态非Error时默认返回为空。
+	// **TIMEOUT_ERROR**：处理超时。
+	// **CALLBACK_ERRORR**：回调错误。
+	// **MODERATION_ERROR**：审核失败。
+	// **URL_NOT_SUPPORTED**：源文件太大或没有图片音频帧
+	// 任务状态非Error时默认返回为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorType *string `json:"ErrorType,omitnil" name:"ErrorType"`
 
@@ -449,6 +456,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 该字段用于返回音频文件识别出的对应文本内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Asrs []*RcbAsr `json:"Asrs,omitnil" name:"Asrs"`
+
+	// 该字段用于返回检测结果明细数据相关的cos url	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentCosUrlList *SegmentCosUrlList `json:"SegmentCosUrlList,omitnil" name:"SegmentCosUrlList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -643,7 +654,7 @@ type ImageResultResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil" name:"Score"`
 
-	// 如果命中场景为涉政，则该数据为人物姓名列表，否则null
+	// 人物名称列表，如未识别，则为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Names []*string `json:"Names,omitnil" name:"Names"`
 
@@ -782,6 +793,28 @@ type RecognitionResult struct {
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
+type SegmentCosUrlList struct {
+	// 全量图片片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageAllUrl *string `json:"ImageAllUrl,omitnil" name:"ImageAllUrl"`
+
+	// 全量音频片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioAllUrl *string `json:"AudioAllUrl,omitnil" name:"AudioAllUrl"`
+
+	// 违规图片片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageBlockUrl *string `json:"ImageBlockUrl,omitnil" name:"ImageBlockUrl"`
+
+	// 违规音频片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioBlockUrl *string `json:"AudioBlockUrl,omitnil" name:"AudioBlockUrl"`
+
+	// 全量音频识别文本的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrUrl *string `json:"AsrUrl,omitnil" name:"AsrUrl"`
+}
+
 type StorageInfo struct {
 	// 类型 可选：
 	// URL 资源链接类型
@@ -912,6 +945,10 @@ type TaskLabel struct {
 	// 得分，分数是 0 ～ 100
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 命中的二级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitnil" name:"SubLabel"`
 }
 
 type TaskResult struct {

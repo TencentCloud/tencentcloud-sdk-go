@@ -1,3 +1,265 @@
+# Release v1.0.788
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 69 次发布
+
+发布时间：2023-11-10 01:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
+
+	* 新增入参：InstanceNameIndexSettings
+
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
+
+	* 新增入参：InstanceNameIndexSettings
+
+
+新增数据结构：
+
+* [InstanceNameIndexSettings](https://cloud.tencent.com/document/api/377/20453#InstanceNameIndexSettings)
+
+修改数据结构：
+
+* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
+
+	* 新增成员：InstanceNameIndexSettings
+
+
+
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 12 次发布
+
+发布时间：2023-11-10 01:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskList](https://cloud.tencent.com/document/api/1500/71779)
+
+	* 新增入参：TaskUpdateTime, TaskStatusList
+
+
+修改数据结构：
+
+* [Task](https://cloud.tencent.com/document/api/1500/71784#Task)
+
+	* 新增成员：VerifyId
+
+* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
+
+	* 新增成员：VerifyId, TaskStatusType
+
+
+
+
+## 数字版权管理(drm) 版本：2018-11-15
+
+### 第 6 次发布
+
+发布时间：2023-11-10 01:14:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GenerateTDRMKey](https://cloud.tencent.com/document/api/1000/101455)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 130 次发布
+
+发布时间：2023-11-10 01:16:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelDescribeBillUsageDetail](https://cloud.tencent.com/document/api/1420/101456)
+
+新增数据结构：
+
+* [ChannelBillUsageDetail](https://cloud.tencent.com/document/api/1420/61525#ChannelBillUsageDetail)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 64 次发布
+
+发布时间：2023-11-10 01:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* <font color="#dd0000">**修改成员**：</font>IdInfoFrom, NFCRequestIds, NFCBillingCounts, PassNo, VisaNum
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 117 次发布
+
+发布时间：2023-11-10 01:21:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyOfdVatInvoiceOCR](https://cloud.tencent.com/document/api/866/52296)
+
+	* 新增出参：AirTicketInfo, RailwayTicketInfo
+
+
+新增数据结构：
+
+* [AirTicketInfo](https://cloud.tencent.com/document/api/866/33527#AirTicketInfo)
+* [DetailInformationOfAirTicketTupleList](https://cloud.tencent.com/document/api/866/33527#DetailInformationOfAirTicketTupleList)
+* [RailwayTicketInfo](https://cloud.tencent.com/document/api/866/33527#RailwayTicketInfo)
+
+
+
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 5 次发布
+
+发布时间：2023-11-10 01:28:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/80016)
+
+	* 新增出参：SegmentCosUrlList
+
+
+新增数据结构：
+
+* [SegmentCosUrlList](https://cloud.tencent.com/document/api/1265/80019#SegmentCosUrlList)
+
+修改数据结构：
+
+* [TaskLabel](https://cloud.tencent.com/document/api/1265/80019#TaskLabel)
+
+	* 新增成员：SubLabel
+
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
+
+
+
+## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
+
+### 第 2 次发布
+
+发布时间：2023-11-10 01:30:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAlarmProcessRecord](https://cloud.tencent.com/document/api/1693/101492)
+* [BatchCreateDevice](https://cloud.tencent.com/document/api/1693/101491)
+* [BatchKillAlarm](https://cloud.tencent.com/document/api/1693/101490)
+* [BatchReportAppMessage](https://cloud.tencent.com/document/api/1693/101489)
+* [ChangeAlarmStatus](https://cloud.tencent.com/document/api/1693/101488)
+* [ControlCameraPTZ](https://cloud.tencent.com/document/api/1693/101468)
+* [ControlDevice](https://cloud.tencent.com/document/api/1693/101487)
+* [CreateApplicationToken](https://cloud.tencent.com/document/api/1693/101495)
+* [DescribeActionList](https://cloud.tencent.com/document/api/1693/101486)
+* [DescribeAdministrationByTag](https://cloud.tencent.com/document/api/1693/101461)
+* [DescribeAlarmLevelList](https://cloud.tencent.com/document/api/1693/101485)
+* [DescribeAlarmList](https://cloud.tencent.com/document/api/1693/101484)
+* [DescribeAlarmStatusList](https://cloud.tencent.com/document/api/1693/101460)
+* [DescribeAlarmTypeList](https://cloud.tencent.com/document/api/1693/101483)
+* [DescribeBuildingList](https://cloud.tencent.com/document/api/1693/101512)
+* [DescribeBuildingModel](https://cloud.tencent.com/document/api/1693/101511)
+* [DescribeBuildingProfile](https://cloud.tencent.com/document/api/1693/101510)
+* [DescribeCameraExtendInfo](https://cloud.tencent.com/document/api/1693/101467)
+* [DescribeCityWorkspaceList](https://cloud.tencent.com/document/api/1693/101459)
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1693/101482)
+* [DescribeDeviceShadowList](https://cloud.tencent.com/document/api/1693/101481)
+* [DescribeDeviceStatusList](https://cloud.tencent.com/document/api/1693/101480)
+* [DescribeDeviceStatusStat](https://cloud.tencent.com/document/api/1693/101479)
+* [DescribeDeviceTagList](https://cloud.tencent.com/document/api/1693/101478)
+* [DescribeDeviceTypeList](https://cloud.tencent.com/document/api/1693/101477)
+* [DescribeElementProfilePage](https://cloud.tencent.com/document/api/1693/101509)
+* [DescribeElementProfileTree](https://cloud.tencent.com/document/api/1693/101508)
+* [DescribeEventList](https://cloud.tencent.com/document/api/1693/101476)
+* [DescribeFileDownloadURL](https://cloud.tencent.com/document/api/1693/101494)
+* [DescribeFileUploadURL](https://cloud.tencent.com/document/api/1693/101493)
+* [DescribeLinkRuleList](https://cloud.tencent.com/document/api/1693/101475)
+* [DescribeModelList](https://cloud.tencent.com/document/api/1693/101474)
+* [DescribeProductList](https://cloud.tencent.com/document/api/1693/101473)
+* [DescribePropertyList](https://cloud.tencent.com/document/api/1693/101507)
+* [DescribeRuleDetail](https://cloud.tencent.com/document/api/1693/101472)
+* [DescribeSceneList](https://cloud.tencent.com/document/api/1693/101506)
+* [DescribeSpaceDeviceIdList](https://cloud.tencent.com/document/api/1693/101505)
+* [DescribeSpaceDeviceRelationList](https://cloud.tencent.com/document/api/1693/101504)
+* [DescribeSpaceInfoByDeviceId](https://cloud.tencent.com/document/api/1693/101503)
+* [DescribeSpaceRelationByDeviceId](https://cloud.tencent.com/document/api/1693/101502)
+* [DescribeSpaceTypeList](https://cloud.tencent.com/document/api/1693/101501)
+* [DescribeTenantBuildingCountAndArea](https://cloud.tencent.com/document/api/1693/101500)
+* [DescribeTenantDepartmentList](https://cloud.tencent.com/document/api/1693/101497)
+* [DescribeTenantUserList](https://cloud.tencent.com/document/api/1693/101496)
+* [DescribeVideoCloudRecord](https://cloud.tencent.com/document/api/1693/101466)
+* [DescribeVideoLiveStream](https://cloud.tencent.com/document/api/1693/101465)
+* [DescribeVideoRecordStream](https://cloud.tencent.com/document/api/1693/101464)
+* [DescribeWorkSpaceBuildingCountAndArea](https://cloud.tencent.com/document/api/1693/101499)
+* [ModifyDeviceName](https://cloud.tencent.com/document/api/1693/101471)
+* [ReportAppMessage](https://cloud.tencent.com/document/api/1693/101470)
+* [StopVideoStreaming](https://cloud.tencent.com/document/api/1693/101463)
+* [UpdateWorkspaceParkAttributes](https://cloud.tencent.com/document/api/1693/101458)
+
+新增数据结构：
+
+* [SsoDepartment](https://cloud.tencent.com/document/api/1693/97961#SsoDepartment)
+* [SsoDepartmentsResult](https://cloud.tencent.com/document/api/1693/97961#SsoDepartmentsResult)
+* [SsoUser](https://cloud.tencent.com/document/api/1693/97961#SsoUser)
+* [SsoUserResult](https://cloud.tencent.com/document/api/1693/97961#SsoUserResult)
+
+
+
 # Release v1.0.787
 
 ## 文件存储(cfs) 版本：2019-07-19

@@ -509,6 +509,61 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
     return
 }
 
+func NewGenerateTDRMKeyRequest() (request *GenerateTDRMKeyRequest) {
+    request = &GenerateTDRMKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("drm", APIVersion, "GenerateTDRMKey")
+    
+    
+    return
+}
+
+func NewGenerateTDRMKeyResponse() (response *GenerateTDRMKeyResponse) {
+    response = &GenerateTDRMKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateTDRMKey
+// 开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GenerateTDRMKey(request *GenerateTDRMKeyRequest) (response *GenerateTDRMKeyResponse, err error) {
+    return c.GenerateTDRMKeyWithContext(context.Background(), request)
+}
+
+// GenerateTDRMKey
+// 开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GenerateTDRMKeyWithContext(ctx context.Context, request *GenerateTDRMKeyRequest) (response *GenerateTDRMKeyResponse, err error) {
+    if request == nil {
+        request = NewGenerateTDRMKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateTDRMKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateTDRMKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
     request = &ModifyFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},

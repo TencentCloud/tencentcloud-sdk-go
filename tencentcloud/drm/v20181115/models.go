@@ -737,6 +737,87 @@ type FairPlayPemDigestInfo struct {
 	Md5PemDecryptKey *string `json:"Md5PemDecryptKey,omitnil" name:"Md5PemDecryptKey"`
 }
 
+// Predefined struct for user
+type GenerateTDRMKeyRequestParams struct {
+	// 使用的DRM方案类型，接口取值 NORMALAES 。
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
+
+	// 加密的track列表，接口取值 SD 。
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 内容类型。接口取值 LiveVideo 。
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
+}
+
+type GenerateTDRMKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 使用的DRM方案类型，接口取值 NORMALAES 。
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
+
+	// 加密的track列表，接口取值 SD 。
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 内容类型。接口取值 LiveVideo 。
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
+}
+
+func (r *GenerateTDRMKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateTDRMKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "Tracks")
+	delete(f, "ContentId")
+	delete(f, "ContentType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateTDRMKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateTDRMKeyResponseParams struct {
+	// 内容ID。
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
+
+	// 加密密钥。
+	TXEncryptionToken *string `json:"TXEncryptionToken,omitnil" name:"TXEncryptionToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GenerateTDRMKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateTDRMKeyResponseParams `json:"Response"`
+}
+
+func (r *GenerateTDRMKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateTDRMKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Key struct {
 	// 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
 	Track *string `json:"Track,omitnil" name:"Track"`

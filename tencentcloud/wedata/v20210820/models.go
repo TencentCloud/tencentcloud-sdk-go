@@ -3142,32 +3142,32 @@ func (r *CommitIntegrationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CommitRuleGroupExecResultRequestParams struct {
-	// preject id
+	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// rule group exec id
+	// 规则组执行ID
 	RuleGroupExecId *uint64 `json:"RuleGroupExecId,omitnil" name:"RuleGroupExecId"`
 
-	// group exec state
+	// 规则组执行状态
 	RuleGroupState *string `json:"RuleGroupState,omitnil" name:"RuleGroupState"`
 
-	// runner rule exec result list
+	// 规则执行结果集合
 	RuleExecResults []*RunnerRuleExecResult `json:"RuleExecResults,omitnil" name:"RuleExecResults"`
 }
 
 type CommitRuleGroupExecResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// preject id
+	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// rule group exec id
+	// 规则组执行ID
 	RuleGroupExecId *uint64 `json:"RuleGroupExecId,omitnil" name:"RuleGroupExecId"`
 
-	// group exec state
+	// 规则组执行状态
 	RuleGroupState *string `json:"RuleGroupState,omitnil" name:"RuleGroupState"`
 
-	// runner rule exec result list
+	// 规则执行结果集合
 	RuleExecResults []*RunnerRuleExecResult `json:"RuleExecResults,omitnil" name:"RuleExecResults"`
 }
 
@@ -20855,7 +20855,7 @@ func (r *DescribeTasksByPageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplateDimCountRequestParams struct {
-	// 模版类型
+	// 模板类型
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 项目ID
@@ -20865,7 +20865,7 @@ type DescribeTemplateDimCountRequestParams struct {
 type DescribeTemplateDimCountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版类型
+	// 模板类型
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 项目ID
@@ -27128,7 +27128,7 @@ type ModifyRuleRequestParams struct {
 	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
-	// 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+	// 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
 	QualityDim *uint64 `json:"QualityDim,omitnil" name:"QualityDim"`
 
 	// 源字段详细类型，int、string
@@ -27201,7 +27201,7 @@ type ModifyRuleRequest struct {
 	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
-	// 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+	// 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
 	QualityDim *uint64 `json:"QualityDim,omitnil" name:"QualityDim"`
 
 	// 源字段详细类型，int、string
@@ -27319,13 +27319,13 @@ func (r *ModifyRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRuleTemplateRequestParams struct {
-	// 模版ID
+	// 模板ID
 	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 模版类型  1.系统模版   2.自定义模版
+	// 模板类型  1.系统模板   2.自定义模板
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
-	// 模版名称
+	// 模板名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
@@ -27356,13 +27356,13 @@ type ModifyRuleTemplateRequestParams struct {
 type ModifyRuleTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版ID
+	// 模板ID
 	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 模版类型  1.系统模版   2.自定义模版
+	// 模板类型  1.系统模板   2.自定义模板
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
-	// 模版名称
+	// 模板名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性

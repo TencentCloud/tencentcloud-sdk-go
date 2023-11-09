@@ -11870,7 +11870,7 @@ func NewDescribeTemplateDimCountResponse() (response *DescribeTemplateDimCountRe
 }
 
 // DescribeTemplateDimCount
-// 查询规则模版维度分布情况
+// 查询规则模板维度分布情况
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11880,7 +11880,7 @@ func (c *Client) DescribeTemplateDimCount(request *DescribeTemplateDimCountReque
 }
 
 // DescribeTemplateDimCount
-// 查询规则模版维度分布情况
+// 查询规则模板维度分布情况
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11921,7 +11921,7 @@ func NewDescribeTemplateHistoryResponse() (response *DescribeTemplateHistoryResp
 }
 
 // DescribeTemplateHistory
-// 查询规则模版操作记录
+// 查询规则模板操作记录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11931,7 +11931,7 @@ func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest
 }
 
 // DescribeTemplateHistory
-// 查询规则模版操作记录
+// 查询规则模板操作记录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14438,7 +14438,7 @@ func NewModifyRuleTemplateResponse() (response *ModifyRuleTemplateResponse) {
 }
 
 // ModifyRuleTemplate
-// 编辑规则模版
+// 编辑规则模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14448,7 +14448,7 @@ func (c *Client) ModifyRuleTemplate(request *ModifyRuleTemplateRequest) (respons
 }
 
 // ModifyRuleTemplate
-// 编辑规则模版
+// 编辑规则模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

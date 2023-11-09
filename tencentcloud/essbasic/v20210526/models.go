@@ -435,6 +435,73 @@ func (r *ChannelBatchCancelFlowsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelBillUsageDetail struct {
+	// 合同流程ID，为32位字符串。
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 合同经办人名称
+	// 如果有多个经办人用分号隔开。
+	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
+
+	// 发起方组织机构名称
+	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil" name:"CreateOrganizationName"`
+
+	// 合同流程的名称。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 合同流程当前的签署状态, 会存在下列的状态值
+	// <ul>
+	// <li>**INIT**: 合同创建</li>
+	// <li>**PART**: 合同签署中(至少有一个签署方已经签署)</li>
+	// <li>**REJECT**: 合同拒签</li>
+	// <li>**ALL**: 合同签署完成</li>
+	// <li>**DEADLINE**: 合同流签(合同过期)</li>
+	// <li>**CANCEL**: 合同撤回</li>
+	// <li>**RELIEVED**: 解除协议（已解除）</li>
+	// <li>**WILLEXPIRE**: 合同即将过期</li>
+	// <li>**EXCEPTION**: 合同异常</li>
+	// </ul>
+	FlowStatus *string `json:"FlowStatus,omitnil" name:"FlowStatus"`
+
+	// 查询的套餐类型
+	// 对应关系如下:
+	// <ul>
+	// <li>**CloudEnterprise**: 企业版合同</li>
+	// <li>**SingleSignature**: 单方签章</li>
+	// <li>**CloudProve**: 签署报告</li>
+	// <li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+	// <li>**ChannelWeCard**: 微工卡</li>
+	// <li>**SignFlow**: 合同套餐</li>
+	// <li>**SignFace**: 签署意愿（人脸识别）</li>
+	// <li>**SignPassword**: 签署意愿（密码）</li>
+	// <li>**SignSMS**: 签署意愿（短信）</li>
+	// <li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+	// <li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+	// <li>**OrgEssAuth**: 签署企业实名</li>
+	// <li>**FlowNotify**: 短信通知</li>
+	// <li>**AuthService**: 企业工商信息查询</li>
+	// </ul>
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 合同使用量
+	// 注: `如果消耗类型是撤销返还，此值为负值代表返还的合同数量`
+	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
+
+	// 消耗的时间戳，格式为Unix标准时间戳（秒）。
+	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
+
+	// 消耗的套餐名称
+	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
+
+	// 消耗类型
+	// **1**.扣费 
+	// **2**.撤销返还
+	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
 // Predefined struct for user
 type ChannelCancelFlowRequestParams struct {
 	// 要撤销的合同流程ID
@@ -559,13 +626,14 @@ type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 二维码ID，为32位字符串。
+	// 需要取消签署的二维码ID，为32位字符串。由[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -581,13 +649,14 @@ type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 二维码ID，为32位字符串。
+	// 需要取消签署的二维码ID，为32位字符串。由[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -1128,11 +1197,18 @@ func (r *ChannelCreateBatchSignUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateBoundFlowsRequestParams struct {
-	// 应用信息
-	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证,  合同会领取给对应的Agent.ProxyOperator.OpenId指定的员工来处理
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 领取的合同id列表
+	// 需要领取的合同流程的ID列表
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 暂未开放
@@ -1144,11 +1220,18 @@ type ChannelCreateBoundFlowsRequestParams struct {
 type ChannelCreateBoundFlowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用信息
-	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证,  合同会领取给对应的Agent.ProxyOperator.OpenId指定的员工来处理
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 领取的合同id列表
+	// 需要领取的合同流程的ID列表
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 暂未开放
@@ -2397,14 +2480,14 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
-	// 建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
@@ -2450,14 +2533,14 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
-	// 建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
@@ -3986,6 +4069,151 @@ func (r *ChannelDeleteSealPoliciesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelDescribeBillUsageDetailRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 目前支持:
+	// <ul>
+	// <li>**CloudEnterprise**: 企业版合同</li>
+	// <li>**SingleSignature**: 单方签章</li>
+	// <li>**CloudProve**: 签署报告</li>
+	// <li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+	// <li>**ChannelWeCard**: 微工卡</li>
+	// <li>**SignFlow**: 合同套餐</li>
+	// <li>**SignFace**: 签署意愿（人脸识别）</li>
+	// <li>**SignPassword**: 签署意愿（密码）</li>
+	// <li>**SignSMS**: 签署意愿（短信）</li>
+	// <li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+	// <li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+	// <li>**OrgEssAuth**: 签署企业实名</li>
+	// <li>**FlowNotify**: 短信通知</li>
+	// <li>**AuthService**: 企业工商信息查询</li>
+	// </ul>
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type ChannelDescribeBillUsageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
+	// 目前支持:
+	// <ul>
+	// <li>**CloudEnterprise**: 企业版合同</li>
+	// <li>**SingleSignature**: 单方签章</li>
+	// <li>**CloudProve**: 签署报告</li>
+	// <li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+	// <li>**ChannelWeCard**: 微工卡</li>
+	// <li>**SignFlow**: 合同套餐</li>
+	// <li>**SignFace**: 签署意愿（人脸识别）</li>
+	// <li>**SignPassword**: 签署意愿（密码）</li>
+	// <li>**SignSMS**: 签署意愿（短信）</li>
+	// <li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+	// <li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+	// <li>**OrgEssAuth**: 签署企业实名</li>
+	// <li>**FlowNotify**: 短信通知</li>
+	// <li>**AuthService**: 企业工商信息查询</li>
+	// </ul>
+	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *ChannelDescribeBillUsageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeBillUsageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QuotaType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeBillUsageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeBillUsageDetailResponseParams struct {
+	// 返回查询记录总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 消耗记录详情
+	Details []*ChannelBillUsageDetail `json:"Details,omitnil" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ChannelDescribeBillUsageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeBillUsageDetailResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeBillUsageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeBillUsageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelDescribeEmployeesRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -4115,20 +4343,36 @@ func (r *ChannelDescribeEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeFlowComponentsRequestParams struct {
-	// 应用相关信息。此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签流程的Id
+	// 需要获取填写控件填写内容的合同流程ID
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 }
 
 type ChannelDescribeFlowComponentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签流程的Id
+	// 需要获取填写控件填写内容的合同流程ID
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 }
 
@@ -4154,8 +4398,7 @@ func (r *ChannelDescribeFlowComponentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeFlowComponentsResponseParams struct {
-	// 流程关联的填写控件信息，控件会按照参与方进行分类。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil" name:"RecipientComponentInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7058,25 +7301,37 @@ func (r *DescribeTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUsageRequestParams struct {
-	// 应用信息，此接口Agent.AppId必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 开始时间，例如：2021-03-21
+	// 查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
+	// 
+	// 注: `查询日期范围区间长度大于90天`。
 	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
-	// 结束时间，例如：2021-06-21；
-	// 开始时间到结束时间的区间长度小于等于90天。
+	// 查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
+	// 
+	// 注: `查询日期范围区间长度大于90天`。
 	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
-	// 不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-	// 汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
+	// <ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
+	// <li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
 	NeedAggregate *bool `json:"NeedAggregate,omitnil" name:"NeedAggregate"`
 
-	// 单次返回的最多条目数量。默认为1000，且不能超过1000。
+	// 指定每页返回的数据条数，和Offset参数配合使用。
+	// 
+	// 注: `默认值为1000，单页做大值为1000`
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 偏移量，默认是0。
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+	// 
+	// 注：`offset从0开始，即第一页为0。`
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 暂未开放
@@ -7088,25 +7343,37 @@ type DescribeUsageRequestParams struct {
 type DescribeUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用信息，此接口Agent.AppId必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 开始时间，例如：2021-03-21
+	// 查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
+	// 
+	// 注: `查询日期范围区间长度大于90天`。
 	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
-	// 结束时间，例如：2021-06-21；
-	// 开始时间到结束时间的区间长度小于等于90天。
+	// 查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
+	// 
+	// 注: `查询日期范围区间长度大于90天`。
 	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
-	// 不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-	// 汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
+	// <ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
+	// <li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
 	NeedAggregate *bool `json:"NeedAggregate,omitnil" name:"NeedAggregate"`
 
-	// 单次返回的最多条目数量。默认为1000，且不能超过1000。
+	// 指定每页返回的数据条数，和Offset参数配合使用。
+	// 
+	// 注: `默认值为1000，单页做大值为1000`
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 偏移量，默认是0。
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+	// 
+	// 注：`offset从0开始，即第一页为0。`
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 暂未开放
@@ -7246,24 +7513,23 @@ type FillError struct {
 }
 
 type FilledComponent struct {
-	// 控件Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 填写控件ID
 	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
 
 	// 控件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
 
-	// 控件填写状态；0-未填写；1-已填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 此填写控件的填写状态
+	//  **0** : 此填写控件**未填写**
+	// **1** : 此填写控件**已填写**
 	ComponentFillStatus *string `json:"ComponentFillStatus,omitnil" name:"ComponentFillStatus"`
 
 	// 控件填写内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
 
 	// 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 
+	// 注: `链接不是永久链接,  默认有效期5分钟后, 到期后链接失效`
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 }
 
@@ -8456,19 +8722,23 @@ type Recipient struct {
 }
 
 type RecipientComponentInfo struct {
-	// 参与方Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 参与方的角色ID
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
 	// 参与方填写状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 
+	// <ul><li> **0** : 还没有填写</li>
+	// <li> **1** : 已经填写</li></ul>
 	RecipientFillStatus *string `json:"RecipientFillStatus,omitnil" name:"RecipientFillStatus"`
 
-	// 是否发起方
+	// 此角色是否是发起方角色
+	// 
+	// <ul><li> **true** : 是发起方角色</li>
+	// <li> **false** : 不是发起方角色</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPromoter *bool `json:"IsPromoter,omitnil" name:"IsPromoter"`
 
-	// 填写控件内容
+	// 此角色的填写控件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components []*FilledComponent `json:"Components,omitnil" name:"Components"`
 }
@@ -8569,12 +8839,15 @@ type ResourceUrlInfo struct {
 
 type SignQrCode struct {
 	// 二维码ID，为32位字符串。	
+	// 
+	// 注: 需要保留此二维码ID, 用于后序通过<a href="https://qian.tencent.com/developers/partnerApis/templates/ChannelCancelMultiFlowSignQRCode" target="_blank">取消一码多扫二维码</a>关闭这个二维码的签署功能。	
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 二维码URL，可通过转换二维码的工具或代码组件将此URL转化为二维码，以便用户扫描进行流程签署。	
 	QrCodeUrl *string `json:"QrCodeUrl,omitnil" name:"QrCodeUrl"`
 
-	// 二维码的有截止时间，格式为Unix标准时间戳（秒）。 一旦超过二维码的有效期限，该二维码将自动失效。	
+	// 二维码的有截止时间，格式为Unix标准时间戳（秒），可以通过入参的QrEffectiveDay来设置有效期，默认为7天有效期。 
+	// 一旦超过二维码的有效期限，该二维码将自动失效。	
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
 }
 
@@ -9152,21 +9425,21 @@ func (r *UploadFilesResponse) FromJsonString(s string) error {
 }
 
 type UsageDetail struct {
-	// 子客企业唯一标识
+	// 子客企业标识
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
 
 	// 子客企业名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
 
-	// 日期，当需要汇总数据时日期为空
+	// 对应的消耗日期, **如果是汇总数据则为1970-01-01**
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitnil" name:"Date"`
 
-	// 消耗数量
+	// 消耗合同数量
 	Usage *uint64 `json:"Usage,omitnil" name:"Usage"`
 
-	// 撤回数量
+	// 撤回合同数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cancel *uint64 `json:"Cancel,omitnil" name:"Cancel"`
 

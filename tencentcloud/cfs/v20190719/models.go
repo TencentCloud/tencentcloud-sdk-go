@@ -2459,10 +2459,10 @@ type FileSystemInfo struct {
 	// - upgrading:升级中
 	LifeCycleState *string `json:"LifeCycleState,omitnil" name:"LifeCycleState"`
 
-	// 文件系统已使用容量,单位Byte
+	// 文件系统已使用容量。单位：Byte
 	SizeByte *uint64 `json:"SizeByte,omitnil" name:"SizeByte"`
 
-	// 文件系统最大空间限制,GiB
+	// 文件系统最大空间限制。单位:GiB
 	SizeLimit *uint64 `json:"SizeLimit,omitnil" name:"SizeLimit"`
 
 	// 区域 ID
@@ -2502,6 +2502,7 @@ type FileSystemInfo struct {
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitnil" name:"BandwidthLimit"`
 
 	// 文件系统总容量
+	// 单位:GiB
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 文件系统标签列表
