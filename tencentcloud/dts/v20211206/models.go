@@ -5243,7 +5243,7 @@ type Table struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnMode *string `json:"ColumnMode,omitnil" name:"ColumnMode"`
 
-	// 同步的的列信息，当ColumnMode为Partial时，必填
+	// 同步的列信息，当ColumnMode为Partial时，必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitnil" name:"Columns"`
 

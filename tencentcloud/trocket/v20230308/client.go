@@ -524,6 +524,67 @@ func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeConsumerGroupListRequest() (request *DescribeConsumerGroupListRequest) {
+    request = &DescribeConsumerGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerGroupList")
+    
+    
+    return
+}
+
+func NewDescribeConsumerGroupListResponse() (response *DescribeConsumerGroupListResponse) {
+    response = &DescribeConsumerGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerGroupList
+// 获取消费组列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. ConsumerGroupName，名称模糊查询
+//
+// 2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerGroupList(request *DescribeConsumerGroupListRequest) (response *DescribeConsumerGroupListResponse, err error) {
+    return c.DescribeConsumerGroupListWithContext(context.Background(), request)
+}
+
+// DescribeConsumerGroupList
+// 获取消费组列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. ConsumerGroupName，名称模糊查询
+//
+// 2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerGroupListWithContext(ctx context.Context, request *DescribeConsumerGroupListRequest) (response *DescribeConsumerGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
     request = &DescribeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

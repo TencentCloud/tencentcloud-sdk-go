@@ -1,3 +1,104 @@
+# Release v1.0.789
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 21 次发布
+
+发布时间：2023-11-13 00:07:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssetViewPortRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewPortRisk)
+
+	* <font color="#dd0000">**修改成员**：</font>Port, AffectAsset, Level, InstanceType, Protocol, Component, Service, RecentTime, FirstTime, Suggestion, Status, Id, Index, InstanceId, InstanceName, AppId, Nick, Uin, From
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 73 次发布
+
+发布时间：2023-11-13 00:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDataEngineEvents](https://cloud.tencent.com/document/api/1342/101534)
+
+新增数据结构：
+
+* [HouseEventsInfo](https://cloud.tencent.com/document/api/1342/53778#HouseEventsInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 131 次发布
+
+发布时间：2023-11-13 00:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeBillUsageDetail
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 1 次发布
+
+发布时间：2023-11-10 16:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1721/101517)
+
+新增数据结构：
+
+* [SystemDisk](https://cloud.tencent.com/document/api/1721/101518#SystemDisk)
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 5 次发布
+
+发布时间：2023-11-13 00:24:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535)
+
+新增数据结构：
+
+* [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem)
+
+
+
 # Release v1.0.788
 
 ## 弹性伸缩(as) 版本：2018-04-19

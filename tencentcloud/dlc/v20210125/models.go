@@ -5239,6 +5239,94 @@ func (r *DescribeDMSTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataEngineEventsRequestParams struct {
+	// 虚拟集群名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 返回数量，默认为10，最大为100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeDataEngineEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 虚拟集群名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 返回数量，默认为10，最大为100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeDataEngineEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineEventsResponseParams struct {
+	// 事件详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*HouseEventsInfo `json:"Events,omitnil" name:"Events"`
+
+	// 分页号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPages *int64 `json:"TotalPages,omitnil" name:"TotalPages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDataEngineEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEngineEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEngineEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataEngineImageVersionsRequestParams struct {
 	// 引擎类型：SQL、SparkBatch
 	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
@@ -8979,6 +9067,20 @@ type HiveInfo struct {
 	// 是否开启Kerberos
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KerberosEnable *bool `json:"KerberosEnable,omitnil" name:"KerberosEnable"`
+}
+
+type HouseEventsInfo struct {
+	// 事件时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time []*string `json:"Time,omitnil" name:"Time"`
+
+	// 事件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventsAction []*string `json:"EventsAction,omitnil" name:"EventsAction"`
+
+	// 集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterInfo []*string `json:"ClusterInfo,omitnil" name:"ClusterInfo"`
 }
 
 type IpPortPair struct {

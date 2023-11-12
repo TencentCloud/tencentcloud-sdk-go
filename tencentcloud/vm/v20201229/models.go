@@ -46,7 +46,7 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 该字段用于返回音频文件的时长，单位为秒。
+	// 该字段用于返回音频文件的时长，单位为毫秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *string `json:"Duration,omitnil" name:"Duration"`
 

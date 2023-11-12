@@ -419,7 +419,7 @@ type AssetViewPortRisk struct {
 	// 状态，0未处理、1已处置、2已忽略
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
-	// 资产唯一id
+	// 风险ID
 	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 前端索引
@@ -442,7 +442,7 @@ type AssetViewPortRisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
-	// 来源
+	// 识别来源，详细看枚举返回。
 	From *string `json:"From,omitnil" name:"From"`
 }
 

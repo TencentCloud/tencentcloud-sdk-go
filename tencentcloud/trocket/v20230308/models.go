@@ -20,6 +20,27 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ConsumeGroupItem struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil" name:"ConsumerGroup"`
+
+	// 是否开启消费
+	ConsumeEnable *bool `json:"ConsumeEnable,omitnil" name:"ConsumeEnable"`
+
+	// 顺序投递：true
+	// 并发投递：false
+	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil" name:"ConsumeMessageOrderly"`
+
+	// 最大重试次数
+	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil" name:"MaxRetryTimes"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
 // Predefined struct for user
 type CreateConsumerGroupRequestParams struct {
 	// 实例ID
@@ -672,6 +693,95 @@ func (r *DeleteTopicResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerGroupListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询指定主题下的消费组
+	FromTopic *string `json:"FromTopic,omitnil" name:"FromTopic"`
+}
+
+type DescribeConsumerGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询指定主题下的消费组
+	FromTopic *string `json:"FromTopic,omitnil" name:"FromTopic"`
+}
+
+func (r *DescribeConsumerGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "FromTopic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerGroupListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消费组列表
+	Data []*ConsumeGroupItem `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeConsumerGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

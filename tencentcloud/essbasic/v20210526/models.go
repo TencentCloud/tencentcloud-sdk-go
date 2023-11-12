@@ -1538,10 +1538,18 @@ func (r *ChannelCreateEmbedWebUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowApproversRequestParams struct {
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同唯一编号
+	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 补充企业签署人信息。
@@ -1563,10 +1571,18 @@ type ChannelCreateFlowApproversRequestParams struct {
 type ChannelCreateFlowApproversRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同唯一编号
+	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 补充企业签署人信息。
@@ -2726,14 +2742,28 @@ func (r *ChannelCreateOrganizationBatchSignUrlResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ChannelCreateOrganizationModifyQrCodeRequestParams struct {
-	// 应用相关信息。 此接口Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type ChannelCreateOrganizationModifyQrCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -3230,7 +3260,15 @@ type ChannelCreateRoleRequestParams struct {
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 代理企业和员工的信息。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 角色描述，最大长度为50个字符
@@ -3246,7 +3284,15 @@ type ChannelCreateRoleRequest struct {
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 代理企业和员工的信息。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 角色描述，最大长度为50个字符
@@ -3834,7 +3880,15 @@ func (r *ChannelCreateWebThemeConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDeleteRoleRequestParams struct {
-	// 代理企业和员工的信息。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 角色id，最多20个
@@ -3844,7 +3898,15 @@ type ChannelDeleteRoleRequestParams struct {
 type ChannelDeleteRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 代理企业和员工的信息。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 角色id，最多20个
@@ -4530,7 +4592,15 @@ func (r *ChannelDescribeOrganizationSealsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelDescribeRolesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 指定每页多少条数据，单页最大200
@@ -4554,7 +4624,15 @@ type ChannelDescribeRolesRequestParams struct {
 type ChannelDescribeRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 指定每页多少条数据，单页最大200
@@ -5032,7 +5110,6 @@ type ChannelRole struct {
 	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 
 	// 角色状态：1-启用；2-禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleStatus *uint64 `json:"RoleStatus,omitnil" name:"RoleStatus"`
 
 	// 权限树
@@ -7445,11 +7522,11 @@ type DownloadFlowInfo struct {
 type ExtentServiceAuthInfo struct {
 	// 扩展服务类型
 	// <ul>
-	//   <li>AUTO_SIGN             企业自动签（自动签署）</li>
+	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
 	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
-	//  <li> PAGING_SEAL           骑缝章</li>
-	//  <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+	// <li> PAGING_SEAL           骑缝章</li>
+	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// </ul>
 	Type *string `json:"Type,omitnil" name:"Type"`
@@ -7457,7 +7534,9 @@ type ExtentServiceAuthInfo struct {
 	// 扩展服务名称 
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 扩展服务的开通状态： ENABLE：开通 DISABLE：未开通	
+	// 扩展服务的开通状态
+	// **ENABLE**：开通 
+	// **DISABLE**：未开通	
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 操作扩展服务的操作人第三方应用平台的用户openid

@@ -3548,6 +3548,55 @@ func (c *Client) DescribeDataEngineWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDataEngineEventsRequest() (request *DescribeDataEngineEventsRequest) {
+    request = &DescribeDataEngineEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDataEngineEvents")
+    
+    
+    return
+}
+
+func NewDescribeDataEngineEventsResponse() (response *DescribeDataEngineEventsResponse) {
+    response = &DescribeDataEngineEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataEngineEvents
+// 查询数据引擎事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+func (c *Client) DescribeDataEngineEvents(request *DescribeDataEngineEventsRequest) (response *DescribeDataEngineEventsResponse, err error) {
+    return c.DescribeDataEngineEventsWithContext(context.Background(), request)
+}
+
+// DescribeDataEngineEvents
+// 查询数据引擎事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+func (c *Client) DescribeDataEngineEventsWithContext(ctx context.Context, request *DescribeDataEngineEventsRequest) (response *DescribeDataEngineEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataEngineEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataEngineEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataEngineEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataEngineImageVersionsRequest() (request *DescribeDataEngineImageVersionsRequest) {
     request = &DescribeDataEngineImageVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

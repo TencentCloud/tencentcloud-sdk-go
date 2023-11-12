@@ -139,6 +139,7 @@ import (
 	gsv20191118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs/v20191118"
 	gsev20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gse/v20191112"
 	habov20181203 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/habo/v20181203"
+	haiv20230812 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hai/v20230812"
 	hasimv20210716 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim/v20210716"
 	hcmv20181106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm/v20181106"
 	iaiv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20180301"
@@ -1837,6 +1838,19 @@ func TestHabov20181203Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init habo_v20181203 client: %v", err)
+    }
+}
+
+func TestHaiv20230812Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := haiv20230812.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init hai_v20230812 client: %v", err)
     }
 }
 
