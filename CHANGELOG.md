@@ -1,3 +1,26 @@
+# Release v1.0.790
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 65 次发布
+
+发布时间：2023-11-13 11:06:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增入参：IsEncryptResponse
+
+	* 新增出参：EncryptedBody
+
+
+
+
 # Release v1.0.789
 
 ## 云安全一体化平台(csip) 版本：2022-11-21

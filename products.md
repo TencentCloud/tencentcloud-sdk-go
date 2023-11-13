@@ -98,7 +98,7 @@
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-11-13 00:13:08 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-11-13 00:13:25 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-09-18 01:48:33 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2023-11-10 01:16:33 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2023-11-13 11:06:52 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-08-17 03:12:49 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2023-08-17 03:12:58 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2023-09-22 01:52:02 |

@@ -1485,6 +1485,9 @@ type GetDetectInfoEnhancedRequestParams struct {
 
 	// 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
 	Encryption *Encryption `json:"Encryption,omitnil" name:"Encryption"`
+
+	// 是否对回包整体进行加密
+	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil" name:"IsEncryptResponse"`
 }
 
 type GetDetectInfoEnhancedRequest struct {
@@ -1515,6 +1518,9 @@ type GetDetectInfoEnhancedRequest struct {
 
 	// 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
 	Encryption *Encryption `json:"Encryption,omitnil" name:"Encryption"`
+
+	// 是否对回包整体进行加密
+	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil" name:"IsEncryptResponse"`
 }
 
 func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
@@ -1537,6 +1543,7 @@ func (r *GetDetectInfoEnhancedRequest) FromJsonString(s string) error {
 	delete(f, "IsNeedIdCardAvatar")
 	delete(f, "IsEncrypt")
 	delete(f, "Encryption")
+	delete(f, "IsEncryptResponse")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDetectInfoEnhancedRequest has unknown keys!", "")
 	}
@@ -1576,6 +1583,10 @@ type GetDetectInfoEnhancedResponseParams struct {
 	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitnil" name:"IntentionActionResult"`
+
+	// 加密后的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptedBody *string `json:"EncryptedBody,omitnil" name:"EncryptedBody"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
