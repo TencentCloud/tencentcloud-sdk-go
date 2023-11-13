@@ -71,6 +71,56 @@ func (r *AddAlarmProcessRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ApplicationInfo struct {
+	// 应用分配的appId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 应用中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 应用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil" name:"Address"`
+
+	// 应用logo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationLogo *ApplicationLogo `json:"ApplicationLogo,omitnil" name:"ApplicationLogo"`
+
+	// 应用类型，0:saas应用 1:平台应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// engine
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnglishName *string `json:"EnglishName,omitnil" name:"EnglishName"`
+
+	// 能源管理应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type ApplicationList struct {
+	// 应用列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationInfoList []*ApplicationInfo `json:"ApplicationInfoList,omitnil" name:"ApplicationInfoList"`
+
+	// 当前查询条件命中的数据总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *string `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
+type ApplicationLogo struct {
+	// logo图片对应的fileId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileId *string `json:"FileId,omitnil" name:"FileId"`
+
+	// logo图片地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+}
+
 // Predefined struct for user
 type BatchCreateDeviceRequestParams struct {
 
@@ -736,12 +786,39 @@ func (r *DescribeAlarmTypeListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationListRequestParams struct {
+	// 项目空间id，本次查询返回的应用均关联至该空间
+	WorkspaceId *uint64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
 
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 应用id数组，可选，填了则表示根据id批量查询
+	ApplicationId []*uint64 `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 请求页号
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页容量，默认为10
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
 }
 
 type DescribeApplicationListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目空间id，本次查询返回的应用均关联至该空间
+	WorkspaceId *uint64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 应用id数组，可选，填了则表示根据id批量查询
+	ApplicationId []*uint64 `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 请求页号
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页容量，默认为10
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
 }
 
 func (r *DescribeApplicationListRequest) ToJsonString() string {
@@ -756,7 +833,11 @@ func (r *DescribeApplicationListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "WorkspaceId")
+	delete(f, "ApplicationToken")
+	delete(f, "ApplicationId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationListRequest has unknown keys!", "")
 	}
@@ -765,6 +846,9 @@ func (r *DescribeApplicationListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationListResponseParams struct {
+	// 应用列表
+	Result *ApplicationList `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1093,12 +1177,63 @@ func (r *DescribeDeviceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceShadowListRequestParams struct {
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
 
+	// WID
+	WIDSet []*string `json:"WIDSet,omitnil" name:"WIDSet"`
+
+	// 分页查询，第几页
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 设备类型code
+	DeviceTypeSet []*string `json:"DeviceTypeSet,omitnil" name:"DeviceTypeSet"`
+
+	// 产品 pid
+	ProductIdSet []*int64 `json:"ProductIdSet,omitnil" name:"ProductIdSet"`
+
+	// 空间层级，（支持空间多层，比如具体建筑、具体楼层）
+	SpaceCodeSet []*string `json:"SpaceCodeSet,omitnil" name:"SpaceCodeSet"`
+
+	// 设备标签名
+	DeviceTagSet []*string `json:"DeviceTagSet,omitnil" name:"DeviceTagSet"`
 }
 
 type DescribeDeviceShadowListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
+
+	// WID
+	WIDSet []*string `json:"WIDSet,omitnil" name:"WIDSet"`
+
+	// 分页查询，第几页
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 设备类型code
+	DeviceTypeSet []*string `json:"DeviceTypeSet,omitnil" name:"DeviceTypeSet"`
+
+	// 产品 pid
+	ProductIdSet []*int64 `json:"ProductIdSet,omitnil" name:"ProductIdSet"`
+
+	// 空间层级，（支持空间多层，比如具体建筑、具体楼层）
+	SpaceCodeSet []*string `json:"SpaceCodeSet,omitnil" name:"SpaceCodeSet"`
+
+	// 设备标签名
+	DeviceTagSet []*string `json:"DeviceTagSet,omitnil" name:"DeviceTagSet"`
 }
 
 func (r *DescribeDeviceShadowListRequest) ToJsonString() string {
@@ -1113,7 +1248,15 @@ func (r *DescribeDeviceShadowListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "WorkspaceId")
+	delete(f, "WIDSet")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ApplicationToken")
+	delete(f, "DeviceTypeSet")
+	delete(f, "ProductIdSet")
+	delete(f, "SpaceCodeSet")
+	delete(f, "DeviceTagSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceShadowListRequest has unknown keys!", "")
 	}
@@ -1122,6 +1265,9 @@ func (r *DescribeDeviceShadowListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceShadowListResponseParams struct {
+	// 获取设备影子结果
+	Result *DeviceShadowRes `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -2645,12 +2791,73 @@ func (r *DescribeVideoLiveStreamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVideoRecordStreamRequestParams struct {
+	// 设备唯一标识
+	WID *string `json:"WID,omitnil" name:"WID"`
 
+	// 枚举如下：
+	// flvsh
+	// rtmp
+	// hls
+	// webrtc
+	// raw (视频原始帧)
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 开始时间（精确到毫秒）
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间（精确到毫秒）
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 倍速 0.5、1、2、4
+	PlayBackRate *float64 `json:"PlayBackRate,omitnil" name:"PlayBackRate"`
+
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 流的唯一标识，播放链接尾缀
+	Stream *string `json:"Stream,omitnil" name:"Stream"`
+
+	// 公有云私有化项目传0或者不传；混合云项目一般传空间id
+	Env *string `json:"Env,omitnil" name:"Env"`
 }
 
 type DescribeVideoRecordStreamRequest struct {
 	*tchttp.BaseRequest
 	
+	// 设备唯一标识
+	WID *string `json:"WID,omitnil" name:"WID"`
+
+	// 枚举如下：
+	// flvsh
+	// rtmp
+	// hls
+	// webrtc
+	// raw (视频原始帧)
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 开始时间（精确到毫秒）
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间（精确到毫秒）
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 倍速 0.5、1、2、4
+	PlayBackRate *float64 `json:"PlayBackRate,omitnil" name:"PlayBackRate"`
+
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 流的唯一标识，播放链接尾缀
+	Stream *string `json:"Stream,omitnil" name:"Stream"`
+
+	// 公有云私有化项目传0或者不传；混合云项目一般传空间id
+	Env *string `json:"Env,omitnil" name:"Env"`
 }
 
 func (r *DescribeVideoRecordStreamRequest) ToJsonString() string {
@@ -2665,7 +2872,15 @@ func (r *DescribeVideoRecordStreamRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "WID")
+	delete(f, "Protocol")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PlayBackRate")
+	delete(f, "WorkspaceId")
+	delete(f, "ApplicationToken")
+	delete(f, "Stream")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoRecordStreamRequest has unknown keys!", "")
 	}
@@ -2888,6 +3103,42 @@ func (r *DescribeWorkspaceUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeviceShadowInfo struct {
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WID *string `json:"WID,omitnil" name:"WID"`
+
+	// 设备影子数据,返回有效数据为"x-json:"后字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceShadow *string `json:"DeviceShadow,omitnil" name:"DeviceShadow"`
+
+	// 设备影子更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceShadowUpdateTime *string `json:"DeviceShadowUpdateTime,omitnil" name:"DeviceShadowUpdateTime"`
+}
+
+type DeviceShadowRes struct {
+	// 第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPage *int64 `json:"TotalPage,omitnil" name:"TotalPage"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRow *int64 `json:"TotalRow,omitnil" name:"TotalRow"`
+
+	// 设备影子列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Set []*DeviceShadowInfo `json:"Set,omitnil" name:"Set"`
+}
+
 // Predefined struct for user
 type ModifyDeviceNameRequestParams struct {
 
@@ -3023,7 +3274,7 @@ type SsoTeamUser struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealName *string `json:"RealName,omitnil" name:"RealName"`
 
-	// 用户类型
+	// 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
@@ -3083,7 +3334,7 @@ type SsoUser struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealName *string `json:"RealName,omitnil" name:"RealName"`
 
-	// 用户类型
+	// 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
@@ -3103,7 +3354,7 @@ type SsoUser struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil" name:"Phone"`
 
-	// 用户状态
+	// 用户状态，0待审核，1正常启用，2禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
@@ -3115,15 +3366,15 @@ type SsoUser struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *int64 `json:"UpdateAt,omitnil" name:"UpdateAt"`
 
-	// 是否属于团队
+	// 是否属于团队，0不可用，1属于，2不属
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongTeam *int64 `json:"BelongTeam,omitnil" name:"BelongTeam"`
 
-	// ID
+	// 部门ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepartmentId *string `json:"DepartmentId,omitnil" name:"DepartmentId"`
 
-	// 名称
+	// 部门名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepartmentName *string `json:"DepartmentName,omitnil" name:"DepartmentName"`
 

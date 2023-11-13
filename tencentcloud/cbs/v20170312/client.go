@@ -2213,6 +2213,7 @@ func NewModifyDiskAttributesResponse() (response *ModifyDiskAttributesResponse) 
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
 func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (response *ModifyDiskAttributesResponse, err error) {
     return c.ModifyDiskAttributesWithContext(context.Background(), request)
 }
@@ -2238,6 +2239,7 @@ func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (res
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
 func (c *Client) ModifyDiskAttributesWithContext(ctx context.Context, request *ModifyDiskAttributesRequest) (response *ModifyDiskAttributesResponse, err error) {
     if request == nil {
         request = NewModifyDiskAttributesRequest()

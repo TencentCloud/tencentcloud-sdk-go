@@ -19284,6 +19284,89 @@ func (r *DescribeTableLineageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableMetasRequestParams struct {
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+type DescribeTableMetasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+func (r *DescribeTableMetasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableMetasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableMetasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableMetasResponseParams struct {
+	// 表元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableMetas []*TableMeta `json:"TableMetas,omitnil" name:"TableMetas"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTableMetasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableMetasResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableMetasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableMetasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableQualityDetailsRequestParams struct {
 	// 统计日期
 	StatisticsDate *int64 `json:"StatisticsDate,omitnil" name:"StatisticsDate"`
@@ -31676,6 +31759,60 @@ type ScriptRequestInfo struct {
 	FileExtensionType *string `json:"FileExtensionType,omitnil" name:"FileExtensionType"`
 }
 
+type SearchColumnDocVO struct {
+	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 字段中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChineseName *string `json:"ChineseName,omitnil" name:"ChineseName"`
+
+	// 字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 字段类型长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Length *uint64 `json:"Length,omitnil" name:"Length"`
+
+	// 字段类型精度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Precision *uint64 `json:"Precision,omitnil" name:"Precision"`
+
+	// 字段类型scale
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitnil" name:"Scale"`
+
+	// 字段默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
+
+	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 字段的顺序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil" name:"Position"`
+
+	// 是否为分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartition *bool `json:"IsPartition,omitnil" name:"IsPartition"`
+
+	// 列上的索引类型 主键: PRI,唯一索引: UNI,一般索引: MUL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnKey *string `json:"ColumnKey,omitnil" name:"ColumnKey"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
+}
+
 type SearchCondition struct {
 	// 查询框架，必选
 	Instance *SearchConditionInstance `json:"Instance,omitnil" name:"Instance"`
@@ -33014,6 +33151,24 @@ type TableConfig struct {
 	FieldConfig []*FieldConfig `json:"FieldConfig,omitnil" name:"FieldConfig"`
 }
 
+type TableHeat struct {
+	// 表ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 统计日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DayTime *string `json:"DayTime,omitnil" name:"DayTime"`
+
+	// 表热度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Heat *float64 `json:"Heat,omitnil" name:"Heat"`
+
+	// 表热度最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxHeat *float64 `json:"MaxHeat,omitnil" name:"MaxHeat"`
+}
+
 type TableInfo struct {
 	// 表Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -33108,6 +33263,222 @@ type TableLineageInfo struct {
 	// 修改血缘的任务id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*string `json:"Tasks,omitnil" name:"Tasks"`
+}
+
+type TableMeta struct {
+	// 表的全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil" name:"TableOwnerName"`
+
+	// 数据源全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *int64 `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 所属集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 数据源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
+
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 表路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePath *string `json:"TablePath,omitnil" name:"TablePath"`
+
+	// 表中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNameCn *string `json:"TableNameCn,omitnil" name:"TableNameCn"`
+
+	// 元数据租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreId *int64 `json:"MetastoreId,omitnil" name:"MetastoreId"`
+
+	// 技术类型，可用值:HIVE,MYSQL,KAFKA, HBASE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitnil" name:"MetastoreType"`
+
+	// 表描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 列分隔符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnSeparator *string `json:"ColumnSeparator,omitnil" name:"ColumnSeparator"`
+
+	// 存储格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageFormat *string `json:"StorageFormat,omitnil" name:"StorageFormat"`
+
+	// 存储量，字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitnil" name:"StorageSize"`
+
+	// 表类型，如hive MANAGED_TABLE;EXTERNAL_TABLE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 最近数据变更时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 最近DDL变更时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DdlModifyTime *string `json:"DdlModifyTime,omitnil" name:"DdlModifyTime"`
+
+	// 数据最后访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAccessTime *string `json:"LastAccessTime,omitnil" name:"LastAccessTime"`
+
+	// 所属项目英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 所属数据目录id（可能多个）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogIds []*string `json:"BizCatalogIds,omitnil" name:"BizCatalogIds"`
+
+	// 所属数据目录（可能多个）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogNames []*string `json:"BizCatalogNames,omitnil" name:"BizCatalogNames"`
+
+	// true已收藏/false表示未收藏状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasFavorite *bool `json:"HasFavorite,omitnil" name:"HasFavorite"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeCycleTime *int64 `json:"LifeCycleTime,omitnil" name:"LifeCycleTime"`
+
+	// 存储量，已转为适合的单位展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil" name:"StorageSizeWithUnit"`
+
+	// 数据源引擎的实例ID：如EMR集群实例ID/数据源实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据来源技术类型：HIVE/MYSQL/HBASE/KAFKA等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TechnologyType *string `json:"TechnologyType,omitnil" name:"TechnologyType"`
+
+	// 表英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNameEn *string `json:"TableNameEn,omitnil" name:"TableNameEn"`
+
+	// 项目Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// Kafka Topic 分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partitions *string `json:"Partitions,omitnil" name:"Partitions"`
+
+	// Kafka Topic 副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationFactor *string `json:"ReplicationFactor,omitnil" name:"ReplicationFactor"`
+
+	// 所属项目英中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil" name:"ProjectDisplayName"`
+
+	// 数据最后修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataModifyTime *string `json:"DataModifyTime,omitnil" name:"DataModifyTime"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 当前用户是否有管理员权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAdminAuthority *bool `json:"HasAdminAuthority,omitnil" name:"HasAdminAuthority"`
+
+	// 数据源展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceDisplayName *string `json:"DatasourceDisplayName,omitnil" name:"DatasourceDisplayName"`
+
+	// 数据库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+
+	// 租户下对表的收藏总次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FavoriteCount *int64 `json:"FavoriteCount,omitnil" name:"FavoriteCount"`
+
+	// 租户下对表的点赞总次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LikeCount *int64 `json:"LikeCount,omitnil" name:"LikeCount"`
+
+	// true已点赞/false表示未点赞状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasLike *bool `json:"HasLike,omitnil" name:"HasLike"`
+
+	// 表的资产评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePropertyScore *TablePropertyScore `json:"TablePropertyScore,omitnil" name:"TablePropertyScore"`
+
+	// 表的热度值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableHeat *TableHeat `json:"TableHeat,omitnil" name:"TableHeat"`
+
+	// 数据源ownerProjectId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerProjectId *string `json:"OwnerProjectId,omitnil" name:"OwnerProjectId"`
+
+	// 表负责人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerId *string `json:"TableOwnerId,omitnil" name:"TableOwnerId"`
+
+	// 系统源-CLUSTER, DB-自定义源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceCategory *string `json:"DataSourceCategory,omitnil" name:"DataSourceCategory"`
+
+	// 表字段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*SearchColumnDocVO `json:"Columns,omitnil" name:"Columns"`
+}
+
+type TablePropertyScore struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 统计日期
+	DayTime *string `json:"DayTime,omitnil" name:"DayTime"`
+
+	// 表完整性评分
+	Integrity *float64 `json:"Integrity,omitnil" name:"Integrity"`
+
+	// 表保障性评分
+	Safety *float64 `json:"Safety,omitnil" name:"Safety"`
+
+	// 表及时性评分
+	Timeliness *float64 `json:"Timeliness,omitnil" name:"Timeliness"`
+
+	// 表稳定性评分
+	Stability *float64 `json:"Stability,omitnil" name:"Stability"`
+
+	// 表规范性评分
+	Normative *float64 `json:"Normative,omitnil" name:"Normative"`
+
+	// 资产评分平均分
+	Average *float64 `json:"Average,omitnil" name:"Average"`
 }
 
 type TableQualityDetail struct {

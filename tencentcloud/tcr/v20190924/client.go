@@ -4059,6 +4059,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -4080,6 +4081,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"

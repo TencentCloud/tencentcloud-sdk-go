@@ -4814,6 +4814,86 @@ func (r *DescribeBinlogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterDatabasesRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeClusterDatabasesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeClusterDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDatabasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterDatabasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterDatabasesResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数据库列表
+	Databases []*string `json:"Databases,omitnil" name:"Databases"`
+
+	// 分页限制数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeClusterDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterDatabasesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterDetailDatabasesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`

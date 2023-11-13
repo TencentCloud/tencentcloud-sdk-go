@@ -9183,6 +9183,10 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil" name:"FeatureBitmap"`
+
+	// 是否是开启了auto scale的通道，0表示否，1表示是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAutoScaleProxy *int64 `json:"IsAutoScaleProxy,omitnil" name:"IsAutoScaleProxy"`
 }
 
 type ProxySimpleInfo struct {

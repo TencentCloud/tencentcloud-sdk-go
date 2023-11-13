@@ -62,11 +62,17 @@ const (
 	// 调用比对引擎接口出错。
 	FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
 
+	// 图中人脸存在遮挡，请传入无遮挡人脸图片
+	FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"
+
 	// 数据库异常。
 	FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
 
 	// 解密失败。
 	FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+
+	// 服务引擎调用失败，请重试
+	FAILEDOPERATION_DETECTENGINESYSTEMERROR = "FailedOperation.DetectEngineSystemError"
 
 	// 文件下载失败。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -115,6 +121,9 @@ const (
 
 	// 图片尺寸过大。
 	FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+
+	// 未检测到完整人脸，请传入完整人脸图片
+	FAILEDOPERATION_INCOMPLETEFACE = "FailedOperation.IncompleteFace"
 
 	// 检测到多张人脸。
 	FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
@@ -179,6 +188,9 @@ const (
 	// Ocr识别失败。
 	FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 
+	// 图片质量过差，请检查图片质量
+	FAILEDOPERATION_POORIMAGEQUALITY = "FailedOperation.PoorImageQuality"
+
 	// 调用次数超出限制。
 	FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 
@@ -223,6 +235,9 @@ const (
 
 	// 认证不通过。
 	FAILEDOPERATION_VERIFICATIONFAIL = "FailedOperation.VerificationFail"
+
+	// 视频解码异常
+	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

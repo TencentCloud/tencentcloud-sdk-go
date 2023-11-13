@@ -403,6 +403,7 @@ func NewAdjustPublicAddressResponse() (response *AdjustPublicAddressResponse) {
 // 本接口 (AdjustPublicAddress) 用于更换IP地址，支持更换CVM实例的普通公网IP和包月带宽的EIP。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
@@ -431,6 +432,7 @@ func (c *Client) AdjustPublicAddress(request *AdjustPublicAddressRequest) (respo
 // 本接口 (AdjustPublicAddress) 用于更换IP地址，支持更换CVM实例的普通公网IP和包月带宽的EIP。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
@@ -3643,6 +3645,7 @@ func NewCreateNatGatewayDestinationIpPortTranslationNatRuleResponse() (response 
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEREPEATED = "InvalidParameterValue.NatGatewayDnatRuleRepeated"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = "LimitExceeded.NatGatewayDnatLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = "UnsupportedOperation.NatGatewayEipNotExists"
 func (c *Client) CreateNatGatewayDestinationIpPortTranslationNatRule(request *CreateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *CreateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
@@ -3660,6 +3663,7 @@ func (c *Client) CreateNatGatewayDestinationIpPortTranslationNatRule(request *Cr
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEREPEATED = "InvalidParameterValue.NatGatewayDnatRuleRepeated"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = "LimitExceeded.NatGatewayDnatLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = "UnsupportedOperation.NatGatewayEipNotExists"
 func (c *Client) CreateNatGatewayDestinationIpPortTranslationNatRuleWithContext(ctx context.Context, request *CreateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *CreateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
@@ -16401,6 +16405,7 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
 // 本接口（ModifyAddressesBandwidth）用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，支持后付费EIP, 预付费EIP和带宽包EIP
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
@@ -16430,6 +16435,7 @@ func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthReque
 // 本接口（ModifyAddressesBandwidth）用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，支持后付费EIP, 预付费EIP和带宽包EIP
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"

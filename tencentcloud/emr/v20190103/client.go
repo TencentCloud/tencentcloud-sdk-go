@@ -138,6 +138,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
 //  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
 //  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
 //  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
@@ -170,6 +171,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
 //  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
 //  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
 //  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
@@ -1940,6 +1942,7 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
 func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
     return c.ModifyResourcePoolsWithContext(context.Background(), request)
 }
@@ -1954,6 +1957,7 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
 func (c *Client) ModifyResourcePoolsWithContext(ctx context.Context, request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
     if request == nil {
         request = NewModifyResourcePoolsRequest()
@@ -1993,6 +1997,7 @@ func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceSchedule
 // 修改YARN资源调度的资源配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
@@ -2007,6 +2012,7 @@ func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleCon
 // 修改YARN资源调度的资源配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"

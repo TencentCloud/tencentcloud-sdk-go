@@ -1770,6 +1770,7 @@ func NewDescribeCurrentMemberListResponse() (response *DescribeCurrentMemberList
 // 获取当前房间的成员列表，房间结束或过期后无法使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  INTERNALERROR = "InternalError"
@@ -1782,6 +1783,7 @@ func (c *Client) DescribeCurrentMemberList(request *DescribeCurrentMemberListReq
 // 获取当前房间的成员列表，房间结束或过期后无法使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  INTERNALERROR = "InternalError"
@@ -2505,6 +2507,7 @@ func NewDescribeRoomStatisticsResponse() (response *DescribeRoomStatisticsRespon
 // 获取房间统计信息，仅可在房间结束后调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
@@ -2517,6 +2520,7 @@ func (c *Client) DescribeRoomStatistics(request *DescribeRoomStatisticsRequest) 
 // 获取房间统计信息，仅可在房间结束后调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
@@ -2988,6 +2992,7 @@ func NewGetRoomEventResponse() (response *GetRoomEventResponse) {
 // 获取房间事件,仅在课堂结束1小时内有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
@@ -2999,6 +3004,7 @@ func (c *Client) GetRoomEvent(request *GetRoomEventRequest) (response *GetRoomEv
 // 获取房间事件,仅在课堂结束1小时内有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
@@ -3920,6 +3926,7 @@ func NewSetAppCustomContentResponse() (response *SetAppCustomContentResponse) {
 // 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3933,6 +3940,7 @@ func (c *Client) SetAppCustomContent(request *SetAppCustomContentRequest) (respo
 // 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

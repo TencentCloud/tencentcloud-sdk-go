@@ -359,6 +359,7 @@ func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
 // >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41118"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"
@@ -384,6 +385,7 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
 // >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41118"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"

@@ -9787,13 +9787,14 @@ type DescribeStatisticDataRequestParams struct {
 	// 所属模块，固定值，为monitor
 	Module *string `json:"Module,omitnil" name:"Module"`
 
-	// 命名空间，目前只支持QCE/TKE2
+	// 命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 指标名列表
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
 	// 维度条件，操作符支持=、in
+	// 配置文档参考：https://cloud.tencent.com/document/product/248/53821
 	Conditions []*MidQueryCondition `json:"Conditions,omitnil" name:"Conditions"`
 
 	// 统计粒度。默认取值为300，单位为s；可选的值为60、300、3600、86400
@@ -9820,13 +9821,14 @@ type DescribeStatisticDataRequest struct {
 	// 所属模块，固定值，为monitor
 	Module *string `json:"Module,omitnil" name:"Module"`
 
-	// 命名空间，目前只支持QCE/TKE2
+	// 命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 指标名列表
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
 	// 维度条件，操作符支持=、in
+	// 配置文档参考：https://cloud.tencent.com/document/product/248/53821
 	Conditions []*MidQueryCondition `json:"Conditions,omitnil" name:"Conditions"`
 
 	// 统计粒度。默认取值为300，单位为s；可选的值为60、300、3600、86400

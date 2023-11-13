@@ -617,6 +617,77 @@ func (c *Client) CheckPhoneAndNameWithContext(ctx context.Context, request *Chec
     return
 }
 
+func NewDetectAIFakeFacesRequest() (request *DetectAIFakeFacesRequest) {
+    request = &DetectAIFakeFacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "DetectAIFakeFaces")
+    
+    
+    return
+}
+
+func NewDetectAIFakeFacesResponse() (response *DetectAIFakeFacesResponse) {
+    response = &DetectAIFakeFacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetectAIFakeFaces
+// 提供对人脸图片/视频的AI合成、翻拍、水印等攻击痕迹的检测，增强图片/视频防伪能力
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"
+//  FAILEDOPERATION_DETECTENGINESYSTEMERROR = "FailedOperation.DetectEngineSystemError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_INCOMPLETEFACE = "FailedOperation.IncompleteFace"
+//  FAILEDOPERATION_POORIMAGEQUALITY = "FailedOperation.PoorImageQuality"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) DetectAIFakeFaces(request *DetectAIFakeFacesRequest) (response *DetectAIFakeFacesResponse, err error) {
+    return c.DetectAIFakeFacesWithContext(context.Background(), request)
+}
+
+// DetectAIFakeFaces
+// 提供对人脸图片/视频的AI合成、翻拍、水印等攻击痕迹的检测，增强图片/视频防伪能力
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"
+//  FAILEDOPERATION_DETECTENGINESYSTEMERROR = "FailedOperation.DetectEngineSystemError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_INCOMPLETEFACE = "FailedOperation.IncompleteFace"
+//  FAILEDOPERATION_POORIMAGEQUALITY = "FailedOperation.PoorImageQuality"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) DetectAIFakeFacesWithContext(ctx context.Context, request *DetectAIFakeFacesRequest) (response *DetectAIFakeFacesResponse, err error) {
+    if request == nil {
+        request = NewDetectAIFakeFacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectAIFakeFaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectAIFakeFacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectAuthRequest() (request *DetectAuthRequest) {
     request = &DetectAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},

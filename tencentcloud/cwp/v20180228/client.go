@@ -26478,11 +26478,6 @@ func NewModifyLicenseOrderResponse() (response *ModifyLicenseOrderResponse) {
 // 编辑《主机安全-按量计费》授权订单
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLicenseOrder(request *ModifyLicenseOrderRequest) (response *ModifyLicenseOrderResponse, err error) {
     return c.ModifyLicenseOrderWithContext(context.Background(), request)
@@ -26492,11 +26487,6 @@ func (c *Client) ModifyLicenseOrder(request *ModifyLicenseOrderRequest) (respons
 // 编辑《主机安全-按量计费》授权订单
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLicenseOrderWithContext(ctx context.Context, request *ModifyLicenseOrderRequest) (response *ModifyLicenseOrderResponse, err error) {
     if request == nil {

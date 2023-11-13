@@ -2570,8 +2570,7 @@ func NewModifySyncRateLimitResponse() (response *ModifySyncRateLimitResponse) {
 // 用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) ModifySyncRateLimit(request *ModifySyncRateLimitRequest) (response *ModifySyncRateLimitResponse, err error) {
     return c.ModifySyncRateLimitWithContext(context.Background(), request)
 }
@@ -2580,8 +2579,7 @@ func (c *Client) ModifySyncRateLimit(request *ModifySyncRateLimitRequest) (respo
 // 用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) ModifySyncRateLimitWithContext(ctx context.Context, request *ModifySyncRateLimitRequest) (response *ModifySyncRateLimitResponse, err error) {
     if request == nil {
         request = NewModifySyncRateLimitRequest()

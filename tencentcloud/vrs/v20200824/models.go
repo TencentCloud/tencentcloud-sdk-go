@@ -119,7 +119,7 @@ type CreateVRSTaskRequestParams struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil" name:"ModelType"`
 
-	// 任务类型 0:默认类型 1:轻量级复刻
+	// 任务类型 0:轻量版复刻
 	// 默认为0
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 
@@ -166,7 +166,7 @@ type CreateVRSTaskRequest struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil" name:"ModelType"`
 
-	// 任务类型 0:默认类型 1:轻量级复刻
+	// 任务类型 0:轻量版复刻
 	// 默认为0
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 

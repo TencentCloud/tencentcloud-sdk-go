@@ -2497,6 +2497,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
 //  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
 //  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
@@ -2544,6 +2545,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 //  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
 //  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
 //  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
@@ -4415,6 +4417,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
@@ -4438,6 +4441,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
@@ -4886,6 +4890,7 @@ func NewDescribeErrorLogDataResponse() (response *DescribeErrorLogDataResponse) 
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
@@ -4909,6 +4914,7 @@ func (c *Client) DescribeErrorLogData(request *DescribeErrorLogDataRequest) (res
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
@@ -5476,6 +5482,7 @@ func NewDescribeRoGroupsResponse() (response *DescribeRoGroupsResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -5493,6 +5500,7 @@ func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *D
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -7842,6 +7850,7 @@ func NewModifyDBInstanceVipVportResponse() (response *ModifyDBInstanceVipVportRe
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
@@ -7857,6 +7866,7 @@ func (c *Client) ModifyDBInstanceVipVport(request *ModifyDBInstanceVipVportReque
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
@@ -8524,6 +8534,7 @@ func NewOfflineIsolatedInstancesResponse() (response *OfflineIsolatedInstancesRe
 // 注意，实例下线后，相关资源和数据将无法找回，请谨慎操作。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -8544,6 +8555,7 @@ func (c *Client) OfflineIsolatedInstances(request *OfflineIsolatedInstancesReque
 // 注意，实例下线后，相关资源和数据将无法找回，请谨慎操作。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"

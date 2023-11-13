@@ -703,6 +703,7 @@ func NewDeleteEventBusResponse() (response *DeleteEventBusResponse) {
 //  OPERATIONDENIED_EVENTBUSRESOURCEISLOCKED = "OperationDenied.EventBusResourceIsLocked"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_TAG = "ResourceNotFound.Tag"
 func (c *Client) DeleteEventBus(request *DeleteEventBusRequest) (response *DeleteEventBusResponse, err error) {
@@ -718,6 +719,7 @@ func (c *Client) DeleteEventBus(request *DeleteEventBusRequest) (response *Delet
 //  OPERATIONDENIED_EVENTBUSRESOURCEISLOCKED = "OperationDenied.EventBusResourceIsLocked"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_TAG = "ResourceNotFound.Tag"
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, request *DeleteEventBusRequest) (response *DeleteEventBusResponse, err error) {

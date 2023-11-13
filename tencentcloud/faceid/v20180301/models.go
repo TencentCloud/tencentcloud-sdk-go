@@ -20,6 +20,19 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AttackRiskDetail struct {
+	// 疑似的攻击痕迹类型
+	// SuspectedSpoofingAttack：翻拍攻击
+	// SuspectedSynthesisImage：疑似合成图片
+	// SuspectedSynthesisVideo：疑似合成视频
+	// SuspectedeAnomalyAttack：人脸特征疑似非真人
+	// SuspectedAdversarialAttack：疑似对抗样本攻击
+	// SuspectedBlackIndustry：疑似黑产攻击
+	// SuspectedWatermark：疑似存在水印
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
 // Predefined struct for user
 type BankCard2EVerificationRequestParams struct {
 	// 姓名
@@ -858,6 +871,100 @@ func (r *CheckPhoneAndNameResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CheckPhoneAndNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectAIFakeFacesRequestParams struct {
+	// 传入需要进行检测的带有人脸的图片或视频，使用base64编码的形式。
+	// 
+	// 图片的Base64值：
+	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上；
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// 
+	// 视频的Base64值：
+	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	FaceInput *string `json:"FaceInput,omitnil" name:"FaceInput"`
+
+	// 传入的类型
+	// 1- 传入的是图片类型
+	// 2- 传入的是视频类型
+	// 其他 - 返回错误码InvalidParameter
+	FaceInputType *int64 `json:"FaceInputType,omitnil" name:"FaceInputType"`
+}
+
+type DetectAIFakeFacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传入需要进行检测的带有人脸的图片或视频，使用base64编码的形式。
+	// 
+	// 图片的Base64值：
+	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上；
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// 
+	// 视频的Base64值：
+	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	FaceInput *string `json:"FaceInput,omitnil" name:"FaceInput"`
+
+	// 传入的类型
+	// 1- 传入的是图片类型
+	// 2- 传入的是视频类型
+	// 其他 - 返回错误码InvalidParameter
+	FaceInputType *int64 `json:"FaceInputType,omitnil" name:"FaceInputType"`
+}
+
+func (r *DetectAIFakeFacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectAIFakeFacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FaceInput")
+	delete(f, "FaceInputType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAIFakeFacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectAIFakeFacesResponseParams struct {
+	// 检测到的图片是否存在攻击：
+	// Low：无攻击风险
+	// Mid：中度疑似攻击
+	// High：高度疑似攻击
+	AttackRiskLevel *string `json:"AttackRiskLevel,omitnil" name:"AttackRiskLevel"`
+
+	// 检测到疑似的攻击痕迹列表
+	// 说明：未检测到攻击痕迹时，返回空数组
+	// 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
+	AttackRiskDetailList []*AttackRiskDetail `json:"AttackRiskDetailList,omitnil" name:"AttackRiskDetailList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DetectAIFakeFacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectAIFakeFacesResponseParams `json:"Response"`
+}
+
+func (r *DetectAIFakeFacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectAIFakeFacesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

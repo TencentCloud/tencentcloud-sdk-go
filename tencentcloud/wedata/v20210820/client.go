@@ -1074,7 +1074,7 @@ func NewCheckAlarmRegularNameExistResponse() (response *CheckAlarmRegularNameExi
 // 判断告警规则重名
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckAlarmRegularNameExist(request *CheckAlarmRegularNameExistRequest) (response *CheckAlarmRegularNameExistResponse, err error) {
     return c.CheckAlarmRegularNameExistWithContext(context.Background(), request)
 }
@@ -1083,7 +1083,7 @@ func (c *Client) CheckAlarmRegularNameExist(request *CheckAlarmRegularNameExistR
 // 判断告警规则重名
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckAlarmRegularNameExistWithContext(ctx context.Context, request *CheckAlarmRegularNameExistRequest) (response *CheckAlarmRegularNameExistResponse, err error) {
     if request == nil {
         request = NewCheckAlarmRegularNameExistRequest()
@@ -10947,6 +10947,55 @@ func (c *Client) DescribeTableLineageWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeTableLineageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableMetasRequest() (request *DescribeTableMetasRequest) {
+    request = &DescribeTableMetasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableMetas")
+    
+    
+    return
+}
+
+func NewDescribeTableMetasResponse() (response *DescribeTableMetasResponse) {
+    response = &DescribeTableMetasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableMetas
+// 获取表元数据list
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTableMetas(request *DescribeTableMetasRequest) (response *DescribeTableMetasResponse, err error) {
+    return c.DescribeTableMetasWithContext(context.Background(), request)
+}
+
+// DescribeTableMetas
+// 获取表元数据list
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTableMetasWithContext(ctx context.Context, request *DescribeTableMetasRequest) (response *DescribeTableMetasResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableMetasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableMetas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableMetasResponse()
     err = c.Send(request, response)
     return
 }

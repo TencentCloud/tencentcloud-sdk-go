@@ -7573,7 +7573,7 @@ type ModifyBackupNameRequestParams struct {
 	// 修改的备份名称
 	BackupName *string `json:"BackupName,omitnil" name:"BackupName"`
 
-	// 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
+	// 备份ID 可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。当GroupId为空时，BackupId必填。
 	BackupId *uint64 `json:"BackupId,omitnil" name:"BackupId"`
 
 	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
@@ -7590,7 +7590,7 @@ type ModifyBackupNameRequest struct {
 	// 修改的备份名称
 	BackupName *string `json:"BackupName,omitnil" name:"BackupName"`
 
-	// 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
+	// 备份ID 可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。当GroupId为空时，BackupId必填。
 	BackupId *uint64 `json:"BackupId,omitnil" name:"BackupId"`
 
 	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
@@ -7656,13 +7656,13 @@ type ModifyBackupStrategyRequestParams struct {
 	// BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
 	BackupDay *uint64 `json:"BackupDay,omitnil" name:"BackupDay"`
 
-	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+	// 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
 	BackupModel *string `json:"BackupModel,omitnil" name:"BackupModel"`
 
 	// BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
 	BackupCycle []*uint64 `json:"BackupCycle,omitnil" name:"BackupCycle"`
 
-	// 数据(日志)备份保留时间，取值[3-1830]天，默认7天
+	// 数据(日志)备份保留天数（必填），取值[3-1830]天，默认7天
 	BackupSaveDays *uint64 `json:"BackupSaveDays,omitnil" name:"BackupSaveDays"`
 
 	// 定期备份状态 enable-开启，disable-关闭，默认关闭
@@ -7696,13 +7696,13 @@ type ModifyBackupStrategyRequest struct {
 	// BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
 	BackupDay *uint64 `json:"BackupDay,omitnil" name:"BackupDay"`
 
-	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+	// 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
 	BackupModel *string `json:"BackupModel,omitnil" name:"BackupModel"`
 
 	// BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
 	BackupCycle []*uint64 `json:"BackupCycle,omitnil" name:"BackupCycle"`
 
-	// 数据(日志)备份保留时间，取值[3-1830]天，默认7天
+	// 数据(日志)备份保留天数（必填），取值[3-1830]天，默认7天
 	BackupSaveDays *uint64 `json:"BackupSaveDays,omitnil" name:"BackupSaveDays"`
 
 	// 定期备份状态 enable-开启，disable-关闭，默认关闭
@@ -9579,13 +9579,13 @@ type RemoveBackupsRequestParams struct {
 	// 实例ID，形如mssql-j8kv137v
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
+	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得，单次请求批量删除备份数不能超过10个。当StartTime、EndTime为空时，此字段必填。
 	BackupNames []*string `json:"BackupNames,omitnil" name:"BackupNames"`
 
-	// 批量删除手动备份起始时间
+	// 批量删除手动备份起始时间。当BackupNames为空时，此字段必填。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 批量删除手动备份截止时间
+	// 批量删除手动备份截止时间。当BackupNames为空时，此字段必填。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
@@ -9595,13 +9595,13 @@ type RemoveBackupsRequest struct {
 	// 实例ID，形如mssql-j8kv137v
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
+	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得，单次请求批量删除备份数不能超过10个。当StartTime、EndTime为空时，此字段必填。
 	BackupNames []*string `json:"BackupNames,omitnil" name:"BackupNames"`
 
-	// 批量删除手动备份起始时间
+	// 批量删除手动备份起始时间。当BackupNames为空时，此字段必填。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 批量删除手动备份截止时间
+	// 批量删除手动备份截止时间。当BackupNames为空时，此字段必填。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 

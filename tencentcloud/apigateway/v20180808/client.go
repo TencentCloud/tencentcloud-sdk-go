@@ -557,6 +557,7 @@ func NewBuildAPIDocResponse() (response *BuildAPIDocResponse) {
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
 //  FAILEDOPERATION_CODINGERROR = "FailedOperation.CodingError"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
@@ -572,6 +573,7 @@ func (c *Client) BuildAPIDoc(request *BuildAPIDocRequest) (response *BuildAPIDoc
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
 //  FAILEDOPERATION_CODINGERROR = "FailedOperation.CodingError"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
@@ -2500,6 +2502,7 @@ func NewDescribeApiAppsStatusResponse() (response *DescribeApiAppsStatusResponse
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUES = "InvalidParameterValue.InvalidTagValues"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {
@@ -2513,6 +2516,7 @@ func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (r
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUES = "InvalidParameterValue.InvalidTagValues"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeApiAppsStatusWithContext(ctx context.Context, request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {

@@ -542,6 +542,7 @@ func NewCreateExporterIntegrationResponse() (response *CreateExporterIntegration
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
 //  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
@@ -561,6 +562,7 @@ func (c *Client) CreateExporterIntegration(request *CreateExporterIntegrationReq
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
 //  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
@@ -1042,6 +1044,7 @@ func NewCreatePrometheusConfigResponse() (response *CreatePrometheusConfigRespon
 // 创建prometheus配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -1062,6 +1065,7 @@ func (c *Client) CreatePrometheusConfig(request *CreatePrometheusConfigRequest) 
 // 创建prometheus配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -3741,6 +3745,7 @@ func NewDescribeClusterAgentCreatingProgressResponse() (response *DescribeCluste
 // 获取prom实例中集群详细的关联状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DescribeClusterAgentCreatingProgress(request *DescribeClusterAgentCreatingProgressRequest) (response *DescribeClusterAgentCreatingProgressResponse, err error) {
@@ -3751,6 +3756,7 @@ func (c *Client) DescribeClusterAgentCreatingProgress(request *DescribeClusterAg
 // 获取prom实例中集群详细的关联状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DescribeClusterAgentCreatingProgressWithContext(ctx context.Context, request *DescribeClusterAgentCreatingProgressRequest) (response *DescribeClusterAgentCreatingProgressResponse, err error) {
@@ -5308,6 +5314,7 @@ func NewDescribePrometheusConfigResponse() (response *DescribePrometheusConfigRe
 // 拉取Prometheus配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
@@ -5331,6 +5338,7 @@ func (c *Client) DescribePrometheusConfig(request *DescribePrometheusConfigReque
 // 拉取Prometheus配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
@@ -6124,6 +6132,7 @@ func NewDescribePrometheusTargetsTMPResponse() (response *DescribePrometheusTarg
 // 获取targets信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INTERNALERROR = "InternalError"
@@ -6143,6 +6152,7 @@ func (c *Client) DescribePrometheusTargetsTMP(request *DescribePrometheusTargets
 // 获取targets信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INTERNALERROR = "InternalError"
@@ -7798,6 +7808,7 @@ func NewModifyPrometheusConfigResponse() (response *ModifyPrometheusConfigRespon
 // 修改prometheus配置，如果配置项不存在，则会新增
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
@@ -7815,6 +7826,7 @@ func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) 
 // 修改prometheus配置，如果配置项不存在，则会新增
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"

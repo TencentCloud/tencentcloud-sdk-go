@@ -1448,6 +1448,7 @@ type CreateConvertTaskApiRequestParams struct {
 	// <li>jpg</li>
 	// <li>jpeg</li>
 	// <li>png</li>
+	// <li>html</li>
 	// <li>bmp</li>
 	// <li>txt</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
@@ -1488,6 +1489,7 @@ type CreateConvertTaskApiRequest struct {
 	// <li>jpg</li>
 	// <li>jpeg</li>
 	// <li>png</li>
+	// <li>html</li>
 	// <li>bmp</li>
 	// <li>txt</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`

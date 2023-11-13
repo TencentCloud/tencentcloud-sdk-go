@@ -87,6 +87,12 @@ type ClusterOption struct {
 	// 计算集群类型，取值范围：
 	// - KUBERNETES
 	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 资源配额。
+	ResourceQuota *ResourceQuota `json:"ResourceQuota,omitnil" name:"ResourceQuota"`
+
+	// 限制范围。
+	LimitRange *LimitRange `json:"LimitRange,omitnil" name:"LimitRange"`
 }
 
 // Predefined struct for user
@@ -99,6 +105,9 @@ type CreateEnvironmentRequestParams struct {
 
 	// 环境描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 是否为默认环境。
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -112,6 +121,9 @@ type CreateEnvironmentRequest struct {
 
 	// 环境描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 是否为默认环境。
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -129,6 +141,7 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Config")
 	delete(f, "Description")
+	delete(f, "IsDefault")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -722,6 +735,9 @@ type EnvironmentConfig struct {
 
 	// 云服务器配置。
 	CVMOption *CVMOption `json:"CVMOption,omitnil" name:"CVMOption"`
+
+	// 安全组配置。
+	SecurityGroupOption *SecurityGroupOption `json:"SecurityGroupOption,omitnil" name:"SecurityGroupOption"`
 }
 
 type ExecutionTime struct {
@@ -1078,6 +1094,16 @@ func (r *ImportTableFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LimitRange struct {
+	// 最大CPU设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxCPU *string `json:"MaxCPU,omitnil" name:"MaxCPU"`
+
+	// 最大内存设置（单位：Mi，Gi，Ti，M，G，T）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxMemory *string `json:"MaxMemory,omitnil" name:"MaxMemory"`
+}
+
 type NFOption struct {
 	// Config。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1132,6 +1158,20 @@ type ResourceIds struct {
 	// 弹性容器集群ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EKSId *string `json:"EKSId,omitnil" name:"EKSId"`
+}
+
+type ResourceQuota struct {
+	// CPU Limit设置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPULimit *string `json:"CPULimit,omitnil" name:"CPULimit"`
+
+	// 内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemoryLimit *string `json:"MemoryLimit,omitnil" name:"MemoryLimit"`
+
+	// Pods数量设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pods *string `json:"Pods,omitnil" name:"Pods"`
 }
 
 // Predefined struct for user
@@ -1708,6 +1748,11 @@ func (r *RunWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SecurityGroupOption struct {
+	// 安全组ID。
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil" name:"SecurityGroupId"`
+}
+
 type StorageOption struct {
 	// 文件存储类型，取值范围：
 	// - SD：通用标准型
@@ -1839,6 +1884,12 @@ func (r *TerminateRunGroupResponse) FromJsonString(s string) error {
 }
 
 type VPCOption struct {
+	// 私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+	VPCId *string `json:"VPCId,omitnil" name:"VPCId"`
+
+	// 子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
 	// 子网可用区。
 	SubnetZone *string `json:"SubnetZone,omitnil" name:"SubnetZone"`
 

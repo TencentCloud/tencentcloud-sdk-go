@@ -4605,6 +4605,10 @@ type MainlandPermitOCRRequestParams struct {
 
 	// 是否返回头像。默认不返回。
 	RetProfile *bool `json:"RetProfile,omitnil" name:"RetProfile"`
+
+	// 图片正反面
+	// FRONT：正面、BACK：反面，默认为FRONT
+	CardSide *string `json:"CardSide,omitnil" name:"CardSide"`
 }
 
 type MainlandPermitOCRRequest struct {
@@ -4625,6 +4629,10 @@ type MainlandPermitOCRRequest struct {
 
 	// 是否返回头像。默认不返回。
 	RetProfile *bool `json:"RetProfile,omitnil" name:"RetProfile"`
+
+	// 图片正反面
+	// FRONT：正面、BACK：反面，默认为FRONT
+	CardSide *string `json:"CardSide,omitnil" name:"CardSide"`
 }
 
 func (r *MainlandPermitOCRRequest) ToJsonString() string {
@@ -4642,6 +4650,7 @@ func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "RetProfile")
+	delete(f, "CardSide")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MainlandPermitOCRRequest has unknown keys!", "")
 	}
@@ -4683,6 +4692,9 @@ type MainlandPermitOCRResponseParams struct {
 	// RetProfile为True时返回头像字段， Base64编码
 	Profile *string `json:"Profile,omitnil" name:"Profile"`
 
+	// 背面字段信息
+	MainlandTravelPermitBackInfos *MainlandTravelPermitBackInfos `json:"MainlandTravelPermitBackInfos,omitnil" name:"MainlandTravelPermitBackInfos"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4701,6 +4713,24 @@ func (r *MainlandPermitOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MainlandPermitOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MainlandTravelPermitBackInfos struct {
+	// String	证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 卡证背面的中文姓名	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 卡证背面的身份证号码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IDNumber *string `json:"IDNumber,omitnil" name:"IDNumber"`
+
+	// 历史通行证号码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HistoryNumber *string `json:"HistoryNumber,omitnil" name:"HistoryNumber"`
 }
 
 type MedicalInvoice struct {

@@ -41,6 +41,9 @@ const (
 	// 创建资源包失败
 	FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
 
+	// 设置备份策略失败，请稍后重试。如果持续不成功，请联系客服进行处理。
+	FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = "FailedOperation.CynosdbMysqlSetBackupStrategy"
+
 	// 数据库访问失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 

@@ -1555,6 +1555,9 @@ type CreateLivePullStreamTaskRequestParams struct {
 
 	// 录制模板 ID。
 	RecordTemplateId *string `json:"RecordTemplateId,omitnil" name:"RecordTemplateId"`
+
+	// 新的目标地址，用于任务同时推两路场景。
+	BackupToUrl *string `json:"BackupToUrl,omitnil" name:"BackupToUrl"`
 }
 
 type CreateLivePullStreamTaskRequest struct {
@@ -1701,6 +1704,9 @@ type CreateLivePullStreamTaskRequest struct {
 
 	// 录制模板 ID。
 	RecordTemplateId *string `json:"RecordTemplateId,omitnil" name:"RecordTemplateId"`
+
+	// 新的目标地址，用于任务同时推两路场景。
+	BackupToUrl *string `json:"BackupToUrl,omitnil" name:"BackupToUrl"`
 }
 
 func (r *CreateLivePullStreamTaskRequest) ToJsonString() string {
@@ -1737,6 +1743,7 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "WatermarkList")
 	delete(f, "VodLocalMode")
 	delete(f, "RecordTemplateId")
+	delete(f, "BackupToUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePullStreamTaskRequest has unknown keys!", "")
 	}
@@ -12758,6 +12765,10 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 1 - 启用。
 	// 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
 	VodLocalMode *int64 `json:"VodLocalMode,omitnil" name:"VodLocalMode"`
+
+	// 新的目标地址。传空值，则取消该地址的推流。
+	// 传入新值，则替换原有地址。
+	BackupToUrl *string `json:"BackupToUrl,omitnil" name:"BackupToUrl"`
 }
 
 type ModifyLivePullStreamTaskRequest struct {
@@ -12870,6 +12881,10 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 1 - 启用。
 	// 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
 	VodLocalMode *int64 `json:"VodLocalMode,omitnil" name:"VodLocalMode"`
+
+	// 新的目标地址。传空值，则取消该地址的推流。
+	// 传入新值，则替换原有地址。
+	BackupToUrl *string `json:"BackupToUrl,omitnil" name:"BackupToUrl"`
 }
 
 func (r *ModifyLivePullStreamTaskRequest) ToJsonString() string {
@@ -12903,6 +12918,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "BackupSourceUrl")
 	delete(f, "WatermarkList")
 	delete(f, "VodLocalMode")
+	delete(f, "BackupToUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePullStreamTaskRequest has unknown keys!", "")
 	}

@@ -10915,7 +10915,7 @@ type ModifyDBInstanceLogToCLSRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 日志类型：errorLog/slowLog
+	// 日志类型：error/slowLog
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 投递状态：ON/OFF
@@ -10946,7 +10946,7 @@ type ModifyDBInstanceLogToCLSRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 日志类型：errorLog/slowLog
+	// 日志类型：error/slowLog
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 投递状态：ON/OFF

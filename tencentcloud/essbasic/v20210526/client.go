@@ -1221,6 +1221,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
@@ -1405,6 +1406,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
@@ -3584,7 +3586,7 @@ func NewChannelDeleteSealPoliciesResponse() (response *ChannelDeleteSealPolicies
 }
 
 // ChannelDeleteSealPolicies
-// 删除指定印章下多个授权信息
+// 此接口（ChannelDeleteSealPolicies）用于删除已指定员工印章授权信息，删除员工的印章授权后，该员工使用印章进行盖章时，将需要提交印章授权申请且通过审核后才能使用该印章进行签署。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
@@ -3595,7 +3597,7 @@ func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesReq
 }
 
 // ChannelDeleteSealPolicies
-// 删除指定印章下多个授权信息
+// 此接口（ChannelDeleteSealPolicies）用于删除已指定员工印章授权信息，删除员工的印章授权后，该员工使用印章进行盖章时，将需要提交印章授权申请且通过审核后才能使用该印章进行签署。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
@@ -3894,9 +3896,15 @@ func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrg
 }
 
 // ChannelDescribeOrganizationSeals
-// 查询子客企业电子印章，需要操作者具有管理印章权限
+// 此接口（ChannelDescribeOrganizationSeals）查询子客企业电子印章。<br />
 //
-// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数，只返回启用的印章。
+// 注: 
+//
+// 1. `查询子客企业电子印章，需要操作者具有管理印章权限`
+//
+// 2. `客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理`
+//
+// 3. `此接口只能查询启用的印章`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3913,9 +3921,15 @@ func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrgani
 }
 
 // ChannelDescribeOrganizationSeals
-// 查询子客企业电子印章，需要操作者具有管理印章权限
+// 此接口（ChannelDescribeOrganizationSeals）查询子客企业电子印章。<br />
 //
-// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数，只返回启用的印章。
+// 注: 
+//
+// 1. `查询子客企业电子印章，需要操作者具有管理印章权限`
+//
+// 2. `客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理`
+//
+// 3. `此接口只能查询启用的印章`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3965,7 +3979,25 @@ func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) 
 // ChannelDescribeRoles
 // 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列。
 //
-// 相关系统默认角色说明可参考文档：https://cloud.tencent.com/document/product/1323/61355
+// 
+//
+// 
+//
+// <font color="red">**系统默认角色**</font>说明可参考下表
+//
+// 
+//
+// | 角色名称| 建议授予对象 | 角色描述 |
+//
+// | --- | --- | --- |
+//
+// | **超级管理员** |电子签业务最高权限，可以授权给法务/企业法人/业务负责人等 | 所有功能和数据管理权限，只能设置一位超管。 |
+//
+// | **业务管理员**|IT 系统负责人，可以授权给CTO等 | 企业合同模块、印章模块、模板模块等全量功能及数据权限。 |
+//
+// | **经办人**|企业法务负责人等 | 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看企业所有合同数据。 |
+//
+// | **业务员**|销售员、采购员 等| 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看自己相关所有合同数据。 |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3986,7 +4018,25 @@ func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (res
 // ChannelDescribeRoles
 // 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列。
 //
-// 相关系统默认角色说明可参考文档：https://cloud.tencent.com/document/product/1323/61355
+// 
+//
+// 
+//
+// <font color="red">**系统默认角色**</font>说明可参考下表
+//
+// 
+//
+// | 角色名称| 建议授予对象 | 角色描述 |
+//
+// | --- | --- | --- |
+//
+// | **超级管理员** |电子签业务最高权限，可以授权给法务/企业法人/业务负责人等 | 所有功能和数据管理权限，只能设置一位超管。 |
+//
+// | **业务管理员**|IT 系统负责人，可以授权给CTO等 | 企业合同模块、印章模块、模板模块等全量功能及数据权限。 |
+//
+// | **经办人**|企业法务负责人等 | 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看企业所有合同数据。 |
+//
+// | **业务员**|销售员、采购员 等| 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看自己相关所有合同数据。 |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4348,7 +4398,7 @@ func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResp
 }
 
 // ChannelUpdateSealStatus
-// 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
+// 此接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4358,7 +4408,7 @@ func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest
 }
 
 // ChannelUpdateSealStatus
-// 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
+// 此接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
