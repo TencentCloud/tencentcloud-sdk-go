@@ -1115,15 +1115,6 @@ type ApiPkg struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil" name:"BillingItem"`
 
-	// 1 API安全6折
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	APICPWaf *int64 `json:"APICPWaf,omitnil" name:"APICPWaf"`
-
-	// 1 表示5折折扣
-	// 2 表示4折折扣
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	APINPWaf *int64 `json:"APINPWaf,omitnil" name:"APINPWaf"`
-
 	// api安全7天试用标识。1试用。0没试用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil" name:"IsAPISecurityTrial"`
@@ -1328,6 +1319,64 @@ type CCRuleItem struct {
 	// 高级参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
+}
+
+type CCRuleItems struct {
+	// 名字
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 模式
+	Advance *uint64 `json:"Advance,omitnil" name:"Advance"`
+
+	// 限制
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 范围
+	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+
+	// 网址
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 匹配类型
+	MatchFunc *uint64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
+
+	// 动作
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 优先级
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
+
+	// 有效时间
+	ValidTime *uint64 `json:"ValidTime,omitnil" name:"ValidTime"`
+
+	// 版本
+	TsVersion *uint64 `json:"TsVersion,omitnil" name:"TsVersion"`
+
+	// 规则详情
+	Options *string `json:"Options,omitnil" name:"Options"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
+
+	// 关联的Session规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionApplied []*int64 `json:"SessionApplied,omitnil" name:"SessionApplied"`
+}
+
+type CCRuleLists struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Res []*CCRuleItems `json:"Res,omitnil" name:"Res"`
 }
 
 type CacheUrlItem struct {
@@ -3850,6 +3899,63 @@ func (r *DescribeBatchIpAccessControlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCCAutoStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DescribeCCAutoStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DescribeCCAutoStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCAutoStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCAutoStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCCAutoStatusResponseParams struct {
+	// 配置状态
+	AutoCCSwitch *int64 `json:"AutoCCSwitch,omitnil" name:"AutoCCSwitch"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCCAutoStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCCAutoStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeCCAutoStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCAutoStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCCRuleListRequestParams struct {
 	// 需要查询的API所属的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -3918,6 +4024,10 @@ func (r *DescribeCCRuleListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCRuleListResponseParams struct {
+	// 查询到的CC规则的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CCRuleLists `json:"Data,omitnil" name:"Data"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -11571,63 +11681,6 @@ func (r *ModifyWafAutoDenyRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyWafAutoDenyStatusRequestParams struct {
-	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
-}
-
-type ModifyWafAutoDenyStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
-}
-
-func (r *ModifyWafAutoDenyStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyWafAutoDenyStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "WafAutoDenyDetails")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWafAutoDenyStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyWafAutoDenyStatusResponseParams struct {
-	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type ModifyWafAutoDenyStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyWafAutoDenyStatusResponseParams `json:"Response"`
-}
-
-func (r *ModifyWafAutoDenyStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyWafAutoDenyStatusResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyWafThreatenIntelligenceRequestParams struct {
 	// 配置WAF威胁情报封禁模块详情
 	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitnil" name:"WafThreatenIntelligenceDetails"`
@@ -12692,6 +12745,78 @@ type TargetEntity struct {
 
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+// Predefined struct for user
+type UpsertCCAutoStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 状态值
+	Value *int64 `json:"Value,omitnil" name:"Value"`
+
+	// 版本：clb-waf, spart-waf
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+}
+
+type UpsertCCAutoStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 状态值
+	Value *int64 `json:"Value,omitnil" name:"Value"`
+
+	// 版本：clb-waf, spart-waf
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+}
+
+func (r *UpsertCCAutoStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpsertCCAutoStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Value")
+	delete(f, "Edition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCAutoStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpsertCCAutoStatusResponseParams struct {
+	// 正常情况为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpsertCCAutoStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *UpsertCCAutoStatusResponseParams `json:"Response"`
+}
+
+func (r *UpsertCCAutoStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpsertCCAutoStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

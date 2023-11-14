@@ -1,3 +1,45 @@
+# Release v1.0.793
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 73 次发布
+
+发布时间：2023-11-14 15:28:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCCAutoStatus](https://cloud.tencent.com/document/api/627/101568)
+* [UpsertCCAutoStatus](https://cloud.tencent.com/document/api/627/101567)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyWafAutoDenyStatus
+
+修改接口：
+
+* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [CCRuleItems](https://cloud.tencent.com/document/api/627/53609#CCRuleItems)
+* [CCRuleLists](https://cloud.tencent.com/document/api/627/53609#CCRuleLists)
+
+修改数据结构：
+
+* [ApiPkg](https://cloud.tencent.com/document/api/627/53609#ApiPkg)
+
+	* <font color="#dd0000">**删除成员**：</font>APICPWaf, APINPWaf
+
+
+
+
 # Release v1.0.792
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07

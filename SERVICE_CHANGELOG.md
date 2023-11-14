@@ -1,49 +1,10 @@
 # 本版本更新包含以下内容：
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 74 次发布
+### 第 73 次发布
 
-发布时间：2023-11-14 01:12:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterDatabases](https://cloud.tencent.com/document/api/1003/101559)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 132 次发布
-
-发布时间：2023-11-14 01:16:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
-
-	* 新增成员：NoTransfer
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 66 次发布
-
-发布时间：2023-11-14 01:16:39
+发布时间：2023-11-14 15:28:58
 
 本次发布包含了以下内容：
 
@@ -51,182 +12,31 @@
 
 新增接口：
 
-* [DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)
+* [DescribeCCAutoStatus](https://cloud.tencent.com/document/api/627/101568)
+* [UpsertCCAutoStatus](https://cloud.tencent.com/document/api/627/101567)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyWafAutoDenyStatus
+
+修改接口：
+
+* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
+
+	* 新增出参：Data
+
 
 新增数据结构：
 
-* [AttackRiskDetail](https://cloud.tencent.com/document/api/1007/41958#AttackRiskDetail)
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 42 次发布
-
-发布时间：2023-11-14 01:16:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CCRuleItems](https://cloud.tencent.com/document/api/627/53609#CCRuleItems)
+* [CCRuleLists](https://cloud.tencent.com/document/api/627/53609#CCRuleLists)
 
 修改数据结构：
 
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+* [ApiPkg](https://cloud.tencent.com/document/api/627/53609#ApiPkg)
 
-	* 新增成员：IsAutoScaleProxy
+	* <font color="#dd0000">**删除成员**：</font>APICPWaf, APINPWaf
 
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 116 次发布
-
-发布时间：2023-11-14 01:19:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
-
-	* 新增入参：BackupToUrl
-
-* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
-
-	* 新增入参：BackupToUrl
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 118 次发布
-
-发布时间：2023-11-14 01:22:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)
-
-	* 新增入参：CardSide
-
-	* 新增出参：MainlandTravelPermitBackInfos
-
-
-新增数据结构：
-
-* [MainlandTravelPermitBackInfos](https://cloud.tencent.com/document/api/866/33527#MainlandTravelPermitBackInfos)
-
-
-
-## 腾讯健康组学平台(omics) 版本：2022-11-28
-
-### 第 8 次发布
-
-发布时间：2023-11-14 01:22:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateEnvironment](https://cloud.tencent.com/document/api/1643/90909)
-
-	* 新增入参：IsDefault
-
-
-新增数据结构：
-
-* [LimitRange](https://cloud.tencent.com/document/api/1643/89100#LimitRange)
-* [ResourceQuota](https://cloud.tencent.com/document/api/1643/89100#ResourceQuota)
-* [SecurityGroupOption](https://cloud.tencent.com/document/api/1643/89100#SecurityGroupOption)
-
-修改数据结构：
-
-* [ClusterOption](https://cloud.tencent.com/document/api/1643/89100#ClusterOption)
-
-	* 新增成员：ResourceQuota, LimitRange
-
-* [EnvironmentConfig](https://cloud.tencent.com/document/api/1643/89100#EnvironmentConfig)
-
-	* 新增成员：SecurityGroupOption
-
-* [VPCOption](https://cloud.tencent.com/document/api/1643/89100#VPCOption)
-
-	* 新增成员：VPCId, SubnetId
-
-	* <font color="#dd0000">**修改成员**：</font>SubnetZone, VPCCIDRBlock, SubnetCIDRBlock
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 56 次发布
-
-发布时间：2023-11-14 01:33:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTableMetas](https://cloud.tencent.com/document/api/1267/101563)
-
-新增数据结构：
-
-* [SearchColumnDocVO](https://cloud.tencent.com/document/api/1267/76336#SearchColumnDocVO)
-* [TableHeat](https://cloud.tencent.com/document/api/1267/76336#TableHeat)
-* [TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta)
-* [TablePropertyScore](https://cloud.tencent.com/document/api/1267/76336#TablePropertyScore)
-
-
-
-## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
-
-### 第 3 次发布
-
-发布时间：2023-11-14 01:34:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeApplicationList](https://cloud.tencent.com/document/api/1693/97958)
-
-	* 新增入参：WorkspaceId, ApplicationToken, ApplicationId, PageNumber, PageSize
-
-	* 新增出参：Result
-
-* [DescribeDeviceShadowList](https://cloud.tencent.com/document/api/1693/101481)
-
-	* 新增入参：WorkspaceId, WIDSet, PageNumber, PageSize, ApplicationToken, DeviceTypeSet, ProductIdSet, SpaceCodeSet, DeviceTagSet
-
-	* 新增出参：Result
-
-* [DescribeVideoRecordStream](https://cloud.tencent.com/document/api/1693/101464)
-
-	* 新增入参：WID, Protocol, StartTime, EndTime, PlayBackRate, WorkspaceId, ApplicationToken, Stream, Env
-
-
-新增数据结构：
-
-* [ApplicationInfo](https://cloud.tencent.com/document/api/1693/97961#ApplicationInfo)
-* [ApplicationList](https://cloud.tencent.com/document/api/1693/97961#ApplicationList)
-* [ApplicationLogo](https://cloud.tencent.com/document/api/1693/97961#ApplicationLogo)
-* [DeviceShadowInfo](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowInfo)
-* [DeviceShadowRes](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowRes)
 
 
 
@@ -41195,7 +41005,7 @@
 
 新增接口：
 
-* [[DescribeClusterDatabases](https://cloud.tencent.com/document/api/1003/101559)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterDatabases](https://cloud.tencent.com/document/api/1003/101559)
 
 ### 第 73 次发布
 
@@ -61167,11 +60977,11 @@
 
 新增接口：
 
-* [[DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)](https://cloud.tencent.com/document/api/#/#)
+* [DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)
 
 新增数据结构：
 
-* [[AttackRiskDetail](https://cloud.tencent.com/document/api/1007/41958#AttackRiskDetail)](https://cloud.tencent.com/document/api/1007/41958#[AttackRiskDetail](https://cloud.tencent.com/document/api/1007/41958#AttackRiskDetail))
+* [AttackRiskDetail](https://cloud.tencent.com/document/api/1007/41958#AttackRiskDetail)
 
 ### 第 65 次发布
 
@@ -87207,7 +87017,7 @@
 
 新增数据结构：
 
-* [[MainlandTravelPermitBackInfos](https://cloud.tencent.com/document/api/866/33527#MainlandTravelPermitBackInfos)](https://cloud.tencent.com/document/api/866/33527#[MainlandTravelPermitBackInfos](https://cloud.tencent.com/document/api/866/33527#MainlandTravelPermitBackInfos))
+* [MainlandTravelPermitBackInfos](https://cloud.tencent.com/document/api/866/33527#MainlandTravelPermitBackInfos)
 
 ### 第 117 次发布
 
@@ -89491,9 +89301,9 @@
 
 新增数据结构：
 
-* [[LimitRange](https://cloud.tencent.com/document/api/1643/89100#LimitRange)](https://cloud.tencent.com/document/api/1643/89100#[LimitRange](https://cloud.tencent.com/document/api/1643/89100#LimitRange))
-* [[ResourceQuota](https://cloud.tencent.com/document/api/1643/89100#ResourceQuota)](https://cloud.tencent.com/document/api/1643/89100#[ResourceQuota](https://cloud.tencent.com/document/api/1643/89100#ResourceQuota))
-* [[SecurityGroupOption](https://cloud.tencent.com/document/api/1643/89100#SecurityGroupOption)](https://cloud.tencent.com/document/api/1643/89100#[SecurityGroupOption](https://cloud.tencent.com/document/api/1643/89100#SecurityGroupOption))
+* [LimitRange](https://cloud.tencent.com/document/api/1643/89100#LimitRange)
+* [ResourceQuota](https://cloud.tencent.com/document/api/1643/89100#ResourceQuota)
+* [SecurityGroupOption](https://cloud.tencent.com/document/api/1643/89100#SecurityGroupOption)
 
 修改数据结构：
 
@@ -137199,6 +137009,42 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 73 次发布
+
+发布时间：2023-11-14 15:28:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCCAutoStatus](https://cloud.tencent.com/document/api/627/101568)](https://cloud.tencent.com/document/api/#/#)
+* [[UpsertCCAutoStatus](https://cloud.tencent.com/document/api/627/101567)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyWafAutoDenyStatus
+
+修改接口：
+
+* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [[CCRuleItems](https://cloud.tencent.com/document/api/627/53609#CCRuleItems)](https://cloud.tencent.com/document/api/627/53609#[CCRuleItems](https://cloud.tencent.com/document/api/627/53609#CCRuleItems))
+* [[CCRuleLists](https://cloud.tencent.com/document/api/627/53609#CCRuleLists)](https://cloud.tencent.com/document/api/627/53609#[CCRuleLists](https://cloud.tencent.com/document/api/627/53609#CCRuleLists))
+
+修改数据结构：
+
+* [ApiPkg](https://cloud.tencent.com/document/api/627/53609#ApiPkg)
+
+	* <font color="#dd0000">**删除成员**：</font>APICPWaf, APINPWaf
+
+
 ### 第 72 次发布
 
 发布时间：2023-11-08 10:49:05
@@ -139081,14 +138927,14 @@
 
 新增接口：
 
-* [[DescribeTableMetas](https://cloud.tencent.com/document/api/1267/101563)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTableMetas](https://cloud.tencent.com/document/api/1267/101563)
 
 新增数据结构：
 
-* [[SearchColumnDocVO](https://cloud.tencent.com/document/api/1267/76336#SearchColumnDocVO)](https://cloud.tencent.com/document/api/1267/76336#[SearchColumnDocVO](https://cloud.tencent.com/document/api/1267/76336#SearchColumnDocVO))
-* [[TableHeat](https://cloud.tencent.com/document/api/1267/76336#TableHeat)](https://cloud.tencent.com/document/api/1267/76336#[TableHeat](https://cloud.tencent.com/document/api/1267/76336#TableHeat))
-* [[TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta)](https://cloud.tencent.com/document/api/1267/76336#[TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta))
-* [[TablePropertyScore](https://cloud.tencent.com/document/api/1267/76336#TablePropertyScore)](https://cloud.tencent.com/document/api/1267/76336#[TablePropertyScore](https://cloud.tencent.com/document/api/1267/76336#TablePropertyScore))
+* [SearchColumnDocVO](https://cloud.tencent.com/document/api/1267/76336#SearchColumnDocVO)
+* [TableHeat](https://cloud.tencent.com/document/api/1267/76336#TableHeat)
+* [TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta)
+* [TablePropertyScore](https://cloud.tencent.com/document/api/1267/76336#TablePropertyScore)
 
 ### 第 55 次发布
 
@@ -140873,11 +140719,11 @@
 
 新增数据结构：
 
-* [[ApplicationInfo](https://cloud.tencent.com/document/api/1693/97961#ApplicationInfo)](https://cloud.tencent.com/document/api/1693/97961#[ApplicationInfo](https://cloud.tencent.com/document/api/1693/97961#ApplicationInfo))
-* [[ApplicationList](https://cloud.tencent.com/document/api/1693/97961#ApplicationList)](https://cloud.tencent.com/document/api/1693/97961#[ApplicationList](https://cloud.tencent.com/document/api/1693/97961#ApplicationList))
-* [[ApplicationLogo](https://cloud.tencent.com/document/api/1693/97961#ApplicationLogo)](https://cloud.tencent.com/document/api/1693/97961#[ApplicationLogo](https://cloud.tencent.com/document/api/1693/97961#ApplicationLogo))
-* [[DeviceShadowInfo](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowInfo)](https://cloud.tencent.com/document/api/1693/97961#[DeviceShadowInfo](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowInfo))
-* [[DeviceShadowRes](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowRes)](https://cloud.tencent.com/document/api/1693/97961#[DeviceShadowRes](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowRes))
+* [ApplicationInfo](https://cloud.tencent.com/document/api/1693/97961#ApplicationInfo)
+* [ApplicationList](https://cloud.tencent.com/document/api/1693/97961#ApplicationList)
+* [ApplicationLogo](https://cloud.tencent.com/document/api/1693/97961#ApplicationLogo)
+* [DeviceShadowInfo](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowInfo)
+* [DeviceShadowRes](https://cloud.tencent.com/document/api/1693/97961#DeviceShadowRes)
 
 ### 第 2 次发布
 

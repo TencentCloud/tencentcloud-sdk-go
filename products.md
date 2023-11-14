@@ -201,7 +201,7 @@
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2023-11-09 01:25:09 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2023-05-18 01:55:50 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2023-08-30 01:25:15 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2023-11-14 01:29:09 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2023-11-14 15:01:32 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2023-11-06 00:21:33 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [资源编排 TIC](https://cloud.tencent.com/document/product/1213) | 2023-08-17 05:26:08 |
@@ -231,7 +231,7 @@
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2023-11-07 02:30:32 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2023-11-09 01:29:06 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-11-14 01:33:45 |
-| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-08 10:49:05 |
+| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-14 15:28:58 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-07-18 01:59:28 |
 | wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2023-11-14 01:33:54 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2023-11-14 01:34:59 |

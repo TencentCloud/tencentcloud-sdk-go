@@ -2433,6 +2433,57 @@ func (c *Client) DescribeBatchIpAccessControlWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeCCAutoStatusRequest() (request *DescribeCCAutoStatusRequest) {
+    request = &DescribeCCAutoStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeCCAutoStatus")
+    
+    
+    return
+}
+
+func NewDescribeCCAutoStatusResponse() (response *DescribeCCAutoStatusResponse) {
+    response = &DescribeCCAutoStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCCAutoStatus
+// Waf 斯巴达版本查询cc自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCAutoStatus(request *DescribeCCAutoStatusRequest) (response *DescribeCCAutoStatusResponse, err error) {
+    return c.DescribeCCAutoStatusWithContext(context.Background(), request)
+}
+
+// DescribeCCAutoStatus
+// Waf 斯巴达版本查询cc自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCAutoStatusWithContext(ctx context.Context, request *DescribeCCAutoStatusRequest) (response *DescribeCCAutoStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCAutoStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCCAutoStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCCAutoStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCRuleRequest() (request *DescribeCCRuleRequest) {
     request = &DescribeCCRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2453,10 +2504,6 @@ func NewDescribeCCRuleResponse() (response *DescribeCCRuleResponse) {
 }
 
 // DescribeCCRule
-// 没有在使用。
-//
-// 
-//
 // Waf  CC V2 Query接口
 //
 // 可能返回的错误码:
@@ -2466,10 +2513,6 @@ func (c *Client) DescribeCCRule(request *DescribeCCRuleRequest) (response *Descr
 }
 
 // DescribeCCRule
-// 没有在使用。
-//
-// 
-//
 // Waf  CC V2 Query接口
 //
 // 可能返回的错误码:
@@ -7504,6 +7547,7 @@ func NewModifyObjectResponse() (response *ModifyObjectResponse) {
 // 修改防护对象
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -7516,6 +7560,7 @@ func (c *Client) ModifyObject(request *ModifyObjectRequest) (response *ModifyObj
 // 修改防护对象
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -7615,6 +7660,7 @@ func NewModifySpartaProtectionResponse() (response *ModifySpartaProtectionRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -7643,6 +7689,7 @@ func (c *Client) ModifySpartaProtection(request *ModifySpartaProtectionRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -7703,6 +7750,7 @@ func NewModifySpartaProtectionModeResponse() (response *ModifySpartaProtectionMo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -7725,6 +7773,7 @@ func (c *Client) ModifySpartaProtectionMode(request *ModifySpartaProtectionModeR
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -7926,57 +7975,6 @@ func (c *Client) ModifyWafAutoDenyRulesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyWafAutoDenyRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyWafAutoDenyStatusRequest() (request *ModifyWafAutoDenyStatusRequest) {
-    request = &ModifyWafAutoDenyStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "ModifyWafAutoDenyStatus")
-    
-    
-    return
-}
-
-func NewModifyWafAutoDenyStatusResponse() (response *ModifyWafAutoDenyStatusResponse) {
-    response = &ModifyWafAutoDenyStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyWafAutoDenyStatus
-// 配置WAF自动封禁模块状态
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyWafAutoDenyStatus(request *ModifyWafAutoDenyStatusRequest) (response *ModifyWafAutoDenyStatusResponse, err error) {
-    return c.ModifyWafAutoDenyStatusWithContext(context.Background(), request)
-}
-
-// ModifyWafAutoDenyStatus
-// 配置WAF自动封禁模块状态
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyWafAutoDenyStatusWithContext(ctx context.Context, request *ModifyWafAutoDenyStatusRequest) (response *ModifyWafAutoDenyStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyWafAutoDenyStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyWafAutoDenyStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyWafAutoDenyStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -8501,6 +8499,59 @@ func (c *Client) SwitchElasticModeWithContext(ctx context.Context, request *Swit
     request.SetContext(ctx)
     
     response = NewSwitchElasticModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpsertCCAutoStatusRequest() (request *UpsertCCAutoStatusRequest) {
+    request = &UpsertCCAutoStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "UpsertCCAutoStatus")
+    
+    
+    return
+}
+
+func NewUpsertCCAutoStatusResponse() (response *UpsertCCAutoStatusResponse) {
+    response = &UpsertCCAutoStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpsertCCAutoStatus
+// Waf 斯巴达版本更新cc自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpsertCCAutoStatus(request *UpsertCCAutoStatusRequest) (response *UpsertCCAutoStatusResponse, err error) {
+    return c.UpsertCCAutoStatusWithContext(context.Background(), request)
+}
+
+// UpsertCCAutoStatus
+// Waf 斯巴达版本更新cc自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpsertCCAutoStatusWithContext(ctx context.Context, request *UpsertCCAutoStatusRequest) (response *UpsertCCAutoStatusResponse, err error) {
+    if request == nil {
+        request = NewUpsertCCAutoStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpsertCCAutoStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpsertCCAutoStatusResponse()
     err = c.Send(request, response)
     return
 }
