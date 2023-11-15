@@ -1651,7 +1651,7 @@ func NewDescribeRiskCenterWebsiteRiskListResponse() (response *DescribeRiskCente
 }
 
 // DescribeRiskCenterWebsiteRiskList
-// 获取网站风险列表
+// 获取内容风险列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1677,7 +1677,7 @@ func (c *Client) DescribeRiskCenterWebsiteRiskList(request *DescribeRiskCenterWe
 }
 
 // DescribeRiskCenterWebsiteRiskList
-// 获取网站风险列表
+// 获取内容风险列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

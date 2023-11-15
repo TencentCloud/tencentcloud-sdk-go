@@ -3920,6 +3920,164 @@ func (r *DescribeDatasetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventsRequestParams struct {
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil" name:"Service"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+
+	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页Limit，默认值为100，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页Offset，默认值为0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
+	// 2. Filter.Values：
+	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
+	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
+	// Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil" name:"Service"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+
+	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页Limit，默认值为100，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页Offset，默认值为0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
+	// 2. Filter.Values：
+	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
+	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
+	// Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Service")
+	delete(f, "ServiceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventsResponseParams struct {
+	// 事件的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*Event `json:"Events,omitnil" name:"Events"`
+
+	// 此次查询的事件的个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInferTemplatesRequestParams struct {
 
 }
@@ -4038,7 +4196,12 @@ func (r *DescribeLatestTrainingMetricsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogsRequestParams struct {
-	// 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
 	Service *string `json:"Service,omitnil" name:"Service"`
 
 	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
@@ -4050,7 +4213,27 @@ type DescribeLogsRequestParams struct {
 	// 日志查询条数，默认值100，最大值100
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 查询哪个Pod的日志（支持结尾通配符*)
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+	// 注：支持结尾通配符*
 	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 排序方向（可选值为ASC, DESC ），默认为DESC
@@ -4073,7 +4256,12 @@ type DescribeLogsRequestParams struct {
 type DescribeLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
 	Service *string `json:"Service,omitnil" name:"Service"`
 
 	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
@@ -4085,7 +4273,27 @@ type DescribeLogsRequest struct {
 	// 日志查询条数，默认值100，最大值100
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 查询哪个Pod的日志（支持结尾通配符*)
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+	// 注：支持结尾通配符*
 	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 排序方向（可选值为ASC, DESC ），默认为DESC
@@ -4121,6 +4329,7 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Limit")
+	delete(f, "ServiceId")
 	delete(f, "PodName")
 	delete(f, "Order")
 	delete(f, "OrderField")
@@ -5892,6 +6101,40 @@ type EnvVar struct {
 	// 环境变量value
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type Event struct {
+	// 事件的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 事件的具体信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 事件第一次发生的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTimestamp *string `json:"FirstTimestamp,omitnil" name:"FirstTimestamp"`
+
+	// 事件最后一次发生的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTimestamp *string `json:"LastTimestamp,omitnil" name:"LastTimestamp"`
+
+	// 事件发生的次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
+
+	// 事件的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 事件关联的资源的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceKind *string `json:"ResourceKind,omitnil" name:"ResourceKind"`
+
+	// 事件关联的资源的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 }
 
 type Filter struct {

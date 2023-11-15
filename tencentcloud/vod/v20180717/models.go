@@ -4338,6 +4338,88 @@ func (r *CreateImageSpriteTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateJustInTimeTranscodeTemplateRequestParams struct {
+	// 模板名字，长度限制64个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 视频参数配置。
+	VideoConfigure *VideoConfigureInfo `json:"VideoConfigure,omitnil" name:"VideoConfigure"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 水印参数配置。
+	WatermarkConfigure *WatermarkConfigureInfo `json:"WatermarkConfigure,omitnil" name:"WatermarkConfigure"`
+
+	// 模板描述，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+}
+
+type CreateJustInTimeTranscodeTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名字，长度限制64个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 视频参数配置。
+	VideoConfigure *VideoConfigureInfo `json:"VideoConfigure,omitnil" name:"VideoConfigure"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 水印参数配置。
+	WatermarkConfigure *WatermarkConfigureInfo `json:"WatermarkConfigure,omitnil" name:"WatermarkConfigure"`
+
+	// 模板描述，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+}
+
+func (r *CreateJustInTimeTranscodeTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJustInTimeTranscodeTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "VideoConfigure")
+	delete(f, "SubAppId")
+	delete(f, "WatermarkConfigure")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJustInTimeTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJustInTimeTranscodeTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateJustInTimeTranscodeTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateJustInTimeTranscodeTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateJustInTimeTranscodeTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePersonSampleRequestParams struct {
 	// 素材名称，长度限制：20 个字符。
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -6713,6 +6795,67 @@ func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteImageSpriteTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJustInTimeTranscodeTemplateRequestParams struct {
+	// 模板名字。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+}
+
+type DeleteJustInTimeTranscodeTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名字。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+}
+
+func (r *DeleteJustInTimeTranscodeTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJustInTimeTranscodeTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJustInTimeTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJustInTimeTranscodeTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteJustInTimeTranscodeTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteJustInTimeTranscodeTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteJustInTimeTranscodeTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9631,6 +9774,98 @@ func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJustInTimeTranscodeTemplatesRequestParams struct {
+	// 模板名过滤条件，数组长度限制：100。
+	Names []*string `json:"Names,omitnil" name:"Names"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置任务流模板；</li>
+	// <li>Custom：用户自定义任务流模板。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeJustInTimeTranscodeTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名过滤条件，数组长度限制：100。
+	Names []*string `json:"Names,omitnil" name:"Names"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置任务流模板；</li>
+	// <li>Custom：用户自定义任务流模板。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeJustInTimeTranscodeTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJustInTimeTranscodeTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Names")
+	delete(f, "SubAppId")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJustInTimeTranscodeTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJustInTimeTranscodeTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 模板详情列表。
+	JustInTimeTranscodeTemplateSet []*JustInTimeTranscodeTemplate `json:"JustInTimeTranscodeTemplateSet,omitnil" name:"JustInTimeTranscodeTemplateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeJustInTimeTranscodeTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJustInTimeTranscodeTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeJustInTimeTranscodeTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJustInTimeTranscodeTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13719,6 +13954,25 @@ type JitterConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
 }
 
+type JustInTimeTranscodeTemplate struct {
+	// 模板类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 模板名。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 模板描述。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+
+	// 视频参数配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoConfigure *VideoConfigureInfo `json:"VideoConfigure,omitnil" name:"VideoConfigure"`
+
+	// 水印参数配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WatermarkConfigure *WatermarkConfigureData `json:"WatermarkConfigure,omitnil" name:"WatermarkConfigure"`
+}
+
 type LicenseUsageDataItem struct {
 	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
 	Time *string `json:"Time,omitnil" name:"Time"`
@@ -16379,6 +16633,88 @@ func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyImageSpriteTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyJustInTimeTranscodeTemplateRequestParams struct {
+	// 模板名字。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 视频参数配置。
+	VideoConfigure *VideoConfigureInfoForUpdate `json:"VideoConfigure,omitnil" name:"VideoConfigure"`
+
+	// 水印参数配置。
+	WatermarkConfigure *WatermarkConfigureInfoForUpdate `json:"WatermarkConfigure,omitnil" name:"WatermarkConfigure"`
+
+	// 模板描述，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+}
+
+type ModifyJustInTimeTranscodeTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名字。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 视频参数配置。
+	VideoConfigure *VideoConfigureInfoForUpdate `json:"VideoConfigure,omitnil" name:"VideoConfigure"`
+
+	// 水印参数配置。
+	WatermarkConfigure *WatermarkConfigureInfoForUpdate `json:"WatermarkConfigure,omitnil" name:"WatermarkConfigure"`
+
+	// 模板描述，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+}
+
+func (r *ModifyJustInTimeTranscodeTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJustInTimeTranscodeTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "SubAppId")
+	delete(f, "VideoConfigure")
+	delete(f, "WatermarkConfigure")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJustInTimeTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyJustInTimeTranscodeTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyJustInTimeTranscodeTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyJustInTimeTranscodeTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyJustInTimeTranscodeTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24072,6 +24408,68 @@ func (r *VerifyDomainRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VideoConfigureInfo struct {
+	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Width *int64 `json:"Width,omitnil" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Height *int64 `json:"Height,omitnil" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitnil" name:"ResolutionAdaptive"`
+
+	// 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+	// 当取值为 0，表示视频码率和原始视频保持一致。
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
+}
+
+type VideoConfigureInfoForUpdate struct {
+	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Width *int64 `json:"Width,omitnil" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Height *int64 `json:"Height,omitnil" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitnil" name:"ResolutionAdaptive"`
+
+	// 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+	// 当取值为 0，表示视频码率和原始视频保持一致。
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
+}
+
 type VideoDenoiseInfo struct {
 	// 视频降噪控制开关，可选值：
 	// <li>ON：开启视频降噪；</li>
@@ -24304,6 +24702,78 @@ type VoiceConfigureInfoForUpdate struct {
 	// <li>ON：开启；</li>
 	// <li>OFF：关闭。</li>
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
+}
+
+type WatermarkConfigureData struct {
+	// 是否启用水印。可取值：
+	// <li>ON：表示启用水印；</li>
+	// <li>OFF：表示关闭水印。</li>
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 水印 Url。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 水印的宽度。
+	// <li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	Width *string `json:"Width,omitnil" name:"Width"`
+
+	// 水印的高度。
+	// <li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+	XPos *string `json:"XPos,omitnil" name:"XPos"`
+
+	// 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+	YPos *string `json:"YPos,omitnil" name:"YPos"`
+}
+
+type WatermarkConfigureInfo struct {
+	// 是否启用水印。可取值：
+	// <li>ON：表示启用水印；</li>
+	// <li>OFF：表示关闭水印。</li>
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 水印图片 Base64 编码后的字符串。支持 jpeg、png 图片格式。
+	ImageContent *string `json:"ImageContent,omitnil" name:"ImageContent"`
+
+	// 水印的宽度。
+	// <li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	Width *string `json:"Width,omitnil" name:"Width"`
+
+	// 水印的高度。
+	// <li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+	XPos *string `json:"XPos,omitnil" name:"XPos"`
+
+	// 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+	YPos *string `json:"YPos,omitnil" name:"YPos"`
+}
+
+type WatermarkConfigureInfoForUpdate struct {
+	// 是否启用水印。可取值：
+	// <li>ON：表示启用水印；</li>
+	// <li>OFF：表示关闭水印。</li>
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 水印图片 Base64 编码后的字符串。支持 jpeg、png 图片格式。
+	ImageContent *string `json:"ImageContent,omitnil" name:"ImageContent"`
+
+	// 水印的宽度。
+	// <li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	Width *string `json:"Width,omitnil" name:"Width"`
+
+	// 水印的高度。
+	// <li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+	XPos *string `json:"XPos,omitnil" name:"XPos"`
+
+	// 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+	YPos *string `json:"YPos,omitnil" name:"YPos"`
 }
 
 type WatermarkCycleConfigForUpdate struct {

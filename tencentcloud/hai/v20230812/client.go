@@ -45,6 +45,393 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
+    request = &DescribeApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeApplications")
+    
+    
+    return
+}
+
+func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
+    response = &DescribeApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApplications
+// 查询应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    return c.DescribeApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeApplications
+// 查询应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceNetworkStatusRequest() (request *DescribeInstanceNetworkStatusRequest) {
+    request = &DescribeInstanceNetworkStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeInstanceNetworkStatus")
+    
+    
+    return
+}
+
+func NewDescribeInstanceNetworkStatusResponse() (response *DescribeInstanceNetworkStatusResponse) {
+    response = &DescribeInstanceNetworkStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceNetworkStatus
+// 查询实例的网络配置及消耗情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+func (c *Client) DescribeInstanceNetworkStatus(request *DescribeInstanceNetworkStatusRequest) (response *DescribeInstanceNetworkStatusResponse, err error) {
+    return c.DescribeInstanceNetworkStatusWithContext(context.Background(), request)
+}
+
+// DescribeInstanceNetworkStatus
+// 查询实例的网络配置及消耗情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+func (c *Client) DescribeInstanceNetworkStatusWithContext(ctx context.Context, request *DescribeInstanceNetworkStatusRequest) (response *DescribeInstanceNetworkStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceNetworkStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceNetworkStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceNetworkStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeInstances")
+    
+    
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstances
+// 查询实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    return c.DescribeInstancesWithContext(context.Background(), request)
+}
+
+// DescribeInstances
+// 查询实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
+    request = &DescribeRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeRegions")
+    
+    
+    return
+}
+
+func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
+    response = &DescribeRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRegions
+// 查询地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    return c.DescribeRegionsWithContext(context.Background(), request)
+}
+
+// DescribeRegions
+// 查询地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScenesRequest() (request *DescribeScenesRequest) {
+    request = &DescribeScenesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeScenes")
+    
+    
+    return
+}
+
+func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
+    response = &DescribeScenesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScenes
+// 查询场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    return c.DescribeScenesWithContext(context.Background(), request)
+}
+
+// DescribeScenes
+// 查询场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+func (c *Client) DescribeScenesWithContext(ctx context.Context, request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScenesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScenes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScenesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServiceLoginSettingsRequest() (request *DescribeServiceLoginSettingsRequest) {
+    request = &DescribeServiceLoginSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeServiceLoginSettings")
+    
+    
+    return
+}
+
+func NewDescribeServiceLoginSettingsResponse() (response *DescribeServiceLoginSettingsResponse) {
+    response = &DescribeServiceLoginSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServiceLoginSettings
+// 查询服务登录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+func (c *Client) DescribeServiceLoginSettings(request *DescribeServiceLoginSettingsRequest) (response *DescribeServiceLoginSettingsResponse, err error) {
+    return c.DescribeServiceLoginSettingsWithContext(context.Background(), request)
+}
+
+// DescribeServiceLoginSettings
+// 查询服务登录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+func (c *Client) DescribeServiceLoginSettingsWithContext(ctx context.Context, request *DescribeServiceLoginSettingsRequest) (response *DescribeServiceLoginSettingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceLoginSettingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceLoginSettings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceLoginSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRunInstancesRequest() (request *InquirePriceRunInstancesRequest) {
+    request = &InquirePriceRunInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "InquirePriceRunInstances")
+    
+    
+    return
+}
+
+func NewInquirePriceRunInstancesResponse() (response *InquirePriceRunInstancesResponse) {
+    response = &InquirePriceRunInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceRunInstances
+// 本接口 (InquirePriceRunInstances) 用于实例询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
+//  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesRequest) (response *InquirePriceRunInstancesResponse, err error) {
+    return c.InquirePriceRunInstancesWithContext(context.Background(), request)
+}
+
+// InquirePriceRunInstances
+// 本接口 (InquirePriceRunInstances) 用于实例询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
+//  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+func (c *Client) InquirePriceRunInstancesWithContext(ctx context.Context, request *InquirePriceRunInstancesRequest) (response *InquirePriceRunInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRunInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceRunInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceRunInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunInstancesRequest() (request *RunInstancesRequest) {
     request = &RunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -70,7 +457,6 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
@@ -89,7 +475,6 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 // 可能返回的错误码:
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"

@@ -7895,6 +7895,10 @@ type DescribeDSPAESDataAssetDetailRequestParams struct {
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 可信分排序，ASC升序
+	// DESC降序
+	CreditScore *string `json:"CreditScore,omitnil" name:"CreditScore"`
 }
 
 type DescribeDSPAESDataAssetDetailRequest struct {
@@ -7914,6 +7918,10 @@ type DescribeDSPAESDataAssetDetailRequest struct {
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 可信分排序，ASC升序
+	// DESC降序
+	CreditScore *string `json:"CreditScore,omitnil" name:"CreditScore"`
 }
 
 func (r *DescribeDSPAESDataAssetDetailRequest) ToJsonString() string {
@@ -7933,6 +7941,7 @@ func (r *DescribeDSPAESDataAssetDetailRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "CreditScore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAESDataAssetDetailRequest has unknown keys!", "")
 	}
@@ -8368,6 +8377,10 @@ type DescribeDSPARDBDataAssetDetailRequestParams struct {
 
 	// 合规组Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
+
+	// 可信分排序，ASC-升序
+	// DESC降序
+	CreditScore *string `json:"CreditScore,omitnil" name:"CreditScore"`
 }
 
 type DescribeDSPARDBDataAssetDetailRequest struct {
@@ -8378,6 +8391,10 @@ type DescribeDSPARDBDataAssetDetailRequest struct {
 
 	// 合规组Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
+
+	// 可信分排序，ASC-升序
+	// DESC降序
+	CreditScore *string `json:"CreditScore,omitnil" name:"CreditScore"`
 }
 
 func (r *DescribeDSPARDBDataAssetDetailRequest) ToJsonString() string {
@@ -8394,6 +8411,7 @@ func (r *DescribeDSPARDBDataAssetDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "ComplianceId")
+	delete(f, "CreditScore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPARDBDataAssetDetailRequest has unknown keys!", "")
 	}
@@ -10382,6 +10400,18 @@ type DspaRDBDataAssetDetail struct {
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
+
+	// 0.系统识别，1人工打标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
+
+	// 0未核查 1已核查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckStatus *int64 `json:"CheckStatus,omitnil" name:"CheckStatus"`
+
+	// 0非敏感，1敏感
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSensitiveData *int64 `json:"IsSensitiveData,omitnil" name:"IsSensitiveData"`
 }
 
 type DspaResourceAccount struct {
@@ -10626,6 +10656,12 @@ type ESDataAssetDetail struct {
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 0系统识别，1人工打标
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
+
+	// 0未核查，1已核查
+	CheckStatus *int64 `json:"CheckStatus,omitnil" name:"CheckStatus"`
 }
 
 type ESInstance struct {
@@ -12743,6 +12779,18 @@ type ModifyDSPAESTaskResultRequestParams struct {
 
 	// 调整后新的分级ID
 	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
+
+	// 调整前的规则id（系统识别的id）
+	SrcRuleId *int64 `json:"SrcRuleId,omitnil" name:"SrcRuleId"`
+
+	// 调整前的规则id（系统识别的id）
+	SrcCategoryId *int64 `json:"SrcCategoryId,omitnil" name:"SrcCategoryId"`
+
+	// 调整前的等级id
+	SrcLevelId *int64 `json:"SrcLevelId,omitnil" name:"SrcLevelId"`
+
+	// 0系统识别，1人工打标
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
 }
 
 type ModifyDSPAESTaskResultRequest struct {
@@ -12768,6 +12816,18 @@ type ModifyDSPAESTaskResultRequest struct {
 
 	// 调整后新的分级ID
 	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
+
+	// 调整前的规则id（系统识别的id）
+	SrcRuleId *int64 `json:"SrcRuleId,omitnil" name:"SrcRuleId"`
+
+	// 调整前的规则id（系统识别的id）
+	SrcCategoryId *int64 `json:"SrcCategoryId,omitnil" name:"SrcCategoryId"`
+
+	// 调整前的等级id
+	SrcLevelId *int64 `json:"SrcLevelId,omitnil" name:"SrcLevelId"`
+
+	// 0系统识别，1人工打标
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
 }
 
 func (r *ModifyDSPAESTaskResultRequest) ToJsonString() string {
@@ -12789,6 +12849,10 @@ func (r *ModifyDSPAESTaskResultRequest) FromJsonString(s string) error {
 	delete(f, "DestRuleId")
 	delete(f, "DestCategoryId")
 	delete(f, "DestLevelId")
+	delete(f, "SrcRuleId")
+	delete(f, "SrcCategoryId")
+	delete(f, "SrcLevelId")
+	delete(f, "IdentifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPAESTaskResultRequest has unknown keys!", "")
 	}
@@ -12839,6 +12903,19 @@ type ModifyDSPATaskResultRequestParams struct {
 
 	// 调整后新的分级ID
 	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
+
+	// 调整前的规则ID
+	SrcRuleId *int64 `json:"SrcRuleId,omitnil" name:"SrcRuleId"`
+
+	// 调整之前的分类id
+	SrcCategoryId *int64 `json:"SrcCategoryId,omitnil" name:"SrcCategoryId"`
+
+	// 调整之前的分级id
+	SrcLevelId *int64 `json:"SrcLevelId,omitnil" name:"SrcLevelId"`
+
+	// 识别方式
+	// 0-系统识别，1-人工打标
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
 }
 
 type ModifyDSPATaskResultRequest struct {
@@ -12864,6 +12941,19 @@ type ModifyDSPATaskResultRequest struct {
 
 	// 调整后新的分级ID
 	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
+
+	// 调整前的规则ID
+	SrcRuleId *int64 `json:"SrcRuleId,omitnil" name:"SrcRuleId"`
+
+	// 调整之前的分类id
+	SrcCategoryId *int64 `json:"SrcCategoryId,omitnil" name:"SrcCategoryId"`
+
+	// 调整之前的分级id
+	SrcLevelId *int64 `json:"SrcLevelId,omitnil" name:"SrcLevelId"`
+
+	// 识别方式
+	// 0-系统识别，1-人工打标
+	IdentifyType *int64 `json:"IdentifyType,omitnil" name:"IdentifyType"`
 }
 
 func (r *ModifyDSPATaskResultRequest) ToJsonString() string {
@@ -12885,6 +12975,10 @@ func (r *ModifyDSPATaskResultRequest) FromJsonString(s string) error {
 	delete(f, "DestRuleId")
 	delete(f, "DestCategoryId")
 	delete(f, "DestLevelId")
+	delete(f, "SrcRuleId")
+	delete(f, "SrcCategoryId")
+	delete(f, "SrcLevelId")
+	delete(f, "IdentifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPATaskResultRequest has unknown keys!", "")
 	}

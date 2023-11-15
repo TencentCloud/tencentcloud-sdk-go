@@ -418,3 +418,52 @@ func (c *Client) GetTrainingTextWithContext(ctx context.Context, request *GetTra
     err = c.Send(request, response)
     return
 }
+
+func NewGetVRSVoiceTypesRequest() (request *GetVRSVoiceTypesRequest) {
+    request = &GetVRSVoiceTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "GetVRSVoiceTypes")
+    
+    
+    return
+}
+
+func NewGetVRSVoiceTypesResponse() (response *GetVRSVoiceTypesResponse) {
+    response = &GetVRSVoiceTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVRSVoiceTypes
+// 查询复刻音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+func (c *Client) GetVRSVoiceTypes(request *GetVRSVoiceTypesRequest) (response *GetVRSVoiceTypesResponse, err error) {
+    return c.GetVRSVoiceTypesWithContext(context.Background(), request)
+}
+
+// GetVRSVoiceTypes
+// 查询复刻音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+func (c *Client) GetVRSVoiceTypesWithContext(ctx context.Context, request *GetVRSVoiceTypesRequest) (response *GetVRSVoiceTypesResponse, err error) {
+    if request == nil {
+        request = NewGetVRSVoiceTypesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVRSVoiceTypes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVRSVoiceTypesResponse()
+    err = c.Send(request, response)
+    return
+}

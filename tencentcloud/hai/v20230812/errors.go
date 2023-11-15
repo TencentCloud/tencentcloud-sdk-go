@@ -23,6 +23,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 两个指定的入参每次只能使用其中一个
+	INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
@@ -49,6 +52,9 @@ const (
 
 	// 实例ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+
+	// 场景ID格式非法
+	INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
 
 	// 指定实例有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"

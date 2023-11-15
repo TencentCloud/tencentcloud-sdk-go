@@ -723,7 +723,7 @@ type MediaInfo struct {
 	// 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
 	Codecs *string `json:"Codecs,omitnil" name:"Codecs"`
 
-	// 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为秒。**默认值为15秒**，支持用户自定义配置。
+	// 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为毫秒。**默认值为15秒**，支持用户自定义配置。
 	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// *内测中，敬请期待*
@@ -737,7 +737,7 @@ type MediaInfo struct {
 }
 
 type MoanResult struct {
-	// 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
+	// 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil" name:"Label"`
 
@@ -908,10 +908,10 @@ type TaskResult struct {
 }
 
 type TextResult struct {
-	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告。
 	// 以及其他令人反感、不安全或不适宜的内容类型。
 	// 
-	// 如音频中无复杂类型「TextResults」的返回则代表改音频中无相关违规内容；
+	// 如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil" name:"Label"`
 

@@ -2895,6 +2895,81 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewModifyUserGroupRequest() (request *ModifyUserGroupRequest) {
+    request = &ModifyUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyUserGroup")
+    
+    
+    return
+}
+
+func NewModifyUserGroupResponse() (response *ModifyUserGroupResponse) {
+    response = &ModifyUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserGroup
+// 修改用户组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserGroup(request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    return c.ModifyUserGroupWithContext(context.Background(), request)
+}
+
+// ModifyUserGroup
+// 修改用户组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserGroupWithContext(ctx context.Context, request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyUserGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetDeviceAccountPasswordRequest() (request *ResetDeviceAccountPasswordRequest) {
     request = &ResetDeviceAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},

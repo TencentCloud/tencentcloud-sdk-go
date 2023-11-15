@@ -5190,8 +5190,14 @@ type MotorVehicleSaleInvoice struct {
 	// 开票人
 	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
 
-	// 完税凭证号码
+	// 进口证明书号
 	TaxNum *string `json:"TaxNum,omitnil" name:"TaxNum"`
+
+	// 完税凭证号码
+	TaxPayNum *string `json:"TaxPayNum,omitnil" name:"TaxPayNum"`
+
+	// 税控码
+	TaxCode *string `json:"TaxCode,omitnil" name:"TaxCode"`
 
 	// 限乘人数
 	MaxPeopleNum *string `json:"MaxPeopleNum,omitnil" name:"MaxPeopleNum"`
@@ -9974,6 +9980,36 @@ type UsedCarPurchaseInvoice struct {
 
 	// 是否有公司印章（0：没有，1：有）
 	CompanySealMark *int64 `json:"CompanySealMark,omitnil" name:"CompanySealMark"`
+
+	// 经营拍卖单位
+	AuctionOrgName *string `json:"AuctionOrgName,omitnil" name:"AuctionOrgName"`
+
+	// 经营拍卖单位地址
+	AuctionOrgAddress *string `json:"AuctionOrgAddress,omitnil" name:"AuctionOrgAddress"`
+
+	// 经营拍卖单位纳税人识别号
+	AuctionOrgTaxID *string `json:"AuctionOrgTaxID,omitnil" name:"AuctionOrgTaxID"`
+
+	// 经营拍卖单位开户银行账号
+	AuctionOrgBankAccount *string `json:"AuctionOrgBankAccount,omitnil" name:"AuctionOrgBankAccount"`
+
+	// 经营拍卖单位电话
+	AuctionOrgPhone *string `json:"AuctionOrgPhone,omitnil" name:"AuctionOrgPhone"`
+
+	// 开票人
+	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
+
+	// 税控码
+	TaxCode *string `json:"TaxCode,omitnil" name:"TaxCode"`
+
+	// 机器编号
+	MachineSerialNumber *string `json:"MachineSerialNumber,omitnil" name:"MachineSerialNumber"`
+
+	// 机打发票代码
+	MachineCode *string `json:"MachineCode,omitnil" name:"MachineCode"`
+
+	// 机打发票号码
+	MachineNumber *string `json:"MachineNumber,omitnil" name:"MachineNumber"`
 }
 
 type UsedVehicleInvoiceInfo struct {

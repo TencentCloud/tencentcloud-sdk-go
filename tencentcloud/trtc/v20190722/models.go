@@ -2803,7 +2803,7 @@ type McuPassThrough struct {
 }
 
 type McuPublishCdnParam struct {
-	// CDN转推URL。
+	// CDN转推URL。注：若更新转推时，URL有任何变化，都会断流重推。
 	PublishCdnUrl *string `json:"PublishCdnUrl,omitnil" name:"PublishCdnUrl"`
 
 	// 是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。注意：1，为避免误产生转推费用，该参数建议明确填写，转推非腾讯云CDN时会产生转推费用，详情参见接口文档说明；2，国内站默认只支持转推腾讯云CDN，如您有转推第三方CDN需求，请联系腾讯云技术支持。
@@ -2868,6 +2868,9 @@ type McuWaterMarkImage struct {
 
 	// 水印在输出时的层级，不填默认为0。
 	ZOrder *uint64 `json:"ZOrder,omitnil" name:"ZOrder"`
+
+	// 动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+	DynamicPosType *uint64 `json:"DynamicPosType,omitnil" name:"DynamicPosType"`
 }
 
 type McuWaterMarkParams struct {
@@ -2905,6 +2908,9 @@ type McuWaterMarkText struct {
 
 	// 字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
 	BackGroundColor *string `json:"BackGroundColor,omitnil" name:"BackGroundColor"`
+
+	// 动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+	DynamicPosType *uint64 `json:"DynamicPosType,omitnil" name:"DynamicPosType"`
 }
 
 type MixLayout struct {

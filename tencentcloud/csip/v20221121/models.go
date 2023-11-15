@@ -471,7 +471,7 @@ type AssetViewVULRisk struct {
 	// 状态，0未处理、1已处置、2已忽略
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
-	// 资产唯一id
+	// 风险ID
 	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 前端索引
@@ -500,19 +500,19 @@ type AssetViewVULRisk struct {
 	// 端口
 	Port *string `json:"Port,omitnil" name:"Port"`
 
-	// 描述
+	// 漏洞描述
 	Describe *string `json:"Describe,omitnil" name:"Describe"`
 
-	// 版本名
+	// 漏洞影响组件
 	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
-	// 相关信息
+	// 技术参考
 	References *string `json:"References,omitnil" name:"References"`
 
-	// 版本
+	// 漏洞影响版本
 	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
 
-	// 漏洞url
+	// 风险点
 	VULURL *string `json:"VULURL,omitnil" name:"VULURL"`
 
 	// 漏洞名称
@@ -521,13 +521,13 @@ type AssetViewVULRisk struct {
 	// cve
 	CVE *string `json:"CVE,omitnil" name:"CVE"`
 
-	// 修复建议
+	// 修复方案
 	Fix *string `json:"Fix,omitnil" name:"Fix"`
 
 	// pocid
 	POCId *string `json:"POCId,omitnil" name:"POCId"`
 
-	// 来源
+	// 扫描来源
 	From *string `json:"From,omitnil" name:"From"`
 
 	// 主机版本
@@ -542,7 +542,7 @@ type AssetViewVULRisk struct {
 	// 实例uuid
 	InstanceUUID *string `json:"InstanceUUID,omitnil" name:"InstanceUUID"`
 
-	// 负载
+	// 攻击载荷
 	Payload *string `json:"Payload,omitnil" name:"Payload"`
 
 	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
@@ -2453,7 +2453,7 @@ type DescribeRiskCenterPortViewPortRiskListResponseParams struct {
 	// 总条数
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 资产视角的端口风险列表
+	// 端口视角的端口风险列表
 	Data []*PortViewPortRisk `json:"Data,omitnil" name:"Data"`
 
 	// 危险等级列表
@@ -2675,7 +2675,7 @@ type DescribeRiskCenterWebsiteRiskListResponseParams struct {
 	// 总条数
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 资产视角的端口风险列表
+	// 内容风险列表
 	Data []*WebsiteRisk `json:"Data,omitnil" name:"Data"`
 
 	// 状态列表
@@ -3847,7 +3847,7 @@ type ScanTaskInfoList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
-	// 排除扫描资产信息
+	// 自定义指定扫描资产信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil" name:"SelfDefiningAssets"`
 
@@ -3879,7 +3879,7 @@ type ScanTaskInfoList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanItem *string `json:"ScanItem,omitnil" name:"ScanItem"`
 
-	// 0-全扫，1-指定资产扫，2-排除资产扫
+	// 0-全扫，1-指定资产扫，2-排除资产扫，3-自定义指定资产扫描
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanAssetType *int64 `json:"ScanAssetType,omitnil" name:"ScanAssetType"`
 

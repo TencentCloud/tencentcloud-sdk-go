@@ -7650,6 +7650,7 @@ func NewModifyDSPATaskResultResponse() (response *ModifyDSPATaskResultResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_MULTIPLEMARKINGNOTALLOWED = "UnsupportedOperation.MultipleMarkingNotAllowed"
 func (c *Client) ModifyDSPATaskResult(request *ModifyDSPATaskResultRequest) (response *ModifyDSPATaskResultResponse, err error) {
     return c.ModifyDSPATaskResultWithContext(context.Background(), request)
 }
@@ -7665,6 +7666,7 @@ func (c *Client) ModifyDSPATaskResult(request *ModifyDSPATaskResultRequest) (res
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_MULTIPLEMARKINGNOTALLOWED = "UnsupportedOperation.MultipleMarkingNotAllowed"
 func (c *Client) ModifyDSPATaskResultWithContext(ctx context.Context, request *ModifyDSPATaskResultRequest) (response *ModifyDSPATaskResultResponse, err error) {
     if request == nil {
         request = NewModifyDSPATaskResultRequest()

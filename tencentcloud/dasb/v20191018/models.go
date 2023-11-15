@@ -4145,6 +4145,74 @@ func (r *ModifyResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserGroupRequestParams struct {
+	// 用户组ID
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+
+	// 用户组名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 用户组所属的部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitnil" name:"DepartmentId"`
+}
+
+type ModifyUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户组ID
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+
+	// 用户组名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 用户组所属的部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitnil" name:"DepartmentId"`
+}
+
+func (r *ModifyUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "DepartmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserRequestParams struct {
 	// 用户ID
 	Id *uint64 `json:"Id,omitnil" name:"Id"`

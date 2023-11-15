@@ -1195,6 +1195,67 @@ func (c *Client) CreateImageSpriteTemplateWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateJustInTimeTranscodeTemplateRequest() (request *CreateJustInTimeTranscodeTemplateRequest) {
+    request = &CreateJustInTimeTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateJustInTimeTranscodeTemplate")
+    
+    
+    return
+}
+
+func NewCreateJustInTimeTranscodeTemplateResponse() (response *CreateJustInTimeTranscodeTemplateResponse) {
+    response = &CreateJustInTimeTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateJustInTimeTranscodeTemplate
+// 创建即时转码模板。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EXISTEDNAME = "InvalidParameterValue.ExistedName"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateJustInTimeTranscodeTemplate(request *CreateJustInTimeTranscodeTemplateRequest) (response *CreateJustInTimeTranscodeTemplateResponse, err error) {
+    return c.CreateJustInTimeTranscodeTemplateWithContext(context.Background(), request)
+}
+
+// CreateJustInTimeTranscodeTemplate
+// 创建即时转码模板。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EXISTEDNAME = "InvalidParameterValue.ExistedName"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateJustInTimeTranscodeTemplateWithContext(ctx context.Context, request *CreateJustInTimeTranscodeTemplateRequest) (response *CreateJustInTimeTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateJustInTimeTranscodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJustInTimeTranscodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2794,6 +2855,55 @@ func (c *Client) DeleteImageSpriteTemplateWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteJustInTimeTranscodeTemplateRequest() (request *DeleteJustInTimeTranscodeTemplateRequest) {
+    request = &DeleteJustInTimeTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteJustInTimeTranscodeTemplate")
+    
+    
+    return
+}
+
+func NewDeleteJustInTimeTranscodeTemplateResponse() (response *DeleteJustInTimeTranscodeTemplateResponse) {
+    response = &DeleteJustInTimeTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteJustInTimeTranscodeTemplate
+// 删除即时转码模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteJustInTimeTranscodeTemplate(request *DeleteJustInTimeTranscodeTemplateRequest) (response *DeleteJustInTimeTranscodeTemplateResponse, err error) {
+    return c.DeleteJustInTimeTranscodeTemplateWithContext(context.Background(), request)
+}
+
+// DeleteJustInTimeTranscodeTemplate
+// 删除即时转码模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteJustInTimeTranscodeTemplateWithContext(ctx context.Context, request *DeleteJustInTimeTranscodeTemplateRequest) (response *DeleteJustInTimeTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteJustInTimeTranscodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJustInTimeTranscodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteJustInTimeTranscodeTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -5117,6 +5227,61 @@ func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeImageSpriteTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJustInTimeTranscodeTemplatesRequest() (request *DescribeJustInTimeTranscodeTemplatesRequest) {
+    request = &DescribeJustInTimeTranscodeTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeJustInTimeTranscodeTemplates")
+    
+    
+    return
+}
+
+func NewDescribeJustInTimeTranscodeTemplatesResponse() (response *DescribeJustInTimeTranscodeTemplatesResponse) {
+    response = &DescribeJustInTimeTranscodeTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJustInTimeTranscodeTemplates
+// 获取即时转码模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeJustInTimeTranscodeTemplates(request *DescribeJustInTimeTranscodeTemplatesRequest) (response *DescribeJustInTimeTranscodeTemplatesResponse, err error) {
+    return c.DescribeJustInTimeTranscodeTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeJustInTimeTranscodeTemplates
+// 获取即时转码模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeJustInTimeTranscodeTemplatesWithContext(ctx context.Context, request *DescribeJustInTimeTranscodeTemplatesRequest) (response *DescribeJustInTimeTranscodeTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeJustInTimeTranscodeTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJustInTimeTranscodeTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJustInTimeTranscodeTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -8220,6 +8385,57 @@ func (c *Client) ModifyImageSpriteTemplateWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyJustInTimeTranscodeTemplateRequest() (request *ModifyJustInTimeTranscodeTemplateRequest) {
+    request = &ModifyJustInTimeTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyJustInTimeTranscodeTemplate")
+    
+    
+    return
+}
+
+func NewModifyJustInTimeTranscodeTemplateResponse() (response *ModifyJustInTimeTranscodeTemplateResponse) {
+    response = &ModifyJustInTimeTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyJustInTimeTranscodeTemplate
+// 修改即时转码模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyJustInTimeTranscodeTemplate(request *ModifyJustInTimeTranscodeTemplateRequest) (response *ModifyJustInTimeTranscodeTemplateResponse, err error) {
+    return c.ModifyJustInTimeTranscodeTemplateWithContext(context.Background(), request)
+}
+
+// ModifyJustInTimeTranscodeTemplate
+// 修改即时转码模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyJustInTimeTranscodeTemplateWithContext(ctx context.Context, request *ModifyJustInTimeTranscodeTemplateRequest) (response *ModifyJustInTimeTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyJustInTimeTranscodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyJustInTimeTranscodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyJustInTimeTranscodeTemplateResponse()
     err = c.Send(request, response)
     return
 }

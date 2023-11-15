@@ -5341,6 +5341,65 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeUpdatableDataEnginesRequest() (request *DescribeUpdatableDataEnginesRequest) {
+    request = &DescribeUpdatableDataEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUpdatableDataEngines")
+    
+    
+    return
+}
+
+func NewDescribeUpdatableDataEnginesResponse() (response *DescribeUpdatableDataEnginesResponse) {
+    response = &DescribeUpdatableDataEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpdatableDataEngines
+// 查询可更新配置的引擎列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
+//  INVALIDPARAMETER_INVALIDENGINEEXECTYPE = "InvalidParameter.InvalidEngineExecType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUpdatableDataEngines(request *DescribeUpdatableDataEnginesRequest) (response *DescribeUpdatableDataEnginesResponse, err error) {
+    return c.DescribeUpdatableDataEnginesWithContext(context.Background(), request)
+}
+
+// DescribeUpdatableDataEngines
+// 查询可更新配置的引擎列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
+//  INVALIDPARAMETER_INVALIDENGINEEXECTYPE = "InvalidParameter.InvalidEngineExecType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUpdatableDataEnginesWithContext(ctx context.Context, request *DescribeUpdatableDataEnginesRequest) (response *DescribeUpdatableDataEnginesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpdatableDataEnginesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpdatableDataEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpdatableDataEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserDataEngineConfigRequest() (request *DescribeUserDataEngineConfigRequest) {
     request = &DescribeUserDataEngineConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

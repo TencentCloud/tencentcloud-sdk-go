@@ -2671,15 +2671,33 @@ type DescribeTreeJobsRsp struct {
 
 // Predefined struct for user
 type DescribeTreeResourcesRequestParams struct {
+	// 筛选条件字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 分页游标
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单页显示数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeTreeResourcesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 筛选条件字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 分页游标
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单页显示数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeTreeResourcesRequest) ToJsonString() string {
@@ -2694,7 +2712,10 @@ func (r *DescribeTreeResourcesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filters")
 	delete(f, "WorkSpaceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTreeResourcesRequest has unknown keys!", "")
 	}

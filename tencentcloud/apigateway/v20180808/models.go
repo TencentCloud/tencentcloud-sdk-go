@@ -29,6 +29,10 @@ type APIDoc struct {
 
 	// API文档构建状态
 	ApiDocStatus *string `json:"ApiDocStatus,omitnil" name:"ApiDocStatus"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type APIDocInfo struct {
@@ -73,6 +77,10 @@ type APIDocInfo struct {
 
 	// 生成API文档的API名称
 	ApiNames []*string `json:"ApiNames,omitnil" name:"ApiNames"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type APIDocs struct {
@@ -501,6 +509,10 @@ type ApiKey struct {
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type ApiKeysStatus struct {
@@ -581,6 +593,10 @@ type ApiUsagePlan struct {
 	// 服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type ApiUsagePlanSet struct {
@@ -1335,6 +1351,9 @@ type CreateAPIDocRequestParams struct {
 
 	// 生成文档的API列表
 	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateAPIDocRequest struct {
@@ -1351,6 +1370,9 @@ type CreateAPIDocRequest struct {
 
 	// 生成文档的API列表
 	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateAPIDocRequest) ToJsonString() string {
@@ -1369,6 +1391,7 @@ func (r *CreateAPIDocRequest) FromJsonString(s string) error {
 	delete(f, "ServiceId")
 	delete(f, "Environment")
 	delete(f, "ApiIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAPIDocRequest has unknown keys!", "")
 	}
@@ -1478,6 +1501,9 @@ type CreateApiKeyRequestParams struct {
 
 	// 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
 	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateApiKeyRequest struct {
@@ -1494,6 +1520,9 @@ type CreateApiKeyRequest struct {
 
 	// 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
 	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateApiKeyRequest) ToJsonString() string {
@@ -1512,6 +1541,7 @@ func (r *CreateApiKeyRequest) FromJsonString(s string) error {
 	delete(f, "AccessKeyType")
 	delete(f, "AccessKeyId")
 	delete(f, "AccessKeySecret")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiKeyRequest has unknown keys!", "")
 	}
@@ -2483,6 +2513,9 @@ type CreateUsagePlanRequestParams struct {
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
 	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateUsagePlanRequest struct {
@@ -2499,6 +2532,9 @@ type CreateUsagePlanRequest struct {
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
 	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateUsagePlanRequest) ToJsonString() string {
@@ -2517,6 +2553,7 @@ func (r *CreateUsagePlanRequest) FromJsonString(s string) error {
 	delete(f, "UsagePlanDesc")
 	delete(f, "MaxRequestNum")
 	delete(f, "MaxRequestNumPreSec")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUsagePlanRequest has unknown keys!", "")
 	}
@@ -10388,6 +10425,10 @@ type UsagePlanInfo struct {
 	// 绑定环境详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindEnvironments []*UsagePlanBindEnvironment `json:"BindEnvironments,omitnil" name:"BindEnvironments"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type UsagePlanStatusInfo struct {
@@ -10418,6 +10459,10 @@ type UsagePlanStatusInfo struct {
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type UsagePlansStatus struct {
