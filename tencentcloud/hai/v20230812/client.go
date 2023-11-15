@@ -113,3 +113,60 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     err = c.Send(request, response)
     return
 }
+
+func NewTerminateInstancesRequest() (request *TerminateInstancesRequest) {
+    request = &TerminateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "TerminateInstances")
+    
+    
+    return
+}
+
+func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
+    response = &TerminateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateInstances
+// 本接口 (TerminateInstances) 用于主动退还实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
+    return c.TerminateInstancesWithContext(context.Background(), request)
+}
+
+// TerminateInstances
+// 本接口 (TerminateInstances) 用于主动退还实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
+    if request == nil {
+        request = NewTerminateInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}

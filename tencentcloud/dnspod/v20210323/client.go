@@ -1806,7 +1806,7 @@ func NewDeleteShareDomainResponse() (response *DeleteShareDomainResponse) {
 }
 
 // DeleteShareDomain
-// 删除域名共享
+// 按账号删除域名共享
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
@@ -1824,7 +1824,7 @@ func (c *Client) DeleteShareDomain(request *DeleteShareDomainRequest) (response 
 }
 
 // DeleteShareDomain
-// 删除域名共享
+// 按账号删除域名共享
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"

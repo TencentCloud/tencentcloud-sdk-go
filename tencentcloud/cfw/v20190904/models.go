@@ -880,7 +880,11 @@ type CreateAddressTemplateRequestParams struct {
 
 	// 1 ip模板
 	// 5 域名模板
+	// 6 协议端口模板
 	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
+	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 type CreateAddressTemplateRequest struct {
@@ -898,7 +902,11 @@ type CreateAddressTemplateRequest struct {
 
 	// 1 ip模板
 	// 5 域名模板
+	// 6 协议端口模板
 	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
+	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 func (r *CreateAddressTemplateRequest) ToJsonString() string {
@@ -917,6 +925,7 @@ func (r *CreateAddressTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Detail")
 	delete(f, "IpString")
 	delete(f, "Type")
+	delete(f, "ProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAddressTemplateRequest has unknown keys!", "")
 	}
@@ -2990,6 +2999,12 @@ type DescribeAddressTemplateListRequestParams struct {
 
 	// 检索地址模板唯一id
 	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 1：ip模板，5：域名模板，6：协议端口模板
+	TemplateType *string `json:"TemplateType,omitnil" name:"TemplateType"`
+
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeAddressTemplateListRequest struct {
@@ -3012,6 +3027,12 @@ type DescribeAddressTemplateListRequest struct {
 
 	// 检索地址模板唯一id
 	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 1：ip模板，5：域名模板，6：协议端口模板
+	TemplateType *string `json:"TemplateType,omitnil" name:"TemplateType"`
+
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeAddressTemplateListRequest) ToJsonString() string {
@@ -3032,6 +3053,8 @@ func (r *DescribeAddressTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "SearchValue")
 	delete(f, "Uuid")
+	delete(f, "TemplateType")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateListRequest has unknown keys!", "")
 	}
@@ -3048,6 +3071,15 @@ type DescribeAddressTemplateListResponseParams struct {
 
 	// 模板名称列表
 	NameList []*string `json:"NameList,omitnil" name:"NameList"`
+
+	// Ip地址模板数量
+	IpTemplateCount *int64 `json:"IpTemplateCount,omitnil" name:"IpTemplateCount"`
+
+	// 域名地址模板数量
+	DomainTemplateCount *int64 `json:"DomainTemplateCount,omitnil" name:"DomainTemplateCount"`
+
+	// 协议端口模板数量
+	PortTemplateCount *int64 `json:"PortTemplateCount,omitnil" name:"PortTemplateCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -6175,6 +6207,10 @@ type EdgeIpInfo struct {
 	// 开关权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchWeight *int64 `json:"SwitchWeight,omitnil" name:"SwitchWeight"`
+
+	// 域名化CLB的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type EdgeIpSwitch struct {
@@ -6658,6 +6694,9 @@ type ModifyAddressTemplateRequestParams struct {
 	// 1 ip模板
 	// 5 域名模板
 	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
+	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 type ModifyAddressTemplateRequest struct {
@@ -6679,6 +6718,9 @@ type ModifyAddressTemplateRequest struct {
 	// 1 ip模板
 	// 5 域名模板
 	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
+	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 func (r *ModifyAddressTemplateRequest) ToJsonString() string {
@@ -6698,6 +6740,7 @@ func (r *ModifyAddressTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Detail")
 	delete(f, "IpString")
 	delete(f, "Type")
+	delete(f, "ProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressTemplateRequest has unknown keys!", "")
 	}
@@ -10327,6 +10370,14 @@ type TemplateListInfo struct {
 	// 关联规则条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulesNum *int64 `json:"RulesNum,omitnil" name:"RulesNum"`
+
+	// 模板Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 协议端口模板，协议类型，4:4层协议，7:7层协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
 }
 
 type UnHandleEvent struct {

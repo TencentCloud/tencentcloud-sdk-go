@@ -20093,6 +20093,9 @@ type ModifyCustomerGatewayAttributeRequestParams struct {
 
 	// 对端网关名称，可任意命名，但不得超过60个字符。
 	CustomerGatewayName *string `json:"CustomerGatewayName,omitnil" name:"CustomerGatewayName"`
+
+	// BGP ASN。只有开启BGP白名单才可以修改此参数。
+	BgpAsn *uint64 `json:"BgpAsn,omitnil" name:"BgpAsn"`
 }
 
 type ModifyCustomerGatewayAttributeRequest struct {
@@ -20103,6 +20106,9 @@ type ModifyCustomerGatewayAttributeRequest struct {
 
 	// 对端网关名称，可任意命名，但不得超过60个字符。
 	CustomerGatewayName *string `json:"CustomerGatewayName,omitnil" name:"CustomerGatewayName"`
+
+	// BGP ASN。只有开启BGP白名单才可以修改此参数。
+	BgpAsn *uint64 `json:"BgpAsn,omitnil" name:"BgpAsn"`
 }
 
 func (r *ModifyCustomerGatewayAttributeRequest) ToJsonString() string {
@@ -20119,6 +20125,7 @@ func (r *ModifyCustomerGatewayAttributeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CustomerGatewayId")
 	delete(f, "CustomerGatewayName")
+	delete(f, "BgpAsn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomerGatewayAttributeRequest has unknown keys!", "")
 	}

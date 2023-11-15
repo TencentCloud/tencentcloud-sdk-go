@@ -2333,12 +2333,16 @@ type PlanInfo struct {
 	AntiRepack *uint64 `json:"AntiRepack,omitnil" name:"AntiRepack"`
 
 	// Dex分离，0关闭，1开启
+	//
+	// Deprecated: SeperateDex is deprecated.
 	SeperateDex *uint64 `json:"SeperateDex,omitnil" name:"SeperateDex"`
 
 	// 内存保护，0关闭，1开启
 	Db *uint64 `json:"Db,omitnil" name:"Db"`
 
 	// Dex签名校验，0关闭，1开启
+	//
+	// Deprecated: DexSig is deprecated.
 	DexSig *uint64 `json:"DexSig,omitnil" name:"DexSig"`
 
 	// So文件信息
@@ -2354,6 +2358,8 @@ type PlanInfo struct {
 	AntiLogLeak *uint64 `json:"AntiLogLeak,omitnil" name:"AntiLogLeak"`
 
 	// root检测，0关闭，1开启
+	//
+	// Deprecated: AntiQemuRoot is deprecated.
 	AntiQemuRoot *uint64 `json:"AntiQemuRoot,omitnil" name:"AntiQemuRoot"`
 
 	// 资源防篡改，0关闭，1开启
@@ -2364,6 +2370,18 @@ type PlanInfo struct {
 
 	// SSL证书防窃取，0关闭，1开启
 	AntiSSL *uint64 `json:"AntiSSL,omitnil" name:"AntiSSL"`
+
+	// Dex分离，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetFile *string `json:"SetFile,omitnil" name:"SetFile"`
+
+	// Dex签名校验，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSign *string `json:"FileSign,omitnil" name:"FileSign"`
+
+	// root检测，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AntiRoot *string `json:"AntiRoot,omitnil" name:"AntiRoot"`
 }
 
 type PluginListItem struct {

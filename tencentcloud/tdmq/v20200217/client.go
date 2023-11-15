@@ -1772,6 +1772,77 @@ func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteProClustersRequest() (request *DeleteProClustersRequest) {
+    request = &DeleteProClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteProClusters")
+    
+    
+    return
+}
+
+func NewDeleteProClustersResponse() (response *DeleteProClustersResponse) {
+    response = &DeleteProClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProClusters
+// 删除专业集群——预付费，仅通过API 调用，支持同时删除多个集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
+//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
+//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) DeleteProClusters(request *DeleteProClustersRequest) (response *DeleteProClustersResponse, err error) {
+    return c.DeleteProClustersWithContext(context.Background(), request)
+}
+
+// DeleteProClusters
+// 删除专业集群——预付费，仅通过API 调用，支持同时删除多个集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
+//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
+//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) DeleteProClustersWithContext(ctx context.Context, request *DeleteProClustersRequest) (response *DeleteProClustersResponse, err error) {
+    if request == nil {
+        request = NewDeleteProClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
     request = &DeleteRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

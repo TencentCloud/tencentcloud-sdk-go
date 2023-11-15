@@ -1118,7 +1118,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/ChannelCreateFlowByFiles.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bf86248a2c163228c4e894cf5926af69/ChannelCreateFlowByFiles.png)
 //
 // 
 //
@@ -1303,7 +1303,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/ChannelCreateFlowByFiles.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bf86248a2c163228c4e894cf5926af69/ChannelCreateFlowByFiles.png)
 //
 // 
 //
@@ -4526,7 +4526,7 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_CreateChannelFlowEvidenceReport.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1b4307ed143a992940c41d61192d3a0f/channel_CreateChannelFlowEvidenceReport.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4564,7 +4564,7 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_CreateChannelFlowEvidenceReport.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1b4307ed143a992940c41d61192d3a0f/channel_CreateChannelFlowEvidenceReport.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5065,7 +5065,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateFlowsByTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/e193519d4383fa74782a9e19147ef01a/CreateFlowsByTemplates.png)
 //
 // 
 //
@@ -5205,7 +5205,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateFlowsByTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/e193519d4383fa74782a9e19147ef01a/CreateFlowsByTemplates.png)
 //
 // 
 //
@@ -5699,7 +5699,7 @@ func NewDescribeChannelFlowEvidenceReportResponse() (response *DescribeChannelFl
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_CreateChannelFlowEvidenceReport.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1b4307ed143a992940c41d61192d3a0f/channel_CreateChannelFlowEvidenceReport.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5734,7 +5734,7 @@ func (c *Client) DescribeChannelFlowEvidenceReport(request *DescribeChannelFlowE
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_CreateChannelFlowEvidenceReport.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1b4307ed143a992940c41d61192d3a0f/channel_CreateChannelFlowEvidenceReport.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6135,11 +6135,11 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 //  该接口常用来配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates" target="_blank">用模板创建签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>接口，作为创建合同的前置接口使用。 
 //
-// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的的创建。
+// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的创建。
 //
 // 
 //
-// **模版的来源**
+// **模板的来源**
 //
 // 子客企业的模板有两种途径获取
 //
@@ -6153,7 +6153,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 // 
 //
-// - 模板模版ID, 模板名字等基本信息
+// - 模板ID, 模板名字等基本信息
 //
 // - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
 //
@@ -6163,11 +6163,11 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 //
 // 
 //
-// 模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
+// 模板中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
 //
 // 
 //
@@ -6220,11 +6220,11 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 //  该接口常用来配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates" target="_blank">用模板创建签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>接口，作为创建合同的前置接口使用。 
 //
-// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的的创建。
+// 通过此接口查询到模板信息后，再通过调用创建合同的接口，指定模板ID，指定模板中需要的填写控件内容等，完成合同文档的创建。
 //
 // 
 //
-// **模版的来源**
+// **模板的来源**
 //
 // 子客企业的模板有两种途径获取
 //
@@ -6238,7 +6238,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 // 
 //
-// - 模板模版ID, 模板名字等基本信息
+// - 模板ID, 模板名字等基本信息
 //
 // - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
 //
@@ -6248,11 +6248,11 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 //
 // 
 //
-// 模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
+// 模板中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
 //
 // 
 //
@@ -6715,39 +6715,41 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业发布授权的查询和设置。
+//
+// 平台模板库中的模板的位置在控制台 企业应用管理 中下面的应用模板库管理目录, 可以参照下图位置
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7f2b6c94164b3e931efc9a037e0400f7.png)
 //
 // 
 //
-// > **使用场景**
+// # 支持的操作
 //
-// >
+// 
 //
-// >  1：查询 OperateType=SELECT
+// ## 1. 查询模板的子客企业授权 (OperateType=SELECT)
 //
-// > - 查询第三方应用平台模板库的可见性以及授权的子客列表。
+// - 查询模板的授权子企业列表
 //
-// >
+// 
 //
-// >  2：修改部分子客授权 OperateType=UPDATE
+// ## 2. 修改模板的子客企业授权 (OperateType=UPDATE)
 //
-// > - 对子客企业进行模板库中模板可见性的进行修改操作。
+// - 当模板未发布时，可以修改模板的模板授权范围是**所有第三方应用合作企业**(AuthTag设置为all)或者**指定第三方应用合作企业**(AuthTag设置为part)，**当模板发布后，不可做此修改**
 //
-// >- 当模板未发布时，可以修改可见性AuthTag（part/all），当模板发布后，不可做此修改
+// - 如果模板是部分授权,  可通过ProxyOrganizationOpenIds增加子客的授权范围。
 //
-// > - 若模板已发布且可见性AuthTag是part，可以通过ProxyOrganizationOpenIds增加子客的授权范围。如果是自动领取的模板，增加授权范围后会自动下发。
+// 
 //
-// >
+// ## 3. 取消模板的子客企业授权 (OperateType=DELETE)
 //
-// >  3：取消部分子客授权 OperateType=DELETE
+// - 对子客企业进行模板库中模板授权范围的进行删除操作。
 //
-// > - 对子客企业进行模板库中模板可见性的进行删除操作。
+// - 主要对于手动领取的模板，去除授权后子客在模板库中看不到，就无法再领取了。但是**已经领取过成为自有模板的不会同步删除**。
 //
-// > - 主要对于手动领取的模板，去除授权后子客在模板库中看不到，就无法再领取了。但是已经领取过成为自有模板的不会同步删除。
+// - 对于自动领取的模板，由于已经下发，更改授权不会影响。
 //
-// > - 对于自动领取的模板，由于已经下发，更改授权不会影响。
-//
-// > - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
+// - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6783,39 +6785,41 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业发布授权的查询和设置。
+//
+// 平台模板库中的模板的位置在控制台 企业应用管理 中下面的应用模板库管理目录, 可以参照下图位置
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7f2b6c94164b3e931efc9a037e0400f7.png)
 //
 // 
 //
-// > **使用场景**
+// # 支持的操作
 //
-// >
+// 
 //
-// >  1：查询 OperateType=SELECT
+// ## 1. 查询模板的子客企业授权 (OperateType=SELECT)
 //
-// > - 查询第三方应用平台模板库的可见性以及授权的子客列表。
+// - 查询模板的授权子企业列表
 //
-// >
+// 
 //
-// >  2：修改部分子客授权 OperateType=UPDATE
+// ## 2. 修改模板的子客企业授权 (OperateType=UPDATE)
 //
-// > - 对子客企业进行模板库中模板可见性的进行修改操作。
+// - 当模板未发布时，可以修改模板的模板授权范围是**所有第三方应用合作企业**(AuthTag设置为all)或者**指定第三方应用合作企业**(AuthTag设置为part)，**当模板发布后，不可做此修改**
 //
-// >- 当模板未发布时，可以修改可见性AuthTag（part/all），当模板发布后，不可做此修改
+// - 如果模板是部分授权,  可通过ProxyOrganizationOpenIds增加子客的授权范围。
 //
-// > - 若模板已发布且可见性AuthTag是part，可以通过ProxyOrganizationOpenIds增加子客的授权范围。如果是自动领取的模板，增加授权范围后会自动下发。
+// 
 //
-// >
+// ## 3. 取消模板的子客企业授权 (OperateType=DELETE)
 //
-// >  3：取消部分子客授权 OperateType=DELETE
+// - 对子客企业进行模板库中模板授权范围的进行删除操作。
 //
-// > - 对子客企业进行模板库中模板可见性的进行删除操作。
+// - 主要对于手动领取的模板，去除授权后子客在模板库中看不到，就无法再领取了。但是**已经领取过成为自有模板的不会同步删除**。
 //
-// > - 主要对于手动领取的模板，去除授权后子客在模板库中看不到，就无法再领取了。但是已经领取过成为自有模板的不会同步删除。
+// - 对于自动领取的模板，由于已经下发，更改授权不会影响。
 //
-// > - 对于自动领取的模板，由于已经下发，更改授权不会影响。
-//
-// > - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
+// - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7134,7 +7138,7 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_SyncProxyOrganizationOperators.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7a27a6bb0e4d39c2f6aa2a0b39946181/channel_SyncProxyOrganizationOperators.png)
 //
 // 
 //
@@ -7187,7 +7191,7 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_SyncProxyOrganizationOperators.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7a27a6bb0e4d39c2f6aa2a0b39946181/channel_SyncProxyOrganizationOperators.png)
 //
 // 
 //

@@ -5602,7 +5602,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 //
 // 
 //
@@ -5668,7 +5668,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 //
 // 
 //

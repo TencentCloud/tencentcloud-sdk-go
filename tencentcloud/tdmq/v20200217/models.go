@@ -2992,6 +2992,66 @@ func (r *DeleteEnvironmentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteProClustersRequestParams struct {
+	// 集群Id列表
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
+}
+
+type DeleteProClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id列表
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
+}
+
+func (r *DeleteProClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProClustersResponseParams struct {
+	// 退还实例订单号
+	DealNames []*string `json:"DealNames,omitnil" name:"DealNames"`
+
+	// 集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteProClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProClustersResponseParams `json:"Response"`
+}
+
+func (r *DeleteProClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`

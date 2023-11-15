@@ -4021,6 +4021,14 @@ type DataEngineInfo struct {
 	// 自动授权开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoAuthorization *bool `json:"AutoAuthorization,omitnil" name:"AutoAuthorization"`
+
+	// 引擎版本，支持Native/SuperSQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineGeneration *string `json:"EngineGeneration,omitnil" name:"EngineGeneration"`
+
+	// 引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil" name:"EngineTypeDetail"`
 }
 
 type DataFormat struct {

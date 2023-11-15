@@ -339,7 +339,7 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 
 	// 注: `CancelMessage为撤销当前合同的理由`
 	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	// 
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
 
@@ -380,7 +380,7 @@ type ChannelBatchCancelFlowsRequest struct {
 	// 
 	// 注: `CancelMessage为撤销当前合同的理由`
 	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	// 
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
 
@@ -909,9 +909,10 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
+	// <li>**2**：密码认证(默认)，需校验成功后才能签署合同</li>
 	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
 	// 注：
-	// <ul><li>默认情况下，认证校验方式为人脸认证</li>
+	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 }
@@ -946,9 +947,10 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
+	// <li>**2**：密码认证(默认)，需校验成功后才能签署合同</li>
 	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
 	// 注：
-	// <ul><li>默认情况下，认证校验方式为人脸认证</li>
+	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 }
@@ -5144,18 +5146,20 @@ func (r *ChannelModifyRoleResponse) FromJsonString(s string) error {
 }
 
 type ChannelRole struct {
-	// 角色id
+	// 角色ID,为32位字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
 
-	// 角色名
+	// 角色的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 
-	// 角色状态：1-启用；2-禁用
+	// 此角色状态
+	// 1: 已经启用
+	// 2: 已经禁用
 	RoleStatus *uint64 `json:"RoleStatus,omitnil" name:"RoleStatus"`
 
-	// 权限树
+	// 此角色对应的权限列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
@@ -6130,9 +6134,9 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -6167,9 +6171,9 @@ type CreateFlowsByTemplatesRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -7214,7 +7218,7 @@ type DescribeTemplatesRequestParams struct {
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 查询模版的内容
+	// 查询模板的内容
 	// 
 	// <ul><li>**0**：（默认）模板列表及详情</li>
 	// <li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
@@ -7296,7 +7300,7 @@ type DescribeTemplatesRequest struct {
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 查询模版的内容
+	// 查询模板的内容
 	// 
 	// <ul><li>**0**：（默认）模板列表及详情</li>
 	// <li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
@@ -8386,36 +8390,38 @@ type OperateChannelTemplateRequestParams struct {
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 操作类型，
+	// 操作类型，可取值如下:
 	// <ul>
-	// <li>查询:"SELECT"</li>
-	// <li>删除:"DELETE"</li>
-	// <li>更新:"UPDATE"</li>
+	// <li>SELECT:  查询</li>
+	// <li>DELETE:  删除</li>
+	// <li>UPDATE: 更新</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
 
-	// 合同模板ID，为32位字符串。此处为第三方应用平台模板库模板ID，非子客模板ID。
+	// 合同模板ID，为32位字符串。
+	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
-	// 
-	// 一个第三方平台子客企业主体与子客企业 ProxyOrganizationOpenId 是一一对应的，不可更改，不可重复使用。例如，可以使用企业名称的哈希值，或者社会统一信用代码的哈希值，或者随机哈希值。
+	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
 
-	// 模板可见性, 
-	// <ul>
-	// <li>全部可见-"all"</li>
-	// <li>部分可见-"part"</li>
-	// </ul>
+	// 模板可见范围, 可以设置的值如下:
+	// 
+	// **all**: 所有本第三方应用合作企业可见
+	// **part**: 指定的本第三方应用合作企业
+	// 
+	// 对应控制台的位置
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
 	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
 
 	// 当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
 	// <ul>
-	// <li>若此字段值为0，则不会修改模板Available</li>
-	// <li>1为启用模板</li>
-	// <li>2为停用模板</li>
+	// <li>0: 不修改模板可用状态</li>
+	// <li>1:  启用模板</li>
+	// <li>2: 停用模板</li>
 	// </ul>
 	// 启用后模板可以正常领取。
+	// 
 	// 停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
 	// 如果Available更新失败，会直接返回错误。
 	Available *int64 `json:"Available,omitnil" name:"Available"`
@@ -8437,36 +8443,38 @@ type OperateChannelTemplateRequest struct {
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 操作类型，
+	// 操作类型，可取值如下:
 	// <ul>
-	// <li>查询:"SELECT"</li>
-	// <li>删除:"DELETE"</li>
-	// <li>更新:"UPDATE"</li>
+	// <li>SELECT:  查询</li>
+	// <li>DELETE:  删除</li>
+	// <li>UPDATE: 更新</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
 
-	// 合同模板ID，为32位字符串。此处为第三方应用平台模板库模板ID，非子客模板ID。
+	// 合同模板ID，为32位字符串。
+	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
-	// 
-	// 一个第三方平台子客企业主体与子客企业 ProxyOrganizationOpenId 是一一对应的，不可更改，不可重复使用。例如，可以使用企业名称的哈希值，或者社会统一信用代码的哈希值，或者随机哈希值。
+	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
 
-	// 模板可见性, 
-	// <ul>
-	// <li>全部可见-"all"</li>
-	// <li>部分可见-"part"</li>
-	// </ul>
+	// 模板可见范围, 可以设置的值如下:
+	// 
+	// **all**: 所有本第三方应用合作企业可见
+	// **part**: 指定的本第三方应用合作企业
+	// 
+	// 对应控制台的位置
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
 	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
 
 	// 当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
 	// <ul>
-	// <li>若此字段值为0，则不会修改模板Available</li>
-	// <li>1为启用模板</li>
-	// <li>2为停用模板</li>
+	// <li>0: 不修改模板可用状态</li>
+	// <li>1:  启用模板</li>
+	// <li>2: 停用模板</li>
 	// </ul>
 	// 启用后模板可以正常领取。
+	// 
 	// 停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
 	// 如果Available更新失败，会直接返回错误。
 	Available *int64 `json:"Available,omitnil" name:"Available"`
@@ -8502,34 +8510,30 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateChannelTemplateResponseParams struct {
-	// 腾讯电子签颁发给第三方应用平台的应用ID
+	// 第三方应用平台的应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
 
-	// 合同模板ID，为32位字符串。此处为第三方应用平台模板库模板ID，非子客模板ID。
+	// 合同模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 描述模板可见性更改的结果，和参数中Available无关。
+	// 描述模板可见性更改的结果。
 	// <ul>
-	// <li>全部成功-"all-success"</li>
-	// <li>部分成功-"part-success"</li>
-	// <li>全部失败-"fail"，失败的会在FailMessageList中展示</li>
+	// <li>all-success: 全部成功</li>
+	// <li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
+	// <li>fail:全部失败, 失败的会在FailMessageList中展示</li>
 	// </ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateResult *string `json:"OperateResult,omitnil" name:"OperateResult"`
 
-	// 模板可见性, 
-	// <ul>
-	// <li>全部可见-"all"</li>
-	// <li>部分可见-"part"</li>
-	// </ul>
+	// 模板可见范围:
+	// **all**: 所有本第三方应用合作企业可见
+	// **part**: 指定的本第三方应用合作企业
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
 
-	// 第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
-	// 
-	// 一个第三方平台子客企业主体与子客企业 ProxyOrganizationOpenId 是一一对应的，不可更改，不可重复使用。例如，可以使用企业名称的哈希值，或者社会统一信用代码的哈希值，或者随机哈希值。
+	// 第三方平台子客企业标识列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
 

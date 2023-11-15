@@ -32,6 +32,12 @@ const (
 	// 算力套餐类型不存在
 	INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 
+	// 列表入参中存在重复值
+	INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+
+	// 指定的实例不存在
+	INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+
 	// 实例名称过长
 	INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 
@@ -40,6 +46,12 @@ const (
 
 	// 每次购买的实例数目不在合理范围内
 	INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
+
+	// 实例ID格式非法
+	INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+
+	// 指定实例有正在执行的操作，不能执行新的操作
+	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 
 	// 指定的算力套餐库存不足
 	RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"

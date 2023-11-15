@@ -329,6 +329,9 @@ type DescribeFraudUltimateResponseParams struct {
 	// 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
 	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil" name:"SuggestionLevel"`
 
+	// 图灵盾统一ID
+	Unionid *string `json:"Unionid,omitnil" name:"Unionid"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

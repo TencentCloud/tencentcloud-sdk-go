@@ -243,61 +243,6 @@ func (c *Client) DescribeAssetListWithContext(ctx context.Context, request *Desc
     return
 }
 
-func NewDescribeAssetsMappingListRequest() (request *DescribeAssetsMappingListRequest) {
-    request = &DescribeAssetsMappingListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetsMappingList")
-    
-    
-    return
-}
-
-func NewDescribeAssetsMappingListResponse() (response *DescribeAssetsMappingListResponse) {
-    response = &DescribeAssetsMappingListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAssetsMappingList
-// 资产测绘-测绘列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {
-    return c.DescribeAssetsMappingListWithContext(context.Background(), request)
-}
-
-// DescribeAssetsMappingList
-// 资产测绘-测绘列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) DescribeAssetsMappingListWithContext(ctx context.Context, request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetsMappingListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAssetsMappingList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAssetsMappingListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAssetListRequest) {
     request = &DescribeCheckConfigAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -836,59 +781,6 @@ func (c *Client) DescribeMappingResultsWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListRequest) {
-    request = &DescribeSafetyEventListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ssa", APIVersion, "DescribeSafetyEventList")
-    
-    
-    return
-}
-
-func NewDescribeSafetyEventListResponse() (response *DescribeSafetyEventListResponse) {
-    response = &DescribeSafetyEventListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeSafetyEventList
-// 获取安全事件列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest) (response *DescribeSafetyEventListResponse, err error) {
-    return c.DescribeSafetyEventListWithContext(context.Background(), request)
-}
-
-// DescribeSafetyEventList
-// 获取安全事件列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) DescribeSafetyEventListWithContext(ctx context.Context, request *DescribeSafetyEventListRequest) (response *DescribeSafetyEventListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSafetyEventListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSafetyEventList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSafetyEventListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSocAlertDetailsRequest() (request *DescribeSocAlertDetailsRequest) {
     request = &DescribeSocAlertDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -914,7 +806,6 @@ func NewDescribeSocAlertDetailsResponse() (response *DescribeSocAlertDetailsResp
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeSocAlertDetails(request *DescribeSocAlertDetailsRequest) (response *DescribeSocAlertDetailsResponse, err error) {
     return c.DescribeSocAlertDetailsWithContext(context.Background(), request)
 }
@@ -925,7 +816,6 @@ func (c *Client) DescribeSocAlertDetails(request *DescribeSocAlertDetailsRequest
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeSocAlertDetailsWithContext(ctx context.Context, request *DescribeSocAlertDetailsRequest) (response *DescribeSocAlertDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeSocAlertDetailsRequest()
@@ -1284,59 +1174,6 @@ func (c *Client) DescribeVulListWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeVulListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
-    request = &SaDivulgeDataQueryPubRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ssa", APIVersion, "SaDivulgeDataQueryPub")
-    
-    
-    return
-}
-
-func NewSaDivulgeDataQueryPubResponse() (response *SaDivulgeDataQueryPubResponse) {
-    response = &SaDivulgeDataQueryPubResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SaDivulgeDataQueryPub
-// 查询【通用字段】【泄露监测数据列表】
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) SaDivulgeDataQueryPub(request *SaDivulgeDataQueryPubRequest) (response *SaDivulgeDataQueryPubResponse, err error) {
-    return c.SaDivulgeDataQueryPubWithContext(context.Background(), request)
-}
-
-// SaDivulgeDataQueryPub
-// 查询【通用字段】【泄露监测数据列表】
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-func (c *Client) SaDivulgeDataQueryPubWithContext(ctx context.Context, request *SaDivulgeDataQueryPubRequest) (response *SaDivulgeDataQueryPubResponse, err error) {
-    if request == nil {
-        request = NewSaDivulgeDataQueryPubRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SaDivulgeDataQueryPub require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSaDivulgeDataQueryPubResponse()
     err = c.Send(request, response)
     return
 }

@@ -18539,6 +18539,10 @@ type OutputAudioStream struct {
 	// <li>2：双声道</li>
 	// 默认值：2。
 	AudioChannel *int64 `json:"AudioChannel,omitnil" name:"AudioChannel"`
+
+	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+	// 当取值为 0，将自动设置音频码率。
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 }
 
 type OutputVideoStream struct {

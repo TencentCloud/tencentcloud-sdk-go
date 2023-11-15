@@ -3769,11 +3769,11 @@ type RiskCenterStatusKey struct {
 }
 
 type ScanTaskInfo struct {
-	// 任务日志Id
+	// 任务Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
-	// 任务日志名称
+	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
@@ -3785,15 +3785,15 @@ type ScanTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitnil" name:"Progress"`
 
-	// 对应的展示时间
+	// 任务完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTime *string `json:"TaskTime,omitnil" name:"TaskTime"`
 
-	// 报表id
+	// 报告ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
-	// 报表名称
+	// 报告名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportName *string `json:"ReportName,omitnil" name:"ReportName"`
 
@@ -4230,7 +4230,7 @@ type TaskAssetObject struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
-	// 	资产类型
+	// 资产类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
@@ -4298,7 +4298,7 @@ type TaskLogInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskNumber *int64 `json:"RiskNumber,omitnil" name:"RiskNumber"`
 
-	// 报告生成时间,任务结束时间
+	// 报告生成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil" name:"Time"`
 
@@ -4427,13 +4427,13 @@ type VULViewVULRisk struct {
 	// 首次识别时间
 	FirstTime *string `json:"FirstTime,omitnil" name:"FirstTime"`
 
-	// 状态，0未处理、1已处置、2已忽略
+	// 影响资产数量
 	AffectAssetCount *uint64 `json:"AffectAssetCount,omitnil" name:"AffectAssetCount"`
 
-	// 资产唯一id
+	// 风险ID
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// 资产子类型
+	// 扫描来源，具体看接口返回枚举类型
 	From *string `json:"From,omitnil" name:"From"`
 
 	// 前端索引
@@ -4451,19 +4451,19 @@ type VULViewVULRisk struct {
 	// 描述
 	Describe *string `json:"Describe,omitnil" name:"Describe"`
 
-	// 负载
+	// 漏洞payload
 	Payload *string `json:"Payload,omitnil" name:"Payload"`
 
-	// 版本名
+	// 漏洞影响组件
 	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
-	// 相关引用
+	// 技术参考
 	References *string `json:"References,omitnil" name:"References"`
 
-	// 版本
+	// 漏洞影响版本
 	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
 
-	// 漏洞链接
+	// 风险点
 	VULURL *string `json:"VULURL,omitnil" name:"VULURL"`
 
 	// 用户昵称

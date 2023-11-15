@@ -2344,7 +2344,7 @@ func (r *QueryExternalContactDetailByDateResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type QueryExternalContactDetailRequestParams struct {
-	// 外部联系人的userid，注意不是企业成员的帐号
+	// 外部联系人的userid，注意不是企业成员的账号
 	ExternalUserId *string `json:"ExternalUserId,omitnil" name:"ExternalUserId"`
 
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
@@ -2357,7 +2357,7 @@ type QueryExternalContactDetailRequestParams struct {
 type QueryExternalContactDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 外部联系人的userid，注意不是企业成员的帐号
+	// 外部联系人的userid，注意不是企业成员的账号
 	ExternalUserId *string `json:"ExternalUserId,omitnil" name:"ExternalUserId"`
 
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取

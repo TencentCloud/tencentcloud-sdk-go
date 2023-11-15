@@ -2486,6 +2486,97 @@ func (c *Client) DescribeCloudNativeAPIGatewayServicesWithContext(ctx context.Co
     return
 }
 
+func NewDescribeCloudNativeAPIGatewayUpstreamRequest() (request *DescribeCloudNativeAPIGatewayUpstreamRequest) {
+    request = &DescribeCloudNativeAPIGatewayUpstreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayUpstream")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayUpstreamResponse() (response *DescribeCloudNativeAPIGatewayUpstreamResponse) {
+    response = &DescribeCloudNativeAPIGatewayUpstreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudNativeAPIGatewayUpstream
+// 获取云原生网关服务详情下的Upstream列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayUpstream(request *DescribeCloudNativeAPIGatewayUpstreamRequest) (response *DescribeCloudNativeAPIGatewayUpstreamResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayUpstreamWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayUpstream
+// 获取云原生网关服务详情下的Upstream列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayUpstreamWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayUpstreamRequest) (response *DescribeCloudNativeAPIGatewayUpstreamResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayUpstreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayUpstream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayUpstreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudNativeAPIGatewaysRequest() (request *DescribeCloudNativeAPIGatewaysRequest) {
     request = &DescribeCloudNativeAPIGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2951,6 +3042,57 @@ func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeSREInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpstreamHealthCheckConfigRequest() (request *DescribeUpstreamHealthCheckConfigRequest) {
+    request = &DescribeUpstreamHealthCheckConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeUpstreamHealthCheckConfig")
+    
+    
+    return
+}
+
+func NewDescribeUpstreamHealthCheckConfigResponse() (response *DescribeUpstreamHealthCheckConfigResponse) {
+    response = &DescribeUpstreamHealthCheckConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpstreamHealthCheckConfig
+// 获取云原生网关服务健康检查配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeUpstreamHealthCheckConfig(request *DescribeUpstreamHealthCheckConfigRequest) (response *DescribeUpstreamHealthCheckConfigResponse, err error) {
+    return c.DescribeUpstreamHealthCheckConfigWithContext(context.Background(), request)
+}
+
+// DescribeUpstreamHealthCheckConfig
+// 获取云原生网关服务健康检查配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeUpstreamHealthCheckConfigWithContext(ctx context.Context, request *DescribeUpstreamHealthCheckConfigRequest) (response *DescribeUpstreamHealthCheckConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpstreamHealthCheckConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpstreamHealthCheckConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpstreamHealthCheckConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -3773,6 +3915,81 @@ func (c *Client) ModifyNativeGatewayServerGroupWithContext(ctx context.Context, 
     return
 }
 
+func NewModifyUpstreamNodeStatusRequest() (request *ModifyUpstreamNodeStatusRequest) {
+    request = &ModifyUpstreamNodeStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyUpstreamNodeStatus")
+    
+    
+    return
+}
+
+func NewModifyUpstreamNodeStatusResponse() (response *ModifyUpstreamNodeStatusResponse) {
+    response = &ModifyUpstreamNodeStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUpstreamNodeStatus
+// 修改云原生网关上游实例节点健康状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyUpstreamNodeStatus(request *ModifyUpstreamNodeStatusRequest) (response *ModifyUpstreamNodeStatusResponse, err error) {
+    return c.ModifyUpstreamNodeStatusWithContext(context.Background(), request)
+}
+
+// ModifyUpstreamNodeStatus
+// 修改云原生网关上游实例节点健康状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyUpstreamNodeStatusWithContext(ctx context.Context, request *ModifyUpstreamNodeStatusRequest) (response *ModifyUpstreamNodeStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyUpstreamNodeStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUpstreamNodeStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUpstreamNodeStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateCloudNativeAPIGatewayCertificateInfoRequest() (request *UpdateCloudNativeAPIGatewayCertificateInfoRequest) {
     request = &UpdateCloudNativeAPIGatewayCertificateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3988,6 +4205,55 @@ func (c *Client) UpdateEngineInternetAccessWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewUpdateEngineInternetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUpstreamHealthCheckConfigRequest() (request *UpdateUpstreamHealthCheckConfigRequest) {
+    request = &UpdateUpstreamHealthCheckConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "UpdateUpstreamHealthCheckConfig")
+    
+    
+    return
+}
+
+func NewUpdateUpstreamHealthCheckConfigResponse() (response *UpdateUpstreamHealthCheckConfigResponse) {
+    response = &UpdateUpstreamHealthCheckConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUpstreamHealthCheckConfig
+// 更新云原生网关健康检查配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+func (c *Client) UpdateUpstreamHealthCheckConfig(request *UpdateUpstreamHealthCheckConfigRequest) (response *UpdateUpstreamHealthCheckConfigResponse, err error) {
+    return c.UpdateUpstreamHealthCheckConfigWithContext(context.Background(), request)
+}
+
+// UpdateUpstreamHealthCheckConfig
+// 更新云原生网关健康检查配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+func (c *Client) UpdateUpstreamHealthCheckConfigWithContext(ctx context.Context, request *UpdateUpstreamHealthCheckConfigRequest) (response *UpdateUpstreamHealthCheckConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateUpstreamHealthCheckConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUpstreamHealthCheckConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUpstreamHealthCheckConfigResponse()
     err = c.Send(request, response)
     return
 }
