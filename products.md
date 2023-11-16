@@ -231,7 +231,7 @@
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2023-11-16 01:35:27 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2023-11-15 02:39:18 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-11-16 01:37:19 |
-| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-14 15:28:58 |
+| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-11-16 17:58:08 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-11-15 02:42:49 |
 | wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2023-11-14 01:33:54 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2023-11-15 02:45:47 |

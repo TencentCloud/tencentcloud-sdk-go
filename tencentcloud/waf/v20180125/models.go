@@ -12481,6 +12481,22 @@ type SessionItem struct {
 
 	// 更新时间戳
 	TsVersion *string `json:"TsVersion,omitnil" name:"TsVersion"`
+
+	// SessionID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *int64 `json:"SessionId,omitnil" name:"SessionId"`
+
+	// Session名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionName *string `json:"SessionName,omitnil" name:"SessionName"`
+
+	// Session是否正在被启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionInUsed *bool `json:"SessionInUsed,omitnil" name:"SessionInUsed"`
+
+	// Session关联的CC规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedRuleID []*int64 `json:"RelatedRuleID,omitnil" name:"RelatedRuleID"`
 }
 
 type SpartaProtectionPort struct {

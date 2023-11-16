@@ -1,3 +1,24 @@
+# Release v1.0.796
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 74 次发布
+
+发布时间：2023-11-16 17:58:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SessionItem](https://cloud.tencent.com/document/api/627/53609#SessionItem)
+
+	* 新增成员：SessionId, SessionName, SessionInUsed, RelatedRuleID
+
+
+
+
 # Release v1.0.795
 
 ## API 网关(apigateway) 版本：2018-08-08
