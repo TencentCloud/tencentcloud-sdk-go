@@ -12214,6 +12214,10 @@ type RocketMQSubscription struct {
 	// 最大重试次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil" name:"MaxRetryTimes"`
+
+	// 协议类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientProtocol *string `json:"ClientProtocol,omitnil" name:"ClientProtocol"`
 }
 
 type RocketMQTopic struct {
@@ -12368,6 +12372,14 @@ type RocketMQVipInstance struct {
 	// 实例消息保留时间，小时为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Retention *int64 `json:"Retention,omitnil" name:"Retention"`
+
+	// 是否开启ACL鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclEnabled *bool `json:"AclEnabled,omitnil" name:"AclEnabled"`
+
+	// 销毁时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestroyTime *uint64 `json:"DestroyTime,omitnil" name:"DestroyTime"`
 }
 
 type Role struct {

@@ -591,7 +591,7 @@ func (r *GetVRSVoiceTypesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVRSVoiceTypesResponseParams struct {
-	// 数据
+	// 复刻音色信息
 	Data *VoiceTypeListData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -632,27 +632,21 @@ type TrainingTexts struct {
 
 type VoiceTypeInfo struct {
 	// 音色id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceType *int64 `json:"VoiceType,omitnil" name:"VoiceType"`
 
 	// 音色名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceName *string `json:"VoiceName,omitnil" name:"VoiceName"`
 
 	// 音色性别: 1-male 2-female
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceGender *int64 `json:"VoiceGender,omitnil" name:"VoiceGender"`
 
 	// 复刻类型: 0-轻量版复刻 1-基础版复刻
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 复刻任务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DateCreated *string `json:"DateCreated,omitnil" name:"DateCreated"`
 }
 

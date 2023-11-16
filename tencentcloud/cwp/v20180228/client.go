@@ -29058,7 +29058,7 @@ func NewScanVulResponse() (response *ScanVulResponse) {
 }
 
 // ScanVul
-//  一键检测
+// 漏洞一键检测
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -29078,7 +29078,7 @@ func (c *Client) ScanVul(request *ScanVulRequest) (response *ScanVulResponse, er
 }
 
 // ScanVul
-//  一键检测
+// 漏洞一键检测
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

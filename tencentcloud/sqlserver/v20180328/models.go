@@ -2406,6 +2406,50 @@ type CrossRegionStatus struct {
 	CrossStatus *int64 `json:"CrossStatus,omitnil" name:"CrossStatus"`
 }
 
+type CrossSummaryDetailRes struct {
+	// 实例状态
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 实例所属地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 跨地域备份状态 enable-开启，disable-关闭
+	CrossBackupEnabled *string `json:"CrossBackupEnabled,omitnil" name:"CrossBackupEnabled"`
+
+	// 跨地域备份目标地域
+	CrossRegions []*string `json:"CrossRegions,omitnil" name:"CrossRegions"`
+
+	// 最新备份开始时间
+	LastBackupStartTime *string `json:"LastBackupStartTime,omitnil" name:"LastBackupStartTime"`
+
+	// 跨地域备份保留天数
+	CrossBackupSaveDays *int64 `json:"CrossBackupSaveDays,omitnil" name:"CrossBackupSaveDays"`
+
+	// 跨地域数据备份总空间
+	DataBackupSpace *uint64 `json:"DataBackupSpace,omitnil" name:"DataBackupSpace"`
+
+	// 跨地域数据备份文件总个数
+	DataBackupCount *uint64 `json:"DataBackupCount,omitnil" name:"DataBackupCount"`
+
+	// 跨地域日志备份总空间
+	LogBackupSpace *uint64 `json:"LogBackupSpace,omitnil" name:"LogBackupSpace"`
+
+	// 跨地域日志备份文件总个数
+	LogBackupCount *uint64 `json:"LogBackupCount,omitnil" name:"LogBackupCount"`
+
+	// 跨地域备份总空间
+	ActualUsedSpace *uint64 `json:"ActualUsedSpace,omitnil" name:"ActualUsedSpace"`
+
+	// 跨地域备份总个数
+	ActualUsedCount *uint64 `json:"ActualUsedCount,omitnil" name:"ActualUsedCount"`
+}
+
 type DBCreateInfo struct {
 	// 数据库名
 	DBName *string `json:"DBName,omitnil" name:"DBName"`
@@ -3775,6 +3819,314 @@ func (r *DescribeBackupMigrationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupMonitorRequestParams struct {
+	// 备份空间使用详情开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 备份空间使用详情结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 备份趋势查询类型，local-本地备份，cross-跨地域备份
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type DescribeBackupMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份空间使用详情开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 备份空间使用详情结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 备份趋势查询类型，local-本地备份，cross-跨地域备份
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *DescribeBackupMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupMonitorResponseParams struct {
+	// 备份趋势图时间轴
+	TimeStamp []*string `json:"TimeStamp,omitnil" name:"TimeStamp"`
+
+	// 免费备份空间
+	FreeSpace []*float64 `json:"FreeSpace,omitnil" name:"FreeSpace"`
+
+	// 实际总备份空间
+	ActualUsedSpace []*float64 `json:"ActualUsedSpace,omitnil" name:"ActualUsedSpace"`
+
+	// 日志备份空间
+	LogBackupSpace []*float64 `json:"LogBackupSpace,omitnil" name:"LogBackupSpace"`
+
+	// 数据备份空间
+	DataBackupSpace []*float64 `json:"DataBackupSpace,omitnil" name:"DataBackupSpace"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBackupMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupMonitorResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupStatisticalRequestParams struct {
+	// 分页返回，每页返回的数目，取值为1-100，默认值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页返回，页编号，默认值为第0页。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 实例名称列表，模糊查询。
+	InstanceNameSet []*string `json:"InstanceNameSet,omitnil" name:"InstanceNameSet"`
+
+	// 排序字段，默认default，则按照备份空间降序。
+	// default 按照备份空间排序
+	// data 数据备份排序
+	// log 日志备份排序
+	// auto 自动备份排序
+	// manual 手动备份排序
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 默认降序，[desc-降序，asc-升序]。
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+}
+
+type DescribeBackupStatisticalRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页返回，每页返回的数目，取值为1-100，默认值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页返回，页编号，默认值为第0页。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 实例名称列表，模糊查询。
+	InstanceNameSet []*string `json:"InstanceNameSet,omitnil" name:"InstanceNameSet"`
+
+	// 排序字段，默认default，则按照备份空间降序。
+	// default 按照备份空间排序
+	// data 数据备份排序
+	// log 日志备份排序
+	// auto 自动备份排序
+	// manual 手动备份排序
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 默认降序，[desc-降序，asc-升序]。
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+}
+
+func (r *DescribeBackupStatisticalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupStatisticalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "InstanceIdSet")
+	delete(f, "InstanceNameSet")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupStatisticalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupStatisticalResponseParams struct {
+	// 符合条件的实例总数。分页返回的话，这个值指的是所有符合条件的实例的个数，而非当前根据Limit和Offset值返回的实例个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 实例列表。
+	Items []*SummaryDetailRes `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBackupStatisticalResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupStatisticalResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupStatisticalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupStatisticalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupSummaryRequestParams struct {
+
+}
+
+type DescribeBackupSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBackupSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupSummaryResponseParams struct {
+	// 实际免费总空间，单位(KB)。
+	FreeSpace *uint64 `json:"FreeSpace,omitnil" name:"FreeSpace"`
+
+	// 备份实际使用空间，单位(KB)。
+	ActualUsedSpace *uint64 `json:"ActualUsedSpace,omitnil" name:"ActualUsedSpace"`
+
+	// 备份文件总个数。
+	BackupFilesTotal *uint64 `json:"BackupFilesTotal,omitnil" name:"BackupFilesTotal"`
+
+	// 备份占用收费空间，单位(KB)。
+	BillingSpace *uint64 `json:"BillingSpace,omitnil" name:"BillingSpace"`
+
+	// 数据备份使用空间，单位(KB)。
+	DataBackupSpace *uint64 `json:"DataBackupSpace,omitnil" name:"DataBackupSpace"`
+
+	// 数据备份文件总个数。
+	DataBackupCount *uint64 `json:"DataBackupCount,omitnil" name:"DataBackupCount"`
+
+	// 数据备份中手动备份使用空间，单位(KB)。
+	ManualBackupSpace *uint64 `json:"ManualBackupSpace,omitnil" name:"ManualBackupSpace"`
+
+	// 数据备份中手动备份文件总个数。
+	ManualBackupCount *uint64 `json:"ManualBackupCount,omitnil" name:"ManualBackupCount"`
+
+	// 数据备份中自动备份使用空间，单位(KB)。
+	AutoBackupSpace *uint64 `json:"AutoBackupSpace,omitnil" name:"AutoBackupSpace"`
+
+	// 数据备份中自动备份文件总个数。
+	AutoBackupCount *uint64 `json:"AutoBackupCount,omitnil" name:"AutoBackupCount"`
+
+	// 日志备份使用空间，单位(KB)。
+	LogBackupSpace *uint64 `json:"LogBackupSpace,omitnil" name:"LogBackupSpace"`
+
+	// 日志备份文件总个数。
+	LogBackupCount *uint64 `json:"LogBackupCount,omitnil" name:"LogBackupCount"`
+
+	// 预估收费金额，单位（元/小时）。
+	EstimatedAmount *float64 `json:"EstimatedAmount,omitnil" name:"EstimatedAmount"`
+
+	// 本地备份文件总个数
+	LocalBackupFilesTotal *uint64 `json:"LocalBackupFilesTotal,omitnil" name:"LocalBackupFilesTotal"`
+
+	// 跨地域备份文件总个数
+	CrossBackupFilesTotal *uint64 `json:"CrossBackupFilesTotal,omitnil" name:"CrossBackupFilesTotal"`
+
+	// 跨地域备份占用收费空间，单位（KB）
+	CrossBillingSpace *uint64 `json:"CrossBillingSpace,omitnil" name:"CrossBillingSpace"`
+
+	// 跨地域自动数据备份使用空间，单位（KB）
+	CrossAutoBackupSpace *uint64 `json:"CrossAutoBackupSpace,omitnil" name:"CrossAutoBackupSpace"`
+
+	// 跨地域自动数据备份文件总个数
+	CrossAutoBackupCount *uint64 `json:"CrossAutoBackupCount,omitnil" name:"CrossAutoBackupCount"`
+
+	// 本地日志备份使用空间，单位（KB）
+	LocalLogBackupSpace *uint64 `json:"LocalLogBackupSpace,omitnil" name:"LocalLogBackupSpace"`
+
+	// 本地日志备份文件总个数
+	LocalLogBackupCount *uint64 `json:"LocalLogBackupCount,omitnil" name:"LocalLogBackupCount"`
+
+	// 跨地域日志备份使用空间，单位（KB）
+	CrossLogBackupSpace *uint64 `json:"CrossLogBackupSpace,omitnil" name:"CrossLogBackupSpace"`
+
+	// 跨地域日志备份文件总个数
+	CrossLogBackupCount *uint64 `json:"CrossLogBackupCount,omitnil" name:"CrossLogBackupCount"`
+
+	// 跨地域备份预估收费金额，单位（元/小时）
+	CrossEstimatedAmount *float64 `json:"CrossEstimatedAmount,omitnil" name:"CrossEstimatedAmount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBackupSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupUploadSizeRequestParams struct {
 	// 导入目标实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -4102,6 +4454,115 @@ func (r *DescribeBusinessIntelligenceFileResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBusinessIntelligenceFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBackupStatisticalRequestParams struct {
+	// 分页,页数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页，页大小
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 实例名称列表
+	InstanceNameSet []*string `json:"InstanceNameSet,omitnil" name:"InstanceNameSet"`
+
+	// 跨地域备份状态，enable-开启，disable-关闭
+	CrossBackupStatus *string `json:"CrossBackupStatus,omitnil" name:"CrossBackupStatus"`
+
+	// 跨地域备份目标地域
+	CrossRegion *string `json:"CrossRegion,omitnil" name:"CrossRegion"`
+
+	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+}
+
+type DescribeCrossBackupStatisticalRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页,页数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页，页大小
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 实例名称列表
+	InstanceNameSet []*string `json:"InstanceNameSet,omitnil" name:"InstanceNameSet"`
+
+	// 跨地域备份状态，enable-开启，disable-关闭
+	CrossBackupStatus *string `json:"CrossBackupStatus,omitnil" name:"CrossBackupStatus"`
+
+	// 跨地域备份目标地域
+	CrossRegion *string `json:"CrossRegion,omitnil" name:"CrossRegion"`
+
+	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+}
+
+func (r *DescribeCrossBackupStatisticalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBackupStatisticalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceIdSet")
+	delete(f, "InstanceNameSet")
+	delete(f, "CrossBackupStatus")
+	delete(f, "CrossRegion")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCrossBackupStatisticalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBackupStatisticalResponseParams struct {
+	// 跨地域备份概览实时统计总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 跨地域备份概览实时统计列表
+	Items []*CrossSummaryDetailRes `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCrossBackupStatisticalResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCrossBackupStatisticalResponseParams `json:"Response"`
+}
+
+func (r *DescribeCrossBackupStatisticalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBackupStatisticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4803,6 +5264,161 @@ func (r *DescribeDBsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabasesNormalRequestParams struct {
+	// 实例ID，形如mssql-7vfv3rk3
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeDatabasesNormalRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，形如mssql-7vfv3rk3
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeDatabasesNormalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabasesNormalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesNormalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabasesNormalResponseParams struct {
+	// 表示当前实例下的数据库总个数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
+	DBList []*DbNormalDetail `json:"DBList,omitnil" name:"DBList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatabasesNormalResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabasesNormalResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabasesNormalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabasesNormalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabasesRequestParams struct {
+	// 实例ID
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页返回，页编号，默认值为第0页
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数据库名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+
+	// 是否已开启TDE加密，enable-已加密，disable-未加密
+	Encryption *string `json:"Encryption,omitnil" name:"Encryption"`
+}
+
+type DescribeDatabasesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页返回，页编号，默认值为第0页
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数据库名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitnil" name:"OrderByType"`
+
+	// 是否已开启TDE加密，enable-已加密，disable-未加密
+	Encryption *string `json:"Encryption,omitnil" name:"Encryption"`
+}
+
+func (r *DescribeDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIdSet")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Name")
+	delete(f, "OrderByType")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabasesResponseParams struct {
+	// 数据库数量
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 实例数据库列表
+	DBInstances []*InstanceDBDetail `json:"DBInstances,omitnil" name:"DBInstances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabasesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6201,6 +6817,101 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegularBackupPlanRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 定期备份保留天数 [90 - 3650]天，默认365天
+	RegularBackupSaveDays *uint64 `json:"RegularBackupSaveDays,omitnil" name:"RegularBackupSaveDays"`
+
+	// 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+	RegularBackupStrategy *string `json:"RegularBackupStrategy,omitnil" name:"RegularBackupStrategy"`
+
+	// 定期备份保留个数，默认1个
+	RegularBackupCounts *uint64 `json:"RegularBackupCounts,omitnil" name:"RegularBackupCounts"`
+
+	// 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+	RegularBackupStartTime *string `json:"RegularBackupStartTime,omitnil" name:"RegularBackupStartTime"`
+
+	// 常规备份周期
+	BackupCycle []*uint64 `json:"BackupCycle,omitnil" name:"BackupCycle"`
+}
+
+type DescribeRegularBackupPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 定期备份保留天数 [90 - 3650]天，默认365天
+	RegularBackupSaveDays *uint64 `json:"RegularBackupSaveDays,omitnil" name:"RegularBackupSaveDays"`
+
+	// 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+	RegularBackupStrategy *string `json:"RegularBackupStrategy,omitnil" name:"RegularBackupStrategy"`
+
+	// 定期备份保留个数，默认1个
+	RegularBackupCounts *uint64 `json:"RegularBackupCounts,omitnil" name:"RegularBackupCounts"`
+
+	// 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+	RegularBackupStartTime *string `json:"RegularBackupStartTime,omitnil" name:"RegularBackupStartTime"`
+
+	// 常规备份周期
+	BackupCycle []*uint64 `json:"BackupCycle,omitnil" name:"BackupCycle"`
+}
+
+func (r *DescribeRegularBackupPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegularBackupPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RegularBackupSaveDays")
+	delete(f, "RegularBackupStrategy")
+	delete(f, "RegularBackupCounts")
+	delete(f, "RegularBackupStartTime")
+	delete(f, "BackupCycle")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegularBackupPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegularBackupPlanResponseParams struct {
+	// 常规备份计划
+	SaveModePeriod []*string `json:"SaveModePeriod,omitnil" name:"SaveModePeriod"`
+
+	// 定期备份计划
+	SaveModeRegular []*string `json:"SaveModeRegular,omitnil" name:"SaveModeRegular"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRegularBackupPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRegularBackupPlanResponseParams `json:"Response"`
+}
+
+func (r *DescribeRegularBackupPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegularBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7785,6 +8496,95 @@ func (r *ModifyBackupStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCrossBackupStrategyRequestParams struct {
+	// 跨地域备份开关(数据备份&日志备份) enable-开启，disable-关闭
+	CrossBackupEnabled *string `json:"CrossBackupEnabled,omitnil" name:"CrossBackupEnabled"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 跨地域备份保留天数，取值：7~1830，默认7天
+	CrossBackupSaveDays *uint64 `json:"CrossBackupSaveDays,omitnil" name:"CrossBackupSaveDays"`
+
+	// 跨地域备份的目标地域ID，最多两个，最少一个
+	CrossBackupRegion []*string `json:"CrossBackupRegion,omitnil" name:"CrossBackupRegion"`
+
+	// 是否立即清理跨地域备份(数据备份&日志备份) ，只有在BackupEnabled = disable时有效。1-是，0-否，默认：0
+	CleanUpCrossBackup *uint64 `json:"CleanUpCrossBackup,omitnil" name:"CleanUpCrossBackup"`
+}
+
+type ModifyCrossBackupStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跨地域备份开关(数据备份&日志备份) enable-开启，disable-关闭
+	CrossBackupEnabled *string `json:"CrossBackupEnabled,omitnil" name:"CrossBackupEnabled"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil" name:"InstanceIdSet"`
+
+	// 跨地域备份保留天数，取值：7~1830，默认7天
+	CrossBackupSaveDays *uint64 `json:"CrossBackupSaveDays,omitnil" name:"CrossBackupSaveDays"`
+
+	// 跨地域备份的目标地域ID，最多两个，最少一个
+	CrossBackupRegion []*string `json:"CrossBackupRegion,omitnil" name:"CrossBackupRegion"`
+
+	// 是否立即清理跨地域备份(数据备份&日志备份) ，只有在BackupEnabled = disable时有效。1-是，0-否，默认：0
+	CleanUpCrossBackup *uint64 `json:"CleanUpCrossBackup,omitnil" name:"CleanUpCrossBackup"`
+}
+
+func (r *ModifyCrossBackupStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCrossBackupStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CrossBackupEnabled")
+	delete(f, "InstanceId")
+	delete(f, "InstanceIdSet")
+	delete(f, "CrossBackupSaveDays")
+	delete(f, "CrossBackupRegion")
+	delete(f, "CleanUpCrossBackup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCrossBackupStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCrossBackupStrategyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyCrossBackupStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCrossBackupStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyCrossBackupStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCrossBackupStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBEncryptAttributesRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -8518,6 +9318,70 @@ func (r *ModifyDatabaseMdfResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDatabaseMdfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatabaseShrinkMDFRequestParams struct {
+	// 数据库名数组
+	DBNames []*string `json:"DBNames,omitnil" name:"DBNames"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type ModifyDatabaseShrinkMDFRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名数组
+	DBNames []*string `json:"DBNames,omitnil" name:"DBNames"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *ModifyDatabaseShrinkMDFRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseShrinkMDFRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBNames")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatabaseShrinkMDFRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatabaseShrinkMDFResponseParams struct {
+	// 流程ID
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDatabaseShrinkMDFResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDatabaseShrinkMDFResponseParams `json:"Response"`
+}
+
+func (r *ModifyDatabaseShrinkMDFResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseShrinkMDFResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10646,6 +11510,50 @@ func (r *StopMigrationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopMigrationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SummaryDetailRes struct {
+	// 地域标识
+	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 实例状态。1：申请中2：运行中3：受限运行中 (主备切换中)4：已隔离5：回收中6：已回收7：任务执行中 (实例做备份、回档等操作)8：已下线9：实例扩容中10：实例迁移中
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 备份空间
+	ActualUsedSpace *uint64 `json:"ActualUsedSpace,omitnil" name:"ActualUsedSpace"`
+
+	// 数据备份空间
+	DataBackupSpace *uint64 `json:"DataBackupSpace,omitnil" name:"DataBackupSpace"`
+
+	// 数据备份文件总个数
+	DataBackupCount *uint64 `json:"DataBackupCount,omitnil" name:"DataBackupCount"`
+
+	// 日志备份空间
+	LogBackupSpace *uint64 `json:"LogBackupSpace,omitnil" name:"LogBackupSpace"`
+
+	// 日志备份文件总个数
+	LogBackupCount *uint64 `json:"LogBackupCount,omitnil" name:"LogBackupCount"`
+
+	// 自动备份空间
+	AutoBackupSpace *uint64 `json:"AutoBackupSpace,omitnil" name:"AutoBackupSpace"`
+
+	// 自动备份文件总个数
+	AutoBackupCount *uint64 `json:"AutoBackupCount,omitnil" name:"AutoBackupCount"`
+
+	// 手动备份空间
+	ManualBackupSpace *uint64 `json:"ManualBackupSpace,omitnil" name:"ManualBackupSpace"`
+
+	// 手动备份文件总个数
+	ManualBackupCount *uint64 `json:"ManualBackupCount,omitnil" name:"ManualBackupCount"`
+
+	// 实例所属地域码
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 // Predefined struct for user

@@ -4243,7 +4243,7 @@ type LoginUserResponseParams struct {
 	// 用户Id。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 登录/注册成功后返回登录态token。有效期7天。
+	// 注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。
 	Token *string `json:"Token,omitnil" name:"Token"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

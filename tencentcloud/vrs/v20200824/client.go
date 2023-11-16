@@ -442,6 +442,7 @@ func NewGetVRSVoiceTypesResponse() (response *GetVRSVoiceTypesResponse) {
 // 查询复刻音色
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 func (c *Client) GetVRSVoiceTypes(request *GetVRSVoiceTypesRequest) (response *GetVRSVoiceTypesResponse, err error) {
     return c.GetVRSVoiceTypesWithContext(context.Background(), request)
@@ -451,6 +452,7 @@ func (c *Client) GetVRSVoiceTypes(request *GetVRSVoiceTypesRequest) (response *G
 // 查询复刻音色
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 func (c *Client) GetVRSVoiceTypesWithContext(ctx context.Context, request *GetVRSVoiceTypesRequest) (response *GetVRSVoiceTypesResponse, err error) {
     if request == nil {

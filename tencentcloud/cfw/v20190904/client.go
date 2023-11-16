@@ -3883,7 +3883,7 @@ func NewDescribeSwitchListsResponse() (response *DescribeSwitchListsResponse) {
 }
 
 // DescribeSwitchLists
-// 防火墙开关列表
+// 防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3893,7 +3893,7 @@ func (c *Client) DescribeSwitchLists(request *DescribeSwitchListsRequest) (respo
 }
 
 // DescribeSwitchLists
-// 防火墙开关列表
+// 防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

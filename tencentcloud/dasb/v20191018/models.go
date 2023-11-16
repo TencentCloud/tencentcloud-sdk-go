@@ -21,15 +21,15 @@ import (
 )
 
 type ACTemplate struct {
-	// 模版id
+	// 模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 模版名称
+	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
-	// 模版描述
+	// 模板描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
 }

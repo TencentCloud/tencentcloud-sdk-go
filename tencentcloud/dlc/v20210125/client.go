@@ -5203,6 +5203,61 @@ func (c *Client) DescribeTablesWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeTablesNameRequest() (request *DescribeTablesNameRequest) {
+    request = &DescribeTablesNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTablesName")
+    
+    
+    return
+}
+
+func NewDescribeTablesNameResponse() (response *DescribeTablesNameResponse) {
+    response = &DescribeTablesNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTablesName
+// 本接口（DescribeTables）用于查询数据表名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeTablesName(request *DescribeTablesNameRequest) (response *DescribeTablesNameResponse, err error) {
+    return c.DescribeTablesNameWithContext(context.Background(), request)
+}
+
+// DescribeTablesName
+// 本接口（DescribeTables）用于查询数据表名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeTablesNameWithContext(ctx context.Context, request *DescribeTablesNameRequest) (response *DescribeTablesNameResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTablesName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablesNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
     request = &DescribeTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

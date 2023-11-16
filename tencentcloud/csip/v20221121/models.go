@@ -3386,7 +3386,7 @@ type DomainAssetVO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SeverIp []*string `json:"SeverIp,omitnil" name:"SeverIp"`
 
-	// boi访问数量
+	// bot攻击数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotCount *uint64 `json:"BotCount,omitnil" name:"BotCount"`
 
@@ -3438,7 +3438,7 @@ type DomainAssetVO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
 
-	// bot访问数据
+	// bot访问数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotAccessCount *int64 `json:"BotAccessCount,omitnil" name:"BotAccessCount"`
 }
@@ -4607,6 +4607,6 @@ type WhereFilter struct {
 
 	// 中台定义：
 	// 1等于 2大于 3小于 4大于等于 5小于等于 6不等于 9模糊匹配 13非模糊匹配 14按位与
-	// 精确匹配填 7 模糊匹配填9 兼容 中台定的结构
+	// 精确匹配填 7 模糊匹配填9 
 	OperatorType *int64 `json:"OperatorType,omitnil" name:"OperatorType"`
 }

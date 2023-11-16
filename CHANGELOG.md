@@ -1,3 +1,102 @@
+# Release v1.0.797
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 76 次发布
+
+发布时间：2023-11-17 01:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTablesName](https://cloud.tencent.com/document/api/1342/101641)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 54 次发布
+
+发布时间：2023-11-17 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupMonitor](https://cloud.tencent.com/document/api/238/101650)
+* [DescribeBackupStatistical](https://cloud.tencent.com/document/api/238/101649)
+* [DescribeBackupSummary](https://cloud.tencent.com/document/api/238/101648)
+* [DescribeCrossBackupStatistical](https://cloud.tencent.com/document/api/238/101647)
+* [DescribeDatabases](https://cloud.tencent.com/document/api/238/101644)
+* [DescribeDatabasesNormal](https://cloud.tencent.com/document/api/238/101643)
+* [DescribeRegularBackupPlan](https://cloud.tencent.com/document/api/238/101646)
+* [ModifyCrossBackupStrategy](https://cloud.tencent.com/document/api/238/101645)
+* [ModifyDatabaseShrinkMDF](https://cloud.tencent.com/document/api/238/101642)
+
+新增数据结构：
+
+* [CrossSummaryDetailRes](https://cloud.tencent.com/document/api/238/19976#CrossSummaryDetailRes)
+* [SummaryDetailRes](https://cloud.tencent.com/document/api/238/19976#SummaryDetailRes)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 91 次发布
+
+发布时间：2023-11-17 01:25:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RocketMQSubscription](https://cloud.tencent.com/document/api/1179/46089#RocketMQSubscription)
+
+	* 新增成员：ClientProtocol
+
+* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
+
+	* 新增成员：AclEnabled, DestroyTime
+
+	* <font color="#dd0000">**修改成员**：</font>MaxRetention, MinRetention, Retention
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 43 次发布
+
+发布时间：2023-11-17 01:26:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
+
+	* 新增入参：PreTrainModel
+
+
+新增数据结构：
+
+* [PreTrainModel](https://cloud.tencent.com/document/api/851/75051#PreTrainModel)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.796
 
 ## Web 应用防火墙(waf) 版本：2018-01-25

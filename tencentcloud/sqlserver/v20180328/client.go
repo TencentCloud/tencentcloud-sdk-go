@@ -2219,6 +2219,179 @@ func (c *Client) DescribeBackupMigrationWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBackupMonitorRequest() (request *DescribeBackupMonitorRequest) {
+    request = &DescribeBackupMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeBackupMonitor")
+    
+    
+    return
+}
+
+func NewDescribeBackupMonitorResponse() (response *DescribeBackupMonitorResponse) {
+    response = &DescribeBackupMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupMonitor
+// 本接口(DescribeBackupMonitor)用于查询备份空间使用详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupMonitor(request *DescribeBackupMonitorRequest) (response *DescribeBackupMonitorResponse, err error) {
+    return c.DescribeBackupMonitorWithContext(context.Background(), request)
+}
+
+// DescribeBackupMonitor
+// 本接口(DescribeBackupMonitor)用于查询备份空间使用详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupMonitorWithContext(ctx context.Context, request *DescribeBackupMonitorRequest) (response *DescribeBackupMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupStatisticalRequest() (request *DescribeBackupStatisticalRequest) {
+    request = &DescribeBackupStatisticalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeBackupStatistical")
+    
+    
+    return
+}
+
+func NewDescribeBackupStatisticalResponse() (response *DescribeBackupStatisticalResponse) {
+    response = &DescribeBackupStatisticalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupStatistical
+// 本接口(DescribeBackupStatistical)用于查询备份实时统计列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupStatistical(request *DescribeBackupStatisticalRequest) (response *DescribeBackupStatisticalResponse, err error) {
+    return c.DescribeBackupStatisticalWithContext(context.Background(), request)
+}
+
+// DescribeBackupStatistical
+// 本接口(DescribeBackupStatistical)用于查询备份实时统计列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupStatisticalWithContext(ctx context.Context, request *DescribeBackupStatisticalRequest) (response *DescribeBackupStatisticalResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupStatisticalRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupStatistical require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupStatisticalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupSummaryRequest() (request *DescribeBackupSummaryRequest) {
+    request = &DescribeBackupSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeBackupSummary")
+    
+    
+    return
+}
+
+func NewDescribeBackupSummaryResponse() (response *DescribeBackupSummaryResponse) {
+    response = &DescribeBackupSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupSummary
+// 本接口(DescribeBackupSummary)用于查询数据库备份概览信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupSummary(request *DescribeBackupSummaryRequest) (response *DescribeBackupSummaryResponse, err error) {
+    return c.DescribeBackupSummaryWithContext(context.Background(), request)
+}
+
+// DescribeBackupSummary
+// 本接口(DescribeBackupSummary)用于查询数据库备份概览信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupSummaryWithContext(ctx context.Context, request *DescribeBackupSummaryRequest) (response *DescribeBackupSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupUploadSizeRequest() (request *DescribeBackupUploadSizeRequest) {
     request = &DescribeBackupUploadSizeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2402,6 +2575,63 @@ func (c *Client) DescribeBusinessIntelligenceFileWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeBusinessIntelligenceFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCrossBackupStatisticalRequest() (request *DescribeCrossBackupStatisticalRequest) {
+    request = &DescribeCrossBackupStatisticalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCrossBackupStatistical")
+    
+    
+    return
+}
+
+func NewDescribeCrossBackupStatisticalResponse() (response *DescribeCrossBackupStatisticalResponse) {
+    response = &DescribeCrossBackupStatisticalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCrossBackupStatistical
+// 本接口(DescribeCrossBackupStatistical)用于查询跨地域备份实时统计列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCrossBackupStatistical(request *DescribeCrossBackupStatisticalRequest) (response *DescribeCrossBackupStatisticalResponse, err error) {
+    return c.DescribeCrossBackupStatisticalWithContext(context.Background(), request)
+}
+
+// DescribeCrossBackupStatistical
+// 本接口(DescribeCrossBackupStatistical)用于查询跨地域备份实时统计列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCrossBackupStatisticalWithContext(ctx context.Context, request *DescribeCrossBackupStatisticalRequest) (response *DescribeCrossBackupStatisticalResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossBackupStatisticalRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCrossBackupStatistical require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCrossBackupStatisticalResponse()
     err = c.Send(request, response)
     return
 }
@@ -2902,6 +3132,132 @@ func (c *Client) DescribeDBsNormalWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeDBsNormalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
+    request = &DescribeDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDatabases")
+    
+    
+    return
+}
+
+func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
+    response = &DescribeDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabases
+// 本接口（DescribeDatabases）用于查询数据库列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    return c.DescribeDatabasesWithContext(context.Background(), request)
+}
+
+// DescribeDatabases
+// 本接口（DescribeDatabases）用于查询数据库列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabasesNormalRequest() (request *DescribeDatabasesNormalRequest) {
+    request = &DescribeDatabasesNormalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDatabasesNormal")
+    
+    
+    return
+}
+
+func NewDescribeDatabasesNormalResponse() (response *DescribeDatabasesNormalResponse) {
+    response = &DescribeDatabasesNormalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabasesNormal
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabasesNormal(request *DescribeDatabasesNormalRequest) (response *DescribeDatabasesNormalResponse, err error) {
+    return c.DescribeDatabasesNormalWithContext(context.Background(), request)
+}
+
+// DescribeDatabasesNormal
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabasesNormalWithContext(ctx context.Context, request *DescribeDatabasesNormalRequest) (response *DescribeDatabasesNormalResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesNormalRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabasesNormal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabasesNormalResponse()
     err = c.Send(request, response)
     return
 }
@@ -3986,6 +4342,65 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeRegularBackupPlanRequest() (request *DescribeRegularBackupPlanRequest) {
+    request = &DescribeRegularBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeRegularBackupPlan")
+    
+    
+    return
+}
+
+func NewDescribeRegularBackupPlanResponse() (response *DescribeRegularBackupPlanResponse) {
+    response = &DescribeRegularBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRegularBackupPlan
+// 本接口（DescribeRegularBackupPlan）用于查询实例定期备份保留计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) DescribeRegularBackupPlan(request *DescribeRegularBackupPlanRequest) (response *DescribeRegularBackupPlanResponse, err error) {
+    return c.DescribeRegularBackupPlanWithContext(context.Background(), request)
+}
+
+// DescribeRegularBackupPlan
+// 本接口（DescribeRegularBackupPlan）用于查询实例定期备份保留计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) DescribeRegularBackupPlanWithContext(ctx context.Context, request *DescribeRegularBackupPlanRequest) (response *DescribeRegularBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegularBackupPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegularBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegularBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackTimeRequest() (request *DescribeRollbackTimeRequest) {
     request = &DescribeRollbackTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4981,6 +5396,63 @@ func (c *Client) ModifyBackupStrategyWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyCrossBackupStrategyRequest() (request *ModifyCrossBackupStrategyRequest) {
+    request = &ModifyCrossBackupStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyCrossBackupStrategy")
+    
+    
+    return
+}
+
+func NewModifyCrossBackupStrategyResponse() (response *ModifyCrossBackupStrategyResponse) {
+    response = &ModifyCrossBackupStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCrossBackupStrategy
+// 本接口(ModifyCrossBackupStrategy)用于开启、关闭地域备份策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyCrossBackupStrategy(request *ModifyCrossBackupStrategyRequest) (response *ModifyCrossBackupStrategyResponse, err error) {
+    return c.ModifyCrossBackupStrategyWithContext(context.Background(), request)
+}
+
+// ModifyCrossBackupStrategy
+// 本接口(ModifyCrossBackupStrategy)用于开启、关闭地域备份策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyCrossBackupStrategyWithContext(ctx context.Context, request *ModifyCrossBackupStrategyRequest) (response *ModifyCrossBackupStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyCrossBackupStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCrossBackupStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCrossBackupStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBEncryptAttributesRequest() (request *ModifyDBEncryptAttributesRequest) {
     request = &ModifyDBEncryptAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5710,6 +6182,69 @@ func (c *Client) ModifyDatabaseMdfWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyDatabaseMdfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseShrinkMDFRequest() (request *ModifyDatabaseShrinkMDFRequest) {
+    request = &ModifyDatabaseShrinkMDFRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseShrinkMDF")
+    
+    
+    return
+}
+
+func NewModifyDatabaseShrinkMDFResponse() (response *ModifyDatabaseShrinkMDFResponse) {
+    response = &ModifyDatabaseShrinkMDFResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDatabaseShrinkMDF
+// 本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDatabaseShrinkMDF(request *ModifyDatabaseShrinkMDFRequest) (response *ModifyDatabaseShrinkMDFResponse, err error) {
+    return c.ModifyDatabaseShrinkMDFWithContext(context.Background(), request)
+}
+
+// ModifyDatabaseShrinkMDF
+// 本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDatabaseShrinkMDFWithContext(ctx context.Context, request *ModifyDatabaseShrinkMDFRequest) (response *ModifyDatabaseShrinkMDFResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseShrinkMDFRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDatabaseShrinkMDF require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDatabaseShrinkMDFResponse()
     err = c.Send(request, response)
     return
 }

@@ -5374,13 +5374,13 @@ type Groups struct {
 }
 
 type HotKeyInfo struct {
-	// 热Key
+	// 热 Key 的名称。
 	Key *string `json:"Key,omitnil" name:"Key"`
 
-	// 类型
+	// Key 类型。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 数量
+	// 某段时间内热 Key 的访问次数
 	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 

@@ -7358,6 +7358,140 @@ func (r *DescribeTableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTablesNameRequestParams struct {
+	// 列出该数据库下所属数据表。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 数据偏移量，从0开始，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为其一
+	// table-name - String - （过滤条件）数据表名称,形如：table-001。
+	// table-id - String - （过滤条件）table id形如：12342。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 指定查询的数据源名称，默认为DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil" name:"DatasourceConnectionName"`
+
+	// 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
+
+	// 排序字段，false：降序（默认）；true：升序
+	Asc *bool `json:"Asc,omitnil" name:"Asc"`
+
+	// table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+
+	// 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+	TableFormat *string `json:"TableFormat,omitnil" name:"TableFormat"`
+}
+
+type DescribeTablesNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 列出该数据库下所属数据表。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 数据偏移量，从0开始，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为其一
+	// table-name - String - （过滤条件）数据表名称,形如：table-001。
+	// table-id - String - （过滤条件）table id形如：12342。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 指定查询的数据源名称，默认为DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil" name:"DatasourceConnectionName"`
+
+	// 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
+
+	// 排序字段，false：降序（默认）；true：升序
+	Asc *bool `json:"Asc,omitnil" name:"Asc"`
+
+	// table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+
+	// 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+	TableFormat *string `json:"TableFormat,omitnil" name:"TableFormat"`
+}
+
+func (r *DescribeTablesNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "DatasourceConnectionName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Sort")
+	delete(f, "Asc")
+	delete(f, "TableType")
+	delete(f, "TableFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesNameResponseParams struct {
+	// 数据表名称对象列表。
+	TableNameList []*string `json:"TableNameList,omitnil" name:"TableNameList"`
+
+	// 实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTablesNameResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablesNameResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablesNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTablesRequestParams struct {
 	// 列出该数据库下所属数据表。
 	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`

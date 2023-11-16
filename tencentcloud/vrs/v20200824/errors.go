@@ -17,6 +17,9 @@ package v20200824
 const (
 	// 此产品的特有错误码
 
+	// CAM权限错误。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 任务状态错误。
 	FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
 

@@ -1926,6 +1926,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+
+	// 太极预训练模型ID
+	PreTrainModel *PreTrainModel `json:"PreTrainModel,omitnil" name:"PreTrainModel"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1997,6 +2000,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+
+	// 太极预训练模型ID
+	PreTrainModel *PreTrainModel `json:"PreTrainModel,omitnil" name:"PreTrainModel"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -2033,6 +2039,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "DataSource")
 	delete(f, "CallbackUrl")
+	delete(f, "PreTrainModel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -7805,6 +7812,16 @@ type PointInfo struct {
 	// Y坐标值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *float64 `json:"Y,omitnil" name:"Y"`
+}
+
+type PreTrainModel struct {
+	// 模型ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+
+	// 模型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelName *string `json:"ModelName,omitnil" name:"ModelName"`
 }
 
 // Predefined struct for user
