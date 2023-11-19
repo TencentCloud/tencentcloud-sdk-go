@@ -94,6 +94,63 @@ func (c *Client) BatchCreateIntegrationTaskAlarmsWithContext(ctx context.Context
     return
 }
 
+func NewBatchCreateTaskVersionDsRequest() (request *BatchCreateTaskVersionDsRequest) {
+    request = &BatchCreateTaskVersionDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "BatchCreateTaskVersionDs")
+    
+    
+    return
+}
+
+func NewBatchCreateTaskVersionDsResponse() (response *BatchCreateTaskVersionDsResponse) {
+    response = &BatchCreateTaskVersionDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchCreateTaskVersionDs
+// 批量创建任务版本Ds
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BatchCreateTaskVersionDs(request *BatchCreateTaskVersionDsRequest) (response *BatchCreateTaskVersionDsResponse, err error) {
+    return c.BatchCreateTaskVersionDsWithContext(context.Background(), request)
+}
+
+// BatchCreateTaskVersionDs
+// 批量创建任务版本Ds
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BatchCreateTaskVersionDsWithContext(ctx context.Context, request *BatchCreateTaskVersionDsRequest) (response *BatchCreateTaskVersionDsResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateTaskVersionDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchCreateTaskVersionDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchCreateTaskVersionDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDeleteIntegrationTasksRequest() (request *BatchDeleteIntegrationTasksRequest) {
     request = &BatchDeleteIntegrationTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2636,6 +2693,63 @@ func (c *Client) CreateTaskAlarmRegularWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateTaskVersionDsRequest() (request *CreateTaskVersionDsRequest) {
+    request = &CreateTaskVersionDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateTaskVersionDs")
+    
+    
+    return
+}
+
+func NewCreateTaskVersionDsResponse() (response *CreateTaskVersionDsResponse) {
+    response = &CreateTaskVersionDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTaskVersionDs
+// 创建任务版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
+    return c.CreateTaskVersionDsWithContext(context.Background(), request)
+}
+
+// CreateTaskVersionDs
+// 创建任务版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateTaskVersionDsWithContext(ctx context.Context, request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskVersionDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskVersionDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskVersionDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkflowRequest() (request *CreateWorkflowRequest) {
     request = &CreateWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4148,6 +4262,57 @@ func (c *Client) DescribeAllUsedVersionSonWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeAllUsedVersionSonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApproveListRequest() (request *DescribeApproveListRequest) {
+    request = &DescribeApproveListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeApproveList")
+    
+    
+    return
+}
+
+func NewDescribeApproveListResponse() (response *DescribeApproveListResponse) {
+    response = &DescribeApproveListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApproveList
+// 获取待审批列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeApproveList(request *DescribeApproveListRequest) (response *DescribeApproveListResponse, err error) {
+    return c.DescribeApproveListWithContext(context.Background(), request)
+}
+
+// DescribeApproveList
+// 获取待审批列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeApproveListWithContext(ctx context.Context, request *DescribeApproveListRequest) (response *DescribeApproveListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApproveListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApproveList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApproveListResponse()
     err = c.Send(request, response)
     return
 }
@@ -13777,6 +13942,55 @@ func (c *Client) MakeUpWorkflowNewWithContext(ctx context.Context, request *Make
     request.SetContext(ctx)
     
     response = NewMakeUpWorkflowNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApproveStatusRequest() (request *ModifyApproveStatusRequest) {
+    request = &ModifyApproveStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyApproveStatus")
+    
+    
+    return
+}
+
+func NewModifyApproveStatusResponse() (response *ModifyApproveStatusResponse) {
+    response = &ModifyApproveStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApproveStatus
+// 修改审批单状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyApproveStatus(request *ModifyApproveStatusRequest) (response *ModifyApproveStatusResponse, err error) {
+    return c.ModifyApproveStatusWithContext(context.Background(), request)
+}
+
+// ModifyApproveStatus
+// 修改审批单状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyApproveStatusWithContext(ctx context.Context, request *ModifyApproveStatusRequest) (response *ModifyApproveStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyApproveStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApproveStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApproveStatusResponse()
     err = c.Send(request, response)
     return
 }

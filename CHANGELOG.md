@@ -1,3 +1,94 @@
+# Release v1.0.798
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 120 次发布
+
+发布时间：2023-11-20 00:06:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeConfig](https://cloud.tencent.com/document/api/213/15753#InstanceTypeConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>Zone, InstanceType, InstanceFamily, GPU, CPU, Memory
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 121 次发布
+
+发布时间：2023-11-20 00:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+
+	* 新增出参：Type, PassportRecognizeInfos
+
+
+新增数据结构：
+
+* [PassportRecognizeInfos](https://cloud.tencent.com/document/api/866/33527#PassportRecognizeInfos)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 57 次发布
+
+发布时间：2023-11-20 00:24:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchCreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101693)
+* [CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)
+* [DescribeApproveList](https://cloud.tencent.com/document/api/1267/101695)
+* [ModifyApproveStatus](https://cloud.tencent.com/document/api/1267/101694)
+
+新增数据结构：
+
+* [AlarmDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmDsVO)
+* [AlarmExtDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmExtDsVO)
+* [Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)
+* [ApproveModify](https://cloud.tencent.com/document/api/1267/76336#ApproveModify)
+* [AttributeItemDsVO](https://cloud.tencent.com/document/api/1267/76336#AttributeItemDsVO)
+* [BatchCreateTaskVersionDTO](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDTO)
+* [BatchCreateTaskVersionDsDTOLite](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDsDTOLite)
+* [BatchOperateResultDs](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultDs)
+* [CandidateDsDTo](https://cloud.tencent.com/document/api/1267/76336#CandidateDsDTo)
+* [DependencyConfigDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#DependencyConfigDsDTONoRecurV2)
+* [DependencyStrategyDs](https://cloud.tencent.com/document/api/1267/76336#DependencyStrategyDs)
+* [DescribeApply](https://cloud.tencent.com/document/api/1267/76336#DescribeApply)
+* [FilterOptional](https://cloud.tencent.com/document/api/1267/76336#FilterOptional)
+* [OrderFieldOptional](https://cloud.tencent.com/document/api/1267/76336#OrderFieldOptional)
+* [ParamInfoDs](https://cloud.tencent.com/document/api/1267/76336#ParamInfoDs)
+* [ParameterTaskDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskDsDto)
+* [ParameterTaskInDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskInDsDto)
+* [ParameterTaskOutDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskOutDsDto)
+* [TaskDsDTOLiteV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTOLiteV2)
+* [TaskDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTONoRecurV2)
+* [TaskExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskExtDsVO)
+* [TaskLinkDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskLinkDsDTO)
+* [TaskTypeDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeDsVO)
+* [TaskTypeExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtDsVO)
+* [TaskTypeExtParamDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtParamDsVO)
+
+
+
 # Release v1.0.797
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25

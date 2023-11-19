@@ -4417,28 +4417,28 @@ func (r *MLIDPassportOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MLIDPassportOCRResponseParams struct {
-	// 护照ID
+	// 护照ID（机读码区的解析结果）
 	ID *string `json:"ID,omitnil" name:"ID"`
 
-	// 姓名
+	// 姓名（机读码区的解析结果）
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 出生日期
+	// 出生日期（机读码区的解析结果）
 	DateOfBirth *string `json:"DateOfBirth,omitnil" name:"DateOfBirth"`
 
-	// 性别（F女，M男）
+	// 性别（F女，M男）（机读码区的解析结果）
 	Sex *string `json:"Sex,omitnil" name:"Sex"`
 
-	// 有效期
+	// 有效期（机读码区的解析结果）
 	DateOfExpiration *string `json:"DateOfExpiration,omitnil" name:"DateOfExpiration"`
 
-	// 发行国
+	// 发行国（机读码区的解析结果）
 	IssuingCountry *string `json:"IssuingCountry,omitnil" name:"IssuingCountry"`
 
-	// 国家地区代码
+	// 国家地区代码（机读码区的解析结果）
 	Nationality *string `json:"Nationality,omitnil" name:"Nationality"`
 
-	// 告警码
+	// 告警码：
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警（包括黑白复印件、彩色复印件）
 	// -9106       证件遮挡告警
@@ -4464,13 +4464,19 @@ type MLIDPassportOCRResponseParams struct {
 	// 最下方第二行 MRZ Code 序列
 	CodeCrc *string `json:"CodeCrc,omitnil" name:"CodeCrc"`
 
-	// 姓
+	// 姓（机读码区的解析结果）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Surname *string `json:"Surname,omitnil" name:"Surname"`
 
-	// 名
+	// 名（机读码区的解析结果）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GivenName *string `json:"GivenName,omitnil" name:"GivenName"`
+
+	// 类型（机读码区的解析结果）
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 信息区证件内容
+	PassportRecognizeInfos *PassportRecognizeInfos `json:"PassportRecognizeInfos,omitnil" name:"PassportRecognizeInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -5575,6 +5581,41 @@ func (r *PassportOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PassportOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PassportRecognizeInfos struct {
+	// 证件类型（护照信息页识别结果）
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 发行国家（护照信息页识别结果）
+	IssuingCountry *string `json:"IssuingCountry,omitnil" name:"IssuingCountry"`
+
+	// 护照号码（护照信息页识别结果）
+	PassportID *string `json:"PassportID,omitnil" name:"PassportID"`
+
+	// 姓（护照信息页识别结果）
+	Surname *string `json:"Surname,omitnil" name:"Surname"`
+
+	// 名（护照信息页识别结果）
+	GivenName *string `json:"GivenName,omitnil" name:"GivenName"`
+
+	// 姓名（护照信息页识别结果）
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 国籍信息（护照信息页识别结果）
+	Nationality *string `json:"Nationality,omitnil" name:"Nationality"`
+
+	// 出生日期（护照信息页识别结果）
+	DateOfBirth *string `json:"DateOfBirth,omitnil" name:"DateOfBirth"`
+
+	// 性别（护照信息页识别结果）
+	Sex *string `json:"Sex,omitnil" name:"Sex"`
+
+	// 发行日期（护照信息页识别结果）
+	DateOfIssuance *string `json:"DateOfIssuance,omitnil" name:"DateOfIssuance"`
+
+	// 截止日期（护照信息页识别结果）
+	DateOfExpiration *string `json:"DateOfExpiration,omitnil" name:"DateOfExpiration"`
 }
 
 // Predefined struct for user

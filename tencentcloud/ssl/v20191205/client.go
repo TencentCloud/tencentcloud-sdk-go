@@ -1446,7 +1446,7 @@ func NewDescribeDeployedResourcesResponse() (response *DescribeDeployedResources
 }
 
 // DescribeDeployedResources
-// 证书查询关联资源
+// 证书查询关联资源， 最新查询接口请使用CreateCertificateBindResourceSyncTask， 可以查询更多支持的云资源
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1464,7 +1464,7 @@ func (c *Client) DescribeDeployedResources(request *DescribeDeployedResourcesReq
 }
 
 // DescribeDeployedResources
-// 证书查询关联资源
+// 证书查询关联资源， 最新查询接口请使用CreateCertificateBindResourceSyncTask， 可以查询更多支持的云资源
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
