@@ -245,6 +245,9 @@ const (
 	// TSF应用性能管理CTSDB客户端调用失败。
 	FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 
+	// TSF应用性能管理ES客户端调用失败。
+	FAILEDOPERATION_TSFAPMESCLIENTREQUESTERROR = "FailedOperation.TsfApmEsClientRequestError"
+
 	// TSF应用性能管理内部异常, 请稍后重试。
 	FAILEDOPERATION_TSFAPMINTERNALERROR = "FailedOperation.TsfApmInternalError"
 

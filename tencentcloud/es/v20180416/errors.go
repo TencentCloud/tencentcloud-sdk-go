@@ -515,6 +515,9 @@ const (
 	// 离线节点蓝绿变更存在风险，请直接选择重启“in-place”。
 	UNSUPPORTEDOPERATION_RESTARTMODE = "UnsupportedOperation.RestartMode"
 
+	// 纵向缩容太多资源。
+	UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+
 	// 不支持该操作，当前实例运行状态不为正常。
 	UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 

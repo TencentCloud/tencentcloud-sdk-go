@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 120 次发布
+### 第 50 次发布
 
-发布时间：2023-11-20 00:06:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeConfig](https://cloud.tencent.com/document/api/213/15753#InstanceTypeConfig)
-
-	* <font color="#dd0000">**修改成员**：</font>Zone, InstanceType, InstanceFamily, GPU, CPU, Memory
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 121 次发布
-
-发布时间：2023-11-20 00:15:46
+发布时间：2023-11-21 01:07:18
 
 本次发布包含了以下内容：
 
@@ -31,22 +12,60 @@
 
 修改接口：
 
-* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
 
-	* 新增出参：Type, PassportRecognizeInfos
+* [DescribeBillDetailForOrganization](https://cloud.tencent.com/document/api/555/98858)
 
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
 
-新增数据结构：
-
-* [PassportRecognizeInfos](https://cloud.tencent.com/document/api/866/33527#PassportRecognizeInfos)
-
+* [DescribeBillResourceSummaryForOrganization](https://cloud.tencent.com/document/api/555/98857)
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 57 次发布
 
-发布时间：2023-11-20 00:24:26
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 147 次发布
+
+发布时间：2023-11-21 01:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewDBInstance](https://cloud.tencent.com/document/api/236/30160)
+
+	* 新增入参：AutoRenew
+
+
+
+
+## 数据安全治理中心(dsgc) 版本：2019-07-23
+
+### 第 6 次发布
+
+发布时间：2023-11-21 01:16:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RiskLevelRisk](https://cloud.tencent.com/document/api/1087/96844#RiskLevelRisk)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, RiskLevelName, RiskLevelDescription, IdentifyComplianceName, Type
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 55 次发布
+
+发布时间：2023-11-21 01:25:12
 
 本次发布包含了以下内容：
 
@@ -54,38 +73,339 @@
 
 新增接口：
 
-* [BatchCreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101693)
-* [CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)
-* [DescribeApproveList](https://cloud.tencent.com/document/api/1267/101695)
-* [ModifyApproveStatus](https://cloud.tencent.com/document/api/1267/101694)
+* [BalanceReadOnlyGroup](https://cloud.tencent.com/document/api/238/101753)
+* [DeleteRestoreTask](https://cloud.tencent.com/document/api/238/101743)
+* [DescribeAccountPrivilegeByDB](https://cloud.tencent.com/document/api/238/101729)
+* [DescribeCollationTimeZone](https://cloud.tencent.com/document/api/238/101735)
+* [DescribeCrossRegions](https://cloud.tencent.com/document/api/238/101738)
+* [DescribeDBPrivilegeByAccount](https://cloud.tencent.com/document/api/238/101715)
+* [DescribeDBRestoreTime](https://cloud.tencent.com/document/api/238/101742)
+* [DescribeDatabaseNames](https://cloud.tencent.com/document/api/238/101714)
+* [DescribeInquiryPriceParameter](https://cloud.tencent.com/document/api/238/101749)
+* [DescribeInstanceTasks](https://cloud.tencent.com/document/api/238/101734)
+* [DescribeInstanceTradeParameter](https://cloud.tencent.com/document/api/238/101748)
+* [DescribeProductSpec](https://cloud.tencent.com/document/api/238/101747)
+* [DescribeReadOnlyGroupAutoWeight](https://cloud.tencent.com/document/api/238/101752)
+* [DescribeRestoreTask](https://cloud.tencent.com/document/api/238/101741)
+* [DescribeSpecSellStatus](https://cloud.tencent.com/document/api/238/101746)
+* [DescribeUpgradeInstanceCheck](https://cloud.tencent.com/document/api/238/101733)
+* [ModifyCloseWanIp](https://cloud.tencent.com/document/api/238/101718)
+* [ModifyDBInstanceNote](https://cloud.tencent.com/document/api/238/101732)
+* [ModifyOpenWanIp](https://cloud.tencent.com/document/api/238/101717)
+* [ModifyPublishSubscribe](https://cloud.tencent.com/document/api/238/101756)
 
 新增数据结构：
 
-* [AlarmDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmDsVO)
-* [AlarmExtDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmExtDsVO)
+* [CheckItem](https://cloud.tencent.com/document/api/238/19976#CheckItem)
+* [InstanceTask](https://cloud.tencent.com/document/api/238/19976#InstanceTask)
+* [ModifyDataBaseTuple](https://cloud.tencent.com/document/api/238/19976#ModifyDataBaseTuple)
+* [Price](https://cloud.tencent.com/document/api/238/19976#Price)
+* [ProductSpec](https://cloud.tencent.com/document/api/238/19976#ProductSpec)
+* [RestoreTask](https://cloud.tencent.com/document/api/238/19976#RestoreTask)
+* [SpecSellStatus](https://cloud.tencent.com/document/api/238/19976#SpecSellStatus)
+* [ZoneStatus](https://cloud.tencent.com/document/api/238/19976#ZoneStatus)
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2023-11-21 01:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFabricBlock](https://cloud.tencent.com/document/api/663/101763)
+* [DescribeFabricTransaction](https://cloud.tencent.com/document/api/663/101762)
+* [InvokeFabricChaincode](https://cloud.tencent.com/document/api/663/101761)
+* [QueryFabricChaincode](https://cloud.tencent.com/document/api/663/101760)
+
+新增数据结构：
+
+* [Transaction](https://cloud.tencent.com/document/api/663/19466#Transaction)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 55 次发布
+
+发布时间：2023-11-21 01:33:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
+
+	* 新增入参：NeedScan
+
+* [AddEditImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81638)
+
+	* 新增入参：AutoScanEnabled, ScanType
+
+* [CreateAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65591)
+
+	* 新增入参：ContainerRunning, ScanScope, ScanEndTime
+
+	* <font color="#dd0000">**修改入参**：</font>All
+
+* [CreateAssetImageScanTask](https://cloud.tencent.com/document/api/1285/65515)
+
+	* 新增入参：ContainerRunning, ScanScope, Timeout
+
+* [DescribeAssetImageDetail](https://cloud.tencent.com/document/api/1285/65506)
+
+	* 新增出参：ImageDigest
+
+* [DescribeAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65487)
+
+	* 新增出参：ContainerRunning, ScanScope, ScanEndTime
+
+* [DescribeAssetSummary](https://cloud.tencent.com/document/api/1285/65477)
+
+	* 新增出参：TodayNewImageCnt, TodayUnsafeImageCnt, RecommendedFixImageCnt, ScannedImageCnt
+
+* [DescribeImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81628)
+
+	* 新增出参：AutoScanEnabled, ScanType
+
+* [RenewImageAuthorizeState](https://cloud.tencent.com/document/api/1285/65459)
+
+	* 新增入参：NeedScan, ScanType
+
+* [SyncAssetImageRegistryAsset](https://cloud.tencent.com/document/api/1285/65458)
+
+	* 新增入参：All, RegistryIds
+
+
+新增数据结构：
+
+* [ImageVulLayerInfo](https://cloud.tencent.com/document/api/1285/65614#ImageVulLayerInfo)
+
+修改数据结构：
+
+* [ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)
+
+	* 新增成员：RecommendedFix
+
+* [ImageVul](https://cloud.tencent.com/document/api/1285/65614#ImageVul)
+
+	* 新增成员：LayerInfos
+
+* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
+
+	* 新增成员：CriticalLevelVulCnt, HighLevelVulCnt, MediumLevelVulCnt, LowLevelVulCnt, IsLatestImage, RecommendedFix
+
+* [ImagesVul](https://cloud.tencent.com/document/api/1285/65614#ImagesVul)
+
+	* 新增成员：AttackLevel
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 92 次发布
+
+发布时间：2023-11-21 01:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+
+	* <font color="#dd0000">**修改入参**：</font>Tags
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 162 次发布
+
+发布时间：2023-11-21 01:37:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterExtraArgs](https://cloud.tencent.com/document/api/457/101764)
+* [DescribeExternalNodeSupportConfig](https://cloud.tencent.com/document/api/457/101767)
+* [DescribeIPAMD](https://cloud.tencent.com/document/api/457/101765)
+
+修改接口：
+
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/457/78051)
+
+	* 新增出参：ClusterIntranetSubnetId
+
+
+新增数据结构：
+
+* [Step](https://cloud.tencent.com/document/api/457/31866#Step)
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 6 次发布
+
+发布时间：2023-11-21 01:38:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportSourceClusterConsumerGroups](https://cloud.tencent.com/document/api/1493/101770)
+* [ImportSourceClusterTopics](https://cloud.tencent.com/document/api/1493/101769)
+
+新增数据结构：
+
+* [SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)
+* [SourceClusterTopicConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterTopicConfig)
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 52 次发布
+
+发布时间：2023-11-21 01:38:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongTarget](https://cloud.tencent.com/document/api/1364/54942#KongTarget)
+
+	* 新增成员：CvmInstanceId, CvmInstanceName
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>FeatureVersion, EnableClientIntranet, StorageOption
+
+
+
+
+## 声音复刻(vrs) 版本：2020-08-24
+
+### 第 5 次发布
+
+发布时间：2023-11-21 01:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VoiceTypeInfo](https://cloud.tencent.com/document/api/1283/90065#VoiceTypeInfo)
+
+	* 新增成员：IsDeployed
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 75 次发布
+
+发布时间：2023-11-21 01:41:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeModuleStatus](https://cloud.tencent.com/document/api/627/101340)
+
+	* 新增出参：RateLimit
+
+* [ModifyModuleStatus](https://cloud.tencent.com/document/api/627/99699)
+
+	* 新增入参：RateLimit
+
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+	* 新增出参：Ids
+
+* [UpsertSession](https://cloud.tencent.com/document/api/627/97645)
+
+	* 新增出参：SessionID
+
+
+修改数据结构：
+
+* [AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem)
+
+	* 新增成员：BeginTime
+
+* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
+
+	* 新增成员：Type, Region
+
+* [DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)
+
+	* 新增成员：ModifyTime, ValidStatus, Source
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+	* 新增成员：WxAccess
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 58 次发布
+
+发布时间：2023-11-21 01:42:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApproveTypeList](https://cloud.tencent.com/document/api/1267/101771)
+
+新增数据结构：
+
+* [ApproveType](https://cloud.tencent.com/document/api/1267/76336#ApproveType)
+
+修改数据结构：
+
 * [Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)
-* [ApproveModify](https://cloud.tencent.com/document/api/1267/76336#ApproveModify)
-* [AttributeItemDsVO](https://cloud.tencent.com/document/api/1267/76336#AttributeItemDsVO)
-* [BatchCreateTaskVersionDTO](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDTO)
-* [BatchCreateTaskVersionDsDTOLite](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDsDTOLite)
-* [BatchOperateResultDs](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultDs)
-* [CandidateDsDTo](https://cloud.tencent.com/document/api/1267/76336#CandidateDsDTo)
-* [DependencyConfigDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#DependencyConfigDsDTONoRecurV2)
-* [DependencyStrategyDs](https://cloud.tencent.com/document/api/1267/76336#DependencyStrategyDs)
-* [DescribeApply](https://cloud.tencent.com/document/api/1267/76336#DescribeApply)
-* [FilterOptional](https://cloud.tencent.com/document/api/1267/76336#FilterOptional)
-* [OrderFieldOptional](https://cloud.tencent.com/document/api/1267/76336#OrderFieldOptional)
-* [ParamInfoDs](https://cloud.tencent.com/document/api/1267/76336#ParamInfoDs)
-* [ParameterTaskDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskDsDto)
-* [ParameterTaskInDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskInDsDto)
-* [ParameterTaskOutDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskOutDsDto)
-* [TaskDsDTOLiteV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTOLiteV2)
-* [TaskDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTONoRecurV2)
-* [TaskExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskExtDsVO)
-* [TaskLinkDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskLinkDsDTO)
-* [TaskTypeDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeDsVO)
-* [TaskTypeExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtDsVO)
-* [TaskTypeExtParamDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtParamDsVO)
+
+	* 新增成员：ErrorMessage, ApplyName, ApproverId, ApproverName, ApproveProjectName
+
+	* <font color="#dd0000">**修改成员**：</font>ApplicantName, ApproveId
+
 
 
 
@@ -8430,6 +8750,25 @@
 
 ## 费用中心(billing) 版本：2018-07-09
 
+### 第 50 次发布
+
+发布时间：2023-11-21 01:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+* [DescribeBillDetailForOrganization](https://cloud.tencent.com/document/api/555/98858)
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+* [DescribeBillResourceSummaryForOrganization](https://cloud.tencent.com/document/api/555/98857)
+
+
 ### 第 49 次发布
 
 发布时间：2023-10-27 15:51:05
@@ -12717,27 +13056,6 @@
 
 
 
-## 云访问安全代理(casb) 版本：2020-05-07
-
-### 第 1 次发布
-
-发布时间：2022-03-04 10:44:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CopyCryptoColumnPolicy](https://cloud.tencent.com/document/api/1303/70652)
-
-新增数据结构：
-
-* [CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter)
-
-
-
-
 ## 云拨测(cat) 版本：2018-04-09
 
 ### 第 14 次发布
@@ -15215,6 +15533,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 147 次发布
+
+发布时间：2023-11-21 01:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewDBInstance](https://cloud.tencent.com/document/api/236/30160)
+
+	* 新增入参：AutoRenew
+
 
 ### 第 146 次发布
 
@@ -28743,131 +29076,6 @@
 * [UsgRuleDetail](https://cloud.tencent.com/document/api/639/41450#UsgRuleDetail)
 * [Vpc](https://cloud.tencent.com/document/api/639/41450#Vpc)
 
-
-
-
-## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
-
-### 第 5 次发布
-
-发布时间：2023-06-16 01:14:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
-
-	* <font color="#dd0000">**删除成员**：</font>PrebuildFile
-
-
-### 第 4 次发布
-
-发布时间：2023-05-09 01:09:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
-
-	* 新增入参：Name
-
-
-修改数据结构：
-
-* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
-
-	* 新增成员：Name
-
-
-### 第 3 次发布
-
-发布时间：2023-04-05 01:18:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeWorkspaceIsReady](https://cloud.tencent.com/document/api/1039/89895)
-
-修改接口：
-
-* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
-
-	* 新增出参：Data
-
-
-### 第 2 次发布
-
-发布时间：2023-03-02 01:11:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateWorkspaceTemporaryToken](https://cloud.tencent.com/document/api/1039/87613)
-
-新增数据结构：
-
-* [WorkspaceTokenDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTokenDTO)
-* [WorkspaceTokenInfoV0](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTokenInfoV0)
-
-### 第 1 次发布
-
-发布时间：2022-09-16 10:03:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80553)
-* [CreateWorkspaceByAgent](https://cloud.tencent.com/document/api/1039/80542)
-* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
-* [CreateWorkspaceByVersionControl](https://cloud.tencent.com/document/api/1039/80541)
-* [DeleteCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80551)
-* [DescribeCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80550)
-* [DescribeCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80549)
-* [DescribeCustomizeTemplatesPresets](https://cloud.tencent.com/document/api/1039/80548)
-* [DescribeWorkspaceEnvList](https://cloud.tencent.com/document/api/1039/80540)
-* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
-* [DescribeWorkspaceStatus](https://cloud.tencent.com/document/api/1039/80538)
-* [DescribeWorkspaceStatusList](https://cloud.tencent.com/document/api/1039/80537)
-* [ModifyCustomizeTemplateVersionControl](https://cloud.tencent.com/document/api/1039/80547)
-* [ModifyCustomizeTemplatesFullById](https://cloud.tencent.com/document/api/1039/80546)
-* [ModifyCustomizeTemplatesPartById](https://cloud.tencent.com/document/api/1039/80545)
-* [ModifyWorkspaceAttributes](https://cloud.tencent.com/document/api/1039/80544)
-* [RecoverWorkspace](https://cloud.tencent.com/document/api/1039/80536)
-* [RemoveWorkspace](https://cloud.tencent.com/document/api/1039/80535)
-* [RunWorkspace](https://cloud.tencent.com/document/api/1039/80534)
-* [StopWorkspace](https://cloud.tencent.com/document/api/1039/80533)
-
-新增数据结构：
-
-* [AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO)
-* [CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo)
-* [ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO)
-* [UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams)
-* [UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams)
-* [UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp)
-* [UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo)
-* [WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO)
-* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
-* [WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO)
-* [WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO)
-* [WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo)
-* [WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo)
-* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
 
 
 
@@ -49428,6 +49636,21 @@
 
 
 ## 数据安全治理中心(dsgc) 版本：2019-07-23
+
+### 第 6 次发布
+
+发布时间：2023-11-21 01:16:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RiskLevelRisk](https://cloud.tencent.com/document/api/1087/96844#RiskLevelRisk)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, RiskLevelName, RiskLevelDescription, IdentifyComplianceName, Type
+
 
 ### 第 5 次发布
 
@@ -87391,7 +87614,7 @@
 
 新增数据结构：
 
-* [[PassportRecognizeInfos](https://cloud.tencent.com/document/api/866/33527#PassportRecognizeInfos)](https://cloud.tencent.com/document/api/866/33527#[PassportRecognizeInfos](https://cloud.tencent.com/document/api/866/33527#PassportRecognizeInfos))
+* [PassportRecognizeInfos](https://cloud.tencent.com/document/api/866/33527#PassportRecognizeInfos)
 
 ### 第 120 次发布
 
@@ -97062,6 +97285,48 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 55 次发布
+
+发布时间：2023-11-21 01:25:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BalanceReadOnlyGroup](https://cloud.tencent.com/document/api/238/101753)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRestoreTask](https://cloud.tencent.com/document/api/238/101743)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccountPrivilegeByDB](https://cloud.tencent.com/document/api/238/101729)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCollationTimeZone](https://cloud.tencent.com/document/api/238/101735)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCrossRegions](https://cloud.tencent.com/document/api/238/101738)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBPrivilegeByAccount](https://cloud.tencent.com/document/api/238/101715)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBRestoreTime](https://cloud.tencent.com/document/api/238/101742)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDatabaseNames](https://cloud.tencent.com/document/api/238/101714)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInquiryPriceParameter](https://cloud.tencent.com/document/api/238/101749)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceTasks](https://cloud.tencent.com/document/api/238/101734)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceTradeParameter](https://cloud.tencent.com/document/api/238/101748)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProductSpec](https://cloud.tencent.com/document/api/238/101747)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReadOnlyGroupAutoWeight](https://cloud.tencent.com/document/api/238/101752)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRestoreTask](https://cloud.tencent.com/document/api/238/101741)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSpecSellStatus](https://cloud.tencent.com/document/api/238/101746)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUpgradeInstanceCheck](https://cloud.tencent.com/document/api/238/101733)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCloseWanIp](https://cloud.tencent.com/document/api/238/101718)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceNote](https://cloud.tencent.com/document/api/238/101732)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyOpenWanIp](https://cloud.tencent.com/document/api/238/101717)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPublishSubscribe](https://cloud.tencent.com/document/api/238/101756)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CheckItem](https://cloud.tencent.com/document/api/238/19976#CheckItem)](https://cloud.tencent.com/document/api/238/19976#[CheckItem](https://cloud.tencent.com/document/api/238/19976#CheckItem))
+* [[InstanceTask](https://cloud.tencent.com/document/api/238/19976#InstanceTask)](https://cloud.tencent.com/document/api/238/19976#[InstanceTask](https://cloud.tencent.com/document/api/238/19976#InstanceTask))
+* [[ModifyDataBaseTuple](https://cloud.tencent.com/document/api/238/19976#ModifyDataBaseTuple)](https://cloud.tencent.com/document/api/238/19976#[ModifyDataBaseTuple](https://cloud.tencent.com/document/api/238/19976#ModifyDataBaseTuple))
+* [[Price](https://cloud.tencent.com/document/api/238/19976#Price)](https://cloud.tencent.com/document/api/238/19976#[Price](https://cloud.tencent.com/document/api/238/19976#Price))
+* [[ProductSpec](https://cloud.tencent.com/document/api/238/19976#ProductSpec)](https://cloud.tencent.com/document/api/238/19976#[ProductSpec](https://cloud.tencent.com/document/api/238/19976#ProductSpec))
+* [[RestoreTask](https://cloud.tencent.com/document/api/238/19976#RestoreTask)](https://cloud.tencent.com/document/api/238/19976#[RestoreTask](https://cloud.tencent.com/document/api/238/19976#RestoreTask))
+* [[SpecSellStatus](https://cloud.tencent.com/document/api/238/19976#SpecSellStatus)](https://cloud.tencent.com/document/api/238/19976#[SpecSellStatus](https://cloud.tencent.com/document/api/238/19976#SpecSellStatus))
+* [[ZoneStatus](https://cloud.tencent.com/document/api/238/19976#ZoneStatus)](https://cloud.tencent.com/document/api/238/19976#[ZoneStatus](https://cloud.tencent.com/document/api/238/19976#ZoneStatus))
+
 ### 第 54 次发布
 
 发布时间：2023-11-17 01:22:32
@@ -101280,6 +101545,25 @@
 
 
 ## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2023-11-21 01:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeFabricBlock](https://cloud.tencent.com/document/api/663/101763)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFabricTransaction](https://cloud.tencent.com/document/api/663/101762)](https://cloud.tencent.com/document/api/#/#)
+* [[InvokeFabricChaincode](https://cloud.tencent.com/document/api/663/101761)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryFabricChaincode](https://cloud.tencent.com/document/api/663/101760)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Transaction](https://cloud.tencent.com/document/api/663/19466#Transaction)](https://cloud.tencent.com/document/api/663/19466#[Transaction](https://cloud.tencent.com/document/api/663/19466#Transaction))
 
 ### 第 18 次发布
 
@@ -106430,6 +106714,82 @@
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
+### 第 55 次发布
+
+发布时间：2023-11-21 01:33:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
+
+	* 新增入参：NeedScan
+
+* [AddEditImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81638)
+
+	* 新增入参：AutoScanEnabled, ScanType
+
+* [CreateAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65591)
+
+	* 新增入参：ContainerRunning, ScanScope, ScanEndTime
+
+	* <font color="#dd0000">**修改入参**：</font>All
+
+* [CreateAssetImageScanTask](https://cloud.tencent.com/document/api/1285/65515)
+
+	* 新增入参：ContainerRunning, ScanScope, Timeout
+
+* [DescribeAssetImageDetail](https://cloud.tencent.com/document/api/1285/65506)
+
+	* 新增出参：ImageDigest
+
+* [DescribeAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65487)
+
+	* 新增出参：ContainerRunning, ScanScope, ScanEndTime
+
+* [DescribeAssetSummary](https://cloud.tencent.com/document/api/1285/65477)
+
+	* 新增出参：TodayNewImageCnt, TodayUnsafeImageCnt, RecommendedFixImageCnt, ScannedImageCnt
+
+* [DescribeImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81628)
+
+	* 新增出参：AutoScanEnabled, ScanType
+
+* [RenewImageAuthorizeState](https://cloud.tencent.com/document/api/1285/65459)
+
+	* 新增入参：NeedScan, ScanType
+
+* [SyncAssetImageRegistryAsset](https://cloud.tencent.com/document/api/1285/65458)
+
+	* 新增入参：All, RegistryIds
+
+
+新增数据结构：
+
+* [[ImageVulLayerInfo](https://cloud.tencent.com/document/api/1285/65614#ImageVulLayerInfo)](https://cloud.tencent.com/document/api/1285/65614#[ImageVulLayerInfo](https://cloud.tencent.com/document/api/1285/65614#ImageVulLayerInfo))
+
+修改数据结构：
+
+* [ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)
+
+	* 新增成员：RecommendedFix
+
+* [ImageVul](https://cloud.tencent.com/document/api/1285/65614#ImageVul)
+
+	* 新增成员：LayerInfos
+
+* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
+
+	* 新增成员：CriticalLevelVulCnt, HighLevelVulCnt, MediumLevelVulCnt, LowLevelVulCnt, IsLatestImage, RecommendedFix
+
+* [ImagesVul](https://cloud.tencent.com/document/api/1285/65614#ImagesVul)
+
+	* 新增成员：AttackLevel
+
+
 ### 第 54 次发布
 
 发布时间：2023-11-01 01:21:35
@@ -108739,6 +109099,21 @@
 
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 92 次发布
+
+发布时间：2023-11-21 01:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+
+	* <font color="#dd0000">**修改入参**：</font>Tags
+
 
 ### 第 91 次发布
 
@@ -118833,6 +119208,31 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 162 次发布
+
+发布时间：2023-11-21 01:37:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterExtraArgs](https://cloud.tencent.com/document/api/457/101764)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeExternalNodeSupportConfig](https://cloud.tencent.com/document/api/457/101767)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIPAMD](https://cloud.tencent.com/document/api/457/101765)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/457/78051)
+
+	* 新增出参：ClusterIntranetSubnetId
+
+
+新增数据结构：
+
+* [[Step](https://cloud.tencent.com/document/api/457/31866#Step)](https://cloud.tencent.com/document/api/457/31866#[Step](https://cloud.tencent.com/document/api/457/31866#Step))
+
 ### 第 161 次发布
 
 发布时间：2023-09-27 22:00:52
@@ -122511,6 +122911,24 @@
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
 
+### 第 6 次发布
+
+发布时间：2023-11-21 01:38:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ImportSourceClusterConsumerGroups](https://cloud.tencent.com/document/api/1493/101770)](https://cloud.tencent.com/document/api/#/#)
+* [[ImportSourceClusterTopics](https://cloud.tencent.com/document/api/1493/101769)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)](https://cloud.tencent.com/document/api/1493/96031#[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig))
+* [[SourceClusterTopicConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterTopicConfig)](https://cloud.tencent.com/document/api/1493/96031#[SourceClusterTopicConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterTopicConfig))
+
 ### 第 5 次发布
 
 发布时间：2023-11-13 00:24:24
@@ -124486,6 +124904,25 @@
 
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 52 次发布
+
+发布时间：2023-11-21 01:38:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongTarget](https://cloud.tencent.com/document/api/1364/54942#KongTarget)
+
+	* 新增成员：CvmInstanceId, CvmInstanceName
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>FeatureVersion, EnableClientIntranet, StorageOption
+
 
 ### 第 51 次发布
 
@@ -137611,6 +138048,21 @@
 
 ## 声音复刻(vrs) 版本：2020-08-24
 
+### 第 5 次发布
+
+发布时间：2023-11-21 01:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VoiceTypeInfo](https://cloud.tencent.com/document/api/1283/90065#VoiceTypeInfo)
+
+	* 新增成员：IsDeployed
+
+
 ### 第 4 次发布
 
 发布时间：2023-11-16 01:37:19
@@ -137696,6 +138148,60 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 75 次发布
+
+发布时间：2023-11-21 01:41:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeModuleStatus](https://cloud.tencent.com/document/api/627/101340)
+
+	* 新增出参：RateLimit
+
+* [ModifyModuleStatus](https://cloud.tencent.com/document/api/627/99699)
+
+	* 新增入参：RateLimit
+
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+	* 新增出参：Ids
+
+* [UpsertSession](https://cloud.tencent.com/document/api/627/97645)
+
+	* 新增出参：SessionID
+
+
+修改数据结构：
+
+* [AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem)
+
+	* 新增成员：BeginTime
+
+* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
+
+	* 新增成员：Type, Region
+
+* [DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)
+
+	* 新增成员：ModifyTime, ValidStatus, Source
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+	* 新增成员：WxAccess
+
 
 ### 第 74 次发布
 
@@ -139620,6 +140126,31 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
+### 第 58 次发布
+
+发布时间：2023-11-21 01:42:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeApproveTypeList](https://cloud.tencent.com/document/api/1267/101771)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApproveType](https://cloud.tencent.com/document/api/1267/76336#ApproveType)](https://cloud.tencent.com/document/api/1267/76336#[ApproveType](https://cloud.tencent.com/document/api/1267/76336#ApproveType))
+
+修改数据结构：
+
+* [Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)
+
+	* 新增成员：ErrorMessage, ApplyName, ApproverId, ApproverName, ApproveProjectName
+
+	* <font color="#dd0000">**修改成员**：</font>ApplicantName, ApproveId
+
+
 ### 第 57 次发布
 
 发布时间：2023-11-20 00:24:26
@@ -139630,38 +140161,38 @@
 
 新增接口：
 
-* [[BatchCreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101693)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeApproveList](https://cloud.tencent.com/document/api/1267/101695)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApproveStatus](https://cloud.tencent.com/document/api/1267/101694)](https://cloud.tencent.com/document/api/#/#)
+* [BatchCreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101693)
+* [CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)
+* [DescribeApproveList](https://cloud.tencent.com/document/api/1267/101695)
+* [ModifyApproveStatus](https://cloud.tencent.com/document/api/1267/101694)
 
 新增数据结构：
 
-* [[AlarmDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmDsVO)](https://cloud.tencent.com/document/api/1267/76336#[AlarmDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmDsVO))
-* [[AlarmExtDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmExtDsVO)](https://cloud.tencent.com/document/api/1267/76336#[AlarmExtDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmExtDsVO))
-* [[Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)](https://cloud.tencent.com/document/api/1267/76336#[Apply](https://cloud.tencent.com/document/api/1267/76336#Apply))
-* [[ApproveModify](https://cloud.tencent.com/document/api/1267/76336#ApproveModify)](https://cloud.tencent.com/document/api/1267/76336#[ApproveModify](https://cloud.tencent.com/document/api/1267/76336#ApproveModify))
-* [[AttributeItemDsVO](https://cloud.tencent.com/document/api/1267/76336#AttributeItemDsVO)](https://cloud.tencent.com/document/api/1267/76336#[AttributeItemDsVO](https://cloud.tencent.com/document/api/1267/76336#AttributeItemDsVO))
-* [[BatchCreateTaskVersionDTO](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDTO)](https://cloud.tencent.com/document/api/1267/76336#[BatchCreateTaskVersionDTO](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDTO))
-* [[BatchCreateTaskVersionDsDTOLite](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDsDTOLite)](https://cloud.tencent.com/document/api/1267/76336#[BatchCreateTaskVersionDsDTOLite](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDsDTOLite))
-* [[BatchOperateResultDs](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultDs)](https://cloud.tencent.com/document/api/1267/76336#[BatchOperateResultDs](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultDs))
-* [[CandidateDsDTo](https://cloud.tencent.com/document/api/1267/76336#CandidateDsDTo)](https://cloud.tencent.com/document/api/1267/76336#[CandidateDsDTo](https://cloud.tencent.com/document/api/1267/76336#CandidateDsDTo))
-* [[DependencyConfigDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#DependencyConfigDsDTONoRecurV2)](https://cloud.tencent.com/document/api/1267/76336#[DependencyConfigDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#DependencyConfigDsDTONoRecurV2))
-* [[DependencyStrategyDs](https://cloud.tencent.com/document/api/1267/76336#DependencyStrategyDs)](https://cloud.tencent.com/document/api/1267/76336#[DependencyStrategyDs](https://cloud.tencent.com/document/api/1267/76336#DependencyStrategyDs))
-* [[DescribeApply](https://cloud.tencent.com/document/api/1267/76336#DescribeApply)](https://cloud.tencent.com/document/api/1267/76336#[DescribeApply](https://cloud.tencent.com/document/api/1267/76336#DescribeApply))
-* [[FilterOptional](https://cloud.tencent.com/document/api/1267/76336#FilterOptional)](https://cloud.tencent.com/document/api/1267/76336#[FilterOptional](https://cloud.tencent.com/document/api/1267/76336#FilterOptional))
-* [[OrderFieldOptional](https://cloud.tencent.com/document/api/1267/76336#OrderFieldOptional)](https://cloud.tencent.com/document/api/1267/76336#[OrderFieldOptional](https://cloud.tencent.com/document/api/1267/76336#OrderFieldOptional))
-* [[ParamInfoDs](https://cloud.tencent.com/document/api/1267/76336#ParamInfoDs)](https://cloud.tencent.com/document/api/1267/76336#[ParamInfoDs](https://cloud.tencent.com/document/api/1267/76336#ParamInfoDs))
-* [[ParameterTaskDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskDsDto)](https://cloud.tencent.com/document/api/1267/76336#[ParameterTaskDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskDsDto))
-* [[ParameterTaskInDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskInDsDto)](https://cloud.tencent.com/document/api/1267/76336#[ParameterTaskInDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskInDsDto))
-* [[ParameterTaskOutDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskOutDsDto)](https://cloud.tencent.com/document/api/1267/76336#[ParameterTaskOutDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskOutDsDto))
-* [[TaskDsDTOLiteV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTOLiteV2)](https://cloud.tencent.com/document/api/1267/76336#[TaskDsDTOLiteV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTOLiteV2))
-* [[TaskDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTONoRecurV2)](https://cloud.tencent.com/document/api/1267/76336#[TaskDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTONoRecurV2))
-* [[TaskExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskExtDsVO)](https://cloud.tencent.com/document/api/1267/76336#[TaskExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskExtDsVO))
-* [[TaskLinkDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskLinkDsDTO)](https://cloud.tencent.com/document/api/1267/76336#[TaskLinkDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskLinkDsDTO))
-* [[TaskTypeDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeDsVO)](https://cloud.tencent.com/document/api/1267/76336#[TaskTypeDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeDsVO))
-* [[TaskTypeExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtDsVO)](https://cloud.tencent.com/document/api/1267/76336#[TaskTypeExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtDsVO))
-* [[TaskTypeExtParamDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtParamDsVO)](https://cloud.tencent.com/document/api/1267/76336#[TaskTypeExtParamDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtParamDsVO))
+* [AlarmDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmDsVO)
+* [AlarmExtDsVO](https://cloud.tencent.com/document/api/1267/76336#AlarmExtDsVO)
+* [Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)
+* [ApproveModify](https://cloud.tencent.com/document/api/1267/76336#ApproveModify)
+* [AttributeItemDsVO](https://cloud.tencent.com/document/api/1267/76336#AttributeItemDsVO)
+* [BatchCreateTaskVersionDTO](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDTO)
+* [BatchCreateTaskVersionDsDTOLite](https://cloud.tencent.com/document/api/1267/76336#BatchCreateTaskVersionDsDTOLite)
+* [BatchOperateResultDs](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultDs)
+* [CandidateDsDTo](https://cloud.tencent.com/document/api/1267/76336#CandidateDsDTo)
+* [DependencyConfigDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#DependencyConfigDsDTONoRecurV2)
+* [DependencyStrategyDs](https://cloud.tencent.com/document/api/1267/76336#DependencyStrategyDs)
+* [DescribeApply](https://cloud.tencent.com/document/api/1267/76336#DescribeApply)
+* [FilterOptional](https://cloud.tencent.com/document/api/1267/76336#FilterOptional)
+* [OrderFieldOptional](https://cloud.tencent.com/document/api/1267/76336#OrderFieldOptional)
+* [ParamInfoDs](https://cloud.tencent.com/document/api/1267/76336#ParamInfoDs)
+* [ParameterTaskDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskDsDto)
+* [ParameterTaskInDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskInDsDto)
+* [ParameterTaskOutDsDto](https://cloud.tencent.com/document/api/1267/76336#ParameterTaskOutDsDto)
+* [TaskDsDTOLiteV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTOLiteV2)
+* [TaskDsDTONoRecurV2](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTONoRecurV2)
+* [TaskExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskExtDsVO)
+* [TaskLinkDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskLinkDsDTO)
+* [TaskTypeDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeDsVO)
+* [TaskTypeExtDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtDsVO)
+* [TaskTypeExtParamDsVO](https://cloud.tencent.com/document/api/1267/76336#TaskTypeExtParamDsVO)
 
 ### 第 56 次发布
 

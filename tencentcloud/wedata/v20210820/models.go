@@ -385,6 +385,25 @@ type Apply struct {
 
 	// 审批类型名称
 	ApproveTypeName *string `json:"ApproveTypeName,omitnil" name:"ApproveTypeName"`
+
+	// 审批异常或者失败信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
+
+	// 申请名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyName *string `json:"ApplyName,omitnil" name:"ApplyName"`
+
+	// 审批人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverId *string `json:"ApproverId,omitnil" name:"ApproverId"`
+
+	// 审批人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
+
+	// 审批所属项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveProjectName *string `json:"ApproveProjectName,omitnil" name:"ApproveProjectName"`
 }
 
 type ApproveModify struct {
@@ -393,6 +412,17 @@ type ApproveModify struct {
 
 	// 是否修改成功
 	Success *bool `json:"Success,omitnil" name:"Success"`
+}
+
+type ApproveType struct {
+	// 申请分类key
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 类型名称
+	TypeName *string `json:"TypeName,omitnil" name:"TypeName"`
+
+	// 申请类型key
+	Classification *string `json:"Classification,omitnil" name:"Classification"`
 }
 
 type AttributeItemDsVO struct {
@@ -8671,6 +8701,63 @@ func (r *DescribeApproveListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApproveListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApproveTypeListRequestParams struct {
+	// 类型key
+	Classification *string `json:"Classification,omitnil" name:"Classification"`
+}
+
+type DescribeApproveTypeListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 类型key
+	Classification *string `json:"Classification,omitnil" name:"Classification"`
+}
+
+func (r *DescribeApproveTypeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApproveTypeListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Classification")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApproveTypeListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApproveTypeListResponseParams struct {
+	// 获取审批分类列表
+	Data []*ApproveType `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeApproveTypeListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApproveTypeListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApproveTypeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApproveTypeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

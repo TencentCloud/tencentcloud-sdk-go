@@ -5511,6 +5511,65 @@ func (c *Client) DescribeClusterEndpointsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClusterExtraArgsRequest() (request *DescribeClusterExtraArgsRequest) {
+    request = &DescribeClusterExtraArgsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterExtraArgs")
+    
+    
+    return
+}
+
+func NewDescribeClusterExtraArgsResponse() (response *DescribeClusterExtraArgsResponse) {
+    response = &DescribeClusterExtraArgsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterExtraArgs
+// 查询集群自定义参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeClusterExtraArgs(request *DescribeClusterExtraArgsRequest) (response *DescribeClusterExtraArgsResponse, err error) {
+    return c.DescribeClusterExtraArgsWithContext(context.Background(), request)
+}
+
+// DescribeClusterExtraArgs
+// 查询集群自定义参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeClusterExtraArgsWithContext(ctx context.Context, request *DescribeClusterExtraArgsRequest) (response *DescribeClusterExtraArgsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterExtraArgsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterExtraArgs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterExtraArgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInspectionResultsOverviewRequest() (request *DescribeClusterInspectionResultsOverviewRequest) {
     request = &DescribeClusterInspectionResultsOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7868,6 +7927,118 @@ func (c *Client) DescribeExternalClusterSpecWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeExternalClusterSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalNodeSupportConfigRequest() (request *DescribeExternalNodeSupportConfigRequest) {
+    request = &DescribeExternalNodeSupportConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeExternalNodeSupportConfig")
+    
+    
+    return
+}
+
+func NewDescribeExternalNodeSupportConfigResponse() (response *DescribeExternalNodeSupportConfigResponse) {
+    response = &DescribeExternalNodeSupportConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalNodeSupportConfig
+// 查看开启第三方节点池配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) DescribeExternalNodeSupportConfig(request *DescribeExternalNodeSupportConfigRequest) (response *DescribeExternalNodeSupportConfigResponse, err error) {
+    return c.DescribeExternalNodeSupportConfigWithContext(context.Background(), request)
+}
+
+// DescribeExternalNodeSupportConfig
+// 查看开启第三方节点池配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) DescribeExternalNodeSupportConfigWithContext(ctx context.Context, request *DescribeExternalNodeSupportConfigRequest) (response *DescribeExternalNodeSupportConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalNodeSupportConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalNodeSupportConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalNodeSupportConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIPAMDRequest() (request *DescribeIPAMDRequest) {
+    request = &DescribeIPAMDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeIPAMD")
+    
+    
+    return
+}
+
+func NewDescribeIPAMDResponse() (response *DescribeIPAMDResponse) {
+    response = &DescribeIPAMDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIPAMD
+// 获取eniipamd组件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeIPAMD(request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
+    return c.DescribeIPAMDWithContext(context.Background(), request)
+}
+
+// DescribeIPAMD
+// 获取eniipamd组件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeIPAMDWithContext(ctx context.Context, request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
+    if request == nil {
+        request = NewDescribeIPAMDRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPAMD require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIPAMDResponse()
     err = c.Send(request, response)
     return
 }
@@ -13190,6 +13361,7 @@ func NewSetNodePoolNodeProtectionResponse() (response *SetNodePoolNodeProtection
 // 仅能设置节点池中处于伸缩组的节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -13208,6 +13380,7 @@ func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionReq
 // 仅能设置节点池中处于伸缩组的节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"

@@ -70,7 +70,7 @@ type AssessmentControlItem struct {
 	// 评估项启用状态，启用/未启用，取值draft / launched
 	Status *string `json:"Status,omitnil" name:"Status"`
 
-	// 评估项关联的模版数量
+	// 评估项关联的模板数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateCount *int64 `json:"TemplateCount,omitnil" name:"TemplateCount"`
 }
@@ -83,10 +83,10 @@ type AssessmentRisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDescription *string `json:"RiskDescription,omitnil" name:"RiskDescription"`
 
-	// 评估模版Id
+	// 评估模板Id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 评估模版名称
+	// 评估模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 评估项Id
@@ -166,7 +166,7 @@ type AssessmentRiskItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
-	// 关联模版个数
+	// 关联模板个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferTemplateCount *int64 `json:"ReferTemplateCount,omitnil" name:"ReferTemplateCount"`
 
@@ -178,7 +178,7 @@ type AssessmentRiskItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 
-	// 关联模版列表
+	// 关联模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferTemplateList []*TemplateInfo `json:"ReferTemplateList,omitnil" name:"ReferTemplateList"`
 }
@@ -204,16 +204,16 @@ type AssessmentTask struct {
 	// 业务负责人
 	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
-	// 评估模版Id
+	// 评估模板Id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 评估模版名称
+	// 评估模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
-	// 分类分级模版Id
+	// 分类分级模板Id
 	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
-	// 分类分级模版名称
+	// 分类分级模板名称
 	ComplianceGroupName *string `json:"ComplianceGroupName,omitnil" name:"ComplianceGroupName"`
 
 	// 评估项数量
@@ -242,7 +242,7 @@ type AssessmentTask struct {
 	// 评估任务失败信息
 	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
 
-	// 模版主键id
+	// 模板主键id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateUid *int64 `json:"TemplateUid,omitnil" name:"TemplateUid"`
 
@@ -256,32 +256,32 @@ type AssessmentTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil" name:"Id"`
 
-	// 评估模版Id
+	// 评估模板Id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 评估模版名称
+	// 评估模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 模版来源，内置/用户自定，取值（system，user）
+	// 模板来源，内置/用户自定，取值（system，user）
 	Source *string `json:"Source,omitnil" name:"Source"`
 
-	// 模版类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
+	// 模板类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
 	UseType *string `json:"UseType,omitnil" name:"UseType"`
 
-	// 评估模版创建时间
+	// 评估模板创建时间
 	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
-	// 模版关联的评估项数量
+	// 模板关联的评估项数量
 	ControlItemCount *int64 `json:"ControlItemCount,omitnil" name:"ControlItemCount"`
 
-	// 模版已启用的评估项数量
+	// 模板已启用的评估项数量
 	AppliedItemCount *int64 `json:"AppliedItemCount,omitnil" name:"AppliedItemCount"`
 
-	// 模版启用状态，草稿/已启用，取值draft / launched
+	// 模板启用状态，草稿/已启用，取值draft / launched
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 支持的数据源类型
@@ -10285,7 +10285,7 @@ type DspaInstance struct {
 	// COS已购配额。
 	CosTotalQuota *int64 `json:"CosTotalQuota,omitnil" name:"CosTotalQuota"`
 
-	// COS配额单位，比如TB。
+	// COS配额单位，例如:TB。
 	CosQuotaUnit *string `json:"CosQuotaUnit,omitnil" name:"CosQuotaUnit"`
 
 	// 0: 默认状态(用户未设置)
@@ -13391,11 +13391,11 @@ type NOSQLInstance struct {
 }
 
 type Note struct {
-	// 通用key，比如分类名称
+	// 通用key，例如分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil" name:"Key"`
 
-	// 通用value，比如分类个数
+	// 通用value，例如分类个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil" name:"Value"`
 }
@@ -13900,7 +13900,7 @@ type RiskLevelRisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 
-	// 引用的分类分级模版
+	// 引用的分类分级模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil" name:"IdentifyComplianceName"`
 
@@ -14207,11 +14207,11 @@ type SuggestRiskLevelMatrixItem struct {
 }
 
 type TemplateInfo struct {
-	// 模版id
+	// 模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 模版名称
+	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 }

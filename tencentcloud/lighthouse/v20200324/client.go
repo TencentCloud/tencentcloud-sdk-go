@@ -80,6 +80,7 @@ func NewApplyDiskBackupResponse() (response *ApplyDiskBackupResponse) {
 // * 如果云硬盘处于 ATTACHED状态，相关RUNNING 状态的实例会强制关机，然后回滚云硬盘备份点。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  OPERATIONDENIED_DISKBACKUPBUSY = "OperationDenied.DiskBackupBusy"
@@ -117,6 +118,7 @@ func (c *Client) ApplyDiskBackup(request *ApplyDiskBackupRequest) (response *App
 // * 如果云硬盘处于 ATTACHED状态，相关RUNNING 状态的实例会强制关机，然后回滚云硬盘备份点。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  OPERATIONDENIED_DISKBACKUPBUSY = "OperationDenied.DiskBackupBusy"
@@ -593,6 +595,7 @@ func NewCancelShareBlueprintAcrossAccountsResponse() (response *CancelShareBluep
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCEINUSE_BLUEPRINTMODIFYINGSHAREPERMISSION = "ResourceInUse.BlueprintModifyingSharePermission"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
 //  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
@@ -615,6 +618,7 @@ func (c *Client) CancelShareBlueprintAcrossAccounts(request *CancelShareBlueprin
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCEINUSE_BLUEPRINTMODIFYINGSHAREPERMISSION = "ResourceInUse.BlueprintModifyingSharePermission"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
 //  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
@@ -2350,6 +2354,7 @@ func NewDescribeDiskBackupsDeniedActionsResponse() (response *DescribeDiskBackup
 // 本接口（DescribeDiskBackupsDeniedActions）用于查询一个或多个云硬盘备份点的操作限制列表信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDiskBackupsDeniedActions(request *DescribeDiskBackupsDeniedActionsRequest) (response *DescribeDiskBackupsDeniedActionsResponse, err error) {
@@ -2360,6 +2365,7 @@ func (c *Client) DescribeDiskBackupsDeniedActions(request *DescribeDiskBackupsDe
 // 本接口（DescribeDiskBackupsDeniedActions）用于查询一个或多个云硬盘备份点的操作限制列表信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDiskBackupsDeniedActionsWithContext(ctx context.Context, request *DescribeDiskBackupsDeniedActionsRequest) (response *DescribeDiskBackupsDeniedActionsResponse, err error) {
@@ -7420,6 +7426,7 @@ func NewShareBlueprintAcrossAccountsResponse() (response *ShareBlueprintAcrossAc
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
 //  LIMITEXCEEDED_SHAREBLUEPRINTACROSSACCOUNTQUOTALIMITEXCEEDED = "LimitExceeded.ShareBlueprintAcrossAccountQuotaLimitExceeded"
 //  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCEINUSE_BLUEPRINTMODIFYINGSHAREPERMISSION = "ResourceInUse.BlueprintModifyingSharePermission"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
 //  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
@@ -7449,6 +7456,7 @@ func (c *Client) ShareBlueprintAcrossAccounts(request *ShareBlueprintAcrossAccou
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = "InvalidParameterValue.InvalidBlueprintState"
 //  LIMITEXCEEDED_SHAREBLUEPRINTACROSSACCOUNTQUOTALIMITEXCEEDED = "LimitExceeded.ShareBlueprintAcrossAccountQuotaLimitExceeded"
 //  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCEINUSE_BLUEPRINTMODIFYINGSHAREPERMISSION = "ResourceInUse.BlueprintModifyingSharePermission"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
 //  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"

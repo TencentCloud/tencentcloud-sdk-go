@@ -521,6 +521,9 @@ const (
 	//  无效参数值。参数值取值范围不合法。
 	INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 
+	// 请求需要区域镜像。
+	INVALIDPARAMETERVALUE_REQUIREDLOCATIONIMAGE = "InvalidParameterValue.RequiredLocationImage"
+
 	// 快照ID不合要求，请提供规范的快照ID，类似snap-xxxxxxxx，字母x代表小写字符或者数字
 	INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
 

@@ -778,6 +778,9 @@ type AddAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 联通性检测的记录ID
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
+
+	// ”授权&扫描"开关
+	NeedScan *bool `json:"NeedScan,omitnil" name:"NeedScan"`
 }
 
 type AddAssetImageRegistryRegistryDetailRequest struct {
@@ -815,6 +818,9 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 
 	// 联通性检测的记录ID
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
+
+	// ”授权&扫描"开关
+	NeedScan *bool `json:"NeedScan,omitnil" name:"NeedScan"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -840,6 +846,7 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 	delete(f, "SpeedLimit")
 	delete(f, "Insecure")
 	delete(f, "ConnDetectConfig")
+	delete(f, "NeedScan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -1193,6 +1200,12 @@ type AddEditImageAutoAuthorizedRuleRequestParams struct {
 
 	// 根据条件过滤而且排除指定主机id
 	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitnil" name:"ExcludeHostIdSet"`
+
+	// 自动扫描开关
+	AutoScanEnabled *int64 `json:"AutoScanEnabled,omitnil" name:"AutoScanEnabled"`
+
+	// 自动扫描范围
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 type AddEditImageAutoAuthorizedRuleRequest struct {
@@ -1218,6 +1231,12 @@ type AddEditImageAutoAuthorizedRuleRequest struct {
 
 	// 根据条件过滤而且排除指定主机id
 	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitnil" name:"ExcludeHostIdSet"`
+
+	// 自动扫描开关
+	AutoScanEnabled *int64 `json:"AutoScanEnabled,omitnil" name:"AutoScanEnabled"`
+
+	// 自动扫描范围
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 func (r *AddEditImageAutoAuthorizedRuleRequest) ToJsonString() string {
@@ -1239,6 +1258,8 @@ func (r *AddEditImageAutoAuthorizedRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "HostIdFilters")
 	delete(f, "ExcludeHostIdSet")
+	delete(f, "AutoScanEnabled")
+	delete(f, "ScanType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddEditImageAutoAuthorizedRuleRequest has unknown keys!", "")
 	}
@@ -3579,7 +3600,8 @@ type CreateAssetImageScanSettingRequestParams struct {
 	// 开关
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
-	// 扫描时间
+	// 扫描开始时间
+	// 01:00 时分
 	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描周期
@@ -3595,10 +3617,22 @@ type CreateAssetImageScanSettingRequestParams struct {
 	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 全部镜像
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义镜像
 	Images []*string `json:"Images,omitnil" name:"Images"`
+
+	// 镜像是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 扫描结束时间
+	// 02:00 时分
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
 }
 
 type CreateAssetImageScanSettingRequest struct {
@@ -3607,7 +3641,8 @@ type CreateAssetImageScanSettingRequest struct {
 	// 开关
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
-	// 扫描时间
+	// 扫描开始时间
+	// 01:00 时分
 	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描周期
@@ -3627,6 +3662,16 @@ type CreateAssetImageScanSettingRequest struct {
 
 	// 自定义镜像
 	Images []*string `json:"Images,omitnil" name:"Images"`
+
+	// 镜像是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 扫描结束时间
+	// 02:00 时分
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
 }
 
 func (r *CreateAssetImageScanSettingRequest) ToJsonString() string {
@@ -3649,6 +3694,9 @@ func (r *CreateAssetImageScanSettingRequest) FromJsonString(s string) error {
 	delete(f, "ScanVul")
 	delete(f, "All")
 	delete(f, "Images")
+	delete(f, "ContainerRunning")
+	delete(f, "ScanScope")
+	delete(f, "ScanEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanSettingRequest has unknown keys!", "")
 	}
@@ -3680,6 +3728,8 @@ func (r *CreateAssetImageScanSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageScanTaskRequestParams struct {
 	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
@@ -3699,6 +3749,15 @@ type CreateAssetImageScanTaskRequestParams struct {
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
 	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
+
+	// 镜像是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 任务超时时长单位秒，默认1小时
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 type CreateAssetImageScanTaskRequest struct {
@@ -3724,6 +3783,15 @@ type CreateAssetImageScanTaskRequest struct {
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
 	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
+
+	// 镜像是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 任务超时时长单位秒，默认1小时
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 func (r *CreateAssetImageScanTaskRequest) ToJsonString() string {
@@ -3745,6 +3813,9 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanRisk")
 	delete(f, "Filters")
 	delete(f, "ExcludeImageIds")
+	delete(f, "ContainerRunning")
+	delete(f, "ScanScope")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanTaskRequest has unknown keys!", "")
 	}
@@ -10236,6 +10307,9 @@ type DescribeAssetImageDetailResponseParams struct {
 	// 镜像名称
 	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
+	// 镜像摘要
+	ImageDigest *string `json:"ImageDigest,omitnil" name:"ImageDigest"`
+
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
@@ -12188,10 +12262,21 @@ type DescribeAssetImageScanSettingResponseParams struct {
 	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 扫描全部镜像
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义扫描镜像
 	Images []*string `json:"Images,omitnil" name:"Images"`
+
+	// 镜像是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 扫描结束时间 02:00 时分
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -13073,6 +13158,18 @@ type DescribeAssetSummaryResponseParams struct {
 
 	// 超级节点运行个数
 	SuperNodeRunningCnt *uint64 `json:"SuperNodeRunningCnt,omitnil" name:"SuperNodeRunningCnt"`
+
+	// 今日新增镜像个数
+	TodayNewImageCnt *uint64 `json:"TodayNewImageCnt,omitnil" name:"TodayNewImageCnt"`
+
+	// 今日新增风险镜像个数
+	TodayUnsafeImageCnt *uint64 `json:"TodayUnsafeImageCnt,omitnil" name:"TodayUnsafeImageCnt"`
+
+	// 推荐处置镜像个数
+	RecommendedFixImageCnt *uint64 `json:"RecommendedFixImageCnt,omitnil" name:"RecommendedFixImageCnt"`
+
+	// 已扫描镜像个数
+	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitnil" name:"ScannedImageCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -15894,6 +15991,12 @@ type DescribeImageAutoAuthorizedRuleResponseParams struct {
 	// 规则id，用未设置时为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 自动扫描开关，0：关闭，1：开启
+	AutoScanEnabled *int64 `json:"AutoScanEnabled,omitnil" name:"AutoScanEnabled"`
+
+	// 自动扫描范围
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -25688,6 +25791,9 @@ type ImageRepoInfo struct {
 	// 敏感信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil" name:"SensitiveInfoCnt"`
+
+	// 是否推荐处置
+	RecommendedFix *bool `json:"RecommendedFix,omitnil" name:"RecommendedFix"`
 }
 
 type ImageRisk struct {
@@ -25946,6 +26052,20 @@ type ImageVul struct {
 	// 攻击热度 0-3
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackLevel *int64 `json:"AttackLevel,omitnil" name:"AttackLevel"`
+
+	// 镜像层信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LayerInfos []*ImageVulLayerInfo `json:"LayerInfos,omitnil" name:"LayerInfos"`
+}
+
+type ImageVulLayerInfo struct {
+	// 层id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LayerId *string `json:"LayerId,omitnil" name:"LayerId"`
+
+	// 层cmd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LayerCmd *string `json:"LayerCmd,omitnil" name:"LayerCmd"`
 }
 
 type ImagesBindRuleInfo struct {
@@ -26038,6 +26158,24 @@ type ImagesInfo struct {
 
 	// 组件个数
 	ComponentCnt *uint64 `json:"ComponentCnt,omitnil" name:"ComponentCnt"`
+
+	// 严重漏洞数
+	CriticalLevelVulCnt *uint64 `json:"CriticalLevelVulCnt,omitnil" name:"CriticalLevelVulCnt"`
+
+	// 高危漏洞数
+	HighLevelVulCnt *uint64 `json:"HighLevelVulCnt,omitnil" name:"HighLevelVulCnt"`
+
+	// 中危漏洞数
+	MediumLevelVulCnt *uint64 `json:"MediumLevelVulCnt,omitnil" name:"MediumLevelVulCnt"`
+
+	// 低危漏洞数
+	LowLevelVulCnt *uint64 `json:"LowLevelVulCnt,omitnil" name:"LowLevelVulCnt"`
+
+	// 是否最新版本镜像
+	IsLatestImage *bool `json:"IsLatestImage,omitnil" name:"IsLatestImage"`
+
+	// 是否推荐处置
+	RecommendedFix *bool `json:"RecommendedFix,omitnil" name:"RecommendedFix"`
 }
 
 type ImagesVul struct {
@@ -26093,6 +26231,10 @@ type ImagesVul struct {
 	// 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*string `json:"Tag,omitnil" name:"Tag"`
+
+	// 攻击热度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackLevel *int64 `json:"AttackLevel,omitnil" name:"AttackLevel"`
 }
 
 // Predefined struct for user
@@ -29498,6 +29640,12 @@ type RenewImageAuthorizeStateRequestParams struct {
 
 	// 镜像ids
 	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
+
+	// 是否授权后自动扫描
+	NeedScan *bool `json:"NeedScan,omitnil" name:"NeedScan"`
+
+	// 扫描类型
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 type RenewImageAuthorizeStateRequest struct {
@@ -29508,6 +29656,12 @@ type RenewImageAuthorizeStateRequest struct {
 
 	// 镜像ids
 	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
+
+	// 是否授权后自动扫描
+	NeedScan *bool `json:"NeedScan,omitnil" name:"NeedScan"`
+
+	// 扫描类型
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 func (r *RenewImageAuthorizeStateRequest) ToJsonString() string {
@@ -29524,6 +29678,8 @@ func (r *RenewImageAuthorizeStateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AllImages")
 	delete(f, "ImageIds")
+	delete(f, "NeedScan")
+	delete(f, "ScanType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewImageAuthorizeStateRequest has unknown keys!", "")
 	}
@@ -31021,12 +31177,21 @@ func (r *SwitchImageAutoAuthorizedRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncAssetImageRegistryAssetRequestParams struct {
+	// 是否同步所有镜像仓库
+	All *bool `json:"All,omitnil" name:"All"`
 
+	// 需要同步的部分镜像仓库
+	RegistryIds []*uint64 `json:"RegistryIds,omitnil" name:"RegistryIds"`
 }
 
 type SyncAssetImageRegistryAssetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 是否同步所有镜像仓库
+	All *bool `json:"All,omitnil" name:"All"`
+
+	// 需要同步的部分镜像仓库
+	RegistryIds []*uint64 `json:"RegistryIds,omitnil" name:"RegistryIds"`
 }
 
 func (r *SyncAssetImageRegistryAssetRequest) ToJsonString() string {
@@ -31041,7 +31206,8 @@ func (r *SyncAssetImageRegistryAssetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "All")
+	delete(f, "RegistryIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncAssetImageRegistryAssetRequest has unknown keys!", "")
 	}

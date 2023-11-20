@@ -648,6 +648,9 @@ type VoiceTypeInfo struct {
 
 	// 创建时间
 	DateCreated *string `json:"DateCreated,omitnil" name:"DateCreated"`
+
+	// 部署状态。若已部署，则可通过语音合成接口调用该音色
+	IsDeployed *bool `json:"IsDeployed,omitnil" name:"IsDeployed"`
 }
 
 type VoiceTypeListData struct {

@@ -1743,6 +1743,7 @@ func NewDeleteStudioProductResponse() (response *DeleteStudioProductResponse) {
 //  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGateWayProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASSHARED = "UnsupportedOperation.ProductHasShared"
 func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (response *DeleteStudioProductResponse, err error) {
     return c.DeleteStudioProductWithContext(context.Background(), request)
 }
@@ -1762,6 +1763,7 @@ func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (respo
 //  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGateWayProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASSHARED = "UnsupportedOperation.ProductHasShared"
 func (c *Client) DeleteStudioProductWithContext(ctx context.Context, request *DeleteStudioProductRequest) (response *DeleteStudioProductResponse, err error) {
     if request == nil {
         request = NewDeleteStudioProductRequest()
@@ -5464,6 +5466,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
+//  UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     return c.PublishMessageWithContext(context.Background(), request)
 }
@@ -5487,6 +5490,7 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
+//  UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
 func (c *Client) PublishMessageWithContext(ctx context.Context, request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     if request == nil {
         request = NewPublishMessageRequest()

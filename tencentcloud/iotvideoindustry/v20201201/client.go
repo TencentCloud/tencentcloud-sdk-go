@@ -6581,6 +6581,7 @@ func NewDescribePresetListResponse() (response *DescribePresetListResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribePresetList(request *DescribePresetListRequest) (response *DescribePresetListResponse, err error) {
     return c.DescribePresetListWithContext(context.Background(), request)
 }
@@ -6590,6 +6591,7 @@ func (c *Client) DescribePresetList(request *DescribePresetListRequest) (respons
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribePresetListWithContext(ctx context.Context, request *DescribePresetListRequest) (response *DescribePresetListResponse, err error) {
     if request == nil {
         request = NewDescribePresetListRequest()

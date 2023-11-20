@@ -37,10 +37,15 @@ type AccessFullTextInfo struct {
 
 type AccessHistogramItem struct {
 	// 时间，单位ms
+	//
+	// Deprecated: BTime is deprecated.
 	BTime *int64 `json:"BTime,omitnil" name:"BTime"`
 
 	// 日志条数
 	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 时间，单位ms
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 }
 
 type AccessKeyValueInfo struct {
@@ -1556,6 +1561,14 @@ type ClbObject struct {
 
 	// kafka投递开关
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil" name:"PostCKafkaStatus"`
+
+	// 对象类型：CLB:负载均衡器，TSE:云原生网关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 对象地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type ClbWafRegionItem struct {
@@ -4420,6 +4433,18 @@ type DescribeCustomRulesRspRuleListItem struct {
 	// 事件id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil" name:"EventId"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 生效状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
+
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil" name:"Source"`
 }
 
 // Predefined struct for user
@@ -5609,9 +5634,13 @@ type DescribeIpAccessControlRequestParams struct {
 	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 最小有效时间的时间戳
+	//
+	// Deprecated: VtsMin is deprecated.
 	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 最大有效时间的时间戳
+	//
+	// Deprecated: VtsMax is deprecated.
 	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 最小创建时间的时间戳
@@ -5637,6 +5666,12 @@ type DescribeIpAccessControlRequestParams struct {
 
 	// 生效状态
 	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
+
+	// 最小有效时间的时间戳
+	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil" name:"ValidTimeStampMin"`
+
+	// 最大有效时间的时间戳
+	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil" name:"ValidTimeStampMax"`
 }
 
 type DescribeIpAccessControlRequest struct {
@@ -5680,6 +5715,12 @@ type DescribeIpAccessControlRequest struct {
 
 	// 生效状态
 	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
+
+	// 最小有效时间的时间戳
+	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil" name:"ValidTimeStampMin"`
+
+	// 最大有效时间的时间戳
+	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil" name:"ValidTimeStampMax"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -5707,6 +5748,8 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "Ip")
 	delete(f, "ValidStatus")
+	delete(f, "ValidTimeStampMin")
+	delete(f, "ValidTimeStampMax")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -5751,9 +5794,13 @@ type DescribeIpHitItemsRequestParams struct {
 	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 有效时间最小时间戳
+	//
+	// Deprecated: VtsMin is deprecated.
 	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 有效时间最大时间戳
+	//
+	// Deprecated: VtsMax is deprecated.
 	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 创建时间最小时间戳
@@ -5776,6 +5823,12 @@ type DescribeIpHitItemsRequestParams struct {
 
 	// IP
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 有效时间最小时间戳
+	ValidTimeStampMin *uint64 `json:"ValidTimeStampMin,omitnil" name:"ValidTimeStampMin"`
+
+	// 有效时间最大时间戳
+	ValidTimeStampMax *uint64 `json:"ValidTimeStampMax,omitnil" name:"ValidTimeStampMax"`
 }
 
 type DescribeIpHitItemsRequest struct {
@@ -5816,6 +5869,12 @@ type DescribeIpHitItemsRequest struct {
 
 	// IP
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 有效时间最小时间戳
+	ValidTimeStampMin *uint64 `json:"ValidTimeStampMin,omitnil" name:"ValidTimeStampMin"`
+
+	// 有效时间最大时间戳
+	ValidTimeStampMax *uint64 `json:"ValidTimeStampMax,omitnil" name:"ValidTimeStampMax"`
 }
 
 func (r *DescribeIpHitItemsRequest) ToJsonString() string {
@@ -5842,6 +5901,8 @@ func (r *DescribeIpHitItemsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Sort")
 	delete(f, "Ip")
+	delete(f, "ValidTimeStampMin")
+	delete(f, "ValidTimeStampMax")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpHitItemsRequest has unknown keys!", "")
 	}
@@ -5925,6 +5986,9 @@ type DescribeModuleStatusResponseParams struct {
 
 	// API安全是否开启
 	ApiProtection *uint64 `json:"ApiProtection,omitnil" name:"ApiProtection"`
+
+	// 限流模块开关
+	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -6032,7 +6096,7 @@ type DescribePeakPointsRequestParams struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// 十一个值可选：
+	// 十二个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
@@ -6044,6 +6108,7 @@ type DescribePeakPointsRequestParams struct {
 	// leak-防泄露攻击总数趋势图
 	// acl-访问控制攻击总数趋势图
 	// http_status-状态码各次数趋势图
+	// wx_access-微信小程序峰值qps趋势图
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
@@ -6065,7 +6130,7 @@ type DescribePeakPointsRequest struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// 十一个值可选：
+	// 十二个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
@@ -6077,6 +6142,7 @@ type DescribePeakPointsRequest struct {
 	// leak-防泄露攻击总数趋势图
 	// acl-访问控制攻击总数趋势图
 	// http_status-状态码各次数趋势图
+	// wx_access-微信小程序峰值qps趋势图
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
@@ -8968,20 +9034,20 @@ type MajorEventsPkg struct {
 
 // Predefined struct for user
 type ModifyAccessPeriodRequestParams struct {
-	// 访问日志保存期限，范围为[1, 30]
+	// 访问日志保存期限，范围为[1, 180]
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 日志主题
+	// 日志主题，新版本不需要再传
 	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
 type ModifyAccessPeriodRequest struct {
 	*tchttp.BaseRequest
 	
-	// 访问日志保存期限，范围为[1, 30]
+	// 访问日志保存期限，范围为[1, 180]
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 日志主题
+	// 日志主题，新版本不需要再传
 	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
@@ -10885,6 +10951,9 @@ type ModifyModuleStatusRequestParams struct {
 
 	// 防泄漏模块开关，0或者1
 	AntiLeakage *uint64 `json:"AntiLeakage,omitnil" name:"AntiLeakage"`
+
+	// 限流模块开关，0或1
+	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
 }
 
 type ModifyModuleStatusRequest struct {
@@ -10910,6 +10979,9 @@ type ModifyModuleStatusRequest struct {
 
 	// 防泄漏模块开关，0或者1
 	AntiLeakage *uint64 `json:"AntiLeakage,omitnil" name:"AntiLeakage"`
+
+	// 限流模块开关，0或1
+	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
 }
 
 func (r *ModifyModuleStatusRequest) ToJsonString() string {
@@ -10931,6 +11003,7 @@ func (r *ModifyModuleStatusRequest) FromJsonString(s string) error {
 	delete(f, "ApiProtection")
 	delete(f, "AntiTamper")
 	delete(f, "AntiLeakage")
+	delete(f, "RateLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModuleStatusRequest has unknown keys!", "")
 	}
@@ -11867,6 +11940,10 @@ type PeakPointsItem struct {
 	// 访问控制 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ACL *uint64 `json:"ACL,omitnil" name:"ACL"`
+
+	// 小程序 qps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WxAccess *uint64 `json:"WxAccess,omitnil" name:"WxAccess"`
 }
 
 type PiechartItem struct {
@@ -13078,6 +13155,10 @@ type UpsertIpAccessControlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCount *int64 `json:"FailedCount,omitnil" name:"FailedCount"`
 
+	// 添加或修改的IP数据Id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ids []*string `json:"Ids,omitnil" name:"Ids"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -13198,6 +13279,10 @@ type UpsertSessionResponseParams struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// SessionID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionID *int64 `json:"SessionID,omitnil" name:"SessionID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

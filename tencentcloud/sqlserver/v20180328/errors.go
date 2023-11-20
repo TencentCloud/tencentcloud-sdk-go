@@ -32,6 +32,9 @@ const (
 	// 数据库错误。
 	FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 
+	// 外网操作失败。
+	FAILEDOPERATION_DOMAINOPERATIONFAILED = "FailedOperation.DomainOperationFailed"
+
 	// 操作失败或者网络超时。
 	FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 
@@ -97,6 +100,15 @@ const (
 
 	// 接口不存在。
 	INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+
+	// 不支持具有发布订阅关系的实例。
+	INVALIDPARAMETER_NOTSUPPORTPUBSUBINSTANCE = "InvalidParameter.NotSupportPubSubInstance"
+
+	// 不支持具有只读副本的主实例。
+	INVALIDPARAMETER_NOTSUPPORTREADONLYMASTERINSTANCE = "InvalidParameter.NotSupportReadOnlyMasterInstance"
+
+	// 不支持单机版（基础版或者RO副本）实例。
+	INVALIDPARAMETER_NOTSUPPORTSINGLEINSTANCE = "InvalidParameter.NotSupportSingleInstance"
 
 	// 参数断言转换错误。
 	INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"

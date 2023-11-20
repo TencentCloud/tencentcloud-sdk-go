@@ -242,6 +242,9 @@ const (
 	// 备份已被其它任务锁住，暂时不能执行该操作。
 	RESOURCEUNAVAILABLE_BACKUPLOCKEDERROR = "ResourceUnavailable.BackupLockedError"
 
+	// 备份还原规格不支持。
+	RESOURCEUNAVAILABLE_BACKUPSPECERROR = "ResourceUnavailable.BackupSpecError"
+
 	// 备份状态异常，暂不能执行该操作。备份可能已过期或已被删除。
 	RESOURCEUNAVAILABLE_BACKUPSTATUSABNORMAL = "ResourceUnavailable.BackupStatusAbnormal"
 

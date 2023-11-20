@@ -4577,6 +4577,14 @@ type KongTarget struct {
 	// Target的来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil" name:"Source"`
+
+	// CVM实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstanceId *string `json:"CvmInstanceId,omitnil" name:"CvmInstanceId"`
+
+	// CVM实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstanceName *string `json:"CvmInstanceName,omitnil" name:"CvmInstanceName"`
 }
 
 type KongUpstreamInfo struct {

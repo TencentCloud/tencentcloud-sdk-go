@@ -1462,6 +1462,128 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
+// Predefined struct for user
+type ImportSourceClusterConsumerGroupsRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 待导入的消费组列表
+	GroupList []*SourceClusterGroupConfig `json:"GroupList,omitnil" name:"GroupList"`
+}
+
+type ImportSourceClusterConsumerGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 待导入的消费组列表
+	GroupList []*SourceClusterGroupConfig `json:"GroupList,omitnil" name:"GroupList"`
+}
+
+func (r *ImportSourceClusterConsumerGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportSourceClusterConsumerGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "GroupList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportSourceClusterConsumerGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportSourceClusterConsumerGroupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImportSourceClusterConsumerGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportSourceClusterConsumerGroupsResponseParams `json:"Response"`
+}
+
+func (r *ImportSourceClusterConsumerGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportSourceClusterConsumerGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportSourceClusterTopicsRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 待导入的主题列表
+	TopicList []*SourceClusterTopicConfig `json:"TopicList,omitnil" name:"TopicList"`
+}
+
+type ImportSourceClusterTopicsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 待导入的主题列表
+	TopicList []*SourceClusterTopicConfig `json:"TopicList,omitnil" name:"TopicList"`
+}
+
+func (r *ImportSourceClusterTopicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportSourceClusterTopicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportSourceClusterTopicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportSourceClusterTopicsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImportSourceClusterTopicsResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportSourceClusterTopicsResponseParams `json:"Response"`
+}
+
+func (r *ImportSourceClusterTopicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportSourceClusterTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceItem struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -1921,6 +2043,79 @@ type RoleItem struct {
 
 	// 修改时间，秒为单位
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
+}
+
+type SourceClusterGroupConfig struct {
+	// 消费组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 是否已导入，作为入参时无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Imported *bool `json:"Imported,omitnil" name:"Imported"`
+
+	// 命名空间，仅4.x集群有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 导入状态
+	// Unknown 未知
+	// Success 成功
+	// Failure 失败
+	// AlreadyExists 已存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportStatus *string `json:"ImportStatus,omitnil" name:"ImportStatus"`
+}
+
+type SourceClusterTopicConfig struct {
+	// 主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 主题类型，
+	// 5.x版本
+	// UNSPECIFIED 未指定
+	// NORMAL 普通消息
+	// FIFO 顺序消息
+	// DELAY 延迟消息
+	// TRANSACTION 事务消息
+	// 
+	// 4.x版本
+	// Normal 普通消息
+	// PartitionedOrder 分区顺序消息
+	// Transaction 事务消息
+	// DelayScheduled 延时消息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicType *string `json:"TopicType,omitnil" name:"TopicType"`
+
+	// 队列数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueNum *int64 `json:"QueueNum,omitnil" name:"QueueNum"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 是否已导入，作为入参时无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Imported *bool `json:"Imported,omitnil" name:"Imported"`
+
+	// 命名空间，仅4.x集群有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 导入状态，
+	// Unknown 未知，
+	// AlreadyExists 已存在，
+	// Success 成功，
+	// Failure 失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportStatus *string `json:"ImportStatus,omitnil" name:"ImportStatus"`
 }
 
 type SubscriptionData struct {

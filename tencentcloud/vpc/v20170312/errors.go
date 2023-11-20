@@ -542,6 +542,9 @@ const (
 	// 私有网络创建的NAT网关超过上限。
 	LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = "LimitExceeded.NatGatewayPerVpcLimitExceeded"
 
+	// VPC内创建的弹性网卡数量超过上限
+	LIMITEXCEEDED_NETWORKINTERFACELIMITEXCEEDED = "LimitExceeded.NetworkInterfaceLimitExceeded"
+
 	// 过滤参数名称超过限制。
 	LIMITEXCEEDED_NUMBEROFFILTERS = "LimitExceeded.NumberOfFilters"
 
@@ -968,6 +971,9 @@ const (
 	// 未找到相关角色，请确认角色是否授权。
 	UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 
+	// 当前路由表删除失败，请先检查是否存在关联的策略。
+	UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+
 	// 路由表绑定了子网。
 	UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = "UnsupportedOperation.RouteTableHasSubnetRule"
 
@@ -1090,6 +1096,9 @@ const (
 
 	// 对端网关BGP ASN和已有的通道对端或云上VPN的BGP ASN相同。
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = "UnsupportedOperation.VpnUnsupportedBgpAsnEqual"
+
+	// `%(value)s`，不支持降低VPN带宽。
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBANDWIDTH = "UnsupportedOperation.VpnUnsupportedModifyBandwidth"
 
 	// VPN不支持修改BGP ASN。
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBGPASN = "UnsupportedOperation.VpnUnsupportedModifyBgpAsn"

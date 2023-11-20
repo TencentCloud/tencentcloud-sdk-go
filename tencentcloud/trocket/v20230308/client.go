@@ -933,6 +933,104 @@ func (c *Client) DescribeTopicStatsOpWithContext(ctx context.Context, request *D
     return
 }
 
+func NewImportSourceClusterConsumerGroupsRequest() (request *ImportSourceClusterConsumerGroupsRequest) {
+    request = &ImportSourceClusterConsumerGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ImportSourceClusterConsumerGroups")
+    
+    
+    return
+}
+
+func NewImportSourceClusterConsumerGroupsResponse() (response *ImportSourceClusterConsumerGroupsResponse) {
+    response = &ImportSourceClusterConsumerGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportSourceClusterConsumerGroups
+// 导入消费者组列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ImportSourceClusterConsumerGroups(request *ImportSourceClusterConsumerGroupsRequest) (response *ImportSourceClusterConsumerGroupsResponse, err error) {
+    return c.ImportSourceClusterConsumerGroupsWithContext(context.Background(), request)
+}
+
+// ImportSourceClusterConsumerGroups
+// 导入消费者组列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ImportSourceClusterConsumerGroupsWithContext(ctx context.Context, request *ImportSourceClusterConsumerGroupsRequest) (response *ImportSourceClusterConsumerGroupsResponse, err error) {
+    if request == nil {
+        request = NewImportSourceClusterConsumerGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportSourceClusterConsumerGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportSourceClusterConsumerGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportSourceClusterTopicsRequest() (request *ImportSourceClusterTopicsRequest) {
+    request = &ImportSourceClusterTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ImportSourceClusterTopics")
+    
+    
+    return
+}
+
+func NewImportSourceClusterTopicsResponse() (response *ImportSourceClusterTopicsResponse) {
+    response = &ImportSourceClusterTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportSourceClusterTopics
+// 导入topic列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ImportSourceClusterTopics(request *ImportSourceClusterTopicsRequest) (response *ImportSourceClusterTopicsResponse, err error) {
+    return c.ImportSourceClusterTopicsWithContext(context.Background(), request)
+}
+
+// ImportSourceClusterTopics
+// 导入topic列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ImportSourceClusterTopicsWithContext(ctx context.Context, request *ImportSourceClusterTopicsRequest) (response *ImportSourceClusterTopicsResponse, err error) {
+    if request == nil {
+        request = NewImportSourceClusterTopicsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportSourceClusterTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportSourceClusterTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyConsumerGroupRequest() (request *ModifyConsumerGroupRequest) {
     request = &ModifyConsumerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

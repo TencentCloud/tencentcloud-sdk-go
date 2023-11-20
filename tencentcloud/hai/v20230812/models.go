@@ -203,7 +203,7 @@ type DescribeInstancesRequestParams struct {
 	// 实例元组
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -219,7 +219,7 @@ type DescribeInstancesRequest struct {
 	// 实例元组
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -340,14 +340,14 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScenesRequestParams struct {
-	// ["sc-abcdefgh"]
+	// 场景id列表
 	SceneIds []*string `json:"SceneIds,omitnil" name:"SceneIds"`
 }
 
 type DescribeScenesRequest struct {
 	*tchttp.BaseRequest
 	
-	// ["sc-abcdefgh"]
+	// 场景id列表
 	SceneIds []*string `json:"SceneIds,omitnil" name:"SceneIds"`
 }
 
@@ -372,7 +372,7 @@ func (r *DescribeScenesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScenesResponseParams struct {
-	// scene info
+	// 场景详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneSet []*SceneInfo `json:"SceneSet,omitnil" name:"SceneSet"`
 
@@ -657,7 +657,7 @@ type Instance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxOutBandwidth *string `json:"MaxOutBandwidth,omitnil" name:"MaxOutBandwidth"`
 
-	// 每月免费流量，默认1000G
+	// 每月免费流量，默认500G
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxFreeTraffic *string `json:"MaxFreeTraffic,omitnil" name:"MaxFreeTraffic"`
 

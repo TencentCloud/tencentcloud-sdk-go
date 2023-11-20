@@ -473,6 +473,7 @@ func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
@@ -514,6 +515,7 @@ func (c *Client) CreateNotebook(request *CreateNotebookRequest) (response *Creat
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
@@ -803,6 +805,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 //  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 //  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
@@ -850,6 +853,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 //  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 //  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
@@ -5404,6 +5408,7 @@ func NewStopTrainingTaskResponse() (response *StopTrainingTaskResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
 //  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
@@ -5419,6 +5424,7 @@ func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *S
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
 //  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"

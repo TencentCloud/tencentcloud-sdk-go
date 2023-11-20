@@ -1566,13 +1566,13 @@ type ChannelCreateFlowApproversRequestParams struct {
 	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
-
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	// <ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
 type ChannelCreateFlowApproversRequest struct {
@@ -1599,13 +1599,13 @@ type ChannelCreateFlowApproversRequest struct {
 	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
-
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	// <ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowApproversRequest) ToJsonString() string {
@@ -1623,8 +1623,8 @@ func (r *ChannelCreateFlowApproversRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "FlowId")
 	delete(f, "Approvers")
-	delete(f, "Operator")
 	delete(f, "FillApproverType")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowApproversRequest has unknown keys!", "")
 	}
@@ -6153,7 +6153,7 @@ type CreateFlowsByTemplatesRequestParams struct {
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
-	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+	// <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
@@ -6190,7 +6190,7 @@ type CreateFlowsByTemplatesRequest struct {
 	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
-	// <ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+	// <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
@@ -7821,7 +7821,7 @@ type FlowApproverInfo struct {
 	// 签署完前端跳转的url，此字段的用法场景请联系客户经理确认
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 
-	// 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人等。
+	// 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人、是否为动态补充签署人等。
 	// 详细操作可以参考开发者中心的ApproverOption结构体。
 	ApproverOption *ApproverOption `json:"ApproverOption,omitnil" name:"ApproverOption"`
 

@@ -277,6 +277,190 @@ type ChainMakerTransactionResult struct {
 }
 
 // Predefined struct for user
+type DescribeFabricBlockRequestParams struct {
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 区块高度，从0开始
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
+}
+
+type DescribeFabricBlockRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 区块高度，从0开始
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
+}
+
+func (r *DescribeFabricBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFabricBlockRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChannelId")
+	delete(f, "BlockHeight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFabricBlockRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFabricBlockResponseParams struct {
+	// 区块高度
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
+
+	// 区块Hash
+	BlockHash *string `json:"BlockHash,omitnil" name:"BlockHash"`
+
+	// 前置区块Hash
+	PreBlockHash *string `json:"PreBlockHash,omitnil" name:"PreBlockHash"`
+
+	// 区块中交易数量
+	TxCount *int64 `json:"TxCount,omitnil" name:"TxCount"`
+
+	// 区块中交易列表
+	TransactionList []*Transaction `json:"TransactionList,omitnil" name:"TransactionList"`
+
+	// 创建时间戳
+	CreateTimestamp *string `json:"CreateTimestamp,omitnil" name:"CreateTimestamp"`
+
+	// 提案组织
+	ProposerOrg *string `json:"ProposerOrg,omitnil" name:"ProposerOrg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeFabricBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFabricBlockResponseParams `json:"Response"`
+}
+
+func (r *DescribeFabricBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFabricBlockResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFabricTransactionRequestParams struct {
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+}
+
+type DescribeFabricTransactionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+}
+
+func (r *DescribeFabricTransactionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFabricTransactionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChannelId")
+	delete(f, "TxId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFabricTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFabricTransactionResponseParams struct {
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+
+	// 交易Hash
+	TxHash *string `json:"TxHash,omitnil" name:"TxHash"`
+
+	// 交易状态
+	TxStatus *string `json:"TxStatus,omitnil" name:"TxStatus"`
+
+	// 参与的组织列表
+	JoinOrgList []*string `json:"JoinOrgList,omitnil" name:"JoinOrgList"`
+
+	// 交易发送者
+	Sender *string `json:"Sender,omitnil" name:"Sender"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 区块高度
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
+
+	// 交易所属合约
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 交易数据，base64编码，解码后为json化的字符串
+	TransactionData *string `json:"TransactionData,omitnil" name:"TransactionData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeFabricTransactionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFabricTransactionResponseParams `json:"Response"`
+}
+
+func (r *DescribeFabricTransactionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFabricTransactionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DownloadUserCertRequestParams struct {
 	// 模块名，固定字段：cert_mng
 	Module *string `json:"Module,omitnil" name:"Module"`
@@ -1411,6 +1595,104 @@ func (r *InvokeChainMakerDemoContractResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type InvokeFabricChaincodeRequestParams struct {
+	// 网络ID，可在区块链网络详情获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 合约名称，可在合约列表或合约详情获取
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 合约方法
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
+
+	// 合约方法入参
+	FuncParam []*string `json:"FuncParam,omitnil" name:"FuncParam"`
+
+	// 是否异步执行，如果异步执行，可使用返回值中的交易TxID查询执行结果
+	WithAsyncResult *bool `json:"WithAsyncResult,omitnil" name:"WithAsyncResult"`
+}
+
+type InvokeFabricChaincodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ID，可在区块链网络详情获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 合约名称，可在合约列表或合约详情获取
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 合约方法
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
+
+	// 合约方法入参
+	FuncParam []*string `json:"FuncParam,omitnil" name:"FuncParam"`
+
+	// 是否异步执行，如果异步执行，可使用返回值中的交易TxID查询执行结果
+	WithAsyncResult *bool `json:"WithAsyncResult,omitnil" name:"WithAsyncResult"`
+}
+
+func (r *InvokeFabricChaincodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeFabricChaincodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChannelId")
+	delete(f, "ChaincodeName")
+	delete(f, "FuncName")
+	delete(f, "FuncParam")
+	delete(f, "WithAsyncResult")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeFabricChaincodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeFabricChaincodeResponseParams struct {
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+
+	// 交易状态
+	TxStatus *string `json:"TxStatus,omitnil" name:"TxStatus"`
+
+	// 交易结果
+	TxResult *string `json:"TxResult,omitnil" name:"TxResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InvokeFabricChaincodeResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeFabricChaincodeResponseParams `json:"Response"`
+}
+
+func (r *InvokeFabricChaincodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeFabricChaincodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InvokeRequestParams struct {
 	// 模块名，固定字段：transaction
 	Module *string `json:"Module,omitnil" name:"Module"`
@@ -2022,6 +2304,97 @@ func (r *QueryChainMakerTransactionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type QueryFabricChaincodeRequestParams struct {
+	// 网络ID，可在区块链网络详情获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 合约名称，可在合约列表或合约详情获取
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 合约方法
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
+
+	// 合约方法入参
+	FuncParam []*string `json:"FuncParam,omitnil" name:"FuncParam"`
+}
+
+type QueryFabricChaincodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ID，可在区块链网络详情获取
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 通道ID，可在通道列表或通道详情获取
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 合约名称，可在合约列表或合约详情获取
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 合约方法
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
+
+	// 合约方法入参
+	FuncParam []*string `json:"FuncParam,omitnil" name:"FuncParam"`
+}
+
+func (r *QueryFabricChaincodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFabricChaincodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChannelId")
+	delete(f, "ChaincodeName")
+	delete(f, "FuncName")
+	delete(f, "FuncParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFabricChaincodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFabricChaincodeResponseParams struct {
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+
+	// 交易状态
+	TxStatus *string `json:"TxStatus,omitnil" name:"TxStatus"`
+
+	// 交易结果
+	TxResult *string `json:"TxResult,omitnil" name:"TxResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QueryFabricChaincodeResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFabricChaincodeResponseParams `json:"Response"`
+}
+
+func (r *QueryFabricChaincodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFabricChaincodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryRequestParams struct {
 	// 模块名，固定字段：transaction
 	Module *string `json:"Module,omitnil" name:"Module"`
@@ -2217,6 +2590,32 @@ func (r *SrvInvokeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SrvInvokeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Transaction struct {
+	// 交易ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
+
+	// 合约名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
+
+	// 交易发送者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sender *string `json:"Sender,omitnil" name:"Sender"`
+
+	// 交易创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 交易所在区块高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
+
+	// 交易在区块中的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxIndex *int64 `json:"TxIndex,omitnil" name:"TxIndex"`
 }
 
 type TransactionItem struct {

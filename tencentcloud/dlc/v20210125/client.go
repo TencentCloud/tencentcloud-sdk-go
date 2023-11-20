@@ -4914,6 +4914,7 @@ func NewDescribeSparkSessionBatchSQLResponse() (response *DescribeSparkSessionBa
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
 func (c *Client) DescribeSparkSessionBatchSQL(request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
     return c.DescribeSparkSessionBatchSQLWithContext(context.Background(), request)
 }
@@ -4927,6 +4928,7 @@ func (c *Client) DescribeSparkSessionBatchSQL(request *DescribeSparkSessionBatch
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
 func (c *Client) DescribeSparkSessionBatchSQLWithContext(ctx context.Context, request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
     if request == nil {
         request = NewDescribeSparkSessionBatchSQLRequest()
@@ -5547,6 +5549,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     return c.DescribeUserInfoWithContext(context.Background(), request)
 }
@@ -5567,6 +5570,7 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()

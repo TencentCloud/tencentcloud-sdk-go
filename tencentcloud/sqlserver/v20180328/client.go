@@ -106,6 +106,61 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     return
 }
 
+func NewBalanceReadOnlyGroupRequest() (request *BalanceReadOnlyGroupRequest) {
+    request = &BalanceReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "BalanceReadOnlyGroup")
+    
+    
+    return
+}
+
+func NewBalanceReadOnlyGroupResponse() (response *BalanceReadOnlyGroupResponse) {
+    response = &BalanceReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BalanceReadOnlyGroup
+// 本接口（BalanceReadOnlyGroup）用于根据预定义的权重平衡每个只读实例的路由权重。预定义权重可根据接口DescribeReadOnlyGroupAutoWeight查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) BalanceReadOnlyGroup(request *BalanceReadOnlyGroupRequest) (response *BalanceReadOnlyGroupResponse, err error) {
+    return c.BalanceReadOnlyGroupWithContext(context.Background(), request)
+}
+
+// BalanceReadOnlyGroup
+// 本接口（BalanceReadOnlyGroup）用于根据预定义的权重平衡每个只读实例的路由权重。预定义权重可根据接口DescribeReadOnlyGroupAutoWeight查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) BalanceReadOnlyGroupWithContext(ctx context.Context, request *BalanceReadOnlyGroupRequest) (response *BalanceReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewBalanceReadOnlyGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BalanceReadOnlyGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBalanceReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneDBRequest() (request *CloneDBRequest) {
     request = &CloneDBRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1920,6 +1975,122 @@ func (c *Client) DeletePublishSubscribeWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteRestoreTaskRequest() (request *DeleteRestoreTaskRequest) {
+    request = &DeleteRestoreTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteRestoreTask")
+    
+    
+    return
+}
+
+func NewDeleteRestoreTaskResponse() (response *DeleteRestoreTaskResponse) {
+    response = &DeleteRestoreTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRestoreTask
+// 本接口(DeleteRestoreTask)用于删除回档任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DeleteRestoreTask(request *DeleteRestoreTaskRequest) (response *DeleteRestoreTaskResponse, err error) {
+    return c.DeleteRestoreTaskWithContext(context.Background(), request)
+}
+
+// DeleteRestoreTask
+// 本接口(DeleteRestoreTask)用于删除回档任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DeleteRestoreTaskWithContext(ctx context.Context, request *DeleteRestoreTaskRequest) (response *DeleteRestoreTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteRestoreTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRestoreTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRestoreTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountPrivilegeByDBRequest() (request *DescribeAccountPrivilegeByDBRequest) {
+    request = &DescribeAccountPrivilegeByDBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeAccountPrivilegeByDB")
+    
+    
+    return
+}
+
+func NewDescribeAccountPrivilegeByDBResponse() (response *DescribeAccountPrivilegeByDBResponse) {
+    response = &DescribeAccountPrivilegeByDBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountPrivilegeByDB
+// 本接口(DescribeAccountPrivilegeByDB)用于查询数据库关联的账号和权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeAccountPrivilegeByDB(request *DescribeAccountPrivilegeByDBRequest) (response *DescribeAccountPrivilegeByDBResponse, err error) {
+    return c.DescribeAccountPrivilegeByDBWithContext(context.Background(), request)
+}
+
+// DescribeAccountPrivilegeByDB
+// 本接口(DescribeAccountPrivilegeByDB)用于查询数据库关联的账号和权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeAccountPrivilegeByDBWithContext(ctx context.Context, request *DescribeAccountPrivilegeByDBRequest) (response *DescribeAccountPrivilegeByDBResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountPrivilegeByDBRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountPrivilegeByDB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountPrivilegeByDBResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2579,6 +2750,59 @@ func (c *Client) DescribeBusinessIntelligenceFileWithContext(ctx context.Context
     return
 }
 
+func NewDescribeCollationTimeZoneRequest() (request *DescribeCollationTimeZoneRequest) {
+    request = &DescribeCollationTimeZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCollationTimeZone")
+    
+    
+    return
+}
+
+func NewDescribeCollationTimeZoneResponse() (response *DescribeCollationTimeZoneResponse) {
+    response = &DescribeCollationTimeZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCollationTimeZone
+// 本接口(DescribeCollationTimeZone)用于查询实例支持的字符集和时区。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCollationTimeZone(request *DescribeCollationTimeZoneRequest) (response *DescribeCollationTimeZoneResponse, err error) {
+    return c.DescribeCollationTimeZoneWithContext(context.Background(), request)
+}
+
+// DescribeCollationTimeZone
+// 本接口(DescribeCollationTimeZone)用于查询实例支持的字符集和时区。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCollationTimeZoneWithContext(ctx context.Context, request *DescribeCollationTimeZoneRequest) (response *DescribeCollationTimeZoneResponse, err error) {
+    if request == nil {
+        request = NewDescribeCollationTimeZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCollationTimeZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCollationTimeZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCrossBackupStatisticalRequest() (request *DescribeCrossBackupStatisticalRequest) {
     request = &DescribeCrossBackupStatisticalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2687,6 +2911,59 @@ func (c *Client) DescribeCrossRegionZoneWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeCrossRegionZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCrossRegionsRequest() (request *DescribeCrossRegionsRequest) {
+    request = &DescribeCrossRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCrossRegions")
+    
+    
+    return
+}
+
+func NewDescribeCrossRegionsResponse() (response *DescribeCrossRegionsResponse) {
+    response = &DescribeCrossRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCrossRegions
+// 本接口(DescribeCrossRegions)用于查询跨地域备份的目标地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCrossRegions(request *DescribeCrossRegionsRequest) (response *DescribeCrossRegionsResponse, err error) {
+    return c.DescribeCrossRegionsWithContext(context.Background(), request)
+}
+
+// DescribeCrossRegions
+// 本接口(DescribeCrossRegions)用于查询跨地域备份的目标地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeCrossRegionsWithContext(ctx context.Context, request *DescribeCrossRegionsRequest) (response *DescribeCrossRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCrossRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCrossRegionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2951,6 +3228,118 @@ func (c *Client) DescribeDBInstancesAttributeWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDBPrivilegeByAccountRequest() (request *DescribeDBPrivilegeByAccountRequest) {
+    request = &DescribeDBPrivilegeByAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBPrivilegeByAccount")
+    
+    
+    return
+}
+
+func NewDescribeDBPrivilegeByAccountResponse() (response *DescribeDBPrivilegeByAccountResponse) {
+    response = &DescribeDBPrivilegeByAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBPrivilegeByAccount
+// 本接口(DescribeDBPrivilegeByAccount)用于查询账号关联的数据库和权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+func (c *Client) DescribeDBPrivilegeByAccount(request *DescribeDBPrivilegeByAccountRequest) (response *DescribeDBPrivilegeByAccountResponse, err error) {
+    return c.DescribeDBPrivilegeByAccountWithContext(context.Background(), request)
+}
+
+// DescribeDBPrivilegeByAccount
+// 本接口(DescribeDBPrivilegeByAccount)用于查询账号关联的数据库和权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+func (c *Client) DescribeDBPrivilegeByAccountWithContext(ctx context.Context, request *DescribeDBPrivilegeByAccountRequest) (response *DescribeDBPrivilegeByAccountResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBPrivilegeByAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBPrivilegeByAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBPrivilegeByAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBRestoreTimeRequest() (request *DescribeDBRestoreTimeRequest) {
+    request = &DescribeDBRestoreTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBRestoreTime")
+    
+    
+    return
+}
+
+func NewDescribeDBRestoreTimeResponse() (response *DescribeDBRestoreTimeResponse) {
+    response = &DescribeDBRestoreTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBRestoreTime
+// 本接口（DescribeDBRestoreTime）用于查询可回档的数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBRestoreTime(request *DescribeDBRestoreTimeRequest) (response *DescribeDBRestoreTimeResponse, err error) {
+    return c.DescribeDBRestoreTimeWithContext(context.Background(), request)
+}
+
+// DescribeDBRestoreTime
+// 本接口（DescribeDBRestoreTime）用于查询可回档的数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBRestoreTimeWithContext(ctx context.Context, request *DescribeDBRestoreTimeRequest) (response *DescribeDBRestoreTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBRestoreTimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBRestoreTime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBRestoreTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3132,6 +3521,65 @@ func (c *Client) DescribeDBsNormalWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeDBsNormalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabaseNamesRequest() (request *DescribeDatabaseNamesRequest) {
+    request = &DescribeDatabaseNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDatabaseNames")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseNamesResponse() (response *DescribeDatabaseNamesResponse) {
+    response = &DescribeDatabaseNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabaseNames
+// 本接口（DescribeDatabaseNames）查询账户关联的数据库名称。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabaseNames(request *DescribeDatabaseNamesRequest) (response *DescribeDatabaseNamesResponse, err error) {
+    return c.DescribeDatabaseNamesWithContext(context.Background(), request)
+}
+
+// DescribeDatabaseNames
+// 本接口（DescribeDatabaseNames）查询账户关联的数据库名称。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDatabaseNamesWithContext(ctx context.Context, request *DescribeDatabaseNamesRequest) (response *DescribeDatabaseNamesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseNamesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseNamesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3427,6 +3875,77 @@ func (c *Client) DescribeIncrementalMigrationWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeInquiryPriceParameterRequest() (request *DescribeInquiryPriceParameterRequest) {
+    request = &DescribeInquiryPriceParameterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInquiryPriceParameter")
+    
+    
+    return
+}
+
+func NewDescribeInquiryPriceParameterResponse() (response *DescribeInquiryPriceParameterResponse) {
+    response = &DescribeInquiryPriceParameterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInquiryPriceParameter
+// 本接口（DescribeInquiryPriceParameter）用于查询实例询价计费参数。当前接口查询实例新购的计费参数。内部接口用于活动页售卖场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BADGOODSNUM = "InvalidParameterValue.BadGoodsNum"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_PARAMETERTYPEERROR = "InvalidParameterValue.ParameterTypeError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInquiryPriceParameter(request *DescribeInquiryPriceParameterRequest) (response *DescribeInquiryPriceParameterResponse, err error) {
+    return c.DescribeInquiryPriceParameterWithContext(context.Background(), request)
+}
+
+// DescribeInquiryPriceParameter
+// 本接口（DescribeInquiryPriceParameter）用于查询实例询价计费参数。当前接口查询实例新购的计费参数。内部接口用于活动页售卖场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BADGOODSNUM = "InvalidParameterValue.BadGoodsNum"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_PARAMETERTYPEERROR = "InvalidParameterValue.ParameterTypeError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInquiryPriceParameterWithContext(ctx context.Context, request *DescribeInquiryPriceParameterRequest) (response *DescribeInquiryPriceParameterResponse, err error) {
+    if request == nil {
+        request = NewDescribeInquiryPriceParameterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInquiryPriceParameter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInquiryPriceParameterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceByOrdersRequest() (request *DescribeInstanceByOrdersRequest) {
     request = &DescribeInstanceByOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3604,6 +4123,140 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceTasksRequest() (request *DescribeInstanceTasksRequest) {
+    request = &DescribeInstanceTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceTasks")
+    
+    
+    return
+}
+
+func NewDescribeInstanceTasksResponse() (response *DescribeInstanceTasksResponse) {
+    response = &DescribeInstanceTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceTasks
+// 本接口（DescribeInstanceTasks）用于查询实例相关的异步任务列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceTasks(request *DescribeInstanceTasksRequest) (response *DescribeInstanceTasksResponse, err error) {
+    return c.DescribeInstanceTasksWithContext(context.Background(), request)
+}
+
+// DescribeInstanceTasks
+// 本接口（DescribeInstanceTasks）用于查询实例相关的异步任务列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceTasksWithContext(ctx context.Context, request *DescribeInstanceTasksRequest) (response *DescribeInstanceTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceTradeParameterRequest() (request *DescribeInstanceTradeParameterRequest) {
+    request = &DescribeInstanceTradeParameterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceTradeParameter")
+    
+    
+    return
+}
+
+func NewDescribeInstanceTradeParameterResponse() (response *DescribeInstanceTradeParameterResponse) {
+    response = &DescribeInstanceTradeParameterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceTradeParameter
+// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = "InvalidParameterValue.SecurityGroupIdIsIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceTradeParameter(request *DescribeInstanceTradeParameterRequest) (response *DescribeInstanceTradeParameterResponse, err error) {
+    return c.DescribeInstanceTradeParameterWithContext(context.Background(), request)
+}
+
+// DescribeInstanceTradeParameter
+// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = "InvalidParameterValue.SecurityGroupIdIsIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceTradeParameterWithContext(ctx context.Context, request *DescribeInstanceTradeParameterRequest) (response *DescribeInstanceTradeParameterResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceTradeParameterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTradeParameter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceTradeParameterResponse()
     err = c.Send(request, response)
     return
 }
@@ -3988,6 +4641,57 @@ func (c *Client) DescribeProductConfigWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeProductSpecRequest() (request *DescribeProductSpecRequest) {
+    request = &DescribeProductSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeProductSpec")
+    
+    
+    return
+}
+
+func NewDescribeProductSpecResponse() (response *DescribeProductSpecResponse) {
+    response = &DescribeProductSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductSpec
+// 本接口 (DescribeProductSpec) 用于查询全地域售卖规格配置（内部前端使用不公开）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) DescribeProductSpec(request *DescribeProductSpecRequest) (response *DescribeProductSpecResponse, err error) {
+    return c.DescribeProductSpecWithContext(context.Background(), request)
+}
+
+// DescribeProductSpec
+// 本接口 (DescribeProductSpec) 用于查询全地域售卖规格配置（内部前端使用不公开）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) DescribeProductSpecWithContext(ctx context.Context, request *DescribeProductSpecRequest) (response *DescribeProductSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductSpecRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurityGroupsRequest) {
     request = &DescribeProjectSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4102,6 +4806,57 @@ func (c *Client) DescribePublishSubscribeWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribePublishSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReadOnlyGroupAutoWeightRequest() (request *DescribeReadOnlyGroupAutoWeightRequest) {
+    request = &DescribeReadOnlyGroupAutoWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeReadOnlyGroupAutoWeight")
+    
+    
+    return
+}
+
+func NewDescribeReadOnlyGroupAutoWeightResponse() (response *DescribeReadOnlyGroupAutoWeightResponse) {
+    response = &DescribeReadOnlyGroupAutoWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReadOnlyGroupAutoWeight
+// 本接口（DescribeReadOnlyGroupAutoWeight）用于查询只读组的自动权重分配结果，在接口BalanceReadOnlyGroup接口中按照自动权重分配结果进行路由权重分配。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeReadOnlyGroupAutoWeight(request *DescribeReadOnlyGroupAutoWeightRequest) (response *DescribeReadOnlyGroupAutoWeightResponse, err error) {
+    return c.DescribeReadOnlyGroupAutoWeightWithContext(context.Background(), request)
+}
+
+// DescribeReadOnlyGroupAutoWeight
+// 本接口（DescribeReadOnlyGroupAutoWeight）用于查询只读组的自动权重分配结果，在接口BalanceReadOnlyGroup接口中按照自动权重分配结果进行路由权重分配。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeReadOnlyGroupAutoWeightWithContext(ctx context.Context, request *DescribeReadOnlyGroupAutoWeightRequest) (response *DescribeReadOnlyGroupAutoWeightResponse, err error) {
+    if request == nil {
+        request = NewDescribeReadOnlyGroupAutoWeightRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReadOnlyGroupAutoWeight require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReadOnlyGroupAutoWeightResponse()
     err = c.Send(request, response)
     return
 }
@@ -4401,6 +5156,61 @@ func (c *Client) DescribeRegularBackupPlanWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeRestoreTaskRequest() (request *DescribeRestoreTaskRequest) {
+    request = &DescribeRestoreTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeRestoreTask")
+    
+    
+    return
+}
+
+func NewDescribeRestoreTaskResponse() (response *DescribeRestoreTaskResponse) {
+    response = &DescribeRestoreTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRestoreTask
+// 本接口（DescribeRestoreTask）用于查询回档任务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeRestoreTask(request *DescribeRestoreTaskRequest) (response *DescribeRestoreTaskResponse, err error) {
+    return c.DescribeRestoreTaskWithContext(context.Background(), request)
+}
+
+// DescribeRestoreTask
+// 本接口（DescribeRestoreTask）用于查询回档任务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeRestoreTaskWithContext(ctx context.Context, request *DescribeRestoreTaskRequest) (response *DescribeRestoreTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRestoreTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRestoreTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRestoreTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackTimeRequest() (request *DescribeRollbackTimeRequest) {
     request = &DescribeRollbackTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4523,6 +5333,130 @@ func (c *Client) DescribeSlowlogsWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeSlowlogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSpecSellStatusRequest() (request *DescribeSpecSellStatusRequest) {
+    request = &DescribeSpecSellStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeSpecSellStatus")
+    
+    
+    return
+}
+
+func NewDescribeSpecSellStatusResponse() (response *DescribeSpecSellStatusResponse) {
+    response = &DescribeSpecSellStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSpecSellStatus
+// 本接口（DescribeSpecSellStatus）用于查询售卖规格状态信息，其中包括售卖状态，参考价格等(实际价格以询价接口为准)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSpecSellStatus(request *DescribeSpecSellStatusRequest) (response *DescribeSpecSellStatusResponse, err error) {
+    return c.DescribeSpecSellStatusWithContext(context.Background(), request)
+}
+
+// DescribeSpecSellStatus
+// 本接口（DescribeSpecSellStatus）用于查询售卖规格状态信息，其中包括售卖状态，参考价格等(实际价格以询价接口为准)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSpecSellStatusWithContext(ctx context.Context, request *DescribeSpecSellStatusRequest) (response *DescribeSpecSellStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecSellStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpecSellStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpecSellStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpgradeInstanceCheckRequest() (request *DescribeUpgradeInstanceCheckRequest) {
+    request = &DescribeUpgradeInstanceCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeUpgradeInstanceCheck")
+    
+    
+    return
+}
+
+func NewDescribeUpgradeInstanceCheckResponse() (response *DescribeUpgradeInstanceCheckResponse) {
+    response = &DescribeUpgradeInstanceCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpgradeInstanceCheck
+// 本接口（DescribeUpgradeInstanceCheck）用于在实例变配前，预检查实例变配的影响情况等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_NOTSUPPORTPUBSUBINSTANCE = "InvalidParameter.NotSupportPubSubInstance"
+//  INVALIDPARAMETER_NOTSUPPORTREADONLYMASTERINSTANCE = "InvalidParameter.NotSupportReadOnlyMasterInstance"
+//  INVALIDPARAMETER_NOTSUPPORTSINGLEINSTANCE = "InvalidParameter.NotSupportSingleInstance"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeUpgradeInstanceCheck(request *DescribeUpgradeInstanceCheckRequest) (response *DescribeUpgradeInstanceCheckResponse, err error) {
+    return c.DescribeUpgradeInstanceCheckWithContext(context.Background(), request)
+}
+
+// DescribeUpgradeInstanceCheck
+// 本接口（DescribeUpgradeInstanceCheck）用于在实例变配前，预检查实例变配的影响情况等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_NOTSUPPORTPUBSUBINSTANCE = "InvalidParameter.NotSupportPubSubInstance"
+//  INVALIDPARAMETER_NOTSUPPORTREADONLYMASTERINSTANCE = "InvalidParameter.NotSupportReadOnlyMasterInstance"
+//  INVALIDPARAMETER_NOTSUPPORTSINGLEINSTANCE = "InvalidParameter.NotSupportSingleInstance"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeUpgradeInstanceCheckWithContext(ctx context.Context, request *DescribeUpgradeInstanceCheckRequest) (response *DescribeUpgradeInstanceCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpgradeInstanceCheckRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpgradeInstanceCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpgradeInstanceCheckResponse()
     err = c.Send(request, response)
     return
 }
@@ -5396,6 +6330,67 @@ func (c *Client) ModifyBackupStrategyWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyCloseWanIpRequest() (request *ModifyCloseWanIpRequest) {
+    request = &ModifyCloseWanIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyCloseWanIp")
+    
+    
+    return
+}
+
+func NewModifyCloseWanIpResponse() (response *ModifyCloseWanIpResponse) {
+    response = &ModifyCloseWanIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloseWanIp
+// 本接口(ModifyCloseWanIp)用于关闭实例外网。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_DOMAINOPERATIONFAILED = "FailedOperation.DomainOperationFailed"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyCloseWanIp(request *ModifyCloseWanIpRequest) (response *ModifyCloseWanIpResponse, err error) {
+    return c.ModifyCloseWanIpWithContext(context.Background(), request)
+}
+
+// ModifyCloseWanIp
+// 本接口(ModifyCloseWanIp)用于关闭实例外网。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_DOMAINOPERATIONFAILED = "FailedOperation.DomainOperationFailed"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyCloseWanIpWithContext(ctx context.Context, request *ModifyCloseWanIpRequest) (response *ModifyCloseWanIpResponse, err error) {
+    if request == nil {
+        request = NewModifyCloseWanIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloseWanIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloseWanIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCrossBackupStrategyRequest() (request *ModifyCrossBackupStrategyRequest) {
     request = &ModifyCrossBackupStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5668,6 +6663,65 @@ func (c *Client) ModifyDBInstanceNetworkWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceNoteRequest() (request *ModifyDBInstanceNoteRequest) {
+    request = &ModifyDBInstanceNoteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstanceNote")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceNoteResponse() (response *ModifyDBInstanceNoteResponse) {
+    response = &ModifyDBInstanceNoteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceNote
+// 本接口（ModifyDBInstanceNote）用于修改实例备注信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENAMEISILLEGAL = "InvalidParameterValue.InstanceNameIsIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDBInstanceNote(request *ModifyDBInstanceNoteRequest) (response *ModifyDBInstanceNoteResponse, err error) {
+    return c.ModifyDBInstanceNoteWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceNote
+// 本接口（ModifyDBInstanceNote）用于修改实例备注信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENAMEISILLEGAL = "InvalidParameterValue.InstanceNameIsIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDBInstanceNoteWithContext(ctx context.Context, request *ModifyDBInstanceNoteRequest) (response *ModifyDBInstanceNoteResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceNoteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceNote require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceNoteResponse()
     err = c.Send(request, response)
     return
 }
@@ -6576,6 +7630,128 @@ func (c *Client) ModifyMigrationWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOpenWanIpRequest() (request *ModifyOpenWanIpRequest) {
+    request = &ModifyOpenWanIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyOpenWanIp")
+    
+    
+    return
+}
+
+func NewModifyOpenWanIpResponse() (response *ModifyOpenWanIpResponse) {
+    response = &ModifyOpenWanIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOpenWanIp
+// 本接口(ModifyOpenWanIp)用于开通实例外网。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_DOMAINOPERATIONFAILED = "FailedOperation.DomainOperationFailed"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyOpenWanIp(request *ModifyOpenWanIpRequest) (response *ModifyOpenWanIpResponse, err error) {
+    return c.ModifyOpenWanIpWithContext(context.Background(), request)
+}
+
+// ModifyOpenWanIp
+// 本接口(ModifyOpenWanIp)用于开通实例外网。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_DOMAINOPERATIONFAILED = "FailedOperation.DomainOperationFailed"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyOpenWanIpWithContext(ctx context.Context, request *ModifyOpenWanIpRequest) (response *ModifyOpenWanIpResponse, err error) {
+    if request == nil {
+        request = NewModifyOpenWanIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOpenWanIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOpenWanIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPublishSubscribeRequest() (request *ModifyPublishSubscribeRequest) {
+    request = &ModifyPublishSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyPublishSubscribe")
+    
+    
+    return
+}
+
+func NewModifyPublishSubscribeResponse() (response *ModifyPublishSubscribeResponse) {
+    response = &ModifyPublishSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPublishSubscribe
+// 本接口（ModifyPublishSubscribe）用于修改实例的发布订阅关系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) ModifyPublishSubscribe(request *ModifyPublishSubscribeRequest) (response *ModifyPublishSubscribeResponse, err error) {
+    return c.ModifyPublishSubscribeWithContext(context.Background(), request)
+}
+
+// ModifyPublishSubscribe
+// 本接口（ModifyPublishSubscribe）用于修改实例的发布订阅关系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) ModifyPublishSubscribeWithContext(ctx context.Context, request *ModifyPublishSubscribeRequest) (response *ModifyPublishSubscribeResponse, err error) {
+    if request == nil {
+        request = NewModifyPublishSubscribeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPublishSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPublishSubscribeResponse()
     err = c.Send(request, response)
     return
 }

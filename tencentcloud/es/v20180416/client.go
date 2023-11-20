@@ -824,6 +824,7 @@ func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
 // 获取索引列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
@@ -839,6 +840,7 @@ func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response 
 // 获取索引列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
@@ -2444,6 +2446,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
@@ -2530,6 +2533,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"

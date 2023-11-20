@@ -4317,6 +4317,55 @@ func (c *Client) DescribeApproveListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeApproveTypeListRequest() (request *DescribeApproveTypeListRequest) {
+    request = &DescribeApproveTypeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeApproveTypeList")
+    
+    
+    return
+}
+
+func NewDescribeApproveTypeListResponse() (response *DescribeApproveTypeListResponse) {
+    response = &DescribeApproveTypeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApproveTypeList
+// 获取审批分类列表
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeApproveTypeList(request *DescribeApproveTypeListRequest) (response *DescribeApproveTypeListResponse, err error) {
+    return c.DescribeApproveTypeListWithContext(context.Background(), request)
+}
+
+// DescribeApproveTypeList
+// 获取审批分类列表
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeApproveTypeListWithContext(ctx context.Context, request *DescribeApproveTypeListRequest) (response *DescribeApproveTypeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApproveTypeListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApproveTypeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApproveTypeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineAllTaskDagRequest() (request *DescribeBaselineAllTaskDagRequest) {
     request = &DescribeBaselineAllTaskDagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12341,7 +12390,6 @@ func NewDescribeWorkflowCanvasInfoResponse() (response *DescribeWorkflowCanvasIn
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeWorkflowCanvasInfo(request *DescribeWorkflowCanvasInfoRequest) (response *DescribeWorkflowCanvasInfoResponse, err error) {
     return c.DescribeWorkflowCanvasInfoWithContext(context.Background(), request)
 }
@@ -12351,7 +12399,6 @@ func (c *Client) DescribeWorkflowCanvasInfo(request *DescribeWorkflowCanvasInfoR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeWorkflowCanvasInfoWithContext(ctx context.Context, request *DescribeWorkflowCanvasInfoRequest) (response *DescribeWorkflowCanvasInfoResponse, err error) {
     if request == nil {
         request = NewDescribeWorkflowCanvasInfoRequest()

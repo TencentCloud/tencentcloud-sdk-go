@@ -418,6 +418,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
     return c.CreateImageWithContext(context.Background(), request)
@@ -471,6 +472,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImageRequest) (response *CreateImageResponse, err error) {
     if request == nil {
@@ -626,6 +628,7 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 //  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
     return c.DeleteImagesWithContext(context.Background(), request)
@@ -657,6 +660,7 @@ func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteIma
 //  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
     if request == nil {
@@ -2314,6 +2318,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImageResponse, err error) {
     return c.SearchImageWithContext(context.Background(), request)
@@ -2362,6 +2367,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) SearchImageWithContext(ctx context.Context, request *SearchImageRequest) (response *SearchImageResponse, err error) {
     if request == nil {

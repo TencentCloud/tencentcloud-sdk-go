@@ -201,6 +201,108 @@ func (c *Client) ApplyUserCertWithContext(ctx context.Context, request *ApplyUse
     return
 }
 
+func NewDescribeFabricBlockRequest() (request *DescribeFabricBlockRequest) {
+    request = &DescribeFabricBlockRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "DescribeFabricBlock")
+    
+    
+    return
+}
+
+func NewDescribeFabricBlockResponse() (response *DescribeFabricBlockResponse) {
+    response = &DescribeFabricBlockResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFabricBlock
+// 获取Fabric某区块的详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FABRICBLOCKNOEXIST = "FailedOperation.FabricBlockNoExist"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) DescribeFabricBlock(request *DescribeFabricBlockRequest) (response *DescribeFabricBlockResponse, err error) {
+    return c.DescribeFabricBlockWithContext(context.Background(), request)
+}
+
+// DescribeFabricBlock
+// 获取Fabric某区块的详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FABRICBLOCKNOEXIST = "FailedOperation.FabricBlockNoExist"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) DescribeFabricBlockWithContext(ctx context.Context, request *DescribeFabricBlockRequest) (response *DescribeFabricBlockResponse, err error) {
+    if request == nil {
+        request = NewDescribeFabricBlockRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFabricBlock require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFabricBlockResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFabricTransactionRequest() (request *DescribeFabricTransactionRequest) {
+    request = &DescribeFabricTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "DescribeFabricTransaction")
+    
+    
+    return
+}
+
+func NewDescribeFabricTransactionResponse() (response *DescribeFabricTransactionResponse) {
+    response = &DescribeFabricTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFabricTransaction
+// 获取Fabric交易的详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) DescribeFabricTransaction(request *DescribeFabricTransactionRequest) (response *DescribeFabricTransactionResponse, err error) {
+    return c.DescribeFabricTransactionWithContext(context.Background(), request)
+}
+
+// DescribeFabricTransaction
+// 获取Fabric交易的详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) DescribeFabricTransactionWithContext(ctx context.Context, request *DescribeFabricTransactionRequest) (response *DescribeFabricTransactionResponse, err error) {
+    if request == nil {
+        request = NewDescribeFabricTransactionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFabricTransaction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFabricTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
     request = &DownloadUserCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1112,6 +1214,57 @@ func (c *Client) InvokeChainMakerDemoContractWithContext(ctx context.Context, re
     return
 }
 
+func NewInvokeFabricChaincodeRequest() (request *InvokeFabricChaincodeRequest) {
+    request = &InvokeFabricChaincodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "InvokeFabricChaincode")
+    
+    
+    return
+}
+
+func NewInvokeFabricChaincodeResponse() (response *InvokeFabricChaincodeResponse) {
+    response = &InvokeFabricChaincodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeFabricChaincode
+// 调用Fabric用户合约执行交易
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) InvokeFabricChaincode(request *InvokeFabricChaincodeRequest) (response *InvokeFabricChaincodeResponse, err error) {
+    return c.InvokeFabricChaincodeWithContext(context.Background(), request)
+}
+
+// InvokeFabricChaincode
+// 调用Fabric用户合约执行交易
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) InvokeFabricChaincodeWithContext(ctx context.Context, request *InvokeFabricChaincodeRequest) (response *InvokeFabricChaincodeResponse, err error) {
+    if request == nil {
+        request = NewInvokeFabricChaincodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeFabricChaincode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeFabricChaincodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryRequest() (request *QueryRequest) {
     request = &QueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1795,6 +1948,55 @@ func (c *Client) QueryChainMakerTransactionWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewQueryChainMakerTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFabricChaincodeRequest() (request *QueryFabricChaincodeRequest) {
+    request = &QueryFabricChaincodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryFabricChaincode")
+    
+    
+    return
+}
+
+func NewQueryFabricChaincodeResponse() (response *QueryFabricChaincodeResponse) {
+    response = &QueryFabricChaincodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryFabricChaincode
+// 调用Fabric用户合约查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) QueryFabricChaincode(request *QueryFabricChaincodeRequest) (response *QueryFabricChaincodeResponse, err error) {
+    return c.QueryFabricChaincodeWithContext(context.Background(), request)
+}
+
+// QueryFabricChaincode
+// 调用Fabric用户合约查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+func (c *Client) QueryFabricChaincodeWithContext(ctx context.Context, request *QueryFabricChaincodeRequest) (response *QueryFabricChaincodeResponse, err error) {
+    if request == nil {
+        request = NewQueryFabricChaincodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFabricChaincode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFabricChaincodeResponse()
     err = c.Send(request, response)
     return
 }

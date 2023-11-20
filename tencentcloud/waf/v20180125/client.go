@@ -5816,7 +5816,7 @@ func NewModifyAccessPeriodResponse() (response *ModifyAccessPeriodResponse) {
 }
 
 // ModifyAccessPeriod
-// 本接口用于修改访问日志保存期限及大字段是否存储
+// 本接口用于修改访问日志保存期限等字段信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5844,7 +5844,7 @@ func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (respons
 }
 
 // ModifyAccessPeriod
-// 本接口用于修改访问日志保存期限及大字段是否存储
+// 本接口用于修改访问日志保存期限等字段信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7754,6 +7754,7 @@ func NewModifySpartaProtectionModeResponse() (response *ModifySpartaProtectionMo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -7777,6 +7778,7 @@ func (c *Client) ModifySpartaProtectionMode(request *ModifySpartaProtectionModeR
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"

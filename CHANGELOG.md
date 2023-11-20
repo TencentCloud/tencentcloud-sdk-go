@@ -1,3 +1,414 @@
+# Release v1.0.799
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 50 次发布
+
+发布时间：2023-11-21 01:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+* [DescribeBillDetailForOrganization](https://cloud.tencent.com/document/api/555/98858)
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+* [DescribeBillResourceSummaryForOrganization](https://cloud.tencent.com/document/api/555/98857)
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 147 次发布
+
+发布时间：2023-11-21 01:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewDBInstance](https://cloud.tencent.com/document/api/236/30160)
+
+	* 新增入参：AutoRenew
+
+
+
+
+## 数据安全治理中心(dsgc) 版本：2019-07-23
+
+### 第 6 次发布
+
+发布时间：2023-11-21 01:16:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RiskLevelRisk](https://cloud.tencent.com/document/api/1087/96844#RiskLevelRisk)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, RiskLevelName, RiskLevelDescription, IdentifyComplianceName, Type
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 55 次发布
+
+发布时间：2023-11-21 01:25:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BalanceReadOnlyGroup](https://cloud.tencent.com/document/api/238/101753)
+* [DeleteRestoreTask](https://cloud.tencent.com/document/api/238/101743)
+* [DescribeAccountPrivilegeByDB](https://cloud.tencent.com/document/api/238/101729)
+* [DescribeCollationTimeZone](https://cloud.tencent.com/document/api/238/101735)
+* [DescribeCrossRegions](https://cloud.tencent.com/document/api/238/101738)
+* [DescribeDBPrivilegeByAccount](https://cloud.tencent.com/document/api/238/101715)
+* [DescribeDBRestoreTime](https://cloud.tencent.com/document/api/238/101742)
+* [DescribeDatabaseNames](https://cloud.tencent.com/document/api/238/101714)
+* [DescribeInquiryPriceParameter](https://cloud.tencent.com/document/api/238/101749)
+* [DescribeInstanceTasks](https://cloud.tencent.com/document/api/238/101734)
+* [DescribeInstanceTradeParameter](https://cloud.tencent.com/document/api/238/101748)
+* [DescribeProductSpec](https://cloud.tencent.com/document/api/238/101747)
+* [DescribeReadOnlyGroupAutoWeight](https://cloud.tencent.com/document/api/238/101752)
+* [DescribeRestoreTask](https://cloud.tencent.com/document/api/238/101741)
+* [DescribeSpecSellStatus](https://cloud.tencent.com/document/api/238/101746)
+* [DescribeUpgradeInstanceCheck](https://cloud.tencent.com/document/api/238/101733)
+* [ModifyCloseWanIp](https://cloud.tencent.com/document/api/238/101718)
+* [ModifyDBInstanceNote](https://cloud.tencent.com/document/api/238/101732)
+* [ModifyOpenWanIp](https://cloud.tencent.com/document/api/238/101717)
+* [ModifyPublishSubscribe](https://cloud.tencent.com/document/api/238/101756)
+
+新增数据结构：
+
+* [CheckItem](https://cloud.tencent.com/document/api/238/19976#CheckItem)
+* [InstanceTask](https://cloud.tencent.com/document/api/238/19976#InstanceTask)
+* [ModifyDataBaseTuple](https://cloud.tencent.com/document/api/238/19976#ModifyDataBaseTuple)
+* [Price](https://cloud.tencent.com/document/api/238/19976#Price)
+* [ProductSpec](https://cloud.tencent.com/document/api/238/19976#ProductSpec)
+* [RestoreTask](https://cloud.tencent.com/document/api/238/19976#RestoreTask)
+* [SpecSellStatus](https://cloud.tencent.com/document/api/238/19976#SpecSellStatus)
+* [ZoneStatus](https://cloud.tencent.com/document/api/238/19976#ZoneStatus)
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2023-11-21 01:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFabricBlock](https://cloud.tencent.com/document/api/663/101763)
+* [DescribeFabricTransaction](https://cloud.tencent.com/document/api/663/101762)
+* [InvokeFabricChaincode](https://cloud.tencent.com/document/api/663/101761)
+* [QueryFabricChaincode](https://cloud.tencent.com/document/api/663/101760)
+
+新增数据结构：
+
+* [Transaction](https://cloud.tencent.com/document/api/663/19466#Transaction)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 55 次发布
+
+发布时间：2023-11-21 01:33:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
+
+	* 新增入参：NeedScan
+
+* [AddEditImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81638)
+
+	* 新增入参：AutoScanEnabled, ScanType
+
+* [CreateAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65591)
+
+	* 新增入参：ContainerRunning, ScanScope, ScanEndTime
+
+	* <font color="#dd0000">**修改入参**：</font>All
+
+* [CreateAssetImageScanTask](https://cloud.tencent.com/document/api/1285/65515)
+
+	* 新增入参：ContainerRunning, ScanScope, Timeout
+
+* [DescribeAssetImageDetail](https://cloud.tencent.com/document/api/1285/65506)
+
+	* 新增出参：ImageDigest
+
+* [DescribeAssetImageScanSetting](https://cloud.tencent.com/document/api/1285/65487)
+
+	* 新增出参：ContainerRunning, ScanScope, ScanEndTime
+
+* [DescribeAssetSummary](https://cloud.tencent.com/document/api/1285/65477)
+
+	* 新增出参：TodayNewImageCnt, TodayUnsafeImageCnt, RecommendedFixImageCnt, ScannedImageCnt
+
+* [DescribeImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81628)
+
+	* 新增出参：AutoScanEnabled, ScanType
+
+* [RenewImageAuthorizeState](https://cloud.tencent.com/document/api/1285/65459)
+
+	* 新增入参：NeedScan, ScanType
+
+* [SyncAssetImageRegistryAsset](https://cloud.tencent.com/document/api/1285/65458)
+
+	* 新增入参：All, RegistryIds
+
+
+新增数据结构：
+
+* [ImageVulLayerInfo](https://cloud.tencent.com/document/api/1285/65614#ImageVulLayerInfo)
+
+修改数据结构：
+
+* [ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)
+
+	* 新增成员：RecommendedFix
+
+* [ImageVul](https://cloud.tencent.com/document/api/1285/65614#ImageVul)
+
+	* 新增成员：LayerInfos
+
+* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
+
+	* 新增成员：CriticalLevelVulCnt, HighLevelVulCnt, MediumLevelVulCnt, LowLevelVulCnt, IsLatestImage, RecommendedFix
+
+* [ImagesVul](https://cloud.tencent.com/document/api/1285/65614#ImagesVul)
+
+	* 新增成员：AttackLevel
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 92 次发布
+
+发布时间：2023-11-21 01:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+
+	* <font color="#dd0000">**修改入参**：</font>Tags
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 162 次发布
+
+发布时间：2023-11-21 01:37:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterExtraArgs](https://cloud.tencent.com/document/api/457/101764)
+* [DescribeExternalNodeSupportConfig](https://cloud.tencent.com/document/api/457/101767)
+* [DescribeIPAMD](https://cloud.tencent.com/document/api/457/101765)
+
+修改接口：
+
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/457/78051)
+
+	* 新增出参：ClusterIntranetSubnetId
+
+
+新增数据结构：
+
+* [Step](https://cloud.tencent.com/document/api/457/31866#Step)
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 6 次发布
+
+发布时间：2023-11-21 01:38:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportSourceClusterConsumerGroups](https://cloud.tencent.com/document/api/1493/101770)
+* [ImportSourceClusterTopics](https://cloud.tencent.com/document/api/1493/101769)
+
+新增数据结构：
+
+* [SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)
+* [SourceClusterTopicConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterTopicConfig)
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 52 次发布
+
+发布时间：2023-11-21 01:38:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongTarget](https://cloud.tencent.com/document/api/1364/54942#KongTarget)
+
+	* 新增成员：CvmInstanceId, CvmInstanceName
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>FeatureVersion, EnableClientIntranet, StorageOption
+
+
+
+
+## 声音复刻(vrs) 版本：2020-08-24
+
+### 第 5 次发布
+
+发布时间：2023-11-21 01:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VoiceTypeInfo](https://cloud.tencent.com/document/api/1283/90065#VoiceTypeInfo)
+
+	* 新增成员：IsDeployed
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 75 次发布
+
+发布时间：2023-11-21 01:41:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+
+	* 新增入参：ValidTimeStampMin, ValidTimeStampMax
+
+* [DescribeModuleStatus](https://cloud.tencent.com/document/api/627/101340)
+
+	* 新增出参：RateLimit
+
+* [ModifyModuleStatus](https://cloud.tencent.com/document/api/627/99699)
+
+	* 新增入参：RateLimit
+
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+	* 新增出参：Ids
+
+* [UpsertSession](https://cloud.tencent.com/document/api/627/97645)
+
+	* 新增出参：SessionID
+
+
+修改数据结构：
+
+* [AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem)
+
+	* 新增成员：BeginTime
+
+* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
+
+	* 新增成员：Type, Region
+
+* [DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)
+
+	* 新增成员：ModifyTime, ValidStatus, Source
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+	* 新增成员：WxAccess
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 58 次发布
+
+发布时间：2023-11-21 01:42:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApproveTypeList](https://cloud.tencent.com/document/api/1267/101771)
+
+新增数据结构：
+
+* [ApproveType](https://cloud.tencent.com/document/api/1267/76336#ApproveType)
+
+修改数据结构：
+
+* [Apply](https://cloud.tencent.com/document/api/1267/76336#Apply)
+
+	* 新增成员：ErrorMessage, ApplyName, ApproverId, ApproverName, ApproveProjectName
+
+	* <font color="#dd0000">**修改成员**：</font>ApplicantName, ApproveId
+
+
+
+
 # Release v1.0.798
 
 ## 云服务器(cvm) 版本：2017-03-12

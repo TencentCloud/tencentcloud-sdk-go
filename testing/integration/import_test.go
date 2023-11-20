@@ -60,7 +60,6 @@ import (
 	camv20190116 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam/v20190116"
 	captchav20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha/v20190722"
 	carv20220110 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/car/v20220110"
-	casbv20200507 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/casb/v20200507"
 	catv20180409 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cat/v20180409"
 	cbsv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs/v20170312"
 	cccv20200210 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ccc/v20200210"
@@ -84,7 +83,6 @@ import (
 	clbv20180317 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb/v20180317"
 	cloudauditv20190319 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit/v20190319"
 	cloudhsmv20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm/v20191112"
-	cloudstudiov20210524 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio/v20210524"
 	cloudstudiov20230508 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio/v20230508"
 	clsv20201016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls/v20201016"
 	cmev20191029 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme/v20191029"
@@ -814,19 +812,6 @@ func TestCarv20220110Import(t *testing.T) {
     }
 }
 
-func TestCasbv20200507Import(t *testing.T) {
-    credential := common.NewCredential(
-        os.Getenv("TENCENTCLOUD_SECRET_ID"),
-        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-    client, err := casbv20200507.NewClient(
-        credential,
-        regions.Guangzhou,
-        profile.NewClientProfile())
-    if err != nil || client == nil {
-        t.Errorf("fail to init casb_v20200507 client: %v", err)
-    }
-}
-
 func TestCatv20180409Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -1123,19 +1108,6 @@ func TestCloudhsmv20191112Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init cloudhsm_v20191112 client: %v", err)
-    }
-}
-
-func TestCloudstudiov20210524Import(t *testing.T) {
-    credential := common.NewCredential(
-        os.Getenv("TENCENTCLOUD_SECRET_ID"),
-        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-    client, err := cloudstudiov20210524.NewClient(
-        credential,
-        regions.Guangzhou,
-        profile.NewClientProfile())
-    if err != nil || client == nil {
-        t.Errorf("fail to init cloudstudio_v20210524 client: %v", err)
     }
 }
 

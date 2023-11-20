@@ -2740,6 +2740,7 @@ func NewPublishLayerVersionResponse() (response *PublishLayerVersionResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNAUTHORIZEDOPERATION_NOTMC = "UnauthorizedOperation.NotMC"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_COS = "UnsupportedOperation.Cos"
 func (c *Client) PublishLayerVersion(request *PublishLayerVersionRequest) (response *PublishLayerVersionResponse, err error) {
     return c.PublishLayerVersionWithContext(context.Background(), request)
@@ -2770,6 +2771,7 @@ func (c *Client) PublishLayerVersion(request *PublishLayerVersionRequest) (respo
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNAUTHORIZEDOPERATION_NOTMC = "UnauthorizedOperation.NotMC"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_COS = "UnsupportedOperation.Cos"
 func (c *Client) PublishLayerVersionWithContext(ctx context.Context, request *PublishLayerVersionRequest) (response *PublishLayerVersionResponse, err error) {
     if request == nil {

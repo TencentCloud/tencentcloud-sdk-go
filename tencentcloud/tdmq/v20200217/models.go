@@ -1443,9 +1443,6 @@ type CreateProClusterRequestParams struct {
 	// 购买时长，取值范围：1～50
 	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
 
-	// 集群的标签列表(已废弃)
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
-
 	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
@@ -1454,6 +1451,9 @@ type CreateProClusterRequestParams struct {
 
 	// vpc网络标签
 	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+
+	// 集群的标签列表(已废弃)
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateProClusterRequest struct {
@@ -1480,9 +1480,6 @@ type CreateProClusterRequest struct {
 	// 购买时长，取值范围：1～50
 	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
 
-	// 集群的标签列表(已废弃)
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
-
 	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
@@ -1491,6 +1488,9 @@ type CreateProClusterRequest struct {
 
 	// vpc网络标签
 	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+
+	// 集群的标签列表(已废弃)
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateProClusterRequest) ToJsonString() string {
@@ -1510,10 +1510,10 @@ func (r *CreateProClusterRequest) FromJsonString(s string) error {
 	delete(f, "StorageSize")
 	delete(f, "AutoRenewFlag")
 	delete(f, "TimeSpan")
-	delete(f, "Tags")
 	delete(f, "ClusterName")
 	delete(f, "AutoVoucher")
 	delete(f, "Vpcs")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProClusterRequest has unknown keys!", "")
 	}
