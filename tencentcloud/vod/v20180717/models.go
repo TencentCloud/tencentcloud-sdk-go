@@ -11621,11 +11621,12 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>FastClipMedia：快速剪辑任务；</li>
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
 	// <li>DescribeFileAttributesTask：获取文件属性任务；</li>
-	// <li>RebuildMedia：音画质重生任务；</li>
+	// <li>RebuildMedia：音画质重生任务（不推荐使用）；</li>
 	// <li>ReviewAudioVideo：音视频审核任务；</li>
 	// <li>ExtractTraceWatermark：提取溯源水印任务；</li>
 	// <li>ExtractCopyRightWatermark：提取版权水印任务；</li>
-	// <li>QualityInspect：音画质检测任务。</li>
+	// <li>QualityInspect：音画质检测任务；</li>
+	// <li>QualityEnhance：音画质重生任务。</li>
 	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -11722,6 +11723,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 音画质检测任务信息，仅当 TaskType 为 QualityInspect 时该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityInspectTask *QualityInspectTask `json:"QualityInspectTask,omitnil" name:"QualityInspectTask"`
+
+	// 音画质重生任务信息，仅当 TaskType 为 QualityEnhance，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityEnhanceTask *QualityEnhanceTask `json:"QualityEnhanceTask,omitnil" name:"QualityEnhanceTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -20401,6 +20406,78 @@ type QRCodeConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
 }
 
+type QualityEnhanceTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil" name:"ErrCodeExt"`
+
+	// 音画质重生任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitnil" name:"Progress"`
+
+	// 音画质重生任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *QualityEnhanceTaskInput `json:"Input,omitnil" name:"Input"`
+
+	// 音画质重生任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *QualityEnhanceTaskOutput `json:"Output,omitnil" name:"Output"`
+
+	// 音画质重生输出视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitnil" name:"MetaData"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
+}
+
+type QualityEnhanceTaskInput struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitnil" name:"FileId"`
+
+	// 音画质重生模板 ID。
+	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type QualityEnhanceTaskOutput struct {
+	// 文件类型，例如 mp4、flv 等。
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
+
+	// 媒体文件播放地址。
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitnil" name:"FileId"`
+
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitnil" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitnil" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+}
+
 type QualityEvaluationConfigureInfo struct {
 	// 视频画面质量评价检测开关，可选值：
 	// <li>ON：开启；</li>
@@ -23595,6 +23672,7 @@ type SvgWatermarkInputForUpdate struct {
 	// 花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
 	// 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
 	// 此配置项即用来描述单个水印的周期配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleConfig *WatermarkCycleConfigForUpdate `json:"CycleConfig,omitnil" name:"CycleConfig"`
 }
 

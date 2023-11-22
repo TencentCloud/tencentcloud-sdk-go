@@ -4327,11 +4327,10 @@ type DescribeOverviewL7DataRequestParams struct {
 	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询的域名集合，不填默认查询所有子域名。
+	// 查询的域名集合，此参数已经废弃。
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 查询的协议类型，取值有：
@@ -4350,6 +4349,7 @@ type DescribeOverviewL7DataRequestParams struct {
 
 	// 过滤条件，详细的过滤条件Key值如下：
 	// <li>socket<br>   按照【<strong>HTTP协议类型</strong>】进行过滤。<br>   对应的Value可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS协议；<br>   QUIC：QUIC协议。</li>
+	// <li>domain<br>   按照【<strong>域名</strong>】进行过滤。</li>
 	// <li>tagKey<br>   按照【<strong>标签Key</strong>】进行过滤。</li>
 	// <li>tagValue<br>   按照【<strong>标签Value</strong>】进行过滤。</li>
 	Filters []*QueryCondition `json:"Filters,omitnil" name:"Filters"`
@@ -4381,11 +4381,10 @@ type DescribeOverviewL7DataRequest struct {
 	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询的域名集合，不填默认查询所有子域名。
+	// 查询的域名集合，此参数已经废弃。
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 查询的协议类型，取值有：
@@ -4404,6 +4403,7 @@ type DescribeOverviewL7DataRequest struct {
 
 	// 过滤条件，详细的过滤条件Key值如下：
 	// <li>socket<br>   按照【<strong>HTTP协议类型</strong>】进行过滤。<br>   对应的Value可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS协议；<br>   QUIC：QUIC协议。</li>
+	// <li>domain<br>   按照【<strong>域名</strong>】进行过滤。</li>
 	// <li>tagKey<br>   按照【<strong>标签Key</strong>】进行过滤。</li>
 	// <li>tagValue<br>   按照【<strong>标签Value</strong>】进行过滤。</li>
 	Filters []*QueryCondition `json:"Filters,omitnil" name:"Filters"`
@@ -4473,6 +4473,10 @@ func (r *DescribeOverviewL7DataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrefetchTasksRequestParams struct {
+	// 站点ID。
+	// 必填参数。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
 	// 查询起始时间。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
@@ -4485,14 +4489,17 @@ type DescribePrefetchTasksRequestParams struct {
 	// 分页查询限制数目，默认值：20，上限：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribePrefetchTasksRequest struct {
 	*tchttp.BaseRequest
 	
+	// 站点ID。
+	// 必填参数。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
 	// 查询起始时间。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
@@ -4505,8 +4512,7 @@ type DescribePrefetchTasksRequest struct {
 	// 分页查询限制数目，默认值：20，上限：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
@@ -4522,6 +4528,7 @@ func (r *DescribePrefetchTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ZoneId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Offset")
@@ -4563,7 +4570,8 @@ func (r *DescribePrefetchTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePurgeTasksRequestParams struct {
-	// 字段已废弃，请使用Filters中的zone-id。
+	// 站点ID。
+	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 查询起始时间。
@@ -4578,14 +4586,15 @@ type DescribePurgeTasksRequestParams struct {
 	// 分页查限制数目，默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 字段已废弃，请使用Filters中的zone-id。
+	// 站点ID。
+	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 查询起始时间。
@@ -4600,7 +4609,7 @@ type DescribePurgeTasksRequest struct {
 	// 分页查限制数目，默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
@@ -4861,13 +4870,10 @@ type DescribeTimingL4DataRequestParams struct {
 	// <li>l4Flow_connections: 访问连接数；</li>
 	// <li>l4Flow_flux: 访问总流量；</li>
 	// <li>l4Flow_inFlux: 访问入流量；</li>
-	// <li>l4Flow_outFlux: 访问出流量；</li>
-	// <li> l4Flow_outPkt: 访问出包量。</li>
+	// <li>l4Flow_outFlux: 访问出流量。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；
-	// 若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -4905,13 +4911,10 @@ type DescribeTimingL4DataRequest struct {
 	// <li>l4Flow_connections: 访问连接数；</li>
 	// <li>l4Flow_flux: 访问总流量；</li>
 	// <li>l4Flow_inFlux: 访问入流量；</li>
-	// <li>l4Flow_outFlux: 访问出流量；</li>
-	// <li> l4Flow_outPkt: 访问出包量。</li>
+	// <li>l4Flow_outFlux: 访问出流量。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；
-	// 若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -5000,17 +5003,16 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: Edgeone响应流量；</li>
-	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
-	// <li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
-	// <li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
+	// <li>l7Flow_outFlux: Edgeone 响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone 请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edgeone 响应带宽；</li>
+	// <li>l7Flow_inBandwidth：Edgeone 请求带宽；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
 	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
 	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合, 此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -5057,17 +5059,16 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: Edgeone响应流量；</li>
-	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
-	// <li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
-	// <li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
+	// <li>l7Flow_outFlux: Edgeone 响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone 请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edgeone 响应带宽；</li>
+	// <li>l7Flow_inBandwidth：Edgeone 请求带宽；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
 	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
 	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合。
-	// 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+	// 站点 ID 集合, 此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -5172,7 +5173,7 @@ type DescribeTimingL7CacheDataRequestParams struct {
 	// <li> l7Cache_outBandwidth：响应带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 过滤条件，详细的过滤条件如下：
@@ -5214,7 +5215,7 @@ type DescribeTimingL7CacheDataRequest struct {
 	// <li> l7Cache_outBandwidth：响应带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 过滤条件，详细的过滤条件如下：
@@ -5326,7 +5327,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
@@ -5398,7 +5399,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// <li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
@@ -5508,7 +5509,7 @@ type DescribeTopL7CacheDataRequestParams struct {
 	// <li> l7Cache_outFlux_statusCode：状态码。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点id集合，不填默认选择全部站点。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
@@ -5554,7 +5555,7 @@ type DescribeTopL7CacheDataRequest struct {
 	// <li> l7Cache_outFlux_statusCode：状态码。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点id集合，不填默认选择全部站点。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
@@ -5926,7 +5927,7 @@ type DownloadL4LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 四层实例 ID 集合。
@@ -5948,7 +5949,7 @@ type DownloadL4LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 四层实例 ID 集合。
@@ -6021,7 +6022,7 @@ type DownloadL7LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点ID集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。
@@ -6043,7 +6044,7 @@ type DownloadL7LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点ID集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。

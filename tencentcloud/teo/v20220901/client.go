@@ -2677,7 +2677,7 @@ func NewDescribeOverviewL7DataResponse() (response *DescribeOverviewL7DataRespon
 }
 
 // DescribeOverviewL7Data
-// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
+// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2693,7 +2693,7 @@ func (c *Client) DescribeOverviewL7Data(request *DescribeOverviewL7DataRequest) 
 }
 
 // DescribeOverviewL7Data
-// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
+// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2740,7 +2740,7 @@ func NewDescribePrefetchTasksResponse() (response *DescribePrefetchTasksResponse
 }
 
 // DescribePrefetchTasks
-// 查询预热任务状态
+// DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2752,7 +2752,7 @@ func (c *Client) DescribePrefetchTasks(request *DescribePrefetchTasksRequest) (r
 }
 
 // DescribePrefetchTasks
-// 查询预热任务状态
+// DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2795,7 +2795,7 @@ func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
 }
 
 // DescribePurgeTasks
-// 查询清除缓存历史记录
+// DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 CreatePurgeTasks 接口提交的任务均可通过此接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2806,7 +2806,7 @@ func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (respons
 }
 
 // DescribePurgeTasks
-// 查询清除缓存历史记录
+// DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 CreatePurgeTasks 接口提交的任务均可通过此接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

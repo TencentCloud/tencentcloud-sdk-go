@@ -1,3 +1,227 @@
+# Release v1.0.800
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 148 次发布
+
+发布时间：2023-11-22 01:30:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseAuditService](https://cloud.tencent.com/document/api/236/101816)
+* [CreateAuditRuleTemplate](https://cloud.tencent.com/document/api/236/101815)
+* [DeleteAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101814)
+* [DeleteDatabase](https://cloud.tencent.com/document/api/236/101808)
+* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/236/101813)
+* [DescribeAuditRuleTemplateModifyHistory](https://cloud.tencent.com/document/api/236/101812)
+* [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)
+* [ModifyAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101810)
+* [ModifyAuditService](https://cloud.tencent.com/document/api/236/101809)
+
+新增数据结构：
+
+* [AuditInstanceFilters](https://cloud.tencent.com/document/api/236/15878#AuditInstanceFilters)
+* [AuditInstanceInfo](https://cloud.tencent.com/document/api/236/15878#AuditInstanceInfo)
+* [AuditRuleTemplateInfo](https://cloud.tencent.com/document/api/236/15878#AuditRuleTemplateInfo)
+* [InstanceDbAuditStatus](https://cloud.tencent.com/document/api/236/15878#InstanceDbAuditStatus)
+* [RuleTemplateInfo](https://cloud.tencent.com/document/api/236/15878#RuleTemplateInfo)
+* [RuleTemplateRecordInfo](https://cloud.tencent.com/document/api/236/15878#RuleTemplateRecordInfo)
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：ExpandCpu
+
+	* <font color="#dd0000">**修改成员**：</font>MasterInfo
+
+
+
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 13 次发布
+
+发布时间：2023-11-22 01:45:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskPolicyTriggerLog](https://cloud.tencent.com/document/api/1500/101818)
+* [TriggerPolicy](https://cloud.tencent.com/document/api/1500/101817)
+
+新增数据结构：
+
+* [PolicyTriggerLog](https://cloud.tencent.com/document/api/1500/71784#PolicyTriggerLog)
+
+
+
+## 配置审计(config) 版本：2022-08-02
+
+### 第 1 次发布
+
+发布时间：2023-11-21 15:26:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListAggregateConfigRules](https://cloud.tencent.com/document/api/1579/101782)
+* [ListConfigRules](https://cloud.tencent.com/document/api/1579/101781)
+
+新增数据结构：
+
+* [Annotation](https://cloud.tencent.com/document/api/1579/101783#Annotation)
+* [ConfigRule](https://cloud.tencent.com/document/api/1579/101783#ConfigRule)
+* [InputParameter](https://cloud.tencent.com/document/api/1579/101783#InputParameter)
+* [InputParameterForManage](https://cloud.tencent.com/document/api/1579/101783#InputParameterForManage)
+* [SourceConditionForManage](https://cloud.tencent.com/document/api/1579/101783#SourceConditionForManage)
+* [Tag](https://cloud.tencent.com/document/api/1579/101783#Tag)
+* [TriggerType](https://cloud.tencent.com/document/api/1579/101783#TriggerType)
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 4 次发布
+
+发布时间：2023-11-22 04:14:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SystemDisk](https://cloud.tencent.com/document/api/1721/101518#SystemDisk)
+
+	* 新增成员：DiskName
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 93 次发布
+
+发布时间：2023-11-22 06:38:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+
+	* 新增入参：Vpc
+
+	* <font color="#dd0000">**删除入参**：</font>Vpcs
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：ProjectId, ProjectName
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 64 次发布
+
+发布时间：2023-11-22 06:42:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/80700)
+
+	* 新增入参：ZoneId
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 163 次发布
+
+发布时间：2023-11-22 06:54:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIPAMD](https://cloud.tencent.com/document/api/457/101765)
+
+	* 新增出参：ClaimExpiredDuration
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 53 次发布
+
+发布时间：2023-11-22 07:09:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseWafProtection](https://cloud.tencent.com/document/api/1364/101822)
+* [CreateWafDomains](https://cloud.tencent.com/document/api/1364/101821)
+* [OpenWafProtection](https://cloud.tencent.com/document/api/1364/101820)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 171 次发布
+
+发布时间：2023-11-22 07:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：QualityEnhanceTask
+
+
+新增数据结构：
+
+* [QualityEnhanceTask](https://cloud.tencent.com/document/api/266/31773#QualityEnhanceTask)
+* [QualityEnhanceTaskInput](https://cloud.tencent.com/document/api/266/31773#QualityEnhanceTaskInput)
+* [QualityEnhanceTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityEnhanceTaskOutput)
+
+
+
 # Release v1.0.799
 
 ## 费用中心(billing) 版本：2018-07-09

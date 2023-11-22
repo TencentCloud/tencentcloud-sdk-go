@@ -578,6 +578,35 @@ type AuditFilter struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type AuditInstanceFilters struct {
+	// 过滤条件名。支持InstanceId-实例ID，InstanceName-实例名称，ProjectId-项目ID，TagKey-标签键，Tag-标签（以竖线分割，例：Tagkey|Tagvalue）。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// true表示精确查找，false表示模糊匹配。
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
+
+	// 筛选值
+	Values []*string `json:"Values,omitnil" name:"Values"`
+}
+
+type AuditInstanceInfo struct {
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfoUnit `json:"TagList,omitnil" name:"TagList"`
+
+	// 数据库内核类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbType *string `json:"DbType,omitnil" name:"DbType"`
+
+	// 数据库内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersion *string `json:"DbVersion,omitnil" name:"DbVersion"`
+}
+
 type AuditLog struct {
 	// 影响行数。
 	AffectRows *int64 `json:"AffectRows,omitnil" name:"AffectRows"`
@@ -807,6 +836,44 @@ type AuditRuleFilters struct {
 	// 单条审计规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+}
+
+type AuditRuleTemplateInfo struct {
+	// 规则模板ID。
+	RuleTemplateId *string `json:"RuleTemplateId,omitnil" name:"RuleTemplateId"`
+
+	// 规则模板名称。
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 规则模板的过滤条件。
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 规则模板描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 规则模板创建时间。
+	CreateAt *string `json:"CreateAt,omitnil" name:"CreateAt"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+
+	// 规则模板应用在哪些在实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedInstances []*string `json:"AffectedInstances,omitnil" name:"AffectedInstances"`
+
+	// 模板状态。0-无任务 ，1-修改中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 模板更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateAt *string `json:"UpdateAt,omitnil" name:"UpdateAt"`
 }
 
 type AutoStrategy struct {
@@ -1222,6 +1289,60 @@ type CloneItem struct {
 
 	// 源实例所在地域Id
 	SrcRegionId *int64 `json:"SrcRegionId,omitnil" name:"SrcRegionId"`
+}
+
+// Predefined struct for user
+type CloseAuditServiceRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type CloseAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *CloseAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseAuditServiceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CloseAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *CloseAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAuditServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1813,6 +1934,92 @@ func (r *CreateAuditRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAuditRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditRuleTemplateRequestParams struct {
+	// 审计规则
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 规则模板名称
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 规则模板描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+type CreateAuditRuleTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审计规则
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 规则模板名称
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 规则模板描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+func (r *CreateAuditRuleTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditRuleTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleFilters")
+	delete(f, "RuleTemplateName")
+	delete(f, "Description")
+	delete(f, "AlarmLevel")
+	delete(f, "AlarmPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditRuleTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditRuleTemplateResponseParams struct {
+	// 生成的规则模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateId *string `json:"RuleTemplateId,omitnil" name:"RuleTemplateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAuditRuleTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditRuleTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditRuleTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditRuleTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3714,6 +3921,60 @@ func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAuditRuleTemplatesRequestParams struct {
+	// 审计规则模版ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+}
+
+type DeleteAuditRuleTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审计规则模版ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+}
+
+func (r *DeleteAuditRuleTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditRuleTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleTemplateIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditRuleTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditRuleTemplatesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteAuditRuleTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditRuleTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditRuleTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditRuleTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteBackupRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -3771,6 +4032,67 @@ func (r *DeleteBackupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatabaseRequestParams struct {
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据库名称。
+	DBName *string `json:"DBName,omitnil" name:"DBName"`
+}
+
+type DeleteDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据库名称。
+	DBName *string `json:"DBName,omitnil" name:"DBName"`
+}
+
+func (r *DeleteDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DBName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDatabaseResponseParams `json:"Response"`
+}
+
+func (r *DeleteDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4260,6 +4582,95 @@ func (r *DescribeAuditConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAuditInstanceListRequestParams struct {
+	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
+
+	// 查询实例列表的过滤条件。
+	Filters []*AuditInstanceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 实例的审计规则模式。1-规则审计；0-全审计。
+	AuditMode *int64 `json:"AuditMode,omitnil" name:"AuditMode"`
+
+	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeAuditInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
+
+	// 查询实例列表的过滤条件。
+	Filters []*AuditInstanceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 实例的审计规则模式。1-规则审计；0-全审计。
+	AuditMode *int64 `json:"AuditMode,omitnil" name:"AuditMode"`
+
+	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeAuditInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditSwitch")
+	delete(f, "Filters")
+	delete(f, "AuditMode")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListResponseParams struct {
+	// 符合查询条件的实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 审计实例详细信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*InstanceDbAuditStatus `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAuditInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAuditLogFilesRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -4559,6 +4970,199 @@ func (r *DescribeAuditPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRuleTemplateModifyHistoryRequestParams struct {
+	// 模板ID
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 查询范围的开始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询范围的结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 返回条数。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序方式。DESC-按修改时间倒排，ASC-正序。
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+type DescribeAuditRuleTemplateModifyHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板ID
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 查询范围的开始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 查询范围的结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 返回条数。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序方式。DESC-按修改时间倒排，ASC-正序。
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+func (r *DescribeAuditRuleTemplateModifyHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRuleTemplateModifyHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleTemplateIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditRuleTemplateModifyHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRuleTemplateModifyHistoryResponseParams struct {
+	// 总的条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 变更详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*RuleTemplateRecordInfo `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAuditRuleTemplateModifyHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditRuleTemplateModifyHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditRuleTemplateModifyHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRuleTemplateModifyHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRuleTemplatesRequestParams struct {
+	// 规则模板ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 规则模板名称。
+	RuleTemplateNames []*string `json:"RuleTemplateNames,omitnil" name:"RuleTemplateNames"`
+
+	// 单次请求返回的数量。默认值20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+type DescribeAuditRuleTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则模板ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 规则模板名称。
+	RuleTemplateNames []*string `json:"RuleTemplateNames,omitnil" name:"RuleTemplateNames"`
+
+	// 单次请求返回的数量。默认值20。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+func (r *DescribeAuditRuleTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRuleTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleTemplateIds")
+	delete(f, "RuleTemplateNames")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "AlarmLevel")
+	delete(f, "AlarmPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditRuleTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRuleTemplatesResponseParams struct {
+	// 符合查询条件的实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 规则模板详细信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AuditRuleTemplateInfo `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAuditRuleTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditRuleTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditRuleTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRuleTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9369,6 +9973,66 @@ type InstanceAuditLogFilters struct {
 	Value []*string `json:"Value,omitnil" name:"Value"`
 }
 
+type InstanceDbAuditStatus struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 审计状态。ON-表示审计已开启，OFF-表示审计关闭
+	AuditStatus *string `json:"AuditStatus,omitnil" name:"AuditStatus"`
+
+	// 任务状态。0-无任务；1-审计开启中，2-审计关闭中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditTask *uint64 `json:"AuditTask,omitnil" name:"AuditTask"`
+
+	// 日志保留时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
+
+	// 高频存储时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil" name:"HighLogExpireDay"`
+
+	// 低频存储时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLogExpireDay *uint64 `json:"LowLogExpireDay,omitnil" name:"LowLogExpireDay"`
+
+	// 日志存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingAmount *float64 `json:"BillingAmount,omitnil" name:"BillingAmount"`
+
+	// 高频存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighRealStorage *float64 `json:"HighRealStorage,omitnil" name:"HighRealStorage"`
+
+	// 低频存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowRealStorage *float64 `json:"LowRealStorage,omitnil" name:"LowRealStorage"`
+
+	// 是否为全审计。true-表示全审计。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
+
+	// 审计开通时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitnil" name:"CreateAt"`
+
+	// 实例相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
+
+	// 总存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealStorage *float64 `json:"RealStorage,omitnil" name:"RealStorage"`
+
+	// 是否包含审计策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldRule *bool `json:"OldRule,omitnil" name:"OldRule"`
+
+	// 实例所应用的规则模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+}
+
 type InstanceInfo struct {
 	// 外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
 	WanStatus *int64 `json:"WanStatus,omitnil" name:"WanStatus"`
@@ -9518,6 +10182,10 @@ type InstanceInfo struct {
 
 	// 实例磁盘类型，仅云盘版实例才返回该值。可能的值为 CLOUD_SSD：SSD云硬盘， CLOUD_HSSD：增强型SSD云硬盘
 	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
+
+	// 当前扩容的CPU核心数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpandCpu *int64 `json:"ExpandCpu,omitnil" name:"ExpandCpu"`
 }
 
 type InstanceRebootTime struct {
@@ -10284,6 +10952,184 @@ func (r *ModifyAuditRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuditRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditRuleTemplatesRequestParams struct {
+	// 审计规则模板ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 修改后的审计规则。
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 修改后的规则模板名称。	
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 修改后的规则模板描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+type ModifyAuditRuleTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审计规则模板ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 修改后的审计规则。
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 修改后的规则模板名称。	
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 修改后的规则模板描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+}
+
+func (r *ModifyAuditRuleTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditRuleTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleTemplateIds")
+	delete(f, "RuleFilters")
+	delete(f, "RuleTemplateName")
+	delete(f, "Description")
+	delete(f, "AlarmLevel")
+	delete(f, "AlarmPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditRuleTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditRuleTemplatesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAuditRuleTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditRuleTemplatesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditRuleTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditRuleTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditServiceRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 日志保留时长。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
+
+	// 高频日志保留时长。
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil" name:"HighLogExpireDay"`
+
+	// 修改实例审计规则为全审计。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
+
+	// 审计规则。
+	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
+
+	// 规则模版ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+}
+
+type ModifyAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 日志保留时长。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
+
+	// 高频日志保留时长。
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil" name:"HighLogExpireDay"`
+
+	// 修改实例审计规则为全审计。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
+
+	// 审计规则。
+	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
+
+	// 规则模版ID。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+}
+
+func (r *ModifyAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "HighLogExpireDay")
+	delete(f, "AuditAll")
+	delete(f, "AuditRuleFilters")
+	delete(f, "RuleTemplateIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditServiceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13246,6 +14092,58 @@ type RuleFilters struct {
 
 	// 审计规则过滤条件的匹配值。sqlType条件的Value需在以下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
 	Value []*string `json:"Value,omitnil" name:"Value"`
+}
+
+type RuleTemplateInfo struct {
+	// 规则模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateId *string `json:"RuleTemplateId,omitnil" name:"RuleTemplateId"`
+
+	// 规则模板名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 规则内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil" name:"RuleFilters"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *int64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 告警策略。0-不告警，1-告警。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmPolicy *int64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+
+	// 规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type RuleTemplateRecordInfo struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 修改前规则模板的详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyBeforeInfo *RuleTemplateInfo `json:"ModifyBeforeInfo,omitnil" name:"ModifyBeforeInfo"`
+
+	// 修改后规则模板的详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyAfterInfo *RuleTemplateInfo `json:"ModifyAfterInfo,omitnil" name:"ModifyAfterInfo"`
+
+	// 影响的实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedInstances []*string `json:"AffectedInstances,omitnil" name:"AffectedInstances"`
+
+	// 操作人，账号uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 变更的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 }
 
 type SecurityGroup struct {

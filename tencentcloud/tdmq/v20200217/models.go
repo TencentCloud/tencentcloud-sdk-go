@@ -385,6 +385,14 @@ type Cluster struct {
 	// 1: 包年包月
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 项目名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 }
 
 type CmqDeadLetterPolicy struct {
@@ -1450,7 +1458,7 @@ type CreateProClusterRequestParams struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 
 	// vpc网络标签
-	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+	Vpc *VpcInfo `json:"Vpc,omitnil" name:"Vpc"`
 
 	// 集群的标签列表(已废弃)
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
@@ -1487,7 +1495,7 @@ type CreateProClusterRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 
 	// vpc网络标签
-	Vpcs *VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
+	Vpc *VpcInfo `json:"Vpc,omitnil" name:"Vpc"`
 
 	// 集群的标签列表(已废弃)
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
@@ -1512,7 +1520,7 @@ func (r *CreateProClusterRequest) FromJsonString(s string) error {
 	delete(f, "TimeSpan")
 	delete(f, "ClusterName")
 	delete(f, "AutoVoucher")
-	delete(f, "Vpcs")
+	delete(f, "Vpc")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProClusterRequest has unknown keys!", "")

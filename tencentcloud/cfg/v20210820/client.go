@@ -366,6 +366,75 @@ func (c *Client) DescribeTaskListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeTaskPolicyTriggerLogRequest() (request *DescribeTaskPolicyTriggerLogRequest) {
+    request = &DescribeTaskPolicyTriggerLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "DescribeTaskPolicyTriggerLog")
+    
+    
+    return
+}
+
+func NewDescribeTaskPolicyTriggerLogResponse() (response *DescribeTaskPolicyTriggerLogResponse) {
+    response = &DescribeTaskPolicyTriggerLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskPolicyTriggerLog
+// 获取护栏触发日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTaskPolicyTriggerLog(request *DescribeTaskPolicyTriggerLogRequest) (response *DescribeTaskPolicyTriggerLogResponse, err error) {
+    return c.DescribeTaskPolicyTriggerLogWithContext(context.Background(), request)
+}
+
+// DescribeTaskPolicyTriggerLog
+// 获取护栏触发日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTaskPolicyTriggerLogWithContext(ctx context.Context, request *DescribeTaskPolicyTriggerLogRequest) (response *DescribeTaskPolicyTriggerLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskPolicyTriggerLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskPolicyTriggerLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskPolicyTriggerLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
     request = &DescribeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -685,6 +754,69 @@ func (c *Client) ModifyTaskRunStatusWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyTaskRunStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTriggerPolicyRequest() (request *TriggerPolicyRequest) {
+    request = &TriggerPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "TriggerPolicy")
+    
+    
+    return
+}
+
+func NewTriggerPolicyResponse() (response *TriggerPolicyResponse) {
+    response = &TriggerPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TriggerPolicy
+// 用于触发混沌演练护栏（类型为触发和恢复2种）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TriggerPolicy(request *TriggerPolicyRequest) (response *TriggerPolicyResponse, err error) {
+    return c.TriggerPolicyWithContext(context.Background(), request)
+}
+
+// TriggerPolicy
+// 用于触发混沌演练护栏（类型为触发和恢复2种）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TriggerPolicyWithContext(ctx context.Context, request *TriggerPolicyRequest) (response *TriggerPolicyResponse, err error) {
+    if request == nil {
+        request = NewTriggerPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerPolicyResponse()
     err = c.Send(request, response)
     return
 }

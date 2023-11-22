@@ -5649,10 +5649,10 @@ type DescribeIpAccessControlRequestParams struct {
 	// 最大创建时间的时间戳
 	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
-	// 分页开始条数
+	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
-	// 每页的条数
+	// 每页返回的数量
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 来源
@@ -5698,10 +5698,10 @@ type DescribeIpAccessControlRequest struct {
 	// 最大创建时间的时间戳
 	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
-	// 分页开始条数
+	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
-	// 每页的条数
+	// 每页返回的数量
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 来源

@@ -121,6 +121,82 @@ type CertificateInfo struct {
 	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
+// Predefined struct for user
+type CloseWafProtectionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 当资源类型 Type 是 Service 或 Route 的时候，传入的服务或路由的列表
+	List []*string `json:"List,omitnil" name:"List"`
+}
+
+type CloseWafProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 当资源类型 Type 是 Service 或 Route 的时候，传入的服务或路由的列表
+	List []*string `json:"List,omitnil" name:"List"`
+}
+
+func (r *CloseWafProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseWafProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Type")
+	delete(f, "List")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseWafProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseWafProtectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CloseWafProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseWafProtectionResponseParams `json:"Response"`
+}
+
+func (r *CloseWafProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseWafProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CloudAPIGatewayCanaryRuleList struct {
 	// 灰度规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1710,6 +1786,67 @@ func (r *CreateNativeGatewayServerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNativeGatewayServerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWafDomainsRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// WAF 防护域名列表
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+}
+
+type CreateWafDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// WAF 防护域名列表
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+}
+
+func (r *CreateWafDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWafDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWafDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWafDomainsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateWafDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWafDomainsResponseParams `json:"Response"`
+}
+
+func (r *CreateWafDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWafDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5678,6 +5815,82 @@ type NetworkAccessControl struct {
 
 	// 黑名单列表
 	CidrBlackList []*string `json:"CidrBlackList,omitnil" name:"CidrBlackList"`
+}
+
+// Predefined struct for user
+type OpenWafProtectionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象（接口暂不支持）
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 当资源类型 Type 是 Service 或 Route 的时候，传入的服务或路由的列表
+	List []*string `json:"List,omitnil" name:"List"`
+}
+
+type OpenWafProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象（接口暂不支持）
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 当资源类型 Type 是 Service 或 Route 的时候，传入的服务或路由的列表
+	List []*string `json:"List,omitnil" name:"List"`
+}
+
+func (r *OpenWafProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenWafProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Type")
+	delete(f, "List")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenWafProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenWafProtectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type OpenWafProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenWafProtectionResponseParams `json:"Response"`
+}
+
+func (r *OpenWafProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenWafProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PolarisCLSTopicInfo struct {

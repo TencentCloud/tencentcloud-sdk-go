@@ -882,6 +882,10 @@ type SystemDisk struct {
 	// 系统盘大小，单位：GB。默认值为 80
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
+
+	// 系统盘分区盘符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskName *string `json:"DiskName,omitnil" name:"DiskName"`
 }
 
 // Predefined struct for user

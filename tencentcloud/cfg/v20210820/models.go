@@ -398,6 +398,78 @@ func (r *DescribeTaskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskPolicyTriggerLogRequestParams struct {
+	// 演练ID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 页码
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+
+	// 页数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+type DescribeTaskPolicyTriggerLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 演练ID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 页码
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+
+	// 页数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+func (r *DescribeTaskPolicyTriggerLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskPolicyTriggerLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskPolicyTriggerLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskPolicyTriggerLogResponseParams struct {
+	// 触发日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerLogs []*PolicyTriggerLog `json:"TriggerLogs,omitnil" name:"TriggerLogs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTaskPolicyTriggerLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskPolicyTriggerLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskPolicyTriggerLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskPolicyTriggerLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskRequestParams struct {
 	// 任务ID
 	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
@@ -847,6 +919,28 @@ func (r *ModifyTaskRunStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTaskRunStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PolicyTriggerLog struct {
+	// 演练ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 类型，0--触发，1--恢复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *int64 `json:"TriggerType,omitnil" name:"TriggerType"`
+
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 触发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatTime *string `json:"CreatTime,omitnil" name:"CreatTime"`
 }
 
 type TagWithCreate struct {
@@ -1491,4 +1585,85 @@ type TemplatePolicy struct {
 
 	// 护栏策略生效处理策略 1:顺序执行，2:暂停
 	TemplatePolicyDealType *int64 `json:"TemplatePolicyDealType,omitnil" name:"TemplatePolicyDealType"`
+}
+
+// Predefined struct for user
+type TriggerPolicyRequestParams struct {
+	// 混沌演练ID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 触发内容
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 触发类型，0--触发；1--恢复
+	TriggerType *int64 `json:"TriggerType,omitnil" name:"TriggerType"`
+}
+
+type TriggerPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 混沌演练ID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 触发内容
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 触发类型，0--触发；1--恢复
+	TriggerType *int64 `json:"TriggerType,omitnil" name:"TriggerType"`
+}
+
+func (r *TriggerPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "Content")
+	delete(f, "TriggerType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerPolicyResponseParams struct {
+	// 演练ID
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 是否触发成功
+	Success *bool `json:"Success,omitnil" name:"Success"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type TriggerPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerPolicyResponseParams `json:"Response"`
+}
+
+func (r *TriggerPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
