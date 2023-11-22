@@ -2433,6 +2433,67 @@ type DeleteNativeGatewayServerGroupResult struct {
 }
 
 // Predefined struct for user
+type DeleteWafDomainsRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// WAF 防护域名列表
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+}
+
+type DeleteWafDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// WAF 防护域名列表
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+}
+
+func (r *DeleteWafDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWafDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWafDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWafDomainsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteWafDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWafDomainsResponseParams `json:"Response"`
+}
+
+func (r *DeleteWafDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWafDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayCanaryRulesRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
@@ -4076,6 +4137,169 @@ func (r *DescribeUpstreamHealthCheckConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUpstreamHealthCheckConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWafDomainsRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+}
+
+type DescribeWafDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+}
+
+func (r *DescribeWafDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWafDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWafDomainsResponseParams struct {
+	// 已被 WAF 防护域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeWafDomainsResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeWafDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWafDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeWafDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWafDomainsResult struct {
+	// WAF防护域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+}
+
+// Predefined struct for user
+type DescribeWafProtectionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象
+	//
+	// Deprecated: Type is deprecated.
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 防护资源类型列表，支持查询多个类型（Global、Service、Route、Object）。为空时，默认查询Global类型。
+	TypeList []*string `json:"TypeList,omitnil" name:"TypeList"`
+}
+
+type DescribeWafProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	//  防护资源的类型。
+	// - Global  实例
+	// - Service  服务
+	// - Route  路由
+	// - Object  对象
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 防护资源类型列表，支持查询多个类型（Global、Service、Route、Object）。为空时，默认查询Global类型。
+	TypeList []*string `json:"TypeList,omitnil" name:"TypeList"`
+}
+
+func (r *DescribeWafProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Type")
+	delete(f, "TypeList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWafProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWafProtectionResponseParams struct {
+	// 保护状态
+	Result *DescribeWafProtectionResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeWafProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWafProtectionResponseParams `json:"Response"`
+}
+
+func (r *DescribeWafProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWafProtectionResult struct {
+	// 全局防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GlobalStatus *string `json:"GlobalStatus,omitnil" name:"GlobalStatus"`
+
+	// 服务防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServicesStatus []*ServiceWafStatus `json:"ServicesStatus,omitnil" name:"ServicesStatus"`
+
+	// 路由防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteStatus []*RouteWafStatus `json:"RouteStatus,omitnil" name:"RouteStatus"`
+
+	// 对象防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectStatus *string `json:"ObjectStatus,omitnil" name:"ObjectStatus"`
 }
 
 // Predefined struct for user
@@ -5939,6 +6163,40 @@ type RateLimitResponse struct {
 	HttpStatus *int64 `json:"HttpStatus,omitnil" name:"HttpStatus"`
 }
 
+type RouteWafStatus struct {
+	// 路由的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 路由的 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	//  路由是否开启 WAF 防护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Methods []*string `json:"Methods,omitnil" name:"Methods"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paths []*string `json:"Paths,omitnil" name:"Paths"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
+
+	// 路由对应服务的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 路由对应服务的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+}
+
 type SREInstance struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -6097,6 +6355,24 @@ type ServiceGovernanceInfo struct {
 	// 引擎关联CLS日志主题信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSTopics []*PolarisCLSTopicInfo `json:"CLSTopics,omitnil" name:"CLSTopics"`
+}
+
+type ServiceWafStatus struct {
+	//  服务的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 服务的 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 服务的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	//  服务是否开启 WAF 防护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type StorageOption struct {

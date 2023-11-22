@@ -1,3 +1,195 @@
+# Release v1.0.801
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 121 次发布
+
+发布时间：2023-11-23 01:14:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstancesAttribute](https://cloud.tencent.com/document/api/213/15739)
+
+	* 新增入参：UserData
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 50 次发布
+
+发布时间：2023-11-23 01:18:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RestartInstance](https://cloud.tencent.com/document/api/845/30630)
+
+	* 新增入参：UpgradeKernel
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：KibanaPrivateDomain, CerebroPrivateDomain
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：KibanaPrivateVip, CustomKibanaPrivateUrl
+
+* [OptionalWebServiceInfo](https://cloud.tencent.com/document/api/845/30634#OptionalWebServiceInfo)
+
+	* 新增成员：PrivateVip, CustomPrivateUrl
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 136 次发布
+
+发布时间：2023-11-23 01:18:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+
+	* 新增入参：IdCardType, IdCardNumber
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 133 次发布
+
+发布时间：2023-11-23 01:19:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+
+	* 新增入参：IdCardType, IdCardNumber
+
+
+修改数据结构：
+
+* [FillApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FillApproverInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>NotChannelOrganization
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 20 次发布
+
+发布时间：2023-11-23 01:26:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DownloadUserCert](https://cloud.tencent.com/document/api/663/38516)
+
+	* 新增出参：Cert
+
+* [Invoke](https://cloud.tencent.com/document/api/663/19464)
+
+	* 新增出参：TxId
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 62 次发布
+
+发布时间：2023-11-23 01:27:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateCustomAccount
+* DeleteCustomAccount
+* DescribeCustomAccounts
+* ModifyCustomAccount
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 54 次发布
+
+发布时间：2023-11-23 01:30:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteWafDomains](https://cloud.tencent.com/document/api/1364/101828)
+* [DescribeWafDomains](https://cloud.tencent.com/document/api/1364/101827)
+* [DescribeWafProtection](https://cloud.tencent.com/document/api/1364/101826)
+
+新增数据结构：
+
+* [DescribeWafDomainsResult](https://cloud.tencent.com/document/api/1364/54942#DescribeWafDomainsResult)
+* [DescribeWafProtectionResult](https://cloud.tencent.com/document/api/1364/54942#DescribeWafProtectionResult)
+* [RouteWafStatus](https://cloud.tencent.com/document/api/1364/54942#RouteWafStatus)
+* [ServiceWafStatus](https://cloud.tencent.com/document/api/1364/54942#ServiceWafStatus)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 59 次发布
+
+发布时间：2023-11-23 01:33:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeColumnsMeta](https://cloud.tencent.com/document/api/1267/101829)
+
+新增数据结构：
+
+* [ColumnMeta](https://cloud.tencent.com/document/api/1267/76336#ColumnMeta)
+* [Pair](https://cloud.tencent.com/document/api/1267/76336#Pair)
+
+
+
 # Release v1.0.800
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

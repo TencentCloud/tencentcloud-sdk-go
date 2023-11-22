@@ -390,6 +390,10 @@ func NewCreateCustomAccountResponse() (response *CreateCustomAccountResponse) {
 }
 
 // CreateCustomAccount
+// 接口未使用
+//
+// 
+//
 // 创建自定义账户
 //
 // 可能返回的错误码:
@@ -405,6 +409,10 @@ func (c *Client) CreateCustomAccount(request *CreateCustomAccountRequest) (respo
 }
 
 // CreateCustomAccount
+// 接口未使用
+//
+// 
+//
 // 创建自定义账户
 //
 // 可能返回的错误码:
@@ -1872,6 +1880,10 @@ func NewDeleteCustomAccountResponse() (response *DeleteCustomAccountResponse) {
 }
 
 // DeleteCustomAccount
+// 接口未使用
+//
+// 
+//
 // 删除自定义账号
 //
 // 可能返回的错误码:
@@ -1885,6 +1897,10 @@ func (c *Client) DeleteCustomAccount(request *DeleteCustomAccountRequest) (respo
 }
 
 // DeleteCustomAccount
+// 接口未使用
+//
+// 
+//
 // 删除自定义账号
 //
 // 可能返回的错误码:
@@ -3465,6 +3481,10 @@ func NewDescribeCustomAccountsResponse() (response *DescribeCustomAccountsRespon
 }
 
 // DescribeCustomAccounts
+// 接口未使用
+//
+// 
+//
 // 查询自定义账号
 //
 // 可能返回的错误码:
@@ -3479,6 +3499,10 @@ func (c *Client) DescribeCustomAccounts(request *DescribeCustomAccountsRequest) 
 }
 
 // DescribeCustomAccounts
+// 接口未使用
+//
+// 
+//
 // 查询自定义账号
 //
 // 可能返回的错误码:
@@ -6308,6 +6332,10 @@ func NewModifyCustomAccountResponse() (response *ModifyCustomAccountResponse) {
 }
 
 // ModifyCustomAccount
+// 接口未使用
+//
+// 
+//
 // 更新自定义账户
 //
 // 可能返回的错误码:
@@ -6321,6 +6349,10 @@ func (c *Client) ModifyCustomAccount(request *ModifyCustomAccountRequest) (respo
 }
 
 // ModifyCustomAccount
+// 接口未使用
+//
+// 
+//
 // 更新自定义账户
 //
 // 可能返回的错误码:

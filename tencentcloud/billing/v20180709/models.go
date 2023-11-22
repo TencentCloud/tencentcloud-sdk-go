@@ -1130,6 +1130,9 @@ type CreateSavingPlanOrderRequestParams struct {
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
 	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+
+	// 可重入ID
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 }
 
 type CreateSavingPlanOrderRequest struct {
@@ -1158,6 +1161,9 @@ type CreateSavingPlanOrderRequest struct {
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
 	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+
+	// 可重入ID
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 }
 
 func (r *CreateSavingPlanOrderRequest) ToJsonString() string {
@@ -1180,6 +1186,7 @@ func (r *CreateSavingPlanOrderRequest) FromJsonString(s string) error {
 	delete(f, "CommodityCode")
 	delete(f, "PromiseUseAmount")
 	delete(f, "SpecifyEffectTime")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSavingPlanOrderRequest has unknown keys!", "")
 	}

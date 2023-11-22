@@ -4928,6 +4928,65 @@ func (c *Client) DescribeColumnLineageWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeColumnsMetaRequest() (request *DescribeColumnsMetaRequest) {
+    request = &DescribeColumnsMetaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeColumnsMeta")
+    
+    
+    return
+}
+
+func NewDescribeColumnsMetaResponse() (response *DescribeColumnsMetaResponse) {
+    response = &DescribeColumnsMetaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeColumnsMeta
+// 查询表的所有列元数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeColumnsMeta(request *DescribeColumnsMetaRequest) (response *DescribeColumnsMetaResponse, err error) {
+    return c.DescribeColumnsMetaWithContext(context.Background(), request)
+}
+
+// DescribeColumnsMeta
+// 查询表的所有列元数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeColumnsMetaWithContext(ctx context.Context, request *DescribeColumnsMetaRequest) (response *DescribeColumnsMetaResponse, err error) {
+    if request == nil {
+        request = NewDescribeColumnsMetaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeColumnsMeta require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeColumnsMetaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataBasesRequest() (request *DescribeDataBasesRequest) {
     request = &DescribeDataBasesRequest{
         BaseRequest: &tchttp.BaseRequest{},

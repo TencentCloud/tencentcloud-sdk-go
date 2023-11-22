@@ -7066,8 +7066,7 @@ type ModifyApplicationProxyRequestParams struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil" name:"SessionPersistTime"`
 
 	// 四层代理模式，取值有：
-	// <li>hostname：表示子域名模式；</li>
-	// <li>instance：表示实例模式。</li>不填写保持原有配置。
+	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
 	ProxyType *string `json:"ProxyType,omitnil" name:"ProxyType"`
 
 	// Ipv6 访问配置，不填写保持原有配置。
@@ -7095,8 +7094,7 @@ type ModifyApplicationProxyRequest struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil" name:"SessionPersistTime"`
 
 	// 四层代理模式，取值有：
-	// <li>hostname：表示子域名模式；</li>
-	// <li>instance：表示实例模式。</li>不填写保持原有配置。
+	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
 	ProxyType *string `json:"ProxyType,omitnil" name:"ProxyType"`
 
 	// Ipv6 访问配置，不填写保持原有配置。
@@ -9322,7 +9320,7 @@ type StandardDebug struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
-	// 允许的客户端来源。支持填写 IPV4 以及 IPV6 的 IP/IP 段。
+	// 允许的客户端来源。支持填写 IPv4 以及 IPv6 的 IP/IP 段。0.0.0.0/0 表示允许所有 IPv4 客户端进行调试，::/0 表示允许所有 IPv6 客户端进行调试。
 	AllowClientIPList []*string `json:"AllowClientIPList,omitnil" name:"AllowClientIPList"`
 
 	// Debug 功能到期时间。超出设置的时间，则功能失效。

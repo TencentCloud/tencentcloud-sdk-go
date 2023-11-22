@@ -554,7 +554,7 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// 应用描述不能大于200组字符。
+	// 应用描述不能大于200个字符。
 	INVALIDPARAMETERVALUE_APPLICATIONDESCLENGTH = "InvalidParameterValue.ApplicationDescLength"
 
 	// 无效的微服务类型。
@@ -917,7 +917,7 @@ const (
 	// 集群已关联该命名空间。
 	INVALIDPARAMETERVALUE_NAMESPACEALREADYBINDCLUSTER = "InvalidParameterValue.NamespaceAlreadyBindCluster"
 
-	// 命名空间描格式不正确。
+	// 命名空间描述格式不正确。
 	INVALIDPARAMETERVALUE_NAMESPACEDESCINVALID = "InvalidParameterValue.NamespaceDescInvalid"
 
 	// 命名空间名称已存在，请更换其他名称。

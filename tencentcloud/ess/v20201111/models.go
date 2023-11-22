@@ -174,9 +174,11 @@ type ApproverInfo struct {
 	// <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
 	// <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
 	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。</li></ul>
+	// 
 	// 注：
-	// <ul><li>默认情况下，认证校验方式为人脸认证和签署密码两种形式；</li>
-	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
+	// 1. 默认情况下，认证校验方式为人脸认证和签署密码两种形式
+	// 2. 您可以传递多种值，表示可用多种认证校验方式
+	// 3. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/company/mobile_support)得到具体的支持说明
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
@@ -227,7 +229,7 @@ type ApproverOption struct {
 
 	// 签署人信息补充类型，默认无需补充。
 	// 
-	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
 	// </ul>
 	FillType *int64 `json:"FillType,omitnil" name:"FillType"`
 
@@ -4721,6 +4723,18 @@ type CreateSchemeUrlRequestParams struct {
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
+	// 证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证(默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+
+	// 证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+
 	// 要跳转的链接类型
 	// 
 	// <ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li>
@@ -4785,6 +4799,18 @@ type CreateSchemeUrlRequest struct {
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
+	// 证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证(默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+
+	// 证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+
 	// 要跳转的链接类型
 	// 
 	// <ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li>
@@ -4848,6 +4874,8 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationName")
 	delete(f, "Name")
 	delete(f, "Mobile")
+	delete(f, "IdCardType")
+	delete(f, "IdCardNumber")
 	delete(f, "EndPoint")
 	delete(f, "FlowId")
 	delete(f, "FlowGroupId")

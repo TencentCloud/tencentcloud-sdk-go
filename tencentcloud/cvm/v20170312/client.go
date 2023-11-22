@@ -6449,6 +6449,8 @@ func NewModifyKeyPairAttributeResponse() (response *ModifyKeyPairAttributeRespon
 //
 // * 密钥对ID是密钥对的唯一标识，不可修改。
 //
+// * 密钥对名称和描述信息必须指定其中之一，也支持同时指定。
+//
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
@@ -6471,6 +6473,8 @@ func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) 
 // * 密钥对名称不能和已经存在的密钥对的名称重复。
 //
 // * 密钥对ID是密钥对的唯一标识，不可修改。
+//
+// * 密钥对名称和描述信息必须指定其中之一，也支持同时指定。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"

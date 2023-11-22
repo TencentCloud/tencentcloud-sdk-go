@@ -62,6 +62,9 @@ const (
 	// 必须有部署成功的记录才可以回滚。
 	FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
 
+	// 证书内容疑似国密证书，与所选证书标准不符，请您核对选择的证书标准和证书内容是否有误
+	FAILEDOPERATION_CERTIFICATEENCRYPTINVALID = "FailedOperation.CertificateEncryptInvalid"
+
 	// 证书已存在。
 	FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
 
@@ -220,6 +223,9 @@ const (
 
 	// 域名无效，请重新输入。
 	INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+
+	// 没有匹配的私钥。
+	INVALIDPARAMETER_MISSMATCHPRIVATEKEY = "InvalidParameter.MissMatchPrivateKey"
 
 	// 权益点ID列表无效。
 	INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"

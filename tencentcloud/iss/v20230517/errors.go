@@ -410,7 +410,7 @@ const (
 	// 资源不可达，该资源不属于该地域
 	REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 
-	// 所有通道都已添加计划，不能重复添加
+	// 存在重复添加的通道
 	RESOURCEINUSE_CHANNELREPEATADD = "ResourceInUse.ChannelRepeatAdd"
 
 	// 计划删除中无法修改

@@ -2766,7 +2766,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil" name:"MultiZoneInfo"`
 
-	// 部署模式<li>0：单可用区</li><li>1：多可用区</li>
+	// 部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployMode *uint64 `json:"DeployMode,omitnil" name:"DeployMode"`
 
@@ -2905,7 +2905,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessPercent *float64 `json:"ProcessPercent,omitnil" name:"ProcessPercent"`
 
-	// Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+	// Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitnil" name:"KibanaAlteringPublicAccess"`
 
@@ -2916,6 +2916,14 @@ type InstanceInfo struct {
 	// cdcId，使用cdc子网时传递
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil" name:"CdcId"`
+
+	// kibana内网vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPrivateVip *string `json:"KibanaPrivateVip,omitnil" name:"KibanaPrivateVip"`
+
+	// 自定义kibana内网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomKibanaPrivateUrl *string `json:"CustomKibanaPrivateUrl,omitnil" name:"CustomKibanaPrivateUrl"`
 }
 
 type InstanceLog struct {
@@ -3520,6 +3528,14 @@ type OptionalWebServiceInfo struct {
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// web服务内网vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateVip *string `json:"PrivateVip,omitnil" name:"PrivateVip"`
+
+	// 自定义cerebro内网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomPrivateUrl *string `json:"CustomPrivateUrl,omitnil" name:"CustomPrivateUrl"`
 }
 
 type ProcessDetail struct {
@@ -3553,6 +3569,9 @@ type RestartInstanceRequestParams struct {
 
 	// 重启模式：0 滚动重启； 1 全量重启
 	RestartMode *int64 `json:"RestartMode,omitnil" name:"RestartMode"`
+
+	// 重启时选择是否升级内核patch版本
+	UpgradeKernel *bool `json:"UpgradeKernel,omitnil" name:"UpgradeKernel"`
 }
 
 type RestartInstanceRequest struct {
@@ -3566,6 +3585,9 @@ type RestartInstanceRequest struct {
 
 	// 重启模式：0 滚动重启； 1 全量重启
 	RestartMode *int64 `json:"RestartMode,omitnil" name:"RestartMode"`
+
+	// 重启时选择是否升级内核patch版本
+	UpgradeKernel *bool `json:"UpgradeKernel,omitnil" name:"UpgradeKernel"`
 }
 
 func (r *RestartInstanceRequest) ToJsonString() string {
@@ -3583,6 +3605,7 @@ func (r *RestartInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "ForceRestart")
 	delete(f, "RestartMode")
+	delete(f, "UpgradeKernel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInstanceRequest has unknown keys!", "")
 	}
@@ -4440,6 +4463,12 @@ type UpdateInstanceRequestParams struct {
 	// OPEN 开启
 	// CLOSE 关闭
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitnil" name:"KibanaAlteringPublicAccess"`
+
+	// kibana内网自定义域名
+	KibanaPrivateDomain *string `json:"KibanaPrivateDomain,omitnil" name:"KibanaPrivateDomain"`
+
+	// cerebro内网自定义域名
+	CerebroPrivateDomain *string `json:"CerebroPrivateDomain,omitnil" name:"CerebroPrivateDomain"`
 }
 
 type UpdateInstanceRequest struct {
@@ -4558,6 +4587,12 @@ type UpdateInstanceRequest struct {
 	// OPEN 开启
 	// CLOSE 关闭
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitnil" name:"KibanaAlteringPublicAccess"`
+
+	// kibana内网自定义域名
+	KibanaPrivateDomain *string `json:"KibanaPrivateDomain,omitnil" name:"KibanaPrivateDomain"`
+
+	// cerebro内网自定义域名
+	CerebroPrivateDomain *string `json:"CerebroPrivateDomain,omitnil" name:"CerebroPrivateDomain"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -4604,6 +4639,8 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EsConfigSet")
 	delete(f, "OperationDuration")
 	delete(f, "KibanaAlteringPublicAccess")
+	delete(f, "KibanaPrivateDomain")
+	delete(f, "CerebroPrivateDomain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

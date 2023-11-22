@@ -533,7 +533,12 @@ type DownloadUserCertResponseParams struct {
 	CertName *string `json:"CertName,omitnil" name:"CertName"`
 
 	// 证书内容
+	//
+	// Deprecated: CertCtx is deprecated.
 	CertCtx *string `json:"CertCtx,omitnil" name:"CertCtx"`
+
+	// 证书内容
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -1790,10 +1795,15 @@ func (r *InvokeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeResponseParams struct {
 	// 交易ID
+	//
+	// Deprecated: Txid is deprecated.
 	Txid *string `json:"Txid,omitnil" name:"Txid"`
 
 	// 交易执行结果
 	Events *string `json:"Events,omitnil" name:"Events"`
+
+	// 交易ID
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

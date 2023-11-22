@@ -225,6 +225,7 @@ func NewDescribeFabricBlockResponse() (response *DescribeFabricBlockResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FABRICBLOCKNOEXIST = "FailedOperation.FabricBlockNoExist"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) DescribeFabricBlock(request *DescribeFabricBlockRequest) (response *DescribeFabricBlockResponse, err error) {
     return c.DescribeFabricBlockWithContext(context.Background(), request)
@@ -235,6 +236,7 @@ func (c *Client) DescribeFabricBlock(request *DescribeFabricBlockRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FABRICBLOCKNOEXIST = "FailedOperation.FabricBlockNoExist"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) DescribeFabricBlockWithContext(ctx context.Context, request *DescribeFabricBlockRequest) (response *DescribeFabricBlockResponse, err error) {
     if request == nil {
@@ -275,6 +277,7 @@ func NewDescribeFabricTransactionResponse() (response *DescribeFabricTransaction
 // 获取Fabric交易的详细信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICTRANSACTIONNOEXIST = "FailedOperation.FabricTransactionNoExist"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) DescribeFabricTransaction(request *DescribeFabricTransactionRequest) (response *DescribeFabricTransactionResponse, err error) {
@@ -285,6 +288,7 @@ func (c *Client) DescribeFabricTransaction(request *DescribeFabricTransactionReq
 // 获取Fabric交易的详细信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICTRANSACTIONNOEXIST = "FailedOperation.FabricTransactionNoExist"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) DescribeFabricTransactionWithContext(ctx context.Context, request *DescribeFabricTransactionRequest) (response *DescribeFabricTransactionResponse, err error) {
@@ -1237,6 +1241,8 @@ func NewInvokeFabricChaincodeResponse() (response *InvokeFabricChaincodeResponse
 // 调用Fabric用户合约执行交易
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICCHAINCODEINVOKEFAILED = "FailedOperation.FabricChaincodeInvokeFailed"
+//  FAILEDOPERATION_FABRICCHAINCODENOEXIST = "FailedOperation.FabricChaincodeNoExist"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) InvokeFabricChaincode(request *InvokeFabricChaincodeRequest) (response *InvokeFabricChaincodeResponse, err error) {
@@ -1247,6 +1253,8 @@ func (c *Client) InvokeFabricChaincode(request *InvokeFabricChaincodeRequest) (r
 // 调用Fabric用户合约执行交易
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICCHAINCODEINVOKEFAILED = "FailedOperation.FabricChaincodeInvokeFailed"
+//  FAILEDOPERATION_FABRICCHAINCODENOEXIST = "FailedOperation.FabricChaincodeNoExist"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) InvokeFabricChaincodeWithContext(ctx context.Context, request *InvokeFabricChaincodeRequest) (response *InvokeFabricChaincodeResponse, err error) {
@@ -1975,6 +1983,9 @@ func NewQueryFabricChaincodeResponse() (response *QueryFabricChaincodeResponse) 
 // 调用Fabric用户合约查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICCHAINCODENOEXIST = "FailedOperation.FabricChaincodeNoExist"
+//  FAILEDOPERATION_FABRICCHAINCODEQUERYFAILED = "FailedOperation.FabricChaincodeQueryFailed"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) QueryFabricChaincode(request *QueryFabricChaincodeRequest) (response *QueryFabricChaincodeResponse, err error) {
     return c.QueryFabricChaincodeWithContext(context.Background(), request)
@@ -1984,6 +1995,9 @@ func (c *Client) QueryFabricChaincode(request *QueryFabricChaincodeRequest) (res
 // 调用Fabric用户合约查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FABRICCHAINCODENOEXIST = "FailedOperation.FabricChaincodeNoExist"
+//  FAILEDOPERATION_FABRICCHAINCODEQUERYFAILED = "FailedOperation.FabricChaincodeQueryFailed"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 func (c *Client) QueryFabricChaincodeWithContext(ctx context.Context, request *QueryFabricChaincodeRequest) (response *QueryFabricChaincodeResponse, err error) {
     if request == nil {

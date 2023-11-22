@@ -3266,6 +3266,40 @@ type ColumnLineageInfo struct {
 	ExtParams []*LineageParamRecord `json:"ExtParams,omitnil" name:"ExtParams"`
 }
 
+type ColumnMeta struct {
+	// 字段英文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameEn *string `json:"NameEn,omitnil" name:"NameEn"`
+
+	// 字段中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameCn *string `json:"NameCn,omitnil" name:"NameCn"`
+
+	// 字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 字段序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil" name:"Position"`
+
+	// 是否为分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartition *bool `json:"IsPartition,omitnil" name:"IsPartition"`
+
+	// 字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// HBase列簇属性集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnFamiliesFieldSet []*Pair `json:"ColumnFamiliesFieldSet,omitnil" name:"ColumnFamiliesFieldSet"`
+}
+
 // Predefined struct for user
 type CommitExportTaskRequestParams struct {
 	// 项目id
@@ -9719,6 +9753,102 @@ func (r *DescribeColumnLineageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeColumnLineageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeColumnsMetaRequestParams struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤器
+	FilterSet []*Filter `json:"FilterSet,omitnil" name:"FilterSet"`
+
+	// 排序字段
+	OrderFieldSet []*OrderField `json:"OrderFieldSet,omitnil" name:"OrderFieldSet"`
+
+	// 是否查询分区字段，默认false
+	IsPartitionQuery *bool `json:"IsPartitionQuery,omitnil" name:"IsPartitionQuery"`
+}
+
+type DescribeColumnsMetaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表ID
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤器
+	FilterSet []*Filter `json:"FilterSet,omitnil" name:"FilterSet"`
+
+	// 排序字段
+	OrderFieldSet []*OrderField `json:"OrderFieldSet,omitnil" name:"OrderFieldSet"`
+
+	// 是否查询分区字段，默认false
+	IsPartitionQuery *bool `json:"IsPartitionQuery,omitnil" name:"IsPartitionQuery"`
+}
+
+func (r *DescribeColumnsMetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeColumnsMetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "FilterSet")
+	delete(f, "OrderFieldSet")
+	delete(f, "IsPartitionQuery")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeColumnsMetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeColumnsMetaResponseParams struct {
+	// 分页返回的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnMetaSet []*ColumnMeta `json:"ColumnMetaSet,omitnil" name:"ColumnMetaSet"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeColumnsMetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeColumnsMetaResponseParams `json:"Response"`
+}
+
+func (r *DescribeColumnsMetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeColumnsMetaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -29537,6 +29667,14 @@ type OrganizationalFunction struct {
 	// 提交失败错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitErrorMsg *string `json:"SubmitErrorMsg,omitnil" name:"SubmitErrorMsg"`
+}
+
+type Pair struct {
+	// 键名
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type PairDto struct {
