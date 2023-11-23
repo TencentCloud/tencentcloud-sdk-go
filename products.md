@@ -111,6 +111,7 @@
 | hai | [高性能应用服务](https://cloud.tencent.com/document/product/1721) | 2023-11-23 01:19:50 |
 | hasim | [高可用物联网卡](https://cloud.tencent.com/document/product/1482) | 2023-05-18 01:29:47 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2023-11-01 01:14:52 |
+| hunyuan | [腾讯混元大模型](https://cloud.tencent.com/document/product/1729) | 2023-11-23 11:16:03 |
 | iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2023-10-24 01:16:21 |
 | ic | [图片瘦身](https://cloud.tencent.com/document/product/636) | 2023-03-02 01:23:21 |
 | icr | [对话机器人](https://cloud.tencent.com/document/product/1268) | 2023-05-18 01:30:40 |

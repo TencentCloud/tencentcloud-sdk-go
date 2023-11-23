@@ -1,3 +1,31 @@
+# Release v1.0.802
+
+## 腾讯混元大模型(hunyuan) 版本：2023-09-01
+
+### 第 1 次发布
+
+发布时间：2023-11-23 11:01:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChatPro](https://cloud.tencent.com/document/api/1729/101837)
+* [ChatStd](https://cloud.tencent.com/document/api/1729/101836)
+* [GetTokenCount](https://cloud.tencent.com/document/api/1729/101835)
+
+新增数据结构：
+
+* [Choice](https://cloud.tencent.com/document/api/1729/101838#Choice)
+* [Delta](https://cloud.tencent.com/document/api/1729/101838#Delta)
+* [ErrorMsg](https://cloud.tencent.com/document/api/1729/101838#ErrorMsg)
+* [Message](https://cloud.tencent.com/document/api/1729/101838#Message)
+* [Usage](https://cloud.tencent.com/document/api/1729/101838#Usage)
+
+
+
 # Release v1.0.801
 
 ## 云服务器(cvm) 版本：2017-03-12

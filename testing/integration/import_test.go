@@ -141,6 +141,7 @@ import (
 	haiv20230812 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hai/v20230812"
 	hasimv20210716 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim/v20210716"
 	hcmv20181106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm/v20181106"
+	hunyuanv20230901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan/v20230901"
 	iaiv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20180301"
 	iaiv20200303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20200303"
 	icv20190307 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic/v20190307"
@@ -1863,6 +1864,19 @@ func TestHcmv20181106Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init hcm_v20181106 client: %v", err)
+    }
+}
+
+func TestHunyuanv20230901Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := hunyuanv20230901.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init hunyuan_v20230901 client: %v", err)
     }
 }
 

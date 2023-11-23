@@ -67,7 +67,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.801
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.802
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -116,6 +116,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/icr v0.0.0
@@ -361,6 +362,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hai => ../tencentcloud/hai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim => ../tencentcloud/hasim
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm => ../tencentcloud/hcm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan => ../tencentcloud/hunyuan
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai => ../tencentcloud/iai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic => ../tencentcloud/ic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/icr => ../tencentcloud/icr
