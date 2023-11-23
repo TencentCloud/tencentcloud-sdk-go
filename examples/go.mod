@@ -6,12 +6,13 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/pierrec/lz4 v2.6.1+incompatible
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v1.0.753
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.753
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.802
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v1.0.753
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan v1.0.802
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm v1.0.753
@@ -35,6 +36,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v1.0.753 => ../tencentcloud/ess
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic v1.0.753 => ../tencentcloud/essbasic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v1.0.753 => ../tencentcloud/hcm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan v1.0.802 => ../tencentcloud/hunyuan
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v1.0.753 => ../tencentcloud/monitor
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v1.0.753 => ../tencentcloud/soe
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm v1.0.753 => ../tencentcloud/ssm
