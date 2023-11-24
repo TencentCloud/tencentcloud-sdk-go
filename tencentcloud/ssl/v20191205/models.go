@@ -417,6 +417,10 @@ type CertificateExtra struct {
 	// 是否是国密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SMCert *int64 `json:"SMCert,omitnil" name:"SMCert"`
+
+	// 公司类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyType *int64 `json:"CompanyType,omitnil" name:"CompanyType"`
 }
 
 type Certificates struct {
@@ -522,7 +526,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVulnerability *bool `json:"IsVulnerability,omitnil" name:"IsVulnerability"`
 
-	// 是否可重颁发证书。
+	// 是否可续费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewAble *bool `json:"RenewAble,omitnil" name:"RenewAble"`
 
@@ -585,6 +589,38 @@ type Certificates struct {
 	// 托管新证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil" name:"HostingRenewCertId"`
+
+	// 存在的续费证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasRenewOrder *string `json:"HasRenewOrder,omitnil" name:"HasRenewOrder"`
+
+	// 重颁发证书原证书是否删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplaceOriCertIsDelete *bool `json:"ReplaceOriCertIsDelete,omitnil" name:"ReplaceOriCertIsDelete"`
+
+	// 是否即将过期， 证书即将到期的30天内为即将过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExpiring *bool `json:"IsExpiring,omitnil" name:"IsExpiring"`
+
+	// DV证书添加验证截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil" name:"DVAuthDeadline"`
+
+	// 域名验证通过时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil" name:"ValidationPassedTime"`
+
+	// 证书关联的多域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertSANs []*string `json:"CertSANs,omitnil" name:"CertSANs"`
+
+	// 域名验证驳回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwaitingValidationMsg *string `json:"AwaitingValidationMsg,omitnil" name:"AwaitingValidationMsg"`
+
+	// 是否允许下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
 }
 
 // Predefined struct for user

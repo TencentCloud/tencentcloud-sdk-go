@@ -25336,7 +25336,7 @@ func NewModifyAutoOpenProVersionConfigResponse() (response *ModifyAutoOpenProVer
 }
 
 // ModifyAutoOpenProVersionConfig
-//  用于设置新增主机自动开通专业防护配置。
+// 用于设置新增主机自动开通专业防护配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -25349,7 +25349,7 @@ func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersio
 }
 
 // ModifyAutoOpenProVersionConfig
-//  用于设置新增主机自动开通专业防护配置。
+// 用于设置新增主机自动开通专业防护配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

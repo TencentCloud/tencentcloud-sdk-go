@@ -264,6 +264,69 @@ func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeInstantTasksRequest() (request *DescribeInstantTasksRequest) {
+    request = &DescribeInstantTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeInstantTasks")
+    
+    
+    return
+}
+
+func NewDescribeInstantTasksResponse() (response *DescribeInstantTasksResponse) {
+    response = &DescribeInstantTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstantTasks
+// 获取历史即时拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeInstantTasks(request *DescribeInstantTasksRequest) (response *DescribeInstantTasksResponse, err error) {
+    return c.DescribeInstantTasksWithContext(context.Background(), request)
+}
+
+// DescribeInstantTasks
+// 获取历史即时拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeInstantTasksWithContext(ctx context.Context, request *DescribeInstantTasksRequest) (response *DescribeInstantTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstantTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstantTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstantTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
     request = &DescribeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

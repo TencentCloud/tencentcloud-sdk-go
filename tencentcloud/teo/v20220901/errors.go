@@ -29,14 +29,47 @@ const (
 	// 证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 
+	// 配置文件Condition表达式语法错误。
+	FAILEDOPERATION_CONFIGCONDITIONSYNTAXERROR = "FailedOperation.ConfigConditionSyntaxError"
+
+	// 无法识别的Condition匹配类型。
+	FAILEDOPERATION_CONFIGCONDITIONUNKNOWNTARGET = "FailedOperation.ConfigConditionUnknownTarget"
+
+	// 配置文件Condition表达式值的项不能为空。
+	FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = "FailedOperation.ConfigConditionValueEmptyError"
+
+	// 配置文件存在类型不匹配的字段。
+	FAILEDOPERATION_CONFIGFIELDTYPEERROR = "FailedOperation.ConfigFieldTypeError"
+
+	// 配置文件存在语法错误。
+	FAILEDOPERATION_CONFIGFORMATERROR = "FailedOperation.ConfigFormatError"
+
+	// 配置文件内容格式错误，无法解析。
+	FAILEDOPERATION_CONFIGMALFORMEDCONTENT = "FailedOperation.ConfigMalformedContent"
+
+	// 配置文件参数校验错误。
+	FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = "FailedOperation.ConfigParamValidateErrors"
+
+	// 配置文件无法识别的字段：存在拼写错误，或者该字段所在的层级出错。
+	FAILEDOPERATION_CONFIGUNKNOWNFIELD = "FailedOperation.ConfigUnknownField"
+
+	// 当前不支持该配置文件版本。
+	FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = "FailedOperation.ConfigUnsupportedFormatVersion"
+
 	// 账户余额不足
 	FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
 
 	// 站点状态不正确。
 	FAILEDOPERATION_INVALIDZONESTATUS = "FailedOperation.InvalidZoneStatus"
 
+	// content缺少必带的配置块。
+	FAILEDOPERATION_MISSINGCONFIGCHUNK = "FailedOperation.MissingConfigChunk"
+
 	// 操作失败。
 	FAILEDOPERATION_MODIFYFAILED = "FailedOperation.ModifyFailed"
+
+	// 未知的配置组类型。
+	FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -118,6 +151,9 @@ const (
 
 	// 当前域名已开启流量调度功能。
 	INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
+
+	// 重复规则。
+	INVALIDPARAMETER_DUPLICATERULE = "InvalidParameter.DuplicateRule"
 
 	// 操作不支持条件。
 	INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = "InvalidParameter.ErrActionUnsupportTarget"
@@ -281,6 +317,9 @@ const (
 	// 分区域回源的源站无效。
 	INVALIDPARAMETER_INVALIDCLIENTIPORIGIN = "InvalidParameter.InvalidClientIpOrigin"
 
+	// 不合法的条件。
+	INVALIDPARAMETER_INVALIDCONDITIONS = "InvalidParameter.InvalidConditions"
+
 	// 无效的回源配置，源站类型为对象存储时，源站地址必须为对象存储域名。
 	INVALIDPARAMETER_INVALIDCOSDOMAIN = "InvalidParameter.InvalidCosDomain"
 
@@ -316,6 +355,9 @@ const (
 
 	// 无效的Ipv6开关配置。
 	INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+
+	// 无效的浏览器缓存。
+	INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = "InvalidParameter.InvalidMaxAgeFollowOrigin"
 
 	// 无效的浏览器缓存。
 	INVALIDPARAMETER_INVALIDMAXAGETIME = "InvalidParameter.InvalidMaxAgeTime"
@@ -388,6 +430,9 @@ const (
 
 	// 无效的回源Host。
 	INVALIDPARAMETER_INVALIDSERVERNAME = "InvalidParameter.InvalidServerName"
+
+	// edgeone的debug配置无效。
+	INVALIDPARAMETER_INVALIDSTANDARDDEBUG = "InvalidParameter.InvalidStandardDebug"
 
 	// 无效的客户端ip或ip段。
 	INVALIDPARAMETER_INVALIDSTANDARDDEBUGCLIENTIP = "InvalidParameter.InvalidStandardDebugClientIp"
@@ -485,6 +530,9 @@ const (
 	// Shield Space 未绑定源站，请先绑定源站后重试。
 	INVALIDPARAMETER_SPACENOTBINDORIGIN = "InvalidParameter.SpaceNotBindOrigin"
 
+	// 状态码缓存的状态码无效。
+	INVALIDPARAMETER_STATUSCODECACHEINVALIDSTATUSCODE = "InvalidParameter.StatusCodeCacheInvalidStatusCode"
+
 	// 资源存在错误。
 	INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
 
@@ -578,11 +626,17 @@ const (
 	// 单位时间内接口请求频率达到限制。
 	LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 
+	// 规则数量达到限制。
+	LIMITEXCEEDED_RULELIMITEXCEEDED = "LimitExceeded.RuleLimitExceeded"
+
 	// 超出功能限制。
 	LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
 
 	// 套餐可绑定的站点数量超过配额。
 	LIMITEXCEEDED_ZONEBINDPLAN = "LimitExceeded.ZoneBindPlan"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
@@ -613,6 +667,9 @@ const (
 
 	// 站点下有域名时不允许修改服务区域。
 	OPERATIONDENIED_DOMAINNUMBERISNOTZERO = "OperationDenied.DomainNumberIsNotZero"
+
+	// 站点内有域名处于非稳态，稳态包括：“在线” 和 “离线” 两个状态。
+	OPERATIONDENIED_DOMAINSTATUSUNSTABLE = "OperationDenied.DomainStatusUnstable"
 
 	// 站点处于停用状态，请开启后重试。
 	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
@@ -653,8 +710,14 @@ const (
 	// 无域名接入站点不支持除切换为CNAME接入类型以外的任何修改动作。
 	OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = "OperationDenied.NoDomainAccessZoneOnlySupportModifyType"
 
+	// 用户不在版本管理的白名单内。
+	OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = "OperationDenied.NotInVersionControlWhiteList"
+
 	// 加速域名使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
+
+	// 归属权校验未通过，请先完成站点归属权校验。
+	OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
 
 	// 套餐不支持变更站点的服务区域。
 	OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
@@ -676,6 +739,9 @@ const (
 
 	// 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
 	OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
+
+	// 站点工作模式不属于版本管理模式。
+	OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = "OperationDenied.WorkModeNotInVersionControl"
 
 	// 共享CNAME已被其他站点绑定，请先解绑才能删除站点
 	OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"
@@ -748,6 +814,9 @@ const (
 
 	// 最大上传大小额度未配置
 	RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = "ResourceNotFound.PostMaxSizeQuotaNotFound"
+
+	// 配置组版本不存在，请检查后重试。
+	RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

@@ -1208,7 +1208,8 @@ func (r *CreateSAMLProviderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateServiceLinkedRoleRequestParams struct {
-	// 授权服务，附加了此角色的腾讯云服务主体。
+	// 填写此角色的腾讯云服务载体，具体可查询文档（角色载体）字段
+	// https://cloud.tencent.com/document/product/598/85165
 	QCSServiceName []*string `json:"QCSServiceName,omitnil" name:"QCSServiceName"`
 
 	// 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
@@ -1224,7 +1225,8 @@ type CreateServiceLinkedRoleRequestParams struct {
 type CreateServiceLinkedRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 授权服务，附加了此角色的腾讯云服务主体。
+	// 填写此角色的腾讯云服务载体，具体可查询文档（角色载体）字段
+	// https://cloud.tencent.com/document/product/598/85165
 	QCSServiceName []*string `json:"QCSServiceName,omitnil" name:"QCSServiceName"`
 
 	// 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。

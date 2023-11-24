@@ -234,6 +234,10 @@ type ConnectionDescription struct {
 	// data transfer service (DTS)参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DTSParams *DTSParams `json:"DTSParams,omitnil" name:"DTSParams"`
+
+	// tdmq参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TDMQParams *TDMQParams `json:"TDMQParams,omitnil" name:"TDMQParams"`
 }
 
 // Predefined struct for user
@@ -641,7 +645,15 @@ func (r *CreateTransformationResponse) FromJsonString(s string) error {
 }
 
 type DTSParams struct {
+	// Consumer Group Name
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
 
+	// 账户名
+	Account *string `json:"Account,omitnil" name:"Account"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil" name:"Password"`
 }
 
 type DeadLetterConfig struct {
@@ -2393,6 +2405,16 @@ type SearchLogResult struct {
 	// 事件状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type TDMQParams struct {
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+
+	// 集群支撑网接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterEndPoint *string `json:"ClusterEndPoint,omitnil" name:"ClusterEndPoint"`
 }
 
 type Target struct {

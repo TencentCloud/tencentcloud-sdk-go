@@ -71,6 +71,17 @@ type AudioEncode struct {
 	Codec *uint64 `json:"Codec,omitnil" name:"Codec"`
 }
 
+type AudioEncodeParams struct {
+	// 音频采样率，取值为[48000, 44100]，单位是Hz。
+	SampleRate *uint64 `json:"SampleRate,omitnil" name:"SampleRate"`
+
+	// 音频声道数，取值范围[1,2]，1表示音频为单声道，2表示音频为双声道。
+	Channel *uint64 `json:"Channel,omitnil" name:"Channel"`
+
+	// 音频码率，取值范围[8,500]，单位为kbps。
+	BitRate *uint64 `json:"BitRate,omitnil" name:"BitRate"`
+}
+
 type AudioParams struct {
 	// 音频采样率枚举值:(注意1 代表48000HZ, 2 代表44100HZ, 3 代表16000HZ)
 	// 1：48000Hz（默认）;
@@ -1269,6 +1280,73 @@ func (r *DescribeScaleInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScaleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamIngestRequestParams struct {
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+}
+
+type DescribeStreamIngestRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+}
+
+func (r *DescribeStreamIngestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamIngestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamIngestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamIngestResponseParams struct {
+	// 任务的状态信息。
+	// InProgress：表示当前任务正在进行中。
+	// NotExist：表示当前任务不存在。
+	// 示例值：InProgress
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeStreamIngestResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamIngestResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamIngestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamIngestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3902,6 +3980,125 @@ func (r *StartPublishCdnStreamResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartStreamIngestRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+
+	// TRTC房间号的类型。
+	// 【*注意】必须和录制的房间所对应的RoomId类型相同:
+	// 0: 字符串类型的RoomId
+	// 1: 32位整型的RoomId（默认）
+	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`
+
+	// 拉流转推机器人的UserId，用于进房发起拉流转推任务。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
+
+	// 源流URL。示例值：https://a.b/test.mp4
+	SourceUrl []*string `json:"SourceUrl,omitnil" name:"SourceUrl"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+	PrivateMapKey *string `json:"PrivateMapKey,omitnil" name:"PrivateMapKey"`
+
+	// 视频编码参数。可选，如果不填，保持原始流的参数。
+	VideoEncodeParams *VideoEncodeParams `json:"VideoEncodeParams,omitnil" name:"VideoEncodeParams"`
+
+	// 音频编码参数。可选，如果不填，保持原始流的参数。
+	AudioEncodeParams *AudioEncodeParams `json:"AudioEncodeParams,omitnil" name:"AudioEncodeParams"`
+}
+
+type StartStreamIngestRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+
+	// TRTC房间号的类型。
+	// 【*注意】必须和录制的房间所对应的RoomId类型相同:
+	// 0: 字符串类型的RoomId
+	// 1: 32位整型的RoomId（默认）
+	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`
+
+	// 拉流转推机器人的UserId，用于进房发起拉流转推任务。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
+
+	// 源流URL。示例值：https://a.b/test.mp4
+	SourceUrl []*string `json:"SourceUrl,omitnil" name:"SourceUrl"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+	PrivateMapKey *string `json:"PrivateMapKey,omitnil" name:"PrivateMapKey"`
+
+	// 视频编码参数。可选，如果不填，保持原始流的参数。
+	VideoEncodeParams *VideoEncodeParams `json:"VideoEncodeParams,omitnil" name:"VideoEncodeParams"`
+
+	// 音频编码参数。可选，如果不填，保持原始流的参数。
+	AudioEncodeParams *AudioEncodeParams `json:"AudioEncodeParams,omitnil" name:"AudioEncodeParams"`
+}
+
+func (r *StartStreamIngestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamIngestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "RoomIdType")
+	delete(f, "UserId")
+	delete(f, "UserSig")
+	delete(f, "SourceUrl")
+	delete(f, "PrivateMapKey")
+	delete(f, "VideoEncodeParams")
+	delete(f, "AudioEncodeParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamIngestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartStreamIngestResponseParams struct {
+	// 拉流转推的任务 ID。任务 ID 是对一次拉流转推生命周期过程的唯一标识，结束任务时会失去意义。任务 ID 需要业务保存下来，作为下次针对这个任务操作的参数。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StartStreamIngestResponse struct {
+	*tchttp.BaseResponse
+	Response *StartStreamIngestResponseParams `json:"Response"`
+}
+
+func (r *StartStreamIngestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamIngestResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopMCUMixTranscodeByStrRoomIdRequestParams struct {
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
@@ -4084,6 +4281,67 @@ func (r *StopPublishCdnStreamResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopPublishCdnStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamIngestRequestParams struct {
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+}
+
+type StopStreamIngestRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+}
+
+func (r *StopStreamIngestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamIngestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopStreamIngestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamIngestResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StopStreamIngestResponse struct {
+	*tchttp.BaseResponse
+	Response *StopStreamIngestResponseParams `json:"Response"`
+}
+
+func (r *StopStreamIngestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamIngestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4371,6 +4629,23 @@ type VideoEncode struct {
 	BitRate *uint64 `json:"BitRate,omitnil" name:"BitRate"`
 
 	// 输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+	Gop *uint64 `json:"Gop,omitnil" name:"Gop"`
+}
+
+type VideoEncodeParams struct {
+	// 宽。取值范围[0,1920]，单位为像素值。
+	Width *uint64 `json:"Width,omitnil" name:"Width"`
+
+	// 高。取值范围[0,1080]，单位为像素值。
+	Height *uint64 `json:"Height,omitnil" name:"Height"`
+
+	// 帧率。取值范围[1,60]，表示帧率可选范围为1到60fps。
+	Fps *uint64 `json:"Fps,omitnil" name:"Fps"`
+
+	// 码率。取值范围[1,10000]，单位为kbps。
+	BitRate *uint64 `json:"BitRate,omitnil" name:"BitRate"`
+
+	// gop。取值范围[1,2]，单位为秒。
 	Gop *uint64 `json:"Gop,omitnil" name:"Gop"`
 }
 

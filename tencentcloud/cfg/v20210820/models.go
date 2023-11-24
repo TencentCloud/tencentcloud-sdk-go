@@ -1060,6 +1060,10 @@ type Task struct {
 	// 关联的隐患验证项ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyId *uint64 `json:"VerifyId,omitnil" name:"VerifyId"`
+
+	// 护栏处理方式，1--顺序回滚，2--演练暂停
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDealType *int64 `json:"PolicyDealType,omitnil" name:"PolicyDealType"`
 }
 
 type TaskConfig struct {
@@ -1080,6 +1084,9 @@ type TaskConfig struct {
 
 	// 演练标签信息，不填则默认取经验标签
 	Tags []*TagWithCreate `json:"Tags,omitnil" name:"Tags"`
+
+	// 护栏处理方式，1--顺序回滚，2--演练暂停
+	PolicyDealType *int64 `json:"PolicyDealType,omitnil" name:"PolicyDealType"`
 }
 
 type TaskGroup struct {
@@ -1442,6 +1449,10 @@ type Template struct {
 	// 告警指标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy []*string `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+
+	// 护栏处理方式，1--顺序回滚，2--演练暂停
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDealType *int64 `json:"PolicyDealType,omitnil" name:"PolicyDealType"`
 }
 
 type TemplateGroup struct {

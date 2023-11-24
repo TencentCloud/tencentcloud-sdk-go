@@ -1183,6 +1183,34 @@ type Compression struct {
 	Algorithms []*string `json:"Algorithms,omitnil" name:"Algorithms"`
 }
 
+type ConfigGroupVersionInfo struct {
+	// 版本 ID。
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
+
+	// 版本号。
+	VersionNumber *string `json:"VersionNumber,omitnil" name:"VersionNumber"`
+
+	// 配置组 ID。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 配置组类型。取值有：
+	// <li>l7_acceleration ：七层加速配置组。</li>
+	// <li>edge_functions ：边缘函数配置组。</li>
+	GroupType *string `json:"GroupType,omitnil" name:"GroupType"`
+
+	// 版本描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 版本状态，取值有：
+	// <li>creating：创建中；</li>
+	// <li>inactive：未生效；</li>
+	// <li>active：已生效。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 版本创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
 // Predefined struct for user
 type CreateAccelerationDomainRequestParams struct {
 	// 加速域名所属站点 ID。
@@ -1685,6 +1713,84 @@ func (r *CreateApplicationProxyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateApplicationProxyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConfigGroupVersionRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 待新建版本的配置组 ID。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例。
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type CreateConfigGroupVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 待新建版本的配置组 ID。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例。
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *CreateConfigGroupVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigGroupVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupId")
+	delete(f, "Content")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigGroupVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConfigGroupVersionResponseParams struct {
+	// 版本 ID。
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateConfigGroupVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConfigGroupVersionResponseParams `json:"Response"`
+}
+
+func (r *CreateConfigGroupVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigGroupVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3093,6 +3199,108 @@ func (r *DeleteZoneResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeployConfigGroupVersionRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 环境 ID。请填写版本需要发布到的环境 ID。
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+
+	// 需要发布的版本信息。可以同时变更多个不同配置组的版本，每个配置组一次仅支持变更一个版本。
+	ConfigGroupVersionInfos []*ConfigGroupVersionInfo `json:"ConfigGroupVersionInfos,omitnil" name:"ConfigGroupVersionInfos"`
+
+	// 变更说明。用于描述此次变更的内容、原因，最大支持 100 个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type DeployConfigGroupVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 环境 ID。请填写版本需要发布到的环境 ID。
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+
+	// 需要发布的版本信息。可以同时变更多个不同配置组的版本，每个配置组一次仅支持变更一个版本。
+	ConfigGroupVersionInfos []*ConfigGroupVersionInfo `json:"ConfigGroupVersionInfos,omitnil" name:"ConfigGroupVersionInfos"`
+
+	// 变更说明。用于描述此次变更的内容、原因，最大支持 100 个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *DeployConfigGroupVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployConfigGroupVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "EnvId")
+	delete(f, "ConfigGroupVersionInfos")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployConfigGroupVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployConfigGroupVersionResponseParams struct {
+	// 发布记录 ID。
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeployConfigGroupVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployConfigGroupVersionResponseParams `json:"Response"`
+}
+
+func (r *DeployConfigGroupVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployConfigGroupVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployRecord struct {
+	// 发布版本的详细信息。
+	ConfigGroupVersionInfos []*ConfigGroupVersionInfo `json:"ConfigGroupVersionInfos,omitnil" name:"ConfigGroupVersionInfos"`
+
+	// 发布时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	DeployTime *string `json:"DeployTime,omitnil" name:"DeployTime"`
+
+	// 发布状态，取值有：
+	// <li> deploying ：发布中；</li>
+	// <li>failure ：发布失败；</li>
+	// <li>success： 发布成功。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 发布结果信息。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 发布记录 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
+
+	// 变更说明。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+// Predefined struct for user
 type DescribeAccelerationDomainsRequestParams struct {
 	// 加速域名所属站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
@@ -3427,6 +3635,163 @@ func (r *DescribeAvailablePlansResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailablePlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigGroupVersionDetailRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 版本 ID。
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
+}
+
+type DescribeConfigGroupVersionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 版本 ID。
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
+}
+
+func (r *DescribeConfigGroupVersionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigGroupVersionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "VersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigGroupVersionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigGroupVersionDetailResponseParams struct {
+	// 版本信息。
+	ConfigGroupVersionInfo *ConfigGroupVersionInfo `json:"ConfigGroupVersionInfo,omitnil" name:"ConfigGroupVersionInfo"`
+
+	// 版本文件的内容。以 JSON 格式返回。
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeConfigGroupVersionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConfigGroupVersionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeConfigGroupVersionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigGroupVersionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigGroupVersionsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 配置组 ID。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 过滤条件，Filters.Values 的上限为 20，该参数不填写时，返回所选配置组下的所有版本信息。详细的过滤条件如下：
+	// <li>version-id：按照版本 ID 进行过滤；</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页查询偏移量。默认值为 0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值为 20，最大值为 100。 
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeConfigGroupVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 配置组 ID。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 过滤条件，Filters.Values 的上限为 20，该参数不填写时，返回所选配置组下的所有版本信息。详细的过滤条件如下：
+	// <li>version-id：按照版本 ID 进行过滤；</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页查询偏移量。默认值为 0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值为 20，最大值为 100。 
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeConfigGroupVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigGroupVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigGroupVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigGroupVersionsResponseParams struct {
+	// 版本总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 版本信息列表。
+	ConfigGroupVersionInfos []*ConfigGroupVersionInfo `json:"ConfigGroupVersionInfos,omitnil" name:"ConfigGroupVersionInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeConfigGroupVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConfigGroupVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeConfigGroupVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigGroupVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3980,6 +4345,142 @@ func (r *DescribeDefaultCertificatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDefaultCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeployHistoryRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 环境 ID。
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+
+	// 过滤条件，Filters.Values 的上限为 20，详细的过滤条件如下：
+	// <li>record-id：按照发布记录 ID 进行过滤进行过滤。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeDeployHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 环境 ID。
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+
+	// 过滤条件，Filters.Values 的上限为 20，详细的过滤条件如下：
+	// <li>record-id：按照发布记录 ID 进行过滤进行过滤。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeDeployHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "EnvId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeployHistoryResponseParams struct {
+	// 发布记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 发布记录详情。
+	Records []*DeployRecord `json:"Records,omitnil" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDeployHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeployHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeployHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+}
+
+type DescribeEnvironmentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+}
+
+func (r *DescribeEnvironmentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentsResponseParams struct {
+	// 环境总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 环境列表。
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil" name:"EnvInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeEnvironmentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvironmentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvironmentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6153,6 +6654,37 @@ type EntityStatus struct {
 
 	// 实例配置下发信息提示。
 	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+type EnvInfo struct {
+	// 环境 ID。
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+
+	// 环境类型，取值有：
+	// <li>production: 生产环境；</li><li>staging: 测试环境。</li>
+	EnvType *string `json:"EnvType,omitnil" name:"EnvType"`
+
+	// 环境状态，取值有：
+	// <li>creating：创建中；</li>
+	// <li>running：稳定运行中，可进行版本变更；</li>
+	// <li>version_deploying：版本部署中，不能进行新的变更。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 当前环境的配置生效范围：
+	// <li>当 EnvType 取值为 production 时，该参数值为 ["ALL"]，代表全网生效；</li>
+	// <li>当 EnvType 取值为 staging 时，会返回测试节点 IP，可用于绑定 host 测试。</li>
+	Scope []*string `json:"Scope,omitnil" name:"Scope"`
+
+	// 当前环境中各配置组实际生效的版本，根据 Status 的取值有以下两种情况：
+	// <li>当 Status 取值为 version_deploying 时，本字段返回的值为执行变更动作之前生效的版本，即新版本部署期间，实际生效的版本为执行变更动作之前的版本；</li>
+	// <li>当 Status 取值为 running 时，本字段返回的值即为当前实际生效的版本。</li>
+	CurrentConfigGroupVersionInfos []*ConfigGroupVersionInfo `json:"CurrentConfigGroupVersionInfos,omitnil" name:"CurrentConfigGroupVersionInfos"`
+
+	// 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 }
 
 type ExceptConfig struct {

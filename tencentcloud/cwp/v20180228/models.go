@@ -19616,6 +19616,9 @@ type DescribeLicenseGeneralResponseParams struct {
 	// 已销毁订单数
 	DestroyOrderNum *uint64 `json:"DestroyOrderNum,omitnil" name:"DestroyOrderNum"`
 
+	// 是否自动续费开关,true 开启,false 关闭
+	RepurchaseRenewSwitch *bool `json:"RepurchaseRenewSwitch,omitnil" name:"RepurchaseRenewSwitch"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -38650,6 +38653,9 @@ type ModifyAutoOpenProVersionConfigRequestParams struct {
 
 	// 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
 	AutoRepurchaseRenewSwitch *uint64 `json:"AutoRepurchaseRenewSwitch,omitnil" name:"AutoRepurchaseRenewSwitch"`
+
+	// 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
+	RepurchaseRenewSwitch *uint64 `json:"RepurchaseRenewSwitch,omitnil" name:"RepurchaseRenewSwitch"`
 }
 
 type ModifyAutoOpenProVersionConfigRequest struct {
@@ -38665,6 +38671,9 @@ type ModifyAutoOpenProVersionConfigRequest struct {
 
 	// 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
 	AutoRepurchaseRenewSwitch *uint64 `json:"AutoRepurchaseRenewSwitch,omitnil" name:"AutoRepurchaseRenewSwitch"`
+
+	// 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
+	RepurchaseRenewSwitch *uint64 `json:"RepurchaseRenewSwitch,omitnil" name:"RepurchaseRenewSwitch"`
 }
 
 func (r *ModifyAutoOpenProVersionConfigRequest) ToJsonString() string {
@@ -38682,6 +38691,7 @@ func (r *ModifyAutoOpenProVersionConfigRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "AutoRepurchaseSwitch")
 	delete(f, "AutoRepurchaseRenewSwitch")
+	delete(f, "RepurchaseRenewSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoOpenProVersionConfigRequest has unknown keys!", "")
 	}

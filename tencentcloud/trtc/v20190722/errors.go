@@ -38,6 +38,9 @@ const (
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
+	// 查询任务失败
+	FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
+
 	// 云API混流模板和SDK混流冲突。
 	FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 
@@ -49,6 +52,9 @@ const (
 
 	// 应用ID不存在。
 	FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
+
+	// 任务已存在
+	FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 
 	// 调用接口时任务已结束。
 	FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
@@ -73,6 +79,9 @@ const (
 
 	// http请求解析失败。
 	INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+
+	// http请求解析失败。
+	INTERNALERROR_HTTPPARSEFAILED = "InternalError.HttpParseFailed"
 
 	// 接口错误。
 	INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
@@ -181,6 +190,9 @@ const (
 
 	// StreamId参数错误。
 	INVALIDPARAMETER_STREAMID = "InvalidParameter.StreamId"
+
+	// TaskId 参数错误。
+	INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
 
 	// Url解析参数失败。
 	INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"

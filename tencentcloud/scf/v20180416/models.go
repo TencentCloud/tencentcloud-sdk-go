@@ -2132,6 +2132,10 @@ type GetFunctionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceEnable *string `json:"TraceEnable,omitnil" name:"TraceEnable"`
 
+	// 镜像配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil" name:"ImageConfig"`
+
 	// HTTP函数支持的访问协议。当前支持WebSockets协议。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *string `json:"ProtocolType,omitnil" name:"ProtocolType"`
@@ -2139,6 +2143,14 @@ type GetFunctionResponseParams struct {
 	// HTTP函数配置ProtocolType访问协议，当前协议配置的参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitnil" name:"ProtocolParams"`
+
+	// 是否开启DNS缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DnsCache *string `json:"DnsCache,omitnil" name:"DnsCache"`
+
+	// 内网访问配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetConfig *IntranetConfigOut `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -2505,9 +2517,9 @@ type ImageConfig struct {
 	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitnil" name:"ContainerImageAccelerate"`
 
 	// 镜像函数端口设置
+	// 默认值: 9000
 	// -1: 无端口镜像函数
-	// 0: 默认端口，当前默认端口是9000
-	// 其他: 特殊端口
+	// 其他: 取值范围 0 ~ 65535
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImagePort *int64 `json:"ImagePort,omitnil" name:"ImagePort"`
 }
@@ -2520,6 +2532,17 @@ type InstanceConcurrencyConfig struct {
 	// 单实例并发数最大值。取值范围 [1,100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConcurrency *uint64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
+}
+
+type IntranetConfigOut struct {
+	// 是否启用固定内网IP
+	// ENABLE 为启用
+	// DISABLE 为不启用
+	IpFixed *string `json:"IpFixed,omitnil" name:"IpFixed"`
+
+	// 若已启用固定内网IP，则该字段返回使用的IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpAddress []*string `json:"IpAddress,omitnil" name:"IpAddress"`
 }
 
 // Predefined struct for user

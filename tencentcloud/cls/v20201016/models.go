@@ -93,6 +93,14 @@ type AlarmAnalysisConfig struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type AlarmClassification struct {
+	// 分类键
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 分类值
+	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
 type AlarmInfo struct {
 	// 告警策略名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -1119,6 +1127,9 @@ type CreateAlarmRequestParams struct {
 	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
+	// 是否开启告警策略。默认值为true
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+
 	// 用户自定义告警内容
 	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
 
@@ -1147,6 +1158,15 @@ type CreateAlarmRequestParams struct {
 	// 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+
+	// 告警附加分类信息列表。
+	// 
+	// Classifications元素个数不能超过20个。
+	// 
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，字符规则 ^[a-z]([a-z0-9_]{0,49})$。
+	// 
+	// Classifications元素的Value长度不能超过200个字符。
+	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
 
 type CreateAlarmRequest struct {
@@ -1203,6 +1223,9 @@ type CreateAlarmRequest struct {
 	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
+	// 是否开启告警策略。默认值为true
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+
 	// 用户自定义告警内容
 	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
 
@@ -1231,6 +1254,15 @@ type CreateAlarmRequest struct {
 	// 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+
+	// 告警附加分类信息列表。
+	// 
+	// Classifications元素个数不能超过20个。
+	// 
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，字符规则 ^[a-z]([a-z0-9_]{0,49})$。
+	// 
+	// Classifications元素的Value长度不能超过200个字符。
+	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
 
 func (r *CreateAlarmRequest) ToJsonString() string {
@@ -1255,6 +1287,7 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "AlarmLevel")
 	delete(f, "MultiConditions")
 	delete(f, "Status")
+	delete(f, "Enable")
 	delete(f, "MessageTemplate")
 	delete(f, "CallBack")
 	delete(f, "Analysis")
@@ -1262,6 +1295,7 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "GroupTriggerCondition")
 	delete(f, "Tags")
 	delete(f, "MonitorObjectType")
+	delete(f, "Classifications")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmRequest has unknown keys!", "")
 	}
@@ -2714,7 +2748,7 @@ type CreateTopicRequestParams struct {
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
 
-	// webtracking开关； false: 关闭 true： 开启
+	// 免鉴权开关； false: 关闭 true： 开启
 	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
 }
 
@@ -2752,7 +2786,7 @@ type CreateTopicRequest struct {
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
 
-	// webtracking开关； false: 关闭 true： 开启
+	// 免鉴权开关； false: 关闭 true： 开启
 	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
 }
 
@@ -6948,6 +6982,16 @@ type MetaTagInfo struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type MetricLabel struct {
+	// 指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 指标内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
 // Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
 	// 通知渠道组ID。
@@ -7099,6 +7143,9 @@ type ModifyAlarmRequestParams struct {
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
+	// 是否开启告警策略。默认值为true
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+
 	// 用户自定义告警内容
 	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
 
@@ -7114,9 +7161,18 @@ type ModifyAlarmRequestParams struct {
 	// 分组触发条件。
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
 
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// <li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+
+	// 告警附加分类信息列表。
+	// Classifications元素个数不能超过20个。
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
+	// Classifications元素的Value长度不能超过200个字符。
+	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
 
 type ModifyAlarmRequest struct {
@@ -7166,6 +7222,9 @@ type ModifyAlarmRequest struct {
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
+	// 是否开启告警策略。默认值为true
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+
 	// 用户自定义告警内容
 	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
 
@@ -7181,9 +7240,18 @@ type ModifyAlarmRequest struct {
 	// 分组触发条件。
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
 
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// <li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+
+	// 告警附加分类信息列表。
+	// Classifications元素个数不能超过20个。
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
+	// Classifications元素的Value长度不能超过200个字符。
+	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
 
 func (r *ModifyAlarmRequest) ToJsonString() string {
@@ -7209,12 +7277,15 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "AlarmNoticeIds")
 	delete(f, "AlarmTargets")
 	delete(f, "Status")
+	delete(f, "Enable")
 	delete(f, "MessageTemplate")
 	delete(f, "CallBack")
 	delete(f, "Analysis")
 	delete(f, "GroupTriggerStatus")
 	delete(f, "GroupTriggerCondition")
+	delete(f, "Tags")
 	delete(f, "MonitorObjectType")
+	delete(f, "Classifications")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmRequest has unknown keys!", "")
 	}
@@ -9232,6 +9303,19 @@ type ScheduledSqlResouceInfo struct {
 
 	// 指标名称
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
+
+	// 指标名称
+	// BizType为1时，优先使用MetricNames字段信息。多指标只能填充到MetricNames字段，单指标建议填充到MetricNames字段
+	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
+
+	// 指标项
+	MetricLabels []*string `json:"MetricLabels,omitnil" name:"MetricLabels"`
+
+	// 自定义时间
+	CustomTime *string `json:"CustomTime,omitnil" name:"CustomTime"`
+
+	// 自定义标签
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil" name:"CustomMetricLabels"`
 }
 
 type ScheduledSqlTaskInfo struct {
@@ -9914,6 +9998,18 @@ type TopicInfo struct {
 	// 热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+
+	// 主题类型。
+	// - 0: 日志主题 
+	// - 1: 指标主题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+
+	// 免鉴权开关。
+	// - false: 关闭
+	// - true: 开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
 }
 
 // Predefined struct for user

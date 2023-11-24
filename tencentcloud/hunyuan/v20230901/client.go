@@ -65,6 +65,12 @@ func NewChatProResponse() (response *ChatProResponse) {
 // ChatPro
 // 腾讯混元大模型高级版是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口为SSE协议。
 //
+// 
+//
+//  1.本接口暂不支持返回图片内容。
+//
+//  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
@@ -84,6 +90,12 @@ func (c *Client) ChatPro(request *ChatProRequest) (response *ChatProResponse, er
 
 // ChatPro
 // 腾讯混元大模型高级版是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口为SSE协议。
+//
+// 
+//
+//  1.本接口暂不支持返回图片内容。
+//
+//  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
@@ -134,6 +146,12 @@ func NewChatStdResponse() (response *ChatStdResponse) {
 // ChatStd
 // 腾讯混元大模型标准版是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口为SSE协议。
 //
+// 
+//
+//  1.本接口暂不支持返回图片内容。
+//
+//  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
@@ -154,6 +172,12 @@ func (c *Client) ChatStd(request *ChatStdRequest) (response *ChatStdResponse, er
 
 // ChatStd
 // 腾讯混元大模型标准版是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口为SSE协议。
+//
+// 
+//
+//  1.本接口暂不支持返回图片内容。
+//
+//  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
