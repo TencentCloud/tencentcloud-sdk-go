@@ -458,10 +458,10 @@ type CreateRegisterCodeRequestParams struct {
 	// 注册码描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 注册实列名称前缀。
+	// 注册实例名称前缀。
 	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitnil" name:"InstanceNamePrefix"`
 
-	// 该注册码允许注册的实列数目。默认限制为10个。
+	// 该注册码允许注册的实例数目。默认限制为10个。
 	RegisterLimit *int64 `json:"RegisterLimit,omitnil" name:"RegisterLimit"`
 
 	// 该注册码的有效时间，单位为小时。默认为4小时。
@@ -477,10 +477,10 @@ type CreateRegisterCodeRequest struct {
 	// 注册码描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 注册实列名称前缀。
+	// 注册实例名称前缀。
 	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitnil" name:"InstanceNamePrefix"`
 
-	// 该注册码允许注册的实列数目。默认限制为10个。
+	// 该注册码允许注册的实例数目。默认限制为10个。
 	RegisterLimit *int64 `json:"RegisterLimit,omitnil" name:"RegisterLimit"`
 
 	// 该注册码的有效时间，单位为小时。默认为4小时。

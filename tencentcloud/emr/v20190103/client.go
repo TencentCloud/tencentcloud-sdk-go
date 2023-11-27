@@ -143,6 +143,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
 //  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
 //  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
 //  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
 //  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
@@ -176,6 +177,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
 //  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
 //  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
 //  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
 //  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
@@ -1053,6 +1055,7 @@ func NewDescribeInstancesListResponse() (response *DescribeInstancesListResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
 //  FAILEDOPERATION_GETCAMROLEFAILED = "FailedOperation.GetCamRoleFailed"
 //  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  INTERNALERROR = "InternalError"
@@ -1089,6 +1092,7 @@ func (c *Client) DescribeInstancesList(request *DescribeInstancesListRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
 //  FAILEDOPERATION_GETCAMROLEFAILED = "FailedOperation.GetCamRoleFailed"
 //  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  INTERNALERROR = "InternalError"
@@ -1481,6 +1485,7 @@ func NewInquiryPriceCreateInstanceResponse() (response *InquiryPriceCreateInstan
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -1532,6 +1537,7 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"

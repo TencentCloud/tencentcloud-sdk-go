@@ -378,6 +378,7 @@ func NewSpeechTranslateResponse() (response *SpeechTranslateResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
@@ -413,6 +414,7 @@ func (c *Client) SpeechTranslate(request *SpeechTranslateRequest) (response *Spe
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"

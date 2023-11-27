@@ -2878,6 +2878,7 @@ func NewDescribeCloudNativeAPIGatewaysResponse() (response *DescribeCloudNativeA
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
@@ -2906,6 +2907,7 @@ func (c *Client) DescribeCloudNativeAPIGateways(request *DescribeCloudNativeAPIG
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
@@ -3869,6 +3871,7 @@ func NewModifyCloudNativeAPIGatewayCertificateResponse() (response *ModifyCloudN
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
@@ -3900,6 +3903,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayCertificate(request *ModifyCloudNati
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
@@ -4834,6 +4838,7 @@ func NewUpdateUpstreamTargetsResponse() (response *UpdateUpstreamTargetsResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 func (c *Client) UpdateUpstreamTargets(request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
     return c.UpdateUpstreamTargetsWithContext(context.Background(), request)
 }
@@ -4843,6 +4848,7 @@ func (c *Client) UpdateUpstreamTargets(request *UpdateUpstreamTargetsRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 func (c *Client) UpdateUpstreamTargetsWithContext(ctx context.Context, request *UpdateUpstreamTargetsRequest) (response *UpdateUpstreamTargetsResponse, err error) {
     if request == nil {
         request = NewUpdateUpstreamTargetsRequest()

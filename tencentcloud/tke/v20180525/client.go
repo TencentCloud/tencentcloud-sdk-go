@@ -2829,6 +2829,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_TAGCOMMON = "FailedOperation.TagCommon"
 //  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -2859,6 +2860,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_TAGCOMMON = "FailedOperation.TagCommon"
 //  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -8014,6 +8016,7 @@ func NewDescribeIPAMDResponse() (response *DescribeIPAMDResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DescribeIPAMD(request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
     return c.DescribeIPAMDWithContext(context.Background(), request)
@@ -8024,6 +8027,7 @@ func (c *Client) DescribeIPAMD(request *DescribeIPAMDRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DescribeIPAMDWithContext(ctx context.Context, request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
     if request == nil {
@@ -13370,6 +13374,7 @@ func NewSetNodePoolNodeProtectionResponse() (response *SetNodePoolNodeProtection
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionRequest) (response *SetNodePoolNodeProtectionResponse, err error) {
     return c.SetNodePoolNodeProtectionWithContext(context.Background(), request)
 }
@@ -13389,6 +13394,7 @@ func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionReq
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetNodePoolNodeProtectionWithContext(ctx context.Context, request *SetNodePoolNodeProtectionRequest) (response *SetNodePoolNodeProtectionResponse, err error) {
     if request == nil {
         request = NewSetNodePoolNodeProtectionRequest()

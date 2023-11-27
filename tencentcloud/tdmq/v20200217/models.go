@@ -1430,10 +1430,10 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProClusterRequestParams struct {
-	// 多可用区部署选择三个可用区，示例"200002","200003","200004"
+	// 多可用区部署选择三个可用区，示例[200002,200003,200004]
 	// 
-	// 单可用区部署选择一个可用区，示例"200002"
-	ZoneIds *string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+	// 单可用区部署选择一个可用区，示例[200002]
+	ZoneIds []*int64 `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 集群规格代号
 	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
@@ -1467,10 +1467,10 @@ type CreateProClusterRequestParams struct {
 type CreateProClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 多可用区部署选择三个可用区，示例"200002","200003","200004"
+	// 多可用区部署选择三个可用区，示例[200002,200003,200004]
 	// 
-	// 单可用区部署选择一个可用区，示例"200002"
-	ZoneIds *string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+	// 单可用区部署选择一个可用区，示例[200002]
+	ZoneIds []*int64 `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 集群规格代号
 	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
@@ -2996,6 +2996,63 @@ func (r *DeleteEnvironmentsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEnvironmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProClusterRequestParams struct {
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+type DeleteProClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+}
+
+func (r *DeleteProClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProClusterResponseParams struct {
+	// 退还实例订单号
+	DealName *string `json:"DealName,omitnil" name:"DealName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteProClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProClusterResponseParams `json:"Response"`
+}
+
+func (r *DeleteProClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -5106,6 +5106,9 @@ type DescribeResourceGroupRequestParams struct {
 
 	// 资产组id  全部传0
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// all  包含子组 own自己
+	ShowType *string `json:"ShowType,omitnil" name:"ShowType"`
 }
 
 type DescribeResourceGroupRequest struct {
@@ -5116,6 +5119,9 @@ type DescribeResourceGroupRequest struct {
 
 	// 资产组id  全部传0
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// all  包含子组 own自己
+	ShowType *string `json:"ShowType,omitnil" name:"ShowType"`
 }
 
 func (r *DescribeResourceGroupRequest) ToJsonString() string {
@@ -5132,6 +5138,7 @@ func (r *DescribeResourceGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "QueryType")
 	delete(f, "GroupId")
+	delete(f, "ShowType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGroupRequest has unknown keys!", "")
 	}

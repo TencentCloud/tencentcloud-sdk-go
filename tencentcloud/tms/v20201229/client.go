@@ -65,13 +65,13 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 }
 
 // TextModeration
-// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms/text/package) 并调整好对应的业务配置。
+// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
 //
 // 
 //
 // ### 接口使用说明
 //
-// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms/text/package)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**1万条**文本识别额度，有效期为1个月。
+// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**3000条**文本识别额度，有效期为15天。
 //
 // - 该接口为收费接口，计费方式敬请参见 [腾讯云文本内容安全定价](https://cloud.tencent.com/product/tms/pricing)。
 //
@@ -114,13 +114,13 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
 }
 
 // TextModeration
-// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms/text/package) 并调整好对应的业务配置。
+// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
 //
 // 
 //
 // ### 接口使用说明
 //
-// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms/text/package)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**1万条**文本识别额度，有效期为1个月。
+// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**3000条**文本识别额度，有效期为15天。
 //
 // - 该接口为收费接口，计费方式敬请参见 [腾讯云文本内容安全定价](https://cloud.tencent.com/product/tms/pricing)。
 //

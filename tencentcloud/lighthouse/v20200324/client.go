@@ -1225,6 +1225,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
+//  RESOURCESSOLDOUT_BUNDLESOLDOUT = "ResourcesSoldOut.BundleSoldOut"
 //  RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = "ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs"
 //  RESOURCESSOLDOUT_ZONESHASNOBUNDLECONFIGS = "ResourcesSoldOut.ZonesHasNoBundleConfigs"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -1266,6 +1267,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
+//  RESOURCESSOLDOUT_BUNDLESOLDOUT = "ResourcesSoldOut.BundleSoldOut"
 //  RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = "ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs"
 //  RESOURCESSOLDOUT_ZONESHASNOBUNDLECONFIGS = "ResourcesSoldOut.ZonesHasNoBundleConfigs"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -1625,6 +1627,7 @@ func NewDeleteFirewallTemplateResponse() (response *DeleteFirewallTemplateRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DeleteFirewallTemplate(request *DeleteFirewallTemplateRequest) (response *DeleteFirewallTemplateResponse, err error) {
     return c.DeleteFirewallTemplateWithContext(context.Background(), request)
 }
@@ -1635,6 +1638,7 @@ func (c *Client) DeleteFirewallTemplate(request *DeleteFirewallTemplateRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DeleteFirewallTemplateWithContext(ctx context.Context, request *DeleteFirewallTemplateRequest) (response *DeleteFirewallTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteFirewallTemplateRequest()
@@ -1677,6 +1681,7 @@ func NewDeleteFirewallTemplateRulesResponse() (response *DeleteFirewallTemplateR
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = "ResourceNotFound.FirewallTemplateRuleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DeleteFirewallTemplateRules(request *DeleteFirewallTemplateRulesRequest) (response *DeleteFirewallTemplateRulesResponse, err error) {
     return c.DeleteFirewallTemplateRulesWithContext(context.Background(), request)
 }
@@ -1688,6 +1693,7 @@ func (c *Client) DeleteFirewallTemplateRules(request *DeleteFirewallTemplateRule
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = "ResourceNotFound.FirewallTemplateRuleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DeleteFirewallTemplateRulesWithContext(ctx context.Context, request *DeleteFirewallTemplateRulesRequest) (response *DeleteFirewallTemplateRulesResponse, err error) {
     if request == nil {
         request = NewDeleteFirewallTemplateRulesRequest()
@@ -6801,6 +6807,7 @@ func NewReplaceFirewallTemplateRuleResponse() (response *ReplaceFirewallTemplate
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ReplaceFirewallTemplateRule(request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
     return c.ReplaceFirewallTemplateRuleWithContext(context.Background(), request)
 }
@@ -6812,6 +6819,7 @@ func (c *Client) ReplaceFirewallTemplateRule(request *ReplaceFirewallTemplateRul
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ReplaceFirewallTemplateRuleWithContext(ctx context.Context, request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
     if request == nil {
         request = NewReplaceFirewallTemplateRuleRequest()

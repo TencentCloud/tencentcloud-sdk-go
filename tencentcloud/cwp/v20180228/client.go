@@ -20561,6 +20561,7 @@ func NewDescribeWarningListResponse() (response *DescribeWarningListResponse) {
 // 获取当前用户告警列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWarningList(request *DescribeWarningListRequest) (response *DescribeWarningListResponse, err error) {
     return c.DescribeWarningListWithContext(context.Background(), request)
@@ -20570,6 +20571,7 @@ func (c *Client) DescribeWarningList(request *DescribeWarningListRequest) (respo
 // 获取当前用户告警列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWarningListWithContext(ctx context.Context, request *DescribeWarningListRequest) (response *DescribeWarningListResponse, err error) {
     if request == nil {
@@ -20610,6 +20612,7 @@ func NewDescribeWebHookPolicyResponse() (response *DescribeWebHookPolicyResponse
 // 查询告警策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookPolicy(request *DescribeWebHookPolicyRequest) (response *DescribeWebHookPolicyResponse, err error) {
     return c.DescribeWebHookPolicyWithContext(context.Background(), request)
@@ -20619,6 +20622,7 @@ func (c *Client) DescribeWebHookPolicy(request *DescribeWebHookPolicyRequest) (r
 // 查询告警策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookPolicyWithContext(ctx context.Context, request *DescribeWebHookPolicyRequest) (response *DescribeWebHookPolicyResponse, err error) {
     if request == nil {
@@ -20659,6 +20663,7 @@ func NewDescribeWebHookReceiverResponse() (response *DescribeWebHookReceiverResp
 // 查询告警接收人列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookReceiver(request *DescribeWebHookReceiverRequest) (response *DescribeWebHookReceiverResponse, err error) {
     return c.DescribeWebHookReceiverWithContext(context.Background(), request)
@@ -20668,6 +20673,7 @@ func (c *Client) DescribeWebHookReceiver(request *DescribeWebHookReceiverRequest
 // 查询告警接收人列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookReceiverWithContext(ctx context.Context, request *DescribeWebHookReceiverRequest) (response *DescribeWebHookReceiverResponse, err error) {
     if request == nil {
@@ -20708,6 +20714,7 @@ func NewDescribeWebHookReceiverUsageResponse() (response *DescribeWebHookReceive
 // 查询指定告警接收人的关联策略使用信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookReceiverUsage(request *DescribeWebHookReceiverUsageRequest) (response *DescribeWebHookReceiverUsageResponse, err error) {
     return c.DescribeWebHookReceiverUsageWithContext(context.Background(), request)
@@ -20717,6 +20724,7 @@ func (c *Client) DescribeWebHookReceiverUsage(request *DescribeWebHookReceiverUs
 // 查询指定告警接收人的关联策略使用信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeWebHookReceiverUsageWithContext(ctx context.Context, request *DescribeWebHookReceiverUsageRequest) (response *DescribeWebHookReceiverUsageResponse, err error) {
     if request == nil {

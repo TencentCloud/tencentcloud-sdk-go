@@ -238,6 +238,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     return c.DescribeRegionsWithContext(context.Background(), request)
 }
@@ -247,6 +248,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeRegionsRequest()
@@ -289,6 +291,7 @@ func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
     return c.DescribeScenesWithContext(context.Background(), request)
 }
@@ -300,6 +303,7 @@ func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *Descr
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 func (c *Client) DescribeScenesWithContext(ctx context.Context, request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
     if request == nil {
         request = NewDescribeScenesRequest()

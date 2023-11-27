@@ -1702,6 +1702,7 @@ func NewDeleteUserDeviceResponse() (response *DeleteUserDeviceResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserDevice(request *DeleteUserDeviceRequest) (response *DeleteUserDeviceResponse, err error) {
     return c.DeleteUserDeviceWithContext(context.Background(), request)
@@ -1714,6 +1715,7 @@ func (c *Client) DeleteUserDevice(request *DeleteUserDeviceRequest) (response *D
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserDeviceWithContext(ctx context.Context, request *DeleteUserDeviceRequest) (response *DeleteUserDeviceResponse, err error) {
     if request == nil {

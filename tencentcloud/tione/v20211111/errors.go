@@ -359,6 +359,9 @@ const (
 	// 裸金属资源组不支持创建免费存储的Notebook
 	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 
+	// 纳管资源组不支持cbs存储，请使用CFS
+	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHSWRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithSWResourceGroup"
+
 	// 裸金属资源组不支持创建Notebook
 	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
 

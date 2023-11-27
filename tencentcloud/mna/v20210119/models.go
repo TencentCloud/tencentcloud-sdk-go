@@ -20,6 +20,84 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ActivateHardware struct {
+	// 厂商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vendor *string `json:"Vendor,omitnil" name:"Vendor"`
+
+	// 设备SN序列号
+	SN *string `json:"SN,omitnil" name:"SN"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 设备密钥
+	DataKey *string `json:"DataKey,omitnil" name:"DataKey"`
+}
+
+// Predefined struct for user
+type ActivateHardwareRequestParams struct {
+	// 待激活的设备列表
+	Hardware []*ActivateHardware `json:"Hardware,omitnil" name:"Hardware"`
+}
+
+type ActivateHardwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待激活的设备列表
+	Hardware []*ActivateHardware `json:"Hardware,omitnil" name:"Hardware"`
+}
+
+func (r *ActivateHardwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateHardwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Hardware")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateHardwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateHardwareResponseParams struct {
+	// 完成激活的设备信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareInfo []*ActivateHardware `json:"HardwareInfo,omitnil" name:"HardwareInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ActivateHardwareResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateHardwareResponseParams `json:"Response"`
+}
+
+func (r *ActivateHardwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateHardwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type AddDeviceRequestParams struct {
 	// 新建设备的名称
@@ -102,6 +180,63 @@ func (r *AddDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddHardwareRequestParams struct {
+	// 硬件列表
+	Hardware []*Hardware `json:"Hardware,omitnil" name:"Hardware"`
+}
+
+type AddHardwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 硬件列表
+	Hardware []*Hardware `json:"Hardware,omitnil" name:"Hardware"`
+}
+
+func (r *AddHardwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddHardwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Hardware")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddHardwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddHardwareResponseParams struct {
+	// 硬件设备
+	Hardware []*Hardware `json:"Hardware,omitnil" name:"Hardware"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddHardwareResponse struct {
+	*tchttp.BaseResponse
+	Response *AddHardwareResponseParams `json:"Response"`
+}
+
+func (r *AddHardwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddHardwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -934,6 +1069,83 @@ func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetHardwareListRequestParams struct {
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页面设备数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+}
+
+type GetHardwareListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页面设备数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+}
+
+func (r *GetHardwareListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetHardwareListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetHardwareListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetHardwareListResponseParams struct {
+	// 硬件信息列表
+	HardwareInfos []*HardwareInfo `json:"HardwareInfos,omitnil" name:"HardwareInfos"`
+
+	// 硬件总数
+	Length *int64 `json:"Length,omitnil" name:"Length"`
+
+	// 总页数
+	TotalPage *int64 `json:"TotalPage,omitnil" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetHardwareListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetHardwareListResponseParams `json:"Response"`
+}
+
+func (r *GetHardwareListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetHardwareListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetMultiFlowStatisticRequestParams struct {
 	// 设备id列表，单次最多请求10个设备
 	DeviceIds []*string `json:"DeviceIds,omitnil" name:"DeviceIds"`
@@ -1233,6 +1445,155 @@ func (r *GetStatisticDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetVendorHardwareRequestParams struct {
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 激活状态，
+	// 空：全部；
+	// 1:待激活；
+	// 2:已激活；
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type GetVendorHardwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 激活状态，
+	// 空：全部；
+	// 1:待激活；
+	// 2:已激活；
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *GetVendorHardwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVendorHardwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVendorHardwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVendorHardwareResponseParams struct {
+	// 硬件信息列表
+	VendorHardware []*VendorHardware `json:"VendorHardware,omitnil" name:"VendorHardware"`
+
+	// 设备总数
+	Length *int64 `json:"Length,omitnil" name:"Length"`
+
+	// 总页数
+	TotalPage *int64 `json:"TotalPage,omitnil" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetVendorHardwareResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVendorHardwareResponseParams `json:"Response"`
+}
+
+func (r *GetVendorHardwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVendorHardwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Hardware struct {
+	// 硬件序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SN *string `json:"SN,omitnil" name:"SN"`
+
+	// license计费模式：
+	// 1，租户月付费
+	// 2，厂商月付费
+	// 3，license永久授权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil" name:"LicenseChargingMode"`
+
+	// 设备描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 硬件ID，入参无需传递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareId *string `json:"HardwareId,omitnil" name:"HardwareId"`
+}
+
+type HardwareInfo struct {
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveTime *string `json:"ActiveTime,omitnil" name:"ActiveTime"`
+
+	// 最后在线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOnlineTime *string `json:"LastOnlineTime,omitnil" name:"LastOnlineTime"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 厂商备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VendorDescription *string `json:"VendorDescription,omitnil" name:"VendorDescription"`
+
+	// license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil" name:"LicenseChargingMode"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 硬件序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SN *string `json:"SN,omitnil" name:"SN"`
+}
+
 type MonitorData struct {
 	// 时间点：s
 	Time *string `json:"Time,omitnil" name:"Time"`
@@ -1368,6 +1729,74 @@ func (r *UpdateDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateHardwareRequestParams struct {
+	// 硬件ID
+	HardwareId *string `json:"HardwareId,omitnil" name:"HardwareId"`
+
+	// 硬件序列号
+	SN *string `json:"SN,omitnil" name:"SN"`
+
+	// 设备备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type UpdateHardwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 硬件ID
+	HardwareId *string `json:"HardwareId,omitnil" name:"HardwareId"`
+
+	// 硬件序列号
+	SN *string `json:"SN,omitnil" name:"SN"`
+
+	// 设备备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *UpdateHardwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateHardwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HardwareId")
+	delete(f, "SN")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateHardwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateHardwareResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateHardwareResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateHardwareResponseParams `json:"Response"`
+}
+
+func (r *UpdateHardwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateHardwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateNetInfo struct {
 	// 网络类型：
 	// 0:数据
@@ -1385,4 +1814,42 @@ type UpdateNetInfo struct {
 
 	// 网卡名
 	NetInfoName *string `json:"NetInfoName,omitnil" name:"NetInfoName"`
+}
+
+type VendorHardware struct {
+	// 硬件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareId *string `json:"HardwareId,omitnil" name:"HardwareId"`
+
+	// 硬件序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SN *string `json:"SN,omitnil" name:"SN"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 激活状态， 空：全部； 1:待激活； 2:已激活
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveTime *string `json:"ActiveTime,omitnil" name:"ActiveTime"`
+
+	// 厂商备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 设备id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil" name:"LicenseChargingMode"`
+
+	// 最后在线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOnlineTime *string `json:"LastOnlineTime,omitnil" name:"LastOnlineTime"`
 }

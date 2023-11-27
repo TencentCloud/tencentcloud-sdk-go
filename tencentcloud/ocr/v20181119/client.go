@@ -2108,6 +2108,7 @@ func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *GeneralBasicOCRResponse, err error) {
     return c.GeneralBasicOCRWithContext(context.Background(), request)
@@ -2252,6 +2253,7 @@ func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *Gen
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralBasicOCRWithContext(ctx context.Context, request *GeneralBasicOCRRequest) (response *GeneralBasicOCRResponse, err error) {
     if request == nil {
@@ -5339,6 +5341,7 @@ func NewRecognizeMedicalInvoiceOCRResponse() (response *RecognizeMedicalInvoiceO
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     return c.RecognizeMedicalInvoiceOCRWithContext(context.Background(), request)
@@ -5362,6 +5365,7 @@ func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRR
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCRWithContext(ctx context.Context, request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     if request == nil {

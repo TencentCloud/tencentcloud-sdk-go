@@ -538,6 +538,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -562,6 +563,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"

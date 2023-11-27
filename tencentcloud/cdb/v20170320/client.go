@@ -759,6 +759,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //  INTERNALERROR_AUDITCREATELOGFILEERROR = "InternalError.AuditCreateLogFileError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
@@ -766,6 +767,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -786,6 +788,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 //  INTERNALERROR_AUDITCREATELOGFILEERROR = "InternalError.AuditCreateLogFileError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
@@ -793,6 +796,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4001,6 +4005,7 @@ func NewDescribeCdbZoneConfigResponse() (response *DescribeCdbZoneConfigResponse
 // 可能返回的错误码:
 //  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
 func (c *Client) DescribeCdbZoneConfig(request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
     return c.DescribeCdbZoneConfigWithContext(context.Background(), request)
 }
@@ -4011,6 +4016,7 @@ func (c *Client) DescribeCdbZoneConfig(request *DescribeCdbZoneConfigRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
 func (c *Client) DescribeCdbZoneConfigWithContext(ctx context.Context, request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
     if request == nil {
         request = NewDescribeCdbZoneConfigRequest()
@@ -4356,6 +4362,7 @@ func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigRe
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -4377,6 +4384,7 @@ func (c *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigReque
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -6505,6 +6513,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -6525,6 +6534,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"

@@ -349,6 +349,7 @@ func NewDeletePictureResponse() (response *DeletePictureResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeletePictureResponse, err error) {
@@ -363,6 +364,7 @@ func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeleteP
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePictureRequest) (response *DeletePictureResponse, err error) {

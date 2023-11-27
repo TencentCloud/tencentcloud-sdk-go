@@ -14941,7 +14941,7 @@ type DescribeVpcEndPointServiceRequestParams struct {
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitnil" name:"EndPointServiceIds"`
 
-	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil" name:"IsListAuthorizedEndPointService"`
 }
 
@@ -14964,7 +14964,7 @@ type DescribeVpcEndPointServiceRequest struct {
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitnil" name:"EndPointServiceIds"`
 
-	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil" name:"IsListAuthorizedEndPointService"`
 }
 
@@ -18137,6 +18137,14 @@ type EndPointService struct {
 
 	// 挂载的PAAS服务类型，CLB,CDB,CRS
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+
+	// Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceUin *string `json:"ServiceUin,omitnil" name:"ServiceUin"`
+
+	// 服务IP类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessIpType *int64 `json:"BusinessIpType,omitnil" name:"BusinessIpType"`
 }
 
 type Filter struct {

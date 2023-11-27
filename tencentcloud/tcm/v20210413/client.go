@@ -75,6 +75,7 @@ func NewCreateMeshResponse() (response *CreateMeshResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateMesh(request *CreateMeshRequest) (response *CreateMeshResponse, err error) {
     return c.CreateMeshWithContext(context.Background(), request)
 }
@@ -90,6 +91,7 @@ func (c *Client) CreateMesh(request *CreateMeshRequest) (response *CreateMeshRes
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateMeshWithContext(ctx context.Context, request *CreateMeshRequest) (response *CreateMeshResponse, err error) {
     if request == nil {
         request = NewCreateMeshRequest()

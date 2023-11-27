@@ -122,6 +122,37 @@ type RiskDetails struct {
 	Level *int64 `json:"Level,omitnil" name:"Level"`
 }
 
+type SentimentAnalysis struct {
+	// 情感标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil" name:"Label"`
+
+	// 标签分数，取值范围0到100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 情感分析明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *SentimentDetail `json:"Detail,omitnil" name:"Detail"`
+
+	// 响应码，成功为"OK"，失败为"InternalError"
+	Code *string `json:"Code,omitnil" name:"Code"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+type SentimentDetail struct {
+	// 正向分数，取值范围0到100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Positive *int64 `json:"Positive,omitnil" name:"Positive"`
+
+	// 负向分数，取值范围0到100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Negative *int64 `json:"Negative,omitnil" name:"Negative"`
+}
+
 type Tag struct {
 	// 该字段用于返回命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -237,6 +268,10 @@ type TextModerationResponseParams struct {
 	// 该字段用于返回上下文关联文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContextText *string `json:"ContextText,omitnil" name:"ContextText"`
+
+	// 情感分析结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SentimentAnalysis *SentimentAnalysis `json:"SentimentAnalysis,omitnil" name:"SentimentAnalysis"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

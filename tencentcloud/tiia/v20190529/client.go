@@ -2190,6 +2190,7 @@ func NewRecognizeCarProResponse() (response *RecognizeCarProResponse) {
 // - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
@@ -2222,6 +2223,7 @@ func (c *Client) RecognizeCarPro(request *RecognizeCarProRequest) (response *Rec
 // - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"

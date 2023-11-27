@@ -5911,6 +5911,7 @@ func NewDescribeWorkGroupsResponse() (response *DescribeWorkGroupsResponse) {
 //  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+//  INVALIDPARAMETER_INVALIDSORTING = "InvalidParameter.InvalidSorting"
 func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
     return c.DescribeWorkGroupsWithContext(context.Background(), request)
 }
@@ -5927,6 +5928,7 @@ func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (respons
 //  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+//  INVALIDPARAMETER_INVALIDSORTING = "InvalidParameter.InvalidSorting"
 func (c *Client) DescribeWorkGroupsWithContext(ctx context.Context, request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeWorkGroupsRequest()

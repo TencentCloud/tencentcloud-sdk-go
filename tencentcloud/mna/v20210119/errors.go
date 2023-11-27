@@ -68,6 +68,15 @@ const (
 	// 相同加速间隔时间过短。
 	OPERATIONDENIED_CREATEQOSEXCEEDLIMIT = "OperationDenied.CreateQosExceedLimit"
 
+	// SN已存在
+	OPERATIONDENIED_DUPLICATESN = "OperationDenied.DuplicateSN"
+
+	// 输入SN对应的硬件已经激活
+	OPERATIONDENIED_HARDWAREHASACTIVATED = "OperationDenied.HardwareHasActivated"
+
+	// 输入SN对应的硬件不存在。
+	OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+
 	// 请求运营商加速超时。
 	OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
 
@@ -76,6 +85,9 @@ const (
 
 	// 该用户不在运营商网络可加速范围内
 	OPERATIONDENIED_USEROUTOFCOVERAGE = "OperationDenied.UserOutOfCoverage"
+
+	// 当前账号尚未注册为厂商。
+	OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
 
 	// 运营商返回结果错误。
 	OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"

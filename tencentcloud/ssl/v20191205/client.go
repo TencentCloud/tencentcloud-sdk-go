@@ -3129,6 +3129,7 @@ func NewReplaceCertificateResponse() (response *ReplaceCertificateResponse) {
 //  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"
 func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (response *ReplaceCertificateResponse, err error) {
     return c.ReplaceCertificateWithContext(context.Background(), request)
 }
@@ -3156,6 +3157,7 @@ func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (respons
 //  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"
 func (c *Client) ReplaceCertificateWithContext(ctx context.Context, request *ReplaceCertificateRequest) (response *ReplaceCertificateResponse, err error) {
     if request == nil {
         request = NewReplaceCertificateRequest()
@@ -3388,6 +3390,7 @@ func NewUpdateCertificateInstanceResponse() (response *UpdateCertificateInstance
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = "FailedOperation.CertificateDeployInstanceEmpty"
+//  FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
 //  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
@@ -3415,6 +3418,7 @@ func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceReq
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = "FailedOperation.CertificateDeployInstanceEmpty"
+//  FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
 //  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"

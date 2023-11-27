@@ -1088,34 +1088,25 @@ type CreateAlarmRequestParams struct {
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
 
-	// 告警重复的周期。
-	// 
-	// 单位是分钟。
-	// 
-	// 取值范围是0~1440。
+	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
 
-	// 触发条件。
-	// 
+	// 触发条件
 	//  注意:  
-	// 
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
-	// 告警级别。
-	// 
+	// 告警级别
 	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-	// 
 	// 注意:  
 	// - 不填则默认为0。
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
 
-	// 多触发条件。
-	// 
+	// 多触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
@@ -1123,11 +1114,10 @@ type CreateAlarmRequestParams struct {
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
 
 	// 是否开启告警策略。
-	// 
 	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
-	// 是否开启告警策略。默认值为true
+	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -1140,7 +1130,6 @@ type CreateAlarmRequestParams struct {
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
 
 	// 分组触发状态。
-	// 
 	// 默认值false
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
 
@@ -1153,18 +1142,13 @@ type CreateAlarmRequestParams struct {
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 
 	// 不填则默认为0。
-	// 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
-	// 
 	// Classifications元素个数不能超过20个。
-	// 
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，字符规则 ^[a-z]([a-z0-9_]{0,49})$。
-	// 
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
 	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
@@ -1184,34 +1168,25 @@ type CreateAlarmRequest struct {
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
 
-	// 告警重复的周期。
-	// 
-	// 单位是分钟。
-	// 
-	// 取值范围是0~1440。
+	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
 
-	// 触发条件。
-	// 
+	// 触发条件
 	//  注意:  
-	// 
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
-	// 告警级别。
-	// 
+	// 告警级别
 	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-	// 
 	// 注意:  
 	// - 不填则默认为0。
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
 
-	// 多触发条件。
-	// 
+	// 多触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
@@ -1219,11 +1194,10 @@ type CreateAlarmRequest struct {
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
 
 	// 是否开启告警策略。
-	// 
 	// 默认值为true
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
-	// 是否开启告警策略。默认值为true
+	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -1236,7 +1210,6 @@ type CreateAlarmRequest struct {
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
 
 	// 分组触发状态。
-	// 
 	// 默认值false
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
 
@@ -1249,18 +1222,13 @@ type CreateAlarmRequest struct {
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 
 	// 不填则默认为0。
-	// 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
-	// 
 	// Classifications元素个数不能超过20个。
-	// 
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，字符规则 ^[a-z]([a-z0-9_]{0,49})$。
-	// 
+	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
 	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
 }
@@ -7232,7 +7200,7 @@ type ModifyAlarmRequestParams struct {
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
-	// 是否开启告警策略。默认值为true
+	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -7311,7 +7279,7 @@ type ModifyAlarmRequest struct {
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
-	// 是否开启告警策略。默认值为true
+	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -9394,16 +9362,16 @@ type ScheduledSqlResouceInfo struct {
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
 	// 指标名称
-	// BizType为1时，优先使用MetricNames字段信息。多指标只能填充到MetricNames字段，单指标建议填充到MetricNames字段
+	// BizType为1时，优先使用MetricNames字段多指标只能填充到MetricNames字段，单指标建议填充到MetricName字段
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 指标项
+	// 指标标签，从SQL结果字段中选择，一般是分组(group by) 的字段。
 	MetricLabels []*string `json:"MetricLabels,omitnil" name:"MetricLabels"`
 
-	// 自定义时间
+	// 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间，精度毫秒）为指标时间戳。
 	CustomTime *string `json:"CustomTime,omitnil" name:"CustomTime"`
 
-	// 自定义标签
+	// 除了MetricLabels，您还可以使用该参数，为指标补充静态的标签。
 	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil" name:"CustomMetricLabels"`
 }
 

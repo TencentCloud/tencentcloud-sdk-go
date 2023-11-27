@@ -2377,6 +2377,7 @@ func NewDeleteScheduledSqlResponse() (response *DeleteScheduledSqlResponse) {
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAFROMTASKNOTEXIST = "ResourceNotFound.DataFromTaskNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DeleteScheduledSql(request *DeleteScheduledSqlRequest) (response *DeleteScheduledSqlResponse, err error) {
     return c.DeleteScheduledSqlWithContext(context.Background(), request)
@@ -2397,6 +2398,7 @@ func (c *Client) DeleteScheduledSql(request *DeleteScheduledSqlRequest) (respons
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAFROMTASKNOTEXIST = "ResourceNotFound.DataFromTaskNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DeleteScheduledSqlWithContext(ctx context.Context, request *DeleteScheduledSqlRequest) (response *DeleteScheduledSqlResponse, err error) {
     if request == nil {
@@ -4860,6 +4862,7 @@ func NewModifyConsumerResponse() (response *ModifyConsumerResponse) {
 //  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
 func (c *Client) ModifyConsumer(request *ModifyConsumerRequest) (response *ModifyConsumerResponse, err error) {
     return c.ModifyConsumerWithContext(context.Background(), request)
 }
@@ -4877,6 +4880,7 @@ func (c *Client) ModifyConsumer(request *ModifyConsumerRequest) (response *Modif
 //  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
 func (c *Client) ModifyConsumerWithContext(ctx context.Context, request *ModifyConsumerRequest) (response *ModifyConsumerResponse, err error) {
     if request == nil {
         request = NewModifyConsumerRequest()

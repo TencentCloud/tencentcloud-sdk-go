@@ -1029,20 +1029,7 @@ func NewModifyInitNodeScriptsResponse() (response *ModifyInitNodeScriptsResponse
 // 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) ModifyInitNodeScripts(request *ModifyInitNodeScriptsRequest) (response *ModifyInitNodeScriptsResponse, err error) {
     return c.ModifyInitNodeScriptsWithContext(context.Background(), request)
 }
@@ -1051,20 +1038,7 @@ func (c *Client) ModifyInitNodeScripts(request *ModifyInitNodeScriptsRequest) (r
 // 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) ModifyInitNodeScriptsWithContext(ctx context.Context, request *ModifyInitNodeScriptsRequest) (response *ModifyInitNodeScriptsResponse, err error) {
     if request == nil {
         request = NewModifyInitNodeScriptsRequest()

@@ -3257,6 +3257,9 @@ type DescribeBasicDeviceStatusRequestParams struct {
 
 	// 地域名称
 	FilterRegion *uint64 `json:"FilterRegion,omitnil" name:"FilterRegion"`
+
+	// cnameWaf资源
+	CnameWafIdList []*string `json:"CnameWafIdList,omitnil" name:"CnameWafIdList"`
 }
 
 type DescribeBasicDeviceStatusRequest struct {
@@ -3270,6 +3273,9 @@ type DescribeBasicDeviceStatusRequest struct {
 
 	// 地域名称
 	FilterRegion *uint64 `json:"FilterRegion,omitnil" name:"FilterRegion"`
+
+	// cnameWaf资源
+	CnameWafIdList []*string `json:"CnameWafIdList,omitnil" name:"CnameWafIdList"`
 }
 
 func (r *DescribeBasicDeviceStatusRequest) ToJsonString() string {
@@ -3287,6 +3293,7 @@ func (r *DescribeBasicDeviceStatusRequest) FromJsonString(s string) error {
 	delete(f, "IpList")
 	delete(f, "IdList")
 	delete(f, "FilterRegion")
+	delete(f, "CnameWafIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBasicDeviceStatusRequest has unknown keys!", "")
 	}
@@ -3304,6 +3311,10 @@ type DescribeBasicDeviceStatusResponseParams struct {
 	// 域名化资产的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLBData []*KeyValue `json:"CLBData,omitnil" name:"CLBData"`
+
+	// cnamewaf资源状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CnameWafData []*KeyValue `json:"CnameWafData,omitnil" name:"CnameWafData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

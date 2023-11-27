@@ -3136,6 +3136,7 @@ func NewSkipSyncCheckItemResponse() (response *SkipSyncCheckItemResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) SkipSyncCheckItem(request *SkipSyncCheckItemRequest) (response *SkipSyncCheckItemResponse, err error) {
     return c.SkipSyncCheckItemWithContext(context.Background(), request)
 }
@@ -3155,6 +3156,7 @@ func (c *Client) SkipSyncCheckItem(request *SkipSyncCheckItemRequest) (response 
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) SkipSyncCheckItemWithContext(ctx context.Context, request *SkipSyncCheckItemRequest) (response *SkipSyncCheckItemResponse, err error) {
     if request == nil {
         request = NewSkipSyncCheckItemRequest()

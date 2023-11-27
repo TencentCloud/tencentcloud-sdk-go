@@ -56,6 +56,9 @@ const (
 	// 场景ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
 
+	// 地域非法
+	INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+
 	// 指定实例有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 

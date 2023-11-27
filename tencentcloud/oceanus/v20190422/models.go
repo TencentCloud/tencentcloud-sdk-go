@@ -686,6 +686,12 @@ type CreateJobConfigRequestParams struct {
 
 	// 算子拓扑图
 	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
+
+	// es索引名称
+	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil" name:"EsServerlessIndex"`
+
+	// es索引空间
+	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil" name:"EsServerlessSpace"`
 }
 
 type CreateJobConfigRequest struct {
@@ -768,6 +774,12 @@ type CreateJobConfigRequest struct {
 
 	// 算子拓扑图
 	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
+
+	// es索引名称
+	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil" name:"EsServerlessIndex"`
+
+	// es索引空间
+	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil" name:"EsServerlessSpace"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -808,6 +820,8 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "TraceModeConfiguration")
 	delete(f, "CheckpointRetainedNum")
 	delete(f, "JobGraph")
+	delete(f, "EsServerlessIndex")
+	delete(f, "EsServerlessSpace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}

@@ -1,3 +1,203 @@
+# Release v1.0.805
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 61 次发布
+
+发布时间：2023-11-28 01:06:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/297/95386)
+
+	* 新增入参：CnameWafIdList
+
+	* 新增出参：CnameWafData
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 49 次发布
+
+发布时间：2023-11-28 01:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceGroup](https://cloud.tencent.com/document/api/1132/60246)
+
+	* 新增入参：ShowType
+
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 14 次发布
+
+发布时间：2023-11-28 01:19:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ActivateHardware](https://cloud.tencent.com/document/api/1385/101985)
+* [AddHardware](https://cloud.tencent.com/document/api/1385/101984)
+* [GetHardwareList](https://cloud.tencent.com/document/api/1385/101983)
+* [GetVendorHardware](https://cloud.tencent.com/document/api/1385/101982)
+* [UpdateHardware](https://cloud.tencent.com/document/api/1385/101981)
+
+新增数据结构：
+
+* [ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware)
+* [Hardware](https://cloud.tencent.com/document/api/1385/55846#Hardware)
+* [HardwareInfo](https://cloud.tencent.com/document/api/1385/55846#HardwareInfo)
+* [VendorHardware](https://cloud.tencent.com/document/api/1385/55846#VendorHardware)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 47 次发布
+
+发布时间：2023-11-28 01:20:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：EsServerlessIndex, EsServerlessSpace
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 95 次发布
+
+发布时间：2023-11-28 01:25:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteProCluster](https://cloud.tencent.com/document/api/1179/101986)
+
+修改接口：
+
+* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneIds
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 66 次发布
+
+发布时间：2023-11-28 01:26:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
+
+	* <font color="#dd0000">**修改成员**：</font>Domain
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 8 次发布
+
+发布时间：2023-11-28 01:28:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextModeration](https://cloud.tencent.com/document/api/1124/51860)
+
+	* 新增出参：SentimentAnalysis
+
+
+新增数据结构：
+
+* [SentimentAnalysis](https://cloud.tencent.com/document/api/1124/51861#SentimentAnalysis)
+* [SentimentDetail](https://cloud.tencent.com/document/api/1124/51861#SentimentDetail)
+
+
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 172 次发布
+
+发布时间：2023-11-28 01:29:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainHTTPSConfig](https://cloud.tencent.com/document/api/266/31773#DomainHTTPSConfig)
+
+	* 新增成员：CloudCertId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 181 次发布
+
+发布时间：2023-11-28 01:30:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService)
+
+	* 新增成员：ServiceUin, BusinessIpType
+
+
+
+
 # Release v1.0.804
 
 ## 日志服务(cls) 版本：2020-10-16

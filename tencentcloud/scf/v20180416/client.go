@@ -1290,6 +1290,7 @@ func NewGetAccountResponse() (response *GetAccountResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetAccount(request *GetAccountRequest) (response *GetAccountResponse, err error) {
     return c.GetAccountWithContext(context.Background(), request)
 }
@@ -1300,6 +1301,7 @@ func (c *Client) GetAccount(request *GetAccountRequest) (response *GetAccountRes
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetAccountWithContext(ctx context.Context, request *GetAccountRequest) (response *GetAccountResponse, err error) {
     if request == nil {
         request = NewGetAccountRequest()
@@ -1732,6 +1734,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_ROLECHECK = "ResourceNotFound.RoleCheck"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREGION = "UnsupportedOperation.NotSupportRegion"
 func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     return c.GetFunctionLogsWithContext(context.Background(), request)
@@ -1767,6 +1770,7 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_ROLECHECK = "ResourceNotFound.RoleCheck"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREGION = "UnsupportedOperation.NotSupportRegion"
 func (c *Client) GetFunctionLogsWithContext(ctx context.Context, request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     if request == nil {

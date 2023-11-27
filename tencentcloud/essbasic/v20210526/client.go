@@ -2680,6 +2680,7 @@ func NewChannelCreateOrganizationBatchSignUrlResponse() (response *ChannelCreate
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -2705,6 +2706,7 @@ func (c *Client) ChannelCreateOrganizationBatchSignUrl(request *ChannelCreateOrg
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3374,7 +3376,9 @@ func NewChannelCreateUserRolesResponse() (response *ChannelCreateUserRolesRespon
 }
 
 // ChannelCreateUserRoles
-// 通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
+// 使用此接口，用来绑定企业实名员工的角色，
+//
+// 支持以电子签userId、客户系统openId两种方式进行绑定。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3389,7 +3393,9 @@ func (c *Client) ChannelCreateUserRoles(request *ChannelCreateUserRolesRequest) 
 }
 
 // ChannelCreateUserRoles
-// 通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
+// 使用此接口，用来绑定企业实名员工的角色，
+//
+// 支持以电子签userId、客户系统openId两种方式进行绑定。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3846,6 +3852,7 @@ func NewChannelDescribeFlowComponentsResponse() (response *ChannelDescribeFlowCo
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3887,6 +3894,7 @@ func (c *Client) ChannelDescribeFlowComponents(request *ChannelDescribeFlowCompo
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  OPERATIONDENIED = "OperationDenied"

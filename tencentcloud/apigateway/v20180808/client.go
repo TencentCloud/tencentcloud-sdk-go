@@ -1763,6 +1763,7 @@ func NewDeletePluginResponse() (response *DeletePluginResponse) {
 // 删除API网关插件
 //
 // 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1778,6 +1779,7 @@ func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePlu
 // 删除API网关插件
 //
 // 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -3568,6 +3570,7 @@ func NewDescribePluginsByApiResponse() (response *DescribePluginsByApiResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
@@ -3581,6 +3584,7 @@ func (c *Client) DescribePluginsByApi(request *DescribePluginsByApiRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"

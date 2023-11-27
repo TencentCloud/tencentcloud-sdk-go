@@ -6295,6 +6295,7 @@ func NewModifyBotStatusResponse() (response *ModifyBotStatusResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) ModifyBotStatus(request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
     return c.ModifyBotStatusWithContext(context.Background(), request)
 }
@@ -6305,6 +6306,7 @@ func (c *Client) ModifyBotStatus(request *ModifyBotStatusRequest) (response *Mod
 // 可能返回的错误码:
 //  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) ModifyBotStatusWithContext(ctx context.Context, request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
     if request == nil {
         request = NewModifyBotStatusRequest()
@@ -8582,6 +8584,7 @@ func NewUpsertCCRuleResponse() (response *UpsertCCRuleResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertCCRule(request *UpsertCCRuleRequest) (response *UpsertCCRuleResponse, err error) {
     return c.UpsertCCRuleWithContext(context.Background(), request)
@@ -8592,6 +8595,7 @@ func (c *Client) UpsertCCRule(request *UpsertCCRuleRequest) (response *UpsertCCR
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertCCRuleWithContext(ctx context.Context, request *UpsertCCRuleRequest) (response *UpsertCCRuleResponse, err error) {
     if request == nil {
@@ -8691,6 +8695,7 @@ func NewUpsertSessionResponse() (response *UpsertSessionResponse) {
 // Waf  会话定义 Upsert接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertSession(request *UpsertSessionRequest) (response *UpsertSessionResponse, err error) {
     return c.UpsertSessionWithContext(context.Background(), request)
@@ -8700,6 +8705,7 @@ func (c *Client) UpsertSession(request *UpsertSessionRequest) (response *UpsertS
 // Waf  会话定义 Upsert接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertSessionWithContext(ctx context.Context, request *UpsertSessionRequest) (response *UpsertSessionResponse, err error) {
     if request == nil {

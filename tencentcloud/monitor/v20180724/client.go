@@ -5593,6 +5593,7 @@ func NewDescribePrometheusInstanceInitStatusResponse() (response *DescribePromet
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusInstanceInitStatus(request *DescribePrometheusInstanceInitStatusRequest) (response *DescribePrometheusInstanceInitStatusResponse, err error) {
     return c.DescribePrometheusInstanceInitStatusWithContext(context.Background(), request)
 }
@@ -5610,6 +5611,7 @@ func (c *Client) DescribePrometheusInstanceInitStatus(request *DescribePrometheu
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusInstanceInitStatusWithContext(ctx context.Context, request *DescribePrometheusInstanceInitStatusRequest) (response *DescribePrometheusInstanceInitStatusResponse, err error) {
     if request == nil {
         request = NewDescribePrometheusInstanceInitStatusRequest()
@@ -7818,6 +7820,7 @@ func NewModifyPrometheusConfigResponse() (response *ModifyPrometheusConfigRespon
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) (response *ModifyPrometheusConfigResponse, err error) {
     return c.ModifyPrometheusConfigWithContext(context.Background(), request)
 }
@@ -7836,6 +7839,7 @@ func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) 
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPrometheusConfigWithContext(ctx context.Context, request *ModifyPrometheusConfigRequest) (response *ModifyPrometheusConfigResponse, err error) {
     if request == nil {
         request = NewModifyPrometheusConfigRequest()

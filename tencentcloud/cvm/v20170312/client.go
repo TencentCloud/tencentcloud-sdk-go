@@ -2000,6 +2000,7 @@ func NewDescribeHostsResponse() (response *DescribeHostsResponse) {
 // 本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
@@ -2015,6 +2016,7 @@ func (c *Client) DescribeHosts(request *DescribeHostsRequest) (response *Describ
 // 本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
@@ -5612,6 +5614,7 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
+//  UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = "UnsupportedOperation.LocationImageNotSupported"
 func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
     return c.ModifyImageSharePermissionWithContext(context.Background(), request)
 }
@@ -5649,6 +5652,7 @@ func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionR
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
+//  UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = "UnsupportedOperation.LocationImageNotSupported"
 func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewModifyImageSharePermissionRequest()
@@ -6734,6 +6738,7 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
@@ -6785,6 +6790,7 @@ func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *Reb
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
@@ -8673,6 +8679,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 //  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 //  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
 //  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
+//  UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = "UnsupportedOperation.LocationImageNotSupported"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
     return c.SyncImagesWithContext(context.Background(), request)
@@ -8705,6 +8712,7 @@ func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesRes
 //  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 //  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
 //  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
+//  UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = "UnsupportedOperation.LocationImageNotSupported"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImagesWithContext(ctx context.Context, request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
     if request == nil {

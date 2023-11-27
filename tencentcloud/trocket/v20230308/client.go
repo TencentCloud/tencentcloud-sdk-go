@@ -176,6 +176,7 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
     return c.CreateRoleWithContext(context.Background(), request)
@@ -189,6 +190,7 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
     if request == nil {

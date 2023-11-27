@@ -45,6 +45,67 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActivateHardwareRequest() (request *ActivateHardwareRequest) {
+    request = &ActivateHardwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "ActivateHardware")
+    
+    
+    return
+}
+
+func NewActivateHardwareResponse() (response *ActivateHardwareResponse) {
+    response = &ActivateHardwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateHardware
+// 激活硬件设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWAREHASACTIVATED = "OperationDenied.HardwareHasActivated"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) ActivateHardware(request *ActivateHardwareRequest) (response *ActivateHardwareResponse, err error) {
+    return c.ActivateHardwareWithContext(context.Background(), request)
+}
+
+// ActivateHardware
+// 激活硬件设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWAREHASACTIVATED = "OperationDenied.HardwareHasActivated"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) ActivateHardwareWithContext(ctx context.Context, request *ActivateHardwareRequest) (response *ActivateHardwareResponse, err error) {
+    if request == nil {
+        request = NewActivateHardwareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateHardware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateHardwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddDeviceRequest() (request *AddDeviceRequest) {
     request = &AddDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -100,6 +161,63 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     request.SetContext(ctx)
     
     response = NewAddDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddHardwareRequest() (request *AddHardwareRequest) {
+    request = &AddHardwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddHardware")
+    
+    
+    return
+}
+
+func NewAddHardwareResponse() (response *AddHardwareResponse) {
+    response = &AddHardwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddHardware
+// 添加硬件设备，生成未激活的硬件设备，可支持批量添加
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_DUPLICATESN = "OperationDenied.DuplicateSN"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) AddHardware(request *AddHardwareRequest) (response *AddHardwareResponse, err error) {
+    return c.AddHardwareWithContext(context.Background(), request)
+}
+
+// AddHardware
+// 添加硬件设备，生成未激活的硬件设备，可支持批量添加
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_DUPLICATESN = "OperationDenied.DuplicateSN"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) AddHardwareWithContext(ctx context.Context, request *AddHardwareRequest) (response *AddHardwareResponse, err error) {
+    if request == nil {
+        request = NewAddHardwareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddHardware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddHardwareResponse()
     err = c.Send(request, response)
     return
 }
@@ -566,6 +684,61 @@ func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFl
     return
 }
 
+func NewGetHardwareListRequest() (request *GetHardwareListRequest) {
+    request = &GetHardwareListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetHardwareList")
+    
+    
+    return
+}
+
+func NewGetHardwareListResponse() (response *GetHardwareListResponse) {
+    response = &GetHardwareListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetHardwareList
+// 租户获取厂商硬件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) GetHardwareList(request *GetHardwareListRequest) (response *GetHardwareListResponse, err error) {
+    return c.GetHardwareListWithContext(context.Background(), request)
+}
+
+// GetHardwareList
+// 租户获取厂商硬件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) GetHardwareListWithContext(ctx context.Context, request *GetHardwareListRequest) (response *GetHardwareListResponse, err error) {
+    if request == nil {
+        request = NewGetHardwareListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetHardwareList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetHardwareListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMultiFlowStatisticRequest() (request *GetMultiFlowStatisticRequest) {
     request = &GetMultiFlowStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -782,6 +955,61 @@ func (c *Client) GetStatisticDataWithContext(ctx context.Context, request *GetSt
     return
 }
 
+func NewGetVendorHardwareRequest() (request *GetVendorHardwareRequest) {
+    request = &GetVendorHardwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetVendorHardware")
+    
+    
+    return
+}
+
+func NewGetVendorHardwareResponse() (response *GetVendorHardwareResponse) {
+    response = &GetVendorHardwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVendorHardware
+// 获取厂商硬件设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) GetVendorHardware(request *GetVendorHardwareRequest) (response *GetVendorHardwareResponse, err error) {
+    return c.GetVendorHardwareWithContext(context.Background(), request)
+}
+
+// GetVendorHardware
+// 获取厂商硬件设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) GetVendorHardwareWithContext(ctx context.Context, request *GetVendorHardwareRequest) (response *GetVendorHardwareResponse, err error) {
+    if request == nil {
+        request = NewGetVendorHardwareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVendorHardware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVendorHardwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDeviceRequest() (request *UpdateDeviceRequest) {
     request = &UpdateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -833,6 +1061,63 @@ func (c *Client) UpdateDeviceWithContext(ctx context.Context, request *UpdateDev
     request.SetContext(ctx)
     
     response = NewUpdateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateHardwareRequest() (request *UpdateHardwareRequest) {
+    request = &UpdateHardwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateHardware")
+    
+    
+    return
+}
+
+func NewUpdateHardwareResponse() (response *UpdateHardwareResponse) {
+    response = &UpdateHardwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateHardware
+// 更新硬件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_DUPLICATESN = "OperationDenied.DuplicateSN"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) UpdateHardware(request *UpdateHardwareRequest) (response *UpdateHardwareResponse, err error) {
+    return c.UpdateHardwareWithContext(context.Background(), request)
+}
+
+// UpdateHardware
+// 更新硬件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_DUPLICATESN = "OperationDenied.DuplicateSN"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) UpdateHardwareWithContext(ctx context.Context, request *UpdateHardwareRequest) (response *UpdateHardwareResponse, err error) {
+    if request == nil {
+        request = NewUpdateHardwareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateHardware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateHardwareResponse()
     err = c.Send(request, response)
     return
 }

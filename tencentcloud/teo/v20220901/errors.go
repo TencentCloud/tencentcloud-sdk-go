@@ -164,6 +164,9 @@ const (
 	// 非法操作-操作配置重复。
 	INVALIDPARAMETER_ERRINVALIDACTIONDUPLICATEACTION = "InvalidParameter.ErrInvalidActionDuplicateAction"
 
+	// 无效的规则引擎操作，源站IP不支持内网IP或回环地址。
+	INVALIDPARAMETER_ERRINVALIDACTIONORIGINPRIVATEADDRESS = "InvalidParameter.ErrInvalidActionOriginPrivateAddress"
+
 	// 非法操作-非法参数。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 
@@ -464,6 +467,9 @@ const (
 	// 参数长度超过限制。
 	INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
 
+	// 修改源站操作中负载均衡实例Id必填。
+	INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = "InvalidParameter.LoadBalanceInstanceIdIsRequired"
+
 	// 不支持智能路由
 	INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = "InvalidParameter.MultiplyLayerNotSupportSmartRouting"
 
@@ -481,6 +487,9 @@ const (
 
 	// 修改源站操作中源站组Id必填。
 	INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
+
+	// 修改源站操作中回源协议必填。
+	INVALIDPARAMETER_ORIGINPULLPROTOCOLISREQUIRED = "InvalidParameter.OriginPullProtocolIsRequired"
 
 	// 源站格式错误。
 	INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
@@ -632,6 +641,9 @@ const (
 	// 超出功能限制。
 	LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
 
+	// 用户实例数量限制。
+	LIMITEXCEEDED_USERQUOTALIMITED = "LimitExceeded.UserQuotaLimited"
+
 	// 套餐可绑定的站点数量超过配额。
 	LIMITEXCEEDED_ZONEBINDPLAN = "LimitExceeded.ZoneBindPlan"
 
@@ -653,6 +665,9 @@ const (
 	// 配置已被锁定，请解除配置锁定之后在重试。
 	OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
 
+	// 删除站点时预检查未通过。
+	OPERATIONDENIED_DELETEZONEPRECHECKFAILED = "OperationDenied.DeleteZonePreCheckFailed"
+
 	// 站点停用未完毕，请稍后再试。
 	OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
 
@@ -670,6 +685,9 @@ const (
 
 	// 站点内有域名处于非稳态，稳态包括：“在线” 和 “离线” 两个状态。
 	OPERATIONDENIED_DOMAINSTATUSUNSTABLE = "OperationDenied.DomainStatusUnstable"
+
+	// 站点环境未准备好。
+	OPERATIONDENIED_ENVNOTREADY = "OperationDenied.EnvNotReady"
 
 	// 站点处于停用状态，请开启后重试。
 	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
@@ -739,6 +757,9 @@ const (
 
 	// 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
 	OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
+
+	// 当前处于版本管理模式下，该操作不允许。
+	OPERATIONDENIED_VERSIONCONTROLLOCKED = "OperationDenied.VersionControlLocked"
 
 	// 站点工作模式不属于版本管理模式。
 	OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = "OperationDenied.WorkModeNotInVersionControl"
@@ -829,6 +850,9 @@ const (
 
 	// 请求的加速域名不存在，请更正后重试。
 	RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
+
+	// 函数不存在或不属于该账号。
+	RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = "ResourceUnavailable.FunctionNotFound"
 
 	// 域名不存在或未开启代理。
 	RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"

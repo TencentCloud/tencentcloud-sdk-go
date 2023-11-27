@@ -121,6 +121,7 @@ func NewCreateSavingPlanOrderResponse() (response *CreateSavingPlanOrderResponse
 // 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) CreateSavingPlanOrder(request *CreateSavingPlanOrderRequest) (response *CreateSavingPlanOrderResponse, err error) {
     return c.CreateSavingPlanOrderWithContext(context.Background(), request)
@@ -130,6 +131,7 @@ func (c *Client) CreateSavingPlanOrder(request *CreateSavingPlanOrderRequest) (r
 // 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) CreateSavingPlanOrderWithContext(ctx context.Context, request *CreateSavingPlanOrderRequest) (response *CreateSavingPlanOrderResponse, err error) {
     if request == nil {

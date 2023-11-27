@@ -281,6 +281,9 @@ const (
 	// 分区不存在。
 	RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
 
+	// 记录不存在
+	RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+
 	// 投递规则不存在。
 	RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
 

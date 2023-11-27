@@ -5347,6 +5347,7 @@ func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsRespon
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) (response *DescribeFlowComponentsResponse, err error) {
     return c.DescribeFlowComponentsWithContext(context.Background(), request)
@@ -5359,6 +5360,7 @@ func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) 
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 func (c *Client) DescribeFlowComponentsWithContext(ctx context.Context, request *DescribeFlowComponentsRequest) (response *DescribeFlowComponentsResponse, err error) {
     if request == nil {
