@@ -22,4 +22,10 @@ const (
 
 	// 账号组不存在。
 	RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+
+	// 资源不存在。
+	RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+
+	// 规则不存在。
+	RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 )

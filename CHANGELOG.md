@@ -1,3 +1,144 @@
+# Release v1.0.804
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 78 次发布
+
+发布时间：2023-11-27 00:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDeliverCloudFunction](https://cloud.tencent.com/document/api/614/101967)
+
+
+
+## 配置审计(config) 版本：2022-08-02
+
+### 第 2 次发布
+
+发布时间：2023-11-27 00:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PutEvaluations](https://cloud.tencent.com/document/api/1579/101968)
+
+新增数据结构：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1579/101783#Evaluation)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 134 次发布
+
+发布时间：2023-11-27 00:10:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+
+	* 新增成员：ApproverIdCardType, ApproverIdCardNumber
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* 新增成员：ForbidEditFillComponent
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 46 次发布
+
+发布时间：2023-11-27 00:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：EsServerlessIndex, EsServerlessSpace
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 63 次发布
+
+发布时间：2023-11-27 00:18:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateCustomAccount
+* DeleteCustomAccount
+* ModifyCustomAccount
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 45 次发布
+
+发布时间：2023-11-27 00:20:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBillingResourceGroup](https://cloud.tencent.com/document/api/851/101969)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 13 次发布
+
+发布时间：2023-11-27 00:22:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle)
+
+	* <font color="#dd0000">**修改成员**：</font>Phoneme
+
+
+
+
 # Release v1.0.803
 
 ## 云拨测(cat) 版本：2018-04-09

@@ -1923,6 +1923,85 @@ func (c *Client) DescribeBatchTasksWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBillingResourceGroupRequest() (request *DescribeBillingResourceGroupRequest) {
+    request = &DescribeBillingResourceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingResourceGroup")
+    
+    
+    return
+}
+
+func NewDescribeBillingResourceGroupResponse() (response *DescribeBillingResourceGroupResponse) {
+    response = &DescribeBillingResourceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingResourceGroup
+// 查询资源组节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingResourceGroup(request *DescribeBillingResourceGroupRequest) (response *DescribeBillingResourceGroupResponse, err error) {
+    return c.DescribeBillingResourceGroupWithContext(context.Background(), request)
+}
+
+// DescribeBillingResourceGroup
+// 查询资源组节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingResourceGroupWithContext(ctx context.Context, request *DescribeBillingResourceGroupRequest) (response *DescribeBillingResourceGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingResourceGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingResourceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingResourceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingResourceGroupsRequest() (request *DescribeBillingResourceGroupsRequest) {
     request = &DescribeBillingResourceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

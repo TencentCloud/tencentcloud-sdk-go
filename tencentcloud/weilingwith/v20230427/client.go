@@ -250,7 +250,7 @@ func NewBatchReportAppMessageResponse() (response *BatchReportAppMessageResponse
 }
 
 // BatchReportAppMessage
-// 批量消息上报
+// 批量上报应用消息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -261,7 +261,7 @@ func (c *Client) BatchReportAppMessage(request *BatchReportAppMessageRequest) (r
 }
 
 // BatchReportAppMessage
-// 批量消息上报
+// 批量上报应用消息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3107,7 +3107,7 @@ func NewReportAppMessageResponse() (response *ReportAppMessageResponse) {
 }
 
 // ReportAppMessage
-// 单条消息上报
+// 上报应用消息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3118,7 +3118,7 @@ func (c *Client) ReportAppMessage(request *ReportAppMessageRequest) (response *R
 }
 
 // ReportAppMessage
-// 单条消息上报
+// 上报应用消息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

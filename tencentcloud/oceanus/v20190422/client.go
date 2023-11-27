@@ -1972,8 +1972,6 @@ func NewModifyJobResponse() (response *ModifyJobResponse) {
 //
 // 假设作业暂停状态，则将作业更改为停止状态，中间状态丢失
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2006,8 +2004,6 @@ func (c *Client) ModifyJob(request *ModifyJobRequest) (response *ModifyJobRespon
 // 假设作业运行状态，则先停止作业，再启动作业，中间状态丢失
 //
 // 假设作业暂停状态，则将作业更改为停止状态，中间状态丢失
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

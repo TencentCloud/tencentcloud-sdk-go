@@ -845,6 +845,55 @@ func (c *Client) CreateDataTransformWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateDeliverCloudFunctionRequest() (request *CreateDeliverCloudFunctionRequest) {
+    request = &CreateDeliverCloudFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateDeliverCloudFunction")
+    
+    
+    return
+}
+
+func NewCreateDeliverCloudFunctionResponse() (response *CreateDeliverCloudFunctionResponse) {
+    response = &CreateDeliverCloudFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeliverCloudFunction
+// 本接口用于创建投递SCF任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDeliverCloudFunction(request *CreateDeliverCloudFunctionRequest) (response *CreateDeliverCloudFunctionResponse, err error) {
+    return c.CreateDeliverCloudFunctionWithContext(context.Background(), request)
+}
+
+// CreateDeliverCloudFunction
+// 本接口用于创建投递SCF任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDeliverCloudFunctionWithContext(ctx context.Context, request *CreateDeliverCloudFunctionRequest) (response *CreateDeliverCloudFunctionResponse, err error) {
+    if request == nil {
+        request = NewCreateDeliverCloudFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeliverCloudFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeliverCloudFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportRequest() (request *CreateExportRequest) {
     request = &CreateExportRequest{
         BaseRequest: &tchttp.BaseRequest{},

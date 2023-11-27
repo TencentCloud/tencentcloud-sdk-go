@@ -20,7 +20,7 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
-	// 未登陆或登陆已过期。
+	// 未登录或登录已过期。
 	AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 
 	// CAM未授权，请联系主账号到CAM中授权QcloudWeDataFullAccess策略给该账户。

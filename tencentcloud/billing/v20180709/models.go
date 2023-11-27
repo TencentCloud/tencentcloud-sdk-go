@@ -1125,7 +1125,7 @@ type CreateSavingPlanOrderRequestParams struct {
 	// 商品唯一标识
 	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
 
-	// 承诺时长内的小额金额（单位：分）
+	// 承诺时长内的小额金额（单位：元）
 	PromiseUseAmount *uint64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
@@ -1156,7 +1156,7 @@ type CreateSavingPlanOrderRequest struct {
 	// 商品唯一标识
 	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
 
-	// 承诺时长内的小额金额（单位：分）
+	// 承诺时长内的小额金额（单位：元）
 	PromiseUseAmount *uint64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻

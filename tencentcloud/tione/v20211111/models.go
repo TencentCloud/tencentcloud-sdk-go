@@ -3299,6 +3299,118 @@ func (r *DescribeBatchTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillingResourceGroupRequestParams struct {
+	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name 只支持以下枚举值:
+	//     InstanceId (资源组节点id)
+	//     InstanceStatus (资源组节点状态)
+	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
+	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询每页大小，最大30; 默认20
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+}
+
+type DescribeBillingResourceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name 只支持以下枚举值:
+	//     InstanceId (资源组节点id)
+	//     InstanceStatus (资源组节点状态)
+	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
+	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询每页大小，最大30; 默认20
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+}
+
+func (r *DescribeBillingResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingResourceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingResourceGroupResponseParams struct {
+	// 资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 资源组节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceSet []*Instance `json:"InstanceSet,omitnil" name:"InstanceSet"`
+
+	// 资源组纳管类型
+	ResourceGroupSWType *string `json:"ResourceGroupSWType,omitnil" name:"ResourceGroupSWType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillingResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingResourceGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingResourceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillingResourceGroupsRequestParams struct {
 	// 资源组类型; 枚举值 TRAIN:训练 INFERENCE:推理
 	Type *string `json:"Type,omitnil" name:"Type"`

@@ -144,3 +144,58 @@ func (c *Client) ListConfigRulesWithContext(ctx context.Context, request *ListCo
     err = c.Send(request, response)
     return
 }
+
+func NewPutEvaluationsRequest() (request *PutEvaluationsRequest) {
+    request = &PutEvaluationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "PutEvaluations")
+    
+    
+    return
+}
+
+func NewPutEvaluationsResponse() (response *PutEvaluationsResponse) {
+    response = &PutEvaluationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PutEvaluations
+// 上报自定义规则评估结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+//  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
+func (c *Client) PutEvaluations(request *PutEvaluationsRequest) (response *PutEvaluationsResponse, err error) {
+    return c.PutEvaluationsWithContext(context.Background(), request)
+}
+
+// PutEvaluations
+// 上报自定义规则评估结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+//  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
+func (c *Client) PutEvaluationsWithContext(ctx context.Context, request *PutEvaluationsRequest) (response *PutEvaluationsResponse, err error) {
+    if request == nil {
+        request = NewPutEvaluationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutEvaluations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPutEvaluationsResponse()
+    err = c.Send(request, response)
+    return
+}

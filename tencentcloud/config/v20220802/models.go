@@ -159,6 +159,28 @@ type ConfigRule struct {
 	ManageTriggerType []*string `json:"ManageTriggerType,omitnil" name:"ManageTriggerType"`
 }
 
+type Evaluation struct {
+	// 已评估资源ID。长度为0~256个字符
+	ComplianceResourceId *string `json:"ComplianceResourceId,omitnil" name:"ComplianceResourceId"`
+
+	// 已评估资源类型。
+	// 支持:
+	// QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::VPC::SecurityGroup、 QCS::CAM::User、QCS::CAM::Group、QCS::CAM::Policy、QCS::CAM::Role、QCS::COS::Bucket
+	ComplianceResourceType *string `json:"ComplianceResourceType,omitnil" name:"ComplianceResourceType"`
+
+	// 已评估资源地域。
+	// 长度为0~32个字符
+	ComplianceRegion *string `json:"ComplianceRegion,omitnil" name:"ComplianceRegion"`
+
+	// 合规类型。取值：
+	// COMPLIANT：合规、
+	// NON_COMPLIANT：不合规
+	ComplianceType *string `json:"ComplianceType,omitnil" name:"ComplianceType"`
+
+	// 不合规资源的补充信息。
+	Annotation *Annotation `json:"Annotation,omitnil" name:"Annotation"`
+}
+
 type InputParameter struct {
 	// 参数名
 	ParameterKey *string `json:"ParameterKey,omitnil" name:"ParameterKey"`
@@ -420,6 +442,67 @@ func (r *ListConfigRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListConfigRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutEvaluationsRequestParams struct {
+	// 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+	ResultToken *string `json:"ResultToken,omitnil" name:"ResultToken"`
+
+	// 自定义规则评估结果信息。
+	Evaluations []*Evaluation `json:"Evaluations,omitnil" name:"Evaluations"`
+}
+
+type PutEvaluationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+	ResultToken *string `json:"ResultToken,omitnil" name:"ResultToken"`
+
+	// 自定义规则评估结果信息。
+	Evaluations []*Evaluation `json:"Evaluations,omitnil" name:"Evaluations"`
+}
+
+func (r *PutEvaluationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutEvaluationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResultToken")
+	delete(f, "Evaluations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutEvaluationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutEvaluationsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type PutEvaluationsResponse struct {
+	*tchttp.BaseResponse
+	Response *PutEvaluationsResponseParams `json:"Response"`
+}
+
+func (r *PutEvaluationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutEvaluationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1447,7 +1447,7 @@ type EnhancedService struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService,omitnil" name:"SecurityService"`
 
-	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
+	// 开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitnil" name:"MonitorService"`
 
@@ -1662,7 +1662,7 @@ type ManagerNode struct {
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+	// 增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 }
 
@@ -1850,7 +1850,7 @@ type QueueConfig struct {
 	// - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
 	ScaleUpMemRatio *int64 `json:"ScaleUpMemRatio,omitnil" name:"ScaleUpMemRatio"`
 
-	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+	// 增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 }
 
@@ -1913,7 +1913,7 @@ type RunAutomationServiceEnabled struct {
 }
 
 type RunMonitorServiceEnabled struct {
-	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+	// 是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务<br><li>FALSE：表示不开启腾讯云可观测平台服务<br><br>默认取值：TRUE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }

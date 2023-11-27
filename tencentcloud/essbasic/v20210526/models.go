@@ -170,45 +170,52 @@ type AutoSignConfig struct {
 }
 
 type BaseFlowInfo struct {
-	// 合同流程名称
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
-	// 合同流程类型
-	// <br/>客户自定义，用于合同分类展示
+	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
 	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
 
-	// 合同流程描述信息
+	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
 
-	// 合同流程截止时间，unix时间戳，单位秒
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
-	// 是否顺序签署(true:无序签,false:顺序签)
-	// <br/>默认false，有序签署合同
+	// 合同流程的签署顺序类型：
+	// **false**：(默认)有序签署, 本合同多个参与人需要依次签署
+	// **true**：无序签署, 本合同多个参与人没有先后签署限制
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
 	// 是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
 	IntelligentStatus *string `json:"IntelligentStatus,omitnil" name:"IntelligentStatus"`
 
-	// 填写控件内容
+	// 填写控件内容， 填写的控制的ID-填写的内容对列表
 	FormFields []*FormField `json:"FormFields,omitnil" name:"FormFields"`
 
-	// 本企业(发起方企业)是否需要签署审批
-	// <br/>true：开启发起方签署审批
-	// <br/>false：不开启发起方签署审批
-	// <br/>开启后，使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
+	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
+	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
+	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 
-	// 用户流程自定义数据参数
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的回调通知模块。
 	UserData *string `json:"UserData,omitnil" name:"UserData"`
 
-	// 抄送人信息
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
-	// 是否需要开启发起方发起前审核
-	// <br/>true：开启发起方发起前审核
-	// <br/>false：不开启发起方发起前审核
-	// <br/>当指定NeedCreateReview=true，则提交审核后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
+	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+	// 
+	// 若设置为true，发起审核结果需通过接口 [提交企业签署流程审批结果](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignReview)通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
+	// 
 	NeedCreateReview *bool `json:"NeedCreateReview,omitnil" name:"NeedCreateReview"`
 
 	// 填写控件：文件发起使用
@@ -1432,27 +1439,39 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
 	// 
-	// - CREATE_SEAL: 生成创建印章的嵌入页面
-	// - CREATE_TEMPLATE：生成创建模板的嵌入页面
-	// - MODIFY_TEMPLATE：生成修改模板的嵌入页面
-	// - PREVIEW_TEMPLATE：生成预览模板的嵌入页面
-	// - PREVIEW_FLOW：生成预览合同文档的嵌入页面
-	// - PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面
-	// - PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
-	// - PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
-	// - EXTEND_SERVICE：生成扩展服务的嵌入页面
+	// <ul>
+	// <li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
+	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
+	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
+	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面</li>
+	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
+	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
+	// </ul>
 	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
 	// 
-	// - 当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId
-	// - 当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId
-	// - 当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId
+	// <ul>
+	// <li>当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId</li>
+	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
+	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
+	// </ul>
 	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -1467,27 +1486,39 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 type ChannelCreateEmbedWebUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
 	// 
-	// - CREATE_SEAL: 生成创建印章的嵌入页面
-	// - CREATE_TEMPLATE：生成创建模板的嵌入页面
-	// - MODIFY_TEMPLATE：生成修改模板的嵌入页面
-	// - PREVIEW_TEMPLATE：生成预览模板的嵌入页面
-	// - PREVIEW_FLOW：生成预览合同文档的嵌入页面
-	// - PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面
-	// - PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
-	// - PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
-	// - EXTEND_SERVICE：生成扩展服务的嵌入页面
+	// <ul>
+	// <li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
+	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
+	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
+	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面</li>
+	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
+	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
+	// </ul>
 	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
 	// 
-	// - 当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId
-	// - 当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId
-	// - 当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId
+	// <ul>
+	// <li>当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId</li>
+	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
+	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
+	// </ul>
 	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -1522,7 +1553,7 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlResponseParams struct {
-	// 嵌入的web链接
+	// 嵌入的web链接，5分钟有效
 	WebUrl *string `json:"WebUrl,omitnil" name:"WebUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2825,25 +2856,33 @@ func (r *ChannelCreateOrganizationModifyQrCodeResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowRequestParams struct {
-	// 资源id，与ResourceType对应
+	// 合同模板ID，为32位字符串。
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// 资源类型，与ResourceId对应1：模板   2: 文件
+	// 资源类型，此接口固定为**1**表示为用模板发起
 	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
 
-	// 合同流程基础信息
+	// 要创建的合同信息
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil" name:"FlowInfo"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同流程配置信息，用于配置发起合同时定制化
+	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
 
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
 
-	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
+	// 用过去已经通过此接口发起的合同的ID复制个新的合同创建链接
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -2865,25 +2904,33 @@ type ChannelCreatePrepareFlowRequestParams struct {
 type ChannelCreatePrepareFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源id，与ResourceType对应
+	// 合同模板ID，为32位字符串。
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// 资源类型，与ResourceId对应1：模板   2: 文件
+	// 资源类型，此接口固定为**1**表示为用模板发起
 	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
 
-	// 合同流程基础信息
+	// 要创建的合同信息
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil" name:"FlowInfo"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同流程配置信息，用于配置发起合同时定制化
+	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
 
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
 
-	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
+	// 用过去已经通过此接口发起的合同的ID复制个新的合同创建链接
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -2926,10 +2973,10 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowResponseParams struct {
-	// 预发起的合同链接， 可以直接点击进入进行合同发起
+	// 发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
 	PrepareFlowUrl *string `json:"PrepareFlowUrl,omitnil" name:"PrepareFlowUrl"`
 
-	// 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果
+	// 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
 	PreviewFlowUrl *string `json:"PreviewFlowUrl,omitnil" name:"PreviewFlowUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5350,13 +5397,23 @@ type CommonApproverOption struct {
 }
 
 type CommonFlowApprover struct {
-	// 指定当前签署人为第三方应用集成子客，默认false：当前签署人为第三方应用集成子客，true：当前签署人为saas企业用户
+	// 指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
+	// <ul>
+	// <li>false: 默认值，第三方平台子客企业下员工</li>
+	// <li>true: SaaS平台企业下的员工</li>
+	// </ul>
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
 
-	// 签署人类型,目前支持：0-企业签署人，1-个人签署人，3-企业静默签署人
+	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
+	// 
+	//  **0** :企业/企业员工（企业签署方或模板发起时的企业静默签）
+	//  **1** :个人/自然人
+	// **3** :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）
+	// 
+	// 注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
 	ApproverType *int64 `json:"ApproverType,omitnil" name:"ApproverType"`
 
-	// 企业id
+	// 电子签平台给企业生成的企业id
 	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
 
 	// 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
@@ -5365,17 +5422,33 @@ type CommonFlowApprover struct {
 	// 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 
-	// 用户id
+	// 电子签平台给企业员工或者自热人生成的用户id
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 用户openId，第三方应用集成非静默签子客企业签署人必传
+	// 第三方平台子客企业员工的唯一标识
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 签署人名称，saas企业签署人，个人签署人必传
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
 
 	// 签署人手机号，saas企业签署人，个人签署人必传
 	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+
+	// 签署方经办人的证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>OTHER_CARD_TYPE : 其他证件</li></ul>
+	// 
+	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil" name:"ApproverIdCardType"`
+
+	// 签署方经办人的证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil" name:"ApproverIdCardNumber"`
 
 	// 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
 	// 注意：模板发起时该字段必填
@@ -5387,19 +5460,38 @@ type CommonFlowApprover struct {
 	// 签署前置条件：阅读全文限制
 	IsFullText *bool `json:"IsFullText,omitnil" name:"IsFullText"`
 
-	// 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
+	// 通知签署方经办人的方式, 有以下途径:
+	// <ul><li> **SMS** :(默认)短信</li>
+	// <li> **NONE** : 不通知</li></ul>
+	// 
+	// 注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
 	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
 
 	// 签署人配置
 	ApproverOption *CommonApproverOption `json:"ApproverOption,omitnil" name:"ApproverOption"`
 
-	// 签署控件：文件发起使用
+	// 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
 	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
 
-	// 签署人查看合同时认证方式, 1-实名查看 2-短信验证码查看(企业签署方不支持该方式) 如果不传默认为1 查看合同的认证方式 Flow层级的优先于approver层级的 （当手写签名方式为OCR_ESIGN时，合同认证方式2无效，因为这种签名方式依赖实名认证）
+	// 指定个人签署方查看合同的校验方式,可以传值如下:
+	// <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
+	// <li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
+	// </li></ul>
+	// 注: 
+	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
+	// <li>此字段可传多个校验方式</li></ul>
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
 
-	// 签署人签署合同时的认证方式 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)	
+	// 签署人签署合同时的认证方式
+	// <ul><li> **1** :人脸认证</li>
+	// <li> **2** :签署密码</li>
+	// <li> **3** :运营商三要素</li></ul>
+	// 
+	// 默认为1(人脸认证 ),2(签署密码)
+	// 
+	// 注: 
+	// 1. 用<font color='red'>模版创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
+	// 2. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/partner/mobile_support)得到具体的支持说明
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 }
 
@@ -5783,9 +5875,9 @@ type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -5802,9 +5894,9 @@ type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -6099,23 +6191,39 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 }
 
 type CreateFlowOption struct {
-	// 是否允许修改合同信息，true-是，false-否
+	// 是否允许修改合同信息，
+	// **true**：可以
+	// **false**：（默认）不可以
 	CanEditFlow *bool `json:"CanEditFlow,omitnil" name:"CanEditFlow"`
 
-	// 是否允许发起合同弹窗隐藏合同名称，true-允许，false-不允许
+	// 是否允许发起合同弹窗隐藏合同名称
+	// **true**：允许
+	// **false**：（默认）不允许
 	HideShowFlowName *bool `json:"HideShowFlowName,omitnil" name:"HideShowFlowName"`
 
-	// 是否允许发起合同弹窗隐藏合同类型，true-允许，false-不允许
+	// 是否允许发起合同弹窗隐藏合同类型，
+	// **true**：允许
+	// **false**：（默认）不允许
 	HideShowFlowType *bool `json:"HideShowFlowType,omitnil" name:"HideShowFlowType"`
 
-	// 是否允许发起合同弹窗隐藏合同到期时间，true-允许，false-不允许
+	// 是否允许发起合同弹窗隐藏合同到期时间
+	// **true**：允许
+	// **false**：（默认）不允许
 	HideShowDeadline *bool `json:"HideShowDeadline,omitnil" name:"HideShowDeadline"`
 
-	// 是否允许发起合同步骤跳过指定签署方步骤，true-允许，false-不允许
+	// 是否允许发起合同步骤跳过指定签署方步骤
+	// **true**：允许
+	// **false**：（默认）不允许
 	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitnil" name:"CanSkipAddApprover"`
 
-	// 定制化发起合同弹窗的描述信息，描述信息最长500
+	// 定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
 	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitnil" name:"CustomCreateFlowDescription"`
+
+	// 禁止编辑填写控件
+	// 
+	// **true**：禁止编辑填写控件
+	// **false**：（默认）允许编辑填写控件
+	ForbidEditFillComponent *bool `json:"ForbidEditFillComponent,omitnil" name:"ForbidEditFillComponent"`
 }
 
 // Predefined struct for user

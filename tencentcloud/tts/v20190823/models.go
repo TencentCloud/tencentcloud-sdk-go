@@ -31,7 +31,7 @@ type CreateTtsTaskRequestParams struct {
 	// 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
 	Volume *float64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5 1.1 1.8等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
 	Speed *float64 `json:"Speed,omitnil" name:"Speed"`
 
 	// 项目id，用户自定义，默认为0。
@@ -77,7 +77,7 @@ type CreateTtsTaskRequest struct {
 	// 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
 	Volume *float64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5 1.1 1.8等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
 	Speed *float64 `json:"Speed,omitnil" name:"Speed"`
 
 	// 项目id，用户自定义，默认为0。
@@ -260,13 +260,13 @@ type Subtitle struct {
 	// ⽂本对应tts语⾳结束时间戳，单位ms。
 	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 该字在整句中的开始位置，从0开始。
+	// 该文本在时间戳数组中的开始位置，从0开始。
 	BeginIndex *int64 `json:"BeginIndex,omitnil" name:"BeginIndex"`
 
-	// 该字在整句中的结束位置，从0开始。
+	// 该文本在时间戳数组中的结束位置，从0开始。
 	EndIndex *int64 `json:"EndIndex,omitnil" name:"EndIndex"`
 
-	// 该字的音素
+	// 该字的音素。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phoneme *string `json:"Phoneme,omitnil" name:"Phoneme"`
 }
@@ -283,7 +283,7 @@ type TextToVoiceRequestParams struct {
 	// 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
 	Volume *float64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5 1.1 1.8等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
 	Speed *float64 `json:"Speed,omitnil" name:"Speed"`
 
 	// 项目id，用户自定义，默认为0。
@@ -333,7 +333,7 @@ type TextToVoiceRequest struct {
 	// 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
 	Volume *float64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5 1.1 1.8等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
 	Speed *float64 `json:"Speed,omitnil" name:"Speed"`
 
 	// 项目id，用户自定义，默认为0。

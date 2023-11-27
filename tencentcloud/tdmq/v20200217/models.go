@@ -174,14 +174,14 @@ type BundleSetOpt struct {
 
 // Predefined struct for user
 type ClearCmqQueueRequestParams struct {
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 }
 
 type ClearCmqQueueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 }
 
@@ -228,20 +228,20 @@ func (r *ClearCmqQueueResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ClearCmqSubscriptionFilterTagsRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 }
 
 type ClearCmqSubscriptionFilterTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 }
 
@@ -1055,10 +1055,10 @@ func (r *CreateCmqQueueResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCmqSubscribeRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 
 	// 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。
@@ -1083,10 +1083,10 @@ type CreateCmqSubscribeRequestParams struct {
 type CreateCmqSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 
 	// 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。
@@ -1161,7 +1161,7 @@ func (r *CreateCmqSubscribeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCmqTopicRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
@@ -1183,7 +1183,7 @@ type CreateCmqTopicRequestParams struct {
 type CreateCmqTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
@@ -2700,14 +2700,14 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCmqQueueRequestParams struct {
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 }
 
 type DeleteCmqQueueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 }
 
@@ -2754,20 +2754,20 @@ func (r *DeleteCmqQueueResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCmqSubscribeRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 }
 
 type DeleteCmqSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil" name:"SubscriptionName"`
 }
 
@@ -2815,14 +2815,14 @@ func (r *DeleteCmqSubscribeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCmqTopicRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
 type DeleteCmqTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
@@ -9187,7 +9187,7 @@ func (r *ModifyClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCmqQueueAttributeRequestParams struct {
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 
 	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -9239,7 +9239,7 @@ type ModifyCmqQueueAttributeRequestParams struct {
 type ModifyCmqQueueAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 
 	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -9346,7 +9346,7 @@ func (r *ModifyCmqQueueAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCmqSubscriptionAttributeRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -9370,7 +9370,7 @@ type ModifyCmqSubscriptionAttributeRequestParams struct {
 type ModifyCmqSubscriptionAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -9439,7 +9439,7 @@ func (r *ModifyCmqSubscriptionAttributeResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyCmqTopicAttributeRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
@@ -9455,7 +9455,7 @@ type ModifyCmqTopicAttributeRequestParams struct {
 type ModifyCmqTopicAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
@@ -11677,7 +11677,7 @@ type RetentionPolicy struct {
 
 // Predefined struct for user
 type RewindCmqQueueRequestParams struct {
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 
 	// 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。
@@ -11687,7 +11687,7 @@ type RewindCmqQueueRequestParams struct {
 type RewindCmqQueueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
 
 	// 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。

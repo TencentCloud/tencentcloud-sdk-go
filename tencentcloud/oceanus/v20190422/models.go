@@ -3121,6 +3121,14 @@ type JobConfig struct {
 	// 算子拓扑图
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobGraph *JobGraph `json:"JobGraph,omitnil" name:"JobGraph"`
+
+	// es索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil" name:"EsServerlessIndex"`
+
+	// es空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil" name:"EsServerlessSpace"`
 }
 
 type JobGraph struct {

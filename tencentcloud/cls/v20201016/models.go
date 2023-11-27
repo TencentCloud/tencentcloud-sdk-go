@@ -1930,6 +1930,95 @@ func (r *CreateDataTransformResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDeliverCloudFunctionRequestParams struct {
+	// 投递规则属于的 topic id
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 投递的云函数名字
+	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 函数版本
+	Qualifier *string `json:"Qualifier,omitnil" name:"Qualifier"`
+
+	// 投递最长等待时间，单位：秒
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
+
+	// 投递最大消息数
+	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil" name:"MaxMsgNum"`
+}
+
+type CreateDeliverCloudFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 投递规则属于的 topic id
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 投递的云函数名字
+	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 函数版本
+	Qualifier *string `json:"Qualifier,omitnil" name:"Qualifier"`
+
+	// 投递最长等待时间，单位：秒
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
+
+	// 投递最大消息数
+	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil" name:"MaxMsgNum"`
+}
+
+func (r *CreateDeliverCloudFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeliverCloudFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "FunctionName")
+	delete(f, "Namespace")
+	delete(f, "Qualifier")
+	delete(f, "Timeout")
+	delete(f, "MaxMsgNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeliverCloudFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeliverCloudFunctionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateDeliverCloudFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeliverCloudFunctionResponseParams `json:"Response"`
+}
+
+func (r *CreateDeliverCloudFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeliverCloudFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExportRequestParams struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
