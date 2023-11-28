@@ -468,6 +468,12 @@ type CreateFunctionRequestParams struct {
 
 	// 单实例多并发配置。只支持Web函数。
 	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitnil" name:"InstanceConcurrencyConfig"`
+
+	// 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+	DnsCache *string `json:"DnsCache,omitnil" name:"DnsCache"`
+
+	// 内网访问配置
+	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
 }
 
 type CreateFunctionRequest struct {
@@ -559,6 +565,12 @@ type CreateFunctionRequest struct {
 
 	// 单实例多并发配置。只支持Web函数。
 	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitnil" name:"InstanceConcurrencyConfig"`
+
+	// 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+	DnsCache *string `json:"DnsCache,omitnil" name:"DnsCache"`
+
+	// 内网访问配置
+	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -602,6 +614,8 @@ func (r *CreateFunctionRequest) FromJsonString(s string) error {
 	delete(f, "ProtocolType")
 	delete(f, "ProtocolParams")
 	delete(f, "InstanceConcurrencyConfig")
+	delete(f, "DnsCache")
+	delete(f, "IntranetConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRequest has unknown keys!", "")
 	}
@@ -2532,6 +2546,13 @@ type InstanceConcurrencyConfig struct {
 	// 单实例并发数最大值。取值范围 [1,100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConcurrency *uint64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
+}
+
+type IntranetConfigIn struct {
+	// 是否开启固定内网IP
+	// ENABLE 为开启
+	// DISABLE 为不开启
+	IpFixed *string `json:"IpFixed,omitnil" name:"IpFixed"`
 }
 
 type IntranetConfigOut struct {

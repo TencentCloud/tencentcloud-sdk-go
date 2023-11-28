@@ -3467,6 +3467,77 @@ func (r *DescribeCloudStorageStreamDataResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeCloudStorageThumbnailListRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 缩略图文件名列表
+	ThumbnailList []*string `json:"ThumbnailList,omitnil" name:"ThumbnailList"`
+}
+
+type DescribeCloudStorageThumbnailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 缩略图文件名列表
+	ThumbnailList []*string `json:"ThumbnailList,omitnil" name:"ThumbnailList"`
+}
+
+func (r *DescribeCloudStorageThumbnailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageThumbnailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ThumbnailList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageThumbnailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageThumbnailListResponseParams struct {
+	// 缩略图访问地址
+	ThumbnailURLInfoList []*ThumbnailURLInfoList `json:"ThumbnailURLInfoList,omitnil" name:"ThumbnailURLInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCloudStorageThumbnailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageThumbnailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageThumbnailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageThumbnailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudStorageThumbnailRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
@@ -8080,6 +8151,16 @@ type TRTCParams struct {
 	// 权限票据，供TRTC SDK使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateMapKey *string `json:"PrivateMapKey,omitnil" name:"PrivateMapKey"`
+}
+
+type ThumbnailURLInfoList struct {
+	// 缩略图访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThumbnailURL *string `json:"ThumbnailURL,omitnil" name:"ThumbnailURL"`
+
+	// 缩略图访问地址的过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }
 
 // Predefined struct for user

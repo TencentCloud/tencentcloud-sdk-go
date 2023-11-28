@@ -2269,6 +2269,59 @@ func (c *Client) DescribeCloudStorageThumbnailWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCloudStorageThumbnailListRequest() (request *DescribeCloudStorageThumbnailListRequest) {
+    request = &DescribeCloudStorageThumbnailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageThumbnailList")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageThumbnailListResponse() (response *DescribeCloudStorageThumbnailListResponse) {
+    response = &DescribeCloudStorageThumbnailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageThumbnailList
+// 批量拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailList(request *DescribeCloudStorageThumbnailListRequest) (response *DescribeCloudStorageThumbnailListResponse, err error) {
+    return c.DescribeCloudStorageThumbnailListWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageThumbnailList
+// 批量拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailListWithContext(ctx context.Context, request *DescribeCloudStorageThumbnailListRequest) (response *DescribeCloudStorageThumbnailListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageThumbnailListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageThumbnailList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageThumbnailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequest) {
     request = &DescribeCloudStorageTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -71,6 +71,8 @@ func NewChatProResponse() (response *ChatProResponse) {
 //
 //  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
+//  3.请使用SDK调用本接口 ，SDK GitHub仓库examples/hunyuan/v20230901/目录有提供[参考示例](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/hunyuan/v20230901/chat_std.py)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
@@ -96,6 +98,8 @@ func (c *Client) ChatPro(request *ChatProRequest) (response *ChatProResponse, er
 //  1.本接口暂不支持返回图片内容。
 //
 //  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
+//  3.请使用SDK调用本接口 ，SDK GitHub仓库examples/hunyuan/v20230901/目录有提供[参考示例](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/hunyuan/v20230901/chat_std.py)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
@@ -152,6 +156,8 @@ func NewChatStdResponse() (response *ChatStdResponse) {
 //
 //  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
+//  3.请使用SDK调用本接口 ，SDK GitHub仓库examples/hunyuan/v20230901/目录有提供[参考示例](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/hunyuan/v20230901/chat_std.py)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
@@ -178,6 +184,8 @@ func (c *Client) ChatStd(request *ChatStdRequest) (response *ChatStdResponse, er
 //  1.本接口暂不支持返回图片内容。
 //
 //  2.默认单账号限制并发数为5路，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
+//  3.请使用SDK调用本接口 ，SDK GitHub仓库examples/hunyuan/v20230901/目录有提供[参考示例](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/hunyuan/v20230901/chat_std.py)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"

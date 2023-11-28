@@ -234,7 +234,7 @@ func NewCopyDSPATemplateResponse() (response *CopyDSPATemplateResponse) {
 }
 
 // CopyDSPATemplate
-// 复制合规组模版
+// 复制合规组模板
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -249,7 +249,7 @@ func (c *Client) CopyDSPATemplate(request *CopyDSPATemplateRequest) (response *C
 }
 
 // CopyDSPATemplate
-// 复制合规组模版
+// 复制合规组模板
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -515,7 +515,7 @@ func NewCreateDSPAAssessmentRiskTemplateResponse() (response *CreateDSPAAssessme
 }
 
 // CreateDSPAAssessmentRiskTemplate
-// 风险评估模版---创建风险评估模版
+// 风险评估模板---创建风险评估模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -524,7 +524,7 @@ func (c *Client) CreateDSPAAssessmentRiskTemplate(request *CreateDSPAAssessmentR
 }
 
 // CreateDSPAAssessmentRiskTemplate
-// 风险评估模版---创建风险评估模版
+// 风险评估模板---创建风险评估模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3255,7 +3255,7 @@ func NewDescribeDSPAAssessmentRiskTemplateDetailResponse() (response *DescribeDS
 }
 
 // DescribeDSPAAssessmentRiskTemplateDetail
-// 风险项页面--查看评估模版详情
+// 风险项页面--查看评估模板详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3271,7 +3271,7 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateDetail(request *DescribeDSPAA
 }
 
 // DescribeDSPAAssessmentRiskTemplateDetail
-// 风险项页面--查看评估模版详情
+// 风险项页面--查看评估模板详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3318,7 +3318,7 @@ func NewDescribeDSPAAssessmentRiskTemplateVulnerableListResponse() (response *De
 }
 
 // DescribeDSPAAssessmentRiskTemplateVulnerableList
-// 风险模版页面--查询风险模版中的脆弱项配置
+// 风险模板页面--查询风险模板中的脆弱项配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3334,7 +3334,7 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateVulnerableList(request *Descr
 }
 
 // DescribeDSPAAssessmentRiskTemplateVulnerableList
-// 风险模版页面--查询风险模版中的脆弱项配置
+// 风险模板页面--查询风险模板中的脆弱项配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6998,7 +6998,7 @@ func NewModifyDSPAAssessmentRiskTemplateResponse() (response *ModifyDSPAAssessme
 }
 
 // ModifyDSPAAssessmentRiskTemplate
-// 风险模版---修改风险模版
+// 风险模板---修改风险模板
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -7007,7 +7007,7 @@ func (c *Client) ModifyDSPAAssessmentRiskTemplate(request *ModifyDSPAAssessmentR
 }
 
 // ModifyDSPAAssessmentRiskTemplate
-// 风险模版---修改风险模版
+// 风险模板---修改风险模板
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"

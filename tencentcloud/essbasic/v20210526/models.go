@@ -7042,6 +7042,84 @@ func (r *DescribeChannelFlowEvidenceReportResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeChannelSealPolicyWorkflowUrlRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 用印审批单的ID，可通过用印申请回调获取。
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+}
+
+type DescribeChannelSealPolicyWorkflowUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// 
+	// 渠道应用标识: Agent.AppId
+	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 用印审批单的ID，可通过用印申请回调获取。
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+}
+
+func (r *DescribeChannelSealPolicyWorkflowUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelSealPolicyWorkflowUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "WorkflowInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelSealPolicyWorkflowUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelSealPolicyWorkflowUrlResponseParams struct {
+	// 用印审批小程序链接，链接类型（通过H5唤起小程序方式查看），一年内有效。
+	WorkflowUrl *string `json:"WorkflowUrl,omitnil" name:"WorkflowUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeChannelSealPolicyWorkflowUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChannelSealPolicyWorkflowUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeChannelSealPolicyWorkflowUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelSealPolicyWorkflowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthInfoRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 

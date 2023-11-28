@@ -13225,6 +13225,15 @@ type DescribeAssetSyncLastTimeResponseParams struct {
 	// 资产最近同步时间
 	AssetSyncLastTime *string `json:"AssetSyncLastTime,omitnil" name:"AssetSyncLastTime"`
 
+	// 任务状态
+	// PENDING:待处理
+	// PROCESSING:处理中
+	// PROCESSED:已完成
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
+
+	// 任务进度(百分比)
+	TaskProcess *int64 `json:"TaskProcess,omitnil" name:"TaskProcess"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -19323,6 +19332,12 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
+	// Namespace
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 工作负载类型
+	WorkloadType *string `json:"WorkloadType,omitnil" name:"WorkloadType"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -22253,6 +22268,12 @@ type DescribeVirusDetailResponseParams struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// Namespace
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 工作负载类型
+	WorkloadType *string `json:"WorkloadType,omitnil" name:"WorkloadType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -30357,6 +30378,12 @@ type RunTimeEventBaseInfo struct {
 
 	// uuid
 	HostID *string `json:"HostID,omitnil" name:"HostID"`
+
+	// Namespace
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// WorkloadType
+	WorkloadType *string `json:"WorkloadType,omitnil" name:"WorkloadType"`
 }
 
 type RunTimeFilters struct {
@@ -32598,6 +32625,12 @@ type VulDefenceEventDetail struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// Namespace
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 工作负载
+	WorkloadType *string `json:"WorkloadType,omitnil" name:"WorkloadType"`
 }
 
 type VulDefenceEventTendency struct {

@@ -1,3 +1,160 @@
+# Release v1.0.806
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 135 次发布
+
+发布时间：2023-11-29 01:55:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeChannelSealPolicyWorkflowUrl](https://cloud.tencent.com/document/api/1420/102013)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 23 次发布
+
+发布时间：2023-11-29 01:57:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudStorageThumbnailList](https://cloud.tencent.com/document/api/1131/102014)
+
+新增数据结构：
+
+* [ThumbnailURLInfoList](https://cloud.tencent.com/document/api/1131/76635#ThumbnailURLInfoList)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 62 次发布
+
+发布时间：2023-11-29 02:01:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：DnsCache, IntranetConfig
+
+
+新增数据结构：
+
+* [IntranetConfigIn](https://cloud.tencent.com/document/api/583/17244#IntranetConfigIn)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 56 次发布
+
+发布时间：2023-11-29 02:03:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetSyncLastTime](https://cloud.tencent.com/document/api/1285/81683)
+
+	* 新增出参：TaskStatus, TaskProcess
+
+* [DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)
+
+	* 新增出参：Namespace, WorkloadType
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：Namespace, WorkloadType
+
+
+修改数据结构：
+
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+
+	* 新增成员：Namespace, WorkloadType
+
+	* <font color="#dd0000">**修改成员**：</font>EventId, FoundTime, ContainerId, ContainerName, ImageId, ImageName, NodeName, Status, EventName, EventType, EventCount, LatestFoundTime, HostIP, ClientIP, ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, NodeID, NodeType, NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, PodName, PodIP, PodStatus, ClusterID, ClusterName, NodeUniqueID, HostID
+
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
+
+	* 新增成员：Namespace, WorkloadType
+
+	* <font color="#dd0000">**修改成员**：</font>NodeSubNetName, NodeSubNetCIDR, PodIP, NodeType, NodeID, NodeUniqueID, NodeSubNetID, ClusterID, ClusterName
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 173 次发布
+
+发布时间：2023-11-29 02:07:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetVodDomainCertificate](https://cloud.tencent.com/document/api/266/102015)
+
+修改数据结构：
+
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
+
+	* 新增成员：Codec, Bitrate
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 182 次发布
+
+发布时间：2023-11-29 02:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：RenewFlag
+
+
+
+
 # Release v1.0.805
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

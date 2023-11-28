@@ -755,7 +755,7 @@ func (r *CopyDSPATemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CopyDSPATemplateResponseParams struct {
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1034,7 +1034,7 @@ type CreateDSPAAssessmentRiskLevelRequestParams struct {
 	// 风险等级名称
 	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
-	// 识别模版
+	// 识别模板
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 风险等级矩阵
@@ -1053,7 +1053,7 @@ type CreateDSPAAssessmentRiskLevelRequest struct {
 	// 风险等级名称
 	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
-	// 识别模版
+	// 识别模板
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 风险等级矩阵
@@ -1198,7 +1198,7 @@ type CreateDSPAAssessmentTaskRequestParams struct {
 	// 评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 评估模版Id，格式“template-xxxxxxxx”
+	// 评估模板Id，格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
@@ -1216,7 +1216,7 @@ type CreateDSPAAssessmentTaskRequestParams struct {
 	// Deprecated: BusinessOwner is deprecated.
 	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
-	// 分类分级模版Id
+	// 分类分级模板Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 敏感数据扫描数据源条件。
@@ -1235,7 +1235,7 @@ type CreateDSPAAssessmentTaskRequest struct {
 	// 评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 评估模版Id，格式“template-xxxxxxxx”
+	// 评估模板Id，格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
@@ -1247,7 +1247,7 @@ type CreateDSPAAssessmentTaskRequest struct {
 	// 业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
-	// 分类分级模版Id
+	// 分类分级模板Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 敏感数据扫描数据源条件。
@@ -3884,7 +3884,7 @@ type DescribeDSPAAssessmentHighRiskTop10OverviewRequestParams struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 过滤条件， rdb（数据库）cos（对象存储）
@@ -3898,7 +3898,7 @@ type DescribeDSPAAssessmentHighRiskTop10OverviewRequest struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 过滤条件， rdb（数据库）cos（对象存储）
@@ -3958,7 +3958,7 @@ type DescribeDSPAAssessmentLatestRiskDetailInfoRequestParams struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险id
@@ -3971,7 +3971,7 @@ type DescribeDSPAAssessmentLatestRiskDetailInfoRequest struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险id
@@ -4013,11 +4013,11 @@ type DescribeDSPAAssessmentLatestRiskDetailInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
-	// 风险评估模版id
+	// 风险评估模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssessmentTemplateId *int64 `json:"AssessmentTemplateId,omitnil" name:"AssessmentTemplateId"`
 
-	// 分类分级的模版id
+	// 分类分级的模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyTemplateId *int64 `json:"IdentifyTemplateId,omitnil" name:"IdentifyTemplateId"`
 
@@ -4102,7 +4102,7 @@ type DescribeDSPAAssessmentLatestRiskListRequestParams struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
@@ -4145,7 +4145,7 @@ type DescribeDSPAAssessmentLatestRiskListRequest struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
@@ -4247,7 +4247,7 @@ type DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4257,7 +4257,7 @@ type DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4317,7 +4317,7 @@ type DescribeDSPAAssessmentPendingRiskOverviewRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4327,7 +4327,7 @@ type DescribeDSPAAssessmentPendingRiskOverviewRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4387,7 +4387,7 @@ type DescribeDSPAAssessmentProcessingRiskOverviewRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4397,7 +4397,7 @@ type DescribeDSPAAssessmentProcessingRiskOverviewRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4457,7 +4457,7 @@ type DescribeDSPAAssessmentRiskAmountOverviewRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4467,7 +4467,7 @@ type DescribeDSPAAssessmentRiskAmountOverviewRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4654,7 +4654,7 @@ type DescribeDSPAAssessmentRiskDealedTrendRequestParams struct {
 	// 结束日期
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4670,7 +4670,7 @@ type DescribeDSPAAssessmentRiskDealedTrendRequest struct {
 	// 结束日期
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -4727,7 +4727,7 @@ type DescribeDSPAAssessmentRiskDistributionOverviewRequestParams struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险资产分布的过滤条件
@@ -4741,7 +4741,7 @@ type DescribeDSPAAssessmentRiskDistributionOverviewRequest struct {
 	// dspa实例Id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险资产分布的过滤条件
@@ -4914,7 +4914,7 @@ type DescribeDSPAAssessmentRiskLevelDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
-	// 分类分级模版名称
+	// 分类分级模板名称
 	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil" name:"IdentifyComplianceName"`
 
 	// 风险数据
@@ -5027,7 +5027,7 @@ type DescribeDSPAAssessmentRiskLevelTrendRequestParams struct {
 	// 结束时日期
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5043,7 +5043,7 @@ type DescribeDSPAAssessmentRiskLevelTrendRequest struct {
 	// 结束时日期
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5231,7 +5231,7 @@ type DescribeDSPAAssessmentRiskSideDistributedRequestParams struct {
 	// DSPA实例ID
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5241,7 +5241,7 @@ type DescribeDSPAAssessmentRiskSideDistributedRequest struct {
 	// DSPA实例ID
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5296,7 +5296,7 @@ type DescribeDSPAAssessmentRiskSideListRequestParams struct {
 	// DSPA实例ID
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5306,7 +5306,7 @@ type DescribeDSPAAssessmentRiskSideListRequest struct {
 	// DSPA实例ID
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版id
+	// 评估模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
@@ -5361,7 +5361,7 @@ type DescribeDSPAAssessmentRiskTemplateDetailRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
@@ -5377,7 +5377,7 @@ type DescribeDSPAAssessmentRiskTemplateDetailRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
@@ -5411,13 +5411,13 @@ func (r *DescribeDSPAAssessmentRiskTemplateDetailRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateDetailResponseParams struct {
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
-	// 模版的描述
+	// 模板的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
@@ -5749,7 +5749,7 @@ type DescribeDSPAAssessmentTemplateControlItemsRequestParams struct {
 	// DSPA实例Id。格式“dspa-xxxxxxxx”
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版Id。格式“template-xxxxxxxx”
+	// 评估模板Id。格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 偏移量。默认为0
@@ -5774,7 +5774,7 @@ type DescribeDSPAAssessmentTemplateControlItemsRequest struct {
 	// DSPA实例Id。格式“dspa-xxxxxxxx”
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 评估模版Id。格式“template-xxxxxxxx”
+	// 评估模板Id。格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 偏移量。默认为0
@@ -5821,7 +5821,7 @@ type DescribeDSPAAssessmentTemplateControlItemsResponseParams struct {
 	// 符合条件的评估项数目
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 模版关联的评估项列表
+	// 模板关联的评估项列表
 	Items []*AssessmentControlItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11157,7 +11157,7 @@ type GetUserQuotaInfoResponseParams struct {
 	// 用户可用的COS存储量配额。
 	CosRemainQuota *float64 `json:"CosRemainQuota,omitnil" name:"CosRemainQuota"`
 
-	// COS存储量单位，比如TB。
+	// COS存储量单位，例如TB。
 	CosQuotaUnit *string `json:"CosQuotaUnit,omitnil" name:"CosQuotaUnit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11901,13 +11901,13 @@ type ModifyDSPAAssessmentRiskTemplateRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
-	// 模版的描述
+	// 模板的描述
 	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 修改的风险等级id
@@ -11923,13 +11923,13 @@ type ModifyDSPAAssessmentRiskTemplateRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
-	// 模版的描述
+	// 模板的描述
 	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
-	// 模版id
+	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 修改的风险等级id

@@ -2861,8 +2861,6 @@ type CreateFlowRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	// 
-	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
@@ -2959,8 +2957,6 @@ type CreateFlowRequest struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	// 
-	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：

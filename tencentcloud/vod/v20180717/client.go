@@ -11125,6 +11125,61 @@ func (c *Client) SetDrmKeyProviderInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewSetVodDomainCertificateRequest() (request *SetVodDomainCertificateRequest) {
+    request = &SetVodDomainCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "SetVodDomainCertificate")
+    
+    
+    return
+}
+
+func NewSetVodDomainCertificateResponse() (response *SetVodDomainCertificateResponse) {
+    response = &SetVodDomainCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetVodDomainCertificate
+// 设置点播域名 HTTPS 证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRequest) (response *SetVodDomainCertificateResponse, err error) {
+    return c.SetVodDomainCertificateWithContext(context.Background(), request)
+}
+
+// SetVodDomainCertificate
+// 设置点播域名 HTTPS 证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetVodDomainCertificateWithContext(ctx context.Context, request *SetVodDomainCertificateRequest) (response *SetVodDomainCertificateResponse, err error) {
+    if request == nil {
+        request = NewSetVodDomainCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVodDomainCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetVodDomainCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSimpleHlsClipRequest() (request *SimpleHlsClipRequest) {
     request = &SimpleHlsClipRequest{
         BaseRequest: &tchttp.BaseRequest{},

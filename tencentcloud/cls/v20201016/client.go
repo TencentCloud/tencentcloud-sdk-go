@@ -3976,7 +3976,7 @@ func NewDescribeMachinesResponse() (response *DescribeMachinesResponse) {
 }
 
 // DescribeMachines
-// 获取制定机器组下的机器状态
+// 获取指定机器组下的机器状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3996,7 +3996,7 @@ func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *D
 }
 
 // DescribeMachines
-// 获取制定机器组下的机器状态
+// 获取指定机器组下的机器状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

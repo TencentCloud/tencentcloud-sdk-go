@@ -5826,6 +5826,55 @@ func (c *Client) DescribeChannelFlowEvidenceReportWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeChannelSealPolicyWorkflowUrlRequest() (request *DescribeChannelSealPolicyWorkflowUrlRequest) {
+    request = &DescribeChannelSealPolicyWorkflowUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeChannelSealPolicyWorkflowUrl")
+    
+    
+    return
+}
+
+func NewDescribeChannelSealPolicyWorkflowUrlResponse() (response *DescribeChannelSealPolicyWorkflowUrlResponse) {
+    response = &DescribeChannelSealPolicyWorkflowUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChannelSealPolicyWorkflowUrl
+// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序方式查看）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeChannelSealPolicyWorkflowUrl(request *DescribeChannelSealPolicyWorkflowUrlRequest) (response *DescribeChannelSealPolicyWorkflowUrlResponse, err error) {
+    return c.DescribeChannelSealPolicyWorkflowUrlWithContext(context.Background(), request)
+}
+
+// DescribeChannelSealPolicyWorkflowUrl
+// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序方式查看）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeChannelSealPolicyWorkflowUrlWithContext(ctx context.Context, request *DescribeChannelSealPolicyWorkflowUrlRequest) (response *DescribeChannelSealPolicyWorkflowUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeChannelSealPolicyWorkflowUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelSealPolicyWorkflowUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChannelSealPolicyWorkflowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExtendedServiceAuthInfoRequest() (request *DescribeExtendedServiceAuthInfoRequest) {
     request = &DescribeExtendedServiceAuthInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

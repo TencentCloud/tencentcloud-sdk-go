@@ -12614,6 +12614,17 @@ type EditMediaTaskOutput struct {
 }
 
 type EditMediaVideoStream struct {
+	// 视频流的编码格式，可选值：
+	// <li>libx264：H.264 编码；</li>
+	// <li>libx265：H.265 编码；</li>
+	// <li>av1：AOMedia Video 1 编码；</li>
+	// <li>H.266：H.266 编码。</li>
+	Codec *string `json:"Codec,omitnil" name:"Codec"`
+
+	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 当取值为 0 或不填时，表示自动选择最佳视频码率。
+	Bitrate *uint64 `json:"Bitrate,omitnil" name:"Bitrate"`
+
 	// 分辨率自适应，可选值：
 	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
@@ -22991,6 +23002,57 @@ func (r *SetDrmKeyProviderInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetDrmKeyProviderInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetVodDomainCertificateRequestParams struct {
+
+}
+
+type SetVodDomainCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SetVodDomainCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVodDomainCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVodDomainCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetVodDomainCertificateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SetVodDomainCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *SetVodDomainCertificateResponseParams `json:"Response"`
+}
+
+func (r *SetVodDomainCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVodDomainCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

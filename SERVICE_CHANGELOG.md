@@ -1,50 +1,10 @@
 # 本版本更新包含以下内容：
 
-## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 61 次发布
+### 第 135 次发布
 
-发布时间：2023-11-28 01:06:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/297/95386)
-
-	* 新增入参：CnameWafIdList
-
-	* 新增出参：CnameWafData
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 49 次发布
-
-发布时间：2023-11-28 01:09:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeResourceGroup](https://cloud.tencent.com/document/api/1132/60246)
-
-	* 新增入参：ShowType
-
-
-
-
-## 多网聚合加速(mna) 版本：2021-01-19
-
-### 第 14 次发布
-
-发布时间：2023-11-28 01:19:46
+发布时间：2023-11-29 01:55:39
 
 本次发布包含了以下内容：
 
@@ -52,26 +12,47 @@
 
 新增接口：
 
-* [ActivateHardware](https://cloud.tencent.com/document/api/1385/101985)
-* [AddHardware](https://cloud.tencent.com/document/api/1385/101984)
-* [GetHardwareList](https://cloud.tencent.com/document/api/1385/101983)
-* [GetVendorHardware](https://cloud.tencent.com/document/api/1385/101982)
-* [UpdateHardware](https://cloud.tencent.com/document/api/1385/101981)
+* [DescribeChannelSealPolicyWorkflowUrl](https://cloud.tencent.com/document/api/1420/102013)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 23 次发布
+
+发布时间：2023-11-29 01:57:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudStorageThumbnailList](https://cloud.tencent.com/document/api/1131/102014)
 
 新增数据结构：
 
-* [ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware)
-* [Hardware](https://cloud.tencent.com/document/api/1385/55846#Hardware)
-* [HardwareInfo](https://cloud.tencent.com/document/api/1385/55846#HardwareInfo)
-* [VendorHardware](https://cloud.tencent.com/document/api/1385/55846#VendorHardware)
+* [ThumbnailURLInfoList](https://cloud.tencent.com/document/api/1131/76635#ThumbnailURLInfoList)
 
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-### 第 47 次发布
 
-发布时间：2023-11-28 01:20:57
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 62 次发布
+
+发布时间：2023-11-29 02:01:37
 
 本次发布包含了以下内容：
 
@@ -79,111 +60,87 @@
 
 修改接口：
 
-* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
 
-	* 新增入参：EsServerlessIndex, EsServerlessSpace
-
-
+	* 新增入参：DnsCache, IntranetConfig
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+新增数据结构：
 
-### 第 95 次发布
+* [IntranetConfigIn](https://cloud.tencent.com/document/api/583/17244#IntranetConfigIn)
 
-发布时间：2023-11-28 01:25:42
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 56 次发布
+
+发布时间：2023-11-29 02:03:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DeleteProCluster](https://cloud.tencent.com/document/api/1179/101986)
 
 修改接口：
 
-* [CreateProCluster](https://cloud.tencent.com/document/api/1179/101433)
+* [DescribeAssetSyncLastTime](https://cloud.tencent.com/document/api/1285/81683)
 
-	* <font color="#dd0000">**修改入参**：</font>ZoneIds
+	* 新增出参：TaskStatus, TaskProcess
 
+* [DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)
 
+	* 新增出参：Namespace, WorkloadType
 
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+	* 新增出参：Namespace, WorkloadType
 
-### 第 66 次发布
-
-发布时间：2023-11-28 01:26:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>Domain
+	* 新增成员：Namespace, WorkloadType
 
+	* <font color="#dd0000">**修改成员**：</font>EventId, FoundTime, ContainerId, ContainerName, ImageId, ImageName, NodeName, Status, EventName, EventType, EventCount, LatestFoundTime, HostIP, ClientIP, ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, NodeID, NodeType, NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, PodName, PodIP, PodStatus, ClusterID, ClusterName, NodeUniqueID, HostID
 
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
 
+	* 新增成员：Namespace, WorkloadType
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+	* <font color="#dd0000">**修改成员**：</font>NodeSubNetName, NodeSubNetCIDR, PodIP, NodeType, NodeID, NodeUniqueID, NodeSubNetID, ClusterID, ClusterName
 
-
-
-## 文本内容安全(tms) 版本：2020-12-29
-
-### 第 8 次发布
-
-发布时间：2023-11-28 01:28:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [TextModeration](https://cloud.tencent.com/document/api/1124/51860)
-
-	* 新增出参：SentimentAnalysis
-
-
-新增数据结构：
-
-* [SentimentAnalysis](https://cloud.tencent.com/document/api/1124/51861#SentimentAnalysis)
-* [SentimentDetail](https://cloud.tencent.com/document/api/1124/51861#SentimentDetail)
-
-
-
-## 文本内容安全(tms) 版本：2020-07-13
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 172 次发布
+### 第 173 次发布
 
-发布时间：2023-11-28 01:29:30
+发布时间：2023-11-29 02:07:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [SetVodDomainCertificate](https://cloud.tencent.com/document/api/266/102015)
+
 修改数据结构：
 
-* [DomainHTTPSConfig](https://cloud.tencent.com/document/api/266/31773#DomainHTTPSConfig)
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
 
-	* 新增成员：CloudCertId
+	* 新增成员：Codec, Bitrate
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 181 次发布
+### 第 182 次发布
 
-发布时间：2023-11-28 01:30:07
+发布时间：2023-11-29 02:08:37
 
 本次发布包含了以下内容：
 
@@ -191,9 +148,9 @@
 
 修改数据结构：
 
-* [EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService)
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
 
-	* 新增成员：ServiceUin, BusinessIpType
+	* 新增成员：RenewFlag
 
 
 
@@ -58995,6 +58952,18 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 135 次发布
+
+发布时间：2023-11-29 01:55:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeChannelSealPolicyWorkflowUrl](https://cloud.tencent.com/document/api/1420/102013)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 134 次发布
 
 发布时间：2023-11-27 00:10:25
@@ -71393,6 +71362,22 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 23 次发布
+
+发布时间：2023-11-29 01:57:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudStorageThumbnailList](https://cloud.tencent.com/document/api/1131/102014)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ThumbnailURLInfoList](https://cloud.tencent.com/document/api/1131/76635#ThumbnailURLInfoList)](https://cloud.tencent.com/document/api/1131/76635#[ThumbnailURLInfoList](https://cloud.tencent.com/document/api/1131/76635#ThumbnailURLInfoList))
+
 ### 第 22 次发布
 
 发布时间：2023-10-31 01:58:13
@@ -79852,18 +79837,18 @@
 
 新增接口：
 
-* [[ActivateHardware](https://cloud.tencent.com/document/api/1385/101985)](https://cloud.tencent.com/document/api/#/#)
-* [[AddHardware](https://cloud.tencent.com/document/api/1385/101984)](https://cloud.tencent.com/document/api/#/#)
-* [[GetHardwareList](https://cloud.tencent.com/document/api/1385/101983)](https://cloud.tencent.com/document/api/#/#)
-* [[GetVendorHardware](https://cloud.tencent.com/document/api/1385/101982)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateHardware](https://cloud.tencent.com/document/api/1385/101981)](https://cloud.tencent.com/document/api/#/#)
+* [ActivateHardware](https://cloud.tencent.com/document/api/1385/101985)
+* [AddHardware](https://cloud.tencent.com/document/api/1385/101984)
+* [GetHardwareList](https://cloud.tencent.com/document/api/1385/101983)
+* [GetVendorHardware](https://cloud.tencent.com/document/api/1385/101982)
+* [UpdateHardware](https://cloud.tencent.com/document/api/1385/101981)
 
 新增数据结构：
 
-* [[ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware)](https://cloud.tencent.com/document/api/1385/55846#[ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware))
-* [[Hardware](https://cloud.tencent.com/document/api/1385/55846#Hardware)](https://cloud.tencent.com/document/api/1385/55846#[Hardware](https://cloud.tencent.com/document/api/1385/55846#Hardware))
-* [[HardwareInfo](https://cloud.tencent.com/document/api/1385/55846#HardwareInfo)](https://cloud.tencent.com/document/api/1385/55846#[HardwareInfo](https://cloud.tencent.com/document/api/1385/55846#HardwareInfo))
-* [[VendorHardware](https://cloud.tencent.com/document/api/1385/55846#VendorHardware)](https://cloud.tencent.com/document/api/1385/55846#[VendorHardware](https://cloud.tencent.com/document/api/1385/55846#VendorHardware))
+* [ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware)
+* [Hardware](https://cloud.tencent.com/document/api/1385/55846#Hardware)
+* [HardwareInfo](https://cloud.tencent.com/document/api/1385/55846#HardwareInfo)
+* [VendorHardware](https://cloud.tencent.com/document/api/1385/55846#VendorHardware)
 
 ### 第 13 次发布
 
@@ -95171,6 +95156,25 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 62 次发布
+
+发布时间：2023-11-29 02:01:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：DnsCache, IntranetConfig
+
+
+新增数据结构：
+
+* [[IntranetConfigIn](https://cloud.tencent.com/document/api/583/17244#IntranetConfigIn)](https://cloud.tencent.com/document/api/583/17244#[IntranetConfigIn](https://cloud.tencent.com/document/api/583/17244#IntranetConfigIn))
+
 ### 第 61 次发布
 
 发布时间：2023-11-24 01:21:32
@@ -107109,6 +107113,44 @@
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
+### 第 56 次发布
+
+发布时间：2023-11-29 02:03:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetSyncLastTime](https://cloud.tencent.com/document/api/1285/81683)
+
+	* 新增出参：TaskStatus, TaskProcess
+
+* [DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)
+
+	* 新增出参：Namespace, WorkloadType
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：Namespace, WorkloadType
+
+
+修改数据结构：
+
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+
+	* 新增成员：Namespace, WorkloadType
+
+	* <font color="#dd0000">**修改成员**：</font>EventId, FoundTime, ContainerId, ContainerName, ImageId, ImageName, NodeName, Status, EventName, EventType, EventCount, LatestFoundTime, HostIP, ClientIP, ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, NodeID, NodeType, NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, PodName, PodIP, PodStatus, ClusterID, ClusterName, NodeUniqueID, HostID
+
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
+
+	* 新增成员：Namespace, WorkloadType
+
+	* <font color="#dd0000">**修改成员**：</font>NodeSubNetName, NodeSubNetCIDR, PodIP, NodeType, NodeID, NodeUniqueID, NodeSubNetID, ClusterID, ClusterName
+
+
 ### 第 55 次发布
 
 发布时间：2023-11-21 01:33:13
@@ -109505,7 +109547,7 @@
 
 新增接口：
 
-* [[DeleteProCluster](https://cloud.tencent.com/document/api/1179/101986)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProCluster](https://cloud.tencent.com/document/api/1179/101986)
 
 修改接口：
 
@@ -123158,8 +123200,8 @@
 
 新增数据结构：
 
-* [[SentimentAnalysis](https://cloud.tencent.com/document/api/1124/51861#SentimentAnalysis)](https://cloud.tencent.com/document/api/1124/51861#[SentimentAnalysis](https://cloud.tencent.com/document/api/1124/51861#SentimentAnalysis))
-* [[SentimentDetail](https://cloud.tencent.com/document/api/1124/51861#SentimentDetail)](https://cloud.tencent.com/document/api/1124/51861#[SentimentDetail](https://cloud.tencent.com/document/api/1124/51861#SentimentDetail))
+* [SentimentAnalysis](https://cloud.tencent.com/document/api/1124/51861#SentimentAnalysis)
+* [SentimentDetail](https://cloud.tencent.com/document/api/1124/51861#SentimentDetail)
 
 ### 第 7 次发布
 
@@ -129915,6 +129957,25 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 173 次发布
+
+发布时间：2023-11-29 02:07:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SetVodDomainCertificate](https://cloud.tencent.com/document/api/266/102015)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
+
+	* 新增成员：Codec, Bitrate
+
+
 ### 第 172 次发布
 
 发布时间：2023-11-28 01:29:30
@@ -134684,6 +134745,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 182 次发布
+
+发布时间：2023-11-29 02:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：RenewFlag
+
 
 ### 第 181 次发布
 

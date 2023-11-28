@@ -463,6 +463,10 @@ type Address struct {
 
 	// 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil" name:"AntiDDoSPackageId"`
+
+	// 当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
+	// <li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
+	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 type AddressChargePrepaid struct {
