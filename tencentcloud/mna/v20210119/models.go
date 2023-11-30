@@ -794,6 +794,23 @@ type DeviceNetInfo struct {
 	UpRate *float64 `json:"UpRate,omitnil" name:"UpRate"`
 }
 
+type DevicePayModeInfo struct {
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 付费模式。
+	// 1：预付费流量包
+	// 0：按流量后付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 付费模式描述
+	PayModeDesc *string `json:"PayModeDesc,omitnil" name:"PayModeDesc"`
+
+	// 流量包ID，仅当付费模式为流量包类型时才有。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+}
+
 type ExpectedThreshold struct {
 	// 期望发起加速的时延阈值
 	RTT *float64 `json:"RTT,omitnil" name:"RTT"`
@@ -825,6 +842,103 @@ type FlowDetails struct {
 	// 流量总值（单位：bytes）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalValue *float64 `json:"TotalValue,omitnil" name:"TotalValue"`
+}
+
+type FlowPackageInfo struct {
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 流量包所属的用户AppId
+	AppId *uint64 `json:"AppId,omitnil" name:"AppId"`
+
+	// 流量包规格类型。可取值如下：
+	// DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
+	// DEVICE_3_FLOW_100G、
+	// DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
+	// 档位也影响流量包可绑定的设备数量上限：
+	// 20G：最多绑定1个设备
+	// 50G：最多绑定2个设备
+	// 100G：最多绑定3个设备
+	// 500G：最多绑定5个设备
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+
+	// 流量包状态，0：未生效，1：有效期内，2：已过期
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 生效时间，Unix时间戳格式，单位：秒
+	ActiveTime *int64 `json:"ActiveTime,omitnil" name:"ActiveTime"`
+
+	// 过期时间，Unix时间戳格式，单位：秒
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 流量包绑定的设备ID列表
+	DeviceList []*string `json:"DeviceList,omitnil" name:"DeviceList"`
+
+	// 流量包总容量，单位：MB
+	CapacitySize *uint64 `json:"CapacitySize,omitnil" name:"CapacitySize"`
+
+	// 流量包余量，单位：MB
+	CapacityRemain *uint64 `json:"CapacityRemain,omitnil" name:"CapacityRemain"`
+
+	// 自动续费标识。true代表自动续费，false代表不自动续费
+	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+// Predefined struct for user
+type GetDevicePayModeRequestParams struct {
+	// 设备ID列表
+	DeviceIdList []*string `json:"DeviceIdList,omitnil" name:"DeviceIdList"`
+}
+
+type GetDevicePayModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备ID列表
+	DeviceIdList []*string `json:"DeviceIdList,omitnil" name:"DeviceIdList"`
+}
+
+func (r *GetDevicePayModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDevicePayModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDevicePayModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDevicePayModeResponseParams struct {
+	// 结果信息
+	Result []*DevicePayModeInfo `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetDevicePayModeResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDevicePayModeResponseParams `json:"Response"`
+}
+
+func (r *GetDevicePayModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDevicePayModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -971,6 +1085,94 @@ func (r *GetDevicesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowPackagesRequestParams struct {
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 流量包绑定的设备ID
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 流量包状态，0：未生效，1：有效期内，2：已过期
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type GetFlowPackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 流量包绑定的设备ID
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 流量包状态，0：未生效，1：有效期内，2：已过期
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *GetFlowPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowPackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ResourceId")
+	delete(f, "DeviceId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowPackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowPackagesResponseParams struct {
+	// 流量包列表
+	PackageList []*FlowPackageInfo `json:"PackageList,omitnil" name:"PackageList"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetFlowPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFlowPackagesResponseParams `json:"Response"`
+}
+
+func (r *GetFlowPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowPackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1594,6 +1796,67 @@ type HardwareInfo struct {
 	SN *string `json:"SN,omitnil" name:"SN"`
 }
 
+// Predefined struct for user
+type ModifyPackageRenewFlagRequestParams struct {
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 自动续费标识。true代表自动续费，false代表不自动续费
+	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+type ModifyPackageRenewFlagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 自动续费标识。true代表自动续费，false代表不自动续费
+	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+func (r *ModifyPackageRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageRenewFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "RenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPackageRenewFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPackageRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyPackageRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPackageRenewFlagResponseParams `json:"Response"`
+}
+
+func (r *ModifyPackageRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageRenewFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorData struct {
 	// 时间点：s
 	Time *string `json:"Time,omitnil" name:"Time"`
@@ -1627,6 +1890,108 @@ type NetworkData struct {
 
 	// 10位秒级时间戳
 	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
+}
+
+// Predefined struct for user
+type OrderFlowPackageRequestParams struct {
+	// 流量包规格类型。可取值如下：
+	// DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
+	// DEVICE_3_FLOW_100G、
+	// DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
+	// 档位也影响流量包可绑定的设备数量上限：
+	// 20G：最多绑定1个设备
+	// 50G：最多绑定2个设备
+	// 100G：最多绑定3个设备
+	// 500G：最多绑定5个设备
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+
+	// 流量包绑定的设备ID列表。捆绑设备个数上限取决于包的规格档位：
+	// 20G：最多绑定1个设备
+	// 50G：最多绑定2个设备
+	// 100G：最多绑定3个设备
+	// 500G：最多绑定5个设备
+	DeviceList []*string `json:"DeviceList,omitnil" name:"DeviceList"`
+
+	// 是否自动续费
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 区域标识，0：国内，1：国外
+	PackageRegion *int64 `json:"PackageRegion,omitnil" name:"PackageRegion"`
+}
+
+type OrderFlowPackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量包规格类型。可取值如下：
+	// DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
+	// DEVICE_3_FLOW_100G、
+	// DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
+	// 档位也影响流量包可绑定的设备数量上限：
+	// 20G：最多绑定1个设备
+	// 50G：最多绑定2个设备
+	// 100G：最多绑定3个设备
+	// 500G：最多绑定5个设备
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+
+	// 流量包绑定的设备ID列表。捆绑设备个数上限取决于包的规格档位：
+	// 20G：最多绑定1个设备
+	// 50G：最多绑定2个设备
+	// 100G：最多绑定3个设备
+	// 500G：最多绑定5个设备
+	DeviceList []*string `json:"DeviceList,omitnil" name:"DeviceList"`
+
+	// 是否自动续费
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 区域标识，0：国内，1：国外
+	PackageRegion *int64 `json:"PackageRegion,omitnil" name:"PackageRegion"`
+}
+
+func (r *OrderFlowPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OrderFlowPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageType")
+	delete(f, "DeviceList")
+	delete(f, "AutoRenewFlag")
+	delete(f, "PackageRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OrderFlowPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OrderFlowPackageResponseParams struct {
+	// 流量包的唯一资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type OrderFlowPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *OrderFlowPackageResponseParams `json:"Response"`
+}
+
+func (r *OrderFlowPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OrderFlowPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SlotNetInfo struct {

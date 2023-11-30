@@ -18627,6 +18627,8 @@ type IPSECOptionsSpecification struct {
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IntegrityAlgorith is deprecated.
 	IntegrityAlgorith *string `json:"IntegrityAlgorith,omitnil" name:"IntegrityAlgorith"`
 
 	// IPsec SA lifetime(s)：单位秒，取值范围：180-604800
@@ -18640,6 +18642,10 @@ type IPSECOptionsSpecification struct {
 	// IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPSECSaLifetimeTraffic *uint64 `json:"IPSECSaLifetimeTraffic,omitnil" name:"IPSECSaLifetimeTraffic"`
+
+	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil" name:"IntegrityAlgorithm"`
 }
 
 // Predefined struct for user

@@ -540,6 +540,61 @@ func (c *Client) DescribeCaptchaOperDataWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeCaptchaRceResultRequest() (request *DescribeCaptchaRceResultRequest) {
+    request = &DescribeCaptchaRceResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaRceResult")
+    
+    
+    return
+}
+
+func NewDescribeCaptchaRceResultResponse() (response *DescribeCaptchaRceResultResponse) {
+    response = &DescribeCaptchaRceResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCaptchaRceResult
+// Rce融合验证核查验证码票据结果(Web及APP)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) DescribeCaptchaRceResult(request *DescribeCaptchaRceResultRequest) (response *DescribeCaptchaRceResultResponse, err error) {
+    return c.DescribeCaptchaRceResultWithContext(context.Background(), request)
+}
+
+// DescribeCaptchaRceResult
+// Rce融合验证核查验证码票据结果(Web及APP)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) DescribeCaptchaRceResultWithContext(ctx context.Context, request *DescribeCaptchaRceResultRequest) (response *DescribeCaptchaRceResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaRceResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaRceResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCaptchaRceResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCaptchaResultRequest() (request *DescribeCaptchaResultRequest) {
     request = &DescribeCaptchaResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

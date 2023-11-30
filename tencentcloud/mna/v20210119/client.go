@@ -574,6 +574,59 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, request *GetDeviceReq
     return
 }
 
+func NewGetDevicePayModeRequest() (request *GetDevicePayModeRequest) {
+    request = &GetDevicePayModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetDevicePayMode")
+    
+    
+    return
+}
+
+func NewGetDevicePayModeResponse() (response *GetDevicePayModeResponse) {
+    response = &GetDevicePayModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDevicePayMode
+// 获取设备付费模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetDevicePayMode(request *GetDevicePayModeRequest) (response *GetDevicePayModeResponse, err error) {
+    return c.GetDevicePayModeWithContext(context.Background(), request)
+}
+
+// GetDevicePayMode
+// 获取设备付费模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetDevicePayModeWithContext(ctx context.Context, request *GetDevicePayModeRequest) (response *GetDevicePayModeResponse, err error) {
+    if request == nil {
+        request = NewGetDevicePayModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevicePayMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDevicePayModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDevicesRequest() (request *GetDevicesRequest) {
     request = &GetDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -623,6 +676,59 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     request.SetContext(ctx)
     
     response = NewGetDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFlowPackagesRequest() (request *GetFlowPackagesRequest) {
+    request = &GetFlowPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowPackages")
+    
+    
+    return
+}
+
+func NewGetFlowPackagesResponse() (response *GetFlowPackagesResponse) {
+    response = &GetFlowPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFlowPackages
+// 获取流量包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetFlowPackages(request *GetFlowPackagesRequest) (response *GetFlowPackagesResponse, err error) {
+    return c.GetFlowPackagesWithContext(context.Background(), request)
+}
+
+// GetFlowPackages
+// 获取流量包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetFlowPackagesWithContext(ctx context.Context, request *GetFlowPackagesRequest) (response *GetFlowPackagesResponse, err error) {
+    if request == nil {
+        request = NewGetFlowPackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowPackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowPackagesResponse()
     err = c.Send(request, response)
     return
 }
@@ -704,7 +810,7 @@ func NewGetHardwareListResponse() (response *GetHardwareListResponse) {
 }
 
 // GetHardwareList
-// 租户获取厂商硬件列表
+// 获取厂商硬件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -716,7 +822,7 @@ func (c *Client) GetHardwareList(request *GetHardwareListRequest) (response *Get
 }
 
 // GetHardwareList
-// 租户获取厂商硬件列表
+// 获取厂商硬件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1006,6 +1112,122 @@ func (c *Client) GetVendorHardwareWithContext(ctx context.Context, request *GetV
     request.SetContext(ctx)
     
     response = NewGetVendorHardwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPackageRenewFlagRequest() (request *ModifyPackageRenewFlagRequest) {
+    request = &ModifyPackageRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "ModifyPackageRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyPackageRenewFlagResponse() (response *ModifyPackageRenewFlagResponse) {
+    response = &ModifyPackageRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPackageRenewFlag
+// 可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyPackageRenewFlag(request *ModifyPackageRenewFlagRequest) (response *ModifyPackageRenewFlagResponse, err error) {
+    return c.ModifyPackageRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyPackageRenewFlag
+// 可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyPackageRenewFlagWithContext(ctx context.Context, request *ModifyPackageRenewFlagRequest) (response *ModifyPackageRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyPackageRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPackageRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPackageRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOrderFlowPackageRequest() (request *OrderFlowPackageRequest) {
+    request = &OrderFlowPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "OrderFlowPackage")
+    
+    
+    return
+}
+
+func NewOrderFlowPackageResponse() (response *OrderFlowPackageResponse) {
+    response = &OrderFlowPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OrderFlowPackage
+// 购买预付费流量包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNOPENEDLIVESERVICE = "UnauthorizedOperation.UnopenedLiveService"
+func (c *Client) OrderFlowPackage(request *OrderFlowPackageRequest) (response *OrderFlowPackageResponse, err error) {
+    return c.OrderFlowPackageWithContext(context.Background(), request)
+}
+
+// OrderFlowPackage
+// 购买预付费流量包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNOPENEDLIVESERVICE = "UnauthorizedOperation.UnopenedLiveService"
+func (c *Client) OrderFlowPackageWithContext(ctx context.Context, request *OrderFlowPackageRequest) (response *OrderFlowPackageResponse, err error) {
+    if request == nil {
+        request = NewOrderFlowPackageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OrderFlowPackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOrderFlowPackageResponse()
     err = c.Send(request, response)
     return
 }

@@ -1308,7 +1308,7 @@ type RunApplicationRequestParams struct {
 	// 任务输入JSON。需要进行base64编码。
 	InputBase64 *string `json:"InputBase64,omitnil" name:"InputBase64"`
 
-	// 任务缓存清理时间。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 
 	// 运行选项。
@@ -1345,7 +1345,7 @@ type RunApplicationRequest struct {
 	// 任务输入JSON。需要进行base64编码。
 	InputBase64 *string `json:"InputBase64,omitnil" name:"InputBase64"`
 
-	// 任务缓存清理时间。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 
 	// 运行选项。
@@ -1651,7 +1651,7 @@ type RunWorkflowRequestParams struct {
 	// （InputBase64和InputCosUri必选其一）
 	InputCosUri *string `json:"InputCosUri,omitnil" name:"InputCosUri"`
 
-	// 任务缓存清理时间。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 }
 
@@ -1691,7 +1691,7 @@ type RunWorkflowRequest struct {
 	// （InputBase64和InputCosUri必选其一）
 	InputCosUri *string `json:"InputCosUri,omitnil" name:"InputCosUri"`
 
-	// 任务缓存清理时间。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 }
 

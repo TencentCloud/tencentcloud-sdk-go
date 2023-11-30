@@ -4704,6 +4704,11 @@ type WaterMarkChar struct {
 
 	// 水印文字的背景色，为空代表背景透明，默认为空
 	BackGroundColor *string `json:"BackGroundColor,omitnil" name:"BackGroundColor"`
+
+	// 文字水印的字体，支持设置以下值：
+	// 1. Tencent （默认）
+	// 2. SourceHanSans
+	Font *string `json:"Font,omitnil" name:"Font"`
 }
 
 type WaterMarkImage struct {
@@ -4749,4 +4754,9 @@ type WaterMarkTimestamp struct {
 
 	// 显示时间戳的时区，默认东八区
 	TimeZone *uint64 `json:"TimeZone,omitnil" name:"TimeZone"`
+
+	// 文字水印的字体，支持设置以下值：
+	// 1. Tencent （默认）
+	// 2. SourceHanSans
+	Font *string `json:"Font,omitnil" name:"Font"`
 }

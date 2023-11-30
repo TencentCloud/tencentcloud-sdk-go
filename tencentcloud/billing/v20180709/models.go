@@ -154,6 +154,14 @@ type BillDetail struct {
 	// 计费规则：各产品详细的计费规则官网说明链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormulaUrl *string `json:"FormulaUrl,omitnil" name:"FormulaUrl"`
+
+	// 账单归属日
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillDay *string `json:"BillDay,omitnil" name:"BillDay"`
+
+	// 账单归属月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil" name:"BillMonth"`
 }
 
 type BillDetailAssociatedOrder struct {
@@ -417,6 +425,10 @@ type BillDistributionResourceSummary struct {
 
 	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitnil" name:"OriginalCostWithSP"`
+
+	// 账单归属月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil" name:"BillMonth"`
 }
 
 type BillResourceSummary struct {
@@ -537,6 +549,10 @@ type BillResourceSummary struct {
 
 	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitnil" name:"OriginalCostWithSP"`
+
+	// 账单归属月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil" name:"BillMonth"`
 }
 
 type BillTagInfo struct {
@@ -4730,6 +4746,14 @@ type DistributionBillDetail struct {
 	// 计费规则：各产品详细的计费规则官网说明链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormulaUrl *string `json:"FormulaUrl,omitnil" name:"FormulaUrl"`
+
+	// 账单归属月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil" name:"BillMonth"`
+
+	// 账单归属日
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillDay *string `json:"BillDay,omitnil" name:"BillDay"`
 }
 
 type ExcludedProducts struct {

@@ -211,6 +211,18 @@ type AlarmEventInfo struct {
 	// 发送结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendResult *string `json:"SendResult,omitnil" name:"SendResult"`
+
+	// 监控对象id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorObjectId *string `json:"MonitorObjectId,omitnil" name:"MonitorObjectId"`
+
+	// 监控对象名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorObjectName *string `json:"MonitorObjectName,omitnil" name:"MonitorObjectName"`
+
+	// 指标阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *float64 `json:"Threshold,omitnil" name:"Threshold"`
 }
 
 type AlarmExtDsVO struct {
@@ -240,7 +252,7 @@ type AlarmIndicatorInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	// 告警指标,0任务失败,1任务运行超时,2任务停止,3任务暂停, 4读取速度,5写入速度,6读取吞吐 7写入吞吐, 8脏数据字节数,9脏数据条数,10任务异常,11任务检测异常, 12重启次数, 13任务延时, 14近20分内的重启次数 15传输延迟,16业务延迟, 50离线包CPU使用率, 51离线包内存使用率, 52离线包并行度使用率, 53离线包排队中的实例数, 54实时包资源使用率, 55实时包运行中的任务数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmIndicator *uint64 `json:"AlarmIndicator,omitnil" name:"AlarmIndicator"`
 
@@ -256,7 +268,7 @@ type AlarmIndicatorInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EstimatedTime *uint64 `json:"EstimatedTime,omitnil" name:"EstimatedTime"`
 
-	// 实时任务告警需要的参数
+	// 告警阈值的算子,1 大于,2 小于
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *uint64 `json:"Operator,omitnil" name:"Operator"`
 
@@ -267,11 +279,15 @@ type AlarmIndicatorInfo struct {
 	// 告警周期
 	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
-	// 告警周期单位
+	// 告警周期单位:hour,minute,day
 	DurationUnit *string `json:"DurationUnit,omitnil" name:"DurationUnit"`
 
 	// 周期内最多告警次数
 	MaxTimes *int64 `json:"MaxTimes,omitnil" name:"MaxTimes"`
+
+	// 指标阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *float64 `json:"Threshold,omitnil" name:"Threshold"`
 }
 
 type AlarmInfo struct {
@@ -2502,6 +2518,9 @@ type BatchUpdateIntegrationTasksRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 责任人Id（多个责任人用小写分号隔开）
+	InchargeIds *string `json:"InchargeIds,omitnil" name:"InchargeIds"`
 }
 
 type BatchUpdateIntegrationTasksRequest struct {
@@ -2518,6 +2537,9 @@ type BatchUpdateIntegrationTasksRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 责任人Id（多个责任人用小写分号隔开）
+	InchargeIds *string `json:"InchargeIds,omitnil" name:"InchargeIds"`
 }
 
 func (r *BatchUpdateIntegrationTasksRequest) ToJsonString() string {
@@ -2536,6 +2558,7 @@ func (r *BatchUpdateIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "Incharge")
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
+	delete(f, "InchargeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -2636,6 +2659,9 @@ type CheckAlarmRegularNameExistRequestParams struct {
 
 	// 任务类型:201.实时,202.离线
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 type CheckAlarmRegularNameExistRequest struct {
@@ -2655,6 +2681,9 @@ type CheckAlarmRegularNameExistRequest struct {
 
 	// 任务类型:201.实时,202.离线
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 func (r *CheckAlarmRegularNameExistRequest) ToJsonString() string {
@@ -2674,6 +2703,7 @@ func (r *CheckAlarmRegularNameExistRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "Id")
 	delete(f, "TaskType")
+	delete(f, "MonitorType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAlarmRegularNameExistRequest has unknown keys!", "")
 	}
@@ -8116,6 +8146,15 @@ type DependencyStrategyDs struct {
 
 // Predefined struct for user
 type DescribeAlarmEventsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+
 	// 过滤条件(key可以是：AlarmLevel,AlarmIndicator,KeyWord)
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
@@ -8131,19 +8170,22 @@ type DescribeAlarmEventsRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
-	// 当前页
-	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
-
-	// 每页记录数
-	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 type DescribeAlarmEventsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+
 	// 过滤条件(key可以是：AlarmLevel,AlarmIndicator,KeyWord)
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
@@ -8159,14 +8201,8 @@ type DescribeAlarmEventsRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
-	// 当前页
-	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
-
-	// 每页记录数
-	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 func (r *DescribeAlarmEventsRequest) ToJsonString() string {
@@ -8181,14 +8217,15 @@ func (r *DescribeAlarmEventsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	delete(f, "Filters")
 	delete(f, "OrderFields")
 	delete(f, "TaskType")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
-	delete(f, "ProjectId")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
+	delete(f, "MonitorType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmEventsRequest has unknown keys!", "")
 	}
@@ -8252,6 +8289,9 @@ type DescribeAlarmReceiverRequestParams struct {
 
 	// 告警时间
 	AlarmTime *string `json:"AlarmTime,omitnil" name:"AlarmTime"`
+
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 type DescribeAlarmReceiverRequest struct {
@@ -8283,6 +8323,9 @@ type DescribeAlarmReceiverRequest struct {
 
 	// 告警时间
 	AlarmTime *string `json:"AlarmTime,omitnil" name:"AlarmTime"`
+
+	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+	MonitorType *uint64 `json:"MonitorType,omitnil" name:"MonitorType"`
 }
 
 func (r *DescribeAlarmReceiverRequest) ToJsonString() string {
@@ -8306,6 +8349,7 @@ func (r *DescribeAlarmReceiverRequest) FromJsonString(s string) error {
 	delete(f, "AlarmRecipient")
 	delete(f, "AlarmRecipientName")
 	delete(f, "AlarmTime")
+	delete(f, "MonitorType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmReceiverRequest has unknown keys!", "")
 	}
@@ -10094,7 +10138,7 @@ func (r *DescribeDataObjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataSourceInfoListRequestParams struct {
-	// 工作空间id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 页码
@@ -10103,23 +10147,23 @@ type DescribeDataSourceInfoListRequestParams struct {
 	// 页数
 	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
 
-	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	// 过滤条件（暂不支持）
 	Filters *Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序配置
 	OrderFields *OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
 
-	// 数据源类型
+	// 数据源类型，必选（如MYSQL、DLC等）
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 数据源名称过滤用
+	// 数据源名称过滤
 	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
 }
 
 type DescribeDataSourceInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 页码
@@ -10128,16 +10172,16 @@ type DescribeDataSourceInfoListRequest struct {
 	// 页数
 	PageSize *uint64 `json:"PageSize,omitnil" name:"PageSize"`
 
-	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	// 过滤条件（暂不支持）
 	Filters *Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序配置
 	OrderFields *OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
 
-	// 数据源类型
+	// 数据源类型，必选（如MYSQL、DLC等）
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 数据源名称过滤用
+	// 数据源名称过滤
 	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
 }
 
@@ -11522,7 +11566,10 @@ type DescribeEventCasesRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 事件实例目录
+	// 事件实例目录,示例取值:
+	// - 已过期: expired
+	// - 未过期: consuming
+	// - 全部: all
 	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 页码
@@ -11535,15 +11582,25 @@ type DescribeEventCasesRequestParams struct {
 	EventName *string `json:"EventName,omitnil" name:"EventName"`
 
 	// 事件类型
+	//
+	// Deprecated: EventType is deprecated.
 	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 事件分割类型
 	EventSubType *string `json:"EventSubType,omitnil" name:"EventSubType"`
 
 	// 事件广播类型
+	//
+	// Deprecated: EventBroadcastType is deprecated.
 	EventBroadcastType *string `json:"EventBroadcastType,omitnil" name:"EventBroadcastType"`
 
-	// 事件实例状态
+	// 事件实例状态,示例取值:
+	// - 已消费: COMSUMED
+	// - 已过期: EXPIRED
+	// - 待消费: ACTIVE
+	// - 消费中: CONSUMING
+	//
+	// Deprecated: Status is deprecated.
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件实例最小创建时间
@@ -11566,6 +11623,15 @@ type DescribeEventCasesRequestParams struct {
 
 	// 事件实例数据时间
 	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
+
+	// 事件实例有效时间
+	TimeToLive *string `json:"TimeToLive,omitnil" name:"TimeToLive"`
+
+	// 排序字段
+	SortItem *string `json:"SortItem,omitnil" name:"SortItem"`
+
+	// 排序顺序
+	SortType *string `json:"SortType,omitnil" name:"SortType"`
 }
 
 type DescribeEventCasesRequest struct {
@@ -11574,7 +11640,10 @@ type DescribeEventCasesRequest struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 事件实例目录
+	// 事件实例目录,示例取值:
+	// - 已过期: expired
+	// - 未过期: consuming
+	// - 全部: all
 	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 页码
@@ -11595,7 +11664,11 @@ type DescribeEventCasesRequest struct {
 	// 事件广播类型
 	EventBroadcastType *string `json:"EventBroadcastType,omitnil" name:"EventBroadcastType"`
 
-	// 事件实例状态
+	// 事件实例状态,示例取值:
+	// - 已消费: COMSUMED
+	// - 已过期: EXPIRED
+	// - 待消费: ACTIVE
+	// - 消费中: CONSUMING
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件实例最小创建时间
@@ -11618,6 +11691,15 @@ type DescribeEventCasesRequest struct {
 
 	// 事件实例数据时间
 	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
+
+	// 事件实例有效时间
+	TimeToLive *string `json:"TimeToLive,omitnil" name:"TimeToLive"`
+
+	// 排序字段
+	SortItem *string `json:"SortItem,omitnil" name:"SortItem"`
+
+	// 排序顺序
+	SortType *string `json:"SortType,omitnil" name:"SortType"`
 }
 
 func (r *DescribeEventCasesRequest) ToJsonString() string {
@@ -11648,6 +11730,9 @@ func (r *DescribeEventCasesRequest) FromJsonString(s string) error {
 	delete(f, "LogTimeStart")
 	delete(f, "LogTimeEnd")
 	delete(f, "Dimension")
+	delete(f, "TimeToLive")
+	delete(f, "SortItem")
+	delete(f, "SortType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventCasesRequest has unknown keys!", "")
 	}
@@ -23081,6 +23166,32 @@ func (r *EditBaselineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *EditBaselineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type EventBatchCaseDTO struct {
+	// 事件实例id
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
+
+	// 事件名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 事件触发起始时间
+	StartDimension *string `json:"StartDimension,omitnil" name:"StartDimension"`
+
+	// 创建时间
+	CreationTs *string `json:"CreationTs,omitnil" name:"CreationTs"`
+
+	// 消费者id
+	ConsumerId *string `json:"ConsumerId,omitnil" name:"ConsumerId"`
+
+	// 描述信息
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 事件触发结束时间
+	EndDimension *string `json:"EndDimension,omitnil" name:"EndDimension"`
+
+	// 事件周期
+	EventSubType *string `json:"EventSubType,omitnil" name:"EventSubType"`
 }
 
 type EventCaseAuditLogOptDto struct {
@@ -36942,6 +37053,9 @@ type TriggerDsEventRequestParams struct {
 
 	// 事件实例信息
 	EventCaseList []*EventCaseDTO `json:"EventCaseList,omitnil" name:"EventCaseList"`
+
+	// 事件实例信息(连续时间)
+	EventBatchCaseList []*EventBatchCaseDTO `json:"EventBatchCaseList,omitnil" name:"EventBatchCaseList"`
 }
 
 type TriggerDsEventRequest struct {
@@ -36952,6 +37066,9 @@ type TriggerDsEventRequest struct {
 
 	// 事件实例信息
 	EventCaseList []*EventCaseDTO `json:"EventCaseList,omitnil" name:"EventCaseList"`
+
+	// 事件实例信息(连续时间)
+	EventBatchCaseList []*EventBatchCaseDTO `json:"EventBatchCaseList,omitnil" name:"EventBatchCaseList"`
 }
 
 func (r *TriggerDsEventRequest) ToJsonString() string {
@@ -36968,6 +37085,7 @@ func (r *TriggerDsEventRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "EventCaseList")
+	delete(f, "EventBatchCaseList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerDsEventRequest has unknown keys!", "")
 	}

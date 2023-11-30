@@ -205,90 +205,6 @@ func (r *CreateApplicationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateOfflineRecordRequestParams struct {
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 录制任务对应的房间号
-	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
-
-	// 录制任务对应的群组Id
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 混流参数配置
-	// 目前课后录制暂未支持自定义混流布局Custom参数
-	MixStream *MixStream `json:"MixStream,omitnil" name:"MixStream"`
-
-	// 白板参数配置
-	Whiteboard *Whiteboard `json:"Whiteboard,omitnil" name:"Whiteboard"`
-}
-
-type CreateOfflineRecordRequest struct {
-	*tchttp.BaseRequest
-	
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 录制任务对应的房间号
-	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
-
-	// 录制任务对应的群组Id
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 混流参数配置
-	// 目前课后录制暂未支持自定义混流布局Custom参数
-	MixStream *MixStream `json:"MixStream,omitnil" name:"MixStream"`
-
-	// 白板参数配置
-	Whiteboard *Whiteboard `json:"Whiteboard,omitnil" name:"Whiteboard"`
-}
-
-func (r *CreateOfflineRecordRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateOfflineRecordRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "RoomId")
-	delete(f, "GroupId")
-	delete(f, "MixStream")
-	delete(f, "Whiteboard")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOfflineRecordRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateOfflineRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateOfflineRecordResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateOfflineRecordResponseParams `json:"Response"`
-}
-
-func (r *CreateOfflineRecordResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateOfflineRecordResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreatePPTCheckTaskRequestParams struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
@@ -525,6 +441,9 @@ type CreateTranscodeRequestParams struct {
 	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+	ExcelParam *ExcelParam `json:"ExcelParam,omitnil" name:"ExcelParam"`
 }
 
 type CreateTranscodeRequest struct {
@@ -580,6 +499,9 @@ type CreateTranscodeRequest struct {
 	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+	ExcelParam *ExcelParam `json:"ExcelParam,omitnil" name:"ExcelParam"`
 }
 
 func (r *CreateTranscodeRequest) ToJsonString() string {
@@ -604,6 +526,7 @@ func (r *CreateTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "Priority")
 	delete(f, "MinScaleResolution")
 	delete(f, "AutoHandleUnsupportedElement")
+	delete(f, "ExcelParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeRequest has unknown keys!", "")
 	}
@@ -1156,121 +1079,6 @@ func (r *DescribeIMApplicationsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIMApplicationsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeOfflineRecordCallbackRequestParams struct {
-	// 应用的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-}
-
-type DescribeOfflineRecordCallbackRequest struct {
-	*tchttp.BaseRequest
-	
-	// 应用的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-}
-
-func (r *DescribeOfflineRecordCallbackRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeOfflineRecordCallbackRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfflineRecordCallbackRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeOfflineRecordCallbackResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeOfflineRecordCallbackResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeOfflineRecordCallbackResponseParams `json:"Response"`
-}
-
-func (r *DescribeOfflineRecordCallbackResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeOfflineRecordCallbackResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeOfflineRecordRequestParams struct {
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 课后录制任务的Id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
-}
-
-type DescribeOfflineRecordRequest struct {
-	*tchttp.BaseRequest
-	
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 课后录制任务的Id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
-}
-
-func (r *DescribeOfflineRecordRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeOfflineRecordRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfflineRecordRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeOfflineRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeOfflineRecordResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeOfflineRecordResponseParams `json:"Response"`
-}
-
-func (r *DescribeOfflineRecordResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeOfflineRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3444,6 +3252,21 @@ type Detail struct {
 	Value *float64 `json:"Value,omitnil" name:"Value"`
 }
 
+type ExcelParam struct {
+	// 表格转码纸张（画布）大小，默认为0。
+	// 0 -- A4
+	// 1 -- A2 
+	// 2 -- A0
+	// 
+	// 注：当设置的值超出合法取值范围时，将采用默认值。
+	PaperSize *int64 `json:"PaperSize,omitnil" name:"PaperSize"`
+
+	// 表格文件转换纸张方向，默认为0。
+	// 0 -- 代表垂直方向
+	// 非0 -- 代表水平方向
+	PaperDirection *int64 `json:"PaperDirection,omitnil" name:"PaperDirection"`
+}
+
 type Interrupt struct {
 	// 用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4102,67 +3925,6 @@ type RunningTaskItem struct {
 	// 当任务类型为TranscodeH5、TranscodeJPG时，房间号为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomID *int64 `json:"RoomID,omitnil" name:"RoomID"`
-}
-
-// Predefined struct for user
-type SetOfflineRecordCallbackRequestParams struct {
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
-	Callback *string `json:"Callback,omitnil" name:"Callback"`
-}
-
-type SetOfflineRecordCallbackRequest struct {
-	*tchttp.BaseRequest
-	
-	// 客户的SdkAppId
-	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
-
-	// 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
-	Callback *string `json:"Callback,omitnil" name:"Callback"`
-}
-
-func (r *SetOfflineRecordCallbackRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SetOfflineRecordCallbackRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "Callback")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetOfflineRecordCallbackRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SetOfflineRecordCallbackResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type SetOfflineRecordCallbackResponse struct {
-	*tchttp.BaseResponse
-	Response *SetOfflineRecordCallbackResponseParams `json:"Response"`
-}
-
-func (r *SetOfflineRecordCallbackResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SetOfflineRecordCallbackResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

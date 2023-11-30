@@ -5187,6 +5187,9 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// TDE透明数据加密配置
 	TDEConfig *TDEConfigAttribute `json:"TDEConfig,omitnil" name:"TDEConfig"`
 
+	// SSL加密
+	SSLConfig *SSLConfig `json:"SSLConfig,omitnil" name:"SSLConfig"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -10550,6 +10553,77 @@ func (r *ModifyDBInstanceRenewFlagResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceSSLRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 操作类型。enable-开启SSL，disable-关闭SSL，renew-更新证书有效期
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil" name:"WaitSwitch"`
+}
+
+type ModifyDBInstanceSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 操作类型。enable-开启SSL，disable-关闭SSL，renew-更新证书有效期
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil" name:"WaitSwitch"`
+}
+
+func (r *ModifyDBInstanceSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "WaitSwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceSSLResponseParams struct {
+	// 异步任务流程ID
+	FlowId *uint64 `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDBInstanceSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceSSLResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 实例 ID，格式如：mssql-c1nl9rpv 或者 mssqlro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -12885,6 +12959,26 @@ func (r *RunMigrationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunMigrationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SSLConfig struct {
+	// SSL加密状态，
+	// enable-已开启
+	// disable-未开启
+	// enable_doing-开启中
+	// disable_doing-关闭中
+	// renew_doing-更新中
+	// wait_doing-等待维护时间内执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encryption *string `json:"Encryption,omitnil" name:"Encryption"`
+
+	// SSL证书有效期，时间格式 YYYY-MM-DD HH:MM:SS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLValidityPeriod *string `json:"SSLValidityPeriod,omitnil" name:"SSLValidityPeriod"`
+
+	// SSL证书有效性，0-无效，1-有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLValidity *uint64 `json:"SSLValidity,omitnil" name:"SSLValidity"`
 }
 
 type SecurityGroup struct {

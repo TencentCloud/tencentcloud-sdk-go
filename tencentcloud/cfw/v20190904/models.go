@@ -1480,6 +1480,117 @@ func (r *CreateDatabaseWhiteListRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIdsWhiteRuleRequestParams struct {
+	// 入侵防御规则ID
+	IdsRuleId *string `json:"IdsRuleId,omitnil" name:"IdsRuleId"`
+
+	// 白名单类型：
+	// src 针对源放通
+	// dst 针对目的放通
+	// srcdst 针对源和目的放通
+	WhiteRuleType *string `json:"WhiteRuleType,omitnil" name:"WhiteRuleType"`
+
+	// 白名单生效防火墙范围：
+	// 1 边界防火墙
+	// 2 nat防火墙
+	// 4 vpc防火墙
+	// 7 = 1+2+4  所有防火墙
+	FwType *int64 `json:"FwType,omitnil" name:"FwType"`
+
+	// 源IP
+	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+
+	// 目的IP
+	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+}
+
+type CreateIdsWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 入侵防御规则ID
+	IdsRuleId *string `json:"IdsRuleId,omitnil" name:"IdsRuleId"`
+
+	// 白名单类型：
+	// src 针对源放通
+	// dst 针对目的放通
+	// srcdst 针对源和目的放通
+	WhiteRuleType *string `json:"WhiteRuleType,omitnil" name:"WhiteRuleType"`
+
+	// 白名单生效防火墙范围：
+	// 1 边界防火墙
+	// 2 nat防火墙
+	// 4 vpc防火墙
+	// 7 = 1+2+4  所有防火墙
+	FwType *int64 `json:"FwType,omitnil" name:"FwType"`
+
+	// 源IP
+	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+
+	// 目的IP
+	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+}
+
+func (r *CreateIdsWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIdsWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdsRuleId")
+	delete(f, "WhiteRuleType")
+	delete(f, "FwType")
+	delete(f, "SrcIp")
+	delete(f, "DstIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIdsWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIdsWhiteRuleResponseParams struct {
+	// 返回状态码：
+	// 0 成功
+	// 非0 失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息：
+	// success 成功
+	// 其他
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 返回状态码：
+	// 0  处置成功
+	// -1 通用错误，不用处理
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateIdsWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIdsWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateIdsWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIdsWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNatFwInstanceRequestParams struct {
 	// 防火墙实例名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -2313,6 +2424,77 @@ func (r *DeleteBlockIgnoreRuleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlockIgnoreRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIdsWhiteRuleRequestParams struct {
+	// 入侵防御白名单id
+	// 参考DescribeIdsWhiteRule接口返回的Id字段
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+}
+
+type DeleteIdsWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 入侵防御白名单id
+	// 参考DescribeIdsWhiteRule接口返回的Id字段
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+}
+
+func (r *DeleteIdsWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIdsWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIdsWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIdsWhiteRuleResponseParams struct {
+	// 返回状态码：
+	// 0 成功
+	// 非0 失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息：
+	// success 成功
+	// 其他
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 返回状态码：
+	// 0  处置成功
+	// -1 通用错误，不用处理
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteIdsWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIdsWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteIdsWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIdsWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4346,6 +4528,97 @@ func (r *DescribeIPStatusListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIdsWhiteRuleRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitnil" name:"By"`
+}
+
+type DescribeIdsWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitnil" name:"By"`
+}
+
+func (r *DescribeIdsWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIdsWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIdsWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIdsWhiteRuleResponseParams struct {
+	// 总条数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 返回状态码 0 成功 非0不成功
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 返回信息  success 成功 其他 不成功
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIdsWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIdsWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeIdsWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIdsWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

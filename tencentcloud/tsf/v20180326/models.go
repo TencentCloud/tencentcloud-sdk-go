@@ -8748,14 +8748,14 @@ func (r *DescribeConfigSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigTemplateRequestParams struct {
-	// 无
+	// 配置模板Id
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil" name:"ConfigTemplateId"`
 }
 
 type DescribeConfigTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 配置模板Id
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil" name:"ConfigTemplateId"`
 }
 
@@ -8780,7 +8780,7 @@ func (r *DescribeConfigTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigTemplateResponseParams struct {
-	// Result
+	// 导入结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ConfigTemplate `json:"Result,omitnil" name:"Result"`
 
@@ -17714,7 +17714,7 @@ func (r *ModifyLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneResponseParams struct {
-	// 编辑成功: true / 编辑失败: false
+	// 更新成功: true / 更新失败: false
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -22274,7 +22274,7 @@ func (r *UpdateConfigTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateConfigTemplateResponseParams struct {
-	// 结果true：成功；false：失败；
+	// 更新成功: true / 更新失败: false
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

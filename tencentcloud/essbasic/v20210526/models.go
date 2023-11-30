@@ -1481,6 +1481,19 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 用户自定义参数
+	// <ul>
+	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
+	// <li>指定后，创建，编辑，删除模版时，回调都会携带该userData</li>
+	// <li>支持的格式：json字符串的BASE64编码字符串</li>
+	// <li>示例：<ul>
+	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
+	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
+	// </ul>
+	// </li>
+	// </ul>
+	UserData *string `json:"UserData,omitnil" name:"UserData"`
 }
 
 type ChannelCreateEmbedWebUrlRequest struct {
@@ -1526,6 +1539,19 @@ type ChannelCreateEmbedWebUrlRequest struct {
 
 	// 渠道操作者信息
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 用户自定义参数
+	// <ul>
+	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
+	// <li>指定后，创建，编辑，删除模版时，回调都会携带该userData</li>
+	// <li>支持的格式：json字符串的BASE64编码字符串</li>
+	// <li>示例：<ul>
+	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
+	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
+	// </ul>
+	// </li>
+	// </ul>
+	UserData *string `json:"UserData,omitnil" name:"UserData"`
 }
 
 func (r *ChannelCreateEmbedWebUrlRequest) ToJsonString() string {
@@ -1545,6 +1571,7 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 	delete(f, "BusinessId")
 	delete(f, "HiddenComponents")
 	delete(f, "Operator")
+	delete(f, "UserData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateEmbedWebUrlRequest has unknown keys!", "")
 	}
@@ -2856,10 +2883,16 @@ func (r *ChannelCreateOrganizationModifyQrCodeResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowRequestParams struct {
-	// 合同模板ID，为32位字符串。
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id</li>
+	// </ul>
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// 资源类型，此接口固定为**1**表示为用模板发起
+	// 资源类型，取值有：
+	// <ul><li> **1**：模板</li>
+	// <li> **2**：文件（默认值）</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
 
 	// 要创建的合同信息
@@ -2882,7 +2915,8 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
 
-	// 用过去已经通过此接口发起的合同的ID复制个新的合同创建链接
+	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
+	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -2904,10 +2938,16 @@ type ChannelCreatePrepareFlowRequestParams struct {
 type ChannelCreatePrepareFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合同模板ID，为32位字符串。
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id</li>
+	// </ul>
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// 资源类型，此接口固定为**1**表示为用模板发起
+	// 资源类型，取值有：
+	// <ul><li> **1**：模板</li>
+	// <li> **2**：文件（默认值）</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
 
 	// 要创建的合同信息
@@ -2930,7 +2970,8 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
 
-	// 用过去已经通过此接口发起的合同的ID复制个新的合同创建链接
+	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
+	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -6224,6 +6265,12 @@ type CreateFlowOption struct {
 	// **true**：禁止编辑填写控件
 	// **false**：（默认）允许编辑填写控件
 	ForbidEditFillComponent *bool `json:"ForbidEditFillComponent,omitnil" name:"ForbidEditFillComponent"`
+
+	// 跳过上传文件步骤
+	// 
+	// **true**：跳过
+	// **false**：（默认）不跳过，需要传ResourceId
+	SkipUploadFile *string `json:"SkipUploadFile,omitnil" name:"SkipUploadFile"`
 }
 
 // Predefined struct for user

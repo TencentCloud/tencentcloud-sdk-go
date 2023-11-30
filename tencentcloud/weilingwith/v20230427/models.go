@@ -333,6 +333,20 @@ type AlarmLevelInfo struct {
 	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 }
 
+type AlarmStatusData struct {
+	// 告警状态ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusID *string `json:"StatusID,omitnil" name:"StatusID"`
+
+	// 告警状态名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusName *string `json:"StatusName,omitnil" name:"StatusName"`
+
+	// 告警状态类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusType *string `json:"StatusType,omitnil" name:"StatusType"`
+}
+
 type AlarmTypeDetailInfo struct {
 	// 告警类型id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1876,12 +1890,21 @@ func (r *DescribeAlarmListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlarmStatusListRequestParams struct {
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
 
+	// 工作空间ID
+	WorkspaceId *string `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
 }
 
 type DescribeAlarmStatusListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 工作空间ID
+	WorkspaceId *string `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
 }
 
 func (r *DescribeAlarmStatusListRequest) ToJsonString() string {
@@ -1896,15 +1919,25 @@ func (r *DescribeAlarmStatusListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApplicationToken")
+	delete(f, "WorkspaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmStatusListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAlarmStatusListRes struct {
+	// 告警状态返回结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*AlarmStatusData `json:"List,omitnil" name:"List"`
+}
+
 // Predefined struct for user
 type DescribeAlarmStatusListResponseParams struct {
+	// 告警状态返回结构
+	Result *DescribeAlarmStatusListRes `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

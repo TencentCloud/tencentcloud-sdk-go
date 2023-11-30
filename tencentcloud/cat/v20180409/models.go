@@ -48,7 +48,7 @@ type CreateProbeTasksRequestParams struct {
 	// 资源标签值
 	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
 
-	// 测试类型，包含定时测试与即时测试。1-定时拨测，其它表示即时拨测。
+	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
 	ProbeType *uint64 `json:"ProbeType,omitnil" name:"ProbeType"`
 
 	// 插件类型，如CDN，详情参考云拨测官方文档。
@@ -90,7 +90,7 @@ type CreateProbeTasksRequest struct {
 	// 资源标签值
 	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
 
-	// 测试类型，包含定时测试与即时测试。1-定时拨测，其它表示即时拨测。
+	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
 	ProbeType *uint64 `json:"ProbeType,omitnil" name:"ProbeType"`
 
 	// 插件类型，如CDN，详情参考云拨测官方文档。

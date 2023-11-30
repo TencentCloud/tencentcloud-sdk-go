@@ -874,6 +874,61 @@ func (c *Client) CreateDatabaseWhiteListRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateIdsWhiteRuleRequest() (request *CreateIdsWhiteRuleRequest) {
+    request = &CreateIdsWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateIdsWhiteRule")
+    
+    
+    return
+}
+
+func NewCreateIdsWhiteRuleResponse() (response *CreateIdsWhiteRuleResponse) {
+    response = &CreateIdsWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIdsWhiteRule
+// 创建入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateIdsWhiteRule(request *CreateIdsWhiteRuleRequest) (response *CreateIdsWhiteRuleResponse, err error) {
+    return c.CreateIdsWhiteRuleWithContext(context.Background(), request)
+}
+
+// CreateIdsWhiteRule
+// 创建入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateIdsWhiteRuleWithContext(ctx context.Context, request *CreateIdsWhiteRuleRequest) (response *CreateIdsWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateIdsWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIdsWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIdsWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNatFwInstanceRequest() (request *CreateNatFwInstanceRequest) {
     request = &CreateNatFwInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1398,6 +1453,61 @@ func (c *Client) DeleteBlockIgnoreRuleListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteBlockIgnoreRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIdsWhiteRuleRequest() (request *DeleteIdsWhiteRuleRequest) {
+    request = &DeleteIdsWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteIdsWhiteRule")
+    
+    
+    return
+}
+
+func NewDeleteIdsWhiteRuleResponse() (response *DeleteIdsWhiteRuleResponse) {
+    response = &DeleteIdsWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteIdsWhiteRule
+// 删除入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteIdsWhiteRule(request *DeleteIdsWhiteRuleRequest) (response *DeleteIdsWhiteRuleResponse, err error) {
+    return c.DeleteIdsWhiteRuleWithContext(context.Background(), request)
+}
+
+// DeleteIdsWhiteRule
+// 删除入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteIdsWhiteRuleWithContext(ctx context.Context, request *DeleteIdsWhiteRuleRequest) (response *DeleteIdsWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteIdsWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIdsWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIdsWhiteRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2964,6 +3074,61 @@ func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeIdsWhiteRuleRequest() (request *DescribeIdsWhiteRuleRequest) {
+    request = &DescribeIdsWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeIdsWhiteRule")
+    
+    
+    return
+}
+
+func NewDescribeIdsWhiteRuleResponse() (response *DescribeIdsWhiteRuleResponse) {
+    response = &DescribeIdsWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIdsWhiteRule
+// 查询入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIdsWhiteRule(request *DescribeIdsWhiteRuleRequest) (response *DescribeIdsWhiteRuleResponse, err error) {
+    return c.DescribeIdsWhiteRuleWithContext(context.Background(), request)
+}
+
+// DescribeIdsWhiteRule
+// 查询入侵防御规则白名单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIdsWhiteRuleWithContext(ctx context.Context, request *DescribeIdsWhiteRuleRequest) (response *DescribeIdsWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeIdsWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIdsWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIdsWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
     request = &DescribeLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2989,6 +3154,8 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     return c.DescribeLogsWithContext(context.Background(), request)
 }
@@ -2999,6 +3166,8 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     if request == nil {
         request = NewDescribeLogsRequest()

@@ -6850,6 +6850,63 @@ func (c *Client) ModifyDBInstanceRenewFlagWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyDBInstanceSSLRequest() (request *ModifyDBInstanceSSLRequest) {
+    request = &ModifyDBInstanceSSLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstanceSSL")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceSSLResponse() (response *ModifyDBInstanceSSLResponse) {
+    response = &ModifyDBInstanceSSLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceSSL
+// 本接口（DescribeDBInstancesAttribute）用于开启\关闭\更新SSL加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (response *ModifyDBInstanceSSLResponse, err error) {
+    return c.ModifyDBInstanceSSLWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceSSL
+// 本接口（DescribeDBInstancesAttribute）用于开启\关闭\更新SSL加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDBInstanceSSLWithContext(ctx context.Context, request *ModifyDBInstanceSSLRequest) (response *ModifyDBInstanceSSLResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSSLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceSSL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceSSLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

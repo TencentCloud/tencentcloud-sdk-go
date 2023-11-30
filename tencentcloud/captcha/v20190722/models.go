@@ -1069,6 +1069,165 @@ func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCaptchaRceResultRequestParams struct {
+	// 固定填值：9。可在控制台配置不同验证码类型。
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
+
+	// 前端回调函数返回的用户验证票据
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
+
+	// 业务侧获取到的验证码使用者的外网IP
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+
+	// 前端回调函数返回的随机字符串
+	Randstr *string `json:"Randstr,omitnil" name:"Randstr"`
+
+	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
+
+	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
+
+	// 预留字段
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
+
+	// 预留字段
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
+
+	// mac 地址或设备唯一标识
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
+
+	// 手机设备号
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
+
+	// 是否返回前端获取验证码时间，取值1：需要返回
+	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitnil" name:"NeedGetCaptchaTime"`
+}
+
+type DescribeCaptchaRceResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定填值：9。可在控制台配置不同验证码类型。
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
+
+	// 前端回调函数返回的用户验证票据
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
+
+	// 业务侧获取到的验证码使用者的外网IP
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+
+	// 前端回调函数返回的随机字符串
+	Randstr *string `json:"Randstr,omitnil" name:"Randstr"`
+
+	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
+
+	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
+
+	// 预留字段
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
+
+	// 预留字段
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
+
+	// mac 地址或设备唯一标识
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
+
+	// 手机设备号
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
+
+	// 是否返回前端获取验证码时间，取值1：需要返回
+	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitnil" name:"NeedGetCaptchaTime"`
+}
+
+func (r *DescribeCaptchaRceResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaptchaRceResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaType")
+	delete(f, "Ticket")
+	delete(f, "UserIp")
+	delete(f, "Randstr")
+	delete(f, "CaptchaAppId")
+	delete(f, "AppSecretKey")
+	delete(f, "BusinessId")
+	delete(f, "SceneId")
+	delete(f, "MacAddress")
+	delete(f, "Imei")
+	delete(f, "NeedGetCaptchaTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaRceResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCaptchaRceResultResponseParams struct {
+	// 1 OK 验证通过
+	// 7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
+	// 8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
+	// 9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
+	// 15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致
+	// 16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】->【基础配置】中获取
+	// 21 diff 票据校验异常，可能的原因是（1）若Ticket包含terror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含terror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
+	// 100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
+
+	// 状态描述及验证错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
+
+	// 无感验证模式下，该参数返回验证结果：
+	// EvilLevel=0 请求无恶意
+	// EvilLevel=100 请求有恶意
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilLevel *int64 `json:"EvilLevel,omitnil" name:"EvilLevel"`
+
+	// 前端获取验证码时间，时间戳格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitnil" name:"GetCaptchaTime"`
+
+	// 拦截类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilBitmap *int64 `json:"EvilBitmap,omitnil" name:"EvilBitmap"`
+
+	// 提交验证码时间
+	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitnil" name:"SubmitCaptchaTime"`
+
+	// rce检测结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RceResult *RceResult `json:"RceResult,omitnil" name:"RceResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCaptchaRceResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCaptchaRceResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCaptchaRceResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaptchaRceResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCaptchaResultRequestParams struct {
 	// 固定填值：9。可在控制台配置不同验证码类型。
 	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
@@ -1765,6 +1924,40 @@ type OutputManageMarketingRiskValue struct {
 	// 	非公网有效 ip 	205	传进来的 IP 地址为内网 ip 地址或者 ip 保留地
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
+}
+
+type RceResult struct {
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 操作时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostTime *int64 `json:"PostTime,omitnil" name:"PostTime"`
+
+	// 业务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
+
+	// 用户Ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
+
+	// 风险类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
+
+	// 设备唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConstId *string `json:"ConstId,omitnil" name:"ConstId"`
+
+	// 风险扩展参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskInformation *string `json:"RiskInformation,omitnil" name:"RiskInformation"`
 }
 
 type RequestTrendObj struct {
