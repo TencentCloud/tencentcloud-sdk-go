@@ -1801,6 +1801,24 @@ type BatchOperationOpsDto struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
+type BatchOpsDTO struct {
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 成功数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitnil" name:"SuccessCount"`
+
+	// 失败数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailCount *int64 `json:"FailCount,omitnil" name:"FailCount"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMessageList []*FailMessage `json:"FailMessageList,omitnil" name:"FailMessageList"`
+}
+
 // Predefined struct for user
 type BatchRerunIntegrationTaskInstancesRequestParams struct {
 	// 实例信息
@@ -23189,6 +23207,26 @@ type EventCaseConsumeLogOptDtoCollection struct {
 	Items []*EventCaseConsumeLogOptDto `json:"Items,omitnil" name:"Items"`
 }
 
+type EventCaseDTO struct {
+	// 事件实例id
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
+
+	// 事件名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 事件格式
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
+
+	// 创建时间
+	CreationTs *string `json:"CreationTs,omitnil" name:"CreationTs"`
+
+	// 消费者id
+	ConsumerId *string `json:"ConsumerId,omitnil" name:"ConsumerId"`
+
+	// 描述信息
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
 type EventCaseOpsDto struct {
 	// 案例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -23396,6 +23434,16 @@ type ExportTaskInfo struct {
 	// 文件相对路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+}
+
+type FailMessage struct {
+	// 数据唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
 }
 
 type FieldConfig struct {
@@ -36885,6 +36933,71 @@ type TopTableStatItem struct {
 
 	// 数
 	Cnt *uint64 `json:"Cnt,omitnil" name:"Cnt"`
+}
+
+// Predefined struct for user
+type TriggerDsEventRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件实例信息
+	EventCaseList []*EventCaseDTO `json:"EventCaseList,omitnil" name:"EventCaseList"`
+}
+
+type TriggerDsEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件实例信息
+	EventCaseList []*EventCaseDTO `json:"EventCaseList,omitnil" name:"EventCaseList"`
+}
+
+func (r *TriggerDsEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerDsEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "EventCaseList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerDsEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerDsEventResponseParams struct {
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *BatchOpsDTO `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type TriggerDsEventResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerDsEventResponseParams `json:"Response"`
+}
+
+func (r *TriggerDsEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerDsEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

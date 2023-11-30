@@ -506,6 +506,88 @@ type Asset struct {
 }
 
 // Predefined struct for user
+type AssignMangedTablePropertiesRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitnil" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitnil" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitnil" name:"UpsertKeys"`
+}
+
+type AssignMangedTablePropertiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitnil" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitnil" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitnil" name:"UpsertKeys"`
+}
+
+func (r *AssignMangedTablePropertiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignMangedTablePropertiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	delete(f, "Columns")
+	delete(f, "Partitions")
+	delete(f, "Properties")
+	delete(f, "UpsertKeys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignMangedTablePropertiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignMangedTablePropertiesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AssignMangedTablePropertiesResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignMangedTablePropertiesResponseParams `json:"Response"`
+}
+
+func (r *AssignMangedTablePropertiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignMangedTablePropertiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AttachUserPolicyRequestParams struct {
 	// 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`

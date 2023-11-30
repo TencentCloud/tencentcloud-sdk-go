@@ -4541,7 +4541,7 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 }
 
 // RecognizeGeneralInvoice
-// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别，点击[立即试用](https://cloud.tencent.com/product/ocr)。
+// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，支持OFD格式的 增值税电子普通发票、增值税电子专用发票、电子发票（普通发票）、电子发票（增值税专用发票）、电子发票（机票行程单）、电子发票（铁路电子客票）的第一页识别，并支持非上述类型的其他发票的智能识别，点击[立即试用](https://cloud.tencent.com/product/ocr)。
 //
 // 
 //
@@ -4656,6 +4656,26 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> VatElectronicInvoiceFull</td>
 //
 //           <td> 电子发票(普通发票) </td>
+//
+//           <td> 16 </td>
+//
+//         </tr>
+//
+//          <tr>
+//
+//           <td> ElectronicFlightTicketFull</td>
+//
+//           <td> 电子发票(机票行程单)，该子类目前仅支持ofd发票</td>
+//
+//           <td> 16 </td>
+//
+//         </tr>
+//
+//          <tr>
+//
+//           <td> ElectronicTrainTicketFull</td>
+//
+//           <td> 电子发票(铁路电子客票)，该子类目前仅支持ofd发票</td>
 //
 //           <td> 16 </td>
 //
@@ -4842,7 +4862,7 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 }
 
 // RecognizeGeneralInvoice
-// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别，点击[立即试用](https://cloud.tencent.com/product/ocr)。
+// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，支持OFD格式的 增值税电子普通发票、增值税电子专用发票、电子发票（普通发票）、电子发票（增值税专用发票）、电子发票（机票行程单）、电子发票（铁路电子客票）的第一页识别，并支持非上述类型的其他发票的智能识别，点击[立即试用](https://cloud.tencent.com/product/ocr)。
 //
 // 
 //
@@ -4957,6 +4977,26 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> VatElectronicInvoiceFull</td>
 //
 //           <td> 电子发票(普通发票) </td>
+//
+//           <td> 16 </td>
+//
+//         </tr>
+//
+//          <tr>
+//
+//           <td> ElectronicFlightTicketFull</td>
+//
+//           <td> 电子发票(机票行程单)，该子类目前仅支持ofd发票</td>
+//
+//           <td> 16 </td>
+//
+//         </tr>
+//
+//          <tr>
+//
+//           <td> ElectronicTrainTicketFull</td>
+//
+//           <td> 电子发票(铁路电子客票)，该子类目前仅支持ofd发票</td>
 //
 //           <td> 16 </td>
 //

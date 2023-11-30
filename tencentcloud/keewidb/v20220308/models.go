@@ -720,8 +720,16 @@ type DescribeConnectionConfigResponseParams struct {
 	// 单分片出流量带宽限制，单位：MB。
 	OutNetLimit *int64 `json:"OutNetLimit,omitnil" name:"OutNetLimit"`
 
-	// 单分片连接数限制。
+	// 实例当前单分片连接数限制。
 	ClientLimit *int64 `json:"ClientLimit,omitnil" name:"ClientLimit"`
+
+	// 单分片连接数限制最小值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil" name:"ClientLimitMin"`
+
+	// 单分片连接数限制最大值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil" name:"ClientLimitMax"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -3235,6 +3243,9 @@ type ModifyNetworkConfigResponseParams struct {
 
 	// 修改后的 VIP 地址。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 任务ID。
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

@@ -16781,6 +16781,55 @@ func (c *Client) TaskLogWithContext(ctx context.Context, request *TaskLogRequest
     return
 }
 
+func NewTriggerDsEventRequest() (request *TriggerDsEventRequest) {
+    request = &TriggerDsEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "TriggerDsEvent")
+    
+    
+    return
+}
+
+func NewTriggerDsEventResponse() (response *TriggerDsEventResponse) {
+    response = &TriggerDsEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TriggerDsEvent
+// 事件管理-触发事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TriggerDsEvent(request *TriggerDsEventRequest) (response *TriggerDsEventResponse, err error) {
+    return c.TriggerDsEventWithContext(context.Background(), request)
+}
+
+// TriggerDsEvent
+// 事件管理-触发事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TriggerDsEventWithContext(ctx context.Context, request *TriggerDsEventRequest) (response *TriggerDsEventResponse, err error) {
+    if request == nil {
+        request = NewTriggerDsEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerDsEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerDsEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTriggerEventRequest() (request *TriggerEventRequest) {
     request = &TriggerEventRequest{
         BaseRequest: &tchttp.BaseRequest{},

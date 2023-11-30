@@ -1808,6 +1808,8 @@ type Hospitalization struct {
 
 	// 入院诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AdmissionDignosis is deprecated.
 	AdmissionDignosis *string `json:"AdmissionDignosis,omitnil" name:"AdmissionDignosis"`
 
 	// 入院情况
@@ -1825,6 +1827,10 @@ type Hospitalization struct {
 	// 出院医嘱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DischargeInstruction *string `json:"DischargeInstruction,omitnil" name:"DischargeInstruction"`
+
+	// 入院诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionDiagnosis *string `json:"AdmissionDiagnosis,omitnil" name:"AdmissionDiagnosis"`
 }
 
 type IHCBlock struct {
@@ -2210,11 +2216,17 @@ type IndicatorItemV2 struct {
 type IndicatorV3 struct {
 	// 检验报告V3结论
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TableIndictors is deprecated.
 	TableIndictors []*TableIndicators `json:"TableIndictors,omitnil" name:"TableIndictors"`
 
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 检验报告V3结论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableIndicators []*TableIndicators `json:"TableIndicators,omitnil" name:"TableIndicators"`
 }
 
 type InternalMedicineAbdomen struct {
@@ -5118,6 +5130,8 @@ type TransfusionHistoryBlock struct {
 type TreatmentRecord struct {
 	// 入院
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DmissionCondition is deprecated.
 	DmissionCondition *string `json:"DmissionCondition,omitnil" name:"DmissionCondition"`
 
 	// 主诉
@@ -5223,6 +5237,10 @@ type TreatmentRecord struct {
 	// 观测天数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObservationDays *string `json:"ObservationDays,omitnil" name:"ObservationDays"`
+
+	// 入院
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionCondition *string `json:"AdmissionCondition,omitnil" name:"AdmissionCondition"`
 }
 
 type TreatmentRecordBlock struct {

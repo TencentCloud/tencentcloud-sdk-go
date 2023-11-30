@@ -2991,6 +2991,7 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3035,6 +3036,7 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -5846,7 +5848,7 @@ func NewDescribeChannelSealPolicyWorkflowUrlResponse() (response *DescribeChanne
 }
 
 // DescribeChannelSealPolicyWorkflowUrl
-// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序方式查看）
+// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转的方式查看）
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -5855,7 +5857,7 @@ func (c *Client) DescribeChannelSealPolicyWorkflowUrl(request *DescribeChannelSe
 }
 
 // DescribeChannelSealPolicyWorkflowUrl
-// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序方式查看）
+// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转的方式查看）
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

@@ -9519,7 +9519,7 @@ func NewDescribeSimpleNamespacesResponse() (response *DescribeSimpleNamespacesRe
 }
 
 // DescribeSimpleNamespaces
-// 查询简单命名空间列表 
+// 查询简单命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
@@ -9536,7 +9536,7 @@ func (c *Client) DescribeSimpleNamespaces(request *DescribeSimpleNamespacesReque
 }
 
 // DescribeSimpleNamespaces
-// 查询简单命名空间列表 
+// 查询简单命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"

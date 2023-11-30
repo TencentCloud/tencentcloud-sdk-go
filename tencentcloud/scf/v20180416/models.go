@@ -305,7 +305,7 @@ type CreateAliasRequestParams struct {
 	// 函数所在的命名空间
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 别名的请求路由配置
+	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil" name:"RoutingConfig"`
 
 	// 别名的描述信息
@@ -327,7 +327,7 @@ type CreateAliasRequest struct {
 	// 函数所在的命名空间
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 别名的请求路由配置
+	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil" name:"RoutingConfig"`
 
 	// 别名的描述信息
@@ -4538,7 +4538,7 @@ type UpdateAliasRequestParams struct {
 	// 函数所在的命名空间
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数
+	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil" name:"RoutingConfig"`
 
 	// 别名的描述
@@ -4560,7 +4560,7 @@ type UpdateAliasRequest struct {
 	// 函数所在的命名空间
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数
+	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil" name:"RoutingConfig"`
 
 	// 别名的描述
@@ -4809,6 +4809,12 @@ type UpdateFunctionConfigurationRequestParams struct {
 
 	// 单实例多并发配置。只支持Web函数。
 	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitnil" name:"InstanceConcurrencyConfig"`
+
+	// 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+	DnsCache *string `json:"DnsCache,omitnil" name:"DnsCache"`
+
+	// 内网访问配置
+	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
 }
 
 type UpdateFunctionConfigurationRequest struct {
@@ -4877,6 +4883,12 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 单实例多并发配置。只支持Web函数。
 	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitnil" name:"InstanceConcurrencyConfig"`
+
+	// 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+	DnsCache *string `json:"DnsCache,omitnil" name:"DnsCache"`
+
+	// 内网访问配置
+	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -4912,6 +4924,8 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InitTimeout")
 	delete(f, "ProtocolParams")
 	delete(f, "InstanceConcurrencyConfig")
+	delete(f, "DnsCache")
+	delete(f, "IntranetConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
 	}

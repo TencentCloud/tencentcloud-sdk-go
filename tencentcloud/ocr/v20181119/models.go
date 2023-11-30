@@ -1798,6 +1798,139 @@ func (r *EduPaperOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ElectronicFlightTicketFull struct {
+	// 旅客姓名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 有效身份证件号码
+	UserID *string `json:"UserID,omitnil" name:"UserID"`
+
+	// 签注
+	Endorsement *string `json:"Endorsement,omitnil" name:"Endorsement"`
+
+	// GP单号
+	GPOrder *string `json:"GPOrder,omitnil" name:"GPOrder"`
+
+	// 发票号码
+	Number *string `json:"Number,omitnil" name:"Number"`
+
+	// 票价
+	Fare *string `json:"Fare,omitnil" name:"Fare"`
+
+	// 燃油附加费
+	FuelSurcharge *string `json:"FuelSurcharge,omitnil" name:"FuelSurcharge"`
+
+	// 增值税税率
+	TaxRate *string `json:"TaxRate,omitnil" name:"TaxRate"`
+
+	// 增值税税额
+	Tax *string `json:"Tax,omitnil" name:"Tax"`
+
+	// 民航发展基金
+	DevelopmentFund *string `json:"DevelopmentFund,omitnil" name:"DevelopmentFund"`
+
+	// 其他税费
+	OtherTax *string `json:"OtherTax,omitnil" name:"OtherTax"`
+
+	// 合计
+	Total *string `json:"Total,omitnil" name:"Total"`
+
+	// 电子客票号码
+	ElectronicTicketNum *string `json:"ElectronicTicketNum,omitnil" name:"ElectronicTicketNum"`
+
+	// 验证码
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
+
+	// 提示信息
+	PromptInformation *string `json:"PromptInformation,omitnil" name:"PromptInformation"`
+
+	// 保险费
+	Insurance *string `json:"Insurance,omitnil" name:"Insurance"`
+
+	// 填开单位
+	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
+
+	// 填开时间
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 国内国际标识
+	DomesticInternationalTag *string `json:"DomesticInternationalTag,omitnil" name:"DomesticInternationalTag"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitnil" name:"Buyer"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitnil" name:"Seller"`
+
+	// 统一社会信用代码
+	BuyerTaxID *string `json:"BuyerTaxID,omitnil" name:"BuyerTaxID"`
+
+	// 机票详细信息元组
+	FlightItems []*FlightItemInfo `json:"FlightItems,omitnil" name:"FlightItems"`
+}
+
+type ElectronicTrainTicketFull struct {
+	// 电子发票类型
+	TypeOfVoucher *string `json:"TypeOfVoucher,omitnil" name:"TypeOfVoucher"`
+
+	// 电子客票号
+	ElectronicTicketNum *string `json:"ElectronicTicketNum,omitnil" name:"ElectronicTicketNum"`
+
+	// 开票日期
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 始发站
+	StationGetOn *string `json:"StationGetOn,omitnil" name:"StationGetOn"`
+
+	// 到达站
+	StationGetOff *string `json:"StationGetOff,omitnil" name:"StationGetOff"`
+
+	// 火车号
+	TrainNumber *string `json:"TrainNumber,omitnil" name:"TrainNumber"`
+
+	// 乘车日期
+	DateGetOn *string `json:"DateGetOn,omitnil" name:"DateGetOn"`
+
+	// 始发时间
+	TimeGetOn *string `json:"TimeGetOn,omitnil" name:"TimeGetOn"`
+
+	// 座位类型
+	Seat *string `json:"Seat,omitnil" name:"Seat"`
+
+	// 座位号
+	SeatNumber *string `json:"SeatNumber,omitnil" name:"SeatNumber"`
+
+	// 票价
+	Fare *string `json:"Fare,omitnil" name:"Fare"`
+
+	// 发票号码
+	Number *string `json:"Number,omitnil" name:"Number"`
+
+	// 身份证号
+	UserID *string `json:"UserID,omitnil" name:"UserID"`
+
+	// 乘车人姓名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 金额
+	Total *string `json:"Total,omitnil" name:"Total"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitnil" name:"TaxRate"`
+
+	// 税额
+	Tax *string `json:"Tax,omitnil" name:"Tax"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitnil" name:"Buyer"`
+
+	// 统一社会信用代码
+	BuyerTaxID *string `json:"BuyerTaxID,omitnil" name:"BuyerTaxID"`
+
+	// 原发票号码
+	OriginalNumber *string `json:"OriginalNumber,omitnil" name:"OriginalNumber"`
+}
+
 // Predefined struct for user
 type EnglishOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -2421,6 +2554,35 @@ type FlightItem struct {
 
 	// 客票级别/客票类别
 	FareBasis *string `json:"FareBasis,omitnil" name:"FareBasis"`
+}
+
+type FlightItemInfo struct {
+	// 出发站
+	TerminalGetOn *string `json:"TerminalGetOn,omitnil" name:"TerminalGetOn"`
+
+	// 到达站
+	TerminalGetOff *string `json:"TerminalGetOff,omitnil" name:"TerminalGetOff"`
+
+	// 承运人
+	Carrier *string `json:"Carrier,omitnil" name:"Carrier"`
+
+	// 航班号
+	FlightNumber *string `json:"FlightNumber,omitnil" name:"FlightNumber"`
+
+	// 座位等级
+	Seat *string `json:"Seat,omitnil" name:"Seat"`
+
+	// 乘机日期
+	DateGetOn *string `json:"DateGetOn,omitnil" name:"DateGetOn"`
+
+	// 乘机时间
+	TimeGetOn *string `json:"TimeGetOn,omitnil" name:"TimeGetOn"`
+
+	// 客票级别/客票类别
+	FareBasis *string `json:"FareBasis,omitnil" name:"FareBasis"`
+
+	// 免费行李额
+	Allow *string `json:"Allow,omitnil" name:"Allow"`
 }
 
 // Predefined struct for user
@@ -8537,6 +8699,14 @@ type SingleInvoiceItem struct {
 	// 增值税销货清单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VatSalesList *VatInvoiceInfo `json:"VatSalesList,omitnil" name:"VatSalesList"`
+
+	// 电子发票（火车票）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicTrainTicketFull *ElectronicTrainTicketFull `json:"ElectronicTrainTicketFull,omitnil" name:"ElectronicTrainTicketFull"`
+
+	// 电子发票（机票行程单）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicFlightTicketFull *ElectronicFlightTicketFull `json:"ElectronicFlightTicketFull,omitnil" name:"ElectronicFlightTicketFull"`
 }
 
 type SmartFormFileUrl struct {

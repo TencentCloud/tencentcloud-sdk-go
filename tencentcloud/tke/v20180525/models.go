@@ -10049,6 +10049,71 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogSwitchesRequestParams struct {
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
+
+	// 集群类型，tke 或eks
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+}
+
+type DescribeLogSwitchesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
+
+	// 集群类型，tke 或eks
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+}
+
+func (r *DescribeLogSwitchesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogSwitchesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogSwitchesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogSwitchesResponseParams struct {
+	// 集群日志开关集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchSet []*Switch `json:"SwitchSet,omitnil" name:"SwitchSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeLogSwitchesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogSwitchesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogSwitchesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogSwitchesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePodDeductionRateRequestParams struct {
 	// 可用区
 	Zone *string `json:"Zone,omitnil" name:"Zone"`
@@ -18772,6 +18837,53 @@ type SuperNodeResource struct {
 	// 节点上的总 GPU 卡数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *float64 `json:"Gpu,omitnil" name:"Gpu"`
+}
+
+type Switch struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 审计开关的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Audit *SwitchInfo `json:"Audit,omitnil" name:"Audit"`
+
+	// 事件开关的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Event *SwitchInfo `json:"Event,omitnil" name:"Event"`
+
+	// 普通日志的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *SwitchInfo `json:"Log,omitnil" name:"Log"`
+
+	// master 日志详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterLog *SwitchInfo `json:"MasterLog,omitnil" name:"MasterLog"`
+}
+
+type SwitchInfo struct {
+	// 开启标识符 true代表开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+
+	// CLS日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// CLS日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 当前log-agent版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 是否可升级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpgradeAble *bool `json:"UpgradeAble,omitnil" name:"UpgradeAble"`
+
+	// CLS日志主题所属region
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicRegion *string `json:"TopicRegion,omitnil" name:"TopicRegion"`
 }
 
 // Predefined struct for user

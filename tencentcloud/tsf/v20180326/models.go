@@ -5937,7 +5937,7 @@ func (r *DeleteLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaneResponseParams struct {
-	// true / false
+	// 删除成功: true / 删除失败: false
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7982,14 +7982,14 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBasicResourceUsageRequestParams struct {
-	// 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+	// 是否拥有权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
 	All *bool `json:"All,omitnil" name:"All"`
 }
 
 type DescribeBasicResourceUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+	// 是否拥有权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
 	All *bool `json:"All,omitnil" name:"All"`
 }
 
@@ -13856,7 +13856,7 @@ type DescribeSimpleNamespacesRequestParams struct {
 	// 通过命名空间名精确过滤
 	NamespaceName *string `json:"NamespaceName,omitnil" name:"NamespaceName"`
 
-	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
+	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
 	IsDefault *string `json:"IsDefault,omitnil" name:"IsDefault"`
 
 	// 无
@@ -13893,7 +13893,7 @@ type DescribeSimpleNamespacesRequest struct {
 	// 通过命名空间名精确过滤
 	NamespaceName *string `json:"NamespaceName,omitnil" name:"NamespaceName"`
 
-	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
+	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
 	IsDefault *string `json:"IsDefault,omitnil" name:"IsDefault"`
 
 	// 无
@@ -17314,7 +17314,8 @@ func (r *ModifyApplicationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationResponseParams struct {
-	// true/false
+	// true：操作成功
+	// false：操作失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
@@ -17713,7 +17714,7 @@ func (r *ModifyLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneResponseParams struct {
-	// 操作状态
+	// 编辑成功: true / 编辑失败: false
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

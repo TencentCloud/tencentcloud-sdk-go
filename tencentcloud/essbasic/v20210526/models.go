@@ -7055,6 +7055,13 @@ type DescribeChannelSealPolicyWorkflowUrlRequestParams struct {
 
 	// 用印审批单的ID，可通过用印申请回调获取。
 	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+
+	// 生成链接的类型：
+	// 生成链接的类型
+	// <ul><li>**LongLink**：(默认)长链接，H5跳转到电子签小程序链接，链接有效期为1年</li>
+	// <li>**ShortLink**：H5跳转到电子签小程序链接，一般用于发送短信中带的链接，打开后进入腾讯电子签小程序，链接有效期为7天</li>
+	// <li>**App**：第三方APP或小程序跳转电子签小程序链接，一般用于贵方小程序或者APP跳转过来，打开后进入腾讯电子签小程序，链接有效期为1年</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 type DescribeChannelSealPolicyWorkflowUrlRequest struct {
@@ -7072,6 +7079,13 @@ type DescribeChannelSealPolicyWorkflowUrlRequest struct {
 
 	// 用印审批单的ID，可通过用印申请回调获取。
 	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+
+	// 生成链接的类型：
+	// 生成链接的类型
+	// <ul><li>**LongLink**：(默认)长链接，H5跳转到电子签小程序链接，链接有效期为1年</li>
+	// <li>**ShortLink**：H5跳转到电子签小程序链接，一般用于发送短信中带的链接，打开后进入腾讯电子签小程序，链接有效期为7天</li>
+	// <li>**App**：第三方APP或小程序跳转电子签小程序链接，一般用于贵方小程序或者APP跳转过来，打开后进入腾讯电子签小程序，链接有效期为1年</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 func (r *DescribeChannelSealPolicyWorkflowUrlRequest) ToJsonString() string {
@@ -7088,6 +7102,7 @@ func (r *DescribeChannelSealPolicyWorkflowUrlRequest) FromJsonString(s string) e
 	}
 	delete(f, "Agent")
 	delete(f, "WorkflowInstanceId")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelSealPolicyWorkflowUrlRequest has unknown keys!", "")
 	}
@@ -7096,7 +7111,7 @@ func (r *DescribeChannelSealPolicyWorkflowUrlRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeChannelSealPolicyWorkflowUrlResponseParams struct {
-	// 用印审批小程序链接，链接类型（通过H5唤起小程序方式查看），一年内有效。
+	// 用印审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转方式查看）。
 	WorkflowUrl *string `json:"WorkflowUrl,omitnil" name:"WorkflowUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

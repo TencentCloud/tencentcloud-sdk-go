@@ -830,10 +830,10 @@ type AddSpartaProtectionRequestParams struct {
 	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件模板。
-	// 0：不支持选择，使用默认模版  
-	// 1：通用型模版 
-	// 2：安全型模版 
-	// 3：自定义模版
+	// 0：不支持选择，使用默认模板  
+	// 1：通用型模板 
+	// 2：安全型模板
+	// 3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
@@ -978,10 +978,10 @@ type AddSpartaProtectionRequest struct {
 	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件模板。
-	// 0：不支持选择，使用默认模版  
-	// 1：通用型模版 
-	// 2：安全型模版 
-	// 3：自定义模版
+	// 0：不支持选择，使用默认模板  
+	// 1：通用型模板 
+	// 2：安全型模板
+	// 3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
