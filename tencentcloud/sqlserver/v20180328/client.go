@@ -6870,7 +6870,7 @@ func NewModifyDBInstanceSSLResponse() (response *ModifyDBInstanceSSLResponse) {
 }
 
 // ModifyDBInstanceSSL
-// 本接口（DescribeDBInstancesAttribute）用于开启\关闭\更新SSL加密
+// 本接口（ModifyDBInstanceSSL）用于开启\关闭\更新SSL加密
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -6883,7 +6883,7 @@ func (c *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (respo
 }
 
 // ModifyDBInstanceSSL
-// 本接口（DescribeDBInstancesAttribute）用于开启\关闭\更新SSL加密
+// 本接口（ModifyDBInstanceSSL）用于开启\关闭\更新SSL加密
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"

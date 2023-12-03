@@ -22,14 +22,14 @@ import (
 
 // Predefined struct for user
 type AssociateTargetGroupsRequestParams struct {
-	// 绑定的关系数组。
+	// 绑定的关系数组。一次请求最多支持20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil" name:"Associations"`
 }
 
 type AssociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 绑定的关系数组。
+	// 绑定的关系数组。一次请求最多支持20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil" name:"Associations"`
 }
 

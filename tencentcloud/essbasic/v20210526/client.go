@@ -2801,9 +2801,7 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // 注意：
 //
-// 1. **仅支持模板**发起
-//
-// 2. 只支持PC浏览器操作使用
+// 1. 只支持PC浏览器操作使用
 //
 // 
 //
@@ -2833,9 +2831,7 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // 注意：
 //
-// 1. **仅支持模板**发起
-//
-// 2. 只支持PC浏览器操作使用
+// 1. 只支持PC浏览器操作使用
 //
 // 
 //

@@ -1,3 +1,45 @@
+# Release v1.0.809
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 48 次发布
+
+发布时间：2023-12-04 00:15:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* <font color="#dd0000">**修改成员**：</font>Tags
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 175 次发布
+
+发布时间：2023-12-04 00:22:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：QualityEnhanceCompleteEvent
+
+	* <font color="#dd0000">**修改成员**：</font>ExtractCopyRightWatermarkCompleteEvent, QualityInspectCompleteEvent
+
+
+
+
 # Release v1.0.808
 
 ## 批量计算(batch) 版本：2017-03-12

@@ -6931,7 +6931,7 @@ func NewGetMonitorDataResponse() (response *GetMonitorDataResponse) {
 //
 // >?
 //
-// >- 2022年9月1日起，云监控开始对GetMonitorData接口计费。每个主账号每月可获得100万次免费请求额度，超过免费额度后如需继续调用接口需要开通 [API请求按量付费](https://buy.cloud.tencent.com/APIRequestBuy)。计费规则可查看[API计费文档](https://cloud.tencent.com/document/product/248/77914)。
+// >- 2022年9月1日起，腾讯云可观测平台开始对GetMonitorData接口计费。每个主账号每月可获得100万次免费请求额度，超过免费额度后如需继续调用接口需要开通 [API请求按量付费](https://buy.cloud.tencent.com/APIRequestBuy)。计费规则可查看[API计费文档](https://cloud.tencent.com/document/product/248/77914)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
@@ -6956,7 +6956,7 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
 //
 // >?
 //
-// >- 2022年9月1日起，云监控开始对GetMonitorData接口计费。每个主账号每月可获得100万次免费请求额度，超过免费额度后如需继续调用接口需要开通 [API请求按量付费](https://buy.cloud.tencent.com/APIRequestBuy)。计费规则可查看[API计费文档](https://cloud.tencent.com/document/product/248/77914)。
+// >- 2022年9月1日起，腾讯云可观测平台开始对GetMonitorData接口计费。每个主账号每月可获得100万次免费请求额度，超过免费额度后如需继续调用接口需要开通 [API请求按量付费](https://buy.cloud.tencent.com/APIRequestBuy)。计费规则可查看[API计费文档](https://cloud.tencent.com/document/product/248/77914)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
