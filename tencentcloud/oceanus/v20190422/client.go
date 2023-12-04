@@ -1127,6 +1127,73 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeFolderRequest() (request *DescribeFolderRequest) {
+    request = &DescribeFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeFolder")
+    
+    
+    return
+}
+
+func NewDescribeFolderResponse() (response *DescribeFolderResponse) {
+    response = &DescribeFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFolder
+// 查询指定文件夹及其相应的子文件夹信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = "FailedOperation.GetResourceTagsByResourceIds"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
+//  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeFolder(request *DescribeFolderRequest) (response *DescribeFolderResponse, err error) {
+    return c.DescribeFolderWithContext(context.Background(), request)
+}
+
+// DescribeFolder
+// 查询指定文件夹及其相应的子文件夹信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = "FailedOperation.GetResourceTagsByResourceIds"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
+//  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeFolderWithContext(ctx context.Context, request *DescribeFolderRequest) (response *DescribeFolderResponse, err error) {
+    if request == nil {
+        request = NewDescribeFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobConfigsRequest() (request *DescribeJobConfigsRequest) {
     request = &DescribeJobConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},

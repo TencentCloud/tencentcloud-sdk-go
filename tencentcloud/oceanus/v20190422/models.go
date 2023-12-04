@@ -1778,6 +1778,95 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFolderRequestParams struct {
+	// folder id
+	FolderId *string `json:"FolderId,omitnil" name:"FolderId"`
+
+	// workspace id
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 1:资源文件夹
+	// 其他:作业文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+}
+
+type DescribeFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// folder id
+	FolderId *string `json:"FolderId,omitnil" name:"FolderId"`
+
+	// workspace id
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 1:资源文件夹
+	// 其他:作业文件夹
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+}
+
+func (r *DescribeFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FolderId")
+	delete(f, "WorkSpaceId")
+	delete(f, "FolderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFolderResponseParams struct {
+	// folder id
+	FolderId *string `json:"FolderId,omitnil" name:"FolderId"`
+
+	// folder name
+	FolderName *string `json:"FolderName,omitnil" name:"FolderName"`
+
+	// 父文件夹id
+	ParentId *string `json:"ParentId,omitnil" name:"ParentId"`
+
+	// 文件夹类型
+	FolderType *int64 `json:"FolderType,omitnil" name:"FolderType"`
+
+	// workspace id
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 子文件夹信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubFolderInfo []*SubFolderInfo `json:"SubFolderInfo,omitnil" name:"SubFolderInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFolderResponseParams `json:"Response"`
+}
+
+func (r *DescribeFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobConfigsRequestParams struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -4267,6 +4356,14 @@ func (r *StopJobsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubFolderInfo struct {
+	// folder id
+	FolderId *string `json:"FolderId,omitnil" name:"FolderId"`
+
+	// folder name
+	FolderName *string `json:"FolderName,omitnil" name:"FolderName"`
 }
 
 type SystemResourceItem struct {

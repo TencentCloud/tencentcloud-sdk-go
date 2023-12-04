@@ -1,3 +1,25 @@
+# Release v1.0.810
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 49 次发布
+
+发布时间：2023-12-04 15:28:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFolder](https://cloud.tencent.com/document/api/849/102187)
+
+新增数据结构：
+
+* [SubFolderInfo](https://cloud.tencent.com/document/api/849/52010#SubFolderInfo)
+
+
+
 # Release v1.0.809
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22

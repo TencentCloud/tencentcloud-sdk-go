@@ -151,7 +151,7 @@
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [NLP 服务](https://cloud.tencent.com/document/product/271) | 2023-09-15 02:14:19 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
-| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2023-12-04 00:15:25 |
+| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2023-12-04 15:28:57 |
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2023-11-30 05:24:08 |
 | omics | [腾讯健康组学平台](https://cloud.tencent.com/document/product/1643) | 2023-12-01 01:21:15 |
 | organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | 2023-11-08 02:00:11 |
