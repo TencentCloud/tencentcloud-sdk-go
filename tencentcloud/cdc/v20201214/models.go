@@ -1663,7 +1663,7 @@ type DetailData struct {
 }
 
 type HostInfo struct {
-	// 宿主机IP
+	// 宿主机IP（废弃）
 	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
 
 	// 云服务类型

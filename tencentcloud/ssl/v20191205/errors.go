@@ -44,6 +44,9 @@ const (
 	// 获取订单信息失败，请稍后重试。
 	FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
 
+	// 温馨提示：上传的证书内容不符合CA证书的标准格式，请您核对证书类型是否有误
+	FAILEDOPERATION_CERTIFICATECAERROR = "FailedOperation.CertificateCaError"
+
 	// 记录状态必须完结才可以执行该操作。
 	FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
 
@@ -89,6 +92,9 @@ const (
 	// 证书不符合标准。
 	FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
 
+	// 温馨提示：证书内容和私钥不匹配，请您核对（请留意是否有多余的空格）
+	FAILEDOPERATION_CERTIFICATEMATCHERROR = "FailedOperation.CertificateMatchError"
+
 	// 证书与私钥不对应。
 	FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
 
@@ -103,6 +109,9 @@ const (
 
 	// 该证书不存在或不可取消。
 	FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = "FailedOperation.CertificateNotFoundOrCantCancel"
+
+	// 解析失败，请检查证书是否符合标准，请留意是否有多余的空格
+	FAILEDOPERATION_CERTIFICATEPARSEERROR = "FailedOperation.CertificateParseError"
 
 	// 证书状态不允许重新申请。
 	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"

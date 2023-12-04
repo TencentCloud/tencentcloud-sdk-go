@@ -247,7 +247,7 @@ type CreateInstanceRequestParams struct {
 	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 已废弃请使用NodeInfoList
-	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD
 	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
 
 	// 已废弃请使用NodeInfoList
@@ -282,7 +282,7 @@ type CreateInstanceRequestParams struct {
 	// 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
 	ClusterNameInConf *string `json:"ClusterNameInConf,omitnil" name:"ClusterNameInConf"`
 
-	// 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署</li>默认为0
+	// 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0
 	DeployMode *uint64 `json:"DeployMode,omitnil" name:"DeployMode"`
 
 	// 多可用区部署时可用区的详细信息(DeployMode为1时必传)
@@ -364,7 +364,7 @@ type CreateInstanceRequest struct {
 	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 已废弃请使用NodeInfoList
-	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD
 	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
 
 	// 已废弃请使用NodeInfoList
@@ -399,7 +399,7 @@ type CreateInstanceRequest struct {
 	// 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
 	ClusterNameInConf *string `json:"ClusterNameInConf,omitnil" name:"ClusterNameInConf"`
 
-	// 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署</li>默认为0
+	// 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0
 	DeployMode *uint64 `json:"DeployMode,omitnil" name:"DeployMode"`
 
 	// 多可用区部署时可用区的详细信息(DeployMode为1时必传)
@@ -2613,6 +2613,72 @@ type IndexSettingsField struct {
 	// 索引刷新频率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefreshInterval *string `json:"RefreshInterval,omitnil" name:"RefreshInterval"`
+}
+
+// Predefined struct for user
+type InquirePriceRenewInstanceRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type InquirePriceRenewInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *InquirePriceRenewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRenewInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRenewInstanceResponseParams struct {
+	// 刊例价，即集群原始价格
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil" name:"OriginalPrice"`
+
+	// 折后价
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil" name:"DiscountPrice"`
+
+	// 折扣，如65折
+	Discount *float64 `json:"Discount,omitnil" name:"Discount"`
+
+	// 货币，如CNY代表人民币
+	Currency *string `json:"Currency,omitnil" name:"Currency"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InquirePriceRenewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceRenewInstanceResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceRenewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceInfo struct {

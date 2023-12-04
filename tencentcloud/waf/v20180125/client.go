@@ -3999,6 +3999,7 @@ func NewDescribeModuleStatusResponse() (response *DescribeModuleStatusResponse) 
 // 查询各个waf基础安全模块的开关状态，看每个模块是否开启
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModuleStatus(request *DescribeModuleStatusRequest) (response *DescribeModuleStatusResponse, err error) {
@@ -4009,6 +4010,7 @@ func (c *Client) DescribeModuleStatus(request *DescribeModuleStatusRequest) (res
 // 查询各个waf基础安全模块的开关状态，看每个模块是否开启
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModuleStatusWithContext(ctx context.Context, request *DescribeModuleStatusRequest) (response *DescribeModuleStatusResponse, err error) {
@@ -4050,6 +4052,7 @@ func NewDescribeObjectsResponse() (response *DescribeObjectsResponse) {
 // 查看防护对象列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {
@@ -4060,6 +4063,7 @@ func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *Des
 // 查看防护对象列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {

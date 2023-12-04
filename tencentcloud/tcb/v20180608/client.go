@@ -3288,6 +3288,7 @@ func NewDescribeHostingDomainTaskResponse() (response *DescribeHostingDomainTask
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostingDomainTask(request *DescribeHostingDomainTaskRequest) (response *DescribeHostingDomainTaskResponse, err error) {
     return c.DescribeHostingDomainTaskWithContext(context.Background(), request)
@@ -3303,6 +3304,7 @@ func (c *Client) DescribeHostingDomainTask(request *DescribeHostingDomainTaskReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostingDomainTaskWithContext(ctx context.Context, request *DescribeHostingDomainTaskRequest) (response *DescribeHostingDomainTaskResponse, err error) {
     if request == nil {

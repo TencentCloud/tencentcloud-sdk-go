@@ -9221,6 +9221,7 @@ func NewDescribeBaselineRuleDetectListResponse() (response *DescribeBaselineRule
 // 获取基线规则检测列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineRuleDetectList(request *DescribeBaselineRuleDetectListRequest) (response *DescribeBaselineRuleDetectListResponse, err error) {
@@ -9231,6 +9232,7 @@ func (c *Client) DescribeBaselineRuleDetectList(request *DescribeBaselineRuleDet
 // 获取基线规则检测列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineRuleDetectListWithContext(ctx context.Context, request *DescribeBaselineRuleDetectListRequest) (response *DescribeBaselineRuleDetectListResponse, err error) {
@@ -29558,6 +29560,7 @@ func NewStartBaselineDetectResponse() (response *StartBaselineDetectResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) StartBaselineDetect(request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {
     return c.StartBaselineDetectWithContext(context.Background(), request)
 }
@@ -29569,6 +29572,7 @@ func (c *Client) StartBaselineDetect(request *StartBaselineDetectRequest) (respo
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) StartBaselineDetectWithContext(ctx context.Context, request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {
     if request == nil {
         request = NewStartBaselineDetectRequest()

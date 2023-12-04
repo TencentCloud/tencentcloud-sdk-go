@@ -1,3 +1,107 @@
+# Release v1.0.811
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 51 次发布
+
+发布时间：2023-12-05 01:46:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquirePriceRenewInstance](https://cloud.tencent.com/document/api/845/102193)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 56 次发布
+
+发布时间：2023-12-05 01:59:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>UserDiscount, CommonDiscount, FinalDiscount, ActivityDiscount, DiscountType
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 97 次发布
+
+发布时间：2023-12-05 02:04:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+
+	* <font color="#dd0000">**修改入参**：</font>OrgId
+
+* [UpdateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79190)
+
+	* <font color="#dd0000">**修改入参**：</font>ChannelName
+
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：ShieldFlag, AlarmShieldingType, AlarmShieldingTime, AlarmShieldingShowType, AlarmShieldingShowTime, AlarmShieldReason, InternalDimensions, MetricName
+
+	* <font color="#dd0000">**修改成员**：</font>AlarmLevel
+
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 20 次发布
+
+发布时间：2023-12-05 02:07:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DestroyResourceInstances](https://cloud.tencent.com/document/api/283/102194)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 123 次发布
+
+发布时间：2023-12-05 02:08:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：Angle
+
+
+
+
 # Release v1.0.810
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22

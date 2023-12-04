@@ -1082,6 +1082,7 @@ func NewBatchUpdateIntegrationTasksResponse() (response *BatchUpdateIntegrationT
 // 批量更新集成任务（暂时仅支持批量更新责任人）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchUpdateIntegrationTasks(request *BatchUpdateIntegrationTasksRequest) (response *BatchUpdateIntegrationTasksResponse, err error) {
     return c.BatchUpdateIntegrationTasksWithContext(context.Background(), request)
@@ -1091,6 +1092,7 @@ func (c *Client) BatchUpdateIntegrationTasks(request *BatchUpdateIntegrationTask
 // 批量更新集成任务（暂时仅支持批量更新责任人）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchUpdateIntegrationTasksWithContext(ctx context.Context, request *BatchUpdateIntegrationTasksRequest) (response *BatchUpdateIntegrationTasksResponse, err error) {
     if request == nil {

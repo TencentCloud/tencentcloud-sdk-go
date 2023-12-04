@@ -2109,6 +2109,79 @@ func (r *DescribeUserBaseInfoInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyResourceInstancesRequestParams struct {
+	// ResourceId 资源id，在创建订单时，返回的resourceId
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 资源绑定的包名，为了防止误删除，需要指定绑定时的包名
+	AppPkgName *string `json:"AppPkgName,omitnil" name:"AppPkgName"`
+}
+
+type DestroyResourceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// ResourceId 资源id，在创建订单时，返回的resourceId
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 资源绑定的包名，为了防止误删除，需要指定绑定时的包名
+	AppPkgName *string `json:"AppPkgName,omitnil" name:"AppPkgName"`
+}
+
+func (r *DestroyResourceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyResourceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "AppPkgName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyResourceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyResourceInstancesResponseParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 返回状态
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitnil" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费  
+	OrderType *int64 `json:"OrderType,omitnil" name:"OrderType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DestroyResourceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyResourceInstancesResponseParams `json:"Response"`
+}
+
+func (r *DestroyResourceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyResourceInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EncryptResults struct {
 	// 平台类型枚举值  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitnil" name:"PlatformType"`

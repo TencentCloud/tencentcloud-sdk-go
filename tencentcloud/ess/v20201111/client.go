@@ -545,6 +545,7 @@ func NewCreateBatchSignUrlResponse() (response *CreateBatchSignUrlResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateBatchSignUrl(request *CreateBatchSignUrlRequest) (response *CreateBatchSignUrlResponse, err error) {
     return c.CreateBatchSignUrlWithContext(context.Background(), request)
 }
@@ -572,6 +573,7 @@ func (c *Client) CreateBatchSignUrl(request *CreateBatchSignUrlRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateBatchSignUrlWithContext(ctx context.Context, request *CreateBatchSignUrlRequest) (response *CreateBatchSignUrlResponse, err error) {
     if request == nil {
         request = NewCreateBatchSignUrlRequest()
@@ -887,6 +889,7 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response *CreateEmbedWebUrlResponse, err error) {
     return c.CreateEmbedWebUrlWithContext(context.Background(), request)
 }
@@ -919,6 +922,7 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateEmbedWebUrlWithContext(ctx context.Context, request *CreateEmbedWebUrlRequest) (response *CreateEmbedWebUrlResponse, err error) {
     if request == nil {
         request = NewCreateEmbedWebUrlRequest()
@@ -5050,6 +5054,7 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
     return c.DescribeExtendedServiceAuthInfosWithContext(context.Background(), request)
 }
@@ -5073,6 +5078,7 @@ func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServi
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context, request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
     if request == nil {
         request = NewDescribeExtendedServiceAuthInfosRequest()

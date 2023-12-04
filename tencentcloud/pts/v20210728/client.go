@@ -2376,8 +2376,8 @@ func NewUpdateFileScenarioRelationResponse() (response *UpdateFileScenarioRelati
 // 更新关联文件场景
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateFileScenarioRelation(request *UpdateFileScenarioRelationRequest) (response *UpdateFileScenarioRelationResponse, err error) {
     return c.UpdateFileScenarioRelationWithContext(context.Background(), request)
 }
@@ -2386,8 +2386,8 @@ func (c *Client) UpdateFileScenarioRelation(request *UpdateFileScenarioRelationR
 // 更新关联文件场景
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateFileScenarioRelationWithContext(ctx context.Context, request *UpdateFileScenarioRelationRequest) (response *UpdateFileScenarioRelationResponse, err error) {
     if request == nil {
         request = NewUpdateFileScenarioRelationRequest()

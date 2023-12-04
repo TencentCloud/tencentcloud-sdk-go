@@ -4637,26 +4637,26 @@ type DescribeDashboardsRequestParams struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// <br><li> dashboardId
+	// <br><li>dashboardId
 	// 
 	// 按照【仪表盘id】进行过滤。
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> dashboardName
 	// 
 	// 按照【仪表盘名字】进行模糊搜索过滤。
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> dashboardRegion
 	// 
 	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> tagKey
 	// 
@@ -4664,7 +4664,7 @@ type DescribeDashboardsRequestParams struct {
 	// 
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> tag:tagKey
 	// 
@@ -4672,7 +4672,7 @@ type DescribeDashboardsRequestParams struct {
 	// 
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -4690,26 +4690,26 @@ type DescribeDashboardsRequest struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// <br><li> dashboardId
+	// <br><li>dashboardId
 	// 
 	// 按照【仪表盘id】进行过滤。
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> dashboardName
 	// 
 	// 按照【仪表盘名字】进行模糊搜索过滤。
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> dashboardRegion
 	// 
 	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> tagKey
 	// 
@@ -4717,7 +4717,7 @@ type DescribeDashboardsRequest struct {
 	// 
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// <br><li> tag:tagKey
 	// 
@@ -4725,7 +4725,7 @@ type DescribeDashboardsRequest struct {
 	// 
 	// 类型：String
 	// 
-	// 必选：否
+	// 必选：否</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`

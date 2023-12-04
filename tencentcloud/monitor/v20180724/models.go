@@ -133,6 +133,38 @@ type AlarmHistory struct {
 	// 告警等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *string `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 是否有配置告警屏蔽规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldFlag *int64 `json:"ShieldFlag,omitnil" name:"ShieldFlag"`
+
+	// 屏蔽类型（英文）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldingType *string `json:"AlarmShieldingType,omitnil" name:"AlarmShieldingType"`
+
+	// 屏蔽时间（英文）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldingTime *string `json:"AlarmShieldingTime,omitnil" name:"AlarmShieldingTime"`
+
+	// 屏蔽类型（中文）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldingShowType *string `json:"AlarmShieldingShowType,omitnil" name:"AlarmShieldingShowType"`
+
+	// 屏蔽时间（中文）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldingShowTime *string `json:"AlarmShieldingShowTime,omitnil" name:"AlarmShieldingShowTime"`
+
+	// 屏蔽原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldReason *string `json:"AlarmShieldReason,omitnil" name:"AlarmShieldReason"`
+
+	// 告警实例的维度信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalDimensions *string `json:"InternalDimensions,omitnil" name:"InternalDimensions"`
+
+	// 指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
 type AlarmHistoryMetric struct {
@@ -1661,11 +1693,11 @@ type CreateGrafanaNotificationChannelRequestParams struct {
 	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
-	// 默认为1，建议使用 OrganizationIds
-	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
-
 	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
+
+	// 默认为1，建议使用 OrganizationIds
+	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
 
 	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil" name:"ExtraOrgIds"`
@@ -1683,11 +1715,11 @@ type CreateGrafanaNotificationChannelRequest struct {
 	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
-	// 默认为1，建议使用 OrganizationIds
-	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
-
 	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
+
+	// 默认为1，建议使用 OrganizationIds
+	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
 
 	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil" name:"ExtraOrgIds"`
@@ -1710,8 +1742,8 @@ func (r *CreateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 	}
 	delete(f, "InstanceId")
 	delete(f, "ChannelName")
-	delete(f, "OrgId")
 	delete(f, "Receivers")
+	delete(f, "OrgId")
 	delete(f, "ExtraOrgIds")
 	delete(f, "OrganizationIds")
 	if len(f) > 0 {
@@ -4280,7 +4312,7 @@ type DescribeAlarmHistoriesRequestParams struct {
 	// 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
 	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能观测；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
+	// 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
 	MonitorTypes []*string `json:"MonitorTypes,omitnil" name:"MonitorTypes"`
 
 	// 根据告警对象过滤 字符串模糊搜索
@@ -4343,7 +4375,7 @@ type DescribeAlarmHistoriesRequest struct {
 	// 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
 	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能观测；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
+	// 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
 	MonitorTypes []*string `json:"MonitorTypes,omitnil" name:"MonitorTypes"`
 
 	// 根据告警对象过滤 字符串模糊搜索
@@ -14702,11 +14734,11 @@ type UpdateGrafanaNotificationChannelRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 告警通道名称，例如：test
-	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
-
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
+
+	// 告警通道名称，已废弃，名称不可修改。
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil" name:"ExtraOrgIds"`
@@ -14724,11 +14756,11 @@ type UpdateGrafanaNotificationChannelRequest struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 告警通道名称，例如：test
-	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
-
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
+
+	// 告警通道名称，已废弃，名称不可修改。
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil" name:"ExtraOrgIds"`
@@ -14751,8 +14783,8 @@ func (r *UpdateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 	}
 	delete(f, "ChannelId")
 	delete(f, "InstanceId")
-	delete(f, "ChannelName")
 	delete(f, "Receivers")
+	delete(f, "ChannelName")
 	delete(f, "ExtraOrgIds")
 	delete(f, "OrganizationIds")
 	if len(f) > 0 {

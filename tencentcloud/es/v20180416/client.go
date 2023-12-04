@@ -1653,6 +1653,63 @@ func (c *Client) GetRequestTargetNodeTypesWithContext(ctx context.Context, reque
     return
 }
 
+func NewInquirePriceRenewInstanceRequest() (request *InquirePriceRenewInstanceRequest) {
+    request = &InquirePriceRenewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "InquirePriceRenewInstance")
+    
+    
+    return
+}
+
+func NewInquirePriceRenewInstanceResponse() (response *InquirePriceRenewInstanceResponse) {
+    response = &InquirePriceRenewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceRenewInstance
+// 集群续费询价接口，续费前通过调用该接口，可获取集群续费的价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
+func (c *Client) InquirePriceRenewInstance(request *InquirePriceRenewInstanceRequest) (response *InquirePriceRenewInstanceResponse, err error) {
+    return c.InquirePriceRenewInstanceWithContext(context.Background(), request)
+}
+
+// InquirePriceRenewInstance
+// 集群续费询价接口，续费前通过调用该接口，可获取集群续费的价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
+func (c *Client) InquirePriceRenewInstanceWithContext(ctx context.Context, request *InquirePriceRenewInstanceRequest) (response *InquirePriceRenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceRenewInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEsVipSecurityGroupRequest() (request *ModifyEsVipSecurityGroupRequest) {
     request = &ModifyEsVipSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

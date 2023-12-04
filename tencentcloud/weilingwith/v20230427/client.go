@@ -1218,6 +1218,7 @@ func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
 //  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
 //  FAILEDOPERATION_APIRULECONFIGERROR = "FailedOperation.ApiRuleConfigError"
 //  INTERNALERROR_APIGATEWAYINTERNALERROR = "InternalError.ApiGatewayInternalError"
+//  INTERNALERROR_BUSINESSLOGICERROR = "InternalError.BusinessLogicError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
 //  RESOURCENOTFOUND_EMPTYDEVICELIST = "ResourceNotFound.EmptyDeviceList"
@@ -1234,6 +1235,7 @@ func (c *Client) DescribeDeviceList(request *DescribeDeviceListRequest) (respons
 //  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
 //  FAILEDOPERATION_APIRULECONFIGERROR = "FailedOperation.ApiRuleConfigError"
 //  INTERNALERROR_APIGATEWAYINTERNALERROR = "InternalError.ApiGatewayInternalError"
+//  INTERNALERROR_BUSINESSLOGICERROR = "InternalError.BusinessLogicError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
 //  RESOURCENOTFOUND_EMPTYDEVICELIST = "ResourceNotFound.EmptyDeviceList"
@@ -1499,6 +1501,8 @@ func NewDescribeDeviceTypeListResponse() (response *DescribeDeviceTypeListRespon
 // 拉取设备的设备类型列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
+//  INVALIDPARAMETER_TOKENFIELDNOTFOUND = "InvalidParameter.TokenFieldNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
 func (c *Client) DescribeDeviceTypeList(request *DescribeDeviceTypeListRequest) (response *DescribeDeviceTypeListResponse, err error) {
     return c.DescribeDeviceTypeListWithContext(context.Background(), request)
@@ -1508,6 +1512,8 @@ func (c *Client) DescribeDeviceTypeList(request *DescribeDeviceTypeListRequest) 
 // 拉取设备的设备类型列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
+//  INVALIDPARAMETER_TOKENFIELDNOTFOUND = "InvalidParameter.TokenFieldNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
 func (c *Client) DescribeDeviceTypeListWithContext(ctx context.Context, request *DescribeDeviceTypeListRequest) (response *DescribeDeviceTypeListResponse, err error) {
     if request == nil {

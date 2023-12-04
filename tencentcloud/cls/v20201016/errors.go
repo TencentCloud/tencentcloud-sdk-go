@@ -86,6 +86,9 @@ const (
 	// 请求标签服务限频。
 	FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 
+	// 操作超时
+	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+
 	// 日志主题已关闭。
 	FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 
@@ -103,6 +106,12 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 检索错误
+	INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+
+	// 检索失败
+	INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"

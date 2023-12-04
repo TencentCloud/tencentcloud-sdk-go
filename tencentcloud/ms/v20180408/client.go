@@ -1286,6 +1286,71 @@ func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, re
     return
 }
 
+func NewDestroyResourceInstancesRequest() (request *DestroyResourceInstancesRequest) {
+    request = &DestroyResourceInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "DestroyResourceInstances")
+    
+    
+    return
+}
+
+func NewDestroyResourceInstancesResponse() (response *DestroyResourceInstancesResponse) {
+    response = &DestroyResourceInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyResourceInstances
+// 渠道合作资源销毁
+//
+// 安卓应用加固-按年收费资源销毁，其他类型暂不支持
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyResourceInstances(request *DestroyResourceInstancesRequest) (response *DestroyResourceInstancesResponse, err error) {
+    return c.DestroyResourceInstancesWithContext(context.Background(), request)
+}
+
+// DestroyResourceInstances
+// 渠道合作资源销毁
+//
+// 安卓应用加固-按年收费资源销毁，其他类型暂不支持
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyResourceInstancesWithContext(ctx context.Context, request *DestroyResourceInstancesRequest) (response *DestroyResourceInstancesResponse, err error) {
+    if request == nil {
+        request = NewDestroyResourceInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyResourceInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyResourceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRequestLocalTaskRequest() (request *RequestLocalTaskRequest) {
     request = &RequestLocalTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
