@@ -80,6 +80,17 @@ func (c *Client) completeRequest(request tchttp.Request) {
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
 	}
+
+	if c.profile.UnsafeRetryOnConnectionFailure {
+		header := request.GetHeader()
+		if header == nil {
+			header = map[string]string{}
+		}
+		// http.Transport will automatically retry the request that considered Idempotent
+		// see http.Request.isReplayable
+		header["X-Idempotency-Key"] = "x"
+		request.SetHeader(header)
+	}
 }
 
 func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.Response) (err error) {
