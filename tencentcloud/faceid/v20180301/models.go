@@ -2739,6 +2739,101 @@ func (r *ImageRecognitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageRecognitionV2RequestParams struct {
+	// 身份证号
+	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
+
+	// 姓名。中文请使用UTF-8编码。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 用于人脸比对的照片，图片的Base64值；
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	ImageBase64 *string `json:"ImageBase64,omitnil" name:"ImageBase64"`
+
+	// 本接口不需要传递此参数。
+	Optional *string `json:"Optional,omitnil" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitnil" name:"Encryption"`
+}
+
+type ImageRecognitionV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 身份证号
+	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
+
+	// 姓名。中文请使用UTF-8编码。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 用于人脸比对的照片，图片的Base64值；
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	ImageBase64 *string `json:"ImageBase64,omitnil" name:"ImageBase64"`
+
+	// 本接口不需要传递此参数。
+	Optional *string `json:"Optional,omitnil" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitnil" name:"Encryption"`
+}
+
+func (r *ImageRecognitionV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageRecognitionV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdCard")
+	delete(f, "Name")
+	delete(f, "ImageBase64")
+	delete(f, "Optional")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageRecognitionV2ResponseParams struct {
+	// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+	Sim *float64 `json:"Sim,omitnil" name:"Sim"`
+
+	// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 业务结果描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImageRecognitionV2Response struct {
+	*tchttp.BaseResponse
+	Response *ImageRecognitionV2ResponseParams `json:"Response"`
+}
+
+func (r *ImageRecognitionV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageRecognitionV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IntentionActionConfig struct {
 	// 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
 	Text *string `json:"Text,omitnil" name:"Text"`

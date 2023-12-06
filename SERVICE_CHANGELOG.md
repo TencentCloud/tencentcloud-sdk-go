@@ -1,45 +1,10 @@
 # 本版本更新包含以下内容：
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 商业智能分析 BI(bi) 版本：2022-01-05
 
-### 第 51 次发布
+### 第 7 次发布
 
-发布时间：2023-12-05 01:46:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [InquirePriceRenewInstance](https://cloud.tencent.com/document/api/845/102193)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 56 次发布
-
-发布时间：2023-12-05 01:59:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
-
-	* <font color="#dd0000">**修改成员**：</font>UserDiscount, CommonDiscount, FinalDiscount, ActivityDiscount, DiscountType
-
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 97 次发布
-
-发布时间：2023-12-05 02:04:16
+发布时间：2023-12-06 01:10:35
 
 本次发布包含了以下内容：
 
@@ -47,31 +12,52 @@
 
 修改接口：
 
-* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+* [CreateDatasourceCloud](https://cloud.tencent.com/document/api/590/98853)
 
-	* <font color="#dd0000">**修改入参**：</font>OrgId
+	* 新增入参：ClusterId
 
-* [UpdateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79190)
+* [CreateEmbedToken](https://cloud.tencent.com/document/api/590/73724)
 
-	* <font color="#dd0000">**修改入参**：</font>ChannelName
+	* 新增入参：TicketNum
+
+* [ModifyDatasourceCloud](https://cloud.tencent.com/document/api/590/98850)
+
+	* 新增入参：ClusterId
 
 
 修改数据结构：
 
-* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+* [EmbedTokenInfo](https://cloud.tencent.com/document/api/590/73726#EmbedTokenInfo)
 
-	* 新增成员：ShieldFlag, AlarmShieldingType, AlarmShieldingTime, AlarmShieldingShowType, AlarmShieldingShowTime, AlarmShieldReason, InternalDimensions, MetricName
-
-	* <font color="#dd0000">**修改成员**：</font>AlarmLevel
+	* 新增成员：TicketNum
 
 
 
 
-## 移动应用安全(ms) 版本：2018-04-08
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 20 次发布
+### 第 75 次发布
 
-发布时间：2023-12-05 02:07:42
+发布时间：2023-12-06 01:34:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Package](https://cloud.tencent.com/document/api/1003/48097#Package)
+
+	* 新增成员：HistoryBindResourceInfos
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 67 次发布
+
+发布时间：2023-12-06 01:49:35
 
 本次发布包含了以下内容：
 
@@ -79,26 +65,55 @@
 
 新增接口：
 
-* [DestroyResourceInstances](https://cloud.tencent.com/document/api/283/102194)
+* [ImageRecognitionV2](https://cloud.tencent.com/document/api/1007/102203)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
-### 第 123 次发布
+### 第 36 次发布
 
-发布时间：2023-12-05 02:08:42
+发布时间：2023-12-06 01:51:28
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+* CreateAgeDetectTask
+* DescribeAgeDetectTask
 
-	* 新增出参：Angle
 
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 67 次发布
+
+发布时间：2023-12-06 02:32:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
+
+	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
+
+* [OriginInfo](https://cloud.tencent.com/document/api/1552/80721#OriginInfo)
+
+	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* 新增成员：Type
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -8340,6 +8355,36 @@
 
 
 ## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 7 次发布
+
+发布时间：2023-12-06 01:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDatasourceCloud](https://cloud.tencent.com/document/api/590/98853)
+
+	* 新增入参：ClusterId
+
+* [CreateEmbedToken](https://cloud.tencent.com/document/api/590/73724)
+
+	* 新增入参：TicketNum
+
+* [ModifyDatasourceCloud](https://cloud.tencent.com/document/api/590/98850)
+
+	* 新增入参：ClusterId
+
+
+修改数据结构：
+
+* [EmbedTokenInfo](https://cloud.tencent.com/document/api/590/73726#EmbedTokenInfo)
+
+	* 新增成员：TicketNum
+
 
 ### 第 6 次发布
 
@@ -41468,6 +41513,21 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 75 次发布
+
+发布时间：2023-12-06 01:34:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Package](https://cloud.tencent.com/document/api/1003/48097#Package)
+
+	* 新增成员：HistoryBindResourceInfos
+
+
 ### 第 74 次发布
 
 发布时间：2023-11-14 01:12:41
@@ -55233,7 +55293,7 @@
 
 新增接口：
 
-* [[InquirePriceRenewInstance](https://cloud.tencent.com/document/api/845/102193)](https://cloud.tencent.com/document/api/#/#)
+* [InquirePriceRenewInstance](https://cloud.tencent.com/document/api/845/102193)
 
 ### 第 50 次发布
 
@@ -61797,6 +61857,18 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 67 次发布
+
+发布时间：2023-12-06 01:49:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ImageRecognitionV2](https://cloud.tencent.com/document/api/1007/102203)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 66 次发布
 
 发布时间：2023-11-14 01:16:39
@@ -64379,6 +64451,19 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 36 次发布
+
+发布时间：2023-12-06 01:51:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateAgeDetectTask
+* DescribeAgeDetectTask
 
 ### 第 35 次发布
 
@@ -86165,7 +86250,7 @@
 
 新增接口：
 
-* [[DestroyResourceInstances](https://cloud.tencent.com/document/api/283/102194)](https://cloud.tencent.com/document/api/#/#)
+* [DestroyResourceInstances](https://cloud.tencent.com/document/api/283/102194)
 
 ### 第 19 次发布
 
@@ -114286,6 +114371,29 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 67 次发布
+
+发布时间：2023-12-06 02:32:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
+
+	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
+
+* [OriginInfo](https://cloud.tencent.com/document/api/1552/80721#OriginInfo)
+
+	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* 新增成员：Type
+
 
 ### 第 66 次发布
 

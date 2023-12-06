@@ -236,6 +236,9 @@ type CreateDatasourceCloudRequestParams struct {
 
 	// 第三方数据源id
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil" name:"DataOriginDatasourceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type CreateDatasourceCloudRequest struct {
@@ -297,6 +300,9 @@ type CreateDatasourceCloudRequest struct {
 
 	// 第三方数据源id
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil" name:"DataOriginDatasourceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *CreateDatasourceCloudRequest) ToJsonString() string {
@@ -330,6 +336,7 @@ func (r *CreateDatasourceCloudRequest) FromJsonString(s string) error {
 	delete(f, "DataOrigin")
 	delete(f, "DataOriginProjectId")
 	delete(f, "DataOriginDatasourceId")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceCloudRequest has unknown keys!", "")
 	}
@@ -584,6 +591,9 @@ type CreateEmbedTokenRequestParams struct {
 
 	// 使用者Id(仅用于多用户)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+	TicketNum *int64 `json:"TicketNum,omitnil" name:"TicketNum"`
 }
 
 type CreateEmbedTokenRequest struct {
@@ -609,6 +619,9 @@ type CreateEmbedTokenRequest struct {
 
 	// 使用者Id(仅用于多用户)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+	TicketNum *int64 `json:"TicketNum,omitnil" name:"TicketNum"`
 }
 
 func (r *CreateEmbedTokenRequest) ToJsonString() string {
@@ -630,6 +643,7 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 	delete(f, "ExtraParam")
 	delete(f, "UserCorpId")
 	delete(f, "UserId")
+	delete(f, "TicketNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedTokenRequest has unknown keys!", "")
 	}
@@ -1970,6 +1984,10 @@ type EmbedTokenInfo struct {
 	// 使用者Id(仅用于多用户)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TicketNum *int64 `json:"TicketNum,omitnil" name:"TicketNum"`
 }
 
 type IdDTO struct {
@@ -2055,6 +2073,9 @@ type ModifyDatasourceCloudRequestParams struct {
 
 	// 第三方数据源id
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil" name:"DataOriginDatasourceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type ModifyDatasourceCloudRequest struct {
@@ -2119,6 +2140,9 @@ type ModifyDatasourceCloudRequest struct {
 
 	// 第三方数据源id
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil" name:"DataOriginDatasourceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *ModifyDatasourceCloudRequest) ToJsonString() string {
@@ -2153,6 +2177,7 @@ func (r *ModifyDatasourceCloudRequest) FromJsonString(s string) error {
 	delete(f, "DataOrigin")
 	delete(f, "DataOriginProjectId")
 	delete(f, "DataOriginDatasourceId")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatasourceCloudRequest has unknown keys!", "")
 	}

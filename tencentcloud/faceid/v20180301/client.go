@@ -1658,6 +1658,109 @@ func (c *Client) ImageRecognitionWithContext(ctx context.Context, request *Image
     return
 }
 
+func NewImageRecognitionV2Request() (request *ImageRecognitionV2Request) {
+    request = &ImageRecognitionV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "ImageRecognitionV2")
+    
+    
+    return
+}
+
+func NewImageRecognitionV2Response() (response *ImageRecognitionV2Response) {
+    response = &ImageRecognitionV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImageRecognitionV2
+// 传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
+//  FAILEDOPERATION_COMPARELIBSERVICEUNAVAILABLE = "FailedOperation.CompareLibServiceUnavailable"
+//  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
+//  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
+//  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
+//  FAILEDOPERATION_IDNOEXISTSYSTEM = "FailedOperation.IdNoExistSystem"
+//  FAILEDOPERATION_IDPHOTONOEXIST = "FailedOperation.IdPhotoNoExist"
+//  FAILEDOPERATION_IDPHOTOPOORQUALITY = "FailedOperation.IdPhotoPoorQuality"
+//  FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = "FailedOperation.IdPhotoSystemNoanswer"
+//  FAILEDOPERATION_IDENTITYAUTHLIMITEXCEEDED = "FailedOperation.IdentityAuthLimitExceeded"
+//  FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
+//  FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
+//  FAILEDOPERATION_LIFEPHOTODETECTNOFACES = "FailedOperation.LifePhotoDetectNoFaces"
+//  FAILEDOPERATION_LIFEPHOTOPOORQUALITY = "FailedOperation.LifePhotoPoorQuality"
+//  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
+//  FAILEDOPERATION_NAMEFORMATERROR = "FailedOperation.NameFormatError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImageRecognitionV2(request *ImageRecognitionV2Request) (response *ImageRecognitionV2Response, err error) {
+    return c.ImageRecognitionV2WithContext(context.Background(), request)
+}
+
+// ImageRecognitionV2
+// 传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
+//  FAILEDOPERATION_COMPARELIBSERVICEUNAVAILABLE = "FailedOperation.CompareLibServiceUnavailable"
+//  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
+//  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
+//  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
+//  FAILEDOPERATION_IDNOEXISTSYSTEM = "FailedOperation.IdNoExistSystem"
+//  FAILEDOPERATION_IDPHOTONOEXIST = "FailedOperation.IdPhotoNoExist"
+//  FAILEDOPERATION_IDPHOTOPOORQUALITY = "FailedOperation.IdPhotoPoorQuality"
+//  FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = "FailedOperation.IdPhotoSystemNoanswer"
+//  FAILEDOPERATION_IDENTITYAUTHLIMITEXCEEDED = "FailedOperation.IdentityAuthLimitExceeded"
+//  FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
+//  FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
+//  FAILEDOPERATION_LIFEPHOTODETECTNOFACES = "FailedOperation.LifePhotoDetectNoFaces"
+//  FAILEDOPERATION_LIFEPHOTOPOORQUALITY = "FailedOperation.LifePhotoPoorQuality"
+//  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
+//  FAILEDOPERATION_NAMEFORMATERROR = "FailedOperation.NameFormatError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImageRecognitionV2WithContext(ctx context.Context, request *ImageRecognitionV2Request) (response *ImageRecognitionV2Response, err error) {
+    if request == nil {
+        request = NewImageRecognitionV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageRecognitionV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageRecognitionV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLivenessRequest() (request *LivenessRequest) {
     request = &LivenessRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -11065,6 +11065,10 @@ type Package struct {
 	// 失效时间：2022-08-01 00:00:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 资源包历史绑定（已解绑）实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HistoryBindResourceInfos []*BindInstanceInfo `json:"HistoryBindResourceInfos,omitnil" name:"HistoryBindResourceInfos"`
 }
 
 type PackageDetail struct {

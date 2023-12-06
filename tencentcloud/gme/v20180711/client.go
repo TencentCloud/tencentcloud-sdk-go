@@ -65,6 +65,10 @@ func NewCreateAgeDetectTaskResponse() (response *CreateAgeDetectTaskResponse) {
 }
 
 // CreateAgeDetectTask
+// 目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+//
+// 
+//
 // 用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 //
 // </br>
@@ -96,6 +100,10 @@ func (c *Client) CreateAgeDetectTask(request *CreateAgeDetectTaskRequest) (respo
 }
 
 // CreateAgeDetectTask
+// 目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+//
+// 
+//
 // 用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 //
 // </br>
@@ -498,6 +506,10 @@ func NewDescribeAgeDetectTaskResponse() (response *DescribeAgeDetectTaskResponse
 }
 
 // DescribeAgeDetectTask
+// 目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+//
+// 
+//
 // 查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 //
 // 可能返回的错误码:
@@ -509,6 +521,10 @@ func (c *Client) DescribeAgeDetectTask(request *DescribeAgeDetectTaskRequest) (r
 }
 
 // DescribeAgeDetectTask
+// 目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+//
+// 
+//
 // 查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 //
 // 可能返回的错误码:
