@@ -2436,6 +2436,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
@@ -2479,6 +2480,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
@@ -2553,6 +2555,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
@@ -2594,6 +2597,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
 //  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
@@ -4438,6 +4442,7 @@ func NewDescribeNotebookSessionStatementResponse() (response *DescribeNotebookSe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeNotebookSessionStatement(request *DescribeNotebookSessionStatementRequest) (response *DescribeNotebookSessionStatementResponse, err error) {
     return c.DescribeNotebookSessionStatementWithContext(context.Background(), request)
 }
@@ -4455,6 +4460,7 @@ func (c *Client) DescribeNotebookSessionStatement(request *DescribeNotebookSessi
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeNotebookSessionStatementWithContext(ctx context.Context, request *DescribeNotebookSessionStatementRequest) (response *DescribeNotebookSessionStatementResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookSessionStatementRequest()
@@ -4570,6 +4576,7 @@ func NewDescribeNotebookSessionStatementsResponse() (response *DescribeNotebookS
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeNotebookSessionStatements(request *DescribeNotebookSessionStatementsRequest) (response *DescribeNotebookSessionStatementsResponse, err error) {
     return c.DescribeNotebookSessionStatementsWithContext(context.Background(), request)
 }
@@ -4587,6 +4594,7 @@ func (c *Client) DescribeNotebookSessionStatements(request *DescribeNotebookSess
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeNotebookSessionStatementsWithContext(ctx context.Context, request *DescribeNotebookSessionStatementsRequest) (response *DescribeNotebookSessionStatementsResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookSessionStatementsRequest()
@@ -4988,6 +4996,7 @@ func NewDescribeSparkSessionBatchSQLResponse() (response *DescribeSparkSessionBa
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeSparkSessionBatchSQL(request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
     return c.DescribeSparkSessionBatchSQLWithContext(context.Background(), request)
 }
@@ -5002,6 +5011,7 @@ func (c *Client) DescribeSparkSessionBatchSQL(request *DescribeSparkSessionBatch
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 func (c *Client) DescribeSparkSessionBatchSQLWithContext(ctx context.Context, request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
     if request == nil {
         request = NewDescribeSparkSessionBatchSQLRequest()

@@ -347,6 +347,8 @@ type AiAnalysisResult struct {
 	// <li>Tag：智能标签</li>
 	// <li>FrameTag：智能按帧标签</li>
 	// <li>Highlight：智能精彩集锦</li>
+	// <li>DeLogo：智能去水印</li>
+	// <li>Description：大模型摘要</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -372,6 +374,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil" name:"DeLogoTask"`
+
+	// 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescriptionTask *AiAnalysisTaskDescriptionResult `json:"DescriptionTask,omitnil" name:"DescriptionTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -468,6 +474,34 @@ type AiAnalysisTaskDelLogoResult struct {
 	// 智能去水印任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskDelLogoOutput `json:"Output,omitnil" name:"Output"`
+}
+
+type AiAnalysisTaskDescriptionInput struct {
+	// 视频智能描述模板 ID。
+	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type AiAnalysisTaskDescriptionOutput struct {
+	// 视频智能描述列表。
+	DescriptionSet []*MediaAiAnalysisDescriptionItem `json:"DescriptionSet,omitnil" name:"DescriptionSet"`
+}
+
+type AiAnalysisTaskDescriptionResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 智能描述任务输入。
+	Input *AiAnalysisTaskDescriptionInput `json:"Input,omitnil" name:"Input"`
+
+	// 智能描述任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskDescriptionOutput `json:"Output,omitnil" name:"Output"`
 }
 
 type AiAnalysisTaskFrameTagInput struct {
@@ -638,6 +672,20 @@ type AiContentReviewResult struct {
 type AiContentReviewTaskInput struct {
 	// 视频内容审核模板 ID。
 	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type AiParagraphInfo struct {
+	// 分段摘要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *string `json:"Summary,omitnil" name:"Summary"`
+
+	// 分段起始时间点，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
+
+	// 分段结束时间点，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
 }
 
 type AiQualityControlTaskInput struct {
@@ -10332,6 +10380,18 @@ type MediaAiAnalysisCoverItem struct {
 
 	// 智能封面的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+}
+
+type MediaAiAnalysisDescriptionItem struct {
+	// 智能描述。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 智能描述的可信度，取值范围是 0 到 100。
+	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+
+	// 分段结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paragraphs []*AiParagraphInfo `json:"Paragraphs,omitnil" name:"Paragraphs"`
 }
 
 type MediaAiAnalysisFrameTagItem struct {

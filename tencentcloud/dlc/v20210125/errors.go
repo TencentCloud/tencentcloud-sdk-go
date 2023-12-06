@@ -173,6 +173,9 @@ const (
 	// 指定集群计费模式不匹配，当前仅支持: 1: 按量计费, 2: 包年包月
 	INVALIDPARAMETER_DATAENGINEMODENOTMATCH = "InvalidParameter.DataEngineModeNotMatch"
 
+	// 当前任务仅支持SQL引擎运行
+	INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
+
 	// 当前任务仅支持Spark批作业引擎运行
 	INVALIDPARAMETER_DATAENGINEONLYSUPPORTSPARKBATCH = "InvalidParameter.DataEngineOnlySupportSparkBatch"
 
@@ -574,6 +577,9 @@ const (
 
 	// session已消亡。
 	RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+
+	// Session正在关闭，请确认任务是否已经取消
+	RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
 
 	// 找不到Spark Shuffle存储路径，请到控制台->数据探索页面->存储配置中设置
 	RESOURCENOTFOUND_SHUFFLEDIRNOTFOUND = "ResourceNotFound.ShuffleDirNotFound"

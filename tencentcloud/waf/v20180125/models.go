@@ -8700,55 +8700,65 @@ type HybridPkg struct {
 }
 
 type InstanceInfo struct {
-	// id
+	// 实例唯一ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// Name
+	// 实例名称
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
-	// 资源id
+	// 实例对应资源ID，计费使用
 	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
-	// 地域
+	// 实例所属地域
 	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 付费模式
 	PayMode *uint64 `json:"PayMode,omitnil" name:"PayMode"`
 
-	// 自动续费
+	// 自动续费标识。
+	// 0：关闭
+	// 1：开启
 	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
-	// 弹性计费
+	// 弹性计费开关。
+	// 0：关闭
+	// 1：开启
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
-	// 套餐版本
+	// 实例套餐版本。
+	// 101：小微版
+	// 102：超轻版
+	// 2：高级版
+	// 3：企业版
+	// 4：旗舰版
+	// 6：独享版
 	Level *uint64 `json:"Level,omitnil" name:"Level"`
 
-	// 过期时间
+	// 实例过期时间
 	ValidTime *string `json:"ValidTime,omitnil" name:"ValidTime"`
 
-	// 开始时间
+	// 实例开始时间
 	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
-	// 已用
+	// 已配置域名个数
 	DomainCount *uint64 `json:"DomainCount,omitnil" name:"DomainCount"`
 
-	// 上限
+	// 域名数量上限
 	SubDomainLimit *uint64 `json:"SubDomainLimit,omitnil" name:"SubDomainLimit"`
 
-	// 已用
+	// 已配置主域名个数
 	MainDomainCount *uint64 `json:"MainDomainCount,omitnil" name:"MainDomainCount"`
 
-	// 上限
+	// 主域名数量上限
 	MainDomainLimit *uint64 `json:"MainDomainLimit,omitnil" name:"MainDomainLimit"`
 
-	// 峰值
+	// 实例30天内QPS峰值
 	MaxQPS *uint64 `json:"MaxQPS,omitnil" name:"MaxQPS"`
 
-	// qps套餐
+	// qps扩展包信息
 	QPS *QPSPackageNew `json:"QPS,omitnil" name:"QPS"`
 
-	// 域名套餐
+	// 域名扩展包信息
 	DomainPkg *DomainPackageNew `json:"DomainPkg,omitnil" name:"DomainPkg"`
 
 	// 用户appid
@@ -8796,7 +8806,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
-	// 实例沙箱值
+	// 实例沙箱qps值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SandboxQps *uint64 `json:"SandboxQps,omitnil" name:"SandboxQps"`
 
@@ -8815,6 +8825,18 @@ type InstanceInfo struct {
 	// API安全资源包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiPkg *ApiPkg `json:"ApiPkg,omitnil" name:"ApiPkg"`
+
+	// 小程序安全加速包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniPkg *MiniPkg `json:"MiniPkg,omitnil" name:"MiniPkg"`
+
+	// 小程序qps规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniQpsStandard *uint64 `json:"MiniQpsStandard,omitnil" name:"MiniQpsStandard"`
+
+	// 小程序qps峰值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniMaxQPS *uint64 `json:"MiniMaxQPS,omitnil" name:"MiniMaxQPS"`
 }
 
 type IpAccessControlData struct {
@@ -9030,6 +9052,40 @@ type MajorEventsPkg struct {
 	// 护网包状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HWState *int64 `json:"HWState,omitnil" name:"HWState"`
+}
+
+type MiniPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitnil" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 购买数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItem *string `json:"BillingItem,omitnil" name:"BillingItem"`
 }
 
 // Predefined struct for user

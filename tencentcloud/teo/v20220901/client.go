@@ -2912,6 +2912,55 @@ func (c *Client) DescribeHostsSettingWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeIPRegionRequest() (request *DescribeIPRegionRequest) {
+    request = &DescribeIPRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeIPRegion")
+    
+    
+    return
+}
+
+func NewDescribeIPRegionResponse() (response *DescribeIPRegionResponse) {
+    response = &DescribeIPRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIPRegion
+// 该接口可用于查询 IP 是否为 EdgeOne IP。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+func (c *Client) DescribeIPRegion(request *DescribeIPRegionRequest) (response *DescribeIPRegionResponse, err error) {
+    return c.DescribeIPRegionWithContext(context.Background(), request)
+}
+
+// DescribeIPRegion
+// 该接口可用于查询 IP 是否为 EdgeOne IP。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+func (c *Client) DescribeIPRegionWithContext(ctx context.Context, request *DescribeIPRegionRequest) (response *DescribeIPRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeIPRegionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIPRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIdentificationsRequest() (request *DescribeIdentificationsRequest) {
     request = &DescribeIdentificationsRequest{
         BaseRequest: &tchttp.BaseRequest{},

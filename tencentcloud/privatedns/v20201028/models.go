@@ -72,6 +72,9 @@ type AddSpecifyPrivateZoneVpcRequestParams struct {
 
 	// 本次新增关联账户vpc信息
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 是否为同步操作
+	Sync *bool `json:"Sync,omitnil" name:"Sync"`
 }
 
 type AddSpecifyPrivateZoneVpcRequest struct {
@@ -85,6 +88,9 @@ type AddSpecifyPrivateZoneVpcRequest struct {
 
 	// 本次新增关联账户vpc信息
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 是否为同步操作
+	Sync *bool `json:"Sync,omitnil" name:"Sync"`
 }
 
 func (r *AddSpecifyPrivateZoneVpcRequest) ToJsonString() string {
@@ -102,6 +108,7 @@ func (r *AddSpecifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "VpcSet")
 	delete(f, "AccountVpcSet")
+	delete(f, "Sync")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpecifyPrivateZoneVpcRequest has unknown keys!", "")
 	}
@@ -118,6 +125,10 @@ type AddSpecifyPrivateZoneVpcResponseParams struct {
 
 	// 本次新增的关联账号vpc
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqId *string `json:"UniqId,omitnil" name:"UniqId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -681,6 +692,9 @@ type DeleteSpecifyPrivateZoneVpcRequestParams struct {
 
 	// 本次删除的关联账户VPC
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 是否为同步操作
+	Sync *bool `json:"Sync,omitnil" name:"Sync"`
 }
 
 type DeleteSpecifyPrivateZoneVpcRequest struct {
@@ -694,6 +708,9 @@ type DeleteSpecifyPrivateZoneVpcRequest struct {
 
 	// 本次删除的关联账户VPC
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 是否为同步操作
+	Sync *bool `json:"Sync,omitnil" name:"Sync"`
 }
 
 func (r *DeleteSpecifyPrivateZoneVpcRequest) ToJsonString() string {
@@ -711,6 +728,7 @@ func (r *DeleteSpecifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "VpcSet")
 	delete(f, "AccountVpcSet")
+	delete(f, "Sync")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSpecifyPrivateZoneVpcRequest has unknown keys!", "")
 	}
@@ -727,6 +745,10 @@ type DeleteSpecifyPrivateZoneVpcResponseParams struct {
 
 	// 本次删除的关联账户的VPC
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqId *string `json:"UniqId,omitnil" name:"UniqId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

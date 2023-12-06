@@ -211,7 +211,7 @@ type BGPStatus struct {
 }
 
 type BgpPeer struct {
-	// 用户侧，BGP Asn
+	// 用户侧BGP ASN
 	Asn *int64 `json:"Asn,omitnil" name:"Asn"`
 
 	// 用户侧BGP密钥
@@ -421,146 +421,132 @@ func (r *CreateDirectConnectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDirectConnectTunnelRequestParams struct {
-	// 专线 ID，例如：dc-kd7d06of
+	// 物理专线ID，例如：dc-kd7d06of。
 	DirectConnectId *string `json:"DirectConnectId,omitnil" name:"DirectConnectId"`
 
-	// 专用通道名称
+	// 专用通道名称。
 	DirectConnectTunnelName *string `json:"DirectConnectTunnelName,omitnil" name:"DirectConnectTunnelName"`
 
-	// 物理专线 owner，缺省为当前客户（物理专线 owner）
-	// 共享专线时这里需要填写共享专线的开发商账号 ID
+	// 物理专线owner，缺省为当前客户（物理专线 owner）
+	// 共享专线时这里需要填写共享专线的开发商账号 ID。
 	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount,omitnil" name:"DirectConnectOwnerAccount"`
 
-	// 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
-	// VPC：私有网络
-	// BMVPC：黑石网络
-	// CCN：云联网
+	// 网络类型，枚举：VPC、BMVPC、CCN；默认为VPC。VPC：私有网络；BMVPC：黑石网络；CCN：云联网）。
 	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 
-	// 网络地域
+	// 网络地域。
 	NetworkRegion *string `json:"NetworkRegion,omitnil" name:"NetworkRegion"`
 
-	// 私有网络统一 ID 或者黑石网络统一 ID
+	// 私有网络统一ID或黑石网络统一ID。
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 专线网关 ID，例如 dcg-d545ddf
+	// 专线网关ID，例如 dcg-d545ddf。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil" name:"DirectConnectGatewayId"`
 
-	// 专线带宽，单位：Mbps
-	// 默认是物理专线带宽值
+	// 专线带宽，单位：Mbps；默认是物理专线带宽值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
 
-	// BGP ：BGP路由
-	// STATIC：静态
-	// 默认为 BGP 路由
+	// 路由类型，枚举：BGP、STATIC；默认为BGP 。（BGP ：BGP路由；STATIC：静态）。
 	RouteType *string `json:"RouteType,omitnil" name:"RouteType"`
 
-	// BgpPeer，用户侧bgp信息，包括Asn和AuthKey
+	// BgpPeer，用户侧bgp信息，包括Asn和AuthKey。
 	BgpPeer *BgpPeer `json:"BgpPeer,omitnil" name:"BgpPeer"`
 
-	// 静态路由，用户IDC的网段地址
+	// 静态路由，用户IDC的网段地址。
 	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitnil" name:"RouteFilterPrefixes"`
 
-	// vlan，范围：0 ~ 3000
-	// 0：不开启子接口
-	// 默认值是非0
+	// vlan，范围：0 ~ 3000。
+	// 0：不开启子接口，默认值是非0。
 	Vlan *int64 `json:"Vlan,omitnil" name:"Vlan"`
 
-	// TencentAddress，腾讯侧互联 IP
+	// TencentAddress，腾讯侧互联 IP。
 	TencentAddress *string `json:"TencentAddress,omitnil" name:"TencentAddress"`
 
-	// CustomerAddress，用户侧互联 IP
+	// CustomerAddress，用户侧互联 IP。
 	CustomerAddress *string `json:"CustomerAddress,omitnil" name:"CustomerAddress"`
 
-	// TencentBackupAddress，腾讯侧备用互联 IP
+	// TencentBackupAddress，腾讯侧备用互联 IP。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitnil" name:"TencentBackupAddress"`
 
-	// 高速上云服务ID
+	// 高速上云服务ID。
 	CloudAttachId *string `json:"CloudAttachId,omitnil" name:"CloudAttachId"`
 
-	// 是否开启BFD
+	// 是否开启BFD。
 	BfdEnable *int64 `json:"BfdEnable,omitnil" name:"BfdEnable"`
 
-	// 是否开启NQA
+	// 是否开启NQA。
 	NqaEnable *int64 `json:"NqaEnable,omitnil" name:"NqaEnable"`
 
-	// BFD配置信息
+	// BFD配置信息。
 	BfdInfo *BFDInfo `json:"BfdInfo,omitnil" name:"BfdInfo"`
 
-	// NQA配置信息
+	// NQA配置信息。
 	NqaInfo *NQAInfo `json:"NqaInfo,omitnil" name:"NqaInfo"`
 }
 
 type CreateDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专线 ID，例如：dc-kd7d06of
+	// 物理专线ID，例如：dc-kd7d06of。
 	DirectConnectId *string `json:"DirectConnectId,omitnil" name:"DirectConnectId"`
 
-	// 专用通道名称
+	// 专用通道名称。
 	DirectConnectTunnelName *string `json:"DirectConnectTunnelName,omitnil" name:"DirectConnectTunnelName"`
 
-	// 物理专线 owner，缺省为当前客户（物理专线 owner）
-	// 共享专线时这里需要填写共享专线的开发商账号 ID
+	// 物理专线owner，缺省为当前客户（物理专线 owner）
+	// 共享专线时这里需要填写共享专线的开发商账号 ID。
 	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount,omitnil" name:"DirectConnectOwnerAccount"`
 
-	// 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
-	// VPC：私有网络
-	// BMVPC：黑石网络
-	// CCN：云联网
+	// 网络类型，枚举：VPC、BMVPC、CCN；默认为VPC。VPC：私有网络；BMVPC：黑石网络；CCN：云联网）。
 	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 
-	// 网络地域
+	// 网络地域。
 	NetworkRegion *string `json:"NetworkRegion,omitnil" name:"NetworkRegion"`
 
-	// 私有网络统一 ID 或者黑石网络统一 ID
+	// 私有网络统一ID或黑石网络统一ID。
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 专线网关 ID，例如 dcg-d545ddf
+	// 专线网关ID，例如 dcg-d545ddf。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil" name:"DirectConnectGatewayId"`
 
-	// 专线带宽，单位：Mbps
-	// 默认是物理专线带宽值
+	// 专线带宽，单位：Mbps；默认是物理专线带宽值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
 
-	// BGP ：BGP路由
-	// STATIC：静态
-	// 默认为 BGP 路由
+	// 路由类型，枚举：BGP、STATIC；默认为BGP 。（BGP ：BGP路由；STATIC：静态）。
 	RouteType *string `json:"RouteType,omitnil" name:"RouteType"`
 
-	// BgpPeer，用户侧bgp信息，包括Asn和AuthKey
+	// BgpPeer，用户侧bgp信息，包括Asn和AuthKey。
 	BgpPeer *BgpPeer `json:"BgpPeer,omitnil" name:"BgpPeer"`
 
-	// 静态路由，用户IDC的网段地址
+	// 静态路由，用户IDC的网段地址。
 	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitnil" name:"RouteFilterPrefixes"`
 
-	// vlan，范围：0 ~ 3000
-	// 0：不开启子接口
-	// 默认值是非0
+	// vlan，范围：0 ~ 3000。
+	// 0：不开启子接口，默认值是非0。
 	Vlan *int64 `json:"Vlan,omitnil" name:"Vlan"`
 
-	// TencentAddress，腾讯侧互联 IP
+	// TencentAddress，腾讯侧互联 IP。
 	TencentAddress *string `json:"TencentAddress,omitnil" name:"TencentAddress"`
 
-	// CustomerAddress，用户侧互联 IP
+	// CustomerAddress，用户侧互联 IP。
 	CustomerAddress *string `json:"CustomerAddress,omitnil" name:"CustomerAddress"`
 
-	// TencentBackupAddress，腾讯侧备用互联 IP
+	// TencentBackupAddress，腾讯侧备用互联 IP。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitnil" name:"TencentBackupAddress"`
 
-	// 高速上云服务ID
+	// 高速上云服务ID。
 	CloudAttachId *string `json:"CloudAttachId,omitnil" name:"CloudAttachId"`
 
-	// 是否开启BFD
+	// 是否开启BFD。
 	BfdEnable *int64 `json:"BfdEnable,omitnil" name:"BfdEnable"`
 
-	// 是否开启NQA
+	// 是否开启NQA。
 	NqaEnable *int64 `json:"NqaEnable,omitnil" name:"NqaEnable"`
 
-	// BFD配置信息
+	// BFD配置信息。
 	BfdInfo *BFDInfo `json:"BfdInfo,omitnil" name:"BfdInfo"`
 
-	// NQA配置信息
+	// NQA配置信息。
 	NqaInfo *NQAInfo `json:"NqaInfo,omitnil" name:"NqaInfo"`
 }
 
@@ -604,7 +590,7 @@ func (r *CreateDirectConnectTunnelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDirectConnectTunnelResponseParams struct {
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelIdSet []*string `json:"DirectConnectTunnelIdSet,omitnil" name:"DirectConnectTunnelIdSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

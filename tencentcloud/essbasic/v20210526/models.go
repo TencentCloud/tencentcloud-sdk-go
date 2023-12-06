@@ -6270,7 +6270,7 @@ type CreateFlowOption struct {
 	// 
 	// **true**：跳过
 	// **false**：（默认）不跳过，需要传ResourceId
-	SkipUploadFile *string `json:"SkipUploadFile,omitnil" name:"SkipUploadFile"`
+	SkipUploadFile *bool `json:"SkipUploadFile,omitnil" name:"SkipUploadFile"`
 }
 
 // Predefined struct for user

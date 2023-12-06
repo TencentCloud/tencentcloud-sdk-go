@@ -1,3 +1,159 @@
+# Release v1.0.813
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 78 次发布
+
+发布时间：2023-12-07 01:38:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ExecutorMaxNumbers
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：HeatValue
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：ResultFormat
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 138 次发布
+
+发布时间：2023-12-07 01:49:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* <font color="#dd0000">**修改成员**：</font>SkipUploadFile
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 77 次发布
+
+发布时间：2023-12-06 20:13:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)
+* [AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)
+* [AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)
+* [AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)
+* [MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)
+
+修改数据结构：
+
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
+
+	* 新增成员：DescriptionTask
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 15 次发布
+
+发布时间：2023-12-07 02:16:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98675)
+
+	* 新增入参：Sync
+
+	* 新增出参：UniqId
+
+* [DeleteSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98674)
+
+	* 新增入参：Sync
+
+	* 新增出参：UniqId
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 76 次发布
+
+发布时间：2023-12-07 02:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)
+
+修改数据结构：
+
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
+
+	* <font color="#dd0000">**修改成员**：</font>RenewFlag
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：MiniPkg, MiniQpsStandard, MiniMaxQPS
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 62 次发布
+
+发布时间：2023-12-07 02:52:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
+
+	* 新增入参：TaskFolderId, DisplayType, IncludeTaskFolder
+
+* [DescribeDsParentFolderTree](https://cloud.tencent.com/document/api/1267/100211)
+
+	* 新增入参：DisplayType
+
+
+
+
 # Release v1.0.812
 
 ## 商业智能分析 BI(bi) 版本：2022-01-05

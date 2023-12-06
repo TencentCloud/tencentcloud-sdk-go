@@ -3935,7 +3935,7 @@ type DataEngineConfigInstanceInfo struct {
 	// 用户自定义配置项集合
 	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
 
-	// 作业集群资源参数配置模版
+	// 作业集群资源参数配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
 }
 
@@ -9490,10 +9490,10 @@ type KerberosInfo struct {
 }
 
 type LakeFileSystemToken struct {
-	// Token使用的临时秘钥的ID
+	// Token使用的临时密钥的ID
 	SecretId *string `json:"SecretId,omitnil" name:"SecretId"`
 
-	// Token使用的临时秘钥
+	// Token使用的临时密钥
 	SecretKey *string `json:"SecretKey,omitnil" name:"SecretKey"`
 
 	// Token信息
@@ -11975,6 +11975,10 @@ type TableResponseInfo struct {
 	// xxxx
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MapMaterializedViewName *string `json:"MapMaterializedViewName,omitnil" name:"MapMaterializedViewName"`
+
+	// 访问热点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeatValue *int64 `json:"HeatValue,omitnil" name:"HeatValue"`
 }
 
 type TagInfo struct {
@@ -12140,6 +12144,10 @@ type TaskResponseInfo struct {
 	// presto任务指标数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrestoMonitorMetrics *PrestoMonitorMetrics `json:"PrestoMonitorMetrics,omitnil" name:"PrestoMonitorMetrics"`
+
+	// 结果文件格式：默认为csv
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultFormat *string `json:"ResultFormat,omitnil" name:"ResultFormat"`
 }
 
 type TaskResultInfo struct {

@@ -4574,6 +4574,63 @@ func (r *DescribeHostsSettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIPRegionRequestParams struct {
+	// 待查询的 IP 列表，支持 IPV4 和 IPV6，最大可查询 100 条。
+	IPs []*string `json:"IPs,omitnil" name:"IPs"`
+}
+
+type DescribeIPRegionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待查询的 IP 列表，支持 IPV4 和 IPV6，最大可查询 100 条。
+	IPs []*string `json:"IPs,omitnil" name:"IPs"`
+}
+
+func (r *DescribeIPRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IPs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIPRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIPRegionResponseParams struct {
+	// IP 归属信息列表。
+	IPRegionInfo []*IPRegionInfo `json:"IPRegionInfo,omitnil" name:"IPRegionInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIPRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIPRegionResponseParams `json:"Response"`
+}
+
+func (r *DescribeIPRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIdentificationsRequestParams struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
@@ -6966,6 +7023,16 @@ type IPGroup struct {
 
 	// IP 组内容，可以填入 IP 及 IP 掩码。
 	Content []*string `json:"Content,omitnil" name:"Content"`
+}
+
+type IPRegionInfo struct {
+	// IP 地址，IPV4 或 IPV6。
+	IP *string `json:"IP,omitnil" name:"IP"`
+
+	// IP 是否属于 EdgeOne 节点，取值有：
+	// <li>yes：该 IP 属于 EdgeOne 节点；</li>
+	// <li>no：该 IP 不属于 EdgeOne 节点。</li>
+	IsEdgeOneIP *string `json:"IsEdgeOneIP,omitnil" name:"IsEdgeOneIP"`
 }
 
 type IPWhitelist struct {

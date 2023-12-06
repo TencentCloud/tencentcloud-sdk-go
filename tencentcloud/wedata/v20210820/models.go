@@ -11402,6 +11402,15 @@ type DescribeDsFolderTreeRequestParams struct {
 
 	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
 	IncludeVirtualTask *bool `json:"IncludeVirtualTask,omitnil" name:"IncludeVirtualTask"`
+
+	// 任务目录id
+	TaskFolderId *string `json:"TaskFolderId,omitnil" name:"TaskFolderId"`
+
+	// classification.分类展示  catalog.目录展示
+	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
+
+	// 是否包含任务目录
+	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil" name:"IncludeTaskFolder"`
 }
 
 type DescribeDsFolderTreeRequest struct {
@@ -11430,6 +11439,15 @@ type DescribeDsFolderTreeRequest struct {
 
 	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
 	IncludeVirtualTask *bool `json:"IncludeVirtualTask,omitnil" name:"IncludeVirtualTask"`
+
+	// 任务目录id
+	TaskFolderId *string `json:"TaskFolderId,omitnil" name:"TaskFolderId"`
+
+	// classification.分类展示  catalog.目录展示
+	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
+
+	// 是否包含任务目录
+	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil" name:"IncludeTaskFolder"`
 }
 
 func (r *DescribeDsFolderTreeRequest) ToJsonString() string {
@@ -11452,6 +11470,9 @@ func (r *DescribeDsFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "IncludeWorkflow")
 	delete(f, "IncludeTask")
 	delete(f, "IncludeVirtualTask")
+	delete(f, "TaskFolderId")
+	delete(f, "DisplayType")
+	delete(f, "IncludeTaskFolder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsFolderTreeRequest has unknown keys!", "")
 	}
@@ -11496,6 +11517,9 @@ type DescribeDsParentFolderTreeRequestParams struct {
 
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	//  classification:分类展示  catalog:目录展示
+	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
 }
 
 type DescribeDsParentFolderTreeRequest struct {
@@ -11512,6 +11536,9 @@ type DescribeDsParentFolderTreeRequest struct {
 
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	//  classification:分类展示  catalog:目录展示
+	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
 }
 
 func (r *DescribeDsParentFolderTreeRequest) ToJsonString() string {
@@ -11530,6 +11557,7 @@ func (r *DescribeDsParentFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "FolderId")
 	delete(f, "WorkflowId")
 	delete(f, "TaskId")
+	delete(f, "DisplayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsParentFolderTreeRequest has unknown keys!", "")
 	}

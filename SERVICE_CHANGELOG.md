@@ -1,10 +1,87 @@
 # 本版本更新包含以下内容：
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 7 次发布
+### 第 78 次发布
 
-发布时间：2023-12-06 01:10:35
+发布时间：2023-12-07 01:38:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ExecutorMaxNumbers
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：HeatValue
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：ResultFormat
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 138 次发布
+
+发布时间：2023-12-07 01:49:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* <font color="#dd0000">**修改成员**：</font>SkipUploadFile
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 77 次发布
+
+发布时间：2023-12-06 20:13:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)
+* [AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)
+* [AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)
+* [AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)
+* [MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)
+
+修改数据结构：
+
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
+
+	* 新增成员：DescriptionTask
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 15 次发布
+
+发布时间：2023-12-07 02:16:03
 
 本次发布包含了以下内容：
 
@@ -12,108 +89,68 @@
 
 修改接口：
 
-* [CreateDatasourceCloud](https://cloud.tencent.com/document/api/590/98853)
+* [AddSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98675)
 
-	* 新增入参：ClusterId
+	* 新增入参：Sync
 
-* [CreateEmbedToken](https://cloud.tencent.com/document/api/590/73724)
+	* 新增出参：UniqId
 
-	* 新增入参：TicketNum
+* [DeleteSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98674)
 
-* [ModifyDatasourceCloud](https://cloud.tencent.com/document/api/590/98850)
+	* 新增入参：Sync
 
-	* 新增入参：ClusterId
+	* 新增出参：UniqId
 
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 76 次发布
+
+发布时间：2023-12-07 02:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)
 
 修改数据结构：
 
-* [EmbedTokenInfo](https://cloud.tencent.com/document/api/590/73726#EmbedTokenInfo)
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
 
-	* 新增成员：TicketNum
+	* <font color="#dd0000">**修改成员**：</font>RenewFlag
 
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
 
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 75 次发布
-
-发布时间：2023-12-06 01:34:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Package](https://cloud.tencent.com/document/api/1003/48097#Package)
-
-	* 新增成员：HistoryBindResourceInfos
+	* 新增成员：MiniPkg, MiniQpsStandard, MiniMaxQPS
 
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 67 次发布
+### 第 62 次发布
 
-发布时间：2023-12-06 01:49:35
+发布时间：2023-12-07 02:52:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ImageRecognitionV2](https://cloud.tencent.com/document/api/1007/102203)
+* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
 
+	* 新增入参：TaskFolderId, DisplayType, IncludeTaskFolder
 
+* [DescribeDsParentFolderTree](https://cloud.tencent.com/document/api/1267/100211)
 
-## 游戏多媒体引擎(gme) 版本：2018-07-11
+	* 新增入参：DisplayType
 
-### 第 36 次发布
-
-发布时间：2023-12-06 01:51:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* CreateAgeDetectTask
-* DescribeAgeDetectTask
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 67 次发布
-
-发布时间：2023-12-06 02:32:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
-
-	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
-
-* [OriginInfo](https://cloud.tencent.com/document/api/1552/80721#OriginInfo)
-
-	* 新增成员：VodeoSubAppId, VodeoDistributionRange, VodeoBucketId
-
-* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
-
-	* 新增成员：Type
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -46806,6 +46843,29 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 78 次发布
+
+发布时间：2023-12-07 01:38:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ExecutorMaxNumbers
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：HeatValue
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：ResultFormat
+
+
 ### 第 77 次发布
 
 发布时间：2023-11-30 03:35:40
@@ -59098,6 +59158,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 138 次发布
+
+发布时间：2023-12-07 01:49:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* <font color="#dd0000">**修改成员**：</font>SkipUploadFile
+
+
 ### 第 137 次发布
 
 发布时间：2023-11-30 16:01:23
@@ -61867,7 +61942,7 @@
 
 新增接口：
 
-* [[ImageRecognitionV2](https://cloud.tencent.com/document/api/1007/102203)](https://cloud.tencent.com/document/api/#/#)
+* [ImageRecognitionV2](https://cloud.tencent.com/document/api/1007/102203)
 
 ### 第 66 次发布
 
@@ -83051,6 +83126,29 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 77 次发布
+
+发布时间：2023-12-06 20:13:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput))
+* [[AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput))
+* [[AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult))
+* [[AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)](https://cloud.tencent.com/document/api/862/37615#[AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo))
+* [[MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)](https://cloud.tencent.com/document/api/862/37615#[MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem))
+
+修改数据结构：
+
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
+
+	* 新增成员：DescriptionTask
+
+
 ### 第 76 次发布
 
 发布时间：2023-10-23 09:46:19
@@ -92848,6 +92946,29 @@
 
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 15 次发布
+
+发布时间：2023-12-07 02:16:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98675)
+
+	* 新增入参：Sync
+
+	* 新增出参：UniqId
+
+* [DeleteSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98674)
+
+	* 新增入参：Sync
+
+	* 新增出参：UniqId
+
 
 ### 第 14 次发布
 
@@ -114371,6 +114492,22 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 68 次发布
+
+发布时间：2023-12-06 12:21:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIPRegion](https://cloud.tencent.com/document/api/1552/102227)
+
+新增数据结构：
+
+* [IPRegionInfo](https://cloud.tencent.com/document/api/1552/80721#IPRegionInfo)
 
 ### 第 67 次发布
 
@@ -139517,6 +139654,29 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 76 次发布
+
+发布时间：2023-12-07 02:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)](https://cloud.tencent.com/document/api/627/53609#[MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg))
+
+修改数据结构：
+
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
+
+	* <font color="#dd0000">**修改成员**：</font>RenewFlag
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：MiniPkg, MiniQpsStandard, MiniMaxQPS
+
+
 ### 第 75 次发布
 
 发布时间：2023-11-21 01:41:48
@@ -141493,6 +141653,25 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 62 次发布
+
+发布时间：2023-12-07 02:52:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
+
+	* 新增入参：TaskFolderId, DisplayType, IncludeTaskFolder
+
+* [DescribeDsParentFolderTree](https://cloud.tencent.com/document/api/1267/100211)
+
+	* 新增入参：DisplayType
+
 
 ### 第 61 次发布
 

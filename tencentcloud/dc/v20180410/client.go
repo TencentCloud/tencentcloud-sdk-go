@@ -244,7 +244,7 @@ func NewCreateDirectConnectTunnelResponse() (response *CreateDirectConnectTunnel
 }
 
 // CreateDirectConnectTunnel
-// 用于创建专用通道的接口
+// 创建专用通道。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -268,7 +268,7 @@ func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelReq
 }
 
 // CreateDirectConnectTunnel
-// 用于创建专用通道的接口
+// 创建专用通道。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

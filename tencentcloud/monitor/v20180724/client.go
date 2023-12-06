@@ -3965,7 +3965,7 @@ func NewDescribeExporterIntegrationsResponse() (response *DescribeExporterIntegr
 }
 
 // DescribeExporterIntegrations
-// 查询 exporter 集成列表
+// 查询集成中心 exporter 集成列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3985,7 +3985,7 @@ func (c *Client) DescribeExporterIntegrations(request *DescribeExporterIntegrati
 }
 
 // DescribeExporterIntegrations
-// 查询 exporter 集成列表
+// 查询集成中心 exporter 集成列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8899,7 +8899,7 @@ func NewUpdateAlertRuleResponse() (response *UpdateAlertRuleResponse) {
 }
 
 // UpdateAlertRule
-// 更新 Prometheus 的报警规则。
+// 更新 Prometheus 的告警规则。
 //
 // 
 //
@@ -8923,7 +8923,7 @@ func (c *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (response *Upd
 }
 
 // UpdateAlertRule
-// 更新 Prometheus 的报警规则。
+// 更新 Prometheus 的告警规则。
 //
 // 
 //
@@ -9509,7 +9509,7 @@ func NewUpdatePrometheusScrapeJobResponse() (response *UpdatePrometheusScrapeJob
 }
 
 // UpdatePrometheusScrapeJob
-// 更新 Prometheus 抓取任务
+// 更新 Prometheus Agent 抓取任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9528,7 +9528,7 @@ func (c *Client) UpdatePrometheusScrapeJob(request *UpdatePrometheusScrapeJobReq
 }
 
 // UpdatePrometheusScrapeJob
-// 更新 Prometheus 抓取任务
+// 更新 Prometheus Agent 抓取任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
