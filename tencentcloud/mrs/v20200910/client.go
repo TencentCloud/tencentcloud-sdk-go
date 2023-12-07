@@ -45,6 +45,49 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewImageMaskRequest() (request *ImageMaskRequest) {
+    request = &ImageMaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "ImageMask")
+    
+    
+    return
+}
+
+func NewImageMaskResponse() (response *ImageMaskResponse) {
+    response = &ImageMaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImageMask
+// 医疗报告图片脱敏接口
+func (c *Client) ImageMask(request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
+    return c.ImageMaskWithContext(context.Background(), request)
+}
+
+// ImageMask
+// 医疗报告图片脱敏接口
+func (c *Client) ImageMaskWithContext(ctx context.Context, request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
+    if request == nil {
+        request = NewImageMaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageMask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageMaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageToClassRequest() (request *ImageToClassRequest) {
     request = &ImageToClassRequest{
         BaseRequest: &tchttp.BaseRequest{},

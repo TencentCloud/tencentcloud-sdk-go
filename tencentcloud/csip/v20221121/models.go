@@ -1925,6 +1925,78 @@ func (r *DescribeDomainAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGatewayAssetsRequestParams struct {
+	// 过滤参数
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+type DescribeGatewayAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤参数
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+func (r *DescribeGatewayAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGatewayAssetsResponseParams struct {
+	// 列表
+	Data []*GateWayAsset `json:"Data,omitnil" name:"Data"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 地域列表
+	RegionList []*FilterDataObject `json:"RegionList,omitnil" name:"RegionList"`
+
+	// 资产类型列表
+	AssetTypeList []*FilterDataObject `json:"AssetTypeList,omitnil" name:"AssetTypeList"`
+
+	// vpc列表
+	VpcList []*FilterDataObject `json:"VpcList,omitnil" name:"VpcList"`
+
+	// appid列表
+	AppIdList []*FilterDataObject `json:"AppIdList,omitnil" name:"AppIdList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeGatewayAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGatewayAssetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGatewayAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeListenerListRequestParams struct {
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
@@ -3472,6 +3544,102 @@ type FilterDataObject struct {
 
 	// 中文翻译
 	Text *string `json:"Text,omitnil" name:"Text"`
+}
+
+type GateWayAsset struct {
+	// appid
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// uin
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 资产ID
+	AssetId *string `json:"AssetId,omitnil" name:"AssetId"`
+
+	// 资产名
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
+
+	// 资产类型
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
+
+	// 私有ip
+	PrivateIp *string `json:"PrivateIp,omitnil" name:"PrivateIp"`
+
+	// 公网ip
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
+
+	// 区域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 私有网络名
+	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
+
+	// 出向峰值带宽
+	OutboundPeakBandwidth *string `json:"OutboundPeakBandwidth,omitnil" name:"OutboundPeakBandwidth"`
+
+	// 入向峰值带宽
+	InboundPeakBandwidth *string `json:"InboundPeakBandwidth,omitnil" name:"InboundPeakBandwidth"`
+
+	// 出站累计流量
+	OutboundCumulativeFlow *string `json:"OutboundCumulativeFlow,omitnil" name:"OutboundCumulativeFlow"`
+
+	// 入站累计流量
+	InboundCumulativeFlow *string `json:"InboundCumulativeFlow,omitnil" name:"InboundCumulativeFlow"`
+
+	// 网络攻击
+	NetworkAttack *int64 `json:"NetworkAttack,omitnil" name:"NetworkAttack"`
+
+	// 暴露端口
+	ExposedPort *int64 `json:"ExposedPort,omitnil" name:"ExposedPort"`
+
+	// 暴露漏洞
+	ExposedVUL *int64 `json:"ExposedVUL,omitnil" name:"ExposedVUL"`
+
+	// 配置风险
+	ConfigureRisk *int64 `json:"ConfigureRisk,omitnil" name:"ConfigureRisk"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 任务数
+	ScanTask *int64 `json:"ScanTask,omitnil" name:"ScanTask"`
+
+	// 最后扫描时间
+	LastScanTime *string `json:"LastScanTime,omitnil" name:"LastScanTime"`
+
+	// 昵称
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
+
+	// ipv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPV6 *string `json:"AddressIPV6,omitnil" name:"AddressIPV6"`
+
+	// 是否核心
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCore *uint64 `json:"IsCore,omitnil" name:"IsCore"`
+
+	// 风险服务暴露
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskExposure *int64 `json:"RiskExposure,omitnil" name:"RiskExposure"`
+
+	// 是否新资产 1新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNewAsset *uint64 `json:"IsNewAsset,omitnil" name:"IsNewAsset"`
+
+	// 网关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// TSE的网关真实地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineRegion *string `json:"EngineRegion,omitnil" name:"EngineRegion"`
 }
 
 type IpAssetListVO struct {

@@ -1,10 +1,60 @@
 # 本版本更新包含以下内容：
 
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 78 次发布
+### 第 22 次发布
 
-发布时间：2023-12-07 01:38:53
+发布时间：2023-12-08 01:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
+
+	* 新增入参：PayMode
+
+* [ModifyApmInstance](https://cloud.tencent.com/document/api/1463/89002)
+
+	* 新增入参：PayMode
+
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：PayMode, PayModeEffective
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 24 次发布
+
+发布时间：2023-12-08 01:27:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGatewayAssets](https://cloud.tencent.com/document/api/664/102291)
+
+新增数据结构：
+
+* [GateWayAsset](https://cloud.tencent.com/document/api/664/90825#GateWayAsset)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 139 次发布
+
+发布时间：2023-12-08 01:47:50
 
 本次发布包含了以下内容：
 
@@ -12,26 +62,18 @@
 
 修改数据结构：
 
-* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
+* [Recipient](https://cloud.tencent.com/document/api/1323/70369#Recipient)
 
-	* <font color="#dd0000">**修改成员**：</font>ExecutorMaxNumbers
-
-* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
-
-	* 新增成员：HeatValue
-
-* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
-
-	* 新增成员：ResultFormat
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
 
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 138 次发布
+### 第 139 次发布
 
-发布时间：2023-12-07 01:49:40
+发布时间：2023-12-08 01:48:54
 
 本次发布包含了以下内容：
 
@@ -39,9 +81,9 @@
 
 修改数据结构：
 
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+* [Recipient](https://cloud.tencent.com/document/api/1420/61525#Recipient)
 
-	* <font color="#dd0000">**修改成员**：</font>SkipUploadFile
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
 
 
 
@@ -50,106 +92,62 @@
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
-### 第 77 次发布
+### 第 21 次发布
 
-发布时间：2023-12-06 20:13:59
+发布时间：2023-12-08 02:10:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [ImageMask](https://cloud.tencent.com/document/api/1314/102293)
 
 新增数据结构：
 
-* [AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)
-* [AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)
-* [AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)
-* [AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)
-* [MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)
+* [ImageMaskFlags](https://cloud.tencent.com/document/api/1314/56230#ImageMaskFlags)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 124 次发布
+
+发布时间：2023-12-08 02:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
+* [TextVehicleBack](https://cloud.tencent.com/document/api/866/33527#TextVehicleBack)
 
-	* 新增成员：DescriptionTask
+	* 新增成员：FuelType
 
-
-
-
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
-
-### 第 15 次发布
-
-发布时间：2023-12-07 02:16:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98675)
-
-	* 新增入参：Sync
-
-	* 新增出参：UniqId
-
-* [DeleteSpecifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/98674)
-
-	* 新增入参：Sync
-
-	* 新增出参：UniqId
+	* <font color="#dd0000">**修改成员**：</font>SubPageCode
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 76 次发布
+### 第 165 次发布
 
-发布时间：2023-12-07 02:50:53
+发布时间：2023-12-08 02:37:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)
 
 修改数据结构：
 
-* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
+* [ResourceDeleteOption](https://cloud.tencent.com/document/api/457/31866#ResourceDeleteOption)
 
-	* <font color="#dd0000">**修改成员**：</font>RenewFlag
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
-
-	* 新增成员：MiniPkg, MiniQpsStandard, MiniMaxQPS
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 62 次发布
-
-发布时间：2023-12-07 02:52:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
-
-	* 新增入参：TaskFolderId, DisplayType, IncludeTaskFolder
-
-* [DescribeDsParentFolderTree](https://cloud.tencent.com/document/api/1267/100211)
-
-	* 新增入参：DisplayType
+	* 新增成员：SkipDeletionProtection
 
 
 
@@ -4513,6 +4511,32 @@
 
 
 ## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 22 次发布
+
+发布时间：2023-12-08 01:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
+
+	* 新增入参：PayMode
+
+* [ModifyApmInstance](https://cloud.tencent.com/document/api/1463/89002)
+
+	* 新增入参：PayMode
+
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：PayMode, PayModeEffective
+
 
 ### 第 21 次发布
 
@@ -35321,6 +35345,22 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 24 次发布
+
+发布时间：2023-12-08 01:27:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeGatewayAssets](https://cloud.tencent.com/document/api/664/102291)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GateWayAsset](https://cloud.tencent.com/document/api/664/90825#GateWayAsset)](https://cloud.tencent.com/document/api/664/90825#[GateWayAsset](https://cloud.tencent.com/document/api/664/90825#GateWayAsset))
+
 ### 第 23 次发布
 
 发布时间：2023-11-16 01:12:23
@@ -56475,6 +56515,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 139 次发布
+
+发布时间：2023-12-08 01:47:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Recipient](https://cloud.tencent.com/document/api/1323/70369#Recipient)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+
 ### 第 138 次发布
 
 发布时间：2023-11-30 16:06:35
@@ -59157,6 +59212,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 139 次发布
+
+发布时间：2023-12-08 01:48:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Recipient](https://cloud.tencent.com/document/api/1420/61525#Recipient)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
 
 ### 第 138 次发布
 
@@ -83136,11 +83206,11 @@
 
 新增数据结构：
 
-* [[AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput))
-* [[AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput))
-* [[AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)](https://cloud.tencent.com/document/api/862/37615#[AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult))
-* [[AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)](https://cloud.tencent.com/document/api/862/37615#[AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo))
-* [[MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)](https://cloud.tencent.com/document/api/862/37615#[MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem))
+* [AiAnalysisTaskDescriptionInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionInput)
+* [AiAnalysisTaskDescriptionOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionOutput)
+* [AiAnalysisTaskDescriptionResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDescriptionResult)
+* [AiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#AiParagraphInfo)
+* [MediaAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisDescriptionItem)
 
 修改数据结构：
 
@@ -85553,6 +85623,22 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 21 次发布
+
+发布时间：2023-12-08 02:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ImageMask](https://cloud.tencent.com/document/api/1314/102293)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ImageMaskFlags](https://cloud.tencent.com/document/api/1314/56230#ImageMaskFlags)](https://cloud.tencent.com/document/api/1314/56230#[ImageMaskFlags](https://cloud.tencent.com/document/api/1314/56230#ImageMaskFlags))
 
 ### 第 20 次发布
 
@@ -88344,6 +88430,23 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 124 次发布
+
+发布时间：2023-12-08 02:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TextVehicleBack](https://cloud.tencent.com/document/api/866/33527#TextVehicleBack)
+
+	* 新增成员：FuelType
+
+	* <font color="#dd0000">**修改成员**：</font>SubPageCode
+
 
 ### 第 123 次发布
 
@@ -120426,6 +120529,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 165 次发布
+
+发布时间：2023-12-08 02:37:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ResourceDeleteOption](https://cloud.tencent.com/document/api/457/31866#ResourceDeleteOption)
+
+	* 新增成员：SkipDeletionProtection
+
+
 ### 第 164 次发布
 
 发布时间：2023-11-30 06:52:41
@@ -139664,7 +139782,7 @@
 
 新增数据结构：
 
-* [[MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)](https://cloud.tencent.com/document/api/627/53609#[MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg))
+* [MiniPkg](https://cloud.tencent.com/document/api/627/53609#MiniPkg)
 
 修改数据结构：
 

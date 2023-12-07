@@ -1905,6 +1905,84 @@ type ImageInfo struct {
 	Base64 *string `json:"Base64,omitnil" name:"Base64"`
 }
 
+type ImageMaskFlags struct {
+	// 是否对医院信息进行脱敏
+	HospitalFlag *bool `json:"HospitalFlag,omitnil" name:"HospitalFlag"`
+
+	// 是否对医生信息进行脱敏
+	DoctorFlag *bool `json:"DoctorFlag,omitnil" name:"DoctorFlag"`
+
+	// 是否对患者信息进行脱敏
+	PatientFlag *bool `json:"PatientFlag,omitnil" name:"PatientFlag"`
+
+	// 是否对二维码信息进行脱敏
+	BarFlag *bool `json:"BarFlag,omitnil" name:"BarFlag"`
+}
+
+// Predefined struct for user
+type ImageMaskRequestParams struct {
+	// 图片信息,目前只支持传图片base64
+	Image *ImageInfo `json:"Image,omitnil" name:"Image"`
+
+	// 图片脱敏选项, 不传默认都脱敏
+	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil" name:"MaskFlag"`
+}
+
+type ImageMaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片信息,目前只支持传图片base64
+	Image *ImageInfo `json:"Image,omitnil" name:"Image"`
+
+	// 图片脱敏选项, 不传默认都脱敏
+	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil" name:"MaskFlag"`
+}
+
+func (r *ImageMaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "MaskFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageMaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageMaskResponseParams struct {
+	// 脱敏后图片的Base64信息
+	MaskedImage *string `json:"MaskedImage,omitnil" name:"MaskedImage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImageMaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageMaskResponseParams `json:"Response"`
+}
+
+func (r *ImageMaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ImageToClassRequestParams struct {
 	// 图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url

@@ -1,3 +1,157 @@
+# Release v1.0.814
+
+## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 22 次发布
+
+发布时间：2023-12-08 01:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
+
+	* 新增入参：PayMode
+
+* [ModifyApmInstance](https://cloud.tencent.com/document/api/1463/89002)
+
+	* 新增入参：PayMode
+
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：PayMode, PayModeEffective
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 24 次发布
+
+发布时间：2023-12-08 01:27:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGatewayAssets](https://cloud.tencent.com/document/api/664/102291)
+
+新增数据结构：
+
+* [GateWayAsset](https://cloud.tencent.com/document/api/664/90825#GateWayAsset)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 139 次发布
+
+发布时间：2023-12-08 01:47:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Recipient](https://cloud.tencent.com/document/api/1323/70369#Recipient)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 139 次发布
+
+发布时间：2023-12-08 01:48:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Recipient](https://cloud.tencent.com/document/api/1420/61525#Recipient)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 21 次发布
+
+发布时间：2023-12-08 02:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImageMask](https://cloud.tencent.com/document/api/1314/102293)
+
+新增数据结构：
+
+* [ImageMaskFlags](https://cloud.tencent.com/document/api/1314/56230#ImageMaskFlags)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 124 次发布
+
+发布时间：2023-12-08 02:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TextVehicleBack](https://cloud.tencent.com/document/api/866/33527#TextVehicleBack)
+
+	* 新增成员：FuelType
+
+	* <font color="#dd0000">**修改成员**：</font>SubPageCode
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 165 次发布
+
+发布时间：2023-12-08 02:37:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ResourceDeleteOption](https://cloud.tencent.com/document/api/457/31866#ResourceDeleteOption)
+
+	* 新增成员：SkipDeletionProtection
+
+
+
+
 # Release v1.0.813
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25

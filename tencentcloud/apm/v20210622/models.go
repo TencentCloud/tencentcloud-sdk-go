@@ -197,6 +197,16 @@ type ApmInstanceDetail struct {
 	// 用户自定义展示标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomShowTags []*string `json:"CustomShowTags,omitnil" name:"CustomShowTags"`
+
+	// 实例计费模式
+	// 1为预付费
+	// 0为按量付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 实例计费模式是否生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayModeEffective *bool `json:"PayModeEffective,omitnil" name:"PayModeEffective"`
 }
 
 type ApmMetricRecord struct {
@@ -231,6 +241,9 @@ type CreateApmInstanceRequestParams struct {
 
 	// 实例上报额度值
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil" name:"SpanDailyCounters"`
+
+	// 实例的计费模式
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
 }
 
 type CreateApmInstanceRequest struct {
@@ -250,6 +263,9 @@ type CreateApmInstanceRequest struct {
 
 	// 实例上报额度值
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil" name:"SpanDailyCounters"`
+
+	// 实例的计费模式
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
 }
 
 func (r *CreateApmInstanceRequest) ToJsonString() string {
@@ -269,6 +285,7 @@ func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "TraceDuration")
 	delete(f, "Tags")
 	delete(f, "SpanDailyCounters")
+	delete(f, "PayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmInstanceRequest has unknown keys!", "")
 	}
@@ -1089,6 +1106,11 @@ type ModifyApmInstanceRequestParams struct {
 
 	// 用户自定义展示标签列表
 	CustomShowTags []*string `json:"CustomShowTags,omitnil" name:"CustomShowTags"`
+
+	// 修改计费模式
+	// 1为预付费
+	// 0为按量付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1144,6 +1166,11 @@ type ModifyApmInstanceRequest struct {
 
 	// 用户自定义展示标签列表
 	CustomShowTags []*string `json:"CustomShowTags,omitnil" name:"CustomShowTags"`
+
+	// 修改计费模式
+	// 1为预付费
+	// 0为按量付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1175,6 +1202,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LogSet")
 	delete(f, "LogSource")
 	delete(f, "CustomShowTags")
+	delete(f, "PayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

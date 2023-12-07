@@ -9340,6 +9340,18 @@ type Recipient struct {
 
 	// 参与方的一些附属信息，json格式
 	RecipientExtra *string `json:"RecipientExtra,omitnil" name:"RecipientExtra"`
+
+	// 签署人查看合同校验方式, 支持的类型如下:
+	// <ul><li> 1 :实名认证查看</li>
+	// <li> 2 :手机号校验查看</li></ul>
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
+
+	// 签署人进行合同签署时的认证方式，支持的类型如下:
+	// <ul><li> 1 :人脸认证</li>
+	// <li> 2 :签署密码</li>
+	// <li> 3 :运营商三要素认证</li>
+	// <li> 4 :UKey认证</li></ul>
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 }
 
 type RecipientComponentInfo struct {

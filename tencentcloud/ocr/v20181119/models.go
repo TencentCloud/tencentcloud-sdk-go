@@ -9657,6 +9657,11 @@ type TextVehicleBack struct {
 	// 副页编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubPageCode *string `json:"SubPageCode,omitnil" name:"SubPageCode"`
+
+	// 燃料种类
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuelType *string `json:"FuelType,omitnil" name:"FuelType"`
 }
 
 type TextVehicleFront struct {

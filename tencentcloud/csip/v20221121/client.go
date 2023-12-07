@@ -884,6 +884,89 @@ func (c *Client) DescribeDomainAssetsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeGatewayAssetsRequest() (request *DescribeGatewayAssetsRequest) {
+    request = &DescribeGatewayAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeGatewayAssets")
+    
+    
+    return
+}
+
+func NewDescribeGatewayAssetsResponse() (response *DescribeGatewayAssetsResponse) {
+    response = &DescribeGatewayAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGatewayAssets
+// 获取网关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
+    return c.DescribeGatewayAssetsWithContext(context.Background(), request)
+}
+
+// DescribeGatewayAssets
+// 获取网关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGatewayAssetsWithContext(ctx context.Context, request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayAssetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenerListRequest() (request *DescribeListenerListRequest) {
     request = &DescribeListenerListRequest{
         BaseRequest: &tchttp.BaseRequest{},
