@@ -11050,6 +11050,14 @@ type PulsarProInstance struct {
 
 	// 峰值带宽。单位：mbps
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil" name:"MaxBandWidth"`
+
+	// 集群的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 type QueueQuota struct {

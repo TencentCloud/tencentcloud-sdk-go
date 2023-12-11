@@ -1953,6 +1953,68 @@ type PrivateZoneRecord struct {
 }
 
 // Predefined struct for user
+type QueryAsyncBindVpcStatusRequestParams struct {
+	// 唯一ID
+	UniqId *string `json:"UniqId,omitnil" name:"UniqId"`
+}
+
+type QueryAsyncBindVpcStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 唯一ID
+	UniqId *string `json:"UniqId,omitnil" name:"UniqId"`
+}
+
+func (r *QueryAsyncBindVpcStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAsyncBindVpcStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UniqId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAsyncBindVpcStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryAsyncBindVpcStatusResponseParams struct {
+	// processing 处理中，success 执行成功，
+	// fail 执行失败
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QueryAsyncBindVpcStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryAsyncBindVpcStatusResponseParams `json:"Response"`
+}
+
+func (r *QueryAsyncBindVpcStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAsyncBindVpcStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SubscribePrivateZoneServiceRequestParams struct {
 
 }

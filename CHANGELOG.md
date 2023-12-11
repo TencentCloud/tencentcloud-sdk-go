@@ -1,3 +1,125 @@
+# Release v1.0.815
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 56 次发布
+
+发布时间：2023-12-11 00:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoginActionFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionFlag)
+
+	* 新增成员：Mail
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 140 次发布
+
+发布时间：2023-12-11 00:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeChannelOrganizations](https://cloud.tencent.com/document/api/1420/102360)
+
+新增数据结构：
+
+* [ChannelOrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#ChannelOrganizationInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 98 次发布
+
+发布时间：2023-12-11 01:02:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlarmConditionFilter](https://cloud.tencent.com/document/api/248/30354#AlarmConditionFilter)
+* [AlarmGroupByItem](https://cloud.tencent.com/document/api/248/30354#AlarmGroupByItem)
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：Filter, GroupBy
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 16 次发布
+
+发布时间：2023-12-11 01:10:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryAsyncBindVpcStatus](https://cloud.tencent.com/document/api/1338/102361)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 68 次发布
+
+发布时间：2023-12-11 01:11:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceSupportFeature](https://cloud.tencent.com/document/api/239/102364)
+* [ModifyInstanceAvailabilityZones](https://cloud.tencent.com/document/api/239/102363)
+* [SwitchAccessNewInstance](https://cloud.tencent.com/document/api/239/102362)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 96 次发布
+
+发布时间：2023-12-11 01:28:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PulsarProInstance](https://cloud.tencent.com/document/api/1179/46089#PulsarProInstance)
+
+	* 新增成员：Tags, CreateTime
+
+
+
+
 # Release v1.0.814
 
 ## 应用性能监控(apm) 版本：2021-06-22

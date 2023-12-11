@@ -3509,6 +3509,76 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceSupportFeatureRequestParams struct {
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	// 示例值：crs-asdasdas
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 功能特性名称
+	// - read-local-node-only 就近接入功能
+	// - multi-account 多账号功能
+	FeatureName *string `json:"FeatureName,omitnil" name:"FeatureName"`
+}
+
+type DescribeInstanceSupportFeatureRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	// 示例值：crs-asdasdas
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 功能特性名称
+	// - read-local-node-only 就近接入功能
+	// - multi-account 多账号功能
+	FeatureName *string `json:"FeatureName,omitnil" name:"FeatureName"`
+}
+
+func (r *DescribeInstanceSupportFeatureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSupportFeatureRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FeatureName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSupportFeatureRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceSupportFeatureResponseParams struct {
+	// 是否支持
+	Support *bool `json:"Support,omitnil" name:"Support"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceSupportFeatureResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceSupportFeatureResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceSupportFeatureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSupportFeatureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceZoneInfoRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -6907,6 +6977,83 @@ func (r *ModifyInstanceAccountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceAvailabilityZonesRequestParams struct {
+	// 指定实例 ID。例如：crs-xjhsdj****，请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 切换时间。
+	// - 1：维护时间窗切换。
+	// - 2：立即切换。
+	SwitchOption *int64 `json:"SwitchOption,omitnil" name:"SwitchOption"`
+
+	// 实例的节点信息，包含节点 ID、节点类型、节点可用区 ID等。具体信息，请参见[RedisNodeInfo ](https://cloud.tencent.com/document/product/239/20022)。
+	// 单可用区实例无需传NodeId，多可用区实例NodeId必传
+	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil" name:"NodeSet"`
+}
+
+type ModifyInstanceAvailabilityZonesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：crs-xjhsdj****，请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 切换时间。
+	// - 1：维护时间窗切换。
+	// - 2：立即切换。
+	SwitchOption *int64 `json:"SwitchOption,omitnil" name:"SwitchOption"`
+
+	// 实例的节点信息，包含节点 ID、节点类型、节点可用区 ID等。具体信息，请参见[RedisNodeInfo ](https://cloud.tencent.com/document/product/239/20022)。
+	// 单可用区实例无需传NodeId，多可用区实例NodeId必传
+	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil" name:"NodeSet"`
+}
+
+func (r *ModifyInstanceAvailabilityZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceAvailabilityZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SwitchOption")
+	delete(f, "NodeSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAvailabilityZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceAvailabilityZonesResponseParams struct {
+	// 任务ID。	
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyInstanceAvailabilityZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceAvailabilityZonesResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceAvailabilityZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceAvailabilityZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceParamsRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -8297,6 +8444,62 @@ func (r *StartupInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartupInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchAccessNewInstanceRequestParams struct {
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	// 示例值：crs-asdasdas
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type SwitchAccessNewInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+	// 示例值：crs-asdasdas
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *SwitchAccessNewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchAccessNewInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchAccessNewInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchAccessNewInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SwitchAccessNewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchAccessNewInstanceResponseParams `json:"Response"`
+}
+
+func (r *SwitchAccessNewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchAccessNewInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

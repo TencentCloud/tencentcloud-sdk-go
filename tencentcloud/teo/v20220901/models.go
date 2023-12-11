@@ -4791,7 +4791,7 @@ func (r *DescribeOriginGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOriginProtectionRequestParams struct {
-	// 查询的站点集合，不填默认查询所有站点。
+	// 查询的站点ID集合。该参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
@@ -4809,7 +4809,7 @@ type DescribeOriginProtectionRequestParams struct {
 type DescribeOriginProtectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询的站点集合，不填默认查询所有站点。
+	// 查询的站点ID集合。该参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：

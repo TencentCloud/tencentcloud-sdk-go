@@ -5824,6 +5824,59 @@ func (c *Client) DescribeChannelFlowEvidenceReportWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeChannelOrganizationsRequest() (request *DescribeChannelOrganizationsRequest) {
+    request = &DescribeChannelOrganizationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeChannelOrganizations")
+    
+    
+    return
+}
+
+func NewDescribeChannelOrganizationsResponse() (response *DescribeChannelOrganizationsResponse) {
+    response = &DescribeChannelOrganizationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChannelOrganizations
+// 查询渠道子客企业信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeChannelOrganizations(request *DescribeChannelOrganizationsRequest) (response *DescribeChannelOrganizationsResponse, err error) {
+    return c.DescribeChannelOrganizationsWithContext(context.Background(), request)
+}
+
+// DescribeChannelOrganizations
+// 查询渠道子客企业信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeChannelOrganizationsWithContext(ctx context.Context, request *DescribeChannelOrganizationsRequest) (response *DescribeChannelOrganizationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeChannelOrganizationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelOrganizations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChannelOrganizationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChannelSealPolicyWorkflowUrlRequest() (request *DescribeChannelSealPolicyWorkflowUrlRequest) {
     request = &DescribeChannelSealPolicyWorkflowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

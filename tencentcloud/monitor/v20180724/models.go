@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AlarmConditionFilter struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expression *string `json:"Expression,omitnil" name:"Expression"`
+
+	// 过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions *string `json:"Dimensions,omitnil" name:"Dimensions"`
+}
+
 type AlarmEvent struct {
 	// 事件名
 	EventName *string `json:"EventName,omitnil" name:"EventName"`
@@ -29,6 +43,16 @@ type AlarmEvent struct {
 
 	// 告警策略类型
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+}
+
+type AlarmGroupByItem struct {
+	// Item Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type AlarmHierarchicalNotice struct {
@@ -357,6 +381,14 @@ type AlarmPolicy struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInstances []*TagInstance `json:"TagInstances,omitnil" name:"TagInstances"`
+
+	// 过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Filter *AlarmConditionFilter `json:"Filter,omitnil" name:"Filter"`
+
+	// 聚合条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupBy []*AlarmGroupByItem `json:"GroupBy,omitnil" name:"GroupBy"`
 
 	// 策略关联的过滤维度信息
 	// 注意：此字段可能返回 null，表示取不到有效值。

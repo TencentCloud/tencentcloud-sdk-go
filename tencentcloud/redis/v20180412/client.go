@@ -2610,6 +2610,61 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceSupportFeatureRequest() (request *DescribeInstanceSupportFeatureRequest) {
+    request = &DescribeInstanceSupportFeatureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceSupportFeature")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSupportFeatureResponse() (response *DescribeInstanceSupportFeatureResponse) {
+    response = &DescribeInstanceSupportFeatureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSupportFeature
+// 本接口（DescribeInstanceSupportFeature）用于查询实例支持的功能特性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeInstanceSupportFeature(request *DescribeInstanceSupportFeatureRequest) (response *DescribeInstanceSupportFeatureResponse, err error) {
+    return c.DescribeInstanceSupportFeatureWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSupportFeature
+// 本接口（DescribeInstanceSupportFeature）用于查询实例支持的功能特性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeInstanceSupportFeatureWithContext(ctx context.Context, request *DescribeInstanceSupportFeatureRequest) (response *DescribeInstanceSupportFeatureResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSupportFeatureRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSupportFeature require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSupportFeatureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceZoneInfoRequest() (request *DescribeInstanceZoneInfoRequest) {
     request = &DescribeInstanceZoneInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4596,6 +4651,75 @@ func (c *Client) ModifyInstanceAccountWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyInstanceAvailabilityZonesRequest() (request *ModifyInstanceAvailabilityZonesRequest) {
+    request = &ModifyInstanceAvailabilityZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceAvailabilityZones")
+    
+    
+    return
+}
+
+func NewModifyInstanceAvailabilityZonesResponse() (response *ModifyInstanceAvailabilityZonesResponse) {
+    response = &ModifyInstanceAvailabilityZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceAvailabilityZones
+// 本接口（ModifyInstanceAvailabilityZones）用于变更实例可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstanceAvailabilityZones(request *ModifyInstanceAvailabilityZonesRequest) (response *ModifyInstanceAvailabilityZonesResponse, err error) {
+    return c.ModifyInstanceAvailabilityZonesWithContext(context.Background(), request)
+}
+
+// ModifyInstanceAvailabilityZones
+// 本接口（ModifyInstanceAvailabilityZones）用于变更实例可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstanceAvailabilityZonesWithContext(ctx context.Context, request *ModifyInstanceAvailabilityZonesRequest) (response *ModifyInstanceAvailabilityZonesResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceAvailabilityZonesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceAvailabilityZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceAvailabilityZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
     request = &ModifyInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5378,6 +5502,63 @@ func (c *Client) StartupInstanceWithContext(ctx context.Context, request *Startu
     request.SetContext(ctx)
     
     response = NewStartupInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchAccessNewInstanceRequest() (request *SwitchAccessNewInstanceRequest) {
+    request = &SwitchAccessNewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "SwitchAccessNewInstance")
+    
+    
+    return
+}
+
+func NewSwitchAccessNewInstanceResponse() (response *SwitchAccessNewInstanceResponse) {
+    response = &SwitchAccessNewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchAccessNewInstance
+// 本接口（SwitchAccessNewInstance）针对处于时间窗口中待切换操作的实例，用户可主动发起该操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) SwitchAccessNewInstance(request *SwitchAccessNewInstanceRequest) (response *SwitchAccessNewInstanceResponse, err error) {
+    return c.SwitchAccessNewInstanceWithContext(context.Background(), request)
+}
+
+// SwitchAccessNewInstance
+// 本接口（SwitchAccessNewInstance）针对处于时间窗口中待切换操作的实例，用户可主动发起该操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) SwitchAccessNewInstanceWithContext(ctx context.Context, request *SwitchAccessNewInstanceRequest) (response *SwitchAccessNewInstanceResponse, err error) {
+    if request == nil {
+        request = NewSwitchAccessNewInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchAccessNewInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchAccessNewInstanceResponse()
     err = c.Send(request, response)
     return
 }

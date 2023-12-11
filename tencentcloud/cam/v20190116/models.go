@@ -5093,6 +5093,9 @@ type LoginActionFlag struct {
 
 	// 自定义
 	Custom *uint64 `json:"Custom,omitnil" name:"Custom"`
+
+	// 邮箱
+	Mail *uint64 `json:"Mail,omitnil" name:"Mail"`
 }
 
 type LoginActionFlagIntl struct {
