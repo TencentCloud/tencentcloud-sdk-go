@@ -1467,19 +1467,19 @@ type CreateExporterIntegrationRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 类型
+	// 类型(可通过 DescribePrometheusIntegrations 接口获取，取每一项中的 ExporterType 字段)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 集成配置
 	Content *string `json:"Content,omitnil" name:"Content"`
 
-	// Kubernetes 集群类型，取值如下：
+	// Kubernetes 集群类型，可不填，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群<EKS> </li>
-	// <li> 3= Prometheus管理的弹性集群<MEKS> </li>
+	// <li> 2=弹性集群(EKS) </li>
+	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil" name:"KubeType"`
 
-	// 集群 ID
+	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
@@ -1489,19 +1489,19 @@ type CreateExporterIntegrationRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 类型
+	// 类型(可通过 DescribePrometheusIntegrations 接口获取，取每一项中的 ExporterType 字段)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 集成配置
 	Content *string `json:"Content,omitnil" name:"Content"`
 
-	// Kubernetes 集群类型，取值如下：
+	// Kubernetes 集群类型，可不填，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群<EKS> </li>
-	// <li> 3= Prometheus管理的弹性集群<MEKS> </li>
+	// <li> 2=弹性集群(EKS) </li>
+	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil" name:"KubeType"`
 
-	// 集群 ID
+	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
@@ -2332,16 +2332,16 @@ type CreatePrometheusMultiTenantInstancePostPayModeRequestParams struct {
 	// 实例名
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
-	// VPC ID
+	// VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网 ID
+	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 数据存储时间（单位天），限制值为15，30，45之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil" name:"DataRetentionTime"`
 
-	// 可用区
+	// 可用区(与子网同可用区)
 	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 实例的标签
@@ -2357,16 +2357,16 @@ type CreatePrometheusMultiTenantInstancePostPayModeRequest struct {
 	// 实例名
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
-	// VPC ID
+	// VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网 ID
+	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 数据存储时间（单位天），限制值为15，30，45之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil" name:"DataRetentionTime"`
 
-	// 可用区
+	// 可用区(与子网同可用区)
 	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 实例的标签
@@ -2496,26 +2496,26 @@ func (r *CreatePrometheusRecordRuleYamlResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreatePrometheusScrapeJobRequestParams struct {
-	// Prometheus 实例 ID，例如：prom-abcd1234
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+	// Agent ID(可通过DescribePrometheusAgents 接口获取)
 	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
-	// 抓取任务配置，格式：job_name:xx
+	// 抓取任务配置
 	Config *string `json:"Config,omitnil" name:"Config"`
 }
 
 type CreatePrometheusScrapeJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID，例如：prom-abcd1234
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+	// Agent ID(可通过DescribePrometheusAgents 接口获取)
 	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
-	// 抓取任务配置，格式：job_name:xx
+	// 抓取任务配置
 	Config *string `json:"Config,omitnil" name:"Config"`
 }
 
@@ -2627,7 +2627,7 @@ type CreateRecordingRuleRequestParams struct {
 	// 聚合规则名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 聚合规则组内容，格式为 yaml
+	// 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
 	Group *string `json:"Group,omitnil" name:"Group"`
 
 	// Prometheus 实例 ID
@@ -2647,7 +2647,7 @@ type CreateRecordingRuleRequest struct {
 	// 聚合规则名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 聚合规则组内容，格式为 yaml
+	// 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
 	Group *string `json:"Group,omitnil" name:"Group"`
 
 	// Prometheus 实例 ID
@@ -3086,7 +3086,7 @@ type DeleteExporterIntegrationRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 类型
+	// 类型(可通过 DescribeExporterIntegrations获取)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 名字
@@ -3094,11 +3094,11 @@ type DeleteExporterIntegrationRequestParams struct {
 
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群<EKS> </li>
-	// <li> 3= Prometheus管理的弹性集群<MEKS> </li>
+	// <li> 2=弹性集群(EKS) </li>
+	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil" name:"KubeType"`
 
-	// 集群 ID
+	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
@@ -3108,7 +3108,7 @@ type DeleteExporterIntegrationRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 类型
+	// 类型(可通过 DescribeExporterIntegrations获取)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 名字
@@ -3116,11 +3116,11 @@ type DeleteExporterIntegrationRequest struct {
 
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群<EKS> </li>
-	// <li> 3= Prometheus管理的弹性集群<MEKS> </li>
+	// <li> 2=弹性集群(EKS) </li>
+	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil" name:"KubeType"`
 
-	// 集群 ID
+	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
@@ -3690,10 +3690,10 @@ type DeletePrometheusScrapeJobsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID(可通过 DescribePrometheusAgents 接口获取)
 	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
-	// 任务 ID 列表
+	// 任务 ID 列表(可通过 DescribePrometheusScrapeJobs 接口获取)
 	JobIds []*string `json:"JobIds,omitnil" name:"JobIds"`
 }
 
@@ -3703,10 +3703,10 @@ type DeletePrometheusScrapeJobsRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID(可通过 DescribePrometheusAgents 接口获取)
 	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
-	// 任务 ID 列表
+	// 任务 ID 列表(可通过 DescribePrometheusScrapeJobs 接口获取)
 	JobIds []*string `json:"JobIds,omitnil" name:"JobIds"`
 }
 
@@ -15325,6 +15325,13 @@ type UpgradeGrafanaDashboardRequestParams struct {
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：
+	// <li>qcloud</li>
+	// <li>cvm_process_exporter</li>
+	// <li>cvm_node_exporter</li>
+	// <li>cvm</li>
+	// <li>kubernetes</li>
+	// <li>cdwch</li>
+	// <li>rocketmq</li>
 	// <li>spring_mvc</li>
 	// <li>mysql</li>
 	// <li>go</li>
@@ -15342,6 +15349,8 @@ type UpgradeGrafanaDashboardRequestParams struct {
 	// <li>tps</li>
 	// <li>istio</li>
 	// <li>etcd</li>
+	// <li>pts</li>
+	// <li>kong</li>
 	IntegrationCodes []*string `json:"IntegrationCodes,omitnil" name:"IntegrationCodes"`
 }
 
@@ -15352,6 +15361,13 @@ type UpgradeGrafanaDashboardRequest struct {
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：
+	// <li>qcloud</li>
+	// <li>cvm_process_exporter</li>
+	// <li>cvm_node_exporter</li>
+	// <li>cvm</li>
+	// <li>kubernetes</li>
+	// <li>cdwch</li>
+	// <li>rocketmq</li>
 	// <li>spring_mvc</li>
 	// <li>mysql</li>
 	// <li>go</li>
@@ -15369,6 +15385,8 @@ type UpgradeGrafanaDashboardRequest struct {
 	// <li>tps</li>
 	// <li>istio</li>
 	// <li>etcd</li>
+	// <li>pts</li>
+	// <li>kong</li>
 	IntegrationCodes []*string `json:"IntegrationCodes,omitnil" name:"IntegrationCodes"`
 }
 

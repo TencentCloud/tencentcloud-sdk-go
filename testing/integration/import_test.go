@@ -68,6 +68,7 @@ import (
 	cdnv20180606 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn/v20180606"
 	cdsv20180420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cds/v20180420"
 	cdwchv20200915 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdwch/v20200915"
+	cdwdorisv20211228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdwdoris/v20211228"
 	cdwpgv20201230 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdwpg/v20201230"
 	cfgv20210820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfg/v20210820"
 	cfsv20190719 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfs/v20190719"
@@ -915,6 +916,19 @@ func TestCdwchv20200915Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init cdwch_v20200915 client: %v", err)
+    }
+}
+
+func TestCdwdorisv20211228Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := cdwdorisv20211228.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init cdwdoris_v20211228 client: %v", err)
     }
 }
 

@@ -68,6 +68,7 @@ func NewDescribeFraudBaseResponse() (response *DescribeFraudBaseResponse) {
 // 查询设备风险
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudBase(request *DescribeFraudBaseRequest) (response *DescribeFraudBaseResponse, err error) {
     return c.DescribeFraudBaseWithContext(context.Background(), request)
@@ -77,6 +78,7 @@ func (c *Client) DescribeFraudBase(request *DescribeFraudBaseRequest) (response 
 // 查询设备风险
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudBaseWithContext(ctx context.Context, request *DescribeFraudBaseRequest) (response *DescribeFraudBaseResponse, err error) {
     if request == nil {

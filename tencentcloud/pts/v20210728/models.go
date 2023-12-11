@@ -83,7 +83,7 @@ func (r *AbortCronJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AbortJobRequestParams struct {
-	// 任务ID
+	// 待停止的压测任务的 ID（所有的压测任务 ID 可以从 DescribeJobs 接口获取）
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 项目ID
@@ -99,7 +99,7 @@ type AbortJobRequestParams struct {
 type AbortJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 待停止的压测任务的 ID（所有的压测任务 ID 可以从 DescribeJobs 接口获取）
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 项目ID
@@ -161,7 +161,7 @@ type AdjustJobSpeedRequestParams struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
-	// 目标RPS
+	// 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitnil" name:"TargetRequestsPerSecond"`
 }
 
@@ -171,7 +171,7 @@ type AdjustJobSpeedRequest struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
-	// 目标RPS
+	// 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitnil" name:"TargetRequestsPerSecond"`
 }
 
@@ -471,26 +471,26 @@ func (r *CopyScenarioResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertChannelRequestParams struct {
-	// Notice ID
+	// monitor 服务的告警通知模板的 NoticeId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 Id 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
 	NoticeId *string `json:"NoticeId,omitnil" name:"NoticeId"`
 
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// AMP Consumer ID
+	// monitor 服务的告警通知模板的 AMPConsumerId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 AMPConsumerId 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
 	AMPConsumerId *string `json:"AMPConsumerId,omitnil" name:"AMPConsumerId"`
 }
 
 type CreateAlertChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// Notice ID
+	// monitor 服务的告警通知模板的 NoticeId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 Id 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
 	NoticeId *string `json:"NoticeId,omitnil" name:"NoticeId"`
 
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// AMP Consumer ID
+	// monitor 服务的告警通知模板的 AMPConsumerId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 AMPConsumerId 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
 	AMPConsumerId *string `json:"AMPConsumerId,omitnil" name:"AMPConsumerId"`
 }
 
@@ -659,7 +659,7 @@ func (r *CreateCronJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileRequestParams struct {
-	// 文件 ID
+	// 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
 	FileId *string `json:"FileId,omitnil" name:"FileId"`
 
 	// 项目 ID
@@ -699,7 +699,7 @@ type CreateFileRequestParams struct {
 type CreateFileRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件 ID
+	// 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
 	FileId *string `json:"FileId,omitnil" name:"FileId"`
 
 	// 项目 ID
@@ -1173,7 +1173,7 @@ type DeleteAlertChannelRequestParams struct {
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// Notice ID
+	// 待删除的通知渠道的 Notice ID（所有通知渠道的 Notice ID 可以从 DescribeAlertChannels 接口获取）
 	NoticeId *string `json:"NoticeId,omitnil" name:"NoticeId"`
 }
 
@@ -1183,7 +1183,7 @@ type DeleteAlertChannelRequest struct {
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// Notice ID
+	// 待删除的通知渠道的 Notice ID（所有通知渠道的 Notice ID 可以从 DescribeAlertChannels 接口获取）
 	NoticeId *string `json:"NoticeId,omitnil" name:"NoticeId"`
 }
 
@@ -1295,7 +1295,7 @@ type DeleteFilesRequestParams struct {
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 文件 ID 数组
+	// 待删除的文件的 ID（所有文件 ID 可从接口 DescribeFiles 获取）
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 }
 
@@ -1305,7 +1305,7 @@ type DeleteFilesRequest struct {
 	// 项目 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 文件 ID 数组
+	// 待删除的文件的 ID（所有文件 ID 可从接口 DescribeFiles 获取）
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 }
 
@@ -1353,7 +1353,7 @@ func (r *DeleteFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteJobsRequestParams struct {
-	// 任务ID数组
+	// 待删除的任务的 ID（所有任务的 ID 可以从 DescribeJobs 获取）
 	JobIds []*string `json:"JobIds,omitnil" name:"JobIds"`
 
 	// 项目ID
@@ -1366,7 +1366,7 @@ type DeleteJobsRequestParams struct {
 type DeleteJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID数组
+	// 待删除的任务的 ID（所有任务的 ID 可以从 DescribeJobs 获取）
 	JobIds []*string `json:"JobIds,omitnil" name:"JobIds"`
 
 	// 项目ID
@@ -2315,10 +2315,10 @@ type DescribeLabelValuesRequestParams struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名称
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 查询标签名称
+	// 标签名。取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	LabelName *string `json:"LabelName,omitnil" name:"LabelName"`
 
 	// 项目ID
@@ -2334,10 +2334,10 @@ type DescribeLabelValuesRequest struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名称
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 查询标签名称
+	// 标签名。取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	LabelName *string `json:"LabelName,omitnil" name:"LabelName"`
 
 	// 项目ID
@@ -2829,32 +2829,32 @@ func (r *DescribeRequestSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSampleBatchQueryRequestParams struct {
-	// job id
+	// 压测任务的 ID
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
-	// 场景id
+	// 场景的 ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
 	// 查询指标数组
 	Queries []*InternalMetricQuery `json:"Queries,omitnil" name:"Queries"`
 
-	// 项目ID
+	// 项目的 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 type DescribeSampleBatchQueryRequest struct {
 	*tchttp.BaseRequest
 	
-	// job id
+	// 压测任务的 ID
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
-	// 场景id
+	// 场景的 ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
 	// 查询指标数组
 	Queries []*InternalMetricQuery `json:"Queries,omitnil" name:"Queries"`
 
-	// 项目ID
+	// 项目的 ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
@@ -3166,13 +3166,13 @@ type DescribeSampleMatrixQueryRequestParams struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名字
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 聚合函数
+	// 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
 	Aggregation *string `json:"Aggregation,omitnil" name:"Aggregation"`
 
-	// 指标过滤
+	// 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分组
@@ -3191,13 +3191,13 @@ type DescribeSampleMatrixQueryRequest struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名字
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 聚合函数
+	// 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
 	Aggregation *string `json:"Aggregation,omitnil" name:"Aggregation"`
 
-	// 指标过滤
+	// 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分组
@@ -3263,16 +3263,16 @@ type DescribeSampleQueryRequestParams struct {
 	// 场景Id
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 聚合条件
+	// 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
 	Aggregation *string `json:"Aggregation,omitnil" name:"Aggregation"`
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 过滤条件
+	// 标签过滤条件。各指标支持的标签参见 DescribeMetricLabelWithValues 接口返回的所有指标及其支持的标签
 	Labels []*Label `json:"Labels,omitnil" name:"Labels"`
 }
 
@@ -3285,16 +3285,16 @@ type DescribeSampleQueryRequest struct {
 	// 场景Id
 	ScenarioId *string `json:"ScenarioId,omitnil" name:"ScenarioId"`
 
-	// 指标名
+	// 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 聚合条件
+	// 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
 	Aggregation *string `json:"Aggregation,omitnil" name:"Aggregation"`
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 过滤条件
+	// 标签过滤条件。各指标支持的标签参见 DescribeMetricLabelWithValues 接口返回的所有指标及其支持的标签
 	Labels []*Label `json:"Labels,omitnil" name:"Labels"`
 }
 
@@ -3862,13 +3862,13 @@ type InternalMetricQuery struct {
 	// 指标名
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// 聚合函数
+	// 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
 	Aggregation *string `json:"Aggregation,omitnil" name:"Aggregation"`
 
 	// deprecated, 请使用Filters
 	Labels []*Label `json:"Labels,omitnil" name:"Labels"`
 
-	// 指标过滤
+	// 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 指标分组
@@ -4052,10 +4052,10 @@ type Job struct {
 }
 
 type Label struct {
-	// label名字
+	// 标签名
 	LabelName *string `json:"LabelName,omitnil" name:"LabelName"`
 
-	// label值
+	// 标签值
 	LabelValue *string `json:"LabelValue,omitnil" name:"LabelValue"`
 }
 
@@ -4929,7 +4929,7 @@ func (r *UpdateCronJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateFileScenarioRelationRequestParams struct {
-	// 文件 ID
+	// 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
 	FileId *string `json:"FileId,omitnil" name:"FileId"`
 
 	// 项目 ID
@@ -4942,7 +4942,7 @@ type UpdateFileScenarioRelationRequestParams struct {
 type UpdateFileScenarioRelationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件 ID
+	// 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
 	FileId *string `json:"FileId,omitnil" name:"FileId"`
 
 	// 项目 ID
@@ -5163,7 +5163,7 @@ type UpdateScenarioRequestParams struct {
 	// 场景描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 压测引擎类型
+	// 压测场景的模式类型。取值范围：pts-http 代表简单模式，pts-js 代表脚本模式，pts-jmeter 代表 JMeter 模式。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 施压配置
@@ -5233,7 +5233,7 @@ type UpdateScenarioRequest struct {
 	// 场景描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 压测引擎类型
+	// 压测场景的模式类型。取值范围：pts-http 代表简单模式，pts-js 代表脚本模式，pts-jmeter 代表 JMeter 模式。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 施压配置

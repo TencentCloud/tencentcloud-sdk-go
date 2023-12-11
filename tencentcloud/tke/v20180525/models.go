@@ -1539,6 +1539,81 @@ func (r *CreateBackupStorageLocationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCLSLogConfigRequestParams struct {
+	// 日志采集配置的json表达
+	LogConfig *string `json:"LogConfig,omitnil" name:"LogConfig"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// CLS日志集ID
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 当前集群类型支持tke、eks
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+}
+
+type CreateCLSLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志采集配置的json表达
+	LogConfig *string `json:"LogConfig,omitnil" name:"LogConfig"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// CLS日志集ID
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 当前集群类型支持tke、eks
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+}
+
+func (r *CreateCLSLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogConfig")
+	delete(f, "ClusterId")
+	delete(f, "LogsetId")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSLogConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCLSLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCLSLogConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateCLSLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateClusterEndpointRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -3157,6 +3232,78 @@ func (r *CreateEdgeLogConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEdgeLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEksLogConfigRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 日志采集配置的json表达
+	LogConfig *string `json:"LogConfig,omitnil" name:"LogConfig"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+}
+
+type CreateEksLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 日志采集配置的json表达
+	LogConfig *string `json:"LogConfig,omitnil" name:"LogConfig"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+}
+
+func (r *CreateEksLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEksLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "LogConfig")
+	delete(f, "LogsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEksLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEksLogConfigResponseParams struct {
+	// 日志采集topicid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateEksLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEksLogConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateEksLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEksLogConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

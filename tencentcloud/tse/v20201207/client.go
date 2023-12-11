@@ -4788,6 +4788,7 @@ func NewUpdateUpstreamHealthCheckConfigResponse() (response *UpdateUpstreamHealt
 // 更新云原生网关健康检查配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 func (c *Client) UpdateUpstreamHealthCheckConfig(request *UpdateUpstreamHealthCheckConfigRequest) (response *UpdateUpstreamHealthCheckConfigResponse, err error) {
     return c.UpdateUpstreamHealthCheckConfigWithContext(context.Background(), request)
@@ -4797,6 +4798,7 @@ func (c *Client) UpdateUpstreamHealthCheckConfig(request *UpdateUpstreamHealthCh
 // 更新云原生网关健康检查配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 func (c *Client) UpdateUpstreamHealthCheckConfigWithContext(ctx context.Context, request *UpdateUpstreamHealthCheckConfigRequest) (response *UpdateUpstreamHealthCheckConfigResponse, err error) {
     if request == nil {

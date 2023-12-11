@@ -1106,10 +1106,6 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBatchQuickSignUrlRequestParams struct {
-	// 批量签署的合同流程ID数组。
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
-
 	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 	// 注:
 	// `1. ApproverType目前只支持个人类型的签署人。`
@@ -1124,6 +1120,14 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 合同组编号
+	// 注：`该参数和合同流程ID数组必须二选一`
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
@@ -1149,10 +1153,6 @@ type CreateBatchQuickSignUrlRequestParams struct {
 type CreateBatchQuickSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批量签署的合同流程ID数组。
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
-
 	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 	// 注:
 	// `1. ApproverType目前只支持个人类型的签署人。`
@@ -1167,6 +1167,14 @@ type CreateBatchQuickSignUrlRequest struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 合同组编号
+	// 注：`该参数和合同流程ID数组必须二选一`
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
@@ -1201,10 +1209,11 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowIds")
 	delete(f, "FlowApproverInfo")
 	delete(f, "Agent")
 	delete(f, "Operator")
+	delete(f, "FlowIds")
+	delete(f, "FlowGroupId")
 	delete(f, "JumpUrl")
 	delete(f, "SignatureTypes")
 	delete(f, "ApproverSignTypes")

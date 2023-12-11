@@ -66,12 +66,18 @@ func NewImageMaskResponse() (response *ImageMaskResponse) {
 
 // ImageMask
 // 医疗报告图片脱敏接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 func (c *Client) ImageMask(request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
     return c.ImageMaskWithContext(context.Background(), request)
 }
 
 // ImageMask
 // 医疗报告图片脱敏接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 func (c *Client) ImageMaskWithContext(ctx context.Context, request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
     if request == nil {
         request = NewImageMaskRequest()

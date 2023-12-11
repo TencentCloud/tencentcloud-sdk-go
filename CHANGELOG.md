@@ -1,3 +1,150 @@
+# Release v1.0.816
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 25 次发布
+
+发布时间：2023-12-12 01:27:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNICAssets](https://cloud.tencent.com/document/api/664/102406)
+
+新增数据结构：
+
+* [NICAsset](https://cloud.tencent.com/document/api/664/90825#NICAsset)
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 28 次发布
+
+发布时间：2023-12-12 01:41:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/242/38895#TemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IsBlack
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 140 次发布
+
+发布时间：2023-12-12 01:48:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1323/101058)
+
+	* 新增入参：FlowGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>FlowIds
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 141 次发布
+
+发布时间：2023-12-12 01:49:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1420/101059)
+
+	* 新增入参：FlowGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>FlowIds
+
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
+
+	* 新增入参：SceneKey
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 实时互动-教育版(lcic) 版本：2022-08-17
+
+### 第 47 次发布
+
+发布时间：2023-12-12 02:02:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：RecordBackground
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 64 次发布
+
+发布时间：2023-12-12 02:27:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCustomAccounts
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CustomAccount
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 166 次发布
+
+发布时间：2023-12-12 02:39:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCLSLogConfig](https://cloud.tencent.com/document/api/457/102410)
+* [CreateEksLogConfig](https://cloud.tencent.com/document/api/457/102409)
+
+
+
 # Release v1.0.815
 
 ## 访问管理(cam) 版本：2019-01-16

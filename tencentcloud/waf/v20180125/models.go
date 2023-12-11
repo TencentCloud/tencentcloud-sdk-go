@@ -12979,7 +12979,7 @@ type UpsertCCRuleRequestParams struct {
 	// 状态
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
-	// 高级模式
+	// 高级模式（是否使用Session检测），0表示不启用，1表示启用
 	Advance *string `json:"Advance,omitnil" name:"Advance"`
 
 	// CC检测阈值
@@ -12991,10 +12991,10 @@ type UpsertCCRuleRequestParams struct {
 	// 检测Url
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 匹配方法
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
 
-	// 动作
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
 	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 优先级
@@ -13006,7 +13006,7 @@ type UpsertCCRuleRequestParams struct {
 	// 附加参数
 	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
 
-	// waf版本
+	// waf版本，sparta-waf或者clb-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 操作类型
@@ -13034,7 +13034,7 @@ type UpsertCCRuleRequest struct {
 	// 状态
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
-	// 高级模式
+	// 高级模式（是否使用Session检测），0表示不启用，1表示启用
 	Advance *string `json:"Advance,omitnil" name:"Advance"`
 
 	// CC检测阈值
@@ -13046,10 +13046,10 @@ type UpsertCCRuleRequest struct {
 	// 检测Url
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 匹配方法
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
 
-	// 动作
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
 	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 优先级
@@ -13061,7 +13061,7 @@ type UpsertCCRuleRequest struct {
 	// 附加参数
 	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
 
-	// waf版本
+	// waf版本，sparta-waf或者clb-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 操作类型

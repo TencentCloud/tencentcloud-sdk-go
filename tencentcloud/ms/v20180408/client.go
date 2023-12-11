@@ -1311,13 +1311,8 @@ func NewDestroyResourceInstancesResponse() (response *DestroyResourceInstancesRe
 // 安卓应用加固-按年收费资源销毁，其他类型暂不支持
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DestroyResourceInstances(request *DestroyResourceInstancesRequest) (response *DestroyResourceInstancesResponse, err error) {
     return c.DestroyResourceInstancesWithContext(context.Background(), request)
 }
@@ -1328,13 +1323,8 @@ func (c *Client) DestroyResourceInstances(request *DestroyResourceInstancesReque
 // 安卓应用加固-按年收费资源销毁，其他类型暂不支持
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DestroyResourceInstancesWithContext(ctx context.Context, request *DestroyResourceInstancesRequest) (response *DestroyResourceInstancesResponse, err error) {
     if request == nil {
         request = NewDestroyResourceInstancesRequest()

@@ -329,6 +329,7 @@ func NewDescribeGeneralSpanListResponse() (response *DescribeGeneralSpanListResp
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeGeneralSpanList(request *DescribeGeneralSpanListRequest) (response *DescribeGeneralSpanListResponse, err error) {
     return c.DescribeGeneralSpanListWithContext(context.Background(), request)
@@ -343,6 +344,7 @@ func (c *Client) DescribeGeneralSpanList(request *DescribeGeneralSpanListRequest
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeGeneralSpanListWithContext(ctx context.Context, request *DescribeGeneralSpanListRequest) (response *DescribeGeneralSpanListResponse, err error) {
     if request == nil {

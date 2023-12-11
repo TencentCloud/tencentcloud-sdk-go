@@ -2008,36 +2008,6 @@ func (r *CreateWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CustomAccount struct {
-	// 自定义账户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
-
-	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitnil" name:"Description"`
-
-	// 是否禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Disable *bool `json:"Disable,omitnil" name:"Disable"`
-
-	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpiresAt *int64 `json:"ExpiresAt,omitnil" name:"ExpiresAt"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
-
-	// 策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Permissions []*Permission `json:"Permissions,omitnil" name:"Permissions"`
-}
-
 type CustomizedDomainInfo struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
@@ -3724,102 +3694,6 @@ func (r *DescribeChartDownloadInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeChartDownloadInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCustomAccountsRequestParams struct {
-	// 实例Id
-	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
-
-	// 列出所有自定义账户
-	All *bool `json:"All,omitnil" name:"All"`
-
-	// 填充策略
-	EmbedPermission *bool `json:"EmbedPermission,omitnil" name:"EmbedPermission"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
-
-	// 偏移量,默认0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
-
-	// 最大输出条数，默认20，最大为100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-}
-
-type DescribeCustomAccountsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例Id
-	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
-
-	// 列出所有自定义账户
-	All *bool `json:"All,omitnil" name:"All"`
-
-	// 填充策略
-	EmbedPermission *bool `json:"EmbedPermission,omitnil" name:"EmbedPermission"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
-
-	// 偏移量,默认0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
-
-	// 最大输出条数，默认20，最大为100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-}
-
-func (r *DescribeCustomAccountsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCustomAccountsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "RegistryId")
-	delete(f, "All")
-	delete(f, "EmbedPermission")
-	delete(f, "Filters")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomAccountsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCustomAccountsResponseParams struct {
-	// 自定义账户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomAccounts []*CustomAccount `json:"CustomAccounts,omitnil" name:"CustomAccounts"`
-
-	// 自定义账户数量
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeCustomAccountsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCustomAccountsResponseParams `json:"Response"`
-}
-
-func (r *DescribeCustomAccountsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCustomAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

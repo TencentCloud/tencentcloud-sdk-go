@@ -891,10 +891,6 @@ func (r *ChannelCreateBatchCancelFlowUrlResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ChannelCreateBatchQuickSignUrlRequestParams struct {
-	// 批量签署的合同流程ID数组。
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
-
 	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 	// 注:
 	// `1. ApproverType目前只支持个人类型的签署人。`
@@ -904,6 +900,14 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 合同组编号
+	// 注：`该参数和合同流程ID数组必须二选一`
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
@@ -929,10 +933,6 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 type ChannelCreateBatchQuickSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批量签署的合同流程ID数组。
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
-
 	// 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 	// 注:
 	// `1. ApproverType目前只支持个人类型的签署人。`
@@ -942,6 +942,14 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 批量签署的合同流程ID数组。
+	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+
+	// 合同组编号
+	// 注：`该参数和合同流程ID数组必须二选一`
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
@@ -976,9 +984,10 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowIds")
 	delete(f, "FlowApproverInfo")
 	delete(f, "Agent")
+	delete(f, "FlowIds")
+	delete(f, "FlowGroupId")
 	delete(f, "JumpUrl")
 	delete(f, "SignatureTypes")
 	delete(f, "ApproverSignTypes")
@@ -1068,6 +1077,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
+	// <li>若为子客企业，请确保员工已经加入企业。</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 
@@ -1135,6 +1145,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
+	// <li>若为子客企业，请确保员工已经加入企业。</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 
@@ -3086,6 +3097,9 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 }
 
 type ChannelCreatePreparedPersonalEsignRequest struct {
@@ -3135,6 +3149,9 @@ type ChannelCreatePreparedPersonalEsignRequest struct {
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
 }
 
 func (r *ChannelCreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -3160,6 +3177,7 @@ func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) err
 	delete(f, "Mobile")
 	delete(f, "EnableAutoSign")
 	delete(f, "LicenseType")
+	delete(f, "SceneKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -5224,40 +5242,32 @@ func (r *ChannelModifyRoleResponse) FromJsonString(s string) error {
 }
 
 type ChannelOrganizationInfo struct {
-	// 电子签企业Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
 	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
 
-	// 电子签企业OpenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 第三方平台子客企业的唯一标识
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
-	// 企业名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 第三方平台子客企业名称
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 
-	// 企业信用代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业的统一社会信用代码
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil" name:"UnifiedSocialCreditCode"`
 
-	// 法人姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业法定代表人的姓名
 	LegalName *string `json:"LegalName,omitnil" name:"LegalName"`
 
-	// 法人OpenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业法定代表人作为第三方平台子客企业员工的唯一标识
 	LegalOpenId *string `json:"LegalOpenId,omitnil" name:"LegalOpenId"`
 
-	// 超管姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业超级管理员的姓名
 	AdminName *string `json:"AdminName,omitnil" name:"AdminName"`
 
-	// 超管OpenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业超级管理员作为第三方平台子客企业员工的唯一标识
 	AdminOpenId *string `json:"AdminOpenId,omitnil" name:"AdminOpenId"`
 
-	// 超管手机号，脱敏后返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 企业超级管理员的手机号码
+	// **注**：`手机号码脱敏（隐藏部分用*替代）`
 	AdminMobile *string `json:"AdminMobile,omitnil" name:"AdminMobile"`
 
 	// 企业认证状态字段。值如下：
@@ -5269,7 +5279,6 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"VERIFYING"**： 认证中的企业</li>
 	//   <li>**"VERIFIED"**： 已认证的企业</li>
 	// </ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationStatus *string `json:"AuthorizationStatus,omitnil" name:"AuthorizationStatus"`
 
 	// 企业认证方式字段。值如下：
@@ -5279,7 +5288,6 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>
 	//   <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
 	// </ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationType *string `json:"AuthorizationType,omitnil" name:"AuthorizationType"`
 }
 
@@ -7157,24 +7165,25 @@ type DescribeChannelOrganizationsRequestParams struct {
 	// 渠道应用标识: Agent.AppId
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 子客OrganizationOpenId，定向查询某个子客的企业数据。
+	// 该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
+	// 
+	// **注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
-	// 企业认证状态过滤字段。可值如下：
-	// <ul>
-	//   <li>**"UNVERIFIED"**： 未认证的企业</li>
+	// 可以按照当前企业的认证状态进行过滤。可值如下：
+	// <ul><li>**"UNVERIFIED"**： 未认证的企业</li>
 	//   <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-	//   <li>**"VERIFYING"**： 认证中的企业</li>
-	//   <li>**"VERIFIED"**： 已认证的企业</li>
-	// </ul>
+	//   <li>**"VERIFYING"**： 认证进行中的企业</li>
+	//   <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
 	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil" name:"AuthorizationStatusList"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
@@ -7191,24 +7200,25 @@ type DescribeChannelOrganizationsRequest struct {
 	// 渠道应用标识: Agent.AppId
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+	// 
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 子客OrganizationOpenId，定向查询某个子客的企业数据。
+	// 该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
+	// 
+	// **注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
-	// 企业认证状态过滤字段。可值如下：
-	// <ul>
-	//   <li>**"UNVERIFIED"**： 未认证的企业</li>
+	// 可以按照当前企业的认证状态进行过滤。可值如下：
+	// <ul><li>**"UNVERIFIED"**： 未认证的企业</li>
 	//   <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-	//   <li>**"VERIFYING"**： 认证中的企业</li>
-	//   <li>**"VERIFIED"**： 已认证的企业</li>
-	// </ul>
+	//   <li>**"VERIFYING"**： 认证进行中的企业</li>
+	//   <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
 	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil" name:"AuthorizationStatusList"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
@@ -7240,7 +7250,7 @@ func (r *DescribeChannelOrganizationsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeChannelOrganizationsResponseParams struct {
-	// 企业企业信息列表。
+	// 满足查询条件的企业信息列表。
 	ChannelOrganizationInfos []*ChannelOrganizationInfo `json:"ChannelOrganizationInfos,omitnil" name:"ChannelOrganizationInfos"`
 
 	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
@@ -7249,7 +7259,7 @@ type DescribeChannelOrganizationsResponseParams struct {
 	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 符合条件的企业数量。
+	// 满足查询条件的企业总数量。
 	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

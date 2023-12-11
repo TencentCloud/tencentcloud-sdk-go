@@ -5042,7 +5042,7 @@ type RoomItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
-	// 房间状态。0 未开始 ；1进行中  ；2 已结束
+	// 房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
@@ -5119,6 +5119,10 @@ type RoomItem struct {
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
+
+	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordBackground *string `json:"RecordBackground,omitnil" name:"RecordBackground"`
 }
 
 type SceneItem struct {

@@ -1987,7 +1987,7 @@ func (r *QueryAsyncBindVpcStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryAsyncBindVpcStatusResponseParams struct {
 	// processing 处理中，success 执行成功，
-	// fail 执行失败
+	// failed 执行失败
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 错误信息

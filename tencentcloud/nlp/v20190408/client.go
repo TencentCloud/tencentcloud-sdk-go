@@ -285,6 +285,7 @@ func NewComposeCoupletResponse() (response *ComposeCoupletResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ComposeCouplet(request *ComposeCoupletRequest) (response *ComposeCoupletResponse, err error) {
     return c.ComposeCoupletWithContext(context.Background(), request)
 }
@@ -314,6 +315,7 @@ func (c *Client) ComposeCouplet(request *ComposeCoupletRequest) (response *Compo
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  UNSUPPORTEDOPERATION_PKGEXHAUSTED = "UnsupportedOperation.PkgExhausted"
 func (c *Client) ComposeCoupletWithContext(ctx context.Context, request *ComposeCoupletRequest) (response *ComposeCoupletResponse, err error) {
     if request == nil {
         request = NewComposeCoupletRequest()
