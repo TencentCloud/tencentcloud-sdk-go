@@ -6229,7 +6229,7 @@ type InstanceChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li><br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
@@ -8047,6 +8047,12 @@ type ResetInstanceRequestParams struct {
 
 	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 要创建的容器配置列表。
+	Containers []*DockerContainerConfiguration `json:"Containers,omitnil" name:"Containers"`
+
+	// 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
+	LoginConfiguration *LoginConfiguration `json:"LoginConfiguration,omitnil" name:"LoginConfiguration"`
 }
 
 type ResetInstanceRequest struct {
@@ -8057,6 +8063,12 @@ type ResetInstanceRequest struct {
 
 	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil" name:"BlueprintId"`
+
+	// 要创建的容器配置列表。
+	Containers []*DockerContainerConfiguration `json:"Containers,omitnil" name:"Containers"`
+
+	// 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
+	LoginConfiguration *LoginConfiguration `json:"LoginConfiguration,omitnil" name:"LoginConfiguration"`
 }
 
 func (r *ResetInstanceRequest) ToJsonString() string {
@@ -8073,6 +8085,8 @@ func (r *ResetInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "BlueprintId")
+	delete(f, "Containers")
+	delete(f, "LoginConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetInstanceRequest has unknown keys!", "")
 	}

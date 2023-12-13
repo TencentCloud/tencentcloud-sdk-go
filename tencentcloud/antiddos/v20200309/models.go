@@ -4968,6 +4968,60 @@ func (r *DescribeDefaultAlarmThresholdResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIpBlockListRequestParams struct {
+
+}
+
+type DescribeIpBlockListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeIpBlockListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIpBlockListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpBlockListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIpBlockListResponseParams struct {
+	// IP封堵列表
+	List []*IpBlockData `json:"List,omitnil" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIpBlockListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIpBlockListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIpBlockListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIpBlockListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeL7RulesBySSLCertIdRequestParams struct {
 	// 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态
 	Status *string `json:"Status,omitnil" name:"Status"`
@@ -7347,6 +7401,26 @@ type InstanceRelation struct {
 
 	// 资源实例的ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type IpBlockData struct {
+	// 状态（Blocked：被封堵；UnBlocking：解封中；UnBlockFailed：解封失败）
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 资源IP
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 封堵时间
+	BlockTime *string `json:"BlockTime,omitnil" name:"BlockTime"`
+
+	// 解封时间（预计解封时间）
+	UnBlockTime *string `json:"UnBlockTime,omitnil" name:"UnBlockTime"`
+
+	// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 高防标记，0：非高防，1：高防
+	ProtectFlag *uint64 `json:"ProtectFlag,omitnil" name:"ProtectFlag"`
 }
 
 type IpSegment struct {

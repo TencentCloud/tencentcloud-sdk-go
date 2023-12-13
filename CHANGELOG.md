@@ -1,3 +1,129 @@
+# Release v1.0.817
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 62 次发布
+
+发布时间：2023-12-13 01:06:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIpBlockList](https://cloud.tencent.com/document/api/297/102444)
+
+新增数据结构：
+
+* [IpBlockData](https://cloud.tencent.com/document/api/297/95396#IpBlockData)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 149 次发布
+
+发布时间：2023-12-13 01:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupDecryptionKey](https://cloud.tencent.com/document/api/236/91083)
+
+	* 新增入参：BackupType
+
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 5 次发布
+
+发布时间：2023-12-13 01:52:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartInstance](https://cloud.tencent.com/document/api/1721/102449)
+* [StopInstance](https://cloud.tencent.com/document/api/1721/102448)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 57 次发布
+
+发布时间：2023-12-13 02:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetInstance](https://cloud.tencent.com/document/api/1207/47571)
+
+	* 新增入参：Containers, LoginConfiguration
+
+
+修改数据结构：
+
+* [InstancePrice](https://cloud.tencent.com/document/api/1207/47576#InstancePrice)
+
+	* <font color="#dd0000">**修改成员**：</font>OriginalBundlePrice, OriginalPrice, Discount, DiscountPrice, Currency
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 9 次发布
+
+发布时间：2023-12-13 02:14:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetRunMetadataFile](https://cloud.tencent.com/document/api/1643/100858)
+
+	* 新增入参：Keys
+
+	* <font color="#dd0000">**修改入参**：</font>Key
+
+	* 新增出参：CosSignedUrls
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 97 次发布
+
+发布时间：2023-12-13 02:31:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PulsarNetworkAccessPointInfo](https://cloud.tencent.com/document/api/1179/46089#PulsarNetworkAccessPointInfo)
+
+	* 新增成员：OperationType
+
+
+
+
 # Release v1.0.816
 
 ## 云安全一体化平台(csip) 版本：2022-11-21

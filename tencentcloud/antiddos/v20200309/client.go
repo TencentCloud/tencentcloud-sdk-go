@@ -552,7 +552,7 @@ func NewCreateCcGeoIPBlockConfigResponse() (response *CreateCcGeoIPBlockConfigRe
 }
 
 // CreateCcGeoIPBlockConfig
-// 新建cc防护的地域封禁配置
+// 新建CC防护的地域封禁配置
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -562,7 +562,7 @@ func (c *Client) CreateCcGeoIPBlockConfig(request *CreateCcGeoIPBlockConfigReque
 }
 
 // CreateCcGeoIPBlockConfig
-// 新建cc防护的地域封禁配置
+// 新建CC防护的地域封禁配置
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -3672,6 +3672,89 @@ func (c *Client) DescribeDefaultAlarmThresholdWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeDefaultAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIpBlockListRequest() (request *DescribeIpBlockListRequest) {
+    request = &DescribeIpBlockListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeIpBlockList")
+    
+    
+    return
+}
+
+func NewDescribeIpBlockListResponse() (response *DescribeIpBlockListResponse) {
+    response = &DescribeIpBlockListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIpBlockList
+// 获取IP封堵列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIpBlockList(request *DescribeIpBlockListRequest) (response *DescribeIpBlockListResponse, err error) {
+    return c.DescribeIpBlockListWithContext(context.Background(), request)
+}
+
+// DescribeIpBlockList
+// 获取IP封堵列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIpBlockListWithContext(ctx context.Context, request *DescribeIpBlockListRequest) (response *DescribeIpBlockListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpBlockListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpBlockList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpBlockListResponse()
     err = c.Send(request, response)
     return
 }

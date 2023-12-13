@@ -70,4 +70,22 @@ const (
 
 	// 客户未授权使用本产品
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+
+	// 不支持对处于`Arrears`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
+
+	// 不支持对处于`LaunchFailed`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+
+	// 不支持对处于`Pending`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+
+	// 不支持对处于`Running`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+
+	// 不支持对处于`StoppedNoCharge`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATESTOPPEDNOCHARGE = "UnsupportedOperation.InstanceStateStoppedNoCharge"
+
+	// 不支持对处于`Terminated`状态的实例执行当前操作。
+	UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
 )

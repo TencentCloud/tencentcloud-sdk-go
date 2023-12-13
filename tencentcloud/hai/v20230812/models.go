@@ -874,6 +874,145 @@ type SceneInfo struct {
 	SceneName *string `json:"SceneName,omitnil" name:"SceneName"`
 }
 
+// Predefined struct for user
+type StartInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil" name:"DryRun"`
+}
+
+type StartInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil" name:"DryRun"`
+}
+
+func (r *StartInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartInstanceResponseParams struct {
+	// task任务id
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StartInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *StartInstanceResponseParams `json:"Response"`
+}
+
+func (r *StartInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// hai实例关机的模式，目前仅支持关机不收费：
+	// STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
+	// 注意：默认值为STOP_CHARGE
+	StopMode *string `json:"StopMode,omitnil" name:"StopMode"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil" name:"DryRun"`
+}
+
+type StopInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// hai实例关机的模式，目前仅支持关机不收费：
+	// STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
+	// 注意：默认值为STOP_CHARGE
+	StopMode *string `json:"StopMode,omitnil" name:"StopMode"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil" name:"DryRun"`
+}
+
+func (r *StopInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StopMode")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopInstanceResponseParams struct {
+	// task任务id
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StopInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *StopInstanceResponseParams `json:"Response"`
+}
+
+func (r *StopInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SystemDisk struct {
 	// 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。	
 	// 注意：此字段可能返回 null，表示取不到有效值。

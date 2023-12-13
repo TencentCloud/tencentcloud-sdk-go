@@ -5894,7 +5894,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top10的数据。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
@@ -5966,7 +5966,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top10的数据。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
@@ -6076,7 +6076,7 @@ type DescribeTopL7CacheDataRequestParams struct {
 	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top 10的数据。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件如下：
@@ -6122,7 +6122,7 @@ type DescribeTopL7CacheDataRequest struct {
 	// 站点 ID 集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
-	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top 10的数据。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件如下：
@@ -10296,6 +10296,7 @@ type Zone struct {
 	// <li> full：NS 接入；</li>
 	// <li> partial：CNAME 接入；</li>
 	// <li> noDomainAccess：无域名接入；</li>
+	// <li> vodeo：开启 VODEO 后默认接入。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 站点是否关闭。

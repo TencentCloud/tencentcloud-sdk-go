@@ -561,7 +561,7 @@ func NewGetRunMetadataFileResponse() (response *GetRunMetadataFileResponse) {
 }
 
 // GetRunMetadataFile
-// 查询任务详情文件。
+// 获取任务详情文件。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -578,7 +578,7 @@ func (c *Client) GetRunMetadataFile(request *GetRunMetadataFileRequest) (respons
 }
 
 // GetRunMetadataFile
-// 查询任务详情文件。
+// 获取任务详情文件。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

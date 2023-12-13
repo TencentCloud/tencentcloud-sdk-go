@@ -5366,6 +5366,9 @@ type DescribeBackupDecryptionKeyRequestParams struct {
 
 	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
 	BackupId *int64 `json:"BackupId,omitnil" name:"BackupId"`
+
+	// 备份类型 data: 数据备份 binlog:日志备份，默认为data
+	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
 }
 
 type DescribeBackupDecryptionKeyRequest struct {
@@ -5376,6 +5379,9 @@ type DescribeBackupDecryptionKeyRequest struct {
 
 	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
 	BackupId *int64 `json:"BackupId,omitnil" name:"BackupId"`
+
+	// 备份类型 data: 数据备份 binlog:日志备份，默认为data
+	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
 }
 
 func (r *DescribeBackupDecryptionKeyRequest) ToJsonString() string {
@@ -5392,6 +5398,7 @@ func (r *DescribeBackupDecryptionKeyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "BackupId")
+	delete(f, "BackupType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDecryptionKeyRequest has unknown keys!", "")
 	}

@@ -840,6 +840,10 @@ type GetRunMetadataFileRequestParams struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
 	// 需要获取的文件名。
 	// 
 	// 默认支持以下文件：
@@ -852,9 +856,17 @@ type GetRunMetadataFileRequestParams struct {
 	// - pipeline_dag.html
 	Key *string `json:"Key,omitnil" name:"Key"`
 
-	// 项目ID。
-	// （不填使用指定地域下的默认项目）
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	// 需要批量获取的文件名。
+	// 
+	// 默认支持以下文件：
+	// - nextflow.log
+	// 
+	// 提交时NFOption中report指定为true时，额外支持以下文件：
+	// - execution_report.html
+	// - execution_timeline.html
+	// - execution_trace.txt
+	// - pipeline_dag.html
+	Keys []*string `json:"Keys,omitnil" name:"Keys"`
 }
 
 type GetRunMetadataFileRequest struct {
@@ -863,6 +875,10 @@ type GetRunMetadataFileRequest struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil" name:"RunUuid"`
 
+	// 项目ID。
+	// （不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
 	// 需要获取的文件名。
 	// 
 	// 默认支持以下文件：
@@ -875,9 +891,17 @@ type GetRunMetadataFileRequest struct {
 	// - pipeline_dag.html
 	Key *string `json:"Key,omitnil" name:"Key"`
 
-	// 项目ID。
-	// （不填使用指定地域下的默认项目）
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	// 需要批量获取的文件名。
+	// 
+	// 默认支持以下文件：
+	// - nextflow.log
+	// 
+	// 提交时NFOption中report指定为true时，额外支持以下文件：
+	// - execution_report.html
+	// - execution_timeline.html
+	// - execution_trace.txt
+	// - pipeline_dag.html
+	Keys []*string `json:"Keys,omitnil" name:"Keys"`
 }
 
 func (r *GetRunMetadataFileRequest) ToJsonString() string {
@@ -893,8 +917,9 @@ func (r *GetRunMetadataFileRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RunUuid")
-	delete(f, "Key")
 	delete(f, "ProjectId")
+	delete(f, "Key")
+	delete(f, "Keys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRunMetadataFileRequest has unknown keys!", "")
 	}
@@ -905,6 +930,10 @@ func (r *GetRunMetadataFileRequest) FromJsonString(s string) error {
 type GetRunMetadataFileResponseParams struct {
 	// 文件预签名链接，一分钟内有效。
 	CosSignedUrl *string `json:"CosSignedUrl,omitnil" name:"CosSignedUrl"`
+
+	// 批量文件预签名链接，一分钟内有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosSignedUrls []*string `json:"CosSignedUrls,omitnil" name:"CosSignedUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

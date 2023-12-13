@@ -503,6 +503,142 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     return
 }
 
+func NewStartInstanceRequest() (request *StartInstanceRequest) {
+    request = &StartInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "StartInstance")
+    
+    
+    return
+}
+
+func NewStartInstanceResponse() (response *StartInstanceResponse) {
+    response = &StartInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartInstance
+// 本接口 (StartInstance) 用于主动启动实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
+//  UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+func (c *Client) StartInstance(request *StartInstanceRequest) (response *StartInstanceResponse, err error) {
+    return c.StartInstanceWithContext(context.Background(), request)
+}
+
+// StartInstance
+// 本接口 (StartInstance) 用于主动启动实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
+//  UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+func (c *Client) StartInstanceWithContext(ctx context.Context, request *StartInstanceRequest) (response *StartInstanceResponse, err error) {
+    if request == nil {
+        request = NewStartInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopInstanceRequest() (request *StopInstanceRequest) {
+    request = &StopInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "StopInstance")
+    
+    
+    return
+}
+
+func NewStopInstanceResponse() (response *StopInstanceResponse) {
+    response = &StopInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopInstance
+// 本接口 (StopInstance) 用于主动关闭实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
+//  UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPEDNOCHARGE = "UnsupportedOperation.InstanceStateStoppedNoCharge"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+func (c *Client) StopInstance(request *StopInstanceRequest) (response *StopInstanceResponse, err error) {
+    return c.StopInstanceWithContext(context.Background(), request)
+}
+
+// StopInstance
+// 本接口 (StopInstance) 用于主动关闭实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
+//  UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPEDNOCHARGE = "UnsupportedOperation.InstanceStateStoppedNoCharge"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+func (c *Client) StopInstanceWithContext(ctx context.Context, request *StopInstanceRequest) (response *StopInstanceResponse, err error) {
+    if request == nil {
+        request = NewStopInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateInstancesRequest() (request *TerminateInstancesRequest) {
     request = &TerminateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
