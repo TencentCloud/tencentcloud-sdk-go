@@ -1,49 +1,78 @@
 # 本版本更新包含以下内容：
 
-## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 62 次发布
+### 第 141 次发布
 
-发布时间：2023-12-13 01:06:45
+发布时间：2023-12-14 01:47:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeIpBlockList](https://cloud.tencent.com/document/api/297/102444)
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
+
+	* 新增入参：TaxIdentifyCode
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 142 次发布
+
+发布时间：2023-12-14 01:49:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+
+	* 新增入参：TaxIdentifyCode
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
+
+### 第 2 次发布
+
+发布时间：2023-12-14 12:16:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
+
+	* 新增入参：Condition, GroupId, OsType, OnlineStatus, Filters, Sort, PageNum, PageSize, Status
+
+	* 新增出参：Data
+
 
 新增数据结构：
 
-* [IpBlockData](https://cloud.tencent.com/document/api/297/95396#IpBlockData)
+* [Condition](https://cloud.tencent.com/document/api/1092/102488#Condition)
+* [DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)
+* [Filter](https://cloud.tencent.com/document/api/1092/102488#Filter)
+* [FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup)
+* [Paging](https://cloud.tencent.com/document/api/1092/102488#Paging)
+* [Sort](https://cloud.tencent.com/document/api/1092/102488#Sort)
 
+### 第 1 次发布
 
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 149 次发布
-
-发布时间：2023-12-13 01:17:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBackupDecryptionKey](https://cloud.tencent.com/document/api/236/91083)
-
-	* 新增入参：BackupType
-
-
-
-
-## 高性能应用服务(hai) 版本：2023-08-12
-
-### 第 5 次发布
-
-发布时间：2023-12-13 01:52:48
+发布时间：2023-12-13 17:22:42
 
 本次发布包含了以下内容：
 
@@ -51,42 +80,15 @@
 
 新增接口：
 
-* [StartInstance](https://cloud.tencent.com/document/api/1721/102449)
-* [StopInstance](https://cloud.tencent.com/document/api/1721/102448)
+* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
 
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
+## 实时互动-教育版(lcic) 版本：2022-08-17
 
-### 第 57 次发布
+### 第 48 次发布
 
-发布时间：2023-12-13 02:03:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ResetInstance](https://cloud.tencent.com/document/api/1207/47571)
-
-	* 新增入参：Containers, LoginConfiguration
-
-
-修改数据结构：
-
-* [InstancePrice](https://cloud.tencent.com/document/api/1207/47576#InstancePrice)
-
-	* <font color="#dd0000">**修改成员**：</font>OriginalBundlePrice, OriginalPrice, Discount, DiscountPrice, Currency
-
-
-
-
-## 腾讯健康组学平台(omics) 版本：2022-11-28
-
-### 第 9 次发布
-
-发布时间：2023-12-13 02:14:02
+发布时间：2023-12-14 02:03:05
 
 本次发布包含了以下内容：
 
@@ -94,32 +96,13 @@
 
 修改接口：
 
-* [GetRunMetadataFile](https://cloud.tencent.com/document/api/1643/100858)
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
 
-	* 新增入参：Keys
+	* 新增入参：RecordBackground
 
-	* <font color="#dd0000">**修改入参**：</font>Key
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
 
-	* 新增出参：CosSignedUrls
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 97 次发布
-
-发布时间：2023-12-13 02:31:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PulsarNetworkAccessPointInfo](https://cloud.tencent.com/document/api/1179/46089#PulsarNetworkAccessPointInfo)
-
-	* 新增成员：OperationType
+	* 新增出参：RecordBackground
 
 
 
@@ -1877,11 +1860,11 @@
 
 新增接口：
 
-* [[DescribeIpBlockList](https://cloud.tencent.com/document/api/297/102444)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeIpBlockList](https://cloud.tencent.com/document/api/297/102444)
 
 新增数据结构：
 
-* [[IpBlockData](https://cloud.tencent.com/document/api/297/95396#IpBlockData)](https://cloud.tencent.com/document/api/297/95396#[IpBlockData](https://cloud.tencent.com/document/api/297/95396#IpBlockData))
+* [IpBlockData](https://cloud.tencent.com/document/api/297/95396#IpBlockData)
 
 ### 第 61 次发布
 
@@ -56592,6 +56575,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 141 次发布
+
+发布时间：2023-12-14 01:47:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
+
+	* 新增入参：TaxIdentifyCode
+
+
 ### 第 140 次发布
 
 发布时间：2023-12-12 01:48:23
@@ -59306,6 +59304,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 142 次发布
+
+发布时间：2023-12-14 01:49:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+
+	* 新增入参：TaxIdentifyCode
+
 
 ### 第 141 次发布
 
@@ -66572,8 +66585,8 @@
 
 新增接口：
 
-* [[StartInstance](https://cloud.tencent.com/document/api/1721/102449)](https://cloud.tencent.com/document/api/#/#)
-* [[StopInstance](https://cloud.tencent.com/document/api/1721/102448)](https://cloud.tencent.com/document/api/#/#)
+* [StartInstance](https://cloud.tencent.com/document/api/1721/102449)
+* [StopInstance](https://cloud.tencent.com/document/api/1721/102448)
 
 ### 第 4 次发布
 
@@ -68662,6 +68675,49 @@
 * [OcrResult](https://cloud.tencent.com/document/api/1125/53274#OcrResult)
 * [OcrTextDetail](https://cloud.tencent.com/document/api/1125/53274#OcrTextDetail)
 * [User](https://cloud.tencent.com/document/api/1125/53274#User)
+
+
+
+
+## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
+
+### 第 2 次发布
+
+发布时间：2023-12-14 12:16:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
+
+	* 新增入参：Condition, GroupId, OsType, OnlineStatus, Filters, Sort, PageNum, PageSize, Status
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [[Condition](https://cloud.tencent.com/document/api/1092/102488#Condition)](https://cloud.tencent.com/document/api/1092/102488#[Condition](https://cloud.tencent.com/document/api/1092/102488#Condition))
+* [[DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)](https://cloud.tencent.com/document/api/1092/102488#[DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp))
+* [[Filter](https://cloud.tencent.com/document/api/1092/102488#Filter)](https://cloud.tencent.com/document/api/1092/102488#[Filter](https://cloud.tencent.com/document/api/1092/102488#Filter))
+* [[FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup)](https://cloud.tencent.com/document/api/1092/102488#[FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup))
+* [[Paging](https://cloud.tencent.com/document/api/1092/102488#Paging)](https://cloud.tencent.com/document/api/1092/102488#[Paging](https://cloud.tencent.com/document/api/1092/102488#Paging))
+* [[Sort](https://cloud.tencent.com/document/api/1092/102488#Sort)](https://cloud.tencent.com/document/api/1092/102488#[Sort](https://cloud.tencent.com/document/api/1092/102488#Sort))
+
+### 第 1 次发布
+
+发布时间：2023-12-13 17:22:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)](https://cloud.tencent.com/document/api/#/#)
 
 
 
@@ -74318,6 +74374,25 @@
 
 
 ## 实时互动-教育版(lcic) 版本：2022-08-17
+
+### 第 48 次发布
+
+发布时间：2023-12-14 02:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：RecordBackground
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：RecordBackground
+
 
 ### 第 47 次发布
 

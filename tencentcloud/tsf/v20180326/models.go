@@ -9366,7 +9366,7 @@ func (r *DescribeDeliveryConfigByGroupIdRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDeliveryConfigByGroupIdResponseParams struct {
-	// 投递kafak配置项
+	// 投递kafka配置项
 	Result *SimpleKafkaDeliveryConfig `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11639,10 +11639,10 @@ type DescribeInvocationMetricScatterPlotRequestParams struct {
 	// 查询时间粒度，单位秒。可选值：60、3600、86400。
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 查询指标维度
+	// 查询指标维度, 不能为空。可选 NamespaceId, GroupId, InstanceId, OperationName, ServiceName, PeerServiceName, PeerOperationName
 	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitnil" name:"MetricDimensions"`
 
-	// 查询指标名
+	// 查询指标名， 不能为空。仅支持 range_count_duratioin 为 key 下的 sum 方法
 	Metrics []*Metric `json:"Metrics,omitnil" name:"Metrics"`
 
 	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -11661,10 +11661,10 @@ type DescribeInvocationMetricScatterPlotRequest struct {
 	// 查询时间粒度，单位秒。可选值：60、3600、86400。
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 查询指标维度
+	// 查询指标维度, 不能为空。可选 NamespaceId, GroupId, InstanceId, OperationName, ServiceName, PeerServiceName, PeerOperationName
 	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitnil" name:"MetricDimensions"`
 
-	// 查询指标名
+	// 查询指标名， 不能为空。仅支持 range_count_duratioin 为 key 下的 sum 方法
 	Metrics []*Metric `json:"Metrics,omitnil" name:"Metrics"`
 
 	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -11697,7 +11697,7 @@ func (r *DescribeInvocationMetricScatterPlotRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeInvocationMetricScatterPlotResponseParams struct {
-	// 多值时间抽统计指标
+	// 多值时间统计指标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *InvocationMetricScatterPlot `json:"Result,omitnil" name:"Result"`
 

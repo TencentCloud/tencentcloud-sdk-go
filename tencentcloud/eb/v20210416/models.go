@@ -257,7 +257,7 @@ type CreateConnectionRequestParams struct {
 	// 使能开关
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
-	// 类型
+	// 连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
 	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
@@ -279,7 +279,7 @@ type CreateConnectionRequest struct {
 	// 使能开关
 	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
-	// 类型
+	// 连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
 	Type *string `json:"Type,omitnil" name:"Type"`
 }
 

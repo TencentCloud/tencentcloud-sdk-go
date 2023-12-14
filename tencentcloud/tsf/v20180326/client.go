@@ -1107,7 +1107,7 @@ func NewCreateConfigTemplateWithDetailRespResponse() (response *CreateConfigTemp
 }
 
 // CreateConfigTemplateWithDetailResp
-// 创建参数模板,并返回模板详细信息
+// 创建参数模版，并返回模版详细信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
@@ -1129,7 +1129,7 @@ func (c *Client) CreateConfigTemplateWithDetailResp(request *CreateConfigTemplat
 }
 
 // CreateConfigTemplateWithDetailResp
-// 创建参数模板,并返回模板详细信息
+// 创建参数模版，并返回模版详细信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"

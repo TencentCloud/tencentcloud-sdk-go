@@ -1140,6 +1140,9 @@ type CreateRoomRequestParams struct {
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
+
+	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+	RecordBackground *string `json:"RecordBackground,omitnil" name:"RecordBackground"`
 }
 
 type CreateRoomRequest struct {
@@ -1240,6 +1243,9 @@ type CreateRoomRequest struct {
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
+
+	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+	RecordBackground *string `json:"RecordBackground,omitnil" name:"RecordBackground"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1280,6 +1286,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "LiveType")
 	delete(f, "RecordLiveUrl")
 	delete(f, "EnableAutoStart")
+	delete(f, "RecordBackground")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2950,6 +2957,9 @@ type DescribeRoomResponseParams struct {
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil" name:"EnableAutoStart"`
+
+	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+	RecordBackground *string `json:"RecordBackground,omitnil" name:"RecordBackground"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

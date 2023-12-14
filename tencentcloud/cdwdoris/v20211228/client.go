@@ -151,7 +151,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
-// 获取实例列表
+// 获取集群列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -160,7 +160,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
-// 获取实例列表
+// 获取集群列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

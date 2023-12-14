@@ -152,6 +152,7 @@ import (
 	iirv20200417 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir/v20200417"
 	imsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims/v20200713"
 	imsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims/v20201229"
+	ioav20220601 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ioa/v20220601"
 	iotv20180123 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot/v20180123"
 	iotcloudv20180614 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud/v20180614"
 	iotcloudv20210408 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud/v20210408"
@@ -2008,6 +2009,19 @@ func TestImsv20201229Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ims_v20201229 client: %v", err)
+    }
+}
+
+func TestIoav20220601Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ioav20220601.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init ioa_v20220601 client: %v", err)
     }
 }
 

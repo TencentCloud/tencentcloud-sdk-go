@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.817
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.818
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -125,6 +125,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ioa v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotexplorer v0.0.0
@@ -372,6 +373,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp => ../tencentcloud/iecp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir => ../tencentcloud/iir
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims => ../tencentcloud/ims
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ioa => ../tencentcloud/ioa
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot => ../tencentcloud/iot
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud => ../tencentcloud/iotcloud
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotexplorer => ../tencentcloud/iotexplorer
