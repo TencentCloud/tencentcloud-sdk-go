@@ -4358,6 +4358,61 @@ func (c *Client) DescribeRocketMQConsumeStatsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeRocketMQConsumerConnectionDetailRequest() (request *DescribeRocketMQConsumerConnectionDetailRequest) {
+    request = &DescribeRocketMQConsumerConnectionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQConsumerConnectionDetail")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQConsumerConnectionDetailResponse() (response *DescribeRocketMQConsumerConnectionDetailResponse) {
+    response = &DescribeRocketMQConsumerConnectionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQConsumerConnectionDetail
+// 获取在线消费端详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQConsumerConnectionDetail(request *DescribeRocketMQConsumerConnectionDetailRequest) (response *DescribeRocketMQConsumerConnectionDetailResponse, err error) {
+    return c.DescribeRocketMQConsumerConnectionDetailWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQConsumerConnectionDetail
+// 获取在线消费端详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQConsumerConnectionDetailWithContext(ctx context.Context, request *DescribeRocketMQConsumerConnectionDetailRequest) (response *DescribeRocketMQConsumerConnectionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQConsumerConnectionDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQConsumerConnectionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQConsumerConnectionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQConsumerConnectionsRequest() (request *DescribeRocketMQConsumerConnectionsRequest) {
     request = &DescribeRocketMQConsumerConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

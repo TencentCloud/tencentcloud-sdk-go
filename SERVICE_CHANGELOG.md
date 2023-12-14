@@ -1,108 +1,24 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 域名注册(domain) 版本：2018-08-08
 
-### 第 141 次发布
+### 第 29 次发布
 
-发布时间：2023-12-14 01:47:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
-
-	* 新增入参：TaxIdentifyCode
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 142 次发布
-
-发布时间：2023-12-14 01:49:14
+发布时间：2023-12-15 01:10:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+* [DomainBatchDetailSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchDetailSet)
 
-	* 新增入参：TaxIdentifyCode
+	* 新增成员：Action, BigDealId
 
+* [DomainBatchLogSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchLogSet)
 
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 2 次发布
-
-发布时间：2023-12-14 12:16:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
-
-	* 新增入参：Condition, GroupId, OsType, OnlineStatus, Filters, Sort, PageNum, PageSize, Status
-
-	* 新增出参：Data
-
-
-新增数据结构：
-
-* [Condition](https://cloud.tencent.com/document/api/1092/102488#Condition)
-* [DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)
-* [Filter](https://cloud.tencent.com/document/api/1092/102488#Filter)
-* [FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup)
-* [Paging](https://cloud.tencent.com/document/api/1092/102488#Paging)
-* [Sort](https://cloud.tencent.com/document/api/1092/102488#Sort)
-
-### 第 1 次发布
-
-发布时间：2023-12-13 17:22:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
-
-
-
-## 实时互动-教育版(lcic) 版本：2022-08-17
-
-### 第 48 次发布
-
-发布时间：2023-12-14 02:03:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
-
-	* 新增入参：RecordBackground
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：RecordBackground
+	* 新增成员：Success, Doing, Failed
 
 
 
@@ -49234,6 +49150,25 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 29 次发布
+
+发布时间：2023-12-15 01:10:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainBatchDetailSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchDetailSet)
+
+	* 新增成员：Action, BigDealId
+
+* [DomainBatchLogSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchLogSet)
+
+	* 新增成员：Success, Doing, Failed
+
+
 ### 第 28 次发布
 
 发布时间：2023-12-12 01:41:31
@@ -59305,6 +59240,24 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 143 次发布
+
+发布时间：2023-12-14 16:39:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBatchOrganizationRegistrationTasks](https://cloud.tencent.com/document/api/1420/102492)
+* [DescribeBatchOrganizationRegistrationUrls](https://cloud.tencent.com/document/api/1420/102491)
+
+新增数据结构：
+
+* [OrganizationAuthUrl](https://cloud.tencent.com/document/api/1420/61525#OrganizationAuthUrl)
+* [RegistrationOrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#RegistrationOrganizationInfo)
+
 ### 第 142 次发布
 
 发布时间：2023-12-14 01:49:14
@@ -68700,12 +68653,12 @@
 
 新增数据结构：
 
-* [[Condition](https://cloud.tencent.com/document/api/1092/102488#Condition)](https://cloud.tencent.com/document/api/1092/102488#[Condition](https://cloud.tencent.com/document/api/1092/102488#Condition))
-* [[DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)](https://cloud.tencent.com/document/api/1092/102488#[DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp))
-* [[Filter](https://cloud.tencent.com/document/api/1092/102488#Filter)](https://cloud.tencent.com/document/api/1092/102488#[Filter](https://cloud.tencent.com/document/api/1092/102488#Filter))
-* [[FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup)](https://cloud.tencent.com/document/api/1092/102488#[FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup))
-* [[Paging](https://cloud.tencent.com/document/api/1092/102488#Paging)](https://cloud.tencent.com/document/api/1092/102488#[Paging](https://cloud.tencent.com/document/api/1092/102488#Paging))
-* [[Sort](https://cloud.tencent.com/document/api/1092/102488#Sort)](https://cloud.tencent.com/document/api/1092/102488#[Sort](https://cloud.tencent.com/document/api/1092/102488#Sort))
+* [Condition](https://cloud.tencent.com/document/api/1092/102488#Condition)
+* [DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)
+* [Filter](https://cloud.tencent.com/document/api/1092/102488#Filter)
+* [FilterGroup](https://cloud.tencent.com/document/api/1092/102488#FilterGroup)
+* [Paging](https://cloud.tencent.com/document/api/1092/102488#Paging)
+* [Sort](https://cloud.tencent.com/document/api/1092/102488#Sort)
 
 ### 第 1 次发布
 
@@ -68717,7 +68670,7 @@
 
 新增接口：
 
-* [[DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDevices](https://cloud.tencent.com/document/api/1092/102467)
 
 
 
@@ -110557,6 +110510,22 @@
 
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 98 次发布
+
+发布时间：2023-12-14 16:31:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRocketMQConsumerConnectionDetail](https://cloud.tencent.com/document/api/1179/102490)
+
+新增数据结构：
+
+* [RocketMQConsumerTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQConsumerTopic)
 
 ### 第 97 次发布
 

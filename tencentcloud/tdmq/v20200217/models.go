@@ -6747,6 +6747,108 @@ func (r *DescribeRocketMQConsumeStatsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQConsumerConnectionDetailRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 消费端实例ID
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Retry, Transaction, DeadLetter
+	FilterType []*string `json:"FilterType,omitnil" name:"FilterType"`
+}
+
+type DescribeRocketMQConsumerConnectionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 消费端实例ID
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Retry, Transaction, DeadLetter
+	FilterType []*string `json:"FilterType,omitnil" name:"FilterType"`
+}
+
+func (r *DescribeRocketMQConsumerConnectionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumerConnectionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupId")
+	delete(f, "ClientId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FilterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQConsumerConnectionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQConsumerConnectionDetailResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消费端主题信息列表
+	Details []*RocketMQConsumerTopic `json:"Details,omitnil" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQConsumerConnectionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQConsumerConnectionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQConsumerConnectionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQConsumerConnectionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQConsumerConnectionsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -11974,6 +12076,27 @@ type RocketMQConsumerConnection struct {
 
 	// 消费端版本
 	Version *string `json:"Version,omitnil" name:"Version"`
+}
+
+type RocketMQConsumerTopic struct {
+	// 主题名称
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
+
+	// 主题类型，Default表示普通，GlobalOrder表示全局顺序，PartitionedOrder表示局部顺序，Transaction表示事务，Retry表示重试，DeadLetter表示死信
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 分区数
+	PartitionNum *uint64 `json:"PartitionNum,omitnil" name:"PartitionNum"`
+
+	// 消息堆积数
+	Accumulative *int64 `json:"Accumulative,omitnil" name:"Accumulative"`
+
+	// 最后消费时间，以毫秒为单位
+	LastConsumptionTime *uint64 `json:"LastConsumptionTime,omitnil" name:"LastConsumptionTime"`
+
+	// 订阅规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubRule *string `json:"SubRule,omitnil" name:"SubRule"`
 }
 
 type RocketMQGroup struct {

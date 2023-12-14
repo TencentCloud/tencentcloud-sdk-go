@@ -1772,6 +1772,9 @@ type DomainBatchDetailSet struct {
 	// 详情ID
 	Id *int64 `json:"Id,omitnil" name:"Id"`
 
+	// 类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+	Action *string `json:"Action,omitnil" name:"Action"`
+
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
@@ -1790,6 +1793,10 @@ type DomainBatchDetailSet struct {
 
 	// 更新时间
 	UpdatedOn *string `json:"UpdatedOn,omitnil" name:"UpdatedOn"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
 }
 
 type DomainBatchLogSet struct {
@@ -1806,6 +1813,15 @@ type DomainBatchLogSet struct {
 
 	// 提交时间
 	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
+
+	// 批量操作成功个数
+	Success *int64 `json:"Success,omitnil" name:"Success"`
+
+	// 批量操作处理中个数
+	Doing *int64 `json:"Doing,omitnil" name:"Doing"`
+
+	// 批量操作失败个数
+	Failed *int64 `json:"Failed,omitnil" name:"Failed"`
 }
 
 type DomainList struct {
