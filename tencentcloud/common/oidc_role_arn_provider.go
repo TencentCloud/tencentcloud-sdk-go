@@ -20,6 +20,7 @@ type OIDCRoleArnProvider struct {
 	roleArn          string
 	roleSessionName  string
 	durationSeconds  int64
+	Endpoint         string
 }
 
 type oidcStsRsp struct {
@@ -91,8 +92,12 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 	if r.durationSeconds > 43200 || r.durationSeconds <= 0 {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "AssumeRoleWithWebIdentity durationSeconds should be in the range of 0~43200s", "")
 	}
+	providerEndpoint := r.Endpoint
+	if providerEndpoint == "" {
+		providerEndpoint = endpoint
+	}
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = endpoint
+	cpf.HttpProfile.Endpoint = providerEndpoint
 	cpf.HttpProfile.ReqMethod = "POST"
 
 	client := NewCommonClient(nil, r.region, cpf)
