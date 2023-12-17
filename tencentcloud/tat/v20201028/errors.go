@@ -203,6 +203,9 @@ const (
 	// Lighthouse 尚不支持指定的地域。
 	RESOURCEUNAVAILABLE_LIGHTHOUSEUNSUPPORTEDREGION = "ResourceUnavailable.LighthouseUnsupportedRegion"
 
+	// 用户配额已用完
+	RESOURCEUNAVAILABLE_USERHASNOQUOTACODE = "ResourceUnavailable.UserHasNoQuotaCode"
+
 	// 角色扮演未授权。
 	UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
 

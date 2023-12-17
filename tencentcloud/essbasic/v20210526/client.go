@@ -5511,6 +5511,97 @@ func (c *Client) CreateFlowsByTemplatesWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreatePartnerAutoSignAuthUrlRequest() (request *CreatePartnerAutoSignAuthUrlRequest) {
+    request = &CreatePartnerAutoSignAuthUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreatePartnerAutoSignAuthUrl")
+    
+    
+    return
+}
+
+func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignAuthUrlResponse) {
+    response = &CreatePartnerAutoSignAuthUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePartnerAutoSignAuthUrl
+// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+//
+// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+//
+// 
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuthUrlRequest) (response *CreatePartnerAutoSignAuthUrlResponse, err error) {
+    return c.CreatePartnerAutoSignAuthUrlWithContext(context.Background(), request)
+}
+
+// CreatePartnerAutoSignAuthUrl
+// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+//
+// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+//
+// 
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAutoSignAuthUrlWithContext(ctx context.Context, request *CreatePartnerAutoSignAuthUrlRequest) (response *CreatePartnerAutoSignAuthUrlResponse, err error) {
+    if request == nil {
+        request = NewCreatePartnerAutoSignAuthUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePartnerAutoSignAuthUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePartnerAutoSignAuthUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSealByImageRequest() (request *CreateSealByImageRequest) {
     request = &CreateSealByImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6110,6 +6201,93 @@ func (c *Client) DescribeChannelSealPolicyWorkflowUrlWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeChannelSealPolicyWorkflowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtendedServiceAuthDetailRequest() (request *DescribeExtendedServiceAuthDetailRequest) {
+    request = &DescribeExtendedServiceAuthDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeExtendedServiceAuthDetail")
+    
+    
+    return
+}
+
+func NewDescribeExtendedServiceAuthDetailResponse() (response *DescribeExtendedServiceAuthDetailResponse) {
+    response = &DescribeExtendedServiceAuthDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExtendedServiceAuthDetail
+// 查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+//
+// 
+//
+// 1. **企业自动签**
+//
+// 2. **批量签署**
+//
+// 
+//
+// 
+//
+// 注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeExtendedServiceAuthDetail(request *DescribeExtendedServiceAuthDetailRequest) (response *DescribeExtendedServiceAuthDetailResponse, err error) {
+    return c.DescribeExtendedServiceAuthDetailWithContext(context.Background(), request)
+}
+
+// DescribeExtendedServiceAuthDetail
+// 查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+//
+// 
+//
+// 1. **企业自动签**
+//
+// 2. **批量签署**
+//
+// 
+//
+// 
+//
+// 注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeExtendedServiceAuthDetailWithContext(ctx context.Context, request *DescribeExtendedServiceAuthDetailRequest) (response *DescribeExtendedServiceAuthDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtendedServiceAuthDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtendedServiceAuthDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtendedServiceAuthDetailResponse()
     err = c.Send(request, response)
     return
 }

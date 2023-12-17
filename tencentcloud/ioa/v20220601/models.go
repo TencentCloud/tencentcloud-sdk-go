@@ -46,6 +46,10 @@ type DescribeDevicesPageRsp struct {
 	// 数据分页信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paging *Paging `json:"Paging,omitnil" name:"Paging"`
+
+	// 业务响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DeviceDetail `json:"Items,omitnil" name:"Items"`
 }
 
 // Predefined struct for user
@@ -198,6 +202,180 @@ func (r *DescribeDevicesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceDetail struct {
+	// 设备ID(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 设备唯一标识符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mid *string `json:"Mid,omitnil" name:"Mid"`
+
+	// 终端名（设备名）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 设备所在分组ID(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *int64 `json:"GroupId,omitnil" name:"GroupId"`
+
+	// OS平台(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsType *int64 `json:"OsType,omitnil" name:"OsType"`
+
+	// 设备IP地址（出口IP）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 在线状态 2 在线 0，1 离线(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineStatus *int64 `json:"OnlineStatus,omitnil" name:"OnlineStatus"`
+
+	// 客户端版本号-大整数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 客户端版本号-点分字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrVersion *string `json:"StrVersion,omitnil" name:"StrVersion"`
+
+	// 首次在线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil" name:"Itime"`
+
+	// 最后一次在线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnActiveTime *string `json:"ConnActiveTime,omitnil" name:"ConnActiveTime"`
+
+	// 设备是否加锁 1 锁定 0 2 非锁定(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Locked *int64 `json:"Locked,omitnil" name:"Locked"`
+
+	// 设备本地IP列表, 包括IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalIpList *string `json:"LocalIpList,omitnil" name:"LocalIpList"`
+
+	// 主机ID(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostId *int64 `json:"HostId,omitnil" name:"HostId"`
+
+	// 设备所属分组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 设备所属分组路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupNamePath *string `json:"GroupNamePath,omitnil" name:"GroupNamePath"`
+
+	// 未修复高危漏洞数(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CriticalVulListCount *int64 `json:"CriticalVulListCount,omitnil" name:"CriticalVulListCount"`
+
+	// 设备名 和Name相同，保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputerName *string `json:"ComputerName,omitnil" name:"ComputerName"`
+
+	// 登录域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
+
+	// MAC地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MacAddr *string `json:"MacAddr,omitnil" name:"MacAddr"`
+
+	// 漏洞数(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulCount *int64 `json:"VulCount,omitnil" name:"VulCount"`
+
+	// 病毒风险数(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskCount *int64 `json:"RiskCount,omitnil" name:"RiskCount"`
+
+	// 病毒库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusVer *string `json:"VirusVer,omitnil" name:"VirusVer"`
+
+	// 漏洞库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulVersion *string `json:"VulVersion,omitnil" name:"VulVersion"`
+
+	// 系统修复引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SysRepVersion *string `json:"SysRepVersion,omitnil" name:"SysRepVersion"`
+
+	// 高危补丁列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulCriticalList []*string `json:"VulCriticalList,omitnil" name:"VulCriticalList"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags *string `json:"Tags,omitnil" name:"Tags"`
+
+	// 终端用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 防火墙状态(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirewallStatus *int64 `json:"FirewallStatus,omitnil" name:"FirewallStatus"`
+
+	// SN序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNum *string `json:"SerialNum,omitnil" name:"SerialNum"`
+
+	// 设备管控策略版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceStrategyVer *string `json:"DeviceStrategyVer,omitnil" name:"DeviceStrategyVer"`
+
+	// NGN策略版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NGNStrategyVer *string `json:"NGNStrategyVer,omitnil" name:"NGNStrategyVer"`
+
+	// 最近登录账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IOAUserName *string `json:"IOAUserName,omitnil" name:"IOAUserName"`
+
+	// 设备管控新策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceNewStrategyVer *string `json:"DeviceNewStrategyVer,omitnil" name:"DeviceNewStrategyVer"`
+
+	// NGN策略新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NGNNewStrategyVer *string `json:"NGNNewStrategyVer,omitnil" name:"NGNNewStrategyVer"`
+
+	// 主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
+
+	// 主板序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseBoardSn *string `json:"BaseBoardSn,omitnil" name:"BaseBoardSn"`
+
+	// 绑定账户只有名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountUsers *string `json:"AccountUsers,omitnil" name:"AccountUsers"`
+
+	// 身份策略版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityStrategyVer *string `json:"IdentityStrategyVer,omitnil" name:"IdentityStrategyVer"`
+
+	// 身份策略新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityNewStrategyVer *string `json:"IdentityNewStrategyVer,omitnil" name:"IdentityNewStrategyVer"`
+
+	// 最近登录账号部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupName *string `json:"AccountGroupName,omitnil" name:"AccountGroupName"`
+
+	// 登录账号姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 账号组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil" name:"AccountGroupId"`
 }
 
 type Filter struct {

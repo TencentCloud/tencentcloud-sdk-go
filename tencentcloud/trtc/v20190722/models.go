@@ -136,7 +136,7 @@ type CreateCloudRecordingRequestParams struct {
 	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 录制机器人的UserId，用于进房发起录制任务。
-	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复，也不可能指定相同的录制机器人UserId同时进房。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
+	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个录制任务时，机器人的userid也不能相互重复，否则会中断前一个录制任务。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 录制机器人UserId对应的校验签名，即UserId和UserSig相当于录制机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
@@ -177,7 +177,7 @@ type CreateCloudRecordingRequest struct {
 	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 录制机器人的UserId，用于进房发起录制任务。
-	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复，也不可能指定相同的录制机器人UserId同时进房。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
+	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个录制任务时，机器人的userid也不能相互重复，否则会中断前一个录制任务。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 录制机器人UserId对应的校验签名，即UserId和UserSig相当于录制机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。

@@ -2264,7 +2264,7 @@ func (r *CreatePrometheusConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrometheusGlobalNotificationRequestParams struct {
-	// 实例ID
+	// 实例ID(可通过 DescribePrometheusInstances 接口获取)
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 告警通知渠道
@@ -2274,7 +2274,7 @@ type CreatePrometheusGlobalNotificationRequestParams struct {
 type CreatePrometheusGlobalNotificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID(可通过 DescribePrometheusInstances 接口获取)
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 告警通知渠道
@@ -3408,26 +3408,26 @@ func (r *DeletePolicyGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePrometheusAlertPolicyRequestParams struct {
-	// 实例id
+	// 实例ID(可通过 DescribePrometheusInstances 接口获取)
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 告警策略id列表
+	// 告警策略ID列表(可通过 DescribePrometheusAlertPolicy 接口获取)
 	AlertIds []*string `json:"AlertIds,omitnil" name:"AlertIds"`
 
-	// 告警策略名称
+	// 告警策略名称(可通过 DescribePrometheusAlertPolicy 接口获取)，名称完全相同的告警策略才会删除
 	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
 type DeletePrometheusAlertPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例ID(可通过 DescribePrometheusInstances 接口获取)
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 告警策略id列表
+	// 告警策略ID列表(可通过 DescribePrometheusAlertPolicy 接口获取)
 	AlertIds []*string `json:"AlertIds,omitnil" name:"AlertIds"`
 
-	// 告警策略名称
+	// 告警策略名称(可通过 DescribePrometheusAlertPolicy 接口获取)，名称完全相同的告警策略才会删除
 	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
@@ -8276,8 +8276,11 @@ type DescribePrometheusClusterAgentsResponseParams struct {
 	// 被关联集群总量
 	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
-	// 是否为首次绑定，需要安装预聚合规则
+	// 是否为首次绑定，如果是首次绑定则需要安装预聚合规则
 	IsFirstBind *bool `json:"IsFirstBind,omitnil" name:"IsFirstBind"`
+
+	// 实例组件是否需要更新镜像版本
+	ImageNeedUpdate *bool `json:"ImageNeedUpdate,omitnil" name:"ImageNeedUpdate"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -8361,6 +8364,9 @@ type DescribePrometheusConfigResponseParams struct {
 
 	// Probes
 	Probes []*PrometheusConfigItem `json:"Probes,omitnil" name:"Probes"`
+
+	// 实例组件是否需要升级
+	ImageNeedUpdate *bool `json:"ImageNeedUpdate,omitnil" name:"ImageNeedUpdate"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -9323,11 +9329,12 @@ type DescribePrometheusTargetsTMPRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 集群类型
-	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
-
-	// 集群id
+	// 集成容器服务填绑定的集群id；
+	// 集成中心填 non-cluster
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 集群类型(可不填)
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 过滤条件，当前支持
 	// Name=state
@@ -9341,11 +9348,12 @@ type DescribePrometheusTargetsTMPRequest struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 集群类型
-	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
-
-	// 集群id
+	// 集成容器服务填绑定的集群id；
+	// 集成中心填 non-cluster
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 集群类型(可不填)
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 过滤条件，当前支持
 	// Name=state
@@ -9366,8 +9374,8 @@ func (r *DescribePrometheusTargetsTMPRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "ClusterType")
 	delete(f, "ClusterId")
+	delete(f, "ClusterType")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusTargetsTMPRequest has unknown keys!", "")
@@ -11890,6 +11898,10 @@ type ModifyPrometheusConfigRequestParams struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil" name:"RawJobs"`
+
+	// 0: 更新实例组件镜像版本；
+	// 1: 不更新实例组件镜像版本
+	UpdateImage *int64 `json:"UpdateImage,omitnil" name:"UpdateImage"`
 }
 
 type ModifyPrometheusConfigRequest struct {
@@ -11912,6 +11924,10 @@ type ModifyPrometheusConfigRequest struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil" name:"RawJobs"`
+
+	// 0: 更新实例组件镜像版本；
+	// 1: 不更新实例组件镜像版本
+	UpdateImage *int64 `json:"UpdateImage,omitnil" name:"UpdateImage"`
 }
 
 func (r *ModifyPrometheusConfigRequest) ToJsonString() string {
@@ -11932,6 +11948,7 @@ func (r *ModifyPrometheusConfigRequest) FromJsonString(s string) error {
 	delete(f, "ServiceMonitors")
 	delete(f, "PodMonitors")
 	delete(f, "RawJobs")
+	delete(f, "UpdateImage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusConfigRequest has unknown keys!", "")
 	}
@@ -12851,7 +12868,17 @@ type PrometheusInstancesOverview struct {
 }
 
 type PrometheusJobTargets struct {
+	// 该Job的targets列表
+	Targets []*PrometheusTarget `json:"Targets,omitnil" name:"Targets"`
 
+	// job的名称
+	JobName *string `json:"JobName,omitnil" name:"JobName"`
+
+	// targets总数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 健康的target总数
+	Up *uint64 `json:"Up,omitnil" name:"Up"`
 }
 
 type PrometheusNotificationItem struct {
@@ -13050,6 +13077,10 @@ type PrometheusTag struct {
 	// 标签对应的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type PrometheusTarget struct {
+
 }
 
 type PrometheusTemp struct {

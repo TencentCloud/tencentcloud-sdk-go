@@ -1699,7 +1699,7 @@ type CreateCosRechargeRequestParams struct {
 	// 默认为minimalist_log
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
-	// supported: "", "gzip", "lzop", "snappy”; 默认空
+	// supported: "", "gzip", "lzop", "snappy"; 默认空
 	Compress *string `json:"Compress,omitnil" name:"Compress"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -1731,7 +1731,7 @@ type CreateCosRechargeRequest struct {
 	// 默认为minimalist_log
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
-	// supported: "", "gzip", "lzop", "snappy”; 默认空
+	// supported: "", "gzip", "lzop", "snappy"; 默认空
 	Compress *string `json:"Compress,omitnil" name:"Compress"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType

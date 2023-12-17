@@ -258,6 +258,32 @@ type ApproverRestriction struct {
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 }
 
+type AuthInfoDetail struct {
+	// 扩展服务类型，和入参一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 扩展服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 授权员工列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil" name:"HasAuthUserList"`
+
+	// 授权企业列表（企业自动签时，该字段有值）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil" name:"HasAuthOrganizationList"`
+
+	// 授权员工列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil" name:"AuthUserTotal"`
+
+	// 授权企业列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil" name:"AuthOrganizationTotal"`
+}
+
 type AuthorizedUser struct {
 	// 电子签系统中的用户id
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
@@ -1148,6 +1174,13 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 type CreateBatchQuickSignUrlRequest struct {
@@ -1195,6 +1228,13 @@ type CreateBatchQuickSignUrlRequest struct {
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1217,6 +1257,7 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "JumpUrl")
 	delete(f, "SignatureTypes")
 	delete(f, "ApproverSignTypes")
+	delete(f, "SignTypeSelector")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -6231,6 +6272,103 @@ func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExtendedServiceAuthDetailRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 要查询的扩展服务类型。
+	// 如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
+	// <li>BATCH_SIGN：批量签署</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeExtendedServiceAuthDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 要查询的扩展服务类型。
+	// 如下所示：
+	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
+	// <li>BATCH_SIGN：批量签署</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeExtendedServiceAuthDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ExtendServiceType")
+	delete(f, "Agent")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtendedServiceAuthDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtendedServiceAuthDetailResponseParams struct {
+	// 服务授权的信息列表，根据查询类型返回特定扩展服务的授权状况。
+	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil" name:"AuthInfoDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeExtendedServiceAuthDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtendedServiceAuthDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtendedServiceAuthDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -8474,6 +8612,13 @@ type FlowCreateApprover struct {
 	// 注:
 	// `此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主`
 	ApproverSignTypes []*uint64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 type FlowDetailInfo struct {
@@ -8780,6 +8925,36 @@ type GroupOrganization struct {
 	// <li> **false**：否</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitnil" name:"FlowEngineEnable"`
+}
+
+type HasAuthOrganization struct {
+	// 授权企业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
+
+	// 授权企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+
+	// 被授权企业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil" name:"AuthorizedOrganizationId"`
+
+	// 被授权企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+
+	// 授权模板id（仅当授权方式为模板授权时有值）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 授权模板名称（仅当授权方式为模板授权时有值）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+
+	// 授权时间，格式为时间戳，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil" name:"AuthorizeTime"`
 }
 
 type HasAuthUser struct {
@@ -10005,7 +10180,6 @@ type UploadFilesRequestParams struct {
 	// 文件对应业务类型,可以选择的类型如下
 	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
 	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用于合同图片控件的填充，文件类型支持.jpg/.png</li>
 	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
@@ -10058,7 +10232,6 @@ type UploadFilesRequest struct {
 	// 文件对应业务类型,可以选择的类型如下
 	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
 	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用于合同图片控件的填充，文件类型支持.jpg/.png</li>
 	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 

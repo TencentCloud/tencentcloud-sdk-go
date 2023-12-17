@@ -2131,6 +2131,75 @@ func (r *DescribeNICAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOrganizationUserInfoRequestParams struct {
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 不支持多云
+	NotSupportCloud *bool `json:"NotSupportCloud,omitnil" name:"NotSupportCloud"`
+}
+
+type DescribeOrganizationUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 不支持多云
+	NotSupportCloud *bool `json:"NotSupportCloud,omitnil" name:"NotSupportCloud"`
+}
+
+func (r *DescribeOrganizationUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "NotSupportCloud")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationUserInfoResponseParams struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 集团用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*OrganizationUserInfo `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeOrganizationUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePublicIpAssetsRequestParams struct {
 	// filte过滤条件
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
@@ -4002,6 +4071,98 @@ type NICAsset struct {
 	// 是否新资产 1新
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAsset *uint64 `json:"IsNewAsset,omitnil" name:"IsNewAsset"`
+}
+
+type OrganizationUserInfo struct {
+	// 成员账号Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 成员账号名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NickName *string `json:"NickName,omitnil" name:"NickName"`
+
+	// 部门节点名称，账号所属部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 资产数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCount *int64 `json:"AssetCount,omitnil" name:"AssetCount"`
+
+	// 风险数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskCount *int64 `json:"RiskCount,omitnil" name:"RiskCount"`
+
+	// 攻击数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackCount *int64 `json:"AttackCount,omitnil" name:"AttackCount"`
+
+	// Member/Admin/;成员或者管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 成员账号id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberId *string `json:"MemberId,omitnil" name:"MemberId"`
+
+	// 成员账号Appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 账号加入方式,create/invite
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinType *string `json:"JoinType,omitnil" name:"JoinType"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFWProtect *string `json:"CFWProtect,omitnil" name:"CFWProtect"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WAFProtect *string `json:"WAFProtect,omitnil" name:"WAFProtect"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPProtect *string `json:"CWPProtect,omitnil" name:"CWPProtect"`
+
+	// 1启用，0未启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+
+	// "Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CSIPProtect *string `json:"CSIPProtect,omitnil" name:"CSIPProtect"`
+
+	// 1为配额消耗者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaConsumer *int64 `json:"QuotaConsumer,omitnil" name:"QuotaConsumer"`
+
+	// 账户类型，0为腾讯云账户，1为AWS账户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *int64 `json:"CloudType,omitnil" name:"CloudType"`
+
+	// 0为缺省值，1为10分钟，2为1小时，3为24小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncFrequency *int64 `json:"SyncFrequency,omitnil" name:"SyncFrequency"`
+
+	// 多云账户是否过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExpired *bool `json:"IsExpired,omitnil" name:"IsExpired"`
+
+	// 多云账户 权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionList []*string `json:"PermissionList,omitnil" name:"PermissionList"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthType *int64 `json:"AuthType,omitnil" name:"AuthType"`
+
+	// 0 腾讯云集团账户
+	// 1 腾讯云接入账户
+	// 2 非腾讯云
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcMemberType *int64 `json:"TcMemberType,omitnil" name:"TcMemberType"`
 }
 
 type PortViewPortRisk struct {

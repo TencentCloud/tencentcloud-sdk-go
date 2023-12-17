@@ -3878,7 +3878,7 @@ type DescribeDDoSAttackDataRequestParams struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -3914,7 +3914,7 @@ type DescribeDDoSAttackDataRequest struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -3990,16 +3990,16 @@ func (r *DescribeDDoSAttackDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSAttackEventRequestParams struct {
-	// 开始时间。
+	// 开始时间，时间范围为 30 天。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间，时间范围为 30 天。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil" name:"PolicyIds"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -4008,7 +4008,7 @@ type DescribeDDoSAttackEventRequestParams struct {
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 是否展示详细信息。
+	// 展示攻击详情的参数，若填false，默认只返回攻击次数，不返回攻击详情；若填true，返回攻击详情。
 	ShowDetail *bool `json:"ShowDetail,omitnil" name:"ShowDetail"`
 
 	// 数据归属地区，取值有：
@@ -4031,16 +4031,16 @@ type DescribeDDoSAttackEventRequestParams struct {
 type DescribeDDoSAttackEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间。
+	// 开始时间，时间范围为 30 天。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间，时间范围为 30 天。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil" name:"PolicyIds"`
 
-	// 站点集合，此参数必填，不填默认查询为空。
+	// 站点集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -4049,7 +4049,7 @@ type DescribeDDoSAttackEventRequest struct {
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 是否展示详细信息。
+	// 展示攻击详情的参数，若填false，默认只返回攻击次数，不返回攻击详情；若填true，返回攻击详情。
 	ShowDetail *bool `json:"ShowDetail,omitnil" name:"ShowDetail"`
 
 	// 数据归属地区，取值有：
@@ -4143,7 +4143,7 @@ type DescribeDDoSAttackTopDataRequestParams struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点ID集合，不填默认选择全部站点。
+	// 站点ID集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。
@@ -4191,7 +4191,7 @@ type DescribeDDoSAttackTopDataRequest struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
-	// 站点ID集合，不填默认选择全部站点。
+	// 站点ID集合，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。

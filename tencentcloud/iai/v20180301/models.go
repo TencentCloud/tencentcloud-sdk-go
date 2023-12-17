@@ -629,7 +629,7 @@ type CreateFaceResponseParams struct {
 	// 加入成功的人脸ID列表
 	SucFaceIds []*string `json:"SucFaceIds,omitnil" name:"SucFaceIds"`
 
-	// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
+	// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，-1109 代表图片尺寸过大或者过小， 
 	// -1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
 	// 其他非 0 值代表算法服务异常。 
 	// RetCode的顺序和入参中 Images 或 Urls 的顺序一致。

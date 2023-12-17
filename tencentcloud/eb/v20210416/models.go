@@ -500,10 +500,19 @@ type CreateTargetRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
-	// 目标类型
+	// 目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 目标描述
+	// 目标描述;scf类型示例:
+	// {"ResourceDescription":"qcs::scf:ap-guangzhou:uin/2252646423:namespace/default/function/john-test-0326/$LATEST"};
+	// cls类型示例:
+	// {"ResourceDescription":"qcs::cls:ap-guangzhou:uin/12323442323:topic/7103f705-6c38-4b64-ac9d-428af0f2e732"}
+	// ckafka类型示例:
+	// {"ResourceDescription":"qcs::ckafka:ap-guangzhou:uin/1500000688:ckafkaId/uin/1500000688/ckafka-018q1nwj","CkafkaTargetParams":{"TopicName":"alert","RetryPolicy":{"RetryInterval":60,"MaxRetryAttempts":360}}}
+	// amp类型-邮件/短信示例:
+	// {"ResourceDescription":"qcs::eb-amp:ap-guangzhou:uin/100012505002:","AMPParams":{"NotificationTemplateId":10181,"Lang":"cn","NoticeReceivers":[{"UserType":"User","UserIds":["9424525"],"TimeWindow":{"From":"09:30:00","To":"23:30:00"},"Channels":["Email","SMS"]}]}}
+	// es类型示例:
+	// {"ResourceDescription":"qcs::es:ap-guangzhou:uin/1500000688:instance/es-7cplmhsd","ESTargetParams":{"EsVersion":"7.14.2","UserName":"elastic","Password":"xxxxx","NetMode":"privateLink","IndexPrefix":"auto-test","IndexSuffixMode":"default","RotationInterval":"none","IndexTemplateType":"","OutputMode":"default"}}
 	TargetDescription *TargetDescription `json:"TargetDescription,omitnil" name:"TargetDescription"`
 
 	// 事件规则ID
@@ -516,10 +525,19 @@ type CreateTargetRequest struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
-	// 目标类型
+	// 目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 目标描述
+	// 目标描述;scf类型示例:
+	// {"ResourceDescription":"qcs::scf:ap-guangzhou:uin/2252646423:namespace/default/function/john-test-0326/$LATEST"};
+	// cls类型示例:
+	// {"ResourceDescription":"qcs::cls:ap-guangzhou:uin/12323442323:topic/7103f705-6c38-4b64-ac9d-428af0f2e732"}
+	// ckafka类型示例:
+	// {"ResourceDescription":"qcs::ckafka:ap-guangzhou:uin/1500000688:ckafkaId/uin/1500000688/ckafka-018q1nwj","CkafkaTargetParams":{"TopicName":"alert","RetryPolicy":{"RetryInterval":60,"MaxRetryAttempts":360}}}
+	// amp类型-邮件/短信示例:
+	// {"ResourceDescription":"qcs::eb-amp:ap-guangzhou:uin/100012505002:","AMPParams":{"NotificationTemplateId":10181,"Lang":"cn","NoticeReceivers":[{"UserType":"User","UserIds":["9424525"],"TimeWindow":{"From":"09:30:00","To":"23:30:00"},"Channels":["Email","SMS"]}]}}
+	// es类型示例:
+	// {"ResourceDescription":"qcs::es:ap-guangzhou:uin/1500000688:instance/es-7cplmhsd","ESTargetParams":{"EsVersion":"7.14.2","UserName":"elastic","Password":"xxxxx","NetMode":"privateLink","IndexPrefix":"auto-test","IndexSuffixMode":"default","RotationInterval":"none","IndexTemplateType":"","OutputMode":"default"}}
 	TargetDescription *TargetDescription `json:"TargetDescription,omitnil" name:"TargetDescription"`
 
 	// 事件规则ID
@@ -581,7 +599,7 @@ type CreateTransformationRequestParams struct {
 	// 规则id
 	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
-	// 一个转换规则列表，当前仅限定一个
+	// 一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
 	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
 }
 
@@ -594,7 +612,7 @@ type CreateTransformationRequest struct {
 	// 规则id
 	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
-	// 一个转换规则列表，当前仅限定一个
+	// 一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
 	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
 }
 
@@ -988,7 +1006,7 @@ type DescribeLogTagValueRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
-	// 聚合字段
+	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
 	GroupField *string `json:"GroupField,omitnil" name:"GroupField"`
 
 	// 页数
@@ -1013,7 +1031,7 @@ type DescribeLogTagValueRequest struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
-	// 聚合字段
+	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
 	GroupField *string `json:"GroupField,omitnil" name:"GroupField"`
 
 	// 页数
@@ -1168,7 +1186,7 @@ type Filter struct {
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitnil" name:"Values"`
 
-	// 过滤键的名称。
+	// 过滤键的名称。EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)
 	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
@@ -1584,7 +1602,7 @@ type ListEventBusesRequestParams struct {
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页偏移量，默认为0。
@@ -1603,7 +1621,7 @@ type ListEventBusesRequest struct {
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页偏移量，默认为0。
@@ -2030,7 +2048,7 @@ type LogFilter struct {
 }
 
 type LogFilters struct {
-	// 过滤字段名称
+	// 过滤字段名称，取值范围如下:region(地域)，type(事件类型)，source(事件源)，status(事件状态)
 	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
@@ -2271,10 +2289,10 @@ type SearchLogRequestParams struct {
 	// 每页数据大小
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 筛选条件
+	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
 	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
 
-	// 排序数组
+	// 事件查询结果排序，["timestamp","subject"]
 	OrderFields []*string `json:"OrderFields,omitnil" name:"OrderFields"`
 
 	// 排序方式，asc 从旧到新，desc 从新到旧
@@ -2299,10 +2317,10 @@ type SearchLogRequest struct {
 	// 每页数据大小
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 筛选条件
+	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
 	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
 
-	// 排序数组
+	// 事件查询结果排序，["timestamp","subject"]
 	OrderFields []*string `json:"OrderFields,omitnil" name:"OrderFields"`
 
 	// 排序方式，asc 从旧到新，desc 从新到旧
@@ -2455,7 +2473,7 @@ type TargetBrief struct {
 }
 
 type TargetDescription struct {
-	// QCS资源六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)
+	// QCS资源六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)；scf资源六段式示例[qcs::scf:ap-guangzhou:uin/123:namespace/test(函数命名空间)/function/test(函数名)/$LATEST(函数版本)] amp资源六段式示例[qcs::eb-amp:ap-guangzhou:uin/123:] ckafka资源六段式示例[qcs::ckafka:ap-guangzhou:uin/123:ckafkaId/uin/123/ckafka-123(ckafka实例Id)] cls资源六段式示例[qcs::cls:ap-guangzhou:uin/123:topic/122332442(topicId)] es资源六段式示例[qcs::es:ap-guangzhou:appid/123/uin/456:instance/es-7cplmhsd(es实例Id)]
 	ResourceDescription *string `json:"ResourceDescription,omitnil" name:"ResourceDescription"`
 
 	// 云函数参数
@@ -2484,15 +2502,15 @@ type Transform struct {
 }
 
 type Transformation struct {
-	// 描述如何提取数据
+	// 描述如何提取数据，{"ExtractionInputPath":"$.data.payload","Format":"JSON"}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extraction *Extraction `json:"Extraction,omitnil" name:"Extraction"`
 
-	// 描述如何过滤数据
+	// 描述如何过滤数据;{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EtlFilter *EtlFilter `json:"EtlFilter,omitnil" name:"EtlFilter"`
 
-	// 描述如何数据转换
+	// 描述如何数据转换;"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"}]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Transform *Transform `json:"Transform,omitnil" name:"Transform"`
 }

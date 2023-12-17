@@ -2721,6 +2721,7 @@ func NewCreateTaskVersionDsResponse() (response *CreateTaskVersionDsResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
@@ -2734,6 +2735,7 @@ func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (respo
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskVersionDsWithContext(ctx context.Context, request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
@@ -17093,6 +17095,7 @@ func NewUploadContentResponse() (response *UploadContentResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
@@ -17107,6 +17110,7 @@ func (c *Client) UploadContent(request *UploadContentRequest) (response *UploadC
 // 可能返回的错误码:
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"

@@ -703,11 +703,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 // CreateDocument
 // 创建签署流程电子文档<br />
 //
-// 适用场景：见创建签署流程接口。<br />
-//
-// 点击查看<a href="https://qian.tencent.com/developers/startFlows/CreateFlow" target="_blank">通过模板创建签署流程</a>
-//
-// <a href="https://qian.tencent.com/developers/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>。<br />
+// 
 //
 // 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
@@ -768,11 +764,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 // CreateDocument
 // 创建签署流程电子文档<br />
 //
-// 适用场景：见创建签署流程接口。<br />
-//
-// 点击查看<a href="https://qian.tencent.com/developers/startFlows/CreateFlow" target="_blank">通过模板创建签署流程</a>
-//
-// <a href="https://qian.tencent.com/developers/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>。<br />
+// 
 //
 // 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
@@ -5012,6 +5004,79 @@ func (c *Client) DescribeBillUsageDetailWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeBillUsageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtendedServiceAuthDetailRequest() (request *DescribeExtendedServiceAuthDetailRequest) {
+    request = &DescribeExtendedServiceAuthDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeExtendedServiceAuthDetail")
+    
+    
+    return
+}
+
+func NewDescribeExtendedServiceAuthDetailResponse() (response *DescribeExtendedServiceAuthDetailResponse) {
+    response = &DescribeExtendedServiceAuthDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExtendedServiceAuthDetail
+// 查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+//
+// 1. 企业自动签（本企业授权、集团企业授权、合作企业授权）
+//
+// 2. 批量签署能力
+//
+// 
+//
+// 
+//
+// 注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeExtendedServiceAuthDetail(request *DescribeExtendedServiceAuthDetailRequest) (response *DescribeExtendedServiceAuthDetailResponse, err error) {
+    return c.DescribeExtendedServiceAuthDetailWithContext(context.Background(), request)
+}
+
+// DescribeExtendedServiceAuthDetail
+// 查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+//
+// 1. 企业自动签（本企业授权、集团企业授权、合作企业授权）
+//
+// 2. 批量签署能力
+//
+// 
+//
+// 
+//
+// 注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeExtendedServiceAuthDetailWithContext(ctx context.Context, request *DescribeExtendedServiceAuthDetailRequest) (response *DescribeExtendedServiceAuthDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtendedServiceAuthDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtendedServiceAuthDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtendedServiceAuthDetailResponse()
     err = c.Send(request, response)
     return
 }

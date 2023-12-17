@@ -31,13 +31,10 @@ type AutomationAgentInfo struct {
 	LastHeartbeatTime *string `json:"LastHeartbeatTime,omitnil" name:"LastHeartbeatTime"`
 
 	// Agent状态，取值范围：
-	// <li> Online：在线
-	// <li> Offline：离线
+	// Online：在线，Offline：离线
 	AgentStatus *string `json:"AgentStatus,omitnil" name:"AgentStatus"`
 
-	// Agent运行环境，取值范围：
-	// <li> Linux：Linux实例
-	// <li> Windows：Windows实例
+	// Agent运行环境，取值范围：Linux：Linux实例Windows：Windows实例
 	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// Agent 支持的功能列表。
@@ -50,8 +47,8 @@ type CancelInvocationRequestParams struct {
 	InvocationId *string `json:"InvocationId,omitnil" name:"InvocationId"`
 
 	// 实例ID列表，上限100。支持实例类型：
-	// <li> CVM
-	// <li> LIGHTHOUSE
+	// <li> CVM </li>
+	// <li> LIGHTHOUSE </li>
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
@@ -62,8 +59,8 @@ type CancelInvocationRequest struct {
 	InvocationId *string `json:"InvocationId,omitnil" name:"InvocationId"`
 
 	// 实例ID列表，上限100。支持实例类型：
-	// <li> CVM
-	// <li> LIGHTHOUSE
+	// <li> CVM </li>
+	// <li> LIGHTHOUSE </li>
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
@@ -912,10 +909,10 @@ type DescribeCommandsRequestParams struct {
 	CommandIds []*string `json:"CommandIds,omitnil" name:"CommandIds"`
 
 	// 过滤条件。
-	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。
-	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。
-	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。
-	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
+	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
+	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
+	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>
@@ -937,10 +934,10 @@ type DescribeCommandsRequest struct {
 	CommandIds []*string `json:"CommandIds,omitnil" name:"CommandIds"`
 
 	// 过滤条件。
-	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。
-	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。
-	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。
-	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
+	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
+	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
+	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>
@@ -1010,7 +1007,9 @@ type DescribeInvocationTasksRequestParams struct {
 	// 执行任务ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationTaskIds` 和 `Filters`。
 	InvocationTaskIds []*string `json:"InvocationTaskIds,omitnil" name:"InvocationTaskIds"`
 
-	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
+	// 过滤条件。<br>
+	// 
+	// <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。</li> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1019,7 +1018,9 @@ type DescribeInvocationTasksRequestParams struct {
 	// 偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 是否隐藏输出，取值范围：<br><li>true：隐藏输出 <br><li>false：不隐藏 <br>默认为 true。
+	// 是否隐藏输出，取值范围：
+	// 
+	// <ul> <li>true：隐藏输出</li> <li>false：不隐藏</li> </ul> 默认为 true。
 	HideOutput *bool `json:"HideOutput,omitnil" name:"HideOutput"`
 }
 
@@ -1029,7 +1030,9 @@ type DescribeInvocationTasksRequest struct {
 	// 执行任务ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationTaskIds` 和 `Filters`。
 	InvocationTaskIds []*string `json:"InvocationTaskIds,omitnil" name:"InvocationTaskIds"`
 
-	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
+	// 过滤条件。<br>
+	// 
+	// <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。</li> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1038,7 +1041,9 @@ type DescribeInvocationTasksRequest struct {
 	// 偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 是否隐藏输出，取值范围：<br><li>true：隐藏输出 <br><li>false：不隐藏 <br>默认为 true。
+	// 是否隐藏输出，取值范围：
+	// 
+	// <ul> <li>true：隐藏输出</li> <li>false：不隐藏</li> </ul> 默认为 true。
 	HideOutput *bool `json:"HideOutput,omitnil" name:"HideOutput"`
 }
 
@@ -1098,11 +1103,13 @@ type DescribeInvocationsRequestParams struct {
 	// 执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
 	InvocationIds []*string `json:"InvocationIds,omitnil" name:"InvocationIds"`
 
-	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> 
-	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 
-	// <li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
-	// <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。
-	// <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
+	// 过滤条件。<br>
+	// 
+	// <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li>
+	//  <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> 
+	// <li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+	//  <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。</li>
+	//  <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1118,11 +1125,13 @@ type DescribeInvocationsRequest struct {
 	// 执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
 	InvocationIds []*string `json:"InvocationIds,omitnil" name:"InvocationIds"`
 
-	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> 
-	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 
-	// <li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
-	// <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。
-	// <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
+	// 过滤条件。<br>
+	// 
+	// <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li>
+	//  <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> 
+	// <li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+	//  <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。</li>
+	//  <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1558,6 +1567,12 @@ type DescribeRegisterInstancesRequestParams struct {
 	// 按照【注册码ID】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 
+	// - sys-name
+	// 
+	// 按照【操作系统类型】进行过滤，取值：Linux | Windows。
+	// 类型：String
+	// 必选：否
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为 0。
@@ -1590,6 +1605,12 @@ type DescribeRegisterInstancesRequest struct {
 	// - register-code-id
 	// 
 	// 按照【注册码ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - sys-name
+	// 
+	// 按照【操作系统类型】进行过滤，取值：Linux | Windows。
 	// 类型：String
 	// 必选：否
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -1843,12 +1864,8 @@ type Invocation struct {
 	CommandId *string `json:"CommandId,omitnil" name:"CommandId"`
 
 	// 执行任务状态。取值范围：
-	// <li> PENDING：等待下发 
-	// <li> RUNNING：命令运行中
-	// <li> SUCCESS：命令成功
-	// <li> FAILED：命令失败
-	// <li> TIMEOUT：命令超时
-	// <li> PARTIAL_FAILED：命令部分失败
+	// 
+	// <ul> <li>PENDING：等待下发</li> <li>RUNNING：命令运行中</li> <li>SUCCESS：命令成功</li> <li>FAILED：命令失败</li> <li>TIMEOUT：命令超时</li> <li>PARTIAL_FAILED：命令部分失败</li> </ul>
 	InvocationStatus *string `json:"InvocationStatus,omitnil" name:"InvocationStatus"`
 
 	// 执行任务信息列表。
@@ -1914,19 +1931,8 @@ type InvocationTask struct {
 	CommandId *string `json:"CommandId,omitnil" name:"CommandId"`
 
 	// 执行任务状态。取值范围：
-	// <li> PENDING：等待下发 
-	// <li> DELIVERING：下发中
-	// <li> DELIVER_DELAYED：延时下发 
-	// <li> DELIVER_FAILED：下发失败
-	// <li> START_FAILED：命令启动失败
-	// <li> RUNNING：命令运行中
-	// <li> SUCCESS：命令成功
-	// <li> FAILED：命令执行失败，执行完退出码不为 0
-	// <li> TIMEOUT：命令超时
-	// <li> TASK_TIMEOUT：执行任务超时
-	// <li> CANCELLING：取消中
-	// <li> CANCELLED：已取消（命令启动前就被取消）
-	// <li> TERMINATED：已中止（命令执行期间被取消）
+	// 
+	// <ul> <li>PENDING：等待下发</li> <li>DELIVERING：下发中</li> <li>DELIVER_DELAYED：延时下发</li> <li>DELIVER_FAILED：下发失败</li> <li>START_FAILED：命令启动失败</li> <li>RUNNING：命令运行中</li> <li>SUCCESS：命令成功</li> <li>FAILED：命令执行失败，执行完退出码不为 0</li> <li>TIMEOUT：命令超时</li> <li>TASK_TIMEOUT：执行任务超时</li> <li>CANCELLING：取消中</li> <li>CANCELLED：已取消（命令启动前就被取消）</li> <li>TERMINATED：已中止（命令执行期间被取消）</li> </ul>
 	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 实例ID。
@@ -2638,7 +2644,7 @@ type RegisterInstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemName *string `json:"SystemName,omitnil" name:"SystemName"`
 
-	// 主机IP。
+	// 主机名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
@@ -2669,8 +2675,8 @@ type RunCommandRequestParams struct {
 	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 待执行命令的实例ID列表，上限200。支持实例类型：
-	// <li> CVM
-	// <li> LIGHTHOUSE
+	// <li> CVM </li>
+	// <li> LIGHTHOUSE </li>
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
@@ -2689,17 +2695,17 @@ type RunCommandRequestParams struct {
 	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 是否保存命令，取值范围：
-	// <li> true：保存
-	// <li> false：不保存
+	// <li> true：保存</li>
+	// <li> false：不保存</li>
 	// 默认为 false。
 	SaveCommand *bool `json:"SaveCommand,omitnil" name:"SaveCommand"`
 
 	// 是否启用自定义参数功能。
 	// 一旦创建，此值不提供修改。
 	// 取值范围：
-	// <li> true：启用
-	// <li> false：不启用
-	// 默认值：false。
+	// <li> true：启用 </li>
+	// <li> false：不启用 </li>
+	// 默认值：false。 
 	EnableParameter *bool `json:"EnableParameter,omitnil" name:"EnableParameter"`
 
 	// 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
@@ -2743,8 +2749,8 @@ type RunCommandRequest struct {
 	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 待执行命令的实例ID列表，上限200。支持实例类型：
-	// <li> CVM
-	// <li> LIGHTHOUSE
+	// <li> CVM </li>
+	// <li> LIGHTHOUSE </li>
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
@@ -2763,17 +2769,17 @@ type RunCommandRequest struct {
 	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 是否保存命令，取值范围：
-	// <li> true：保存
-	// <li> false：不保存
+	// <li> true：保存</li>
+	// <li> false：不保存</li>
 	// 默认为 false。
 	SaveCommand *bool `json:"SaveCommand,omitnil" name:"SaveCommand"`
 
 	// 是否启用自定义参数功能。
 	// 一旦创建，此值不提供修改。
 	// 取值范围：
-	// <li> true：启用
-	// <li> false：不启用
-	// 默认值：false。
+	// <li> true：启用 </li>
+	// <li> false：不启用 </li>
+	// 默认值：false。 
 	EnableParameter *bool `json:"EnableParameter,omitnil" name:"EnableParameter"`
 
 	// 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。

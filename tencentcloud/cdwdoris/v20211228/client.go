@@ -65,13 +65,13 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 }
 
 // DescribeInstance
-// 根据实例ID查询某个实例的具体信息
+// 根据集群ID查询某个集群的具体信息
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     return c.DescribeInstanceWithContext(context.Background(), request)
 }
 
 // DescribeInstance
-// 根据实例ID查询某个实例的具体信息
+// 根据集群ID查询某个集群的具体信息
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceRequest()
@@ -108,13 +108,13 @@ func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse
 }
 
 // DescribeInstanceNodes
-// 获取实例节点信息列表
+// 获取集群节点信息列表
 func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     return c.DescribeInstanceNodesWithContext(context.Background(), request)
 }
 
 // DescribeInstanceNodes
-// 获取实例节点信息列表
+// 获取集群节点信息列表
 func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceNodesRequest()

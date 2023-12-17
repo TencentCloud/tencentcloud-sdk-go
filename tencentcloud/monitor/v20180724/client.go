@@ -903,7 +903,7 @@ func NewCreatePrometheusAlertPolicyResponse() (response *CreatePrometheusAlertPo
 }
 
 // CreatePrometheusAlertPolicy
-// 创建告警策略
+// 创建 Prometheus 告警策略(将逐步废弃，建议使用 CreatePrometheusAlertGroup 创建告警策略)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -924,7 +924,7 @@ func (c *Client) CreatePrometheusAlertPolicy(request *CreatePrometheusAlertPolic
 }
 
 // CreatePrometheusAlertPolicy
-// 创建告警策略
+// 创建 Prometheus 告警策略(将逐步废弃，建议使用 CreatePrometheusAlertGroup 创建告警策略)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -1114,7 +1114,7 @@ func NewCreatePrometheusGlobalNotificationResponse() (response *CreatePrometheus
 }
 
 // CreatePrometheusGlobalNotification
-// 创建全局告警通知渠道
+// 创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -1125,7 +1125,7 @@ func (c *Client) CreatePrometheusGlobalNotification(request *CreatePrometheusGlo
 }
 
 // CreatePrometheusGlobalNotification
-// 创建全局告警通知渠道
+// 创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

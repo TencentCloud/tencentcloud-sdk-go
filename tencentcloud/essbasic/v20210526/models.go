@@ -126,6 +126,32 @@ type AuthFailMessage struct {
 	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
+type AuthInfoDetail struct {
+	// 扩展服务类型，和入参一致	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 扩展服务名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 授权员工列表	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil" name:"HasAuthUserList"`
+
+	// 授权企业列表（企业自动签时，该字段有值）	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil" name:"HasAuthOrganizationList"`
+
+	// 授权员工列表总数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil" name:"AuthUserTotal"`
+
+	// 授权企业列表总数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil" name:"AuthOrganizationTotal"`
+}
+
 type AuthorizedUser struct {
 	// 第三方应用平台的用户openid
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
@@ -208,8 +234,6 @@ type BaseFlowInfo struct {
 	UserData *string `json:"UserData,omitnil" name:"UserData"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	// 
-	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
@@ -928,6 +952,13 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 type ChannelCreateBatchQuickSignUrlRequest struct {
@@ -970,6 +1001,13 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 func (r *ChannelCreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -991,6 +1029,7 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "JumpUrl")
 	delete(f, "SignatureTypes")
 	delete(f, "ApproverSignTypes")
+	delete(f, "SignTypeSelector")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -6588,6 +6627,104 @@ func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePartnerAutoSignAuthUrlRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil" name:"AuthorizedOrganizationId"`
+
+	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+}
+
+type CreatePartnerAutoSignAuthUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil" name:"AuthorizedOrganizationId"`
+
+	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+}
+
+func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "AuthorizedOrganizationId")
+	delete(f, "AuthorizedOrganizationName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePartnerAutoSignAuthUrlResponseParams struct {
+	// 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+	MiniAppPath *string `json:"MiniAppPath,omitnil" name:"MiniAppPath"`
+
+	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreatePartnerAutoSignAuthUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePartnerAutoSignAuthUrlResponseParams `json:"Response"`
+}
+
+func (r *CreatePartnerAutoSignAuthUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePartnerAutoSignAuthUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSealByImageRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -6646,7 +6783,8 @@ type CreateSealByImageRequestParams struct {
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 
 	// <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **40_40**: 圆形企业印章直径40mm, 当SealStyle是圆形的时候才有效</li>
-	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
+	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li>
+	// <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
 	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
 
 	// 企业税号
@@ -6713,7 +6851,8 @@ type CreateSealByImageRequest struct {
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 
 	// <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **40_40**: 圆形企业印章直径40mm, 当SealStyle是圆形的时候才有效</li>
-	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
+	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li>
+	// <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
 	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
 
 	// 企业税号
@@ -7572,6 +7711,109 @@ func (r *DescribeChannelSealPolicyWorkflowUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeChannelSealPolicyWorkflowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtendedServiceAuthDetailRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 要查询的扩展服务类型。
+	// 如下所示：
+	// <ul><li> AUTO_SIGN：企业静默签署</li>
+	// <li>BATCH_SIGN：批量签署</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeExtendedServiceAuthDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 要查询的扩展服务类型。
+	// 如下所示：
+	// <ul><li> AUTO_SIGN：企业静默签署</li>
+	// <li>BATCH_SIGN：批量签署</li>
+	// </ul>
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeExtendedServiceAuthDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "ExtendServiceType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtendedServiceAuthDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtendedServiceAuthDetailResponseParams struct {
+	// 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil" name:"AuthInfoDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeExtendedServiceAuthDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtendedServiceAuthDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtendedServiceAuthDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8528,6 +8770,13 @@ type FlowApproverInfo struct {
 	// 
 	// 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+
+	// 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+	// 注：
+	// `不指定该值时，默认为签署方自行选择。`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
 }
 
 type FlowApproverItem struct {
@@ -8877,6 +9126,36 @@ func (r *GetDownloadFlowUrlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type HasAuthOrganization struct {
+	// 授权企业openid，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+
+	// 授权企业名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+
+	// 被授权企业openid，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizedOrganizationOpenId *string `json:"AuthorizedOrganizationOpenId,omitnil" name:"AuthorizedOrganizationOpenId"`
+
+	// 被授权企业名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+
+	// 授权时间，格式为时间戳，单位s	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil" name:"AuthorizeTime"`
+}
+
+type HasAuthUser struct {
+	// 第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
+	// 
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 }
 
 // Predefined struct for user

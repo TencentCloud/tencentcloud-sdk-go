@@ -2458,6 +2458,12 @@ type DescribeCertificatesRequestParams struct {
 
 	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
 	Hostable *uint64 `json:"Hostable,omitnil" name:"Hostable"`
+
+	// 筛选指定标签的证书
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+
+	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil" name:"IsPendingIssue"`
 }
 
 type DescribeCertificatesRequest struct {
@@ -2504,6 +2510,12 @@ type DescribeCertificatesRequest struct {
 
 	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
 	Hostable *uint64 `json:"Hostable,omitnil" name:"Hostable"`
+
+	// 筛选指定标签的证书
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+
+	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil" name:"IsPendingIssue"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -2532,6 +2544,8 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "IsSM")
 	delete(f, "FilterExpiring")
 	delete(f, "Hostable")
+	delete(f, "Tags")
+	delete(f, "IsPendingIssue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}

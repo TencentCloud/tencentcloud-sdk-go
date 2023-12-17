@@ -928,6 +928,9 @@ func (r *CancelNotebookSessionStatementResponse) FromJsonString(s string) error 
 type CancelSparkSessionBatchSQLRequestParams struct {
 	// 批任务唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键，若不为空，则使用该值进行查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 type CancelSparkSessionBatchSQLRequest struct {
@@ -935,6 +938,9 @@ type CancelSparkSessionBatchSQLRequest struct {
 	
 	// 批任务唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键，若不为空，则使用该值进行查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 func (r *CancelSparkSessionBatchSQLRequest) ToJsonString() string {
@@ -950,6 +956,7 @@ func (r *CancelSparkSessionBatchSQLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BatchId")
+	delete(f, "CustomKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelSparkSessionBatchSQLRequest has unknown keys!", "")
 	}
@@ -3050,6 +3057,9 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 
 	// 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
 	IsInherit *int64 `json:"IsInherit,omitnil" name:"IsInherit"`
+
+	// 用户自定义主键，需唯一
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 type CreateSparkSessionBatchSQLRequest struct {
@@ -3089,6 +3099,9 @@ type CreateSparkSessionBatchSQLRequest struct {
 
 	// 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
 	IsInherit *int64 `json:"IsInherit,omitnil" name:"IsInherit"`
+
+	// 用户自定义主键，需唯一
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 func (r *CreateSparkSessionBatchSQLRequest) ToJsonString() string {
@@ -3114,6 +3127,7 @@ func (r *CreateSparkSessionBatchSQLRequest) FromJsonString(s string) error {
 	delete(f, "SessionName")
 	delete(f, "Arguments")
 	delete(f, "IsInherit")
+	delete(f, "CustomKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkSessionBatchSQLRequest has unknown keys!", "")
 	}
@@ -7192,6 +7206,9 @@ func (r *DescribeSparkAppTasksResponse) FromJsonString(s string) error {
 type DescribeSparkSessionBatchSQLRequestParams struct {
 	// SparkSQL唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键, 若不为空，则按照该值查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 type DescribeSparkSessionBatchSQLRequest struct {
@@ -7199,6 +7216,9 @@ type DescribeSparkSessionBatchSQLRequest struct {
 	
 	// SparkSQL唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键, 若不为空，则按照该值查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 func (r *DescribeSparkSessionBatchSQLRequest) ToJsonString() string {
@@ -7214,6 +7234,7 @@ func (r *DescribeSparkSessionBatchSQLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BatchId")
+	delete(f, "CustomKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkSessionBatchSQLRequest has unknown keys!", "")
 	}
@@ -7256,6 +7277,9 @@ func (r *DescribeSparkSessionBatchSQLResponse) FromJsonString(s string) error {
 type DescribeSparkSessionBatchSqlLogRequestParams struct {
 	// SparkSQL唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键，若不为空，则按照该值进行查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 type DescribeSparkSessionBatchSqlLogRequest struct {
@@ -7263,6 +7287,9 @@ type DescribeSparkSessionBatchSqlLogRequest struct {
 	
 	// SparkSQL唯一标识
 	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+
+	// 用户自定义主键，若不为空，则按照该值进行查询
+	CustomKey *string `json:"CustomKey,omitnil" name:"CustomKey"`
 }
 
 func (r *DescribeSparkSessionBatchSqlLogRequest) ToJsonString() string {
@@ -7278,6 +7305,7 @@ func (r *DescribeSparkSessionBatchSqlLogRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "BatchId")
+	delete(f, "CustomKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkSessionBatchSqlLogRequest has unknown keys!", "")
 	}
@@ -12647,7 +12675,7 @@ type UpdateUserDataEngineConfigRequestParams struct {
 	// 引擎ID
 	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
-	// 引擎配置项
+	// 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
 	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
 
 	// 作业引擎资源配置模版
@@ -12660,7 +12688,7 @@ type UpdateUserDataEngineConfigRequest struct {
 	// 引擎ID
 	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
-	// 引擎配置项
+	// 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
 	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
 
 	// 作业引擎资源配置模版

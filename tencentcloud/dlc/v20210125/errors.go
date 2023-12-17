@@ -152,6 +152,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 指定的交互式SQL任务自定义主键不唯一
+	INVALIDPARAMETER_BATCHSQLCUSTOMKEYNOTUNIQUE = "InvalidParameter.BatchSQLCustomKeyNotUnique"
+
 	// 指定的交互式SQL任务Filter.Key不匹配，当前仅支持: task-sql-keyword/task-operator/batch-id/session-id/task-state
 	INVALIDPARAMETER_BATCHSQLFILTERSKEYTYPENOTMATH = "InvalidParameter.BatchSQLFiltersKeyTypeNotMath"
 

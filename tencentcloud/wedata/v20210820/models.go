@@ -3346,6 +3346,14 @@ type ColumnMeta struct {
 	// HBase列簇属性集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnFamiliesFieldSet []*Pair `json:"ColumnFamiliesFieldSet,omitnil" name:"ColumnFamiliesFieldSet"`
+
+	// 对应码表字典ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictionaryId *string `json:"DictionaryId,omitnil" name:"DictionaryId"`
+
+	// 对应码表字典名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictionaryName *string `json:"DictionaryName,omitnil" name:"DictionaryName"`
 }
 
 // Predefined struct for user
@@ -5922,6 +5930,9 @@ type CreateTaskVersionDsRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil" name:"RequestFromSource"`
+
 	// 告警方式:email-邮件;sms-短信;wecom-企业微信
 	AlarmWays *string `json:"AlarmWays,omitnil" name:"AlarmWays"`
 
@@ -5943,6 +5954,9 @@ type CreateTaskVersionDsRequest struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil" name:"RequestFromSource"`
 
 	// 告警方式:email-邮件;sms-短信;wecom-企业微信
 	AlarmWays *string `json:"AlarmWays,omitnil" name:"AlarmWays"`
@@ -5967,6 +5981,7 @@ func (r *CreateTaskVersionDsRequest) FromJsonString(s string) error {
 	delete(f, "NeedCheckParentSubmitted")
 	delete(f, "AutoRun")
 	delete(f, "ProjectId")
+	delete(f, "RequestFromSource")
 	delete(f, "AlarmWays")
 	delete(f, "AlarmRecipientTypes")
 	if len(f) > 0 {
@@ -37447,6 +37462,9 @@ func (r *UpdateWorkflowOwnerResponse) FromJsonString(s string) error {
 type UploadContentRequestParams struct {
 	// 脚本上传信息
 	ScriptRequestInfo *ScriptRequestInfo `json:"ScriptRequestInfo,omitnil" name:"ScriptRequestInfo"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil" name:"RequestFromSource"`
 }
 
 type UploadContentRequest struct {
@@ -37454,6 +37472,9 @@ type UploadContentRequest struct {
 	
 	// 脚本上传信息
 	ScriptRequestInfo *ScriptRequestInfo `json:"ScriptRequestInfo,omitnil" name:"ScriptRequestInfo"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil" name:"RequestFromSource"`
 }
 
 func (r *UploadContentRequest) ToJsonString() string {
@@ -37469,6 +37490,7 @@ func (r *UploadContentRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ScriptRequestInfo")
+	delete(f, "RequestFromSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadContentRequest has unknown keys!", "")
 	}
