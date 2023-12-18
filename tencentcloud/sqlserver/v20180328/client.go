@@ -3314,6 +3314,7 @@ func NewDescribeDBRestoreTimeResponse() (response *DescribeDBRestoreTimeResponse
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBRestoreTime(request *DescribeDBRestoreTimeRequest) (response *DescribeDBRestoreTimeResponse, err error) {
     return c.DescribeDBRestoreTimeWithContext(context.Background(), request)
 }
@@ -3326,6 +3327,7 @@ func (c *Client) DescribeDBRestoreTime(request *DescribeDBRestoreTimeRequest) (r
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBRestoreTimeWithContext(ctx context.Context, request *DescribeDBRestoreTimeRequest) (response *DescribeDBRestoreTimeResponse, err error) {
     if request == nil {
         request = NewDescribeDBRestoreTimeRequest()
@@ -3796,6 +3798,7 @@ func NewDescribeHASwitchLogResponse() (response *DescribeHASwitchLogResponse) {
 // 本接口(DescribeHASwitchLog)用于手动主备切换。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeHASwitchLog(request *DescribeHASwitchLogRequest) (response *DescribeHASwitchLogResponse, err error) {
     return c.DescribeHASwitchLogWithContext(context.Background(), request)
@@ -3805,6 +3808,7 @@ func (c *Client) DescribeHASwitchLog(request *DescribeHASwitchLogRequest) (respo
 // 本接口(DescribeHASwitchLog)用于手动主备切换。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeHASwitchLogWithContext(ctx context.Context, request *DescribeHASwitchLogRequest) (response *DescribeHASwitchLogResponse, err error) {
     if request == nil {
@@ -5185,6 +5189,7 @@ func NewDescribeRestoreTaskResponse() (response *DescribeRestoreTaskResponse) {
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRestoreTask(request *DescribeRestoreTaskRequest) (response *DescribeRestoreTaskResponse, err error) {
     return c.DescribeRestoreTaskWithContext(context.Background(), request)
 }
@@ -5197,6 +5202,7 @@ func (c *Client) DescribeRestoreTask(request *DescribeRestoreTaskRequest) (respo
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRestoreTaskWithContext(ctx context.Context, request *DescribeRestoreTaskRequest) (response *DescribeRestoreTaskResponse, err error) {
     if request == nil {
         request = NewDescribeRestoreTaskRequest()

@@ -69,6 +69,7 @@ func NewImageMaskResponse() (response *ImageMaskResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) ImageMask(request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
     return c.ImageMaskWithContext(context.Background(), request)
 }
@@ -78,6 +79,7 @@ func (c *Client) ImageMask(request *ImageMaskRequest) (response *ImageMaskRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) ImageMaskWithContext(ctx context.Context, request *ImageMaskRequest) (response *ImageMaskResponse, err error) {
     if request == nil {
         request = NewImageMaskRequest()

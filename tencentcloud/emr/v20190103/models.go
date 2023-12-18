@@ -794,18 +794,20 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstanceRequestParams struct {
 	// 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：
-	// <li>16：表示EMR-V2.3.0。</li>
-	// <li>20：表示EMR-V2.5.0。</li>
-	// <li>25：表示EMR-V3.1.0。</li>
-	// <li>27：表示KAFKA-V1.0.0。</li>
-	// <li>30：表示EMR-V2.6.0。</li>
-	// <li>33 :   表示EMR-V3.2.1。</li>
-	// <li>34 :   表示EMR-V3.3.0。</li>
-	// <li>36 :   表示STARROCKS-V1.0.0。</li>
-	// <li>37 :   表示EMR-V3.4.0。</li>
-	// <li>38 :   表示EMR-V2.7.0。</li>
-	// <li>39 :   表示STARROCKS-V1.1.0。</li>
-	// <li>41 :   表示DRUID-V1.1.0。</li>
+	// 51:表示STARROCKS-V1.4.0
+	// 54:表示STARROCKS-V2.0.0
+	// 27:表示KAFKA-V1.0.0
+	// 50:表示KAFKA-V2.0.0
+	// 16:表示EMR-V2.3.0
+	// 20:表示EMR-V2.5.0
+	// 30:表示EMR-V2.6.0
+	// 38:表示EMR-V2.7.0
+	// 25:表示EMR-V3.1.0
+	// 33:表示EMR-V3.2.1
+	// 34:表示EMR-V3.3.0
+	// 37:表示EMR-V3.4.0
+	// 44:表示EMR-V3.5.0
+	// 53:表示EMR-V3.6.0
 	ProductId *uint64 `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
@@ -931,18 +933,20 @@ type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：
-	// <li>16：表示EMR-V2.3.0。</li>
-	// <li>20：表示EMR-V2.5.0。</li>
-	// <li>25：表示EMR-V3.1.0。</li>
-	// <li>27：表示KAFKA-V1.0.0。</li>
-	// <li>30：表示EMR-V2.6.0。</li>
-	// <li>33 :   表示EMR-V3.2.1。</li>
-	// <li>34 :   表示EMR-V3.3.0。</li>
-	// <li>36 :   表示STARROCKS-V1.0.0。</li>
-	// <li>37 :   表示EMR-V3.4.0。</li>
-	// <li>38 :   表示EMR-V2.7.0。</li>
-	// <li>39 :   表示STARROCKS-V1.1.0。</li>
-	// <li>41 :   表示DRUID-V1.1.0。</li>
+	// 51:表示STARROCKS-V1.4.0
+	// 54:表示STARROCKS-V2.0.0
+	// 27:表示KAFKA-V1.0.0
+	// 50:表示KAFKA-V2.0.0
+	// 16:表示EMR-V2.3.0
+	// 20:表示EMR-V2.5.0
+	// 30:表示EMR-V2.6.0
+	// 38:表示EMR-V2.7.0
+	// 25:表示EMR-V3.1.0
+	// 33:表示EMR-V3.2.1
+	// 34:表示EMR-V3.3.0
+	// 37:表示EMR-V3.4.0
+	// 44:表示EMR-V3.5.0
+	// 53:表示EMR-V3.6.0
 	ProductId *uint64 `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
@@ -4981,6 +4985,9 @@ type PreExecuteFileSettings struct {
 
 	// cos的appid，已废弃
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type PriceDetail struct {

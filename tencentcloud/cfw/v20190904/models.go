@@ -1867,6 +1867,9 @@ type CreateNatRuleItem struct {
 
 	// 描述
 	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 端口协议组ID
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
 }
 
 type CreateRuleItem struct {
@@ -1914,6 +1917,9 @@ type CreateRuleItem struct {
 
 	// 告警Id
 	LogId *string `json:"LogId,omitnil" name:"LogId"`
+
+	// 端都协议组ID
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
 }
 
 // Predefined struct for user
@@ -2917,6 +2923,14 @@ type DescAcItem struct {
 	// 互联网边界防火墙使用的内部规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetBorderUuid *string `json:"InternetBorderUuid,omitnil" name:"InternetBorderUuid"`
+
+	// 协议端口组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTemplateName *string `json:"ParamTemplateName,omitnil" name:"ParamTemplateName"`
+
+	// 协议端口组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
 }
 
 // Predefined struct for user
@@ -11027,6 +11041,14 @@ type VpcRuleItem struct {
 	// beta任务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*BetaInfoByACL `json:"BetaList,omitnil" name:"BetaList"`
+
+	// 端口协议组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
+
+	// 端口协议组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTemplateName *string `json:"ParamTemplateName,omitnil" name:"ParamTemplateName"`
 }
 
 type VpcZoneData struct {

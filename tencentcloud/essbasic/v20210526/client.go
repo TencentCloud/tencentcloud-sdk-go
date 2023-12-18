@@ -599,6 +599,8 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // 注：
 //
+// - 使用此接口生成链接，需要提前开通 `使用手机号验证签署方身份` 功能，在 `腾讯电子签网页端-企业设置-拓展服务` 中可以找到。
+//
 // - 参与人点击链接后需短信验证码才能查看合同内容。
 //
 // - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。若为子客企业，请确保员工已经加入企业。
@@ -625,6 +627,8 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 // 
 //
 // 注：
+//
+// - 使用此接口生成链接，需要提前开通 `使用手机号验证签署方身份` 功能，在 `腾讯电子签网页端-企业设置-拓展服务` 中可以找到。
 //
 // - 参与人点击链接后需短信验证码才能查看合同内容。
 //

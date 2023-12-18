@@ -239,7 +239,7 @@ type AddLiveWatermarkRequestParams struct {
 	PictureUrl *string `json:"PictureUrl,omitnil" name:"PictureUrl"`
 
 	// 水印名称。
-	// 最长16字节。
+	// 最长30字节。
 	WatermarkName *string `json:"WatermarkName,omitnil" name:"WatermarkName"`
 
 	// 显示位置，X轴偏移，单位是百分比，默认 0。
@@ -270,7 +270,7 @@ type AddLiveWatermarkRequest struct {
 	PictureUrl *string `json:"PictureUrl,omitnil" name:"PictureUrl"`
 
 	// 水印名称。
-	// 最长16字节。
+	// 最长30字节。
 	WatermarkName *string `json:"WatermarkName,omitnil" name:"WatermarkName"`
 
 	// 显示位置，X轴偏移，单位是百分比，默认 0。
@@ -15706,6 +15706,7 @@ type TranscodeDetailInfo struct {
 
 	// 编码方式，带模块，
 	// 示例：
+	// liveprocessor_ACC:  音频转码，
 	// liveprocessor_H264：直播转码-H264，
 	// liveprocessor_H265： 直播转码-H265，
 	// topspeed_H264：极速高清-H264，
@@ -15851,7 +15852,7 @@ type UpdateLiveWatermarkRequestParams struct {
 	YPosition *int64 `json:"YPosition,omitnil" name:"YPosition"`
 
 	// 水印名称。
-	// 最长16字节。
+	// 最长30字节。
 	WatermarkName *string `json:"WatermarkName,omitnil" name:"WatermarkName"`
 
 	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
@@ -15886,7 +15887,7 @@ type UpdateLiveWatermarkRequest struct {
 	YPosition *int64 `json:"YPosition,omitnil" name:"YPosition"`
 
 	// 水印名称。
-	// 最长16字节。
+	// 最长30字节。
 	WatermarkName *string `json:"WatermarkName,omitnil" name:"WatermarkName"`
 
 	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。

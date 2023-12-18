@@ -6842,6 +6842,10 @@ type ModelInfo struct {
 	// 模型格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelFormat *string `json:"ModelFormat,omitnil" name:"ModelFormat"`
+
+	// 是否为私有化大模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPrivateModel *bool `json:"IsPrivateModel,omitnil" name:"IsPrivateModel"`
 }
 
 type ModelInputInfo struct {
@@ -8441,14 +8445,15 @@ type SendChatMessageRequestParams struct {
 	Question *string `json:"Question,omitnil" name:"Question"`
 
 	// 会话模型版本。
-	// 多行业客服大模型：填写demo_big_model_version_id。
-	// 默认为demo_big_model_version_id，即多行业客服大模型。
+	// 金融大模型：填写sn-finllm-13b-chat-v1。
+	// 默认为sn-finllm-13b-chat-v1，即金融大模型。
 	ModelVersion *string `json:"ModelVersion,omitnil" name:"ModelVersion"`
 
-	// 使用模式(仅多场景客服大模型支持)。
+	// 使用模式。
 	// 通用问答：填写General。
 	// 搜索增强问答：填写WithSearchPlugin。
 	// 默认为General，即通用问答。
+	// 当前可体验模型仅支持General。
 	Mode *string `json:"Mode,omitnil" name:"Mode"`
 
 	// 搜索来源。仅当Mode为WithSearchPlugin时生效。
@@ -8466,14 +8471,15 @@ type SendChatMessageRequest struct {
 	Question *string `json:"Question,omitnil" name:"Question"`
 
 	// 会话模型版本。
-	// 多行业客服大模型：填写demo_big_model_version_id。
-	// 默认为demo_big_model_version_id，即多行业客服大模型。
+	// 金融大模型：填写sn-finllm-13b-chat-v1。
+	// 默认为sn-finllm-13b-chat-v1，即金融大模型。
 	ModelVersion *string `json:"ModelVersion,omitnil" name:"ModelVersion"`
 
-	// 使用模式(仅多场景客服大模型支持)。
+	// 使用模式。
 	// 通用问答：填写General。
 	// 搜索增强问答：填写WithSearchPlugin。
 	// 默认为General，即通用问答。
+	// 当前可体验模型仅支持General。
 	Mode *string `json:"Mode,omitnil" name:"Mode"`
 
 	// 搜索来源。仅当Mode为WithSearchPlugin时生效。

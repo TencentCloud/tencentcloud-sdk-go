@@ -3025,7 +3025,7 @@ type JobItem struct {
 }
 
 type KafkaOption struct {
-	// 投递到kafka的数据类型，如Avro,Json
+	// 投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json
 	DataType *string `json:"DataType,omitnil" name:"DataType"`
 
 	// 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
@@ -3884,7 +3884,7 @@ type Options struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaOption *KafkaOption `json:"KafkaOption,omitnil" name:"KafkaOption"`
 
-	// 任务限速信息、该字段仅用作出参、入参该字段无效
+	// 任务限速信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitnil" name:"RateLimitOption"`
 
@@ -4042,47 +4042,47 @@ type ProcessStepTip struct {
 }
 
 type RateLimitOption struct {
-	// 当前生效的全量导出线程数
+	// 当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentDumpThread *int64 `json:"CurrentDumpThread,omitnil" name:"CurrentDumpThread"`
 
-	// 默认的全量导出线程数
+	// 默认的全量导出线程数，该字段仅在出参有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultDumpThread *int64 `json:"DefaultDumpThread,omitnil" name:"DefaultDumpThread"`
 
-	// 当前生效的全量导出Rps	
+	// 当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentDumpRps *int64 `json:"CurrentDumpRps,omitnil" name:"CurrentDumpRps"`
 
-	// 默认的全量导出Rps	
+	// 默认的全量导出Rps，该字段仅在出参有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultDumpRps *int64 `json:"DefaultDumpRps,omitnil" name:"DefaultDumpRps"`
 
-	// 当前生效的全量导入线程数
+	// 当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentLoadThread *int64 `json:"CurrentLoadThread,omitnil" name:"CurrentLoadThread"`
 
-	// 默认的全量导入线程数
+	// 默认的全量导入线程数，该字段仅在出参有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultLoadThread *int64 `json:"DefaultLoadThread,omitnil" name:"DefaultLoadThread"`
 
-	// 当前生效的全量导入Rps	
+	// 当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentLoadRps *int64 `json:"CurrentLoadRps,omitnil" name:"CurrentLoadRps"`
 
-	// 默认的全量导入Rps	
+	// 默认的全量导入Rps，该字段仅在出参有意义	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultLoadRps *int64 `json:"DefaultLoadRps,omitnil" name:"DefaultLoadRps"`
 
-	// 当前生效的增量导入线程数
+	// 当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentSinkerThread *int64 `json:"CurrentSinkerThread,omitnil" name:"CurrentSinkerThread"`
 
-	// 默认的增量导入线程数
+	// 默认的增量导入线程数，该字段仅在出参有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultSinkerThread *int64 `json:"DefaultSinkerThread,omitnil" name:"DefaultSinkerThread"`
 
-	// enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速
+	// enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasUserSetRateLimit *string `json:"HasUserSetRateLimit,omitnil" name:"HasUserSetRateLimit"`
 }

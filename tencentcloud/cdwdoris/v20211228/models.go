@@ -418,6 +418,10 @@ type InstanceInfo struct {
 	// 组件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components *string `json:"Components,omitnil" name:"Components"`
+
+	// 判断审计日志表是否有catalog字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IfExistCatalog *int64 `json:"IfExistCatalog,omitnil" name:"IfExistCatalog"`
 }
 
 type InstanceNode struct {

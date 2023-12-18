@@ -8211,6 +8211,9 @@ type DescribeRocketMQTopicsRequestParams struct {
 
 	// 按主题名称搜索，支持模糊查询
 	FilterName *string `json:"FilterName,omitnil" name:"FilterName"`
+
+	// 按订阅消费组名称过滤
+	FilterGroup *string `json:"FilterGroup,omitnil" name:"FilterGroup"`
 }
 
 type DescribeRocketMQTopicsRequest struct {
@@ -8233,6 +8236,9 @@ type DescribeRocketMQTopicsRequest struct {
 
 	// 按主题名称搜索，支持模糊查询
 	FilterName *string `json:"FilterName,omitnil" name:"FilterName"`
+
+	// 按订阅消费组名称过滤
+	FilterGroup *string `json:"FilterGroup,omitnil" name:"FilterGroup"`
 }
 
 func (r *DescribeRocketMQTopicsRequest) ToJsonString() string {
@@ -8253,6 +8259,7 @@ func (r *DescribeRocketMQTopicsRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "FilterType")
 	delete(f, "FilterName")
+	delete(f, "FilterGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicsRequest has unknown keys!", "")
 	}
@@ -11220,6 +11227,11 @@ type RabbitMQClusterAccessInfo struct {
 	// Prometheus信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrometheusEndpointInfo *PrometheusEndpointInfo `json:"PrometheusEndpointInfo,omitnil" name:"PrometheusEndpointInfo"`
+
+	// http://amqp-k3eb47gm.dashboard.rabbitmq.cq.public.tencenttdmq.com:15672/
+	// 公网域名接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebConsoleDomainEndpoint *string `json:"WebConsoleDomainEndpoint,omitnil" name:"WebConsoleDomainEndpoint"`
 }
 
 type RabbitMQClusterInfo struct {

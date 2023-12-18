@@ -2060,7 +2060,7 @@ type CreateInstancePreRequestParams struct {
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
-	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitnil" name:"KafkaVersion"`
 
 	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"
@@ -2127,7 +2127,7 @@ type CreateInstancePreRequest struct {
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
-	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitnil" name:"KafkaVersion"`
 
 	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"

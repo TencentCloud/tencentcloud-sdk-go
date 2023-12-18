@@ -350,6 +350,10 @@ type AlarmReceiverInfo struct {
 	// 企业微信群，0：未设置，1：成功，2：失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WecomGroup *uint64 `json:"WecomGroup,omitnil" name:"WecomGroup"`
+
+	// 飞书群，0：未设置，1：成功，2：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkGroup *uint64 `json:"LarkGroup,omitnil" name:"LarkGroup"`
 }
 
 type AlarmRuleDto struct {
@@ -2438,6 +2442,9 @@ type BatchSuspendIntegrationTasksRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+	Event *string `json:"Event,omitnil" name:"Event"`
 }
 
 type BatchSuspendIntegrationTasksRequest struct {
@@ -2451,6 +2458,9 @@ type BatchSuspendIntegrationTasksRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+	Event *string `json:"Event,omitnil" name:"Event"`
 }
 
 func (r *BatchSuspendIntegrationTasksRequest) ToJsonString() string {
@@ -2468,6 +2478,7 @@ func (r *BatchSuspendIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskIds")
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
+	delete(f, "Event")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSuspendIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -3464,6 +3475,9 @@ type CommitIntegrationTaskRequestParams struct {
 
 	// 提交版本号
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
+
+	// 前端操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 type CommitIntegrationTaskRequest struct {
@@ -3489,6 +3503,9 @@ type CommitIntegrationTaskRequest struct {
 
 	// 提交版本号
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
+
+	// 前端操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 func (r *CommitIntegrationTaskRequest) ToJsonString() string {
@@ -3510,6 +3527,7 @@ func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "ExtConfig")
 	delete(f, "VersionDesc")
 	delete(f, "InstanceVersion")
+	delete(f, "EventDesc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -20152,6 +20170,64 @@ func (r *DescribeTableLineageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableMetaRequestParams struct {
+	// 表唯一id
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+}
+
+type DescribeTableMetaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表唯一id
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+}
+
+func (r *DescribeTableMetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableMetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableMetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableMetaResponseParams struct {
+	// 表的元数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableMeta *TableMeta `json:"TableMeta,omitnil" name:"TableMeta"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTableMetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableMetaResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableMetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableMetaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableMetasRequestParams struct {
 	// 分页页码
 	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
@@ -30922,6 +30998,9 @@ type ResumeIntegrationTaskRequestParams struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil" name:"ExtConfig"`
+
+	// 前端操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 type ResumeIntegrationTaskRequest struct {
@@ -30938,6 +31017,9 @@ type ResumeIntegrationTaskRequest struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil" name:"ExtConfig"`
+
+	// 前端操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 func (r *ResumeIntegrationTaskRequest) ToJsonString() string {
@@ -30956,6 +31038,7 @@ func (r *ResumeIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "Event")
 	delete(f, "ExtConfig")
+	delete(f, "EventDesc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -33344,6 +33427,9 @@ type StartIntegrationTaskRequestParams struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil" name:"ExtConfig"`
+
+	// 操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 type StartIntegrationTaskRequest struct {
@@ -33360,6 +33446,9 @@ type StartIntegrationTaskRequest struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil" name:"ExtConfig"`
+
+	// 操作类型描述
+	EventDesc *string `json:"EventDesc,omitnil" name:"EventDesc"`
 }
 
 func (r *StartIntegrationTaskRequest) ToJsonString() string {
@@ -33378,6 +33467,7 @@ func (r *StartIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "Event")
 	delete(f, "ExtConfig")
+	delete(f, "EventDesc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -34167,6 +34257,9 @@ type SuspendIntegrationTaskRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+	Event *string `json:"Event,omitnil" name:"Event"`
 }
 
 type SuspendIntegrationTaskRequest struct {
@@ -34177,6 +34270,9 @@ type SuspendIntegrationTaskRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+	Event *string `json:"Event,omitnil" name:"Event"`
 }
 
 func (r *SuspendIntegrationTaskRequest) ToJsonString() string {
@@ -34193,6 +34289,7 @@ func (r *SuspendIntegrationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
+	delete(f, "Event")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SuspendIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -34796,6 +34893,10 @@ type TaskAlarmInfo struct {
 	// 告警规则描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 飞书群Hook地址，多个hook地址使用,隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkWebHooks *string `json:"LarkWebHooks,omitnil" name:"LarkWebHooks"`
 }
 
 type TaskByCycle struct {

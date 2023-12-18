@@ -985,7 +985,7 @@ func NewCreateInstancePreResponse() (response *CreateInstancePreResponse) {
 }
 
 // CreateInstancePre
-// 创建实例(预付费包年包月)
+// 创建实例(预付费包年包月),  仅支持创建专业版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1008,7 +1008,7 @@ func (c *Client) CreateInstancePre(request *CreateInstancePreRequest) (response 
 }
 
 // CreateInstancePre
-// 创建实例(预付费包年包月)
+// 创建实例(预付费包年包月),  仅支持创建专业版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

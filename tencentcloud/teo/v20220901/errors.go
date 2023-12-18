@@ -761,6 +761,9 @@ const (
 	// 加速域名使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
 
+	// 规则引擎使用中，无法删除。
+	OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = "OperationDenied.OriginGroupRuleEngineUsed"
+
 	// 归属权校验未通过，请先完成站点归属权校验。
 	OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
 

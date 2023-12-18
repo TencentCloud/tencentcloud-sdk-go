@@ -1,30 +1,60 @@
 # 本版本更新包含以下内容：
 
+## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
+
+### 第 2 次发布
+
+发布时间：2023-12-19 01:19:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
+
+	* 新增成员：IfExistCatalog
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 51 次发布
+
+发布时间：2023-12-19 01:19:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateNatRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateNatRuleItem)
+
+	* 新增成员：ParamTemplateId
+
+* [CreateRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateRuleItem)
+
+	* 新增成员：ParamTemplateId
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：ParamTemplateName, ParamTemplateId
+
+* [VpcRuleItem](https://cloud.tencent.com/document/api/1132/49071#VpcRuleItem)
+
+	* 新增成员：ParamTemplateId, ParamTemplateName
+
+
+
+
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 26 次发布
+### 第 27 次发布
 
-发布时间：2023-12-15 19:18:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeOrganizationUserInfo](https://cloud.tencent.com/document/api/664/102512)
-
-新增数据结构：
-
-* [OrganizationUserInfo](https://cloud.tencent.com/document/api/664/90825#OrganizationUserInfo)
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 79 次发布
-
-发布时间：2023-12-15 19:29:56
+发布时间：2023-12-19 01:25:03
 
 本次发布包含了以下内容：
 
@@ -32,129 +62,72 @@
 
 修改接口：
 
-* [CancelSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92839)
+* [DescribeDomainAssets](https://cloud.tencent.com/document/api/664/93511)
 
-	* 新增入参：CustomKey
+	* 新增入参：MemberId
 
-* [CreateSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92838)
+* [DescribeGatewayAssets](https://cloud.tencent.com/document/api/664/102291)
 
-	* 新增入参：CustomKey
+	* 新增入参：MemberId
 
-* [DescribeSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/98747)
+* [DescribeListenerList](https://cloud.tencent.com/document/api/664/96103)
 
-	* 新增入参：CustomKey
+	* 新增入参：MemberId
 
-* [DescribeSparkSessionBatchSqlLog](https://cloud.tencent.com/document/api/1342/92837)
+* [DescribeNICAssets](https://cloud.tencent.com/document/api/664/102406)
 
-	* 新增入参：CustomKey
+	* 新增入参：MemberId
 
+* [DescribePublicIpAssets](https://cloud.tencent.com/document/api/664/93510)
 
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 142 次发布
-
-发布时间：2023-12-15 19:39:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1323/102513)
-
-修改接口：
-
-* [CreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1323/101058)
-
-	* 新增入参：SignTypeSelector
-
-
-新增数据结构：
-
-* [AuthInfoDetail](https://cloud.tencent.com/document/api/1323/70369#AuthInfoDetail)
-* [HasAuthOrganization](https://cloud.tencent.com/document/api/1323/70369#HasAuthOrganization)
-
-修改数据结构：
-
-* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
-
-	* 新增成员：SignTypeSelector
+	* 新增入参：MemberId
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 144 次发布
+### 第 54 次发布
 
-发布时间：2023-12-15 19:40:36
+发布时间：2023-12-19 01:39:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [CreatePartnerAutoSignAuthUrl](https://cloud.tencent.com/document/api/1420/102515)
-* [DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1420/102514)
-
-修改接口：
-
-* [ChannelCreateBatchQuickSignUrl](https://cloud.tencent.com/document/api/1420/101059)
-
-	* 新增入参：SignTypeSelector
-
-
-新增数据结构：
-
-* [AuthInfoDetail](https://cloud.tencent.com/document/api/1420/61525#AuthInfoDetail)
-* [HasAuthOrganization](https://cloud.tencent.com/document/api/1420/61525#HasAuthOrganization)
-* [HasAuthUser](https://cloud.tencent.com/document/api/1420/61525#HasAuthUser)
-
 修改数据结构：
 
-* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+* [PreExecuteFileSettings](https://cloud.tencent.com/document/api/589/33981#PreExecuteFileSettings)
 
-	* 新增成员：SignTypeSelector
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 3 次发布
-
-发布时间：2023-12-15 19:46:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail)
-
-修改数据结构：
-
-* [DescribeDevicesPageRsp](https://cloud.tencent.com/document/api/1092/102488#DescribeDevicesPageRsp)
-
-	* 新增成员：Items
+	* 新增成员：Remark
 
 
 
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 100 次发布
+
+发布时间：2023-12-19 01:56:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice)
+
+	* 新增成员：PolicyId
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
 ### 第 99 次发布
 
-发布时间：2023-12-15 19:59:38
+发布时间：2023-12-19 02:14:52
 
 本次发布包含了以下内容：
 
@@ -162,60 +135,27 @@
 
 修改接口：
 
-* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/248/86040)
+* [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)
 
-	* 新增出参：ImageNeedUpdate
+	* 新增入参：FilterGroup
 
-* [DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)
-
-	* 新增出参：ImageNeedUpdate
-
-* [DescribePrometheusTargetsTMP](https://cloud.tencent.com/document/api/248/86037)
-
-	* <font color="#dd0000">**修改入参**：</font>ClusterType
-
-* [ModifyPrometheusConfig](https://cloud.tencent.com/document/api/248/86031)
-
-	* 新增入参：UpdateImage
-
-
-新增数据结构：
-
-* [PrometheusTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTarget)
 
 修改数据结构：
 
-* [PrometheusJobTargets](https://cloud.tencent.com/document/api/248/30354#PrometheusJobTargets)
+* [RabbitMQClusterAccessInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterAccessInfo)
 
-	* 新增成员：Targets, JobName, Total, Up
+	* 新增成员：WebConsoleDomainEndpoint
 
-
-
-
-## SSL 证书(ssl) 版本：2019-12-05
-
-### 第 50 次发布
-
-发布时间：2023-12-15 20:14:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
-
-	* 新增入参：Tags, IsPendingIssue
+	* <font color="#dd0000">**修改成员**：</font>PublicWebConsoleSwitchStatus, VpcWebConsoleSwitchStatus, PublicDataStreamStatus, PrometheusEndpointInfo
 
 
 
 
-## 自动化助手(tat) 版本：2020-10-28
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 22 次发布
+### 第 46 次发布
 
-发布时间：2023-12-15 20:16:37
+发布时间：2023-12-19 02:18:26
 
 本次发布包含了以下内容：
 
@@ -223,47 +163,63 @@
 
 修改数据结构：
 
-* [AutomationAgentInfo](https://cloud.tencent.com/document/api/1340/52687#AutomationAgentInfo)
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>SupportFeatures
+	* 新增成员：IsPrivateModel
 
-* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
 
-	* <font color="#dd0000">**修改成员**：</font>OutputCOSBucketUrl, OutputCOSKeyPrefix
 
-* [RegisterCodeInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterCodeInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>RegisterCodeId, Description, InstanceNamePrefix, RegisterLimit, ExpiredTime, IpAddressRange, Enabled, RegisteredCount, CreatedTime, UpdatedTime
-
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 63 次发布
+### 第 64 次发布
 
-发布时间：2023-12-15 20:46:29
+发布时间：2023-12-19 02:31:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeTableMeta](https://cloud.tencent.com/document/api/1267/102541)
+
 修改接口：
 
-* [CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)
+* [BatchSuspendIntegrationTasks](https://cloud.tencent.com/document/api/1267/82532)
 
-	* 新增入参：RequestFromSource
+	* 新增入参：Event
 
-* [UploadContent](https://cloud.tencent.com/document/api/1267/93282)
+* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
 
-	* 新增入参：RequestFromSource
+	* 新增入参：EventDesc
+
+* [ResumeIntegrationTask](https://cloud.tencent.com/document/api/1267/82473)
+
+	* 新增入参：EventDesc
+
+* [StartIntegrationTask](https://cloud.tencent.com/document/api/1267/82471)
+
+	* 新增入参：EventDesc
+
+* [SuspendIntegrationTask](https://cloud.tencent.com/document/api/1267/82469)
+
+	* 新增入参：Event
 
 
 修改数据结构：
 
-* [ColumnMeta](https://cloud.tencent.com/document/api/1267/76336#ColumnMeta)
+* [AlarmReceiverInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverInfo)
 
-	* 新增成员：DictionaryId, DictionaryName
+	* 新增成员：LarkGroup
+
+* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
+
+	* 新增成员：LarkWebHooks
 
 
 
@@ -21893,6 +21849,21 @@
 
 ## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
 
+### 第 2 次发布
+
+发布时间：2023-12-19 01:19:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
+
+	* 新增成员：IfExistCatalog
+
+
 ### 第 1 次发布
 
 发布时间：2023-12-11 11:31:16
@@ -22864,6 +22835,33 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 51 次发布
+
+发布时间：2023-12-19 01:19:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateNatRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateNatRuleItem)
+
+	* 新增成员：ParamTemplateId
+
+* [CreateRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateRuleItem)
+
+	* 新增成员：ParamTemplateId
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：ParamTemplateName, ParamTemplateId
+
+* [VpcRuleItem](https://cloud.tencent.com/document/api/1132/49071#VpcRuleItem)
+
+	* 新增成员：ParamTemplateId, ParamTemplateName
+
 
 ### 第 50 次发布
 
@@ -35535,6 +35533,37 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 27 次发布
+
+发布时间：2023-12-19 01:25:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDomainAssets](https://cloud.tencent.com/document/api/664/93511)
+
+	* 新增入参：MemberId
+
+* [DescribeGatewayAssets](https://cloud.tencent.com/document/api/664/102291)
+
+	* 新增入参：MemberId
+
+* [DescribeListenerList](https://cloud.tencent.com/document/api/664/96103)
+
+	* 新增入参：MemberId
+
+* [DescribeNICAssets](https://cloud.tencent.com/document/api/664/102406)
+
+	* 新增入参：MemberId
+
+* [DescribePublicIpAssets](https://cloud.tencent.com/document/api/664/93510)
+
+	* 新增入参：MemberId
+
+
 ### 第 26 次发布
 
 发布时间：2023-12-15 19:18:42
@@ -35545,11 +35574,11 @@
 
 新增接口：
 
-* [[DescribeOrganizationUserInfo](https://cloud.tencent.com/document/api/664/102512)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeOrganizationUserInfo](https://cloud.tencent.com/document/api/664/102512)
 
 新增数据结构：
 
-* [[OrganizationUserInfo](https://cloud.tencent.com/document/api/664/90825#OrganizationUserInfo)](https://cloud.tencent.com/document/api/664/90825#[OrganizationUserInfo](https://cloud.tencent.com/document/api/664/90825#OrganizationUserInfo))
+* [OrganizationUserInfo](https://cloud.tencent.com/document/api/664/90825#OrganizationUserInfo)
 
 ### 第 25 次发布
 
@@ -54408,6 +54437,21 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 54 次发布
+
+发布时间：2023-12-19 01:39:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PreExecuteFileSettings](https://cloud.tencent.com/document/api/589/33981#PreExecuteFileSettings)
+
+	* 新增成员：Remark
+
+
 ### 第 53 次发布
 
 发布时间：2023-10-16 01:15:50
@@ -56808,7 +56852,7 @@
 
 新增接口：
 
-* [[DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1323/102513)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1323/102513)
 
 修改接口：
 
@@ -56819,8 +56863,8 @@
 
 新增数据结构：
 
-* [[AuthInfoDetail](https://cloud.tencent.com/document/api/1323/70369#AuthInfoDetail)](https://cloud.tencent.com/document/api/1323/70369#[AuthInfoDetail](https://cloud.tencent.com/document/api/1323/70369#AuthInfoDetail))
-* [[HasAuthOrganization](https://cloud.tencent.com/document/api/1323/70369#HasAuthOrganization)](https://cloud.tencent.com/document/api/1323/70369#[HasAuthOrganization](https://cloud.tencent.com/document/api/1323/70369#HasAuthOrganization))
+* [AuthInfoDetail](https://cloud.tencent.com/document/api/1323/70369#AuthInfoDetail)
+* [HasAuthOrganization](https://cloud.tencent.com/document/api/1323/70369#HasAuthOrganization)
 
 修改数据结构：
 
@@ -59569,8 +59613,8 @@
 
 新增接口：
 
-* [[CreatePartnerAutoSignAuthUrl](https://cloud.tencent.com/document/api/1420/102515)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1420/102514)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePartnerAutoSignAuthUrl](https://cloud.tencent.com/document/api/1420/102515)
+* [DescribeExtendedServiceAuthDetail](https://cloud.tencent.com/document/api/1420/102514)
 
 修改接口：
 
@@ -59581,9 +59625,9 @@
 
 新增数据结构：
 
-* [[AuthInfoDetail](https://cloud.tencent.com/document/api/1420/61525#AuthInfoDetail)](https://cloud.tencent.com/document/api/1420/61525#[AuthInfoDetail](https://cloud.tencent.com/document/api/1420/61525#AuthInfoDetail))
-* [[HasAuthOrganization](https://cloud.tencent.com/document/api/1420/61525#HasAuthOrganization)](https://cloud.tencent.com/document/api/1420/61525#[HasAuthOrganization](https://cloud.tencent.com/document/api/1420/61525#HasAuthOrganization))
-* [[HasAuthUser](https://cloud.tencent.com/document/api/1420/61525#HasAuthUser)](https://cloud.tencent.com/document/api/1420/61525#[HasAuthUser](https://cloud.tencent.com/document/api/1420/61525#HasAuthUser))
+* [AuthInfoDetail](https://cloud.tencent.com/document/api/1420/61525#AuthInfoDetail)
+* [HasAuthOrganization](https://cloud.tencent.com/document/api/1420/61525#HasAuthOrganization)
+* [HasAuthUser](https://cloud.tencent.com/document/api/1420/61525#HasAuthUser)
 
 修改数据结构：
 
@@ -68996,7 +69040,7 @@
 
 新增数据结构：
 
-* [[DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail)](https://cloud.tencent.com/document/api/1092/102488#[DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail))
+* [DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail)
 
 修改数据结构：
 
@@ -81715,6 +81759,21 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 100 次发布
+
+发布时间：2023-12-19 01:56:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice)
+
+	* 新增成员：PolicyId
+
+
 ### 第 99 次发布
 
 发布时间：2023-12-15 19:59:38
@@ -81744,7 +81803,7 @@
 
 新增数据结构：
 
-* [[PrometheusTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTarget)](https://cloud.tencent.com/document/api/248/30354#[PrometheusTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTarget))
+* [PrometheusTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTarget)
 
 修改数据结构：
 
@@ -110958,6 +111017,30 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 99 次发布
+
+发布时间：2023-12-19 02:14:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)
+
+	* 新增入参：FilterGroup
+
+
+修改数据结构：
+
+* [RabbitMQClusterAccessInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterAccessInfo)
+
+	* 新增成员：WebConsoleDomainEndpoint
+
+	* <font color="#dd0000">**修改成员**：</font>PublicWebConsoleSwitchStatus, VpcWebConsoleSwitchStatus, PublicDataStreamStatus, PrometheusEndpointInfo
+
+
 ### 第 98 次发布
 
 发布时间：2023-12-14 16:31:17
@@ -119409,6 +119492,21 @@
 
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 46 次发布
+
+发布时间：2023-12-19 02:18:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
+
+	* 新增成员：IsPrivateModel
+
 
 ### 第 45 次发布
 
@@ -142567,6 +142665,52 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 64 次发布
+
+发布时间：2023-12-19 02:31:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTableMeta](https://cloud.tencent.com/document/api/1267/102541)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [BatchSuspendIntegrationTasks](https://cloud.tencent.com/document/api/1267/82532)
+
+	* 新增入参：Event
+
+* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
+
+	* 新增入参：EventDesc
+
+* [ResumeIntegrationTask](https://cloud.tencent.com/document/api/1267/82473)
+
+	* 新增入参：EventDesc
+
+* [StartIntegrationTask](https://cloud.tencent.com/document/api/1267/82471)
+
+	* 新增入参：EventDesc
+
+* [SuspendIntegrationTask](https://cloud.tencent.com/document/api/1267/82469)
+
+	* 新增入参：Event
+
+
+修改数据结构：
+
+* [AlarmReceiverInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverInfo)
+
+	* 新增成员：LarkGroup
+
+* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
+
+	* 新增成员：LarkWebHooks
+
 
 ### 第 63 次发布
 

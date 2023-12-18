@@ -63,6 +63,10 @@ type AlarmHierarchicalNotice struct {
 	// 通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Classification []*string `json:"Classification,omitnil" name:"Classification"`
+
+	// 模板对应的策略id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *string `json:"PolicyId,omitnil" name:"PolicyId"`
 }
 
 type AlarmHierarchicalValue struct {

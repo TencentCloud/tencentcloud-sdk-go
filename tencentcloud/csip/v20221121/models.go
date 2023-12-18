@@ -1841,6 +1841,9 @@ func (r *DescribeDbAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 
@@ -1851,6 +1854,9 @@ type DescribeDomainAssetsRequestParams struct {
 type DescribeDomainAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 
@@ -1870,6 +1876,7 @@ func (r *DescribeDomainAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -1926,6 +1933,9 @@ func (r *DescribeDomainAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -1933,6 +1943,9 @@ type DescribeGatewayAssetsRequestParams struct {
 type DescribeGatewayAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -1949,6 +1962,7 @@ func (r *DescribeGatewayAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayAssetsRequest has unknown keys!", "")
@@ -1998,6 +2012,9 @@ func (r *DescribeGatewayAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeListenerListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -2005,6 +2022,9 @@ type DescribeListenerListRequestParams struct {
 type DescribeListenerListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -2021,6 +2041,7 @@ func (r *DescribeListenerListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListenerListRequest has unknown keys!", "")
@@ -2060,6 +2081,9 @@ func (r *DescribeListenerListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNICAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -2067,6 +2091,9 @@ type DescribeNICAssetsRequestParams struct {
 type DescribeNICAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -2083,6 +2110,7 @@ func (r *DescribeNICAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNICAssetsRequest has unknown keys!", "")
@@ -2201,6 +2229,9 @@ func (r *DescribeOrganizationUserInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicIpAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// filte过滤条件
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 
@@ -2211,6 +2242,9 @@ type DescribePublicIpAssetsRequestParams struct {
 type DescribePublicIpAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// filte过滤条件
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 
@@ -2230,6 +2264,7 @@ func (r *DescribePublicIpAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {

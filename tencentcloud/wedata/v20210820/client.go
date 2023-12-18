@@ -11230,6 +11230,67 @@ func (c *Client) DescribeTableLineageWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTableMetaRequest() (request *DescribeTableMetaRequest) {
+    request = &DescribeTableMetaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableMeta")
+    
+    
+    return
+}
+
+func NewDescribeTableMetaResponse() (response *DescribeTableMetaResponse) {
+    response = &DescribeTableMetaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableMeta
+// 查询表元数据详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableMeta(request *DescribeTableMetaRequest) (response *DescribeTableMetaResponse, err error) {
+    return c.DescribeTableMetaWithContext(context.Background(), request)
+}
+
+// DescribeTableMeta
+// 查询表元数据详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableMetaWithContext(ctx context.Context, request *DescribeTableMetaRequest) (response *DescribeTableMetaResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableMetaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableMeta require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableMetaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableMetasRequest() (request *DescribeTableMetasRequest) {
     request = &DescribeTableMetasRequest{
         BaseRequest: &tchttp.BaseRequest{},
