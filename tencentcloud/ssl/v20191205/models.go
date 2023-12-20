@@ -5061,6 +5061,22 @@ type OperationLog struct {
 
 	// 操作时间。
 	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitnil" name:"SubAccountUin"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type PackageInfo struct {

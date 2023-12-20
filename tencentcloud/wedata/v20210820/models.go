@@ -25281,6 +25281,10 @@ type InstanceLogInfo struct {
 	// 实例状态 COMPLETED 完成 FAILED失败重试 EXPIRED失败 RUNNING运行中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
+
+	// 实例代码文件，为空表示对应代码文件不存在，可能是因为执行机未升级/对应类型任务无代码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeFileName *string `json:"CodeFileName,omitnil" name:"CodeFileName"`
 }
 
 type InstanceLogInfoOpsDto struct {

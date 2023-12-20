@@ -3014,6 +3014,79 @@ func (c *Client) DescribeModelAccelerateTasksWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeModelAccelerateVersionsRequest() (request *DescribeModelAccelerateVersionsRequest) {
+    request = &DescribeModelAccelerateVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeModelAccelerateVersions")
+    
+    
+    return
+}
+
+func NewDescribeModelAccelerateVersionsResponse() (response *DescribeModelAccelerateVersionsResponse) {
+    response = &DescribeModelAccelerateVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelAccelerateVersions
+// 模型加速之后的模型版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMFAILURE = "FailedOperation.CAMFailure"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeModelAccelerateVersions(request *DescribeModelAccelerateVersionsRequest) (response *DescribeModelAccelerateVersionsResponse, err error) {
+    return c.DescribeModelAccelerateVersionsWithContext(context.Background(), request)
+}
+
+// DescribeModelAccelerateVersions
+// 模型加速之后的模型版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMFAILURE = "FailedOperation.CAMFailure"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeModelAccelerateVersionsWithContext(ctx context.Context, request *DescribeModelAccelerateVersionsRequest) (response *DescribeModelAccelerateVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelAccelerateVersionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelAccelerateVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelAccelerateVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModelServiceRequest() (request *DescribeModelServiceRequest) {
     request = &DescribeModelServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

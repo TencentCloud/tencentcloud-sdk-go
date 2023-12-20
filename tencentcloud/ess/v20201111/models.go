@@ -2238,7 +2238,7 @@ type CreateFlowByFilesRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 }
@@ -2360,7 +2360,7 @@ type CreateFlowByFilesRequest struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 }
@@ -2538,7 +2538,7 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFlowGroupByFilesRequestParams struct {
 	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
@@ -2564,7 +2564,7 @@ type CreateFlowGroupByFilesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
@@ -2949,7 +2949,7 @@ type CreateFlowRequestParams struct {
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 
@@ -3045,7 +3045,7 @@ type CreateFlowRequest struct {
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 
@@ -4307,6 +4307,9 @@ type CreatePrepareFlowRequestParams struct {
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil" name:"UserData"`
 
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	CcInfos *CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
@@ -4398,6 +4401,9 @@ type CreatePrepareFlowRequest struct {
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil" name:"UserData"`
 
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	CcInfos *CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
@@ -4437,6 +4443,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "NeedCreateReview")
 	delete(f, "UserData")
+	delete(f, "CcInfos")
 	delete(f, "FlowId")
 	delete(f, "Agent")
 	delete(f, "InitiatorComponents")
@@ -8845,7 +8852,7 @@ type GetTaskResultApiResponseParams struct {
 	// <li> **ProcessTimeout** : 转换文件超时</li></ul>
 	TaskMessage *string `json:"TaskMessage,omitnil" name:"TaskMessage"`
 
-	// 资源Id，也是FileId，用于文件发起时使用
+	// 资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -4717,6 +4717,110 @@ func (r *DescribeModelAccelerateTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelAccelerateVersionsRequestParams struct {
+	// 过滤条件
+	//     Filter.Name: 枚举值: ModelJobName (任务名称)|TrainingModelVersionId (模型版本id)
+	//     Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段; 枚举值: CreateTime (创建时间) ；默认CreateTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询每页大小，最大20000; 默认10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 模型ID
+	TrainingModelId *string `json:"TrainingModelId,omitnil" name:"TrainingModelId"`
+}
+
+type DescribeModelAccelerateVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件
+	//     Filter.Name: 枚举值: ModelJobName (任务名称)|TrainingModelVersionId (模型版本id)
+	//     Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段; 枚举值: CreateTime (创建时间) ；默认CreateTime
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询每页大小，最大20000; 默认10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 模型ID
+	TrainingModelId *string `json:"TrainingModelId,omitnil" name:"TrainingModelId"`
+}
+
+func (r *DescribeModelAccelerateVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TrainingModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAccelerateVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccelerateVersionsResponseParams struct {
+	// 优化模型总数； 注意接口是分页拉取的，total是指优化模型节点总数，不是本次返回中ModelAccelerateVersions数组的大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 优化模型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccelerateVersions []*ModelAccelerateVersion `json:"ModelAccelerateVersions,omitnil" name:"ModelAccelerateVersions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeModelAccelerateVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAccelerateVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAccelerateVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeModelServiceCallInfoRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil" name:"ServiceGroupId"`
@@ -6811,6 +6915,68 @@ type ModelAccelerateTask struct {
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil" name:"FrameworkVersion"`
 }
 
+type ModelAccelerateVersion struct {
+	// 模型id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+
+	// 优化模型版本id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelVersionId *string `json:"ModelVersionId,omitnil" name:"ModelVersionId"`
+
+	// 优化任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelJobId *string `json:"ModelJobId,omitnil" name:"ModelJobId"`
+
+	// 优化任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelJobName *string `json:"ModelJobName,omitnil" name:"ModelJobName"`
+
+	// 优化后模型版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelVersion *string `json:"ModelVersion,omitnil" name:"ModelVersion"`
+
+	// 加速比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeedUp *string `json:"SpeedUp,omitnil" name:"SpeedUp"`
+
+	// 模型来源/任务名称/任务版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelSource *ModelSource `json:"ModelSource,omitnil" name:"ModelSource"`
+
+	// 模型cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitnil" name:"CosPathInfo"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 模型规范
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelFormat *string `json:"ModelFormat,omitnil" name:"ModelFormat"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// GPU类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUType *string `json:"GPUType,omitnil" name:"GPUType"`
+
+	// 模型cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelCosPath *CosPathInfo `json:"ModelCosPath,omitnil" name:"ModelCosPath"`
+}
+
 type ModelInfo struct {
 	// 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
 	// 自动学习类型的模型填写自动学习的任务id
@@ -6858,6 +7024,52 @@ type ModelInputInfo struct {
 	// input数据尺寸
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelInputDimension []*string `json:"ModelInputDimension,omitnil" name:"ModelInputDimension"`
+}
+
+type ModelSource struct {
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil" name:"Source"`
+
+	// 来源任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobName *string `json:"JobName,omitnil" name:"JobName"`
+
+	// 来源任务版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobVersion *string `json:"JobVersion,omitnil" name:"JobVersion"`
+
+	// 来源任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
+
+	// 模型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelName *string `json:"ModelName,omitnil" name:"ModelName"`
+
+	// 算法框架
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlgorithmFramework *string `json:"AlgorithmFramework,omitnil" name:"AlgorithmFramework"`
+
+	// 训练偏好
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingPreference *string `json:"TrainingPreference,omitnil" name:"TrainingPreference"`
+
+	// 推理环境来源，SYSTEM/CUSTOM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningEnvironmentSource *string `json:"ReasoningEnvironmentSource,omitnil" name:"ReasoningEnvironmentSource"`
+
+	// 推理环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningEnvironment *string `json:"ReasoningEnvironment,omitnil" name:"ReasoningEnvironment"`
+
+	// 推理环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitnil" name:"ReasoningEnvironmentId"`
+
+	// 自定义推理环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningImageInfo *ImageInfo `json:"ReasoningImageInfo,omitnil" name:"ReasoningImageInfo"`
 }
 
 // Predefined struct for user

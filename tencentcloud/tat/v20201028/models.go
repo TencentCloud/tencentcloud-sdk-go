@@ -2588,7 +2588,7 @@ type RegisterCodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitnil" name:"InstanceNamePrefix"`
 
-	// 该注册码允许注册的实列数目。
+	// 该注册码允许注册的实例数目。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisterLimit *int64 `json:"RegisterLimit,omitnil" name:"RegisterLimit"`
 

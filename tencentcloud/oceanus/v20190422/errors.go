@@ -194,6 +194,12 @@ const (
 	// RunType错误。
 	INVALIDPARAMETERVALUE_RUNTYPE = "InvalidParameterValue.RunType"
 
+	// 时间戳范围有误。
+	INVALIDPARAMETERVALUE_TIMESTAMP = "InvalidParameterValue.Timestamp"
+
+	// 非法的类型字段。
+	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+
 	// 不支持的复合类型。
 	INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
 

@@ -1263,6 +1263,73 @@ func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeJobEventsRequest() (request *DescribeJobEventsRequest) {
+    request = &DescribeJobEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobEvents")
+    
+    
+    return
+}
+
+func NewDescribeJobEventsResponse() (response *DescribeJobEventsResponse) {
+    response = &DescribeJobEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobEvents
+// 获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  INVALIDPARAMETERVALUE_TIMESTAMP = "InvalidParameterValue.Timestamp"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobEvents(request *DescribeJobEventsRequest) (response *DescribeJobEventsResponse, err error) {
+    return c.DescribeJobEventsWithContext(context.Background(), request)
+}
+
+// DescribeJobEvents
+// 获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  INVALIDPARAMETERVALUE_TIMESTAMP = "InvalidParameterValue.Timestamp"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobEventsWithContext(ctx context.Context, request *DescribeJobEventsRequest) (response *DescribeJobEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobSavepointRequest() (request *DescribeJobSavepointRequest) {
     request = &DescribeJobSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},

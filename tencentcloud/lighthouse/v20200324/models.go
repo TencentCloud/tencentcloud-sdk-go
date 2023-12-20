@@ -5576,7 +5576,10 @@ type FirewallRule struct {
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
 	Port *string `json:"Port,omitnil" name:"Port"`
 
-	// 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+	// IPv4网段或 IPv4地址(互斥)。
+	// 示例值：0.0.0.0/0。
+	// 
+	// 和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
 	CidrBlock *string `json:"CidrBlock,omitnil" name:"CidrBlock"`
 
 	// 取值：ACCEPT，DROP。默认为 ACCEPT。
@@ -5596,7 +5599,10 @@ type FirewallRuleInfo struct {
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
 	Port *string `json:"Port,omitnil" name:"Port"`
 
-	// 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+	// IPv4网段或 IPv4地址(互斥)。
+	// 示例值：0.0.0.0/0。
+	// 
+	// 和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
 	CidrBlock *string `json:"CidrBlock,omitnil" name:"CidrBlock"`
 
 	// 取值：ACCEPT，DROP。默认为 ACCEPT。

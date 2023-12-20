@@ -373,7 +373,7 @@ func NewCreateCosTokenResponse() (response *CreateCosTokenResponse) {
 }
 
 // CreateCosToken
-// 生成Cos临时秘钥
+// 生成Cos临时密钥
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -385,7 +385,7 @@ func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *Creat
 }
 
 // CreateCosToken
-// 生成Cos临时秘钥
+// 生成Cos临时密钥
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"

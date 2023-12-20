@@ -1496,7 +1496,7 @@ type CreateEngineRequestParams struct {
 	// 引擎的标签列表。用户自定义的key/value形式，无参考值
 	EngineTags []*InstanceTagInfo `json:"EngineTags,omitnil" name:"EngineTags"`
 
-	// 引擎的初始帐号信息。可设置参数：
+	// 引擎的初始账号信息。可设置参数：
 	// - Name：控制台初始用户名
 	// - Password：控制台初始密码
 	// - Token：引擎接口的管理员 Token
@@ -1604,7 +1604,7 @@ type CreateEngineRequest struct {
 	// 引擎的标签列表。用户自定义的key/value形式，无参考值
 	EngineTags []*InstanceTagInfo `json:"EngineTags,omitnil" name:"EngineTags"`
 
-	// 引擎的初始帐号信息。可设置参数：
+	// 引擎的初始账号信息。可设置参数：
 	// - Name：控制台初始用户名
 	// - Password：控制台初始密码
 	// - Token：引擎接口的管理员 Token

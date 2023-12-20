@@ -68,8 +68,14 @@ const (
 	// 修改的生命周期被禁止。
 	FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
 
+	// 文件预览失败，请稍后再试。
+	FAILEDOPERATION_PREVIEWFILE = "FailedOperation.PreviewFile"
+
 	// 查询语句运行失败。
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+
+	// 读取文件内容失败，请确认文件可读。
+	FAILEDOPERATION_READFILE = "FailedOperation.ReadFile"
 
 	// 读qps超过限制。
 	FAILEDOPERATION_READQPSLIMIT = "FailedOperation.ReadQpsLimit"
