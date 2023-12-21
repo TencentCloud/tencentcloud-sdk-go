@@ -1802,6 +1802,112 @@ func (r *EduPaperOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ElectronicAirTransport struct {
+	// 发票代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
+
+	// 发票号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Number *string `json:"Number,omitnil" name:"Number"`
+
+	// 开票日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *string `json:"Amount,omitnil" name:"Amount"`
+
+	// 校验码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckCode *string `json:"CheckCode,omitnil" name:"CheckCode"`
+
+	// 价税合计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil" name:"Total"`
+
+	// 抵扣标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductionMark *string `json:"DeductionMark,omitnil" name:"DeductionMark"`
+
+	// 发票状态代码，0正常 1 未更新  2作废 3已红冲
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StateCode *string `json:"StateCode,omitnil" name:"StateCode"`
+
+	// 购方识别号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuyerTaxCode *string `json:"BuyerTaxCode,omitnil" name:"BuyerTaxCode"`
+
+	// 购方名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuyerName *string `json:"BuyerName,omitnil" name:"BuyerName"`
+
+	// 合计税额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tax *string `json:"Tax,omitnil" name:"Tax"`
+
+	// 国内国际标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomesticInternationalMark *string `json:"DomesticInternationalMark,omitnil" name:"DomesticInternationalMark"`
+
+	// 旅客姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassengerName *string `json:"PassengerName,omitnil" name:"PassengerName"`
+
+	// 有效身份证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassengerNo *string `json:"PassengerNo,omitnil" name:"PassengerNo"`
+
+	// 电子客票号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicNumber *string `json:"ElectronicNumber,omitnil" name:"ElectronicNumber"`
+
+	// 全电发票（航空运输电子客票行程单）详细信息
+	// 
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicAirTransportDetails []*ElectronicAirTransportDetail `json:"ElectronicAirTransportDetails,omitnil" name:"ElectronicAirTransportDetails"`
+}
+
+type ElectronicAirTransportDetail struct {
+	// 航段序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlightSegment *string `json:"FlightSegment,omitnil" name:"FlightSegment"`
+
+	// 始发站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StationGetOn *string `json:"StationGetOn,omitnil" name:"StationGetOn"`
+
+	// 目的站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StationGetOff *string `json:"StationGetOff,omitnil" name:"StationGetOff"`
+
+	// 承运人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Carrier *string `json:"Carrier,omitnil" name:"Carrier"`
+
+	// 航班号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlightNumber *string `json:"FlightNumber,omitnil" name:"FlightNumber"`
+
+	// 座位等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SeatLevel *string `json:"SeatLevel,omitnil" name:"SeatLevel"`
+
+	// 承运日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlightDate *string `json:"FlightDate,omitnil" name:"FlightDate"`
+
+	// 起飞时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepartureTime *string `json:"DepartureTime,omitnil" name:"DepartureTime"`
+
+	// 客票级别/客票类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FareBasis *string `json:"FareBasis,omitnil" name:"FareBasis"`
+}
+
 type ElectronicFlightTicketFull struct {
 	// 旅客姓名
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
@@ -1871,6 +1977,104 @@ type ElectronicFlightTicketFull struct {
 
 	// 机票详细信息元组
 	FlightItems []*FlightItemInfo `json:"FlightItems,omitnil" name:"FlightItems"`
+}
+
+type ElectronicTrainTicket struct {
+	// 购方名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuyerName *string `json:"BuyerName,omitnil" name:"BuyerName"`
+
+	// 购方识别号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuyerTaxCode *string `json:"BuyerTaxCode,omitnil" name:"BuyerTaxCode"`
+
+	// 发票号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Number *string `json:"Number,omitnil" name:"Number"`
+
+	// 开票日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 价税合计（中文大写）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCN *string `json:"TotalCN,omitnil" name:"TotalCN"`
+
+	// 税额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tax *string `json:"Tax,omitnil" name:"Tax"`
+
+	// 业务类型，0：退票，1:售票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+
+	// 出发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeGetOn *string `json:"TimeGetOn,omitnil" name:"TimeGetOn"`
+
+	// 车次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainNumber *string `json:"TrainNumber,omitnil" name:"TrainNumber"`
+
+	// 发票代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
+
+	// 席别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SeatType *string `json:"SeatType,omitnil" name:"SeatType"`
+
+	// 乘车日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateGetOn *string `json:"DateGetOn,omitnil" name:"DateGetOn"`
+
+	// 车厢
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainCabin *string `json:"TrainCabin,omitnil" name:"TrainCabin"`
+
+	// 出发站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StationGetOn *string `json:"StationGetOn,omitnil" name:"StationGetOn"`
+
+	// 电子客票号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicNumber *string `json:"ElectronicNumber,omitnil" name:"ElectronicNumber"`
+
+	// 姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassengerName *string `json:"PassengerName,omitnil" name:"PassengerName"`
+
+	// 证件号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassengerNo *string `json:"PassengerNo,omitnil" name:"PassengerNo"`
+
+	// 金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *string `json:"Amount,omitnil" name:"Amount"`
+
+	// 到达站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StationGetOff *string `json:"StationGetOff,omitnil" name:"StationGetOff"`
+
+	// 税率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxRate *string `json:"TaxRate,omitnil" name:"TaxRate"`
+
+	// 席位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seat *string `json:"Seat,omitnil" name:"Seat"`
+
+	// 价税合计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil" name:"Total"`
+
+	// 校验码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckCode *string `json:"CheckCode,omitnil" name:"CheckCode"`
+
+	// 发票状态代码，0正常 1 未更新  2作废 3已红冲
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StateCode *string `json:"StateCode,omitnil" name:"StateCode"`
 }
 
 type ElectronicTrainTicketFull struct {
@@ -10429,15 +10633,19 @@ type VatInvoice struct {
 	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 购方抬头
+	// 通用机打发票类型时不返回
 	BuyerName *string `json:"BuyerName,omitnil" name:"BuyerName"`
 
 	// 购方税号
+	// 通用机打发票类型时不返回
 	BuyerTaxCode *string `json:"BuyerTaxCode,omitnil" name:"BuyerTaxCode"`
 
 	// 购方地址电话
+	// 通用机打发票类型做不返回
 	BuyerAddressPhone *string `json:"BuyerAddressPhone,omitnil" name:"BuyerAddressPhone"`
 
 	// 购方银行账号
+	// 通用机打发票类型时不返回
 	BuyerBankAccount *string `json:"BuyerBankAccount,omitnil" name:"BuyerBankAccount"`
 
 	// 销方名称
@@ -10470,7 +10678,12 @@ type VatInvoice struct {
 	// 15：二手车销售统一发票，
 	// 32：深圳区块链发票，
 	// 102：通用机打电子发票
+	// 61：电子发票（航空运输电子客票行程单）
+	// 83：电子发票（铁路电子发票）
 	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
+	ElectronicType *string `json:"ElectronicType,omitnil" name:"ElectronicType"`
 
 	// 检验码
 	CheckCode *string `json:"CheckCode,omitnil" name:"CheckCode"`
@@ -11064,17 +11277,23 @@ func (r *VatInvoiceVerifyNewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VatInvoiceVerifyNewResponseParams struct {
-	// 增值税发票信息，详情请点击左侧链接。
+	// 增值税发票、购车发票、全电发票的基础要素字段信息。
 	Invoice *VatInvoice `json:"Invoice,omitnil" name:"Invoice"`
 
-	// 机动车销售统一发票信息
+	// 机动车销售统一发票详细字段信息。
 	VehicleInvoiceInfo *VehicleInvoiceInfo `json:"VehicleInvoiceInfo,omitnil" name:"VehicleInvoiceInfo"`
 
-	// 二手车销售统一发票信息
+	// 二手车销售统一发票详细字段信息。
 	UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitnil" name:"UsedVehicleInvoiceInfo"`
 
-	// 通行费发票信息
+	// 通行费发票详细字段信息。
 	PassInvoiceInfoList []*PassInvoiceInfo `json:"PassInvoiceInfoList,omitnil" name:"PassInvoiceInfoList"`
+
+	// 全电发票（铁路电子客票）详细字段信息。
+	ElectronicTrainTicket *ElectronicTrainTicket `json:"ElectronicTrainTicket,omitnil" name:"ElectronicTrainTicket"`
+
+	// 全电发票（航空运输电子客票行程单）详细字段信息。
+	ElectronicAirTransport *ElectronicAirTransport `json:"ElectronicAirTransport,omitnil" name:"ElectronicAirTransport"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

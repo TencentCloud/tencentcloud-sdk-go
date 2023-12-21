@@ -3649,11 +3649,11 @@ func (r *DescribeBillingSpecsPriceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingSpecsRequestParams struct {
-	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
-	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
-
 	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
 	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
@@ -3662,11 +3662,11 @@ type DescribeBillingSpecsRequestParams struct {
 type DescribeBillingSpecsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
-	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
-
 	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
 	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
@@ -3684,8 +3684,8 @@ func (r *DescribeBillingSpecsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TaskType")
 	delete(f, "ChargeType")
+	delete(f, "TaskType")
 	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingSpecsRequest has unknown keys!", "")

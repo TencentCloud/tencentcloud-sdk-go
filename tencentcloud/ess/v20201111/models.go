@@ -2183,15 +2183,30 @@ type CreateFlowByFilesRequestParams struct {
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil" name:"UserData"`
+
 	// 合同到期提醒时间，为Unix标准时间戳（秒）格式，支持的范围是从发起时间开始到后10年内。
 	// 
 	// 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
 	RemindedOn *int64 `json:"RemindedOn,omitnil" name:"RemindedOn"`
 
-	// 合同流程的签署顺序类型：
-	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
-	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	// 指定个人签署方查看合同的校验方式
+	// <ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
+	// <li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
+	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
+	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
 	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 	// <ul><li>{合同名称}   </li>
@@ -2209,30 +2224,6 @@ type CreateFlowByFilesRequestParams struct {
 	// 
 	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
-	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
-
-	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
-	// 
-	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
-
-	// 指定个人签署方查看合同的校验方式
-	// <ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
-	// <li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
-
-	// 签署方签署控件（印章/签名等）的生成方式：
-	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
-	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
-	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
-
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
@@ -2241,6 +2232,15 @@ type CreateFlowByFilesRequestParams struct {
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
+
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
+	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
+	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
+	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -2305,15 +2305,30 @@ type CreateFlowByFilesRequest struct {
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil" name:"UserData"`
+
 	// 合同到期提醒时间，为Unix标准时间戳（秒）格式，支持的范围是从发起时间开始到后10年内。
 	// 
 	// 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
 	RemindedOn *int64 `json:"RemindedOn,omitnil" name:"RemindedOn"`
 
-	// 合同流程的签署顺序类型：
-	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
-	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	// 指定个人签署方查看合同的校验方式
+	// <ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
+	// <li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
+	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
+	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
 	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 	// <ul><li>{合同名称}   </li>
@@ -2331,30 +2346,6 @@ type CreateFlowByFilesRequest struct {
 	// 
 	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
-	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
-
-	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
-	// 
-	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
-
-	// 指定个人签署方查看合同的校验方式
-	// <ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
-	// <li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
-
-	// 签署方签署控件（印章/签名等）的生成方式：
-	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
-	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
-	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
-
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
@@ -2363,6 +2354,15 @@ type CreateFlowByFilesRequest struct {
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
+
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
+	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
+	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
+	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -2389,15 +2389,15 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedPreview")
 	delete(f, "PreviewType")
 	delete(f, "Deadline")
-	delete(f, "RemindedOn")
 	delete(f, "Unordered")
-	delete(f, "CustomShowMap")
-	delete(f, "NeedSignReview")
 	delete(f, "UserData")
+	delete(f, "RemindedOn")
 	delete(f, "ApproverVerifyType")
 	delete(f, "SignBeanTag")
+	delete(f, "CustomShowMap")
 	delete(f, "Agent")
 	delete(f, "AutoSignScene")
+	delete(f, "NeedSignReview")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}

@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 3 次发布
+### 第 145 次发布
 
-发布时间：2023-12-20 01:16:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
-
-	* 新增成员：Characteristic
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 143 次发布
-
-发布时间：2023-12-20 01:38:18
+发布时间：2023-12-21 01:38:43
 
 本次发布包含了以下内容：
 
@@ -31,38 +12,22 @@
 
 修改接口：
 
-* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
 
-	* 新增入参：CcInfos
-
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 50 次发布
-
-发布时间：2023-12-20 01:57:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeJobEvents](https://cloud.tencent.com/document/api/849/102554)
-
-新增数据结构：
-
-* [JobEvent](https://cloud.tencent.com/document/api/849/52010#JobEvent)
+	* <font color="#dd0000">**修改入参**：</font>ResourceId
 
 
 
-## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 51 次发布
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
-发布时间：2023-12-20 02:05:02
+
+
+## 实时互动-教育版(lcic) 版本：2022-08-17
+
+### 第 49 次发布
+
+发布时间：2023-12-21 01:48:52
 
 本次发布包含了以下内容：
 
@@ -70,31 +35,88 @@
 
 修改数据结构：
 
-* [OperationLog](https://cloud.tencent.com/document/api/400/41679#OperationLog)
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
 
-	* 新增成员：Uin, SubAccountUin, CertId, Type
-
-
+	* 新增成员：RecordBackground
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 47 次发布
 
-发布时间：2023-12-20 02:15:59
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 125 次发布
+
+发布时间：2023-12-21 01:56:34
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeModelAccelerateVersions](https://cloud.tencent.com/document/api/851/102555)
+* [VatInvoiceVerifyNew](https://cloud.tencent.com/document/api/866/73674)
+
+	* 新增出参：ElectronicTrainTicket, ElectronicAirTransport
+
 
 新增数据结构：
 
-* [ModelAccelerateVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateVersion)
-* [ModelSource](https://cloud.tencent.com/document/api/851/75051#ModelSource)
+* [ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport)
+* [ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail)
+* [ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket)
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：ElectronicType
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 100 次发布
+
+发布时间：2023-12-21 02:11:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNamespaceBundlesOpt](https://cloud.tencent.com/document/api/1179/59039)
+
+	* <font color="#dd0000">**删除出参**：</font>BundleSet
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BundleSetOpt
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 48 次发布
+
+发布时间：2023-12-21 02:14:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillingResourceGroups](https://cloud.tencent.com/document/api/851/75065)
+
+	* <font color="#dd0000">**修改入参**：</font>Type
+
+* [DescribeBillingSpecs](https://cloud.tencent.com/document/api/851/80175)
+
+	* <font color="#dd0000">**修改入参**：</font>TaskType
+
 
 
 
@@ -102,24 +124,23 @@
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## 云点播(vod) 版本：2018-07-17
 
-### 第 65 次发布
+### 第 176 次发布
 
-发布时间：2023-12-20 02:28:42
+发布时间：2023-12-21 02:21:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [InstanceLogInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceLogInfo)
+* [EnhanceMediaQuality](https://cloud.tencent.com/document/api/266/102571)
 
-	* 新增成员：CodeFileName
+新增数据结构：
 
-	* <font color="#dd0000">**修改成员**：</font>TaskId, CurRunDate, Tries, LastUpdate, BrokerIp, FileSize, OriginFileName, CreateTime, InstanceLogType, TaskName, CostTime, InstanceStatus
-
+* [EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig)
 
 
 
@@ -59532,6 +59553,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 145 次发布
+
+发布时间：2023-12-21 01:38:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+
+	* <font color="#dd0000">**修改入参**：</font>ResourceId
+
+
 ### 第 144 次发布
 
 发布时间：2023-12-15 19:40:36
@@ -74672,6 +74708,21 @@
 
 ## 实时互动-教育版(lcic) 版本：2022-08-17
 
+### 第 49 次发布
+
+发布时间：2023-12-21 01:48:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：RecordBackground
+
+
 ### 第 48 次发布
 
 发布时间：2023-12-14 02:03:05
@@ -88067,11 +88118,11 @@
 
 新增接口：
 
-* [[DescribeJobEvents](https://cloud.tencent.com/document/api/849/102554)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeJobEvents](https://cloud.tencent.com/document/api/849/102554)
 
 新增数据结构：
 
-* [[JobEvent](https://cloud.tencent.com/document/api/849/52010#JobEvent)](https://cloud.tencent.com/document/api/849/52010#[JobEvent](https://cloud.tencent.com/document/api/849/52010#JobEvent))
+* [JobEvent](https://cloud.tencent.com/document/api/849/52010#JobEvent)
 
 ### 第 49 次发布
 
@@ -89072,6 +89123,34 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 125 次发布
+
+发布时间：2023-12-21 01:56:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VatInvoiceVerifyNew](https://cloud.tencent.com/document/api/866/73674)
+
+	* 新增出参：ElectronicTrainTicket, ElectronicAirTransport
+
+
+新增数据结构：
+
+* [[ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport)](https://cloud.tencent.com/document/api/866/33527#[ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport))
+* [[ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail)](https://cloud.tencent.com/document/api/866/33527#[ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail))
+* [[ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket)](https://cloud.tencent.com/document/api/866/33527#[ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket))
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：ElectronicType
+
 
 ### 第 124 次发布
 
@@ -110977,6 +111056,25 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 100 次发布
+
+发布时间：2023-12-21 02:11:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNamespaceBundlesOpt](https://cloud.tencent.com/document/api/1179/59039)
+
+	* <font color="#dd0000">**删除出参**：</font>BundleSet
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BundleSetOpt
+
 ### 第 99 次发布
 
 发布时间：2023-12-19 02:14:52
@@ -119453,6 +119551,25 @@
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
+### 第 48 次发布
+
+发布时间：2023-12-21 02:14:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillingResourceGroups](https://cloud.tencent.com/document/api/851/75065)
+
+	* <font color="#dd0000">**修改入参**：</font>Type
+
+* [DescribeBillingSpecs](https://cloud.tencent.com/document/api/851/80175)
+
+	* <font color="#dd0000">**修改入参**：</font>TaskType
+
+
 ### 第 47 次发布
 
 发布时间：2023-12-20 02:15:59
@@ -119463,12 +119580,12 @@
 
 新增接口：
 
-* [[DescribeModelAccelerateVersions](https://cloud.tencent.com/document/api/851/102555)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeModelAccelerateVersions](https://cloud.tencent.com/document/api/851/102555)
 
 新增数据结构：
 
-* [[ModelAccelerateVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateVersion)](https://cloud.tencent.com/document/api/851/75051#[ModelAccelerateVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateVersion))
-* [[ModelSource](https://cloud.tencent.com/document/api/851/75051#ModelSource)](https://cloud.tencent.com/document/api/851/75051#[ModelSource](https://cloud.tencent.com/document/api/851/75051#ModelSource))
+* [ModelAccelerateVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateVersion)
+* [ModelSource](https://cloud.tencent.com/document/api/851/75051#ModelSource)
 
 ### 第 46 次发布
 
@@ -131642,6 +131759,22 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 176 次发布
+
+发布时间：2023-12-21 02:21:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[EnhanceMediaQuality](https://cloud.tencent.com/document/api/266/102571)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig)](https://cloud.tencent.com/document/api/266/31773#[EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig))
 
 ### 第 175 次发布
 

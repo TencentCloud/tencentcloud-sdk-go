@@ -168,10 +168,6 @@ type BindCluster struct {
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
-type BundleSetOpt struct {
-
-}
-
 // Predefined struct for user
 type ClearCmqQueueRequestParams struct {
 	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -5209,7 +5205,7 @@ type DescribeNamespaceBundlesOptRequestParams struct {
 	// 过滤的 bundle
 	Bundle *string `json:"Bundle,omitnil" name:"Bundle"`
 
-	// bundle 所属的 broker ip 地址，支持模糊查询
+	// bundle 所属的 broker IP 地址，支持模糊查询
 	OwnerBroker *string `json:"OwnerBroker,omitnil" name:"OwnerBroker"`
 }
 
@@ -5237,7 +5233,7 @@ type DescribeNamespaceBundlesOptRequest struct {
 	// 过滤的 bundle
 	Bundle *string `json:"Bundle,omitnil" name:"Bundle"`
 
-	// bundle 所属的 broker ip 地址，支持模糊查询
+	// bundle 所属的 broker IP 地址，支持模糊查询
 	OwnerBroker *string `json:"OwnerBroker,omitnil" name:"OwnerBroker"`
 }
 
@@ -5271,9 +5267,6 @@ func (r *DescribeNamespaceBundlesOptRequest) FromJsonString(s string) error {
 type DescribeNamespaceBundlesOptResponseParams struct {
 	// 记录条数
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
-
-	// bundle列表
-	BundleSet []*BundleSetOpt `json:"BundleSet,omitnil" name:"BundleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

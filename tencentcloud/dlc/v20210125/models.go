@@ -3676,11 +3676,11 @@ func (r *CreateWorkGroupResponse) FromJsonString(s string) error {
 }
 
 type CrontabResumeSuspendStrategy struct {
-	// 定时拉起时间：如：周一8点
+	// 定时拉起时间：如：周一&周三8点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResumeTime *string `json:"ResumeTime,omitnil" name:"ResumeTime"`
 
-	// 定时挂起时间：如：周一20点
+	// 定时挂起时间：如：周一&周三20点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuspendTime *string `json:"SuspendTime,omitnil" name:"SuspendTime"`
 

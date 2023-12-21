@@ -2933,13 +2933,6 @@ func (r *ChannelCreateOrganizationModifyQrCodeResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowRequestParams struct {
-	// 资源id，与ResourceType相对应，取值范围：
-	// <ul>
-	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id</li>
-	// </ul>
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
-
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
 	// <li> **2**：文件（默认值）</li></ul>
@@ -2958,6 +2951,13 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id</li>
+	// </ul>
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
@@ -2988,13 +2988,6 @@ type ChannelCreatePrepareFlowRequestParams struct {
 type ChannelCreatePrepareFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源id，与ResourceType相对应，取值范围：
-	// <ul>
-	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id</li>
-	// </ul>
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
-
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
 	// <li> **2**：文件（默认值）</li></ul>
@@ -3013,6 +3006,13 @@ type ChannelCreatePrepareFlowRequest struct {
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id</li>
+	// </ul>
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
@@ -3046,10 +3046,10 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ResourceId")
 	delete(f, "ResourceType")
 	delete(f, "FlowInfo")
 	delete(f, "Agent")
+	delete(f, "ResourceId")
 	delete(f, "FlowOption")
 	delete(f, "FlowApproverList")
 	delete(f, "FlowId")
@@ -5577,6 +5577,8 @@ type CommonFlowApprover struct {
 	// **3** :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）
 	// 
 	// 注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
+	// 使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -> 企业设置 -> 扩展服务 -> 企业自动签。
+	// 使用文件发起自动签时使用前请联系对接的客户经理沟通。
 	ApproverType *int64 `json:"ApproverType,omitnil" name:"ApproverType"`
 
 	// 电子签平台给企业生成的企业id

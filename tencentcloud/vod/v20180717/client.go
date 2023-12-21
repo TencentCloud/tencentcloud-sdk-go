@@ -7071,6 +7071,65 @@ func (c *Client) EnhanceMediaByTemplateWithContext(ctx context.Context, request 
     return
 }
 
+func NewEnhanceMediaQualityRequest() (request *EnhanceMediaQualityRequest) {
+    request = &EnhanceMediaQualityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "EnhanceMediaQuality")
+    
+    
+    return
+}
+
+func NewEnhanceMediaQualityResponse() (response *EnhanceMediaQualityResponse) {
+    response = &EnhanceMediaQualityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnhanceMediaQuality
+// 对点播中的音视频媒体发起音画质重生任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) EnhanceMediaQuality(request *EnhanceMediaQualityRequest) (response *EnhanceMediaQualityResponse, err error) {
+    return c.EnhanceMediaQualityWithContext(context.Background(), request)
+}
+
+// EnhanceMediaQuality
+// 对点播中的音视频媒体发起音画质重生任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) EnhanceMediaQualityWithContext(ctx context.Context, request *EnhanceMediaQualityRequest) (response *EnhanceMediaQualityResponse, err error) {
+    if request == nil {
+        request = NewEnhanceMediaQualityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnhanceMediaQuality require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnhanceMediaQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
     request = &ExecuteFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},

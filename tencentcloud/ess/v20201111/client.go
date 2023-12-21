@@ -1024,6 +1024,60 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //
 // 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
 //
+// <table>
+//
+// 	<thead>
+//
+// 		<tr>
+//
+// 			<th>签署人类别</th>
+//
+// 			<th>需要提前准备的信息</th>
+//
+// 		</tr>
+//
+// 	</thead>
+//
+// 	<tbody>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>其他企业的员工签署</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>个人（自然人）签署</td>
+//
+// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 	</tbody>
+//
+// </table>
+//
+// 
+//
 // 
 //
 // 注：配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。整体的逻辑如下图
@@ -1119,6 +1173,60 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // 通过模板创建签署流程<br/>
 //
 // 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
+//
+// <table>
+//
+// 	<thead>
+//
+// 		<tr>
+//
+// 			<th>签署人类别</th>
+//
+// 			<th>需要提前准备的信息</th>
+//
+// 		</tr>
+//
+// 	</thead>
+//
+// 	<tbody>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>其他企业的员工签署</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>个人（自然人）签署</td>
+//
+// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 	</tbody>
+//
+// </table>
+//
+// 
 //
 // 
 //
@@ -1454,7 +1562,67 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //
 // 
 //
+// <table>
+//
+// 	<thead>
+//
+// 		<tr>
+//
+// 			<th>签署人类别</th>
+//
+// 			<th>需要提前准备的信息</th>
+//
+// 		</tr>
+//
+// 	</thead>
+//
+// 	<tbody>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>其他企业的员工签署</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>个人（自然人）签署</td>
+//
+// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 	</tbody>
+//
+// </table>
+//
+// 
+//
+// 
+//
+// 
+//
 // 该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi)接口转换成pdf资源）<br/>
+//
+// 
 //
 // 
 //
@@ -1618,7 +1786,67 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //
 // 
 //
+// <table>
+//
+// 	<thead>
+//
+// 		<tr>
+//
+// 			<th>签署人类别</th>
+//
+// 			<th>需要提前准备的信息</th>
+//
+// 		</tr>
+//
+// 	</thead>
+//
+// 	<tbody>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>自己企业的员工签署（已认证加入）</td>
+//
+// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>其他企业的员工签署</td>
+//
+// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 		<tr>
+//
+// 			<td>个人（自然人）签署</td>
+//
+// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
+//
+// 		</tr>
+//
+// 	</tbody>
+//
+// </table>
+//
+// 
+//
+// 
+//
+// 
+//
 // 该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi)接口转换成pdf资源）<br/>
+//
+// 
 //
 // 
 //
@@ -2576,15 +2804,21 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //
 // 
 //
-// 1. 发起合同时，签署人的NotifyType需设置为sms
+// 1. 发起合同时，**签署人的NotifyType需设置为sms**
 //
-// 2. 合同中当前状态为“待签署”的签署人是催办的对象
+// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 3. 每个合同只能催办一次
+// 3. **每个合同只能催办一次**
 //
 // 
 //
-// 注意：该接口无法直接调用，请联系客户经理申请使用。
+// **催办的效果**: 对方会收到如下的短信通知
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2604,15 +2838,21 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 //
 // 
 //
-// 1. 发起合同时，签署人的NotifyType需设置为sms
+// 1. 发起合同时，**签署人的NotifyType需设置为sms**
 //
-// 2. 合同中当前状态为“待签署”的签署人是催办的对象
+// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 3. 每个合同只能催办一次
+// 3. **每个合同只能催办一次**
 //
 // 
 //
-// 注意：该接口无法直接调用，请联系客户经理申请使用。
+// **催办的效果**: 对方会收到如下的短信通知
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
