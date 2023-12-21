@@ -4595,6 +4595,9 @@ type DomainInfo struct {
 
 	// 是否启用搜索引擎推送
 	SearchEnginePush *string `json:"SearchEnginePush,omitnil" name:"SearchEnginePush"`
+
+	// 是否开启辅助 DNS
+	SlaveDNS *string `json:"SlaveDNS,omitnil" name:"SlaveDNS"`
 }
 
 type DomainListItem struct {

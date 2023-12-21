@@ -5037,7 +5037,7 @@ type SyncDBEndpointInfos struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseType *string `json:"DatabaseType,omitnil" name:"DatabaseType"`
 
-	// 数据库信息
+	// 数据库信息。注意：如果数据类型为tdsqlmysql，此处Endpoint数组的顺序应该与set顺序对应，第一个分片（shardkey范围起始为0的分片）必须要输入在第一个位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info []*Endpoint `json:"Info,omitnil" name:"Info"`
 }

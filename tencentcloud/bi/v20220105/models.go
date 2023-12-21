@@ -1086,6 +1086,10 @@ type DatasourceInfo struct {
 	// 第三方数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil" name:"DataOriginDatasourceId"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type DatasourceInfoData struct {

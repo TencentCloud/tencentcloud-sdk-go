@@ -965,6 +965,10 @@ type BackupInfo struct {
 	// 备份文件是否加密， on-加密， off-未加密
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptionFlag *string `json:"EncryptionFlag,omitnil" name:"EncryptionFlag"`
+
+	// 备份GTID点位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutedGTIDSet *string `json:"ExecutedGTIDSet,omitnil" name:"ExecutedGTIDSet"`
 }
 
 type BackupItem struct {
@@ -3307,7 +3311,7 @@ type CreateDatabaseRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 数据库名称。
+	// 数据库名称，长度不超过64。
 	DBName *string `json:"DBName,omitnil" name:"DBName"`
 
 	// 字符集，可选值：utf8，gbk，latin1，utf8mb4。
@@ -3320,7 +3324,7 @@ type CreateDatabaseRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 数据库名称。
+	// 数据库名称，长度不超过64。
 	DBName *string `json:"DBName,omitnil" name:"DBName"`
 
 	// 字符集，可选值：utf8，gbk，latin1，utf8mb4。
@@ -4040,7 +4044,7 @@ type DeleteDatabaseRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 数据库名称。
+	// 数据库名称，长度不超过64。
 	DBName *string `json:"DBName,omitnil" name:"DBName"`
 }
 
@@ -4050,7 +4054,7 @@ type DeleteDatabaseRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 数据库名称。
+	// 数据库名称，长度不超过64。
 	DBName *string `json:"DBName,omitnil" name:"DBName"`
 }
 
@@ -5887,6 +5891,9 @@ type DescribeBinlogsRequestParams struct {
 
 	// binlog最晚开始时间，时间格式：2016-03-17 02:10:37
 	MaxStartTime *string `json:"MaxStartTime,omitnil" name:"MaxStartTime"`
+
+	// 返回binlog列表是否包含MinStartTime起始节点，默认为否
+	ContainsMinStartTime *bool `json:"ContainsMinStartTime,omitnil" name:"ContainsMinStartTime"`
 }
 
 type DescribeBinlogsRequest struct {
@@ -5906,6 +5913,9 @@ type DescribeBinlogsRequest struct {
 
 	// binlog最晚开始时间，时间格式：2016-03-17 02:10:37
 	MaxStartTime *string `json:"MaxStartTime,omitnil" name:"MaxStartTime"`
+
+	// 返回binlog列表是否包含MinStartTime起始节点，默认为否
+	ContainsMinStartTime *bool `json:"ContainsMinStartTime,omitnil" name:"ContainsMinStartTime"`
 }
 
 func (r *DescribeBinlogsRequest) ToJsonString() string {
@@ -5925,6 +5935,7 @@ func (r *DescribeBinlogsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "MinStartTime")
 	delete(f, "MaxStartTime")
+	delete(f, "ContainsMinStartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBinlogsRequest has unknown keys!", "")
 	}

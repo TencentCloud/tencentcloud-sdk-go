@@ -948,6 +948,9 @@ type DetectAIFakeFacesResponseParams struct {
 	// 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
 	AttackRiskDetailList []*AttackRiskDetail `json:"AttackRiskDetailList,omitnil" name:"AttackRiskDetailList"`
 
+	// 额外信息
+	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil" name:"ExtraInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1506,6 +1509,12 @@ type Encryption struct {
 	// SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*string `json:"TagList,omitnil" name:"TagList"`
+}
+
+type ExtraInfo struct {
+	// 命中模板的详细信息，仅返回命中的相似度最高的模板信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetrievalLivenessExtraInfo []*RetrievalLivenessExtraInfo `json:"RetrievalLivenessExtraInfo,omitnil" name:"RetrievalLivenessExtraInfo"`
 }
 
 // Predefined struct for user
@@ -4174,6 +4183,20 @@ func (r *PhoneVerificationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PhoneVerificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RetrievalLivenessExtraInfo struct {
+	// 命中的模版类型，其中Common-公共库；Auto-自动聚类库；Owner-自建模版库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitGroup *string `json:"HitGroup,omitnil" name:"HitGroup"`
+
+	// 命中的相似度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SimilarityScore *float64 `json:"SimilarityScore,omitnil" name:"SimilarityScore"`
+
+	// 命中的模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitTemplate *string `json:"HitTemplate,omitnil" name:"HitTemplate"`
 }
 
 type RuleIdConfig struct {

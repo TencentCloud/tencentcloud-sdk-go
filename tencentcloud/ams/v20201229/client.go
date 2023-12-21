@@ -359,10 +359,6 @@ func NewCreateAudioModerationTaskResponse() (response *CreateAudioModerationTask
 //
 // - 如果直播任务没有取消/结束，直播视频推流因故中断，产品将在将在10分钟内持续拉流重试。如果10分钟检测到音频切片数据，则恢复正常审核，反之，则终止拉流并退出审核。在拉流终止后，用户如有审核需求，需重新送审。
 //
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
@@ -448,10 +444,6 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
 // - 如果直播任务取消/结束，则终止直播拉流并退出审核。
 //
 // - 如果直播任务没有取消/结束，直播视频推流因故中断，产品将在将在10分钟内持续拉流重试。如果10分钟检测到音频切片数据，则恢复正常审核，反之，则终止拉流并退出审核。在拉流终止后，用户如有审核需求，需重新送审。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

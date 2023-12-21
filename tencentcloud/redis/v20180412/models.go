@@ -4649,7 +4649,9 @@ type DescribeSlowLogRequestParams struct {
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+	// 节点所属角色。
+	// - master：主节点。
+	// - slave：从节点。
 	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
@@ -4674,7 +4676,9 @@ type DescribeSlowLogRequest struct {
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+	// 节点所属角色。
+	// - master：主节点。
+	// - slave：从节点。
 	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
@@ -7752,10 +7756,16 @@ type ProductConf struct {
 	// - 0：按量计费。
 	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
 
-	// 是否支持副本只读。
+	// 该参数名因存在拼写不规范的问题，建议使用**EnableReplicaReadOnly**参数取代。其含义为是否支持副本只读。
 	// - true：支持副本只读。
 	// - false：不支持。
 	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly,omitnil" name:"EnableRepicaReadOnly"`
+
+	// 是否支持副本只读。
+	// - true：支持副本只读。
+	// - false：不支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableReplicaReadOnly *bool `json:"EnableReplicaReadOnly,omitnil" name:"EnableReplicaReadOnly"`
 }
 
 type ProxyNodes struct {

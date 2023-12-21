@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 标签策略强制打标签限制
+	FAILEDOPERATION_POLICYENFORCEDINVALID = "FailedOperation.PolicyEnforcedInvalid"
+
 	// 项目已禁用。
 	FAILEDOPERATION_PROJECTDISABLED = "FailedOperation.ProjectDisabled"
 

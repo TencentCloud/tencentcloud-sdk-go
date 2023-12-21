@@ -716,7 +716,11 @@ func NewChannelCreateBoundFlowsResponse() (response *ChannelCreateBoundFlowsResp
 //
 // 
 //
-// 注: `支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败`
+// 注: 
+//
+// 1. 支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败
+//
+// 2. 只有企业的<font color="red">超管或者法人</font>才能进行合同的领取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -791,7 +795,11 @@ func (c *Client) ChannelCreateBoundFlows(request *ChannelCreateBoundFlowsRequest
 //
 // 
 //
-// 注: `支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败`
+// 注: 
+//
+// 1. 支持批量领取,  如果有一个合同流程无法领取会导致接口报错,  使得所有合同都领取失败
+//
+// 2. 只有企业的<font color="red">超管或者法人</font>才能进行合同的领取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

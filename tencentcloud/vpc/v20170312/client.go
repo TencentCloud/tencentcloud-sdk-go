@@ -6283,6 +6283,10 @@ func NewDeleteAddressTemplateResponse() (response *DeleteAddressTemplateResponse
 // DeleteAddressTemplate
 // 本接口（DeleteAddressTemplate）用于删除IP地址模板。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -6293,6 +6297,10 @@ func (c *Client) DeleteAddressTemplate(request *DeleteAddressTemplateRequest) (r
 
 // DeleteAddressTemplate
 // 本接口（DeleteAddressTemplate）用于删除IP地址模板。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -6336,6 +6344,10 @@ func NewDeleteAddressTemplateGroupResponse() (response *DeleteAddressTemplateGro
 // DeleteAddressTemplateGroup
 // 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -6346,6 +6358,10 @@ func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupR
 
 // DeleteAddressTemplateGroup
 // 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7836,6 +7852,10 @@ func NewDeleteServiceTemplateResponse() (response *DeleteServiceTemplateResponse
 // DeleteServiceTemplate
 // 本接口（DeleteServiceTemplate）用于删除协议端口模板。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -7846,6 +7866,10 @@ func (c *Client) DeleteServiceTemplate(request *DeleteServiceTemplateRequest) (r
 
 // DeleteServiceTemplate
 // 本接口（DeleteServiceTemplate）用于删除协议端口模板。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7889,6 +7913,10 @@ func NewDeleteServiceTemplateGroupResponse() (response *DeleteServiceTemplateGro
 // DeleteServiceTemplateGroup
 // 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -7899,6 +7927,10 @@ func (c *Client) DeleteServiceTemplateGroup(request *DeleteServiceTemplateGroupR
 
 // DeleteServiceTemplateGroup
 // 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -16298,6 +16330,10 @@ func NewModifyAddressTemplateAttributeResponse() (response *ModifyAddressTemplat
 // ModifyAddressTemplateAttribute
 // 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -16314,6 +16350,10 @@ func (c *Client) ModifyAddressTemplateAttribute(request *ModifyAddressTemplateAt
 
 // ModifyAddressTemplateAttribute
 // 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -16363,6 +16403,10 @@ func NewModifyAddressTemplateGroupAttributeResponse() (response *ModifyAddressTe
 // ModifyAddressTemplateGroupAttribute
 // 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -16377,6 +16421,10 @@ func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTempl
 
 // ModifyAddressTemplateGroupAttribute
 // 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -18326,6 +18374,10 @@ func NewModifyServiceTemplateAttributeResponse() (response *ModifyServiceTemplat
 // ModifyServiceTemplateAttribute
 // 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -18340,6 +18392,10 @@ func (c *Client) ModifyServiceTemplateAttribute(request *ModifyServiceTemplateAt
 
 // ModifyServiceTemplateAttribute
 // 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -18387,6 +18443,10 @@ func NewModifyServiceTemplateGroupAttributeResponse() (response *ModifyServiceTe
 // ModifyServiceTemplateGroupAttribute
 // 本接口（ModifyServiceTemplateGroupAttribute）用于修改协议端口模板集合。
 //
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -18398,6 +18458,10 @@ func (c *Client) ModifyServiceTemplateGroupAttribute(request *ModifyServiceTempl
 
 // ModifyServiceTemplateGroupAttribute
 // 本接口（ModifyServiceTemplateGroupAttribute）用于修改协议端口模板集合。
+//
+// >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

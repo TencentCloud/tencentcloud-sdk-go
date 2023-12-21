@@ -377,6 +377,7 @@ func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *CreateMerchantResponse, err error) {
@@ -388,6 +389,7 @@ func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateMerchantRequest) (response *CreateMerchantResponse, err error) {
@@ -430,6 +432,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
@@ -441,6 +444,7 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateProductWithContext(ctx context.Context, request *CreateProductRequest) (response *CreateProductResponse, err error) {
@@ -1637,6 +1641,65 @@ func (c *Client) DescribeMerchantsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeMerchantsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlanQRCodeScanRecordsRequest() (request *DescribePlanQRCodeScanRecordsRequest) {
+    request = &DescribePlanQRCodeScanRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribePlanQRCodeScanRecords")
+    
+    
+    return
+}
+
+func NewDescribePlanQRCodeScanRecordsResponse() (response *DescribePlanQRCodeScanRecordsResponse) {
+    response = &DescribePlanQRCodeScanRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlanQRCodeScanRecords
+// 查询安心计划二维码扫码记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlanQRCodeScanRecords(request *DescribePlanQRCodeScanRecordsRequest) (response *DescribePlanQRCodeScanRecordsResponse, err error) {
+    return c.DescribePlanQRCodeScanRecordsWithContext(context.Background(), request)
+}
+
+// DescribePlanQRCodeScanRecords
+// 查询安心计划二维码扫码记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlanQRCodeScanRecordsWithContext(ctx context.Context, request *DescribePlanQRCodeScanRecordsRequest) (response *DescribePlanQRCodeScanRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribePlanQRCodeScanRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlanQRCodeScanRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlanQRCodeScanRecordsResponse()
     err = c.Send(request, response)
     return
 }

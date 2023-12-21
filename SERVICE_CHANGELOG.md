@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 音频内容安全(ams) 版本：2020-12-29
 
-### 第 145 次发布
+### 第 10 次发布
 
-发布时间：2023-12-21 01:38:43
+发布时间：2023-12-22 01:06:11
 
 本次发布包含了以下内容：
 
@@ -12,22 +12,26 @@
 
 修改接口：
 
-* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+* [CreateAudioModerationTask](https://cloud.tencent.com/document/api/1219/53257)
 
-	* <font color="#dd0000">**修改入参**：</font>ResourceId
-
-
+	* 新增入参：User
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+新增数据结构：
+
+* [User](https://cloud.tencent.com/document/api/1219/53259#User)
 
 
 
-## 实时互动-教育版(lcic) 版本：2022-08-17
+## 音频内容安全(ams) 版本：2020-06-08
 
-### 第 49 次发布
 
-发布时间：2023-12-21 01:48:52
+
+## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 8 次发布
+
+发布时间：2023-12-22 01:07:03
 
 本次发布包含了以下内容：
 
@@ -35,18 +39,18 @@
 
 修改数据结构：
 
-* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+* [DatasourceInfo](https://cloud.tencent.com/document/api/590/73726#DatasourceInfo)
 
-	* 新增成员：RecordBackground
-
-
+	* 新增成员：ClusterId
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 125 次发布
 
-发布时间：2023-12-21 01:56:34
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 150 次发布
+
+发布时间：2023-12-22 01:08:53
 
 本次发布包含了以下内容：
 
@@ -54,31 +58,82 @@
 
 修改接口：
 
-* [VatInvoiceVerifyNew](https://cloud.tencent.com/document/api/866/73674)
+* [DescribeBinlogs](https://cloud.tencent.com/document/api/236/15843)
 
-	* 新增出参：ElectronicTrainTicket, ElectronicAirTransport
+	* 新增入参：ContainsMinStartTime
 
-
-新增数据结构：
-
-* [ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport)
-* [ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail)
-* [ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket)
 
 修改数据结构：
 
-* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
 
-	* 新增成员：ElectronicType
-
-
+	* 新增成员：ExecutedGTIDSet
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 100 次发布
 
-发布时间：2023-12-21 02:11:13
+## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
+
+### 第 4 次发布
+
+发布时间：2023-12-22 01:09:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
+
+	* 新增成员：RestartTimeout
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 123 次发布
+
+发布时间：2023-12-22 01:11:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, Refunds, PriceDetail
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 28 次发布
+
+发布时间：2023-12-22 01:14:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+
+	* 新增成员：SlaveDNS
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 68 次发布
+
+发布时间：2023-12-22 01:16:17
 
 本次发布包含了以下内容：
 
@@ -86,61 +141,65 @@
 
 修改接口：
 
-* [DescribeNamespaceBundlesOpt](https://cloud.tencent.com/document/api/1179/59039)
+* [DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)
 
-	* <font color="#dd0000">**删除出参**：</font>BundleSet
+	* 新增出参：ExtraInfo
 
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* BundleSetOpt
-
-
-
-## TI-ONE 训练平台(tione) 版本：2021-11-11
-
-### 第 48 次发布
-
-发布时间：2023-12-21 02:14:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBillingResourceGroups](https://cloud.tencent.com/document/api/851/75065)
-
-	* <font color="#dd0000">**修改入参**：</font>Type
-
-* [DescribeBillingSpecs](https://cloud.tencent.com/document/api/851/80175)
-
-	* <font color="#dd0000">**修改入参**：</font>TaskType
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 176 次发布
-
-发布时间：2023-12-21 02:21:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [EnhanceMediaQuality](https://cloud.tencent.com/document/api/266/102571)
 
 新增数据结构：
 
-* [EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig)
+* [ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo)
+* [RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 69 次发布
+
+发布时间：2023-12-22 01:21:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductConf](https://cloud.tencent.com/document/api/239/20022#ProductConf)
+
+	* 新增成员：EnableReplicaReadOnly
+
+
+
+
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 6 次发布
+
+发布时间：2023-12-22 01:27:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVideoModerationTask](https://cloud.tencent.com/document/api/1265/80017)
+
+	* 新增入参：User
+
+
+新增数据结构：
+
+* [User](https://cloud.tencent.com/document/api/1265/80019#User)
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
 
 
 
@@ -1678,6 +1737,25 @@
 
 
 ## 音频内容安全(ams) 版本：2020-12-29
+
+### 第 10 次发布
+
+发布时间：2023-12-22 01:06:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAudioModerationTask](https://cloud.tencent.com/document/api/1219/53257)
+
+	* 新增入参：User
+
+
+新增数据结构：
+
+* [[User](https://cloud.tencent.com/document/api/1219/53259#User)](https://cloud.tencent.com/document/api/1219/53259#[User](https://cloud.tencent.com/document/api/1219/53259#User))
 
 ### 第 9 次发布
 
@@ -8424,6 +8502,21 @@
 
 
 ## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 8 次发布
+
+发布时间：2023-12-22 01:07:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DatasourceInfo](https://cloud.tencent.com/document/api/590/73726#DatasourceInfo)
+
+	* 新增成员：ClusterId
+
 
 ### 第 7 次发布
 
@@ -15482,6 +15575,28 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 150 次发布
+
+发布时间：2023-12-22 01:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBinlogs](https://cloud.tencent.com/document/api/236/15843)
+
+	* 新增入参：ContainsMinStartTime
+
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：ExecutedGTIDSet
+
+
 ### 第 149 次发布
 
 发布时间：2023-12-13 01:17:04
@@ -21768,6 +21883,21 @@
 
 
 ## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
+
+### 第 4 次发布
+
+发布时间：2023-12-22 01:09:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
+
+	* 新增成员：RestartTimeout
+
 
 ### 第 3 次发布
 
@@ -36129,6 +36259,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 123 次发布
+
+发布时间：2023-12-22 01:11:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, Refunds, PriceDetail
+
+
 ### 第 122 次发布
 
 发布时间：2023-12-01 01:12:05
@@ -48861,6 +49006,21 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 28 次发布
+
+发布时间：2023-12-22 01:14:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+
+	* 新增成员：SlaveDNS
+
 
 ### 第 27 次发布
 
@@ -62459,6 +62619,26 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 68 次发布
+
+发布时间：2023-12-22 01:16:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)
+
+	* 新增出参：ExtraInfo
+
+
+新增数据结构：
+
+* [[ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo)](https://cloud.tencent.com/document/api/1007/41958#[ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo))
+* [[RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo)](https://cloud.tencent.com/document/api/1007/41958#[RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo))
 
 ### 第 67 次发布
 
@@ -89141,9 +89321,9 @@
 
 新增数据结构：
 
-* [[ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport)](https://cloud.tencent.com/document/api/866/33527#[ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport))
-* [[ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail)](https://cloud.tencent.com/document/api/866/33527#[ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail))
-* [[ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket)](https://cloud.tencent.com/document/api/866/33527#[ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket))
+* [ElectronicAirTransport](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransport)
+* [ElectronicAirTransportDetail](https://cloud.tencent.com/document/api/866/33527#ElectronicAirTransportDetail)
+* [ElectronicTrainTicket](https://cloud.tencent.com/document/api/866/33527#ElectronicTrainTicket)
 
 修改数据结构：
 
@@ -94614,6 +94794,21 @@
 
 
 ## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 69 次发布
+
+发布时间：2023-12-22 01:21:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductConf](https://cloud.tencent.com/document/api/239/20022#ProductConf)
+
+	* 新增成员：EnableReplicaReadOnly
+
 
 ### 第 68 次发布
 
@@ -125411,6 +125606,33 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 30 次发布
+
+发布时间：2023-12-21 10:26:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePlanQRCodeScanRecords](https://cloud.tencent.com/document/api/1458/102574)
+
+新增数据结构：
+
+* [PlanQRCodeRecord](https://cloud.tencent.com/document/api/1458/75030#PlanQRCodeRecord)
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* <font color="#dd0000">**修改成员**：</font>TplName, Job, ProductionDate, ValidDate, Attrs
+
+* [Ext](https://cloud.tencent.com/document/api/1458/75030#Ext)
+
+	* 新增成员：Value
+
+
 ### 第 29 次发布
 
 发布时间：2023-10-26 14:46:10
@@ -125437,7 +125659,7 @@
 
 新增接口：
 
-* [DescribeCodeBatches](https://cloud.tencent.com/document/api/1458/75017)
+* [DescribeCodeBatches](https://cloud.tencent.com/document/api/1458/101819)
 
 ### 第 27 次发布
 
@@ -131590,6 +131812,25 @@
 
 ## 视频内容安全(vm) 版本：2021-09-22
 
+### 第 6 次发布
+
+发布时间：2023-12-22 01:27:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVideoModerationTask](https://cloud.tencent.com/document/api/1265/80017)
+
+	* 新增入参：User
+
+
+新增数据结构：
+
+* [[User](https://cloud.tencent.com/document/api/1265/80019#User)](https://cloud.tencent.com/document/api/1265/80019#[User](https://cloud.tencent.com/document/api/1265/80019#User))
+
 ### 第 5 次发布
 
 发布时间：2023-11-10 01:28:11
@@ -131770,11 +132011,11 @@
 
 新增接口：
 
-* [[EnhanceMediaQuality](https://cloud.tencent.com/document/api/266/102571)](https://cloud.tencent.com/document/api/#/#)
+* [EnhanceMediaQuality](https://cloud.tencent.com/document/api/266/102571)
 
 新增数据结构：
 
-* [[EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig)](https://cloud.tencent.com/document/api/266/31773#[EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig))
+* [EnhanceMediaQualityOutputConfig](https://cloud.tencent.com/document/api/266/31773#EnhanceMediaQualityOutputConfig)
 
 ### 第 175 次发布
 

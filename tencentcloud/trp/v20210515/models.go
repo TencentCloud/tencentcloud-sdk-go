@@ -180,6 +180,8 @@ type CodeBatch struct {
 
 	// 未使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Ext is deprecated.
 	Ext *Ext `json:"Ext,omitnil" name:"Ext"`
 
 	// 模板名称
@@ -2903,6 +2905,90 @@ func (r *DescribeMerchantsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePlanQRCodeScanRecordsRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+type DescribePlanQRCodeScanRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+func (r *DescribePlanQRCodeScanRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlanQRCodeScanRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlanQRCodeScanRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlanQRCodeScanRecordsResponseParams struct {
+	// 返回码
+	Ret *int64 `json:"Ret,omitnil" name:"Ret"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 数据
+	Data []*PlanQRCodeRecord `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePlanQRCodeScanRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlanQRCodeScanRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribePlanQRCodeScanRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlanQRCodeScanRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePlanQRCodesRequestParams struct {
 	// 计划ID
 	PlanId *int64 `json:"PlanId,omitnil" name:"PlanId"`
@@ -3875,7 +3961,11 @@ func (r *EffectFeedbackResponse) FromJsonString(s string) error {
 }
 
 type Ext struct {
-
+	// 字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Value is deprecated.
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type InputEncryptData struct {
@@ -4866,6 +4956,36 @@ type PlanQRCode struct {
 	// 状态，0:未激活 1:已激活 2:已冻结
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type PlanQRCodeRecord struct {
+	// 二维码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// OpenID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+
+	// 扫码时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
+
+	// IP 地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitnil" name:"Country"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitnil" name:"Province"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitnil" name:"City"`
 }
 
 type Product struct {

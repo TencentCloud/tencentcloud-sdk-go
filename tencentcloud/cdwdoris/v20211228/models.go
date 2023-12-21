@@ -428,6 +428,10 @@ type InstanceInfo struct {
 	// 页面特性，用于前端屏蔽一些页面入口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Characteristic []*string `json:"Characteristic,omitnil" name:"Characteristic"`
+
+	// 超时时间 单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartTimeout *string `json:"RestartTimeout,omitnil" name:"RestartTimeout"`
 }
 
 type InstanceNode struct {

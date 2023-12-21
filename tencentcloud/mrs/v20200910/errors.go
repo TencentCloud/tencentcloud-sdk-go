@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 异步队列中待处理消息较多,请待处理完成后再调用异步接口。
+	FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
+
 	// 获取结果为空,请检查任务ID是否正确。
 	FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
 
