@@ -1513,8 +1513,8 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -1573,8 +1573,8 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -8954,7 +8954,10 @@ type FlowInfo struct {
 	// 多个签署人信息，最大支持50个签署方
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
 
-	// 表单K-V对列表
+	// 发起方角色的填写控件的填充内容。
+	// 
+	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。(<font color="red">白名单功能需要联系对接经理开通，否则模板编辑时无法将填写控件分配给发起方</font>)。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b1d3978140ee2b44e2c9fdc96e467a5d.png)
 	FormFields []*FormField `json:"FormFields,omitnil" name:"FormFields"`
 
 	// 合同状态变动结的通知回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性，最大长度1000个字符。

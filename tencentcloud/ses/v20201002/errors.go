@@ -41,6 +41,9 @@ const (
 	// 拒信率过高，被临时block。
 	FAILEDOPERATION_HIGHREJECTIONRATE = "FailedOperation.HighRejectionRate"
 
+	// 邮件包含不合规链接
+	FAILEDOPERATION_ILLEGALURL = "FailedOperation.IllegalURL"
+
 	// 邮箱地址错误。
 	FAILEDOPERATION_INCORRECTEMAIL = "FailedOperation.IncorrectEmail"
 

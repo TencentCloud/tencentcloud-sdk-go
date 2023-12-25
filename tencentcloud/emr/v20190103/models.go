@@ -184,6 +184,14 @@ type AutoScaleRecord struct {
 	// 补偿次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompensateCount *int64 `json:"CompensateCount,omitnil" name:"CompensateCount"`
+
+	// 重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryCount *uint64 `json:"RetryCount,omitnil" name:"RetryCount"`
+
+	// 重试信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryInfo *string `json:"RetryInfo,omitnil" name:"RetryInfo"`
 }
 
 type BootstrapAction struct {
@@ -312,6 +320,8 @@ type ClusterInstancesInfo struct {
 
 	// 标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Ftitle is deprecated.
 	Ftitle *string `json:"Ftitle,omitnil" name:"Ftitle"`
 
 	// 集群名
@@ -387,6 +397,8 @@ type ClusterInstancesInfo struct {
 
 	// 集群产品配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Config is deprecated.
 	Config *EmrProductConfigOutter `json:"Config,omitnil" name:"Config"`
 
 	// 主节点外网IP
@@ -496,6 +508,14 @@ type ClusterInstancesInfo struct {
 	// 是否开通异常节点自动补偿
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCvmReplace *bool `json:"IsCvmReplace,omitnil" name:"IsCvmReplace"`
+
+	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterTitle *string `json:"ClusterTitle,omitnil" name:"ClusterTitle"`
+
+	// 集群产品配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigDetail *EmrProductConfigDetail `json:"ConfigDetail,omitnil" name:"ConfigDetail"`
 }
 
 type ClusterSetting struct {
@@ -1372,6 +1392,9 @@ type DescribeClusterNodesRequestParams struct {
 	// 注意：现在只支持以上取值，输入其他值会导致错误。
 	NodeFlag *string `json:"NodeFlag,omitnil" name:"NodeFlag"`
 
+	// 导出全部节点信息csv时是否携带cdb信息
+	ExportDb *bool `json:"ExportDb,omitnil" name:"ExportDb"`
+
 	// 页编号，默认值为0，表示第一页。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
@@ -1410,6 +1433,9 @@ type DescribeClusterNodesRequest struct {
 	// 注意：现在只支持以上取值，输入其他值会导致错误。
 	NodeFlag *string `json:"NodeFlag,omitnil" name:"NodeFlag"`
 
+	// 导出全部节点信息csv时是否携带cdb信息
+	ExportDb *bool `json:"ExportDb,omitnil" name:"ExportDb"`
+
 	// 页编号，默认值为0，表示第一页。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
@@ -1443,6 +1469,7 @@ func (r *DescribeClusterNodesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "NodeFlag")
+	delete(f, "ExportDb")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "HardwareResourceType")
@@ -2674,6 +2701,84 @@ type EmrPrice struct {
 	// 是否支持竞价实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportSpotPaid *bool `json:"SupportSpotPaid,omitnil" name:"SupportSpotPaid"`
+}
+
+type EmrProductConfigDetail struct {
+	// 软件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftInfo []*string `json:"SoftInfo,omitnil" name:"SoftInfo"`
+
+	// Master节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterNodeSize *int64 `json:"MasterNodeSize,omitnil" name:"MasterNodeSize"`
+
+	// Core节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoreNodeSize *int64 `json:"CoreNodeSize,omitnil" name:"CoreNodeSize"`
+
+	// Task节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNodeSize *int64 `json:"TaskNodeSize,omitnil" name:"TaskNodeSize"`
+
+	// Common节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComNodeSize *int64 `json:"ComNodeSize,omitnil" name:"ComNodeSize"`
+
+	// Master节点资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterResource *ResourceDetail `json:"MasterResource,omitnil" name:"MasterResource"`
+
+	// Core节点资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoreResource *ResourceDetail `json:"CoreResource,omitnil" name:"CoreResource"`
+
+	// Task节点资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskResource *ResourceDetail `json:"TaskResource,omitnil" name:"TaskResource"`
+
+	// Common节点资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComResource *ResourceDetail `json:"ComResource,omitnil" name:"ComResource"`
+
+	// 是否使用COS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCos *bool `json:"OnCos,omitnil" name:"OnCos"`
+
+	// 收费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *int64 `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// Router节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouterNodeSize *int64 `json:"RouterNodeSize,omitnil" name:"RouterNodeSize"`
+
+	// 是否支持HA
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportHA *bool `json:"SupportHA,omitnil" name:"SupportHA"`
+
+	// 是否支持安全模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityOn *bool `json:"SecurityOn,omitnil" name:"SecurityOn"`
+
+	// 安全组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroup *string `json:"SecurityGroup,omitnil" name:"SecurityGroup"`
+
+	// 是否开启Cbs加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CbsEncrypt *int64 `json:"CbsEncrypt,omitnil" name:"CbsEncrypt"`
+
+	// 自定义应用角色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationRole *string `json:"ApplicationRole,omitnil" name:"ApplicationRole"`
+
+	// 安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroups []*string `json:"SecurityGroups,omitnil" name:"SecurityGroups"`
+
+	// SSH密钥Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKeyId *string `json:"PublicKeyId,omitnil" name:"PublicKeyId"`
 }
 
 type EmrProductConfigOutter struct {
@@ -5166,6 +5271,44 @@ type Resource struct {
 	DiskNum *uint64 `json:"DiskNum,omitnil" name:"DiskNum"`
 }
 
+type ResourceDetail struct {
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitnil" name:"Spec"`
+
+	// 规格名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
+
+	// 硬盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *int64 `json:"StorageType,omitnil" name:"StorageType"`
+
+	// 硬盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
+
+	// 系统盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitnil" name:"RootSize"`
+
+	// 内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitnil" name:"MemSize"`
+
+	// CPU个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 硬盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
+
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+}
+
 // Predefined struct for user
 type RunJobFlowRequestParams struct {
 	// 作业名称。
@@ -5840,13 +5983,18 @@ type ScriptBootstrapActionConfig struct {
 
 	// 脚本文件名
 	CosFileName *string `json:"CosFileName,omitnil" name:"CosFileName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type SearchItem struct {
 	// 支持搜索的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchType *string `json:"SearchType,omitnil" name:"SearchType"`
 
 	// 支持搜索的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
 }
 

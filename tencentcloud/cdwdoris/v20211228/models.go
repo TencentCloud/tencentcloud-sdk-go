@@ -432,6 +432,14 @@ type InstanceInfo struct {
 	// 超时时间 单位s
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestartTimeout *string `json:"RestartTimeout,omitnil" name:"RestartTimeout"`
+
+	// 内核优雅重启超时时间，如果为-1说明未设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GraceShutdownWaitSeconds *string `json:"GraceShutdownWaitSeconds,omitnil" name:"GraceShutdownWaitSeconds"`
+
+	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseSensitive *int64 `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
 }
 
 type InstanceNode struct {

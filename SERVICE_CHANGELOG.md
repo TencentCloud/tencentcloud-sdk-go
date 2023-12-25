@@ -1,82 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 音频内容安全(ams) 版本：2020-12-29
-
-### 第 10 次发布
-
-发布时间：2023-12-22 01:06:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAudioModerationTask](https://cloud.tencent.com/document/api/1219/53257)
-
-	* 新增入参：User
-
-
-新增数据结构：
-
-* [User](https://cloud.tencent.com/document/api/1219/53259#User)
-
-
-
-## 音频内容安全(ams) 版本：2020-06-08
-
-
-
-## 商业智能分析 BI(bi) 版本：2022-01-05
-
-### 第 8 次发布
-
-发布时间：2023-12-22 01:07:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DatasourceInfo](https://cloud.tencent.com/document/api/590/73726#DatasourceInfo)
-
-	* 新增成员：ClusterId
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 150 次发布
-
-发布时间：2023-12-22 01:08:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBinlogs](https://cloud.tencent.com/document/api/236/15843)
-
-	* 新增入参：ContainsMinStartTime
-
-
-修改数据结构：
-
-* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
-
-	* 新增成员：ExecutedGTIDSet
-
-
-
-
 ## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2023-12-22 01:09:56
+发布时间：2023-12-25 00:04:35
 
 本次发布包含了以下内容：
 
@@ -86,54 +14,16 @@
 
 * [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
 
-	* 新增成员：RestartTimeout
+	* 新增成员：GraceShutdownWaitSeconds, CaseSensitive
 
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 123 次发布
+### 第 55 次发布
 
-发布时间：2023-12-22 01:11:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
-
-	* <font color="#dd0000">**修改成员**：</font>InstanceId, Refunds, PriceDetail
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 28 次发布
-
-发布时间：2023-12-22 01:14:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
-
-	* 新增成员：SlaveDNS
-
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 68 次发布
-
-发布时间：2023-12-22 01:16:17
+发布时间：2023-12-25 00:10:01
 
 本次发布包含了以下内容：
 
@@ -141,65 +31,48 @@
 
 修改接口：
 
-* [DetectAIFakeFaces](https://cloud.tencent.com/document/api/1007/101561)
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
 
-	* 新增出参：ExtraInfo
+	* 新增入参：ExportDb
 
 
 新增数据结构：
 
-* [ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo)
-* [RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo)
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 69 次发布
-
-发布时间：2023-12-22 01:21:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [EmrProductConfigDetail](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigDetail)
+* [ResourceDetail](https://cloud.tencent.com/document/api/589/33981#ResourceDetail)
 
 修改数据结构：
 
-* [ProductConf](https://cloud.tencent.com/document/api/239/20022#ProductConf)
+* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
 
-	* 新增成员：EnableReplicaReadOnly
+	* 新增成员：RetryCount, RetryInfo
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：ClusterTitle, ConfigDetail
+
+* [ScriptBootstrapActionConfig](https://cloud.tencent.com/document/api/589/33981#ScriptBootstrapActionConfig)
+
+	* 新增成员：Remark
 
 
 
 
-## 视频内容安全(vm) 版本：2021-09-22
+## 风险探针(rkp) 版本：2019-12-09
 
-### 第 6 次发布
+### 第 2 次发布
 
-发布时间：2023-12-22 01:27:31
+发布时间：2023-12-25 00:16:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [CreateVideoModerationTask](https://cloud.tencent.com/document/api/1265/80017)
-
-	* 新增入参：User
-
-
-新增数据结构：
-
-* [User](https://cloud.tencent.com/document/api/1265/80019#User)
-
-
-
-## 视频内容安全(vm) 版本：2020-12-29
-
-
-
-## 视频内容安全(vm) 版本：2020-07-09
+* GetOpenId
+* GetToken
+* QueryDevAndRisk
 
 
 
@@ -1755,7 +1628,7 @@
 
 新增数据结构：
 
-* [[User](https://cloud.tencent.com/document/api/1219/53259#User)](https://cloud.tencent.com/document/api/1219/53259#[User](https://cloud.tencent.com/document/api/1219/53259#User))
+* [User](https://cloud.tencent.com/document/api/1219/53259#User)
 
 ### 第 9 次发布
 
@@ -21883,6 +21756,21 @@
 
 
 ## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
+
+### 第 5 次发布
+
+发布时间：2023-12-25 00:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
+
+	* 新增成员：GraceShutdownWaitSeconds, CaseSensitive
+
 
 ### 第 4 次发布
 
@@ -54532,6 +54420,41 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 55 次发布
+
+发布时间：2023-12-25 00:10:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
+
+	* 新增入参：ExportDb
+
+
+新增数据结构：
+
+* [[EmrProductConfigDetail](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigDetail)](https://cloud.tencent.com/document/api/589/33981#[EmrProductConfigDetail](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigDetail))
+* [[ResourceDetail](https://cloud.tencent.com/document/api/589/33981#ResourceDetail)](https://cloud.tencent.com/document/api/589/33981#[ResourceDetail](https://cloud.tencent.com/document/api/589/33981#ResourceDetail))
+
+修改数据结构：
+
+* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
+
+	* 新增成员：RetryCount, RetryInfo
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：ClusterTitle, ConfigDetail
+
+* [ScriptBootstrapActionConfig](https://cloud.tencent.com/document/api/589/33981#ScriptBootstrapActionConfig)
+
+	* 新增成员：Remark
+
+
 ### 第 54 次发布
 
 发布时间：2023-12-19 01:39:39
@@ -62637,8 +62560,8 @@
 
 新增数据结构：
 
-* [[ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo)](https://cloud.tencent.com/document/api/1007/41958#[ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo))
-* [[RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo)](https://cloud.tencent.com/document/api/1007/41958#[RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo))
+* [ExtraInfo](https://cloud.tencent.com/document/api/1007/41958#ExtraInfo)
+* [RetrievalLivenessExtraInfo](https://cloud.tencent.com/document/api/1007/41958#RetrievalLivenessExtraInfo)
 
 ### 第 67 次发布
 
@@ -96174,6 +96097,20 @@
 
 
 ## 风险探针(rkp) 版本：2019-12-09
+
+### 第 2 次发布
+
+发布时间：2023-12-25 00:16:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* GetOpenId
+* GetToken
+* QueryDevAndRisk
 
 ### 第 1 次发布
 
@@ -131829,7 +131766,7 @@
 
 新增数据结构：
 
-* [[User](https://cloud.tencent.com/document/api/1265/80019#User)](https://cloud.tencent.com/document/api/1265/80019#[User](https://cloud.tencent.com/document/api/1265/80019#User))
+* [User](https://cloud.tencent.com/document/api/1265/80019#User)
 
 ### 第 5 次发布
 

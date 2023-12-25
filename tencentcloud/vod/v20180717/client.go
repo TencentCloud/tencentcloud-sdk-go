@@ -949,6 +949,8 @@ func NewCreateEnhanceMediaTemplateResponse() (response *CreateEnhanceMediaTempla
 }
 
 // CreateEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 创建音画质重生模板。
 //
 // 可能返回的错误码:
@@ -960,6 +962,8 @@ func (c *Client) CreateEnhanceMediaTemplate(request *CreateEnhanceMediaTemplateR
 }
 
 // CreateEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 创建音画质重生模板。
 //
 // 可能返回的错误码:
@@ -1451,6 +1455,8 @@ func NewCreateRebuildMediaTemplateResponse() (response *CreateRebuildMediaTempla
 }
 
 // CreateRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 创建视频重生模板。
 //
 // 可能返回的错误码:
@@ -1461,6 +1467,8 @@ func (c *Client) CreateRebuildMediaTemplate(request *CreateRebuildMediaTemplateR
 }
 
 // CreateRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 创建视频重生模板。
 //
 // 可能返回的错误码:
@@ -2645,6 +2653,8 @@ func NewDeleteEnhanceMediaTemplateResponse() (response *DeleteEnhanceMediaTempla
 }
 
 // DeleteEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 删除音画质重生模板。
 //
 // 可能返回的错误码:
@@ -2659,6 +2669,8 @@ func (c *Client) DeleteEnhanceMediaTemplate(request *DeleteEnhanceMediaTemplateR
 }
 
 // DeleteEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 删除音画质重生模板。
 //
 // 可能返回的错误码:
@@ -3160,6 +3172,8 @@ func NewDeleteRebuildMediaTemplateResponse() (response *DeleteRebuildMediaTempla
 }
 
 // DeleteRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 删除视频重生模板。
 //
 // 可能返回的错误码:
@@ -3170,6 +3184,8 @@ func (c *Client) DeleteRebuildMediaTemplate(request *DeleteRebuildMediaTemplateR
 }
 
 // DeleteRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 删除视频重生模板。
 //
 // 可能返回的错误码:
@@ -4745,6 +4761,8 @@ func NewDescribeEnhanceMediaTemplatesResponse() (response *DescribeEnhanceMediaT
 }
 
 // DescribeEnhanceMediaTemplates
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
@@ -4754,6 +4772,8 @@ func (c *Client) DescribeEnhanceMediaTemplates(request *DescribeEnhanceMediaTemp
 }
 
 // DescribeEnhanceMediaTemplates
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
@@ -5846,6 +5866,8 @@ func NewDescribeRebuildMediaTemplatesResponse() (response *DescribeRebuildMediaT
 }
 
 // DescribeRebuildMediaTemplates
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 获取视频重生模板列表。
 //
 // 可能返回的错误码:
@@ -5857,6 +5879,8 @@ func (c *Client) DescribeRebuildMediaTemplates(request *DescribeRebuildMediaTemp
 }
 
 // DescribeRebuildMediaTemplates
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 获取视频重生模板列表。
 //
 // 可能返回的错误码:
@@ -7026,6 +7050,8 @@ func NewEnhanceMediaByTemplateResponse() (response *EnhanceMediaByTemplateRespon
 }
 
 // EnhanceMediaByTemplate
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 使用模板发起音画质重生。
 //
 // 可能返回的错误码:
@@ -7043,6 +7069,8 @@ func (c *Client) EnhanceMediaByTemplate(request *EnhanceMediaByTemplateRequest) 
 }
 
 // EnhanceMediaByTemplate
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 使用模板发起音画质重生。
 //
 // 可能返回的错误码:
@@ -8200,6 +8228,8 @@ func NewModifyEnhanceMediaTemplateResponse() (response *ModifyEnhanceMediaTempla
 }
 
 // ModifyEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 修改音画质重生模板。
 //
 // 可能返回的错误码:
@@ -8215,6 +8245,8 @@ func (c *Client) ModifyEnhanceMediaTemplate(request *ModifyEnhanceMediaTemplateR
 }
 
 // ModifyEnhanceMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 修改音画质重生模板。
 //
 // 可能返回的错误码:
@@ -8851,6 +8883,8 @@ func NewModifyRebuildMediaTemplateResponse() (response *ModifyRebuildMediaTempla
 }
 
 // ModifyRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 修改视频重生模板。
 //
 // 可能返回的错误码:
@@ -8862,6 +8896,8 @@ func (c *Client) ModifyRebuildMediaTemplate(request *ModifyRebuildMediaTemplateR
 }
 
 // ModifyRebuildMediaTemplate
+// 该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+//
 // 修改视频重生模板。
 //
 // 可能返回的错误码:
@@ -10362,6 +10398,8 @@ func NewRebuildMediaResponse() (response *RebuildMediaResponse) {
 }
 
 // RebuildMedia
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 发起音画质重生
 //
 // 可能返回的错误码:
@@ -10372,6 +10410,8 @@ func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMe
 }
 
 // RebuildMedia
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 发起音画质重生
 //
 // 可能返回的错误码:
@@ -10413,6 +10453,8 @@ func NewRebuildMediaByTemplateResponse() (response *RebuildMediaByTemplateRespon
 }
 
 // RebuildMediaByTemplate
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 使用模板发起视频重生。
 //
 // 可能返回的错误码:
@@ -10423,6 +10465,8 @@ func (c *Client) RebuildMediaByTemplate(request *RebuildMediaByTemplateRequest) 
 }
 
 // RebuildMediaByTemplate
+// 该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+//
 // 使用模板发起视频重生。
 //
 // 可能返回的错误码:
