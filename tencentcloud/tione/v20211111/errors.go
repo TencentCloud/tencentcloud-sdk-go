@@ -293,6 +293,12 @@ const (
 	// AI市场公共算法版本Id不存在
 	INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
 
+	// 无效的自动重启次数
+	INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
+
+	// 该任务不支持自动重启
+	INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
+
 	// 名称不合法。
 	INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 

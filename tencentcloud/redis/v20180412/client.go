@@ -4684,6 +4684,7 @@ func NewModifyInstanceAvailabilityZonesResponse() (response *ModifyInstanceAvail
 //  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 //  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
 func (c *Client) ModifyInstanceAvailabilityZones(request *ModifyInstanceAvailabilityZonesRequest) (response *ModifyInstanceAvailabilityZonesResponse, err error) {
@@ -4704,6 +4705,7 @@ func (c *Client) ModifyInstanceAvailabilityZones(request *ModifyInstanceAvailabi
 //  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 //  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
 func (c *Client) ModifyInstanceAvailabilityZonesWithContext(ctx context.Context, request *ModifyInstanceAvailabilityZonesRequest) (response *ModifyInstanceAvailabilityZonesResponse, err error) {

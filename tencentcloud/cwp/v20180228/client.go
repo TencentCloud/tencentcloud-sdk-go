@@ -4899,6 +4899,7 @@ func NewDescribeAssetDatabaseInfoResponse() (response *DescribeAssetDatabaseInfo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetDatabaseInfo(request *DescribeAssetDatabaseInfoRequest) (response *DescribeAssetDatabaseInfoResponse, err error) {
     return c.DescribeAssetDatabaseInfoWithContext(context.Background(), request)
 }
@@ -4911,6 +4912,7 @@ func (c *Client) DescribeAssetDatabaseInfo(request *DescribeAssetDatabaseInfoReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetDatabaseInfoWithContext(ctx context.Context, request *DescribeAssetDatabaseInfoRequest) (response *DescribeAssetDatabaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAssetDatabaseInfoRequest()

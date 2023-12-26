@@ -375,6 +375,7 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
 //  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
@@ -394,6 +395,7 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
 //  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
@@ -440,7 +442,7 @@ func NewCreateBatchQuickSignUrlResponse() (response *CreateBatchQuickSignUrlResp
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=1)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
 //
 // 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
 //
@@ -469,7 +471,7 @@ func (c *Client) CreateBatchQuickSignUrl(request *CreateBatchQuickSignUrlRequest
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=1)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
 //
 // 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
 //
@@ -4660,6 +4662,7 @@ func NewCreateSealPolicyResponse() (response *CreateSealPolicyResponse) {
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -4676,6 +4679,7 @@ func (c *Client) CreateSealPolicy(request *CreateSealPolicyRequest) (response *C
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -5160,6 +5164,7 @@ func NewDeleteIntegrationRoleUsersResponse() (response *DeleteIntegrationRoleUse
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
@@ -5176,6 +5181,7 @@ func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersR
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
@@ -7335,6 +7341,7 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
@@ -7350,6 +7357,7 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {

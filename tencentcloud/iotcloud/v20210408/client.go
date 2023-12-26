@@ -2591,6 +2591,7 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
 //  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  OPERATIONDENIED_GETTDMQPROINTERNALENDPOINTFAIL = "OperationDenied.GetTDMQProInternalEndpointFail"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
     return c.EnableTopicRuleWithContext(context.Background(), request)
@@ -2614,6 +2615,7 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
 //  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
 //  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  OPERATIONDENIED_GETTDMQPROINTERNALENDPOINTFAIL = "OperationDenied.GetTDMQProInternalEndpointFail"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) EnableTopicRuleWithContext(ctx context.Context, request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
     if request == nil {

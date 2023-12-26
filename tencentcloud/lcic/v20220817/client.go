@@ -3555,6 +3555,7 @@ func NewModifyRoomResponse() (response *ModifyRoomResponse) {
 // 修改房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
@@ -3578,6 +3579,7 @@ func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomRes
 // 修改房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"

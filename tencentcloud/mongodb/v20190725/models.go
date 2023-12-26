@@ -3338,50 +3338,66 @@ func (r *ModifyDBInstanceSecurityGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSpecRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 实例配置变更后的内存大小，单位：GB。内存和磁盘必须同时升配或同时降配
+	// 实例配置变更后的内存大小。
+	// - 单位：GB。
+	// - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	Memory *uint64 `json:"Memory,omitnil" name:"Memory"`
 
-	// 实例配置变更后的硬盘大小，单位：GB。内存和磁盘必须同时升配或同时降配。降配时，新的磁盘参数必须大于已用磁盘容量的1.2倍
+	// 实例配置变更后的硬盘大小，单位：GB。<ul><li>内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。</li><li>降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。</li></ul>
 	Volume *uint64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 实例配置变更后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+	// (已废弃) 请使用ResizeOplog独立接口完成。
+	// 
+	// 实例配置变更后 Oplog 的大小。
+	// - 单位：GB。
+	// - 默认 Oplog 占用容量为磁盘空间的10%。系统允许设置的 Oplog 容量范围为磁盘空间的[10%,90%]。
 	OplogSize *uint64 `json:"OplogSize,omitnil" name:"OplogSize"`
 
-	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	// 实例变更后的节点数(mongod节点或mongos节点或readonly节点调整后的节点数，具体类型取决于AddNodeList或RemoveNodeList参数的节点类型)。
+	// <ul><li>副本集：取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。</li><li>分片集群：取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。</li></ul>
 	NodeNum *uint64 `json:"NodeNum,omitnil" name:"NodeNum"`
 
-	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	// 实例变更后的分片数。<ul><li>取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数MinReplicateSetNum与MaxReplicateSetNum获取。</li><li>该参数只能增加不能减少。</li></ul>
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil" name:"ReplicateSetNum"`
 
-	// 实例配置变更的切换时间，参数为：0(默认)、1。0-调整完成时，1-维护时间内。注：调整节点数和分片数不支持在【维护时间内】变更。
+	// 实例配置变更的切换时间。<ul><li>0：调整完成时，立即执行变配任务。默认为0。</li><li>1：在维护时间窗内，执行变配任务。
+	// <b>说明</b>：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。</li></ul>
 	InMaintenance *uint64 `json:"InMaintenance,omitnil" name:"InMaintenance"`
 }
 
 type ModifyDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 实例配置变更后的内存大小，单位：GB。内存和磁盘必须同时升配或同时降配
+	// 实例配置变更后的内存大小。
+	// - 单位：GB。
+	// - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	Memory *uint64 `json:"Memory,omitnil" name:"Memory"`
 
-	// 实例配置变更后的硬盘大小，单位：GB。内存和磁盘必须同时升配或同时降配。降配时，新的磁盘参数必须大于已用磁盘容量的1.2倍
+	// 实例配置变更后的硬盘大小，单位：GB。<ul><li>内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。</li><li>降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。</li></ul>
 	Volume *uint64 `json:"Volume,omitnil" name:"Volume"`
 
-	// 实例配置变更后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+	// (已废弃) 请使用ResizeOplog独立接口完成。
+	// 
+	// 实例配置变更后 Oplog 的大小。
+	// - 单位：GB。
+	// - 默认 Oplog 占用容量为磁盘空间的10%。系统允许设置的 Oplog 容量范围为磁盘空间的[10%,90%]。
 	OplogSize *uint64 `json:"OplogSize,omitnil" name:"OplogSize"`
 
-	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	// 实例变更后的节点数(mongod节点或mongos节点或readonly节点调整后的节点数，具体类型取决于AddNodeList或RemoveNodeList参数的节点类型)。
+	// <ul><li>副本集：取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。</li><li>分片集群：取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。</li></ul>
 	NodeNum *uint64 `json:"NodeNum,omitnil" name:"NodeNum"`
 
-	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	// 实例变更后的分片数。<ul><li>取值范围请通过云数据库的售卖规格（DescribeSpecInfo）接口返回的参数MinReplicateSetNum与MaxReplicateSetNum获取。</li><li>该参数只能增加不能减少。</li></ul>
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil" name:"ReplicateSetNum"`
 
-	// 实例配置变更的切换时间，参数为：0(默认)、1。0-调整完成时，1-维护时间内。注：调整节点数和分片数不支持在【维护时间内】变更。
+	// 实例配置变更的切换时间。<ul><li>0：调整完成时，立即执行变配任务。默认为0。</li><li>1：在维护时间窗内，执行变配任务。
+	// <b>说明</b>：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。</li></ul>
 	InMaintenance *uint64 `json:"InMaintenance,omitnil" name:"InMaintenance"`
 }
 
@@ -3412,7 +3428,7 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSpecResponseParams struct {
-	// 订单ID
+	// 订单 ID。
 	DealId *string `json:"DealId,omitnil" name:"DealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

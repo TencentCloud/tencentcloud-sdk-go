@@ -449,6 +449,14 @@ type Addon struct {
 	Reason *string `json:"Reason,omitnil" name:"Reason"`
 }
 
+type AnnotationValue struct {
+	// 注释键
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 注释值
+	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
 type AppChart struct {
 	// chart名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -1865,7 +1873,7 @@ type CreateClusterNodePoolRequestParams struct {
 	// LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
 	LaunchConfigurePara *string `json:"LaunchConfigurePara,omitnil" name:"LaunchConfigurePara"`
 
-	// InstanceAdvancedSettings 示例参数
+	// InstanceAdvancedSettings
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil" name:"InstanceAdvancedSettings"`
 
 	// 是否启用自动伸缩
@@ -1879,6 +1887,9 @@ type CreateClusterNodePoolRequestParams struct {
 
 	// Taints互斥
 	Taints []*Taint `json:"Taints,omitnil" name:"Taints"`
+
+	// 节点Annotation 列表
+	Annotations []*AnnotationValue `json:"Annotations,omitnil" name:"Annotations"`
 
 	// 节点池纬度运行时类型及版本
 	ContainerRuntime *string `json:"ContainerRuntime,omitnil" name:"ContainerRuntime"`
@@ -1911,7 +1922,7 @@ type CreateClusterNodePoolRequest struct {
 	// LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
 	LaunchConfigurePara *string `json:"LaunchConfigurePara,omitnil" name:"LaunchConfigurePara"`
 
-	// InstanceAdvancedSettings 示例参数
+	// InstanceAdvancedSettings
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil" name:"InstanceAdvancedSettings"`
 
 	// 是否启用自动伸缩
@@ -1925,6 +1936,9 @@ type CreateClusterNodePoolRequest struct {
 
 	// Taints互斥
 	Taints []*Taint `json:"Taints,omitnil" name:"Taints"`
+
+	// 节点Annotation 列表
+	Annotations []*AnnotationValue `json:"Annotations,omitnil" name:"Annotations"`
 
 	// 节点池纬度运行时类型及版本
 	ContainerRuntime *string `json:"ContainerRuntime,omitnil" name:"ContainerRuntime"`
@@ -1965,6 +1979,7 @@ func (r *CreateClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Labels")
 	delete(f, "Taints")
+	delete(f, "Annotations")
 	delete(f, "ContainerRuntime")
 	delete(f, "RuntimeVersion")
 	delete(f, "NodePoolOs")
@@ -15982,6 +15997,9 @@ type ModifyClusterNodePoolRequestParams struct {
 	// 污点
 	Taints []*Taint `json:"Taints,omitnil" name:"Taints"`
 
+	// 节点 Annotation 列表
+	Annotations []*AnnotationValue `json:"Annotations,omitnil" name:"Annotations"`
+
 	// 是否开启伸缩
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil" name:"EnableAutoscale"`
 
@@ -16043,6 +16061,9 @@ type ModifyClusterNodePoolRequest struct {
 	// 污点
 	Taints []*Taint `json:"Taints,omitnil" name:"Taints"`
 
+	// 节点 Annotation 列表
+	Annotations []*AnnotationValue `json:"Annotations,omitnil" name:"Annotations"`
+
 	// 是否开启伸缩
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil" name:"EnableAutoscale"`
 
@@ -16099,6 +16120,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "MinNodesNum")
 	delete(f, "Labels")
 	delete(f, "Taints")
+	delete(f, "Annotations")
 	delete(f, "EnableAutoscale")
 	delete(f, "OsName")
 	delete(f, "OsCustomizeType")
@@ -17010,6 +17032,9 @@ type NodePool struct {
 
 	// Taints 污点标记
 	Taints []*Taint `json:"Taints,omitnil" name:"Taints"`
+
+	// 节点 Annotation 列表
+	Annotations []*AnnotationValue `json:"Annotations,omitnil" name:"Annotations"`
 
 	// NodeCountSummary 节点列表
 	NodeCountSummary *NodeCountSummary `json:"NodeCountSummary,omitnil" name:"NodeCountSummary"`

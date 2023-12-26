@@ -1934,6 +1934,7 @@ func NewTerminateComputeNodesResponse() (response *TerminateComputeNodesResponse
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
+//  UNSUPPORTEDOPERATION_COMPUTENODEISTERMINATING = "UnsupportedOperation.ComputeNodeIsTerminating"
 func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
     return c.TerminateComputeNodesWithContext(context.Background(), request)
 }
@@ -1950,6 +1951,7 @@ func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (r
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
+//  UNSUPPORTEDOPERATION_COMPUTENODEISTERMINATING = "UnsupportedOperation.ComputeNodeIsTerminating"
 func (c *Client) TerminateComputeNodesWithContext(ctx context.Context, request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
     if request == nil {
         request = NewTerminateComputeNodesRequest()

@@ -316,6 +316,59 @@ func (c *Client) DescribeKTVMusicAccompanySegmentUrlWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeKTVMusicAccompanySegmentUrlVipRequest() (request *DescribeKTVMusicAccompanySegmentUrlVipRequest) {
+    request = &DescribeKTVMusicAccompanySegmentUrlVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVMusicAccompanySegmentUrlVip")
+    
+    
+    return
+}
+
+func NewDescribeKTVMusicAccompanySegmentUrlVipResponse() (response *DescribeKTVMusicAccompanySegmentUrlVipResponse) {
+    response = &DescribeKTVMusicAccompanySegmentUrlVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKTVMusicAccompanySegmentUrlVip
+// 获取歌曲伴奏高潮的开始、结束时间，可用于抢唱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
+func (c *Client) DescribeKTVMusicAccompanySegmentUrlVip(request *DescribeKTVMusicAccompanySegmentUrlVipRequest) (response *DescribeKTVMusicAccompanySegmentUrlVipResponse, err error) {
+    return c.DescribeKTVMusicAccompanySegmentUrlVipWithContext(context.Background(), request)
+}
+
+// DescribeKTVMusicAccompanySegmentUrlVip
+// 获取歌曲伴奏高潮的开始、结束时间，可用于抢唱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
+func (c *Client) DescribeKTVMusicAccompanySegmentUrlVipWithContext(ctx context.Context, request *DescribeKTVMusicAccompanySegmentUrlVipRequest) (response *DescribeKTVMusicAccompanySegmentUrlVipResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicAccompanySegmentUrlVipRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMusicAccompanySegmentUrlVip require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVMusicAccompanySegmentUrlVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVMusicsByTagRequest() (request *DescribeKTVMusicsByTagRequest) {
     request = &DescribeKTVMusicsByTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +817,63 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeVipUserInfoRequest() (request *DescribeVipUserInfoRequest) {
+    request = &DescribeVipUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeVipUserInfo")
+    
+    
+    return
+}
+
+func NewDescribeVipUserInfoResponse() (response *DescribeVipUserInfoResponse) {
+    response = &DescribeVipUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVipUserInfo
+// 获取会员信息：获取用户是否开通会员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVipUserInfo(request *DescribeVipUserInfoRequest) (response *DescribeVipUserInfoResponse, err error) {
+    return c.DescribeVipUserInfoWithContext(context.Background(), request)
+}
+
+// DescribeVipUserInfo
+// 获取会员信息：获取用户是否开通会员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVipUserInfoWithContext(ctx context.Context, request *DescribeVipUserInfoRequest) (response *DescribeVipUserInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeVipUserInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVipUserInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVipUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyKTVRobotRequest() (request *DestroyKTVRobotRequest) {
     request = &DestroyKTVRobotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -882,6 +992,67 @@ func (c *Client) RechargeLiveVipWithContext(ctx context.Context, request *Rechar
     request.SetContext(ctx)
     
     response = NewRechargeLiveVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRechargeVipRequest() (request *RechargeVipRequest) {
+    request = &RechargeVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "RechargeVip")
+    
+    
+    return
+}
+
+func NewRechargeVipResponse() (response *RechargeVipResponse) {
+    response = &RechargeVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RechargeVip
+// 充值会员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RechargeVip(request *RechargeVipRequest) (response *RechargeVipResponse, err error) {
+    return c.RechargeVipWithContext(context.Background(), request)
+}
+
+// RechargeVip
+// 充值会员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RechargeVipWithContext(ctx context.Context, request *RechargeVipRequest) (response *RechargeVipResponse, err error) {
+    if request == nil {
+        request = NewRechargeVipRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RechargeVip require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRechargeVipResponse()
     err = c.Send(request, response)
     return
 }

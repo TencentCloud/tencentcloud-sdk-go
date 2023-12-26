@@ -9453,7 +9453,7 @@ type ScheduledSqlResouceInfo struct {
 	// 指标维度，不接受时间类型。
 	MetricLabels []*string `json:"MetricLabels,omitnil" name:"MetricLabels"`
 
-	// 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间，精度毫秒）为指标时间戳。
+	// 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间、TimeStamp，精度毫秒）为指标时间戳。
 	CustomTime *string `json:"CustomTime,omitnil" name:"CustomTime"`
 
 	// 除了MetricLabels，您还可以使用该参数，为指标补充静态的维度。

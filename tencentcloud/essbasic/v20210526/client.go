@@ -508,7 +508,7 @@ func NewChannelCreateBatchQuickSignUrlResponse() (response *ChannelCreateBatchQu
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=PERSON)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
 //
 // 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
 //
@@ -537,7 +537,7 @@ func (c *Client) ChannelCreateBatchQuickSignUrl(request *ChannelCreateBatchQuick
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=PERSON)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
 //
 // 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
 //
@@ -6260,7 +6260,9 @@ func NewDescribeChannelSealPolicyWorkflowUrlResponse() (response *DescribeChanne
 }
 
 // DescribeChannelSealPolicyWorkflowUrl
-// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转的方式查看）
+// 制定渠道分支客户的印刷申请审批微型应用程序链接，链接模式（通过H5触发微型应用程序或通过APP跳转进行查看）。
+//
+// 此刻，代理参数中的OpenId 必须为审批者的openId，生成的链接必须由该用户启动，其他用户则无审批权限。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -6269,7 +6271,9 @@ func (c *Client) DescribeChannelSealPolicyWorkflowUrl(request *DescribeChannelSe
 }
 
 // DescribeChannelSealPolicyWorkflowUrl
-// 生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转的方式查看）
+// 制定渠道分支客户的印刷申请审批微型应用程序链接，链接模式（通过H5触发微型应用程序或通过APP跳转进行查看）。
+//
+// 此刻，代理参数中的OpenId 必须为审批者的openId，生成的链接必须由该用户启动，其他用户则无审批权限。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

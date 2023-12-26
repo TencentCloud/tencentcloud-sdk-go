@@ -34,6 +34,749 @@ type AttachCBSSpec struct {
 	DiskDesc *string `json:"DiskDesc,omitnil" name:"DiskDesc"`
 }
 
+type ChargeProperties struct {
+	// 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 是否自动续费，1表示自动续费开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 计费时间长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 计费时间单位，“m”表示月等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+}
+
+type ClusterConfigsInfoFromEMR struct {
+	// 配置文件名称
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
+
+	// 配置文件对应的相关属性信息
+	FileConf *string `json:"FileConf,omitnil" name:"FileConf"`
+
+	// 配置文件对应的其他属性信息
+	KeyConf *string `json:"KeyConf,omitnil" name:"KeyConf"`
+
+	// 配置文件的内容，base64编码
+	OriParam *string `json:"OriParam,omitnil" name:"OriParam"`
+
+	// 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
+	NeedRestart *int64 `json:"NeedRestart,omitnil" name:"NeedRestart"`
+
+	// 配置文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+
+	// 配置文件kv值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: FileKeyValues is deprecated.
+	FileKeyValues *string `json:"FileKeyValues,omitnil" name:"FileKeyValues"`
+
+	// 配置文件kv值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileKeyValuesNew []*ConfigKeyValue `json:"FileKeyValuesNew,omitnil" name:"FileKeyValuesNew"`
+}
+
+type ConfigKeyValue struct {
+	// key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyName *string `json:"KeyName,omitnil" name:"KeyName"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 1-只读，2-可修改但不可删除，3-可删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Display *int64 `json:"Display,omitnil" name:"Display"`
+
+	// 0不支持 1支持热更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportHotUpdate *int64 `json:"SupportHotUpdate,omitnil" name:"SupportHotUpdate"`
+}
+
+// Predefined struct for user
+type CreateInstanceNewRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// FE规格
+	FeSpec *CreateInstanceSpec `json:"FeSpec,omitnil" name:"FeSpec"`
+
+	// BE规格
+	BeSpec *CreateInstanceSpec `json:"BeSpec,omitnil" name:"BeSpec"`
+
+	// 是否高可用
+	HaFlag *bool `json:"HaFlag,omitnil" name:"HaFlag"`
+
+	// 用户VPCID
+	UserVPCId *string `json:"UserVPCId,omitnil" name:"UserVPCId"`
+
+	// 用户子网ID
+	UserSubnetId *string `json:"UserSubnetId,omitnil" name:"UserSubnetId"`
+
+	// 产品版本号
+	ProductVersion *string `json:"ProductVersion,omitnil" name:"ProductVersion"`
+
+	// 付费类型
+	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil" name:"ChargeProperties"`
+
+	// 实例名字
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 数据库密码
+	DorisUserPwd *string `json:"DorisUserPwd,omitnil" name:"DorisUserPwd"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 高可用类型：0：非高可用，1：读高可用，2：读写高可用。
+	HaType *int64 `json:"HaType,omitnil" name:"HaType"`
+
+	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	CaseSensitive *int64 `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
+}
+
+type CreateInstanceNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// FE规格
+	FeSpec *CreateInstanceSpec `json:"FeSpec,omitnil" name:"FeSpec"`
+
+	// BE规格
+	BeSpec *CreateInstanceSpec `json:"BeSpec,omitnil" name:"BeSpec"`
+
+	// 是否高可用
+	HaFlag *bool `json:"HaFlag,omitnil" name:"HaFlag"`
+
+	// 用户VPCID
+	UserVPCId *string `json:"UserVPCId,omitnil" name:"UserVPCId"`
+
+	// 用户子网ID
+	UserSubnetId *string `json:"UserSubnetId,omitnil" name:"UserSubnetId"`
+
+	// 产品版本号
+	ProductVersion *string `json:"ProductVersion,omitnil" name:"ProductVersion"`
+
+	// 付费类型
+	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil" name:"ChargeProperties"`
+
+	// 实例名字
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 数据库密码
+	DorisUserPwd *string `json:"DorisUserPwd,omitnil" name:"DorisUserPwd"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 高可用类型：0：非高可用，1：读高可用，2：读写高可用。
+	HaType *int64 `json:"HaType,omitnil" name:"HaType"`
+
+	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	CaseSensitive *int64 `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
+}
+
+func (r *CreateInstanceNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "FeSpec")
+	delete(f, "BeSpec")
+	delete(f, "HaFlag")
+	delete(f, "UserVPCId")
+	delete(f, "UserSubnetId")
+	delete(f, "ProductVersion")
+	delete(f, "ChargeProperties")
+	delete(f, "InstanceName")
+	delete(f, "DorisUserPwd")
+	delete(f, "Tags")
+	delete(f, "HaType")
+	delete(f, "CaseSensitive")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceNewResponseParams struct {
+	// 流程ID
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateInstanceNewResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstanceNewResponseParams `json:"Response"`
+}
+
+func (r *CreateInstanceNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceSpec struct {
+	// 规格名字
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
+
+	// 数量
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
+
+	// 云盘大小
+	DiskSize *uint64 `json:"DiskSize,omitnil" name:"DiskSize"`
+}
+
+type DataBaseAuditRecord struct {
+	// 查询用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsUser *string `json:"OsUser,omitnil" name:"OsUser"`
+
+	// 查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialQueryId *string `json:"InitialQueryId,omitnil" name:"InitialQueryId"`
+
+	// SQL语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryStartTime *string `json:"QueryStartTime,omitnil" name:"QueryStartTime"`
+
+	// 执行耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationMs *int64 `json:"DurationMs,omitnil" name:"DurationMs"`
+
+	// 读取行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadRows *int64 `json:"ReadRows,omitnil" name:"ReadRows"`
+
+	// 读取字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultRows *int64 `json:"ResultRows,omitnil" name:"ResultRows"`
+
+	// 结果字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultBytes *uint64 `json:"ResultBytes,omitnil" name:"ResultBytes"`
+
+	// 内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemoryUsage *int64 `json:"MemoryUsage,omitnil" name:"MemoryUsage"`
+
+	// 初始查询IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialAddress *string `json:"InitialAddress,omitnil" name:"InitialAddress"`
+
+	// 数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// sql类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
+
+	// catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+}
+
+// Predefined struct for user
+type DescribeClusterConfigsRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	//  0 公有云查询；1青鹅查询，青鹅查询显示所有需要展示的
+	ConfigType *int64 `json:"ConfigType,omitnil" name:"ConfigType"`
+
+	// 模糊搜索关键字文件
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
+
+	// 0集群维度 1节点维度
+	ClusterConfigType *int64 `json:"ClusterConfigType,omitnil" name:"ClusterConfigType"`
+
+	// eth0的ip地址
+	IPAddress *string `json:"IPAddress,omitnil" name:"IPAddress"`
+}
+
+type DescribeClusterConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	//  0 公有云查询；1青鹅查询，青鹅查询显示所有需要展示的
+	ConfigType *int64 `json:"ConfigType,omitnil" name:"ConfigType"`
+
+	// 模糊搜索关键字文件
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
+
+	// 0集群维度 1节点维度
+	ClusterConfigType *int64 `json:"ClusterConfigType,omitnil" name:"ClusterConfigType"`
+
+	// eth0的ip地址
+	IPAddress *string `json:"IPAddress,omitnil" name:"IPAddress"`
+}
+
+func (r *DescribeClusterConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ConfigType")
+	delete(f, "FileName")
+	delete(f, "ClusterConfigType")
+	delete(f, "IPAddress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterConfigsResponseParams struct {
+	// 返回实例的配置文件相关的信息
+	ClusterConfList []*ClusterConfigsInfoFromEMR `json:"ClusterConfList,omitnil" name:"ClusterConfList"`
+
+	// 返回当前内核版本 如果不存在则返回空字符串
+	BuildVersion *string `json:"BuildVersion,omitnil" name:"BuildVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeClusterConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseAuditDownloadRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	OrderType *string `json:"OrderType,omitnil" name:"OrderType"`
+
+	// 用户
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// sql类型
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 用户 多选
+	Users []*string `json:"Users,omitnil" name:"Users"`
+
+	// 数据库 多选
+	DbNames []*string `json:"DbNames,omitnil" name:"DbNames"`
+
+	// sql类型 多选
+	SqlTypes []*string `json:"SqlTypes,omitnil" name:"SqlTypes"`
+
+	// catalog名称 （多选）
+	Catalogs []*string `json:"Catalogs,omitnil" name:"Catalogs"`
+}
+
+type DescribeDatabaseAuditDownloadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	OrderType *string `json:"OrderType,omitnil" name:"OrderType"`
+
+	// 用户
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// sql类型
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 用户 多选
+	Users []*string `json:"Users,omitnil" name:"Users"`
+
+	// 数据库 多选
+	DbNames []*string `json:"DbNames,omitnil" name:"DbNames"`
+
+	// sql类型 多选
+	SqlTypes []*string `json:"SqlTypes,omitnil" name:"SqlTypes"`
+
+	// catalog名称 （多选）
+	Catalogs []*string `json:"Catalogs,omitnil" name:"Catalogs"`
+}
+
+func (r *DescribeDatabaseAuditDownloadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAuditDownloadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	delete(f, "OrderType")
+	delete(f, "User")
+	delete(f, "DbName")
+	delete(f, "SqlType")
+	delete(f, "Sql")
+	delete(f, "Users")
+	delete(f, "DbNames")
+	delete(f, "SqlTypes")
+	delete(f, "Catalogs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditDownloadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseAuditDownloadResponseParams struct {
+	// 日志的cos地址
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatabaseAuditDownloadResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseAuditDownloadResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseAuditDownloadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAuditDownloadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseAuditRecordsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	OrderType *string `json:"OrderType,omitnil" name:"OrderType"`
+
+	// 用户
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// sql类型
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 用户 （多选）
+	Users []*string `json:"Users,omitnil" name:"Users"`
+
+	// 数据库 （多选）
+	DbNames []*string `json:"DbNames,omitnil" name:"DbNames"`
+
+	// sql类型 （多选）
+	SqlTypes []*string `json:"SqlTypes,omitnil" name:"SqlTypes"`
+
+	// catalog名称（多选）
+	Catalogs []*string `json:"Catalogs,omitnil" name:"Catalogs"`
+}
+
+type DescribeDatabaseAuditRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	OrderType *string `json:"OrderType,omitnil" name:"OrderType"`
+
+	// 用户
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// sql类型
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 用户 （多选）
+	Users []*string `json:"Users,omitnil" name:"Users"`
+
+	// 数据库 （多选）
+	DbNames []*string `json:"DbNames,omitnil" name:"DbNames"`
+
+	// sql类型 （多选）
+	SqlTypes []*string `json:"SqlTypes,omitnil" name:"SqlTypes"`
+
+	// catalog名称（多选）
+	Catalogs []*string `json:"Catalogs,omitnil" name:"Catalogs"`
+}
+
+func (r *DescribeDatabaseAuditRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAuditRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	delete(f, "OrderType")
+	delete(f, "User")
+	delete(f, "DbName")
+	delete(f, "SqlType")
+	delete(f, "Sql")
+	delete(f, "Users")
+	delete(f, "DbNames")
+	delete(f, "SqlTypes")
+	delete(f, "Catalogs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseAuditRecordsResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 记录列表
+	SlowQueryRecords *DataBaseAuditRecord `json:"SlowQueryRecords,omitnil" name:"SlowQueryRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatabaseAuditRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseAuditRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseAuditRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAuditRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceNodesInfoRequestParams struct {
+	// 集群id
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type DescribeInstanceNodesInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+func (r *DescribeInstanceNodesInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceNodesInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceNodesInfoResponseParams struct {
+	// Be节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeNodes []*string `json:"BeNodes,omitnil" name:"BeNodes"`
+
+	// Fe节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeNodes []*string `json:"FeNodes,omitnil" name:"FeNodes"`
+
+	// Fe master节点
+	FeMaster *string `json:"FeMaster,omitnil" name:"FeMaster"`
+
+	// Be节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeNodeInfos []*NodeInfo `json:"BeNodeInfos,omitnil" name:"BeNodeInfos"`
+
+	// Fe节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeNodeInfos []*NodeInfo `json:"FeNodeInfos,omitnil" name:"FeNodeInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceNodesInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceNodesInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceNodesInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeInstanceNodesRequestParams struct {
 	// 集群实例ID
@@ -181,6 +924,83 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceStateRequestParams struct {
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeInstanceStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceStateResponseParams struct {
+	// 集群状态，例如：Serving
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
+
+	// 集群操作创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil" name:"FlowCreateTime"`
+
+	// 集群操作名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 集群操作进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowProgress *float64 `json:"FlowProgress,omitnil" name:"FlowProgress"`
+
+	// 集群状态描述，例如：运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil" name:"InstanceStateDesc"`
+
+	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstancesRequestParams struct {
 	// 搜索的集群id名称
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
@@ -265,6 +1085,285 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowQueryRecordsDownloadRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 慢查询时间
+	QueryDurationMs *int64 `json:"QueryDurationMs,omitnil" name:"QueryDurationMs"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 排序参数
+	DurationMs *string `json:"DurationMs,omitnil" name:"DurationMs"`
+}
+
+type DescribeSlowQueryRecordsDownloadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 慢查询时间
+	QueryDurationMs *int64 `json:"QueryDurationMs,omitnil" name:"QueryDurationMs"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 排序参数
+	DurationMs *string `json:"DurationMs,omitnil" name:"DurationMs"`
+}
+
+func (r *DescribeSlowQueryRecordsDownloadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryRecordsDownloadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "QueryDurationMs")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DurationMs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsDownloadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowQueryRecordsDownloadResponseParams struct {
+	// cos地址
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSlowQueryRecordsDownloadResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSlowQueryRecordsDownloadResponseParams `json:"Response"`
+}
+
+func (r *DescribeSlowQueryRecordsDownloadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryRecordsDownloadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowQueryRecordsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 慢查询时间
+	QueryDurationMs *int64 `json:"QueryDurationMs,omitnil" name:"QueryDurationMs"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	DurationMs *string `json:"DurationMs,omitnil" name:"DurationMs"`
+
+	// 数据库名称
+	DbName []*string `json:"DbName,omitnil" name:"DbName"`
+
+	// 是否是查询，0：否， 1：是
+	IsQuery *int64 `json:"IsQuery,omitnil" name:"IsQuery"`
+
+	// catalog名称
+	CatalogName []*string `json:"CatalogName,omitnil" name:"CatalogName"`
+}
+
+type DescribeSlowQueryRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 慢查询时间
+	QueryDurationMs *int64 `json:"QueryDurationMs,omitnil" name:"QueryDurationMs"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
+
+	// 排序参数
+	DurationMs *string `json:"DurationMs,omitnil" name:"DurationMs"`
+
+	// 数据库名称
+	DbName []*string `json:"DbName,omitnil" name:"DbName"`
+
+	// 是否是查询，0：否， 1：是
+	IsQuery *int64 `json:"IsQuery,omitnil" name:"IsQuery"`
+
+	// catalog名称
+	CatalogName []*string `json:"CatalogName,omitnil" name:"CatalogName"`
+}
+
+func (r *DescribeSlowQueryRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "QueryDurationMs")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	delete(f, "DurationMs")
+	delete(f, "DbName")
+	delete(f, "IsQuery")
+	delete(f, "CatalogName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowQueryRecordsResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 记录列表
+	SlowQueryRecords []*SlowQueryRecord `json:"SlowQueryRecords,omitnil" name:"SlowQueryRecords"`
+
+	// 所有数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBNameList []*string `json:"DBNameList,omitnil" name:"DBNameList"`
+
+	// 所有catalog名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogNameList []*string `json:"CatalogNameList,omitnil" name:"CatalogNameList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSlowQueryRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSlowQueryRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSlowQueryRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyInstanceRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DestroyInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DestroyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyInstanceResponseParams struct {
+	// 流程ID
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DestroyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyInstanceResponseParams `json:"Response"`
+}
+
+func (r *DestroyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -481,6 +1580,77 @@ type InstanceNode struct {
 	UUID *string `json:"UUID,omitnil" name:"UUID"`
 }
 
+// Predefined struct for user
+type ModifyInstanceRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 新修改的实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+}
+
+type ModifyInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 新修改的实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+}
+
+func (r *ModifyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type NodeInfo struct {
+	// 用户IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 节点状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
 type NodesSummary struct {
 	// 机型，如 S1
 	Spec *string `json:"Spec,omitnil" name:"Spec"`
@@ -532,6 +1702,332 @@ type NodesSummary struct {
 	MaxDiskSize *int64 `json:"MaxDiskSize,omitnil" name:"MaxDiskSize"`
 }
 
+// Predefined struct for user
+type ResizeDiskRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 云盘大小
+	DiskSize *uint64 `json:"DiskSize,omitnil" name:"DiskSize"`
+}
+
+type ResizeDiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 云盘大小
+	DiskSize *uint64 `json:"DiskSize,omitnil" name:"DiskSize"`
+}
+
+func (r *ResizeDiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDiskResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 流程ID
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ResizeDiskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeDiskResponseParams `json:"Response"`
+}
+
+func (r *ResizeDiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartClusterForNodeRequestParams struct {
+	// 集群ID，例如cdwch-xxxx
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 配置文件名称
+	ConfigName *string `json:"ConfigName,omitnil" name:"ConfigName"`
+
+	// 每次重启的批次
+	BatchSize *int64 `json:"BatchSize,omitnil" name:"BatchSize"`
+
+	// 重启节点
+	NodeList []*string `json:"NodeList,omitnil" name:"NodeList"`
+
+	// false表示非滚动重启，true表示滚动重启
+	RollingRestart *bool `json:"RollingRestart,omitnil" name:"RollingRestart"`
+}
+
+type RestartClusterForNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID，例如cdwch-xxxx
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 配置文件名称
+	ConfigName *string `json:"ConfigName,omitnil" name:"ConfigName"`
+
+	// 每次重启的批次
+	BatchSize *int64 `json:"BatchSize,omitnil" name:"BatchSize"`
+
+	// 重启节点
+	NodeList []*string `json:"NodeList,omitnil" name:"NodeList"`
+
+	// false表示非滚动重启，true表示滚动重启
+	RollingRestart *bool `json:"RollingRestart,omitnil" name:"RollingRestart"`
+}
+
+func (r *RestartClusterForNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartClusterForNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ConfigName")
+	delete(f, "BatchSize")
+	delete(f, "NodeList")
+	delete(f, "RollingRestart")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartClusterForNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartClusterForNodeResponseParams struct {
+	// 流程相关信息
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RestartClusterForNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartClusterForNodeResponseParams `json:"Response"`
+}
+
+func (r *RestartClusterForNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartClusterForNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleOutInstanceRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitnil" name:"NodeCount"`
+
+	// 扩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
+	HaType *int64 `json:"HaType,omitnil" name:"HaType"`
+}
+
+type ScaleOutInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitnil" name:"NodeCount"`
+
+	// 扩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
+	HaType *int64 `json:"HaType,omitnil" name:"HaType"`
+}
+
+func (r *ScaleOutInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "NodeCount")
+	delete(f, "HaType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleOutInstanceResponseParams struct {
+	// 流程ID
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ScaleOutInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleOutInstanceResponseParams `json:"Response"`
+}
+
+func (r *ScaleOutInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleUpInstanceRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 节点规格
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type ScaleUpInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 节点规格
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
+
+	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *ScaleUpInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SpecName")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleUpInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleUpInstanceResponseParams struct {
+	// 流程ID
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ScaleUpInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleUpInstanceResponseParams `json:"Response"`
+}
+
+func (r *ScaleUpInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchTags struct {
 	// 标签的键
 	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
@@ -541,6 +2037,46 @@ type SearchTags struct {
 
 	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
 	AllValue *int64 `json:"AllValue,omitnil" name:"AllValue"`
+}
+
+type SlowQueryRecord struct {
+	// 查询用户
+	OsUser *string `json:"OsUser,omitnil" name:"OsUser"`
+
+	// 查询ID
+	InitialQueryId *string `json:"InitialQueryId,omitnil" name:"InitialQueryId"`
+
+	// SQL语句
+	Sql *string `json:"Sql,omitnil" name:"Sql"`
+
+	// 开始时间
+	QueryStartTime *string `json:"QueryStartTime,omitnil" name:"QueryStartTime"`
+
+	// 执行耗时
+	DurationMs *int64 `json:"DurationMs,omitnil" name:"DurationMs"`
+
+	// 读取行数
+	ReadRows *int64 `json:"ReadRows,omitnil" name:"ReadRows"`
+
+	// 读取字节数
+	ResultRows *int64 `json:"ResultRows,omitnil" name:"ResultRows"`
+
+	// 结果字节数
+	ResultBytes *uint64 `json:"ResultBytes,omitnil" name:"ResultBytes"`
+
+	// 内存
+	MemoryUsage *int64 `json:"MemoryUsage,omitnil" name:"MemoryUsage"`
+
+	// 初始查询IP
+	InitialAddress *string `json:"InitialAddress,omitnil" name:"InitialAddress"`
+
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// 是否是查询，0：否，1：查询语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQuery *int64 `json:"IsQuery,omitnil" name:"IsQuery"`
 }
 
 type Tag struct {

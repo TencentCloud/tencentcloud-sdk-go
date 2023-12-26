@@ -143,6 +143,9 @@ const (
 	// CNAME模式下无法申请泛域名证书。
 	INVALIDPARAMETER_CNAMEWILDHOSTNOTALLOWAPPLYCERTIFICATE = "InvalidParameter.CnameWildHostNotAllowApplyCertificate"
 
+	// 无效的压缩算法。
+	INVALIDPARAMETER_COMPRESSIONINVALIDALGORITHMS = "InvalidParameter.CompressionInvalidAlgorithms"
+
 	// 源站不能和域名一致。
 	INVALIDPARAMETER_CONFLICTHOSTORIGIN = "InvalidParameter.ConflictHostOrigin"
 
@@ -319,6 +322,9 @@ const (
 
 	// 证书信息错误。
 	INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+
+	// 无效的客户端IP地理位置配置，HeaderName由1-100个字母或数字组成的，不能以"-"开头或结尾。
+	INVALIDPARAMETER_INVALIDCLIENTIPCOUNTRYHEADERNAME = "InvalidParameter.InvalidClientIpCountryHeaderName"
 
 	// 无效的客户端IP请求头。
 	INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
@@ -506,6 +512,9 @@ const (
 	// 源站格式错误。
 	INVALIDPARAMETER_ORIGINRECORDFORMATERROR = "InvalidParameter.OriginRecordFormatError"
 
+	// 权重取值范围：0 - 100。
+	INVALIDPARAMETER_ORIGINRECORDWEIGHTVALUE = "InvalidParameter.OriginRecordWeightValue"
+
 	// 秘钥格式错误。
 	INVALIDPARAMETER_ORIGINTHIRDPARTYPARAMFORMATERROR = "InvalidParameter.OriginThirdPartyParamFormatError"
 
@@ -625,6 +634,9 @@ const (
 
 	// DNS 代理域名源站错误。
 	INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
+
+	// 标签值存在不合法字符。
+	INVALIDPARAMETERVALUE_INVALIDTAGVALUE = "InvalidParameterValue.InvalidTagValue"
 
 	// 不支持接入泛域名 CNAME
 	INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
@@ -760,6 +772,9 @@ const (
 
 	// 加速域名使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
+
+	// 负载均衡使用中，无法删除。
+	OPERATIONDENIED_ORIGINGROUPLBUSED = "OperationDenied.OriginGroupLBUsed"
 
 	// 规则引擎使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = "OperationDenied.OriginGroupRuleEngineUsed"

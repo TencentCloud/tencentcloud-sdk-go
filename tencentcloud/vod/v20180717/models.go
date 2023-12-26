@@ -3014,7 +3014,7 @@ type CrashScreenConfigureInfoForUpdate struct {
 
 // Predefined struct for user
 type CreateAIAnalysisTemplateRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音视频内容分析模板名称，长度限制：64 个字符。
@@ -3042,7 +3042,7 @@ type CreateAIAnalysisTemplateRequestParams struct {
 type CreateAIAnalysisTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音视频内容分析模板名称，长度限制：64 个字符。
@@ -3415,7 +3415,7 @@ type CreateAnimatedGraphicsTemplateRequestParams struct {
 	// 帧率，取值范围：[1, 30]，单位：Hz。
 	Fps *uint64 `json:"Fps,omitnil" name:"Fps"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -3459,7 +3459,7 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	// 帧率，取值范围：[1, 30]，单位：Hz。
 	Fps *uint64 `json:"Fps,omitnil" name:"Fps"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -3627,7 +3627,7 @@ type CreateContentReviewTemplateRequestParams struct {
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitnil" name:"ReviewWallSwitch"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 内容审核模板名称，长度限制：64 个字符。
@@ -3665,7 +3665,7 @@ type CreateContentReviewTemplateRequest struct {
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitnil" name:"ReviewWallSwitch"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 内容审核模板名称，长度限制：64 个字符。
@@ -4167,7 +4167,7 @@ type CreateImageSpriteTemplateRequestParams struct {
 	// 注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil" name:"ColumnCount"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 雪碧图模板名称，长度限制：64 个字符。
@@ -4235,7 +4235,7 @@ type CreateImageSpriteTemplateRequest struct {
 	// 注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil" name:"ColumnCount"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 雪碧图模板名称，长度限制：64 个字符。
@@ -4430,7 +4430,7 @@ type CreatePersonSampleRequestParams struct {
 	// 3. All：包含以上全部，等价于 1+2。
 	Usages []*string `json:"Usages,omitnil" name:"Usages"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 素材描述，长度限制：1024 个字符。
@@ -4458,7 +4458,7 @@ type CreatePersonSampleRequest struct {
 	// 3. All：包含以上全部，等价于 1+2。
 	Usages []*string `json:"Usages,omitnil" name:"Usages"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 素材描述，长度限制：1024 个字符。
@@ -4531,7 +4531,7 @@ type CreateProcedureTemplateRequestParams struct {
 	// 任务流名字（支持中文，不超过20个字）。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -4560,7 +4560,7 @@ type CreateProcedureTemplateRequest struct {
 	// 任务流名字（支持中文，不超过20个字）。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -4633,7 +4633,7 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQualityInspectTemplateRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质检测模板名称。
@@ -4679,7 +4679,7 @@ type CreateQualityInspectTemplateRequestParams struct {
 type CreateQualityInspectTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质检测模板名称。
@@ -4784,7 +4784,7 @@ type CreateRebuildMediaTemplateRequestParams struct {
 	// 输出文件封装格式，可选值：mp4、flv、hls。
 	Container *string `json:"Container,omitnil" name:"Container"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质重生模板名称。
@@ -4824,7 +4824,7 @@ type CreateRebuildMediaTemplateRequest struct {
 	// 输出文件封装格式，可选值：mp4、flv、hls。
 	Container *string `json:"Container,omitnil" name:"Container"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质重生模板名称。
@@ -4923,7 +4923,7 @@ type CreateReviewTemplateRequestParams struct {
 	// <li>Moan：娇喘。</li>
 	Labels []*string `json:"Labels,omitnil" name:"Labels"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *string `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 审核模板名称，长度限制：64 个字符。
@@ -4946,7 +4946,7 @@ type CreateReviewTemplateRequest struct {
 	// <li>Moan：娇喘。</li>
 	Labels []*string `json:"Labels,omitnil" name:"Labels"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *string `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 审核模板名称，长度限制：64 个字符。
@@ -5012,7 +5012,7 @@ type CreateRoundPlayRequestParams struct {
 	// <li>数组长度限制：100。</li>
 	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil" name:"RoundPlaylist"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 轮播播单名称，长度限制：64 个字符。
@@ -5038,7 +5038,7 @@ type CreateRoundPlayRequest struct {
 	// <li>数组长度限制：100。</li>
 	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil" name:"RoundPlaylist"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 轮播播单名称，长度限制：64 个字符。
@@ -5118,7 +5118,7 @@ type CreateSampleSnapshotTemplateRequestParams struct {
 	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
 	SampleInterval *uint64 `json:"SampleInterval,omitnil" name:"SampleInterval"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 采样截图模板名称，长度限制：64 个字符。
@@ -5174,7 +5174,7 @@ type CreateSampleSnapshotTemplateRequest struct {
 	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
 	SampleInterval *uint64 `json:"SampleInterval,omitnil" name:"SampleInterval"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 采样截图模板名称，长度限制：64 个字符。
@@ -5272,7 +5272,7 @@ func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSnapshotByTimeOffsetTemplateRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 指定时间点截图模板名称，长度限制：64 个字符。
@@ -5318,7 +5318,7 @@ type CreateSnapshotByTimeOffsetTemplateRequestParams struct {
 type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 指定时间点截图模板名称，长度限制：64 个字符。
@@ -5542,7 +5542,7 @@ type CreateSuperPlayerConfigRequestParams struct {
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 播放的音视频类型，可选值：
@@ -5605,7 +5605,7 @@ type CreateSuperPlayerConfigRequest struct {
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 播放的音视频类型，可选值：
@@ -5719,7 +5719,7 @@ type CreateTranscodeTemplateRequestParams struct {
 	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitnil" name:"Container"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -5762,7 +5762,7 @@ type CreateTranscodeTemplateRequest struct {
 	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitnil" name:"Container"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -5936,7 +5936,7 @@ type CreateWatermarkTemplateRequestParams struct {
 	// <li>svg：SVG 水印。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 水印模板名称，长度限制：64 个字符。
@@ -5984,7 +5984,7 @@ type CreateWatermarkTemplateRequest struct {
 	// <li>svg：SVG 水印。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 水印模板名称，长度限制：64 个字符。
@@ -6095,7 +6095,7 @@ type CreateWordSamplesRequestParams struct {
 	// 关键词，数组长度限制：100。
 	Words []*AiSampleWordInfo `json:"Words,omitnil" name:"Words"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6116,7 +6116,7 @@ type CreateWordSamplesRequest struct {
 	// 关键词，数组长度限制：100。
 	Words []*AiSampleWordInfo `json:"Words,omitnil" name:"Words"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6315,7 +6315,7 @@ type DeleteAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 自适应转码模板唯一标识。
 	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6325,7 +6325,7 @@ type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
 	// 自适应转码模板唯一标识。
 	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6559,7 +6559,7 @@ type DeleteEnhanceMediaTemplateRequestParams struct {
 	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6569,7 +6569,7 @@ type DeleteEnhanceMediaTemplateRequest struct {
 	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6932,7 +6932,7 @@ type DeletePersonSampleRequestParams struct {
 	// 素材 ID。
 	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6942,7 +6942,7 @@ type DeletePersonSampleRequest struct {
 	// 素材 ID。
 	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -6993,7 +6993,7 @@ type DeleteProcedureTemplateRequestParams struct {
 	// 任务流名字。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7003,7 +7003,7 @@ type DeleteProcedureTemplateRequest struct {
 	// 任务流名字。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7115,7 +7115,7 @@ type DeleteRebuildMediaTemplateRequestParams struct {
 	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7125,7 +7125,7 @@ type DeleteRebuildMediaTemplateRequest struct {
 	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7176,7 +7176,7 @@ type DeleteReviewTemplateRequestParams struct {
 	// 审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7186,7 +7186,7 @@ type DeleteReviewTemplateRequest struct {
 	// 审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7237,7 +7237,7 @@ type DeleteRoundPlayRequestParams struct {
 	// 轮播播单唯一标识。
 	RoundPlayId *string `json:"RoundPlayId,omitnil" name:"RoundPlayId"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7247,7 +7247,7 @@ type DeleteRoundPlayRequest struct {
 	// 轮播播单唯一标识。
 	RoundPlayId *string `json:"RoundPlayId,omitnil" name:"RoundPlayId"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7420,7 +7420,7 @@ type DeleteSuperPlayerConfigRequestParams struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7430,7 +7430,7 @@ type DeleteSuperPlayerConfigRequest struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7542,7 +7542,7 @@ type DeleteVodDomainRequestParams struct {
 	// 要删除的点播加速域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7552,7 +7552,7 @@ type DeleteVodDomainRequest struct {
 	// 要删除的点播加速域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7664,7 +7664,7 @@ type DeleteWordSamplesRequestParams struct {
 	// 关键词，数组长度限制：100 个词。
 	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -7674,7 +7674,7 @@ type DeleteWordSamplesRequest struct {
 	// 关键词，数组长度限制：100 个词。
 	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8578,7 +8578,7 @@ type DescribeClientUploadAccelerationUsageDataRequestParams struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 客户端上传加速类型，取值有：
@@ -8597,7 +8597,7 @@ type DescribeClientUploadAccelerationUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 客户端上传加速类型，取值有：
@@ -8656,7 +8656,7 @@ func (r *DescribeClientUploadAccelerationUsageDataResponse) FromJsonString(s str
 
 // Predefined struct for user
 type DescribeContentReviewTemplatesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 内容审核模板唯一标识过滤条件，数组长度限制：100。
@@ -8672,7 +8672,7 @@ type DescribeContentReviewTemplatesRequestParams struct {
 type DescribeContentReviewTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 内容审核模板唯一标识过滤条件，数组长度限制：100。
@@ -8746,7 +8746,7 @@ type DescribeDailyMediaPlayStatRequestParams struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
 	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8762,7 +8762,7 @@ type DescribeDailyMediaPlayStatRequest struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
 	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8827,7 +8827,7 @@ type DescribeDailyMostPlayedStatRequestParams struct {
 	// 默认值为Traffic。
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8846,7 +8846,7 @@ type DescribeDailyMostPlayedStatRequest struct {
 	// 默认值为Traffic。
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8905,7 +8905,7 @@ type DescribeDailyPlayStatFileListRequestParams struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -8918,7 +8918,7 @@ type DescribeDailyPlayStatFileListRequest struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9034,14 +9034,14 @@ func (r *DescribeDrmDataKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDrmKeyProviderInfoRequestParams struct {
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 type DescribeDrmKeyProviderInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9092,7 +9092,7 @@ func (r *DescribeDrmKeyProviderInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnhanceMediaTemplatesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质重生模板列表。长度限制：100。
@@ -9113,7 +9113,7 @@ type DescribeEnhanceMediaTemplatesRequestParams struct {
 type DescribeEnhanceMediaTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质重生模板列表。长度限制：100。
@@ -9250,14 +9250,14 @@ func (r *DescribeEventConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsStateRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 type DescribeEventsStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9622,7 +9622,7 @@ type DescribeImageReviewUsageDataRequestParams struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9635,7 +9635,7 @@ type DescribeImageReviewUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9881,7 +9881,7 @@ type DescribeLicenseUsageDataRequestParams struct {
 	// <li> DRM: DRM 加密播放 License</li>
 	LicenseType *string `json:"LicenseType,omitnil" name:"LicenseType"`
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -9898,7 +9898,7 @@ type DescribeLicenseUsageDataRequest struct {
 	// <li> DRM: DRM 加密播放 License</li>
 	LicenseType *string `json:"LicenseType,omitnil" name:"LicenseType"`
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -10254,7 +10254,7 @@ func (r *DescribeMediaProcessUsageDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePersonSamplesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 拉取的素材类型，可选值：
@@ -10284,7 +10284,7 @@ type DescribePersonSamplesRequestParams struct {
 type DescribePersonSamplesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 拉取的素材类型，可选值：
@@ -10420,7 +10420,7 @@ func (r *DescribePrepaidProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProcedureTemplatesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 任务流模板名字过滤条件，数组长度限制：100。
@@ -10441,7 +10441,7 @@ type DescribeProcedureTemplatesRequestParams struct {
 type DescribeProcedureTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 任务流模板名字过滤条件，数组长度限制：100。
@@ -10512,7 +10512,7 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeQualityInspectTemplatesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质检测模板列表。长度限制：100。
@@ -10533,7 +10533,7 @@ type DescribeQualityInspectTemplatesRequestParams struct {
 type DescribeQualityInspectTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 音画质检测模板列表。长度限制：100。
@@ -10607,7 +10607,7 @@ type DescribeRebuildMediaTemplatesRequestParams struct {
 	// 视频重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitnil" name:"Definitions"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 模板类型过滤条件，可选值：
@@ -10628,7 +10628,7 @@ type DescribeRebuildMediaTemplatesRequest struct {
 	// 视频重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitnil" name:"Definitions"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 模板类型过滤条件，可选值：
@@ -10865,7 +10865,7 @@ func (r *DescribeReviewTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoundPlaysRequestParams struct {
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 轮播播单标识过滤条件，数组长度限制：100。
@@ -10881,7 +10881,7 @@ type DescribeRoundPlaysRequestParams struct {
 type DescribeRoundPlaysRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 轮播播单标识过滤条件，数组长度限制：100。
@@ -11130,14 +11130,14 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeStorageDataRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 type DescribeStorageDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -11479,7 +11479,7 @@ func (r *DescribeSubAppIdsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSuperPlayerConfigsRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 播放器配置名字过滤条件，数组长度限制：100。
@@ -11500,7 +11500,7 @@ type DescribeSuperPlayerConfigsRequestParams struct {
 type DescribeSuperPlayerConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 播放器配置名字过滤条件，数组长度限制：100。
@@ -11988,7 +11988,7 @@ type DescribeVodDomainsRequestParams struct {
 	// 分页拉取的起始偏移量。默认值：0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -12005,7 +12005,7 @@ type DescribeVodDomainsRequest struct {
 	// 分页拉取的起始偏移量。默认值：0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
@@ -12160,7 +12160,7 @@ func (r *DescribeWatermarkTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWordSamplesRequestParams struct {
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// <b>关键词应用场景过滤条件，可选值：</b>
@@ -12190,7 +12190,7 @@ type DescribeWordSamplesRequestParams struct {
 type DescribeWordSamplesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// <b>关键词应用场景过滤条件，可选值：</b>
@@ -12666,7 +12666,7 @@ type EnhanceMediaByTemplateRequestParams struct {
 	// 音画质重生模板 ID。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
@@ -12700,7 +12700,7 @@ type EnhanceMediaByTemplateRequest struct {
 	// 音画质重生模板 ID。
 	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
@@ -13026,7 +13026,7 @@ type ExecuteFunctionRequestParams struct {
 	// 接口参数，具体参数格式调用时与后端协调。
 	FunctionArg *string `json:"FunctionArg,omitnil" name:"FunctionArg"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -13048,7 +13048,7 @@ type ExecuteFunctionRequest struct {
 	// 接口参数，具体参数格式调用时与后端协调。
 	FunctionArg *string `json:"FunctionArg,omitnil" name:"FunctionArg"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -13115,7 +13115,7 @@ type ExtractCopyRightWatermarkRequestParams struct {
 	// 需要提取水印的媒体 URL。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 标识来源上下文，用于透传用户请求信息，在 ExtractCopyRightWatermarkComplete 回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -13137,7 +13137,7 @@ type ExtractCopyRightWatermarkRequest struct {
 	// 需要提取水印的媒体 URL。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 
 	// 标识来源上下文，用于透传用户请求信息，在 ExtractCopyRightWatermarkComplete 回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。

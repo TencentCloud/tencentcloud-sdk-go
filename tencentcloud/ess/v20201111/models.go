@@ -145,7 +145,8 @@ type ApproverInfo struct {
 
 	// 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
 	// 
-	// 注: `若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息`
+	// 注： 
+	// 如果传进来的<font color="red">UserId已经实名， 则忽略ApproverName，ApproverIdCardType，ApproverIdCardNumber，ApproverMobile这四个入参</font>（会用此UserId实名的身份证和登录的手机号覆盖）
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 在企微场景下使用，需设置参数为**WEWORKAPP**，以表明合同来源于企微。
@@ -1132,7 +1133,9 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// <li>**4**：系统签名</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
-	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li>
+	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li>
+	// </ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
@@ -1189,7 +1192,9 @@ type CreateBatchQuickSignUrlRequest struct {
 	// <li>**4**：系统签名</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
-	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li>
+	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li>
+	// </ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
@@ -1606,6 +1611,7 @@ type CreateDocumentRequestParams struct {
 	// 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
 	// <ul>
 	// <li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
+	// <li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li>
 	// </ul>
 	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
@@ -1652,6 +1658,7 @@ type CreateDocumentRequest struct {
 	// 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
 	// <ul>
 	// <li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
+	// <li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li>
 	// </ul>
 	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)

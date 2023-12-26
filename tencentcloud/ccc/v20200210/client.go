@@ -478,6 +478,7 @@ func NewCreateExtensionResponse() (response *CreateExtensionResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
     return c.CreateExtensionWithContext(context.Background(), request)
 }
@@ -487,6 +488,7 @@ func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CreateExtensionWithContext(ctx context.Context, request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
     if request == nil {
         request = NewCreateExtensionRequest()

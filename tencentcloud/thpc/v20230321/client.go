@@ -682,6 +682,7 @@ func NewDescribeClusterActivitiesResponse() (response *DescribeClusterActivities
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) DescribeClusterActivities(request *DescribeClusterActivitiesRequest) (response *DescribeClusterActivitiesResponse, err error) {
     return c.DescribeClusterActivitiesWithContext(context.Background(), request)
 }
@@ -691,6 +692,7 @@ func (c *Client) DescribeClusterActivities(request *DescribeClusterActivitiesReq
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) DescribeClusterActivitiesWithContext(ctx context.Context, request *DescribeClusterActivitiesRequest) (response *DescribeClusterActivitiesResponse, err error) {
     if request == nil {
         request = NewDescribeClusterActivitiesRequest()

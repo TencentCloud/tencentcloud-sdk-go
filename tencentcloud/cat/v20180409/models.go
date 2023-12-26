@@ -247,7 +247,7 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 	// true表示升序
 	Ascending *bool `json:"Ascending,omitnil" name:"Ascending"`
 
-	// 选中字段
+	// 选中字段，如ProbeTime、TransferTime、TransferSize等。
 	SelectedFields []*string `json:"SelectedFields,omitnil" name:"SelectedFields"`
 
 	// 起始取数位置
@@ -293,6 +293,9 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 
 	// es scroll查询id
 	ScrollID *string `json:"ScrollID,omitnil" name:"ScrollID"`
+
+	// 详情数据下载
+	QueryFlag *string `json:"QueryFlag,omitnil" name:"QueryFlag"`
 }
 
 type DescribeDetailedSingleProbeDataRequest struct {
@@ -320,7 +323,7 @@ type DescribeDetailedSingleProbeDataRequest struct {
 	// true表示升序
 	Ascending *bool `json:"Ascending,omitnil" name:"Ascending"`
 
-	// 选中字段
+	// 选中字段，如ProbeTime、TransferTime、TransferSize等。
 	SelectedFields []*string `json:"SelectedFields,omitnil" name:"SelectedFields"`
 
 	// 起始取数位置
@@ -366,6 +369,9 @@ type DescribeDetailedSingleProbeDataRequest struct {
 
 	// es scroll查询id
 	ScrollID *string `json:"ScrollID,omitnil" name:"ScrollID"`
+
+	// 详情数据下载
+	QueryFlag *string `json:"QueryFlag,omitnil" name:"QueryFlag"`
 }
 
 func (r *DescribeDetailedSingleProbeDataRequest) ToJsonString() string {
@@ -394,6 +400,7 @@ func (r *DescribeDetailedSingleProbeDataRequest) FromJsonString(s string) error 
 	delete(f, "ErrorTypes")
 	delete(f, "City")
 	delete(f, "ScrollID")
+	delete(f, "QueryFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailedSingleProbeDataRequest has unknown keys!", "")
 	}

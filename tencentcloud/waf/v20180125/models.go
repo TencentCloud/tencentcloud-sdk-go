@@ -8837,6 +8837,10 @@ type InstanceInfo struct {
 	// 小程序qps峰值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniMaxQPS *uint64 `json:"MiniMaxQPS,omitnil" name:"MiniMaxQPS"`
+
+	// 最近一次超量时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastQpsExceedTime *string `json:"LastQpsExceedTime,omitnil" name:"LastQpsExceedTime"`
 }
 
 type IpAccessControlData struct {

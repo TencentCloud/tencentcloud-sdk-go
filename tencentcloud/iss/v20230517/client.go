@@ -215,6 +215,7 @@ func NewAddRecordBackupPlanResponse() (response *AddRecordBackupPlanResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDORGANIZATIONID = "InvalidParameterValue.InvalidOrganizationId"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_PLANNAMEREPEAT = "InvalidParameterValue.PlanNameRepeat"
 //  RESOURCEINUSE_PLANNAMEREPEAT = "ResourceInUse.PlanNameRepeat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddRecordBackupPlan(request *AddRecordBackupPlanRequest) (response *AddRecordBackupPlanResponse, err error) {
@@ -232,6 +233,7 @@ func (c *Client) AddRecordBackupPlan(request *AddRecordBackupPlanRequest) (respo
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDORGANIZATIONID = "InvalidParameterValue.InvalidOrganizationId"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_PLANNAMEREPEAT = "InvalidParameterValue.PlanNameRepeat"
 //  RESOURCEINUSE_PLANNAMEREPEAT = "ResourceInUse.PlanNameRepeat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddRecordBackupPlanWithContext(ctx context.Context, request *AddRecordBackupPlanRequest) (response *AddRecordBackupPlanResponse, err error) {

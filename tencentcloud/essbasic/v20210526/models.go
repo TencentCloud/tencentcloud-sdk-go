@@ -944,7 +944,8 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// <li>**4**：系统签名</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
-	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li>
+	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
@@ -996,7 +997,8 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// <li>**4**：系统签名</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
-	// <li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+	// <li>您可以传递多种值，表示可用多种签名类型。</li>
+	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
@@ -7018,6 +7020,9 @@ type CreateSignUrlsRequestParams struct {
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+	// 
+	// 注： 
+	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -7119,6 +7124,9 @@ type CreateSignUrlsRequest struct {
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+	// 
+	// 注： 
+	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -8187,8 +8195,6 @@ type DescribeTemplatesRequestParams struct {
 	// <li>**true**：获取</li></ul>
 	// 
 	// 设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-	// 
-	// 注: `此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接。
@@ -8269,8 +8275,6 @@ type DescribeTemplatesRequest struct {
 	// <li>**true**：获取</li></ul>
 	// 
 	// 设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-	// 
-	// 注: `此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接。
@@ -8693,6 +8697,9 @@ type FlowApproverInfo struct {
 	// 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成
 	// 
 	// 当签署方为同一第三方平台下的员工时，该字段若不指定，则发起【待领取】的流程
+	// 
+	// 注： 
+	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
 	// 同应用下第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样，签署方为非发起方企业场景下必传，最大长度64个字符
@@ -10413,10 +10420,10 @@ type TemplateInfo struct {
 	// 模板的填充控件列表
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
-	// 模板中的签署参与方列表
+	// 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
 	Recipients []*Recipient `json:"Recipients,omitnil" name:"Recipients"`
 
-	// 模板中的签署控件列表
+	// 此模版中的签署控件列表
 	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板
@@ -10435,7 +10442,6 @@ type TemplateInfo struct {
 
 	// 模板的H5预览链接,有效期5分钟。
 	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-	// （此功能开放需要联系客户经理）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil" name:"PreviewUrl"`
 
@@ -10457,14 +10463,15 @@ type TemplateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelAutoSave *int64 `json:"ChannelAutoSave,omitnil" name:"ChannelAutoSave"`
 
-	// 模板版本，全数字字符。
-	// 默认为空，初始版本为yyyyMMdd001。
+	// 模板版本，由全数字字符组成。
+	// 默认为空，模板版本号由日期和序号组成，初始版本为yyyyMMdd001，yyyyMMdd002表示第二个版本，以此类推。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitnil" name:"TemplateVersion"`
 
-	// 模板可用状态：
-	// 1启用（默认）
-	// 2停用
+	// 模板可用状态的取值通常为以下两种：
+	// 
+	// <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
+	// <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Available *int64 `json:"Available,omitnil" name:"Available"`
 }

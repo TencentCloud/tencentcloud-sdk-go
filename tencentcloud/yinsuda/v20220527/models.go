@@ -501,6 +501,92 @@ func (r *DescribeKTVMusicAccompanySegmentUrlResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeKTVMusicAccompanySegmentUrlVipRequestParams struct {
+	// 应用名称
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 歌曲 Id 
+	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+}
+
+type DescribeKTVMusicAccompanySegmentUrlVipRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 歌曲 Id 
+	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+}
+
+func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "MusicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicAccompanySegmentUrlVipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVMusicAccompanySegmentUrlVipResponseParams struct {
+	// 0:成功获取 1:歌曲下架 2:无权限 3: 非包月会员 4:没有对应的链接
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 伴奏链接
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 伴奏类型，如mkv，mp3等
+	ExtName *string `json:"ExtName,omitnil" name:"ExtName"`
+
+	// 高潮开始时间
+	SegmentBegin *int64 `json:"SegmentBegin,omitnil" name:"SegmentBegin"`
+
+	// 高潮结束时间
+	SegmentEnd *int64 `json:"SegmentEnd,omitnil" name:"SegmentEnd"`
+
+	// 链接文件大小 (单位:字节)
+	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeKTVMusicAccompanySegmentUrlVipResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVMusicAccompanySegmentUrlVipResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVMusicAccompanySegmentUrlVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicAccompanySegmentUrlVipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVMusicsByTagRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitnil" name:"AppName"`
@@ -1239,6 +1325,82 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVipUserInfoRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+}
+
+type DescribeVipUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+}
+
+func (r *DescribeVipUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVipUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVipUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVipUserInfoResponseParams struct {
+	// 是否是会员。（0:不是会员 1:是会员）
+	IsVip *int64 `json:"IsVip,omitnil" name:"IsVip"`
+
+	// 主播id
+	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 会员过期时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeVipUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVipUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeVipUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVipUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyKTVRobotRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitnil" name:"AppName"`
@@ -1663,6 +1825,97 @@ func (r *RechargeLiveVipResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RechargeLiveVipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RechargeVipRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 房间Id。
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 充值会员天数。(取值有：31、93、186、372)
+	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+
+	// 主播id。
+	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+}
+
+type RechargeVipRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 房间Id。
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 充值会员天数。(取值有：31、93、186、372)
+	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+
+	// 主播id。
+	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+}
+
+func (r *RechargeVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RechargeVipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RoomId")
+	delete(f, "VipDays")
+	delete(f, "AnchorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RechargeVipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RechargeVipResponseParams struct {
+	// 厂商订单号。
+	PartnerNo *string `json:"PartnerNo,omitnil" name:"PartnerNo"`
+
+	// TME订单号。
+	OrderNo *string `json:"OrderNo,omitnil" name:"OrderNo"`
+
+	// 订单创建时间。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RechargeVipResponse struct {
+	*tchttp.BaseResponse
+	Response *RechargeVipResponseParams `json:"Response"`
+}
+
+func (r *RechargeVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RechargeVipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
