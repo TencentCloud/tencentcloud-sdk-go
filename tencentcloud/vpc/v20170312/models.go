@@ -19992,6 +19992,12 @@ type ModifyCcnAttributeRequestParams struct {
 
 	// CCN描述信息，最大长度不能超过100个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
 	CcnDescription *string `json:"CcnDescription,omitnil" name:"CcnDescription"`
+
+	// 是否开启等价路由功能。`False` 不开启，`True` 开启。
+	RouteECMPFlag *bool `json:"RouteECMPFlag,omitnil" name:"RouteECMPFlag"`
+
+	// 是否开启路由重叠功能。`False` 不开启，`True` 开启。
+	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil" name:"RouteOverlapFlag"`
 }
 
 type ModifyCcnAttributeRequest struct {
@@ -20005,6 +20011,12 @@ type ModifyCcnAttributeRequest struct {
 
 	// CCN描述信息，最大长度不能超过100个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
 	CcnDescription *string `json:"CcnDescription,omitnil" name:"CcnDescription"`
+
+	// 是否开启等价路由功能。`False` 不开启，`True` 开启。
+	RouteECMPFlag *bool `json:"RouteECMPFlag,omitnil" name:"RouteECMPFlag"`
+
+	// 是否开启路由重叠功能。`False` 不开启，`True` 开启。
+	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil" name:"RouteOverlapFlag"`
 }
 
 func (r *ModifyCcnAttributeRequest) ToJsonString() string {
@@ -20022,6 +20034,8 @@ func (r *ModifyCcnAttributeRequest) FromJsonString(s string) error {
 	delete(f, "CcnId")
 	delete(f, "CcnName")
 	delete(f, "CcnDescription")
+	delete(f, "RouteECMPFlag")
+	delete(f, "RouteOverlapFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCcnAttributeRequest has unknown keys!", "")
 	}

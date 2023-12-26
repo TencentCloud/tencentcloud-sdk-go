@@ -162,6 +162,10 @@ type BillDetail struct {
 	// 账单归属月
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillMonth *string `json:"BillMonth,omitnil" name:"BillMonth"`
+
+	// 账单记录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type BillDetailAssociatedOrder struct {
@@ -3917,6 +3921,8 @@ type DescribeDosageDetailByDateRequestParams struct {
 	// 10227 视频直播带宽(国内)
 	// 100763 视频直播流量(海外)
 	// 100762 视频直播宽带(海外)
+	// 
+	// 仅支持以上产品
 	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
 
 	// 查询域名 例如 www.qq.com
@@ -3926,6 +3932,9 @@ type DescribeDosageDetailByDateRequestParams struct {
 	// 1、如果为空，则返回EIP或CLB所有实例的明细；
 	// 2、如果传入实例名，则返回该实例明细
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+	PayerUin *string `json:"PayerUin,omitnil" name:"PayerUin"`
 }
 
 type DescribeDosageDetailByDateRequest struct {
@@ -3955,6 +3964,8 @@ type DescribeDosageDetailByDateRequest struct {
 	// 10227 视频直播带宽(国内)
 	// 100763 视频直播流量(海外)
 	// 100762 视频直播宽带(海外)
+	// 
+	// 仅支持以上产品
 	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
 
 	// 查询域名 例如 www.qq.com
@@ -3964,6 +3975,9 @@ type DescribeDosageDetailByDateRequest struct {
 	// 1、如果为空，则返回EIP或CLB所有实例的明细；
 	// 2、如果传入实例名，则返回该实例明细
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+	PayerUin *string `json:"PayerUin,omitnil" name:"PayerUin"`
 }
 
 func (r *DescribeDosageDetailByDateRequest) ToJsonString() string {
@@ -3983,6 +3997,7 @@ func (r *DescribeDosageDetailByDateRequest) FromJsonString(s string) error {
 	delete(f, "ProductCode")
 	delete(f, "Domain")
 	delete(f, "InstanceID")
+	delete(f, "PayerUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDosageDetailByDateRequest has unknown keys!", "")
 	}

@@ -2726,6 +2726,123 @@ func (r *CreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlowGroupSignReviewRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByTemplates)创建合同组签署流程时返回。
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+
+	// 提交的审核结果，审核结果有下面三种情况
+	// <ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
+	// <li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
+	// <li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
+	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+
+	// 需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
+	// 
+	// 个人：二选一（选择其中任意信息组合即可）
+	// <ul><li>姓名+证件类型+证件号</li>
+	// <li>姓名+手机号</li></ul>
+	// 
+	// 企业：二选一  （选择其中任意信息组合即可）
+	// <ul><li>企业名+姓名+证件类型+证件号</li>
+	// <li>企业名+姓名+手机号</li></ul>
+	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil" name:"ApproverInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 审核不通过的原因，该字段的字符串长度不超过200个字符。
+	// 
+	// 注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
+	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+}
+
+type CreateFlowGroupSignReviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByTemplates)创建合同组签署流程时返回。
+	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+
+	// 提交的审核结果，审核结果有下面三种情况
+	// <ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
+	// <li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
+	// <li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
+	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+
+	// 需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
+	// 
+	// 个人：二选一（选择其中任意信息组合即可）
+	// <ul><li>姓名+证件类型+证件号</li>
+	// <li>姓名+手机号</li></ul>
+	// 
+	// 企业：二选一  （选择其中任意信息组合即可）
+	// <ul><li>企业名+姓名+证件类型+证件号</li>
+	// <li>企业名+姓名+手机号</li></ul>
+	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil" name:"ApproverInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 审核不通过的原因，该字段的字符串长度不超过200个字符。
+	// 
+	// 注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
+	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+}
+
+func (r *CreateFlowGroupSignReviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupSignReviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupId")
+	delete(f, "ReviewType")
+	delete(f, "ApproverInfo")
+	delete(f, "Agent")
+	delete(f, "ReviewMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowGroupSignReviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupSignReviewResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateFlowGroupSignReviewResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowGroupSignReviewResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowGroupSignReviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupSignReviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateFlowOption struct {
 	// 是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
 	// <br/>true：允许编辑<br/>false：不允许编辑（默认值）<br/>
@@ -3111,26 +3228,21 @@ type CreateFlowSignReviewRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同流程ID，为32位字符串。
-	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 企业审核结果
-	// <ul><li>PASS: 通过</li> 
-	// <li>REJECT: 拒绝</li></ul>
+	// 企业内部审核结果
+	// <ul><li>PASS: 审核通过</li>
+	// <li>REJECT: 审核拒绝</li>
+	// <li>SIGN_REJECT:拒签(流程结束)</li></ul>
 	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
-
-	// 审核结果原因，
-	// 字符串长度不超过200
-	// 当ReviewType 是拒绝（REJECT） 时此字段必填。
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 审核签署节点人标识，
-	// 用来标识审核的签署方。
-	// 如果签署审核节点是个人， 此参数必填。
+	// 审核节点的签署人标志，用于指定当前审核的签署方
+	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
 	// 操作类型：（接口通过该字段区分不同的操作类型）
@@ -3140,6 +3252,13 @@ type CreateFlowSignReviewRequestParams struct {
 	// 
 	// 如果审核节点是个人，则操作类型只能为SignReview。
 	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+
+	// 审核结果原因
+	// <ul><li>字符串长度不超过200</li>
+	// <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
+	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
+	// 
+	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
 }
 
 type CreateFlowSignReviewRequest struct {
@@ -3150,26 +3269,21 @@ type CreateFlowSignReviewRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同流程ID，为32位字符串。
-	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 企业审核结果
-	// <ul><li>PASS: 通过</li> 
-	// <li>REJECT: 拒绝</li></ul>
+	// 企业内部审核结果
+	// <ul><li>PASS: 审核通过</li>
+	// <li>REJECT: 审核拒绝</li>
+	// <li>SIGN_REJECT:拒签(流程结束)</li></ul>
 	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
-
-	// 审核结果原因，
-	// 字符串长度不超过200
-	// 当ReviewType 是拒绝（REJECT） 时此字段必填。
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 审核签署节点人标识，
-	// 用来标识审核的签署方。
-	// 如果签署审核节点是个人， 此参数必填。
+	// 审核节点的签署人标志，用于指定当前审核的签署方
+	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
 	// 操作类型：（接口通过该字段区分不同的操作类型）
@@ -3179,6 +3293,13 @@ type CreateFlowSignReviewRequest struct {
 	// 
 	// 如果审核节点是个人，则操作类型只能为SignReview。
 	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+
+	// 审核结果原因
+	// <ul><li>字符串长度不超过200</li>
+	// <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
+	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
+	// 
+	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
 }
 
 func (r *CreateFlowSignReviewRequest) ToJsonString() string {
@@ -3196,10 +3317,10 @@ func (r *CreateFlowSignReviewRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "ReviewType")
-	delete(f, "ReviewMessage")
 	delete(f, "Agent")
 	delete(f, "RecipientId")
 	delete(f, "OperateType")
+	delete(f, "ReviewMessage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignReviewRequest has unknown keys!", "")
 	}
@@ -9299,6 +9420,40 @@ func (r *ModifyIntegrationRoleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyIntegrationRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NeedReviewApproverInfo struct {
+	// 签署方经办人的类型，支持以下类型
+	// <ul><li> ORGANIZATION 企业（含企业自动签）</li>
+	// <li>PERSON 个人（含个人自动签）</li></ul>
+	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+
+	// 签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
+
+	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
+	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+
+	// 签署方经办人的证件类型，支持以下类型
+	// <ul><li>ID_CARD 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
+	// 
+	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil" name:"ApproverIdCardType"`
+
+	// 签署方经办人的证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil" name:"ApproverIdCardNumber"`
+
+	// 组织机构名称。
+	// 请确认该名称与企业营业执照中注册的名称一致。
+	// 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
+	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 }
 
 type OccupiedSeal struct {

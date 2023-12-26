@@ -496,4 +496,7 @@ const (
 
 	// StreamType和Resolution参数不支持同时下发
 	UNSUPPORTEDOPERATION_STREAMTYPEORRESOLUTION = "UnsupportedOperation.StreamTypeOrResolution"
+
+	// 该地域未开通内网服务
+	UNSUPPORTEDOPERATION_UNOPENEDINTRANETSERVICESINREGION = "UnsupportedOperation.UnopenedIntranetServicesInRegion"
 )

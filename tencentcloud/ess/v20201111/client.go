@@ -2782,6 +2782,123 @@ func (c *Client) CreateFlowGroupByTemplatesWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateFlowGroupSignReviewRequest() (request *CreateFlowGroupSignReviewRequest) {
+    request = &CreateFlowGroupSignReviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowGroupSignReview")
+    
+    
+    return
+}
+
+func NewCreateFlowGroupSignReviewResponse() (response *CreateFlowGroupSignReviewResponse) {
+    response = &CreateFlowGroupSignReviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowGroupSignReview
+// 提交合同组签署流程审批结果的适用场景包括：
+//
+// 
+//
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByTemplates)创建合同组签署流程时，若指定了以下参数 为true，则可以调用此接口提交企业内部签署审批结果。即使是自动签署也需要进行审核通过才会进行签署。
+//
+//   - [FlowGroupInfo.NeedSignReview](https://qian.tencent.com/developers/companyApis/dataTypes/#flowgroupinfo)
+//
+//   - [ApproverInfo.ApproverNeedSignReview](https://qian.tencent.com/developers/companyApis/dataTypes/#approverinfo)
+//
+// 
+//
+// 
+//
+// 2. 同一合同组，同一签署人可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupSignReview(request *CreateFlowGroupSignReviewRequest) (response *CreateFlowGroupSignReviewResponse, err error) {
+    return c.CreateFlowGroupSignReviewWithContext(context.Background(), request)
+}
+
+// CreateFlowGroupSignReview
+// 提交合同组签署流程审批结果的适用场景包括：
+//
+// 
+//
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByTemplates)创建合同组签署流程时，若指定了以下参数 为true，则可以调用此接口提交企业内部签署审批结果。即使是自动签署也需要进行审核通过才会进行签署。
+//
+//   - [FlowGroupInfo.NeedSignReview](https://qian.tencent.com/developers/companyApis/dataTypes/#flowgroupinfo)
+//
+//   - [ApproverInfo.ApproverNeedSignReview](https://qian.tencent.com/developers/companyApis/dataTypes/#approverinfo)
+//
+// 
+//
+// 
+//
+// 2. 同一合同组，同一签署人可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupSignReviewWithContext(ctx context.Context, request *CreateFlowGroupSignReviewRequest) (response *CreateFlowGroupSignReviewResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowGroupSignReviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowGroupSignReview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowGroupSignReviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowRemindsRequest() (request *CreateFlowRemindsRequest) {
     request = &CreateFlowRemindsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2901,11 +3018,65 @@ func NewCreateFlowSignReviewResponse() (response *CreateFlowSignReviewResponse) 
 }
 
 // CreateFlowSignReview
-// 提交签署流程审批结果的适用场景包括：
+// 提交企业流程审批结果 
 //
-// 1. 在使用模板（CreateFlow）或文件（CreateFlowByFiles）创建签署流程时，若指定了参数NeedSignReview为true，且发起方企业作为签署方参与了流程签署，则可以调用此接口提交企业内部签署审批结果。自动签署也需要进行审核通过才会进行签署。
+// **当前存在两种审核操作：**
 //
-// 2. 若签署流程状态正常，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+// <ul>
+//
+// <li>签署审核
+//
+// <ul>
+//
+// <li>在通过接口<ul>
+//
+// <li>CreateFlowByFiles</li>
+//
+// <li>CreateFlow</li>
+//
+// <li>CreateFlowGroupByTemplates</li>
+//
+// <li>CreateFlowGroupByFiles</li>
+//
+// <li>CreatePrepareFlow</li>
+//
+// </ul> 
+//
+// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+//
+// <li>在通过接口
+//
+// <ul>
+//
+// <li>CreateFlowByFiles</li>
+//
+// <li>CreateFlow</li>
+//
+// <li>CreateFlowGroupByTemplates</li>
+//
+// <li>CreateFlowGroupByFiles</li>
+//
+// </ul>
+//
+// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+//
+// </ul>
+//
+// </li>
+//
+// <li>发起审核
+//
+//  <ul>
+//
+// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+//
+// </li>
+//
+// </ul>
+//
+// </li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2934,11 +3105,65 @@ func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (res
 }
 
 // CreateFlowSignReview
-// 提交签署流程审批结果的适用场景包括：
+// 提交企业流程审批结果 
 //
-// 1. 在使用模板（CreateFlow）或文件（CreateFlowByFiles）创建签署流程时，若指定了参数NeedSignReview为true，且发起方企业作为签署方参与了流程签署，则可以调用此接口提交企业内部签署审批结果。自动签署也需要进行审核通过才会进行签署。
+// **当前存在两种审核操作：**
 //
-// 2. 若签署流程状态正常，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+// <ul>
+//
+// <li>签署审核
+//
+// <ul>
+//
+// <li>在通过接口<ul>
+//
+// <li>CreateFlowByFiles</li>
+//
+// <li>CreateFlow</li>
+//
+// <li>CreateFlowGroupByTemplates</li>
+//
+// <li>CreateFlowGroupByFiles</li>
+//
+// <li>CreatePrepareFlow</li>
+//
+// </ul> 
+//
+// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+//
+// <li>在通过接口
+//
+// <ul>
+//
+// <li>CreateFlowByFiles</li>
+//
+// <li>CreateFlow</li>
+//
+// <li>CreateFlowGroupByTemplates</li>
+//
+// <li>CreateFlowGroupByFiles</li>
+//
+// </ul>
+//
+// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+//
+// </ul>
+//
+// </li>
+//
+// <li>发起审核
+//
+//  <ul>
+//
+// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+//
+// </li>
+//
+// </ul>
+//
+// </li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

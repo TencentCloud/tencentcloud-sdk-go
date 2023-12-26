@@ -678,7 +678,7 @@ func NewCreateBasicDBInstancesResponse() (response *CreateBasicDBInstancesRespon
 }
 
 // CreateBasicDBInstances
-// 本接口（CreateBasicDBInstances）用于创建SQL server基础版实例。
+// 本接口（CreateBasicDBInstances）用于创建基础版实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -700,7 +700,7 @@ func (c *Client) CreateBasicDBInstances(request *CreateBasicDBInstancesRequest) 
 }
 
 // CreateBasicDBInstances
-// 本接口（CreateBasicDBInstances）用于创建SQL server基础版实例。
+// 本接口（CreateBasicDBInstances）用于创建基础版实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -753,7 +753,7 @@ func NewCreateBusinessDBInstancesResponse() (response *CreateBusinessDBInstances
 }
 
 // CreateBusinessDBInstances
-// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -776,7 +776,7 @@ func (c *Client) CreateBusinessDBInstances(request *CreateBusinessDBInstancesReq
 }
 
 // CreateBusinessDBInstances
-// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -887,7 +887,7 @@ func NewCreateCloudDBInstancesResponse() (response *CreateCloudDBInstancesRespon
 }
 
 // CreateCloudDBInstances
-// 本接口（CreateCloudDBInstances）用于创建高可用实例(虚拟机版本)。
+// 本接口（CreateCloudDBInstances）用于创建高可用实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -910,7 +910,7 @@ func (c *Client) CreateCloudDBInstances(request *CreateCloudDBInstancesRequest) 
 }
 
 // CreateCloudDBInstances
-// 本接口（CreateCloudDBInstances）用于创建高可用实例(虚拟机版本)。
+// 本接口（CreateCloudDBInstances）用于创建高可用实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -964,7 +964,7 @@ func NewCreateCloudReadOnlyDBInstancesResponse() (response *CreateCloudReadOnlyD
 }
 
 // CreateCloudReadOnlyDBInstances
-// 本接口（CreateCloudReadOnlyDBInstances）用于添加只读副本实例(虚拟机版本)。
+// 本接口（CreateCloudReadOnlyDBInstances）用于创建只读实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -990,7 +990,7 @@ func (c *Client) CreateCloudReadOnlyDBInstances(request *CreateCloudReadOnlyDBIn
 }
 
 // CreateCloudReadOnlyDBInstances
-// 本接口（CreateCloudReadOnlyDBInstances）用于添加只读副本实例(虚拟机版本)。
+// 本接口（CreateCloudReadOnlyDBInstances）用于创建只读实例 (云盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -1128,7 +1128,7 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 }
 
 // CreateDBInstances
-// 本接口（CreateDBInstances）用于创建实例。
+// 本接口（CreateDBInstances）用于创建高可用实例 (本地盘)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -1151,7 +1151,7 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 }
 
 // CreateDBInstances
-// 本接口（CreateDBInstances）用于创建实例。
+// 本接口（CreateDBInstances）用于创建高可用实例 (本地盘)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -1426,7 +1426,7 @@ func NewCreateReadOnlyDBInstancesResponse() (response *CreateReadOnlyDBInstances
 }
 
 // CreateReadOnlyDBInstances
-// 本接口（CreateReadOnlyDBInstances）用于添加只读副本实例。
+// 本接口（CreateReadOnlyDBInstances）用于创建只读实例 (本地盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -1450,7 +1450,7 @@ func (c *Client) CreateReadOnlyDBInstances(request *CreateReadOnlyDBInstancesReq
 }
 
 // CreateReadOnlyDBInstances
-// 本接口（CreateReadOnlyDBInstances）用于添加只读副本实例。
+// 本接口（CreateReadOnlyDBInstances）用于创建只读实例 (本地盘)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"

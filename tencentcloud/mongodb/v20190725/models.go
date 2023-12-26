@@ -20,6 +20,19 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AddNodeList struct {
+	// 需要删除的节点角色。
+	// - SECONDARY：Mongod 节点。
+	// - READONLY：只读节点。
+	// - MONGOS：Mongos 节点。
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 节点所对应的可用区。
+	// - 单可用区，所有节点在同一可用区。
+	// - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置新增节点对应的可用区，且新增后必须满足任意2个可用区节点数大于第3个可用区原则。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+}
+
 // Predefined struct for user
 type AssignProjectRequestParams struct {
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
@@ -3366,6 +3379,12 @@ type ModifyDBInstanceSpecRequestParams struct {
 	// 实例配置变更的切换时间。<ul><li>0：调整完成时，立即执行变配任务。默认为0。</li><li>1：在维护时间窗内，执行变配任务。
 	// <b>说明</b>：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。</li></ul>
 	InMaintenance *uint64 `json:"InMaintenance,omitnil" name:"InMaintenance"`
+
+	// 新增节点属性列表。
+	AddNodeList []*AddNodeList `json:"AddNodeList,omitnil" name:"AddNodeList"`
+
+	// 删除节点属性列表。
+	RemoveNodeList []*RemoveNodeList `json:"RemoveNodeList,omitnil" name:"RemoveNodeList"`
 }
 
 type ModifyDBInstanceSpecRequest struct {
@@ -3399,6 +3418,12 @@ type ModifyDBInstanceSpecRequest struct {
 	// 实例配置变更的切换时间。<ul><li>0：调整完成时，立即执行变配任务。默认为0。</li><li>1：在维护时间窗内，执行变配任务。
 	// <b>说明</b>：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。</li></ul>
 	InMaintenance *uint64 `json:"InMaintenance,omitnil" name:"InMaintenance"`
+
+	// 新增节点属性列表。
+	AddNodeList []*AddNodeList `json:"AddNodeList,omitnil" name:"AddNodeList"`
+
+	// 删除节点属性列表。
+	RemoveNodeList []*RemoveNodeList `json:"RemoveNodeList,omitnil" name:"RemoveNodeList"`
 }
 
 func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
@@ -3420,6 +3445,8 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 	delete(f, "NodeNum")
 	delete(f, "ReplicateSetNum")
 	delete(f, "InMaintenance")
+	delete(f, "AddNodeList")
+	delete(f, "RemoveNodeList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSpecRequest has unknown keys!", "")
 	}
@@ -3581,6 +3608,25 @@ type Operation struct {
 
 	// 操作序号
 	OpId *int64 `json:"OpId,omitnil" name:"OpId"`
+}
+
+type RemoveNodeList struct {
+	// 需要删除的节点角色。
+	// - SECONDARY：Mongod 节点。
+	// - READONLY：只读节点。
+	// - MONGOS：Mongos 节点。
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对改组对齐。
+	// 
+	// - 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/)，在**节点管理**页签，可获取**节点 ID**。
+	// - 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk****_0-node-primary。
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 节点所对应的可用区。
+	// - 单可用区，所有节点在同一可用区。
+	// - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置所删除节点对应的可用区，且删除后必须满足任意2个可用区节点数大于第3个可用区原则。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 }
 
 // Predefined struct for user

@@ -2690,6 +2690,7 @@ func NewDescribeRecordPlaybackUrlResponse() (response *DescribeRecordPlaybackUrl
 //  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_UNOPENEDINTRANETSERVICESINREGION = "UnsupportedOperation.UnopenedIntranetServicesInRegion"
 func (c *Client) DescribeRecordPlaybackUrl(request *DescribeRecordPlaybackUrlRequest) (response *DescribeRecordPlaybackUrlResponse, err error) {
     return c.DescribeRecordPlaybackUrlWithContext(context.Background(), request)
 }
@@ -2707,6 +2708,7 @@ func (c *Client) DescribeRecordPlaybackUrl(request *DescribeRecordPlaybackUrlReq
 //  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_UNOPENEDINTRANETSERVICESINREGION = "UnsupportedOperation.UnopenedIntranetServicesInRegion"
 func (c *Client) DescribeRecordPlaybackUrlWithContext(ctx context.Context, request *DescribeRecordPlaybackUrlRequest) (response *DescribeRecordPlaybackUrlResponse, err error) {
     if request == nil {
         request = NewDescribeRecordPlaybackUrlRequest()

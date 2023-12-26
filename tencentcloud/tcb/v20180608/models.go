@@ -2200,9 +2200,9 @@ type CreateWxCloudBaseRunServerDBClusterRequestParams struct {
 	// mysql内核版本，支持5.7,8.0
 	DbVersion *string `json:"DbVersion,omitnil" name:"DbVersion"`
 
-	// 0: 非大小写敏感
-	// 1: 大小写敏感
-	// 默认 0
+	// 0: 大小写敏感
+	// 1: 非大小写敏感
+	// 默认为0
 	LowerCaseTableName *string `json:"LowerCaseTableName,omitnil" name:"LowerCaseTableName"`
 }
 
@@ -2221,9 +2221,9 @@ type CreateWxCloudBaseRunServerDBClusterRequest struct {
 	// mysql内核版本，支持5.7,8.0
 	DbVersion *string `json:"DbVersion,omitnil" name:"DbVersion"`
 
-	// 0: 非大小写敏感
-	// 1: 大小写敏感
-	// 默认 0
+	// 0: 大小写敏感
+	// 1: 非大小写敏感
+	// 默认为0
 	LowerCaseTableName *string `json:"LowerCaseTableName,omitnil" name:"LowerCaseTableName"`
 }
 

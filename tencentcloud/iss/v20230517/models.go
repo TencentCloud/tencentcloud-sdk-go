@@ -131,7 +131,7 @@ type AddAITaskRequestParams struct {
 	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
 	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
-	// AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -153,7 +153,7 @@ type AddAITaskRequest struct {
 	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
 	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
-	// AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -2670,7 +2670,7 @@ type DescribeDeviceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
-	// 设备编码（即我们为设备生成的20位国标编码）
+	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil" name:"Code"`
 
@@ -4676,7 +4676,7 @@ type ListDeviceInfo struct {
 	// 设备 ID
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
-	// 设备国标编码
+	// 设备编码
 	Code *string `json:"Code,omitnil" name:"Code"`
 
 	// 设备状态。0:未注册，1:在线，2:离线，3:禁用
@@ -4721,7 +4721,10 @@ type ListDevicesRequestParams struct {
 	// 是否获取当前层级及子层级的设备列表，默认false
 	IsContainSubLevel *bool `json:"IsContainSubLevel,omitnil" name:"IsContainSubLevel"`
 
-	// 设备接入协议。1:RTMP，2:GB，3:GW
+	// 是否包含当前用户已关联的设备，默认false
+	IsContainUser *bool `json:"IsContainUser,omitnil" name:"IsContainUser"`
+
+	// 设备接入协议。1:RTMP，2:GB，3:GW，4:IVCP(私有协议)
 	AccessProtocol *uint64 `json:"AccessProtocol,omitnil" name:"AccessProtocol"`
 
 	// 设备类型。1:IPC，2:NVR
@@ -4733,7 +4736,7 @@ type ListDevicesRequestParams struct {
 	// 服务节点ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
-	// 模糊搜索设备关键字
+	// 模糊搜索设备的关键字
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 当前用户Uin
@@ -4755,7 +4758,10 @@ type ListDevicesRequest struct {
 	// 是否获取当前层级及子层级的设备列表，默认false
 	IsContainSubLevel *bool `json:"IsContainSubLevel,omitnil" name:"IsContainSubLevel"`
 
-	// 设备接入协议。1:RTMP，2:GB，3:GW
+	// 是否包含当前用户已关联的设备，默认false
+	IsContainUser *bool `json:"IsContainUser,omitnil" name:"IsContainUser"`
+
+	// 设备接入协议。1:RTMP，2:GB，3:GW，4:IVCP(私有协议)
 	AccessProtocol *uint64 `json:"AccessProtocol,omitnil" name:"AccessProtocol"`
 
 	// 设备类型。1:IPC，2:NVR
@@ -4767,7 +4773,7 @@ type ListDevicesRequest struct {
 	// 服务节点ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
-	// 模糊搜索设备关键字
+	// 模糊搜索设备的关键字
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 当前用户Uin
@@ -4794,6 +4800,7 @@ func (r *ListDevicesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OrganizationId")
 	delete(f, "IsContainSubLevel")
+	delete(f, "IsContainUser")
 	delete(f, "AccessProtocol")
 	delete(f, "Type")
 	delete(f, "Status")
@@ -6486,7 +6493,7 @@ type UpdateAITaskRequestParams struct {
 	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
 	ChannelList []*string `json:"ChannelList,omitnil" name:"ChannelList"`
 
-	// AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -6511,7 +6518,7 @@ type UpdateAITaskRequest struct {
 	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
 	ChannelList []*string `json:"ChannelList,omitnil" name:"ChannelList"`
 
-	// AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -7071,13 +7078,13 @@ type UpdateRecordBackupPlanData struct {
 }
 
 type UpdateRecordBackupPlanModify struct {
-	// 录像计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段）
+	// 录像上云计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段）
 	PlanName *string `json:"PlanName,omitnil" name:"PlanName"`
 
 	// 录制模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取，不修改模板ID时，不需要该字段）
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 录像计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段）
+	// 录像上云计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段）
 	Describe *string `json:"Describe,omitnil" name:"Describe"`
 
 	// 生命周期（录像文件生命周期设置，管理文件冷、热存储的时间，不修改生命周期时，不需要该字段）

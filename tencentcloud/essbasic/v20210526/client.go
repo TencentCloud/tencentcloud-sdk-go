@@ -2406,15 +2406,37 @@ func NewChannelCreateFlowSignReviewResponse() (response *ChannelCreateFlowSignRe
 }
 
 // ChannelCreateFlowSignReview
-// 提交企业流程审批结果
+// 提交企业流程审批结果 
 //
-// 目前存在两种审核操作，签署审核，发起审核
+// **当前存在两种审核操作：**
 //
-// 签署审核：通过接口（CreateFlowsByTemplates或ChannelCreateFlowByFiles或ChannelCreatePrepareFlow）发起签署流程后，若指定了参数 NeedSignReview 为true,则可以调用此接口，指定operate=SignReview，提交企业内部签署审批结果；若签署流程状态正常，且本企业存在签署方未签署，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效
+// <ul>
 //
-// 
+// <li>签署审核
 //
-// 发起审核：通过接口ChannelCreatePrepareFlow指定发起后需要审核，则可以通过调用此接口，指定operate=CreateReview，提交企业内部审批结果，可多次提交，当通过后，后续提交结果无效
+// <ul>
+//
+// <li>在通过接口<ul><li>CreateFlowsByTemplates</li><li>ChannelCreateFlowByFiles</li><li>ChannelCreateFlowGroupByTemplates</li><li>ChannelCreateFlowGroupByFiles</li><li>ChannelCreatePrepareFlow</li></ul> 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+//
+// <li>在通过接口<ul><li>CreateFlowsByTemplates</li><li>ChannelCreateFlowByFiles</li><li>ChannelCreateFlowGroupByTemplates</li><li>ChannelCreateFlowGroupByFiles</li></ul>发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+//
+// </ul>
+//
+// </li>
+//
+// <li>发起审核
+//
+//  <ul>
+//
+// <li>通过接口ChannelCreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+//
+// </li>
+//
+// </ul>
+//
+// </li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
@@ -2437,15 +2459,37 @@ func (c *Client) ChannelCreateFlowSignReview(request *ChannelCreateFlowSignRevie
 }
 
 // ChannelCreateFlowSignReview
-// 提交企业流程审批结果
+// 提交企业流程审批结果 
 //
-// 目前存在两种审核操作，签署审核，发起审核
+// **当前存在两种审核操作：**
 //
-// 签署审核：通过接口（CreateFlowsByTemplates或ChannelCreateFlowByFiles或ChannelCreatePrepareFlow）发起签署流程后，若指定了参数 NeedSignReview 为true,则可以调用此接口，指定operate=SignReview，提交企业内部签署审批结果；若签署流程状态正常，且本企业存在签署方未签署，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效
+// <ul>
 //
-// 
+// <li>签署审核
 //
-// 发起审核：通过接口ChannelCreatePrepareFlow指定发起后需要审核，则可以通过调用此接口，指定operate=CreateReview，提交企业内部审批结果，可多次提交，当通过后，后续提交结果无效
+// <ul>
+//
+// <li>在通过接口<ul><li>CreateFlowsByTemplates</li><li>ChannelCreateFlowByFiles</li><li>ChannelCreateFlowGroupByTemplates</li><li>ChannelCreateFlowGroupByFiles</li><li>ChannelCreatePrepareFlow</li></ul> 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+//
+// <li>在通过接口<ul><li>CreateFlowsByTemplates</li><li>ChannelCreateFlowByFiles</li><li>ChannelCreateFlowGroupByTemplates</li><li>ChannelCreateFlowGroupByFiles</li></ul>发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+//
+// </ul>
+//
+// </li>
+//
+// <li>发起审核
+//
+//  <ul>
+//
+// <li>通过接口ChannelCreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+//
+// </li>
+//
+// </ul>
+//
+// </li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
@@ -5260,6 +5304,103 @@ func (c *Client) CreateConsoleLoginUrlWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateConsoleLoginUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFlowGroupSignReviewRequest() (request *CreateFlowGroupSignReviewRequest) {
+    request = &CreateFlowGroupSignReviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateFlowGroupSignReview")
+    
+    
+    return
+}
+
+func NewCreateFlowGroupSignReviewResponse() (response *CreateFlowGroupSignReviewResponse) {
+    response = &CreateFlowGroupSignReviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowGroupSignReview
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
+//
+//   - [FlowInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowinfo)
+//
+//   - [FlowFileInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowfileinfo)
+//
+//   - [FlowApproverInfo.ApproverNeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo) 
+//
+// 
+//
+// 2. 同一合同组，同一签署人可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFlowGroupSignReview(request *CreateFlowGroupSignReviewRequest) (response *CreateFlowGroupSignReviewResponse, err error) {
+    return c.CreateFlowGroupSignReviewWithContext(context.Background(), request)
+}
+
+// CreateFlowGroupSignReview
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
+//
+//   - [FlowInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowinfo)
+//
+//   - [FlowFileInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowfileinfo)
+//
+//   - [FlowApproverInfo.ApproverNeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo) 
+//
+// 
+//
+// 2. 同一合同组，同一签署人可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFlowGroupSignReviewWithContext(ctx context.Context, request *CreateFlowGroupSignReviewRequest) (response *CreateFlowGroupSignReviewResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowGroupSignReviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowGroupSignReview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowGroupSignReviewResponse()
     err = c.Send(request, response)
     return
 }

@@ -193,7 +193,7 @@ type CompareObjectItem struct {
 }
 
 type CompareOptions struct {
-	// 对比类型：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+	// 对比方式：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil" name:"Method"`
 

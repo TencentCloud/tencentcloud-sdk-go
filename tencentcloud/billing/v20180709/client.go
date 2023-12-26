@@ -1388,6 +1388,7 @@ func NewDescribeDosageDetailByDateResponse() (response *DescribeDosageDetailByDa
 // 按日期获取产品用量明细
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 func (c *Client) DescribeDosageDetailByDate(request *DescribeDosageDetailByDateRequest) (response *DescribeDosageDetailByDateResponse, err error) {
     return c.DescribeDosageDetailByDateWithContext(context.Background(), request)
@@ -1397,6 +1398,7 @@ func (c *Client) DescribeDosageDetailByDate(request *DescribeDosageDetailByDateR
 // 按日期获取产品用量明细
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 func (c *Client) DescribeDosageDetailByDateWithContext(ctx context.Context, request *DescribeDosageDetailByDateRequest) (response *DescribeDosageDetailByDateResponse, err error) {
     if request == nil {
