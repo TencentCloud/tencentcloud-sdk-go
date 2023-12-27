@@ -38,6 +38,13 @@ func (c *RoleArnCredential) GetToken() string {
 	return c.token
 }
 
+func (c *RoleArnCredential) GetCredential() (string, string, string) {
+	if c.needRefresh() {
+		c.refresh()
+	}
+	return c.tmpSecretId, c.tmpSecretKey, c.token
+}
+
 func (c *RoleArnCredential) needRefresh() bool {
 	if c.tmpSecretKey == "" || c.tmpSecretId == "" || c.token == "" || c.expiredTime <= time.Now().Unix() {
 		return true
