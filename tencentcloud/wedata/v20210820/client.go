@@ -6601,6 +6601,55 @@ func (c *Client) DescribeFathersWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeFieldBasicInfoRequest() (request *DescribeFieldBasicInfoRequest) {
+    request = &DescribeFieldBasicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFieldBasicInfo")
+    
+    
+    return
+}
+
+func NewDescribeFieldBasicInfoResponse() (response *DescribeFieldBasicInfoResponse) {
+    response = &DescribeFieldBasicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFieldBasicInfo
+// 元数据模型-字段基础信息查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFieldBasicInfo(request *DescribeFieldBasicInfoRequest) (response *DescribeFieldBasicInfoResponse, err error) {
+    return c.DescribeFieldBasicInfoWithContext(context.Background(), request)
+}
+
+// DescribeFieldBasicInfo
+// 元数据模型-字段基础信息查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFieldBasicInfoWithContext(ctx context.Context, request *DescribeFieldBasicInfoRequest) (response *DescribeFieldBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFieldBasicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFieldBasicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFieldBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFolderListRequest() (request *DescribeFolderListRequest) {
     request = &DescribeFolderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11124,6 +11173,55 @@ func (c *Client) DescribeSuccessorOpsTaskInfosWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeTableBasicInfoRequest() (request *DescribeTableBasicInfoRequest) {
+    request = &DescribeTableBasicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableBasicInfo")
+    
+    
+    return
+}
+
+func NewDescribeTableBasicInfoResponse() (response *DescribeTableBasicInfoResponse) {
+    response = &DescribeTableBasicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableBasicInfo
+// 元数据模型-表基础信息查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTableBasicInfo(request *DescribeTableBasicInfoRequest) (response *DescribeTableBasicInfoResponse, err error) {
+    return c.DescribeTableBasicInfoWithContext(context.Background(), request)
+}
+
+// DescribeTableBasicInfo
+// 元数据模型-表基础信息查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTableBasicInfoWithContext(ctx context.Context, request *DescribeTableBasicInfoRequest) (response *DescribeTableBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableBasicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableBasicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableInfoListRequest() (request *DescribeTableInfoListRequest) {
     request = &DescribeTableInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11226,6 +11324,63 @@ func (c *Client) DescribeTableLineageWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeTableLineageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableLineageInfoRequest() (request *DescribeTableLineageInfoRequest) {
+    request = &DescribeTableLineageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableLineageInfo")
+    
+    
+    return
+}
+
+func NewDescribeTableLineageInfoResponse() (response *DescribeTableLineageInfoResponse) {
+    response = &DescribeTableLineageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableLineageInfo
+// 列出表血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableLineageInfo(request *DescribeTableLineageInfoRequest) (response *DescribeTableLineageInfoResponse, err error) {
+    return c.DescribeTableLineageInfoWithContext(context.Background(), request)
+}
+
+// DescribeTableLineageInfo
+// 列出表血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableLineageInfoWithContext(ctx context.Context, request *DescribeTableLineageInfoRequest) (response *DescribeTableLineageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableLineageInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableLineageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableLineageInfoResponse()
     err = c.Send(request, response)
     return
 }

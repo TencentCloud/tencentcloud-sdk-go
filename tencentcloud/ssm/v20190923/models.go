@@ -317,10 +317,10 @@ type CreateSecretRequestParams struct {
 	// 凭据类型，默认为自定义凭据。
 	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
-	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
+	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
 	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
-	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
+	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
 	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 
 	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
@@ -348,10 +348,10 @@ type CreateSecretRequest struct {
 	// 凭据类型，默认为自定义凭据。
 	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
-	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
+	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
 	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
-	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
+	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
 	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 
 	// JSON 格式字符串，用于指定特定凭据类型的额外配置。

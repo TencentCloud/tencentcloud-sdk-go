@@ -98,7 +98,7 @@ type AppearIndexPair struct {
 	// 出现信息，取值范围为[1，3]
 	AppearIndex *int64 `json:"AppearIndex,omitnil" name:"AppearIndex"`
 
-	// AppearInfo中AppearIndex对应元素的第Index元素，从0开始技术
+	// AppearInfo中AppearIndex对应元素的第Index元素，从0开始计数
 	Index *int64 `json:"Index,omitnil" name:"Index"`
 }
 

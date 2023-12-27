@@ -3231,6 +3231,84 @@ type ColumnAggregationLineage struct {
 	ColumnInfoSet []*SimpleColumnInfo `json:"ColumnInfoSet,omitnil" name:"ColumnInfoSet"`
 }
 
+type ColumnBasicInfo struct {
+	// 表的全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 数据源全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 数据源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
+
+	// 数据库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitnil" name:"ColumnName"`
+
+	// 数据类型,string/int等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataType *string `json:"DataType,omitnil" name:"DataType"`
+
+	// 字段类型, varchar(32)/int(10)等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnType *string `json:"ColumnType,omitnil" name:"ColumnType"`
+
+	// 字段默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnDefault *string `json:"ColumnDefault,omitnil" name:"ColumnDefault"`
+
+	// 索引类型, PRI/MUL/PARTITION等,普通字段该值为空串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnKey *string `json:"ColumnKey,omitnil" name:"ColumnKey"`
+
+	// 字段顺序标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnPosition *int64 `json:"ColumnPosition,omitnil" name:"ColumnPosition"`
+
+	// 字段注释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnComment *string `json:"ColumnComment,omitnil" name:"ColumnComment"`
+
+	// 数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoreType *string `json:"StoreType,omitnil" name:"StoreType"`
+
+	// 所属项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 所属项目英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 所属项目中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil" name:"ProjectDisplayName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
+
 type ColumnLineageInfo struct {
 	// 血缘id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12460,6 +12538,89 @@ func (r *DescribeFathersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFieldBasicInfoRequestParams struct {
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+type DescribeFieldBasicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+func (r *DescribeFieldBasicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFieldBasicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFieldBasicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFieldBasicInfoResponseParams struct {
+	// 字段元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnBasicInfoList []*ColumnBasicInfo `json:"ColumnBasicInfoList,omitnil" name:"ColumnBasicInfoList"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeFieldBasicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFieldBasicInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeFieldBasicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFieldBasicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFolderListData struct {
 	// 文件夹信息列表
 	Items []*Folder `json:"Items,omitnil" name:"Items"`
@@ -19998,6 +20159,89 @@ func (r *DescribeSuccessorOpsTaskInfosResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableBasicInfoRequestParams struct {
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+type DescribeTableBasicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 过滤字段
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil" name:"OrderFields"`
+}
+
+func (r *DescribeTableBasicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableBasicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableBasicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableBasicInfoResponseParams struct {
+	// 表元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableBasicInfoList []*TableBasicInfo `json:"TableBasicInfoList,omitnil" name:"TableBasicInfoList"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTableBasicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableBasicInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableBasicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableBasicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableInfoListRequestParams struct {
 	// 表名
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -20066,6 +20310,106 @@ func (r *DescribeTableInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTableInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableLineageInfoRequestParams struct {
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
+
+	// 表信息
+	Data *TableLineageInfo `json:"Data,omitnil" name:"Data"`
+
+	// 单次查询入度,默认 1
+	InputDepth *int64 `json:"InputDepth,omitnil" name:"InputDepth"`
+
+	// 单次查询出度,默认 1
+	OutputDepth *int64 `json:"OutputDepth,omitnil" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*LineageParamRecord `json:"ExtParams,omitnil" name:"ExtParams"`
+
+	// 是否过滤临时表,默认true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitnil" name:"IgnoreTemp"`
+
+	// 是否递归查询二级节点数目，默认为true
+	RecursiveSecond *bool `json:"RecursiveSecond,omitnil" name:"RecursiveSecond"`
+}
+
+type DescribeTableLineageInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
+
+	// 表信息
+	Data *TableLineageInfo `json:"Data,omitnil" name:"Data"`
+
+	// 单次查询入度,默认 1
+	InputDepth *int64 `json:"InputDepth,omitnil" name:"InputDepth"`
+
+	// 单次查询出度,默认 1
+	OutputDepth *int64 `json:"OutputDepth,omitnil" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*LineageParamRecord `json:"ExtParams,omitnil" name:"ExtParams"`
+
+	// 是否过滤临时表,默认true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitnil" name:"IgnoreTemp"`
+
+	// 是否递归查询二级节点数目，默认为true
+	RecursiveSecond *bool `json:"RecursiveSecond,omitnil" name:"RecursiveSecond"`
+}
+
+func (r *DescribeTableLineageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableLineageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Direction")
+	delete(f, "Data")
+	delete(f, "InputDepth")
+	delete(f, "OutputDepth")
+	delete(f, "ExtParams")
+	delete(f, "IgnoreTemp")
+	delete(f, "RecursiveSecond")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableLineageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableLineageInfoResponseParams struct {
+	// 表血缘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableLineageBasicInfo *TableLineageBaseInfo `json:"TableLineageBasicInfo,omitnil" name:"TableLineageBasicInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTableLineageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableLineageInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableLineageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableLineageInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -34367,6 +34711,120 @@ type TableBaseInfo struct {
 	DbGovernPolicyIsDisable *string `json:"DbGovernPolicyIsDisable,omitnil" name:"DbGovernPolicyIsDisable"`
 }
 
+type TableBasicInfo struct {
+	// 表的全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 数据源全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 数据源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil" name:"DatasourceName"`
+
+	// 数据库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 引擎/存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
+
+	// 表类型，视图，外部表等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableType *string `json:"TableType,omitnil" name:"TableType"`
+
+	// 项目Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 所属项目英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 所属项目英中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil" name:"ProjectDisplayName"`
+
+	// 责任人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerId *string `json:"TableOwnerId,omitnil" name:"TableOwnerId"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil" name:"TableOwnerName"`
+
+	// 存储位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageLocation *int64 `json:"StorageLocation,omitnil" name:"StorageLocation"`
+
+	// 表描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 是否分区表，0-全量表 1-分区表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartitionTable *int64 `json:"IsPartitionTable,omitnil" name:"IsPartitionTable"`
+
+	// 分区字段list
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionColumns []*string `json:"PartitionColumns,omitnil" name:"PartitionColumns"`
+
+	// 存储格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageFormat *string `json:"StorageFormat,omitnil" name:"StorageFormat"`
+
+	// 存储量，字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *uint64 `json:"StorageSize,omitnil" name:"StorageSize"`
+
+	// 存储量，单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil" name:"StorageSizeWithUnit"`
+
+	// 累计存储【MB】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSizeMb *uint64 `json:"TotalSizeMb,omitnil" name:"TotalSizeMb"`
+
+	// 副本数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaCount *int64 `json:"ReplicaCount,omitnil" name:"ReplicaCount"`
+
+	// 文件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileCount *int64 `json:"FileCount,omitnil" name:"FileCount"`
+
+	// 分区总数（包含hive，iceberg）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionCount *int64 `json:"PartitionCount,omitnil" name:"PartitionCount"`
+
+	// 分区字段数量（包含hive，iceberg）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionFieldCount *int64 `json:"PartitionFieldCount,omitnil" name:"PartitionFieldCount"`
+
+	// 生命周期-分区保留天数【分区保留策略时有效】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionExpireDays *int64 `json:"PartitionExpireDays,omitnil" name:"PartitionExpireDays"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
+
 type TableConfig struct {
 	// 数据库Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -34427,6 +34885,84 @@ type TableInfo struct {
 	// 表schemaName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginSchemaName *string `json:"OriginSchemaName,omitnil" name:"OriginSchemaName"`
+}
+
+type TableLineageBaseInfo struct {
+	// 元数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitnil" name:"MetastoreType"`
+
+	// 由中心节点到该节点的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitnil" name:"PrefixPath"`
+
+	// 空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil" name:"TableId"`
+
+	// 表血缘参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*LineageParamRecord `json:"Params,omitnil" name:"Params"`
+
+	// 父节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet *string `json:"ParentSet,omitnil" name:"ParentSet"`
+
+	// 子节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet *string `json:"ChildSet,omitnil" name:"ChildSet"`
+
+	// 额外参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtParams []*RecordField `json:"ExtParams,omitnil" name:"ExtParams"`
+
+	// 血缘id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 元数据类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreTypeName *string `json:"MetastoreTypeName,omitnil" name:"MetastoreTypeName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 表全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitnil" name:"QualifiedName"`
+
+	// 血缘下游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitnil" name:"DownStreamCount"`
+
+	// 血缘上游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitnil" name:"UpStreamCount"`
+
+	// 血缘描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 血缘创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 血缘更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 修改血缘的任务id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*string `json:"Tasks,omitnil" name:"Tasks"`
 }
 
 type TableLineageInfo struct {

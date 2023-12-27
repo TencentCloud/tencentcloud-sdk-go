@@ -2176,7 +2176,7 @@ func (r *ContinueRunFailedTaskBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ContinueRunFailedTaskBatchResponseParams struct {
-	// 成功或失败
+	// true：操作成功、false：操作失败
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1205,21 +1205,39 @@ type ResourceQuota struct {
 
 // Predefined struct for user
 type RetryRunsRequestParams struct {
-	// 关联项目ID。
+	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 任务UUID。
+	// 需要重试的任务批次ID。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
+	// 需要重试的任务UUID。
 	RunUuids []*string `json:"RunUuids,omitnil" name:"RunUuids"`
+
+	// WDL运行选项，不填使用被重试的任务批次运行选项。
+	WDLOption *RunOption `json:"WDLOption,omitnil" name:"WDLOption"`
+
+	// Nextflow运行选项，不填使用被重试的任务批次运行选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
 }
 
 type RetryRunsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关联项目ID。
+	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 任务UUID。
+	// 需要重试的任务批次ID。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
+	// 需要重试的任务UUID。
 	RunUuids []*string `json:"RunUuids,omitnil" name:"RunUuids"`
+
+	// WDL运行选项，不填使用被重试的任务批次运行选项。
+	WDLOption *RunOption `json:"WDLOption,omitnil" name:"WDLOption"`
+
+	// Nextflow运行选项，不填使用被重试的任务批次运行选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
 }
 
 func (r *RetryRunsRequest) ToJsonString() string {
@@ -1235,7 +1253,10 @@ func (r *RetryRunsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
+	delete(f, "RunGroupId")
 	delete(f, "RunUuids")
+	delete(f, "WDLOption")
+	delete(f, "NFOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryRunsRequest has unknown keys!", "")
 	}
@@ -1244,6 +1265,10 @@ func (r *RetryRunsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RetryRunsResponseParams struct {
+	// 新的任务批次ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunGroupId *string `json:"RunGroupId,omitnil" name:"RunGroupId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

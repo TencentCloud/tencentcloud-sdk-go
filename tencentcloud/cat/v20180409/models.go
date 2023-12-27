@@ -272,7 +272,7 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 	// 	
 	// 这里实际按拨测结果中的地区来填写即可
 	// 
-	// 国内一般是省级单位，如广东、广西、中国香港、新疆；直辖市则填北京、上海
+	// 国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
 	// 
 	// 境外一般是国家名，如澳大利亚、新加坡
 	Districts []*string `json:"Districts,omitnil" name:"Districts"`
@@ -348,7 +348,7 @@ type DescribeDetailedSingleProbeDataRequest struct {
 	// 	
 	// 这里实际按拨测结果中的地区来填写即可
 	// 
-	// 国内一般是省级单位，如广东、广西、中国香港、新疆；直辖市则填北京、上海
+	// 国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
 	// 
 	// 境外一般是国家名，如澳大利亚、新加坡
 	Districts []*string `json:"Districts,omitnil" name:"Districts"`

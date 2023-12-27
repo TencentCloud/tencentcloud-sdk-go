@@ -884,6 +884,8 @@ func (r *ChannelCreateBatchCancelFlowUrlRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ChannelCreateBatchCancelFlowUrlResponseParams struct {
 	// 批量撤销合同的URL链接, 需要在手机端打开, 有效期24小时
+	// 
+	// 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	BatchCancelFlowUrl *string `json:"BatchCancelFlowUrl,omitnil" name:"BatchCancelFlowUrl"`
 
 	// 与入参的FlowIds数组一致,   成功生成到撤销链接中,则为"",   不能撤销合同则为失败原因
@@ -1236,7 +1238,9 @@ func (r *ChannelCreateBatchSignUrlRequest) FromJsonString(s string) error {
 type ChannelCreateBatchSignUrlResponseParams struct {
 	// 批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
 	// 
-	// 注: `非小程序和APP集成使用`
+	// 注: 
+	// 1. 非小程序和APP集成使用
+	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
 
 	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
@@ -1244,7 +1248,9 @@ type ChannelCreateBatchSignUrlResponseParams struct {
 
 	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 	// 
-	// 注: `小程序和APP集成使用`
+	// 注: 
+	// 1. 小程序和APP集成使用
+	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	MiniAppPath *string `json:"MiniAppPath,omitnil" name:"MiniAppPath"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6445,9 +6451,11 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 type CreateConsoleLoginUrlResponseParams struct {
 	// 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
 	// <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP</td> <td>一年</td>  </tr> </tbody> </table>
+	// 
 	// 注： 
-	// `1.链接仅单次有效，每次登录需要需要重新创建新的链接`
-	// `2.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+	// 1. <font color="red">链接仅单次有效</font>，每次登录需要需要重新创建新的链接
+	// 2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
+	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	ConsoleUrl *string `json:"ConsoleUrl,omitnil" name:"ConsoleUrl"`
 
 	// 子客企业是否已开通腾讯电子签，
@@ -8964,10 +8972,12 @@ type FlowApproverItem struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署短链接。</br>
+	// 签署短链接。
+	// 
 	// 注意:
-	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
-	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
+	// 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
+	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
 
 	// 签署人类型。
@@ -8980,10 +8990,12 @@ type FlowApproverUrlInfo struct {
 	// 签署人手机号。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 签署长链接。</br>
+	// 签署长链接。
+	// 
 	// 注意:
-	// - 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
-	// - 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
+	// 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+	// 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
+	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongUrl *string `json:"LongUrl,omitnil" name:"LongUrl"`
 }
@@ -10210,6 +10222,8 @@ type SignUrl struct {
 
 type SignUrlInfo struct {
 	// 签署链接，过期时间为90天
+	// 
+	// 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
 
