@@ -46,21 +46,18 @@ func signRequest(request tchttp.Request, credential CredentialIface, method stri
 	if method != SHA256 {
 		method = SHA1
 	}
-	checkAuthParams(request, credential, method)
-	s := getStringToSign(request)
-	signature := Sign(s, credential.GetSecretKey(), method)
-	request.GetParams()["Signature"] = signature
-	return
-}
-
-func checkAuthParams(request tchttp.Request, credential CredentialIface, method string) {
 	params := request.GetParams()
-	params["SecretId"] = credential.GetSecretId()
-	if token := credential.GetToken(); len(token) != 0 {
+	secId, secKey, token := credential.GetCredential()
+	params["SecretId"] = secId
+	if len(token) != 0 {
 		params["Token"] = token
 	}
 	params["SignatureMethod"] = method
 	delete(params, "Signature")
+	s := getStringToSign(request)
+	signature := Sign(s, secKey, method)
+	request.GetParams()["Signature"] = signature
+	return
 }
 
 func getStringToSign(request tchttp.Request) string {

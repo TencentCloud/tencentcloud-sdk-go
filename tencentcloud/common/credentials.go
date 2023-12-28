@@ -6,6 +6,7 @@ type CredentialIface interface {
 	GetSecretId() string
 	GetToken() string
 	GetSecretKey() string
+	GetCredential() (string, string, string)
 	// needRefresh() bool
 	// refresh()
 }
@@ -48,4 +49,8 @@ func (c *Credential) GetSecretId() string {
 
 func (c *Credential) GetToken() string {
 	return c.Token
+}
+
+func (c *Credential) GetCredential() (string, string, string) {
+	return c.SecretId, c.SecretKey, c.Token
 }

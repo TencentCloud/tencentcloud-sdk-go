@@ -37,6 +37,13 @@ func (c *CvmRoleCredential) GetSecretKey() string {
 	return c.tmpSecretKey
 }
 
+func (c *CvmRoleCredential) GetCredential() (string, string, string) {
+	if c.needRefresh() {
+		c.refresh()
+	}
+	return c.tmpSecretId, c.tmpSecretKey, c.token
+}
+
 func (c *CvmRoleCredential) needRefresh() bool {
 	if c.tmpSecretId == "" || c.tmpSecretKey == "" || c.token == "" || c.expiredTime-ExpiredTimeout <= time.Now().Unix() {
 		return true

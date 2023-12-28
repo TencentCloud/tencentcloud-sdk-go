@@ -291,8 +291,9 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if c.region != "" {
 		headers["X-TC-Region"] = c.region
 	}
-	if c.credential.GetToken() != "" {
-		headers["X-TC-Token"] = c.credential.GetToken()
+	secId, secKey, token := c.credential.GetCredential()
+	if token != "" {
+		headers["X-TC-Token"] = token
 	}
 	if request.GetHttpMethod() == "GET" {
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
@@ -409,7 +410,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	//log.Println("string2sign", string2sign)
 
 	// sign string
-	secretDate := hmacsha256(date, "TC3"+c.credential.GetSecretKey())
+	secretDate := hmacsha256(date, "TC3"+secKey)
 	secretService := hmacsha256(request.GetService(), secretDate)
 	secretKey := hmacsha256("tc3_request", secretService)
 	signature := hex.EncodeToString([]byte(hmacsha256(string2sign, secretKey)))
@@ -418,7 +419,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	// build authorization
 	authorization := fmt.Sprintf("%s Credential=%s/%s, SignedHeaders=%s, Signature=%s",
 		algorithm,
-		c.credential.GetSecretId(),
+		secId,
 		credentialScope,
 		signedHeaders,
 		signature)
