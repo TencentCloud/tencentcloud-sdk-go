@@ -2013,6 +2013,59 @@ func (c *Client) FetchSqlGatewayStatementResultWithContext(ctx context.Context, 
     return
 }
 
+func NewGetMetaTableRequest() (request *GetMetaTableRequest) {
+    request = &GetMetaTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "GetMetaTable")
+    
+    
+    return
+}
+
+func NewGetMetaTableResponse() (response *GetMetaTableResponse) {
+    response = &GetMetaTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetMetaTable
+// 查询元数据表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TABLENOTEXIST = "ResourceNotFound.TableNotExist"
+func (c *Client) GetMetaTable(request *GetMetaTableRequest) (response *GetMetaTableResponse, err error) {
+    return c.GetMetaTableWithContext(context.Background(), request)
+}
+
+// GetMetaTable
+// 查询元数据表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TABLENOTEXIST = "ResourceNotFound.TableNotExist"
+func (c *Client) GetMetaTableWithContext(ctx context.Context, request *GetMetaTableRequest) (response *GetMetaTableResponse, err error) {
+    if request == nil {
+        request = NewGetMetaTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMetaTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMetaTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFolderRequest() (request *ModifyFolderRequest) {
     request = &ModifyFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},

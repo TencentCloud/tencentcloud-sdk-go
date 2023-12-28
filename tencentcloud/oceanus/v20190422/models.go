@@ -3216,6 +3216,101 @@ type GatewayRefItem struct {
 	Type *uint64 `json:"Type,omitnil" name:"Type"`
 }
 
+// Predefined struct for user
+type GetMetaTableRequestParams struct {
+	// Catalog名
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// Database名
+	Database *string `json:"Database,omitnil" name:"Database"`
+
+	// Table名
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 空间唯一标识
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+type GetMetaTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// Catalog名
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// Database名
+	Database *string `json:"Database,omitnil" name:"Database"`
+
+	// Table名
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 空间唯一标识
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+}
+
+func (r *GetMetaTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMetaTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Catalog")
+	delete(f, "Database")
+	delete(f, "Table")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMetaTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMetaTableResponseParams struct {
+	// 元数据表唯一标识
+	SerialId *string `json:"SerialId,omitnil" name:"SerialId"`
+
+	// Catalog名
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// Database名
+	Database *string `json:"Database,omitnil" name:"Database"`
+
+	// Table名
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 建表语句,使用 Base64 编码。
+	// 例如
+	// Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=
+	DDL *string `json:"DDL,omitnil" name:"DDL"`
+
+	// 场景时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetMetaTableResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMetaTableResponseParams `json:"Response"`
+}
+
+func (r *GetMetaTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMetaTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type JobConfig struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`

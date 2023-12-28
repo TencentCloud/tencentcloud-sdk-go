@@ -212,13 +212,57 @@ type CreatePPTCheckTaskRequestParams struct {
 	// 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，例如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 是否对不支持元素开启自动处理的功能，默认不开启。
+	// true -- 开启
+	// false -- 不开启
 	// 
-	// 在开启自动处理的情况下，会自动进行如下处理：
-	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	// 当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+	// 
+	// 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+	// 
+	// 目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+	// 0: 不支持的墨迹类型
+	// -- 自动处理方式：移除墨迹
+	// 
+	// 1: 自动翻页
+	// -- 自动处理方式：移除自动翻页设置，并修改为单击切换
+	// 
+	// 2: 已损坏音视频
+	// -- 自动处理方式：移除对损坏音视频的引用
+	// 
+	// 3: 不可访问资源
+	// -- 自动处理方式：移除对不可访问的资源的引用
+	// 
+	// 4: 只读文件
+	// -- 自动处理方式：移除只读设置
+	// 
+	// 5: 不支持的元素编辑锁定状态
+	// -- 自动处理方式：移除锁定状态
+	// 
+	// 6: 可能有兼容问题的字体
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 7: 设置了柔化边缘的GIF图片
+	// -- 自动处理方式：移除柔化边缘设置
+	// 
+	// 8: 存在不兼容的空格下划线
+	// -- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+	// 
+	// 9: 存在设置了分段动画的数学公式和文本混合内容
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 10: 存在设置了分段动画的渐变色文本
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 11: 存在不兼容的分散对齐方式
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 12: 存在不兼容的多倍行距设置
+	// -- 自动处理方式： 不支持处理
+	AutoHandleUnsupportedElementTypes []*int64 `json:"AutoHandleUnsupportedElementTypes,omitnil" name:"AutoHandleUnsupportedElementTypes"`
 }
 
 type CreatePPTCheckTaskRequest struct {
@@ -230,13 +274,57 @@ type CreatePPTCheckTaskRequest struct {
 	// 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，例如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 是否对不支持元素开启自动处理的功能，默认不开启。
+	// true -- 开启
+	// false -- 不开启
 	// 
-	// 在开启自动处理的情况下，会自动进行如下处理：
-	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	// 当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+	// 
+	// 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+	// 
+	// 目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+	// 0: 不支持的墨迹类型
+	// -- 自动处理方式：移除墨迹
+	// 
+	// 1: 自动翻页
+	// -- 自动处理方式：移除自动翻页设置，并修改为单击切换
+	// 
+	// 2: 已损坏音视频
+	// -- 自动处理方式：移除对损坏音视频的引用
+	// 
+	// 3: 不可访问资源
+	// -- 自动处理方式：移除对不可访问的资源的引用
+	// 
+	// 4: 只读文件
+	// -- 自动处理方式：移除只读设置
+	// 
+	// 5: 不支持的元素编辑锁定状态
+	// -- 自动处理方式：移除锁定状态
+	// 
+	// 6: 可能有兼容问题的字体
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 7: 设置了柔化边缘的GIF图片
+	// -- 自动处理方式：移除柔化边缘设置
+	// 
+	// 8: 存在不兼容的空格下划线
+	// -- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+	// 
+	// 9: 存在设置了分段动画的数学公式和文本混合内容
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 10: 存在设置了分段动画的渐变色文本
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 11: 存在不兼容的分散对齐方式
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 12: 存在不兼容的多倍行距设置
+	// -- 自动处理方式： 不支持处理
+	AutoHandleUnsupportedElementTypes []*int64 `json:"AutoHandleUnsupportedElementTypes,omitnil" name:"AutoHandleUnsupportedElementTypes"`
 }
 
 func (r *CreatePPTCheckTaskRequest) ToJsonString() string {
@@ -254,6 +342,7 @@ func (r *CreatePPTCheckTaskRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Url")
 	delete(f, "AutoHandleUnsupportedElement")
+	delete(f, "AutoHandleUnsupportedElementTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePPTCheckTaskRequest has unknown keys!", "")
 	}
@@ -434,13 +523,58 @@ type CreateTranscodeRequestParams struct {
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil" name:"MinScaleResolution"`
 
 	// 此参数仅对动态转码生效。
-	// 是否对不支持元素开启自动处理的功能。默认不开启。
 	// 
-	// 在开启自动处理的情况下，会自动进行如下处理：
-	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	// 是否对不支持元素开启自动处理的功能，默认不开启。
+	// true -- 开启
+	// false -- 不开启
+	// 
+	// 当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+	// 
+	// 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+	// 
+	// 目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+	// 0: 不支持的墨迹类型
+	// -- 自动处理方式：移除墨迹
+	// 
+	// 1: 自动翻页
+	// -- 自动处理方式：移除自动翻页设置，并修改为单击切换
+	// 
+	// 2: 已损坏音视频
+	// -- 自动处理方式：移除对损坏音视频的引用
+	// 
+	// 3: 不可访问资源
+	// -- 自动处理方式：移除对不可访问的资源的引用
+	// 
+	// 4: 只读文件
+	// -- 自动处理方式：移除只读设置
+	// 
+	// 5: 不支持的元素编辑锁定状态
+	// -- 自动处理方式：移除锁定状态
+	// 
+	// 6: 可能有兼容问题的字体
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 7: 设置了柔化边缘的GIF图片
+	// -- 自动处理方式：移除柔化边缘设置
+	// 
+	// 8: 存在不兼容的空格下划线
+	// -- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+	// 
+	// 9: 存在设置了分段动画的数学公式和文本混合内容
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 10: 存在设置了分段动画的渐变色文本
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 11: 存在不兼容的分散对齐方式
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 12: 存在不兼容的多倍行距设置
+	// -- 自动处理方式： 不支持处理
+	AutoHandleUnsupportedElementTypes []*int64 `json:"AutoHandleUnsupportedElementTypes,omitnil" name:"AutoHandleUnsupportedElementTypes"`
 
 	// Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
 	ExcelParam *ExcelParam `json:"ExcelParam,omitnil" name:"ExcelParam"`
@@ -492,13 +626,58 @@ type CreateTranscodeRequest struct {
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil" name:"MinScaleResolution"`
 
 	// 此参数仅对动态转码生效。
-	// 是否对不支持元素开启自动处理的功能。默认不开启。
 	// 
-	// 在开启自动处理的情况下，会自动进行如下处理：
-	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	// 是否对不支持元素开启自动处理的功能，默认不开启。
+	// true -- 开启
+	// false -- 不开启
+	// 
+	// 当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
+
+	// 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+	// 
+	// 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+	// 
+	// 目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+	// 0: 不支持的墨迹类型
+	// -- 自动处理方式：移除墨迹
+	// 
+	// 1: 自动翻页
+	// -- 自动处理方式：移除自动翻页设置，并修改为单击切换
+	// 
+	// 2: 已损坏音视频
+	// -- 自动处理方式：移除对损坏音视频的引用
+	// 
+	// 3: 不可访问资源
+	// -- 自动处理方式：移除对不可访问的资源的引用
+	// 
+	// 4: 只读文件
+	// -- 自动处理方式：移除只读设置
+	// 
+	// 5: 不支持的元素编辑锁定状态
+	// -- 自动处理方式：移除锁定状态
+	// 
+	// 6: 可能有兼容问题的字体
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 7: 设置了柔化边缘的GIF图片
+	// -- 自动处理方式：移除柔化边缘设置
+	// 
+	// 8: 存在不兼容的空格下划线
+	// -- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+	// 
+	// 9: 存在设置了分段动画的数学公式和文本混合内容
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 10: 存在设置了分段动画的渐变色文本
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 11: 存在不兼容的分散对齐方式
+	// -- 自动处理方式： 不支持处理
+	// 
+	// 12: 存在不兼容的多倍行距设置
+	// -- 自动处理方式： 不支持处理
+	AutoHandleUnsupportedElementTypes []*int64 `json:"AutoHandleUnsupportedElementTypes,omitnil" name:"AutoHandleUnsupportedElementTypes"`
 
 	// Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
 	ExcelParam *ExcelParam `json:"ExcelParam,omitnil" name:"ExcelParam"`
@@ -526,6 +705,7 @@ func (r *CreateTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "Priority")
 	delete(f, "MinScaleResolution")
 	delete(f, "AutoHandleUnsupportedElement")
+	delete(f, "AutoHandleUnsupportedElementTypes")
 	delete(f, "ExcelParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeRequest has unknown keys!", "")

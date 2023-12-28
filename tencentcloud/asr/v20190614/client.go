@@ -1672,6 +1672,7 @@ func NewVoicePrintEnrollResponse() (response *VoicePrintEnrollResponse) {
 //  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 //  LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VoicePrintEnroll(request *VoicePrintEnrollRequest) (response *VoicePrintEnrollResponse, err error) {
@@ -1706,6 +1707,7 @@ func (c *Client) VoicePrintEnroll(request *VoicePrintEnrollRequest) (response *V
 //  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 //  LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VoicePrintEnrollWithContext(ctx context.Context, request *VoicePrintEnrollRequest) (response *VoicePrintEnrollResponse, err error) {
@@ -1759,6 +1761,7 @@ func NewVoicePrintUpdateResponse() (response *VoicePrintUpdateResponse) {
 //  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VoicePrintUpdate(request *VoicePrintUpdateRequest) (response *VoicePrintUpdateResponse, err error) {
     return c.VoicePrintUpdateWithContext(context.Background(), request)
@@ -1780,6 +1783,7 @@ func (c *Client) VoicePrintUpdate(request *VoicePrintUpdateRequest) (response *V
 //  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VoicePrintUpdateWithContext(ctx context.Context, request *VoicePrintUpdateRequest) (response *VoicePrintUpdateResponse, err error) {
     if request == nil {
@@ -1835,6 +1839,7 @@ func NewVoicePrintVerifyResponse() (response *VoicePrintVerifyResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 func (c *Client) VoicePrintVerify(request *VoicePrintVerifyRequest) (response *VoicePrintVerifyResponse, err error) {
     return c.VoicePrintVerifyWithContext(context.Background(), request)
 }
@@ -1858,6 +1863,7 @@ func (c *Client) VoicePrintVerify(request *VoicePrintVerifyRequest) (response *V
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
 func (c *Client) VoicePrintVerifyWithContext(ctx context.Context, request *VoicePrintVerifyRequest) (response *VoicePrintVerifyResponse, err error) {
     if request == nil {
         request = NewVoicePrintVerifyRequest()

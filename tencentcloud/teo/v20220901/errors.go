@@ -515,7 +515,7 @@ const (
 	// 权重取值范围：0 - 100。
 	INVALIDPARAMETER_ORIGINRECORDWEIGHTVALUE = "InvalidParameter.OriginRecordWeightValue"
 
-	// 秘钥格式错误。
+	// 密钥格式错误。
 	INVALIDPARAMETER_ORIGINTHIRDPARTYPARAMFORMATERROR = "InvalidParameter.OriginThirdPartyParamFormatError"
 
 	// 参数错误: 无效 "结束时间", 不在允许的查询范围内: [开始时间, 开始+ 7天]

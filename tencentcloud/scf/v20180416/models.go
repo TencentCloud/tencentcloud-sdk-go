@@ -1954,7 +1954,7 @@ func (r *GetFunctionLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFunctionRequestParams struct {
-	// 需要获取详情的函数名称
+	// 需要获取详情的函数名称，ResourceId和FunctionName只能传一个
 	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
 
 	// 函数的版本号
@@ -1972,7 +1972,7 @@ type GetFunctionRequestParams struct {
 type GetFunctionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要获取详情的函数名称
+	// 需要获取详情的函数名称，ResourceId和FunctionName只能传一个
 	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
 
 	// 函数的版本号
@@ -4815,6 +4815,9 @@ type UpdateFunctionConfigurationRequestParams struct {
 
 	// 内网访问配置
 	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
+
+	// 忽略系统日志上报
+	IgnoreSysLog *bool `json:"IgnoreSysLog,omitnil" name:"IgnoreSysLog"`
 }
 
 type UpdateFunctionConfigurationRequest struct {
@@ -4889,6 +4892,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 内网访问配置
 	IntranetConfig *IntranetConfigIn `json:"IntranetConfig,omitnil" name:"IntranetConfig"`
+
+	// 忽略系统日志上报
+	IgnoreSysLog *bool `json:"IgnoreSysLog,omitnil" name:"IgnoreSysLog"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -4926,6 +4932,7 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceConcurrencyConfig")
 	delete(f, "DnsCache")
 	delete(f, "IntranetConfig")
+	delete(f, "IgnoreSysLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
 	}

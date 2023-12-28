@@ -14654,8 +14654,7 @@ func (r *DescribeBaselineItemIgnoreListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBaselineItemInfoRequestParams struct {
-	// <li>ItemId - int64 - 是否必填：否 - 项Id</i>
-	// <li>PolicyId - int64 - 是否必填：否 - 项Id</i>
+	// <li>ItemId - int64 - 是否必填：否 - 项Id</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
 	// <li>ItemName - string - 是否必填：否 - 检测项名字</li>
 	// <li>RuleId - int - 是否必填：否 - 规则Id</li>
@@ -14677,8 +14676,7 @@ type DescribeBaselineItemInfoRequestParams struct {
 type DescribeBaselineItemInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li>ItemId - int64 - 是否必填：否 - 项Id</i>
-	// <li>PolicyId - int64 - 是否必填：否 - 项Id</i>
+	// <li>ItemId - int64 - 是否必填：否 - 项Id</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
 	// <li>ItemName - string - 是否必填：否 - 检测项名字</li>
 	// <li>RuleId - int - 是否必填：否 - 规则Id</li>
@@ -46334,12 +46332,15 @@ func (r *SyncAssetScanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncBaselineDetectSummaryRequestParams struct {
-
+	// 用于计算检测中和进度的任务ID集合，一般不用传入
+	TaskIds []*uint64 `json:"TaskIds,omitnil" name:"TaskIds"`
 }
 
 type SyncBaselineDetectSummaryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 用于计算检测中和进度的任务ID集合，一般不用传入
+	TaskIds []*uint64 `json:"TaskIds,omitnil" name:"TaskIds"`
 }
 
 func (r *SyncBaselineDetectSummaryRequest) ToJsonString() string {
@@ -46354,7 +46355,7 @@ func (r *SyncBaselineDetectSummaryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncBaselineDetectSummaryRequest has unknown keys!", "")
 	}

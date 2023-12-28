@@ -47,7 +47,7 @@ const (
 	// 无效Vip信息。
 	INVALIDPARAMETER_INVALIDVIP = "InvalidParameter.InvalidVip"
 
-	// 当前子帐号无权执行该操作。
+	// 当前子账号无权执行该操作。
 	INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 
 	// 可用区已关闭售卖。

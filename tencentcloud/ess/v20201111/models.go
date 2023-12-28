@@ -6495,12 +6495,17 @@ type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// 要查询的扩展服务类型。
 	// 默认为空，即查询当前支持的所有扩展服务信息。
 	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
-	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
-	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
-	// <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
 	// <li>BATCH_SIGN：批量签署</li>
-	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
+	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。
@@ -6518,12 +6523,17 @@ type DescribeExtendedServiceAuthInfosRequest struct {
 	// 要查询的扩展服务类型。
 	// 默认为空，即查询当前支持的所有扩展服务信息。
 	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
-	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
-	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
-	// <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
 	// <li>BATCH_SIGN：批量签署</li>
-	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
+	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。
@@ -8246,19 +8256,27 @@ type EmbedUrlOption struct {
 
 type ExtendAuthInfo struct {
 	// 扩展服务的类型，可能是以下值：
-	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>BATCH_SIGN：批量签署</li>
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
-	// <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 	// <li>PAGING_SEAL：骑缝章</li>
-	// <li>BATCH_SIGN：批量签署</li></ul>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 扩展服务的名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 扩展服务的开通状态：
-	// ENABLE：开通
-	// DISABLE：未开通
+	// <ul>
+	// <li>ENABLE : 已开通</li>
+	// <li>DISABLE : 未开通</li>
+	// </ul>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 操作扩展服务的操作人UserId，员工在腾讯电子签平台的唯一身份标识，为32位字符串。
@@ -9216,6 +9234,135 @@ func (r *ModifyApplicationCallbackInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApplicationCallbackInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExtendedServiceRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 要管理的拓展服务类型。
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+
+	// 操作类型
+	// <ul>
+	// <li>OPEN : 开通</li>
+	// <li>CLOSE : 关闭</li>
+	// </ul>
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 链接跳转类型，支持以下类型
+	// <ul>
+	// <li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+	// <li>APP : 第三方APP或小程序跳转电子签小程序</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+}
+
+type ModifyExtendedServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 要管理的拓展服务类型。
+	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+
+	// 操作类型
+	// <ul>
+	// <li>OPEN : 开通</li>
+	// <li>CLOSE : 关闭</li>
+	// </ul>
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 链接跳转类型，支持以下类型
+	// <ul>
+	// <li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+	// <li>APP : 第三方APP或小程序跳转电子签小程序</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+}
+
+func (r *ModifyExtendedServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtendedServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ServiceType")
+	delete(f, "Operate")
+	delete(f, "Agent")
+	delete(f, "Endpoint")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExtendedServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExtendedServiceResponseParams struct {
+	// 操作跳转链接，有效期24小时
+	// 若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
+	// 
+	// 当操作类型是 OPEN 且 扩展服务类型是  OPEN_SERVER_SIGN 或者 OVERSEA_SIGN 时返回操作链接，
+	// 返回的链接当前操作人（超管或法人）点击链接完成服务开通操作。
+	OperateUrl *string `json:"OperateUrl,omitnil" name:"OperateUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyExtendedServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyExtendedServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyExtendedServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtendedServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2110,16 +2110,19 @@ type ContainerGroupOther struct {
 	// 已启动实例总数
 	CurrentNum *int64 `json:"CurrentNum,omitnil" name:"CurrentNum"`
 
+	// 负载均衡DNS地址
+	LbDns *string `json:"LbDns,omitnil" name:"LbDns"`
+
 	// 负载均衡ip
 	LbIp *string `json:"LbIp,omitnil" name:"LbIp"`
 
 	// Service ip
 	ClusterIp *string `json:"ClusterIp,omitnil" name:"ClusterIp"`
 
-	// 服务状态，请参考后面的的状态定义
+	// 服务状态，请参考后面的状态定义
 	Status *string `json:"Status,omitnil" name:"Status"`
 
-	// 服务状态，请参考后面的的状态定义
+	// 服务状态，请参考后面的状态定义
 	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 环境变量

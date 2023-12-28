@@ -2356,7 +2356,15 @@ type ClusterInfoItem struct {
 	// 任务创建时间,检查时间
 	TaskCreateTime *string `json:"TaskCreateTime,omitnil" name:"TaskCreateTime"`
 
-	// 接入状态
+	// 接入状态:
+	// 未接入: AccessedNone
+	// 已防护: AccessedDefended
+	// 未防护: AccessedInstalled
+	// 部分防护: AccessedPartialDefence
+	// 接入异常: AccessedException
+	// 卸载异常: AccessedUninstallException
+	// 接入中: AccessedInstalling
+	// 卸载中: AccessedUninstalling
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessedStatus *string `json:"AccessedStatus,omitnil" name:"AccessedStatus"`
 
@@ -2375,6 +2383,10 @@ type ClusterInfoItem struct {
 	// 未安装agent节点数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitnil" name:"UnInstallAgentNodeCount"`
+
+	// 计费核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
 }
 
 type ClusterRiskItem struct {
@@ -15629,7 +15641,8 @@ func (r *DescribeExportJobDownloadURLResponse) FromJsonString(s string) error {
 type DescribeExportJobManageListRequestParams struct {
 	// 过滤条件。
 	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
-	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+	// </li>
+	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像 RegistryImage: 仓库镜像
 	// </li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
@@ -15652,7 +15665,8 @@ type DescribeExportJobManageListRequest struct {
 	
 	// 过滤条件。
 	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
-	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+	// </li>
+	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像 RegistryImage: 仓库镜像
 	// </li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
@@ -25529,6 +25543,14 @@ type HostInfo struct {
 
 	// 集群接入状态
 	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil" name:"ClusterAccessedStatus"`
+
+	// 计费核数
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
+
+	// 防护状态:
+	// 已防护: Defended
+	// 未防护: UnDefended
+	DefendStatus *string `json:"DefendStatus,omitnil" name:"DefendStatus"`
 }
 
 type ImageAutoAuthorizedTask struct {

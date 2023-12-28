@@ -362,7 +362,7 @@ type CreateCodeBatchRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
-	// 模版ID，或者活动ID
+	// 模板ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitnil" name:"MpTpl"`
 
 	// 克隆批次ID，同时会复制溯源信息
@@ -399,7 +399,7 @@ type CreateCodeBatchRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
-	// 模版ID，或者活动ID
+	// 模板ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitnil" name:"MpTpl"`
 
 	// 克隆批次ID，同时会复制溯源信息
@@ -3160,6 +3160,9 @@ type DescribeProductsRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil" name:"CorpId"`
+
+	// 认证状态
+	CertState *int64 `json:"CertState,omitnil" name:"CertState"`
 }
 
 type DescribeProductsRequest struct {
@@ -3179,6 +3182,9 @@ type DescribeProductsRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil" name:"CorpId"`
+
+	// 认证状态
+	CertState *int64 `json:"CertState,omitnil" name:"CertState"`
 }
 
 func (r *DescribeProductsRequest) ToJsonString() string {
@@ -3198,6 +3204,7 @@ func (r *DescribeProductsRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "MerchantId")
 	delete(f, "CorpId")
+	delete(f, "CertState")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductsRequest has unknown keys!", "")
 	}
@@ -5028,6 +5035,10 @@ type Product struct {
 
 	// 商户名称
 	MerchantName *string `json:"MerchantName,omitnil" name:"MerchantName"`
+
+	// 认证状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertState *int64 `json:"CertState,omitnil" name:"CertState"`
 }
 
 type Quota struct {
@@ -5082,6 +5093,10 @@ type Quota struct {
 	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 是否开启企业认证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCertify *uint64 `json:"ProductCertify,omitnil" name:"ProductCertify"`
 }
 
 type RawScanLog struct {

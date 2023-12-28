@@ -9886,7 +9886,7 @@ type RuleInfoData struct {
 	// 策略, 0：观察，1：阻断，2：放行
 	Strategy *string `json:"Strategy,omitnil" name:"Strategy"`
 
-	// 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+	// 访问源类型，1是IP，3是域名，4是IP地址模板，5是域名地址模板
 	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
 	// 方向，0：出站，1：入站
@@ -9895,7 +9895,7 @@ type RuleInfoData struct {
 	// 描述
 	Detail *string `json:"Detail,omitnil" name:"Detail"`
 
-	// 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+	// 访问目的类型，1是IP，3是域名，4是IP地址模板，5是域名地址模板
 	TargetType *uint64 `json:"TargetType,omitnil" name:"TargetType"`
 
 	// 端口
@@ -10633,11 +10633,11 @@ type TLogInfo struct {
 }
 
 type TemplateListInfo struct {
-	// 模版ID
+	// 模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 
-	// 模版名称
+	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
@@ -10645,7 +10645,7 @@ type TemplateListInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil" name:"Detail"`
 
-	// IP模版
+	// IP模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpString *string `json:"IpString,omitnil" name:"IpString"`
 
@@ -10657,7 +10657,7 @@ type TemplateListInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
-	// 模版类型
+	// 模板类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil" name:"Type"`
 

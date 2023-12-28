@@ -867,6 +867,8 @@ func NewCreateRecordResponse() (response *CreateRecordResponse) {
 // CreateRecord
 // 添加记录
 //
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
@@ -925,6 +927,8 @@ func (c *Client) CreateRecord(request *CreateRecordRequest) (response *CreateRec
 
 // CreateRecord
 // 添加记录
+//
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2297,6 +2301,8 @@ func NewDescribeDomainFilterListResponse() (response *DescribeDomainFilterListRe
 // DescribeDomainFilterList
 // 获取域名筛选列表
 //
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -2319,6 +2325,8 @@ func (c *Client) DescribeDomainFilterList(request *DescribeDomainFilterListReque
 
 // DescribeDomainFilterList
 // 获取域名筛选列表
+//
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3383,6 +3391,8 @@ func NewDescribeRecordListResponse() (response *DescribeRecordListResponse) {
 // DescribeRecordList
 // 获取某个域名下的解析记录列表
 //
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -3412,6 +3422,8 @@ func (c *Client) DescribeRecordList(request *DescribeRecordListRequest) (respons
 
 // DescribeRecordList
 // 获取某个域名下的解析记录列表
+//
+// 备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

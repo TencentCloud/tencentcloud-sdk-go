@@ -6309,10 +6309,10 @@ type CreateConsoleLoginUrlRequestParams struct {
 	MenuStatus *string `json:"MenuStatus,omitnil" name:"MenuStatus"`
 
 	// 生成链接的类型：
-	// <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
+	// <ul><li>**PC**：(默认)<font color="red">web控制台</font>链接, 需要在PC浏览器中打开</li>
 	// <li>**CHANNEL**：H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
-	// <li>**SHORT_URL**：H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
-	// <li>**APP**：第三方APP或小程序跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li></ul>
+	// <li>**SHORT_URL**：<font color="red">H5</font>跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+	// <li>**APP**：<font color="red">APP或小程序</font>跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li></ul>
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
@@ -6393,10 +6393,10 @@ type CreateConsoleLoginUrlRequest struct {
 	MenuStatus *string `json:"MenuStatus,omitnil" name:"MenuStatus"`
 
 	// 生成链接的类型：
-	// <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
+	// <ul><li>**PC**：(默认)<font color="red">web控制台</font>链接, 需要在PC浏览器中打开</li>
 	// <li>**CHANNEL**：H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
-	// <li>**SHORT_URL**：H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
-	// <li>**APP**：第三方APP或小程序跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li></ul>
+	// <li>**SHORT_URL**：<font color="red">H5</font>跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+	// <li>**APP**：<font color="red">APP或小程序</font>跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li></ul>
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
@@ -7999,10 +7999,11 @@ type DescribeExtendedServiceAuthInfoRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -8013,10 +8014,11 @@ type DescribeExtendedServiceAuthInfoRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -8644,11 +8646,12 @@ type ExtentServiceAuthInfo struct {
 	// 扩展服务类型
 	// <ul>
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
-	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
 	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
@@ -9362,17 +9365,20 @@ type ModifyExtendedServiceRequestParams struct {
 	//   扩展服务类型
 	// <ul>
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
-	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
 	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
-	// 操作类型 
-	// OPEN:开通 
-	// CLOSE:关闭
+	// 操作类型
+	// <ul>
+	// <li>OPEN : 开通</li>
+	// <li>CLOSE : 关闭</li>
+	// </ul>
 	Operate *string `json:"Operate,omitnil" name:"Operate"`
 
 	// 链接跳转类型，支持以下类型
@@ -9399,17 +9405,20 @@ type ModifyExtendedServiceRequest struct {
 	//   扩展服务类型
 	// <ul>
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
-	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
 	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
-	// 操作类型 
-	// OPEN:开通 
-	// CLOSE:关闭
+	// 操作类型
+	// <ul>
+	// <li>OPEN : 开通</li>
+	// <li>CLOSE : 关闭</li>
+	// </ul>
 	Operate *string `json:"Operate,omitnil" name:"Operate"`
 
 	// 链接跳转类型，支持以下类型
@@ -9447,8 +9456,8 @@ type ModifyExtendedServiceResponseParams struct {
 	// 操作跳转链接，有效期24小时
 	// 若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
 	// 
-	// 当操作类型是 OPEN 且 扩展服务类型是  AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
-	// 返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作。
+	// 当操作类型是 OPEN 且 扩展服务类型是 AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
+	// 返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作
 	OperateUrl *string `json:"OperateUrl,omitnil" name:"OperateUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10612,7 +10621,7 @@ type TemplateInfo struct {
 	// 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
 	Recipients []*Recipient `json:"Recipients,omitnil" name:"Recipients"`
 
-	// 此模版中的签署控件列表
+	// 此模板中的签署控件列表
 	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板

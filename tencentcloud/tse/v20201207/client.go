@@ -419,6 +419,61 @@ func (c *Client) CreateCloudNativeAPIGatewayCertificateWithContext(ctx context.C
     return
 }
 
+func NewCreateCloudNativeAPIGatewayPublicNetworkRequest() (request *CreateCloudNativeAPIGatewayPublicNetworkRequest) {
+    request = &CreateCloudNativeAPIGatewayPublicNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateCloudNativeAPIGatewayPublicNetwork")
+    
+    
+    return
+}
+
+func NewCreateCloudNativeAPIGatewayPublicNetworkResponse() (response *CreateCloudNativeAPIGatewayPublicNetworkResponse) {
+    response = &CreateCloudNativeAPIGatewayPublicNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudNativeAPIGatewayPublicNetwork
+// 创建公网网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) CreateCloudNativeAPIGatewayPublicNetwork(request *CreateCloudNativeAPIGatewayPublicNetworkRequest) (response *CreateCloudNativeAPIGatewayPublicNetworkResponse, err error) {
+    return c.CreateCloudNativeAPIGatewayPublicNetworkWithContext(context.Background(), request)
+}
+
+// CreateCloudNativeAPIGatewayPublicNetwork
+// 创建公网网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) CreateCloudNativeAPIGatewayPublicNetworkWithContext(ctx context.Context, request *CreateCloudNativeAPIGatewayPublicNetworkRequest) (response *CreateCloudNativeAPIGatewayPublicNetworkResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudNativeAPIGatewayPublicNetworkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudNativeAPIGatewayPublicNetwork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudNativeAPIGatewayPublicNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudNativeAPIGatewayRouteRequest() (request *CreateCloudNativeAPIGatewayRouteRequest) {
     request = &CreateCloudNativeAPIGatewayRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1271,6 +1326,59 @@ func (c *Client) DeleteCloudNativeAPIGatewayCertificateWithContext(ctx context.C
     request.SetContext(ctx)
     
     response = NewDeleteCloudNativeAPIGatewayCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudNativeAPIGatewayPublicNetworkRequest() (request *DeleteCloudNativeAPIGatewayPublicNetworkRequest) {
+    request = &DeleteCloudNativeAPIGatewayPublicNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteCloudNativeAPIGatewayPublicNetwork")
+    
+    
+    return
+}
+
+func NewDeleteCloudNativeAPIGatewayPublicNetworkResponse() (response *DeleteCloudNativeAPIGatewayPublicNetworkResponse) {
+    response = &DeleteCloudNativeAPIGatewayPublicNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudNativeAPIGatewayPublicNetwork
+// 删除公网网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DeleteCloudNativeAPIGatewayPublicNetwork(request *DeleteCloudNativeAPIGatewayPublicNetworkRequest) (response *DeleteCloudNativeAPIGatewayPublicNetworkResponse, err error) {
+    return c.DeleteCloudNativeAPIGatewayPublicNetworkWithContext(context.Background(), request)
+}
+
+// DeleteCloudNativeAPIGatewayPublicNetwork
+// 删除公网网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DeleteCloudNativeAPIGatewayPublicNetworkWithContext(ctx context.Context, request *DeleteCloudNativeAPIGatewayPublicNetworkRequest) (response *DeleteCloudNativeAPIGatewayPublicNetworkResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudNativeAPIGatewayPublicNetworkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudNativeAPIGatewayPublicNetwork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudNativeAPIGatewayPublicNetworkResponse()
     err = c.Send(request, response)
     return
 }
@@ -4303,6 +4411,77 @@ func (c *Client) ModifyCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     return
 }
 
+func NewModifyConsoleNetworkRequest() (request *ModifyConsoleNetworkRequest) {
+    request = &ModifyConsoleNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyConsoleNetwork")
+    
+    
+    return
+}
+
+func NewModifyConsoleNetworkResponse() (response *ModifyConsoleNetworkResponse) {
+    response = &ModifyConsoleNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConsoleNetwork
+// 修改网关实例Konga网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyConsoleNetwork(request *ModifyConsoleNetworkRequest) (response *ModifyConsoleNetworkResponse, err error) {
+    return c.ModifyConsoleNetworkWithContext(context.Background(), request)
+}
+
+// ModifyConsoleNetwork
+// 修改网关实例Konga网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyConsoleNetworkWithContext(ctx context.Context, request *ModifyConsoleNetworkRequest) (response *ModifyConsoleNetworkResponse, err error) {
+    if request == nil {
+        request = NewModifyConsoleNetworkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConsoleNetwork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConsoleNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNativeGatewayServerGroupRequest() (request *ModifyNativeGatewayServerGroupRequest) {
     request = &ModifyNativeGatewayServerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4378,6 +4557,148 @@ func (c *Client) ModifyNativeGatewayServerGroupWithContext(ctx context.Context, 
     return
 }
 
+func NewModifyNetworkAccessStrategyRequest() (request *ModifyNetworkAccessStrategyRequest) {
+    request = &ModifyNetworkAccessStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyNetworkAccessStrategy")
+    
+    
+    return
+}
+
+func NewModifyNetworkAccessStrategyResponse() (response *ModifyNetworkAccessStrategyResponse) {
+    response = &ModifyNetworkAccessStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNetworkAccessStrategy
+// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyNetworkAccessStrategy(request *ModifyNetworkAccessStrategyRequest) (response *ModifyNetworkAccessStrategyResponse, err error) {
+    return c.ModifyNetworkAccessStrategyWithContext(context.Background(), request)
+}
+
+// ModifyNetworkAccessStrategy
+// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyNetworkAccessStrategyWithContext(ctx context.Context, request *ModifyNetworkAccessStrategyRequest) (response *ModifyNetworkAccessStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkAccessStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetworkAccessStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNetworkAccessStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetworkBasicInfoRequest() (request *ModifyNetworkBasicInfoRequest) {
+    request = &ModifyNetworkBasicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyNetworkBasicInfo")
+    
+    
+    return
+}
+
+func NewModifyNetworkBasicInfoResponse() (response *ModifyNetworkBasicInfoResponse) {
+    response = &ModifyNetworkBasicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNetworkBasicInfo
+// 修改云原生API网关实例网络基本信息，比如带宽以及描述，只支持修改客户端公网/内网的信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyNetworkBasicInfo(request *ModifyNetworkBasicInfoRequest) (response *ModifyNetworkBasicInfoResponse, err error) {
+    return c.ModifyNetworkBasicInfoWithContext(context.Background(), request)
+}
+
+// ModifyNetworkBasicInfo
+// 修改云原生API网关实例网络基本信息，比如带宽以及描述，只支持修改客户端公网/内网的信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyNetworkBasicInfoWithContext(ctx context.Context, request *ModifyNetworkBasicInfoRequest) (response *ModifyNetworkBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkBasicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetworkBasicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNetworkBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUpstreamNodeStatusRequest() (request *ModifyUpstreamNodeStatusRequest) {
     request = &ModifyUpstreamNodeStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4403,12 +4724,10 @@ func NewModifyUpstreamNodeStatusResponse() (response *ModifyUpstreamNodeStatusRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
@@ -4425,12 +4744,10 @@ func (c *Client) ModifyUpstreamNodeStatus(request *ModifyUpstreamNodeStatusReque
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"

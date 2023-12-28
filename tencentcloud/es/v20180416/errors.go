@@ -401,7 +401,7 @@ const (
 	// CAM资源未找到。
 	RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 
-	// 负载均衡信息未找打。
+	// 负载均衡信息未找到。
 	RESOURCENOTFOUND_CLBNOTFOUND = "ResourceNotFound.CLBNotFound"
 
 	// 集群资源获取失败。

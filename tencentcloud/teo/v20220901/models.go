@@ -1980,7 +1980,7 @@ type CreatePrefetchTaskRequestParams struct {
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 要预热的资源列表，每个元素格式类似如下:
-	// http://www.example.com/example.txt。
+	// http://www.example.com/example.txt。参数值当前必填。
 	// 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
 	Targets []*string `json:"Targets,omitnil" name:"Targets"`
 
@@ -1998,7 +1998,7 @@ type CreatePrefetchTaskRequest struct {
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 要预热的资源列表，每个元素格式类似如下:
-	// http://www.example.com/example.txt。
+	// http://www.example.com/example.txt。参数值当前必填。
 	// 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
 	Targets []*string `json:"Targets,omitnil" name:"Targets"`
 
@@ -5041,10 +5041,10 @@ type DescribePrefetchTasksRequestParams struct {
 	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 查询起始时间。
+	// 查询起始时间，时间与 job-id 必填一个。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间。
+	// 查询结束时间，时间与 job-id 必填一个。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为 0。
@@ -5064,10 +5064,10 @@ type DescribePrefetchTasksRequest struct {
 	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 查询起始时间。
+	// 查询起始时间，时间与 job-id 必填一个。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间。
+	// 查询结束时间，时间与 job-id 必填一个。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为 0。
@@ -5138,10 +5138,10 @@ type DescribePurgeTasksRequestParams struct {
 	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 查询起始时间。
+	// 查询起始时间，时间与job-id必填一个。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间。
+	// 查询结束时间，时间与job-id必填一个。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为0。
@@ -5161,10 +5161,10 @@ type DescribePurgeTasksRequest struct {
 	// 必填参数。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 查询起始时间。
+	// 查询起始时间，时间与job-id必填一个。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 查询结束时间。
+	// 查询结束时间，时间与job-id必填一个。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询偏移量，默认为0。

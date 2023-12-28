@@ -779,6 +779,74 @@ func (r *CreateCloudNativeAPIGatewayCertificateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type CreateCloudNativeAPIGatewayPublicNetworkRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 公网负载均衡配置。
+	InternetConfig *InternetConfig `json:"InternetConfig,omitnil" name:"InternetConfig"`
+}
+
+type CreateCloudNativeAPIGatewayPublicNetworkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 公网负载均衡配置。
+	InternetConfig *InternetConfig `json:"InternetConfig,omitnil" name:"InternetConfig"`
+}
+
+func (r *CreateCloudNativeAPIGatewayPublicNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudNativeAPIGatewayPublicNetworkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	delete(f, "InternetConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayPublicNetworkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudNativeAPIGatewayPublicNetworkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCloudNativeAPIGatewayPublicNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudNativeAPIGatewayPublicNetworkResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudNativeAPIGatewayPublicNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudNativeAPIGatewayPublicNetworkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCloudNativeAPIGatewayRequestParams struct {
 	// 云原生API网关名字, 最多支持60个字符。
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -1976,6 +2044,85 @@ func (r *DeleteCloudNativeAPIGatewayCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudNativeAPIGatewayCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayPublicNetworkRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id，kong类型时必填
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 公网类型
+	// - IPV4 （默认值）
+	// - IPV6
+	InternetAddressVersion *string `json:"InternetAddressVersion,omitnil" name:"InternetAddressVersion"`
+
+	// 公网ip，存在多个公网时必填
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+}
+
+type DeleteCloudNativeAPIGatewayPublicNetworkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id，kong类型时必填
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 公网类型
+	// - IPV4 （默认值）
+	// - IPV6
+	InternetAddressVersion *string `json:"InternetAddressVersion,omitnil" name:"InternetAddressVersion"`
+
+	// 公网ip，存在多个公网时必填
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayPublicNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayPublicNetworkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	delete(f, "InternetAddressVersion")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayPublicNetworkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayPublicNetworkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteCloudNativeAPIGatewayPublicNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudNativeAPIGatewayPublicNetworkResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayPublicNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayPublicNetworkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5784,6 +5931,89 @@ func (r *ModifyCloudNativeAPIGatewayServiceResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type ModifyConsoleNetworkRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网络类型：
+	// - Open 公网
+	// - Internal 内网（暂不支持）
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// 开启Konga网络，不填时默认为Open
+	// - Open，开启
+	// - Close，关闭
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 访问控制策略
+	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil" name:"AccessControl"`
+}
+
+type ModifyConsoleNetworkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网络类型：
+	// - Open 公网
+	// - Internal 内网（暂不支持）
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// 开启Konga网络，不填时默认为Open
+	// - Open，开启
+	// - Close，关闭
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 访问控制策略
+	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil" name:"AccessControl"`
+}
+
+func (r *ModifyConsoleNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleNetworkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "NetworkType")
+	delete(f, "Operate")
+	delete(f, "AccessControl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsoleNetworkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsoleNetworkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyConsoleNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsoleNetworkResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsoleNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleNetworkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNativeGatewayServerGroupRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
@@ -5855,6 +6085,187 @@ func (r *ModifyNativeGatewayServerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyNativeGatewayServerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkAccessStrategyRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络类型： 
+	// - Open 公网
+	// - Internal 内网	（暂不支持）
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// ip地址
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 访问控制策略
+	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil" name:"AccessControl"`
+}
+
+type ModifyNetworkAccessStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络类型： 
+	// - Open 公网
+	// - Internal 内网	（暂不支持）
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// ip地址
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 访问控制策略
+	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil" name:"AccessControl"`
+}
+
+func (r *ModifyNetworkAccessStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkAccessStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	delete(f, "NetworkType")
+	delete(f, "Vip")
+	delete(f, "AccessControl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkAccessStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkAccessStrategyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyNetworkAccessStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNetworkAccessStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyNetworkAccessStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkAccessStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkBasicInfoRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络类型：
+	// - Open 公网ipv4
+	// - Open-IPv6 公网ipv6
+	// - Internal 内网
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// ip地址
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 公网出流量带宽[1,2048]Mbps
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
+
+	// 负载均衡描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type ModifyNetworkBasicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络类型：
+	// - Open 公网ipv4
+	// - Open-IPv6 公网ipv6
+	// - Internal 内网
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+
+	// ip地址
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 公网出流量带宽[1,2048]Mbps
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
+
+	// 负载均衡描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *ModifyNetworkBasicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkBasicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	delete(f, "NetworkType")
+	delete(f, "Vip")
+	delete(f, "InternetMaxBandwidthOut")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkBasicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkBasicInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyNetworkBasicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNetworkBasicInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyNetworkBasicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkBasicInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -197,6 +197,9 @@ const (
 	// 模型不存在。
 	INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
 
+	// 音频内容没有人声或有效人声小于1秒
+	INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
+
 	// 非法的模型状态。
 	INVALIDPARAMETERVALUE_TOSTATE = "InvalidParameterValue.ToState"
 
