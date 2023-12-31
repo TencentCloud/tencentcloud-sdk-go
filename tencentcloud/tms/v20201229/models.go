@@ -21,7 +21,7 @@ import (
 )
 
 type DetailResults struct {
-	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitnil" name:"Label"`
 
 	// 该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -36,15 +36,15 @@ type DetailResults struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil" name:"Score"`
 
-	// 该字段**仅当Label为Custom自定义关键词时有效**，用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+	// 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitnil" name:"LibType"`
 
-	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
+	// 该字段用于返回自定义库的ID，以方便自定义库管理和配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitnil" name:"LibId"`
 
-	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
+	// 该字段用于返回自定义库的名称,以方便自定义库管理和配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitnil" name:"LibName"`
 
@@ -102,6 +102,197 @@ type HitInfo struct {
 	// 位置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Positions []*Positions `json:"Positions,omitnil" name:"Positions"`
+}
+
+type LabelGrade struct {
+	// 内容审核结果客户定制标签码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
+
+	// 内容审核结果客户定制一级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grade1 *string `json:"Grade1,omitnil" name:"Grade1"`
+
+	// 内容审核结果客户定制二级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grade2 *string `json:"Grade2,omitnil" name:"Grade2"`
+
+	// 内容审核结果客户定制三级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grade3 *string `json:"Grade3,omitnil" name:"Grade3"`
+}
+
+type LibCheckResult struct {
+	// 库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibId *string `json:"LibId,omitnil" name:"LibId"`
+
+	// 库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibName *string `json:"LibName,omitnil" name:"LibName"`
+
+	// 库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibType *uint64 `json:"LibType,omitnil" name:"LibType"`
+
+	// 命中的关键词
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 命中的关键词在送审文本的位置，可能存在多个位置，每个位置显示开始位置和结束位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Positions []*Positions `json:"Positions,omitnil" name:"Positions"`
+}
+
+type ModelResult struct {
+	// 模型检测出的违规内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 模型检测出的违规内容的位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Positions []*Positions `json:"Positions,omitnil" name:"Positions"`
+}
+
+// Predefined struct for user
+type ModerateTextRequestParams struct {
+	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
+	BizType *string `json:"BizType,omitnil" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。
+	// 取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，长度不超过64个字符
+	DataId *string `json:"DataId,omitnil" name:"DataId"`
+
+	// 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+	User *User `json:"User,omitnil" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+	Device *Device `json:"Device,omitnil" name:"Device"`
+}
+
+type ModerateTextRequest struct {
+	*tchttp.BaseRequest
+	
+	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
+	BizType *string `json:"BizType,omitnil" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。
+	// 取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，长度不超过64个字符
+	DataId *string `json:"DataId,omitnil" name:"DataId"`
+
+	// 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+	User *User `json:"User,omitnil" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+	Device *Device `json:"Device,omitnil" name:"Device"`
+}
+
+func (r *ModerateTextRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModerateTextRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "User")
+	delete(f, "Device")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModerateTextRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModerateTextResponseParams struct {
+	// 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+	DataId *string `json:"DataId,omitnil" name:"DataId"`
+
+	// 该字段用于返回请求参数中的BizType参数
+	BizType *string `json:"BizType,omitnil" name:"BizType"`
+
+	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。
+	// 返回值：Block：建议屏蔽，Review ：建议人工复审，Pass：建议通过
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+
+	// 命中标签，可参阅对应数据结构（LabelGrade）的详细描述
+	Label *LabelGrade `json:"Label,omitnil" name:"Label"`
+
+	// 命中标签对应腾讯侧定义的标签
+	TcLabelCodes []*string `json:"TcLabelCodes,omitnil" name:"TcLabelCodes"`
+
+	// 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+
+	// 该字段用于返回文本审核的详细结果，返回值信息可参阅对应数据结构（ModerationDetail）的详细描述
+	ModerationDetails []*ModerationDetail `json:"ModerationDetails,omitnil" name:"ModerationDetails"`
+
+	// 该字段用于返回审核结果置信度，使用百分制。分数越高表示结果可信度越高。
+	Score *uint64 `json:"Score,omitnil" name:"Score"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModerateTextResponse struct {
+	*tchttp.BaseResponse
+	Response *ModerateTextResponseParams `json:"Response"`
+}
+
+func (r *ModerateTextResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModerateTextResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModerationDetail struct {
+	// 审核建议，Block表示建议拦截，Review表示建议人工复审，Pass表示建议放行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+
+	// 命中标签，含标签码和一二三级标签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *LabelGrade `json:"Label,omitnil" name:"Label"`
+
+	// 标签得分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *uint64 `json:"Score,omitnil" name:"Score"`
+
+	// label对应腾讯侧命中标签码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcLabelCodes []*string `json:"TcLabelCodes,omitnil" name:"TcLabelCodes"`
+
+	// 库检测命中详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibResults []*LibCheckResult `json:"LibResults,omitnil" name:"LibResults"`
+
+	// 模型检测详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelResults []*ModelResult `json:"ModelResults,omitnil" name:"ModelResults"`
+
+	// 情绪正负向检测结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SentimentResult *SentimentDetail `json:"SentimentResult,omitnil" name:"SentimentResult"`
 }
 
 type Positions struct {

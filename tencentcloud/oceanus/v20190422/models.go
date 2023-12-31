@@ -2312,6 +2312,9 @@ type DescribeJobsRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 查询额外的作业信息,例如 JobEventInfo	
+	ExtraResult []*string `json:"ExtraResult,omitnil" name:"ExtraResult"`
 }
 
 type DescribeJobsRequest struct {
@@ -2331,6 +2334,9 @@ type DescribeJobsRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 查询额外的作业信息,例如 JobEventInfo	
+	ExtraResult []*string `json:"ExtraResult,omitnil" name:"ExtraResult"`
 }
 
 func (r *DescribeJobsRequest) ToJsonString() string {
@@ -2350,6 +2356,7 @@ func (r *DescribeJobsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "WorkSpaceId")
+	delete(f, "ExtraResult")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsRequest has unknown keys!", "")
 	}
@@ -3453,6 +3460,12 @@ type JobEvent struct {
 	SolutionLink *string `json:"SolutionLink,omitnil" name:"SolutionLink"`
 }
 
+type JobEventInfo struct {
+	// 异常事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorEventTotal *int64 `json:"ErrorEventTotal,omitnil" name:"ErrorEventTotal"`
+}
+
 type JobGraph struct {
 	// 运行图的点集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3630,6 +3643,10 @@ type JobV1 struct {
 	// 作业标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 作业异常事件信息	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventInfo *JobEventInfo `json:"EventInfo,omitnil" name:"EventInfo"`
 }
 
 type LogContent struct {

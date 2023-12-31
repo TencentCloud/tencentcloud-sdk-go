@@ -1,61 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 105 次发布
-
-发布时间：2023-12-29 01:12:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SyncBaselineDetectSummary](https://cloud.tencent.com/document/api/296/81348)
-
-	* 新增入参：TaskIds
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 145 次发布
-
-发布时间：2023-12-29 01:16:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyExtendedService](https://cloud.tencent.com/document/api/1323/102771)
-
-
-
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 51 次发布
+### 第 52 次发布
 
-发布时间：2023-12-29 01:21:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetMetaTable](https://cloud.tencent.com/document/api/849/102773)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 64 次发布
-
-发布时间：2023-12-29 01:22:39
+发布时间：2024-01-01 00:15:04
 
 本次发布包含了以下内容：
 
@@ -63,132 +12,20 @@
 
 修改接口：
 
-* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+* [DescribeJobs](https://cloud.tencent.com/document/api/849/52008)
 
-	* <font color="#dd0000">**修改入参**：</font>FunctionName
-
-* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
-
-	* 新增入参：IgnoreSysLog
+	* 新增入参：ExtraResult
 
 
+新增数据结构：
 
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 57 次发布
-
-发布时间：2023-12-29 01:24:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo)
 
 修改数据结构：
 
-* [ClusterInfoItem](https://cloud.tencent.com/document/api/1285/65614#ClusterInfoItem)
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
 
-	* 新增成员：ChargeCoresCnt
-
-* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
-
-	* 新增成员：ChargeCoresCnt, DefendStatus
-
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 38 次发布
-
-发布时间：2023-12-29 01:26:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreatePPTCheckTask](https://cloud.tencent.com/document/api/1137/90054)
-
-	* 新增入参：AutoHandleUnsupportedElementTypes
-
-* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
-
-	* 新增入参：AutoHandleUnsupportedElementTypes
-
-
-
-
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
-
-### 第 31 次发布
-
-发布时间：2023-12-29 01:27:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeProducts](https://cloud.tencent.com/document/api/1458/75011)
-
-	* 新增入参：CertState
-
-
-修改数据结构：
-
-* [Ext](https://cloud.tencent.com/document/api/1458/75030#Ext)
-
-	* <font color="#dd0000">**修改成员**：</font>Value
-
-* [Product](https://cloud.tencent.com/document/api/1458/75030#Product)
-
-	* 新增成员：CertState
-
-* [Quota](https://cloud.tencent.com/document/api/1458/75030#Quota)
-
-	* 新增成员：ProductCertify
-
-
-
-
-## 微服务引擎 TSE(tse) 版本：2020-12-07
-
-### 第 55 次发布
-
-发布时间：2023-12-29 01:27:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102778)
-* [DeleteCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102777)
-* [ModifyConsoleNetwork](https://cloud.tencent.com/document/api/1364/102776)
-* [ModifyNetworkAccessStrategy](https://cloud.tencent.com/document/api/1364/102775)
-* [ModifyNetworkBasicInfo](https://cloud.tencent.com/document/api/1364/102774)
-
-
-
-## 微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 102 次发布
-
-发布时间：2023-12-29 01:28:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ContainerGroupOther](https://cloud.tencent.com/document/api/649/36099#ContainerGroupOther)
-
-	* 新增成员：LbDns
+	* 新增成员：EventInfo
 
 
 
@@ -57093,7 +56930,7 @@
 
 新增接口：
 
-* [[ModifyExtendedService](https://cloud.tencent.com/document/api/1323/102771)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyExtendedService](https://cloud.tencent.com/document/api/1323/102771)
 
 ### 第 144 次发布
 
@@ -88595,6 +88432,32 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 52 次发布
+
+发布时间：2024-01-01 00:15:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeJobs](https://cloud.tencent.com/document/api/849/52008)
+
+	* 新增入参：ExtraResult
+
+
+新增数据结构：
+
+* [[JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo)](https://cloud.tencent.com/document/api/849/52010#[JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo))
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：EventInfo
+
+
 ### 第 51 次发布
 
 发布时间：2023-12-29 01:21:17
@@ -88605,7 +88468,7 @@
 
 新增接口：
 
-* [[GetMetaTable](https://cloud.tencent.com/document/api/849/102773)](https://cloud.tencent.com/document/api/#/#)
+* [GetMetaTable](https://cloud.tencent.com/document/api/849/102773)
 
 ### 第 50 次发布
 
@@ -125586,6 +125449,25 @@
 
 ## 文本内容安全(tms) 版本：2020-12-29
 
+### 第 9 次发布
+
+发布时间：2023-12-29 16:06:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModerateText](https://cloud.tencent.com/document/api/1124/102791)
+
+新增数据结构：
+
+* [LabelGrade](https://cloud.tencent.com/document/api/1124/51861#LabelGrade)
+* [LibCheckResult](https://cloud.tencent.com/document/api/1124/51861#LibCheckResult)
+* [ModelResult](https://cloud.tencent.com/document/api/1124/51861#ModelResult)
+* [ModerationDetail](https://cloud.tencent.com/document/api/1124/51861#ModerationDetail)
+
 ### 第 8 次发布
 
 发布时间：2023-11-28 01:28:13
@@ -128020,11 +127902,11 @@
 
 新增接口：
 
-* [[CreateCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102778)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102777)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyConsoleNetwork](https://cloud.tencent.com/document/api/1364/102776)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyNetworkAccessStrategy](https://cloud.tencent.com/document/api/1364/102775)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyNetworkBasicInfo](https://cloud.tencent.com/document/api/1364/102774)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102778)
+* [DeleteCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102777)
+* [ModifyConsoleNetwork](https://cloud.tencent.com/document/api/1364/102776)
+* [ModifyNetworkAccessStrategy](https://cloud.tencent.com/document/api/1364/102775)
+* [ModifyNetworkBasicInfo](https://cloud.tencent.com/document/api/1364/102774)
 
 ### 第 54 次发布
 

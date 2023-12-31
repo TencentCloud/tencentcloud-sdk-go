@@ -1955,7 +1955,7 @@ type ModifySiteDeviceInfoRequestParams struct {
 	// 2、确定的机架位置包含:
 	// 温度范围为 41 到 104°F (5 到 40°C)。
 	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil" name:"ConditionRequirement"`
 
 	// 是否满足下面的尺寸条件：
@@ -1964,7 +1964,7 @@ type ModifySiteDeviceInfoRequestParams struct {
 	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	// 是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil" name:"RedundantNetworking"`
 
 	// 是否需要腾讯云团队协助完成机架支撑工作
@@ -2012,7 +2012,7 @@ type ModifySiteDeviceInfoRequest struct {
 	// 2、确定的机架位置包含:
 	// 温度范围为 41 到 104°F (5 到 40°C)。
 	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil" name:"ConditionRequirement"`
 
 	// 是否满足下面的尺寸条件：
@@ -2021,7 +2021,7 @@ type ModifySiteDeviceInfoRequest struct {
 	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	// 是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil" name:"RedundantNetworking"`
 
 	// 是否需要腾讯云团队协助完成机架支撑工作
