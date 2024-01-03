@@ -2389,6 +2389,149 @@ type ClusterInfoItem struct {
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
 }
 
+type ClusterNodeInfo struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 内网ip地址
+	PrivateIpAddresses *string `json:"PrivateIpAddresses,omitnil" name:"PrivateIpAddresses"`
+
+	// 节点的角色，Master、Work等
+	InstanceRole *string `json:"InstanceRole,omitnil" name:"InstanceRole"`
+
+	// 实例的状态（running 运行中，initializing 初始化中，failed 异常）
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// agent安装状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentStatus *string `json:"AgentStatus,omitnil" name:"AgentStatus"`
+
+	// 公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
+
+	// 主机类型(普通节点情况)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+
+	// 节点类型(
+	// NORMAL: 普通节点
+	// SUPER:超级节点
+	// )
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
+
+	// uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UUID *string `json:"UUID,omitnil" name:"UUID"`
+
+	// 计费核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
+
+	// 防护状态:
+	// 已防护: Defended
+	// 未防护: UnDefended
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefendStatus *string `json:"DefendStatus,omitnil" name:"DefendStatus"`
+}
+
+type ClusterPodInfo struct {
+	// Pod名称.
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
+
+	// Pod状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// Pod IP
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
+
+	// 节点内网Ip
+	NodeLanIP *string `json:"NodeLanIP,omitnil" name:"NodeLanIP"`
+
+	// 所属的工作负载名字
+	WorkloadName *string `json:"WorkloadName,omitnil" name:"WorkloadName"`
+
+	// 所属工作负载类型
+	WorkloadKind *string `json:"WorkloadKind,omitnil" name:"WorkloadKind"`
+
+	// 所属集群名字
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 所属集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 所属命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 所属地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 运行时间
+	Age *string `json:"Age,omitnil" name:"Age"`
+
+	// 创建时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 重启次数
+	Restarts *uint64 `json:"Restarts,omitnil" name:"Restarts"`
+
+	// 关联的service名字
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 关联的service数量
+	ServiceCount *uint64 `json:"ServiceCount,omitnil" name:"ServiceCount"`
+
+	// 关联的容器名字
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
+
+	// 关联的容器数量
+	ContainerCount *uint64 `json:"ContainerCount,omitnil" name:"ContainerCount"`
+
+	// CPU占用率
+	CPU *uint64 `json:"CPU,omitnil" name:"CPU"`
+
+	// 内存占用量
+	Memory *uint64 `json:"Memory,omitnil" name:"Memory"`
+
+	// Pod标签
+	Labels *string `json:"Labels,omitnil" name:"Labels"`
+
+	// 集群状态
+	ClusterStatus *string `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
+
+	// 工作负载标签
+	WorkloadLabels *string `json:"WorkloadLabels,omitnil" name:"WorkloadLabels"`
+
+	// 容器Id
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
+
+	// 主机Id
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+
+	// abc
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// NORMAL：普通节点 SUPER：超级节点
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
+
+	// 计费核数
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
+}
+
 type ClusterRiskItem struct {
 	// 检测项相关信息
 	CheckItem *ClusterCheckItem `json:"CheckItem,omitnil" name:"CheckItem"`
@@ -13204,6 +13347,102 @@ func (r *DescribeAssetSummaryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAssetSuperNodeListRequestParams struct {
+	// 过滤条件。
+	// <li>NodeID- String - 是否必填：否 - ID </li>
+	// <li>NodeName- String - 是否必填：否 - 超级节点名称 </li>
+	// <li>SubnetName- String - 是否必填：否 - VPC子网 </li>
+	// <li>AgentStatus- String - 是否必填：否 - 安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中; </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+type DescribeAssetSuperNodeListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>NodeID- String - 是否必填：否 - ID </li>
+	// <li>NodeName- String - 是否必填：否 - 超级节点名称 </li>
+	// <li>SubnetName- String - 是否必填：否 - VPC子网 </li>
+	// <li>AgentStatus- String - 是否必填：否 - 安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中; </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+func (r *DescribeAssetSuperNodeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSuperNodeListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSuperNodeListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSuperNodeListResponseParams struct {
+	// 超级节点列表
+	List []*SuperNodeListItem `json:"List,omitnil" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAssetSuperNodeListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetSuperNodeListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetSuperNodeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSuperNodeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAssetSyncLastTimeRequestParams struct {
 
 }
@@ -13652,6 +13891,137 @@ func (r *DescribeClusterDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterNodesRequestParams struct {
+	// 集群Id,不输入表示查询所有
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每次查询的最大记录数量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Name 可取值：
+	// DefendStatus（防护状态）:
+	// 	Defended 已防护
+	// 	UnDefended 未防护
+	// AgentStatus (容器agent状态):
+	//  	OFFLINE 离线
+	//  	ONLINE 在线
+	//  	UNINSTALL 未安装
+	// InstanceState (节点状态):
+	//   	Running 运行中
+	//   	Ready 准备
+	//   	Notready 未准备好
+	//   	Initializing 初始化
+	//   	Failed 失败
+	//   	Error 错误
+	// InstanceRole (节点角色)
+	//     WORKER 工作节点
+	//     MASTER_ETCD 主节点
+	//     SUPER 超级节点
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+type DescribeClusterNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id,不输入表示查询所有
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每次查询的最大记录数量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Name 可取值：
+	// DefendStatus（防护状态）:
+	// 	Defended 已防护
+	// 	UnDefended 未防护
+	// AgentStatus (容器agent状态):
+	//  	OFFLINE 离线
+	//  	ONLINE 在线
+	//  	UNINSTALL 未安装
+	// InstanceState (节点状态):
+	//   	Running 运行中
+	//   	Ready 准备
+	//   	Notready 未准备好
+	//   	Initializing 初始化
+	//   	Failed 失败
+	//   	Error 错误
+	// InstanceRole (节点角色)
+	//     WORKER 工作节点
+	//     MASTER_ETCD 主节点
+	//     SUPER 超级节点
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+func (r *DescribeClusterNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterNodesResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 节点列表
+	ClusterNodeList []*ClusterNodeInfo `json:"ClusterNodeList,omitnil" name:"ClusterNodeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeClusterNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21053,6 +21423,106 @@ func (r *DescribeSecLogVasInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSuperNodePodListRequestParams struct {
+	// 过滤条件。
+	// <li>NodeUniqueID- String - 是否必填：否 - 节点唯一id </li>
+	// <li>PodName- String - 是否必填：否 - Pod示例名称 </li>
+	// <li>PodIP- String - 是否必填：否 - POD IP </li>
+	// <li>Namespace- String - 是否必填：否 - 命名空间 </li>
+	// <li>Deployment- String - 是否必填：否 - 所属工作负载 </li>
+	// <li>Status- String - 是否必填：否 - 状态 </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+type DescribeSuperNodePodListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>NodeUniqueID- String - 是否必填：否 - 节点唯一id </li>
+	// <li>PodName- String - 是否必填：否 - Pod示例名称 </li>
+	// <li>PodIP- String - 是否必填：否 - POD IP </li>
+	// <li>Namespace- String - 是否必填：否 - 命名空间 </li>
+	// <li>Deployment- String - 是否必填：否 - 所属工作负载 </li>
+	// <li>Status- String - 是否必填：否 - 状态 </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+}
+
+func (r *DescribeSuperNodePodListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSuperNodePodListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSuperNodePodListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSuperNodePodListResponseParams struct {
+	// 列表
+	List []*SuperNodePodListItem `json:"List,omitnil" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSuperNodePodListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSuperNodePodListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSuperNodePodListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSuperNodePodListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSupportDefenceVulRequestParams struct {
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
@@ -21644,6 +22114,115 @@ func (r *DescribeUserClusterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserPodListRequestParams struct {
+	// 集群Id,不填表示获取用户所有pod
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每次查询的最大记录数量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Name 可取值：ClusterId集群id,Namespace命名空间等
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// Service名称
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+}
+
+type DescribeUserPodListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id,不填表示获取用户所有pod
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每次查询的最大记录数量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Name 可取值：ClusterId集群id,Namespace命名空间等
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式 asc,desc
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// Service名称
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+}
+
+func (r *DescribeUserPodListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserPodListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "ServiceName")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserPodListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserPodListResponseParams struct {
+	// Pod列表详细信息
+	PodList []*ClusterPodInfo `json:"PodList,omitnil" name:"PodList"`
+
+	// Pod列表总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserPodListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserPodListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserPodListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserPodListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -31138,6 +31717,120 @@ func (r *StopVulScanTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopVulScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SuperNodeListItem struct {
+	// 超级节点ID
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
+
+	// 超级节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 所属集群名
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 所属集群ID
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
+
+	// 节点状态:Running,Ready,Notready,Initializing,Failed,Error
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 子网ID
+	SubNetID *string `json:"SubNetID,omitnil" name:"SubNetID"`
+
+	// 子网名称
+	SubNetName *string `json:"SubNetName,omitnil" name:"SubNetName"`
+
+	// 子网网段
+	SubNetCidr *string `json:"SubNetCidr,omitnil" name:"SubNetCidr"`
+
+	// 可用区ID
+	ZoneID *string `json:"ZoneID,omitnil" name:"ZoneID"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 关联pod数
+	RelatePodCount *uint64 `json:"RelatePodCount,omitnil" name:"RelatePodCount"`
+
+	// 关联容器数
+	RelateContainerCount *uint64 `json:"RelateContainerCount,omitnil" name:"RelateContainerCount"`
+
+	// agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;
+	AgentStatus *string `json:"AgentStatus,omitnil" name:"AgentStatus"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
+
+	// 集群接入状态
+	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil" name:"ClusterAccessedStatus"`
+
+	// 计费核数
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
+
+	// 防护状态:
+	// 已防护: Defended
+	// 未防护: UnDefended
+	DefendStatus *string `json:"DefendStatus,omitnil" name:"DefendStatus"`
+}
+
+type SuperNodePodListItem struct {
+	// pod名称
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
+
+	// podIP
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
+
+	// 运行状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// cpu需求核数
+	CpuRequest *int64 `json:"CpuRequest,omitnil" name:"CpuRequest"`
+
+	// cpu限制核数
+	CpuLimit *int64 `json:"CpuLimit,omitnil" name:"CpuLimit"`
+
+	// 内存需求大小
+	MemRequest *int64 `json:"MemRequest,omitnil" name:"MemRequest"`
+
+	// 内存限制大小
+	MemLimit *int64 `json:"MemLimit,omitnil" name:"MemLimit"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 工作负载名称
+	DeploymentName *string `json:"DeploymentName,omitnil" name:"DeploymentName"`
+
+	// 工作负载id
+	DeploymentID *string `json:"DeploymentID,omitnil" name:"DeploymentID"`
+
+	// 启动时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 关联容器个数
+	RelateContainerCount *uint64 `json:"RelateContainerCount,omitnil" name:"RelateContainerCount"`
+
+	// 运行时间
+	RunningTime *string `json:"RunningTime,omitnil" name:"RunningTime"`
+
+	// PodUid
+	PodUid *string `json:"PodUid,omitnil" name:"PodUid"`
+
+	// 计费核数
+	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil" name:"ChargeCoresCnt"`
+
+	// 防护状态
+	DefendStatus *string `json:"DefendStatus,omitnil" name:"DefendStatus"`
 }
 
 type SupportDefenceVul struct {

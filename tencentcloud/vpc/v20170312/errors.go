@@ -359,6 +359,9 @@ const (
 	// 该资源不支持此操作。
 	INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 
+	// 指定的优先级之间冲突或与已存在的优先级冲突。
+	INVALIDPARAMETERVALUE_ROUTEPOLICYPRIORITYCONFLICT = "InvalidParameterValue.RoutePolicyPriorityConflict"
+
 	// SSL-VPN-SERVER 云端网段和SSL-VPN-SERVER 客户端网段重叠。
 	INVALIDPARAMETERVALUE_SSLCCNVPNSERVERCIDRCONFLICT = "InvalidParameterValue.SslCcnVpnServerCidrConflict"
 

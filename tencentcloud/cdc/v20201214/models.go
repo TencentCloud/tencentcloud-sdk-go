@@ -678,7 +678,7 @@ type DedicatedClusterType struct {
 	// 功率要求(KW)
 	PowerDrawKva *float64 `json:"PowerDrawKva,omitnil" name:"PowerDrawKva"`
 
-	// 显示计算资源规格详情，存储等资源不显示；对应规格
+	// 显示计算资源规格详情，存储等资源不显示
 	ComputeFormatDesc *string `json:"ComputeFormatDesc,omitnil" name:"ComputeFormatDesc"`
 }
 
@@ -1223,6 +1223,18 @@ type DescribeDedicatedClusterOverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpnConnectionBandwidthData []*VpngwBandwidthData `json:"VpnConnectionBandwidthData,omitnil" name:"VpnConnectionBandwidthData"`
 
+	// 宿主机资源概览信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostDetailInfo []*HostDetailInfo `json:"HostDetailInfo,omitnil" name:"HostDetailInfo"`
+
+	// 热备宿主机数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostStandbyCount *uint64 `json:"HostStandbyCount,omitnil" name:"HostStandbyCount"`
+
+	// 普通宿主机数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostNormalCount *uint64 `json:"HostNormalCount,omitnil" name:"HostNormalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1660,6 +1672,28 @@ type DetailData struct {
 	// 对应的具体值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil" name:"Values"`
+}
+
+type HostDetailInfo struct {
+	// 类型族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostTypeFamily *string `json:"HostTypeFamily,omitnil" name:"HostTypeFamily"`
+
+	// 总CPU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTotal *float64 `json:"CpuTotal,omitnil" name:"CpuTotal"`
+
+	// 可用CPU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuAvailable *float64 `json:"CpuAvailable,omitnil" name:"CpuAvailable"`
+
+	// 总内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemTotal *float64 `json:"MemTotal,omitnil" name:"MemTotal"`
+
+	// 可用内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemAvailable *float64 `json:"MemAvailable,omitnil" name:"MemAvailable"`
 }
 
 type HostInfo struct {

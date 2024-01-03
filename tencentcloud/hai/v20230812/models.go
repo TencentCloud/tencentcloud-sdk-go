@@ -42,6 +42,23 @@ type ApplicationInfo struct {
 	// 系统盘大小下限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSystemDiskSize *int64 `json:"MinSystemDiskSize,omitnil" name:"MinSystemDiskSize"`
+
+	// 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitnil" name:"ApplicationType"`
+
+	// 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
+	// 示例值：ONLINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationState *string `json:"ApplicationState,omitnil" name:"ApplicationState"`
+
+	// 应用创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 应用大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationSize *int64 `json:"ApplicationSize,omitnil" name:"ApplicationSize"`
 }
 
 // Predefined struct for user
@@ -50,9 +67,10 @@ type DescribeApplicationsRequestParams struct {
 	ApplicationIds []*string `json:"ApplicationIds,omitnil" name:"ApplicationIds"`
 
 	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-	// application-id，精确匹配
-	// scene-id，精确匹配
-	// application-name，模糊匹配
+	// application-id: 精确匹配;
+	// scene-id: 精确匹配;
+	// application-name: 模糊匹配;
+	// application-type: 精确匹配;
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -62,6 +80,12 @@ type DescribeApplicationsRequestParams struct {
 	// MC：1000
 	// 用户：100
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeApplicationsRequest struct {
@@ -71,9 +95,10 @@ type DescribeApplicationsRequest struct {
 	ApplicationIds []*string `json:"ApplicationIds,omitnil" name:"ApplicationIds"`
 
 	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-	// application-id，精确匹配
-	// scene-id，精确匹配
-	// application-name，模糊匹配
+	// application-id: 精确匹配;
+	// scene-id: 精确匹配;
+	// application-name: 模糊匹配;
+	// application-type: 精确匹配;
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -83,6 +108,12 @@ type DescribeApplicationsRequest struct {
 	// MC：1000
 	// 用户：100
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -101,6 +132,8 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
 	}

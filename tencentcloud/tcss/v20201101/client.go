@@ -8035,6 +8035,57 @@ func (c *Client) DescribeAssetSummaryWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAssetSuperNodeListRequest() (request *DescribeAssetSuperNodeListRequest) {
+    request = &DescribeAssetSuperNodeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetSuperNodeList")
+    
+    
+    return
+}
+
+func NewDescribeAssetSuperNodeListResponse() (response *DescribeAssetSuperNodeListResponse) {
+    response = &DescribeAssetSuperNodeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetSuperNodeList
+// 查询超级节点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetSuperNodeList(request *DescribeAssetSuperNodeListRequest) (response *DescribeAssetSuperNodeListResponse, err error) {
+    return c.DescribeAssetSuperNodeListWithContext(context.Background(), request)
+}
+
+// DescribeAssetSuperNodeList
+// 查询超级节点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetSuperNodeListWithContext(ctx context.Context, request *DescribeAssetSuperNodeListRequest) (response *DescribeAssetSuperNodeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSuperNodeListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSuperNodeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetSuperNodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetSyncLastTimeRequest() (request *DescribeAssetSyncLastTimeRequest) {
     request = &DescribeAssetSyncLastTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8332,6 +8383,65 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeClusterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
+    request = &DescribeClusterNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeClusterNodes")
+    
+    
+    return
+}
+
+func NewDescribeClusterNodesResponse() (response *DescribeClusterNodesResponse) {
+    response = &DescribeClusterNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterNodes
+// 查询集群节点信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (response *DescribeClusterNodesResponse, err error) {
+    return c.DescribeClusterNodesWithContext(context.Background(), request)
+}
+
+// DescribeClusterNodes
+// 查询集群节点信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeClusterNodesWithContext(ctx context.Context, request *DescribeClusterNodesRequest) (response *DescribeClusterNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterNodesResponse()
     err = c.Send(request, response)
     return
 }
@@ -13700,6 +13810,57 @@ func (c *Client) DescribeSecLogVasInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSuperNodePodListRequest() (request *DescribeSuperNodePodListRequest) {
+    request = &DescribeSuperNodePodListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeSuperNodePodList")
+    
+    
+    return
+}
+
+func NewDescribeSuperNodePodListResponse() (response *DescribeSuperNodePodListResponse) {
+    response = &DescribeSuperNodePodListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSuperNodePodList
+// 查询超级节点pod列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSuperNodePodList(request *DescribeSuperNodePodListRequest) (response *DescribeSuperNodePodListResponse, err error) {
+    return c.DescribeSuperNodePodListWithContext(context.Background(), request)
+}
+
+// DescribeSuperNodePodList
+// 查询超级节点pod列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSuperNodePodListWithContext(ctx context.Context, request *DescribeSuperNodePodListRequest) (response *DescribeSuperNodePodListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSuperNodePodListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSuperNodePodList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSuperNodePodListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSupportDefenceVulRequest() (request *DescribeSupportDefenceVulRequest) {
     request = &DescribeSupportDefenceVulRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14133,6 +14294,65 @@ func (c *Client) DescribeUserClusterWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeUserClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserPodListRequest() (request *DescribeUserPodListRequest) {
+    request = &DescribeUserPodListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeUserPodList")
+    
+    
+    return
+}
+
+func NewDescribeUserPodListResponse() (response *DescribeUserPodListResponse) {
+    response = &DescribeUserPodListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserPodList
+// 获取用户的pod列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeUserPodList(request *DescribeUserPodListRequest) (response *DescribeUserPodListResponse, err error) {
+    return c.DescribeUserPodListWithContext(context.Background(), request)
+}
+
+// DescribeUserPodList
+// 获取用户的pod列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeUserPodListWithContext(ctx context.Context, request *DescribeUserPodListRequest) (response *DescribeUserPodListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserPodListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserPodList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserPodListResponse()
     err = c.Send(request, response)
     return
 }

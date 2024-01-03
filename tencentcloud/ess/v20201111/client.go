@@ -4961,6 +4961,7 @@ func NewCreateUserAutoSignEnableUrlResponse() (response *CreateUserAutoSignEnabl
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
     return c.CreateUserAutoSignEnableUrlWithContext(context.Background(), request)
 }
@@ -4987,6 +4988,7 @@ func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUr
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
     if request == nil {
         request = NewCreateUserAutoSignEnableUrlRequest()

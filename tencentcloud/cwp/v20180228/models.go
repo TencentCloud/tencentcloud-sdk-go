@@ -4662,7 +4662,7 @@ func (r *CreateMaliciousRequestWhiteListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateMalwareWhiteListRequestParams struct {
-	// 白名单模式； 0MD5白名单，1自定义
+	// 白名单模式； 0 MD5白名单，1自定义
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// quuid 列表
@@ -4693,7 +4693,7 @@ type CreateMalwareWhiteListRequestParams struct {
 type CreateMalwareWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 白名单模式； 0MD5白名单，1自定义
+	// 白名单模式； 0 MD5白名单，1自定义
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// quuid 列表
@@ -9822,16 +9822,16 @@ type DescribeAssetMachineListRequestParams struct {
 	// <li>IP   内网IP或公网IP</li>
 	// <li>OsType - String - 是否必填：否 - windows或linux</li>
 	// <li>CpuLoad - Int - 是否必填：否 - 
-	// 0: 未知  1: 低负载
-	// 2: 中负载  3: 高负载</li>
+	// 	0: 未知  1: 低负载
+	// 	2: 中负载  3: 高负载</li>
 	// <li>DiskLoad - Int - 是否必填：否 - 
-	// 0: 0%或未知  1: 0%～20%
-	// 2: 20%～50%  3: 50%～80%
-	// 4: 80%～100%</li>
+	// 	0: 0%或未知  1: 0%～20%
+	// 	2: 20%～50%  3: 50%～80%
+	// 	4: 80%～100%</li>
 	// <li>MemLoad - Int - 是否必填：否 - 
-	// 0: 0%或未知  1: 0%～20%
-	// 2: 20%～50%  3: 50%～80%
-	// 4: 80%～100%</li>
+	// 	0: 0%或未知  1: 0%～20%
+	// 	2: 20%～50%  3: 50%～80%
+	// 	4: 80%～100%</li>
 	// <li>Quuid：主机Quuid</li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -9858,16 +9858,16 @@ type DescribeAssetMachineListRequest struct {
 	// <li>IP   内网IP或公网IP</li>
 	// <li>OsType - String - 是否必填：否 - windows或linux</li>
 	// <li>CpuLoad - Int - 是否必填：否 - 
-	// 0: 未知  1: 低负载
-	// 2: 中负载  3: 高负载</li>
+	// 	0: 未知  1: 低负载
+	// 	2: 中负载  3: 高负载</li>
 	// <li>DiskLoad - Int - 是否必填：否 - 
-	// 0: 0%或未知  1: 0%～20%
-	// 2: 20%～50%  3: 50%～80%
-	// 4: 80%～100%</li>
+	// 	0: 0%或未知  1: 0%～20%
+	// 	2: 20%～50%  3: 50%～80%
+	// 	4: 80%～100%</li>
 	// <li>MemLoad - Int - 是否必填：否 - 
-	// 0: 0%或未知  1: 0%～20%
-	// 2: 20%～50%  3: 50%～80%
-	// 4: 80%～100%</li>
+	// 	0: 0%或未知  1: 0%～20%
+	// 	2: 20%～50%  3: 50%～80%
+	// 	4: 80%～100%</li>
 	// <li>Quuid：主机Quuid</li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -11140,8 +11140,7 @@ type DescribeAssetUserListRequestParams struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
-	// PasswordLockDays
+	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime|PasswordLockDays]
 	By *string `json:"By,omitnil" name:"By"`
 }
 
@@ -11183,8 +11182,7 @@ type DescribeAssetUserListRequest struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
-	// PasswordLockDays
+	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime|PasswordLockDays]
 	By *string `json:"By,omitnil" name:"By"`
 }
 
@@ -34745,7 +34743,9 @@ func (r *ExportJavaMemShellPluginsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportJavaMemShellsRequestParams struct {
-	// 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+	// 过滤条件：InstanceID、IP、
+	// 
+	// MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 导出字段
@@ -34755,7 +34755,9 @@ type ExportJavaMemShellsRequestParams struct {
 type ExportJavaMemShellsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+	// 过滤条件：InstanceID、IP、
+	// 
+	// MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 导出字段
@@ -34784,7 +34786,7 @@ func (r *ExportJavaMemShellsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportJavaMemShellsResponseParams struct {
-	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
+	// 任务ID,需要到接口“异步导出任务”https://cloud.tencent.com/document/product/296/52508 获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

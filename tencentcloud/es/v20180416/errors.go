@@ -461,6 +461,9 @@ const (
 	// 不支持变配节点或磁盘的配置。
 	UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
 
+	// 不支持该操作，在集群中存在分配的分片。
+	UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
+
 	// 集群中存在部分索引处于关闭状态。
 	UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 

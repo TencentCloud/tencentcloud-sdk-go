@@ -262,6 +262,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
 //  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
 //  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
 //  INVALIDPARAMETER_INVALIDEXTENDFIELD = "InvalidParameter.InvalidExtendField"
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
@@ -346,6 +347,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
 //  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
 //  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
 //  INVALIDPARAMETER_INVALIDEXTENDFIELD = "InvalidParameter.InvalidExtendField"
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
@@ -1165,6 +1167,7 @@ func NewDescribeJobFlowResponse() (response *DescribeJobFlowResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *DescribeJobFlowResponse, err error) {
     return c.DescribeJobFlowWithContext(context.Background(), request)
 }
@@ -1175,6 +1178,7 @@ func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *Des
 // 可能返回的错误码:
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeJobFlowWithContext(ctx context.Context, request *DescribeJobFlowRequest) (response *DescribeJobFlowResponse, err error) {
     if request == nil {
         request = NewDescribeJobFlowRequest()
@@ -2254,6 +2258,7 @@ func NewRunJobFlowResponse() (response *RunJobFlowResponse) {
 //  INVALIDPARAMETER_INVALIDBOOTSTRAPACTION = "InvalidParameter.InvalidBootstrapAction"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
 //  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
+//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDFAILUREPOLICY = "InvalidParameter.InvalidFailurePolicy"
 //  INVALIDPARAMETER_INVALIDINSTANCE = "InvalidParameter.InvalidInstance"
 //  INVALIDPARAMETER_INVALIDINSTANCEPOLICY = "InvalidParameter.InvalidInstancePolicy"
@@ -2303,6 +2308,7 @@ func (c *Client) RunJobFlow(request *RunJobFlowRequest) (response *RunJobFlowRes
 //  INVALIDPARAMETER_INVALIDBOOTSTRAPACTION = "InvalidParameter.InvalidBootstrapAction"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
 //  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
+//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
 //  INVALIDPARAMETER_INVALIDFAILUREPOLICY = "InvalidParameter.InvalidFailurePolicy"
 //  INVALIDPARAMETER_INVALIDINSTANCE = "InvalidParameter.InvalidInstance"
 //  INVALIDPARAMETER_INVALIDINSTANCEPOLICY = "InvalidParameter.InvalidInstancePolicy"

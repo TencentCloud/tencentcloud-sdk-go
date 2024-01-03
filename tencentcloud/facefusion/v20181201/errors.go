@@ -137,6 +137,9 @@ const (
 	// 素材人脸ID不存在。
 	FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
 
+	// 内部错误。
+	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 

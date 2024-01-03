@@ -380,6 +380,9 @@ const (
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
+	// 源站组类型错误。
+	INVALIDPARAMETER_INVALIDORIGINGROUPTYPE = "InvalidParameter.InvalidOriginGroupType"
+
 	// 不支持填写内网IP/回环地址作为源站地址
 	INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
 
@@ -578,6 +581,9 @@ const (
 	// 内部错误。
 	INVALIDPARAMETER_TASKSYSTEMERROR = "InvalidParameter.TaskSystemError"
 
+	// HTTPS的TLS版本不连续。
+	INVALIDPARAMETER_TLSVERSIONNOTINSEQUENCE = "InvalidParameter.TlsVersionNotInSequence"
+
 	// 过滤值过多。
 	INVALIDPARAMETER_TOOMANYFILTERVALUES = "InvalidParameter.TooManyFilterValues"
 
@@ -752,6 +758,9 @@ const (
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
+	// 绑定负载均衡有处于非运行中的状态，禁止操作。
+	OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = "OperationDenied.LoadBalanceStatusNotInOnline"
+
 	// 站点状态不支持操作负载均衡。
 	OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = "OperationDenied.LoadBalancingZoneIsNotActive"
 
@@ -772,6 +781,9 @@ const (
 
 	// 加速域名使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = "OperationDenied.OriginGroupAccelerationDomainUsed"
+
+	// 四层代理使用中，无法删除。
+	OPERATIONDENIED_ORIGINGROUPL4USED = "OperationDenied.OriginGroupL4Used"
 
 	// 负载均衡使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPLBUSED = "OperationDenied.OriginGroupLBUsed"

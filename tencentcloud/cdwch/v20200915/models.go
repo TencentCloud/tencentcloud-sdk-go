@@ -1454,6 +1454,9 @@ type DescribeSpecRequestParams struct {
 
 	// 是否弹性ck
 	IsElastic *bool `json:"IsElastic,omitnil" name:"IsElastic"`
+
+	// 是否是购买页面需要的spec
+	CaseType *int64 `json:"CaseType,omitnil" name:"CaseType"`
 }
 
 type DescribeSpecRequest struct {
@@ -1467,6 +1470,9 @@ type DescribeSpecRequest struct {
 
 	// 是否弹性ck
 	IsElastic *bool `json:"IsElastic,omitnil" name:"IsElastic"`
+
+	// 是否是购买页面需要的spec
+	CaseType *int64 `json:"CaseType,omitnil" name:"CaseType"`
 }
 
 func (r *DescribeSpecRequest) ToJsonString() string {
@@ -1484,6 +1490,7 @@ func (r *DescribeSpecRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "PayMode")
 	delete(f, "IsElastic")
+	delete(f, "CaseType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecRequest has unknown keys!", "")
 	}

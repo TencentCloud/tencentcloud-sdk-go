@@ -421,6 +421,7 @@ func NewCloseAuditServiceResponse() (response *CloseAuditServiceResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 func (c *Client) CloseAuditService(request *CloseAuditServiceRequest) (response *CloseAuditServiceResponse, err error) {
@@ -432,6 +433,7 @@ func (c *Client) CloseAuditService(request *CloseAuditServiceRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 func (c *Client) CloseAuditServiceWithContext(ctx context.Context, request *CloseAuditServiceRequest) (response *CloseAuditServiceResponse, err error) {
@@ -2383,6 +2385,7 @@ func NewDeleteDatabaseResponse() (response *DeleteDatabaseResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DeleteDatabase(request *DeleteDatabaseRequest) (response *DeleteDatabaseResponse, err error) {
     return c.DeleteDatabaseWithContext(context.Background(), request)
 }
@@ -2406,6 +2409,7 @@ func (c *Client) DeleteDatabase(request *DeleteDatabaseRequest) (response *Delet
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DeleteDatabaseWithContext(ctx context.Context, request *DeleteDatabaseRequest) (response *DeleteDatabaseResponse, err error) {
     if request == nil {
         request = NewDeleteDatabaseRequest()
@@ -2918,6 +2922,7 @@ func NewDescribeAuditConfigResponse() (response *DescribeAuditConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -2932,6 +2937,7 @@ func (c *Client) DescribeAuditConfig(request *DescribeAuditConfigRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"

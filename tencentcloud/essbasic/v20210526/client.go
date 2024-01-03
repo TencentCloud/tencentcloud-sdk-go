@@ -4932,7 +4932,7 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 //
 // <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
 //
-// <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
+// <li>印章:   会删除所有的印章所有的机构公章，合同专用章，财务专用章和人事专用章,  然后用新企业名称生成新的机构公章，合同专用章，财务专用章和人事专用章,  而法人章不会处理</li>
 //
 // <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
 //
@@ -5019,7 +5019,7 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 //
 // <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
 //
-// <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
+// <li>印章:   会删除所有的印章所有的机构公章，合同专用章，财务专用章和人事专用章,  然后用新企业名称生成新的机构公章，合同专用章，财务专用章和人事专用章,  而法人章不会处理</li>
 //
 // <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
 //
@@ -6345,6 +6345,7 @@ func NewDescribeChannelOrganizationsResponse() (response *DescribeChannelOrganiz
 // - 对于整个应用下所有企业的查询，**不需要指定子客的唯一标识**，直接查询整个应用下所有子客企业的企业信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -6362,6 +6363,7 @@ func (c *Client) DescribeChannelOrganizations(request *DescribeChannelOrganizati
 // - 对于整个应用下所有企业的查询，**不需要指定子客的唯一标识**，直接查询整个应用下所有子客企业的企业信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -7372,6 +7374,7 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -7425,6 +7428,7 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"

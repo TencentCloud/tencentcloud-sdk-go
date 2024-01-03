@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+## 本地专用集群(cdc) 版本：2020-12-14
 
-### 第 52 次发布
+### 第 8 次发布
 
-发布时间：2024-01-01 00:15:04
+发布时间：2024-01-03 01:08:25
 
 本次发布包含了以下内容：
 
@@ -12,21 +12,85 @@
 
 修改接口：
 
-* [DescribeJobs](https://cloud.tencent.com/document/api/849/52008)
+* [DescribeDedicatedClusterOverview](https://cloud.tencent.com/document/api/1346/73760)
 
-	* 新增入参：ExtraResult
+	* 新增出参：HostDetailInfo, HostStandbyCount, HostNormalCount
 
 
 新增数据结构：
 
-* [JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo)
+* [HostDetailInfo](https://cloud.tencent.com/document/api/1346/73770#HostDetailInfo)
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 18 次发布
+
+发布时间：2024-01-03 01:08:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)
+
+	* 新增入参：CaseType
+
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 6 次发布
+
+发布时间：2024-01-03 01:16:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)
+
+	* 新增入参：OrderField, Order
+
 
 修改数据结构：
 
-* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+* [ApplicationInfo](https://cloud.tencent.com/document/api/1721/101518#ApplicationInfo)
 
-	* 新增成员：EventInfo
+	* 新增成员：ApplicationType, ApplicationState, CreateTime, ApplicationSize
 
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 58 次发布
+
+发布时间：2024-01-03 01:24:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAssetSuperNodeList](https://cloud.tencent.com/document/api/1285/102813)
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/1285/102811)
+* [DescribeSuperNodePodList](https://cloud.tencent.com/document/api/1285/102812)
+* [DescribeUserPodList](https://cloud.tencent.com/document/api/1285/102810)
+
+新增数据结构：
+
+* [ClusterNodeInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterNodeInfo)
+* [ClusterPodInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterPodInfo)
+* [SuperNodeListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodeListItem)
+* [SuperNodePodListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodePodListItem)
 
 
 
@@ -18441,6 +18505,25 @@
 
 ## 本地专用集群(cdc) 版本：2020-12-14
 
+### 第 8 次发布
+
+发布时间：2024-01-03 01:08:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDedicatedClusterOverview](https://cloud.tencent.com/document/api/1346/73760)
+
+	* 新增出参：HostDetailInfo, HostStandbyCount, HostNormalCount
+
+
+新增数据结构：
+
+* [[HostDetailInfo](https://cloud.tencent.com/document/api/1346/73770#HostDetailInfo)](https://cloud.tencent.com/document/api/1346/73770#[HostDetailInfo](https://cloud.tencent.com/document/api/1346/73770#HostDetailInfo))
+
 ### 第 7 次发布
 
 发布时间：2023-09-12 01:18:51
@@ -21409,6 +21492,21 @@
 
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 18 次发布
+
+发布时间：2024-01-03 01:08:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)
+
+	* 新增入参：CaseType
+
 
 ### 第 17 次发布
 
@@ -67111,6 +67209,28 @@
 
 ## 高性能应用服务(hai) 版本：2023-08-12
 
+### 第 6 次发布
+
+发布时间：2024-01-03 01:16:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)
+
+	* 新增入参：OrderField, Order
+
+
+修改数据结构：
+
+* [ApplicationInfo](https://cloud.tencent.com/document/api/1721/101518#ApplicationInfo)
+
+	* 新增成员：ApplicationType, ApplicationState, CreateTime, ApplicationSize
+
+
 ### 第 5 次发布
 
 发布时间：2023-12-13 01:52:48
@@ -88449,7 +88569,7 @@
 
 新增数据结构：
 
-* [[JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo)](https://cloud.tencent.com/document/api/849/52010#[JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo))
+* [JobEventInfo](https://cloud.tencent.com/document/api/849/52010#JobEventInfo)
 
 修改数据结构：
 
@@ -109060,6 +109180,28 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 58 次发布
+
+发布时间：2024-01-03 01:24:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAssetSuperNodeList](https://cloud.tencent.com/document/api/1285/102813)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterNodes](https://cloud.tencent.com/document/api/1285/102811)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSuperNodePodList](https://cloud.tencent.com/document/api/1285/102812)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserPodList](https://cloud.tencent.com/document/api/1285/102810)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClusterNodeInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterNodeInfo)](https://cloud.tencent.com/document/api/1285/65614#[ClusterNodeInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterNodeInfo))
+* [[ClusterPodInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterPodInfo)](https://cloud.tencent.com/document/api/1285/65614#[ClusterPodInfo](https://cloud.tencent.com/document/api/1285/65614#ClusterPodInfo))
+* [[SuperNodeListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodeListItem)](https://cloud.tencent.com/document/api/1285/65614#[SuperNodeListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodeListItem))
+* [[SuperNodePodListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodePodListItem)](https://cloud.tencent.com/document/api/1285/65614#[SuperNodePodListItem](https://cloud.tencent.com/document/api/1285/65614#SuperNodePodListItem))
 
 ### 第 57 次发布
 

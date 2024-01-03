@@ -671,6 +671,7 @@ func NewAddUserDeviceResponse() (response *AddUserDeviceResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
 //  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
@@ -690,6 +691,7 @@ func (c *Client) AddUserDevice(request *AddUserDeviceRequest) (response *AddUser
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
 //  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"

@@ -445,6 +445,7 @@ func NewCreateCloudNativeAPIGatewayPublicNetworkResponse() (response *CreateClou
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) CreateCloudNativeAPIGatewayPublicNetwork(request *CreateCloudNativeAPIGatewayPublicNetworkRequest) (response *CreateCloudNativeAPIGatewayPublicNetworkResponse, err error) {
     return c.CreateCloudNativeAPIGatewayPublicNetworkWithContext(context.Background(), request)
@@ -457,6 +458,7 @@ func (c *Client) CreateCloudNativeAPIGatewayPublicNetwork(request *CreateCloudNa
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) CreateCloudNativeAPIGatewayPublicNetworkWithContext(ctx context.Context, request *CreateCloudNativeAPIGatewayPublicNetworkRequest) (response *CreateCloudNativeAPIGatewayPublicNetworkResponse, err error) {
     if request == nil {

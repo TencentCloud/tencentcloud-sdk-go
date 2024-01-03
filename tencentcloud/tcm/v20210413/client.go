@@ -136,6 +136,7 @@ func NewDeleteMeshResponse() (response *DeleteMeshResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMesh(request *DeleteMeshRequest) (response *DeleteMeshResponse, err error) {
     return c.DeleteMeshWithContext(context.Background(), request)
@@ -150,6 +151,7 @@ func (c *Client) DeleteMesh(request *DeleteMeshRequest) (response *DeleteMeshRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMeshWithContext(ctx context.Context, request *DeleteMeshRequest) (response *DeleteMeshResponse, err error) {
     if request == nil {

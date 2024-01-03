@@ -2504,6 +2504,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
@@ -2513,6 +2514,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_UPDATEDISKTYPE = "UnsupportedOperation.UpdateDiskType"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
 func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
     return c.UpdateInstanceWithContext(context.Background(), request)
@@ -2592,6 +2594,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
@@ -2601,6 +2604,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
 //  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_UPDATEDISKTYPE = "UnsupportedOperation.UpdateDiskType"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
 func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
     if request == nil {

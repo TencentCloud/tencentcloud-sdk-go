@@ -72,6 +72,9 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
+//  INVALIDPARAMETERVALUE_INVALIDORDER = "InvalidParameterValue.InvalidOrder"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 //  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
 func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
     return c.DescribeApplicationsWithContext(context.Background(), request)
@@ -85,6 +88,9 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
+//  INVALIDPARAMETERVALUE_INVALIDORDER = "InvalidParameterValue.InvalidOrder"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 //  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
 func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
     if request == nil {
@@ -467,6 +473,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
@@ -485,6 +492,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstancesRequest) (response *RunInstancesResponse, err error) {

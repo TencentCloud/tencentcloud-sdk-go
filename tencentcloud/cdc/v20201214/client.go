@@ -440,7 +440,7 @@ func NewDescribeDedicatedClusterHostsResponse() (response *DescribeDedicatedClus
 }
 
 // DescribeDedicatedClusterHosts
-// 专用集群宿主机信息
+// 查询专用集群宿主机信息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
@@ -451,7 +451,7 @@ func (c *Client) DescribeDedicatedClusterHosts(request *DescribeDedicatedCluster
 }
 
 // DescribeDedicatedClusterHosts
-// 专用集群宿主机信息
+// 查询专用集群宿主机信息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
@@ -595,7 +595,7 @@ func NewDescribeDedicatedClusterOverviewResponse() (response *DescribeDedicatedC
 }
 
 // DescribeDedicatedClusterOverview
-// 专用集群概览信息
+// 查询专用集群概览信息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -605,7 +605,7 @@ func (c *Client) DescribeDedicatedClusterOverview(request *DescribeDedicatedClus
 }
 
 // DescribeDedicatedClusterOverview
-// 专用集群概览信息
+// 查询专用集群概览信息
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

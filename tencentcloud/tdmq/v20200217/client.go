@@ -7222,6 +7222,7 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     return c.SendCmqMsgWithContext(context.Background(), request)
 }
@@ -7232,6 +7233,7 @@ func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgRes
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SendCmqMsgWithContext(ctx context.Context, request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()

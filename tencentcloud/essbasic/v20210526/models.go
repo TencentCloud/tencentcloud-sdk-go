@@ -825,9 +825,9 @@ type ChannelCreateBatchCancelFlowUrlRequestParams struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
@@ -848,9 +848,9 @@ type ChannelCreateBatchCancelFlowUrlRequest struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
@@ -1073,7 +1073,15 @@ func (r *ChannelCreateBatchQuickSignUrlResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ChannelCreateBatchSignUrlRequestParams struct {
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 签署方经办人的姓名。
@@ -1141,7 +1149,15 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 type ChannelCreateBatchSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 签署方经办人的姓名。
@@ -1788,9 +1804,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -1908,9 +1924,9 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -6175,9 +6191,10 @@ type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
 	// 此接口下面信息必填。
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
@@ -6194,9 +6211,10 @@ type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	// 此接口下面信息必填。
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
@@ -7099,7 +7117,7 @@ type CreateSignUrlsRequestParams struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
@@ -7203,7 +7221,7 @@ type CreateSignUrlsRequest struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
@@ -8001,9 +8019,9 @@ type DescribeExtendedServiceAuthInfoRequestParams struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -8016,9 +8034,9 @@ type DescribeExtendedServiceAuthInfoRequest struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -9356,10 +9374,11 @@ type ModifyExtendedServiceRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	//   扩展服务类型
@@ -9396,10 +9415,11 @@ type ModifyExtendedServiceRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	//   扩展服务类型
@@ -9556,7 +9576,7 @@ type OperateChannelTemplateRequestParams struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识: Agent.AppId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
@@ -9609,7 +9629,7 @@ type OperateChannelTemplateRequest struct {
 	// 
 	// 此接口下面信息必填。
 	// <ul>
-	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// <li>渠道应用标识: Agent.AppId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 

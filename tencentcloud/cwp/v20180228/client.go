@@ -13355,7 +13355,7 @@ func NewDescribeMachineFileTamperRulesResponse() (response *DescribeMachineFileT
 }
 
 // DescribeMachineFileTamperRules
-// 查询主机相关核心文件监控规则列 表   
+// 查询主机相关核心文件监控规则列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -13370,7 +13370,7 @@ func (c *Client) DescribeMachineFileTamperRules(request *DescribeMachineFileTamp
 }
 
 // DescribeMachineFileTamperRules
-// 查询主机相关核心文件监控规则列 表   
+// 查询主机相关核心文件监控规则列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

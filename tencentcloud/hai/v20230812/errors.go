@@ -47,11 +47,20 @@ const (
 	// 应用ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 
+	// 应用类型application-type仅可以选择PUBLIC_APPLICATION或PRIVATE_APPLICATION。
+	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
+
 	// 每次购买的实例数目不在合理范围内
 	INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 
 	// 实例ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+
+	// 无效的排练顺序
+	INVALIDPARAMETERVALUE_INVALIDORDER = "InvalidParameterValue.InvalidOrder"
+
+	// 无效的排序字段
+	INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 
 	// 场景ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
@@ -64,6 +73,9 @@ const (
 
 	// 指定的算力套餐库存不足
 	RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+
+	// 高性能应用服务相关角色获取失败，无法完成操作
+	UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
 
 	// 用户账号的网络类型是传统型，不允许使用HAI
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
