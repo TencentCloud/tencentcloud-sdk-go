@@ -34786,7 +34786,7 @@ func (r *ExportJavaMemShellsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportJavaMemShellsResponseParams struct {
-	// 任务ID,需要到接口“异步导出任务”https://cloud.tencent.com/document/product/296/52508 获取DownloadUrl下载地址
+	// 任务ID,需要到接口 <a href="https://cloud.tencent.com/document/product/296/52508" target="_blank" >异步导出任务</a>获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

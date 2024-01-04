@@ -23,6 +23,12 @@ const (
 	// 异步队列中待处理消息较多,请待处理完成后再调用异步接口。
 	FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
 
+	// 异步任务处理出错,不会扣费。
+	FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
+
+	// 异步任务处理中，请稍后。
+	FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
+
 	// 获取结果为空,请检查任务ID是否正确。
 	FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
 

@@ -682,6 +682,55 @@ func (c *Client) DescribeInstanceKeyValConfigsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeInstanceNodesRequest() (request *DescribeInstanceNodesRequest) {
+    request = &DescribeInstanceNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstanceNodes")
+    
+    
+    return
+}
+
+func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse) {
+    response = &DescribeInstanceNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceNodes
+// 获取实例节点信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
+    return c.DescribeInstanceNodesWithContext(context.Background(), request)
+}
+
+// DescribeInstanceNodes
+// 获取实例节点信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceShardsRequest() (request *DescribeInstanceShardsRequest) {
     request = &DescribeInstanceShardsRequest{
         BaseRequest: &tchttp.BaseRequest{},

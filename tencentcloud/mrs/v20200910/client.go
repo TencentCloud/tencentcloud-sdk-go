@@ -96,6 +96,106 @@ func (c *Client) ImageMaskWithContext(ctx context.Context, request *ImageMaskReq
     return
 }
 
+func NewImageMaskAsyncRequest() (request *ImageMaskAsyncRequest) {
+    request = &ImageMaskAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "ImageMaskAsync")
+    
+    
+    return
+}
+
+func NewImageMaskAsyncResponse() (response *ImageMaskAsyncResponse) {
+    response = &ImageMaskAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImageMaskAsync
+// 图片脱敏-异步接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
+func (c *Client) ImageMaskAsync(request *ImageMaskAsyncRequest) (response *ImageMaskAsyncResponse, err error) {
+    return c.ImageMaskAsyncWithContext(context.Background(), request)
+}
+
+// ImageMaskAsync
+// 图片脱敏-异步接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
+func (c *Client) ImageMaskAsyncWithContext(ctx context.Context, request *ImageMaskAsyncRequest) (response *ImageMaskAsyncResponse, err error) {
+    if request == nil {
+        request = NewImageMaskAsyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageMaskAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageMaskAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImageMaskAsyncGetResultRequest() (request *ImageMaskAsyncGetResultRequest) {
+    request = &ImageMaskAsyncGetResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "ImageMaskAsyncGetResult")
+    
+    
+    return
+}
+
+func NewImageMaskAsyncGetResultResponse() (response *ImageMaskAsyncGetResultResponse) {
+    response = &ImageMaskAsyncGetResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImageMaskAsyncGetResult
+// 图片脱敏-异步获取结果接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
+//  FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
+func (c *Client) ImageMaskAsyncGetResult(request *ImageMaskAsyncGetResultRequest) (response *ImageMaskAsyncGetResultResponse, err error) {
+    return c.ImageMaskAsyncGetResultWithContext(context.Background(), request)
+}
+
+// ImageMaskAsyncGetResult
+// 图片脱敏-异步获取结果接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
+//  FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
+func (c *Client) ImageMaskAsyncGetResultWithContext(ctx context.Context, request *ImageMaskAsyncGetResultRequest) (response *ImageMaskAsyncGetResultResponse, err error) {
+    if request == nil {
+        request = NewImageMaskAsyncGetResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageMaskAsyncGetResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageMaskAsyncGetResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageToClassRequest() (request *ImageToClassRequest) {
     request = &ImageToClassRequest{
         BaseRequest: &tchttp.BaseRequest{},

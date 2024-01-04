@@ -1151,6 +1151,102 @@ func (r *DescribeInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceNodesRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 集群角色类型，默认为 "data"数据节点
+	NodeRole *string `json:"NodeRole,omitnil" name:"NodeRole"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 展现策略，All时显示所有
+	DisplayPolicy *string `json:"DisplayPolicy,omitnil" name:"DisplayPolicy"`
+
+	// 当true的时候返回所有节点，即Limit无限大
+	ForceAll *bool `json:"ForceAll,omitnil" name:"ForceAll"`
+}
+
+type DescribeInstanceNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 集群角色类型，默认为 "data"数据节点
+	NodeRole *string `json:"NodeRole,omitnil" name:"NodeRole"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 展现策略，All时显示所有
+	DisplayPolicy *string `json:"DisplayPolicy,omitnil" name:"DisplayPolicy"`
+
+	// 当true的时候返回所有节点，即Limit无限大
+	ForceAll *bool `json:"ForceAll,omitnil" name:"ForceAll"`
+}
+
+func (r *DescribeInstanceNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeRole")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DisplayPolicy")
+	delete(f, "ForceAll")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceNodesResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 实例节点总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNodesList []*InstanceNode `json:"InstanceNodesList,omitnil" name:"InstanceNodesList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -1610,6 +1706,17 @@ type DiskSpec struct {
 	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
 }
 
+type GroupInfo struct {
+	// 分组名称
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 分片变量名称
+	ShardName *string `json:"ShardName,omitnil" name:"ShardName"`
+
+	// 副本变量名称
+	ReplicaName *string `json:"ReplicaName,omitnil" name:"ReplicaName"`
+}
+
 type InstanceConfigInfo struct {
 	// 配置项名称
 	ConfKey *string `json:"ConfKey,omitnil" name:"ConfKey"`
@@ -1840,6 +1947,40 @@ type InstanceInfo struct {
 	// true
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasEsIndex *bool `json:"HasEsIndex,omitnil" name:"HasEsIndex"`
+}
+
+type InstanceNode struct {
+	// IP地址
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 机型，如 S1
+	Spec *string `json:"Spec,omitnil" name:"Spec"`
+
+	// cpu核数
+	Core *int64 `json:"Core,omitnil" name:"Core"`
+
+	// 内存大小
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 磁盘类型
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
+
+	// 磁盘大小
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
+
+	// 所属clickhouse cluster名称
+	Cluster *string `json:"Cluster,omitnil" name:"Cluster"`
+
+	// 节点所属的分组信息
+	NodeGroups []*GroupInfo `json:"NodeGroups,omitnil" name:"NodeGroups"`
+
+	// VPC IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rip *string `json:"Rip,omitnil" name:"Rip"`
+
+	// ture的时候表示该节点上部署了chproxy进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCHProxy *bool `json:"IsCHProxy,omitnil" name:"IsCHProxy"`
 }
 
 type InstanceStateInfo struct {

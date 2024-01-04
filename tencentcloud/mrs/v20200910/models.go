@@ -1905,6 +1905,127 @@ type ImageInfo struct {
 	Base64 *string `json:"Base64,omitnil" name:"Base64"`
 }
 
+// Predefined struct for user
+type ImageMaskAsyncGetResultRequestParams struct {
+	// 异步任务ID
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+}
+
+type ImageMaskAsyncGetResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 异步任务ID
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+}
+
+func (r *ImageMaskAsyncGetResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskAsyncGetResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageMaskAsyncGetResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageMaskAsyncGetResultResponseParams struct {
+	// 脱敏后图片的base64编码
+	MaskedImage *string `json:"MaskedImage,omitnil" name:"MaskedImage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImageMaskAsyncGetResultResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageMaskAsyncGetResultResponseParams `json:"Response"`
+}
+
+func (r *ImageMaskAsyncGetResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskAsyncGetResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageMaskAsyncRequestParams struct {
+	// 图片信息,目前只支持传图片base64
+	Image *ImageInfo `json:"Image,omitnil" name:"Image"`
+
+	// 图片脱敏选项, 不传默认都脱敏
+	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil" name:"MaskFlag"`
+}
+
+type ImageMaskAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片信息,目前只支持传图片base64
+	Image *ImageInfo `json:"Image,omitnil" name:"Image"`
+
+	// 图片脱敏选项, 不传默认都脱敏
+	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil" name:"MaskFlag"`
+}
+
+func (r *ImageMaskAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "MaskFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageMaskAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageMaskAsyncResponseParams struct {
+	// 加密任务ID
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImageMaskAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageMaskAsyncResponseParams `json:"Response"`
+}
+
+func (r *ImageMaskAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageMaskAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ImageMaskFlags struct {
 	// 是否对医院信息进行脱敏
 	HospitalFlag *bool `json:"HospitalFlag,omitnil" name:"HospitalFlag"`
