@@ -2257,7 +2257,7 @@ func NewDeleteAuditRuleTemplatesResponse() (response *DeleteAuditRuleTemplatesRe
 }
 
 // DeleteAuditRuleTemplates
-// 删除审计规则模版
+// 删除审计规则模板
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -2267,7 +2267,7 @@ func (c *Client) DeleteAuditRuleTemplates(request *DeleteAuditRuleTemplatesReque
 }
 
 // DeleteAuditRuleTemplates
-// 删除审计规则模版
+// 删除审计规则模板
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"

@@ -3926,14 +3926,14 @@ func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditRuleTemplatesRequestParams struct {
-	// 审计规则模版ID。
+	// 审计规则模板ID。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
 }
 
 type DeleteAuditRuleTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 审计规则模版ID。
+	// 审计规则模板ID。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
 }
 
@@ -11079,7 +11079,7 @@ type ModifyAuditServiceRequestParams struct {
 	// 审计规则。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
 
-	// 规则模版ID。
+	// 规则模板ID。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
 }
 
@@ -11101,7 +11101,7 @@ type ModifyAuditServiceRequest struct {
 	// 审计规则。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
 
-	// 规则模版ID。
+	// 规则模板ID。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
 }
 

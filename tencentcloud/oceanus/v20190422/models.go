@@ -3225,13 +3225,13 @@ type GatewayRefItem struct {
 
 // Predefined struct for user
 type GetMetaTableRequestParams struct {
-	// Catalog名
+	// 目录名
 	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
 
-	// Database名
+	// 库名
 	Database *string `json:"Database,omitnil" name:"Database"`
 
-	// Table名
+	// 表名
 	Table *string `json:"Table,omitnil" name:"Table"`
 
 	// 空间唯一标识
@@ -3241,13 +3241,13 @@ type GetMetaTableRequestParams struct {
 type GetMetaTableRequest struct {
 	*tchttp.BaseRequest
 	
-	// Catalog名
+	// 目录名
 	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
 
-	// Database名
+	// 库名
 	Database *string `json:"Database,omitnil" name:"Database"`
 
-	// Table名
+	// 表名
 	Table *string `json:"Table,omitnil" name:"Table"`
 
 	// 空间唯一标识

@@ -9078,7 +9078,12 @@ type SmartStructuralOCRV2RequestParams struct {
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
 	// InvoiceEng -- 海外发票模版
+	// Coin --钱币识别模板
+	// OnboardingDocuments -- 入职材料识别
 	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+
+	// 是否打开印章识别
+	EnableSealRecognize *bool `json:"EnableSealRecognize,omitnil" name:"EnableSealRecognize"`
 }
 
 type SmartStructuralOCRV2Request struct {
@@ -9121,7 +9126,12 @@ type SmartStructuralOCRV2Request struct {
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
 	// InvoiceEng -- 海外发票模版
+	// Coin --钱币识别模板
+	// OnboardingDocuments -- 入职材料识别
 	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+
+	// 是否打开印章识别
+	EnableSealRecognize *bool `json:"EnableSealRecognize,omitnil" name:"EnableSealRecognize"`
 }
 
 func (r *SmartStructuralOCRV2Request) ToJsonString() string {
@@ -9143,6 +9153,7 @@ func (r *SmartStructuralOCRV2Request) FromJsonString(s string) error {
 	delete(f, "ItemNames")
 	delete(f, "ReturnFullText")
 	delete(f, "ConfigId")
+	delete(f, "EnableSealRecognize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRV2Request has unknown keys!", "")
 	}

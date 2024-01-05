@@ -217,6 +217,61 @@ func (c *Client) ChatStdWithContext(ctx context.Context, request *ChatStdRequest
     return
 }
 
+func NewGetEmbeddingRequest() (request *GetEmbeddingRequest) {
+    request = &GetEmbeddingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "GetEmbedding")
+    
+    
+    return
+}
+
+func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
+    response = &GetEmbeddingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetEmbedding
+// 腾讯混元-Embedding接口，可以将文本转化为高质量的向量数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
+    return c.GetEmbeddingWithContext(context.Background(), request)
+}
+
+// GetEmbedding
+// 腾讯混元-Embedding接口，可以将文本转化为高质量的向量数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
+    if request == nil {
+        request = NewGetEmbeddingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEmbedding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetEmbeddingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTokenCountRequest() (request *GetTokenCountRequest) {
     request = &GetTokenCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

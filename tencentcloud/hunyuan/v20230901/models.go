@@ -176,6 +176,28 @@ type Delta struct {
 	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
+type EmbeddingData struct {
+	// embedding 信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Embedding []*float64 `json:"Embedding,omitnil" name:"Embedding"`
+
+	// 下标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitnil" name:"Index"`
+
+	// embedding
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Object *string `json:"Object,omitnil" name:"Object"`
+}
+
+type EmbeddingUsage struct {
+	// 输入Token数。
+	PromptTokens *int64 `json:"PromptTokens,omitnil" name:"PromptTokens"`
+
+	// 总Token数。
+	TotalTokens *int64 `json:"TotalTokens,omitnil" name:"TotalTokens"`
+}
+
 type ErrorMsg struct {
 	// 错误提示信息。
 	Msg *string `json:"Msg,omitnil" name:"Msg"`
@@ -184,6 +206,66 @@ type ErrorMsg struct {
 	// 4000 服务内部异常。
 	// 4001 请求模型超时。
 	Code *int64 `json:"Code,omitnil" name:"Code"`
+}
+
+// Predefined struct for user
+type GetEmbeddingRequestParams struct {
+	// 输入文本。总长度不超过1024 个token, 超过则会截断最后面的内容。
+	Input *string `json:"Input,omitnil" name:"Input"`
+}
+
+type GetEmbeddingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入文本。总长度不超过1024 个token, 超过则会截断最后面的内容。
+	Input *string `json:"Input,omitnil" name:"Input"`
+}
+
+func (r *GetEmbeddingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetEmbeddingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetEmbeddingResponseParams struct {
+	// 返回的 embedding 信息。
+	Data []*EmbeddingData `json:"Data,omitnil" name:"Data"`
+
+	// token 使用计数，按照总token数量收费。
+	Usage *EmbeddingUsage `json:"Usage,omitnil" name:"Usage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetEmbeddingResponse struct {
+	*tchttp.BaseResponse
+	Response *GetEmbeddingResponseParams `json:"Response"`
+}
+
+func (r *GetEmbeddingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -1,10 +1,68 @@
 # 本版本更新包含以下内容：
 
-## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 19 次发布
+### 第 52 次发布
 
-发布时间：2024-01-04 01:08:58
+发布时间：2024-01-05 01:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyPublicIPSwitchStatus
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 106 次发布
+
+发布时间：2024-01-05 01:11:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BruteAttackInfo](https://cloud.tencent.com/document/api/296/19867#BruteAttackInfo)
+
+	* 新增成员：DataFrom
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 21 次发布
+
+发布时间：2024-01-05 01:13:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1025/74416#Command)
+
+	* 新增成员：Size
+
+* [SearchCommandResult](https://cloud.tencent.com/document/api/1025/74416#SearchCommandResult)
+
+	* 新增成员：Size
+
+
+
+
+## 腾讯混元大模型(hunyuan) 版本：2023-09-01
+
+### 第 2 次发布
+
+发布时间：2024-01-05 01:17:08
 
 本次发布包含了以下内容：
 
@@ -12,29 +70,94 @@
 
 新增接口：
 
-* [DescribeInstanceNodes](https://cloud.tencent.com/document/api/1299/102819)
+* [GetEmbedding](https://cloud.tencent.com/document/api/1729/102832)
 
 新增数据结构：
 
-* [GroupInfo](https://cloud.tencent.com/document/api/1299/83429#GroupInfo)
-* [InstanceNode](https://cloud.tencent.com/document/api/1299/83429#InstanceNode)
+* [EmbeddingData](https://cloud.tencent.com/document/api/1729/101838#EmbeddingData)
+* [EmbeddingUsage](https://cloud.tencent.com/document/api/1729/101838#EmbeddingUsage)
 
 
 
-## 医疗报告结构化(mrs) 版本：2020-09-10
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 22 次发布
+### 第 126 次发布
 
-发布时间：2024-01-04 01:19:26
+发布时间：2024-01-05 01:21:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ImageMaskAsync](https://cloud.tencent.com/document/api/1314/102821)
-* [ImageMaskAsyncGetResult](https://cloud.tencent.com/document/api/1314/102820)
+* [SmartStructuralOCRV2](https://cloud.tencent.com/document/api/866/90013)
+
+	* 新增入参：EnableSealRecognize
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 11 次发布
+
+发布时间：2024-01-05 01:21:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunApplication](https://cloud.tencent.com/document/api/1643/89094)
+
+	* 新增入参：NFOption
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, Option
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 59 次发布
+
+发布时间：2024-01-05 01:25:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePurchaseStateInfo](https://cloud.tencent.com/document/api/1285/65466)
+
+	* 新增出参：InquireKey
+
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 103 次发布
+
+发布时间：2024-01-05 01:28:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [BusinessLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigAssociatedGroup)
+
+修改数据结构：
+
+* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
+
+	* 新增成员：ConfigAssociatedGroupList
+
 
 
 
@@ -21447,12 +21570,12 @@
 
 新增接口：
 
-* [[DescribeInstanceNodes](https://cloud.tencent.com/document/api/1299/102819)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstanceNodes](https://cloud.tencent.com/document/api/1299/102819)
 
 新增数据结构：
 
-* [[GroupInfo](https://cloud.tencent.com/document/api/1299/83429#GroupInfo)](https://cloud.tencent.com/document/api/1299/83429#[GroupInfo](https://cloud.tencent.com/document/api/1299/83429#GroupInfo))
-* [[InstanceNode](https://cloud.tencent.com/document/api/1299/83429#InstanceNode)](https://cloud.tencent.com/document/api/1299/83429#[InstanceNode](https://cloud.tencent.com/document/api/1299/83429#InstanceNode))
+* [GroupInfo](https://cloud.tencent.com/document/api/1299/83429#GroupInfo)
+* [InstanceNode](https://cloud.tencent.com/document/api/1299/83429#InstanceNode)
 
 ### 第 18 次发布
 
@@ -22873,6 +22996,18 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 52 次发布
+
+发布时间：2024-01-05 01:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyPublicIPSwitchStatus
 
 ### 第 51 次发布
 
@@ -38517,6 +38652,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 106 次发布
+
+发布时间：2024-01-05 01:11:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BruteAttackInfo](https://cloud.tencent.com/document/api/296/19867#BruteAttackInfo)
+
+	* 新增成员：DataFrom
+
+
 ### 第 105 次发布
 
 发布时间：2023-12-29 01:12:06
@@ -43471,6 +43621,25 @@
 
 
 ## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 21 次发布
+
+发布时间：2024-01-05 01:13:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1025/74416#Command)
+
+	* 新增成员：Size
+
+* [SearchCommandResult](https://cloud.tencent.com/document/api/1025/74416#SearchCommandResult)
+
+	* 新增成员：Size
+
 
 ### 第 20 次发布
 
@@ -67519,6 +67688,23 @@
 
 ## 腾讯混元大模型(hunyuan) 版本：2023-09-01
 
+### 第 2 次发布
+
+发布时间：2024-01-05 01:17:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetEmbedding](https://cloud.tencent.com/document/api/1729/102832)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EmbeddingData](https://cloud.tencent.com/document/api/1729/101838#EmbeddingData)](https://cloud.tencent.com/document/api/1729/101838#[EmbeddingData](https://cloud.tencent.com/document/api/1729/101838#EmbeddingData))
+* [[EmbeddingUsage](https://cloud.tencent.com/document/api/1729/101838#EmbeddingUsage)](https://cloud.tencent.com/document/api/1729/101838#[EmbeddingUsage](https://cloud.tencent.com/document/api/1729/101838#EmbeddingUsage))
+
 ### 第 1 次发布
 
 发布时间：2023-11-23 11:01:12
@@ -86716,8 +86902,8 @@
 
 新增接口：
 
-* [[ImageMaskAsync](https://cloud.tencent.com/document/api/1314/102821)](https://cloud.tencent.com/document/api/#/#)
-* [[ImageMaskAsyncGetResult](https://cloud.tencent.com/document/api/1314/102820)](https://cloud.tencent.com/document/api/#/#)
+* [ImageMaskAsync](https://cloud.tencent.com/document/api/1314/102821)
+* [ImageMaskAsyncGetResult](https://cloud.tencent.com/document/api/1314/102820)
 
 ### 第 21 次发布
 
@@ -89580,6 +89766,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 126 次发布
+
+发布时间：2024-01-05 01:21:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SmartStructuralOCRV2](https://cloud.tencent.com/document/api/866/90013)
+
+	* 新增入参：EnableSealRecognize
+
+
 ### 第 125 次发布
 
 发布时间：2023-12-21 01:56:34
@@ -92009,6 +92210,23 @@
 
 
 ## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 11 次发布
+
+发布时间：2024-01-05 01:21:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunApplication](https://cloud.tencent.com/document/api/1643/89094)
+
+	* 新增入参：NFOption
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, Option
+
 
 ### 第 10 次发布
 
@@ -109154,6 +109372,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 59 次发布
+
+发布时间：2024-01-05 01:25:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePurchaseStateInfo](https://cloud.tencent.com/document/api/1285/65466)
+
+	* 新增出参：InquireKey
+
 
 ### 第 58 次发布
 
@@ -129120,6 +129353,25 @@
 
 
 ## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 103 次发布
+
+发布时间：2024-01-05 01:28:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BusinessLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigAssociatedGroup)](https://cloud.tencent.com/document/api/649/36099#[BusinessLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigAssociatedGroup))
+
+修改数据结构：
+
+* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
+
+	* 新增成员：ConfigAssociatedGroupList
+
 
 ### 第 102 次发布
 

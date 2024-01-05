@@ -559,6 +559,10 @@ type Command struct {
 	// 设备部门name
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitnil" name:"DeviceDepartmentName"`
+
+	// 会话大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 }
 
 // Predefined struct for user
@@ -5003,6 +5007,10 @@ type SearchCommandResult struct {
 	// 设备部门名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitnil" name:"DeviceDepartmentName"`
+
+	// 会话大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 }
 
 // Predefined struct for user

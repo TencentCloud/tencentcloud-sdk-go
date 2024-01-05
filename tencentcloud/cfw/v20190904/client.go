@@ -6046,67 +6046,6 @@ func (c *Client) ModifyNatSequenceRulesWithContext(ctx context.Context, request 
     return
 }
 
-func NewModifyPublicIPSwitchStatusRequest() (request *ModifyPublicIPSwitchStatusRequest) {
-    request = &ModifyPublicIPSwitchStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifyPublicIPSwitchStatus")
-    
-    
-    return
-}
-
-func NewModifyPublicIPSwitchStatusResponse() (response *ModifyPublicIPSwitchStatusResponse) {
-    response = &ModifyPublicIPSwitchStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyPublicIPSwitchStatus
-// 已上新接口，支持串行
-//
-// 
-//
-// 单个修改互联网边界防火墙开关
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyPublicIPSwitchStatus(request *ModifyPublicIPSwitchStatusRequest) (response *ModifyPublicIPSwitchStatusResponse, err error) {
-    return c.ModifyPublicIPSwitchStatusWithContext(context.Background(), request)
-}
-
-// ModifyPublicIPSwitchStatus
-// 已上新接口，支持串行
-//
-// 
-//
-// 单个修改互联网边界防火墙开关
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyPublicIPSwitchStatusWithContext(ctx context.Context, request *ModifyPublicIPSwitchStatusRequest) (response *ModifyPublicIPSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyPublicIPSwitchStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyPublicIPSwitchStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyPublicIPSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyResourceGroupRequest() (request *ModifyResourceGroupRequest) {
     request = &ModifyResourceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

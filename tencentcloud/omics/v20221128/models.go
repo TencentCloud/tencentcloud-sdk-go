@@ -1350,9 +1350,6 @@ type RunApplicationRequestParams struct {
 	// 应用ID。
 	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 
-	// 项目ID。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
 	// 任务批次名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
@@ -1365,8 +1362,8 @@ type RunApplicationRequestParams struct {
 	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 
-	// 运行选项。
-	Option *RunOption `json:"Option,omitnil" name:"Option"`
+	// 项目ID。（不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 任务批次描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
@@ -1379,6 +1376,12 @@ type RunApplicationRequestParams struct {
 
 	// 应用版本ID。不填表示使用当前最新版本。
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil" name:"ApplicationVersionId"`
+
+	// WDL运行选项。
+	Option *RunOption `json:"Option,omitnil" name:"Option"`
+
+	// Nextflow运行选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
 }
 
 type RunApplicationRequest struct {
@@ -1387,9 +1390,6 @@ type RunApplicationRequest struct {
 	// 应用ID。
 	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 
-	// 项目ID。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
-
 	// 任务批次名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
@@ -1402,8 +1402,8 @@ type RunApplicationRequest struct {
 	// 任务缓存清理时间（小时）。不填表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil" name:"CacheClearDelay"`
 
-	// 运行选项。
-	Option *RunOption `json:"Option,omitnil" name:"Option"`
+	// 项目ID。（不填使用指定地域下的默认项目）
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 任务批次描述。
 	Description *string `json:"Description,omitnil" name:"Description"`
@@ -1416,6 +1416,12 @@ type RunApplicationRequest struct {
 
 	// 应用版本ID。不填表示使用当前最新版本。
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil" name:"ApplicationVersionId"`
+
+	// WDL运行选项。
+	Option *RunOption `json:"Option,omitnil" name:"Option"`
+
+	// Nextflow运行选项。
+	NFOption *NFOption `json:"NFOption,omitnil" name:"NFOption"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1431,16 +1437,17 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationId")
-	delete(f, "ProjectId")
 	delete(f, "Name")
 	delete(f, "EnvironmentId")
 	delete(f, "InputBase64")
 	delete(f, "CacheClearDelay")
-	delete(f, "Option")
+	delete(f, "ProjectId")
 	delete(f, "Description")
 	delete(f, "TableId")
 	delete(f, "TableRowUuids")
 	delete(f, "ApplicationVersionId")
+	delete(f, "Option")
+	delete(f, "NFOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}

@@ -667,7 +667,7 @@ type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 需要取消签署的二维码ID，为32位字符串。由[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
+	// 需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -690,7 +690,7 @@ type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 需要取消签署的二维码ID，为32位字符串。由[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
+	// 需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
 	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
 
 	// 暂未开放
@@ -2777,10 +2777,10 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ChannelCreateMultiFlowSignQRCodeResponseParams struct {
-	// 签署二维码的基本信息，用于创建二维码，用户可扫描该二维码进行签署操作。	
+	// 一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
 	QrCode *SignQrCode `json:"QrCode,omitnil" name:"QrCode"`
 
-	// 流程签署二维码的签署信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
+	// 一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
 	SignUrls *SignUrl `json:"SignUrls,omitnil" name:"SignUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

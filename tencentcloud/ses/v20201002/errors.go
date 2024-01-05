@@ -104,6 +104,9 @@ const (
 	// 收件人数太多，最多支持同时发送50人。
 	FAILEDOPERATION_TOOMANYRECIPIENTS = "FailedOperation.TooManyRecipients"
 
+	// 禁止到达率低用户在邮件内容中带有URL 网页链接
+	FAILEDOPERATION_URLFORBIDDEN = "FailedOperation.URLForbidden"
+
 	// 不支持的邮箱类型。
 	FAILEDOPERATION_UNSUPPORTMAILTYPE = "FailedOperation.UnsupportMailType"
 

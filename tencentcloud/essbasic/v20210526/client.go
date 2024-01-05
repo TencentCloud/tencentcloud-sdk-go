@@ -285,11 +285,11 @@ func NewChannelCancelMultiFlowSignQRCodeResponse() (response *ChannelCancelMulti
 }
 
 // ChannelCancelMultiFlowSignQRCode
-// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+// 此接口（CancelMultiFlowSignQRCode）用于废除取消一码多签签署码。
 //
-// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
+// 该接口所需的二维码ID，源自[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
 //
-// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
+// 如果该签署码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -304,11 +304,11 @@ func (c *Client) ChannelCancelMultiFlowSignQRCode(request *ChannelCancelMultiFlo
 }
 
 // ChannelCancelMultiFlowSignQRCode
-// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+// 此接口（CancelMultiFlowSignQRCode）用于废除取消一码多签签署码。
 //
-// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
+// 该接口所需的二维码ID，源自[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
 //
-// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
+// 如果该签署码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2638,7 +2638,7 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 }
 
 // ChannelCreateMultiFlowSignQRCode
-// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多签签署码。 
 //
 // 
 //
@@ -2658,15 +2658,15 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 //
 //     - B端企业是非首位签署
 //
-// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+// 2. 通过扫描一码多签签署码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
 //
 // ]( https://qian.tencent.com/developers/partner/callback_types_contracts_sign)
 //
-// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// 3. 用户通过扫描一码多签签署码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 //
 // 
 //
-// 二维码的样式如下图:
+// 签署码的样式如下图:
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
@@ -2689,7 +2689,7 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 }
 
 // ChannelCreateMultiFlowSignQRCode
-// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。 
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多签签署码。 
 //
 // 
 //
@@ -2709,15 +2709,15 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 //
 //     - B端企业是非首位签署
 //
-// 2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+// 2. 通过扫描一码多签签署码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
 //
 // ]( https://qian.tencent.com/developers/partner/callback_types_contracts_sign)
 //
-// 3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+// 3. 用户通过扫描一码多签签署码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 //
 // 
 //
-// 二维码的样式如下图:
+// 签署码的样式如下图:
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //

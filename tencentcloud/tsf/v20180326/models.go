@@ -1065,7 +1065,59 @@ type BusinessLogConfig struct {
 
 	// 配置项关联部署组
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ConfigAssociatedGroups is deprecated.
 	ConfigAssociatedGroups []*BusinesLogConfigAssociatedGroup `json:"ConfigAssociatedGroups,omitnil" name:"ConfigAssociatedGroups"`
+
+	// 配置项关联部署组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigAssociatedGroupList []*BusinessLogConfigAssociatedGroup `json:"ConfigAssociatedGroupList,omitnil" name:"ConfigAssociatedGroupList"`
+}
+
+type BusinessLogConfigAssociatedGroup struct {
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 部署组所属应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 部署组所属应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitnil" name:"ApplicationName"`
+
+	// 部署组所属应用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitnil" name:"ApplicationType"`
+
+	// 部署组所属命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
+
+	// 部署组所属命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitnil" name:"NamespaceName"`
+
+	// 部署组所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 部署组所属集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 部署组所属集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+
+	// 部署组关联日志配置时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedTime *string `json:"AssociatedTime,omitnil" name:"AssociatedTime"`
 }
 
 type BusinessLogConfigSchema struct {
