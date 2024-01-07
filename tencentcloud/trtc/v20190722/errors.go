@@ -38,6 +38,9 @@ const (
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
+	// 未开通RTMP
+	FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
+
 	// 查询任务失败
 	FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
 
@@ -205,6 +208,9 @@ const (
 
 	// 用户数超过6个。
 	INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+
+	// UserSig过期或错误。
+	INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
 
 	// 视频分辨率参数错误。
 	INVALIDPARAMETER_VIDEORESOLUTION = "InvalidParameter.VideoResolution"

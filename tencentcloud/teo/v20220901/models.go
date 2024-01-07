@@ -2073,10 +2073,10 @@ type CreatePurgeTaskRequestParams struct {
 	// <li>purge_cache_tag：cache-tag 刷新。</li>缓存清除类型详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存 类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>注意：使用目录刷新时，默认值： invalidate。
+	// 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>默认值： invalidate。
 	Method *string `json:"Method,omitnil" name:"Method"`
 
-	// 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>EO 默认针对内容含有非 ASCII 字符集的字符进行转义，编码规则遵循 RFC3986；</li><li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
+	// 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
 	Targets []*string `json:"Targets,omitnil" name:"Targets"`
 
 	// 若有编码转换，仅清除编码转换后匹配的资源。
@@ -2100,10 +2100,10 @@ type CreatePurgeTaskRequest struct {
 	// <li>purge_cache_tag：cache-tag 刷新。</li>缓存清除类型详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存 类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>注意：使用目录刷新时，默认值： invalidate。
+	// 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>默认值： invalidate。
 	Method *string `json:"Method,omitnil" name:"Method"`
 
-	// 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>EO 默认针对内容含有非 ASCII 字符集的字符进行转义，编码规则遵循 RFC3986；</li><li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
+	// 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
 	Targets []*string `json:"Targets,omitnil" name:"Targets"`
 
 	// 若有编码转换，仅清除编码转换后匹配的资源。
@@ -9785,35 +9785,35 @@ type SecEntryValue struct {
 }
 
 type SecurityConfig struct {
-	// 托管规则。如果为null，默认使用历史配置。
+	// 托管规则。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafConfig *WafConfig `json:"WafConfig,omitnil" name:"WafConfig"`
 
-	// 速率限制。如果为null，默认使用历史配置。
+	// 速率限制。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitConfig *RateLimitConfig `json:"RateLimitConfig,omitnil" name:"RateLimitConfig"`
 
-	// 自定义规则。如果为null，默认使用历史配置。
+	// 自定义规则。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclConfig *AclConfig `json:"AclConfig,omitnil" name:"AclConfig"`
 
-	// Bot配置。如果为null，默认使用历史配置。
+	// Bot配置。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotConfig *BotConfig `json:"BotConfig,omitnil" name:"BotConfig"`
 
-	// 七层防护总开关。如果为null，默认使用历史配置。
+	// 七层防护总开关。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchConfig *SwitchConfig `json:"SwitchConfig,omitnil" name:"SwitchConfig"`
 
-	// 基础访问管控。如果为null，默认使用历史配置。
+	// 基础访问管控。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpTableConfig *IpTableConfig `json:"IpTableConfig,omitnil" name:"IpTableConfig"`
 
-	// 例外规则配置。如果为null，默认使用历史配置。
+	// 例外规则配置。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptConfig *ExceptConfig `json:"ExceptConfig,omitnil" name:"ExceptConfig"`
 
-	// 自定义拦截页面配置。如果为null，默认使用历史配置。
+	// 自定义拦截页面配置。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropPageConfig *DropPageConfig `json:"DropPageConfig,omitnil" name:"DropPageConfig"`
 
@@ -9821,7 +9821,7 @@ type SecurityConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateConfig *TemplateConfig `json:"TemplateConfig,omitnil" name:"TemplateConfig"`
 
-	// 慢速攻击配置。如果为null，默认使用历史配置。
+	// 慢速攻击配置。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowPostConfig *SlowPostConfig `json:"SlowPostConfig,omitnil" name:"SlowPostConfig"`
 }

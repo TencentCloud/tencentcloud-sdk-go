@@ -2913,6 +2913,76 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // 
 //
+// **嵌入式签署人-各种场景传参说明**:
+//
+// 
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// <th>签署方传参说明</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// <td>OpenId、OrganizationOpenId、OrganizationName必传, ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>个人/自然人</td>
+//
+// <td>Name、Mobile必传, ApproverType设置为PERSON</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 
+//
 // 嵌入的页面样式如下：
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/b2ae013fb4d747891dd3815bbe897208.png)
@@ -2940,6 +3010,76 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 // 注意：
 //
 // 1. 只支持PC浏览器操作使用
+//
+// 
+//
+// **嵌入式签署人-各种场景传参说明**:
+//
+// 
+//
+// <table>
+//
+// <thead>
+//
+// <tr>
+//
+// <th>场景编号</th>
+//
+// <th>可作为签署方的类型</th>
+//
+// <th>签署方传参说明</th>
+//
+// </tr>
+//
+// </thead>
+//
+// 
+//
+// <tbody>
+//
+// <tr>
+//
+// <td>场景一</td>
+//
+// <td>第三方子企业A员工</td>
+//
+// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景二</td>
+//
+// <td>第三方子企业B员工</td>
+//
+// <td>OpenId、OrganizationOpenId、OrganizationName必传, ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景三</td>
+//
+// <td>SaaS平台企业员工</td>
+//
+// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为ORGANIZATION</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td>场景四</td>
+//
+// <td>个人/自然人</td>
+//
+// <td>Name、Mobile必传, ApproverType设置为PERSON</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
 //
 // 
 //
@@ -4870,13 +5010,33 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 }
 
 // CreateChannelOrganizationInfoChangeUrl
-// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接（需要在移动端打开，会跳转到微信小程序），支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接。
+//
+// 
+//
+// <h3 id="1">支持变更链接类型，通过入参 Endpoint 指定，默认为WEIXINAPP。</h3>
+//
+// 
+//
+// <h4 id="WEIXINAPP">WEIXINAPP</h4>
+//
+// <p>创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。</p>
+//
+// 
+//
+// <h4 id="APP">APP</h4>
+//
+// <p>创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</p>
 //
 // 
 //
 // 
 //
-// <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+// <h3 id="2">支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。</h3>
+//
+// 
+//
+// <h4 id="1-企业超管变更">1. 企业超管变更</h4>
 //
 // 
 //
@@ -4884,11 +5044,11 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 //
 // 
 //
-// <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+// <h4 id="2-企业基础信息变更">2. 企业基础信息变更</h4>
 //
 // 
 //
-// <h4 id="可以变动">可以变动</h4>
+// <h5 id="可以变动">可以变动</h5>
 //
 // 
 //
@@ -4908,7 +5068,7 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 //
 // 
 //
-// <h4 id="不可变动">不可变动</h4>
+// <h5 id="不可变动">不可变动</h5>
 //
 // 
 //
@@ -4957,13 +5117,33 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 }
 
 // CreateChannelOrganizationInfoChangeUrl
-// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接（需要在移动端打开，会跳转到微信小程序），支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接。
+//
+// 
+//
+// <h3 id="1">支持变更链接类型，通过入参 Endpoint 指定，默认为WEIXINAPP。</h3>
+//
+// 
+//
+// <h4 id="WEIXINAPP">WEIXINAPP</h4>
+//
+// <p>创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。</p>
+//
+// 
+//
+// <h4 id="APP">APP</h4>
+//
+// <p>创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</p>
 //
 // 
 //
 // 
 //
-// <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+// <h3 id="2">支持创建企业超管变更链接或企业基础信息变更链接，通过入参 ChangeType 指定。</h3>
+//
+// 
+//
+// <h4 id="1-企业超管变更">1. 企业超管变更</h4>
 //
 // 
 //
@@ -4971,11 +5151,11 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 //
 // 
 //
-// <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+// <h4 id="2-企业基础信息变更">2. 企业基础信息变更</h4>
 //
 // 
 //
-// <h4 id="可以变动">可以变动</h4>
+// <h5 id="可以变动">可以变动</h5>
 //
 // 
 //
@@ -4995,7 +5175,7 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 //
 // 
 //
-// <h4 id="不可变动">不可变动</h4>
+// <h5 id="不可变动">不可变动</h5>
 //
 // 
 //
@@ -5093,6 +5273,8 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <th>点击链接进入的流程</th>
 //
+// <th>视频样例</th>
+//
 // </tr>
 //
 // </thead>
@@ -5107,6 +5289,8 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
 //
+// <td><a href="https://dyn.ess.tencent.cn/guide/apivideo/CreateConsoleLoginUrl_noverify.mp4" target="_blank">打开</a></td>
+//
 // </tr>
 //
 // <tr>
@@ -5117,6 +5301,8 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <td>进入员认证并加入企业流程</td>
 //
+// <td>-</td>
+//
 // </tr>
 //
 // <tr>
@@ -5126,6 +5312,8 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 // <td>员工已认证</td>
 //
 // <td>进入子客企业Web控制台</td>
+//
+// <td>-</td>
 //
 // </tr>
 //
@@ -5204,6 +5392,8 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <th>点击链接进入的流程</th>
 //
+// <th>视频样例</th>
+//
 // </tr>
 //
 // </thead>
@@ -5218,6 +5408,8 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
 //
+// <td><a href="https://dyn.ess.tencent.cn/guide/apivideo/CreateConsoleLoginUrl_noverify.mp4" target="_blank">打开</a></td>
+//
 // </tr>
 //
 // <tr>
@@ -5228,6 +5420,8 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <td>进入员认证并加入企业流程</td>
 //
+// <td>-</td>
+//
 // </tr>
 //
 // <tr>
@@ -5237,6 +5431,8 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 // <td>员工已认证</td>
 //
 // <td>进入子客企业Web控制台</td>
+//
+// <td>-</td>
 //
 // </tr>
 //

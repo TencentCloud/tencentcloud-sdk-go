@@ -4135,8 +4135,10 @@ type PatientInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgeNorm *string `json:"AgeNorm,omitnil" name:"AgeNorm"`
 
-	// 民族
+	// 民族。该字段已不再使用，请从Ethnicity取值
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Nation is deprecated.
 	Nation *string `json:"Nation,omitnil" name:"Nation"`
 
 	// 婚姻代码

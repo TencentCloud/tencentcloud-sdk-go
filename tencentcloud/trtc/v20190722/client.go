@@ -3544,7 +3544,12 @@ func NewStartStreamIngestResponse() (response *StartStreamIngestResponse) {
 // StartStreamIngest
 // 将一个在线媒体流推到TRTC房间。
 //
+// 使用此接口的前提条件：需要购买 [尊享版或旗舰版套餐包](https://cloud.tencent.com/document/product/647/85386
+//
+// )
+//
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  INTERNALERROR_HTTPPARSEFAILED = "InternalError.HttpParseFailed"
@@ -3554,6 +3559,7 @@ func NewStartStreamIngestResponse() (response *StartStreamIngestResponse) {
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STRROOMID = "InvalidParameter.StrRoomId"
 //  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
@@ -3565,7 +3571,12 @@ func (c *Client) StartStreamIngest(request *StartStreamIngestRequest) (response 
 // StartStreamIngest
 // 将一个在线媒体流推到TRTC房间。
 //
+// 使用此接口的前提条件：需要购买 [尊享版或旗舰版套餐包](https://cloud.tencent.com/document/product/647/85386
+//
+// )
+//
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  INTERNALERROR_HTTPPARSEFAILED = "InternalError.HttpParseFailed"
@@ -3575,6 +3586,7 @@ func (c *Client) StartStreamIngest(request *StartStreamIngestRequest) (response 
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STRROOMID = "InvalidParameter.StrRoomId"
 //  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
 //  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"

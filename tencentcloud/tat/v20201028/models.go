@@ -1573,6 +1573,7 @@ type DescribeRegisterInstancesRequestParams struct {
 	// 按照【操作系统类型】进行过滤，取值：Linux | Windows。
 	// 类型：String
 	// 必选：否
+	// 
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为 0。
@@ -1613,6 +1614,7 @@ type DescribeRegisterInstancesRequest struct {
 	// 按照【操作系统类型】进行过滤，取值：Linux | Windows。
 	// 类型：String
 	// 必选：否
+	// 
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为 0。

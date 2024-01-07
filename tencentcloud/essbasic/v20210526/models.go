@@ -6201,6 +6201,13 @@ type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
 	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
 	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+
+	// 变更链接类型：
+	// <ul>
+	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
+	// <li>**APP** : 创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 type CreateChannelOrganizationInfoChangeUrlRequest struct {
@@ -6221,6 +6228,13 @@ type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
 	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+
+	// 变更链接类型：
+	// <ul>
+	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
+	// <li>**APP** : 创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 func (r *CreateChannelOrganizationInfoChangeUrlRequest) ToJsonString() string {
@@ -6237,6 +6251,7 @@ func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string)
 	}
 	delete(f, "Agent")
 	delete(f, "ChangeType")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelOrganizationInfoChangeUrlRequest has unknown keys!", "")
 	}
