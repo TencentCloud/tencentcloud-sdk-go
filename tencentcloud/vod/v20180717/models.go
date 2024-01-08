@@ -2053,6 +2053,24 @@ func (r *ApplyUploadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AreaCLSTargetInfo struct {
+	// 日志集所属地区：
+	// ap-guangzhou：广州； 
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 投递的目标主题 ID。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 投递的目标集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 日志投递状态。
+	//  ON：启用；
+	//  OFF：停用。
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+}
+
 type ArtifactRepairInfo struct {
 	// 去伪影（毛刺）控制开关，可选值：
 	// <li>ON：开启去伪影（毛刺）；</li>
@@ -2394,6 +2412,28 @@ type BlurConfigureInfoForUpdate struct {
 	// <li>ON：开启；</li>
 	// <li>OFF：关闭。</li>
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
+}
+
+type CLSLogsetInfo struct {
+	// 日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 日志集名。
+	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+}
+
+type CLSTopicInfo struct {
+	// 日志主题 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 日志主题名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 日志集 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
 }
 
 type Canvas struct {
@@ -3546,6 +3586,142 @@ func (r *CreateAnimatedGraphicsTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSLogsetRequestParams struct {
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+}
+
+type CreateCLSLogsetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+}
+
+func (r *CreateCLSLogsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSLogsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSLogsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSLogsetResponseParams struct {
+	// 日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCLSLogsetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCLSLogsetResponseParams `json:"Response"`
+}
+
+func (r *CreateCLSLogsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSLogsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSTopicRequestParams struct {
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题名。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+}
+
+type CreateCLSTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题名。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+}
+
+func (r *CreateCLSTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	delete(f, "TopicName")
+	delete(f, "LogsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSTopicResponseParams struct {
+	// 日志主题 ID。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCLSTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCLSTopicResponseParams `json:"Response"`
+}
+
+func (r *CreateCLSTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6433,6 +6609,71 @@ func (r *DeleteAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DeleteCLSTopicRequestParams struct {
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题 ID。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+}
+
+type DeleteCLSTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题 ID。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+}
+
+func (r *DeleteCLSTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCLSTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCLSTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCLSTopicResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteCLSTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCLSTopicResponseParams `json:"Response"`
+}
+
+func (r *DeleteCLSTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCLSTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteClassRequestParams struct {
 	// 分类 ID
 	ClassId *int64 `json:"ClassId,omitnil" name:"ClassId"`
@@ -8464,6 +8705,226 @@ func (r *DescribeCDNUsageDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCDNUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSLogsetsRequestParams struct {
+	// CLS 日志集所属的地域，取值有：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+}
+
+type DescribeCLSLogsetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// CLS 日志集所属的地域，取值有：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+}
+
+func (r *DescribeCLSLogsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogsetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSLogsetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSLogsetsResponseParams struct {
+	// 查询到的日志集列表。
+	Logsets []*CLSLogsetInfo `json:"Logsets,omitnil" name:"Logsets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCLSLogsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSLogsetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSLogsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSPushTargetsRequestParams struct {
+	// 点播域名。
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+
+	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+}
+
+type DescribeCLSPushTargetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 点播域名。
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+
+	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+}
+
+func (r *DescribeCLSPushTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSPushTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSPushTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSPushTargetsResponseParams struct {
+	// 域名推送总数量。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 域名推送 CLS 目标列表。
+	DomainCLSTargets []*DomainCLSTargetInfo `json:"DomainCLSTargets,omitnil" name:"DomainCLSTargets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCLSPushTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSPushTargetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSPushTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSPushTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSTopicsRequestParams struct {
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题所属日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 日志主题 ID 列表。如果不填，表示查询所有的日志主题。
+	TopicIds []*string `json:"TopicIds,omitnil" name:"TopicIds"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回记录条数，默认值：20，最大值：100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeCLSTopicsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志集所属地区：
+	// ap-guangzhou：广州；
+	// ap-singapore：新加坡。
+	CLSRegion *string `json:"CLSRegion,omitnil" name:"CLSRegion"`
+
+	// 日志主题所属日志集 ID。
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+
+	// 日志主题 ID 列表。如果不填，表示查询所有的日志主题。
+	TopicIds []*string `json:"TopicIds,omitnil" name:"TopicIds"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回记录条数，默认值：20，最大值：100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeCLSTopicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSTopicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	delete(f, "LogsetId")
+	delete(f, "TopicIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSTopicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSTopicsResponseParams struct {
+	// 日志主题总数量。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 日志主题列表。
+	Topics []*CLSTopicInfo `json:"Topics,omitnil" name:"Topics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCLSTopicsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSTopicsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSTopicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSTopicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12265,6 +12726,17 @@ func (r *DescribeWordSamplesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainCLSTargetInfo struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 中国大陆地区的日志推送目标。
+	ChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"ChineseMainlandCLSTargetInfo,omitnil" name:"ChineseMainlandCLSTargetInfo"`
+
+	// 中国大陆以外地区的日志推送目标。
+	OutsideChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"OutsideChineseMainlandCLSTargetInfo,omitnil" name:"OutsideChineseMainlandCLSTargetInfo"`
 }
 
 type DomainDetailInfo struct {
@@ -23058,6 +23530,81 @@ type SegmentConfigureInfoForUpdate struct {
 	// <li>ON：开启智能视频拆条识别任务；</li>
 	// <li>OFF：关闭智能视频拆条识别任务。</li>
 	Switch *string `json:"Switch,omitnil" name:"Switch"`
+}
+
+// Predefined struct for user
+type SetCLSPushTargetRequestParams struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 要设置的中国大陆地区的日志推送目标。
+	ChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"ChineseMainlandCLSTargetInfo,omitnil" name:"ChineseMainlandCLSTargetInfo"`
+
+	// 要设置的中国大陆以外地区的日志推送目标。
+	OutsideChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"OutsideChineseMainlandCLSTargetInfo,omitnil" name:"OutsideChineseMainlandCLSTargetInfo"`
+}
+
+type SetCLSPushTargetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *int64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
+	// 要设置的中国大陆地区的日志推送目标。
+	ChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"ChineseMainlandCLSTargetInfo,omitnil" name:"ChineseMainlandCLSTargetInfo"`
+
+	// 要设置的中国大陆以外地区的日志推送目标。
+	OutsideChineseMainlandCLSTargetInfo *AreaCLSTargetInfo `json:"OutsideChineseMainlandCLSTargetInfo,omitnil" name:"OutsideChineseMainlandCLSTargetInfo"`
+}
+
+func (r *SetCLSPushTargetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetCLSPushTargetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SubAppId")
+	delete(f, "ChineseMainlandCLSTargetInfo")
+	delete(f, "OutsideChineseMainlandCLSTargetInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetCLSPushTargetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetCLSPushTargetResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SetCLSPushTargetResponse struct {
+	*tchttp.BaseResponse
+	Response *SetCLSPushTargetResponseParams `json:"Response"`
+}
+
+func (r *SetCLSPushTargetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetCLSPushTargetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

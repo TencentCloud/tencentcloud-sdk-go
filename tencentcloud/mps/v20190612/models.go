@@ -765,6 +765,10 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	// 语音全文识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitnil" name:"Output"`
+
+	// 任务进度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
 }
 
 type AiRecognitionTaskAsrFullTextResultInput struct {
@@ -1132,6 +1136,10 @@ type AiRecognitionTaskTransTextResult struct {
 	// 翻译任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskTransTextResultOutput `json:"Output,omitnil" name:"Output"`
+
+	// 任务进度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
 }
 
 type AiRecognitionTaskTransTextResultInput struct {
@@ -1888,6 +1896,8 @@ type AudioSeparateConfig struct {
 
 type AudioTemplateInfo struct {
 	// 音频流的编码格式。
+	// 当不需要对音频进行转码时，可选值为：
+	// <li>copy。</li>
 	// 当外层参数 Container 为 mp3 时，可选值为：
 	// <li>libmp3lame。</li>
 	// 当外层参数 Container 为 ogg 或 flac 时，可选值为：
@@ -1898,7 +1908,8 @@ type AudioTemplateInfo struct {
 	// <li>ac3。</li>
 	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 	// <li>libfdk_aac：更适合 mp4；</li>
-	// <li>libmp3lame：更适合 flv。</li>
+	// <li>libmp3lame：更适合 flv；</li>
+	// <li>mp2。</li>
 	// 当外层参数 Container 为 hls 时，可选值为：
 	// <li>libfdk_aac；</li>
 	// <li>libmp3lame。</li>
@@ -1926,6 +1937,8 @@ type AudioTemplateInfo struct {
 
 type AudioTemplateInfoForUpdate struct {
 	// 音频流的编码格式。
+	// 当不需要对音频进行转码时，可选值为：
+	// <li>copy。</li>
 	// 当外层参数 Container 为 mp3 时，可选值为：
 	// <li>libmp3lame。</li>
 	// 当外层参数 Container 为 ogg 或 flac 时，可选值为：
@@ -2270,6 +2283,11 @@ type ComposeAudioStream struct {
 	// <li>1：单声道 。</li>
 	// <li>2：双声道（默认）。</li>
 	AudioChannel *int64 `json:"AudioChannel,omitnil" name:"AudioChannel"`
+
+	// 参考码率，单位 kbps，范围：26~10000。
+	// 如果设置，编码时会尽量按该码率进行编码。
+	// 如果不设置，服务将根据音频参数自动采用合适的码率。
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 }
 
 type ComposeCanvas struct {
@@ -2656,6 +2674,11 @@ type ComposeVideoStream struct {
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。  
 	// 默认值：0，表示和第一个视频帧率一致。
 	Fps *int64 `json:"Fps,omitnil" name:"Fps"`
+
+	// 参考码率，单位 kbps，范围：50~35000。
+	// 如果设置，编码时会尽量按该码率进行编码。
+	// 如果不设置，服务将通过画面复杂度自动采用合适的码率。
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 }
 
 type ContentReviewTemplateItem struct {

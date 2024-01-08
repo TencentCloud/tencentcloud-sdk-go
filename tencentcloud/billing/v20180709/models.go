@@ -3895,6 +3895,89 @@ func (r *DescribeDosageCosDetailByDateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDosageDetail struct {
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil" name:"Date"`
+
+	// 账号 ID 是用户在腾讯云的唯一账号标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 用量统计类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageType *string `json:"DosageType,omitnil" name:"DosageType"`
+
+	// 产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 子产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCode *string `json:"SubProductCode,omitnil" name:"SubProductCode"`
+
+	// 组件类型编码
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItemCode *string `json:"BillingItemCode,omitnil" name:"BillingItemCode"`
+
+	// 组件编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubBillingItemCode *string `json:"SubBillingItemCode,omitnil" name:"SubBillingItemCode"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCodeName *string `json:"ProductCodeName,omitnil" name:"ProductCodeName"`
+
+	// 子产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCodeName *string `json:"SubProductCodeName,omitnil" name:"SubProductCodeName"`
+
+	// 组件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItemCodeName *string `json:"BillingItemCodeName,omitnil" name:"BillingItemCodeName"`
+
+	// 组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubBillingItemCodeName *string `json:"SubBillingItemCodeName,omitnil" name:"SubBillingItemCodeName"`
+
+	// 用量单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageUnit *string `json:"DosageUnit,omitnil" name:"DosageUnit"`
+
+	// 用量起始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageBeginTime *string `json:"DosageBeginTime,omitnil" name:"DosageBeginTime"`
+
+	// 用量截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageEndTime *string `json:"DosageEndTime,omitnil" name:"DosageEndTime"`
+
+	// 标准用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageValue *float64 `json:"DosageValue,omitnil" name:"DosageValue"`
+
+	// 抵扣用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductValue *float64 `json:"DeductValue,omitnil" name:"DeductValue"`
+
+	// 抵扣余量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainValue *float64 `json:"RemainValue,omitnil" name:"RemainValue"`
+
+	// sdkAppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SdkAppId *string `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 其他信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttrStr []*JsonObject `json:"AttrStr,omitnil" name:"AttrStr"`
+
+	// 用量模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SheetName []*string `json:"SheetName,omitnil" name:"SheetName"`
+}
+
 // Predefined struct for user
 type DescribeDosageDetailByDateRequestParams struct {
 	// 查询账单开始日期，如 2019-01-01
@@ -4039,6 +4122,122 @@ func (r *DescribeDosageDetailByDateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDosageDetailByDateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDosageDetailListRequestParams struct {
+	// 用量起始时间，如：2023-02-01
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 用量截止时间，如：2023-02-28
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 产品编码，已支持查询的产品如下：
+	// p_ccc（云联络中心）
+	// p_rav（实时音视频）
+	// p_pstn（号码保护）
+	// p_smh（智能媒资托管）
+	// p_coding_devops（CODING DevOps）
+	// p_dsa（全球IP应用加速）
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 数据偏移量（从0开始）
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次数据量（最大3000）
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 用量统计类型：用量明细的数据统计汇总周期类型，包括minute-按5分钟汇总、hour-按小时汇总、day-按天汇总、month-按月汇总、comm-其他，默认查询所有类型明细，目前各产品已支持的统计类型如下：
+	// p_ccc（云联络中心）：comm、day
+	// p_rav（实时音视频）：minute、day
+	// p_pstn（号码保护）：comm
+	// p_smh（智能媒资托管）：day
+	// p_coding_devops（CODING DevOps）：comm、day
+	// p_dsa（全球IP应用加速）：minute
+	DosageType *string `json:"DosageType,omitnil" name:"DosageType"`
+}
+
+type DescribeDosageDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用量起始时间，如：2023-02-01
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 用量截止时间，如：2023-02-28
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 产品编码，已支持查询的产品如下：
+	// p_ccc（云联络中心）
+	// p_rav（实时音视频）
+	// p_pstn（号码保护）
+	// p_smh（智能媒资托管）
+	// p_coding_devops（CODING DevOps）
+	// p_dsa（全球IP应用加速）
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 数据偏移量（从0开始）
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次数据量（最大3000）
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 用量统计类型：用量明细的数据统计汇总周期类型，包括minute-按5分钟汇总、hour-按小时汇总、day-按天汇总、month-按月汇总、comm-其他，默认查询所有类型明细，目前各产品已支持的统计类型如下：
+	// p_ccc（云联络中心）：comm、day
+	// p_rav（实时音视频）：minute、day
+	// p_pstn（号码保护）：comm
+	// p_smh（智能媒资托管）：day
+	// p_coding_devops（CODING DevOps）：comm、day
+	// p_dsa（全球IP应用加速）：minute
+	DosageType *string `json:"DosageType,omitnil" name:"DosageType"`
+}
+
+func (r *DescribeDosageDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDosageDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ProductCode")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DosageType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDosageDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDosageDetailListResponseParams struct {
+	// 用量明细集合
+	Record []*DescribeDosageDetail `json:"Record,omitnil" name:"Record"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDosageDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDosageDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDosageDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDosageDetailListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4777,6 +4976,14 @@ type ExcludedProducts struct {
 
 	// postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。
 	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+}
+
+type JsonObject struct {
+	// key值
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// value值
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 // Predefined struct for user

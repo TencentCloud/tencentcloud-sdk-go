@@ -4610,6 +4610,9 @@ type DescribeIdsWhiteRuleResponseParams struct {
 	// 总条数
 	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
+	// 规则详情
+	Data []*IdsWhiteInfo `json:"Data,omitnil" name:"Data"`
+
 	// 返回状态码 0 成功 非0不成功
 	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
 
@@ -6733,6 +6736,32 @@ type IPDefendStatus struct {
 
 	// 防护状态   1:防护打开; -1:地址错误; 其他:未防护
 	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type IdsWhiteInfo struct {
+	// 白名单唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 源IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+
+	// 目的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+
+	// 规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhiteRuleType *string `json:"WhiteRuleType,omitnil" name:"WhiteRuleType"`
+
+	// 白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *int64 `json:"FwType,omitnil" name:"FwType"`
+
+	// 入侵防御规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type InstanceInfo struct {

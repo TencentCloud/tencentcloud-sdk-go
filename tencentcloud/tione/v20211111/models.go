@@ -1356,13 +1356,15 @@ type CreateNotebookRequestParams struct {
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 存储的类型。取值包含： 
-	//     FREE:    预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// FREE：预付费的免费存储
+	// CLOUD_PREMIUM：高性能云硬盘
+	// CLOUD_SSD：SSD云硬盘
+	// CFS：CFS存储
+	// CFS_TURBO：CFS Turbo存储
+	// GooseFSx：GooseFSx存储
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil" name:"VolumeSourceType"`
 
-	// 存储卷大小，单位GB
+	// 云硬盘存储卷大小，单位GB
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil" name:"VolumeSizeInGB"`
 
 	// CFS存储的配置
@@ -1386,17 +1388,20 @@ type CreateNotebookRequestParams struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
-	// 数据配置
+	// 数据配置，只支持WEDATA_HDFS存储类型
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
-	// 镜像类型
+	// 镜像类型，包括SYSTEM、TCR、CCR
 	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 
 	// SSH配置信息
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil" name:"SSHConfig"`
+
+	// GooseFS存储配置
+	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil" name:"VolumeSourceGooseFS"`
 }
 
 type CreateNotebookRequest struct {
@@ -1435,13 +1440,15 @@ type CreateNotebookRequest struct {
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 存储的类型。取值包含： 
-	//     FREE:    预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// FREE：预付费的免费存储
+	// CLOUD_PREMIUM：高性能云硬盘
+	// CLOUD_SSD：SSD云硬盘
+	// CFS：CFS存储
+	// CFS_TURBO：CFS Turbo存储
+	// GooseFSx：GooseFSx存储
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil" name:"VolumeSourceType"`
 
-	// 存储卷大小，单位GB
+	// 云硬盘存储卷大小，单位GB
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil" name:"VolumeSizeInGB"`
 
 	// CFS存储的配置
@@ -1465,17 +1472,20 @@ type CreateNotebookRequest struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
-	// 数据配置
+	// 数据配置，只支持WEDATA_HDFS存储类型
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
-	// 镜像类型
+	// 镜像类型，包括SYSTEM、TCR、CCR
 	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 
 	// SSH配置信息
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil" name:"SSHConfig"`
+
+	// GooseFS存储配置
+	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil" name:"VolumeSourceGooseFS"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -1513,6 +1523,7 @@ func (r *CreateNotebookRequest) FromJsonString(s string) error {
 	delete(f, "ImageInfo")
 	delete(f, "ImageType")
 	delete(f, "SSHConfig")
+	delete(f, "VolumeSourceGooseFS")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
 	}
@@ -1897,7 +1908,7 @@ type CreateTrainingTaskRequestParams struct {
 	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
 	TrainingMode *string `json:"TrainingMode,omitnil" name:"TrainingMode"`
 
-	// 数据配置，依赖DataSource字段
+	// 数据配置，依赖DataSource字段，数量不超过10个
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// VPC Id
@@ -1912,16 +1923,16 @@ type CreateTrainingTaskRequestParams struct {
 	// CLS日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitnil" name:"LogConfig"`
 
-	// 调优参数
+	// 调优参数，不超过2048个字符
 	TuningParameters *string `json:"TuningParameters,omitnil" name:"TuningParameters"`
 
 	// 是否上报日志
 	LogEnable *bool `json:"LogEnable,omitnil" name:"LogEnable"`
 
-	// 备注，最多500个字
+	// 备注，不超过1024个字符
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
-	// 数据来源，eg：DATASET、COS、CFS、HDFS
+	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
 	DataSource *string `json:"DataSource,omitnil" name:"DataSource"`
 
 	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
@@ -1971,7 +1982,7 @@ type CreateTrainingTaskRequest struct {
 	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
 	TrainingMode *string `json:"TrainingMode,omitnil" name:"TrainingMode"`
 
-	// 数据配置，依赖DataSource字段
+	// 数据配置，依赖DataSource字段，数量不超过10个
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// VPC Id
@@ -1986,16 +1997,16 @@ type CreateTrainingTaskRequest struct {
 	// CLS日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitnil" name:"LogConfig"`
 
-	// 调优参数
+	// 调优参数，不超过2048个字符
 	TuningParameters *string `json:"TuningParameters,omitnil" name:"TuningParameters"`
 
 	// 是否上报日志
 	LogEnable *bool `json:"LogEnable,omitnil" name:"LogEnable"`
 
-	// 备注，最多500个字
+	// 备注，不超过1024个字符
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
-	// 数据来源，eg：DATASET、COS、CFS、HDFS
+	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
 	DataSource *string `json:"DataSource,omitnil" name:"DataSource"`
 
 	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
@@ -2150,7 +2161,7 @@ type DataConfig struct {
 	// 映射路径
 	MappingPath *string `json:"MappingPath,omitnil" name:"MappingPath"`
 
-	// DATASET、COS、CFS、HDFS、WEDATA_HDFS
+	// DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
@@ -5583,6 +5594,7 @@ type DescribeNotebooksRequestParams struct {
 	// Name（名称）：notebook1
 	// Id（notebook ID）：nb-123456789
 	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+	// Creator（创建者 uin）：100014761913
 	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
 	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
@@ -5615,6 +5627,7 @@ type DescribeNotebooksRequest struct {
 	// Name（名称）：notebook1
 	// Id（notebook ID）：nb-123456789
 	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+	// Creator（创建者 uin）：100014761913
 	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
 	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
@@ -6182,7 +6195,9 @@ type DescribeTrainingTasksRequestParams struct {
 	// 取值范围：
 	// Name（名称）：task1
 	// Id（task ID）：train-23091792777383936
-	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// Status（状态）：SUBMITTING/PENDING/STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// ResourceGroupId（资源组 Id）：trsg-kvvfrwl7
+	// Creator（创建者 uin）：100014761913
 	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -6199,7 +6214,7 @@ type DescribeTrainingTasksRequestParams struct {
 	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// 排序的依据字段， 取值范围 "CreateTime" 、"UpdateTime"、"StartTime"，默认为UpdateTime
 	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
 }
 
@@ -6211,7 +6226,9 @@ type DescribeTrainingTasksRequest struct {
 	// 取值范围：
 	// Name（名称）：task1
 	// Id（task ID）：train-23091792777383936
-	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// Status（状态）：SUBMITTING/PENDING/STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// ResourceGroupId（资源组 Id）：trsg-kvvfrwl7
+	// Creator（创建者 uin）：100014761913
 	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -6228,7 +6245,7 @@ type DescribeTrainingTasksRequest struct {
 	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// 排序的依据字段， 取值范围 "CreateTime" 、"UpdateTime"、"StartTime"，默认为UpdateTime
 	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
 }
 
@@ -6466,6 +6483,14 @@ type GooseFS struct {
 	// goosefs实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// GooseFS类型，包括GooseFS和GooseFSx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// GooseFSx实例需要挂载的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil" name:"Path"`
 }
 
 type GpuDetail struct {
@@ -6511,7 +6536,9 @@ type HorizontalPodAutoscaler struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
 
-	// 扩缩容指标
+	// 支持：
+	// "gpu-util": GPU利用率。范围{10, 100}      "cpu-util": CPU利用率。范围{10, 100}	      "memory-util": 内存利用率。范围{10, 100}      "service-qps": 单个实例QPS值。范围{1, 5000}
+	// "concurrency-util":单个实例请求数量值。范围{1,100000}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpaMetrics []*Option `json:"HpaMetrics,omitnil" name:"HpaMetrics"`
 }
@@ -7406,10 +7433,10 @@ type ModifyNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// 名称
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 计算资源付费模式 ，可选值为：
+	// （不允许修改）计算资源付费模式 ，可选值为：
 	// PREPAID：预付费，即包年包月
 	// POSTPAID_BY_HOUR：按小时后付费
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
@@ -7432,23 +7459,23 @@ type ModifyNotebookRequestParams struct {
 	// 资源组ID(for预付费)
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
 
-	// Vpc-Id
+	// （不允许修改）Vpc-Id
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网Id
+	// （不允许修改）子网Id
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 存储卷大小，单位GB
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil" name:"VolumeSizeInGB"`
 
-	// 存储的类型。取值包含： 
+	// （不允许修改）存储的类型。取值包含： 
 	//     FREE:    预付费的免费存储
 	//     CLOUD_PREMIUM： 高性能云硬盘
 	//     CLOUD_SSD： SSD云硬盘
 	//     CFS:     CFS存储，包含NFS和turbo
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil" name:"VolumeSourceType"`
 
-	// CFS存储的配置
+	// （不允许修改）CFS存储的配置
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil" name:"VolumeSourceCFS"`
 
 	// 日志配置
@@ -7469,13 +7496,13 @@ type ModifyNotebookRequestParams struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
-	// 数据配置
+	// 数据配置，只支持WEDATA_HDFS
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
-	// 镜像类型
+	// 镜像类型，包括SYSTEM、TCR、CCR
 	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 
 	// SSH配置
@@ -7488,10 +7515,10 @@ type ModifyNotebookRequest struct {
 	// notebook id
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// 名称
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 计算资源付费模式 ，可选值为：
+	// （不允许修改）计算资源付费模式 ，可选值为：
 	// PREPAID：预付费，即包年包月
 	// POSTPAID_BY_HOUR：按小时后付费
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
@@ -7514,23 +7541,23 @@ type ModifyNotebookRequest struct {
 	// 资源组ID(for预付费)
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil" name:"ResourceGroupId"`
 
-	// Vpc-Id
+	// （不允许修改）Vpc-Id
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网Id
+	// （不允许修改）子网Id
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 存储卷大小，单位GB
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil" name:"VolumeSizeInGB"`
 
-	// 存储的类型。取值包含： 
+	// （不允许修改）存储的类型。取值包含： 
 	//     FREE:    预付费的免费存储
 	//     CLOUD_PREMIUM： 高性能云硬盘
 	//     CLOUD_SSD： SSD云硬盘
 	//     CFS:     CFS存储，包含NFS和turbo
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil" name:"VolumeSourceType"`
 
-	// CFS存储的配置
+	// （不允许修改）CFS存储的配置
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil" name:"VolumeSourceCFS"`
 
 	// 日志配置
@@ -7551,13 +7578,13 @@ type ModifyNotebookRequest struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
-	// 数据配置
+	// 数据配置，只支持WEDATA_HDFS
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil" name:"DataConfigs"`
 
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
-	// 镜像类型
+	// 镜像类型，包括SYSTEM、TCR、CCR
 	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 
 	// SSH配置
@@ -7894,6 +7921,14 @@ type NotebookDetail struct {
 	// 镜像类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
+
+	// SSH配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSHConfig *SSHConfig `json:"SSHConfig,omitnil" name:"SSHConfig"`
+
+	// GooseFS存储配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil" name:"VolumeSourceGooseFS"`
 }
 
 type NotebookImageRecord struct {
@@ -7905,7 +7940,7 @@ type NotebookImageRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
-	// 状态
+	// 状态。eg：creating导出中/success已完成/stopped已停止/fail异常
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil" name:"Status"`
 
@@ -8026,6 +8061,10 @@ type NotebookSetItem struct {
 	// SSH配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil" name:"SSHConfig"`
+
+	// GooseFS存储配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil" name:"VolumeSourceGooseFS"`
 }
 
 type OcrLabelInfo struct {
@@ -8118,7 +8157,7 @@ type PodInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil" name:"IP"`
 
-	// pod状态
+	// pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil" name:"Status"`
 
@@ -8224,11 +8263,11 @@ type ResourceConf struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *uint64 `json:"Memory,omitnil" name:"Memory"`
 
-	// gpu Gpu卡资源，单位为1单位的GpuType，例如GpuType=T4时，1 Gpu = 1/100 T4卡，GpuType=vcuda时，1 Gpu = 1/100 vcuda-core (for预付费)
+	// gpu Gpu卡资源，单位为1/100卡，例如GpuType=T4时，1 Gpu = 1/100 T4卡 (for预付费)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *uint64 `json:"Gpu,omitnil" name:"Gpu"`
 
-	// GpuType 卡类型 vcuda, T4,P4,V100等 (for预付费)
+	// GpuType 卡类型，参考资源组上对应的卡类型。eg: H800,A800,A100,T4,P4,V100等 (for预付费)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuType *string `json:"GpuType,omitnil" name:"GpuType"`
 
@@ -8257,16 +8296,16 @@ type ResourceConfigInfo struct {
 	// 角色，eg：PS、WORKER、DRIVER、EXECUTOR
 	Role *string `json:"Role,omitnil" name:"Role"`
 
-	// cpu核数，1000=1核
+	// cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
 	Cpu *uint64 `json:"Cpu,omitnil" name:"Cpu"`
 
-	// 内存，单位为MB
+	// 内存，使用资源组时需配置。单位为MB
 	Memory *uint64 `json:"Memory,omitnil" name:"Memory"`
 
-	// gpu卡类型
+	// gpu卡类型，使用资源组时需配置
 	GpuType *string `json:"GpuType,omitnil" name:"GpuType"`
 
-	// gpu数
+	// gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
 	Gpu *uint64 `json:"Gpu,omitnil" name:"Gpu"`
 
 	// 算力规格ID
@@ -9168,6 +9207,12 @@ type ServiceLimit struct {
 
 	// 每个服务实例的 request per second 限速, 0 为不限流
 	InstanceRpsLimit *int64 `json:"InstanceRpsLimit,omitnil" name:"InstanceRpsLimit"`
+
+	// 是否开启单实例最大并发数限制，true or false。true 则 InstanceReqLimit 必填， false 则 InstanceReqLimit 不生效
+	EnableInstanceReqLimit *bool `json:"EnableInstanceReqLimit,omitnil" name:"EnableInstanceReqLimit"`
+
+	// 每个服务实例的最大并发
+	InstanceReqLimit *int64 `json:"InstanceReqLimit,omitnil" name:"InstanceReqLimit"`
 }
 
 type Spec struct {
@@ -9777,7 +9822,13 @@ type TextLabelDistributionInfo struct {
 }
 
 type TrainingDataPoint struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
+	// 训练上报的值。可以为训练指标（双精度浮点数，也可以为Epoch/Step（两者皆保证是整数）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitnil" name:"Value"`
 }
 
 type TrainingMetric struct {
@@ -10111,7 +10162,8 @@ type TrainingTaskSetItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainingMode *string `json:"TrainingMode,omitnil" name:"TrainingMode"`
 
-	// 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+	// 任务状态，eg：SUBMITTING提交中、PENDING排队中、
+	// STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 运行时长

@@ -92,13 +92,13 @@ const (
 	// 跟踪集名称不支持修改。
 	INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
 
-	// 云审计目前不支持输入的cmq地域
+	// 操作审计目前不支持输入的cmq地域
 	INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
 
 	// 输入的cos存储桶名称不符合规范
 	INVALIDPARAMETERVALUE_COSNAMEERROR = "InvalidParameterValue.CosNameError"
 
-	// 云审计目前不支持输入的cos地域
+	// 操作审计目前不支持输入的cos地域
 	INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 
 	// IsCreateNewBucket的有效取值范围是0和1，0代表不创建新的存储桶，1代表创建新的存储桶。
@@ -110,7 +110,7 @@ const (
 	// IsEnableCmqNotify的有效取值范围是0和1，0代表不开启投递cmq,1代表开启cmq投递。
 	INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = "InvalidParameterValue.IsEnableCmqNotifyError"
 
-	// 云审计暂不支持该地域的KMS
+	// 操作审计暂不支持该地域的KMS
 	INVALIDPARAMETERVALUE_KMSREGIONERROR = "InvalidParameterValue.KmsRegionError"
 
 	// 日志前缀格式错误

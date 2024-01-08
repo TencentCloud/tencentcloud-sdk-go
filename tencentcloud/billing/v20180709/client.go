@@ -1416,6 +1416,61 @@ func (c *Client) DescribeDosageDetailByDateWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeDosageDetailListRequest() (request *DescribeDosageDetailListRequest) {
+    request = &DescribeDosageDetailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageDetailList")
+    
+    
+    return
+}
+
+func NewDescribeDosageDetailListResponse() (response *DescribeDosageDetailListResponse) {
+    response = &DescribeDosageDetailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDosageDetailList
+// 获取已接入标准用量明细模板产品的用量明细数据，目前已接入并支持查询的产品包括：云联络中心、实时音视频、实时音视频、智能媒资托管、CODING DevOps、全球IP应用加速
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDBFAILED = "FailedOperation.QueryDBFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMCHECKFAILED = "InvalidParameter.ParamCheckFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDosageDetailList(request *DescribeDosageDetailListRequest) (response *DescribeDosageDetailListResponse, err error) {
+    return c.DescribeDosageDetailListWithContext(context.Background(), request)
+}
+
+// DescribeDosageDetailList
+// 获取已接入标准用量明细模板产品的用量明细数据，目前已接入并支持查询的产品包括：云联络中心、实时音视频、实时音视频、智能媒资托管、CODING DevOps、全球IP应用加速
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDBFAILED = "FailedOperation.QueryDBFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMCHECKFAILED = "InvalidParameter.ParamCheckFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDosageDetailListWithContext(ctx context.Context, request *DescribeDosageDetailListRequest) (response *DescribeDosageDetailListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDosageDetailListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDosageDetailList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDosageDetailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSavingPlanCoverageRequest() (request *DescribeSavingPlanCoverageRequest) {
     request = &DescribeSavingPlanCoverageRequest{
         BaseRequest: &tchttp.BaseRequest{},

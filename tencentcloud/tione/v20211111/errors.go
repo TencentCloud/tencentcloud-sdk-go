@@ -347,6 +347,15 @@ const (
 	// 获取CFS的挂载IP失败
 	INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
 
+	// 获取GooseFS实例失败
+	INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
+
+	// GooseFS的配置不能为空
+	INVALIDPARAMETERVALUE_GOOSEFSCONFIGCANNOTEMPTY = "InvalidParameterValue.GooseFSConfigCannotEmpty"
+
+	// 所选的GooseFS实例不存在
+	INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+
 	// 训练任务镜像不存在。
 	INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 
@@ -391,6 +400,9 @@ const (
 
 	// 裸金属类型资源组不支持配置输入数据
 	INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+
+	// 不支持使用GooseFS实例
+	INVALIDPARAMETERVALUE_UNSUPPORTEDGOOSEFSCONFIG = "InvalidParameterValue.UnsupportedGooseFSConfig"
 
 	// Notebook卷大小只能增加，如需减小容量请重新创建实例。
 	INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"

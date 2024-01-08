@@ -1680,6 +1680,9 @@ type DescribeCfsFileSystemsRequestParams struct {
 
 	// Limit 页面大小
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 用户自定义名称
+	CreationToken *string `json:"CreationToken,omitnil" name:"CreationToken"`
 }
 
 type DescribeCfsFileSystemsRequest struct {
@@ -1699,6 +1702,9 @@ type DescribeCfsFileSystemsRequest struct {
 
 	// Limit 页面大小
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 用户自定义名称
+	CreationToken *string `json:"CreationToken,omitnil" name:"CreationToken"`
 }
 
 func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
@@ -1718,6 +1724,7 @@ func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "CreationToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsFileSystemsRequest has unknown keys!", "")
 	}

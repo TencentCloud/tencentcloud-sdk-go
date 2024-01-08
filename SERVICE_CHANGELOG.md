@@ -1,10 +1,31 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 147 次发布
+### 第 54 次发布
 
-发布时间：2024-01-08 00:10:12
+发布时间：2024-01-09 01:07:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDosageDetailList](https://cloud.tencent.com/document/api/555/102914)
+
+新增数据结构：
+
+* [DescribeDosageDetail](https://cloud.tencent.com/document/api/555/19183#DescribeDosageDetail)
+* [JsonObject](https://cloud.tencent.com/document/api/555/19183#JsonObject)
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 28 次发布
+
+发布时间：2024-01-09 01:09:35
 
 本次发布包含了以下内容：
 
@@ -12,22 +33,41 @@
 
 修改接口：
 
-* [CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)
+* [DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)
 
-	* 新增入参：Endpoint
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+	* 新增入参：CreationToken
 
 
 
-## 医疗报告结构化(mrs) 版本：2020-09-10
 
-### 第 23 次发布
+## 云防火墙(cfw) 版本：2019-09-04
 
-发布时间：2024-01-08 00:14:42
+### 第 53 次发布
+
+发布时间：2024-01-09 01:09:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIdsWhiteRule](https://cloud.tencent.com/document/api/1132/102105)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [IdsWhiteInfo](https://cloud.tencent.com/document/api/1132/49071#IdsWhiteInfo)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 78 次发布
+
+发布时间：2024-01-09 01:20:43
 
 本次发布包含了以下内容：
 
@@ -35,52 +75,122 @@
 
 修改数据结构：
 
-* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskTransTextResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextResult)
+
+	* 新增成员：Progress
+
+* [ComposeAudioStream](https://cloud.tencent.com/document/api/862/37615#ComposeAudioStream)
+
+	* 新增成员：Bitrate
+
+* [ComposeVideoStream](https://cloud.tencent.com/document/api/862/37615#ComposeVideoStream)
+
+	* 新增成员：Bitrate
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 69 次发布
+### 第 49 次发布
 
-发布时间：2024-01-08 00:19:23
+发布时间：2024-01-09 01:26:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
+
+	* 新增入参：VolumeSourceGooseFS
+
+
 修改数据结构：
 
-* [RateLimitTemplateDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplateDetail)
+* [GooseFS](https://cloud.tencent.com/document/api/851/75051#GooseFS)
 
-	* <font color="#dd0000">**修改成员**：</font>ID, Action, PunishTime, Threshold, Period
+	* 新增成员：Type, Path
+
+* [NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)
+
+	* 新增成员：SSHConfig, VolumeSourceGooseFS
+
+	* <font color="#dd0000">**修改成员**：</font>ImageInfo, ImageType
+
+* [NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)
+
+	* <font color="#dd0000">**修改成员**：</font>RecordId, ImageUrl, Status, CreateTime, Message, InstanceId, Kernels
+
+* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
+
+	* 新增成员：VolumeSourceGooseFS
+
+* [ServiceLimit](https://cloud.tencent.com/document/api/851/75051#ServiceLimit)
+
+	* 新增成员：EnableInstanceReqLimit, InstanceReqLimit
+
+* [TrainingDataPoint](https://cloud.tencent.com/document/api/851/75051#TrainingDataPoint)
+
+	* 新增成员：Timestamp, Value
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 63 次发布
+### 第 64 次发布
 
-发布时间：2024-01-08 00:21:01
+发布时间：2024-01-09 01:27:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [StartStreamIngest](https://cloud.tencent.com/document/api/647/101872)
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
 
-	* 新增入参：StreamUrl
+	* 新增成员：TransparentUrl
 
-	* <font color="#dd0000">**修改入参**：</font>SourceUrl
 
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 177 次发布
+
+发布时间：2024-01-09 01:28:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCLSLogset](https://cloud.tencent.com/document/api/266/102922)
+* [CreateCLSTopic](https://cloud.tencent.com/document/api/266/102921)
+* [DeleteCLSTopic](https://cloud.tencent.com/document/api/266/102920)
+* [DescribeCLSLogsets](https://cloud.tencent.com/document/api/266/102919)
+* [DescribeCLSPushTargets](https://cloud.tencent.com/document/api/266/102918)
+* [DescribeCLSTopics](https://cloud.tencent.com/document/api/266/102917)
+* [SetCLSPushTarget](https://cloud.tencent.com/document/api/266/102916)
+
+新增数据结构：
+
+* [AreaCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#AreaCLSTargetInfo)
+* [CLSLogsetInfo](https://cloud.tencent.com/document/api/266/31773#CLSLogsetInfo)
+* [CLSTopicInfo](https://cloud.tencent.com/document/api/266/31773#CLSTopicInfo)
+* [DomainCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#DomainCLSTargetInfo)
 
 
 
@@ -8562,6 +8672,23 @@
 
 
 ## 费用中心(billing) 版本：2018-07-09
+
+### 第 54 次发布
+
+发布时间：2024-01-09 01:07:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDosageDetailList](https://cloud.tencent.com/document/api/555/102914)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DescribeDosageDetail](https://cloud.tencent.com/document/api/555/19183#DescribeDosageDetail)](https://cloud.tencent.com/document/api/555/19183#[DescribeDosageDetail](https://cloud.tencent.com/document/api/555/19183#DescribeDosageDetail))
+* [[JsonObject](https://cloud.tencent.com/document/api/555/19183#JsonObject)](https://cloud.tencent.com/document/api/555/19183#[JsonObject](https://cloud.tencent.com/document/api/555/19183#JsonObject))
 
 ### 第 53 次发布
 
@@ -22407,6 +22534,21 @@
 
 ## 文件存储(cfs) 版本：2019-07-19
 
+### 第 28 次发布
+
+发布时间：2024-01-09 01:09:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)
+
+	* 新增入参：CreationToken
+
+
 ### 第 27 次发布
 
 发布时间：2023-11-09 01:08:52
@@ -22919,6 +23061,25 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 53 次发布
+
+发布时间：2024-01-09 01:09:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIdsWhiteRule](https://cloud.tencent.com/document/api/1132/102105)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [[IdsWhiteInfo](https://cloud.tencent.com/document/api/1132/49071#IdsWhiteInfo)](https://cloud.tencent.com/document/api/1132/49071#[IdsWhiteInfo](https://cloud.tencent.com/document/api/1132/49071#IdsWhiteInfo))
 
 ### 第 52 次发布
 
@@ -84402,6 +84563,33 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 78 次发布
+
+发布时间：2024-01-09 01:20:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskTransTextResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextResult)
+
+	* 新增成员：Progress
+
+* [ComposeAudioStream](https://cloud.tencent.com/document/api/862/37615#ComposeAudioStream)
+
+	* 新增成员：Bitrate
+
+* [ComposeVideoStream](https://cloud.tencent.com/document/api/862/37615#ComposeVideoStream)
+
+	* 新增成员：Bitrate
+
+
 ### 第 77 次发布
 
 发布时间：2023-12-06 20:13:59
@@ -120314,6 +120502,50 @@
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
+### 第 49 次发布
+
+发布时间：2024-01-09 01:26:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
+
+	* 新增入参：VolumeSourceGooseFS
+
+
+修改数据结构：
+
+* [GooseFS](https://cloud.tencent.com/document/api/851/75051#GooseFS)
+
+	* 新增成员：Type, Path
+
+* [NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)
+
+	* 新增成员：SSHConfig, VolumeSourceGooseFS
+
+	* <font color="#dd0000">**修改成员**：</font>ImageInfo, ImageType
+
+* [NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)
+
+	* <font color="#dd0000">**修改成员**：</font>RecordId, ImageUrl, Status, CreateTime, Message, InstanceId, Kernels
+
+* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
+
+	* 新增成员：VolumeSourceGooseFS
+
+* [ServiceLimit](https://cloud.tencent.com/document/api/851/75051#ServiceLimit)
+
+	* 新增成员：EnableInstanceReqLimit, InstanceReqLimit
+
+* [TrainingDataPoint](https://cloud.tencent.com/document/api/851/75051#TrainingDataPoint)
+
+	* 新增成员：Timestamp, Value
+
+
 ### 第 48 次发布
 
 发布时间：2023-12-21 02:14:50
@@ -127041,6 +127273,21 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 64 次发布
+
+发布时间：2024-01-09 01:27:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
+
+	* 新增成员：TransparentUrl
+
+
 ### 第 63 次发布
 
 发布时间：2024-01-08 00:21:01
@@ -132733,6 +132980,31 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 177 次发布
+
+发布时间：2024-01-09 01:28:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCLSLogset](https://cloud.tencent.com/document/api/266/102922)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCLSTopic](https://cloud.tencent.com/document/api/266/102921)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCLSTopic](https://cloud.tencent.com/document/api/266/102920)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCLSLogsets](https://cloud.tencent.com/document/api/266/102919)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCLSPushTargets](https://cloud.tencent.com/document/api/266/102918)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCLSTopics](https://cloud.tencent.com/document/api/266/102917)](https://cloud.tencent.com/document/api/#/#)
+* [[SetCLSPushTarget](https://cloud.tencent.com/document/api/266/102916)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AreaCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#AreaCLSTargetInfo)](https://cloud.tencent.com/document/api/266/31773#[AreaCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#AreaCLSTargetInfo))
+* [[CLSLogsetInfo](https://cloud.tencent.com/document/api/266/31773#CLSLogsetInfo)](https://cloud.tencent.com/document/api/266/31773#[CLSLogsetInfo](https://cloud.tencent.com/document/api/266/31773#CLSLogsetInfo))
+* [[CLSTopicInfo](https://cloud.tencent.com/document/api/266/31773#CLSTopicInfo)](https://cloud.tencent.com/document/api/266/31773#[CLSTopicInfo](https://cloud.tencent.com/document/api/266/31773#CLSTopicInfo))
+* [[DomainCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#DomainCLSTargetInfo)](https://cloud.tencent.com/document/api/266/31773#[DomainCLSTargetInfo](https://cloud.tencent.com/document/api/266/31773#DomainCLSTargetInfo))
 
 ### 第 176 次发布
 

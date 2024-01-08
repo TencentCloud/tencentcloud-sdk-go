@@ -718,6 +718,104 @@ func (c *Client) CreateAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateCLSLogsetRequest() (request *CreateCLSLogsetRequest) {
+    request = &CreateCLSLogsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateCLSLogset")
+    
+    
+    return
+}
+
+func NewCreateCLSLogsetResponse() (response *CreateCLSLogsetResponse) {
+    response = &CreateCLSLogsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCLSLogset
+// 由 VOD 创建新的日志集。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCLSLogset(request *CreateCLSLogsetRequest) (response *CreateCLSLogsetResponse, err error) {
+    return c.CreateCLSLogsetWithContext(context.Background(), request)
+}
+
+// CreateCLSLogset
+// 由 VOD 创建新的日志集。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCLSLogsetWithContext(ctx context.Context, request *CreateCLSLogsetRequest) (response *CreateCLSLogsetResponse, err error) {
+    if request == nil {
+        request = NewCreateCLSLogsetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCLSLogset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCLSLogsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCLSTopicRequest() (request *CreateCLSTopicRequest) {
+    request = &CreateCLSTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateCLSTopic")
+    
+    
+    return
+}
+
+func NewCreateCLSTopicResponse() (response *CreateCLSTopicResponse) {
+    response = &CreateCLSTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCLSTopic
+// 创建 VOD 下新的 CLS 日志主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCLSTopic(request *CreateCLSTopicRequest) (response *CreateCLSTopicResponse, err error) {
+    return c.CreateCLSTopicWithContext(context.Background(), request)
+}
+
+// CreateCLSTopic
+// 创建 VOD 下新的 CLS 日志主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCLSTopicWithContext(ctx context.Context, request *CreateCLSTopicRequest) (response *CreateCLSTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateCLSTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCLSTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCLSTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2513,6 +2611,61 @@ func (c *Client) DeleteAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewDeleteCLSTopicRequest() (request *DeleteCLSTopicRequest) {
+    request = &DeleteCLSTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteCLSTopic")
+    
+    
+    return
+}
+
+func NewDeleteCLSTopicResponse() (response *DeleteCLSTopicResponse) {
+    response = &DeleteCLSTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCLSTopic
+// 删除点播开通的日志主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCLSTopic(request *DeleteCLSTopicRequest) (response *DeleteCLSTopicResponse, err error) {
+    return c.DeleteCLSTopicWithContext(context.Background(), request)
+}
+
+// DeleteCLSTopic
+// 删除点播开通的日志主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCLSTopicWithContext(ctx context.Context, request *DeleteCLSTopicRequest) (response *DeleteCLSTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteCLSTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCLSTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCLSTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClassRequest() (request *DeleteClassRequest) {
     request = &DeleteClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4195,6 +4348,197 @@ func (c *Client) DescribeCDNUsageDataWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCDNUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCLSLogsetsRequest() (request *DescribeCLSLogsetsRequest) {
+    request = &DescribeCLSLogsetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCLSLogsets")
+    
+    
+    return
+}
+
+func NewDescribeCLSLogsetsResponse() (response *DescribeCLSLogsetsResponse) {
+    response = &DescribeCLSLogsetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCLSLogsets
+// 查询 VOD 创建的 CLS 日志集。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAINTERVAL = "InvalidParameterValue.DataInterval"
+//  INVALIDPARAMETERVALUE_DATATYPE = "InvalidParameterValue.DataType"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_DOMAINNAMES = "InvalidParameterValue.DomainNames"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCLSLogsets(request *DescribeCLSLogsetsRequest) (response *DescribeCLSLogsetsResponse, err error) {
+    return c.DescribeCLSLogsetsWithContext(context.Background(), request)
+}
+
+// DescribeCLSLogsets
+// 查询 VOD 创建的 CLS 日志集。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAINTERVAL = "InvalidParameterValue.DataInterval"
+//  INVALIDPARAMETERVALUE_DATATYPE = "InvalidParameterValue.DataType"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_DOMAINNAMES = "InvalidParameterValue.DomainNames"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCLSLogsetsWithContext(ctx context.Context, request *DescribeCLSLogsetsRequest) (response *DescribeCLSLogsetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCLSLogsetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCLSLogsets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCLSLogsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCLSPushTargetsRequest() (request *DescribeCLSPushTargetsRequest) {
+    request = &DescribeCLSPushTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCLSPushTargets")
+    
+    
+    return
+}
+
+func NewDescribeCLSPushTargetsResponse() (response *DescribeCLSPushTargetsResponse) {
+    response = &DescribeCLSPushTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCLSPushTargets
+// 查询点播域名下日志投递的目标主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAINTERVAL = "InvalidParameterValue.DataInterval"
+//  INVALIDPARAMETERVALUE_DATATYPE = "InvalidParameterValue.DataType"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_DOMAINNAMES = "InvalidParameterValue.DomainNames"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCLSPushTargets(request *DescribeCLSPushTargetsRequest) (response *DescribeCLSPushTargetsResponse, err error) {
+    return c.DescribeCLSPushTargetsWithContext(context.Background(), request)
+}
+
+// DescribeCLSPushTargets
+// 查询点播域名下日志投递的目标主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAINTERVAL = "InvalidParameterValue.DataInterval"
+//  INVALIDPARAMETERVALUE_DATATYPE = "InvalidParameterValue.DataType"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_DOMAINNAMES = "InvalidParameterValue.DomainNames"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCLSPushTargetsWithContext(ctx context.Context, request *DescribeCLSPushTargetsRequest) (response *DescribeCLSPushTargetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCLSPushTargetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCLSPushTargets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCLSPushTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCLSTopicsRequest() (request *DescribeCLSTopicsRequest) {
+    request = &DescribeCLSTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCLSTopics")
+    
+    
+    return
+}
+
+func NewDescribeCLSTopicsResponse() (response *DescribeCLSTopicsResponse) {
+    response = &DescribeCLSTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCLSTopics
+// 查询 VOD 创建的 CLS 日志主题列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCLSTopics(request *DescribeCLSTopicsRequest) (response *DescribeCLSTopicsResponse, err error) {
+    return c.DescribeCLSTopicsWithContext(context.Background(), request)
+}
+
+// DescribeCLSTopics
+// 查询 VOD 创建的 CLS 日志主题列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCLSTopicsWithContext(ctx context.Context, request *DescribeCLSTopicsRequest) (response *DescribeCLSTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCLSTopicsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCLSTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCLSTopicsResponse()
     err = c.Send(request, response)
     return
 }
@@ -11175,6 +11519,101 @@ func (c *Client) SearchMediaWithContext(ctx context.Context, request *SearchMedi
     request.SetContext(ctx)
     
     response = NewSearchMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetCLSPushTargetRequest() (request *SetCLSPushTargetRequest) {
+    request = &SetCLSPushTargetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "SetCLSPushTarget")
+    
+    
+    return
+}
+
+func NewSetCLSPushTargetResponse() (response *SetCLSPushTargetResponse) {
+    response = &SetCLSPushTargetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetCLSPushTarget
+// 为点播域名设置投递 CLS 的目标。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
+//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
+//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
+//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
+//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
+//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
+//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
+//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetCLSPushTarget(request *SetCLSPushTargetRequest) (response *SetCLSPushTargetResponse, err error) {
+    return c.SetCLSPushTargetWithContext(context.Background(), request)
+}
+
+// SetCLSPushTarget
+// 为点播域名设置投递 CLS 的目标。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
+//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
+//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
+//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
+//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
+//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
+//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
+//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetCLSPushTargetWithContext(ctx context.Context, request *SetCLSPushTargetRequest) (response *SetCLSPushTargetResponse, err error) {
+    if request == nil {
+        request = NewSetCLSPushTargetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetCLSPushTarget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetCLSPushTargetResponse()
     err = c.Send(request, response)
     return
 }
