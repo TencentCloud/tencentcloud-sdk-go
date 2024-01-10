@@ -356,6 +356,122 @@ func (r *CompleteMigrateJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ConfigureSubscribeJobRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	SubscribeMode *string `json:"SubscribeMode,omitnil" name:"SubscribeMode"`
+
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	AccessType *string `json:"AccessType,omitnil" name:"AccessType"`
+
+	// 数据库节点信息
+	Endpoints []*EndpointItem `json:"Endpoints,omitnil" name:"Endpoints"`
+
+	// Kafka配置
+	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil" name:"KafkaConfig"`
+
+	// 订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil" name:"SubscribeObjects"`
+
+	// 订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// mongo选填参数：输出聚合设置。
+	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil" name:"PipelineInfo"`
+
+	// 为业务添加的额外信息。参数名作key，参数值作value。
+	// mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
+	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
+	// 其他业务暂没有可选参数。
+	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil" name:"ExtraAttr"`
+}
+
+type ConfigureSubscribeJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	SubscribeMode *string `json:"SubscribeMode,omitnil" name:"SubscribeMode"`
+
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	AccessType *string `json:"AccessType,omitnil" name:"AccessType"`
+
+	// 数据库节点信息
+	Endpoints []*EndpointItem `json:"Endpoints,omitnil" name:"Endpoints"`
+
+	// Kafka配置
+	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil" name:"KafkaConfig"`
+
+	// 订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil" name:"SubscribeObjects"`
+
+	// 订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// mongo选填参数：输出聚合设置。
+	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil" name:"PipelineInfo"`
+
+	// 为业务添加的额外信息。参数名作key，参数值作value。
+	// mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
+	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
+	// 其他业务暂没有可选参数。
+	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil" name:"ExtraAttr"`
+}
+
+func (r *ConfigureSubscribeJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureSubscribeJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "SubscribeMode")
+	delete(f, "AccessType")
+	delete(f, "Endpoints")
+	delete(f, "KafkaConfig")
+	delete(f, "SubscribeObjects")
+	delete(f, "Protocol")
+	delete(f, "PipelineInfo")
+	delete(f, "ExtraAttr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureSubscribeJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConfigureSubscribeJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ConfigureSubscribeJobResponse struct {
+	*tchttp.BaseResponse
+	Response *ConfigureSubscribeJobResponseParams `json:"Response"`
+}
+
+func (r *ConfigureSubscribeJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureSubscribeJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ConfigureSyncJobRequestParams struct {
 	// 同步实例id（即标识一个同步作业），形如sync-werwfs23
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -783,6 +899,88 @@ func (r *CreateCompareTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateConsumerGroupRequestParams struct {
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称，以数字、字母(大小写)或者_ - .开头，以数字、字母(大小写)结尾。实际生成的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账号名称。以数字、字母(大小写)或者_ - .开头，以数字、字母(大小写)结尾。实际生成的账户全称形如：account-#{SubscribeId}-#{AccountName}
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 消费组密码，长度必须大于3
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 消费组备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type CreateConsumerGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称，以数字、字母(大小写)或者_ - .开头，以数字、字母(大小写)结尾。实际生成的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账号名称。以数字、字母(大小写)或者_ - .开头，以数字、字母(大小写)结尾。实际生成的账户全称形如：account-#{SubscribeId}-#{AccountName}
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 消费组密码，长度必须大于3
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 消费组备注
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *CreateConsumerGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "ConsumerGroupName")
+	delete(f, "AccountName")
+	delete(f, "Password")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsumerGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateConsumerGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsumerGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateConsumerGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateMigrateCheckJobRequestParams struct {
 	// 数据迁移任务ID
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -994,6 +1192,160 @@ func (r *CreateModifyCheckSyncJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateModifyCheckSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubscribeCheckJobRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type CreateSubscribeCheckJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *CreateSubscribeCheckJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubscribeCheckJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeCheckJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubscribeCheckJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateSubscribeCheckJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubscribeCheckJobResponseParams `json:"Response"`
+}
+
+func (r *CreateSubscribeCheckJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubscribeCheckJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubscribeRequestParams struct {
+	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 付费方式，枚举值：0-包年包月，1-按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+
+	// 是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+	AutoRenew *int64 `json:"AutoRenew,omitnil" name:"AutoRenew"`
+
+	// 购买数量,默认为1，最大为10
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 实例资源标签
+	Tags []*TagItem `json:"Tags,omitnil" name:"Tags"`
+
+	// 任务名，自定义
+	Name *string `json:"Name,omitnil" name:"Name"`
+}
+
+type CreateSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 付费方式，枚举值：0-包年包月，1-按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+
+	// 是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+	AutoRenew *int64 `json:"AutoRenew,omitnil" name:"AutoRenew"`
+
+	// 购买数量,默认为1，最大为10
+	Count *int64 `json:"Count,omitnil" name:"Count"`
+
+	// 实例资源标签
+	Tags []*TagItem `json:"Tags,omitnil" name:"Tags"`
+
+	// 任务名，自定义
+	Name *string `json:"Name,omitnil" name:"Name"`
+}
+
+func (r *CreateSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "PayType")
+	delete(f, "Duration")
+	delete(f, "AutoRenew")
+	delete(f, "Count")
+	delete(f, "Tags")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubscribeResponseParams struct {
+	// 数据订阅实例的ID数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeIds []*string `json:"SubscribeIds,omitnil" name:"SubscribeIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubscribeResponseParams `json:"Response"`
+}
+
+func (r *CreateSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1486,6 +1838,78 @@ func (r *DeleteCompareTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteConsumerGroupRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
+	// 请务必保证消费组名称正确。
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
+	// 请务必保证账户名称正确。
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+}
+
+type DeleteConsumerGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
+	// 请务必保证消费组名称正确。
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
+	// 请务必保证账户名称正确。
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+}
+
+func (r *DeleteConsumerGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "ConsumerGroupName")
+	delete(f, "AccountName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteConsumerGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsumerGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsumerGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCheckSyncJobResultRequestParams struct {
 	// 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -1771,6 +2195,80 @@ func (r *DescribeCompareTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCompareTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerGroupsRequestParams struct {
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 返回记录的起始偏移量。默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次返回的记录数量。默认10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeConsumerGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 返回记录的起始偏移量。默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次返回的记录数量。默认10
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeConsumerGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerGroupsResponseParams struct {
+	// 指定实例下的消费者组总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消费者组列表
+	Items []*GroupInfo `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeConsumerGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2352,6 +2850,494 @@ func (r *DescribeModifyCheckSyncJobResultResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DescribeOffsetByTimeRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+	Time *string `json:"Time,omitnil" name:"Time"`
+}
+
+type DescribeOffsetByTimeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+	Time *string `json:"Time,omitnil" name:"Time"`
+}
+
+func (r *DescribeOffsetByTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOffsetByTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "Time")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOffsetByTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOffsetByTimeResponseParams struct {
+	// 时间与Offset的对应
+	Items []*OffsetTimeMap `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeOffsetByTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOffsetByTimeResponseParams `json:"Response"`
+}
+
+func (r *DescribeOffsetByTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOffsetByTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeCheckJobRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type DescribeSubscribeCheckJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *DescribeSubscribeCheckJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeCheckJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribeCheckJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeCheckJobResponseParams struct {
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 失败或者报错提示，成功则提示success。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 任务运行状态，可能值为 running,failed,success
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 当前总体进度，范围 0~100
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
+
+	// 校验总步骤数
+	StepAll *uint64 `json:"StepAll,omitnil" name:"StepAll"`
+
+	// 当前执行步骤
+	StepNow *uint64 `json:"StepNow,omitnil" name:"StepNow"`
+
+	// 各个步骤运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Steps []*SubscribeCheckStepInfo `json:"Steps,omitnil" name:"Steps"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSubscribeCheckJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubscribeCheckJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubscribeCheckJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeCheckJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeDetailRequestParams struct {
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type DescribeSubscribeDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *DescribeSubscribeDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribeDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeDetailResponseParams struct {
+	// 数据订阅的ID，形如subs-b6x64o31tm
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅实例的名称
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+
+	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 订阅的云数据库实例ID，只有订阅云数据库该值才有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
+
+	// 订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error
+	SubsStatus *string `json:"SubsStatus,omitnil" name:"SubsStatus"`
+
+	// 修改时间，时间格式如：Y-m-d h:m:s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 创建时间，时间格式如：Y-m-d h:m:s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitnil" name:"IsolateTime"`
+
+	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitnil" name:"OfflineTime"`
+
+	// 付费方式，可能值为：0-包年包月，1-按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 任务所在地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// Kafka topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
+
+	// Kafka服务Broker地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Broker *string `json:"Broker,omitnil" name:"Broker"`
+
+	// 数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeMode *string `json:"SubscribeMode,omitnil" name:"SubscribeMode"`
+
+	// 订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 订阅的数据库表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil" name:"SubscribeObjects"`
+
+	// kafka配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil" name:"KafkaConfig"`
+
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *string `json:"AccessType,omitnil" name:"AccessType"`
+
+	// 接入类型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endpoints []*EndpointItem `json:"Endpoints,omitnil" name:"Endpoints"`
+
+	// mongo输出聚合设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil" name:"PipelineInfo"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagItem `json:"Tags,omitnil" name:"Tags"`
+
+	// 订阅任务报错信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*SubsErr `json:"Errors,omitnil" name:"Errors"`
+
+	// 为业务添加的额外信息。参数名作key，参数值作value。
+	// mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
+	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil" name:"ExtraAttr"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSubscribeDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubscribeDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubscribeDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeJobsRequestParams struct {
+	// 订阅 ID 筛选，精确匹配
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 订阅名称，前缀模糊匹配
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+
+	// 订阅的云上数据库实例的 ID，精确匹配
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+	Status []*string `json:"Status,omitnil" name:"Status"`
+
+	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	SubsStatus []*string `json:"SubsStatus,omitnil" name:"SubsStatus"`
+
+	// 返回记录的起始偏移量。默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次返回的记录数量。默认20，最大100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
+
+	// tag 过滤条件，多个 TagFilter 之间关系为且
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
+}
+
+type DescribeSubscribeJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅 ID 筛选，精确匹配
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 订阅名称，前缀模糊匹配
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+
+	// 订阅的云上数据库实例的 ID，精确匹配
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+	Status []*string `json:"Status,omitnil" name:"Status"`
+
+	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	SubsStatus []*string `json:"SubsStatus,omitnil" name:"SubsStatus"`
+
+	// 返回记录的起始偏移量。默认0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 单次返回的记录数量。默认20，最大100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
+
+	// tag 过滤条件，多个 TagFilter 之间关系为且
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
+}
+
+func (r *DescribeSubscribeJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "SubscribeName")
+	delete(f, "InstanceId")
+	delete(f, "PayType")
+	delete(f, "Product")
+	delete(f, "Status")
+	delete(f, "SubsStatus")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderDirection")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribeJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeJobsResponseParams struct {
+	// 符合查询条件的实例总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 数据订阅实例的信息列表
+	Items []*SubscribeInfo `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSubscribeJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubscribeJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubscribeJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeReturnableRequestParams struct {
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type DescribeSubscribeReturnableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *DescribeSubscribeReturnableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeReturnableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribeReturnableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubscribeReturnableResponseParams struct {
+	// 实例是否支持退还/退货
+	IsReturnable *bool `json:"IsReturnable,omitnil" name:"IsReturnable"`
+
+	// 不支持退还的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnFailMessage *string `json:"ReturnFailMessage,omitnil" name:"ReturnFailMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSubscribeReturnableResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubscribeReturnableResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubscribeReturnableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubscribeReturnableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
 	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -2480,6 +3466,60 @@ func (r *DescribeSyncJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSyncJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyIsolatedSubscribeRequestParams struct {
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type DestroyIsolatedSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *DestroyIsolatedSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyIsolatedSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyIsolatedSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyIsolatedSubscribeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DestroyIsolatedSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyIsolatedSubscribeResponseParams `json:"Response"`
+}
+
+func (r *DestroyIsolatedSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyIsolatedSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2677,6 +3717,24 @@ type DifferenceItem struct {
 	FinishedAt *string `json:"FinishedAt,omitnil" name:"FinishedAt"`
 }
 
+type DistributeRule struct {
+	// 规则类型。非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区，cols-按列名分区。mongo的枚举值为：collection-按集合名分区、collectionAndObjectId-按集合+主键分区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 库名匹配规则，请填写正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbPattern *string `json:"DbPattern,omitnil" name:"DbPattern"`
+
+	// 表名匹配规则，如果 DatabaseType 为 mongodb，则匹配集合名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePattern *string `json:"TablePattern,omitnil" name:"TablePattern"`
+
+	// 列名。如果 RuleType 为 cols，此项必填。订阅任务会用该列的值计算分区。mongo没有按列分区，因此也不用传这个字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*string `json:"Columns,omitnil" name:"Columns"`
+}
+
 type DynamicOptions struct {
 	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2805,6 +3863,72 @@ type Endpoint struct {
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil" name:"CcnOwnerUin"`
 }
 
+type EndpointItem struct {
+	// 源库所在地域。如果 AccessType 为 ccn，请填vpc所在地域，因为此时不知道源库在哪个地域。其他接入方式，请填订阅任务所在地域，因为确保订阅任务与源库在同一地域是最优的网络方案。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseRegion *string `json:"DatabaseRegion,omitnil" name:"DatabaseRegion"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 密码。作为入参时必填，作为出参时为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 目标实例ID。如果 AccessType 为 cdb，此项必填。配置InstanceId时会查询并校验实例信息。mysql的查询接口经过了鉴权，请确保子用户有 cdb:DescribeDBInstances 的接口权限。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 云主机ID。如果 AccessType 为 cvm，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstanceId *string `json:"CvmInstanceId,omitnil" name:"CvmInstanceId"`
+
+	// 专线网关ID。如果 AccessType 为 dcg，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqDcgId *string `json:"UniqDcgId,omitnil" name:"UniqDcgId"`
+
+	// 云联网ID。如果 AccessType 为 ccn，此项必填。 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitnil" name:"CcnId"`
+
+	// vpn网关ID。如果 AccessType 为 vpncloud，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil" name:"UniqVpnGwId"`
+
+	// VpcID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 子网ID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 数据库地址，支持域名与IP。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
+
+	// 数据库端口。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet\cvm，此项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitnil" name:"Port"`
+
+	// 是否走加密传输，枚举值：UnEncrypted-不加密，Encrypted-加密。只有mysql支持，不填默认不加密，其他产品不填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptConn *string `json:"EncryptConn,omitnil" name:"EncryptConn"`
+
+	// 数据库网络环境。如果 AccessType 为 ccn 此项必填。枚举值：UserIDC-自建idc，TencentVPC-腾讯云，Aws-aws，AliYun-阿里云，Others-其他。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil" name:"DatabaseNetEnv"`
+
+	// 云联网网关所属的主账号uin、跨账号云联网需要。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil" name:"CcnOwnerUin"`
+
+	// 为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil" name:"ExtraAttr"`
+}
+
 type ErrInfo struct {
 	// 错误原因
 	Reason *string `json:"Reason,omitnil" name:"Reason"`
@@ -2834,6 +3958,43 @@ type ErrorInfoItem struct {
 	// 文档提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitnil" name:"HelpDoc"`
+}
+
+type GroupInfo struct {
+	// 消费者组账号
+	Account *string `json:"Account,omitnil" name:"Account"`
+
+	// 消费者组名称
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 消费者组备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
+	ConsumerGroupOffset *int64 `json:"ConsumerGroupOffset,omitnil" name:"ConsumerGroupOffset"`
+
+	// 消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段
+	ConsumerGroupLag *int64 `json:"ConsumerGroupLag,omitnil" name:"ConsumerGroupLag"`
+
+	// 消费延迟(单位为秒)
+	Latency *int64 `json:"Latency,omitnil" name:"Latency"`
+
+	// 各分区的消费状态
+	StateOfPartition []*MonitorInfo `json:"StateOfPartition,omitnil" name:"StateOfPartition"`
+
+	// 消费者组创建时间，格式为YYYY-MM-DD hh:mm:ss
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+
+	// 消费者组修改时间，格式为YYYY-MM-DD hh:mm:ss
+	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+
+	// 消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作
+	ConsumerGroupState *string `json:"ConsumerGroupState,omitnil" name:"ConsumerGroupState"`
+
+	// 每个消费者正在消费的分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionAssignment []*PartitionAssignment `json:"PartitionAssignment,omitnil" name:"PartitionAssignment"`
 }
 
 // Predefined struct for user
@@ -2887,6 +4048,60 @@ func (r *IsolateMigrateJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *IsolateMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolateSubscribeRequestParams struct {
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type IsolateSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *IsolateSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolateSubscribeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type IsolateSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *IsolateSubscribeResponseParams `json:"Response"`
+}
+
+func (r *IsolateSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3131,6 +4346,21 @@ type MigrateOption struct {
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil" name:"ExtraAttr"`
 }
 
+type ModifiedSubscribeObject struct {
+	// 订阅对象的类型，枚举值为：0-库，1-表(该值对于mongo任务来说，是集合) 。
+	// 注意：mongo只支持全实例、单库或者单集合订阅，因此该字段不要与SubscribeObjectType冲突。如：SubscribeObjectType=4，表示mongo单库订阅，那么该字段应该传0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectsType *int64 `json:"ObjectsType,omitnil" name:"ObjectsType"`
+
+	// 订阅数据库的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 订阅数据库中表(或集合)的名称。如果 ObjectsType 为 1，那么此字段为必填，且不为空；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNames []*string `json:"TableNames,omitnil" name:"TableNames"`
+}
+
 // Predefined struct for user
 type ModifyCompareTaskNameRequestParams struct {
 	// 迁移任务 Id
@@ -3285,6 +4515,167 @@ func (r *ModifyCompareTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCompareTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsumerGroupDescriptionRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
+	// 请务必保证消费组名称正确。
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账户名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
+	// 请务必保证账户名称正确。
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 修改之后的消费组描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type ModifyConsumerGroupDescriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
+	// 请务必保证消费组名称正确。
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 账户名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
+	// 请务必保证账户名称正确。
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 修改之后的消费组描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *ModifyConsumerGroupDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupDescriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "ConsumerGroupName")
+	delete(f, "AccountName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupDescriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsumerGroupDescriptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyConsumerGroupDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsumerGroupDescriptionResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsumerGroupDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsumerGroupPasswordRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 旧密码
+	OldPassword *string `json:"OldPassword,omitnil" name:"OldPassword"`
+
+	// 新密码。字符长度不小于3，不大于32
+	NewPassword *string `json:"NewPassword,omitnil" name:"NewPassword"`
+}
+
+type ModifyConsumerGroupPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}
+	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 旧密码
+	OldPassword *string `json:"OldPassword,omitnil" name:"OldPassword"`
+
+	// 新密码。字符长度不小于3，不大于32
+	NewPassword *string `json:"NewPassword,omitnil" name:"NewPassword"`
+}
+
+func (r *ModifyConsumerGroupPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "AccountName")
+	delete(f, "ConsumerGroupName")
+	delete(f, "OldPassword")
+	delete(f, "NewPassword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsumerGroupPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyConsumerGroupPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsumerGroupPasswordResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsumerGroupPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3671,6 +5062,221 @@ func (r *ModifyMigrationJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySubscribeAutoRenewFlagRequestParams struct {
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 自动续费标识。1-自动续费，0-不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+}
+
+type ModifySubscribeAutoRenewFlagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 自动续费标识。1-自动续费，0-不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+}
+
+func (r *ModifySubscribeAutoRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeAutoRenewFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "AutoRenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeAutoRenewFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubscribeAutoRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifySubscribeAutoRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySubscribeAutoRenewFlagResponseParams `json:"Response"`
+}
+
+func (r *ModifySubscribeAutoRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeAutoRenewFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubscribeNameRequestParams struct {
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 修改后的数据订阅实例的名称，长度限制为[1,60]
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+}
+
+type ModifySubscribeNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 修改后的数据订阅实例的名称，长度限制为[1,60]
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+}
+
+func (r *ModifySubscribeNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "SubscribeName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubscribeNameResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifySubscribeNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySubscribeNameResponseParams `json:"Response"`
+}
+
+func (r *ModifySubscribeNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubscribeObjectsRequestParams struct {
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitnil" name:"SubscribeObjectType"`
+
+	// 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则改字段必填。
+	Objects []*ModifiedSubscribeObject `json:"Objects,omitnil" name:"Objects"`
+
+	// kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil" name:"DistributeRules"`
+
+	// 默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
+	// 非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
+	// 该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+	DefaultRuleType *string `json:"DefaultRuleType,omitnil" name:"DefaultRuleType"`
+
+	// mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil" name:"PipelineInfo"`
+}
+
+type ModifySubscribeObjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitnil" name:"SubscribeObjectType"`
+
+	// 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则改字段必填。
+	Objects []*ModifiedSubscribeObject `json:"Objects,omitnil" name:"Objects"`
+
+	// kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil" name:"DistributeRules"`
+
+	// 默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
+	// 非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
+	// 该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+	DefaultRuleType *string `json:"DefaultRuleType,omitnil" name:"DefaultRuleType"`
+
+	// mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil" name:"PipelineInfo"`
+}
+
+func (r *ModifySubscribeObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "SubscribeObjectType")
+	delete(f, "Objects")
+	delete(f, "DistributeRules")
+	delete(f, "DefaultRuleType")
+	delete(f, "PipelineInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubscribeObjectsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifySubscribeObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySubscribeObjectsResponseParams `json:"Response"`
+}
+
+func (r *ModifySubscribeObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubscribeObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySyncJobConfigRequestParams struct {
 	// 同步任务id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -3827,6 +5433,20 @@ func (r *ModifySyncRateLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MonitorInfo struct {
+	// 当前分区的编号，从0开始
+	PartitionNo *int64 `json:"PartitionNo,omitnil" name:"PartitionNo"`
+
+	// 当前分区的偏移量
+	ConsumerGroupOffset *int64 `json:"ConsumerGroupOffset,omitnil" name:"ConsumerGroupOffset"`
+
+	// 当前分区未消费的数据量
+	ConsumerGroupLag *int64 `json:"ConsumerGroupLag,omitnil" name:"ConsumerGroupLag"`
+
+	// 当前分区的消费延迟(单位为秒)
+	Latency *int64 `json:"Latency,omitnil" name:"Latency"`
+}
+
 type Objects struct {
 	// 同步对象类型 Partial(部分对象)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3843,6 +5463,16 @@ type Objects struct {
 	// OnlineDDL类型，冗余字段不做配置用途
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineDDL *OnlineDDL `json:"OnlineDDL,omitnil" name:"OnlineDDL"`
+}
+
+type OffsetTimeMap struct {
+	// kafka分区编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionNo *uint64 `json:"PartitionNo,omitnil" name:"PartitionNo"`
+
+	// kafka offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type OnlineDDL struct {
@@ -3891,6 +5521,15 @@ type Options struct {
 	// 自动重试的时间窗口设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil" name:"AutoRetryTimeRangeMinutes"`
+}
+
+type PartitionAssignment struct {
+	// 消费者的clientId
+	ClientId *string `json:"ClientId,omitnil" name:"ClientId"`
+
+	// 该消费者正在消费的分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionNo []*uint64 `json:"PartitionNo,omitnil" name:"PartitionNo"`
 }
 
 // Predefined struct for user
@@ -3999,6 +5638,16 @@ func (r *PauseSyncJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PauseSyncJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PipelineInfo struct {
+	// 聚合运算符：$addFields、$match、$project、$replaceRoot、$redact、$replaceWith、$set、$unset。其中 $replaceWith、$set、$unset 只有当订阅实例是4.2及以上版本可选。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AggOp *string `json:"AggOp,omitnil" name:"AggOp"`
+
+	// 聚合表达式。必须是json格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AggCmd *string `json:"AggCmd,omitnil" name:"AggCmd"`
 }
 
 type ProcessProgress struct {
@@ -4196,6 +5845,149 @@ func (r *RecoverSyncJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ResetConsumerGroupOffsetRequestParams struct {
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 订阅的kafka topic
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 需要修改offset的分区编号
+	PartitionNos []*int64 `json:"PartitionNos,omitnil" name:"PartitionNos"`
+
+	// 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+	ResetMode *string `json:"ResetMode,omitnil" name:"ResetMode"`
+
+	// 当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+	ResetDatetime *string `json:"ResetDatetime,omitnil" name:"ResetDatetime"`
+}
+
+type ResetConsumerGroupOffsetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订阅实例id
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 订阅的kafka topic
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+
+	// 需要修改offset的分区编号
+	PartitionNos []*int64 `json:"PartitionNos,omitnil" name:"PartitionNos"`
+
+	// 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+	ResetMode *string `json:"ResetMode,omitnil" name:"ResetMode"`
+
+	// 当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+	ResetDatetime *string `json:"ResetDatetime,omitnil" name:"ResetDatetime"`
+}
+
+func (r *ResetConsumerGroupOffsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetConsumerGroupOffsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	delete(f, "TopicName")
+	delete(f, "ConsumerGroupName")
+	delete(f, "PartitionNos")
+	delete(f, "ResetMode")
+	delete(f, "ResetDatetime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetConsumerGroupOffsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetConsumerGroupOffsetResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ResetConsumerGroupOffsetResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetConsumerGroupOffsetResponseParams `json:"Response"`
+}
+
+func (r *ResetConsumerGroupOffsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetConsumerGroupOffsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetSubscribeRequestParams struct {
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type ResetSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *ResetSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetSubscribeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ResetSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetSubscribeResponseParams `json:"Response"`
+}
+
+func (r *ResetSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResizeSyncJobRequestParams struct {
 	// 同步任务id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -4314,6 +6106,60 @@ func (r *ResumeMigrateJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResumeMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeSubscribeRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type ResumeSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *ResumeSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeSubscribeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ResumeSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeSubscribeResponseParams `json:"Response"`
+}
+
+func (r *ResumeSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4708,6 +6554,60 @@ func (r *StartModifySyncJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartSubscribeRequestParams struct {
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+type StartSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据订阅实例的 ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+}
+
+func (r *StartSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubscribeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartSubscribeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StartSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *StartSubscribeResponseParams `json:"Response"`
+}
+
+func (r *StartSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StartSyncJobRequestParams struct {
 	// 同步任务id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -5022,6 +6922,159 @@ func (r *StopSyncJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopSyncJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubsErr struct {
+	// 报错信息
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+type SubscribeCheckStepInfo struct {
+	// 步骤名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepName *string `json:"StepName,omitnil" name:"StepName"`
+
+	// 步骤Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepId *string `json:"StepId,omitnil" name:"StepId"`
+
+	// 步骤编号，从 1 开始
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepNo *uint64 `json:"StepNo,omitnil" name:"StepNo"`
+
+	// 当前步骤状态，可能值为 notStarted,running,finished,failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 当前步骤进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *uint64 `json:"Percent,omitnil" name:"Percent"`
+
+	// 错误提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*SubscribeCheckStepTip `json:"Errors,omitnil" name:"Errors"`
+
+	// 告警提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Warnings []*SubscribeCheckStepTip `json:"Warnings,omitnil" name:"Warnings"`
+}
+
+type SubscribeCheckStepTip struct {
+	// 错误或告警的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 帮助文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HelpDoc *string `json:"HelpDoc,omitnil" name:"HelpDoc"`
+}
+
+type SubscribeInfo struct {
+	// 数据订阅的实例ID
+	SubscribeId *string `json:"SubscribeId,omitnil" name:"SubscribeId"`
+
+	// 数据订阅实例的名称
+	SubscribeName *string `json:"SubscribeName,omitnil" name:"SubscribeName"`
+
+	// 订阅实例发送数据的kafka topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
+
+	// 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
+
+	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	SubsStatus *string `json:"SubsStatus,omitnil" name:"SubsStatus"`
+
+	// 上次修改时间，时间格式如：Y-m-d h:m:s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 创建时间，时间格式如：Y-m-d h:m:s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitnil" name:"IsolateTime"`
+
+	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitnil" name:"OfflineTime"`
+
+	// 计费方式，0 - 包年包月，1 - 按量计费
+	PayType *int64 `json:"PayType,omitnil" name:"PayType"`
+
+	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 数据订阅实例所属地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *string `json:"AccessType,omitnil" name:"AccessType"`
+
+	// 数据库节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endpoints []*EndpointItem `json:"Endpoints,omitnil" name:"Endpoints"`
+
+	// 数据订阅版本, 当前只支持 kafka 版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeVersion *string `json:"SubscribeVersion,omitnil" name:"SubscribeVersion"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagItem `json:"Tags,omitnil" name:"Tags"`
+
+	// 任务报错信息，如果有的话。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*SubsErr `json:"Errors,omitnil" name:"Errors"`
+}
+
+type SubscribeKafkaConfig struct {
+	// kafka分区数量，枚举值为1，4，8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberOfPartitions *uint64 `json:"NumberOfPartitions,omitnil" name:"NumberOfPartitions"`
+
+	// 分区规则。当NumberOfPartitions > 1时，该项必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil" name:"DistributeRules"`
+
+	// 默认分区策略。当NumberOfPartitions > 1时，该项必填。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
+	// 非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区。mongo的枚举值为：collection-按集合名分区。
+	// 该字段与DistributeRules搭配使用，如果配置了该字段，视为配置了一条DistributeRules。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultRuleType *string `json:"DefaultRuleType,omitnil" name:"DefaultRuleType"`
+}
+
+type SubscribeObject struct {
+	// 订阅数据的类型，枚举值：database-数据库，table-数据库的表(如果 DatabaseType 为 mongodb，则表示集合)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *string `json:"ObjectType,omitnil" name:"ObjectType"`
+
+	// 订阅的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Database *string `json:"Database,omitnil" name:"Database"`
+
+	// 订阅数据库中表的名称。如果 DatabaseType 为 mongodb，填集合名。mongodb只支持订阅单库或者单集合。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables []*string `json:"Tables,omitnil" name:"Tables"`
 }
 
 type SyncDBEndpointInfos struct {

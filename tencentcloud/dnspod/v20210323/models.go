@@ -5791,6 +5791,9 @@ type ModifyRecordRequestParams struct {
 
 	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 记录的备注信息。传空删除备注。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyRecordRequest struct {
@@ -5831,6 +5834,9 @@ type ModifyRecordRequest struct {
 
 	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 记录的备注信息。传空删除备注。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyRecordRequest) ToJsonString() string {
@@ -5857,6 +5863,7 @@ func (r *ModifyRecordRequest) FromJsonString(s string) error {
 	delete(f, "TTL")
 	delete(f, "Weight")
 	delete(f, "Status")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordRequest has unknown keys!", "")
 	}

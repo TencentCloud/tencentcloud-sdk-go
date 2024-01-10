@@ -2995,8 +2995,9 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源id，与ResourceType相对应，取值范围：
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id</li>
+	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
 	// </ul>
+	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
@@ -3050,8 +3051,9 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 资源id，与ResourceType相对应，取值范围：
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id</li>
+	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
 	// </ul>
+	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
@@ -6166,7 +6168,7 @@ type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
 	// 变更链接类型：
 	// <ul>
 	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
-	// <li>**APP** : 创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</li>
+	// <li>**APP** : 创建变更小程序链接，可从第三方App跳转到微信腾讯电子签小程序进行更换。</li>
 	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
@@ -6193,7 +6195,7 @@ type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	// 变更链接类型：
 	// <ul>
 	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
-	// <li>**APP** : 创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</li>
+	// <li>**APP** : 创建变更小程序链接，可从第三方App跳转到微信腾讯电子签小程序进行更换。</li>
 	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }

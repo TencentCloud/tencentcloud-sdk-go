@@ -11857,6 +11857,8 @@ type VerifyOfdVatInvoiceOCRResponseParams struct {
 	// 028:增值税电子专用发票
 	// 010:电子发票（普通发票）
 	// 020:电子发票（增值税专用发票）
+	// 030:电子发票（铁路电子客票）
+	// 040:电子发票（航空运输电子客票行程单）
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 发票代码

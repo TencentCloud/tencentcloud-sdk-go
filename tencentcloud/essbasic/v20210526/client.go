@@ -5026,7 +5026,7 @@ func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChanne
 //
 // <h4 id="APP">APP</h4>
 //
-// <p>创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</p>
+// <p>创建变更小程序链接，可从第三方App跳转到微信腾讯电子签小程序进行更换。</p>
 //
 // 
 //
@@ -5133,7 +5133,7 @@ func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOr
 //
 // <h4 id="APP">APP</h4>
 //
-// <p>创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</p>
+// <p>创建变更小程序链接，可从第三方App跳转到微信腾讯电子签小程序进行更换。</p>
 //
 // 
 //

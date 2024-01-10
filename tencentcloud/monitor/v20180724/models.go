@@ -1576,6 +1576,9 @@ type CreateGrafanaInstanceRequestParams struct {
 
 	// 标签
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil" name:"TagSpecification"`
+
+	// 是否自动选择代金券，默认为 false
+	AutoVoucher *bool `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 }
 
 type CreateGrafanaInstanceRequest struct {
@@ -1598,6 +1601,9 @@ type CreateGrafanaInstanceRequest struct {
 
 	// 标签
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil" name:"TagSpecification"`
+
+	// 是否自动选择代金券，默认为 false
+	AutoVoucher *bool `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 }
 
 func (r *CreateGrafanaInstanceRequest) ToJsonString() string {
@@ -1618,6 +1624,7 @@ func (r *CreateGrafanaInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableInternet")
 	delete(f, "GrafanaInitPassword")
 	delete(f, "TagSpecification")
+	delete(f, "AutoVoucher")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGrafanaInstanceRequest has unknown keys!", "")
 	}

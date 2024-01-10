@@ -3058,6 +3058,10 @@ type CynosdbInstance struct {
 	// 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIndexMode *string `json:"InstanceIndexMode,omitnil" name:"InstanceIndexMode"`
+
+	// 当前实例支持的能力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil" name:"InstanceAbility"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -8023,6 +8027,16 @@ func (r *InquirePriceRenewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InstanceAbility struct {
+	// 实例是否支持强制重启，可选值：yes：支持，no：不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportForceRestart *string `json:"IsSupportForceRestart,omitnil" name:"IsSupportForceRestart"`
+
+	// 不支持强制重启的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonsupportForceRestartReason *string `json:"NonsupportForceRestartReason,omitnil" name:"NonsupportForceRestartReason"`
+}
+
 type InstanceAuditLogFilter struct {
 	// 过滤项。目前支持以下搜索条件：
 	// 
@@ -8191,6 +8205,12 @@ type IsolateClusterRequestParams struct {
 
 	// 该参数已废用
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
+
+	// 实例退还原因类型
+	IsolateReasonTypes []*int64 `json:"IsolateReasonTypes,omitnil" name:"IsolateReasonTypes"`
+
+	// 实例退还原因补充
+	IsolateReason *string `json:"IsolateReason,omitnil" name:"IsolateReason"`
 }
 
 type IsolateClusterRequest struct {
@@ -8201,6 +8221,12 @@ type IsolateClusterRequest struct {
 
 	// 该参数已废用
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
+
+	// 实例退还原因类型
+	IsolateReasonTypes []*int64 `json:"IsolateReasonTypes,omitnil" name:"IsolateReasonTypes"`
+
+	// 实例退还原因补充
+	IsolateReason *string `json:"IsolateReason,omitnil" name:"IsolateReason"`
 }
 
 func (r *IsolateClusterRequest) ToJsonString() string {
@@ -8217,6 +8243,8 @@ func (r *IsolateClusterRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "DbType")
+	delete(f, "IsolateReasonTypes")
+	delete(f, "IsolateReason")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateClusterRequest has unknown keys!", "")
 	}
@@ -8263,6 +8291,12 @@ type IsolateInstanceRequestParams struct {
 
 	// 该参数已废弃
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
+
+	// 实例退还原因类型
+	IsolateReasonTypes []*int64 `json:"IsolateReasonTypes,omitnil" name:"IsolateReasonTypes"`
+
+	// 实例退还原因补充
+	IsolateReason *string `json:"IsolateReason,omitnil" name:"IsolateReason"`
 }
 
 type IsolateInstanceRequest struct {
@@ -8276,6 +8310,12 @@ type IsolateInstanceRequest struct {
 
 	// 该参数已废弃
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
+
+	// 实例退还原因类型
+	IsolateReasonTypes []*int64 `json:"IsolateReasonTypes,omitnil" name:"IsolateReasonTypes"`
+
+	// 实例退还原因补充
+	IsolateReason *string `json:"IsolateReason,omitnil" name:"IsolateReason"`
 }
 
 func (r *IsolateInstanceRequest) ToJsonString() string {
@@ -8293,6 +8333,8 @@ func (r *IsolateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "InstanceIdList")
 	delete(f, "DbType")
+	delete(f, "IsolateReasonTypes")
+	delete(f, "IsolateReason")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateInstanceRequest has unknown keys!", "")
 	}
@@ -12537,6 +12579,20 @@ func (r *SetRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SlaveZoneStockInfo struct {
+	// 备可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZone *string `json:"SlaveZone,omitnil" name:"SlaveZone"`
+
+	// 备可用区的库存数量	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StockCount *uint64 `json:"StockCount,omitnil" name:"StockCount"`
+
+	// 备可用区是否有库存	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasStock *bool `json:"HasStock,omitnil" name:"HasStock"`
+}
+
 type SlowQueriesItem struct {
 	// 执行时间戳
 	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
@@ -13363,4 +13419,8 @@ type ZoneStockInfo struct {
 
 	// 库存数量
 	StockCount *int64 `json:"StockCount,omitnil" name:"StockCount"`
+
+	// 备可用区库存信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneStockInfos []*SlaveZoneStockInfo `json:"SlaveZoneStockInfos,omitnil" name:"SlaveZoneStockInfos"`
 }
