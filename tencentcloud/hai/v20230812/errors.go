@@ -68,6 +68,12 @@ const (
 	// 地域非法
 	INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 
+	// 没有配额去为HAI创建新的安全组
+	LIMITEXCEEDED_SECURITYGROUPLIMITEXCEEDED = "LimitExceeded.SecurityGroupLimitExceeded"
+
+	// 没有配额去为HAI创建新的VPC
+	LIMITEXCEEDED_VPCLIMITEXCEEDED = "LimitExceeded.VpcLimitExceeded"
+
 	// 指定实例有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 

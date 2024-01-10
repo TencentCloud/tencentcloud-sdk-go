@@ -671,7 +671,7 @@ type DescribeEventsRequestParams struct {
 	// 返回日志的最大条数（最大 50 条）
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
 
-	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
 	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitnil" name:"LookupAttributes"`
 
 	// 是否返回 IP 归属地（1 返回，0 不返回）
@@ -693,7 +693,7 @@ type DescribeEventsRequest struct {
 	// 返回日志的最大条数（最大 50 条）
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
 
-	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
 	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitnil" name:"LookupAttributes"`
 
 	// 是否返回 IP 归属地（1 返回，0 不返回）
@@ -1391,9 +1391,11 @@ func (r *ModifyAuditTrackResponse) FromJsonString(s string) error {
 
 type Resource struct {
 	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
 
 	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 }
 
@@ -1523,6 +1525,14 @@ type Storage struct {
 
 	// 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
 	StoragePrefix *string `json:"StoragePrefix,omitnil" name:"StoragePrefix"`
+
+	// 被指定存储用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageAccountId *string `json:"StorageAccountId,omitnil" name:"StorageAccountId"`
+
+	// 被指定存储用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageAppId *string `json:"StorageAppId,omitnil" name:"StorageAppId"`
 }
 
 type Tracks struct {

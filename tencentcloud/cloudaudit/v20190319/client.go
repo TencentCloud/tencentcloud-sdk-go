@@ -174,7 +174,7 @@ func NewCreateAuditTrackResponse() (response *CreateAuditTrackResponse) {
 }
 
 // CreateAuditTrack
-// 创建跟踪集
+// 创建操作审计跟踪集
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -194,7 +194,7 @@ func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *C
 }
 
 // CreateAuditTrack
-// 创建跟踪集
+// 创建操作审计跟踪集
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -296,7 +296,7 @@ func NewDeleteAuditTrackResponse() (response *DeleteAuditTrackResponse) {
 }
 
 // DeleteAuditTrack
-// 删除云审计跟踪集
+// 删除操作审计跟踪集
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -309,7 +309,7 @@ func (c *Client) DeleteAuditTrack(request *DeleteAuditTrackRequest) (response *D
 }
 
 // DeleteAuditTrack
-// 删除云审计跟踪集
+// 删除操作审计跟踪集
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -404,7 +404,7 @@ func NewDescribeAuditTrackResponse() (response *DescribeAuditTrackResponse) {
 }
 
 // DescribeAuditTrack
-// 查询云审计跟踪集详情
+// 查询操作审计跟踪集详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -417,7 +417,7 @@ func (c *Client) DescribeAuditTrack(request *DescribeAuditTrackRequest) (respons
 }
 
 // DescribeAuditTrack
-// 查询云审计跟踪集详情
+// 查询操作审计跟踪集详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -461,7 +461,7 @@ func NewDescribeAuditTracksResponse() (response *DescribeAuditTracksResponse) {
 }
 
 // DescribeAuditTracks
-// 查询云审计跟踪集列表
+// 查询操作审计跟踪集列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -473,7 +473,7 @@ func (c *Client) DescribeAuditTracks(request *DescribeAuditTracksRequest) (respo
 }
 
 // DescribeAuditTracks
-// 查询云审计跟踪集列表
+// 查询操作审计跟踪集列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -516,7 +516,7 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
 }
 
 // DescribeEvents
-// 查询云审计日志
+// 查询操作审计日志
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -528,7 +528,7 @@ func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *Descr
 }
 
 // DescribeEvents
-// 查询云审计日志
+// 查询操作审计日志
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -930,7 +930,7 @@ func NewModifyAuditTrackResponse() (response *ModifyAuditTrackResponse) {
 }
 
 // ModifyAuditTrack
-// 修改云审计跟踪
+// 修改操作审计跟踪集
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
@@ -951,7 +951,7 @@ func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *M
 }
 
 // ModifyAuditTrack
-// 修改云审计跟踪
+// 修改操作审计跟踪集
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
