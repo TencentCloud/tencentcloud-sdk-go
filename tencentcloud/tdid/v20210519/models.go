@@ -20,471 +20,9 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
-// Predefined struct for user
-type CheckChainRequestParams struct {
-	// 群组ID
-	GroupId *int64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// did服务机构名称
-	AgencyName *string `json:"AgencyName,omitnil" name:"AgencyName"`
-}
-
-type CheckChainRequest struct {
-	*tchttp.BaseRequest
-	
-	// 群组ID
-	GroupId *int64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// did服务机构名称
-	AgencyName *string `json:"AgencyName,omitnil" name:"AgencyName"`
-}
-
-func (r *CheckChainRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CheckChainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "GroupId")
-	delete(f, "ClusterId")
-	delete(f, "AgencyName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckChainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CheckChainResponseParams struct {
-	// 1为盟主，0为非盟主
-	RoleType *int64 `json:"RoleType,omitnil" name:"RoleType"`
-
-	// 链ID
-	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
-
-	// 应用名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CheckChainResponse struct {
-	*tchttp.BaseResponse
-	Response *CheckChainResponseParams `json:"Response"`
-}
-
-func (r *CheckChainResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CheckChainResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCredentialRequestParams struct {
-	// 参数集合，详见示例
-	FunctionArg *FunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
-
-	// 参数集合，详见示例
-	TransactionArg *TransactionArg `json:"TransactionArg,omitnil" name:"TransactionArg"`
-
-	// 版本
-	VersionCredential *string `json:"VersionCredential,omitnil" name:"VersionCredential"`
-
-	// 是否未签名
-	UnSigned *bool `json:"UnSigned,omitnil" name:"UnSigned"`
-}
-
-type CreateCredentialRequest struct {
-	*tchttp.BaseRequest
-	
-	// 参数集合，详见示例
-	FunctionArg *FunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
-
-	// 参数集合，详见示例
-	TransactionArg *TransactionArg `json:"TransactionArg,omitnil" name:"TransactionArg"`
-
-	// 版本
-	VersionCredential *string `json:"VersionCredential,omitnil" name:"VersionCredential"`
-
-	// 是否未签名
-	UnSigned *bool `json:"UnSigned,omitnil" name:"UnSigned"`
-}
-
-func (r *CreateCredentialRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCredentialRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FunctionArg")
-	delete(f, "TransactionArg")
-	delete(f, "VersionCredential")
-	delete(f, "UnSigned")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCredentialRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCredentialResponseParams struct {
-	// Credential的具体信息
-	CredentialData *string `json:"CredentialData,omitnil" name:"CredentialData"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateCredentialResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateCredentialResponseParams `json:"Response"`
-}
-
-func (r *CreateCredentialResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCredentialResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateSelectiveCredentialRequestParams struct {
-	// 参数集合
-	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
-
-	// 批露策略id
-	PolicyId *uint64 `json:"PolicyId,omitnil" name:"PolicyId"`
-}
-
-type CreateSelectiveCredentialRequest struct {
-	*tchttp.BaseRequest
-	
-	// 参数集合
-	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
-
-	// 批露策略id
-	PolicyId *uint64 `json:"PolicyId,omitnil" name:"PolicyId"`
-}
-
-func (r *CreateSelectiveCredentialRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateSelectiveCredentialRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FunctionArg")
-	delete(f, "PolicyId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSelectiveCredentialRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateSelectiveCredentialResponseParams struct {
-	// 凭证字符串
-	CredentialData *string `json:"CredentialData,omitnil" name:"CredentialData"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateSelectiveCredentialResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateSelectiveCredentialResponseParams `json:"Response"`
-}
-
-func (r *CreateSelectiveCredentialResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateSelectiveCredentialResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidByPrivateKeyRequestParams struct {
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 私钥
-	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
-}
-
-type CreateTDidByPrivateKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 私钥
-	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
-}
-
-func (r *CreateTDidByPrivateKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidByPrivateKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "GroupId")
-	delete(f, "PrivateKey")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTDidByPrivateKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidByPrivateKeyResponseParams struct {
-	// did的具体信息
-	Did *string `json:"Did,omitnil" name:"Did"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateTDidByPrivateKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateTDidByPrivateKeyResponseParams `json:"Response"`
-}
-
-func (r *CreateTDidByPrivateKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidByPrivateKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidByPublicKeyRequestParams struct {
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 身份公钥
-	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
-
-	// 加密公钥
-	EncryptPubKey *string `json:"EncryptPubKey,omitnil" name:"EncryptPubKey"`
-}
-
-type CreateTDidByPublicKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 身份公钥
-	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
-
-	// 加密公钥
-	EncryptPubKey *string `json:"EncryptPubKey,omitnil" name:"EncryptPubKey"`
-}
-
-func (r *CreateTDidByPublicKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidByPublicKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "GroupId")
-	delete(f, "PublicKey")
-	delete(f, "EncryptPubKey")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTDidByPublicKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidByPublicKeyResponseParams struct {
-	// did具体信息
-	Did *string `json:"Did,omitnil" name:"Did"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateTDidByPublicKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateTDidByPublicKeyResponseParams `json:"Response"`
-}
-
-func (r *CreateTDidByPublicKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidByPublicKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidRequestParams struct {
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 部署机构为1，否则为0
-	Relegation *uint64 `json:"Relegation,omitnil" name:"Relegation"`
-}
-
-type CreateTDidRequest struct {
-	*tchttp.BaseRequest
-	
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 部署机构为1，否则为0
-	Relegation *uint64 `json:"Relegation,omitnil" name:"Relegation"`
-}
-
-func (r *CreateTDidRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "GroupId")
-	delete(f, "ClusterId")
-	delete(f, "Relegation")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTDidRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTDidResponseParams struct {
-	// TDID
-	Did *string `json:"Did,omitnil" name:"Did"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type CreateTDidResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateTDidResponseParams `json:"Response"`
-}
-
-func (r *CreateTDidResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTDidResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type CredentialStatus struct {
-	// 凭证唯一id
-	CredentialId *string `json:"CredentialId,omitnil" name:"CredentialId"`
-
-	// 凭证状态（0：吊销；1：有效）
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
-
-	// 凭证颁发者Did
-	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
-
-	// 凭证摘要
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Digest *string `json:"Digest,omitnil" name:"Digest"`
-
-	// 凭证签名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Signature *string `json:"Signature,omitnil" name:"Signature"`
-
-	// 更新时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeStamp *uint64 `json:"TimeStamp,omitnil" name:"TimeStamp"`
-}
-
-type FunctionArg struct {
+type CRDLArg struct {
 	// CPT ID
-	CptId *uint64 `json:"CptId,omitnil" name:"CptId"`
+	CPTId *uint64 `json:"CPTId,omitnil" name:"CPTId"`
 
 	// 签发者 did
 	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
@@ -494,502 +32,666 @@ type FunctionArg struct {
 
 	// 声明
 	ClaimJson *string `json:"ClaimJson,omitnil" name:"ClaimJson"`
+
+	// 凭证类型
+	Type []*string `json:"Type,omitnil" name:"Type"`
+
+	// 多方签名的用户did
+	Parties []*string `json:"Parties,omitnil" name:"Parties"`
+}
+
+type ChainTransaction struct {
+	// 交易哈希
+	TransactionHash *string `json:"TransactionHash,omitnil" name:"TransactionHash"`
 }
 
 // Predefined struct for user
-type GetAuthorityIssuerRequestParams struct {
-	// tdid
-	Did *string `json:"Did,omitnil" name:"Did"`
+type CheckNewPurchaseRequestParams struct {
+
 }
 
-type GetAuthorityIssuerRequest struct {
+type CheckNewPurchaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// tdid
-	Did *string `json:"Did,omitnil" name:"Did"`
 }
 
-func (r *GetAuthorityIssuerRequest) ToJsonString() string {
+func (r *CheckNewPurchaseRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetAuthorityIssuerRequest) FromJsonString(s string) error {
+func (r *CheckNewPurchaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckNewPurchaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckNewPurchaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CheckNewPurchaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckNewPurchaseResponseParams `json:"Response"`
+}
+
+func (r *CheckNewPurchaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckNewPurchaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTDidByHostRequestParams struct {
+	// DID应用ID
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 自定义DID文档json属性
+	CustomAttribute *string `json:"CustomAttribute,omitnil" name:"CustomAttribute"`
+}
+
+type CreateTDidByHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// DID应用ID
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 自定义DID文档json属性
+	CustomAttribute *string `json:"CustomAttribute,omitnil" name:"CustomAttribute"`
+}
+
+func (r *CreateTDidByHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTDidByHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DAPId")
+	delete(f, "CustomAttribute")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTDidByHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTDidByHostResponseParams struct {
+	// DID标识
+	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// 链上交易信息
+	Transaction *ChainTransaction `json:"Transaction,omitnil" name:"Transaction"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateTDidByHostResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTDidByHostResponseParams `json:"Response"`
+}
+
+func (r *CreateTDidByHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTDidByHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTDidByPubKeyRequestParams struct {
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// pem格式的认证公钥
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
+
+	// 自定义DID初始化属性json字符串
+	CustomAttribute *string `json:"CustomAttribute,omitnil" name:"CustomAttribute"`
+
+	// 0:did存在返回错误，1:did存在返回该did，默认:0
+	IgnoreExisted *uint64 `json:"IgnoreExisted,omitnil" name:"IgnoreExisted"`
+}
+
+type CreateTDidByPubKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// pem格式的认证公钥
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
+
+	// 自定义DID初始化属性json字符串
+	CustomAttribute *string `json:"CustomAttribute,omitnil" name:"CustomAttribute"`
+
+	// 0:did存在返回错误，1:did存在返回该did，默认:0
+	IgnoreExisted *uint64 `json:"IgnoreExisted,omitnil" name:"IgnoreExisted"`
+}
+
+func (r *CreateTDidByPubKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTDidByPubKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DAPId")
+	delete(f, "PublicKey")
+	delete(f, "CustomAttribute")
+	delete(f, "IgnoreExisted")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTDidByPubKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTDidByPubKeyResponseParams struct {
+	// did标识
+	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// 链上交易信息
+	Transaction *ChainTransaction `json:"Transaction,omitnil" name:"Transaction"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateTDidByPubKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTDidByPubKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateTDidByPubKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTDidByPubKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CredentialState struct {
+	// 凭证唯一id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 凭证状态（0：吊销；1：有效）
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 凭证颁发者Did
+	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
+
+	// VC摘要，对应凭证Proof的vcDigest字段
+	VCDigest *string `json:"VCDigest,omitnil" name:"VCDigest"`
+
+	// 交易摘要，对应凭证Proof的txDigest字段 
+	TXDigest *string `json:"TXDigest,omitnil" name:"TXDigest"`
+
+	// 颁布凭证的UTC时间戳
+	IssueTime *uint64 `json:"IssueTime,omitnil" name:"IssueTime"`
+
+	// 凭证过期的UTC时间戳
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 凭证模板id
+	CPTId *uint64 `json:"CPTId,omitnil" name:"CPTId"`
+
+	// 凭证签名
+	Signature *string `json:"Signature,omitnil" name:"Signature"`
+
+	// 元数据摘要
+	MetaDigest *string `json:"MetaDigest,omitnil" name:"MetaDigest"`
+}
+
+// Predefined struct for user
+type DeactivateTDidRequestParams struct {
+	// DID标识符
+	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// 设置DID禁用状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	OperateCredential *string `json:"OperateCredential,omitnil" name:"OperateCredential"`
+
+	// DID应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 是否禁用
+	Deactivated *string `json:"Deactivated,omitnil" name:"Deactivated"`
+}
+
+type DeactivateTDidRequest struct {
+	*tchttp.BaseRequest
+	
+	// DID标识符
+	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// 设置DID禁用状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	OperateCredential *string `json:"OperateCredential,omitnil" name:"OperateCredential"`
+
+	// DID应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 是否禁用
+	Deactivated *string `json:"Deactivated,omitnil" name:"Deactivated"`
+}
+
+func (r *DeactivateTDidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeactivateTDidRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	delete(f, "Did")
+	delete(f, "OperateCredential")
+	delete(f, "DAPId")
+	delete(f, "Deactivated")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAuthorityIssuerRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeactivateTDidRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type GetAuthorityIssuerResponseParams struct {
-	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
-
-	// 区块链网络id
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
-
-	// 区块链群组id
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 权威机构did
-	Did *string `json:"Did,omitnil" name:"Did"`
-
-	// 机构备注信息
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
-
-	// 注册时间
-	RegisterTime *string `json:"RegisterTime,omitnil" name:"RegisterTime"`
-
-	// 认证时间
-	RecognizeTime *string `json:"RecognizeTime,omitnil" name:"RecognizeTime"`
+type DeactivateTDidResponseParams struct {
+	// 上链交易信息
+	Transaction *ChainTransaction `json:"Transaction,omitnil" name:"Transaction"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type GetAuthorityIssuerResponse struct {
+type DeactivateTDidResponse struct {
 	*tchttp.BaseResponse
-	Response *GetAuthorityIssuerResponseParams `json:"Response"`
+	Response *DeactivateTDidResponseParams `json:"Response"`
 }
 
-func (r *GetAuthorityIssuerResponse) ToJsonString() string {
+func (r *DeactivateTDidResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetAuthorityIssuerResponse) FromJsonString(s string) error {
+func (r *DeactivateTDidResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type GetCptInfoRequestParams struct {
-	// Cpt索引
-	CptIndex *uint64 `json:"CptIndex,omitnil" name:"CptIndex"`
+type GetCredentialStateRequestParams struct {
+	// 凭证唯一Id
+	CredentialId *string `json:"CredentialId,omitnil" name:"CredentialId"`
+
+	// 用户应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-type GetCptInfoRequest struct {
+type GetCredentialStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// Cpt索引
-	CptIndex *uint64 `json:"CptIndex,omitnil" name:"CptIndex"`
-}
-
-func (r *GetCptInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCptInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "CptIndex")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCptInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetCptInfoResponseParams struct {
-	// CptJsonData的具体信息
-	CptJsonData *string `json:"CptJsonData,omitnil" name:"CptJsonData"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type GetCptInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *GetCptInfoResponseParams `json:"Response"`
-}
-
-func (r *GetCptInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCptInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetCredentialStatusRequestParams struct {
-	// 凭证id
+	// 凭证唯一Id
 	CredentialId *string `json:"CredentialId,omitnil" name:"CredentialId"`
+
+	// 用户应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-type GetCredentialStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// 凭证id
-	CredentialId *string `json:"CredentialId,omitnil" name:"CredentialId"`
-}
-
-func (r *GetCredentialStatusRequest) ToJsonString() string {
+func (r *GetCredentialStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetCredentialStatusRequest) FromJsonString(s string) error {
+func (r *GetCredentialStateRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	delete(f, "CredentialId")
+	delete(f, "DAPId")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCredentialStatusRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCredentialStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type GetCredentialStatusResponseParams struct {
+type GetCredentialStateResponseParams struct {
 	// 凭证状态信息
-	CredentialStatus *CredentialStatus `json:"CredentialStatus,omitnil" name:"CredentialStatus"`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CredentialState *CredentialState `json:"CredentialState,omitnil" name:"CredentialState"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type GetCredentialStatusResponse struct {
+type GetCredentialStateResponse struct {
 	*tchttp.BaseResponse
-	Response *GetCredentialStatusResponseParams `json:"Response"`
+	Response *GetCredentialStateResponseParams `json:"Response"`
 }
 
-func (r *GetCredentialStatusResponse) ToJsonString() string {
+func (r *GetCredentialStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetCredentialStatusResponse) FromJsonString(s string) error {
+func (r *GetCredentialStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type GetDidDocumentRequestParams struct {
-	// tdid
+type GetTDidDocumentRequestParams struct {
+	// DID标识
 	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// DID应用ID
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-type GetDidDocumentRequest struct {
+type GetTDidDocumentRequest struct {
 	*tchttp.BaseRequest
 	
-	// tdid
+	// DID标识
 	Did *string `json:"Did,omitnil" name:"Did"`
+
+	// DID应用ID
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-func (r *GetDidDocumentRequest) ToJsonString() string {
+func (r *GetTDidDocumentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetDidDocumentRequest) FromJsonString(s string) error {
+func (r *GetTDidDocumentRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	delete(f, "Did")
+	delete(f, "DAPId")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDidDocumentRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTDidDocumentRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type GetDidDocumentResponseParams struct {
-	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
-
-	// DID文档
+type GetTDidDocumentResponseParams struct {
+	// DID文档内容
 	Document *string `json:"Document,omitnil" name:"Document"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type GetDidDocumentResponse struct {
+type GetTDidDocumentResponse struct {
 	*tchttp.BaseResponse
-	Response *GetDidDocumentResponseParams `json:"Response"`
+	Response *GetTDidDocumentResponseParams `json:"Response"`
 }
 
-func (r *GetDidDocumentResponse) ToJsonString() string {
+func (r *GetTDidDocumentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *GetDidDocumentResponse) FromJsonString(s string) error {
+func (r *GetTDidDocumentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Proof struct {
-	// 创建时间
-	Created *int64 `json:"Created,omitnil" name:"Created"`
-
-	// 创建着did
-	Creator *string `json:"Creator,omitnil" name:"Creator"`
-
-	// salt值
-	SaltJson *string `json:"SaltJson,omitnil" name:"SaltJson"`
-
-	// 签名
-	SignatureValue *string `json:"SignatureValue,omitnil" name:"SignatureValue"`
-
-	// type类型
-	Type *string `json:"Type,omitnil" name:"Type"`
-}
-
 // Predefined struct for user
-type RegisterCptRequestParams struct {
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
+type IssueCredentialRequestParams struct {
+	// 参数集合，详见示例
+	CRDLArg *CRDLArg `json:"CRDLArg,omitnil" name:"CRDLArg"`
 
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+	// 是否未签名
+	UnSigned *bool `json:"UnSigned,omitnil" name:"UnSigned"`
 
-	// CptJson的具体信息
-	CptJson *string `json:"CptJson,omitnil" name:"CptJson"`
-
-	// cptId 不填默认自增
-	CptId *uint64 `json:"CptId,omitnil" name:"CptId"`
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-type RegisterCptRequest struct {
+type IssueCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
+	// 参数集合，详见示例
+	CRDLArg *CRDLArg `json:"CRDLArg,omitnil" name:"CRDLArg"`
 
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+	// 是否未签名
+	UnSigned *bool `json:"UnSigned,omitnil" name:"UnSigned"`
 
-	// CptJson的具体信息
-	CptJson *string `json:"CptJson,omitnil" name:"CptJson"`
-
-	// cptId 不填默认自增
-	CptId *uint64 `json:"CptId,omitnil" name:"CptId"`
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-func (r *RegisterCptRequest) ToJsonString() string {
+func (r *IssueCredentialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *RegisterCptRequest) FromJsonString(s string) error {
+func (r *IssueCredentialRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "GroupId")
-	delete(f, "ClusterId")
-	delete(f, "CptJson")
-	delete(f, "CptId")
+	delete(f, "CRDLArg")
+	delete(f, "UnSigned")
+	delete(f, "DAPId")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterCptRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IssueCredentialRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type RegisterCptResponseParams struct {
-	// 凭证模板索引
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
-
-	// 凭证模板id
-	CptId *uint64 `json:"CptId,omitnil" name:"CptId"`
+type IssueCredentialResponseParams struct {
+	// 可验证凭证内容
+	CredentialData *string `json:"CredentialData,omitnil" name:"CredentialData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type RegisterCptResponse struct {
+type IssueCredentialResponse struct {
 	*tchttp.BaseResponse
-	Response *RegisterCptResponseParams `json:"Response"`
+	Response *IssueCredentialResponseParams `json:"Response"`
 }
 
-func (r *RegisterCptResponse) ToJsonString() string {
+func (r *IssueCredentialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *RegisterCptResponse) FromJsonString(s string) error {
+func (r *IssueCredentialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type SetCredentialStatusRequestParams struct {
-	// 凭证状态
-	CredentialStatus *CredentialStatus `json:"CredentialStatus,omitnil" name:"CredentialStatus"`
+type UpdateCredentialStateRequestParams struct {
+	// DID应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	OperateCredential *string `json:"OperateCredential,omitnil" name:"OperateCredential"`
 }
 
-type SetCredentialStatusRequest struct {
+type UpdateCredentialStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 凭证状态
-	CredentialStatus *CredentialStatus `json:"CredentialStatus,omitnil" name:"CredentialStatus"`
+	// DID应用Id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
+
+	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	OperateCredential *string `json:"OperateCredential,omitnil" name:"OperateCredential"`
 }
 
-func (r *SetCredentialStatusRequest) ToJsonString() string {
+func (r *UpdateCredentialStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *SetCredentialStatusRequest) FromJsonString(s string) error {
+func (r *UpdateCredentialStateRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "CredentialStatus")
+	delete(f, "DAPId")
+	delete(f, "OperateCredential")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetCredentialStatusRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCredentialStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type SetCredentialStatusResponseParams struct {
+type UpdateCredentialStateResponseParams struct {
+	// 更新是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type SetCredentialStatusResponse struct {
+type UpdateCredentialStateResponse struct {
 	*tchttp.BaseResponse
-	Response *SetCredentialStatusResponseParams `json:"Response"`
+	Response *UpdateCredentialStateResponseParams `json:"Response"`
 }
 
-func (r *SetCredentialStatusResponse) ToJsonString() string {
+func (r *UpdateCredentialStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *SetCredentialStatusResponse) FromJsonString(s string) error {
+func (r *UpdateCredentialStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type TransactionArg struct {
-	// 凭证did
-	InvokerTDid *string `json:"InvokerTDid,omitnil" name:"InvokerTDid"`
-}
-
 // Predefined struct for user
-type VerifyCredentialRequestParams struct {
-	// 参数集合
-	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
+type VerifyCredentialsRequestParams struct {
+	// 0:仅验证签名，1:验证签名和链上状态，2, 仅验证链上状态，默认为0, 3.验证DID和凭证状态以及签名，4. 验证历史凭证有效性
+	VerifyType *uint64 `json:"VerifyType,omitnil" name:"VerifyType"`
+
+	// 凭证内容
+	CredentialData *string `json:"CredentialData,omitnil" name:"CredentialData"`
+
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-type VerifyCredentialRequest struct {
+type VerifyCredentialsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数集合
-	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitnil" name:"FunctionArg"`
+	// 0:仅验证签名，1:验证签名和链上状态，2, 仅验证链上状态，默认为0, 3.验证DID和凭证状态以及签名，4. 验证历史凭证有效性
+	VerifyType *uint64 `json:"VerifyType,omitnil" name:"VerifyType"`
+
+	// 凭证内容
+	CredentialData *string `json:"CredentialData,omitnil" name:"CredentialData"`
+
+	// DID应用id
+	DAPId *uint64 `json:"DAPId,omitnil" name:"DAPId"`
 }
 
-func (r *VerifyCredentialRequest) ToJsonString() string {
+func (r *VerifyCredentialsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *VerifyCredentialRequest) FromJsonString(s string) error {
+func (r *VerifyCredentialsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FunctionArg")
+	delete(f, "VerifyType")
+	delete(f, "CredentialData")
+	delete(f, "DAPId")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyCredentialRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyCredentialsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type VerifyCredentialResponseParams struct {
+type VerifyCredentialsResponseParams struct {
 	// 是否验证成功
 	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 验证返回码
 	VerifyCode *uint64 `json:"VerifyCode,omitnil" name:"VerifyCode"`
 
-	// 验证消息
+	// 验证结果信息
 	VerifyMessage *string `json:"VerifyMessage,omitnil" name:"VerifyMessage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
-type VerifyCredentialResponse struct {
+type VerifyCredentialsResponse struct {
 	*tchttp.BaseResponse
-	Response *VerifyCredentialResponseParams `json:"Response"`
+	Response *VerifyCredentialsResponseParams `json:"Response"`
 }
 
-func (r *VerifyCredentialResponse) ToJsonString() string {
+func (r *VerifyCredentialsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *VerifyCredentialResponse) FromJsonString(s string) error {
+func (r *VerifyCredentialsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type VerifyFunctionArg struct {
-	// CPT ID
-	CptId *uint64 `json:"CptId,omitnil" name:"CptId"`
-
-	// issuer did
-	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
-
-	// 过期时间
-	ExpirationDate *int64 `json:"ExpirationDate,omitnil" name:"ExpirationDate"`
-
-	// 声明
-	ClaimJson *string `json:"ClaimJson,omitnil" name:"ClaimJson"`
-
-	// 颁发时间
-	IssuanceDate *int64 `json:"IssuanceDate,omitnil" name:"IssuanceDate"`
-
-	// context值
-	Context *string `json:"Context,omitnil" name:"Context"`
-
-	// id值
-	Id *string `json:"Id,omitnil" name:"Id"`
-
-	// 签名值
-	Proof *Proof `json:"Proof,omitnil" name:"Proof"`
-
-	// type值
-	Type []*string `json:"Type,omitnil" name:"Type"`
 }

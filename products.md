@@ -200,7 +200,7 @@
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2023-12-12 02:27:39 |
 | tcss | [容器安全服务](https://cloud.tencent.com/document/product/1285) | 2024-01-05 01:25:17 |
 | tdcpg | [TDSQL-C PostgreSQL 版](https://cloud.tencent.com/document/product/1556) | 2023-06-21 01:36:25 |
-| tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2023-07-24 01:49:20 |
+| tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2024-01-11 10:56:14 |
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2023-12-21 02:11:13 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2023-11-15 02:26:59 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2023-12-20 02:13:36 |

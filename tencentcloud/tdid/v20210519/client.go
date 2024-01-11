@@ -45,35 +45,30 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewCheckChainRequest() (request *CheckChainRequest) {
-    request = &CheckChainRequest{
+func NewCheckNewPurchaseRequest() (request *CheckNewPurchaseRequest) {
+    request = &CheckNewPurchaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CheckChain")
+    request.Init().WithApiInfo("tdid", APIVersion, "CheckNewPurchase")
     
     
     return
 }
 
-func NewCheckChainResponse() (response *CheckChainResponse) {
-    response = &CheckChainResponse{
+func NewCheckNewPurchaseResponse() (response *CheckNewPurchaseResponse) {
+    response = &CheckNewPurchaseResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CheckChain
-// 该接口不再使用
-//
-// 
-//
-// 检查区块链信息
+// CheckNewPurchase
+// 检查用户套餐购买状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
@@ -84,21 +79,17 @@ func NewCheckChainResponse() (response *CheckChainResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CheckChain(request *CheckChainRequest) (response *CheckChainResponse, err error) {
-    return c.CheckChainWithContext(context.Background(), request)
+func (c *Client) CheckNewPurchase(request *CheckNewPurchaseRequest) (response *CheckNewPurchaseResponse, err error) {
+    return c.CheckNewPurchaseWithContext(context.Background(), request)
 }
 
-// CheckChain
-// 该接口不再使用
-//
-// 
-//
-// 检查区块链信息
+// CheckNewPurchase
+// 检查用户套餐购买状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
@@ -109,117 +100,144 @@ func (c *Client) CheckChain(request *CheckChainRequest) (response *CheckChainRes
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CheckChainWithContext(ctx context.Context, request *CheckChainRequest) (response *CheckChainResponse, err error) {
+func (c *Client) CheckNewPurchaseWithContext(ctx context.Context, request *CheckNewPurchaseRequest) (response *CheckNewPurchaseResponse, err error) {
     if request == nil {
-        request = NewCheckChainRequest()
+        request = NewCheckNewPurchaseRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CheckChain require credential")
+        return nil, errors.New("CheckNewPurchase require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCheckChainResponse()
+    response = NewCheckNewPurchaseResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewCreateCredentialRequest() (request *CreateCredentialRequest) {
-    request = &CreateCredentialRequest{
+func NewCreateTDidByHostRequest() (request *CreateTDidByHostRequest) {
+    request = &CreateTDidByHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CreateCredential")
+    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByHost")
     
     
     return
 }
 
-func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
-    response = &CreateCredentialResponse{
+func NewCreateTDidByHostResponse() (response *CreateTDidByHostResponse) {
+    response = &CreateTDidByHostResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CreateCredential
-// 该接口不再使用
-//
-// 
-//
-// 创建凭证
+// CreateTDidByHost
+// 自动生成公私钥对托管在DID平台，并注册DID标识
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDEXISTED = "DidFailedOperation.DidExisted"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDOBJECTIDEXISTED = "DidFailedOperation.DidObjectIdExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDFAILEDOPERATION_PRIVATEKEYINVALID = "DidFailedOperation.PrivateKeyInvalid"
+//  DIDFAILEDOPERATION_PUBLICKEYINVALID = "DidFailedOperation.PublicKeyInvalid"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *CreateCredentialResponse, err error) {
-    return c.CreateCredentialWithContext(context.Background(), request)
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreateTDidByHost(request *CreateTDidByHostRequest) (response *CreateTDidByHostResponse, err error) {
+    return c.CreateTDidByHostWithContext(context.Background(), request)
 }
 
-// CreateCredential
-// 该接口不再使用
-//
-// 
-//
-// 创建凭证
+// CreateTDidByHost
+// 自动生成公私钥对托管在DID平台，并注册DID标识
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDEXISTED = "DidFailedOperation.DidExisted"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDOBJECTIDEXISTED = "DidFailedOperation.DidObjectIdExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDFAILEDOPERATION_PRIVATEKEYINVALID = "DidFailedOperation.PrivateKeyInvalid"
+//  DIDFAILEDOPERATION_PUBLICKEYINVALID = "DidFailedOperation.PublicKeyInvalid"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateCredentialWithContext(ctx context.Context, request *CreateCredentialRequest) (response *CreateCredentialResponse, err error) {
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreateTDidByHostWithContext(ctx context.Context, request *CreateTDidByHostRequest) (response *CreateTDidByHostResponse, err error) {
     if request == nil {
-        request = NewCreateCredentialRequest()
+        request = NewCreateTDidByHostRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CreateCredential require credential")
+        return nil, errors.New("CreateTDidByHost require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCreateCredentialResponse()
+    response = NewCreateTDidByHostResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRequest) {
-    request = &CreateSelectiveCredentialRequest{
+func NewCreateTDidByPubKeyRequest() (request *CreateTDidByPubKeyRequest) {
+    request = &CreateTDidByPubKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CreateSelectiveCredential")
+    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByPubKey")
     
     
     return
 }
 
-func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredentialResponse) {
-    response = &CreateSelectiveCredentialResponse{
+func NewCreateTDidByPubKeyResponse() (response *CreateTDidByPubKeyResponse) {
+    response = &CreateTDidByPubKeyResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CreateSelectiveCredential
-// 该接口不再使用
-//
-// 
-//
-// 创建选择性批露凭证
+// CreateTDidByPubKey
+// 使用导入的公钥文件注册DID标识
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -227,6 +245,7 @@ func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredential
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -235,16 +254,12 @@ func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredential
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialRequest) (response *CreateSelectiveCredentialResponse, err error) {
-    return c.CreateSelectiveCredentialWithContext(context.Background(), request)
+func (c *Client) CreateTDidByPubKey(request *CreateTDidByPubKeyRequest) (response *CreateTDidByPubKeyResponse, err error) {
+    return c.CreateTDidByPubKeyWithContext(context.Background(), request)
 }
 
-// CreateSelectiveCredential
-// 该接口不再使用
-//
-// 
-//
-// 创建选择性批露凭证
+// CreateTDidByPubKey
+// 使用导入的公钥文件注册DID标识
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -252,6 +267,7 @@ func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialReq
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -260,824 +276,630 @@ func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialReq
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateSelectiveCredentialWithContext(ctx context.Context, request *CreateSelectiveCredentialRequest) (response *CreateSelectiveCredentialResponse, err error) {
+func (c *Client) CreateTDidByPubKeyWithContext(ctx context.Context, request *CreateTDidByPubKeyRequest) (response *CreateTDidByPubKeyResponse, err error) {
     if request == nil {
-        request = NewCreateSelectiveCredentialRequest()
+        request = NewCreateTDidByPubKeyRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CreateSelectiveCredential require credential")
+        return nil, errors.New("CreateTDidByPubKey require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCreateSelectiveCredentialResponse()
+    response = NewCreateTDidByPubKeyResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewCreateTDidRequest() (request *CreateTDidRequest) {
-    request = &CreateTDidRequest{
+func NewDeactivateTDidRequest() (request *DeactivateTDidRequest) {
+    request = &DeactivateTDidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDid")
+    request.Init().WithApiInfo("tdid", APIVersion, "DeactivateTDid")
     
     
     return
 }
 
-func NewCreateTDidResponse() (response *CreateTDidResponse) {
-    response = &CreateTDidResponse{
+func NewDeactivateTDidResponse() (response *DeactivateTDidResponse) {
+    response = &DeactivateTDidResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CreateTDid
-// 该接口不再使用
-//
-// 
-//
-// 创建机构DID
+// DeactivateTDid
+// 更新DID标识的禁用状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-func (c *Client) CreateTDid(request *CreateTDidRequest) (response *CreateTDidResponse, err error) {
-    return c.CreateTDidWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) DeactivateTDid(request *DeactivateTDidRequest) (response *DeactivateTDidResponse, err error) {
+    return c.DeactivateTDidWithContext(context.Background(), request)
 }
 
-// CreateTDid
-// 该接口不再使用
-//
-// 
-//
-// 创建机构DID
+// DeactivateTDid
+// 更新DID标识的禁用状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-func (c *Client) CreateTDidWithContext(ctx context.Context, request *CreateTDidRequest) (response *CreateTDidResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) DeactivateTDidWithContext(ctx context.Context, request *DeactivateTDidRequest) (response *DeactivateTDidResponse, err error) {
     if request == nil {
-        request = NewCreateTDidRequest()
+        request = NewDeactivateTDidRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CreateTDid require credential")
+        return nil, errors.New("DeactivateTDid require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCreateTDidResponse()
+    response = NewDeactivateTDidResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewCreateTDidByPrivateKeyRequest() (request *CreateTDidByPrivateKeyRequest) {
-    request = &CreateTDidByPrivateKeyRequest{
+func NewGetCredentialStateRequest() (request *GetCredentialStateRequest) {
+    request = &GetCredentialStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByPrivateKey")
+    request.Init().WithApiInfo("tdid", APIVersion, "GetCredentialState")
     
     
     return
 }
 
-func NewCreateTDidByPrivateKeyResponse() (response *CreateTDidByPrivateKeyResponse) {
-    response = &CreateTDidByPrivateKeyResponse{
+func NewGetCredentialStateResponse() (response *GetCredentialStateResponse) {
+    response = &GetCredentialStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CreateTDidByPrivateKey
-// 该接口不再使用
-//
-// 
-//
-// 新建DID根据私钥生成Tdid
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateTDidByPrivateKey(request *CreateTDidByPrivateKeyRequest) (response *CreateTDidByPrivateKeyResponse, err error) {
-    return c.CreateTDidByPrivateKeyWithContext(context.Background(), request)
-}
-
-// CreateTDidByPrivateKey
-// 该接口不再使用
-//
-// 
-//
-// 新建DID根据私钥生成Tdid
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateTDidByPrivateKeyWithContext(ctx context.Context, request *CreateTDidByPrivateKeyRequest) (response *CreateTDidByPrivateKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateTDidByPrivateKeyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateTDidByPrivateKey require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateTDidByPrivateKeyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateTDidByPublicKeyRequest() (request *CreateTDidByPublicKeyRequest) {
-    request = &CreateTDidByPublicKeyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByPublicKey")
-    
-    
-    return
-}
-
-func NewCreateTDidByPublicKeyResponse() (response *CreateTDidByPublicKeyResponse) {
-    response = &CreateTDidByPublicKeyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateTDidByPublicKey
-// 该接口不再使用
-//
-// 
-//
-//  新建DID根据公钥生成Tdid
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateTDidByPublicKey(request *CreateTDidByPublicKeyRequest) (response *CreateTDidByPublicKeyResponse, err error) {
-    return c.CreateTDidByPublicKeyWithContext(context.Background(), request)
-}
-
-// CreateTDidByPublicKey
-// 该接口不再使用
-//
-// 
-//
-//  新建DID根据公钥生成Tdid
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateTDidByPublicKeyWithContext(ctx context.Context, request *CreateTDidByPublicKeyRequest) (response *CreateTDidByPublicKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateTDidByPublicKeyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateTDidByPublicKey require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateTDidByPublicKeyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetAuthorityIssuerRequest() (request *GetAuthorityIssuerRequest) {
-    request = &GetAuthorityIssuerRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "GetAuthorityIssuer")
-    
-    
-    return
-}
-
-func NewGetAuthorityIssuerResponse() (response *GetAuthorityIssuerResponse) {
-    response = &GetAuthorityIssuerResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetAuthorityIssuer
-// 该接口不再使用
-//
-// 
-//
-// 获取权威机构信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetAuthorityIssuer(request *GetAuthorityIssuerRequest) (response *GetAuthorityIssuerResponse, err error) {
-    return c.GetAuthorityIssuerWithContext(context.Background(), request)
-}
-
-// GetAuthorityIssuer
-// 该接口不再使用
-//
-// 
-//
-// 获取权威机构信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetAuthorityIssuerWithContext(ctx context.Context, request *GetAuthorityIssuerRequest) (response *GetAuthorityIssuerResponse, err error) {
-    if request == nil {
-        request = NewGetAuthorityIssuerRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetAuthorityIssuer require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetAuthorityIssuerResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetCptInfoRequest() (request *GetCptInfoRequest) {
-    request = &GetCptInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "GetCptInfo")
-    
-    
-    return
-}
-
-func NewGetCptInfoResponse() (response *GetCptInfoResponse) {
-    response = &GetCptInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetCptInfo
-// 该接口不再使用
-//
-// 
-//
-// 凭证模版详情
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetCptInfo(request *GetCptInfoRequest) (response *GetCptInfoResponse, err error) {
-    return c.GetCptInfoWithContext(context.Background(), request)
-}
-
-// GetCptInfo
-// 该接口不再使用
-//
-// 
-//
-// 凭证模版详情
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetCptInfoWithContext(ctx context.Context, request *GetCptInfoRequest) (response *GetCptInfoResponse, err error) {
-    if request == nil {
-        request = NewGetCptInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetCptInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetCptInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetCredentialStatusRequest() (request *GetCredentialStatusRequest) {
-    request = &GetCredentialStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "GetCredentialStatus")
-    
-    
-    return
-}
-
-func NewGetCredentialStatusResponse() (response *GetCredentialStatusResponse) {
-    response = &GetCredentialStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetCredentialStatus
-// 该接口不再使用
-//
-// 
-//
+// GetCredentialState
 // 获取凭证链上状态信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetCredentialStatus(request *GetCredentialStatusRequest) (response *GetCredentialStatusResponse, err error) {
-    return c.GetCredentialStatusWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetCredentialState(request *GetCredentialStateRequest) (response *GetCredentialStateResponse, err error) {
+    return c.GetCredentialStateWithContext(context.Background(), request)
 }
 
-// GetCredentialStatus
-// 该接口不再使用
-//
-// 
-//
+// GetCredentialState
 // 获取凭证链上状态信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetCredentialStatusWithContext(ctx context.Context, request *GetCredentialStatusRequest) (response *GetCredentialStatusResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetCredentialStateWithContext(ctx context.Context, request *GetCredentialStateRequest) (response *GetCredentialStateResponse, err error) {
     if request == nil {
-        request = NewGetCredentialStatusRequest()
+        request = NewGetCredentialStateRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("GetCredentialStatus require credential")
+        return nil, errors.New("GetCredentialState require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewGetCredentialStatusResponse()
+    response = NewGetCredentialStateResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewGetDidDocumentRequest() (request *GetDidDocumentRequest) {
-    request = &GetDidDocumentRequest{
+func NewGetTDidDocumentRequest() (request *GetTDidDocumentRequest) {
+    request = &GetTDidDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "GetDidDocument")
+    request.Init().WithApiInfo("tdid", APIVersion, "GetTDidDocument")
     
     
     return
 }
 
-func NewGetDidDocumentResponse() (response *GetDidDocumentResponse) {
-    response = &GetDidDocumentResponse{
+func NewGetTDidDocumentResponse() (response *GetTDidDocumentResponse) {
+    response = &GetTDidDocumentResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// GetDidDocument
-// 该接口不再使用
-//
-// 
-//
-// 查看DID文档
+// GetTDidDocument
+// 获取DID标识的文档
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidDocument(request *GetDidDocumentRequest) (response *GetDidDocumentResponse, err error) {
-    return c.GetDidDocumentWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidDocument(request *GetTDidDocumentRequest) (response *GetTDidDocumentResponse, err error) {
+    return c.GetTDidDocumentWithContext(context.Background(), request)
 }
 
-// GetDidDocument
-// 该接口不再使用
-//
-// 
-//
-// 查看DID文档
+// GetTDidDocument
+// 获取DID标识的文档
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidDocumentWithContext(ctx context.Context, request *GetDidDocumentRequest) (response *GetDidDocumentResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidDocumentWithContext(ctx context.Context, request *GetTDidDocumentRequest) (response *GetTDidDocumentResponse, err error) {
     if request == nil {
-        request = NewGetDidDocumentRequest()
+        request = NewGetTDidDocumentRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("GetDidDocument require credential")
+        return nil, errors.New("GetTDidDocument require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewGetDidDocumentResponse()
+    response = NewGetTDidDocumentResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewRegisterCptRequest() (request *RegisterCptRequest) {
-    request = &RegisterCptRequest{
+func NewIssueCredentialRequest() (request *IssueCredentialRequest) {
+    request = &IssueCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "RegisterCpt")
+    request.Init().WithApiInfo("tdid", APIVersion, "IssueCredential")
     
     
     return
 }
 
-func NewRegisterCptResponse() (response *RegisterCptResponse) {
-    response = &RegisterCptResponse{
+func NewIssueCredentialResponse() (response *IssueCredentialResponse) {
+    response = &IssueCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// RegisterCpt
-// 该接口不再使用
-//
-// 
-//
-// 凭证模版新建
+// IssueCredential
+// 颁发可验证凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) RegisterCpt(request *RegisterCptRequest) (response *RegisterCptResponse, err error) {
-    return c.RegisterCptWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) IssueCredential(request *IssueCredentialRequest) (response *IssueCredentialResponse, err error) {
+    return c.IssueCredentialWithContext(context.Background(), request)
 }
 
-// RegisterCpt
-// 该接口不再使用
-//
-// 
-//
-// 凭证模版新建
+// IssueCredential
+// 颁发可验证凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) RegisterCptWithContext(ctx context.Context, request *RegisterCptRequest) (response *RegisterCptResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) IssueCredentialWithContext(ctx context.Context, request *IssueCredentialRequest) (response *IssueCredentialResponse, err error) {
     if request == nil {
-        request = NewRegisterCptRequest()
+        request = NewIssueCredentialRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("RegisterCpt require credential")
+        return nil, errors.New("IssueCredential require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewRegisterCptResponse()
+    response = NewIssueCredentialResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewSetCredentialStatusRequest() (request *SetCredentialStatusRequest) {
-    request = &SetCredentialStatusRequest{
+func NewUpdateCredentialStateRequest() (request *UpdateCredentialStateRequest) {
+    request = &UpdateCredentialStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "SetCredentialStatus")
+    request.Init().WithApiInfo("tdid", APIVersion, "UpdateCredentialState")
     
     
     return
 }
 
-func NewSetCredentialStatusResponse() (response *SetCredentialStatusResponse) {
-    response = &SetCredentialStatusResponse{
+func NewUpdateCredentialStateResponse() (response *UpdateCredentialStateResponse) {
+    response = &UpdateCredentialStateResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// SetCredentialStatus
-// 该接口不再使用
-//
-// 
-//
-// 设置凭证链上状态
+// UpdateCredentialState
+// 更新凭证的链上状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CPT_CREATECPTFAILED = "Cpt.CreateCPTFailed"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) SetCredentialStatus(request *SetCredentialStatusRequest) (response *SetCredentialStatusResponse, err error) {
-    return c.SetCredentialStatusWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) UpdateCredentialState(request *UpdateCredentialStateRequest) (response *UpdateCredentialStateResponse, err error) {
+    return c.UpdateCredentialStateWithContext(context.Background(), request)
 }
 
-// SetCredentialStatus
-// 该接口不再使用
-//
-// 
-//
-// 设置凭证链上状态
+// UpdateCredentialState
+// 更新凭证的链上状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CPT_CREATECPTFAILED = "Cpt.CreateCPTFailed"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) SetCredentialStatusWithContext(ctx context.Context, request *SetCredentialStatusRequest) (response *SetCredentialStatusResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) UpdateCredentialStateWithContext(ctx context.Context, request *UpdateCredentialStateRequest) (response *UpdateCredentialStateResponse, err error) {
     if request == nil {
-        request = NewSetCredentialStatusRequest()
+        request = NewUpdateCredentialStateRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("SetCredentialStatus require credential")
+        return nil, errors.New("UpdateCredentialState require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewSetCredentialStatusResponse()
+    response = NewUpdateCredentialStateResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
-    request = &VerifyCredentialRequest{
+func NewVerifyCredentialsRequest() (request *VerifyCredentialsRequest) {
+    request = &VerifyCredentialsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "VerifyCredential")
+    request.Init().WithApiInfo("tdid", APIVersion, "VerifyCredentials")
     
     
     return
 }
 
-func NewVerifyCredentialResponse() (response *VerifyCredentialResponse) {
-    response = &VerifyCredentialResponse{
+func NewVerifyCredentialsResponse() (response *VerifyCredentialsResponse) {
+    response = &VerifyCredentialsResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// VerifyCredential
-// 该接口不再使用
-//
-// 
-//
-// 验证凭证
+// VerifyCredentials
+// 验证已签名的可验证凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) VerifyCredential(request *VerifyCredentialRequest) (response *VerifyCredentialResponse, err error) {
-    return c.VerifyCredentialWithContext(context.Background(), request)
+func (c *Client) VerifyCredentials(request *VerifyCredentialsRequest) (response *VerifyCredentialsResponse, err error) {
+    return c.VerifyCredentialsWithContext(context.Background(), request)
 }
 
-// VerifyCredential
-// 该接口不再使用
-//
-// 
-//
-// 验证凭证
+// VerifyCredentials
+// 验证已签名的可验证凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) VerifyCredentialWithContext(ctx context.Context, request *VerifyCredentialRequest) (response *VerifyCredentialResponse, err error) {
+func (c *Client) VerifyCredentialsWithContext(ctx context.Context, request *VerifyCredentialsRequest) (response *VerifyCredentialsResponse, err error) {
     if request == nil {
-        request = NewVerifyCredentialRequest()
+        request = NewVerifyCredentialsRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("VerifyCredential require credential")
+        return nil, errors.New("VerifyCredentials require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewVerifyCredentialResponse()
+    response = NewVerifyCredentialsResponse()
     err = c.Send(request, response)
     return
 }

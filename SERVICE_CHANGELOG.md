@@ -1,21 +1,56 @@
 # 本版本更新包含以下内容：
 
-## 操作审计(cloudaudit) 版本：2019-03-19
+## 分布式身份(tdid) 版本：2021-05-19
 
-### 第 13 次发布
+### 第 11 次发布
 
-发布时间：2024-01-11 01:09:52
+发布时间：2024-01-11 10:56:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Storage](https://cloud.tencent.com/document/api/629/35353#Storage)
+* [CheckNewPurchase](https://cloud.tencent.com/document/api/1439/102971)
+* [CreateTDidByHost](https://cloud.tencent.com/document/api/1439/102970)
+* [CreateTDidByPubKey](https://cloud.tencent.com/document/api/1439/102969)
+* [DeactivateTDid](https://cloud.tencent.com/document/api/1439/102968)
+* [GetCredentialState](https://cloud.tencent.com/document/api/1439/102966)
+* [GetTDidDocument](https://cloud.tencent.com/document/api/1439/102967)
+* [IssueCredential](https://cloud.tencent.com/document/api/1439/102965)
+* [UpdateCredentialState](https://cloud.tencent.com/document/api/1439/102964)
+* [VerifyCredentials](https://cloud.tencent.com/document/api/1439/102963)
 
-	* 新增成员：StorageAccountId, StorageAppId
+<font color="#dd0000">**删除接口**：</font>
 
+* CheckChain
+* CreateCredential
+* CreateSelectiveCredential
+* CreateTDid
+* CreateTDidByPrivateKey
+* CreateTDidByPublicKey
+* GetAuthorityIssuer
+* GetCptInfo
+* GetCredentialStatus
+* GetDidDocument
+* RegisterCpt
+* SetCredentialStatus
+* VerifyCredential
+
+新增数据结构：
+
+* [CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg)
+* [ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction)
+* [CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CredentialStatus
+* FunctionArg
+* Proof
+* TransactionArg
+* VerifyFunctionArg
 
 
 
@@ -111647,6 +111682,56 @@
 
 
 ## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 11 次发布
+
+发布时间：2024-01-11 10:56:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckNewPurchase](https://cloud.tencent.com/document/api/1439/102971)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateTDidByHost](https://cloud.tencent.com/document/api/1439/102970)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateTDidByPubKey](https://cloud.tencent.com/document/api/1439/102969)](https://cloud.tencent.com/document/api/#/#)
+* [[DeactivateTDid](https://cloud.tencent.com/document/api/1439/102968)](https://cloud.tencent.com/document/api/#/#)
+* [[GetCredentialState](https://cloud.tencent.com/document/api/1439/102966)](https://cloud.tencent.com/document/api/#/#)
+* [[GetTDidDocument](https://cloud.tencent.com/document/api/1439/102967)](https://cloud.tencent.com/document/api/#/#)
+* [[IssueCredential](https://cloud.tencent.com/document/api/1439/102965)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateCredentialState](https://cloud.tencent.com/document/api/1439/102964)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyCredentials](https://cloud.tencent.com/document/api/1439/102963)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckChain
+* CreateCredential
+* CreateSelectiveCredential
+* CreateTDid
+* CreateTDidByPrivateKey
+* CreateTDidByPublicKey
+* GetAuthorityIssuer
+* GetCptInfo
+* GetCredentialStatus
+* GetDidDocument
+* RegisterCpt
+* SetCredentialStatus
+* VerifyCredential
+
+新增数据结构：
+
+* [[CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg)](https://cloud.tencent.com/document/api/1439/60283#[CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg))
+* [[ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction)](https://cloud.tencent.com/document/api/1439/60283#[ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction))
+* [[CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState)](https://cloud.tencent.com/document/api/1439/60283#[CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState))
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CredentialStatus
+* FunctionArg
+* Proof
+* TransactionArg
+* VerifyFunctionArg
 
 ### 第 10 次发布
 
