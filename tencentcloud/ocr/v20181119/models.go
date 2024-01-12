@@ -8569,6 +8569,12 @@ type SealOCRRequestParams struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitnil" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
 }
 
 type SealOCRRequest struct {
@@ -8581,6 +8587,12 @@ type SealOCRRequest struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitnil" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
 }
 
 func (r *SealOCRRequest) ToJsonString() string {
@@ -8597,6 +8609,8 @@ func (r *SealOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "EnablePdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SealOCRRequest has unknown keys!", "")
 	}

@@ -545,18 +545,23 @@ type CloudBaseRunKVPriority struct {
 
 type CloudBaseRunNfsVolumeSource struct {
 	// NFS挂载Server
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server *string `json:"Server,omitnil" name:"Server"`
 
 	// Server路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 是否只读
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitnil" name:"ReadOnly"`
 
 	// secret名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 临时目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitnil" name:"EnableEmptyDirVolume"`
 }
 
@@ -715,15 +720,19 @@ type CloudBaseRunVersionFlowItem struct {
 
 type CloudBaseRunVolumeMount struct {
 	// 资源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 挂载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil" name:"MountPath"`
 
 	// 是否只读
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitnil" name:"ReadOnly"`
 
 	// Nfs挂载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitnil" name:"NfsVolumes"`
 }
 

@@ -20,11 +20,26 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 机构名称要求输入中英文或数字，不超过32个字符
+	AUTHORITY_AUTHORITYNAMELENGTHLONG = "Authority.AuthorityNameLengthLong"
+
+	// 认证备注要求输入中英文或数字，不超过64个字符
+	AUTHORITY_AUTHORITYREMARKLENGTHLONG = "Authority.AuthorityRemarkLengthLong"
+
+	// 该权威机构已被认证:<%ExtMsg%>
+	AUTHORITY_ERRCODEAUTHORITYREGISTERED = "Authority.ErrCodeAuthorityRegistered"
+
+	// 该DID已经认证为权威机构:<%ExtMsg%>
+	AUTHORITY_ERRCODEDIDAUTHORITYREGISTERED = "Authority.ErrCodeDidAuthorityRegistered"
+
 	// CAM鉴权失败
 	CAM_INVALIDAUTH = "Cam.InvalidAuth"
 
 	// 创建凭证模板失败，请重新操作
 	CPT_CREATECPTFAILED = "Cpt.CreateCPTFailed"
+
+	// 模板内容为无效的json格式
+	CPT_INVALIDCPTJSON = "Cpt.InvalidCPTJson"
 
 	// 凭证模板不存在
 	CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
@@ -109,6 +124,9 @@ const (
 
 	// 获取DID文档失败，请重新操作
 	DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+
+	// 非权威机构DID:<%ExtMsg%>
+	DIDFAILEDOPERATION_NOTAUTHORITY = "DidFailedOperation.NotAuthority"
 
 	// 非DID创建者，无法更新DID状态
 	DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"

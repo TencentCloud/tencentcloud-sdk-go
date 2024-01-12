@@ -1859,6 +1859,12 @@ type GetEidResultRequestParams struct {
 
 	// 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
 	BestFramesCount *uint64 `json:"BestFramesCount,omitnil" name:"BestFramesCount"`
+
+	// 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+	IsCutIdCardImage *bool `json:"IsCutIdCardImage,omitnil" name:"IsCutIdCardImage"`
+
+	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitnil" name:"IsNeedIdCardAvatar"`
 }
 
 type GetEidResultRequest struct {
@@ -1874,6 +1880,12 @@ type GetEidResultRequest struct {
 
 	// 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
 	BestFramesCount *uint64 `json:"BestFramesCount,omitnil" name:"BestFramesCount"`
+
+	// 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+	IsCutIdCardImage *bool `json:"IsCutIdCardImage,omitnil" name:"IsCutIdCardImage"`
+
+	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitnil" name:"IsNeedIdCardAvatar"`
 }
 
 func (r *GetEidResultRequest) ToJsonString() string {
@@ -1891,6 +1903,8 @@ func (r *GetEidResultRequest) FromJsonString(s string) error {
 	delete(f, "EidToken")
 	delete(f, "InfoType")
 	delete(f, "BestFramesCount")
+	delete(f, "IsCutIdCardImage")
+	delete(f, "IsNeedIdCardAvatar")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEidResultRequest has unknown keys!", "")
 	}

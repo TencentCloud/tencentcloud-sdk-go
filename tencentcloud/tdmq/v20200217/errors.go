@@ -158,6 +158,9 @@ const (
 	// Broker服务异常。
 	INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 
+	// 操作失败。
+	INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+
 	// 获取属性失败。
 	INTERNALERROR_GETATTRIBUTESFAILED = "InternalError.GetAttributesFailed"
 

@@ -45,75 +45,228 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewCheckNewPurchaseRequest() (request *CheckNewPurchaseRequest) {
-    request = &CheckNewPurchaseRequest{
+func NewCreateDisclosedCredentialRequest() (request *CreateDisclosedCredentialRequest) {
+    request = &CreateDisclosedCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tdid", APIVersion, "CheckNewPurchase")
+    request.Init().WithApiInfo("tdid", APIVersion, "CreateDisclosedCredential")
     
     
     return
 }
 
-func NewCheckNewPurchaseResponse() (response *CheckNewPurchaseResponse) {
-    response = &CheckNewPurchaseResponse{
+func NewCreateDisclosedCredentialResponse() (response *CreateDisclosedCredentialResponse) {
+    response = &CreateDisclosedCredentialResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// CheckNewPurchase
-// 检查用户套餐购买状态
+// CreateDisclosedCredential
+// 根据披露策略创建选择性披露凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CheckNewPurchase(request *CheckNewPurchaseRequest) (response *CheckNewPurchaseResponse, err error) {
-    return c.CheckNewPurchaseWithContext(context.Background(), request)
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreateDisclosedCredential(request *CreateDisclosedCredentialRequest) (response *CreateDisclosedCredentialResponse, err error) {
+    return c.CreateDisclosedCredentialWithContext(context.Background(), request)
 }
 
-// CheckNewPurchase
-// 检查用户套餐购买状态
+// CreateDisclosedCredential
+// 根据披露策略创建选择性披露凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
 //  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
 //  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CheckNewPurchaseWithContext(ctx context.Context, request *CheckNewPurchaseRequest) (response *CheckNewPurchaseResponse, err error) {
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreateDisclosedCredentialWithContext(ctx context.Context, request *CreateDisclosedCredentialRequest) (response *CreateDisclosedCredentialResponse, err error) {
     if request == nil {
-        request = NewCheckNewPurchaseRequest()
+        request = NewCreateDisclosedCredentialRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CheckNewPurchase require credential")
+        return nil, errors.New("CreateDisclosedCredential require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCheckNewPurchaseResponse()
+    response = NewCreateDisclosedCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePresentationRequest() (request *CreatePresentationRequest) {
+    request = &CreatePresentationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "CreatePresentation")
+    
+    
+    return
+}
+
+func NewCreatePresentationResponse() (response *CreatePresentationResponse) {
+    response = &CreatePresentationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePresentation
+// 创建凭证持有人的可验证表达
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreatePresentation(request *CreatePresentationRequest) (response *CreatePresentationResponse, err error) {
+    return c.CreatePresentationWithContext(context.Background(), request)
+}
+
+// CreatePresentation
+// 创建凭证持有人的可验证表达
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_GENERATECOMMITMENTFAILED = "Credential.GenerateCommitmentFailed"
+//  CREDENTIAL_GENERATERANGEPROOF = "Credential.GenerateRangeProof"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_INVALIDPROOFCOMMITMENT = "Credential.InvalidProofCommitment"
+//  CREDENTIAL_INVALIDPROOFVALUE = "Credential.InvalidProofValue"
+//  CREDENTIAL_INVALIDZEROPROOF = "Credential.InvalidZeroProof"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_PROOFVALUENOTEXISTED = "Credential.ProofValueNotExisted"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  CREDENTIAL_VERIFYZEROPROOFFAILED = "Credential.VerifyZeroProofFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) CreatePresentationWithContext(ctx context.Context, request *CreatePresentationRequest) (response *CreatePresentationResponse, err error) {
+    if request == nil {
+        request = NewCreatePresentationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePresentation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePresentationResponse()
     err = c.Send(request, response)
     return
 }
@@ -399,6 +552,79 @@ func (c *Client) DeactivateTDidWithContext(ctx context.Context, request *Deactiv
     return
 }
 
+func NewGetAppSummaryRequest() (request *GetAppSummaryRequest) {
+    request = &GetAppSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "GetAppSummary")
+    
+    
+    return
+}
+
+func NewGetAppSummaryResponse() (response *GetAppSummaryResponse) {
+    response = &GetAppSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetAppSummary
+// 获取某个应用关键指标统计数据
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetAppSummary(request *GetAppSummaryRequest) (response *GetAppSummaryResponse, err error) {
+    return c.GetAppSummaryWithContext(context.Background(), request)
+}
+
+// GetAppSummary
+// 获取某个应用关键指标统计数据
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetAppSummaryWithContext(ctx context.Context, request *GetAppSummaryRequest) (response *GetAppSummaryResponse, err error) {
+    if request == nil {
+        request = NewGetAppSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAppSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAppSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCredentialStateRequest() (request *GetCredentialStateRequest) {
     request = &GetCredentialStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -472,6 +698,168 @@ func (c *Client) GetCredentialStateWithContext(ctx context.Context, request *Get
     request.SetContext(ctx)
     
     response = NewGetCredentialStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetOverSummaryRequest() (request *GetOverSummaryRequest) {
+    request = &GetOverSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "GetOverSummary")
+    
+    
+    return
+}
+
+func NewGetOverSummaryResponse() (response *GetOverSummaryResponse) {
+    response = &GetOverSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetOverSummary
+// 获取某个应用关键指标统计数据
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetOverSummary(request *GetOverSummaryRequest) (response *GetOverSummaryResponse, err error) {
+    return c.GetOverSummaryWithContext(context.Background(), request)
+}
+
+// GetOverSummary
+// 获取某个应用关键指标统计数据
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetOverSummaryWithContext(ctx context.Context, request *GetOverSummaryRequest) (response *GetOverSummaryResponse, err error) {
+    if request == nil {
+        request = NewGetOverSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOverSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetOverSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTDidByObjectIdRequest() (request *GetTDidByObjectIdRequest) {
+    request = &GetTDidByObjectIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "GetTDidByObjectId")
+    
+    
+    return
+}
+
+func NewGetTDidByObjectIdResponse() (response *GetTDidByObjectIdResponse) {
+    response = &GetTDidByObjectIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTDidByObjectId
+// 通过业务层绑定的对象ID获取DID标识
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDEXISTED = "DidFailedOperation.DidExisted"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDOBJECTIDEXISTED = "DidFailedOperation.DidObjectIdExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidByObjectId(request *GetTDidByObjectIdRequest) (response *GetTDidByObjectIdResponse, err error) {
+    return c.GetTDidByObjectIdWithContext(context.Background(), request)
+}
+
+// GetTDidByObjectId
+// 通过业务层绑定的对象ID获取DID标识
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDEXISTED = "DidFailedOperation.DidExisted"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDOBJECTIDEXISTED = "DidFailedOperation.DidObjectIdExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidByObjectIdWithContext(ctx context.Context, request *GetTDidByObjectIdRequest) (response *GetTDidByObjectIdResponse, err error) {
+    if request == nil {
+        request = NewGetTDidByObjectIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTDidByObjectId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTDidByObjectIdResponse()
     err = c.Send(request, response)
     return
 }
@@ -553,6 +941,87 @@ func (c *Client) GetTDidDocumentWithContext(ctx context.Context, request *GetTDi
     request.SetContext(ctx)
     
     response = NewGetTDidDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTDidPubKeyRequest() (request *GetTDidPubKeyRequest) {
+    request = &GetTDidPubKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "GetTDidPubKey")
+    
+    
+    return
+}
+
+func NewGetTDidPubKeyResponse() (response *GetTDidPubKeyResponse) {
+    response = &GetTDidPubKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTDidPubKey
+// 查询DID标识的认证公钥
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidPubKey(request *GetTDidPubKeyRequest) (response *GetTDidPubKeyResponse, err error) {
+    return c.GetTDidPubKeyWithContext(context.Background(), request)
+}
+
+// GetTDidPubKey
+// 查询DID标识的认证公钥
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_GETDIDDOCFILED = "DidFailedOperation.GetDidDocFiled"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) GetTDidPubKeyWithContext(ctx context.Context, request *GetTDidPubKeyRequest) (response *GetTDidPubKeyResponse, err error) {
+    if request == nil {
+        request = NewGetTDidPubKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTDidPubKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTDidPubKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -670,6 +1139,255 @@ func (c *Client) IssueCredentialWithContext(ctx context.Context, request *IssueC
     request.SetContext(ctx)
     
     response = NewIssueCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAuthorityInfoRequest() (request *QueryAuthorityInfoRequest) {
+    request = &QueryAuthorityInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "QueryAuthorityInfo")
+    
+    
+    return
+}
+
+func NewQueryAuthorityInfoResponse() (response *QueryAuthorityInfoResponse) {
+    response = &QueryAuthorityInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryAuthorityInfo
+// 查询权威机构信息
+//
+// 可能返回的错误码:
+//  AUTHORITY_AUTHORITYNAMELENGTHLONG = "Authority.AuthorityNameLengthLong"
+//  AUTHORITY_AUTHORITYREMARKLENGTHLONG = "Authority.AuthorityRemarkLengthLong"
+//  AUTHORITY_ERRCODEAUTHORITYREGISTERED = "Authority.ErrCodeAuthorityRegistered"
+//  AUTHORITY_ERRCODEDIDAUTHORITYREGISTERED = "Authority.ErrCodeDidAuthorityRegistered"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_NOTAUTHORITY = "DidFailedOperation.NotAuthority"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) QueryAuthorityInfo(request *QueryAuthorityInfoRequest) (response *QueryAuthorityInfoResponse, err error) {
+    return c.QueryAuthorityInfoWithContext(context.Background(), request)
+}
+
+// QueryAuthorityInfo
+// 查询权威机构信息
+//
+// 可能返回的错误码:
+//  AUTHORITY_AUTHORITYNAMELENGTHLONG = "Authority.AuthorityNameLengthLong"
+//  AUTHORITY_AUTHORITYREMARKLENGTHLONG = "Authority.AuthorityRemarkLengthLong"
+//  AUTHORITY_ERRCODEAUTHORITYREGISTERED = "Authority.ErrCodeAuthorityRegistered"
+//  AUTHORITY_ERRCODEDIDAUTHORITYREGISTERED = "Authority.ErrCodeDidAuthorityRegistered"
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_NOTAUTHORITY = "DidFailedOperation.NotAuthority"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) QueryAuthorityInfoWithContext(ctx context.Context, request *QueryAuthorityInfoRequest) (response *QueryAuthorityInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryAuthorityInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAuthorityInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryAuthorityInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCPTRequest() (request *QueryCPTRequest) {
+    request = &QueryCPTRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "QueryCPT")
+    
+    
+    return
+}
+
+func NewQueryCPTResponse() (response *QueryCPTResponse) {
+    response = &QueryCPTResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryCPT
+// 查询凭证模版内容
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CPT_CREATECPTFAILED = "Cpt.CreateCPTFailed"
+//  CPT_INVALIDCPTJSON = "Cpt.InvalidCPTJson"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) QueryCPT(request *QueryCPTRequest) (response *QueryCPTResponse, err error) {
+    return c.QueryCPTWithContext(context.Background(), request)
+}
+
+// QueryCPT
+// 查询凭证模版内容
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CPT_CREATECPTFAILED = "Cpt.CreateCPTFailed"
+//  CPT_INVALIDCPTJSON = "Cpt.InvalidCPTJson"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) QueryCPTWithContext(ctx context.Context, request *QueryCPTRequest) (response *QueryCPTResponse, err error) {
+    if request == nil {
+        request = NewQueryCPTRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCPT require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCPTResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetTDidAttributeRequest() (request *SetTDidAttributeRequest) {
+    request = &SetTDidAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "SetTDidAttribute")
+    
+    
+    return
+}
+
+func NewSetTDidAttributeResponse() (response *SetTDidAttributeResponse) {
+    response = &SetTDidAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetTDidAttribute
+// 设置DID文档的自定义属性
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) SetTDidAttribute(request *SetTDidAttributeRequest) (response *SetTDidAttributeResponse, err error) {
+    return c.SetTDidAttributeWithContext(context.Background(), request)
+}
+
+// SetTDidAttribute
+// 设置DID文档的自定义属性
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DID_PERMISSIONDENIED = "Did.PermissionDenied"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSTATUSINVALID = "DidFailedOperation.DidStatusInvalid"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDFAILEDOPERATION_NOTDIDCREATOR = "DidFailedOperation.NotDidCreator"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) SetTDidAttributeWithContext(ctx context.Context, request *SetTDidAttributeRequest) (response *SetTDidAttributeResponse, err error) {
+    if request == nil {
+        request = NewSetTDidAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTDidAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetTDidAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -900,6 +1618,113 @@ func (c *Client) VerifyCredentialsWithContext(ctx context.Context, request *Veri
     request.SetContext(ctx)
     
     response = NewVerifyCredentialsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyPresentationRequest() (request *VerifyPresentationRequest) {
+    request = &VerifyPresentationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdid", APIVersion, "VerifyPresentation")
+    
+    
+    return
+}
+
+func NewVerifyPresentationResponse() (response *VerifyPresentationResponse) {
+    response = &VerifyPresentationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyPresentation
+// 验证可验证表达的内容
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) VerifyPresentation(request *VerifyPresentationRequest) (response *VerifyPresentationResponse, err error) {
+    return c.VerifyPresentationWithContext(context.Background(), request)
+}
+
+// VerifyPresentation
+// 验证可验证表达的内容
+//
+// 可能返回的错误码:
+//  CAM_INVALIDAUTH = "Cam.InvalidAuth"
+//  CREDENTIAL_CPTNOTEXISTED = "Credential.CPTNotExisted"
+//  CREDENTIAL_CREDENTIALEXPIRED = "Credential.CredentialExpired"
+//  CREDENTIAL_FAILEDCREATEPRESENTATION = "Credential.FailedCreatePresentation"
+//  CREDENTIAL_HOLDERDIDNOTMATCH = "Credential.HolderDidNotMatch"
+//  CREDENTIAL_INVALIDCRDLID = "Credential.InvalidCRDLId"
+//  CREDENTIAL_INVALIDCRDLISSUER = "Credential.InvalidCRDLIssuer"
+//  CREDENTIAL_INVALIDCLAIM = "Credential.InvalidClaim"
+//  CREDENTIAL_INVALIDDISCLOSUREPOLICY = "Credential.InvalidDisclosurePolicy"
+//  CREDENTIAL_INVALIDOPERATECLAIM = "Credential.InvalidOperateClaim"
+//  CREDENTIAL_INVALIDPARAS = "Credential.InvalidParas"
+//  CREDENTIAL_ISSUERDIDNOTMATCH = "Credential.IssuerDidNotMatch"
+//  CREDENTIAL_NOIDINCLAIM = "Credential.NoIdInClaim"
+//  CREDENTIAL_VERIFYCRDLFAILED = "Credential.VerifyCRDLFailed"
+//  DATABASE_FAILEDOPERATION = "DataBase.FailedOperation"
+//  DIDFAILEDOPERATION_DIDNOTEXISTED = "DidFailedOperation.DidNotExisted"
+//  DIDFAILEDOPERATION_DIDSVCNOTEXISTED = "DidFailedOperation.DidSvcNotExisted"
+//  DIDSDK_UNKNOWNERROR = "DidSdk.UnknownError"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  HTTPINVOKER_NEWQUESTERROR = "HttpInvoker.NewQuestError"
+//  HTTPINVOKER_SENDQUESTERROR = "HttpInvoker.SendQuestError"
+//  INTERNALERROR_APIUNKNOWNERROR = "InternalError.ApiUnknownError"
+//  INTERNALERROR_SERVICEDISABLED = "InternalError.ServiceDisabled"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALDATETIME = "InvalidParameterValue.IllegalDateTime"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
+func (c *Client) VerifyPresentationWithContext(ctx context.Context, request *VerifyPresentationRequest) (response *VerifyPresentationResponse, err error) {
+    if request == nil {
+        request = NewVerifyPresentationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyPresentation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyPresentationResponse()
     err = c.Send(request, response)
     return
 }

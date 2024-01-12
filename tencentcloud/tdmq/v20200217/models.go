@@ -8932,6 +8932,140 @@ type ExchangeQuota struct {
 	UsedExchange *int64 `json:"UsedExchange,omitnil" name:"UsedExchange"`
 }
 
+// Predefined struct for user
+type ExportRocketMQMessageDetailRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 应用命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// Topic名称
+	// 如果是死信消息 isDlqMsg=true
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 是否包含消息体
+	IncludeMsgBody *bool `json:"IncludeMsgBody,omitnil" name:"IncludeMsgBody"`
+
+	// 是否死信消息
+	DeadLetterMsg *bool `json:"DeadLetterMsg,omitnil" name:"DeadLetterMsg"`
+}
+
+type ExportRocketMQMessageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 应用命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// Topic名称
+	// 如果是死信消息 isDlqMsg=true
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 是否包含消息体
+	IncludeMsgBody *bool `json:"IncludeMsgBody,omitnil" name:"IncludeMsgBody"`
+
+	// 是否死信消息
+	DeadLetterMsg *bool `json:"DeadLetterMsg,omitnil" name:"DeadLetterMsg"`
+}
+
+func (r *ExportRocketMQMessageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportRocketMQMessageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "MsgId")
+	delete(f, "IncludeMsgBody")
+	delete(f, "DeadLetterMsg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportRocketMQMessageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportRocketMQMessageDetailResponseParams struct {
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息生成时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BornTimestamp *int64 `json:"BornTimestamp,omitnil" name:"BornTimestamp"`
+
+	// 消息存储时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitnil" name:"StoreTimestamp"`
+
+	// 消息生产客户端地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BornHost *string `json:"BornHost,omitnil" name:"BornHost"`
+
+	// 消息Tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgTag *string `json:"MsgTag,omitnil" name:"MsgTag"`
+
+	// 消息Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgKey *string `json:"MsgKey,omitnil" name:"MsgKey"`
+
+	// 消息属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties *string `json:"Properties,omitnil" name:"Properties"`
+
+	// 消息重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReConsumeTimes *uint64 `json:"ReConsumeTimes,omitnil" name:"ReConsumeTimes"`
+
+	// Base64编码格式字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgBody *string `json:"MsgBody,omitnil" name:"MsgBody"`
+
+	// 消息内容的CRC32 Code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgBodyCRC *int64 `json:"MsgBodyCRC,omitnil" name:"MsgBodyCRC"`
+
+	// 消息体大小（单位K）
+	// 当大于2048时不返回消息
+	MsgBodySize *uint64 `json:"MsgBodySize,omitnil" name:"MsgBodySize"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ExportRocketMQMessageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportRocketMQMessageDetailResponseParams `json:"Response"`
+}
+
+func (r *ExportRocketMQMessageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportRocketMQMessageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤参数的名字
 	Name *string `json:"Name,omitnil" name:"Name"`

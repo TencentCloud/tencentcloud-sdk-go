@@ -2060,6 +2060,111 @@ func (r *CreatePrometheusAgentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrometheusAlertGroupRequestParams struct {
+	// prometheus实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组名称，不能与其他告警分组重名
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 告警分组状态：
+	// 2 -- 启用
+	// 3 -- 禁用
+	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+
+	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	AMPReceivers []*string `json:"AMPReceivers,omitnil" name:"AMPReceivers"`
+
+	// 自定义告警通知模板
+	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil" name:"CustomReceiver"`
+
+	// 告警通知周期（收敛时间），为空默认1h
+	RepeatInterval *string `json:"RepeatInterval,omitnil" name:"RepeatInterval"`
+
+	// 要创建的告警规则列表
+	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil" name:"Rules"`
+}
+
+type CreatePrometheusAlertGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// prometheus实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组名称，不能与其他告警分组重名
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 告警分组状态：
+	// 2 -- 启用
+	// 3 -- 禁用
+	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+
+	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	AMPReceivers []*string `json:"AMPReceivers,omitnil" name:"AMPReceivers"`
+
+	// 自定义告警通知模板
+	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil" name:"CustomReceiver"`
+
+	// 告警通知周期（收敛时间），为空默认1h
+	RepeatInterval *string `json:"RepeatInterval,omitnil" name:"RepeatInterval"`
+
+	// 要创建的告警规则列表
+	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil" name:"Rules"`
+}
+
+func (r *CreatePrometheusAlertGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusAlertGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupName")
+	delete(f, "GroupState")
+	delete(f, "AMPReceivers")
+	delete(f, "CustomReceiver")
+	delete(f, "RepeatInterval")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusAlertGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusAlertGroupResponseParams struct {
+	// 创建的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreatePrometheusAlertGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrometheusAlertGroupResponseParams `json:"Response"`
+}
+
+func (r *CreatePrometheusAlertGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusAlertGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrometheusAlertPolicyRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -3414,6 +3519,67 @@ func (r *DeletePolicyGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePolicyGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusAlertGroupsRequestParams struct {
+	// prometheus实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 需要删除的告警分组ID，形如alert-xxxxx
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+type DeletePrometheusAlertGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// prometheus实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 需要删除的告警分组ID，形如alert-xxxxx
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+func (r *DeletePrometheusAlertGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusAlertGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusAlertGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusAlertGroupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeletePrometheusAlertGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrometheusAlertGroupsResponseParams `json:"Response"`
+}
+
+func (r *DeletePrometheusAlertGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusAlertGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8150,6 +8316,100 @@ func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusAlertGroupsRequestParams struct {
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 告警分组ID，形如alert-xxxx。
+	// 查询给定ID的告警分组
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 告警分组名称。
+	// 查询名称中包含给定字符串的告警分组
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+}
+
+type DescribePrometheusAlertGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 告警分组ID，形如alert-xxxx。
+	// 查询给定ID的告警分组
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 告警分组名称。
+	// 查询名称中包含给定字符串的告警分组
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+}
+
+func (r *DescribePrometheusAlertGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "GroupId")
+	delete(f, "GroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusAlertGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusAlertGroupsResponseParams struct {
+	// 告警分组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertGroupSet []*PrometheusAlertGroupSet `json:"AlertGroupSet,omitnil" name:"AlertGroupSet"`
+
+	// 告警分组总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePrometheusAlertGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusAlertGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusAlertGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusAlertPolicyRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -12495,6 +12755,109 @@ type PrometheusAgentOverview struct {
 	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
+type PrometheusAlertAllowTimeRange struct {
+	// 从0点开始的秒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Start *string `json:"Start,omitnil" name:"Start"`
+
+	// 从0点开始的秒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	End *string `json:"End,omitnil" name:"End"`
+}
+
+type PrometheusAlertCustomReceiver struct {
+	// 自定义通知类型
+	// alertmanager -- vpc内自建alertmanager
+	// webhook -- vpc内webhook地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// alertmanager/webhook地址。（prometheus实例同vpc内ip）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 允许发送告警的时间范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowedTimeRanges []*PrometheusAlertAllowTimeRange `json:"AllowedTimeRanges,omitnil" name:"AllowedTimeRanges"`
+
+	// alertmanager所在的内网集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// alertmanager所在的内网集群类型(tke/eks/tdcc)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+}
+
+type PrometheusAlertGroupRuleSet struct {
+	// 告警规则名称，同一告警分组下不允许重名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*PrometheusRuleKV `json:"Labels,omitnil" name:"Labels"`
+
+	// 注释列表
+	// 
+	// 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Annotations []*PrometheusRuleKV `json:"Annotations,omitnil" name:"Annotations"`
+
+	// 规则报警持续时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitnil" name:"Duration"`
+
+	// 规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expr *string `json:"Expr,omitnil" name:"Expr"`
+
+	// 告警规则状态:
+	// 2-启用
+	// 3-禁用
+	// 为空默认启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil" name:"State"`
+}
+
+type PrometheusAlertGroupSet struct {
+	// 告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 告警分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 云监控告警模板ID ，返回告警模板转换后的notice ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AMPReceivers []*string `json:"AMPReceivers,omitnil" name:"AMPReceivers"`
+
+	// 自定义告警模板
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil" name:"CustomReceiver"`
+
+	// 告警通知间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepeatInterval *string `json:"RepeatInterval,omitnil" name:"RepeatInterval"`
+
+	// 若告警分组通过模板创建，则返回模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 分组内告警规则详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil" name:"Rules"`
+
+	// 分组创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+
+	// 分组更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+}
+
 type PrometheusAlertManagerConfig struct {
 	// alertmanager url
 	Url *string `json:"Url,omitnil" name:"Url"`
@@ -15021,6 +15384,190 @@ func (r *UpdatePrometheusAgentStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdatePrometheusAgentStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrometheusAlertGroupRequestParams struct {
+	// prometheus实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组ID，形如alert-xxxx
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 告警分组名称，不能与其他告警分组重名
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 告警分组状态：
+	// 2 -- 启用
+	// 3 -- 禁用
+	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+
+	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	AMPReceivers []*string `json:"AMPReceivers,omitnil" name:"AMPReceivers"`
+
+	// 自定义告警通知模板
+	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil" name:"CustomReceiver"`
+
+	// 告警通知周期（收敛时间），为空默认1h
+	RepeatInterval *string `json:"RepeatInterval,omitnil" name:"RepeatInterval"`
+
+	// 要创建的告警规则列表
+	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil" name:"Rules"`
+}
+
+type UpdatePrometheusAlertGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// prometheus实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组ID，形如alert-xxxx
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 告警分组名称，不能与其他告警分组重名
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 告警分组状态：
+	// 2 -- 启用
+	// 3 -- 禁用
+	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+
+	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	AMPReceivers []*string `json:"AMPReceivers,omitnil" name:"AMPReceivers"`
+
+	// 自定义告警通知模板
+	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil" name:"CustomReceiver"`
+
+	// 告警通知周期（收敛时间），为空默认1h
+	RepeatInterval *string `json:"RepeatInterval,omitnil" name:"RepeatInterval"`
+
+	// 要创建的告警规则列表
+	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil" name:"Rules"`
+}
+
+func (r *UpdatePrometheusAlertGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrometheusAlertGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupId")
+	delete(f, "GroupName")
+	delete(f, "GroupState")
+	delete(f, "AMPReceivers")
+	delete(f, "CustomReceiver")
+	delete(f, "RepeatInterval")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePrometheusAlertGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrometheusAlertGroupResponseParams struct {
+	// 更新的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdatePrometheusAlertGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePrometheusAlertGroupResponseParams `json:"Response"`
+}
+
+func (r *UpdatePrometheusAlertGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrometheusAlertGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrometheusAlertGroupStateRequestParams struct {
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组ID列表，形如alert-xxxx
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+
+	// 告警分组状态
+	// 2 -- 启用
+	// 3 -- 禁用
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+}
+
+type UpdatePrometheusAlertGroupStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 告警分组ID列表，形如alert-xxxx
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+
+	// 告警分组状态
+	// 2 -- 启用
+	// 3 -- 禁用
+	GroupState *int64 `json:"GroupState,omitnil" name:"GroupState"`
+}
+
+func (r *UpdatePrometheusAlertGroupStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrometheusAlertGroupStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupIds")
+	delete(f, "GroupState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePrometheusAlertGroupStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrometheusAlertGroupStateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdatePrometheusAlertGroupStateResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePrometheusAlertGroupStateResponseParams `json:"Response"`
+}
+
+func (r *UpdatePrometheusAlertGroupStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrometheusAlertGroupStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -460,6 +460,10 @@ type BGPInstance struct {
 	// 是否是基础防护加强版 0: 不是 1: 是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicPlusFlag *uint64 `json:"BasicPlusFlag,omitnil" name:"BasicPlusFlag"`
+
+	// 是否是商业模式优化-普惠版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanCntFlag *uint64 `json:"PlanCntFlag,omitnil" name:"PlanCntFlag"`
 }
 
 type BGPInstanceSpecification struct {
@@ -5320,6 +5324,9 @@ type DescribeListBGPInstancesRequestParams struct {
 
 	// 是否包含基础防护增强版 0: 不包含 1: 包含
 	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitnil" name:"FilterBasicPlusFlag"`
+
+	// 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
+	FilterPlanCntFlag *uint64 `json:"FilterPlanCntFlag,omitnil" name:"FilterPlanCntFlag"`
 }
 
 type DescribeListBGPInstancesRequest struct {
@@ -5381,6 +5388,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 是否包含基础防护增强版 0: 不包含 1: 包含
 	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitnil" name:"FilterBasicPlusFlag"`
+
+	// 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
+	FilterPlanCntFlag *uint64 `json:"FilterPlanCntFlag,omitnil" name:"FilterPlanCntFlag"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -5414,6 +5424,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ExcludeAdvancedInfo")
 	delete(f, "FilterAssetIpList")
 	delete(f, "FilterBasicPlusFlag")
+	delete(f, "FilterPlanCntFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}
@@ -7238,7 +7249,7 @@ type EipAddressPackRelation struct {
 }
 
 type EipAddressRelation struct {
-	// 高防弹性公网IP绑定的实例地区，例如hk代表香港
+	// 高防弹性公网IP绑定的实例地区，例如hk代表中国香港
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddressRegion *string `json:"EipAddressRegion,omitnil" name:"EipAddressRegion"`
 

@@ -2902,20 +2902,20 @@ func (r *DeleteApplicationProxyRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOriginGroupRequestParams struct {
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组ID，此参数必填。
+	// 源站组 ID，此参数必填。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 }
 
 type DeleteOriginGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 源站组ID，此参数必填。
+	// 源站组 ID，此参数必填。
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 }
 

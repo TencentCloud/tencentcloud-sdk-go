@@ -20437,7 +20437,7 @@ type ServiceSetting struct {
 }
 
 type ServiceStatisticsResult struct {
-	// 请求模版路径:type为接口时返回，服务时不返回
+	// 请求模板路径:type为接口时返回，服务时不返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil" name:"Path"`
 

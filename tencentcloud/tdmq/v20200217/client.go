@@ -5555,6 +5555,59 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewExportRocketMQMessageDetailRequest() (request *ExportRocketMQMessageDetailRequest) {
+    request = &ExportRocketMQMessageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ExportRocketMQMessageDetail")
+    
+    
+    return
+}
+
+func NewExportRocketMQMessageDetailResponse() (response *ExportRocketMQMessageDetailResponse) {
+    response = &ExportRocketMQMessageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportRocketMQMessageDetail
+// 导出RocketMQ消息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) ExportRocketMQMessageDetail(request *ExportRocketMQMessageDetailRequest) (response *ExportRocketMQMessageDetailResponse, err error) {
+    return c.ExportRocketMQMessageDetailWithContext(context.Background(), request)
+}
+
+// ExportRocketMQMessageDetail
+// 导出RocketMQ消息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) ExportRocketMQMessageDetailWithContext(ctx context.Context, request *ExportRocketMQMessageDetailRequest) (response *ExportRocketMQMessageDetailResponse, err error) {
+    if request == nil {
+        request = NewExportRocketMQMessageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportRocketMQMessageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportRocketMQMessageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportRocketMQConsumerGroupsRequest() (request *ImportRocketMQConsumerGroupsRequest) {
     request = &ImportRocketMQConsumerGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5578,15 +5631,9 @@ func NewImportRocketMQConsumerGroupsResponse() (response *ImportRocketMQConsumer
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
     return c.ImportRocketMQConsumerGroupsWithContext(context.Background(), request)
 }
@@ -5595,15 +5642,9 @@ func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGro
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQConsumerGroupsWithContext(ctx context.Context, request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
     if request == nil {
         request = NewImportRocketMQConsumerGroupsRequest()
@@ -5643,15 +5684,9 @@ func NewImportRocketMQTopicsResponse() (response *ImportRocketMQTopicsResponse) 
 // 导入topic列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
     return c.ImportRocketMQTopicsWithContext(context.Background(), request)
 }
@@ -5660,15 +5695,9 @@ func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (res
 // 导入topic列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQTopicsWithContext(ctx context.Context, request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
     if request == nil {
         request = NewImportRocketMQTopicsRequest()
