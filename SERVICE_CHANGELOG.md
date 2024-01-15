@@ -1,56 +1,23 @@
 # 本版本更新包含以下内容：
 
-## 分布式身份(tdid) 版本：2021-05-19
+## 微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 11 次发布
+### 第 104 次发布
 
-发布时间：2024-01-11 10:56:14
+发布时间：2024-01-15 01:25:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CheckNewPurchase](https://cloud.tencent.com/document/api/1439/102971)
-* [CreateTDidByHost](https://cloud.tencent.com/document/api/1439/102970)
-* [CreateTDidByPubKey](https://cloud.tencent.com/document/api/1439/102969)
-* [DeactivateTDid](https://cloud.tencent.com/document/api/1439/102968)
-* [GetCredentialState](https://cloud.tencent.com/document/api/1439/102966)
-* [GetTDidDocument](https://cloud.tencent.com/document/api/1439/102967)
-* [IssueCredential](https://cloud.tencent.com/document/api/1439/102965)
-* [UpdateCredentialState](https://cloud.tencent.com/document/api/1439/102964)
-* [VerifyCredentials](https://cloud.tencent.com/document/api/1439/102963)
+* [LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)
 
-<font color="#dd0000">**删除接口**：</font>
+	* 新增成员：LaneGroupId
 
-* CheckChain
-* CreateCredential
-* CreateSelectiveCredential
-* CreateTDid
-* CreateTDidByPrivateKey
-* CreateTDidByPublicKey
-* GetAuthorityIssuer
-* GetCptInfo
-* GetCredentialStatus
-* GetDidDocument
-* RegisterCpt
-* SetCredentialStatus
-* VerifyCredential
+	* <font color="#dd0000">**修改成员**：</font>LaneId, LaneName, Remark, CreateTime, UpdateTime, LaneGroupList, Entrance, NamespaceIdList
 
-新增数据结构：
-
-* [CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg)
-* [ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction)
-* [CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState)
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* CredentialStatus
-* FunctionArg
-* Proof
-* TransactionArg
-* VerifyFunctionArg
 
 
 
@@ -1815,6 +1782,28 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 63 次发布
+
+发布时间：2024-01-12 01:06:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
+
+	* 新增入参：FilterPlanCntFlag
+
+
+修改数据结构：
+
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
+
+	* 新增成员：PlanCntFlag
+
 
 ### 第 62 次发布
 
@@ -51354,6 +51343,21 @@
 
 ## 数据传输服务(dts) 版本：2021-12-06
 
+### 第 22 次发布
+
+发布时间：2024-01-12 01:14:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MigrateOption](https://cloud.tencent.com/document/api/571/82108#MigrateOption)
+
+	* 新增成员：MigrateWay
+
+
 ### 第 21 次发布
 
 发布时间：2024-01-10 01:13:50
@@ -62948,6 +62952,21 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 70 次发布
+
+发布时间：2024-01-12 01:15:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
+
+	* 新增入参：IsCutIdCardImage, IsNeedIdCardAvatar
+
 
 ### 第 69 次发布
 
@@ -82404,6 +82423,29 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 102 次发布
+
+发布时间：2024-01-12 01:19:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrometheusAlertGroup](https://cloud.tencent.com/document/api/248/102990)
+* [DeletePrometheusAlertGroups](https://cloud.tencent.com/document/api/248/102989)
+* [DescribePrometheusAlertGroups](https://cloud.tencent.com/document/api/248/102988)
+* [UpdatePrometheusAlertGroup](https://cloud.tencent.com/document/api/248/102987)
+* [UpdatePrometheusAlertGroupState](https://cloud.tencent.com/document/api/248/102986)
+
+新增数据结构：
+
+* [PrometheusAlertAllowTimeRange](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertAllowTimeRange)
+* [PrometheusAlertCustomReceiver](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertCustomReceiver)
+* [PrometheusAlertGroupRuleSet](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertGroupRuleSet)
+* [PrometheusAlertGroupSet](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertGroupSet)
+
 ### 第 101 次发布
 
 发布时间：2024-01-10 01:19:07
@@ -89895,6 +89937,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 127 次发布
+
+发布时间：2024-01-12 01:20:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
+
+	* 新增入参：EnablePdf, PdfPageNumber
+
+
 ### 第 126 次发布
 
 发布时间：2024-01-05 01:21:40
@@ -96872,6 +96929,20 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 31 次发布
+
+发布时间：2024-01-12 01:21:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeleteOfflineLogConfig
+* DeleteOfflineLogRecord
+* DescribeOfflineLogConfigs
 
 ### 第 30 次发布
 
@@ -111683,6 +111754,37 @@
 
 ## 分布式身份(tdid) 版本：2021-05-19
 
+### 第 12 次发布
+
+发布时间：2024-01-12 01:24:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDisclosedCredential](https://cloud.tencent.com/document/api/1439/102997)
+* [CreatePresentation](https://cloud.tencent.com/document/api/1439/102996)
+* [GetAppSummary](https://cloud.tencent.com/document/api/1439/102993)
+* [GetOverSummary](https://cloud.tencent.com/document/api/1439/102992)
+* [GetTDidByObjectId](https://cloud.tencent.com/document/api/1439/103001)
+* [GetTDidPubKey](https://cloud.tencent.com/document/api/1439/103000)
+* [QueryAuthorityInfo](https://cloud.tencent.com/document/api/1439/102999)
+* [QueryCPT](https://cloud.tencent.com/document/api/1439/102995)
+* [SetTDidAttribute](https://cloud.tencent.com/document/api/1439/102998)
+* [VerifyPresentation](https://cloud.tencent.com/document/api/1439/102994)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckNewPurchase
+
+新增数据结构：
+
+* [CredentialProof](https://cloud.tencent.com/document/api/1439/60283#CredentialProof)
+* [DidAttribute](https://cloud.tencent.com/document/api/1439/60283#DidAttribute)
+* [ResourceCounterData](https://cloud.tencent.com/document/api/1439/60283#ResourceCounterData)
+
 ### 第 11 次发布
 
 发布时间：2024-01-11 10:56:14
@@ -111693,15 +111795,15 @@
 
 新增接口：
 
-* [[CheckNewPurchase](https://cloud.tencent.com/document/api/1439/102971)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTDidByHost](https://cloud.tencent.com/document/api/1439/102970)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTDidByPubKey](https://cloud.tencent.com/document/api/1439/102969)](https://cloud.tencent.com/document/api/#/#)
-* [[DeactivateTDid](https://cloud.tencent.com/document/api/1439/102968)](https://cloud.tencent.com/document/api/#/#)
-* [[GetCredentialState](https://cloud.tencent.com/document/api/1439/102966)](https://cloud.tencent.com/document/api/#/#)
-* [[GetTDidDocument](https://cloud.tencent.com/document/api/1439/102967)](https://cloud.tencent.com/document/api/#/#)
-* [[IssueCredential](https://cloud.tencent.com/document/api/1439/102965)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateCredentialState](https://cloud.tencent.com/document/api/1439/102964)](https://cloud.tencent.com/document/api/#/#)
-* [[VerifyCredentials](https://cloud.tencent.com/document/api/1439/102963)](https://cloud.tencent.com/document/api/#/#)
+* [CheckNewPurchase](https://cloud.tencent.com/document/api/#/#)
+* [CreateTDidByHost](https://cloud.tencent.com/document/api/1439/102970)
+* [CreateTDidByPubKey](https://cloud.tencent.com/document/api/1439/102969)
+* [DeactivateTDid](https://cloud.tencent.com/document/api/1439/102968)
+* [GetCredentialState](https://cloud.tencent.com/document/api/1439/102966)
+* [GetTDidDocument](https://cloud.tencent.com/document/api/1439/102967)
+* [IssueCredential](https://cloud.tencent.com/document/api/1439/102965)
+* [UpdateCredentialState](https://cloud.tencent.com/document/api/1439/102964)
+* [VerifyCredentials](https://cloud.tencent.com/document/api/1439/102963)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -111721,9 +111823,9 @@
 
 新增数据结构：
 
-* [[CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg)](https://cloud.tencent.com/document/api/1439/60283#[CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg))
-* [[ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction)](https://cloud.tencent.com/document/api/1439/60283#[ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction))
-* [[CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState)](https://cloud.tencent.com/document/api/1439/60283#[CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState))
+* [CRDLArg](https://cloud.tencent.com/document/api/1439/60283#CRDLArg)
+* [ChainTransaction](https://cloud.tencent.com/document/api/1439/60283#ChainTransaction)
+* [CredentialState](https://cloud.tencent.com/document/api/1439/60283#CredentialState)
 
 <font color="#dd0000">**删除数据结构**：</font>
 
@@ -112045,6 +112147,18 @@
 
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 101 次发布
+
+发布时间：2024-01-12 01:24:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ExportRocketMQMessageDetail](https://cloud.tencent.com/document/api/1179/103002)
 
 ### 第 100 次发布
 
@@ -129637,6 +129751,23 @@
 
 
 ## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 104 次发布
+
+发布时间：2024-01-15 01:25:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)
+
+	* 新增成员：LaneGroupId
+
+	* <font color="#dd0000">**修改成员**：</font>LaneId, LaneName, Remark, CreateTime, UpdateTime, LaneGroupList, Entrance, NamespaceIdList
+
 
 ### 第 103 次发布
 

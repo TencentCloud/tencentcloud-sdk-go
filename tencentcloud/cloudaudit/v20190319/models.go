@@ -228,7 +228,7 @@ type CreateAuditTrackRequestParams struct {
 	// 数据投递存储（目前支持 cos、cls）
 	Storage *Storage `json:"Storage,omitnil" name:"Storage"`
 
-	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
 	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil" name:"TrackForAllMembers"`
 }
 
@@ -253,7 +253,7 @@ type CreateAuditTrackRequest struct {
 	// 数据投递存储（目前支持 cos、cls）
 	Storage *Storage `json:"Storage,omitnil" name:"Storage"`
 
-	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
 	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil" name:"TrackForAllMembers"`
 }
 

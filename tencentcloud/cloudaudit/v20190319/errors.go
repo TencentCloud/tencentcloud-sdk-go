@@ -167,6 +167,9 @@ const (
 	// 跟踪集不存在
 	RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 
+	// cos桶不存在。
+	RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
+
 	// 角色不存在。
 	RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
 )

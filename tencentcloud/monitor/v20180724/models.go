@@ -5035,11 +5035,11 @@ type DescribeAlarmPoliciesRequestParams struct {
 	// 按策略名称模糊搜索
 	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
-	// 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控
+	// 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控,当Dimension不为空时，该项为必填项
 	MonitorTypes []*string `json:"MonitorTypes,omitnil" name:"MonitorTypes"`
 
 	// 根据命名空间过滤，不同策略类型的值详见
-	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)
+	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
 	Namespaces []*string `json:"Namespaces,omitnil" name:"Namespaces"`
 
 	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
@@ -5126,11 +5126,11 @@ type DescribeAlarmPoliciesRequest struct {
 	// 按策略名称模糊搜索
 	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
-	// 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控
+	// 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控,当Dimension不为空时，该项为必填项
 	MonitorTypes []*string `json:"MonitorTypes,omitnil" name:"MonitorTypes"`
 
 	// 根据命名空间过滤，不同策略类型的值详见
-	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)
+	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
 	Namespaces []*string `json:"Namespaces,omitnil" name:"Namespaces"`
 
 	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：

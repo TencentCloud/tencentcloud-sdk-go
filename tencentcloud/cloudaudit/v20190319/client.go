@@ -189,6 +189,7 @@ func NewCreateAuditTrackResponse() (response *CreateAuditTrackResponse) {
 //  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
 func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
     return c.CreateAuditTrackWithContext(context.Background(), request)
 }
@@ -209,6 +210,7 @@ func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *C
 //  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
 func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
     if request == nil {
         request = NewCreateAuditTrackRequest()
@@ -946,6 +948,7 @@ func NewModifyAuditTrackResponse() (response *ModifyAuditTrackResponse) {
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
 func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
     return c.ModifyAuditTrackWithContext(context.Background(), request)
 }
@@ -967,6 +970,7 @@ func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *M
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
 func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
     if request == nil {
         request = NewModifyAuditTrackRequest()

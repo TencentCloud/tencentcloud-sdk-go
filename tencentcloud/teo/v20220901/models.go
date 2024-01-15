@@ -504,11 +504,13 @@ type ApplicationProxyRule struct {
 
 	// 源站类型，取值有：
 	// <li>custom：手动添加；</li>
+	// <li>loadbalancer：负载均衡；</li>
 	// <li>origins：源站组。</li>
 	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
 
 	// 源站信息：
 	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 loadbalancer 时，表示一个负载均衡，如`["lb-xdffsfasdfs"]`；</li>
 	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitnil" name:"OriginValue"`
 
@@ -1437,9 +1439,7 @@ type CreateApplicationProxyRequestParams struct {
 	// <li>1：开启加速。</li>
 	AccelerateType *int64 `json:"AccelerateType,omitnil" name:"AccelerateType"`
 
-	// 四层代理模式，取值有：
-	// <li>hostname：表示子域名模式；</li>
-	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
+	// 四层代理模式，取值有： <li>instance：表示实例模式。</li>不填写使用默认值instance。
 	ProxyType *string `json:"ProxyType,omitnil" name:"ProxyType"`
 
 	// 会话保持时间，取值范围：30-3600，单位：秒。
@@ -1483,9 +1483,7 @@ type CreateApplicationProxyRequest struct {
 	// <li>1：开启加速。</li>
 	AccelerateType *int64 `json:"AccelerateType,omitnil" name:"AccelerateType"`
 
-	// 四层代理模式，取值有：
-	// <li>hostname：表示子域名模式；</li>
-	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
+	// 四层代理模式，取值有： <li>instance：表示实例模式。</li>不填写使用默认值instance。
 	ProxyType *string `json:"ProxyType,omitnil" name:"ProxyType"`
 
 	// 会话保持时间，取值范围：30-3600，单位：秒。
@@ -1577,11 +1575,13 @@ type CreateApplicationProxyRuleRequestParams struct {
 
 	// 源站类型，取值有：
 	// <li>custom：手动添加；</li>
+	// <li>loadbalancer：负载均衡；</li>
 	// <li>origins：源站组。</li>
 	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
 
 	// 源站信息：
 	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 loadbalancer 时，表示一个负载均衡，如`["lb-xdffsfasdfs"]`；</li>
 	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitnil" name:"OriginValue"`
 
@@ -1630,11 +1630,13 @@ type CreateApplicationProxyRuleRequest struct {
 
 	// 源站类型，取值有：
 	// <li>custom：手动添加；</li>
+	// <li>loadbalancer：负载均衡；</li>
 	// <li>origins：源站组。</li>
 	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
 
 	// 源站信息：
 	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 loadbalancer 时，表示一个负载均衡，如`["lb-xdffsfasdfs"]`；</li>
 	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitnil" name:"OriginValue"`
 

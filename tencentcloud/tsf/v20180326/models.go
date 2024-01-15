@@ -17085,6 +17085,10 @@ type LaneInfo struct {
 	// 泳道已经关联部署组的命名空间列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceIdList []*string `json:"NamespaceIdList,omitnil" name:"NamespaceIdList"`
+
+	// 泳道部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneGroupId *string `json:"LaneGroupId,omitnil" name:"LaneGroupId"`
 }
 
 type LaneInfos struct {
