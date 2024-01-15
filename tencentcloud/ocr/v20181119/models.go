@@ -6665,6 +6665,124 @@ func (r *RecognizeContainerOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RecognizeForeignPermanentResidentIdCardRequestParams struct {
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume
+	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitnil" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	// 示例值：1
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
+}
+
+type RecognizeForeignPermanentResidentIdCardRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume
+	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitnil" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	// 示例值：1
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
+}
+
+func (r *RecognizeForeignPermanentResidentIdCardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeForeignPermanentResidentIdCardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "EnablePdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeForeignPermanentResidentIdCardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeForeignPermanentResidentIdCardResponseParams struct {
+	// 中文姓名。
+	CnName *string `json:"CnName,omitnil" name:"CnName"`
+
+	// 英文名。
+	EnName *string `json:"EnName,omitnil" name:"EnName"`
+
+	// 性别。
+	Sex *string `json:"Sex,omitnil" name:"Sex"`
+
+	// 出生日期。规范格式为 XXXX年XX月XX日。
+	DateOfBirth *string `json:"DateOfBirth,omitnil" name:"DateOfBirth"`
+
+	// 国籍。
+	Nationality *string `json:"Nationality,omitnil" name:"Nationality"`
+
+	// 有效期限。
+	PeriodOfValidity *string `json:"PeriodOfValidity,omitnil" name:"PeriodOfValidity"`
+
+	// 证件号码。
+	No *string `json:"No,omitnil" name:"No"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RecognizeForeignPermanentResidentIdCardResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeForeignPermanentResidentIdCardResponseParams `json:"Response"`
+}
+
+func (r *RecognizeForeignPermanentResidentIdCardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeForeignPermanentResidentIdCardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizeGeneralInvoiceRequestParams struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。

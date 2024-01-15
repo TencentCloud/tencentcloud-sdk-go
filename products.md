@@ -76,7 +76,7 @@
 | dasb | [T-Sec-堡垒机（BH）](https://cloud.tencent.com/document/product/1025) | 2024-01-05 01:13:10 |
 | dataintegration | [数据接入平台](https://cloud.tencent.com/document/product/1591) | 2022-07-26 15:32:15 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2023-05-18 01:20:11 |
-| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2023-10-09 01:12:39 |
+| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2024-01-16 01:12:56 |
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2023-08-22 01:11:33 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2024-01-11 01:12:33 |
 | dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2023-10-30 00:33:47 |
@@ -96,8 +96,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2023-12-25 00:10:01 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-01-03 01:15:03 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-10 01:15:05 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-11 01:14:56 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-16 01:14:53 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-16 01:15:09 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-12-15 19:41:44 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-01-12 01:15:37 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-12-25 00:11:01 |
@@ -154,9 +154,9 @@
 | nlp | [NLP 服务](https://cloud.tencent.com/document/product/271) | 2023-09-15 02:14:19 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2024-01-05 01:21:32 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-01-15 01:19:04 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-01-16 01:19:57 |
 | omics | [腾讯健康组学平台](https://cloud.tencent.com/document/product/1643) | 2024-01-05 01:21:57 |
-| organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | 2023-12-25 00:15:53 |
+| organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | 2024-01-16 01:20:17 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2023-08-17 04:23:46 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2023-05-18 01:44:14 |
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2023-11-14 01:22:46 |
@@ -212,7 +212,7 @@
 | tics | [威胁情报云查服务](https://cloud.tencent.com/document/product/1013) | 2023-08-17 05:26:12 |
 | tiems | [腾讯云 TI 平台 TI-EMS ](https://cloud.tencent.com/document/product/1120) | 2022-07-19 06:19:39 |
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2023-09-01 01:23:47 |
-| tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2024-01-09 01:26:40 |
+| tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2024-01-16 01:24:12 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2023-12-29 01:26:38 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2023-12-26 01:27:04 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
@@ -236,7 +236,7 @@
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-11-27 00:23:42 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-12-26 02:05:35 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-11-15 02:42:49 |
-| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2023-12-28 01:29:55 |
+| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2024-01-16 01:27:38 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2023-12-14 02:56:46 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | yinsuda | [音速达直播音乐版权引擎](https://cloud.tencent.com/document/product/1592) | 2023-12-26 02:06:57 |

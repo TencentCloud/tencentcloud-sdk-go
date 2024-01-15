@@ -3430,6 +3430,12 @@ type DescribeRedisTopBigKeysRequestParams struct {
 
 	// 查询数目，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 异步任务ID。当为空时，选择最近任务的ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitnil" name:"ShardIds"`
 }
 
 type DescribeRedisTopBigKeysRequest struct {
@@ -3452,6 +3458,12 @@ type DescribeRedisTopBigKeysRequest struct {
 
 	// 查询数目，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 异步任务ID。当为空时，选择最近任务的ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitnil" name:"ShardIds"`
 }
 
 func (r *DescribeRedisTopBigKeysRequest) ToJsonString() string {
@@ -3472,6 +3484,8 @@ func (r *DescribeRedisTopBigKeysRequest) FromJsonString(s string) error {
 	delete(f, "SortBy")
 	delete(f, "KeyType")
 	delete(f, "Limit")
+	delete(f, "AsyncRequestId")
+	delete(f, "ShardIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopBigKeysRequest has unknown keys!", "")
 	}
@@ -5002,6 +5016,10 @@ type InstanceConfs struct {
 	// redis大key分析的自定义分割符，仅redis使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyDelimiters []*string `json:"KeyDelimiters,omitnil" name:"KeyDelimiters"`
+
+	// 分片节点数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardNum *string `json:"ShardNum,omitnil" name:"ShardNum"`
 }
 
 type InstanceID struct {

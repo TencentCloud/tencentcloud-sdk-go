@@ -3223,23 +3223,21 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 }
 
 // CreateFlowSignUrl
-// 该接口用于发起合同后，生成个人用户的签署链接, 暂时不支持企业端签署 <br/>
+// 该接口用于发起合同后，生成用户的签署链接 <br/>
 //
 // 
 //
 // **注意**
 //
-// 1. 该接口目前**仅支持签署人类型是个人签署方**的场景(PERSON)。
+// 1. 该接口可生成签署链接的签署人必须仅有手写签名、时间类型和印章类型的签署控件，**不支持填写控件** 。
 //
-// 2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，**不支持填写控件** 。
+// 2. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
 //
-// 3. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
-//
-// 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
+// 3. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
 // 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
-// 5. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+// 4. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3259,23 +3257,21 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 }
 
 // CreateFlowSignUrl
-// 该接口用于发起合同后，生成个人用户的签署链接, 暂时不支持企业端签署 <br/>
+// 该接口用于发起合同后，生成用户的签署链接 <br/>
 //
 // 
 //
 // **注意**
 //
-// 1. 该接口目前**仅支持签署人类型是个人签署方**的场景(PERSON)。
+// 1. 该接口可生成签署链接的签署人必须仅有手写签名、时间类型和印章类型的签署控件，**不支持填写控件** 。
 //
-// 2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，**不支持填写控件** 。
+// 2. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
 //
-// 3. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
-//
-// 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
+// 3. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
 // 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
-// 5. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+// 4. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3391,7 +3387,65 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 }
 
 // CreateIntegrationEmployees
-// 此接口（CreateIntegrationEmployees）用于创建企业员工。调用成功后会给员工发送提醒员工实名的短信。若通过手机号发现员工已经创建，则不会重新创建，但会发送短信提醒员工实名。另外，此接口还支持通过企微组织架构的openid 创建员工（将WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内），该场景下，员工会接收到提醒实名的企微消息。
+// 此接口（CreateIntegrationEmployees）用于创建企业员工。
+//
+// 支持以下场景
+//
+// <table style="border-collapse: collapse; width: 100%;" border="1">
+//
+// <tbody>
+//
+// <tr>
+//
+// <td style="width: 25%;">生成端</td>
+//
+// <td style="width: 25%;">入参</td>
+//
+// <td style="width: 25%;">提醒方式</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">普通saas员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
+//
+// <td style="width: 25%;">短信</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">企微员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+//
+// <td style="width: 25%;">企微内部实名消息</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">H5端 saas员工</td>
+//
+// <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
+//
+// <td style="width: 25%;">生成H5链接</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 注意：
+//
+// 
+//
+// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
+//
+// - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3410,7 +3464,65 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 }
 
 // CreateIntegrationEmployees
-// 此接口（CreateIntegrationEmployees）用于创建企业员工。调用成功后会给员工发送提醒员工实名的短信。若通过手机号发现员工已经创建，则不会重新创建，但会发送短信提醒员工实名。另外，此接口还支持通过企微组织架构的openid 创建员工（将WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内），该场景下，员工会接收到提醒实名的企微消息。
+// 此接口（CreateIntegrationEmployees）用于创建企业员工。
+//
+// 支持以下场景
+//
+// <table style="border-collapse: collapse; width: 100%;" border="1">
+//
+// <tbody>
+//
+// <tr>
+//
+// <td style="width: 25%;">生成端</td>
+//
+// <td style="width: 25%;">入参</td>
+//
+// <td style="width: 25%;">提醒方式</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">普通saas员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
+//
+// <td style="width: 25%;">短信</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">企微员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+//
+// <td style="width: 25%;">企微内部实名消息</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">H5端 saas员工</td>
+//
+// <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
+//
+// <td style="width: 25%;">生成H5链接</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 注意：
+//
+// 
+//
+// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
+//
+// - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7739,9 +7851,63 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 }
 
 // UpdateIntegrationEmployees
-// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号。
+// 此接口（UpdateIntegrationEmployees）用于修改未实名企业员工信息(姓名，手机号，邮件、部门)。
 //
-// 可进行批量操作，Employees中的userID与openID二选一必填
+// 修改手机号的时候,支持以下场景进行提醒通知
+//
+// <table style="border-collapse: collapse; width: 100%;" border="1">
+//
+// <tbody>
+//
+// <tr>
+//
+// <td style="width: 25%;">生成端</td>
+//
+// <td style="width: 25%;">入参</td>
+//
+// <td style="width: 25%;">提醒方式</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">普通saas员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
+//
+// <td style="width: 25%;">短信</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">企微员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+//
+// <td style="width: 25%;">企微内部实名消息</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">H5端 saas员工</td>
+//
+// <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
+//
+// <td style="width: 25%;">生成H5链接</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 注意：
+//
+// 
+//
+// - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7755,9 +7921,63 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 }
 
 // UpdateIntegrationEmployees
-// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号。
+// 此接口（UpdateIntegrationEmployees）用于修改未实名企业员工信息(姓名，手机号，邮件、部门)。
 //
-// 可进行批量操作，Employees中的userID与openID二选一必填
+// 修改手机号的时候,支持以下场景进行提醒通知
+//
+// <table style="border-collapse: collapse; width: 100%;" border="1">
+//
+// <tbody>
+//
+// <tr>
+//
+// <td style="width: 25%;">生成端</td>
+//
+// <td style="width: 25%;">入参</td>
+//
+// <td style="width: 25%;">提醒方式</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">普通saas员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
+//
+// <td style="width: 25%;">短信</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">企微员工</td>
+//
+// <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+//
+// <td style="width: 25%;">企微内部实名消息</td>
+//
+// </tr>
+//
+// <tr>
+//
+// <td style="width: 25%;">H5端 saas员工</td>
+//
+// <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
+//
+// <td style="width: 25%;">生成H5链接</td>
+//
+// </tr>
+//
+// </tbody>
+//
+// </table>
+//
+// 注意：
+//
+// 
+//
+// - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

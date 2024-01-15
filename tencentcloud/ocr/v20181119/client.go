@@ -4535,6 +4535,73 @@ func (c *Client) RecognizeContainerOCRWithContext(ctx context.Context, request *
     return
 }
 
+func NewRecognizeForeignPermanentResidentIdCardRequest() (request *RecognizeForeignPermanentResidentIdCardRequest) {
+    request = &RecognizeForeignPermanentResidentIdCardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeForeignPermanentResidentIdCard")
+    
+    
+    return
+}
+
+func NewRecognizeForeignPermanentResidentIdCardResponse() (response *RecognizeForeignPermanentResidentIdCardResponse) {
+    response = &RecognizeForeignPermanentResidentIdCardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeForeignPermanentResidentIdCard
+// 外国人永久居留身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeForeignPermanentResidentIdCard(request *RecognizeForeignPermanentResidentIdCardRequest) (response *RecognizeForeignPermanentResidentIdCardResponse, err error) {
+    return c.RecognizeForeignPermanentResidentIdCardWithContext(context.Background(), request)
+}
+
+// RecognizeForeignPermanentResidentIdCard
+// 外国人永久居留身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeForeignPermanentResidentIdCardWithContext(ctx context.Context, request *RecognizeForeignPermanentResidentIdCardRequest) (response *RecognizeForeignPermanentResidentIdCardResponse, err error) {
+    if request == nil {
+        request = NewRecognizeForeignPermanentResidentIdCardRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeForeignPermanentResidentIdCard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeForeignPermanentResidentIdCardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeGeneralInvoiceRequest() (request *RecognizeGeneralInvoiceRequest) {
     request = &RecognizeGeneralInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

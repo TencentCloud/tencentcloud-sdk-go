@@ -15184,67 +15184,6 @@ func (r *DescribeIntegrationVersionNodesInfoResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
-type DescribeKafkaTopicInfoRequestParams struct {
-	// 数据源id
-	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
-
-	// 数据源类型
-	Type *string `json:"Type,omitnil" name:"Type"`
-}
-
-type DescribeKafkaTopicInfoRequest struct {
-	*tchttp.BaseRequest
-	
-	// 数据源id
-	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
-
-	// 数据源类型
-	Type *string `json:"Type,omitnil" name:"Type"`
-}
-
-func (r *DescribeKafkaTopicInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeKafkaTopicInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DatasourceId")
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaTopicInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeKafkaTopicInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeKafkaTopicInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeKafkaTopicInfoResponseParams `json:"Response"`
-}
-
-func (r *DescribeKafkaTopicInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeKafkaTopicInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeMonitorsByPageRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`

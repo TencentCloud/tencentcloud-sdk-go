@@ -798,8 +798,9 @@ type Component struct {
 	// <li> <b>DATE</b> : 日期控件；默认是格式化为xxxx年xx月xx日字符串；</li>
 	// <li> <b>DISTRICT</b> : 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；</li></ul>
 	// 
-	// **如果是SignComponent签署控件类型，则可选的字段为**
-	// 
+	// **如果是SignComponent签署控件类型，
+	// 需要根据签署人的类型可选的字段为**
+	// * 企业方
 	// <ul><li> <b>SIGN_SEAL</b> : 签署印章控件；</li>
 	// <li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
@@ -807,6 +808,12 @@ type Component struct {
 	// <li> <b>SIGN_PAGING_SEAL</b> : 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
 	// <li> <b>SIGN_LEGAL_PERSON_SEAL</b> : 企业法定代表人控件。</li></ul>
+	// 
+	// * 个人方
+	// <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
+	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+	// <li> <b>SIGN_PERSONAL_SEAL</b> : 个人签署印章控件（使用文件发起暂不支持此类型）；</li></ul>
+	//  
 	// 注：` 表单域的控件不能作为印章和签名控件`
 	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
 
@@ -3366,13 +3373,6 @@ type CreateFlowSignUrlRequestParams struct {
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，
-	// 
-	// 注:
-	// `1. ApproverType目前只支持个人类型的签署人。`
-	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
-	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
-
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
@@ -3381,6 +3381,13 @@ type CreateFlowSignUrlRequestParams struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
+	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
+	// 
+	// 注:
+	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
+	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
+
 	// 机构信息，暂未开放
 	//
 	// Deprecated: Organization is deprecated.
@@ -3388,6 +3395,14 @@ type CreateFlowSignUrlRequestParams struct {
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+
+	// 链接类型，支持指定以下类型
+	// <ul><li>0 : 签署链接 (默认值)</li>
+	// <li>1 : 预览链接</li></ul>
+	// 注:
+	// `1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
+	// `2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
+	UrlType *int64 `json:"UrlType,omitnil" name:"UrlType"`
 }
 
 type CreateFlowSignUrlRequest struct {
@@ -3398,13 +3413,6 @@ type CreateFlowSignUrlRequest struct {
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，
-	// 
-	// 注:
-	// `1. ApproverType目前只支持个人类型的签署人。`
-	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
-	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
-
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
@@ -3413,11 +3421,26 @@ type CreateFlowSignUrlRequest struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
+	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
+	// 
+	// 注:
+	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
+	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
+
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+
+	// 链接类型，支持指定以下类型
+	// <ul><li>0 : 签署链接 (默认值)</li>
+	// <li>1 : 预览链接</li></ul>
+	// 注:
+	// `1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
+	// `2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
+	UrlType *int64 `json:"UrlType,omitnil" name:"UrlType"`
 }
 
 func (r *CreateFlowSignUrlRequest) ToJsonString() string {
@@ -3433,11 +3456,12 @@ func (r *CreateFlowSignUrlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FlowId")
-	delete(f, "FlowApproverInfos")
 	delete(f, "Operator")
 	delete(f, "Agent")
+	delete(f, "FlowApproverInfos")
 	delete(f, "Organization")
 	delete(f, "JumpUrl")
+	delete(f, "UrlType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignUrlRequest has unknown keys!", "")
 	}
@@ -3588,6 +3612,16 @@ type CreateIntegrationEmployeesRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 员工邀请方式
+	// 如果是来自H5的，参数需要传递H5
+	// 短信或者企微 请传递SMS，或者不传递
+	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil" name:"InvitationNotifyType"`
+
+	// 回跳地址，
+	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
+	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
 type CreateIntegrationEmployeesRequest struct {
@@ -3605,6 +3639,16 @@ type CreateIntegrationEmployeesRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 员工邀请方式
+	// 如果是来自H5的，参数需要传递H5
+	// 短信或者企微 请传递SMS，或者不传递
+	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil" name:"InvitationNotifyType"`
+
+	// 回跳地址，
+	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
+	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
 func (r *CreateIntegrationEmployeesRequest) ToJsonString() string {
@@ -3622,6 +3666,8 @@ func (r *CreateIntegrationEmployeesRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "Employees")
 	delete(f, "Agent")
+	delete(f, "InvitationNotifyType")
+	delete(f, "JumpUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationEmployeesRequest has unknown keys!", "")
 	}
@@ -10198,6 +10244,11 @@ type SuccessCreateStaffData struct {
 
 	// 传入的企微账号id
 	WeworkOpenId *string `json:"WeworkOpenId,omitnil" name:"WeworkOpenId"`
+
+	// H5端员工加入\实名链接
+	// 
+	// 只有入参 InvitationNotifyType = H5的时候才会进行返回。
+	Url *string `json:"Url,omitnil" name:"Url"`
 }
 
 type SuccessDeleteStaffData struct {
@@ -10221,6 +10272,11 @@ type SuccessUpdateStaffData struct {
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
 	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// H5端员工实名链接
+	// 
+	// 只有入参 InvitationNotifyType = H5的时候才会进行返回。
+	Url *string `json:"Url,omitnil" name:"Url"`
 }
 
 type TemplateInfo struct {
@@ -10415,6 +10471,16 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 员工邀请方式
+	// 如果是来自H5的，参数需要传递H5
+	// 短信或者企微 请传递SMS，或者不传递
+	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil" name:"InvitationNotifyType"`
+
+	// 回跳地址，
+	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
+	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置。
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
 type UpdateIntegrationEmployeesRequest struct {
@@ -10432,6 +10498,16 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 员工邀请方式
+	// 如果是来自H5的，参数需要传递H5
+	// 短信或者企微 请传递SMS，或者不传递
+	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil" name:"InvitationNotifyType"`
+
+	// 回跳地址，
+	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
+	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置。
+	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 }
 
 func (r *UpdateIntegrationEmployeesRequest) ToJsonString() string {
@@ -10449,6 +10525,8 @@ func (r *UpdateIntegrationEmployeesRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "Employees")
 	delete(f, "Agent")
+	delete(f, "InvitationNotifyType")
+	delete(f, "JumpUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIntegrationEmployeesRequest has unknown keys!", "")
 	}
