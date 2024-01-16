@@ -17,6 +17,9 @@ package v20210331
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 该账号已被注册。
 	FAILEDOPERATION_ACCOUNTALREADYREGISTER = "FailedOperation.AccountAlreadyRegister"
 
@@ -82,6 +85,9 @@ const (
 
 	// 查询策略失败。
 	FAILEDOPERATION_GETPOLICYDETAIL = "FailedOperation.GetPolicyDetail"
+
+	// 共享单元存在不同的共享资源类型
+	FAILEDOPERATION_HASDIFFERENTRESOURCETYPE = "FailedOperation.HasDifferentResourceType"
 
 	// 邮箱绑定失败。
 	FAILEDOPERATION_MEMBERBINDEMAILERROR = "FailedOperation.MemberBindEmailError"
@@ -176,11 +182,26 @@ const (
 	// 退出共享单元失败。
 	FAILEDOPERATION_QUITESHAREUNIT = "FailedOperation.QuiteShareUnit"
 
+	// 资源超过最大上限。
+	FAILEDOPERATION_RESOURCEOVERLIMIT = "FailedOperation.ResourceOverLimit"
+
+	// 共享地域不存在。
+	FAILEDOPERATION_SHAREAREANOTEXIST = "FailedOperation.ShareAreaNotExist"
+
 	// 成员正在使用共享资源。
 	FAILEDOPERATION_SHARERESOURCEMEMBERINUSE = "FailedOperation.ShareResourceMemberInUse"
 
+	// 共享资源不存在。
+	FAILEDOPERATION_SHARERESOURCENOTEXIST = "FailedOperation.ShareResourceNotExist"
+
+	// 共享资源类型不存在。
+	FAILEDOPERATION_SHARERESOURCETYPENOTEXIST = "FailedOperation.ShareResourceTypeNotExist"
+
 	// 共享单元不为空。
 	FAILEDOPERATION_SHAREUNITNOTEMPTY = "FailedOperation.ShareUnitNotEmpty"
+
+	// 共享单元不存在。
+	FAILEDOPERATION_SHAREUNITNOTEXIST = "FailedOperation.ShareUnitNotExist"
 
 	// 存在不属于当前组织的uin。
 	FAILEDOPERATION_SOMEUINSNOTINORGANIZATION = "FailedOperation.SomeUinsNotInOrganization"
@@ -239,8 +260,20 @@ const (
 	// 手机超过绑定上限。
 	LIMITEXCEEDED_PHONENUMBOUND = "LimitExceeded.PhoneNumBound"
 
+	// 当次操作的共享成员超过上限。
+	LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = "LimitExceeded.ShareUnitMemberOverLimit"
+
+	// 当次操作的共享资源超过上限。
+	LIMITEXCEEDED_SHAREUNITRESOURCEOVERLIMIT = "LimitExceeded.ShareUnitResourceOverLimit"
+
 	// 修改成员绑定信息超过限制。
 	LIMITEXCEEDED_UPDATEEMAILBINDOVERLIMIT = "LimitExceeded.UpdateEmailBindOverLimit"
+
+	// 操作被拒绝。
+	OPERATIONDENIED = "OperationDenied"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 邮箱绑定记录不存在。
 	RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
@@ -277,6 +310,9 @@ const (
 
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -346,6 +382,9 @@ const (
 
 	// 成员不支持主动退出。
 	UNSUPPORTEDOPERATION_MEMBERNOTALLOWQUIT = "UnsupportedOperation.MemberNotAllowQuit"
+
+	// 成员不支持操作。
+	UNSUPPORTEDOPERATION_MEMBERUNSUPPORTEDOPERATION = "UnsupportedOperation.MemberUnsupportedOperation"
 
 	// 存在在途订单。
 	UNSUPPORTEDOPERATION_ORDERINPROGRESSEXISTED = "UnsupportedOperation.OrderInProgressExisted"

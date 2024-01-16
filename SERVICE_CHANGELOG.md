@@ -1,40 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
 
-### 第 27 次发布
+### 第 22 次发布
 
-发布时间：2024-01-16 01:12:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeRedisTopBigKeys](https://cloud.tencent.com/document/api/1130/72832)
-
-	* 新增入参：AsyncRequestId, ShardIds
-
-
-修改数据结构：
-
-* [InstanceConfs](https://cloud.tencent.com/document/api/1130/57812#InstanceConfs)
-
-	* 新增成员：ShardNum
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 146 次发布
-
-发布时间：2024-01-16 01:14:53
+发布时间：2024-01-17 01:12:30
 
 本次发布包含了以下内容：
 
@@ -42,39 +12,18 @@
 
 修改接口：
 
-* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
+* [DeployResource](https://cloud.tencent.com/document/api/1025/86961)
 
-	* 新增入参：UrlType
-
-	* <font color="#dd0000">**修改入参**：</font>FlowApproverInfos
-
-* [CreateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81117)
-
-	* 新增入参：InvitationNotifyType, JumpUrl
-
-* [UpdateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/89457)
-
-	* 新增入参：InvitationNotifyType, JumpUrl
-
-
-修改数据结构：
-
-* [SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)
-
-	* 新增成员：Url
-
-* [SuccessUpdateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessUpdateStaffData)
-
-	* 新增成员：Url
+	* 新增入参：CdcClusterId
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 148 次发布
+### 第 103 次发布
 
-发布时间：2024-01-16 01:15:09
+发布时间：2024-01-17 01:18:35
 
 本次发布包含了以下内容：
 
@@ -82,35 +31,25 @@
 
 修改接口：
 
-* [ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)
+* [GetMonitorData](https://cloud.tencent.com/document/api/248/31014)
 
-	* 新增入参：UrlType
-
-	* <font color="#dd0000">**修改入参**：</font>FlowApproverInfos
-
-* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
-
-	* 新增入参：ProxyOperatorIdCardNumber, AutoJumpUrl
+	* 新增入参：SpecifyStatistics
 
 
 修改数据结构：
 
-* [RegistrationOrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#RegistrationOrganizationInfo)
+* [DataPoint](https://cloud.tencent.com/document/api/248/30354#DataPoint)
 
-	* 新增成员：AdminIdCardType, AdminIdCardNumber
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+	* 新增成员：MaxValues, MinValues, AvgValues
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 128 次发布
+## 集团账号管理(organization) 版本：2021-03-31
 
-发布时间：2024-01-16 01:19:57
+### 第 28 次发布
+
+发布时间：2024-01-17 01:19:45
 
 本次发布包含了以下内容：
 
@@ -118,23 +57,149 @@
 
 新增接口：
 
-* [RecognizeForeignPermanentResidentIdCard](https://cloud.tencent.com/document/api/866/103033)
+* [AddShareUnit](https://cloud.tencent.com/document/api/850/103056)
+* [AddShareUnitMembers](https://cloud.tencent.com/document/api/850/103055)
+* [AddShareUnitResources](https://cloud.tencent.com/document/api/850/103054)
+* [DeleteShareUnit](https://cloud.tencent.com/document/api/850/103053)
+* [DeleteShareUnitMembers](https://cloud.tencent.com/document/api/850/103052)
+* [DeleteShareUnitResources](https://cloud.tencent.com/document/api/850/103051)
+* [DescribeShareAreas](https://cloud.tencent.com/document/api/850/103050)
+* [DescribeShareUnitMembers](https://cloud.tencent.com/document/api/850/103049)
+* [DescribeShareUnitResources](https://cloud.tencent.com/document/api/850/103048)
+* [DescribeShareUnits](https://cloud.tencent.com/document/api/850/103047)
+* [UpdateShareUnit](https://cloud.tencent.com/document/api/850/103046)
+
+新增数据结构：
+
+* [ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit)
+* [ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource)
+* [ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea)
+* [ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember)
+* [ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource)
+* [ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember)
+* [ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource)
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## 集团账号管理(organization) 版本：2018-12-25
 
-### 第 67 次发布
 
-发布时间：2024-01-16 01:27:38
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 186 次发布
+
+发布时间：2024-01-17 01:26:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改接口：
 
-* DescribeKafkaTopicInfo
+* [DescribeUsedIpAddress](https://cloud.tencent.com/document/api/215/91061)
+
+	* 新增入参：Filters
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 68 次发布
+
+发布时间：2024-01-17 01:27:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)
+
+	* 新增入参：ConnectResult
+
+* [DescribeBaselineAllTaskDag](https://cloud.tencent.com/document/api/1267/95248)
+
+	* 新增入参：BaselineTaskId
+
+* [DescribeBaselineInstanceDag](https://cloud.tencent.com/document/api/1267/95246)
+
+	* 新增入参：PromiseTaskId
+
+* [DescribeBaselineInstanceGantt](https://cloud.tencent.com/document/api/1267/95245)
+
+	* 新增入参：PromiseTaskId
+
+* [DescribeSchedulerInstanceStatus](https://cloud.tencent.com/document/api/1267/95198)
+
+	* 新增入参：WorkflowId
+
+* [DescribeSchedulerRunTimeInstanceCntByStatus](https://cloud.tencent.com/document/api/1267/95197)
+
+	* 新增入参：WorkflowId, SortItem, SortType
+
+* [DescribeSchedulerTaskCntByStatus](https://cloud.tencent.com/document/api/1267/95196)
+
+	* 新增入参：WorkflowId
+
+* [DescribeStatisticInstanceStatusTrendOps](https://cloud.tencent.com/document/api/1267/95193)
+
+	* 新增入参：WorkflowId
+
+* [DescribeTaskByCycle](https://cloud.tencent.com/document/api/1267/95192)
+
+	* 新增入参：WorkflowId
+
+* [DescribeTaskByStatusReport](https://cloud.tencent.com/document/api/1267/95190)
+
+	* 新增入参：WorkflowId
+
+
+修改数据结构：
+
+* [BaselineTaskInstanceDto](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskInstanceDto)
+
+	* 新增成员：CriticalDependency
+
+	* <font color="#dd0000">**修改成员**：</font>Id, BaselineInstanceId, BaselineType, BaselineDataTime, UpstreamInstanceIds, DownstreamInstanceIds, IsPromiseTask, TaskId, CurRunDate, TaskName, InCriticalPath, InFirstLevel, EstimatedCostTime, ActualCostTime, LatestStartTime, ActualStartTime, EstimatedEndTime, LatestEndTime, ActualEndTime, TaskInstanceStatus, ProjectId, ShardKey, CreateTime, UpdateTime, UserUin, OwnerUin, AppId
+
+* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+
+* [RuntimeInstanceCntTop](https://cloud.tencent.com/document/api/1267/76336#RuntimeInstanceCntTop)
+
+	* 新增成员：WaitScheduleTime
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, TaskName, InCharge, CycleUnit, State, RunTime, CurRunTime
+
+* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
+
+	* 新增成员：ChannelType
+
+	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+
+
+
+
+## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
+
+### 第 6 次发布
+
+发布时间：2024-01-17 01:27:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ControlDevice](https://cloud.tencent.com/document/api/1693/101487)
+
+	* 新增入参：IsSynchronized
+
 
 
 
@@ -43722,6 +43787,21 @@
 
 ## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
 
+### 第 22 次发布
+
+发布时间：2024-01-17 01:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployResource](https://cloud.tencent.com/document/api/1025/86961)
+
+	* 新增入参：CdcClusterId
+
+
 ### 第 21 次发布
 
 发布时间：2024-01-05 01:13:10
@@ -82626,6 +82706,28 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 103 次发布
+
+发布时间：2024-01-17 01:18:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetMonitorData](https://cloud.tencent.com/document/api/248/31014)
+
+	* 新增入参：SpecifyStatistics
+
+
+修改数据结构：
+
+* [DataPoint](https://cloud.tencent.com/document/api/248/30354#DataPoint)
+
+	* 新增成员：MaxValues, MinValues, AvgValues
+
+
 ### 第 102 次发布
 
 发布时间：2024-01-12 01:19:06
@@ -90150,7 +90252,7 @@
 
 新增接口：
 
-* [[RecognizeForeignPermanentResidentIdCard](https://cloud.tencent.com/document/api/866/103033)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeForeignPermanentResidentIdCard](https://cloud.tencent.com/document/api/866/103033)
 
 ### 第 127 次发布
 
@@ -92929,6 +93031,38 @@
 
 
 ## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 28 次发布
+
+发布时间：2024-01-17 01:19:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddShareUnit](https://cloud.tencent.com/document/api/850/103056)](https://cloud.tencent.com/document/api/#/#)
+* [[AddShareUnitMembers](https://cloud.tencent.com/document/api/850/103055)](https://cloud.tencent.com/document/api/#/#)
+* [[AddShareUnitResources](https://cloud.tencent.com/document/api/850/103054)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteShareUnit](https://cloud.tencent.com/document/api/850/103053)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteShareUnitMembers](https://cloud.tencent.com/document/api/850/103052)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteShareUnitResources](https://cloud.tencent.com/document/api/850/103051)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeShareAreas](https://cloud.tencent.com/document/api/850/103050)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeShareUnitMembers](https://cloud.tencent.com/document/api/850/103049)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeShareUnitResources](https://cloud.tencent.com/document/api/850/103048)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeShareUnits](https://cloud.tencent.com/document/api/850/103047)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateShareUnit](https://cloud.tencent.com/document/api/850/103046)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit)](https://cloud.tencent.com/document/api/850/67060#[ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit))
+* [[ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource)](https://cloud.tencent.com/document/api/850/67060#[ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource))
+* [[ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea)](https://cloud.tencent.com/document/api/850/67060#[ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea))
+* [[ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember)](https://cloud.tencent.com/document/api/850/67060#[ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember))
+* [[ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource)](https://cloud.tencent.com/document/api/850/67060#[ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource))
+* [[ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember)](https://cloud.tencent.com/document/api/850/67060#[ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember))
+* [[ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource)](https://cloud.tencent.com/document/api/850/67060#[ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource))
 
 ### 第 27 次发布
 
@@ -138243,6 +138377,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 186 次发布
+
+发布时间：2024-01-17 01:26:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUsedIpAddress](https://cloud.tencent.com/document/api/215/91061)
+
+	* 新增入参：Filters
+
+
 ### 第 185 次发布
 
 发布时间：2023-12-27 01:44:26
@@ -144467,6 +144616,82 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
+### 第 68 次发布
+
+发布时间：2024-01-17 01:27:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)
+
+	* 新增入参：ConnectResult
+
+* [DescribeBaselineAllTaskDag](https://cloud.tencent.com/document/api/1267/95248)
+
+	* 新增入参：BaselineTaskId
+
+* [DescribeBaselineInstanceDag](https://cloud.tencent.com/document/api/1267/95246)
+
+	* 新增入参：PromiseTaskId
+
+* [DescribeBaselineInstanceGantt](https://cloud.tencent.com/document/api/1267/95245)
+
+	* 新增入参：PromiseTaskId
+
+* [DescribeSchedulerInstanceStatus](https://cloud.tencent.com/document/api/1267/95198)
+
+	* 新增入参：WorkflowId
+
+* [DescribeSchedulerRunTimeInstanceCntByStatus](https://cloud.tencent.com/document/api/1267/95197)
+
+	* 新增入参：WorkflowId, SortItem, SortType
+
+* [DescribeSchedulerTaskCntByStatus](https://cloud.tencent.com/document/api/1267/95196)
+
+	* 新增入参：WorkflowId
+
+* [DescribeStatisticInstanceStatusTrendOps](https://cloud.tencent.com/document/api/1267/95193)
+
+	* 新增入参：WorkflowId
+
+* [DescribeTaskByCycle](https://cloud.tencent.com/document/api/1267/95192)
+
+	* 新增入参：WorkflowId
+
+* [DescribeTaskByStatusReport](https://cloud.tencent.com/document/api/1267/95190)
+
+	* 新增入参：WorkflowId
+
+
+修改数据结构：
+
+* [BaselineTaskInstanceDto](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskInstanceDto)
+
+	* 新增成员：CriticalDependency
+
+	* <font color="#dd0000">**修改成员**：</font>Id, BaselineInstanceId, BaselineType, BaselineDataTime, UpstreamInstanceIds, DownstreamInstanceIds, IsPromiseTask, TaskId, CurRunDate, TaskName, InCriticalPath, InFirstLevel, EstimatedCostTime, ActualCostTime, LatestStartTime, ActualStartTime, EstimatedEndTime, LatestEndTime, ActualEndTime, TaskInstanceStatus, ProjectId, ShardKey, CreateTime, UpdateTime, UserUin, OwnerUin, AppId
+
+* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+
+* [RuntimeInstanceCntTop](https://cloud.tencent.com/document/api/1267/76336#RuntimeInstanceCntTop)
+
+	* 新增成员：WaitScheduleTime
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, TaskName, InCharge, CycleUnit, State, RunTime, CurRunTime
+
+* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
+
+	* 新增成员：ChannelType
+
+	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+
+
 ### 第 67 次发布
 
 发布时间：2024-01-16 01:27:38
@@ -146536,6 +146761,21 @@
 
 
 ## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
+
+### 第 6 次发布
+
+发布时间：2024-01-17 01:27:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ControlDevice](https://cloud.tencent.com/document/api/1693/101487)
+
+	* 新增入参：IsSynchronized
+
 
 ### 第 5 次发布
 

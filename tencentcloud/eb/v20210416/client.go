@@ -961,7 +961,7 @@ func NewDescribeLogTagValueResponse() (response *DescribeLogTagValueResponse) {
 }
 
 // DescribeLogTagValue
-// 查询日志索引维度值
+// 前置条件：需开启事件存储；事件查询维度值
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -972,7 +972,7 @@ func (c *Client) DescribeLogTagValue(request *DescribeLogTagValueRequest) (respo
 }
 
 // DescribeLogTagValue
-// 查询日志索引维度值
+// 前置条件：需开启事件存储；事件查询维度值
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1769,7 +1769,7 @@ func NewSearchLogResponse() (response *SearchLogResponse) {
 }
 
 // SearchLog
-// 日志检索
+// 前置条件：开启事件存储；查询历史推送事件
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1780,7 +1780,7 @@ func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogRespon
 }
 
 // SearchLog
-// 日志检索
+// 前置条件：开启事件存储；查询历史推送事件
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

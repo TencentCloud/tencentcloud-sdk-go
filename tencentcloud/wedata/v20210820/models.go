@@ -856,6 +856,10 @@ type BaselineTaskInstanceDto struct {
 	// 租户id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 关键路径依赖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CriticalDependency *string `json:"CriticalDependency,omitnil" name:"CriticalDependency"`
 }
 
 // Predefined struct for user
@@ -3314,10 +3318,6 @@ type ColumnLineageInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// 由中心节点出发的路径信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrefixPath *string `json:"PrefixPath,omitnil" name:"PrefixPath"`
-
 	// 数据源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
@@ -3377,6 +3377,10 @@ type ColumnLineageInfo struct {
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 由中心节点出发的路径信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitnil" name:"PrefixPath"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4307,6 +4311,9 @@ type CreateDataSourceRequestParams struct {
 
 	// cos region
 	COSRegion *string `json:"COSRegion,omitnil" name:"COSRegion"`
+
+	// 连接测试结果
+	ConnectResult *string `json:"ConnectResult,omitnil" name:"ConnectResult"`
 }
 
 type CreateDataSourceRequest struct {
@@ -4362,6 +4369,9 @@ type CreateDataSourceRequest struct {
 
 	// cos region
 	COSRegion *string `json:"COSRegion,omitnil" name:"COSRegion"`
+
+	// 连接测试结果
+	ConnectResult *string `json:"ConnectResult,omitnil" name:"ConnectResult"`
 }
 
 func (r *CreateDataSourceRequest) ToJsonString() string {
@@ -4393,6 +4403,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "Collect")
 	delete(f, "COSBucket")
 	delete(f, "COSRegion")
+	delete(f, "ConnectResult")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataSourceRequest has unknown keys!", "")
 	}
@@ -8975,6 +8986,9 @@ type DescribeBaselineAllTaskDagRequestParams struct {
 
 	// 1
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 1
+	BaselineTaskId *string `json:"BaselineTaskId,omitnil" name:"BaselineTaskId"`
 }
 
 type DescribeBaselineAllTaskDagRequest struct {
@@ -8985,6 +8999,9 @@ type DescribeBaselineAllTaskDagRequest struct {
 
 	// 1
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 1
+	BaselineTaskId *string `json:"BaselineTaskId,omitnil" name:"BaselineTaskId"`
 }
 
 func (r *DescribeBaselineAllTaskDagRequest) ToJsonString() string {
@@ -9001,6 +9018,7 @@ func (r *DescribeBaselineAllTaskDagRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BaselineId")
 	delete(f, "ProjectId")
+	delete(f, "BaselineTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineAllTaskDagRequest has unknown keys!", "")
 	}
@@ -9110,6 +9128,9 @@ type DescribeBaselineInstanceDagRequestParams struct {
 
 	// 向上展开层级
 	Level *int64 `json:"Level,omitnil" name:"Level"`
+
+	// 保障任务id
+	PromiseTaskId *string `json:"PromiseTaskId,omitnil" name:"PromiseTaskId"`
 }
 
 type DescribeBaselineInstanceDagRequest struct {
@@ -9126,6 +9147,9 @@ type DescribeBaselineInstanceDagRequest struct {
 
 	// 向上展开层级
 	Level *int64 `json:"Level,omitnil" name:"Level"`
+
+	// 保障任务id
+	PromiseTaskId *string `json:"PromiseTaskId,omitnil" name:"PromiseTaskId"`
 }
 
 func (r *DescribeBaselineInstanceDagRequest) ToJsonString() string {
@@ -9144,6 +9168,7 @@ func (r *DescribeBaselineInstanceDagRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "UpstreamInstanceIds")
 	delete(f, "Level")
+	delete(f, "PromiseTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineInstanceDagRequest has unknown keys!", "")
 	}
@@ -9183,6 +9208,9 @@ type DescribeBaselineInstanceGanttRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 保障任务id
+	PromiseTaskId *string `json:"PromiseTaskId,omitnil" name:"PromiseTaskId"`
 }
 
 type DescribeBaselineInstanceGanttRequest struct {
@@ -9193,6 +9221,9 @@ type DescribeBaselineInstanceGanttRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 保障任务id
+	PromiseTaskId *string `json:"PromiseTaskId,omitnil" name:"PromiseTaskId"`
 }
 
 func (r *DescribeBaselineInstanceGanttRequest) ToJsonString() string {
@@ -9209,6 +9240,7 @@ func (r *DescribeBaselineInstanceGanttRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BaselineInstanceId")
 	delete(f, "ProjectId")
+	delete(f, "PromiseTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineInstanceGanttRequest has unknown keys!", "")
 	}
@@ -19203,6 +19235,9 @@ type DescribeSchedulerInstanceStatusRequestParams struct {
 
 	// 责任人
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 type DescribeSchedulerInstanceStatusRequest struct {
@@ -19228,6 +19263,9 @@ type DescribeSchedulerInstanceStatusRequest struct {
 
 	// 责任人
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 func (r *DescribeSchedulerInstanceStatusRequest) ToJsonString() string {
@@ -19249,6 +19287,7 @@ func (r *DescribeSchedulerInstanceStatusRequest) FromJsonString(s string) error 
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "InCharge")
+	delete(f, "WorkflowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerInstanceStatusRequest has unknown keys!", "")
 	}
@@ -19303,6 +19342,15 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequestParams struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
+
+	// 排序字段
+	SortItem *string `json:"SortItem,omitnil" name:"SortItem"`
+
+	// 升序降序
+	SortType *string `json:"SortType,omitnil" name:"SortType"`
 }
 
 type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
@@ -19328,6 +19376,15 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
+
+	// 排序字段
+	SortItem *string `json:"SortItem,omitnil" name:"SortItem"`
+
+	// 升序降序
+	SortType *string `json:"SortType,omitnil" name:"SortType"`
 }
 
 func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) ToJsonString() string {
@@ -19349,6 +19406,9 @@ func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) FromJsonString(s st
 	delete(f, "EndTime")
 	delete(f, "TaskType")
 	delete(f, "InCharge")
+	delete(f, "WorkflowId")
+	delete(f, "SortItem")
+	delete(f, "SortType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerRunTimeInstanceCntByStatusRequest has unknown keys!", "")
 	}
@@ -19394,6 +19454,9 @@ type DescribeSchedulerTaskCntByStatusRequestParams struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 type DescribeSchedulerTaskCntByStatusRequest struct {
@@ -19410,6 +19473,9 @@ type DescribeSchedulerTaskCntByStatusRequest struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 func (r *DescribeSchedulerTaskCntByStatusRequest) ToJsonString() string {
@@ -19428,6 +19494,7 @@ func (r *DescribeSchedulerTaskCntByStatusRequest) FromJsonString(s string) error
 	delete(f, "TypeName")
 	delete(f, "ProjectId")
 	delete(f, "InCharge")
+	delete(f, "WorkflowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerTaskCntByStatusRequest has unknown keys!", "")
 	}
@@ -19806,6 +19873,9 @@ type DescribeStatisticInstanceStatusTrendOpsRequestParams struct {
 
 	// 1
 	AverageWindowSize *int64 `json:"AverageWindowSize,omitnil" name:"AverageWindowSize"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 type DescribeStatisticInstanceStatusTrendOpsRequest struct {
@@ -19849,6 +19919,9 @@ type DescribeStatisticInstanceStatusTrendOpsRequest struct {
 
 	// 1
 	AverageWindowSize *int64 `json:"AverageWindowSize,omitnil" name:"AverageWindowSize"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 func (r *DescribeStatisticInstanceStatusTrendOpsRequest) ToJsonString() string {
@@ -19876,6 +19949,7 @@ func (r *DescribeStatisticInstanceStatusTrendOpsRequest) FromJsonString(s string
 	delete(f, "StateList")
 	delete(f, "AggregationUnit")
 	delete(f, "AverageWindowSize")
+	delete(f, "WorkflowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticInstanceStatusTrendOpsRequest has unknown keys!", "")
 	}
@@ -21069,6 +21143,9 @@ type DescribeTaskByCycleRequestParams struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 type DescribeTaskByCycleRequest struct {
@@ -21079,6 +21156,9 @@ type DescribeTaskByCycleRequest struct {
 
 	// 1
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 func (r *DescribeTaskByCycleRequest) ToJsonString() string {
@@ -21095,6 +21175,7 @@ func (r *DescribeTaskByCycleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "InCharge")
+	delete(f, "WorkflowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByCycleRequest has unknown keys!", "")
 	}
@@ -21157,6 +21238,9 @@ type DescribeTaskByStatusReportRequestParams struct {
 
 	// 无
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 type DescribeTaskByStatusReportRequest struct {
@@ -21191,6 +21275,9 @@ type DescribeTaskByStatusReportRequest struct {
 
 	// 无
 	InCharge *string `json:"InCharge,omitnil" name:"InCharge"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
 }
 
 func (r *DescribeTaskByStatusReportRequest) ToJsonString() string {
@@ -21215,6 +21302,7 @@ func (r *DescribeTaskByStatusReportRequest) FromJsonString(s string) error {
 	delete(f, "CycleUnit")
 	delete(f, "Status")
 	delete(f, "InCharge")
+	delete(f, "WorkflowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByStatusReportRequest has unknown keys!", "")
 	}
@@ -32926,6 +33014,10 @@ type RuntimeInstanceCntTop struct {
 	// 实例运行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurRunTime *string `json:"CurRunTime,omitnil" name:"CurRunTime"`
+
+	// 等待调度耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitScheduleTime *uint64 `json:"WaitScheduleTime,omitnil" name:"WaitScheduleTime"`
 }
 
 // Predefined struct for user
@@ -34909,10 +35001,6 @@ type TableLineageInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetastoreType *string `json:"MetastoreType,omitnil" name:"MetastoreType"`
 
-	// 由中心节点到该节点的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrefixPath *string `json:"PrefixPath,omitnil" name:"PrefixPath"`
-
 	// 空间id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
@@ -34969,6 +35057,10 @@ type TableLineageInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
+	// 由中心节点到该节点的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitnil" name:"PrefixPath"`
+
 	// 血缘创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
@@ -34980,6 +35072,10 @@ type TableLineageInfo struct {
 	// 修改血缘的任务id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*string `json:"Tasks,omitnil" name:"Tasks"`
+
+	// 模块/应用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelType *string `json:"ChannelType,omitnil" name:"ChannelType"`
 }
 
 type TableMeta struct {

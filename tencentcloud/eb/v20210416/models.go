@@ -1071,7 +1071,7 @@ func (r *DescribeLogTagValueRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogTagValueResponseParams struct {
-	// 索引检索维度值
+	// 事件查询维度值结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*string `json:"Results,omitnil" name:"Results"`
 
@@ -2355,11 +2355,11 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchLogResponseParams struct {
-	// 日志总数
+	// 事件总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil" name:"Total"`
 
-	// 每页日志条数
+	// 每页事件条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
@@ -2367,7 +2367,7 @@ type SearchLogResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Page *int64 `json:"Page,omitnil" name:"Page"`
 
-	// 日志检索结果
+	// 事件查询结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*SearchLogResult `json:"Results,omitnil" name:"Results"`
 

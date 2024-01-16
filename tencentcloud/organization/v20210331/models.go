@@ -170,6 +170,220 @@ func (r *AddOrganizationNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddShareUnitMembersRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享成员列表。最大10个。
+	Members []*ShareMember `json:"Members,omitnil" name:"Members"`
+}
+
+type AddShareUnitMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享成员列表。最大10个。
+	Members []*ShareMember `json:"Members,omitnil" name:"Members"`
+}
+
+func (r *AddShareUnitMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Members")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShareUnitMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddShareUnitMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddShareUnitMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *AddShareUnitMembersResponseParams `json:"Response"`
+}
+
+func (r *AddShareUnitMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddShareUnitRequestParams struct {
+	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享单元描述。最大128个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type AddShareUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享单元描述。最大128个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *AddShareUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Area")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShareUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddShareUnitResourcesRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 共享资源列表。最大10个。
+	Resources []*ProductResource `json:"Resources,omitnil" name:"Resources"`
+}
+
+type AddShareUnitResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 共享资源列表。最大10个。
+	Resources []*ProductResource `json:"Resources,omitnil" name:"Resources"`
+}
+
+func (r *AddShareUnitResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Type")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShareUnitResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddShareUnitResourcesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddShareUnitResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *AddShareUnitResourcesResponseParams `json:"Response"`
+}
+
+func (r *AddShareUnitResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddShareUnitResponseParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddShareUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *AddShareUnitResponseParams `json:"Response"`
+}
+
+func (r *AddShareUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShareUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuthNode struct {
 	// 互信主体关系ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1172,6 +1386,203 @@ func (r *DeleteOrganizationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteShareUnitMembersRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 成员列表。
+	Members []*ShareMember `json:"Members,omitnil" name:"Members"`
+}
+
+type DeleteShareUnitMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 成员列表。
+	Members []*ShareMember `json:"Members,omitnil" name:"Members"`
+}
+
+func (r *DeleteShareUnitMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Members")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteShareUnitMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteShareUnitMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteShareUnitMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteShareUnitMembersResponseParams `json:"Response"`
+}
+
+func (r *DeleteShareUnitMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteShareUnitRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+}
+
+type DeleteShareUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+}
+
+func (r *DeleteShareUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteShareUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteShareUnitResourcesRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 资源类型。支持共享的资源类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 共享资源列表。最大10个。
+	Resources []*ShareResource `json:"Resources,omitnil" name:"Resources"`
+}
+
+type DeleteShareUnitResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 资源类型。支持共享的资源类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 共享资源列表。最大10个。
+	Resources []*ShareResource `json:"Resources,omitnil" name:"Resources"`
+}
+
+func (r *DeleteShareUnitResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Type")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteShareUnitResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteShareUnitResourcesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteShareUnitResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteShareUnitResourcesResponseParams `json:"Response"`
+}
+
+func (r *DeleteShareUnitResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteShareUnitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteShareUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteShareUnitResponseParams `json:"Response"`
+}
+
+func (r *DeleteShareUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteShareUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationAuthNodeRequestParams struct {
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -2156,6 +2567,334 @@ func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShareAreasRequestParams struct {
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitnil" name:"Lang"`
+}
+
+type DescribeShareAreasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitnil" name:"Lang"`
+}
+
+func (r *DescribeShareAreasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareAreasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShareAreasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareAreasResponseParams struct {
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ShareArea `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeShareAreasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeShareAreasResponseParams `json:"Response"`
+}
+
+func (r *DescribeShareAreasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareAreasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitMembersRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持成员uin搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+}
+
+type DescribeShareUnitMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持成员uin搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+}
+
+func (r *DescribeShareUnitMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShareUnitMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitMembersResponseParams struct {
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 共享单元成员列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ShareUnitMember `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeShareUnitMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeShareUnitMembersResponseParams `json:"Response"`
+}
+
+func (r *DescribeShareUnitMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitResourcesRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持产品资源ID搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+
+	// 共享资源类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type DescribeShareUnitResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持产品资源ID搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+
+	// 共享资源类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *DescribeShareUnitResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Area")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShareUnitResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitResourcesResponseParams struct {
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 共享单元资源列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ShareUnitResource `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeShareUnitResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeShareUnitResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeShareUnitResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitsRequestParams struct {
+	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持UnitId和Name搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+}
+
+type DescribeShareUnitsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索关键字。支持UnitId和Name搜索。
+	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+}
+
+func (r *DescribeShareUnitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Area")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShareUnitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeShareUnitsResponseParams struct {
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 共享单元列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ManagerShareUnit `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeShareUnitsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeShareUnitsResponseParams `json:"Response"`
+}
+
+func (r *DescribeShareUnitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeShareUnitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IdentityPolicy struct {
 	// CAM预设策略ID。PolicyType 为预设策略时有效且必选
 	PolicyId *uint64 `json:"PolicyId,omitnil" name:"PolicyId"`
@@ -2260,6 +2999,39 @@ func (r *ListOrganizationIdentityResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListOrganizationIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ManagerShareUnit struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元名称。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 共享单元管理员Uin。
+	Uin *int64 `json:"Uin,omitnil" name:"Uin"`
+
+	// 共享单元管理员OwnerUin。
+	OwnerUin *int64 `json:"OwnerUin,omitnil" name:"OwnerUin"`
+
+	// 共享单元地域。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 共享单元资源数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareResourceNum *int64 `json:"ShareResourceNum,omitnil" name:"ShareResourceNum"`
+
+	// 共享单元成员数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareMemberNum *int64 `json:"ShareMemberNum,omitnil" name:"ShareMemberNum"`
 }
 
 type MemberIdentity struct {
@@ -2641,6 +3413,16 @@ type OrgProductFinancial struct {
 	Ratio *string `json:"Ratio,omitnil" name:"Ratio"`
 }
 
+type ProductResource struct {
+	// 产品资源ID。
+	ProductResourceId *string `json:"ProductResourceId,omitnil" name:"ProductResourceId"`
+
+	// 资源六段式最后一节
+	//
+	// Deprecated: ResourceGrantLast is deprecated.
+	ResourceGrantLast *string `json:"ResourceGrantLast,omitnil" name:"ResourceGrantLast"`
+}
+
 // Predefined struct for user
 type QuitOrganizationRequestParams struct {
 	// 企业组织ID
@@ -2693,6 +3475,69 @@ func (r *QuitOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QuitOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ShareArea struct {
+	// 地域名称。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 地域标识。
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 地域ID。
+	AreaId *int64 `json:"AreaId,omitnil" name:"AreaId"`
+}
+
+type ShareMember struct {
+	// 共享成员Uin。
+	ShareMemberUin *int64 `json:"ShareMemberUin,omitnil" name:"ShareMemberUin"`
+}
+
+type ShareResource struct {
+	// 共享资源ID。
+	//
+	// Deprecated: ResourceId is deprecated.
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 产品资源ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductResourceId *string `json:"ProductResourceId,omitnil" name:"ProductResourceId"`
+}
+
+type ShareUnitMember struct {
+	// 共享成员Uin。
+	ShareMemberUin *int64 `json:"ShareMemberUin,omitnil" name:"ShareMemberUin"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
+type ShareUnitResource struct {
+	// 共享资源ID。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 共享资源类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 产品资源ID。
+	ProductResourceId *string `json:"ProductResourceId,omitnil" name:"ProductResourceId"`
+
+	// 共享单元成员数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SharedMemberNum *uint64 `json:"SharedMemberNum,omitnil" name:"SharedMemberNum"`
+
+	// 使用中共享单元成员数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SharedMemberUseNum *uint64 `json:"SharedMemberUseNum,omitnil" name:"SharedMemberUseNum"`
+
+	// 共享管理员OwnerUin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil" name:"ShareManagerUin"`
 }
 
 // Predefined struct for user
@@ -3008,5 +3853,73 @@ func (r *UpdateOrganizationNodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateOrganizationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateShareUnitRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 共享单元描述。最大128个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type UpdateShareUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil" name:"UnitId"`
+
+	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 共享单元描述。最大128个字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *UpdateShareUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateShareUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateShareUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateShareUnitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateShareUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateShareUnitResponseParams `json:"Response"`
+}
+
+func (r *UpdateShareUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateShareUnitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

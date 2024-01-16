@@ -1200,6 +1200,9 @@ type ControlDeviceRequestParams struct {
 
 	// 应用token
 	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 是否同步返回设备下控ack结果
+	IsSynchronized *bool `json:"IsSynchronized,omitnil" name:"IsSynchronized"`
 }
 
 type ControlDeviceRequest struct {
@@ -1216,6 +1219,9 @@ type ControlDeviceRequest struct {
 
 	// 应用token
 	ApplicationToken *string `json:"ApplicationToken,omitnil" name:"ApplicationToken"`
+
+	// 是否同步返回设备下控ack结果
+	IsSynchronized *bool `json:"IsSynchronized,omitnil" name:"IsSynchronized"`
 }
 
 func (r *ControlDeviceRequest) ToJsonString() string {
@@ -1234,6 +1240,7 @@ func (r *ControlDeviceRequest) FromJsonString(s string) error {
 	delete(f, "WIDSet")
 	delete(f, "ControlData")
 	delete(f, "ApplicationToken")
+	delete(f, "IsSynchronized")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlDeviceRequest has unknown keys!", "")
 	}

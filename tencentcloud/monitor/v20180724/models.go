@@ -3005,6 +3005,18 @@ type DataPoint struct {
 
 	// 监控值数组，该数组和Timestamps一一对应
 	Values []*float64 `json:"Values,omitnil" name:"Values"`
+
+	// 监控值数组，该数组和Timestamps一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxValues []*float64 `json:"MaxValues,omitnil" name:"MaxValues"`
+
+	// 监控值数组，该数组和Timestamps一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinValues []*float64 `json:"MinValues,omitnil" name:"MinValues"`
+
+	// 监控值数组，该数组和Timestamps一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgValues []*float64 `json:"AvgValues,omitnil" name:"AvgValues"`
 }
 
 // Predefined struct for user
@@ -10598,6 +10610,9 @@ type GetMonitorDataRequestParams struct {
 
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil" name:"SpecifyStatistics"`
 }
 
 type GetMonitorDataRequest struct {
@@ -10620,6 +10635,9 @@ type GetMonitorDataRequest struct {
 
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil" name:"SpecifyStatistics"`
 }
 
 func (r *GetMonitorDataRequest) ToJsonString() string {
@@ -10640,6 +10658,7 @@ func (r *GetMonitorDataRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "SpecifyStatistics")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMonitorDataRequest has unknown keys!", "")
 	}

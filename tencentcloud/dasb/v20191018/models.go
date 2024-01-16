@@ -1928,6 +1928,9 @@ type DeployResourceRequestParams struct {
 
 	// 需要开通服务的子网名称
 	SubnetName *string `json:"SubnetName,omitnil" name:"SubnetName"`
+
+	// 需要开通实例所属的CDC集群ID
+	CdcClusterId *string `json:"CdcClusterId,omitnil" name:"CdcClusterId"`
 }
 
 type DeployResourceRequest struct {
@@ -1959,6 +1962,9 @@ type DeployResourceRequest struct {
 
 	// 需要开通服务的子网名称
 	SubnetName *string `json:"SubnetName,omitnil" name:"SubnetName"`
+
+	// 需要开通实例所属的CDC集群ID
+	CdcClusterId *string `json:"CdcClusterId,omitnil" name:"CdcClusterId"`
 }
 
 func (r *DeployResourceRequest) ToJsonString() string {
@@ -1982,6 +1988,7 @@ func (r *DeployResourceRequest) FromJsonString(s string) error {
 	delete(f, "VpcName")
 	delete(f, "VpcCidrBlock")
 	delete(f, "SubnetName")
+	delete(f, "CdcClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployResourceRequest has unknown keys!", "")
 	}

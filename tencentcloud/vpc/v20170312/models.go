@@ -14766,6 +14766,9 @@ type DescribeUsedIpAddressRequestParams struct {
 	// 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
 	IpAddresses []*string `json:"IpAddresses,omitnil" name:"IpAddresses"`
 
+	// 过滤条件，不支持同时指定IpAddresses和Filters参数。 支持的过滤条件如下： <li>ip-addresses：IP地址。</li> <li>resource-id：资源ID。</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
@@ -14784,6 +14787,9 @@ type DescribeUsedIpAddressRequest struct {
 
 	// 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
 	IpAddresses []*string `json:"IpAddresses,omitnil" name:"IpAddresses"`
+
+	// 过滤条件，不支持同时指定IpAddresses和Filters参数。 支持的过滤条件如下： <li>ip-addresses：IP地址。</li> <li>resource-id：资源ID。</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -14807,6 +14813,7 @@ func (r *DescribeUsedIpAddressRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "IpAddresses")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {

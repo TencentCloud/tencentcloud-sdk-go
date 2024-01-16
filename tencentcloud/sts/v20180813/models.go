@@ -49,7 +49,7 @@ type AssumeRoleRequestParams struct {
 
 	// 策略描述
 	// 注意：
-	// 1、policy 需要做 urlencode（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
+	// 1、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
 	// 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 3、策略中不能包含 principal 元素。
 	Policy *string `json:"Policy,omitnil" name:"Policy"`
@@ -84,7 +84,7 @@ type AssumeRoleRequest struct {
 
 	// 策略描述
 	// 注意：
-	// 1、policy 需要做 urlencode（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
+	// 1、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
 	// 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 3、策略中不能包含 principal 元素。
 	Policy *string `json:"Policy,omitnil" name:"Policy"`
@@ -425,11 +425,10 @@ type GetFederationTokenRequestParams struct {
 	// 您可以自定义调用方英文名称，由字母组成。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 授予该临时访问凭证权限的CAM策略
 	// 注意：
 	// 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 2、策略中不能包含 principal 元素。
-	// 3、该参数需要做urlencode。
+	// 3、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。
 	Policy *string `json:"Policy,omitnil" name:"Policy"`
 
 	// 指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
@@ -442,11 +441,10 @@ type GetFederationTokenRequest struct {
 	// 您可以自定义调用方英文名称，由字母组成。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 授予该临时访问凭证权限的CAM策略
 	// 注意：
 	// 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 2、策略中不能包含 principal 元素。
-	// 3、该参数需要做urlencode。
+	// 3、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。
 	Policy *string `json:"Policy,omitnil" name:"Policy"`
 
 	// 指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
