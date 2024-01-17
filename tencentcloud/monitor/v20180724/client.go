@@ -7154,6 +7154,12 @@ func NewGetMonitorDataResponse() (response *GetMonitorDataResponse) {
 //
 // 若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
 //
+// 参数SpecifyStatistics目前可支持返回三种统计方式（avg，max，min），分别为二进制1，2，4。
+//
+// 例子：3:avg+max，5:avg+min，6:max+min，7:avg+max+min
+//
+// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置，因为更小粒度数据存储时间有限，拉取时间范围也是有限。
+//
 // 
 //
 // >?
@@ -7178,6 +7184,12 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
 // 接口调用限制：单请求最多可支持批量拉取10个实例的监控数据，单请求的数据点数限制为1440个。
 //
 // 若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
+//
+// 参数SpecifyStatistics目前可支持返回三种统计方式（avg，max，min），分别为二进制1，2，4。
+//
+// 例子：3:avg+max，5:avg+min，6:max+min，7:avg+max+min
+//
+// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置，因为更小粒度数据存储时间有限，拉取时间范围也是有限。
 //
 // 
 //

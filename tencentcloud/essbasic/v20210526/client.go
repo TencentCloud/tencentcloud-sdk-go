@@ -2905,7 +2905,9 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // 注意：
 //
-// 1. 只支持PC浏览器操作使用
+// 1. <font color="red">仅支持在PC浏览器</font>上进行操作和使用。
+//
+// 2. 在使用<font color="red">模板发起合同时，需指定RecipientId</font>以明确参与方在模板中所扮演的角色。
 //
 // 
 //
@@ -2937,9 +2939,9 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // <td>场景一</td>
 //
-// <td>第三方子企业A员工</td>
+// <td>第三方子企业员工</td>
 //
-// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
+// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为0</td>
 //
 // </tr>
 //
@@ -2947,9 +2949,9 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // <td>场景二</td>
 //
-// <td>第三方子企业B员工</td>
+// <td>SaaS平台企业员工</td>
 //
-// <td>OpenId、OrganizationOpenId、OrganizationName必传, ApproverType设置为ORGANIZATION</td>
+// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为0</td>
 //
 // </tr>
 //
@@ -2957,19 +2959,9 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // <td>场景三</td>
 //
-// <td>SaaS平台企业员工</td>
-//
-// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为ORGANIZATION</td>
-//
-// </tr>
-//
-// <tr>
-//
-// <td>场景四</td>
-//
 // <td>个人/自然人</td>
 //
-// <td>Name、Mobile必传, ApproverType设置为PERSON</td>
+// <td>Name、Mobile必传, ApproverType设置为1</td>
 //
 // </tr>
 //
@@ -3005,7 +2997,9 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // 注意：
 //
-// 1. 只支持PC浏览器操作使用
+// 1. <font color="red">仅支持在PC浏览器</font>上进行操作和使用。
+//
+// 2. 在使用<font color="red">模板发起合同时，需指定RecipientId</font>以明确参与方在模板中所扮演的角色。
 //
 // 
 //
@@ -3037,9 +3031,9 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // <td>场景一</td>
 //
-// <td>第三方子企业A员工</td>
+// <td>第三方子企业员工</td>
 //
-// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
+// <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为0</td>
 //
 // </tr>
 //
@@ -3047,9 +3041,9 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // <td>场景二</td>
 //
-// <td>第三方子企业B员工</td>
+// <td>SaaS平台企业员工</td>
 //
-// <td>OpenId、OrganizationOpenId、OrganizationName必传, ApproverType设置为ORGANIZATION</td>
+// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为0</td>
 //
 // </tr>
 //
@@ -3057,19 +3051,9 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // <td>场景三</td>
 //
-// <td>SaaS平台企业员工</td>
-//
-// <td>Name、Mobile、OrganizationName必传，NotChannelOrganization=True。 ApproverType设置为ORGANIZATION</td>
-//
-// </tr>
-//
-// <tr>
-//
-// <td>场景四</td>
-//
 // <td>个人/自然人</td>
 //
-// <td>Name、Mobile必传, ApproverType设置为PERSON</td>
+// <td>Name、Mobile必传, ApproverType设置为1</td>
 //
 // </tr>
 //

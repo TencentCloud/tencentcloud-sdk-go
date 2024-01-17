@@ -1,55 +1,10 @@
 # 本版本更新包含以下内容：
 
-## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 22 次发布
+### 第 55 次发布
 
-发布时间：2024-01-17 01:12:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeployResource](https://cloud.tencent.com/document/api/1025/86961)
-
-	* 新增入参：CdcClusterId
-
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 103 次发布
-
-发布时间：2024-01-17 01:18:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetMonitorData](https://cloud.tencent.com/document/api/248/31014)
-
-	* 新增入参：SpecifyStatistics
-
-
-修改数据结构：
-
-* [DataPoint](https://cloud.tencent.com/document/api/248/30354#DataPoint)
-
-	* 新增成员：MaxValues, MinValues, AvgValues
-
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
-
-### 第 28 次发布
-
-发布时间：2024-01-17 01:19:45
+发布时间：2024-01-18 01:09:19
 
 本次发布包含了以下内容：
 
@@ -57,39 +12,35 @@
 
 新增接口：
 
-* [AddShareUnit](https://cloud.tencent.com/document/api/850/103056)
-* [AddShareUnitMembers](https://cloud.tencent.com/document/api/850/103055)
-* [AddShareUnitResources](https://cloud.tencent.com/document/api/850/103054)
-* [DeleteShareUnit](https://cloud.tencent.com/document/api/850/103053)
-* [DeleteShareUnitMembers](https://cloud.tencent.com/document/api/850/103052)
-* [DeleteShareUnitResources](https://cloud.tencent.com/document/api/850/103051)
-* [DescribeShareAreas](https://cloud.tencent.com/document/api/850/103050)
-* [DescribeShareUnitMembers](https://cloud.tencent.com/document/api/850/103049)
-* [DescribeShareUnitResources](https://cloud.tencent.com/document/api/850/103048)
-* [DescribeShareUnits](https://cloud.tencent.com/document/api/850/103047)
-* [UpdateShareUnit](https://cloud.tencent.com/document/api/850/103046)
+* [DescribeSavingPlanResourceInfo](https://cloud.tencent.com/document/api/555/103077)
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 56 次发布
+
+发布时间：2024-01-18 01:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInsightList](https://cloud.tencent.com/document/api/589/103078)
 
 新增数据结构：
 
-* [ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit)
-* [ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource)
-* [ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea)
-* [ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember)
-* [ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource)
-* [ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember)
-* [ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource)
+* [InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult)
 
 
 
-## 集团账号管理(organization) 版本：2018-12-25
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 24 次发布
 
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 186 次发布
-
-发布时间：2024-01-17 01:26:10
+发布时间：2024-01-18 01:17:58
 
 本次发布包含了以下内容：
 
@@ -97,18 +48,34 @@
 
 修改接口：
 
-* [DescribeUsedIpAddress](https://cloud.tencent.com/document/api/215/91061)
+* [DeleteCloudStorageEvent](https://cloud.tencent.com/document/api/1131/95523)
 
-	* 新增入参：Filters
+	* 新增入参：ChannelId
 
+* [DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)
+
+	* 新增出参：ChannelId
+
+* [ResetCloudStorageEvent](https://cloud.tencent.com/document/api/1131/96104)
+
+	* 新增入参：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 68 次发布
+### 第 69 次发布
 
-发布时间：2024-01-17 01:27:06
+发布时间：2024-01-18 01:27:50
 
 本次发布包含了以下内容：
 
@@ -116,89 +83,53 @@
 
 修改接口：
 
-* [CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)
+* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
 
-	* 新增入参：ConnectResult
+	* 新增入参：FunctionName, FunctionType, DatabaseName, SchemaName, CommandFormat
 
-* [DescribeBaselineAllTaskDag](https://cloud.tencent.com/document/api/1267/95248)
+	* <font color="#dd0000">**修改入参**：</font>ClusterIdentifier, FunctionId
 
-	* 新增入参：BaselineTaskId
 
-* [DescribeBaselineInstanceDag](https://cloud.tencent.com/document/api/1267/95246)
+新增数据结构：
 
-	* 新增入参：PromiseTaskId
-
-* [DescribeBaselineInstanceGantt](https://cloud.tencent.com/document/api/1267/95245)
-
-	* 新增入参：PromiseTaskId
-
-* [DescribeSchedulerInstanceStatus](https://cloud.tencent.com/document/api/1267/95198)
-
-	* 新增入参：WorkflowId
-
-* [DescribeSchedulerRunTimeInstanceCntByStatus](https://cloud.tencent.com/document/api/1267/95197)
-
-	* 新增入参：WorkflowId, SortItem, SortType
-
-* [DescribeSchedulerTaskCntByStatus](https://cloud.tencent.com/document/api/1267/95196)
-
-	* 新增入参：WorkflowId
-
-* [DescribeStatisticInstanceStatusTrendOps](https://cloud.tencent.com/document/api/1267/95193)
-
-	* 新增入参：WorkflowId
-
-* [DescribeTaskByCycle](https://cloud.tencent.com/document/api/1267/95192)
-
-	* 新增入参：WorkflowId
-
-* [DescribeTaskByStatusReport](https://cloud.tencent.com/document/api/1267/95190)
-
-	* 新增入参：WorkflowId
-
+* [SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression)
+* [SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable)
 
 修改数据结构：
 
-* [BaselineTaskInstanceDto](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskInstanceDto)
+* [BooleanResponse](https://cloud.tencent.com/document/api/1267/76336#BooleanResponse)
 
-	* 新增成员：CriticalDependency
+	* 新增成员：Code
 
-	* <font color="#dd0000">**修改成员**：</font>Id, BaselineInstanceId, BaselineType, BaselineDataTime, UpstreamInstanceIds, DownstreamInstanceIds, IsPromiseTask, TaskId, CurRunDate, TaskName, InCriticalPath, InFirstLevel, EstimatedCostTime, ActualCostTime, LatestStartTime, ActualStartTime, EstimatedEndTime, LatestEndTime, ActualEndTime, TaskInstanceStatus, ProjectId, ShardKey, CreateTime, UpdateTime, UserUin, OwnerUin, AppId
+* [InstanceReportReadNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportReadNode)
 
-* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+	* 新增成员：WaitWriterTime
 
-	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+* [InstanceReportWriteNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportWriteNode)
 
-* [RuntimeInstanceCntTop](https://cloud.tencent.com/document/api/1267/76336#RuntimeInstanceCntTop)
+	* 新增成员：WaitReaderTime
 
-	* 新增成员：WaitScheduleTime
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>TaskId, TaskName, InCharge, CycleUnit, State, RunTime, CurRunTime
+	* 新增成员：ArrangeSpaceTaskId, OfflineTaskStatus
 
-* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
 
-	* 新增成员：ChannelType
+	* 新增成员：TableName, TableOwnerName, ExecStrategy, Subscription, CreateTime, DatasourceId, DatabaseId, MonitorStatus
 
-	* <font color="#dd0000">**修改成员**：</font>PrefixPath
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
 
+	* 新增成员：RuleId, RuleName
 
+	* <font color="#dd0000">**修改成员**：</font>RuleGroupId, MonitorType, ExecQueue, ExecutorGroupId, ExecutorGroupName, Tasks, StartTime, EndTime, CycleType, DelayTime, CycleStep, TaskAction
 
+* [RuleGroupSubscribe](https://cloud.tencent.com/document/api/1267/76336#RuleGroupSubscribe)
 
-## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
+	* 新增成员：RuleId, RuleName
 
-### 第 6 次发布
+* [RuleTemplate](https://cloud.tencent.com/document/api/1267/76336#RuleTemplate)
 
-发布时间：2024-01-17 01:27:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ControlDevice](https://cloud.tencent.com/document/api/1693/101487)
-
-	* 新增入参：IsSynchronized
+	* 新增成员：ResolvedSqlExpression, DatasourceTypes
 
 
 
@@ -8703,6 +8634,18 @@
 
 
 ## 费用中心(billing) 版本：2018-07-09
+
+### 第 55 次发布
+
+发布时间：2024-01-18 01:09:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSavingPlanResourceInfo](https://cloud.tencent.com/document/api/555/103077)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 54 次发布
 
@@ -54990,6 +54933,22 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 56 次发布
+
+发布时间：2024-01-18 01:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInsightList](https://cloud.tencent.com/document/api/589/103078)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult)](https://cloud.tencent.com/document/api/589/33981#[InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult))
+
 ### 第 55 次发布
 
 发布时间：2023-12-25 00:10:01
@@ -73112,6 +73071,29 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 24 次发布
+
+发布时间：2024-01-18 01:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCloudStorageEvent](https://cloud.tencent.com/document/api/1131/95523)
+
+	* 新增入参：ChannelId
+
+* [DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)
+
+	* 新增出参：ChannelId
+
+* [ResetCloudStorageEvent](https://cloud.tencent.com/document/api/1131/96104)
+
+	* 新增入参：ChannelId
+
 
 ### 第 23 次发布
 
@@ -93042,27 +93024,27 @@
 
 新增接口：
 
-* [[AddShareUnit](https://cloud.tencent.com/document/api/850/103056)](https://cloud.tencent.com/document/api/#/#)
-* [[AddShareUnitMembers](https://cloud.tencent.com/document/api/850/103055)](https://cloud.tencent.com/document/api/#/#)
-* [[AddShareUnitResources](https://cloud.tencent.com/document/api/850/103054)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteShareUnit](https://cloud.tencent.com/document/api/850/103053)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteShareUnitMembers](https://cloud.tencent.com/document/api/850/103052)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteShareUnitResources](https://cloud.tencent.com/document/api/850/103051)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShareAreas](https://cloud.tencent.com/document/api/850/103050)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShareUnitMembers](https://cloud.tencent.com/document/api/850/103049)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShareUnitResources](https://cloud.tencent.com/document/api/850/103048)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShareUnits](https://cloud.tencent.com/document/api/850/103047)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateShareUnit](https://cloud.tencent.com/document/api/850/103046)](https://cloud.tencent.com/document/api/#/#)
+* [AddShareUnit](https://cloud.tencent.com/document/api/850/103056)
+* [AddShareUnitMembers](https://cloud.tencent.com/document/api/850/103055)
+* [AddShareUnitResources](https://cloud.tencent.com/document/api/850/103054)
+* [DeleteShareUnit](https://cloud.tencent.com/document/api/850/103053)
+* [DeleteShareUnitMembers](https://cloud.tencent.com/document/api/850/103052)
+* [DeleteShareUnitResources](https://cloud.tencent.com/document/api/850/103051)
+* [DescribeShareAreas](https://cloud.tencent.com/document/api/850/103050)
+* [DescribeShareUnitMembers](https://cloud.tencent.com/document/api/850/103049)
+* [DescribeShareUnitResources](https://cloud.tencent.com/document/api/850/103048)
+* [DescribeShareUnits](https://cloud.tencent.com/document/api/850/103047)
+* [UpdateShareUnit](https://cloud.tencent.com/document/api/850/103046)
 
 新增数据结构：
 
-* [[ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit)](https://cloud.tencent.com/document/api/850/67060#[ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit))
-* [[ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource)](https://cloud.tencent.com/document/api/850/67060#[ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource))
-* [[ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea)](https://cloud.tencent.com/document/api/850/67060#[ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea))
-* [[ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember)](https://cloud.tencent.com/document/api/850/67060#[ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember))
-* [[ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource)](https://cloud.tencent.com/document/api/850/67060#[ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource))
-* [[ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember)](https://cloud.tencent.com/document/api/850/67060#[ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember))
-* [[ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource)](https://cloud.tencent.com/document/api/850/67060#[ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource))
+* [ManagerShareUnit](https://cloud.tencent.com/document/api/850/67060#ManagerShareUnit)
+* [ProductResource](https://cloud.tencent.com/document/api/850/67060#ProductResource)
+* [ShareArea](https://cloud.tencent.com/document/api/850/67060#ShareArea)
+* [ShareMember](https://cloud.tencent.com/document/api/850/67060#ShareMember)
+* [ShareResource](https://cloud.tencent.com/document/api/850/67060#ShareResource)
+* [ShareUnitMember](https://cloud.tencent.com/document/api/850/67060#ShareUnitMember)
+* [ShareUnitResource](https://cloud.tencent.com/document/api/850/67060#ShareUnitResource)
 
 ### 第 27 次发布
 
@@ -144615,6 +144597,65 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 69 次发布
+
+发布时间：2024-01-18 01:27:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
+
+	* 新增入参：FunctionName, FunctionType, DatabaseName, SchemaName, CommandFormat
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterIdentifier, FunctionId
+
+
+新增数据结构：
+
+* [[SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression)](https://cloud.tencent.com/document/api/1267/76336#[SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression))
+* [[SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable)](https://cloud.tencent.com/document/api/1267/76336#[SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable))
+
+修改数据结构：
+
+* [BooleanResponse](https://cloud.tencent.com/document/api/1267/76336#BooleanResponse)
+
+	* 新增成员：Code
+
+* [InstanceReportReadNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportReadNode)
+
+	* 新增成员：WaitWriterTime
+
+* [InstanceReportWriteNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportWriteNode)
+
+	* 新增成员：WaitReaderTime
+
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+
+	* 新增成员：ArrangeSpaceTaskId, OfflineTaskStatus
+
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+
+	* 新增成员：TableName, TableOwnerName, ExecStrategy, Subscription, CreateTime, DatasourceId, DatabaseId, MonitorStatus
+
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+
+	* 新增成员：RuleId, RuleName
+
+	* <font color="#dd0000">**修改成员**：</font>RuleGroupId, MonitorType, ExecQueue, ExecutorGroupId, ExecutorGroupName, Tasks, StartTime, EndTime, CycleType, DelayTime, CycleStep, TaskAction
+
+* [RuleGroupSubscribe](https://cloud.tencent.com/document/api/1267/76336#RuleGroupSubscribe)
+
+	* 新增成员：RuleId, RuleName
+
+* [RuleTemplate](https://cloud.tencent.com/document/api/1267/76336#RuleTemplate)
+
+	* 新增成员：ResolvedSqlExpression, DatasourceTypes
+
 
 ### 第 68 次发布
 

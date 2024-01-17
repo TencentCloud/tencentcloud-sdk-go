@@ -1092,6 +1092,12 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //
 // 注：**静默（自动）签署不支持合同签署方存在填写**功能
 //
+// <br>
+//
+// **相关视频指引**
+//
+// <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
@@ -1241,6 +1247,12 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // 
 //
 // 注：**静默（自动）签署不支持合同签署方存在填写**功能
+//
+// <br>
+//
+// **相关视频指引**
+//
+// <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1634,8 +1646,6 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //
 // 注：
 //
-// - 不同类型的签署方传参不同, 可以参考开发者中心的ApproverInfo结构体说明
-//
 // -  合同**发起后就会扣减合同的额度**, 如果未签署完成时撤销合同会返还此额度（**过期，拒签，签署完成，解除完成等状态不会返还额度**）
 //
 // - **静默（自动）签署不支持合同签署方存在填写**功能
@@ -1857,8 +1867,6 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 // 
 //
 // 注：
-//
-// - 不同类型的签署方传参不同, 可以参考开发者中心的ApproverInfo结构体说明
 //
 // -  合同**发起后就会扣减合同的额度**, 如果未签署完成时撤销合同会返还此额度（**过期，拒签，签署完成，解除完成等状态不会返还额度**）
 //
@@ -3911,6 +3919,8 @@ func NewCreateOrganizationBatchSignUrlResponse() (response *CreateOrganizationBa
 //
 // - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 //
+// - 仅支持待签署状态的合同生成签署链接。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -3931,6 +3941,8 @@ func (c *Client) CreateOrganizationBatchSignUrl(request *CreateOrganizationBatch
 // - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
 //
 // - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+//
+// - 仅支持待签署状态的合同生成签署链接。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7637,9 +7649,15 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //
 // 注：
 //
-// - **合同发起后就会扣减合同的额度**, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
+// 1.<font color="red">合同发起后就会扣减合同的额度</font>, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
 //
-// - **静默（自动）签署不支持合同签署方存在填写**功能
+// 
+//
+// 2.<font color="red">静默（自动）签署不支持合同签署方存在填写</font>功能
+//
+// 
+//
+// 3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_file_resources)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7701,9 +7719,15 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //
 // 注：
 //
-// - **合同发起后就会扣减合同的额度**, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
+// 1.<font color="red">合同发起后就会扣减合同的额度</font>, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
 //
-// - **静默（自动）签署不支持合同签署方存在填写**功能
+// 
+//
+// 2.<font color="red">静默（自动）签署不支持合同签署方存在填写</font>功能
+//
+// 
+//
+// 3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_file_resources)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

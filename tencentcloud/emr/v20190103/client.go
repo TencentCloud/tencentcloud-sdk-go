@@ -831,6 +831,57 @@ func (c *Client) DescribeImpalaQueriesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeInsightListRequest() (request *DescribeInsightListRequest) {
+    request = &DescribeInsightListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeInsightList")
+    
+    
+    return
+}
+
+func NewDescribeInsightListResponse() (response *DescribeInsightListResponse) {
+    response = &DescribeInsightListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInsightList
+// 获取洞察结果信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeInsightList(request *DescribeInsightListRequest) (response *DescribeInsightListResponse, err error) {
+    return c.DescribeInsightListWithContext(context.Background(), request)
+}
+
+// DescribeInsightList
+// 获取洞察结果信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeInsightListWithContext(ctx context.Context, request *DescribeInsightListRequest) (response *DescribeInsightListResponse, err error) {
+    if request == nil {
+        request = NewDescribeInsightListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInsightList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInsightListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
     request = &DescribeInstanceRenewNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

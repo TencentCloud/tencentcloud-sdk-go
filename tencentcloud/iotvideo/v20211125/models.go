@@ -1782,6 +1782,9 @@ type DeleteCloudStorageEventRequestParams struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type DeleteCloudStorageEventRequest struct {
@@ -1804,6 +1807,9 @@ type DeleteCloudStorageEventRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 func (r *DeleteCloudStorageEventRequest) ToJsonString() string {
@@ -1824,6 +1830,7 @@ func (r *DeleteCloudStorageEventRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudStorageEventRequest has unknown keys!", "")
 	}
@@ -3155,6 +3162,9 @@ type DescribeCloudStorageOrderResponseParams struct {
 	// 1: 已过期
 	// 2:生效
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 通道id
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -7809,6 +7819,9 @@ type ResetCloudStorageEventRequestParams struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type ResetCloudStorageEventRequest struct {
@@ -7822,6 +7835,9 @@ type ResetCloudStorageEventRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 func (r *ResetCloudStorageEventRequest) ToJsonString() string {
@@ -7839,6 +7855,7 @@ func (r *ResetCloudStorageEventRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetCloudStorageEventRequest has unknown keys!", "")
 	}

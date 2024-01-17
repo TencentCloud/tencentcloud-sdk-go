@@ -1908,6 +1908,95 @@ func (r *DescribeImpalaQueriesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInsightListRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 获取的洞察结果开始时间，此时间针对对App或者Hive查询的开始时间的过滤
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 获取的洞察结果结束时间，此时间针对对App或者Hive查询的开始时间的过滤
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+}
+
+type DescribeInsightListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 获取的洞察结果开始时间，此时间针对对App或者Hive查询的开始时间的过滤
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 获取的洞察结果结束时间，此时间针对对App或者Hive查询的开始时间的过滤
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+}
+
+func (r *DescribeInsightListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInsightListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInsightListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInsightListResponseParams struct {
+	// 总数，分页查询时使用
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 洞察结果数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultList []*InsightResult `json:"ResultList,omitnil" name:"ResultList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInsightListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInsightListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInsightListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInsightListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceRenewNodesRequestParams struct {
 	// 集群实例ID,实例ID形如: emr-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -3772,6 +3861,84 @@ func (r *InquiryPriceUpdateInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InquiryPriceUpdateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InsightResult struct {
+	// 当Type为HIVE时，是Hive查询ID，当Type为MAPREDUCE，SPARK，TEZ时则是YarnAppID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil" name:"ID"`
+
+	// 洞察应用的类型，HIVE,SPARK,MAPREDUCE,TEZ
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 洞察规则ID
+	// HIVE-ScanManyMeta:元数据扫描过多
+	// HIVE-ScanManyPartition:大表扫描
+	// HIVE-SlowCompile:编译耗时过长
+	// HIVE-UnSuitableConfig:不合理参数
+	// MAPREDUCE-MapperDataSkew:Map数据倾斜
+	// MAPREDUCE-MapperMemWaste:MapMemory资源浪费
+	// MAPREDUCE-MapperSlowTask:Map慢Task
+	// MAPREDUCE-MapperTaskGC:MapperTaskGC
+	// MAPREDUCE-MemExceeded:峰值内存超限
+	// MAPREDUCE-ReducerDataSkew:Reduce数据倾斜
+	// MAPREDUCE-ReducerMemWaste:ReduceMemory资源浪费
+	// MAPREDUCE-ReducerSlowTask:Reduce慢Task
+	// MAPREDUCE-ReducerTaskGC:ReducerTaskGC
+	// MAPREDUCE-SchedulingDelay:调度延迟
+	// SPARK-CpuWaste:CPU资源浪费
+	// SPARK-DataSkew:数据倾斜
+	// SPARK-ExecutorGC:ExecutorGC
+	// SPARK-MemExceeded:峰值内存超限
+	// SPARK-MemWaste:Memory资源浪费
+	// SPARK-ScheduleOverhead:ScheduleOverhead
+	// SPARK-ScheduleSkew:调度倾斜
+	// SPARK-SlowTask:慢Task
+	// TEZ-DataSkew:数据倾斜
+	// TEZ-MapperDataSkew:Map数据倾斜
+	// TEZ-ReducerDataSkew:Reduce数据倾斜
+	// TEZ-TezMemWaste:Memory资源浪费
+	// TEZ-TezSlowTask:慢Task
+	// TEZ-TezTaskGC:TasksGC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
+
+	// 洞察规则名字，可参考RuleID的说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 洞察规则解释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExplain *string `json:"RuleExplain,omitnil" name:"RuleExplain"`
+
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// 建议信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+
+	// 洞察异常衡量值，同类型的洞察项越大越严重，不同类型的洞察项无对比意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitnil" name:"Value"`
+
+	// 调度任务执行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTaskExecID *string `json:"ScheduleTaskExecID,omitnil" name:"ScheduleTaskExecID"`
+
+	// 调度流，DAG
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleFlowName *string `json:"ScheduleFlowName,omitnil" name:"ScheduleFlowName"`
+
+	// 调度flow中的某个task节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTaskName *string `json:"ScheduleTaskName,omitnil" name:"ScheduleTaskName"`
+
+	// Yarn任务的部分核心配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobConf *string `json:"JobConf,omitnil" name:"JobConf"`
 }
 
 type InstanceChargePrepaid struct {

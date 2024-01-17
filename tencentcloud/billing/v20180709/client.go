@@ -1571,6 +1571,55 @@ func (c *Client) DescribeSavingPlanOverviewWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeSavingPlanResourceInfoRequest() (request *DescribeSavingPlanResourceInfoRequest) {
+    request = &DescribeSavingPlanResourceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeSavingPlanResourceInfo")
+    
+    
+    return
+}
+
+func NewDescribeSavingPlanResourceInfoResponse() (response *DescribeSavingPlanResourceInfoResponse) {
+    response = &DescribeSavingPlanResourceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSavingPlanResourceInfo
+// 查询节省计划详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanResourceInfo(request *DescribeSavingPlanResourceInfoRequest) (response *DescribeSavingPlanResourceInfoResponse, err error) {
+    return c.DescribeSavingPlanResourceInfoWithContext(context.Background(), request)
+}
+
+// DescribeSavingPlanResourceInfo
+// 查询节省计划详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanResourceInfoWithContext(ctx context.Context, request *DescribeSavingPlanResourceInfoRequest) (response *DescribeSavingPlanResourceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSavingPlanResourceInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSavingPlanResourceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSavingPlanResourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSavingPlanUsageRequest() (request *DescribeSavingPlanUsageRequest) {
     request = &DescribeSavingPlanUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},

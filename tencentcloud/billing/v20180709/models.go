@@ -4414,6 +4414,84 @@ func (r *DescribeSavingPlanOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSavingPlanResourceInfoRequestParams struct {
+	// 数量，最大值为100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 购买开始时间，格式yyyy-MM-dd
+	CreateStartDate *string `json:"CreateStartDate,omitnil" name:"CreateStartDate"`
+
+	// 购买结束时间，格式yyyy-MM-dd
+	CreateEndDate *string `json:"CreateEndDate,omitnil" name:"CreateEndDate"`
+}
+
+type DescribeSavingPlanResourceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数量，最大值为100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 购买开始时间，格式yyyy-MM-dd
+	CreateStartDate *string `json:"CreateStartDate,omitnil" name:"CreateStartDate"`
+
+	// 购买结束时间，格式yyyy-MM-dd
+	CreateEndDate *string `json:"CreateEndDate,omitnil" name:"CreateEndDate"`
+}
+
+func (r *DescribeSavingPlanResourceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanResourceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "CreateStartDate")
+	delete(f, "CreateEndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSavingPlanResourceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSavingPlanResourceInfoResponseParams struct {
+	// 记录数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSavingPlanResourceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSavingPlanResourceInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSavingPlanResourceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSavingPlanResourceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSavingPlanUsageRequestParams struct {
 	// 开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
 	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`

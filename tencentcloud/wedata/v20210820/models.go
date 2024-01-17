@@ -2622,6 +2622,10 @@ type BooleanResponse struct {
 	// 基线Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaselineId *int64 `json:"BaselineId,omitnil" name:"BaselineId"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
 }
 
 type BytesSpeed struct {
@@ -6796,6 +6800,21 @@ type DeleteCustomFunctionRequestParams struct {
 
 	// 项目ID，必须填
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+
+	// 函数类型，HIVE，SPARK，DLC，CDW_POSTGRESQL
+	FunctionType *string `json:"FunctionType,omitnil" name:"FunctionType"`
+
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 模式名
+	SchemaName *string `json:"SchemaName,omitnil" name:"SchemaName"`
+
+	// 函数命令格式
+	CommandFormat *string `json:"CommandFormat,omitnil" name:"CommandFormat"`
 }
 
 type DeleteCustomFunctionRequest struct {
@@ -6809,6 +6828,21 @@ type DeleteCustomFunctionRequest struct {
 
 	// 项目ID，必须填
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+
+	// 函数类型，HIVE，SPARK，DLC，CDW_POSTGRESQL
+	FunctionType *string `json:"FunctionType,omitnil" name:"FunctionType"`
+
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// 模式名
+	SchemaName *string `json:"SchemaName,omitnil" name:"SchemaName"`
+
+	// 函数命令格式
+	CommandFormat *string `json:"CommandFormat,omitnil" name:"CommandFormat"`
 }
 
 func (r *DeleteCustomFunctionRequest) ToJsonString() string {
@@ -6826,6 +6860,11 @@ func (r *DeleteCustomFunctionRequest) FromJsonString(s string) error {
 	delete(f, "ClusterIdentifier")
 	delete(f, "FunctionId")
 	delete(f, "ProjectId")
+	delete(f, "FunctionName")
+	delete(f, "FunctionType")
+	delete(f, "DatabaseName")
+	delete(f, "SchemaName")
+	delete(f, "CommandFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomFunctionRequest has unknown keys!", "")
 	}
@@ -25989,6 +26028,10 @@ type InstanceReportReadNode struct {
 
 	// 脏数据条数
 	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitnil" name:"TotalErrorRecords"`
+
+	// 等待数据发送到下游的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitWriterTime *float64 `json:"WaitWriterTime,omitnil" name:"WaitWriterTime"`
 }
 
 type InstanceReportSummary struct {
@@ -26047,6 +26090,10 @@ type InstanceReportWriteNode struct {
 
 	// 脏数据条数
 	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitnil" name:"TotalErrorRecords"`
+
+	// 等待上游数据发送过来的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitReaderTime *float64 `json:"WaitReaderTime,omitnil" name:"WaitReaderTime"`
 }
 
 type InstanceSearchCondition struct {
@@ -26468,6 +26515,14 @@ type IntegrationTaskInfo struct {
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
+
+	// 离线任务导入到编排空间的任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArrangeSpaceTaskId *string `json:"ArrangeSpaceTaskId,omitnil" name:"ArrangeSpaceTaskId"`
+
+	// 离线任务状态区分1.未提交2.已提交3.已导出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTaskStatus *int64 `json:"OfflineTaskStatus,omitnil" name:"OfflineTaskStatus"`
 }
 
 // Predefined struct for user
@@ -31664,6 +31719,38 @@ type Rule struct {
 	// 源端对应的引擎类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil" name:"SourceEngineTypes"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 表负责人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil" name:"TableOwnerName"`
+
+	// 执行策略信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecStrategy *RuleGroupExecStrategy `json:"ExecStrategy,omitnil" name:"ExecStrategy"`
+
+	// 订阅信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subscription *RuleGroupSubscribe `json:"Subscription,omitnil" name:"Subscription"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 数据源 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *uint64 `json:"DatasourceId,omitnil" name:"DatasourceId"`
+
+	// 数据库 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+
+	// 监控是否开启.0false,1true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 }
 
 type RuleConfig struct {
@@ -32156,6 +32243,14 @@ type RuleGroupExecStrategy struct {
 	// 执行计划
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecPlan *string `json:"ExecPlan,omitnil" name:"ExecPlan"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 }
 
 type RuleGroupMonitor struct {
@@ -32278,6 +32373,14 @@ type RuleGroupSubscribe struct {
 	// 群机器人配置的webhook信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebHooks []*SubscribeWebHook `json:"WebHooks,omitnil" name:"WebHooks"`
+
+	// 规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 }
 
 type RuleGroupTable struct {
@@ -32444,6 +32547,14 @@ type RuleTemplate struct {
 	// 模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubQualityDim *uint64 `json:"SubQualityDim,omitnil" name:"SubQualityDim"`
+
+	// sql表达式解析对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolvedSqlExpression *SqlExpression `json:"ResolvedSqlExpression,omitnil" name:"ResolvedSqlExpression"`
+
+	// 支持的数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceTypes []*int64 `json:"DatasourceTypes,omitnil" name:"DatasourceTypes"`
 }
 
 type RuleTemplateHistory struct {
@@ -33747,6 +33858,26 @@ type SpeedValue struct {
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Speed *float64 `json:"Speed,omitnil" name:"Speed"`
+}
+
+type SqlExpression struct {
+	// sql表达式表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableExpressions []*SqlExpressionTable `json:"TableExpressions,omitnil" name:"TableExpressions"`
+
+	// sql表达式字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamExpressions []*string `json:"ParamExpressions,omitnil" name:"ParamExpressions"`
+}
+
+type SqlExpressionTable struct {
+	// sql表达式表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableExpression *string `json:"TableExpression,omitnil" name:"TableExpression"`
+
+	// sql表达式字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnExpression []*string `json:"ColumnExpression,omitnil" name:"ColumnExpression"`
 }
 
 type StageCloudApiRequest struct {

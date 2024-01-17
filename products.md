@@ -23,7 +23,7 @@
 | batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2024-01-01 00:02:00 |
 | bda | [人体分析](https://cloud.tencent.com/document/product/1208) | 2023-10-11 01:10:01 |
 | bi | [商业智能分析 BI](https://cloud.tencent.com/document/product/590) | 2024-01-10 01:07:00 |
-| billing | [费用中心](https://cloud.tencent.com/document/product/555) | 2024-01-09 01:07:19 |
+| billing | [费用中心](https://cloud.tencent.com/document/product/555) | 2024-01-18 01:09:19 |
 | bizlive | [商业直播](https://cloud.tencent.com/document/product) | 2020-03-10 01:08:07 |
 | bm | [黑石物理服务器CPM](https://cloud.tencent.com/document/product/386) | 2023-10-18 01:14:30 |
 | bma | [品牌经营管家](https://cloud.tencent.com/document/product/1296) | 2023-08-31 01:07:17 |
@@ -60,7 +60,7 @@
 | cloudaudit | [操作审计](https://cloud.tencent.com/document/product/629) | 2024-01-15 01:09:37 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2023-08-17 01:57:08 |
 | cloudstudio | [Cloud Studio（云端 IDE）](https://cloud.tencent.com/document/product/1039) | 2023-08-03 01:03:28 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2023-12-26 01:10:29 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2024-01-18 01:12:03 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2023-12-05 01:27:33 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2023-08-17 02:03:39 |
 | cms | [内容安全](https://cloud.tencent.com/document/product/669) | 2023-08-24 01:10:10 |
@@ -69,7 +69,7 @@
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | 2023-12-29 01:11:43 |
 | csxg | [5G入云服务](https://cloud.tencent.com/document/product/1687) | 2023-05-19 11:26:14 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-01-10 01:10:38 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-01-18 01:12:34 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2024-01-05 01:11:37 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-01-10 01:11:56 |
@@ -94,10 +94,10 @@
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2023-12-20 01:36:00 |
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2023-05-18 01:25:40 |
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
-| emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2023-12-25 00:10:01 |
+| emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-01-18 01:15:51 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-01-03 01:15:03 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-17 01:14:55 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-16 01:15:09 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-17 21:43:05 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-18 01:16:19 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-12-15 19:41:44 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-01-12 01:15:37 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-12-25 00:11:01 |
@@ -109,7 +109,7 @@
 | gs | [云游戏](https://cloud.tencent.com/document/product/1162) | 2023-05-18 01:29:42 |
 | gse | [游戏服务器伸缩](https://cloud.tencent.com/document/product/1165) | 2022-07-11 06:12:44 |
 | habo | [](https://cloud.tencent.com/document/product) | 2019-05-09 19:37:22 |
-| hai | [高性能应用服务](https://cloud.tencent.com/document/product/1721) | 2024-01-03 01:16:14 |
+| hai | [高性能应用服务](https://cloud.tencent.com/document/product/1721) | 2024-01-18 01:16:58 |
 | hasim | [高可用物联网卡](https://cloud.tencent.com/document/product/1482) | 2023-05-18 01:29:47 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2023-11-01 01:14:52 |
 | hunyuan | [腾讯混元大模型](https://cloud.tencent.com/document/product/1729) | 2024-01-08 00:11:02 |
@@ -125,7 +125,7 @@
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2023-11-06 00:11:14 |
 | iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2023-10-16 01:17:51 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2023-05-18 01:33:02 |
-| iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2023-11-29 01:57:28 |
+| iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2024-01-18 01:17:58 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2023-08-17 03:44:44 |
 | irp | [智能推荐平台](https://cloud.tencent.com/document/product/1541) | 2023-09-22 02:00:51 |
 | iss | [智能视图计算平台](https://cloud.tencent.com/document/product/1344) | 2023-12-27 01:22:46 |
@@ -134,7 +134,7 @@
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2023-08-17 03:51:31 |
 | lcic | [实时互动-教育版](https://cloud.tencent.com/document/product/1639) | 2023-12-21 01:48:52 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2024-01-03 01:18:19 |
-| live | [云直播CSS](https://cloud.tencent.com/document/product/267) | 2024-01-17 01:17:58 |
+| live | [云直播CSS](https://cloud.tencent.com/document/product/267) | 2024-01-18 01:19:02 |
 | lowcode | [云开发低码](https://cloud.tencent.com/document/product/1301) | 2022-04-04 06:56:51 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2022-04-04 06:56:52 |
 | mall | [商场客留大数据](https://cloud.tencent.com/document/product/1707) | 2023-07-17 10:16:02 |
@@ -145,7 +145,7 @@
 | mmps | [小程序安全](https://cloud.tencent.com/document/product/1223) | 2023-05-18 01:39:20 |
 | mna | [多网聚合加速](https://cloud.tencent.com/document/product/1385) | 2023-12-01 01:19:47 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2023-12-27 01:26:46 |
-| monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-01-17 01:18:35 |
+| monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-01-18 01:19:40 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-01-09 01:20:43 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-01-08 00:14:42 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2023-12-05 02:07:42 |
@@ -214,7 +214,7 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2023-09-01 01:23:47 |
 | tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2024-01-16 01:24:12 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2023-12-29 01:26:38 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2023-12-26 01:27:04 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2024-01-18 01:25:02 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2024-01-12 01:25:58 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2024-01-04 01:25:25 |
@@ -236,7 +236,7 @@
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-11-27 00:23:42 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-01-17 01:26:45 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-11-15 02:42:49 |
-| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2024-01-17 01:27:06 |
+| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2024-01-18 01:27:50 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2024-01-17 01:27:53 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | yinsuda | [音速达直播音乐版权引擎](https://cloud.tencent.com/document/product/1592) | 2023-12-26 02:06:57 |
