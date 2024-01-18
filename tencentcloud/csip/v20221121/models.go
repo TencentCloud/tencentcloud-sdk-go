@@ -3961,6 +3961,63 @@ type IpAssetListVO struct {
 }
 
 // Predefined struct for user
+type ModifyOrganizationAccountStatusRequestParams struct {
+	// 修改集团账号状态，1 开启， 2关闭
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type ModifyOrganizationAccountStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 修改集团账号状态，1 开启， 2关闭
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *ModifyOrganizationAccountStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrganizationAccountStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOrganizationAccountStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOrganizationAccountStatusResponseParams struct {
+	// 返回值为0，则修改成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyOrganizationAccountStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOrganizationAccountStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyOrganizationAccountStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrganizationAccountStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRiskCenterRiskStatusRequestParams struct {
 	// 风险资产相关数据
 	RiskStatusKeys []*RiskCenterStatusKey `json:"RiskStatusKeys,omitnil" name:"RiskStatusKeys"`

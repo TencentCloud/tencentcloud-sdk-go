@@ -4282,6 +4282,9 @@ func (r *DescribeDDoSAttackTopDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDefaultCertificatesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
 	// 过滤条件，Filters.Values的上限为5。详细的过滤条件如下：
 	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是 </li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -4296,6 +4299,9 @@ type DescribeDefaultCertificatesRequestParams struct {
 type DescribeDefaultCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
 	// 过滤条件，Filters.Values的上限为5。详细的过滤条件如下：
 	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是 </li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -4319,6 +4325,7 @@ func (r *DescribeDefaultCertificatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ZoneId")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")

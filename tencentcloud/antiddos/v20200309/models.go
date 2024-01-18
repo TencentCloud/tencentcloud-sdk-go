@@ -378,6 +378,91 @@ type BGPIPInstanceUsages struct {
 	Last7DayAttackCount *uint64 `json:"Last7DayAttackCount,omitnil" name:"Last7DayAttackCount"`
 }
 
+type BGPIPL7RuleEntry struct {
+	// 转发协议，取值[http, https]
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 转发域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 负载均衡方式，取值[1(加权轮询)]
+	LbType *uint64 `json:"LbType,omitnil" name:"LbType"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitnil" name:"KeepEnable"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitnil" name:"KeepTime"`
+
+	// 回源方式，取值[1(域名回源)，2(IP回源)]
+	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
+
+	// 回源列表
+	SourceList []*L4RuleSource `json:"SourceList,omitnil" name:"SourceList"`
+
+	// 区域码
+	Region *uint64 `json:"Region,omitnil" name:"Region"`
+
+	// 资源Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 资源Ip
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 规则描述
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+	CertType *uint64 `json:"CertType,omitnil" name:"CertType"`
+
+	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
+
+	// 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// cc防护状态，取值[0(关闭), 1(开启)]
+	CCStatus *uint64 `json:"CCStatus,omitnil" name:"CCStatus"`
+
+	// HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+	CCEnable *uint64 `json:"CCEnable,omitnil" name:"CCEnable"`
+
+	// HTTPS协议的CC防护阈值（已废弃）
+	CCThreshold *int64 `json:"CCThreshold,omitnil" name:"CCThreshold"`
+
+	// HTTPS协议的CC防护等级
+	CCLevel *string `json:"CCLevel,omitnil" name:"CCLevel"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitnil" name:"HttpsToHttpEnable"`
+
+	// 接入端口值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPort *uint64 `json:"VirtualPort,omitnil" name:"VirtualPort"`
+
+	// http强制跳转https，1表示打开，0表示关闭
+	RewriteHttps *uint64 `json:"RewriteHttps,omitnil" name:"RewriteHttps"`
+
+	// 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
+	ErrCode *uint64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *uint64 `json:"Version,omitnil" name:"Version"`
+}
+
 type BGPInstance struct {
 	// 资产实例的详细信息
 	InstanceDetail *InstanceRelation `json:"InstanceDetail,omitnil" name:"InstanceDetail"`
@@ -3248,6 +3333,125 @@ func (r *DeleteWaterPrintKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWaterPrintKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBGPIPL7RulesRequestParams struct {
+	// DDoS防护子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitnil" name:"Business"`
+
+	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	StatusList []*uint64 `json:"StatusList,omitnil" name:"StatusList"`
+
+	// 域名搜索，选填，当需要搜索域名请填写
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// IP搜索，选填，当需要搜索IP请填写
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 一页条数，默认值100，最大值100，超过100最大返回100条
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 规则偏移量，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 转发协议搜索，选填，取值[http, https, http/https]
+	ProtocolList []*string `json:"ProtocolList,omitnil" name:"ProtocolList"`
+
+	// 高防IP实例的Cname
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
+
+	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+	Export *bool `json:"Export,omitnil" name:"Export"`
+}
+
+type DescribeBGPIPL7RulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// DDoS防护子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitnil" name:"Business"`
+
+	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	StatusList []*uint64 `json:"StatusList,omitnil" name:"StatusList"`
+
+	// 域名搜索，选填，当需要搜索域名请填写
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// IP搜索，选填，当需要搜索IP请填写
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 一页条数，默认值100，最大值100，超过100最大返回100条
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 规则偏移量，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 转发协议搜索，选填，取值[http, https, http/https]
+	ProtocolList []*string `json:"ProtocolList,omitnil" name:"ProtocolList"`
+
+	// 高防IP实例的Cname
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
+
+	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+	Export *bool `json:"Export,omitnil" name:"Export"`
+}
+
+func (r *DescribeBGPIPL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBGPIPL7RulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "StatusList")
+	delete(f, "Domain")
+	delete(f, "Ip")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ProtocolList")
+	delete(f, "Cname")
+	delete(f, "Export")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBGPIPL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBGPIPL7RulesResponseParams struct {
+	// 转发规则列表
+	Rules []*BGPIPL7RuleEntry `json:"Rules,omitnil" name:"Rules"`
+
+	// 健康检查配置列表
+	Healths []*L7RuleHealth `json:"Healths,omitnil" name:"Healths"`
+
+	// 总规则数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBGPIPL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBGPIPL7RulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBGPIPL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBGPIPL7RulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

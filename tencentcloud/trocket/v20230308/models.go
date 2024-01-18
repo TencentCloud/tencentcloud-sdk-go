@@ -277,6 +277,185 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMQTTInstanceRequestParams struct {
+	// 实例类型，
+	// EXPERIMENT 体验版
+	// BASIC 基础版
+	// PRO  专业版
+	// PLATINUM 铂金版
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 商品规格，可用规格如下：
+	// experiment_500,
+	// basic_1k,
+	// basic_2k,
+	// basic_4k,
+	// basic_6k,
+	// pro_4k,
+	// pro_6k,
+	// pro_1w,
+	// pro_2w,
+	// pro_3w,
+	// pro_4w,
+	// pro_5w,
+	// platinum_6k,
+	// platinum_1w,
+	// platinum_2w,
+	// platinum_4w,
+	// platinum_10w,
+	// platinum_15w,
+	// platinum_20w,
+	// platinum_40w,
+	// platinum_60w,
+	// platinum_100w
+	SkuCode *string `json:"SkuCode,omitnil" name:"SkuCode"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
+
+	// 实例绑定的VPC信息
+	VpcList []*VpcInfo `json:"VpcList,omitnil" name:"VpcList"`
+
+	// 是否开启公网
+	EnablePublic *bool `json:"EnablePublic,omitnil" name:"EnablePublic"`
+
+	// 公网带宽（单位：兆）
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 公网访问白名单
+	IpRules []*IpRule `json:"IpRules,omitnil" name:"IpRules"`
+
+	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 购买时长（单位：月）
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+}
+
+type CreateMQTTInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例类型，
+	// EXPERIMENT 体验版
+	// BASIC 基础版
+	// PRO  专业版
+	// PLATINUM 铂金版
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 商品规格，可用规格如下：
+	// experiment_500,
+	// basic_1k,
+	// basic_2k,
+	// basic_4k,
+	// basic_6k,
+	// pro_4k,
+	// pro_6k,
+	// pro_1w,
+	// pro_2w,
+	// pro_3w,
+	// pro_4w,
+	// pro_5w,
+	// platinum_6k,
+	// platinum_1w,
+	// platinum_2w,
+	// platinum_4w,
+	// platinum_10w,
+	// platinum_15w,
+	// platinum_20w,
+	// platinum_40w,
+	// platinum_60w,
+	// platinum_100w
+	SkuCode *string `json:"SkuCode,omitnil" name:"SkuCode"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
+
+	// 实例绑定的VPC信息
+	VpcList []*VpcInfo `json:"VpcList,omitnil" name:"VpcList"`
+
+	// 是否开启公网
+	EnablePublic *bool `json:"EnablePublic,omitnil" name:"EnablePublic"`
+
+	// 公网带宽（单位：兆）
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 公网访问白名单
+	IpRules []*IpRule `json:"IpRules,omitnil" name:"IpRules"`
+
+	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 购买时长（单位：月）
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+}
+
+func (r *CreateMQTTInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMQTTInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "Name")
+	delete(f, "SkuCode")
+	delete(f, "Remark")
+	delete(f, "TagList")
+	delete(f, "VpcList")
+	delete(f, "EnablePublic")
+	delete(f, "Bandwidth")
+	delete(f, "IpRules")
+	delete(f, "RenewFlag")
+	delete(f, "TimeSpan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMQTTInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMQTTInstanceResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateMQTTInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMQTTInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateMQTTInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMQTTInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRoleRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -1087,6 +1266,140 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMQTTInstanceListRequestParams struct {
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeMQTTInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeMQTTInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMQTTInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMQTTInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMQTTInstanceListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 实例列表
+	Data []*MQTTInstanceItem `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeMQTTInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMQTTInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMQTTInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMQTTInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMQTTProductSKUListRequestParams struct {
+
+}
+
+type DescribeMQTTProductSKUListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeMQTTProductSKUListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMQTTProductSKUListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMQTTProductSKUListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMQTTProductSKUListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// mqtt商品配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MQTTProductSkuList []*MQTTProductSkuItem `json:"MQTTProductSkuList,omitnil" name:"MQTTProductSkuList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeMQTTProductSKUListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMQTTProductSKUListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMQTTProductSKUListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMQTTProductSKUListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoleListRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -1673,6 +1986,108 @@ type IpRule struct {
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
+type MQTTInstanceItem struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 实例版本
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 实例类型，
+	// EXPERIMENT，体验版
+	// BASIC，基础版
+	// PRO，专业版
+	// PLATINUM，铂金版
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 实例状态，
+	// RUNNING, 运行中
+	// MAINTAINING，维护中
+	// ABNORMAL，异常
+	// OVERDUE，欠费
+	// DESTROYED，已删除
+	// CREATING，创建中
+	// MODIFYING，变配中
+	// CREATE_FAILURE，创建失败
+	// MODIFY_FAILURE，变配失败
+	// DELETING，删除中
+	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
+
+	// 实例主题数上限
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil" name:"TopicNumLimit"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 主题数量
+	TopicNum *int64 `json:"TopicNum,omitnil" name:"TopicNum"`
+
+	// 商品规格
+	SkuCode *string `json:"SkuCode,omitnil" name:"SkuCode"`
+
+	// 弹性TPS限流值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpsLimit *int64 `json:"TpsLimit,omitnil" name:"TpsLimit"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 订阅关系上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscriptionNumLimit *int64 `json:"SubscriptionNumLimit,omitnil" name:"SubscriptionNumLimit"`
+
+	// 客户端连接数上线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil" name:"ClientNumLimit"`
+}
+
+type MQTTProductSkuItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// cide
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkuCode *string `json:"SkuCode,omitnil" name:"SkuCode"`
+
+	// sale
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnSale *bool `json:"OnSale,omitnil" name:"OnSale"`
+
+	// topic num限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil" name:"TopicNumLimit"`
+
+	// tps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpsLimit *int64 `json:"TpsLimit,omitnil" name:"TpsLimit"`
+
+	// 客户端连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil" name:"ClientNumLimit"`
+
+	// 订阅数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscriptionNumLimit *int64 `json:"SubscriptionNumLimit,omitnil" name:"SubscriptionNumLimit"`
+
+	// 代理核
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxySpecCore *int64 `json:"ProxySpecCore,omitnil" name:"ProxySpecCore"`
+
+	// 代理内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxySpecMemory *int64 `json:"ProxySpecMemory,omitnil" name:"ProxySpecMemory"`
+
+	// 代理总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxySpecCount *int64 `json:"ProxySpecCount,omitnil" name:"ProxySpecCount"`
 }
 
 // Predefined struct for user

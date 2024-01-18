@@ -1245,10 +1245,6 @@ type TaskGroupInstance struct {
 	// 实例动作执行状态
 	TaskGroupInstanceStatus *int64 `json:"TaskGroupInstanceStatus,omitnil" name:"TaskGroupInstanceStatus"`
 
-	// 实例动作执行日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitnil" name:"TaskGroupInstanceExecuteLog"`
-
 	// 实例创建时间
 	TaskGroupInstanceCreateTime *string `json:"TaskGroupInstanceCreateTime,omitnil" name:"TaskGroupInstanceCreateTime"`
 
@@ -1265,6 +1261,12 @@ type TaskGroupInstance struct {
 	// 执行结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitnil" name:"TaskGroupInstanceEndTime"`
+
+	// 实例动作执行日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TaskGroupInstanceExecuteLog is deprecated.
+	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitnil" name:"TaskGroupInstanceExecuteLog"`
 
 	// 实例是否可重试
 	// 注意：此字段可能返回 null，表示取不到有效值。

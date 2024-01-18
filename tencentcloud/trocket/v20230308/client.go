@@ -149,6 +149,55 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewCreateMQTTInstanceRequest() (request *CreateMQTTInstanceRequest) {
+    request = &CreateMQTTInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateMQTTInstance")
+    
+    
+    return
+}
+
+func NewCreateMQTTInstanceResponse() (response *CreateMQTTInstanceResponse) {
+    response = &CreateMQTTInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMQTTInstance
+// 购买新的MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMQTTInstance(request *CreateMQTTInstanceRequest) (response *CreateMQTTInstanceResponse, err error) {
+    return c.CreateMQTTInstanceWithContext(context.Background(), request)
+}
+
+// CreateMQTTInstance
+// 购买新的MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMQTTInstanceWithContext(ctx context.Context, request *CreateMQTTInstanceRequest) (response *CreateMQTTInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateMQTTInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMQTTInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMQTTInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoleRequest() (request *CreateRoleRequest) {
     request = &CreateRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -705,6 +754,128 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTInstanceListRequest() (request *DescribeMQTTInstanceListRequest) {
+    request = &DescribeMQTTInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeMQTTInstanceListResponse() (response *DescribeMQTTInstanceListResponse) {
+    response = &DescribeMQTTInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTInstanceList
+// 获取实例列表，Filters参数使用说明如下：
+//
+// 1. InstanceName, 名称模糊查询
+//
+// 2. InstanceId，实例ID查询
+//
+// 3. InstanceType, 实例类型查询，支持多选
+//
+// 3. InstanceStatus，实例状态查询，支持多选
+//
+// 
+//
+// 当使用TagFilters查询时，Filters参数失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMQTTInstanceList(request *DescribeMQTTInstanceListRequest) (response *DescribeMQTTInstanceListResponse, err error) {
+    return c.DescribeMQTTInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeMQTTInstanceList
+// 获取实例列表，Filters参数使用说明如下：
+//
+// 1. InstanceName, 名称模糊查询
+//
+// 2. InstanceId，实例ID查询
+//
+// 3. InstanceType, 实例类型查询，支持多选
+//
+// 3. InstanceStatus，实例状态查询，支持多选
+//
+// 
+//
+// 当使用TagFilters查询时，Filters参数失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMQTTInstanceListWithContext(ctx context.Context, request *DescribeMQTTInstanceListRequest) (response *DescribeMQTTInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTProductSKUListRequest() (request *DescribeMQTTProductSKUListRequest) {
+    request = &DescribeMQTTProductSKUListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTProductSKUList")
+    
+    
+    return
+}
+
+func NewDescribeMQTTProductSKUListResponse() (response *DescribeMQTTProductSKUListResponse) {
+    response = &DescribeMQTTProductSKUListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTProductSKUList
+// 非对外接口，获取产品售卖规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMQTTProductSKUList(request *DescribeMQTTProductSKUListRequest) (response *DescribeMQTTProductSKUListResponse, err error) {
+    return c.DescribeMQTTProductSKUListWithContext(context.Background(), request)
+}
+
+// DescribeMQTTProductSKUList
+// 非对外接口，获取产品售卖规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMQTTProductSKUListWithContext(ctx context.Context, request *DescribeMQTTProductSKUListRequest) (response *DescribeMQTTProductSKUListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTProductSKUListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTProductSKUList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTProductSKUListResponse()
     err = c.Send(request, response)
     return
 }

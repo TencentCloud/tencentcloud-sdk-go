@@ -2723,6 +2723,9 @@ type CreateShipperRequestParams struct {
 
 	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
 	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// cos桶存储类型
+	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 }
 
 type CreateShipperRequest struct {
@@ -2766,6 +2769,9 @@ type CreateShipperRequest struct {
 
 	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
 	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// cos桶存储类型
+	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 }
 
 func (r *CreateShipperRequest) ToJsonString() string {
@@ -2793,6 +2799,7 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 	delete(f, "FilenameMode")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShipperRequest has unknown keys!", "")
 	}
@@ -8630,6 +8637,9 @@ type ModifyShipperRequestParams struct {
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+
+	// cos桶类型
+	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 }
 
 type ModifyShipperRequest struct {
@@ -8670,6 +8680,9 @@ type ModifyShipperRequest struct {
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+
+	// cos桶类型
+	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 }
 
 func (r *ModifyShipperRequest) ToJsonString() string {
@@ -8696,6 +8709,7 @@ func (r *ModifyShipperRequest) FromJsonString(s string) error {
 	delete(f, "Compress")
 	delete(f, "Content")
 	delete(f, "FilenameMode")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyShipperRequest has unknown keys!", "")
 	}
@@ -9959,6 +9973,10 @@ type ShipperInfo struct {
 	// 4：任务运行结束
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HistoryStatus *int64 `json:"HistoryStatus,omitnil" name:"HistoryStatus"`
+
+	// cos桶类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 }
 
 type ShipperTaskInfo struct {

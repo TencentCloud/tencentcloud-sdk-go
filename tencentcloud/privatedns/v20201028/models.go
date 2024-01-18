@@ -1870,7 +1870,8 @@ type PrivateZone struct {
 	// 绑定的Vpc列表
 	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
-	// 私有域状态：正常解析：ENABLED, 暂停解析：SUSPEND, 锁定：FROZEN
+	// 私有域绑定VPC状态，未关联vpc：SUSPEND，已关联VPC：ENABLED
+	// ，关联VPC失败：FAILED
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 域名递归解析状态：开通：ENABLED, 关闭，DISABLED
@@ -1905,6 +1906,10 @@ type PrivateZone struct {
 	// 终端节点名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPointName *string `json:"EndPointName,omitnil" name:"EndPointName"`
+
+	// 已删除的vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletedVpcSet []*VpcInfo `json:"DeletedVpcSet,omitnil" name:"DeletedVpcSet"`
 }
 
 type PrivateZoneRecord struct {

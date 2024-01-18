@@ -2358,6 +2358,55 @@ func (c *Client) DeleteWaterPrintKeyWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeBGPIPL7RulesRequest() (request *DescribeBGPIPL7RulesRequest) {
+    request = &DescribeBGPIPL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeBGPIPL7Rules")
+    
+    
+    return
+}
+
+func NewDescribeBGPIPL7RulesResponse() (response *DescribeBGPIPL7RulesResponse) {
+    response = &DescribeBGPIPL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBGPIPL7Rules
+// 高防IP获取7层规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeBGPIPL7Rules(request *DescribeBGPIPL7RulesRequest) (response *DescribeBGPIPL7RulesResponse, err error) {
+    return c.DescribeBGPIPL7RulesWithContext(context.Background(), request)
+}
+
+// DescribeBGPIPL7Rules
+// 高防IP获取7层规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeBGPIPL7RulesWithContext(ctx context.Context, request *DescribeBGPIPL7RulesRequest) (response *DescribeBGPIPL7RulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBGPIPL7RulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBGPIPL7Rules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBGPIPL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBasicDeviceStatusRequest() (request *DescribeBasicDeviceStatusRequest) {
     request = &DescribeBasicDeviceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2381,9 +2430,7 @@ func NewDescribeBasicDeviceStatusResponse() (response *DescribeBasicDeviceStatus
 // 获取基础防护攻击状态
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  AUTHFAILURE = "AuthFailure"
 func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
     return c.DescribeBasicDeviceStatusWithContext(context.Background(), request)
 }
@@ -2392,9 +2439,7 @@ func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusReq
 // 获取基础防护攻击状态
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  AUTHFAILURE = "AuthFailure"
 func (c *Client) DescribeBasicDeviceStatusWithContext(ctx context.Context, request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeBasicDeviceStatusRequest()
@@ -2434,9 +2479,7 @@ func NewDescribeBgpBizTrendResponse() (response *DescribeBgpBizTrendResponse) {
 // 获取高防包流量折线图
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  AUTHFAILURE = "AuthFailure"
 func (c *Client) DescribeBgpBizTrend(request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
     return c.DescribeBgpBizTrendWithContext(context.Background(), request)
 }
@@ -2445,9 +2488,7 @@ func (c *Client) DescribeBgpBizTrend(request *DescribeBgpBizTrendRequest) (respo
 // 获取高防包流量折线图
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  AUTHFAILURE = "AuthFailure"
 func (c *Client) DescribeBgpBizTrendWithContext(ctx context.Context, request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
     if request == nil {
         request = NewDescribeBgpBizTrendRequest()

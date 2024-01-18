@@ -463,6 +463,9 @@ type CopyJobsRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 目标工作空间 SerialId
+	TargetWorkspaceId *string `json:"TargetWorkspaceId,omitnil" name:"TargetWorkspaceId"`
 }
 
 type CopyJobsRequest struct {
@@ -473,6 +476,9 @@ type CopyJobsRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil" name:"WorkSpaceId"`
+
+	// 目标工作空间 SerialId
+	TargetWorkspaceId *string `json:"TargetWorkspaceId,omitnil" name:"TargetWorkspaceId"`
 }
 
 func (r *CopyJobsRequest) ToJsonString() string {
@@ -489,6 +495,7 @@ func (r *CopyJobsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobItems")
 	delete(f, "WorkSpaceId")
+	delete(f, "TargetWorkspaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyJobsRequest has unknown keys!", "")
 	}
@@ -3435,6 +3442,14 @@ type JobConfig struct {
 	// es空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil" name:"EsServerlessSpace"`
+
+	// es索引中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
+
+	// es空间中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceName *string `json:"WorkspaceName,omitnil" name:"WorkspaceName"`
 }
 
 type JobEvent struct {

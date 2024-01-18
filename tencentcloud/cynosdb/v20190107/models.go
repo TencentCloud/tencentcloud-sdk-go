@@ -34,6 +34,10 @@ type Ability struct {
 	// 不支持RO实例的原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonsupportRoReason *string `json:"NonsupportRoReason,omitnil" name:"NonsupportRoReason"`
+
+	// 是否支持手动发起快照备份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportManualSnapshot *string `json:"IsSupportManualSnapshot,omitnil" name:"IsSupportManualSnapshot"`
 }
 
 type Account struct {
@@ -206,7 +210,9 @@ type AddInstancesRequestParams struct {
 	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil" name:"ReadOnlyCount"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
+	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+	//
+	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
 
 	// 所属VPC网络ID。
@@ -259,7 +265,7 @@ type AddInstancesRequest struct {
 	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil" name:"ReadOnlyCount"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
+	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
 
 	// 所属VPC网络ID。
@@ -964,7 +970,15 @@ func (r *CloseProxyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CloseWanRequestParams struct {
 	// 实例组id
+	//
+	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type CloseWanRequest struct {
@@ -972,6 +986,12 @@ type CloseWanRequest struct {
 	
 	// 实例组id
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *CloseWanRequest) ToJsonString() string {
@@ -987,6 +1007,8 @@ func (r *CloseWanRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceGrpId")
+	delete(f, "InstanceGroupId")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseWanRequest has unknown keys!", "")
 	}
@@ -3170,6 +3192,74 @@ type CynosdbInstanceDetail struct {
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil" name:"ServerlessStatus"`
 }
 
+type CynosdbInstanceGroup struct {
+	// 用户appId
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+
+	// 删除时间
+	DeletedTime *string `json:"DeletedTime,omitnil" name:"DeletedTime"`
+
+	// 实例组ID
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
+
+	// 状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 实例组类型。ha-ha组；ro-只读组
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitnil" name:"UpdatedTime"`
+
+	// 内网IP
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 内网端口
+	Vport *int64 `json:"Vport,omitnil" name:"Vport"`
+
+	// 外网域名
+	WanDomain *string `json:"WanDomain,omitnil" name:"WanDomain"`
+
+	// 外网ip
+	WanIP *string `json:"WanIP,omitnil" name:"WanIP"`
+
+	// 外网端口
+	WanPort *int64 `json:"WanPort,omitnil" name:"WanPort"`
+
+	// 外网状态
+	WanStatus *string `json:"WanStatus,omitnil" name:"WanStatus"`
+
+	// 实例组包含实例信息
+	InstanceSet []*CynosdbInstance `json:"InstanceSet,omitnil" name:"InstanceSet"`
+
+	// VPC的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil" name:"UniqSubnetId"`
+
+	// 正在回收IP信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldAddrInfo *OldAddrInfo `json:"OldAddrInfo,omitnil" name:"OldAddrInfo"`
+
+	// 正在进行的任务
+	ProcessingTasks []*string `json:"ProcessingTasks,omitnil" name:"ProcessingTasks"`
+
+	// 任务列表
+	Tasks []*ObjectTask `json:"Tasks,omitnil" name:"Tasks"`
+
+	// biz_net_service表id
+	NetServiceId *int64 `json:"NetServiceId,omitnil" name:"NetServiceId"`
+}
+
 type CynosdbInstanceGrp struct {
 	// 用户appId
 	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
@@ -5074,7 +5164,12 @@ type DescribeClusterInstanceGrpsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 实例组列表
+	//
+	// Deprecated: InstanceGrpInfoList is deprecated.
 	InstanceGrpInfoList []*CynosdbInstanceGrp `json:"InstanceGrpInfoList,omitnil" name:"InstanceGrpInfoList"`
+
+	// 实例组列表
+	InstanceGroupInfoList []*CynosdbInstanceGroup `json:"InstanceGroupInfoList,omitnil" name:"InstanceGroupInfoList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -5199,6 +5294,9 @@ type DescribeClusterParamsRequestParams struct {
 
 	// 参数名字
 	ParamName *string `json:"ParamName,omitnil" name:"ParamName"`
+
+	// 是否为全局参数
+	IsGlobal *string `json:"IsGlobal,omitnil" name:"IsGlobal"`
 }
 
 type DescribeClusterParamsRequest struct {
@@ -5209,6 +5307,9 @@ type DescribeClusterParamsRequest struct {
 
 	// 参数名字
 	ParamName *string `json:"ParamName,omitnil" name:"ParamName"`
+
+	// 是否为全局参数
+	IsGlobal *string `json:"IsGlobal,omitnil" name:"IsGlobal"`
 }
 
 func (r *DescribeClusterParamsRequest) ToJsonString() string {
@@ -5225,6 +5326,7 @@ func (r *DescribeClusterParamsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "ParamName")
+	delete(f, "IsGlobal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterParamsRequest has unknown keys!", "")
 	}
@@ -5443,15 +5545,23 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSecurityGroupsRequestParams struct {
-	// 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
+	// 实例ID
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例组ID
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 }
 
 type DescribeDBSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例组ID
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 }
 
 func (r *DescribeDBSecurityGroupsRequest) ToJsonString() string {
@@ -5467,6 +5577,7 @@ func (r *DescribeDBSecurityGroupsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "InstanceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSecurityGroupsRequest has unknown keys!", "")
 	}
@@ -5740,6 +5851,9 @@ type DescribeInstanceParamsRequestParams struct {
 
 	// 参数名搜索条件，支持模糊匹配
 	ParamKeyword *string `json:"ParamKeyword,omitnil" name:"ParamKeyword"`
+
+	// 是否为全局参数
+	IsGlobal *string `json:"IsGlobal,omitnil" name:"IsGlobal"`
 }
 
 type DescribeInstanceParamsRequest struct {
@@ -5753,6 +5867,9 @@ type DescribeInstanceParamsRequest struct {
 
 	// 参数名搜索条件，支持模糊匹配
 	ParamKeyword *string `json:"ParamKeyword,omitnil" name:"ParamKeyword"`
+
+	// 是否为全局参数
+	IsGlobal *string `json:"IsGlobal,omitnil" name:"IsGlobal"`
 }
 
 func (r *DescribeInstanceParamsRequest) ToJsonString() string {
@@ -5770,6 +5887,7 @@ func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "InstanceIds")
 	delete(f, "ParamKeyword")
+	delete(f, "IsGlobal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceParamsRequest has unknown keys!", "")
 	}
@@ -5992,7 +6110,7 @@ func (r *DescribeInstanceSpecsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 返回数量，默认为 20，最大值为 100
+	// 返回数量，默认为 20，取值范围为(0,100]
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 记录偏移量，默认值为0
@@ -6011,7 +6129,7 @@ type DescribeInstancesRequestParams struct {
 	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Filters []*QueryFilter `json:"Filters,omitnil" name:"Filters"`
 
-	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+	// 引擎类型：目前支持“MYSQL”
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
 
 	// 实例状态, 可选值:
@@ -6031,7 +6149,7 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为 20，最大值为 100
+	// 返回数量，默认为 20，取值范围为(0,100]
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 记录偏移量，默认值为0
@@ -6050,7 +6168,7 @@ type DescribeInstancesRequest struct {
 	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Filters []*QueryFilter `json:"Filters,omitnil" name:"Filters"`
 
-	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+	// 引擎类型：目前支持“MYSQL”
 	DbType *string `json:"DbType,omitnil" name:"DbType"`
 
 	// 实例状态, 可选值:
@@ -8415,7 +8533,8 @@ type LogicBackupConfigInfo struct {
 }
 
 type ModifiableInfo struct {
-
+	// 参数是否可被修改, 1:可以 0:不可以
+	IsModifiable *int64 `json:"IsModifiable,omitnil" name:"IsModifiable"`
 }
 
 // Predefined struct for user
@@ -10347,7 +10466,12 @@ type ModifyVipVportRequestParams struct {
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 实例组id
+	//
+	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 
 	// 需要修改的目的ip
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
@@ -10371,6 +10495,9 @@ type ModifyVipVportRequest struct {
 
 	// 实例组id
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 
 	// 需要修改的目的ip
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
@@ -10400,6 +10527,7 @@ func (r *ModifyVipVportRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "InstanceGrpId")
+	delete(f, "InstanceGroupId")
 	delete(f, "Vip")
 	delete(f, "Vport")
 	delete(f, "DbType")
@@ -10997,7 +11125,15 @@ func (r *OpenReadOnlyInstanceExclusiveAccessResponse) FromJsonString(s string) e
 // Predefined struct for user
 type OpenWanRequestParams struct {
 	// 实例组id
+	//
+	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 }
 
 type OpenWanRequest struct {
@@ -11005,6 +11141,12 @@ type OpenWanRequest struct {
 	
 	// 实例组id
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
 }
 
 func (r *OpenWanRequest) ToJsonString() string {
@@ -11020,6 +11162,8 @@ func (r *OpenWanRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceGrpId")
+	delete(f, "InstanceId")
+	delete(f, "InstanceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenWanRequest has unknown keys!", "")
 	}
@@ -11393,7 +11537,7 @@ type PolicyRule struct {
 	// 策略，ACCEPT或者DROP
 	Action *string `json:"Action,omitnil" name:"Action"`
 
-	// 来源IP或IP段，例如192.168.0.0/16
+	// 来源Ip或Ip段，例如192.168.0.0/16
 	CidrIp *string `json:"CidrIp,omitnil" name:"CidrIp"`
 
 	// 端口

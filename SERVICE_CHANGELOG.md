@@ -1,26 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 费用中心(billing) 版本：2018-07-09
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 55 次发布
+### 第 64 次发布
 
-发布时间：2024-01-18 01:09:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSavingPlanResourceInfo](https://cloud.tencent.com/document/api/555/103077)
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 56 次发布
-
-发布时间：2024-01-18 01:15:51
+发布时间：2024-01-19 01:06:05
 
 本次发布包含了以下内容：
 
@@ -28,109 +12,257 @@
 
 新增接口：
 
-* [DescribeInsightList](https://cloud.tencent.com/document/api/589/103078)
+* [DescribeBGPIPL7Rules](https://cloud.tencent.com/document/api/297/103093)
 
 新增数据结构：
 
-* [InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult)
+* [BGPIPL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#BGPIPL7RuleEntry)
 
 
 
-## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+## 混沌演练平台(cfg) 版本：2021-08-20
 
-### 第 24 次发布
+### 第 15 次发布
 
-发布时间：2024-01-18 01:17:58
+发布时间：2024-01-19 01:08:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DeleteCloudStorageEvent](https://cloud.tencent.com/document/api/1131/95523)
-
-	* 新增入参：ChannelId
-
-* [DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)
-
-	* 新增出参：ChannelId
-
-* [ResetCloudStorageEvent](https://cloud.tencent.com/document/api/1131/96104)
-
-	* 新增入参：ChannelId
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 69 次发布
-
-发布时间：2024-01-18 01:27:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
-
-	* 新增入参：FunctionName, FunctionType, DatabaseName, SchemaName, CommandFormat
-
-	* <font color="#dd0000">**修改入参**：</font>ClusterIdentifier, FunctionId
-
-
-新增数据结构：
-
-* [SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression)
-* [SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable)
 
 修改数据结构：
 
-* [BooleanResponse](https://cloud.tencent.com/document/api/1267/76336#BooleanResponse)
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
 
-	* 新增成员：Code
+	* <font color="#dd0000">**修改成员**：</font>TaskGroupInstanceExecuteLog
 
-* [InstanceReportReadNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportReadNode)
 
-	* 新增成员：WaitWriterTime
 
-* [InstanceReportWriteNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportWriteNode)
 
-	* 新增成员：WaitReaderTime
+## 日志服务(cls) 版本：2020-10-16
 
-* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+### 第 79 次发布
 
-	* 新增成员：ArrangeSpaceTaskId, OfflineTaskStatus
+发布时间：2024-01-19 01:09:34
 
-* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+本次发布包含了以下内容：
 
-	* 新增成员：TableName, TableOwnerName, ExecStrategy, Subscription, CreateTime, DatasourceId, DatabaseId, MonitorStatus
+改善已有的文档。
 
-* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+修改接口：
 
-	* 新增成员：RuleId, RuleName
+* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
 
-	* <font color="#dd0000">**修改成员**：</font>RuleGroupId, MonitorType, ExecQueue, ExecutorGroupId, ExecutorGroupName, Tasks, StartTime, EndTime, CycleType, DelayTime, CycleStep, TaskAction
+	* 新增入参：StorageType
 
-* [RuleGroupSubscribe](https://cloud.tencent.com/document/api/1267/76336#RuleGroupSubscribe)
+* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
 
-	* 新增成员：RuleId, RuleName
+	* 新增入参：StorageType
 
-* [RuleTemplate](https://cloud.tencent.com/document/api/1267/76336#RuleTemplate)
 
-	* 新增成员：ResolvedSqlExpression, DatasourceTypes
+修改数据结构：
 
+* [ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)
+
+	* 新增成员：StorageType
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 28 次发布
+
+发布时间：2024-01-19 01:09:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyOrganizationAccountStatus](https://cloud.tencent.com/document/api/664/103094)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 77 次发布
+
+发布时间：2024-01-19 01:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddInstances](https://cloud.tencent.com/document/api/1003/48088)
+
+* [CloseWan](https://cloud.tencent.com/document/api/1003/92737)
+
+	* 新增入参：InstanceGroupId, InstanceId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+* [DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)
+
+	* 新增出参：InstanceGroupInfoList
+
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+
+	* 新增入参：IsGlobal
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)
+
+	* 新增入参：InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)
+
+	* 新增入参：IsGlobal
+
+* [ModifyVipVport](https://cloud.tencent.com/document/api/1003/86720)
+
+	* 新增入参：InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+* [OpenWan](https://cloud.tencent.com/document/api/1003/92732)
+
+	* 新增入参：InstanceId, InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+
+新增数据结构：
+
+* [CynosdbInstanceGroup](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGroup)
+
+修改数据结构：
+
+* [Ability](https://cloud.tencent.com/document/api/1003/48097#Ability)
+
+	* 新增成员：IsSupportManualSnapshot
+
+* [ModifiableInfo](https://cloud.tencent.com/document/api/1003/48097#ModifiableInfo)
+
+	* 新增成员：IsModifiable
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 53 次发布
+
+发布时间：2024-01-19 01:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CopyJobs](https://cloud.tencent.com/document/api/849/77740)
+
+	* 新增入参：TargetWorkspaceId
+
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：IndexName, WorkspaceName
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 17 次发布
+
+发布时间：2024-01-19 01:18:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
+
+	* 新增成员：DeletedVpcSet
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 52 次发布
+
+发布时间：2024-01-19 01:19:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* HostCertificate
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CertHostingInfo
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 70 次发布
+
+发布时间：2024-01-19 01:22:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDefaultCertificates](https://cloud.tencent.com/document/api/1552/80603)
+
+	* 新增入参：ZoneId
+
+	* <font color="#dd0000">**修改入参**：</font>Filters
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 7 次发布
+
+发布时间：2024-01-19 01:23:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateMQTTInstance](https://cloud.tencent.com/document/api/1493/103099)
+* [DescribeMQTTInstanceList](https://cloud.tencent.com/document/api/1493/103098)
+* [DescribeMQTTProductSKUList](https://cloud.tencent.com/document/api/1493/103096)
+
+新增数据结构：
+
+* [MQTTInstanceItem](https://cloud.tencent.com/document/api/1493/96031#MQTTInstanceItem)
+* [MQTTProductSkuItem](https://cloud.tencent.com/document/api/1493/96031#MQTTProductSkuItem)
 
 
 
@@ -1895,6 +2027,22 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 64 次发布
+
+发布时间：2024-01-19 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBGPIPL7Rules](https://cloud.tencent.com/document/api/297/103093)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BGPIPL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#BGPIPL7RuleEntry)](https://cloud.tencent.com/document/api/297/95396#[BGPIPL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#BGPIPL7RuleEntry))
 
 ### 第 63 次发布
 
@@ -8645,7 +8793,7 @@
 
 新增接口：
 
-* [[DescribeSavingPlanResourceInfo](https://cloud.tencent.com/document/api/555/103077)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSavingPlanResourceInfo](https://cloud.tencent.com/document/api/555/103077)
 
 ### 第 54 次发布
 
@@ -22183,6 +22331,21 @@
 
 ## 混沌演练平台(cfg) 版本：2021-08-20
 
+### 第 15 次发布
+
+发布时间：2024-01-19 01:08:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskGroupInstanceExecuteLog
+
+
 ### 第 14 次发布
 
 发布时间：2023-11-24 01:09:00
@@ -29622,6 +29785,32 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 79 次发布
+
+发布时间：2024-01-19 01:09:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
+
+	* 新增入参：StorageType
+
+* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
+
+	* 新增入参：StorageType
+
+
+修改数据结构：
+
+* [ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)
+
+	* 新增成员：StorageType
+
+
 ### 第 78 次发布
 
 发布时间：2023-11-27 00:05:31
@@ -35778,6 +35967,18 @@
 
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 28 次发布
+
+发布时间：2024-01-19 01:09:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyOrganizationAccountStatus](https://cloud.tencent.com/document/api/664/103094)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 27 次发布
 
@@ -42131,6 +42332,70 @@
 
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 77 次发布
+
+发布时间：2024-01-19 01:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddInstances](https://cloud.tencent.com/document/api/1003/48088)
+
+* [CloseWan](https://cloud.tencent.com/document/api/1003/92737)
+
+	* 新增入参：InstanceGroupId, InstanceId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+* [DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)
+
+	* 新增出参：InstanceGroupInfoList
+
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+
+	* 新增入参：IsGlobal
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)
+
+	* 新增入参：InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)
+
+	* 新增入参：IsGlobal
+
+* [ModifyVipVport](https://cloud.tencent.com/document/api/1003/86720)
+
+	* 新增入参：InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+* [OpenWan](https://cloud.tencent.com/document/api/1003/92732)
+
+	* 新增入参：InstanceId, InstanceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceGrpId
+
+
+新增数据结构：
+
+* [[CynosdbInstanceGroup](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGroup)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstanceGroup](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGroup))
+
+修改数据结构：
+
+* [Ability](https://cloud.tencent.com/document/api/1003/48097#Ability)
+
+	* 新增成员：IsSupportManualSnapshot
+
+* [ModifiableInfo](https://cloud.tencent.com/document/api/1003/48097#ModifiableInfo)
+
+	* 新增成员：IsModifiable
+
 
 ### 第 76 次发布
 
@@ -54943,11 +55208,11 @@
 
 新增接口：
 
-* [[DescribeInsightList](https://cloud.tencent.com/document/api/589/103078)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInsightList](https://cloud.tencent.com/document/api/589/103078)
 
 新增数据结构：
 
-* [[InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult)](https://cloud.tencent.com/document/api/589/33981#[InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult))
+* [InsightResult](https://cloud.tencent.com/document/api/589/33981#InsightResult)
 
 ### 第 55 次发布
 
@@ -89170,6 +89435,28 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 53 次发布
+
+发布时间：2024-01-19 01:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CopyJobs](https://cloud.tencent.com/document/api/849/77740)
+
+	* 新增入参：TargetWorkspaceId
+
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：IndexName, WorkspaceName
+
+
 ### 第 52 次发布
 
 发布时间：2024-01-01 00:15:04
@@ -94999,6 +95286,21 @@
 
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 17 次发布
+
+发布时间：2024-01-19 01:18:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
+
+	* 新增成员：DeletedVpcSet
+
 
 ### 第 16 次发布
 
@@ -102103,6 +102405,22 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 52 次发布
+
+发布时间：2024-01-19 01:19:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* HostCertificate
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CertHostingInfo
 
 ### 第 51 次发布
 
@@ -116955,6 +117273,23 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 70 次发布
+
+发布时间：2024-01-19 01:22:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDefaultCertificates](https://cloud.tencent.com/document/api/1552/80603)
+
+	* 新增入参：ZoneId
+
+	* <font color="#dd0000">**修改入参**：</font>Filters
+
+
 ### 第 69 次发布
 
 发布时间：2024-01-08 00:19:23
@@ -126848,6 +127183,25 @@
 
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 7 次发布
+
+发布时间：2024-01-19 01:23:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateMQTTInstance](https://cloud.tencent.com/document/api/1493/103099)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMQTTInstanceList](https://cloud.tencent.com/document/api/1493/103098)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMQTTProductSKUList](https://cloud.tencent.com/document/api/1493/103096)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MQTTInstanceItem](https://cloud.tencent.com/document/api/1493/96031#MQTTInstanceItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTInstanceItem](https://cloud.tencent.com/document/api/1493/96031#MQTTInstanceItem))
+* [[MQTTProductSkuItem](https://cloud.tencent.com/document/api/1493/96031#MQTTProductSkuItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTProductSkuItem](https://cloud.tencent.com/document/api/1493/96031#MQTTProductSkuItem))
 
 ### 第 6 次发布
 
@@ -144617,8 +144971,8 @@
 
 新增数据结构：
 
-* [[SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression)](https://cloud.tencent.com/document/api/1267/76336#[SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression))
-* [[SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable)](https://cloud.tencent.com/document/api/1267/76336#[SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable))
+* [SqlExpression](https://cloud.tencent.com/document/api/1267/76336#SqlExpression)
+* [SqlExpressionTable](https://cloud.tencent.com/document/api/1267/76336#SqlExpressionTable)
 
 修改数据结构：
 
