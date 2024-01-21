@@ -1094,7 +1094,9 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //
 // <br>
 //
-// **相关视频指引**
+// 
+//
+// <font color="red">相关视频指引</font>
 //
 // <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a>
 //
@@ -1250,7 +1252,9 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //
 // <br>
 //
-// **相关视频指引**
+// 
+//
+// <font color="red">相关视频指引</font>
 //
 // <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a>
 //

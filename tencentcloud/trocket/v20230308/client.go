@@ -149,6 +149,55 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewCreateMQTTInsPublicEndpointRequest() (request *CreateMQTTInsPublicEndpointRequest) {
+    request = &CreateMQTTInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateMQTTInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewCreateMQTTInsPublicEndpointResponse() (response *CreateMQTTInsPublicEndpointResponse) {
+    response = &CreateMQTTInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMQTTInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMQTTInsPublicEndpoint(request *CreateMQTTInsPublicEndpointRequest) (response *CreateMQTTInsPublicEndpointResponse, err error) {
+    return c.CreateMQTTInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// CreateMQTTInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMQTTInsPublicEndpointWithContext(ctx context.Context, request *CreateMQTTInsPublicEndpointRequest) (response *CreateMQTTInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewCreateMQTTInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMQTTInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMQTTInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMQTTInstanceRequest() (request *CreateMQTTInstanceRequest) {
     request = &CreateMQTTInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -194,6 +243,124 @@ func (c *Client) CreateMQTTInstanceWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateMQTTInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMQTTTopicRequest() (request *CreateMQTTTopicRequest) {
+    request = &CreateMQTTTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateMQTTTopic")
+    
+    
+    return
+}
+
+func NewCreateMQTTTopicResponse() (response *CreateMQTTTopicResponse) {
+    response = &CreateMQTTTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMQTTTopic
+// 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateMQTTTopic(request *CreateMQTTTopicRequest) (response *CreateMQTTTopicResponse, err error) {
+    return c.CreateMQTTTopicWithContext(context.Background(), request)
+}
+
+// CreateMQTTTopic
+// 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateMQTTTopicWithContext(ctx context.Context, request *CreateMQTTTopicRequest) (response *CreateMQTTTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateMQTTTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMQTTTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMQTTTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMQTTUserRequest() (request *CreateMQTTUserRequest) {
+    request = &CreateMQTTUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateMQTTUser")
+    
+    
+    return
+}
+
+func NewCreateMQTTUserResponse() (response *CreateMQTTUserResponse) {
+    response = &CreateMQTTUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMQTTUser
+// 添加mqtt角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateMQTTUser(request *CreateMQTTUserRequest) (response *CreateMQTTUserResponse, err error) {
+    return c.CreateMQTTUserWithContext(context.Background(), request)
+}
+
+// CreateMQTTUser
+// 添加mqtt角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateMQTTUserWithContext(ctx context.Context, request *CreateMQTTUserRequest) (response *CreateMQTTUserResponse, err error) {
+    if request == nil {
+        request = NewCreateMQTTUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMQTTUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMQTTUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -416,6 +583,216 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMQTTInsPublicEndpointRequest() (request *DeleteMQTTInsPublicEndpointRequest) {
+    request = &DeleteMQTTInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteMQTTInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewDeleteMQTTInsPublicEndpointResponse() (response *DeleteMQTTInsPublicEndpointResponse) {
+    response = &DeleteMQTTInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMQTTInsPublicEndpoint
+// 删除MQTT实例的公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMQTTInsPublicEndpoint(request *DeleteMQTTInsPublicEndpointRequest) (response *DeleteMQTTInsPublicEndpointResponse, err error) {
+    return c.DeleteMQTTInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// DeleteMQTTInsPublicEndpoint
+// 删除MQTT实例的公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMQTTInsPublicEndpointWithContext(ctx context.Context, request *DeleteMQTTInsPublicEndpointRequest) (response *DeleteMQTTInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewDeleteMQTTInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMQTTInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMQTTInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMQTTInstanceRequest() (request *DeleteMQTTInstanceRequest) {
+    request = &DeleteMQTTInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteMQTTInstance")
+    
+    
+    return
+}
+
+func NewDeleteMQTTInstanceResponse() (response *DeleteMQTTInstanceResponse) {
+    response = &DeleteMQTTInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMQTTInstance
+// 删除实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMQTTInstance(request *DeleteMQTTInstanceRequest) (response *DeleteMQTTInstanceResponse, err error) {
+    return c.DeleteMQTTInstanceWithContext(context.Background(), request)
+}
+
+// DeleteMQTTInstance
+// 删除实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMQTTInstanceWithContext(ctx context.Context, request *DeleteMQTTInstanceRequest) (response *DeleteMQTTInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteMQTTInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMQTTInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMQTTInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMQTTTopicRequest() (request *DeleteMQTTTopicRequest) {
+    request = &DeleteMQTTTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteMQTTTopic")
+    
+    
+    return
+}
+
+func NewDeleteMQTTTopicResponse() (response *DeleteMQTTTopicResponse) {
+    response = &DeleteMQTTTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMQTTTopic
+// 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DeleteMQTTTopic(request *DeleteMQTTTopicRequest) (response *DeleteMQTTTopicResponse, err error) {
+    return c.DeleteMQTTTopicWithContext(context.Background(), request)
+}
+
+// DeleteMQTTTopic
+// 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DeleteMQTTTopicWithContext(ctx context.Context, request *DeleteMQTTTopicRequest) (response *DeleteMQTTTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteMQTTTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMQTTTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMQTTTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMQTTUserRequest() (request *DeleteMQTTUserRequest) {
+    request = &DeleteMQTTUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteMQTTUser")
+    
+    
+    return
+}
+
+func NewDeleteMQTTUserResponse() (response *DeleteMQTTUserResponse) {
+    response = &DeleteMQTTUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMQTTUser
+// 删除MQTT访问用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteMQTTUser(request *DeleteMQTTUserRequest) (response *DeleteMQTTUserResponse, err error) {
+    return c.DeleteMQTTUserWithContext(context.Background(), request)
+}
+
+// DeleteMQTTUser
+// 删除MQTT访问用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteMQTTUserWithContext(ctx context.Context, request *DeleteMQTTUserRequest) (response *DeleteMQTTUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteMQTTUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMQTTUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMQTTUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -758,6 +1135,251 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMQTTClientRequest() (request *DescribeMQTTClientRequest) {
+    request = &DescribeMQTTClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTClient")
+    
+    
+    return
+}
+
+func NewDescribeMQTTClientResponse() (response *DescribeMQTTClientResponse) {
+    response = &DescribeMQTTClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTClient
+// 查询 MQTT 客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTClient(request *DescribeMQTTClientRequest) (response *DescribeMQTTClientResponse, err error) {
+    return c.DescribeMQTTClientWithContext(context.Background(), request)
+}
+
+// DescribeMQTTClient
+// 查询 MQTT 客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTClientWithContext(ctx context.Context, request *DescribeMQTTClientRequest) (response *DescribeMQTTClientResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTClientRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTClient require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTInsPublicEndpointsRequest() (request *DescribeMQTTInsPublicEndpointsRequest) {
+    request = &DescribeMQTTInsPublicEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTInsPublicEndpoints")
+    
+    
+    return
+}
+
+func NewDescribeMQTTInsPublicEndpointsResponse() (response *DescribeMQTTInsPublicEndpointsResponse) {
+    response = &DescribeMQTTInsPublicEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTInsPublicEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTInsPublicEndpoints(request *DescribeMQTTInsPublicEndpointsRequest) (response *DescribeMQTTInsPublicEndpointsResponse, err error) {
+    return c.DescribeMQTTInsPublicEndpointsWithContext(context.Background(), request)
+}
+
+// DescribeMQTTInsPublicEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTInsPublicEndpointsWithContext(ctx context.Context, request *DescribeMQTTInsPublicEndpointsRequest) (response *DescribeMQTTInsPublicEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTInsPublicEndpointsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTInsPublicEndpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTInsPublicEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTInsVPCEndpointsRequest() (request *DescribeMQTTInsVPCEndpointsRequest) {
+    request = &DescribeMQTTInsVPCEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTInsVPCEndpoints")
+    
+    
+    return
+}
+
+func NewDescribeMQTTInsVPCEndpointsResponse() (response *DescribeMQTTInsVPCEndpointsResponse) {
+    response = &DescribeMQTTInsVPCEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTInsVPCEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTInsVPCEndpoints(request *DescribeMQTTInsVPCEndpointsRequest) (response *DescribeMQTTInsVPCEndpointsResponse, err error) {
+    return c.DescribeMQTTInsVPCEndpointsWithContext(context.Background(), request)
+}
+
+// DescribeMQTTInsVPCEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
+func (c *Client) DescribeMQTTInsVPCEndpointsWithContext(ctx context.Context, request *DescribeMQTTInsVPCEndpointsRequest) (response *DescribeMQTTInsVPCEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTInsVPCEndpointsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTInsVPCEndpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTInsVPCEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTInstanceRequest() (request *DescribeMQTTInstanceRequest) {
+    request = &DescribeMQTTInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTInstance")
+    
+    
+    return
+}
+
+func NewDescribeMQTTInstanceResponse() (response *DescribeMQTTInstanceResponse) {
+    response = &DescribeMQTTInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTInstance
+// 查询实例信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTInstance(request *DescribeMQTTInstanceRequest) (response *DescribeMQTTInstanceResponse, err error) {
+    return c.DescribeMQTTInstanceWithContext(context.Background(), request)
+}
+
+// DescribeMQTTInstance
+// 查询实例信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTInstanceWithContext(ctx context.Context, request *DescribeMQTTInstanceRequest) (response *DescribeMQTTInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTInstanceCertRequest() (request *DescribeMQTTInstanceCertRequest) {
+    request = &DescribeMQTTInstanceCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTInstanceCert")
+    
+    
+    return
+}
+
+func NewDescribeMQTTInstanceCertResponse() (response *DescribeMQTTInstanceCertResponse) {
+    response = &DescribeMQTTInstanceCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTInstanceCert
+// 查询MQTT集群证书列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTInstanceCert(request *DescribeMQTTInstanceCertRequest) (response *DescribeMQTTInstanceCertResponse, err error) {
+    return c.DescribeMQTTInstanceCertWithContext(context.Background(), request)
+}
+
+// DescribeMQTTInstanceCert
+// 查询MQTT集群证书列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTInstanceCertWithContext(ctx context.Context, request *DescribeMQTTInstanceCertRequest) (response *DescribeMQTTInstanceCertResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTInstanceCertRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTInstanceCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTInstanceCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMQTTInstanceListRequest() (request *DescribeMQTTInstanceListRequest) {
     request = &DescribeMQTTInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -831,6 +1453,106 @@ func (c *Client) DescribeMQTTInstanceListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeMQTTMessageRequest() (request *DescribeMQTTMessageRequest) {
+    request = &DescribeMQTTMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTMessage")
+    
+    
+    return
+}
+
+func NewDescribeMQTTMessageResponse() (response *DescribeMQTTMessageResponse) {
+    response = &DescribeMQTTMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTMessage
+// 查询MQTT消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMQTTMessage(request *DescribeMQTTMessageRequest) (response *DescribeMQTTMessageResponse, err error) {
+    return c.DescribeMQTTMessageWithContext(context.Background(), request)
+}
+
+// DescribeMQTTMessage
+// 查询MQTT消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMQTTMessageWithContext(ctx context.Context, request *DescribeMQTTMessageRequest) (response *DescribeMQTTMessageResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTMessageListRequest() (request *DescribeMQTTMessageListRequest) {
+    request = &DescribeMQTTMessageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTMessageList")
+    
+    
+    return
+}
+
+func NewDescribeMQTTMessageListResponse() (response *DescribeMQTTMessageListResponse) {
+    response = &DescribeMQTTMessageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTMessageList
+// 查询消息列表，如查询死信，请设置ConsumerGroup参数
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTMessageList(request *DescribeMQTTMessageListRequest) (response *DescribeMQTTMessageListResponse, err error) {
+    return c.DescribeMQTTMessageListWithContext(context.Background(), request)
+}
+
+// DescribeMQTTMessageList
+// 查询消息列表，如查询死信，请设置ConsumerGroup参数
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTMessageListWithContext(ctx context.Context, request *DescribeMQTTMessageListRequest) (response *DescribeMQTTMessageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTMessageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTMessageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTMessageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMQTTProductSKUListRequest() (request *DescribeMQTTProductSKUListRequest) {
     request = &DescribeMQTTProductSKUListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -854,7 +1576,7 @@ func NewDescribeMQTTProductSKUListResponse() (response *DescribeMQTTProductSKULi
 // 非对外接口，获取产品售卖规格
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeMQTTProductSKUList(request *DescribeMQTTProductSKUListRequest) (response *DescribeMQTTProductSKUListResponse, err error) {
     return c.DescribeMQTTProductSKUListWithContext(context.Background(), request)
 }
@@ -863,7 +1585,7 @@ func (c *Client) DescribeMQTTProductSKUList(request *DescribeMQTTProductSKUListR
 // 非对外接口，获取产品售卖规格
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeMQTTProductSKUListWithContext(ctx context.Context, request *DescribeMQTTProductSKUListRequest) (response *DescribeMQTTProductSKUListResponse, err error) {
     if request == nil {
         request = NewDescribeMQTTProductSKUListRequest()
@@ -876,6 +1598,175 @@ func (c *Client) DescribeMQTTProductSKUListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeMQTTProductSKUListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTTopicRequest() (request *DescribeMQTTTopicRequest) {
+    request = &DescribeMQTTTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTTopic")
+    
+    
+    return
+}
+
+func NewDescribeMQTTTopicResponse() (response *DescribeMQTTTopicResponse) {
+    response = &DescribeMQTTTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTTopic
+// 查询mqtt主题详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeMQTTTopic(request *DescribeMQTTTopicRequest) (response *DescribeMQTTTopicResponse, err error) {
+    return c.DescribeMQTTTopicWithContext(context.Background(), request)
+}
+
+// DescribeMQTTTopic
+// 查询mqtt主题详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeMQTTTopicWithContext(ctx context.Context, request *DescribeMQTTTopicRequest) (response *DescribeMQTTTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTTopicListRequest() (request *DescribeMQTTTopicListRequest) {
+    request = &DescribeMQTTTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTTopicList")
+    
+    
+    return
+}
+
+func NewDescribeMQTTTopicListResponse() (response *DescribeMQTTTopicListResponse) {
+    response = &DescribeMQTTTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTTopicList
+// 获取主题列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. TopicName，主题名称模糊搜索
+//
+// 2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTTopicList(request *DescribeMQTTTopicListRequest) (response *DescribeMQTTTopicListResponse, err error) {
+    return c.DescribeMQTTTopicListWithContext(context.Background(), request)
+}
+
+// DescribeMQTTTopicList
+// 获取主题列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. TopicName，主题名称模糊搜索
+//
+// 2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTTopicListWithContext(ctx context.Context, request *DescribeMQTTTopicListRequest) (response *DescribeMQTTTopicListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTTopicListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMQTTUserListRequest() (request *DescribeMQTTUserListRequest) {
+    request = &DescribeMQTTUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMQTTUserList")
+    
+    
+    return
+}
+
+func NewDescribeMQTTUserListResponse() (response *DescribeMQTTUserListResponse) {
+    response = &DescribeMQTTUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMQTTUserList
+// 查询用户列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. Username，用户名称模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTUserList(request *DescribeMQTTUserListRequest) (response *DescribeMQTTUserListResponse, err error) {
+    return c.DescribeMQTTUserListWithContext(context.Background(), request)
+}
+
+// DescribeMQTTUserList
+// 查询用户列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. Username，用户名称模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMQTTUserListWithContext(ctx context.Context, request *DescribeMQTTUserListRequest) (response *DescribeMQTTUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMQTTUserListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMQTTUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMQTTUserListResponse()
     err = c.Send(request, response)
     return
 }
@@ -907,7 +1798,7 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 // 1. RoleName，角色名称模糊搜索
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     return c.DescribeRoleListWithContext(context.Background(), request)
 }
@@ -920,7 +1811,7 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 // 1. RoleName，角色名称模糊搜索
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     if request == nil {
         request = NewDescribeRoleListRequest()
@@ -1302,6 +2193,267 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMQTTInsPublicEndpointRequest() (request *ModifyMQTTInsPublicEndpointRequest) {
+    request = &ModifyMQTTInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyMQTTInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewModifyMQTTInsPublicEndpointResponse() (response *ModifyMQTTInsPublicEndpointResponse) {
+    response = &ModifyMQTTInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMQTTInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
+    return c.ModifyMQTTInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// ModifyMQTTInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInsPublicEndpointWithContext(ctx context.Context, request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewModifyMQTTInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMQTTInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMQTTInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMQTTInstanceRequest() (request *ModifyMQTTInstanceRequest) {
+    request = &ModifyMQTTInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyMQTTInstance")
+    
+    
+    return
+}
+
+func NewModifyMQTTInstanceResponse() (response *ModifyMQTTInstanceResponse) {
+    response = &ModifyMQTTInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMQTTInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInstance(request *ModifyMQTTInstanceRequest) (response *ModifyMQTTInstanceResponse, err error) {
+    return c.ModifyMQTTInstanceWithContext(context.Background(), request)
+}
+
+// ModifyMQTTInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInstanceWithContext(ctx context.Context, request *ModifyMQTTInstanceRequest) (response *ModifyMQTTInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyMQTTInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMQTTInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMQTTInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMQTTInstanceCertBindingRequest() (request *ModifyMQTTInstanceCertBindingRequest) {
+    request = &ModifyMQTTInstanceCertBindingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyMQTTInstanceCertBinding")
+    
+    
+    return
+}
+
+func NewModifyMQTTInstanceCertBindingResponse() (response *ModifyMQTTInstanceCertBindingResponse) {
+    response = &ModifyMQTTInstanceCertBindingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMQTTInstanceCertBinding
+// 更新MQTT集群绑定证书
+//
+// 参数传空，则为删除证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInstanceCertBinding(request *ModifyMQTTInstanceCertBindingRequest) (response *ModifyMQTTInstanceCertBindingResponse, err error) {
+    return c.ModifyMQTTInstanceCertBindingWithContext(context.Background(), request)
+}
+
+// ModifyMQTTInstanceCertBinding
+// 更新MQTT集群绑定证书
+//
+// 参数传空，则为删除证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMQTTInstanceCertBindingWithContext(ctx context.Context, request *ModifyMQTTInstanceCertBindingRequest) (response *ModifyMQTTInstanceCertBindingResponse, err error) {
+    if request == nil {
+        request = NewModifyMQTTInstanceCertBindingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMQTTInstanceCertBinding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMQTTInstanceCertBindingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMQTTTopicRequest() (request *ModifyMQTTTopicRequest) {
+    request = &ModifyMQTTTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyMQTTTopic")
+    
+    
+    return
+}
+
+func NewModifyMQTTTopicResponse() (response *ModifyMQTTTopicResponse) {
+    response = &ModifyMQTTTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMQTTTopic
+// 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyMQTTTopic(request *ModifyMQTTTopicRequest) (response *ModifyMQTTTopicResponse, err error) {
+    return c.ModifyMQTTTopicWithContext(context.Background(), request)
+}
+
+// ModifyMQTTTopic
+// 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyMQTTTopicWithContext(ctx context.Context, request *ModifyMQTTTopicRequest) (response *ModifyMQTTTopicResponse, err error) {
+    if request == nil {
+        request = NewModifyMQTTTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMQTTTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMQTTTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMQTTUserRequest() (request *ModifyMQTTUserRequest) {
+    request = &ModifyMQTTUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyMQTTUser")
+    
+    
+    return
+}
+
+func NewModifyMQTTUserResponse() (response *ModifyMQTTUserResponse) {
+    response = &ModifyMQTTUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMQTTUser
+// 修改MQTT角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyMQTTUser(request *ModifyMQTTUserRequest) (response *ModifyMQTTUserResponse, err error) {
+    return c.ModifyMQTTUserWithContext(context.Background(), request)
+}
+
+// ModifyMQTTUser
+// 修改MQTT角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyMQTTUserWithContext(ctx context.Context, request *ModifyMQTTUserRequest) (response *ModifyMQTTUserResponse, err error) {
+    if request == nil {
+        request = NewModifyMQTTUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMQTTUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMQTTUserResponse()
     err = c.Send(request, response)
     return
 }

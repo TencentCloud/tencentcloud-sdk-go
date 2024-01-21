@@ -146,7 +146,7 @@ func NewAddClusterCIDRResponse() (response *AddClusterCIDRResponse) {
 }
 
 // AddClusterCIDR
-// 给GR集群增加可用的ClusterCIDR
+// 给GR集群增加可用的ClusterCIDR（开白才能使用此功能，如需要请联系我们）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
@@ -167,7 +167,7 @@ func (c *Client) AddClusterCIDR(request *AddClusterCIDRRequest) (response *AddCl
 }
 
 // AddClusterCIDR
-// 给GR集群增加可用的ClusterCIDR
+// 给GR集群增加可用的ClusterCIDR（开白才能使用此功能，如需要请联系我们）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DB = "FailedOperation.Db"

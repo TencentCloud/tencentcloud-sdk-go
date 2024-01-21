@@ -3530,6 +3530,59 @@ func (c *Client) DeleteProjectParamDsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteProjectUsersRequest() (request *DeleteProjectUsersRequest) {
+    request = &DeleteProjectUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteProjectUsers")
+    
+    
+    return
+}
+
+func NewDeleteProjectUsersResponse() (response *DeleteProjectUsersResponse) {
+    response = &DeleteProjectUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProjectUsers
+// 删除项目用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteProjectUsers(request *DeleteProjectUsersRequest) (response *DeleteProjectUsersResponse, err error) {
+    return c.DeleteProjectUsersWithContext(context.Background(), request)
+}
+
+// DeleteProjectUsers
+// 删除项目用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteProjectUsersWithContext(ctx context.Context, request *DeleteProjectUsersRequest) (response *DeleteProjectUsersResponse, err error) {
+    if request == nil {
+        request = NewDeleteProjectUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProjectUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProjectUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourceRequest() (request *DeleteResourceRequest) {
     request = &DeleteResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

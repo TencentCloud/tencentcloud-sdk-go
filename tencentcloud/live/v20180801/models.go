@@ -8686,12 +8686,19 @@ func (r *DescribeLiveTranscodeTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveTranscodeTemplatesRequestParams struct {
-
+	// 转码模板类型，默认0。
+	// 0：普通转码模板。
+	// 1：自适应码率转码模板。
+	TemplateType *int64 `json:"TemplateType,omitnil" name:"TemplateType"`
 }
 
 type DescribeLiveTranscodeTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 转码模板类型，默认0。
+	// 0：普通转码模板。
+	// 1：自适应码率转码模板。
+	TemplateType *int64 `json:"TemplateType,omitnil" name:"TemplateType"`
 }
 
 func (r *DescribeLiveTranscodeTemplatesRequest) ToJsonString() string {
@@ -8706,7 +8713,7 @@ func (r *DescribeLiveTranscodeTemplatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TemplateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeTemplatesRequest has unknown keys!", "")
 	}

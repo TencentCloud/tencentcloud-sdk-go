@@ -964,56 +964,62 @@ type CommandTake struct {
 
 // Predefined struct for user
 type CreateInstanceAccountRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 子账号名称
+	// 自定义访问数据库的名称。
+	// - 仅由字母、数字、下划线、中划线组成。
+	// - 长度不能大于32位。
 	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
 
-	// 1.长度8-30位,推荐使用12位以上的密码
-	// 2.不能以"/"开头
-	// 3.至少包含两项
-	//     a.小写字母a-z
-	//     b.大写字母A-Z
-	//     c.数字0-9
-	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+	// 设置自定义账号的密码。密码复杂度要求如下：
+	// - 字符个数为[8,32]。
+	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
+	// - 不能以"/"开头。
 	AccountPassword *string `json:"AccountPassword,omitnil" name:"AccountPassword"`
 
-	// 路由策略：填写master或者replication，表示主节点或者从节点
+	// 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
+	// - master：主节点
+	// - replication：副本节点
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil" name:"ReadonlyPolicy"`
 
-	// 读写策略：填写r、rw，表示只读、读写
+	// 账户读写权限，支持选择只读与读写权限。
+	// - r：只读
+	// - rw: 读写权限
 	Privilege *string `json:"Privilege,omitnil" name:"Privilege"`
 
-	// 子账号描述信息
+	// 子账号描述信息，长度[0,64] 字节，支持中文。
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type CreateInstanceAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 子账号名称
+	// 自定义访问数据库的名称。
+	// - 仅由字母、数字、下划线、中划线组成。
+	// - 长度不能大于32位。
 	AccountName *string `json:"AccountName,omitnil" name:"AccountName"`
 
-	// 1.长度8-30位,推荐使用12位以上的密码
-	// 2.不能以"/"开头
-	// 3.至少包含两项
-	//     a.小写字母a-z
-	//     b.大写字母A-Z
-	//     c.数字0-9
-	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+	// 设置自定义账号的密码。密码复杂度要求如下：
+	// - 字符个数为[8,32]。
+	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
+	// - 不能以"/"开头。
 	AccountPassword *string `json:"AccountPassword,omitnil" name:"AccountPassword"`
 
-	// 路由策略：填写master或者replication，表示主节点或者从节点
+	// 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
+	// - master：主节点
+	// - replication：副本节点
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil" name:"ReadonlyPolicy"`
 
-	// 读写策略：填写r、rw，表示只读、读写
+	// 账户读写权限，支持选择只读与读写权限。
+	// - r：只读
+	// - rw: 读写权限
 	Privilege *string `json:"Privilege,omitnil" name:"Privilege"`
 
-	// 子账号描述信息
+	// 子账号描述信息，长度[0,64] 字节，支持中文。
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 

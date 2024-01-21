@@ -836,7 +836,7 @@ func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse
 }
 
 // CreateInstanceAccount
-// 创建实例子账号
+// 该接口（CreateInstanceAccount）用于自定义访问实例的账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -850,7 +850,7 @@ func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (r
 }
 
 // CreateInstanceAccount
-// 创建实例子账号
+// 该接口（CreateInstanceAccount）用于自定义访问实例的账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

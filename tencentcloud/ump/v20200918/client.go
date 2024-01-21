@@ -219,6 +219,10 @@ func NewCreateCaptureResponse() (response *CreateCaptureResponse) {
 }
 
 // CreateCapture
+// 优mall产品下线
+//
+// 
+//
 // 场内抓拍上报接口
 //
 // 可能返回的错误码:
@@ -241,6 +245,10 @@ func (c *Client) CreateCapture(request *CreateCaptureRequest) (response *CreateC
 }
 
 // CreateCapture
+// 优mall产品下线
+//
+// 
+//
 // 场内抓拍上报接口
 //
 // 可能返回的错误码:

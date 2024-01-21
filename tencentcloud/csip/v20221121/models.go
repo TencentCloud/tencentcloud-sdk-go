@@ -4085,6 +4085,132 @@ func (r *ModifyRiskCenterRiskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRiskCenterScanTaskRequestParams struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
+
+	// 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+	ScanAssetType *int64 `json:"ScanAssetType,omitnil" name:"ScanAssetType"`
+
+	// 扫描项目；port/poc/weakpass/webcontent/configrisk
+	ScanItem []*string `json:"ScanItem,omitnil" name:"ScanItem"`
+
+	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+	ScanPlanType *int64 `json:"ScanPlanType,omitnil" name:"ScanPlanType"`
+
+	// 要修改的任务id
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 扫描资产信息列表
+	Assets []*TaskAssetObject `json:"Assets,omitnil" name:"Assets"`
+
+	// 扫描计划详情
+	ScanPlanContent *string `json:"ScanPlanContent,omitnil" name:"ScanPlanContent"`
+
+	// ip/域名/url数组
+	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil" name:"SelfDefiningAssets"`
+
+	// 高级配置
+	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitnil" name:"TaskAdvanceCFG"`
+
+	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+	TaskMode *int64 `json:"TaskMode,omitnil" name:"TaskMode"`
+}
+
+type ModifyRiskCenterScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
+
+	// 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+	ScanAssetType *int64 `json:"ScanAssetType,omitnil" name:"ScanAssetType"`
+
+	// 扫描项目；port/poc/weakpass/webcontent/configrisk
+	ScanItem []*string `json:"ScanItem,omitnil" name:"ScanItem"`
+
+	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+	ScanPlanType *int64 `json:"ScanPlanType,omitnil" name:"ScanPlanType"`
+
+	// 要修改的任务id
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 扫描资产信息列表
+	Assets []*TaskAssetObject `json:"Assets,omitnil" name:"Assets"`
+
+	// 扫描计划详情
+	ScanPlanContent *string `json:"ScanPlanContent,omitnil" name:"ScanPlanContent"`
+
+	// ip/域名/url数组
+	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil" name:"SelfDefiningAssets"`
+
+	// 高级配置
+	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitnil" name:"TaskAdvanceCFG"`
+
+	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+	TaskMode *int64 `json:"TaskMode,omitnil" name:"TaskMode"`
+}
+
+func (r *ModifyRiskCenterScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskCenterScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "ScanAssetType")
+	delete(f, "ScanItem")
+	delete(f, "ScanPlanType")
+	delete(f, "TaskId")
+	delete(f, "Assets")
+	delete(f, "ScanPlanContent")
+	delete(f, "SelfDefiningAssets")
+	delete(f, "TaskAdvanceCFG")
+	delete(f, "TaskMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskCenterScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRiskCenterScanTaskResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 0，修改成功，其他失败；-1为存在资产未认证
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 未认证资产列表
+	UnAuthAsset []*string `json:"UnAuthAsset,omitnil" name:"UnAuthAsset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyRiskCenterScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRiskCenterScanTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyRiskCenterScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskCenterScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NICAsset struct {
 	// appid
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
