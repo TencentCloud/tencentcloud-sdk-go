@@ -8854,6 +8854,8 @@ func NewModifyJustInTimeTranscodeTemplateResponse() (response *ModifyJustInTimeT
 // ModifyJustInTimeTranscodeTemplate
 // 修改即时转码模板。
 //
+// - 注意：即时转码模板创建后，不推荐修改，如需修改参数，推荐使用新增模板。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -8863,6 +8865,8 @@ func (c *Client) ModifyJustInTimeTranscodeTemplate(request *ModifyJustInTimeTran
 
 // ModifyJustInTimeTranscodeTemplate
 // 修改即时转码模板。
+//
+// - 注意：即时转码模板创建后，不推荐修改，如需修改参数，推荐使用新增模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

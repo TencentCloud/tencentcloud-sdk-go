@@ -23,26 +23,14 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 活动状态错误。
-	FAILEDOPERATION_ACTIVITYSTATUSINVALID = "FailedOperation.ActivityStatusInvalid"
-
 	// 人脸配准点出框错误码。
 	FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
-
-	// 人脸检测失败。
-	FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
 
 	// 人脸出框，无法使用。
 	FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
 
-	// 人脸提特征失败。
-	FAILEDOPERATION_FACEFEATUREFAILED = "FailedOperation.FaceFeatureFailed"
-
 	// 人脸融合失败，请更换图片后重试。
 	FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
-
-	// 人脸姿态检测失败。
-	FAILEDOPERATION_FACEPOSEFAILED = "FailedOperation.FacePoseFailed"
 
 	// 人脸框不合法。
 	FAILEDOPERATION_FACERECTINVALID = "FailedOperation.FaceRectInvalid"
@@ -50,17 +38,8 @@ const (
 	// 人脸配准失败。
 	FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
 
-	// 人脸配准点不合法。
-	FAILEDOPERATION_FACESHAPEINVALID = "FailedOperation.FaceShapeInvalid"
-
 	// 人脸因太小被过滤，建议人脸分辨率不小于34*34。
 	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
-
-	// 人脸融合后端服务异常。
-	FAILEDOPERATION_FUSEBACKENDSERVERFAULT = "FailedOperation.FuseBackendServerFault"
-
-	// 未检测到人脸。
-	FAILEDOPERATION_FUSEDETECTNOFACE = "FailedOperation.FuseDetectNoFace"
 
 	// 操作太频繁，触发频控。
 	FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
@@ -98,20 +77,11 @@ const (
 	// 输入图片base64数据大小超过5M。
 	FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 
-	// base64编码后的图片数据大小不超500k。
-	FAILEDOPERATION_IMAGESIZEEXCEEDFIVEHUNDREDKB = "FailedOperation.ImageSizeExceedFiveHundredKB"
-
 	// 图片尺寸过大或者过小；不满足算法要求。
 	FAILEDOPERATION_IMAGESIZEINVALID = "FailedOperation.ImageSizeInvalid"
 
-	// 图片上传失败。
-	FAILEDOPERATION_IMAGEUPLOADFAILED = "FailedOperation.ImageUploadFailed"
-
 	// 服务内部错误。
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-
-	// 素材条数超过上限。
-	FAILEDOPERATION_MATERIALVALUEEXCEED = "FailedOperation.MaterialValueExceed"
 
 	// 无法检测出人脸, 人脸框配准分低于阈值。
 	FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
@@ -145,9 +115,6 @@ const (
 
 	// 未查找到活动id。
 	INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
-
-	// 活动算法版本值错误。
-	INVALIDPARAMETERVALUE_ENGINEVALUEERROR = "InvalidParameterValue.EngineValueError"
 
 	// 人脸框参数有误或者人脸框太小。
 	INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"

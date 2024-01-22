@@ -1,10 +1,30 @@
 # 本版本更新包含以下内容：
 
-## 云安全一体化平台(csip) 版本：2022-11-21
+## 人脸融合(facefusion) 版本：2022-09-27
 
-### 第 29 次发布
 
-发布时间：2024-01-22 01:09:58
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 9 次发布
+
+发布时间：2024-01-23 01:18:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* FaceFusionLite
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 25 次发布
+
+发布时间：2024-01-23 01:20:20
 
 本次发布包含了以下内容：
 
@@ -12,15 +32,130 @@
 
 新增接口：
 
-* [ModifyRiskCenterScanTask](https://cloud.tencent.com/document/api/664/103117)
+* [DescribeCloudStorageMultiThumbnail](https://cloud.tencent.com/document/api/1131/103174)
 
 
 
-## 云直播CSS(live) 版本：2018-08-01
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-### 第 117 次发布
 
-发布时间：2024-01-22 01:16:38
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 32 次发布
+
+发布时间：2024-01-23 01:25:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AgentDealNewElem](https://cloud.tencent.com/document/api/563/16047#AgentDealNewElem)
+
+	* 新增成员：SubGoodsName
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 32 次发布
+
+发布时间：2024-01-23 01:26:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateLogExport
+* DeleteLogExport
+* DescribeLogExports
+* DescribeLogList
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* LogExport
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 101 次发布
+
+发布时间：2024-01-23 01:27:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
+
+	* 新增成员：Uin, BuildFinishTime, DeployFinishTime, BuildId, SourceUrl, FailReasonShort, FirstInitRepo
+
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+### 第 1 次发布
+
+发布时间：2024-01-22 11:36:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNodePools](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [Annotation](https://cloud.tencent.com/document/api/#/##Annotation)
+* [AutoscalingAdded](https://cloud.tencent.com/document/api/#/##AutoscalingAdded)
+* [ExternalNodeInfo](https://cloud.tencent.com/document/api/#/##ExternalNodeInfo)
+* [ExternalNodePoolInfo](https://cloud.tencent.com/document/api/#/##ExternalNodePoolInfo)
+* [Filter](https://cloud.tencent.com/document/api/#/##Filter)
+* [Instance](https://cloud.tencent.com/document/api/#/##Instance)
+* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/#/##InstanceAdvancedSettings)
+* [InstanceExtraArgs](https://cloud.tencent.com/document/api/#/##InstanceExtraArgs)
+* [InternetAccessible](https://cloud.tencent.com/document/api/#/##InternetAccessible)
+* [Label](https://cloud.tencent.com/document/api/#/##Label)
+* [ManuallyAdded](https://cloud.tencent.com/document/api/#/##ManuallyAdded)
+* [NativeNodeInfo](https://cloud.tencent.com/document/api/#/##NativeNodeInfo)
+* [NativeNodePoolInfo](https://cloud.tencent.com/document/api/#/##NativeNodePoolInfo)
+* [NodeCountSummary](https://cloud.tencent.com/document/api/#/##NodeCountSummary)
+* [NodePool](https://cloud.tencent.com/document/api/#/##NodePool)
+* [RegularNodeInfo](https://cloud.tencent.com/document/api/#/##RegularNodeInfo)
+* [RegularNodePoolInfo](https://cloud.tencent.com/document/api/#/##RegularNodePoolInfo)
+* [RuntimeConfig](https://cloud.tencent.com/document/api/#/##RuntimeConfig)
+* [SortBy](https://cloud.tencent.com/document/api/#/##SortBy)
+* [SuperNodeInfo](https://cloud.tencent.com/document/api/#/##SuperNodeInfo)
+* [SuperNodePoolInfo](https://cloud.tencent.com/document/api/#/##SuperNodePoolInfo)
+* [Taint](https://cloud.tencent.com/document/api/#/##Taint)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 9 次发布
+
+发布时间：2024-01-23 01:30:19
 
 本次发布包含了以下内容：
 
@@ -28,65 +163,18 @@
 
 修改接口：
 
-* [DescribeLiveTranscodeTemplates](https://cloud.tencent.com/document/api/267/32641)
-
-	* 新增入参：TemplateType
-
-
-
-
-## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
-
-### 第 8 次发布
-
-发布时间：2024-01-22 01:23:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
 * [CreateMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103140)
-* [CreateMQTTTopic](https://cloud.tencent.com/document/api/1493/103139)
-* [CreateMQTTUser](https://cloud.tencent.com/document/api/1493/103121)
-* [DeleteMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103138)
-* [DeleteMQTTInstance](https://cloud.tencent.com/document/api/1493/103137)
-* [DeleteMQTTTopic](https://cloud.tencent.com/document/api/1493/103136)
-* [DeleteMQTTUser](https://cloud.tencent.com/document/api/1493/103120)
-* [DescribeMQTTClient](https://cloud.tencent.com/document/api/1493/103135)
-* [DescribeMQTTInsPublicEndpoints](https://cloud.tencent.com/document/api/1493/103134)
-* [DescribeMQTTInsVPCEndpoints](https://cloud.tencent.com/document/api/1493/103133)
-* [DescribeMQTTInstance](https://cloud.tencent.com/document/api/1493/103132)
-* [DescribeMQTTInstanceCert](https://cloud.tencent.com/document/api/1493/103131)
-* [DescribeMQTTMessage](https://cloud.tencent.com/document/api/1493/103123)
-* [DescribeMQTTMessageList](https://cloud.tencent.com/document/api/1493/103130)
-* [DescribeMQTTTopic](https://cloud.tencent.com/document/api/1493/103129)
-* [DescribeMQTTTopicList](https://cloud.tencent.com/document/api/1493/103128)
-* [DescribeMQTTUserList](https://cloud.tencent.com/document/api/1493/103119)
-* [ModifyMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103127)
-* [ModifyMQTTInstance](https://cloud.tencent.com/document/api/1493/103126)
-* [ModifyMQTTInstanceCertBinding](https://cloud.tencent.com/document/api/1493/103125)
-* [ModifyMQTTTopic](https://cloud.tencent.com/document/api/1493/103124)
-* [ModifyMQTTUser](https://cloud.tencent.com/document/api/1493/103118)
 
-新增数据结构：
+	* <font color="#dd0000">**修改入参**：</font>Rules
 
-* [CustomMapEntry](https://cloud.tencent.com/document/api/1493/96031#CustomMapEntry)
-* [MQTTClientSubscription](https://cloud.tencent.com/document/api/1493/96031#MQTTClientSubscription)
-* [MQTTEndpointItem](https://cloud.tencent.com/document/api/1493/96031#MQTTEndpointItem)
-* [MQTTMessageItem](https://cloud.tencent.com/document/api/1493/96031#MQTTMessageItem)
-* [MQTTTopicItem](https://cloud.tencent.com/document/api/1493/96031#MQTTTopicItem)
-* [MQTTUserItem](https://cloud.tencent.com/document/api/1493/96031#MQTTUserItem)
-* [PublicAccessRule](https://cloud.tencent.com/document/api/1493/96031#PublicAccessRule)
 
 
 
 ## 客流数字化平台(ump) 版本：2020-09-18
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2024-01-22 01:24:15
+发布时间：2024-01-23 01:31:22
 
 本次发布包含了以下内容：
 
@@ -94,23 +182,22 @@
 
 <font color="#dd0000">**预下线接口**：</font>
 
-* CreateCapture
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 70 次发布
-
-发布时间：2024-01-22 01:25:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteProjectUsers](https://cloud.tencent.com/document/api/1267/103141)
+* CreateCameraAlerts
+* CreateCameraState
+* CreateMultiBizAlert
+* CreateProgramState
+* CreateServerState
+* DeleteMultiBizAlert
+* DeleteTask
+* DescribeCameras
+* DescribeConfig
+* DescribeImage
+* DescribeMultiBizBaseImage
+* DescribeTasks
+* DescribeZones
+* ModifyMultiBizConfig
+* ReportServiceRegister
+* SearchImage
 
 
 
@@ -35826,7 +35913,7 @@
 
 新增接口：
 
-* [[ModifyRiskCenterScanTask](https://cloud.tencent.com/document/api/664/103117)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyRiskCenterScanTask](https://cloud.tencent.com/document/api/664/103117)
 
 ### 第 28 次发布
 
@@ -63074,6 +63161,18 @@
 
 ## 人脸融合(facefusion) 版本：2018-12-01
 
+### 第 9 次发布
+
+发布时间：2024-01-23 01:18:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* FaceFusionLite
+
 ### 第 8 次发布
 
 发布时间：2023-09-08 01:55:19
@@ -73196,6 +73295,18 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 25 次发布
+
+发布时间：2024-01-23 01:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudStorageMultiThumbnail](https://cloud.tencent.com/document/api/1131/103174)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 24 次发布
 
@@ -93667,6 +93778,21 @@
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
 
+### 第 32 次发布
+
+发布时间：2024-01-23 01:25:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AgentDealNewElem](https://cloud.tencent.com/document/api/563/16047#AgentDealNewElem)
+
+	* 新增成员：SubGoodsName
+
+
 ### 第 31 次发布
 
 发布时间：2023-07-20 18:40:49
@@ -97437,6 +97563,25 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 32 次发布
+
+发布时间：2024-01-23 01:26:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateLogExport
+* DeleteLogExport
+* DescribeLogExports
+* DescribeLogList
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* LogExport
 
 ### 第 31 次发布
 
@@ -106158,6 +106303,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 101 次发布
+
+发布时间：2024-01-23 01:27:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
+
+	* 新增成员：Uin, BuildFinishTime, DeployFinishTime, BuildId, SourceUrl, FailReasonShort, FirstInitRepo
+
 
 ### 第 100 次发布
 
@@ -126601,6 +126761,48 @@
 
 
 
+## 容器服务(tke) 版本：2022-05-01
+
+### 第 1 次发布
+
+发布时间：2024-01-22 11:36:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterInstances](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNodePools](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Annotation](https://cloud.tencent.com/document/api/#/##Annotation)](https://cloud.tencent.com/document/api/#/##[Annotation](https://cloud.tencent.com/document/api/#/##Annotation))
+* [[AutoscalingAdded](https://cloud.tencent.com/document/api/#/##AutoscalingAdded)](https://cloud.tencent.com/document/api/#/##[AutoscalingAdded](https://cloud.tencent.com/document/api/#/##AutoscalingAdded))
+* [[ExternalNodeInfo](https://cloud.tencent.com/document/api/#/##ExternalNodeInfo)](https://cloud.tencent.com/document/api/#/##[ExternalNodeInfo](https://cloud.tencent.com/document/api/#/##ExternalNodeInfo))
+* [[ExternalNodePoolInfo](https://cloud.tencent.com/document/api/#/##ExternalNodePoolInfo)](https://cloud.tencent.com/document/api/#/##[ExternalNodePoolInfo](https://cloud.tencent.com/document/api/#/##ExternalNodePoolInfo))
+* [[Filter](https://cloud.tencent.com/document/api/#/##Filter)](https://cloud.tencent.com/document/api/#/##[Filter](https://cloud.tencent.com/document/api/#/##Filter))
+* [[Instance](https://cloud.tencent.com/document/api/#/##Instance)](https://cloud.tencent.com/document/api/#/##[Instance](https://cloud.tencent.com/document/api/#/##Instance))
+* [[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/#/##InstanceAdvancedSettings)](https://cloud.tencent.com/document/api/#/##[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/#/##InstanceAdvancedSettings))
+* [[InstanceExtraArgs](https://cloud.tencent.com/document/api/#/##InstanceExtraArgs)](https://cloud.tencent.com/document/api/#/##[InstanceExtraArgs](https://cloud.tencent.com/document/api/#/##InstanceExtraArgs))
+* [[InternetAccessible](https://cloud.tencent.com/document/api/#/##InternetAccessible)](https://cloud.tencent.com/document/api/#/##[InternetAccessible](https://cloud.tencent.com/document/api/#/##InternetAccessible))
+* [[Label](https://cloud.tencent.com/document/api/#/##Label)](https://cloud.tencent.com/document/api/#/##[Label](https://cloud.tencent.com/document/api/#/##Label))
+* [[ManuallyAdded](https://cloud.tencent.com/document/api/#/##ManuallyAdded)](https://cloud.tencent.com/document/api/#/##[ManuallyAdded](https://cloud.tencent.com/document/api/#/##ManuallyAdded))
+* [[NativeNodeInfo](https://cloud.tencent.com/document/api/#/##NativeNodeInfo)](https://cloud.tencent.com/document/api/#/##[NativeNodeInfo](https://cloud.tencent.com/document/api/#/##NativeNodeInfo))
+* [[NativeNodePoolInfo](https://cloud.tencent.com/document/api/#/##NativeNodePoolInfo)](https://cloud.tencent.com/document/api/#/##[NativeNodePoolInfo](https://cloud.tencent.com/document/api/#/##NativeNodePoolInfo))
+* [[NodeCountSummary](https://cloud.tencent.com/document/api/#/##NodeCountSummary)](https://cloud.tencent.com/document/api/#/##[NodeCountSummary](https://cloud.tencent.com/document/api/#/##NodeCountSummary))
+* [[NodePool](https://cloud.tencent.com/document/api/#/##NodePool)](https://cloud.tencent.com/document/api/#/##[NodePool](https://cloud.tencent.com/document/api/#/##NodePool))
+* [[RegularNodeInfo](https://cloud.tencent.com/document/api/#/##RegularNodeInfo)](https://cloud.tencent.com/document/api/#/##[RegularNodeInfo](https://cloud.tencent.com/document/api/#/##RegularNodeInfo))
+* [[RegularNodePoolInfo](https://cloud.tencent.com/document/api/#/##RegularNodePoolInfo)](https://cloud.tencent.com/document/api/#/##[RegularNodePoolInfo](https://cloud.tencent.com/document/api/#/##RegularNodePoolInfo))
+* [[RuntimeConfig](https://cloud.tencent.com/document/api/#/##RuntimeConfig)](https://cloud.tencent.com/document/api/#/##[RuntimeConfig](https://cloud.tencent.com/document/api/#/##RuntimeConfig))
+* [[SortBy](https://cloud.tencent.com/document/api/#/##SortBy)](https://cloud.tencent.com/document/api/#/##[SortBy](https://cloud.tencent.com/document/api/#/##SortBy))
+* [[SuperNodeInfo](https://cloud.tencent.com/document/api/#/##SuperNodeInfo)](https://cloud.tencent.com/document/api/#/##[SuperNodeInfo](https://cloud.tencent.com/document/api/#/##SuperNodeInfo))
+* [[SuperNodePoolInfo](https://cloud.tencent.com/document/api/#/##SuperNodePoolInfo)](https://cloud.tencent.com/document/api/#/##[SuperNodePoolInfo](https://cloud.tencent.com/document/api/#/##SuperNodePoolInfo))
+* [[Taint](https://cloud.tencent.com/document/api/#/##Taint)](https://cloud.tencent.com/document/api/#/##[Taint](https://cloud.tencent.com/document/api/#/##Taint))
+
+
+
 
 ## (tkgdq) 版本：2019-04-11
 
@@ -127059,6 +127261,21 @@
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
 
+### 第 9 次发布
+
+发布时间：2024-01-23 01:30:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103140)
+
+	* <font color="#dd0000">**修改入参**：</font>Rules
+
+
 ### 第 8 次发布
 
 发布时间：2024-01-22 01:23:11
@@ -127069,38 +127286,38 @@
 
 新增接口：
 
-* [[CreateMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103140)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMQTTTopic](https://cloud.tencent.com/document/api/1493/103139)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMQTTUser](https://cloud.tencent.com/document/api/1493/103121)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103138)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMQTTInstance](https://cloud.tencent.com/document/api/1493/103137)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMQTTTopic](https://cloud.tencent.com/document/api/1493/103136)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMQTTUser](https://cloud.tencent.com/document/api/1493/103120)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTClient](https://cloud.tencent.com/document/api/1493/103135)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTInsPublicEndpoints](https://cloud.tencent.com/document/api/1493/103134)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTInsVPCEndpoints](https://cloud.tencent.com/document/api/1493/103133)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTInstance](https://cloud.tencent.com/document/api/1493/103132)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTInstanceCert](https://cloud.tencent.com/document/api/1493/103131)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTMessage](https://cloud.tencent.com/document/api/1493/103123)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTMessageList](https://cloud.tencent.com/document/api/1493/103130)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTTopic](https://cloud.tencent.com/document/api/1493/103129)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTTopicList](https://cloud.tencent.com/document/api/1493/103128)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMQTTUserList](https://cloud.tencent.com/document/api/1493/103119)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103127)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMQTTInstance](https://cloud.tencent.com/document/api/1493/103126)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMQTTInstanceCertBinding](https://cloud.tencent.com/document/api/1493/103125)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMQTTTopic](https://cloud.tencent.com/document/api/1493/103124)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMQTTUser](https://cloud.tencent.com/document/api/1493/103118)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103140)
+* [CreateMQTTTopic](https://cloud.tencent.com/document/api/1493/103139)
+* [CreateMQTTUser](https://cloud.tencent.com/document/api/1493/103121)
+* [DeleteMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103138)
+* [DeleteMQTTInstance](https://cloud.tencent.com/document/api/1493/103137)
+* [DeleteMQTTTopic](https://cloud.tencent.com/document/api/1493/103136)
+* [DeleteMQTTUser](https://cloud.tencent.com/document/api/1493/103120)
+* [DescribeMQTTClient](https://cloud.tencent.com/document/api/1493/103135)
+* [DescribeMQTTInsPublicEndpoints](https://cloud.tencent.com/document/api/1493/103134)
+* [DescribeMQTTInsVPCEndpoints](https://cloud.tencent.com/document/api/1493/103133)
+* [DescribeMQTTInstance](https://cloud.tencent.com/document/api/1493/103132)
+* [DescribeMQTTInstanceCert](https://cloud.tencent.com/document/api/1493/103131)
+* [DescribeMQTTMessage](https://cloud.tencent.com/document/api/1493/103123)
+* [DescribeMQTTMessageList](https://cloud.tencent.com/document/api/1493/103130)
+* [DescribeMQTTTopic](https://cloud.tencent.com/document/api/1493/103129)
+* [DescribeMQTTTopicList](https://cloud.tencent.com/document/api/1493/103128)
+* [DescribeMQTTUserList](https://cloud.tencent.com/document/api/1493/103119)
+* [ModifyMQTTInsPublicEndpoint](https://cloud.tencent.com/document/api/1493/103127)
+* [ModifyMQTTInstance](https://cloud.tencent.com/document/api/1493/103126)
+* [ModifyMQTTInstanceCertBinding](https://cloud.tencent.com/document/api/1493/103125)
+* [ModifyMQTTTopic](https://cloud.tencent.com/document/api/1493/103124)
+* [ModifyMQTTUser](https://cloud.tencent.com/document/api/1493/103118)
 
 新增数据结构：
 
-* [[CustomMapEntry](https://cloud.tencent.com/document/api/1493/96031#CustomMapEntry)](https://cloud.tencent.com/document/api/1493/96031#[CustomMapEntry](https://cloud.tencent.com/document/api/1493/96031#CustomMapEntry))
-* [[MQTTClientSubscription](https://cloud.tencent.com/document/api/1493/96031#MQTTClientSubscription)](https://cloud.tencent.com/document/api/1493/96031#[MQTTClientSubscription](https://cloud.tencent.com/document/api/1493/96031#MQTTClientSubscription))
-* [[MQTTEndpointItem](https://cloud.tencent.com/document/api/1493/96031#MQTTEndpointItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTEndpointItem](https://cloud.tencent.com/document/api/1493/96031#MQTTEndpointItem))
-* [[MQTTMessageItem](https://cloud.tencent.com/document/api/1493/96031#MQTTMessageItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTMessageItem](https://cloud.tencent.com/document/api/1493/96031#MQTTMessageItem))
-* [[MQTTTopicItem](https://cloud.tencent.com/document/api/1493/96031#MQTTTopicItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTTopicItem](https://cloud.tencent.com/document/api/1493/96031#MQTTTopicItem))
-* [[MQTTUserItem](https://cloud.tencent.com/document/api/1493/96031#MQTTUserItem)](https://cloud.tencent.com/document/api/1493/96031#[MQTTUserItem](https://cloud.tencent.com/document/api/1493/96031#MQTTUserItem))
-* [[PublicAccessRule](https://cloud.tencent.com/document/api/1493/96031#PublicAccessRule)](https://cloud.tencent.com/document/api/1493/96031#[PublicAccessRule](https://cloud.tencent.com/document/api/1493/96031#PublicAccessRule))
+* [CustomMapEntry](https://cloud.tencent.com/document/api/1493/96031#CustomMapEntry)
+* [MQTTClientSubscription](https://cloud.tencent.com/document/api/1493/96031#MQTTClientSubscription)
+* [MQTTEndpointItem](https://cloud.tencent.com/document/api/1493/96031#MQTTEndpointItem)
+* [MQTTMessageItem](https://cloud.tencent.com/document/api/1493/96031#MQTTMessageItem)
+* [MQTTTopicItem](https://cloud.tencent.com/document/api/1493/96031#MQTTTopicItem)
+* [MQTTUserItem](https://cloud.tencent.com/document/api/1493/96031#MQTTUserItem)
+* [PublicAccessRule](https://cloud.tencent.com/document/api/1493/96031#PublicAccessRule)
 
 ### 第 7 次发布
 
@@ -133286,6 +133503,33 @@
 
 
 ## 客流数字化平台(ump) 版本：2020-09-18
+
+### 第 5 次发布
+
+发布时间：2024-01-23 01:31:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateCameraAlerts
+* CreateCameraState
+* CreateMultiBizAlert
+* CreateProgramState
+* CreateServerState
+* DeleteMultiBizAlert
+* DeleteTask
+* DescribeCameras
+* DescribeConfig
+* DescribeImage
+* DescribeMultiBizBaseImage
+* DescribeTasks
+* DescribeZones
+* ModifyMultiBizConfig
+* ReportServiceRegister
+* SearchImage
 
 ### 第 4 次发布
 
@@ -144892,7 +145136,7 @@
 
 新增接口：
 
-* [[DeleteProjectUsers](https://cloud.tencent.com/document/api/1267/103141)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProjectUsers](https://cloud.tencent.com/document/api/1267/103141)
 
 ### 第 69 次发布
 

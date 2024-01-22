@@ -261,6 +261,7 @@ import (
 	tionev20211111 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tione/v20211111"
 	tiwv20190919 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tiw/v20190919"
 	tkev20180525 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tke/v20180525"
+	tkev20220501 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tke/v20220501"
 	tkgdqv20190411 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tkgdq/v20190411"
 	tmsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20200713"
 	tmsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20201229"
@@ -3426,6 +3427,19 @@ func TestTkev20180525Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tke_v20180525 client: %v", err)
+    }
+}
+
+func TestTkev20220501Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tkev20220501.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tke_v20220501 client: %v", err)
     }
 }
 

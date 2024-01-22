@@ -65,6 +65,10 @@ func NewCreateCameraAlertsResponse() (response *CreateCameraAlertsResponse) {
 }
 
 // CreateCameraAlerts
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报相机移动、遮挡等告警信息
 //
 // 
@@ -89,6 +93,10 @@ func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (respons
 }
 
 // CreateCameraAlerts
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报相机移动、遮挡等告警信息
 //
 // 
@@ -144,6 +152,10 @@ func NewCreateCameraStateResponse() (response *CreateCameraStateResponse) {
 }
 
 // CreateCameraState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报当前场内所有相机的当前状态
 //
 // 可能返回的错误码:
@@ -166,6 +178,10 @@ func (c *Client) CreateCameraState(request *CreateCameraStateRequest) (response 
 }
 
 // CreateCameraState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报当前场内所有相机的当前状态
 //
 // 可能返回的错误码:
@@ -302,6 +318,10 @@ func NewCreateMultiBizAlertResponse() (response *CreateMultiBizAlertResponse) {
 }
 
 // CreateMultiBizAlert
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位告警
 //
 // 可能返回的错误码:
@@ -324,6 +344,10 @@ func (c *Client) CreateMultiBizAlert(request *CreateMultiBizAlertRequest) (respo
 }
 
 // CreateMultiBizAlert
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位告警
 //
 // 可能返回的错误码:
@@ -377,6 +401,10 @@ func NewCreateProgramStateResponse() (response *CreateProgramStateResponse) {
 }
 
 // CreateProgramState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报所有进程监控信息
 //
 // 可能返回的错误码:
@@ -399,6 +427,10 @@ func (c *Client) CreateProgramState(request *CreateProgramStateRequest) (respons
 }
 
 // CreateProgramState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报所有进程监控信息
 //
 // 可能返回的错误码:
@@ -452,6 +484,10 @@ func NewCreateServerStateResponse() (response *CreateServerStateResponse) {
 }
 
 // CreateServerState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报所有服务器硬件监控信息
 //
 // 可能返回的错误码:
@@ -474,6 +510,10 @@ func (c *Client) CreateServerState(request *CreateServerStateRequest) (response 
 }
 
 // CreateServerState
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报所有服务器硬件监控信息
 //
 // 可能返回的错误码:
@@ -527,6 +567,10 @@ func NewDeleteMultiBizAlertResponse() (response *DeleteMultiBizAlertResponse) {
 }
 
 // DeleteMultiBizAlert
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位消警
 //
 // 可能返回的错误码:
@@ -549,6 +593,10 @@ func (c *Client) DeleteMultiBizAlert(request *DeleteMultiBizAlertRequest) (respo
 }
 
 // DeleteMultiBizAlert
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位消警
 //
 // 可能返回的错误码:
@@ -602,6 +650,10 @@ func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
 }
 
 // DeleteTask
+// 优mall产品启动下线流程
+//
+// 
+//
 // 删除集团广场对应的任务
 //
 // 可能返回的错误码:
@@ -624,6 +676,10 @@ func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskRes
 }
 
 // DeleteTask
+// 优mall产品启动下线流程
+//
+// 
+//
 // 删除集团广场对应的任务
 //
 // 可能返回的错误码:
@@ -677,6 +733,10 @@ func NewDescribeCamerasResponse() (response *DescribeCamerasResponse) {
 }
 
 // DescribeCameras
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取集团广场对应的摄像头列表
 //
 // 可能返回的错误码:
@@ -699,6 +759,10 @@ func (c *Client) DescribeCameras(request *DescribeCamerasRequest) (response *Des
 }
 
 // DescribeCameras
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取集团广场对应的摄像头列表
 //
 // 可能返回的错误码:
@@ -752,6 +816,10 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 }
 
 // DescribeConfig
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取摄像头配置信息
 //
 // mac不为空返回指定相机配置
@@ -778,6 +846,10 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
 }
 
 // DescribeConfig
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取摄像头配置信息
 //
 // mac不为空返回指定相机配置
@@ -835,6 +907,10 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
 }
 
 // DescribeImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 实时获取底图接口
 //
 // 可能返回的错误码:
@@ -857,6 +933,10 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
 }
 
 // DescribeImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 实时获取底图接口
 //
 // 可能返回的错误码:
@@ -910,6 +990,10 @@ func NewDescribeMultiBizBaseImageResponse() (response *DescribeMultiBizBaseImage
 }
 
 // DescribeMultiBizBaseImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取多经点位底图
 //
 // 可能返回的错误码:
@@ -932,6 +1016,10 @@ func (c *Client) DescribeMultiBizBaseImage(request *DescribeMultiBizBaseImageReq
 }
 
 // DescribeMultiBizBaseImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取多经点位底图
 //
 // 可能返回的错误码:
@@ -985,6 +1073,10 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 }
 
 // DescribeTasks
+// 优mall产品启动下线流程
+//
+// 
+//
 // 查询集团广场对应的任务列表
 //
 // 可能返回的错误码:
@@ -1007,6 +1099,10 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 }
 
 // DescribeTasks
+// 优mall产品启动下线流程
+//
+// 
+//
 // 查询集团广场对应的任务列表
 //
 // 可能返回的错误码:
@@ -1060,6 +1156,10 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 }
 
 // DescribeZones
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取集团广场的点位列表
 //
 // 可能返回的错误码:
@@ -1082,6 +1182,10 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 }
 
 // DescribeZones
+// 优mall产品启动下线流程
+//
+// 
+//
 // 获取集团广场的点位列表
 //
 // 可能返回的错误码:
@@ -1135,6 +1239,10 @@ func NewModifyMultiBizConfigResponse() (response *ModifyMultiBizConfigResponse) 
 }
 
 // ModifyMultiBizConfig
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位配置更新
 //
 // 可能返回的错误码:
@@ -1157,6 +1265,10 @@ func (c *Client) ModifyMultiBizConfig(request *ModifyMultiBizConfigRequest) (res
 }
 
 // ModifyMultiBizConfig
+// 优mall产品启动下线流程
+//
+// 
+//
 // 集团广场的多经点位配置更新
 //
 // 可能返回的错误码:
@@ -1210,6 +1322,10 @@ func NewReportServiceRegisterResponse() (response *ReportServiceRegisterResponse
 }
 
 // ReportServiceRegister
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报服务注册自身的服务地址作为回调地址, 用于信息回传。
 //
 // 可能返回的错误码:
@@ -1232,6 +1348,10 @@ func (c *Client) ReportServiceRegister(request *ReportServiceRegisterRequest) (r
 }
 
 // ReportServiceRegister
+// 优mall产品启动下线流程
+//
+// 
+//
 // 上报服务注册自身的服务地址作为回调地址, 用于信息回传。
 //
 // 可能返回的错误码:
@@ -1285,6 +1405,10 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 }
 
 // SearchImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 以图搜图
 //
 // 可能返回的错误码:
@@ -1307,6 +1431,10 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 }
 
 // SearchImage
+// 优mall产品启动下线流程
+//
+// 
+//
 // 以图搜图
 //
 // 可能返回的错误码:

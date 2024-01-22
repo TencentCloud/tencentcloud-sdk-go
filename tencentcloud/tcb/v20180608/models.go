@@ -444,6 +444,34 @@ type CloudBaseProjectVersion struct {
 	// ci部署进度（%）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildPercent *int64 `json:"BuildPercent,omitnil" name:"BuildPercent"`
+
+	// Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// BuildFinishTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildFinishTime *string `json:"BuildFinishTime,omitnil" name:"BuildFinishTime"`
+
+	// DeployFinishTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployFinishTime *string `json:"DeployFinishTime,omitnil" name:"DeployFinishTime"`
+
+	// BuildId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildId *string `json:"BuildId,omitnil" name:"BuildId"`
+
+	// SourceUrl
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceUrl *string `json:"SourceUrl,omitnil" name:"SourceUrl"`
+
+	// FailReasonShort
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReasonShort *string `json:"FailReasonShort,omitnil" name:"FailReasonShort"`
+
+	// FirstInitRepo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstInitRepo *string `json:"FirstInitRepo,omitnil" name:"FirstInitRepo"`
 }
 
 type CloudBaseRunEmptyDirVolumeSource struct {
@@ -3354,7 +3382,7 @@ type DescribeCloudBaseBuildServiceResponseParams struct {
 	// 上传url
 	UploadUrl *string `json:"UploadUrl,omitnil" name:"UploadUrl"`
 
-	// 上传heder
+	// 上传header
 	UploadHeaders []*KVPair `json:"UploadHeaders,omitnil" name:"UploadHeaders"`
 
 	// 包名
@@ -3513,10 +3541,10 @@ type DescribeCloudBaseProjectVersionListRequestParams struct {
 	// 第几页,从0开始
 	PageNum *uint64 `json:"PageNum,omitnil" name:"PageNum"`
 
-	// 起始时间 2021-03-27 12:00:00
+	// 起始时间
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 终止时间 2021-03-27 12:00:00
+	// 终止时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
@@ -3535,10 +3563,10 @@ type DescribeCloudBaseProjectVersionListRequest struct {
 	// 第几页,从0开始
 	PageNum *uint64 `json:"PageNum,omitnil" name:"PageNum"`
 
-	// 起始时间 2021-03-27 12:00:00
+	// 起始时间
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 终止时间 2021-03-27 12:00:00
+	// 终止时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
@@ -4896,8 +4924,8 @@ type DescribeCurveDataRequestParams struct {
 	// <li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
 	// <li> DbRead: 数据库读请求数 </li>
 	// <li> DbWrite: 数据库写请求数 </li>
-	// <li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
-	// <li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+	// <li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li>
+	// <li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li>
 	// <li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
 	// <li> TkeCpuRatio: 容器CPU占用率 </li>
 	// <li> TkeMemRatio: 容器内存占用率 </li>
@@ -4939,8 +4967,8 @@ type DescribeCurveDataRequest struct {
 	// <li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
 	// <li> DbRead: 数据库读请求数 </li>
 	// <li> DbWrite: 数据库写请求数 </li>
-	// <li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
-	// <li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+	// <li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li>
+	// <li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li>
 	// <li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
 	// <li> TkeCpuRatio: 容器CPU占用率 </li>
 	// <li> TkeMemRatio: 容器内存占用率 </li>
@@ -5001,7 +5029,7 @@ type DescribeCurveDataResponseParams struct {
 	// 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
 	Period *uint64 `json:"Period,omitnil" name:"Period"`
 
-	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到。
 	Values []*int64 `json:"Values,omitnil" name:"Values"`
 
 	// 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
@@ -6120,14 +6148,14 @@ type DescribeGraphDataRequestParams struct {
 	// StorageCdnOriginFlux: CDN回源流量, 单位字节 
 	// CDNFlux: CDN回源流量, 单位字节 
 	// FunctionInvocation: 云函数调用次数 
-	// FunctionGBs: 云函数资源使用量, 单位Mb*Ms 
+	// FunctionGBs: 云函数资源使用量, 单位MB*ms 
 	// FunctionFlux: 云函数流量, 单位千字节(KB) 
 	// FunctionError: 云函数调用错误次数 
 	// FunctionDuration: 云函数运行时间, 单位毫秒 
 	// DbRead: 数据库读请求数 
 	// DbWrite: 数据库写请求数 
-	// DbCostTime10ms: 数据库耗时在10ms~50ms请求数 
-	// DbCostTime50ms: 数据库耗时在50ms~100ms请求数 
+	// DbCostTime10ms: 数据库耗时在10ms-50ms请求数 
+	// DbCostTime50ms: 数据库耗时在50ms-100ms请求数 
 	// DbCostTime100ms: 数据库耗时在100ms以上请求数 
 	// TkeCpuRatio: 容器CPU占用率 
 	// TkeMemRatio: 容器内存占用率 
@@ -6163,14 +6191,14 @@ type DescribeGraphDataRequest struct {
 	// StorageCdnOriginFlux: CDN回源流量, 单位字节 
 	// CDNFlux: CDN回源流量, 单位字节 
 	// FunctionInvocation: 云函数调用次数 
-	// FunctionGBs: 云函数资源使用量, 单位Mb*Ms 
+	// FunctionGBs: 云函数资源使用量, 单位MB*ms 
 	// FunctionFlux: 云函数流量, 单位千字节(KB) 
 	// FunctionError: 云函数调用错误次数 
 	// FunctionDuration: 云函数运行时间, 单位毫秒 
 	// DbRead: 数据库读请求数 
 	// DbWrite: 数据库写请求数 
-	// DbCostTime10ms: 数据库耗时在10ms~50ms请求数 
-	// DbCostTime50ms: 数据库耗时在50ms~100ms请求数 
+	// DbCostTime10ms: 数据库耗时在10ms-50ms请求数 
+	// DbCostTime50ms: 数据库耗时在50ms-100ms请求数 
 	// DbCostTime100ms: 数据库耗时在100ms以上请求数 
 	// TkeCpuRatio: 容器CPU占用率 
 	// TkeMemRatio: 容器内存占用率 
@@ -6231,7 +6259,7 @@ type DescribeGraphDataResponseParams struct {
 	// 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
 	Period *uint64 `json:"Period,omitnil" name:"Period"`
 
-	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到。
 	Values []*float64 `json:"Values,omitnil" name:"Values"`
 
 	// 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
@@ -9118,6 +9146,7 @@ type RollUpdateCloudBaseRunServerVersionRequestParams struct {
 	MaxNum *string `json:"MaxNum,omitnil" name:"MaxNum"`
 
 	// 策略类型
+	// cpu/mem
 	PolicyType *string `json:"PolicyType,omitnil" name:"PolicyType"`
 
 	// 策略阈值
@@ -9224,6 +9253,7 @@ type RollUpdateCloudBaseRunServerVersionRequest struct {
 	MaxNum *string `json:"MaxNum,omitnil" name:"MaxNum"`
 
 	// 策略类型
+	// cpu/mem
 	PolicyType *string `json:"PolicyType,omitnil" name:"PolicyType"`
 
 	// 策略阈值

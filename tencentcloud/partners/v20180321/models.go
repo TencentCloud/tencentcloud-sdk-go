@@ -271,6 +271,10 @@ type AgentDealNewElem struct {
 	// 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundMap []*RefundMap `json:"RefundMap,omitnil" name:"RefundMap"`
+
+	// 子产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubGoodsName *string `json:"SubGoodsName,omitnil" name:"SubGoodsName"`
 }
 
 // Predefined struct for user

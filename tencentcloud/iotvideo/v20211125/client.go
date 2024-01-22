@@ -1998,6 +1998,59 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCloudStorageMultiThumbnailRequest() (request *DescribeCloudStorageMultiThumbnailRequest) {
+    request = &DescribeCloudStorageMultiThumbnailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageMultiThumbnail")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageMultiThumbnailResponse() (response *DescribeCloudStorageMultiThumbnailResponse) {
+    response = &DescribeCloudStorageMultiThumbnailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageMultiThumbnail
+// 拉取多个云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageMultiThumbnail(request *DescribeCloudStorageMultiThumbnailRequest) (response *DescribeCloudStorageMultiThumbnailResponse, err error) {
+    return c.DescribeCloudStorageMultiThumbnailWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageMultiThumbnail
+// 拉取多个云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageMultiThumbnailWithContext(ctx context.Context, request *DescribeCloudStorageMultiThumbnailRequest) (response *DescribeCloudStorageMultiThumbnailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageMultiThumbnailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageMultiThumbnail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageMultiThumbnailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageOrderRequest() (request *DescribeCloudStorageOrderRequest) {
     request = &DescribeCloudStorageOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
