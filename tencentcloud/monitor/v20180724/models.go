@@ -8982,6 +8982,10 @@ type DescribePrometheusInstanceInitStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EksClusterId *string `json:"EksClusterId,omitnil" name:"EksClusterId"`
 
+	// eks集群内pod的安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil" name:"SecurityGroupId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -12772,6 +12776,10 @@ type PrometheusAgentOverview struct {
 	// agent名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 是否已开启公网访问，true 开启，false 未开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableExternal *bool `json:"EnableExternal,omitnil" name:"EnableExternal"`
 }
 
 type PrometheusAlertAllowTimeRange struct {

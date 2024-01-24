@@ -6669,6 +6669,9 @@ func (r *DescribeDBInstanceInfoResponse) FromJsonString(s string) error {
 type DescribeDBInstanceLogToCLSRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// CLS服务所在地域
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 type DescribeDBInstanceLogToCLSRequest struct {
@@ -6676,6 +6679,9 @@ type DescribeDBInstanceLogToCLSRequest struct {
 	
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// CLS服务所在地域
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 func (r *DescribeDBInstanceLogToCLSRequest) ToJsonString() string {
@@ -6691,6 +6697,7 @@ func (r *DescribeDBInstanceLogToCLSRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "ClsRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceLogToCLSRequest has unknown keys!", "")
 	}
@@ -10332,6 +10339,10 @@ type LogToCLSConfig struct {
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+
+	// CLS服务所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 type MasterInfo struct {
@@ -11779,7 +11790,7 @@ type ModifyDBInstanceLogToCLSRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 日志类型：error/slowLog
+	// 日志类型：error/slowlog
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 投递状态：ON/OFF
@@ -11802,6 +11813,9 @@ type ModifyDBInstanceLogToCLSRequestParams struct {
 
 	// 创建日志主题时，是否创建索引
 	CreateIndex *bool `json:"CreateIndex,omitnil" name:"CreateIndex"`
+
+	// CLS所在地域
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 type ModifyDBInstanceLogToCLSRequest struct {
@@ -11810,7 +11824,7 @@ type ModifyDBInstanceLogToCLSRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 日志类型：error/slowLog
+	// 日志类型：error/slowlog
 	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 投递状态：ON/OFF
@@ -11833,6 +11847,9 @@ type ModifyDBInstanceLogToCLSRequest struct {
 
 	// 创建日志主题时，是否创建索引
 	CreateIndex *bool `json:"CreateIndex,omitnil" name:"CreateIndex"`
+
+	// CLS所在地域
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 func (r *ModifyDBInstanceLogToCLSRequest) ToJsonString() string {
@@ -11856,6 +11873,7 @@ func (r *ModifyDBInstanceLogToCLSRequest) FromJsonString(s string) error {
 	delete(f, "LogTopic")
 	delete(f, "Period")
 	delete(f, "CreateIndex")
+	delete(f, "ClsRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceLogToCLSRequest has unknown keys!", "")
 	}

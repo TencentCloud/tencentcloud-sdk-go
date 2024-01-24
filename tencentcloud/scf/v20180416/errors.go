@@ -47,6 +47,9 @@ const (
 	// CLS服务未注册。
 	FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
 
+	// 函数集群不存在。
+	FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+
 	// CopyAsyncRun 传参异常。
 	FAILEDOPERATION_COPYASYNCRUN = "FailedOperation.CopyAsyncRun"
 

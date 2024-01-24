@@ -2084,6 +2084,18 @@ type SlowQueryRecord struct {
 	// 是否是查询，0：否，1：查询语句
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsQuery *int64 `json:"IsQuery,omitnil" name:"IsQuery"`
+
+	// ResultBytes的MB格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultBytesMB *float64 `json:"ResultBytesMB,omitnil" name:"ResultBytesMB"`
+
+	// MemoryUsage的MB表示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemoryUsageMB *float64 `json:"MemoryUsageMB,omitnil" name:"MemoryUsageMB"`
+
+	// DurationMs的秒表示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationSec *float64 `json:"DurationSec,omitnil" name:"DurationSec"`
 }
 
 type Tag struct {

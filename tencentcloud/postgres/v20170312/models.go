@@ -6995,8 +6995,8 @@ type ModifyDBInstanceSpecRequestParams struct {
 	Storage *uint64 `json:"Storage,omitnil" name:"Storage"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 
@@ -7007,9 +7007,9 @@ type ModifyDBInstanceSpecRequestParams struct {
 	ActivityId *uint64 `json:"ActivityId,omitnil" name:"ActivityId"`
 
 	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 
-	// <li>1：指定时间切换
-	// <li>2：维护时间窗口内切换
+	// <li>0：立即切换 </li>
+	// <li>1：指定时间切换</li>
+	// <li>2：维护时间窗口内</li>切换
 	// 默认值：0 
 	SwitchTag *uint64 `json:"SwitchTag,omitnil" name:"SwitchTag"`
 
@@ -7033,8 +7033,8 @@ type ModifyDBInstanceSpecRequest struct {
 	Storage *uint64 `json:"Storage,omitnil" name:"Storage"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
 
@@ -7045,9 +7045,9 @@ type ModifyDBInstanceSpecRequest struct {
 	ActivityId *uint64 `json:"ActivityId,omitnil" name:"ActivityId"`
 
 	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 
-	// <li>1：指定时间切换
-	// <li>2：维护时间窗口内切换
+	// <li>0：立即切换 </li>
+	// <li>1：指定时间切换</li>
+	// <li>2：维护时间窗口内</li>切换
 	// 默认值：0 
 	SwitchTag *uint64 `json:"SwitchTag,omitnil" name:"SwitchTag"`
 

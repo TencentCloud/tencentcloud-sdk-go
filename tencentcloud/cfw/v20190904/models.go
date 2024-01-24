@@ -374,8 +374,14 @@ type AddEnterpriseSecurityGroupRulesRequestParams struct {
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 
-	// 是否延迟下发，1则延迟下发，否则立即下发
+	// （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
 	IsDelay *uint64 `json:"IsDelay,omitnil" name:"IsDelay"`
+
+	// 来源 默认空 覆盖导入是 batch_import_cover
+	From *string `json:"From,omitnil" name:"From"`
+
+	// 是否使用id 默认不需要
+	IsUseId *int64 `json:"IsUseId,omitnil" name:"IsUseId"`
 }
 
 type AddEnterpriseSecurityGroupRulesRequest struct {
@@ -390,8 +396,14 @@ type AddEnterpriseSecurityGroupRulesRequest struct {
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
 
-	// 是否延迟下发，1则延迟下发，否则立即下发
+	// （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
 	IsDelay *uint64 `json:"IsDelay,omitnil" name:"IsDelay"`
+
+	// 来源 默认空 覆盖导入是 batch_import_cover
+	From *string `json:"From,omitnil" name:"From"`
+
+	// 是否使用id 默认不需要
+	IsUseId *int64 `json:"IsUseId,omitnil" name:"IsUseId"`
 }
 
 func (r *AddEnterpriseSecurityGroupRulesRequest) ToJsonString() string {
@@ -410,6 +422,8 @@ func (r *AddEnterpriseSecurityGroupRulesRequest) FromJsonString(s string) error 
 	delete(f, "Type")
 	delete(f, "ClientToken")
 	delete(f, "IsDelay")
+	delete(f, "From")
+	delete(f, "IsUseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddEnterpriseSecurityGroupRulesRequest has unknown keys!", "")
 	}
@@ -638,6 +652,22 @@ type BetaInfoByACL struct {
 }
 
 type BlockIgnoreRule struct {
+	// 1 封禁 2外部IP 3域名 4情报 5assets 6udf  7入侵防御规则id （2-7属于白名单类型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 规则ip或白名单内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ioc *string `json:"Ioc,omitnil" name:"Ioc"`
+
+	// 资产实例名称、自定义策略名称等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IocName *string `json:"IocName,omitnil" name:"IocName"`
+
+	// 白名单信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IocInfo *string `json:"IocInfo,omitnil" name:"IocInfo"`
+
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -645,10 +675,6 @@ type BlockIgnoreRule struct {
 	// IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil" name:"IP"`
-
-	// 规则ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ioc *string `json:"Ioc,omitnil" name:"Ioc"`
 
 	// 危险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -661,6 +687,10 @@ type BlockIgnoreRule struct {
 	// 方向：1入站，0出站
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *int64 `json:"Direction,omitnil" name:"Direction"`
+
+	// 所有方向聚合成字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectionList *string `json:"DirectionList,omitnil" name:"DirectionList"`
 
 	// 协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -705,6 +735,14 @@ type BlockIgnoreRule struct {
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil" name:"Comment"`
+
+	// 上次命中时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastHitTime *string `json:"LastHitTime,omitnil" name:"LastHitTime"`
+
+	// 自定义规则细节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil" name:"CustomRule"`
 }
 
 type CfwNatDnatRule struct {
@@ -1870,6 +1908,9 @@ type CreateNatRuleItem struct {
 
 	// 端口协议组ID
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
+
+	// 内部id
+	InternalUuid *int64 `json:"InternalUuid,omitnil" name:"InternalUuid"`
 }
 
 type CreateRuleItem struct {
@@ -2115,6 +2156,24 @@ func (r *CreateVpcFwGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateVpcFwGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomWhiteRule struct {
+	// 访问源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcIP *string `json:"SrcIP,omitnil" name:"SrcIP"`
+
+	// 访问目的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstIP *string `json:"DstIP,omitnil" name:"DstIP"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdsRuleName *string `json:"IdsRuleName,omitnil" name:"IdsRuleName"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdsRuleId *string `json:"IdsRuleId,omitnil" name:"IdsRuleId"`
 }
 
 type DatabaseWhiteListRuleData struct {
@@ -2931,6 +2990,14 @@ type DescAcItem struct {
 	// 协议端口组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil" name:"ParamTemplateId"`
+
+	// 访问源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceName *string `json:"SourceName,omitnil" name:"SourceName"`
+
+	// 访问目的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetName *string `json:"TargetName,omitnil" name:"TargetName"`
 }
 
 // Predefined struct for user
@@ -3591,9 +3658,6 @@ type DescribeBlockIgnoreListRequestParams struct {
 	// 方向：1互联网入站，0互联网出站，3内网，空 全部方向
 	Direction *string `json:"Direction,omitnil" name:"Direction"`
 
-	// 规则类型：1封禁，2放通
-	RuleType *uint64 `json:"RuleType,omitnil" name:"RuleType"`
-
 	// 排序类型：desc降序，asc正序
 	Order *string `json:"Order,omitnil" name:"Order"`
 
@@ -3602,6 +3666,13 @@ type DescribeBlockIgnoreListRequestParams struct {
 
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
 	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 规则类型：1封禁，2放通
+	RuleType *uint64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// blocklist 封禁列表
+	// whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil" name:"ShowType"`
 }
 
 type DescribeBlockIgnoreListRequest struct {
@@ -3616,9 +3687,6 @@ type DescribeBlockIgnoreListRequest struct {
 	// 方向：1互联网入站，0互联网出站，3内网，空 全部方向
 	Direction *string `json:"Direction,omitnil" name:"Direction"`
 
-	// 规则类型：1封禁，2放通
-	RuleType *uint64 `json:"RuleType,omitnil" name:"RuleType"`
-
 	// 排序类型：desc降序，asc正序
 	Order *string `json:"Order,omitnil" name:"Order"`
 
@@ -3627,6 +3695,13 @@ type DescribeBlockIgnoreListRequest struct {
 
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
 	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 规则类型：1封禁，2放通
+	RuleType *uint64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// blocklist 封禁列表
+	// whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil" name:"ShowType"`
 }
 
 func (r *DescribeBlockIgnoreListRequest) ToJsonString() string {
@@ -3644,10 +3719,11 @@ func (r *DescribeBlockIgnoreListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Direction")
-	delete(f, "RuleType")
 	delete(f, "Order")
 	delete(f, "By")
 	delete(f, "SearchValue")
+	delete(f, "RuleType")
+	delete(f, "ShowType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockIgnoreListRequest has unknown keys!", "")
 	}
@@ -3670,6 +3746,9 @@ type DescribeBlockIgnoreListResponseParams struct {
 
 	// 安全事件来源下拉框
 	SourceList []*string `json:"SourceList,omitnil" name:"SourceList"`
+
+	// 对应规则类型的数量，示例：[0,122,30,55,12,232,0]，封禁0个，IP地址122个，域名30个，威胁情报55个，资产实例12个，自定义策略232个，入侵防御规则0个
+	RuleTypeDataList []*int64 `json:"RuleTypeDataList,omitnil" name:"RuleTypeDataList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -10109,6 +10188,9 @@ type SecurityGroupListData struct {
 	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil" name:"ParameterName"`
+
+	// 端口协议类型参数模板名称
+	ProtocolPortName *string `json:"ProtocolPortName,omitnil" name:"ProtocolPortName"`
 }
 
 type SecurityGroupOrderIndexData struct {
@@ -10175,6 +10257,9 @@ type SecurityGroupRule struct {
 	// （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
 	// 规则状态，true表示启用，false表示禁用
 	Enable *string `json:"Enable,omitnil" name:"Enable"`
+
+	// 规则对应的唯一内部id
+	Uid *string `json:"Uid,omitnil" name:"Uid"`
 }
 
 type SecurityGroupSimplifyRule struct {
@@ -11010,6 +11095,14 @@ type VpcRuleItem struct {
 	// 端口协议组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateName *string `json:"ParamTemplateName,omitnil" name:"ParamTemplateName"`
+
+	// 访问目的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetName *string `json:"TargetName,omitnil" name:"TargetName"`
+
+	// 访问源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceName *string `json:"SourceName,omitnil" name:"SourceName"`
 }
 
 type VpcZoneData struct {

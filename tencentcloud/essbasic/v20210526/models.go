@@ -514,6 +514,7 @@ type ChannelBillUsageDetail struct {
 	// <li>**OrgEssAuth**: 签署企业实名</li>
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
+	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 
@@ -4375,6 +4376,7 @@ type ChannelDescribeBillUsageDetailRequestParams struct {
 	// <li>**OrgEssAuth**: 签署企业实名</li>
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
+	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 
@@ -4422,6 +4424,7 @@ type ChannelDescribeBillUsageDetailRequest struct {
 	// <li>**OrgEssAuth**: 签署企业实名</li>
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
+	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
 

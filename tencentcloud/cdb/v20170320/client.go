@@ -4567,7 +4567,7 @@ func NewDescribeDBInstanceLogToCLSResponse() (response *DescribeDBInstanceLogToC
 }
 
 // DescribeDBInstanceLogToCLS
-// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过appId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过AppId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
@@ -4583,7 +4583,7 @@ func (c *Client) DescribeDBInstanceLogToCLS(request *DescribeDBInstanceLogToCLSR
 }
 
 // DescribeDBInstanceLogToCLS
-// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过appId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+// 本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过AppId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
@@ -6141,6 +6141,7 @@ func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
 // 使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LOGCONTENTOVERLIMIT = "FailedOperation.LogContentOverLimit"
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
 //  FAILEDOPERATION_RESULTSETOVERLIMIT = "FailedOperation.ResultSetOverLimit"
 //  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
@@ -6166,6 +6167,7 @@ func (c *Client) DescribeSlowLogData(request *DescribeSlowLogDataRequest) (respo
 // 使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LOGCONTENTOVERLIMIT = "FailedOperation.LogContentOverLimit"
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
 //  FAILEDOPERATION_RESULTSETOVERLIMIT = "FailedOperation.ResultSetOverLimit"
 //  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"

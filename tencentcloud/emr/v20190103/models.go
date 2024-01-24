@@ -3113,6 +3113,14 @@ type ImpalaQuery struct {
 	// 从缓存中获取的数据行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumRowsFetchedFromCache *int64 `json:"NumRowsFetchedFromCache,omitnil" name:"NumRowsFetchedFromCache"`
+
+	// 会话ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+
+	// 单节点内存峰值和(Bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PerNodePeakMemoryBytesSum *int64 `json:"PerNodePeakMemoryBytesSum,omitnil" name:"PerNodePeakMemoryBytesSum"`
 }
 
 // Predefined struct for user

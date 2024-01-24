@@ -126,6 +126,10 @@ type Acl struct {
 	// 关联的数据库高危命令列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ACTemplateSet []*ACTemplate `json:"ACTemplateSet,omitnil" name:"ACTemplateSet"`
+
+	// 关联的白命令命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhiteCmds []*string `json:"WhiteCmds,omitnil" name:"WhiteCmds"`
 }
 
 // Predefined struct for user
@@ -5738,4 +5742,8 @@ type User struct {
 	// 状态 与Filter中一致
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 权限版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclVersion *uint64 `json:"AclVersion,omitnil" name:"AclVersion"`
 }
