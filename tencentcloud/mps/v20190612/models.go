@@ -1929,8 +1929,8 @@ type AudioTemplateInfo struct {
 	// 音频通道方式，可选值：
 	// <li>1：单通道</li>
 	// <li>2：双通道</li>
-	// <li>6：立体声</li>
-	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
+	// <li>6：5.1声道</li>
+	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
 	// 默认值：2。
 	AudioChannel *int64 `json:"AudioChannel,omitnil" name:"AudioChannel"`
 }
@@ -3957,6 +3957,9 @@ type CreateScheduleRequestParams struct {
 
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type CreateScheduleRequest struct {
@@ -3980,6 +3983,9 @@ type CreateScheduleRequest struct {
 
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *CreateScheduleRequest) ToJsonString() string {
@@ -4000,6 +4006,7 @@ func (r *CreateScheduleRequest) FromJsonString(s string) error {
 	delete(f, "OutputStorage")
 	delete(f, "OutputDir")
 	delete(f, "TaskNotifyConfig")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduleRequest has unknown keys!", "")
 	}
@@ -10254,6 +10261,11 @@ type LiveStreamTagRecognitionResult struct {
 }
 
 type LiveStreamTaskNotifyConfig struct {
+	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+	// 
+	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+
 	// CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
 	CmqModel *string `json:"CmqModel,omitnil" name:"CmqModel"`
 
@@ -10265,11 +10277,6 @@ type LiveStreamTaskNotifyConfig struct {
 
 	// 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
-
-	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
-	// 
-	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
 
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitnil" name:"NotifyUrl"`
@@ -12176,6 +12183,9 @@ type ModifyScheduleRequestParams struct {
 
 	// 任务的事件通知配置。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type ModifyScheduleRequest struct {
@@ -12203,6 +12213,9 @@ type ModifyScheduleRequest struct {
 
 	// 任务的事件通知配置。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *ModifyScheduleRequest) ToJsonString() string {
@@ -12224,6 +12237,7 @@ func (r *ModifyScheduleRequest) FromJsonString(s string) error {
 	delete(f, "OutputStorage")
 	delete(f, "OutputDir")
 	delete(f, "TaskNotifyConfig")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduleRequest has unknown keys!", "")
 	}
@@ -13696,7 +13710,8 @@ type ProcessMediaRequestParams struct {
 	// 编排ID。
 	// 注意1：对于OutputStorage、OutputDir参数：
 	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有指定输出，将覆盖原有编排的默认输出。</li>
+	// <li>即输出设置的优先级：编排子任务节点 > 任务接口指定 > 对应编排内的配置 </li>
 	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
 	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
@@ -13751,7 +13766,8 @@ type ProcessMediaRequest struct {
 	// 编排ID。
 	// 注意1：对于OutputStorage、OutputDir参数：
 	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有指定输出，将覆盖原有编排的默认输出。</li>
+	// <li>即输出设置的优先级：编排子任务节点 > 任务接口指定 > 对应编排内的配置 </li>
 	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
 	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
@@ -14621,6 +14637,10 @@ type SchedulesInfo struct {
 	// 最后编辑时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 资源ID，对于没有关联资源ID的，用账号主资源ID填充。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type ScratchRepairConfig struct {

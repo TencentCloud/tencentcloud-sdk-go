@@ -1797,6 +1797,198 @@ func (r *CreateConfigGroupVersionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateL4ProxyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例名称，可输入 1-50 个字符，允许的字符为 a-z、0-9、-，且 - 不能单独注册或连续使用，不能放在开头或结尾。创建完成后不支持修改。
+	ProxyName *string `json:"ProxyName,omitnil" name:"ProxyName"`
+
+	// 四层代理实例加速区域。
+	// <li>mainland：中国大陆可用区；</li>
+	// <li>overseas：全球可用区（不含中国大陆）；</li>
+	// <li>global：全球可用区。</li>
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 是否开启 IPv6 访问，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	// 
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
+
+	// 是否开启固定 IP，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	StaticIp *string `json:"StaticIp,omitnil" name:"StaticIp"`
+
+	// 是否开启中国大陆网络优化，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	AccelerateMainland *string `json:"AccelerateMainland,omitnil" name:"AccelerateMainland"`
+
+	// L3/L4 DDoS 防护配置，不填写时默认使用平台默认防护选项。详情参考 [独立 DDoS 防护](https://cloud.tencent.com/document/product/1552/95994)。
+	DDosProtectionConfig *DDosProtectionConfig `json:"DDosProtectionConfig,omitnil" name:"DDosProtectionConfig"`
+}
+
+type CreateL4ProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例名称，可输入 1-50 个字符，允许的字符为 a-z、0-9、-，且 - 不能单独注册或连续使用，不能放在开头或结尾。创建完成后不支持修改。
+	ProxyName *string `json:"ProxyName,omitnil" name:"ProxyName"`
+
+	// 四层代理实例加速区域。
+	// <li>mainland：中国大陆可用区；</li>
+	// <li>overseas：全球可用区（不含中国大陆）；</li>
+	// <li>global：全球可用区。</li>
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 是否开启 IPv6 访问，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	// 
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
+
+	// 是否开启固定 IP，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	StaticIp *string `json:"StaticIp,omitnil" name:"StaticIp"`
+
+	// 是否开启中国大陆网络优化，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	AccelerateMainland *string `json:"AccelerateMainland,omitnil" name:"AccelerateMainland"`
+
+	// L3/L4 DDoS 防护配置，不填写时默认使用平台默认防护选项。详情参考 [独立 DDoS 防护](https://cloud.tencent.com/document/product/1552/95994)。
+	DDosProtectionConfig *DDosProtectionConfig `json:"DDosProtectionConfig,omitnil" name:"DDosProtectionConfig"`
+}
+
+func (r *CreateL4ProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL4ProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyName")
+	delete(f, "Area")
+	delete(f, "Ipv6")
+	delete(f, "StaticIp")
+	delete(f, "AccelerateMainland")
+	delete(f, "DDosProtectionConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL4ProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateL4ProxyResponseParams struct {
+	// 四层实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateL4ProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateL4ProxyResponseParams `json:"Response"`
+}
+
+func (r *CreateL4ProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL4ProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateL4ProxyRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则列表。单次最多支持 200 条转发规则。
+	// 注意：L4ProxyRule 在此处使用时，Protocol、PortRange、OriginType、OriginValue、OriginPortRange 为必填字段；ClientIPPassThroughMode、SessionPersist、SessionPersistTime、RuleTag 均为选填字段；RuleId、Status 请勿填写。
+	L4ProxyRules []*L4ProxyRule `json:"L4ProxyRules,omitnil" name:"L4ProxyRules"`
+}
+
+type CreateL4ProxyRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则列表。单次最多支持 200 条转发规则。
+	// 注意：L4ProxyRule 在此处使用时，Protocol、PortRange、OriginType、OriginValue、OriginPortRange 为必填字段；ClientIPPassThroughMode、SessionPersist、SessionPersistTime、RuleTag 均为选填字段；RuleId、Status 请勿填写。
+	L4ProxyRules []*L4ProxyRule `json:"L4ProxyRules,omitnil" name:"L4ProxyRules"`
+}
+
+func (r *CreateL4ProxyRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL4ProxyRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "L4ProxyRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL4ProxyRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateL4ProxyRulesResponseParams struct {
+	// 新增转发规则的 ID，以数组的形式返回。
+	L4ProxyRuleIds []*string `json:"L4ProxyRuleIds,omitnil" name:"L4ProxyRuleIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateL4ProxyRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateL4ProxyRulesResponseParams `json:"Response"`
+}
+
+func (r *CreateL4ProxyRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL4ProxyRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
@@ -2592,6 +2784,27 @@ type DDoSBlockData struct {
 	BlockArea *string `json:"BlockArea,omitnil" name:"BlockArea"`
 }
 
+type DDosProtectionConfig struct {
+	// 中国大陆地区独立 DDoS 防护的规格。详情请参考 [独立 DDoS 防护相关费用](https://cloud.tencent.com/document/product/1552/94162)
+	// <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
+	// <li>BASE30_MAX300：开启独立 DDoS 防护，提供 30 Gbps 保底防护带宽，可配置最高 300 Gpbs 弹性防护带宽；</li>
+	// <li>BASE60_MAX600：开启独立 DDoS 防护，提供 60 Gbps 保底防护带宽，可配置最高 600 Gpbs 弹性防护带宽。</li>不填写参数时，取默认值 PLATFORM。
+	LevelMainland *string `json:"LevelMainland,omitnil" name:"LevelMainland"`
+
+	// 中国大陆地区独立 DDoS 防护的弹性防护带宽配置。
+	// 仅当开启中国大陆区域独立 DDos 防护时有效（详见 LevelMainland 参数配置），且取值范围有如下限制：
+	// <li>开启中国大陆地区独立 DDoS 防护，使用 30 Gbps 保底防护带宽规格时（ LevelMainland 参数值为 BASE30_MAX300 ）：有效取值范围为 30 至 300，单位为 Gbps；</li>
+	// <li>开启中国大陆地区独立 DDoS 防护，使用 60 Gbps 保底防护带宽规格时（ LevelMainland 参数值为 BASE60_MAX600 ）：有效取值范围为 60 至 600，单位为 Gbps；</li>
+	// <li>使用平台默认防护（ LevelMainland 参数值为 PLATFORM ）：不支持配置，本参数值无效。</li>
+	MaxBandwidthMainland *uint64 `json:"MaxBandwidthMainland,omitnil" name:"MaxBandwidthMainland"`
+
+	// 全球（除中国大陆以外）地区独立 DDoS 防护的规格。
+	// <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
+	// <li>ANYCAST300：开启独立 DDoS 防护，提供合计最大 300 Gbps 防护带宽；</li>
+	// <li>ANYCAST_ALLIN：开启独立 DDoS 防护，使用全部可用防护资源进行防护。</li>不填写参数时，取默认值 PLATFORM。
+	LevelOverseas *string `json:"LevelOverseas,omitnil" name:"LevelOverseas"`
+}
+
 type DefaultServerCertInfo struct {
 	// 服务器证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2899,6 +3112,135 @@ func (r *DeleteApplicationProxyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteApplicationProxyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL4ProxyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+}
+
+type DeleteL4ProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+}
+
+func (r *DeleteL4ProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL4ProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteL4ProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL4ProxyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteL4ProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteL4ProxyResponseParams `json:"Response"`
+}
+
+func (r *DeleteL4ProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL4ProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL4ProxyRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则 ID 列表。单次最多支持 200 条转发规则。
+	RuleIds []*string `json:"RuleIds,omitnil" name:"RuleIds"`
+}
+
+type DeleteL4ProxyRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则 ID 列表。单次最多支持 200 条转发规则。
+	RuleIds []*string `json:"RuleIds,omitnil" name:"RuleIds"`
+}
+
+func (r *DeleteL4ProxyRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL4ProxyRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "RuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteL4ProxyRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL4ProxyRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteL4ProxyRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteL4ProxyRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteL4ProxyRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL4ProxyRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4712,6 +5054,183 @@ func (r *DescribeIdentificationsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIdentificationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeL4ProxyRequestParams struct {
+	// 四层代理实例所属站点的 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 分页查询偏移量，不填写时默认为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。	
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有四层代理实例信息。详细的过滤条件如下：
+	// <li>proxy-id：按照四层代理实例 ID 进行过滤；</li>
+	// <li>ddos-protection-type：按照安全防护类型进行过滤。</li>
+	// 
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeL4ProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 四层代理实例所属站点的 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 分页查询偏移量，不填写时默认为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。	
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有四层代理实例信息。详细的过滤条件如下：
+	// <li>proxy-id：按照四层代理实例 ID 进行过滤；</li>
+	// <li>ddos-protection-type：按照安全防护类型进行过滤。</li>
+	// 
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeL4ProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL4ProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL4ProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeL4ProxyResponseParams struct {
+	// 四层代理实例的数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 四层代理实例列表。
+	L4Proxies []*L4Proxy `json:"L4Proxies,omitnil" name:"L4Proxies"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeL4ProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeL4ProxyResponseParams `json:"Response"`
+}
+
+func (r *DescribeL4ProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL4ProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeL4ProxyRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 分页查询偏移量，不填写时默认为 0。	
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values的上限为20。不填写时返回当前四层实例下所有的规则信息，详细的过滤条件如下： 
+	//  <li>rule-tag：按照规则标签对四层代理实例下的规则进行过滤。</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeL4ProxyRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 分页查询偏移量，不填写时默认为 0。	
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。	
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values的上限为20。不填写时返回当前四层实例下所有的规则信息，详细的过滤条件如下： 
+	//  <li>rule-tag：按照规则标签对四层代理实例下的规则进行过滤。</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeL4ProxyRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL4ProxyRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL4ProxyRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeL4ProxyRulesResponseParams struct {
+	// 转发规则总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 转发规则列表。	
+	L4ProxyRules []*L4ProxyRule `json:"L4ProxyRules,omitnil" name:"L4ProxyRules"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeL4ProxyRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeL4ProxyRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeL4ProxyRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL4ProxyRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7269,6 +7788,131 @@ type L4OfflineLog struct {
 	Size *int64 `json:"Size,omitnil" name:"Size"`
 }
 
+type L4Proxy struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 四层代理实例名称。
+	ProxyName *string `json:"ProxyName,omitnil" name:"ProxyName"`
+
+	// 四层代理实例的加速区域。 
+	// <li>mainland：中国大陆可用区；</li>
+	// <li>overseas： 全球可用区（不含中国大陆）；</li>
+	//  <li>global：全球可用区。</li>	
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 接入 CNAME。
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
+
+	// 开启固定 IP 后，该值会返回对应的接入 IP；未开启时，该值为空。
+	Ips []*string `json:"Ips,omitnil" name:"Ips"`
+
+	// 四层代理实例状态。
+	// <li>online：已启用；</li>
+	// <li>offline：已停用；</li>
+	// <li>progress：部署中；</li>	
+	// <li>stopping：停用中；</li>
+	// <li>banned：已封禁；</li>
+	// <li>fail：部署失败/停用失败。</li>	
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 是否开启 IPv6 访问。 
+	// <li>on：开启；</li> 
+	// <li>off：关闭。</li>
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
+
+	// 是否开启固定 IP。
+	//  <li>on：开启；</li> <li>off：关闭。</li>
+	StaticIp *string `json:"StaticIp,omitnil" name:"StaticIp"`
+
+	// 是否开启中国大陆网络优化。
+	//  <li>on：开启</li> <li>off：关闭</li>
+	AccelerateMainland *string `json:"AccelerateMainland,omitnil" name:"AccelerateMainland"`
+
+	// 安全防护配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DDosProtectionConfig *DDosProtectionConfig `json:"DDosProtectionConfig,omitnil" name:"DDosProtectionConfig"`
+
+	// 四层代理实例下的转发规则数量。
+	L4ProxyRuleCount *int64 `json:"L4ProxyRuleCount,omitnil" name:"L4ProxyRuleCount"`
+
+	// 最新变更时间。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
+
+type L4ProxyRule struct {
+	// 转发规则 ID。
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数请勿填写；在 ModifyL4ProxyRules 作为入参使用时，该参数必填。
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 转发协议。取值有：
+	// <li>TCP：TCP 协议；</li>
+	// <li>UDP：UDP 协议。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 转发端口，支持按照以下形式填写：
+	// <li>单端口，如：80；</li>
+	// <li>端口段，如：81-85。表示 81、82、83、84、85 五个端口。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
+	PortRange []*string `json:"PortRange,omitnil" name:"PortRange"`
+
+	// 源站类型，取值有：
+	// <li>IP_DOMAIN：IP/域名源站；</li>
+	// <li>ORIGIN_GROUP：源站组；</li>
+	// <li>LB：负载均衡，当前仅白名单开放。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
+	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
+
+	// 源站地址：
+	// <li>当 OriginType 为 IP_DOMAIN 时，填写 IP 或域名，如 8.8.8.8 或 test.com ；</li>
+	// <li>当 OriginType 为 ORIGIN_GROUP 时，填写源站组 ID，如 og-537y24vf5b41；</li>
+	// <li>当 OriginType 为 LB 时，填写负载均衡实例 ID，如 lb-2qwk30xf7s9g。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
+	OriginValue []*string `json:"OriginValue,omitnil" name:"OriginValue"`
+
+	// 源站端口，支持按照以下形式填写：
+	// <li>单端口，如：80；</li>
+	// <li>端口段，如：81-85，表示 81、82、83、84、85 五个端口。填写端口段时，则需要与转发端口段长度保持一致，例如转发端口：80-90，则转发端口：90-100。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
+	OriginPortRange *string `json:"OriginPortRange,omitnil" name:"OriginPortRange"`
+
+	// 传递客户端 IP 的形式，取值有：
+	// <li>TOA：TOA（仅 Protocol = TCP 时可选）；</li> 
+	// <li>PPV1：Proxy Protocol 传递，协议版本 V1（仅 Protocol = TCP 时可选）；</li>
+	// <li>PPV2：Proxy Protocol 传递，协议版本 V2；</li> 
+	// <li>SPP：Simple Proxy Protocol 传递，（仅 Protocol = UDP 时可选）；</li> 
+	// <li>OFF：不传递。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数选填，不填写时默认为 OFF；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写表示不修改。
+	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitnil" name:"ClientIPPassThroughMode"`
+
+	// 是否开启会话保持，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数选填，不填写时默认为 off；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写表示不修改。
+	SessionPersist *string `json:"SessionPersist,omitnil" name:"SessionPersist"`
+
+	// 会话保持时间，取值范围为 30-3600，单位为秒。
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数选填，仅当 SessionPersist = on 时，该值才会生效，且当 SessionPersist = on ，该值不填写默认为 3600；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写表示不修改。
+	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil" name:"SessionPersistTime"`
+
+	// 规则标签。可输入1-50 个任意字符。
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数选填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写表示不修改。
+	RuleTag *string `json:"RuleTag,omitnil" name:"RuleTag"`
+
+	// 规则状态，取值有：
+	// <li>online：已启用；</li>
+	// <li>offline：已停用；</li>
+	// <li>progress：部署中；</li>
+	// <li>stopping：停用中；</li>
+	// <li>fail：部署失败/停用失败。</li>
+	// 注意：L4ProxyRule 在 CreateL4ProxyRules、ModifyL4ProxyRules 作为入参使用时，该参数请勿填写。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
 type L7OfflineLog struct {
 	// 离线日志域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -8176,6 +8820,310 @@ func (r *ModifyHostsCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyHostsCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 应用 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 是否开启 IPv6 访问。 不填该参数时，表示不修改该配置。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li> 
+	// <li>off：关闭。</li>
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
+
+	// 是否开启中国大陆网络优化。不填该参数时，表示不修改该配置。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li> 
+	// <li>off：关闭。</li>
+	AccelerateMainland *string `json:"AccelerateMainland,omitnil" name:"AccelerateMainland"`
+}
+
+type ModifyL4ProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 应用 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 是否开启 IPv6 访问。 不填该参数时，表示不修改该配置。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li> 
+	// <li>off：关闭。</li>
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
+
+	// 是否开启中国大陆网络优化。不填该参数时，表示不修改该配置。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
+	// <li>on：开启；</li> 
+	// <li>off：关闭。</li>
+	AccelerateMainland *string `json:"AccelerateMainland,omitnil" name:"AccelerateMainland"`
+}
+
+func (r *ModifyL4ProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "Ipv6")
+	delete(f, "AccelerateMainland")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4ProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyL4ProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyL4ProxyResponseParams `json:"Response"`
+}
+
+func (r *ModifyL4ProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则列表。单次最多支持 200 条转发规则。
+	// 注意：L4ProxyRule 在此处使用时，RuleId 为必填字段；Protocol、PortRange、OriginType、OriginValue、OriginPortRange、ClientIPPassThroughMode、SessionPersist、SessionPersistTime、RuleTag 均为选填字段，不填写表示不修改；Status 请勿填写。
+	L4ProxyRules []*L4ProxyRule `json:"L4ProxyRules,omitnil" name:"L4ProxyRules"`
+}
+
+type ModifyL4ProxyRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则列表。单次最多支持 200 条转发规则。
+	// 注意：L4ProxyRule 在此处使用时，RuleId 为必填字段；Protocol、PortRange、OriginType、OriginValue、OriginPortRange、ClientIPPassThroughMode、SessionPersist、SessionPersistTime、RuleTag 均为选填字段，不填写表示不修改；Status 请勿填写。
+	L4ProxyRules []*L4ProxyRule `json:"L4ProxyRules,omitnil" name:"L4ProxyRules"`
+}
+
+func (r *ModifyL4ProxyRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "L4ProxyRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4ProxyRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyL4ProxyRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyL4ProxyRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyL4ProxyRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyRulesStatusRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则 ID 列表。单次最多支持 200 条转发规则。
+	RuleIds []*string `json:"RuleIds,omitnil" name:"RuleIds"`
+
+	// 转发规则状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type ModifyL4ProxyRulesStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 转发规则 ID 列表。单次最多支持 200 条转发规则。
+	RuleIds []*string `json:"RuleIds,omitnil" name:"RuleIds"`
+
+	// 转发规则状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *ModifyL4ProxyRulesStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyRulesStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "RuleIds")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4ProxyRulesStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyRulesStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyL4ProxyRulesStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyL4ProxyRulesStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyL4ProxyRulesStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyRulesStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyStatusRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 四层代理实例状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type ModifyL4ProxyStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 四层代理实例 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
+
+	// 四层代理实例状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *ModifyL4ProxyStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ProxyId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4ProxyStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyL4ProxyStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyL4ProxyStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyL4ProxyStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyL4ProxyStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL4ProxyStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

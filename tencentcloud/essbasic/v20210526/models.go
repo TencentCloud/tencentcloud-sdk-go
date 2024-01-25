@@ -2077,6 +2077,8 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 type ChannelCreateFlowByFilesResponseParams struct {
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 
+	// [点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
@@ -3338,6 +3340,9 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 待解除的签署流程编号(即原签署流程的编号)。
+	// 
+	// 
+	// [点击产看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容, 包括解除理由等信息。
@@ -3395,6 +3400,9 @@ type ChannelCreateReleaseFlowRequest struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 待解除的签署流程编号(即原签署流程的编号)。
+	// 
+	// 
+	// [点击产看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容, 包括解除理由等信息。
@@ -3943,7 +3951,15 @@ func (r *ChannelCreateUserAutoSignSealUrlResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateUserRolesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 绑定角色的角色id列表，最多 100 个
@@ -3964,7 +3980,15 @@ type ChannelCreateUserRolesRequestParams struct {
 type ChannelCreateUserRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 绑定角色的角色id列表，最多 100 个
@@ -6516,8 +6540,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConsoleLoginUrlResponseParams struct {
 	// 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
-	// <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> 
-	// <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
+	// <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
 	// 
 	// 注： 
 	// 1. <font color="red">链接仅单次有效</font>，每次登录需要需要重新创建新的链接
@@ -6822,6 +6845,8 @@ func (r *CreateFlowsByTemplatesRequest) FromJsonString(s string) error {
 type CreateFlowsByTemplatesResponseParams struct {
 	// 生成的合同流程ID数组，合同流程ID为32位字符串。
 	// 建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
+	// 
+	// [点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
@@ -8361,6 +8386,8 @@ type DescribeTemplatesRequestParams struct {
 	// 合同模板ID，为32位字符串。
 	// 
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
+	// 
+	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 查询模板的内容
@@ -8375,6 +8402,9 @@ type DescribeTemplatesRequestParams struct {
 	// 1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
 	// 2. `请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。`
 	// 4. `若传递此参数，分页参数(Limit,Offset)无效`
+	// 
+	// 
+	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateIds []*string `json:"TemplateIds,omitnil" name:"TemplateIds"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
@@ -8441,6 +8471,8 @@ type DescribeTemplatesRequest struct {
 	// 合同模板ID，为32位字符串。
 	// 
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
+	// 
+	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 查询模板的内容
@@ -8455,6 +8487,9 @@ type DescribeTemplatesRequest struct {
 	// 1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
 	// 2. `请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。`
 	// 4. `若传递此参数，分页参数(Limit,Offset)无效`
+	// 
+	// 
+	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateIds []*string `json:"TemplateIds,omitnil" name:"TemplateIds"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
@@ -9180,6 +9215,8 @@ type FlowInfo struct {
 	// 如果使用模板发起接口，此参数为必填。
 	// 
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在**企业模板**中得到合同模板ID。
+	// 
+	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 多个签署人信息，最大支持50个签署方
@@ -9566,8 +9603,8 @@ type ModifyFlowDeadlineRequestParams struct {
 
 	// 签署方角色编号，为32位字符串
 	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
-	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
-	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	// <li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
@@ -9587,8 +9624,8 @@ type ModifyFlowDeadlineRequest struct {
 
 	// 签署方角色编号，为32位字符串
 	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
-	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
-	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	// <li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
@@ -11042,4 +11079,17 @@ type WebThemeConfig struct {
 	// 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
 	// <br/>
 	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil" name:"WebEmbedThemeColor"`
+
+	// 企业认证页背景图（base64图片）
+	AuthenticateBackground *string `json:"AuthenticateBackground,omitnil" name:"AuthenticateBackground"`
+
+	// 隐藏企业认证页面导航栏，取值如下：
+	// <ul><li> **true**：隐藏企业认证页面导航栏</li>
+	// <li> **false**：显示企业认证页面导航栏（默认）</li></ul>
+	HideAuthenticateNavigationBar *bool `json:"HideAuthenticateNavigationBar,omitnil" name:"HideAuthenticateNavigationBar"`
+
+	// 隐藏企业认证顶部logo，取值如下：
+	// <ul><li> **true**：隐藏企业认证顶部logo</li>
+	// <li> **false**：显示企业认证顶部logo（默认）</li></ul>
+	HideAuthenticateTopLogo *bool `json:"HideAuthenticateTopLogo,omitnil" name:"HideAuthenticateTopLogo"`
 }

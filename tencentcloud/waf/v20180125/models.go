@@ -10503,6 +10503,74 @@ func (r *ModifyDomainIpv6StatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDomainPostActionRequestParams struct {
+	// www.tx.com
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 0-关闭投递，1-开启投递
+	PostCLSAction *int64 `json:"PostCLSAction,omitnil" name:"PostCLSAction"`
+
+	// 0-关闭投递，1-开启投递
+	PostCKafkaAction *int64 `json:"PostCKafkaAction,omitnil" name:"PostCKafkaAction"`
+}
+
+type ModifyDomainPostActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// www.tx.com
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 0-关闭投递，1-开启投递
+	PostCLSAction *int64 `json:"PostCLSAction,omitnil" name:"PostCLSAction"`
+
+	// 0-关闭投递，1-开启投递
+	PostCKafkaAction *int64 `json:"PostCKafkaAction,omitnil" name:"PostCKafkaAction"`
+}
+
+func (r *ModifyDomainPostActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainPostActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "PostCLSAction")
+	delete(f, "PostCKafkaAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainPostActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDomainPostActionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDomainPostActionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDomainPostActionResponseParams `json:"Response"`
+}
+
+func (r *ModifyDomainPostActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainPostActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDomainWhiteRuleRequestParams struct {
 	// 需要更改的规则的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`

@@ -796,6 +796,128 @@ func (c *Client) CreateConfigGroupVersionWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateL4ProxyRequest() (request *CreateL4ProxyRequest) {
+    request = &CreateL4ProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateL4Proxy")
+    
+    
+    return
+}
+
+func NewCreateL4ProxyResponse() (response *CreateL4ProxyResponse) {
+    response = &CreateL4ProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateL4Proxy
+// 用于创建四层代理实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateL4Proxy(request *CreateL4ProxyRequest) (response *CreateL4ProxyResponse, err error) {
+    return c.CreateL4ProxyWithContext(context.Background(), request)
+}
+
+// CreateL4Proxy
+// 用于创建四层代理实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateL4ProxyWithContext(ctx context.Context, request *CreateL4ProxyRequest) (response *CreateL4ProxyResponse, err error) {
+    if request == nil {
+        request = NewCreateL4ProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateL4Proxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateL4ProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateL4ProxyRulesRequest() (request *CreateL4ProxyRulesRequest) {
+    request = &CreateL4ProxyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateL4ProxyRules")
+    
+    
+    return
+}
+
+func NewCreateL4ProxyRulesResponse() (response *CreateL4ProxyRulesResponse) {
+    response = &CreateL4ProxyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateL4ProxyRules
+// 用于创建四层代理实例规则，支持单条或者批量创建。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_INVALIDORIGINVALUE = "InvalidParameter.InvalidOriginValue"
+//  INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
+//  LIMITEXCEEDED_PROXYRULESLIMITEXCEEDED = "LimitExceeded.ProxyRulesLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4PORTLACKOFRESOURCES = "OperationDenied.L4PortLackOfResources"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateL4ProxyRules(request *CreateL4ProxyRulesRequest) (response *CreateL4ProxyRulesResponse, err error) {
+    return c.CreateL4ProxyRulesWithContext(context.Background(), request)
+}
+
+// CreateL4ProxyRules
+// 用于创建四层代理实例规则，支持单条或者批量创建。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_INVALIDORIGINVALUE = "InvalidParameter.InvalidOriginValue"
+//  INVALIDPARAMETER_RULEPORTDUPLICATING = "InvalidParameter.RulePortDuplicating"
+//  LIMITEXCEEDED_PROXYRULESLIMITEXCEEDED = "LimitExceeded.ProxyRulesLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4PORTLACKOFRESOURCES = "OperationDenied.L4PortLackOfResources"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateL4ProxyRulesWithContext(ctx context.Context, request *CreateL4ProxyRulesRequest) (response *CreateL4ProxyRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateL4ProxyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateL4ProxyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateL4ProxyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOriginGroupRequest() (request *CreateOriginGroupRequest) {
     request = &CreateOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1764,6 +1886,112 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteApplicationProxyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteL4ProxyRequest() (request *DeleteL4ProxyRequest) {
+    request = &DeleteL4ProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteL4Proxy")
+    
+    
+    return
+}
+
+func NewDeleteL4ProxyResponse() (response *DeleteL4ProxyResponse) {
+    response = &DeleteL4ProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteL4Proxy
+// 用于删除四层代理实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DeleteL4Proxy(request *DeleteL4ProxyRequest) (response *DeleteL4ProxyResponse, err error) {
+    return c.DeleteL4ProxyWithContext(context.Background(), request)
+}
+
+// DeleteL4Proxy
+// 用于删除四层代理实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DeleteL4ProxyWithContext(ctx context.Context, request *DeleteL4ProxyRequest) (response *DeleteL4ProxyResponse, err error) {
+    if request == nil {
+        request = NewDeleteL4ProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteL4Proxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteL4ProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteL4ProxyRulesRequest() (request *DeleteL4ProxyRulesRequest) {
+    request = &DeleteL4ProxyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteL4ProxyRules")
+    
+    
+    return
+}
+
+func NewDeleteL4ProxyRulesResponse() (response *DeleteL4ProxyRulesResponse) {
+    response = &DeleteL4ProxyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteL4ProxyRules
+// 用于删除四层代理转发规则，支持单条或者批量操作。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteL4ProxyRules(request *DeleteL4ProxyRulesRequest) (response *DeleteL4ProxyRulesResponse, err error) {
+    return c.DeleteL4ProxyRulesWithContext(context.Background(), request)
+}
+
+// DeleteL4ProxyRules
+// 用于删除四层代理转发规则，支持单条或者批量操作。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteL4ProxyRulesWithContext(ctx context.Context, request *DeleteL4ProxyRulesRequest) (response *DeleteL4ProxyRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteL4ProxyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteL4ProxyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteL4ProxyRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3048,6 +3276,116 @@ func (c *Client) DescribeIdentificationsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeIdentificationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeL4ProxyRequest() (request *DescribeL4ProxyRequest) {
+    request = &DescribeL4ProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeL4Proxy")
+    
+    
+    return
+}
+
+func NewDescribeL4ProxyResponse() (response *DescribeL4ProxyResponse) {
+    response = &DescribeL4ProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeL4Proxy
+// 用于查询四层代理实例列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeL4Proxy(request *DescribeL4ProxyRequest) (response *DescribeL4ProxyResponse, err error) {
+    return c.DescribeL4ProxyWithContext(context.Background(), request)
+}
+
+// DescribeL4Proxy
+// 用于查询四层代理实例列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeL4ProxyWithContext(ctx context.Context, request *DescribeL4ProxyRequest) (response *DescribeL4ProxyResponse, err error) {
+    if request == nil {
+        request = NewDescribeL4ProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL4Proxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeL4ProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeL4ProxyRulesRequest() (request *DescribeL4ProxyRulesRequest) {
+    request = &DescribeL4ProxyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeL4ProxyRules")
+    
+    
+    return
+}
+
+func NewDescribeL4ProxyRulesResponse() (response *DescribeL4ProxyRulesResponse) {
+    response = &DescribeL4ProxyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeL4ProxyRules
+// 查询四层代理实例下的规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeL4ProxyRules(request *DescribeL4ProxyRulesRequest) (response *DescribeL4ProxyRulesResponse, err error) {
+    return c.DescribeL4ProxyRulesWithContext(context.Background(), request)
+}
+
+// DescribeL4ProxyRules
+// 查询四层代理实例下的规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeL4ProxyRulesWithContext(ctx context.Context, request *DescribeL4ProxyRulesRequest) (response *DescribeL4ProxyRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeL4ProxyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL4ProxyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeL4ProxyRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4715,6 +5053,240 @@ func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyHostsCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyL4ProxyRequest() (request *ModifyL4ProxyRequest) {
+    request = &ModifyL4ProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyL4Proxy")
+    
+    
+    return
+}
+
+func NewModifyL4ProxyResponse() (response *ModifyL4ProxyResponse) {
+    response = &ModifyL4ProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyL4Proxy
+// 用于修改四层代理实例的配置。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  OPERATIONDENIED_L4PROXYINOFFLINESTATUS = "OperationDenied.L4ProxyInOfflineStatus"
+//  OPERATIONDENIED_L4PROXYINPROCESSSTATUS = "OperationDenied.L4ProxyInProcessStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) ModifyL4Proxy(request *ModifyL4ProxyRequest) (response *ModifyL4ProxyResponse, err error) {
+    return c.ModifyL4ProxyWithContext(context.Background(), request)
+}
+
+// ModifyL4Proxy
+// 用于修改四层代理实例的配置。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  OPERATIONDENIED_L4PROXYINOFFLINESTATUS = "OperationDenied.L4ProxyInOfflineStatus"
+//  OPERATIONDENIED_L4PROXYINPROCESSSTATUS = "OperationDenied.L4ProxyInProcessStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) ModifyL4ProxyWithContext(ctx context.Context, request *ModifyL4ProxyRequest) (response *ModifyL4ProxyResponse, err error) {
+    if request == nil {
+        request = NewModifyL4ProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4Proxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyL4ProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyL4ProxyRulesRequest() (request *ModifyL4ProxyRulesRequest) {
+    request = &ModifyL4ProxyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyL4ProxyRules")
+    
+    
+    return
+}
+
+func NewModifyL4ProxyRulesResponse() (response *ModifyL4ProxyRulesResponse) {
+    response = &ModifyL4ProxyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyL4ProxyRules
+// 用于修改四层代理转发规则，支持单条或者批量修改。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyRules(request *ModifyL4ProxyRulesRequest) (response *ModifyL4ProxyRulesResponse, err error) {
+    return c.ModifyL4ProxyRulesWithContext(context.Background(), request)
+}
+
+// ModifyL4ProxyRules
+// 用于修改四层代理转发规则，支持单条或者批量修改。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyRulesWithContext(ctx context.Context, request *ModifyL4ProxyRulesRequest) (response *ModifyL4ProxyRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyL4ProxyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4ProxyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyL4ProxyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyL4ProxyRulesStatusRequest() (request *ModifyL4ProxyRulesStatusRequest) {
+    request = &ModifyL4ProxyRulesStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyL4ProxyRulesStatus")
+    
+    
+    return
+}
+
+func NewModifyL4ProxyRulesStatusResponse() (response *ModifyL4ProxyRulesStatusResponse) {
+    response = &ModifyL4ProxyRulesStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyL4ProxyRulesStatus
+// 用于启用/停用四层代理转发规则状态，支持单条或者批量操作。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyRulesStatus(request *ModifyL4ProxyRulesStatusRequest) (response *ModifyL4ProxyRulesStatusResponse, err error) {
+    return c.ModifyL4ProxyRulesStatusWithContext(context.Background(), request)
+}
+
+// ModifyL4ProxyRulesStatus
+// 用于启用/停用四层代理转发规则状态，支持单条或者批量操作。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyRulesStatusWithContext(ctx context.Context, request *ModifyL4ProxyRulesStatusRequest) (response *ModifyL4ProxyRulesStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyL4ProxyRulesStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4ProxyRulesStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyL4ProxyRulesStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyL4ProxyStatusRequest() (request *ModifyL4ProxyStatusRequest) {
+    request = &ModifyL4ProxyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyL4ProxyStatus")
+    
+    
+    return
+}
+
+func NewModifyL4ProxyStatusResponse() (response *ModifyL4ProxyStatusResponse) {
+    response = &ModifyL4ProxyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyL4ProxyStatus
+// 用于启用/停用四层代理实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyStatus(request *ModifyL4ProxyStatusRequest) (response *ModifyL4ProxyStatusResponse, err error) {
+    return c.ModifyL4ProxyStatusWithContext(context.Background(), request)
+}
+
+// ModifyL4ProxyStatus
+// 用于启用/停用四层代理实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyL4ProxyStatusWithContext(ctx context.Context, request *ModifyL4ProxyStatusRequest) (response *ModifyL4ProxyStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyL4ProxyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4ProxyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyL4ProxyStatusResponse()
     err = c.Send(request, response)
     return
 }

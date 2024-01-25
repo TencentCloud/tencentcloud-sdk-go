@@ -822,6 +822,7 @@ func NewCreateScheduleResponse() (response *CreateScheduleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
@@ -861,6 +862,7 @@ func (c *Client) CreateSchedule(request *CreateScheduleRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
@@ -2989,6 +2991,7 @@ func NewDescribeSchedulesResponse() (response *DescribeSchedulesResponse) {
 // 查询编排。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
@@ -3002,6 +3005,7 @@ func (c *Client) DescribeSchedules(request *DescribeSchedulesRequest) (response 
 // 查询编排。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
@@ -4270,7 +4274,7 @@ func NewEditMediaResponse() (response *EditMediaResponse) {
 // EditMedia
 // 对视频进行编辑，生成一个新的视频。编辑的功能包括：
 //
-//   
+//  
 //
 // 
 //
@@ -4295,6 +4299,7 @@ func NewEditMediaResponse() (response *EditMediaResponse) {
 // 4. 视频级别：转场、倍数播放、拼接、剪切、字幕、画中画、音画分离、出入场动效等
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4305,7 +4310,7 @@ func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaRespon
 // EditMedia
 // 对视频进行编辑，生成一个新的视频。编辑的功能包括：
 //
-//   
+//  
 //
 // 
 //
@@ -4330,6 +4335,7 @@ func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaRespon
 // 4. 视频级别：转场、倍数播放、拼接、剪切、字幕、画中画、音画分离、出入场动效等
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4375,6 +4381,7 @@ func NewEnableScheduleResponse() (response *EnableScheduleResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
@@ -4396,6 +4403,7 @@ func (c *Client) EnableSchedule(request *EnableScheduleRequest) (response *Enabl
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
@@ -5212,6 +5220,7 @@ func NewModifyScheduleResponse() (response *ModifyScheduleResponse) {
 // 修改编排
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
@@ -5226,6 +5235,7 @@ func (c *Client) ModifySchedule(request *ModifyScheduleRequest) (response *Modif
 // 修改编排
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
@@ -5923,6 +5933,7 @@ func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
 // 直播流处理事件通知支持HTTP回调，也支持实时写入用户指定的消息队列 CMQ 中，用户从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5953,6 +5964,7 @@ func (c *Client) ProcessLiveStream(request *ProcessLiveStreamRequest) (response 
 // 直播流处理事件通知支持HTTP回调，也支持实时写入用户指定的消息队列 CMQ 中，用户从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6011,11 +6023,14 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
-// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾）；
+// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾、游戏打点）；
 //
 // 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
 //
+// 10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
+//
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6043,11 +6058,14 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
-// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾）；
+// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾、游戏打点）；
 //
 // 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
 //
+// 10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
+//
 // 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

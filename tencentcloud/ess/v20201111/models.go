@@ -1623,13 +1623,14 @@ type CreateDocumentRequestParams struct {
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
+	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
+	// 
+	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png)
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
 	// 合同流程ID，为32位字符串。
 	// 此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
-
-	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
 	FileNames []*string `json:"FileNames,omitnil" name:"FileNames"`
@@ -1670,13 +1671,14 @@ type CreateDocumentRequest struct {
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
+	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
+	// 
+	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png)
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
 	// 合同流程ID，为32位字符串。
 	// 此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
-
-	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
 	FileNames []*string `json:"FileNames,omitnil" name:"FileNames"`
@@ -1724,8 +1726,8 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "FlowId")
 	delete(f, "TemplateId")
+	delete(f, "FlowId")
 	delete(f, "FileNames")
 	delete(f, "FormFields")
 	delete(f, "NeedPreview")
@@ -2423,9 +2425,10 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 type CreateFlowByFilesResponseParams struct {
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	// 
 	// 注: 如果是预览模式(即NeedPreview设置为true)时, 此处不会有值返回。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 合同预览链接URL。
@@ -3233,7 +3236,7 @@ type CreateFlowResponseParams struct {
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 
 	// 注:
-	// 此返回的合同流程ID，需再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口将合同开始后，合同才能进入签署环节
+	// 此返回的合同流程ID，需再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口将合同开始后，合同才能进入签署环节，[点击产看FlowId在控制台中的位置（只在进如签署环节后有效）](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	// 
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
@@ -6845,6 +6848,8 @@ type DescribeFlowBriefsRequestParams struct {
 	// 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
 	// 
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -6863,6 +6868,8 @@ type DescribeFlowBriefsRequest struct {
 	// 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
 	// 
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -7087,6 +7094,11 @@ type DescribeFlowInfoRequestParams struct {
 
 	// 需要查询的流程ID列表，最多可传入100个ID。
 	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
+	// 
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
@@ -7104,6 +7116,11 @@ type DescribeFlowInfoRequest struct {
 
 	// 需要查询的流程ID列表，最多可传入100个ID。
 	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
+	// 
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	

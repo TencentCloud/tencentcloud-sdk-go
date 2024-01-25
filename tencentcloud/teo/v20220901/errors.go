@@ -389,6 +389,9 @@ const (
 	// 源站类型错误。
 	INVALIDPARAMETER_INVALIDORIGINTYPE = "InvalidParameter.InvalidOriginType"
 
+	// 源站错误或不存在。
+	INVALIDPARAMETER_INVALIDORIGINVALUE = "InvalidParameter.InvalidOriginValue"
+
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
@@ -683,6 +686,9 @@ const (
 	// 计费套餐不支持。
 	LIMITEXCEEDED_PACKNOTALLOW = "LimitExceeded.PackNotAllow"
 
+	// 导入的规则数量超限制。
+	LIMITEXCEEDED_PROXYRULESLIMITEXCEEDED = "LimitExceeded.ProxyRulesLimitExceeded"
+
 	// 查询时间范围超出限制。
 	LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 
@@ -758,8 +764,17 @@ const (
 	// 四层实例资源售卖火爆，已售罄，正在加紧补货中，当前无法新增四层代理，请您耐心等待。
 	OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
 
+	// 四层端口资源售卖火爆，已售罄，正在加紧补货中，当前无法新增四层代理或添加规则，请您耐心等待。
+	OPERATIONDENIED_L4PORTLACKOFRESOURCES = "OperationDenied.L4PortLackOfResources"
+
 	// 4层代理资源处于封禁中，禁止操作。
 	OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+
+	// 4层通道处于关闭状态，不允许添加规则。
+	OPERATIONDENIED_L4PROXYINOFFLINESTATUS = "OperationDenied.L4ProxyInOfflineStatus"
+
+	// 实例处于部署中，无法操作。
+	OPERATIONDENIED_L4PROXYINPROCESSSTATUS = "OperationDenied.L4ProxyInProcessStatus"
 
 	// 存在四层代理实例处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L4PROXYINPROGRESSSTATUS = "OperationDenied.L4ProxyInProgressStatus"

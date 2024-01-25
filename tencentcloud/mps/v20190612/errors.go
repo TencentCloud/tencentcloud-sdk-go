@@ -26,6 +26,9 @@ const (
 	// 操作失败：COS 已经停服。
 	FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 
+	// 生成资源失败。
+	FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+
 	// 操作失败：获取源通知错误。
 	FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
 

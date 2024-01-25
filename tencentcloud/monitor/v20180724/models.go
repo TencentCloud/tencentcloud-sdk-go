@@ -10149,7 +10149,8 @@ type DescribeStatisticDataRequestParams struct {
 	// 命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 指标名列表
+	// 指标名列表，相关指标信息可参考对应 云产品指标文档
+	// https://cloud.tencent.com/document/product/248/62458
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
 	// 维度条件，操作符支持=、in
@@ -10183,7 +10184,8 @@ type DescribeStatisticDataRequest struct {
 	// 命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
-	// 指标名列表
+	// 指标名列表，相关指标信息可参考对应 云产品指标文档
+	// https://cloud.tencent.com/document/product/248/62458
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
 	// 维度条件，操作符支持=、in

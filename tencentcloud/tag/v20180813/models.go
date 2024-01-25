@@ -549,6 +549,12 @@ type DescribeProjectsRequestParams struct {
 
 	// 分页偏移量。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 按项目ID筛选，大于0
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 按项目名称筛选
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 }
 
 type DescribeProjectsRequest struct {
@@ -562,6 +568,12 @@ type DescribeProjectsRequest struct {
 
 	// 分页偏移量。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 按项目ID筛选，大于0
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 按项目名称筛选
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 }
 
 func (r *DescribeProjectsRequest) ToJsonString() string {
@@ -579,6 +591,8 @@ func (r *DescribeProjectsRequest) FromJsonString(s string) error {
 	delete(f, "AllList")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "ProjectId")
+	delete(f, "ProjectName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
 	}

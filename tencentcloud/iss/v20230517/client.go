@@ -3162,6 +3162,7 @@ func NewDescribeVideoDownloadUrlResponse() (response *DescribeVideoDownloadUrlRe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_VIDEONOTFOUND = "ResourceNotFound.VideoNotFound"
 //  RESOURCEUNAVAILABLE_VIDEOARCHIVED = "ResourceUnavailable.VideoArchived"
+//  UNSUPPORTEDOPERATION_UNOPENEDINTRANETSERVICESINREGION = "UnsupportedOperation.UnopenedIntranetServicesInRegion"
 func (c *Client) DescribeVideoDownloadUrl(request *DescribeVideoDownloadUrlRequest) (response *DescribeVideoDownloadUrlResponse, err error) {
     return c.DescribeVideoDownloadUrlWithContext(context.Background(), request)
 }
@@ -3185,6 +3186,7 @@ func (c *Client) DescribeVideoDownloadUrl(request *DescribeVideoDownloadUrlReque
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_VIDEONOTFOUND = "ResourceNotFound.VideoNotFound"
 //  RESOURCEUNAVAILABLE_VIDEOARCHIVED = "ResourceUnavailable.VideoArchived"
+//  UNSUPPORTEDOPERATION_UNOPENEDINTRANETSERVICESINREGION = "UnsupportedOperation.UnopenedIntranetServicesInRegion"
 func (c *Client) DescribeVideoDownloadUrlWithContext(ctx context.Context, request *DescribeVideoDownloadUrlRequest) (response *DescribeVideoDownloadUrlResponse, err error) {
     if request == nil {
         request = NewDescribeVideoDownloadUrlRequest()

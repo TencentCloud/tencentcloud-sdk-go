@@ -281,7 +281,7 @@ func NewCreateCCCSkillGroupResponse() (response *CreateCCCSkillGroupResponse) {
 }
 
 // CreateCCCSkillGroup
-// 创建技能组
+// 新建技能组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -293,7 +293,7 @@ func (c *Client) CreateCCCSkillGroup(request *CreateCCCSkillGroupRequest) (respo
 }
 
 // CreateCCCSkillGroup
-// 创建技能组
+// 新建技能组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
