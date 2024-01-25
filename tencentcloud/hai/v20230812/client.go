@@ -538,6 +538,7 @@ func NewStartInstanceResponse() (response *StartInstanceResponse) {
 // 本接口 (StartInstance) 用于主动启动实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
@@ -557,6 +558,7 @@ func (c *Client) StartInstance(request *StartInstanceRequest) (response *StartIn
 // 本接口 (StartInstance) 用于主动启动实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
@@ -607,6 +609,7 @@ func NewStopInstanceResponse() (response *StopInstanceResponse) {
 // 本接口 (StopInstance) 用于主动关闭实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
@@ -625,6 +628,7 @@ func (c *Client) StopInstance(request *StopInstanceRequest) (response *StopInsta
 // 本接口 (StopInstance) 用于主动关闭实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"

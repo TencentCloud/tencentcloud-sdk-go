@@ -4535,6 +4535,9 @@ type UpdateInstanceRequestParams struct {
 
 	// cerebro内网自定义域名
 	CerebroPrivateDomain *string `json:"CerebroPrivateDomain,omitnil" name:"CerebroPrivateDomain"`
+
+	// 变更为https集群，默认是http
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 }
 
 type UpdateInstanceRequest struct {
@@ -4659,6 +4662,9 @@ type UpdateInstanceRequest struct {
 
 	// cerebro内网自定义域名
 	CerebroPrivateDomain *string `json:"CerebroPrivateDomain,omitnil" name:"CerebroPrivateDomain"`
+
+	// 变更为https集群，默认是http
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -4707,6 +4713,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "KibanaAlteringPublicAccess")
 	delete(f, "KibanaPrivateDomain")
 	delete(f, "CerebroPrivateDomain")
+	delete(f, "Protocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

@@ -290,6 +290,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 当前任务选择了平台CFS的内置代码，且未正确配置/opt/ml/output/data输出路径，任务无法提交
+	INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
+
 	// AI市场公共算法版本Id不存在
 	INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
 
@@ -383,6 +386,9 @@ const (
 	// 分页查询limit超出限制
 	INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
 
+	// 查询vpc信息失败
+	INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
+
 	// RDMA配置不合法
 	INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 
@@ -445,6 +451,9 @@ const (
 
 	// 子网不合法。
 	OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+
+	// 太极应用组存量资源不足，不满足训练要求
+	OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 
 	// 白名单免费配额不足。
 	OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"

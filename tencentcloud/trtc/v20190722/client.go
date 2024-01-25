@@ -1120,7 +1120,7 @@ func NewDescribeStreamIngestResponse() (response *DescribeStreamIngestResponse) 
 }
 
 // DescribeStreamIngest
-// 您可以查询转推任务的状态。
+// 您可以查询输入在线媒体流任务的状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
@@ -1133,7 +1133,7 @@ func (c *Client) DescribeStreamIngest(request *DescribeStreamIngestRequest) (res
 }
 
 // DescribeStreamIngest
-// 您可以查询转推任务的状态。
+// 您可以查询输入在线媒体流任务的状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
@@ -3840,7 +3840,7 @@ func NewStopStreamIngestResponse() (response *StopStreamIngestResponse) {
 }
 
 // StopStreamIngest
-// 停止一个拉流转推任务。
+// 停止一个输入在线媒体流任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
@@ -3852,7 +3852,7 @@ func (c *Client) StopStreamIngest(request *StopStreamIngestRequest) (response *S
 }
 
 // StopStreamIngest
-// 停止一个拉流转推任务。
+// 停止一个输入在线媒体流任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"

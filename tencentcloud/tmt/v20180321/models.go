@@ -72,7 +72,7 @@ type FileTranslateRequestParams struct {
 	// 原始文档类型
 	BasicDocumentType *string `json:"BasicDocumentType,omitnil" name:"BasicDocumentType"`
 
-	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中。
+	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
@@ -132,7 +132,7 @@ type FileTranslateRequest struct {
 	// 原始文档类型
 	BasicDocumentType *string `json:"BasicDocumentType,omitnil" name:"BasicDocumentType"`
 
-	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中。
+	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。

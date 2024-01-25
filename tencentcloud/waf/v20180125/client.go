@@ -1302,9 +1302,7 @@ func NewDeleteHostResponse() (response *DeleteHostResponse) {
 }
 
 // DeleteHost
-// 删除CLB-WAF防护域名
-//
-// 支持批量操作
+// 删除负载均衡型域名，支持批量操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1325,9 +1323,7 @@ func (c *Client) DeleteHost(request *DeleteHostRequest) (response *DeleteHostRes
 }
 
 // DeleteHost
-// 删除CLB-WAF防护域名
-//
-// 支持批量操作
+// 删除负载均衡型域名，支持批量操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1491,7 +1487,7 @@ func NewDeleteSpartaProtectionResponse() (response *DeleteSpartaProtectionRespon
 }
 
 // DeleteSpartaProtection
-// Saas型WAF删除防护域名
+// SaaS型WAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1503,7 +1499,7 @@ func (c *Client) DeleteSpartaProtection(request *DeleteSpartaProtectionRequest) 
 }
 
 // DeleteSpartaProtection
-// Saas型WAF删除防护域名
+// SaaS型WAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4531,7 +4527,7 @@ func NewDescribeTlsVersionResponse() (response *DescribeTlsVersionResponse) {
 }
 
 // DescribeTlsVersion
-// 查询用户TLS版本
+// 查询SaaS型WAF支持的TLS版本
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4558,7 +4554,7 @@ func (c *Client) DescribeTlsVersion(request *DescribeTlsVersionRequest) (respons
 }
 
 // DescribeTlsVersion
-// 查询用户TLS版本
+// 查询SaaS型WAF支持的TLS版本
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6911,7 +6907,7 @@ func NewModifyHostResponse() (response *ModifyHostResponse) {
 }
 
 // ModifyHost
-// clb-waf编辑防护域名配置
+// 编辑负载均衡型WAF防护域名配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6933,7 +6929,7 @@ func (c *Client) ModifyHost(request *ModifyHostRequest) (response *ModifyHostRes
 }
 
 // ModifyHost
-// clb-waf编辑防护域名配置
+// 编辑负载均衡型WAF防护域名配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6986,7 +6982,7 @@ func NewModifyHostFlowModeResponse() (response *ModifyHostFlowModeResponse) {
 }
 
 // ModifyHostFlowMode
-// clb-waf 设置防护域名的流量模式
+// 设置负载均衡型WAF防护域名的流量模式，切换镜像模式和清洗模式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7007,7 +7003,7 @@ func (c *Client) ModifyHostFlowMode(request *ModifyHostFlowModeRequest) (respons
 }
 
 // ModifyHostFlowMode
-// clb-waf 设置防护域名的流量模式
+// 设置负载均衡型WAF防护域名的流量模式，切换镜像模式和清洗模式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7664,7 +7660,7 @@ func NewModifySpartaProtectionResponse() (response *ModifySpartaProtectionRespon
 }
 
 // ModifySpartaProtection
-// 修改域名配置
+// 编辑SaaS型WAF域名配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7693,7 +7689,7 @@ func (c *Client) ModifySpartaProtection(request *ModifySpartaProtectionRequest) 
 }
 
 // ModifySpartaProtection
-// 修改域名配置
+// 编辑SaaS型WAF域名配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

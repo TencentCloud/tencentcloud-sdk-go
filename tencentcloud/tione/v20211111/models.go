@@ -103,10 +103,10 @@ type BatchModelAccTask struct {
 }
 
 type BatchTaskDetail struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 
-	// 跑批任务名称
+	// 批量预测任务名称
 	BatchTaskName *string `json:"BatchTaskName,omitnil" name:"BatchTaskName"`
 
 	// 主账号uin
@@ -195,7 +195,12 @@ type BatchTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// 计费状态，取值范围:
+	// BILLING: 计费中
+	// NOT_BILLING: 未计费
+	// WHITELIST_USING: 白名单使用中
+	// WHITELIST_STOP: 白名单到期
+	// ARREARS_STOP: 欠费停止
 	ChargeStatus *string `json:"ChargeStatus,omitnil" name:"ChargeStatus"`
 
 	// 最近一次实例ID
@@ -244,10 +249,10 @@ type BatchTaskInstance struct {
 }
 
 type BatchTaskSetItem struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 
-	// 跑批任务名称
+	// 批量预测任务名称
 	BatchTaskName *string `json:"BatchTaskName,omitnil" name:"BatchTaskName"`
 
 	// 模型信息
@@ -260,7 +265,12 @@ type BatchTaskSetItem struct {
 	// 计费模式
 	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
 
-	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// 计费状态，取值范围:
+	// BILLING: 计费中
+	// NOT_BILLING: 未计费
+	// WHITELIST_USING: 白名单使用中
+	// WHITELIST_STOP: 白名单到期
+	// ARREARS_STOP: 欠费停止
 	ChargeStatus *string `json:"ChargeStatus,omitnil" name:"ChargeStatus"`
 
 	// 包年包月资源组ID
@@ -274,25 +284,26 @@ type BatchTaskSetItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
-	// 任务状态
+	// 任务状态, 取值范围:
+	// INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 运行时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitnil" name:"RuntimeInSeconds"`
 
-	// 创建时间
+	// 任务创建时间
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
-	// 开始时间
+	// 任务开始运行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
-	// 结束时间
+	// 任务结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 更新时间
+	// 任务更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
@@ -306,7 +317,7 @@ type BatchTaskSetItem struct {
 	// 失败原因
 	FailureReason *string `json:"FailureReason,omitnil" name:"FailureReason"`
 
-	// 计费金额信息，eg：2.00元/小时 (for 按量计费)
+	// 按量计费信息
 	BillingInfo *string `json:"BillingInfo,omitnil" name:"BillingInfo"`
 }
 
@@ -602,7 +613,7 @@ func (r *CreateBatchModelAccTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBatchTaskRequestParams struct {
-	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// 批量预测任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	BatchTaskName *string `json:"BatchTaskName,omitnil" name:"BatchTaskName"`
 
 	// 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
@@ -611,16 +622,20 @@ type CreateBatchTaskRequestParams struct {
 	// 资源配置
 	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitnil" name:"ResourceConfigInfo"`
 
-	// 结果输出
+	// 结果输出存储信息
 	Outputs []*DataConfig `json:"Outputs,omitnil" name:"Outputs"`
 
 	// 是否上报日志
 	LogEnable *bool `json:"LogEnable,omitnil" name:"LogEnable"`
 
 	// 工作类型 1:单次 2:周期
+	//
+	// Deprecated: JobType is deprecated.
 	JobType *uint64 `json:"JobType,omitnil" name:"JobType"`
 
 	// 任务周期描述
+	//
+	// Deprecated: CronInfo is deprecated.
 	CronInfo *CronInfo `json:"CronInfo,omitnil" name:"CronInfo"`
 
 	// 包年包月资源组ID
@@ -663,7 +678,7 @@ type CreateBatchTaskRequestParams struct {
 type CreateBatchTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// 批量预测任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	BatchTaskName *string `json:"BatchTaskName,omitnil" name:"BatchTaskName"`
 
 	// 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
@@ -672,7 +687,7 @@ type CreateBatchTaskRequest struct {
 	// 资源配置
 	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitnil" name:"ResourceConfigInfo"`
 
-	// 结果输出
+	// 结果输出存储信息
 	Outputs []*DataConfig `json:"Outputs,omitnil" name:"Outputs"`
 
 	// 是否上报日志
@@ -760,7 +775,7 @@ func (r *CreateBatchTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBatchTaskResponseParams struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2415,14 +2430,14 @@ type DefaultNginxGatewayCallInfo struct {
 
 // Predefined struct for user
 type DeleteBatchTaskRequestParams struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
 type DeleteBatchTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
@@ -3085,14 +3100,14 @@ func (r *DescribeAPIConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTaskInstancesRequestParams struct {
-	// 跑批任务id
+	// 批量预测任务id
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
 type DescribeBatchTaskInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跑批任务id
+	// 批量预测任务id
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
@@ -3117,7 +3132,7 @@ func (r *DescribeBatchTaskInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTaskInstancesResponseParams struct {
-	// 实例集
+	// 批量预测实例结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchInstances []*BatchTaskInstance `json:"BatchInstances,omitnil" name:"BatchInstances"`
 
@@ -3143,14 +3158,14 @@ func (r *DescribeBatchTaskInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTaskRequestParams struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
 type DescribeBatchTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
@@ -3175,7 +3190,7 @@ func (r *DescribeBatchTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTaskResponseParams struct {
-	// 跑批任务详情
+	// 批量预测任务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchTaskDetail *BatchTaskDetail `json:"BatchTaskDetail,omitnil" name:"BatchTaskDetail"`
 
@@ -3201,58 +3216,58 @@ func (r *DescribeBatchTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTasksRequestParams struct {
-	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+	// 过滤器
 	// 
-	// 取值范围：
-	// Name（名称）：task1
-	// Id（task ID）：train-23091792777383936
-	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-	// ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
-	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+	// Name支持的取值范围：
+	// BatchTaskId, BatchTaskName, Status, ModelVersionId
+	// 
+	// 其中Status 的有效取值范围:
+	// INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	// 标签过滤器
 	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 返回数量，默认为10，最大为50
+	// 限制数目，默认为20
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// 排序字段。当前仅支持 "CreateTime"。
+	// 不传此字段则按照DB默认排序结果返回
 	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
 }
 
 type DescribeBatchTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+	// 过滤器
 	// 
-	// 取值范围：
-	// Name（名称）：task1
-	// Id（task ID）：train-23091792777383936
-	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-	// ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
-	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+	// Name支持的取值范围：
+	// BatchTaskId, BatchTaskName, Status, ModelVersionId
+	// 
+	// 其中Status 的有效取值范围:
+	// INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	// 标签过滤器
 	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 返回数量，默认为10，最大为50
+	// 限制数目，默认为20
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// 排序字段。当前仅支持 "CreateTime"。
+	// 不传此字段则按照DB默认排序结果返回
 	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
 }
 
@@ -3282,10 +3297,10 @@ func (r *DescribeBatchTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchTasksResponseParams struct {
-	// 数量
+	// 批量预测任务总数
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 任务集
+	// 批量预测任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchTaskSet []*BatchTaskSetItem `json:"BatchTaskSet,omitnil" name:"BatchTaskSet"`
 
@@ -9417,14 +9432,14 @@ type StatefulSetCondition struct {
 
 // Predefined struct for user
 type StopBatchTaskRequestParams struct {
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 
 type StopBatchTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跑批任务ID
+	// 批量预测任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitnil" name:"BatchTaskId"`
 }
 

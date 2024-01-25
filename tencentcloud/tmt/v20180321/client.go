@@ -126,7 +126,7 @@ func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
 // GetFileTranslate
 // 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
 //
-// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调。
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
 //
 // • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
 //
@@ -140,7 +140,7 @@ func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *G
 // GetFileTranslate
 // 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
 //
-// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调。
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
 //
 // • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
 //

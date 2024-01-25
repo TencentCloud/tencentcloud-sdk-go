@@ -1374,6 +1374,9 @@ type BatchCreateTaskVersionDsRequestParams struct {
 
 	// 告警对象:1-项目管理员，2-任务责任人
 	AlarmRecipientTypes *string `json:"AlarmRecipientTypes,omitnil" name:"AlarmRecipientTypes"`
+
+	// 是否需要校验父任务已经提交到调度	
+	NeedCheckParentSubmitted *bool `json:"NeedCheckParentSubmitted,omitnil" name:"NeedCheckParentSubmitted"`
 }
 
 type BatchCreateTaskVersionDsRequest struct {
@@ -1393,6 +1396,9 @@ type BatchCreateTaskVersionDsRequest struct {
 
 	// 告警对象:1-项目管理员，2-任务责任人
 	AlarmRecipientTypes *string `json:"AlarmRecipientTypes,omitnil" name:"AlarmRecipientTypes"`
+
+	// 是否需要校验父任务已经提交到调度	
+	NeedCheckParentSubmitted *bool `json:"NeedCheckParentSubmitted,omitnil" name:"NeedCheckParentSubmitted"`
 }
 
 func (r *BatchCreateTaskVersionDsRequest) ToJsonString() string {
@@ -1412,6 +1418,7 @@ func (r *BatchCreateTaskVersionDsRequest) FromJsonString(s string) error {
 	delete(f, "AutoRun")
 	delete(f, "AlarmWays")
 	delete(f, "AlarmRecipientTypes")
+	delete(f, "NeedCheckParentSubmitted")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateTaskVersionDsRequest has unknown keys!", "")
 	}
@@ -13974,9 +13981,6 @@ type DescribeCodeSearchInfoRequestParams struct {
 	// 要查询的搜索范围
 	SearchScope *string `json:"SearchScope,omitnil" name:"SearchScope"`
 
-	// 搜索范围列表
-	SearchScopes []*string `json:"SearchScopes,omitnil" name:"SearchScopes"`
-
 	// 页数
 	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
@@ -13985,6 +13989,9 @@ type DescribeCodeSearchInfoRequestParams struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 搜索范围列表
+	SearchScopes []*string `json:"SearchScopes,omitnil" name:"SearchScopes"`
 
 	// 责任人ID列表
 	OwnerIds []*string `json:"OwnerIds,omitnil" name:"OwnerIds"`
@@ -14001,8 +14008,23 @@ type DescribeCodeSearchInfoRequestParams struct {
 	// 更新时间范围：结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 任务状态
+	// 开发态/生产态
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 工作流ID
+	WorkflowIds []*string `json:"WorkflowIds,omitnil" name:"WorkflowIds"`
+
+	// 文件夹ID
+	FolderIds []*string `json:"FolderIds,omitnil" name:"FolderIds"`
+
+	// 数据源ID
+	DatasourceIds []*string `json:"DatasourceIds,omitnil" name:"DatasourceIds"`
+
+	// 文件夹路径
+	FolderPaths []*string `json:"FolderPaths,omitnil" name:"FolderPaths"`
+
+	// 任务状态
+	TaskStatus []*string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 }
 
 type DescribeCodeSearchInfoRequest struct {
@@ -14014,9 +14036,6 @@ type DescribeCodeSearchInfoRequest struct {
 	// 要查询的搜索范围
 	SearchScope *string `json:"SearchScope,omitnil" name:"SearchScope"`
 
-	// 搜索范围列表
-	SearchScopes []*string `json:"SearchScopes,omitnil" name:"SearchScopes"`
-
 	// 页数
 	PageNumber *uint64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
@@ -14025,6 +14044,9 @@ type DescribeCodeSearchInfoRequest struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 搜索范围列表
+	SearchScopes []*string `json:"SearchScopes,omitnil" name:"SearchScopes"`
 
 	// 责任人ID列表
 	OwnerIds []*string `json:"OwnerIds,omitnil" name:"OwnerIds"`
@@ -14041,8 +14063,23 @@ type DescribeCodeSearchInfoRequest struct {
 	// 更新时间范围：结束时间
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// 任务状态
+	// 开发态/生产态
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 工作流ID
+	WorkflowIds []*string `json:"WorkflowIds,omitnil" name:"WorkflowIds"`
+
+	// 文件夹ID
+	FolderIds []*string `json:"FolderIds,omitnil" name:"FolderIds"`
+
+	// 数据源ID
+	DatasourceIds []*string `json:"DatasourceIds,omitnil" name:"DatasourceIds"`
+
+	// 文件夹路径
+	FolderPaths []*string `json:"FolderPaths,omitnil" name:"FolderPaths"`
+
+	// 任务状态
+	TaskStatus []*string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 }
 
 func (r *DescribeCodeSearchInfoRequest) ToJsonString() string {
@@ -14059,16 +14096,21 @@ func (r *DescribeCodeSearchInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Keyword")
 	delete(f, "SearchScope")
-	delete(f, "SearchScopes")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "ProjectId")
+	delete(f, "SearchScopes")
 	delete(f, "OwnerIds")
 	delete(f, "FileTypes")
 	delete(f, "TaskTypes")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Status")
+	delete(f, "WorkflowIds")
+	delete(f, "FolderIds")
+	delete(f, "DatasourceIds")
+	delete(f, "FolderPaths")
+	delete(f, "TaskStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeSearchInfoRequest has unknown keys!", "")
 	}
@@ -16464,7 +16506,8 @@ type DescribeDsFolderTreeRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 是否一级拉取
+	// 是否一级拉取 true 是 
+	// false 否
 	FirstLevelPull *bool `json:"FirstLevelPull,omitnil" name:"FirstLevelPull"`
 
 	// 文件夹ID
@@ -16476,10 +16519,12 @@ type DescribeDsFolderTreeRequestParams struct {
 	// 关键字搜索
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
-	// 是否包含工作流
+	// 是否包含工作流 true 是 
+	// false 否
 	IncludeWorkflow *bool `json:"IncludeWorkflow,omitnil" name:"IncludeWorkflow"`
 
-	// 是否包含任务
+	// 是否包含任务 true 是 
+	// false 否
 	IncludeTask *bool `json:"IncludeTask,omitnil" name:"IncludeTask"`
 
 	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
@@ -16491,7 +16536,8 @@ type DescribeDsFolderTreeRequestParams struct {
 	// classification.分类展示  catalog.目录展示
 	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
 
-	// 是否包含任务目录
+	// 是否包含任务目录 true 是 
+	// false 否
 	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil" name:"IncludeTaskFolder"`
 }
 
@@ -16501,7 +16547,8 @@ type DescribeDsFolderTreeRequest struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 是否一级拉取
+	// 是否一级拉取 true 是 
+	// false 否
 	FirstLevelPull *bool `json:"FirstLevelPull,omitnil" name:"FirstLevelPull"`
 
 	// 文件夹ID
@@ -16513,10 +16560,12 @@ type DescribeDsFolderTreeRequest struct {
 	// 关键字搜索
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
-	// 是否包含工作流
+	// 是否包含工作流 true 是 
+	// false 否
 	IncludeWorkflow *bool `json:"IncludeWorkflow,omitnil" name:"IncludeWorkflow"`
 
-	// 是否包含任务
+	// 是否包含任务 true 是 
+	// false 否
 	IncludeTask *bool `json:"IncludeTask,omitnil" name:"IncludeTask"`
 
 	// 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
@@ -16528,7 +16577,8 @@ type DescribeDsFolderTreeRequest struct {
 	// classification.分类展示  catalog.目录展示
 	DisplayType *string `json:"DisplayType,omitnil" name:"DisplayType"`
 
-	// 是否包含任务目录
+	// 是否包含任务目录 true 是 
+	// false 否
 	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil" name:"IncludeTaskFolder"`
 }
 
@@ -23040,6 +23090,9 @@ type DescribeResourceManagePathTreesRequestParams struct {
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 文件夹类型
+	// personal 个人
+	// project 项目
+	// resource 资源
 	DirType *string `json:"DirType,omitnil" name:"DirType"`
 }
 
@@ -23059,6 +23112,9 @@ type DescribeResourceManagePathTreesRequest struct {
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 文件夹类型
+	// personal 个人
+	// project 项目
+	// resource 资源
 	DirType *string `json:"DirType,omitnil" name:"DirType"`
 }
 
@@ -33260,6 +33316,7 @@ type GetFileInfoRequestParams struct {
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 文件路径
+	// 项目区1470575647377821696项目，f1目录下： /datastudio/project/1470575647377821696/f1/sql1234.sql 个人区： /datastudio/personal/sqlTTT.sql
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 }
 
@@ -33270,6 +33327,7 @@ type GetFileInfoRequest struct {
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 文件路径
+	// 项目区1470575647377821696项目，f1目录下： /datastudio/project/1470575647377821696/f1/sql1234.sql 个人区： /datastudio/personal/sqlTTT.sql
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 }
 
@@ -40449,6 +40507,22 @@ type OrganizationalFunction struct {
 	// 提交失败错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitErrorMsg *string `json:"SubmitErrorMsg,omitnil" name:"SubmitErrorMsg"`
+
+	// 模式名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil" name:"SchemaName"`
+
+	// 函数命令格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommandFormat *string `json:"CommandFormat,omitnil" name:"CommandFormat"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitnil" name:"OwnerName"`
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubmitTimestamp *string `json:"SubmitTimestamp,omitnil" name:"SubmitTimestamp"`
 }
 
 type Pair struct {
@@ -41691,6 +41765,15 @@ type RemoveWorkflowDsRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
+
+	// 是否删除脚本
+	DeleteScript *string `json:"DeleteScript,omitnil" name:"DeleteScript"`
+
+	// 删除是否通知下游
+	OperateIsInform *string `json:"OperateIsInform,omitnil" name:"OperateIsInform"`
+
+	// 是否终止进行中的任务
+	DeleteMode *string `json:"DeleteMode,omitnil" name:"DeleteMode"`
 }
 
 type RemoveWorkflowDsRequest struct {
@@ -41701,6 +41784,15 @@ type RemoveWorkflowDsRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil" name:"WorkflowId"`
+
+	// 是否删除脚本
+	DeleteScript *string `json:"DeleteScript,omitnil" name:"DeleteScript"`
+
+	// 删除是否通知下游
+	OperateIsInform *string `json:"OperateIsInform,omitnil" name:"OperateIsInform"`
+
+	// 是否终止进行中的任务
+	DeleteMode *string `json:"DeleteMode,omitnil" name:"DeleteMode"`
 }
 
 func (r *RemoveWorkflowDsRequest) ToJsonString() string {
@@ -41717,6 +41809,9 @@ func (r *RemoveWorkflowDsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "WorkflowId")
+	delete(f, "DeleteScript")
+	delete(f, "OperateIsInform")
+	delete(f, "DeleteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveWorkflowDsRequest has unknown keys!", "")
 	}
@@ -41725,7 +41820,7 @@ func (r *RemoveWorkflowDsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveWorkflowDsResponseParams struct {
-	// 工作流ID
+	// 是否删除成功
 	Data *bool `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -45089,6 +45184,10 @@ type ScriptInfoResponse struct {
 
 type ScriptRequestInfo struct {
 	// 脚本路径
+	// 项目区1470575647377821696项目，f1目录下：
+	// /datastudio/project/1470575647377821696/f1/sql1234.sql
+	// 个人区：
+	// /datastudio/personal/sqlTTT.sql
 	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 项目id
@@ -46679,62 +46778,62 @@ func (r *SubmitTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTaskTestRunRequestParams struct {
-	// 无
+	// taskId列表
 	TaskIds *string `json:"TaskIds,omitnil" name:"TaskIds"`
 
-	// 无
+	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 无
+	// 工作流id
 	WorkFlowId *string `json:"WorkFlowId,omitnil" name:"WorkFlowId"`
 
-	// 无
+	// 工作流名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 无
+	// 工作流任务列表
 	Tasks []*StageCloudApiRequest `json:"Tasks,omitnil" name:"Tasks"`
 
-	// 无
+	// 备注
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 无
+	// 运行参数，map的Json形式
 	RunParams *string `json:"RunParams,omitnil" name:"RunParams"`
 
-	// 无
+	// 脚本内容
 	ScriptContent *string `json:"ScriptContent,omitnil" name:"ScriptContent"`
 
-	// 无
+	// 版本号
 	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
 type SubmitTaskTestRunRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// taskId列表
 	TaskIds *string `json:"TaskIds,omitnil" name:"TaskIds"`
 
-	// 无
+	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 无
+	// 工作流id
 	WorkFlowId *string `json:"WorkFlowId,omitnil" name:"WorkFlowId"`
 
-	// 无
+	// 工作流名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 无
+	// 工作流任务列表
 	Tasks []*StageCloudApiRequest `json:"Tasks,omitnil" name:"Tasks"`
 
-	// 无
+	// 备注
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 无
+	// 运行参数，map的Json形式
 	RunParams *string `json:"RunParams,omitnil" name:"RunParams"`
 
-	// 无
+	// 脚本内容
 	ScriptContent *string `json:"ScriptContent,omitnil" name:"ScriptContent"`
 
-	// 无
+	// 版本号
 	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
@@ -46767,10 +46866,10 @@ func (r *SubmitTaskTestRunRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTaskTestRunResponseParams struct {
-	// 无
+	// 提交运行jobid
 	JobId *int64 `json:"JobId,omitnil" name:"JobId"`
 
-	// 无
+	// 运行记录id
 	RecordId []*int64 `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

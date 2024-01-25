@@ -637,7 +637,7 @@ type BizLicenseOCRRequestParams struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
-	// 是否返回黑白复印件告警码，默认为false
+	// 是否返回告警码，默认为false
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil" name:"EnableCopyWarn"`
 }
 
@@ -657,7 +657,7 @@ type BizLicenseOCRRequest struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
-	// 是否返回黑白复印件告警码，默认为false
+	// 是否返回告警码，默认为false
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil" name:"EnableCopyWarn"`
 }
 
@@ -721,7 +721,7 @@ type BizLicenseOCRResponseParams struct {
 
 	// 告警码说明：
 	// WARN_COPY_CARD 黑白复印件告警
-	// WARN_RESHOOT_SCREENED_CARD 翻拍件告警
+	// WARN_RESHOOT_CARD翻拍件告警
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitnil" name:"RecognizeWarnMsg"`
 
 	// 是否为副本。1为是，-1为不是。

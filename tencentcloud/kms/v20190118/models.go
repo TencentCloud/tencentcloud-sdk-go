@@ -161,7 +161,7 @@ type AsymmetricSm2DecryptRequestParams struct {
 	// CMK的唯一标识
 	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
-	// 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
+	// 使用PublicKey加密的密文，Base64编码，原始密文格式需要为C1C3C2_ASN1。原始密文长度不能超过256字节。
 	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 }
 
@@ -171,7 +171,7 @@ type AsymmetricSm2DecryptRequest struct {
 	// CMK的唯一标识
 	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
-	// 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
+	// 使用PublicKey加密的密文，Base64编码，原始密文格式需要为C1C3C2_ASN1。原始密文长度不能超过256字节。
 	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 }
 

@@ -80,6 +80,9 @@ type AudioEncodeParams struct {
 
 	// 音频码率，取值范围[8,500]，单位为kbps。
 	BitRate *uint64 `json:"BitRate,omitnil" name:"BitRate"`
+
+	// 音量，取值范围[0,300]。默认100，表示原始音量；0表示静音。
+	Volume *uint64 `json:"Volume,omitnil" name:"Volume"`
 }
 
 type AudioParams struct {
@@ -4001,10 +4004,10 @@ type StartStreamIngestRequestParams struct {
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`
 
-	// 拉流转推机器人的UserId，用于进房发起拉流转推任务。
+	// 输入在线媒体流机器人的UserId，用于进房发起拉流转推任务。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
 
 	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
@@ -4038,10 +4041,10 @@ type StartStreamIngestRequest struct {
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`
 
-	// 拉流转推机器人的UserId，用于进房发起拉流转推任务。
+	// 输入在线媒体流机器人的UserId，用于进房发起拉流转推任务。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
 
 	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
@@ -4090,7 +4093,7 @@ func (r *StartStreamIngestRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartStreamIngestResponseParams struct {
-	// 拉流转推的任务 ID。任务 ID 是对一次拉流转推生命周期过程的唯一标识，结束任务时会失去意义。任务 ID 需要业务保存下来，作为下次针对这个任务操作的参数。
+	// 输入在线媒体流的任务 ID。任务 ID 是对一次输入在线媒体流生命周期过程的唯一标识，结束任务时会失去意义。任务 ID 需要业务保存下来，作为下次针对这个任务操作的参数。
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

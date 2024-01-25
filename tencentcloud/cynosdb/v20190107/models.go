@@ -451,6 +451,27 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditInstanceFilters struct {
+	// 过滤条件值。支持InstanceId-实例ID，InstanceName-实例名称，ProjectId-项目ID，TagKey-标签键，Tag-标签（以竖线分割，例：Tagkey|Tagvalue）。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// true表示精确查找，false表示模糊匹配。
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
+
+	// 筛选值
+	Values []*string `json:"Values,omitnil" name:"Values"`
+}
+
+type AuditInstanceInfo struct {
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
+}
+
 type AuditLog struct {
 	// 影响行数。
 	AffectRows *int64 `json:"AffectRows,omitnil" name:"AffectRows"`
@@ -4034,6 +4055,95 @@ func (r *DescribeAccountsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListRequestParams struct {
+	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
+
+	// 查询实例列表的过滤条件。
+	Filters []*AuditInstanceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 实例的审计规则模式。1-规则审计；0-全审计。
+	AuditMode *int64 `json:"AuditMode,omitnil" name:"AuditMode"`
+
+	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeAuditInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
+
+	// 查询实例列表的过滤条件。
+	Filters []*AuditInstanceFilters `json:"Filters,omitnil" name:"Filters"`
+
+	// 实例的审计规则模式。1-规则审计；0-全审计。
+	AuditMode *int64 `json:"AuditMode,omitnil" name:"AuditMode"`
+
+	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认值为 0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeAuditInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditSwitch")
+	delete(f, "Filters")
+	delete(f, "AuditMode")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListResponseParams struct {
+	// 符合查询条件的实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 审计实例详细信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*InstanceAuditStatus `json:"Items,omitnil" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAuditInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8200,6 +8310,58 @@ type InstanceAuditRule struct {
 	// 实例应用的规则模板详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplates []*RuleTemplateInfo `json:"RuleTemplates,omitnil" name:"RuleTemplates"`
+}
+
+type InstanceAuditStatus struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 审计状态。ON-表示审计已开启，OFF-表示审计关闭。
+	AuditStatus *string `json:"AuditStatus,omitnil" name:"AuditStatus"`
+
+	// 日志保留时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
+
+	// 高频存储时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil" name:"HighLogExpireDay"`
+
+	// 低频存储时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLogExpireDay *uint64 `json:"LowLogExpireDay,omitnil" name:"LowLogExpireDay"`
+
+	// 日志存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingAmount *float64 `json:"BillingAmount,omitnil" name:"BillingAmount"`
+
+	// 高频存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighRealStorage *float64 `json:"HighRealStorage,omitnil" name:"HighRealStorage"`
+
+	// 低频存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowRealStorage *float64 `json:"LowRealStorage,omitnil" name:"LowRealStorage"`
+
+	// 是否为全审计。true-表示全审计。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
+
+	// 审计开通时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitnil" name:"CreateAt"`
+
+	// 实例相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
+
+	// 总存储量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealStorage *float64 `json:"RealStorage,omitnil" name:"RealStorage"`
+
+	// 实例所应用的规则模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
 }
 
 type InstanceInitInfo struct {

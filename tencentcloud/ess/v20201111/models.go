@@ -199,6 +199,11 @@ type ApproverInfo struct {
 
 	// 签署须知：支持传入富文本，最长字数：500个中文字符
 	SignInstructionContent *string `json:"SignInstructionContent,omitnil" name:"SignInstructionContent"`
+
+	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）
+	// 
+	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 }
 
 type ApproverItem struct {
@@ -8832,6 +8837,12 @@ type FlowCreateApprover struct {
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
 	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
+
+	// Deadline
+	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）
+	// 
+	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 }
 
 type FlowDetailInfo struct {
@@ -9443,6 +9454,100 @@ func (r *ModifyExtendedServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyExtendedServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFlowDeadlineRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 合同流程ID，为32位字符串。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 签署方角色编号，为32位字符串
+	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
+	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+}
+
+type ModifyFlowDeadlineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 合同流程ID，为32位字符串。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 签署方角色编号，为32位字符串
+	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
+	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+}
+
+func (r *ModifyFlowDeadlineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlowDeadlineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowId")
+	delete(f, "Deadline")
+	delete(f, "Agent")
+	delete(f, "RecipientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlowDeadlineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFlowDeadlineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyFlowDeadlineResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFlowDeadlineResponseParams `json:"Response"`
+}
+
+func (r *ModifyFlowDeadlineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlowDeadlineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

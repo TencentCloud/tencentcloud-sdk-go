@@ -197,7 +197,7 @@ func NewCreateBatchTaskResponse() (response *CreateBatchTaskResponse) {
 }
 
 // CreateBatchTask
-// 创建跑批任务
+// 创建批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -216,7 +216,7 @@ func (c *Client) CreateBatchTask(request *CreateBatchTaskRequest) (response *Cre
 }
 
 // CreateBatchTask
-// 创建跑批任务
+// 创建批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -807,6 +807,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
 //  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
 //  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
 //  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
@@ -819,6 +820,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
 //  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
 //  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 //  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
 //  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
@@ -833,6 +835,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
@@ -859,6 +862,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
 //  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
 //  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
 //  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
@@ -871,6 +875,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
 //  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
 //  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 //  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
 //  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
@@ -885,6 +890,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
@@ -923,7 +929,7 @@ func NewDeleteBatchTaskResponse() (response *DeleteBatchTaskResponse) {
 }
 
 // DeleteBatchTask
-// 删除跑批任务
+// 删除批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -941,7 +947,7 @@ func (c *Client) DeleteBatchTask(request *DeleteBatchTaskRequest) (response *Del
 }
 
 // DeleteBatchTask
-// 删除跑批任务
+// 删除批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1768,7 +1774,7 @@ func NewDescribeBatchTaskResponse() (response *DescribeBatchTaskResponse) {
 }
 
 // DescribeBatchTask
-// 查询跑批任务
+// 查询批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1785,7 +1791,7 @@ func (c *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (response 
 }
 
 // DescribeBatchTask
-// 查询跑批任务
+// 查询批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1833,7 +1839,7 @@ func NewDescribeBatchTaskInstancesResponse() (response *DescribeBatchTaskInstanc
 }
 
 // DescribeBatchTaskInstances
-// 查询跑批实例列表
+// 查询批量预测任务实例列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
@@ -1849,7 +1855,7 @@ func (c *Client) DescribeBatchTaskInstances(request *DescribeBatchTaskInstancesR
 }
 
 // DescribeBatchTaskInstances
-// 查询跑批实例列表
+// 查询批量预测任务实例列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
@@ -1896,7 +1902,7 @@ func NewDescribeBatchTasksResponse() (response *DescribeBatchTasksResponse) {
 }
 
 // DescribeBatchTasks
-// 批量预测任务列表信息
+// 查询批量预测任务列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1914,7 +1920,7 @@ func (c *Client) DescribeBatchTasks(request *DescribeBatchTasksRequest) (respons
 }
 
 // DescribeBatchTasks
-// 批量预测任务列表信息
+// 查询批量预测任务列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5240,6 +5246,7 @@ func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -5273,6 +5280,7 @@ func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response 
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -5312,7 +5320,7 @@ func NewStopBatchTaskResponse() (response *StopBatchTaskResponse) {
 }
 
 // StopBatchTask
-// 停止跑批任务
+// 停止批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5331,7 +5339,7 @@ func (c *Client) StopBatchTask(request *StopBatchTaskRequest) (response *StopBat
 }
 
 // StopBatchTask
-// 停止跑批任务
+// 停止批量预测任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

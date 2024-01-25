@@ -2413,18 +2413,24 @@ func (r *ChannelCreateFlowRemindsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowSignReviewRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
-	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
-	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 企业内部审核结果
-	// <ul><li>PASS: 审核通过</li>
-	// <li>REJECT: 审核拒绝</li>
-	// <li>SIGN_REJECT:拒签(流程结束)</li></ul>
+	// <ul><li>PASS: 审核通过（流程可以继续签署或者发起）</li>
+	// <li>REJECT: 审核拒绝（流程状态不变，可以继续调用审核接口通过审核）</li>
+	// <li>SIGN_REJECT:拒签(流程终止，流程状态变为拒签状态)</li></ul>
 	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
 
 	// 审核结果原因
@@ -2448,18 +2454,24 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 type ChannelCreateFlowSignReviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
-	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
-	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 企业内部审核结果
-	// <ul><li>PASS: 审核通过</li>
-	// <li>REJECT: 审核拒绝</li>
-	// <li>SIGN_REJECT:拒签(流程结束)</li></ul>
+	// <ul><li>PASS: 审核通过（流程可以继续签署或者发起）</li>
+	// <li>REJECT: 审核拒绝（流程状态不变，可以继续调用审核接口通过审核）</li>
+	// <li>SIGN_REJECT:拒签(流程终止，流程状态变为拒签状态)</li></ul>
 	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
 
 	// 审核结果原因
@@ -8922,8 +8934,9 @@ type FlowApproverInfo struct {
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
-	// 本签署人在此合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
-	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）
+	// 
+	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
 	// 签署完回调url，最大长度1000个字符
@@ -9535,6 +9548,91 @@ func (r *ModifyExtendedServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyExtendedServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFlowDeadlineRequestParams struct {
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 合同流程ID，为32位字符串。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 签署方角色编号，为32位字符串
+	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
+	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+}
+
+type ModifyFlowDeadlineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 合同流程ID，为32位字符串。
+	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+
+	// 签署方角色编号，为32位字符串
+	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
+	// <li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+	// <li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+}
+
+func (r *ModifyFlowDeadlineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlowDeadlineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowId")
+	delete(f, "Deadline")
+	delete(f, "RecipientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlowDeadlineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFlowDeadlineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyFlowDeadlineResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFlowDeadlineResponseParams `json:"Response"`
+}
+
+func (r *ModifyFlowDeadlineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlowDeadlineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
