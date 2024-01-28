@@ -5836,8 +5836,11 @@ type InstanceClusterShard struct {
 	// 容量倾斜率。
 	StorageSlope *float64 `json:"StorageSlope,omitnil" name:"StorageSlope"`
 
-	// 实例运行时节点 ID。
+	// 该字段因拼写不规范问题，建议使用RunId取代。含义：实例运行时节点 ID。
 	Runid *string `json:"Runid,omitnil" name:"Runid"`
+
+	// 实例运行时节点 ID。
+	RunId *string `json:"RunId,omitnil" name:"RunId"`
 
 	// 服务状态。
 	// - 0：down。
@@ -6137,9 +6140,13 @@ type InstanceSet struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PasswordFree *int64 `json:"PasswordFree,omitnil" name:"PasswordFree"`
 
-	// 内部参数，用户可忽略。
+	// 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil" name:"Vip6"`
+
+	// 内部参数，用户可忽略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6 *string `json:"IPv6,omitnil" name:"IPv6"`
 
 	// 实例只读标识（内部参数，用户可忽略）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6294,9 +6301,13 @@ type Instances struct {
 	// 实例 VIP 地址。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
-	// 内部参数，用户可忽略。
+	// 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil" name:"Vip6"`
+
+	// 内部参数，用户可忽略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6 *string `json:"IPv6,omitnil" name:"IPv6"`
 
 	// VPC 网络ID，如：75101。
 	VpcID *int64 `json:"VpcID,omitnil" name:"VpcID"`

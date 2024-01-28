@@ -1271,6 +1271,9 @@ type DdosInstanceList struct {
 type DeleteCertificateRequestParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+
+	// 删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
+	IsCheckResource *bool `json:"IsCheckResource,omitnil" name:"IsCheckResource"`
 }
 
 type DeleteCertificateRequest struct {
@@ -1278,6 +1281,9 @@ type DeleteCertificateRequest struct {
 	
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+
+	// 删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
+	IsCheckResource *bool `json:"IsCheckResource,omitnil" name:"IsCheckResource"`
 }
 
 func (r *DeleteCertificateRequest) ToJsonString() string {
@@ -1293,6 +1299,7 @@ func (r *DeleteCertificateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
+	delete(f, "IsCheckResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertificateRequest has unknown keys!", "")
 	}
@@ -1303,6 +1310,10 @@ func (r *DeleteCertificateRequest) FromJsonString(s string) error {
 type DeleteCertificateResponseParams struct {
 	// 删除结果（true：删除成功，false：删除失败）
 	DeleteResult *bool `json:"DeleteResult,omitnil" name:"DeleteResult"`
+
+	// 异步删除的任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

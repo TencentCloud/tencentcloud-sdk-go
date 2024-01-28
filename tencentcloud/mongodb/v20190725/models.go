@@ -2931,6 +2931,10 @@ type InstanceDetail struct {
 	// 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
 	RealInstanceId *string `json:"RealInstanceId,omitnil" name:"RealInstanceId"`
 
+	// 实例当前可用区信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneList []*string `json:"ZoneList,omitnil" name:"ZoneList"`
+
 	// mongos节点个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil" name:"MongosNodeNum"`

@@ -1,5 +1,122 @@
 # 本版本更新包含以下内容：
 
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 58 次发布
+
+发布时间：2024-01-29 01:13:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：IsDedicatedCluster
+
+	* <font color="#dd0000">**修改成员**：</font>IsSupportOutsideCluster
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 34 次发布
+
+发布时间：2024-01-29 01:17:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/240/38576#InstanceDetail)
+
+	* 新增成员：ZoneList
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 70 次发布
+
+发布时间：2024-01-29 01:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceClusterShard](https://cloud.tencent.com/document/api/239/20022#InstanceClusterShard)
+
+	* 新增成员：RunId
+
+* [InstanceSet](https://cloud.tencent.com/document/api/239/20022#InstanceSet)
+
+	* 新增成员：IPv6
+
+* [Instances](https://cloud.tencent.com/document/api/239/20022#Instances)
+
+	* 新增成员：IPv6
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 53 次发布
+
+发布时间：2024-01-29 01:19:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCertificate](https://cloud.tencent.com/document/api/400/41675)
+
+	* 新增入参：IsCheckResource
+
+	* 新增出参：TaskId
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 72 次发布
+
+发布时间：2024-01-27 19:39:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)
+
+新增数据结构：
+
+* [BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData)
+* [BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -55076,6 +55193,23 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 58 次发布
+
+发布时间：2024-01-29 01:13:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：IsDedicatedCluster
+
+	* <font color="#dd0000">**修改成员**：</font>IsSupportOutsideCluster
+
+
 ### 第 57 次发布
 
 发布时间：2024-01-24 01:28:23
@@ -82393,6 +82527,21 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 34 次发布
+
+发布时间：2024-01-29 01:17:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/240/38576#InstanceDetail)
+
+	* 新增成员：ZoneList
+
+
 ### 第 33 次发布
 
 发布时间：2023-12-27 01:26:46
@@ -96246,6 +96395,29 @@
 
 ## 云数据库Redis(redis) 版本：2018-04-12
 
+### 第 70 次发布
+
+发布时间：2024-01-29 01:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceClusterShard](https://cloud.tencent.com/document/api/239/20022#InstanceClusterShard)
+
+	* 新增成员：RunId
+
+* [InstanceSet](https://cloud.tencent.com/document/api/239/20022#InstanceSet)
+
+	* 新增成员：IPv6
+
+* [Instances](https://cloud.tencent.com/document/api/239/20022#Instances)
+
+	* 新增成员：IPv6
+
+
 ### 第 69 次发布
 
 发布时间：2023-12-22 01:21:35
@@ -102544,6 +102716,23 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 53 次发布
+
+发布时间：2024-01-29 01:19:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCertificate](https://cloud.tencent.com/document/api/400/41675)
+
+	* 新增入参：IsCheckResource
+
+	* 新增出参：TaskId
+
+
 ### 第 52 次发布
 
 发布时间：2024-01-19 01:19:47
@@ -104015,6 +104204,23 @@
 新增数据结构：
 
 * [Credentials](https://cloud.tencent.com/document/api/1312/48198#Credentials)
+
+
+
+
+## 节省计划(svp) 版本：2024-01-25
+
+### 第 1 次发布
+
+发布时间：2024-01-26 16:30:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSavingPlanOrder](https://cloud.tencent.com/document/api/1761/103541)
 
 
 
@@ -117441,6 +117647,23 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 72 次发布
+
+发布时间：2024-01-27 19:39:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData)](https://cloud.tencent.com/document/api/1552/80721#[BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData))
+* [[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)](https://cloud.tencent.com/document/api/1552/80721#[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter))
+
 ### 第 71 次发布
 
 发布时间：2024-01-25 11:46:06
@@ -119207,7 +119430,7 @@
 * [DescribeAddableEntityList](https://cloud.tencent.com/document/api/1552/80630)
 * [DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)
 * [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/80606)
-* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/80765)
+* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)
 * [DescribeBotClientIpList](https://cloud.tencent.com/document/api/1552/80666)
 * [DescribeBotData](https://cloud.tencent.com/document/api/1552/80665)
 * [DescribeBotHitRuleDetail](https://cloud.tencent.com/document/api/1552/80664)
@@ -129658,7 +129881,7 @@
 
 
 
-## 微服务引擎 TSE(tse) 版本：2020-12-07
+## 微服务引擎(tse) 版本：2020-12-07
 
 ### 第 55 次发布
 

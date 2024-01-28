@@ -222,6 +222,7 @@ import (
 	sslpodv20190605 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sslpod/v20190605"
 	ssmv20190923 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm/v20190923"
 	stsv20180813 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts/v20180813"
+	svpv20240125 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/svp/v20240125"
 	tafv20200210 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/taf/v20200210"
 	tagv20180813 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag/v20180813"
 	tanv20220420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tan/v20220420"
@@ -2920,6 +2921,19 @@ func TestStsv20180813Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init sts_v20180813 client: %v", err)
+    }
+}
+
+func TestSvpv20240125Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := svpv20240125.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init svp_v20240125 client: %v", err)
     }
 }
 

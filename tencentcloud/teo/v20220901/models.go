@@ -562,6 +562,22 @@ type AscriptionInfo struct {
 	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 }
 
+type BillingData struct {
+	// 时间。
+	Time *string `json:"Time,omitnil" name:"Time"`
+
+	// 数值。
+	Value *uint64 `json:"Value,omitnil" name:"Value"`
+}
+
+type BillingDataFilter struct {
+	// 参数名称。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 参数值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
 // Predefined struct for user
 type BindSecurityTemplateToEntityRequestParams struct {
 	// 需要绑定或解绑的策略模板所属站点 ID。
@@ -3985,6 +4001,143 @@ func (r *DescribeAvailablePlansResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailablePlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingDataRequestParams struct {
+	// 起始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 站点 ID 集合，此参数必填。
+	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+
+	// 指标列表，取值有：
+	// <li>acc_flux: 内容加速流量，单位为 Byte；</li>
+	// <li>smt_flux: 智能加速流量，单位为 Byte；</li>
+	// <li>l4_flux: 四层加速流量，单位为 Byte；</li>
+	// <li>sec_flux: 独立防护流量，单位为 Byte；</li>
+	// <li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
+	// <li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
+	// <li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
+	// <li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
+	// <li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
+	// <li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
+	// <li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
+	// <li>smt_request_clean: 智能加速请求，单位为次；</li>
+	// <li>quic_request: QUIC 请求，单位为次；</li>
+	// <li>bot_request_clean: Bot 请求，单位为次；</li>
+	// <li>cls_count: 实时日志推送条数，单位为条；</li>
+	// <li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li>
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
+
+	// 查询时间粒度，取值有：
+	// <li>5min：5 分钟粒度；</li>
+	// <li>hour：1 小时粒度；</li>
+	// <li>day：1 天粒度。</li>
+	Interval *string `json:"Interval,omitnil" name:"Interval"`
+
+	// 过滤条件，详细的过滤条件取值如下：
+	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。示例值：test.example.com。<br>   类型：String<br>   必选：否</li>
+	// <li>proxy-id<br>   按照【<strong>四层代理实例 ID</strong>】进行过滤。示例值：sid-2rugn89bkla9。<br>   类型：String<br>   必选：否</li>
+	// <li>region-id<br>   按照【<strong>计费大区</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项如下：<br>   CH：中国大陆境内<br>   AF：非洲<br>   AS1：亚太一区<br>   AS2：亚太二区<br>   AS3：亚太三区<br>   EU：欧洲<br>   MidEast：中东<br>   NA：北美<br>   SA：南美</li>
+	Filters []*BillingDataFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeBillingDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 站点 ID 集合，此参数必填。
+	ZoneIds []*string `json:"ZoneIds,omitnil" name:"ZoneIds"`
+
+	// 指标列表，取值有：
+	// <li>acc_flux: 内容加速流量，单位为 Byte；</li>
+	// <li>smt_flux: 智能加速流量，单位为 Byte；</li>
+	// <li>l4_flux: 四层加速流量，单位为 Byte；</li>
+	// <li>sec_flux: 独立防护流量，单位为 Byte；</li>
+	// <li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
+	// <li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
+	// <li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
+	// <li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
+	// <li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
+	// <li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
+	// <li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
+	// <li>smt_request_clean: 智能加速请求，单位为次；</li>
+	// <li>quic_request: QUIC 请求，单位为次；</li>
+	// <li>bot_request_clean: Bot 请求，单位为次；</li>
+	// <li>cls_count: 实时日志推送条数，单位为条；</li>
+	// <li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li>
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
+
+	// 查询时间粒度，取值有：
+	// <li>5min：5 分钟粒度；</li>
+	// <li>hour：1 小时粒度；</li>
+	// <li>day：1 天粒度。</li>
+	Interval *string `json:"Interval,omitnil" name:"Interval"`
+
+	// 过滤条件，详细的过滤条件取值如下：
+	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。示例值：test.example.com。<br>   类型：String<br>   必选：否</li>
+	// <li>proxy-id<br>   按照【<strong>四层代理实例 ID</strong>】进行过滤。示例值：sid-2rugn89bkla9。<br>   类型：String<br>   必选：否</li>
+	// <li>region-id<br>   按照【<strong>计费大区</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项如下：<br>   CH：中国大陆境内<br>   AF：非洲<br>   AS1：亚太一区<br>   AS2：亚太二区<br>   AS3：亚太三区<br>   EU：欧洲<br>   MidEast：中东<br>   NA：北美<br>   SA：南美</li>
+	Filters []*BillingDataFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeBillingDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ZoneIds")
+	delete(f, "MetricName")
+	delete(f, "Interval")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingDataResponseParams struct {
+	// 数据点列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*BillingData `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillingDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

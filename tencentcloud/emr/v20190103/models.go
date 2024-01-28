@@ -2768,6 +2768,10 @@ type EmrListInstance struct {
 	// 当前集群的应用场景是否支持体外客户端
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportOutsideCluster *bool `json:"IsSupportOutsideCluster,omitnil" name:"IsSupportOutsideCluster"`
+
+	// 是否专有集群场景集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDedicatedCluster *bool `json:"IsDedicatedCluster,omitnil" name:"IsDedicatedCluster"`
 }
 
 type EmrPrice struct {

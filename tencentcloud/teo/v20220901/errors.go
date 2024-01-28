@@ -368,6 +368,9 @@ const (
 	// 无效的HTTPS TLS版本。
 	INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = "InvalidParameter.InvalidHttpsTlsVersion"
 
+	// 无效时间间隔。取值应为[min 5min hour day]。
+	INVALIDPARAMETER_INVALIDINTERVAL = "InvalidParameter.InvalidInterval"
+
 	// 无效的Ipv6开关配置。
 	INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
 
@@ -376,6 +379,9 @@ const (
 
 	// 无效的浏览器缓存。
 	INVALIDPARAMETER_INVALIDMAXAGETIME = "InvalidParameter.InvalidMaxAgeTime"
+
+	// 无效查询维度。
+	INVALIDPARAMETER_INVALIDMETRIC = "InvalidParameter.InvalidMetric"
 
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
@@ -595,6 +601,9 @@ const (
 
 	// 站点已被绑定。
 	INVALIDPARAMETER_ZONEHASBEENBOUND = "InvalidParameter.ZoneHasBeenBound"
+
+	// 站点未绑定套餐。
+	INVALIDPARAMETER_ZONEHASNOTBEENBOUNDTOPLAN = "InvalidParameter.ZoneHasNotBeenBoundToPlan"
 
 	// 站点升级中，暂不支持进行变更操作，请稍后再试。
 	INVALIDPARAMETER_ZONEISGRAYPUBLISHING = "InvalidParameter.ZoneIsGrayPublishing"
