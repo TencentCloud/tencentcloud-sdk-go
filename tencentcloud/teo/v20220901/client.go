@@ -547,7 +547,7 @@ func NewCreateApplicationProxyResponse() (response *CreateApplicationProxyRespon
 }
 
 // CreateApplicationProxy
-// 创建应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版 [创建四层代理实例](https://cloud.tencent.com/document/product/1552/103417) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -568,7 +568,7 @@ func (c *Client) CreateApplicationProxy(request *CreateApplicationProxyRequest) 
 }
 
 // CreateApplicationProxy
-// 创建应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版 [创建四层代理实例](https://cloud.tencent.com/document/product/1552/103417) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -620,7 +620,9 @@ func NewCreateApplicationProxyRuleResponse() (response *CreateApplicationProxyRu
 }
 
 // CreateApplicationProxyRule
-// 创建应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [创建四层代理转发规则
+//
+// ](https://cloud.tencent.com/document/product/1552/103416) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -643,7 +645,9 @@ func (c *Client) CreateApplicationProxyRule(request *CreateApplicationProxyRuleR
 }
 
 // CreateApplicationProxyRule
-// 创建应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [创建四层代理转发规则
+//
+// ](https://cloud.tencent.com/document/product/1552/103416) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1804,7 +1808,9 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 }
 
 // DeleteApplicationProxy
-// 删除应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理实例
+//
+// ](https://cloud.tencent.com/document/product/1552/103415) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1815,7 +1821,9 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 }
 
 // DeleteApplicationProxy
-// 删除应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理实例
+//
+// ](https://cloud.tencent.com/document/product/1552/103415) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1857,7 +1865,7 @@ func NewDeleteApplicationProxyRuleResponse() (response *DeleteApplicationProxyRu
 }
 
 // DeleteApplicationProxyRule
-// 删除应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理转发规则](https://cloud.tencent.com/document/product/1552/103414) 。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1868,7 +1876,7 @@ func (c *Client) DeleteApplicationProxyRule(request *DeleteApplicationProxyRuleR
 }
 
 // DeleteApplicationProxyRule
-// 删除应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理转发规则](https://cloud.tencent.com/document/product/1552/103414) 。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2534,7 +2542,7 @@ func NewDescribeApplicationProxiesResponse() (response *DescribeApplicationProxi
 }
 
 // DescribeApplicationProxies
-// 查询应用代理列表。
+// 本接口为旧版，如需调用请尽快迁移至新版，新版接口中将四层代理实例列表的查询和四层转发规则的查询拆分成两个接口，详情请参考 [查询四层代理实例列表](https://cloud.tencent.com/document/product/1552/103413) 和 [查询四层代理转发规则列表](https://cloud.tencent.com/document/product/1552/103412)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -2547,7 +2555,7 @@ func (c *Client) DescribeApplicationProxies(request *DescribeApplicationProxiesR
 }
 
 // DescribeApplicationProxies
-// 查询应用代理列表。
+// 本接口为旧版，如需调用请尽快迁移至新版，新版接口中将四层代理实例列表的查询和四层转发规则的查询拆分成两个接口，详情请参考 [查询四层代理实例列表](https://cloud.tencent.com/document/product/1552/103413) 和 [查询四层代理转发规则列表](https://cloud.tencent.com/document/product/1552/103412)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -3410,7 +3418,7 @@ func NewDescribeL4ProxyRulesResponse() (response *DescribeL4ProxyRulesResponse) 
 }
 
 // DescribeL4ProxyRules
-// 查询四层代理实例下的规则列表。
+// 查询四层代理实例下的转发规则列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -3422,7 +3430,7 @@ func (c *Client) DescribeL4ProxyRules(request *DescribeL4ProxyRulesRequest) (res
 }
 
 // DescribeL4ProxyRules
-// 查询四层代理实例下的规则列表。
+// 查询四层代理实例下的转发规则列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -4781,7 +4789,9 @@ func NewModifyApplicationProxyResponse() (response *ModifyApplicationProxyRespon
 }
 
 // ModifyApplicationProxy
-// 修改应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例
+//
+// ](https://cloud.tencent.com/document/product/1552/103411) 。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
@@ -4795,7 +4805,9 @@ func (c *Client) ModifyApplicationProxy(request *ModifyApplicationProxyRequest) 
 }
 
 // ModifyApplicationProxy
-// 修改应用代理
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例
+//
+// ](https://cloud.tencent.com/document/product/1552/103411) 。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
@@ -4840,7 +4852,9 @@ func NewModifyApplicationProxyRuleResponse() (response *ModifyApplicationProxyRu
 }
 
 // ModifyApplicationProxyRule
-// 修改应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则
+//
+// ](https://cloud.tencent.com/document/product/1552/103410) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4854,7 +4868,9 @@ func (c *Client) ModifyApplicationProxyRule(request *ModifyApplicationProxyRuleR
 }
 
 // ModifyApplicationProxyRule
-// 修改应用代理规则
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则
+//
+// ](https://cloud.tencent.com/document/product/1552/103410) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4899,7 +4915,9 @@ func NewModifyApplicationProxyRuleStatusResponse() (response *ModifyApplicationP
 }
 
 // ModifyApplicationProxyRuleStatus
-// 修改应用代理规则的状态
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则状态
+//
+// ](https://cloud.tencent.com/document/product/1552/103409) 。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -4911,7 +4929,9 @@ func (c *Client) ModifyApplicationProxyRuleStatus(request *ModifyApplicationProx
 }
 
 // ModifyApplicationProxyRuleStatus
-// 修改应用代理规则的状态
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则状态
+//
+// ](https://cloud.tencent.com/document/product/1552/103409) 。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -4954,7 +4974,7 @@ func NewModifyApplicationProxyStatusResponse() (response *ModifyApplicationProxy
 }
 
 // ModifyApplicationProxyStatus
-// 修改应用代理的状态
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例状态](https://cloud.tencent.com/document/product/1552/103408) 。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
@@ -4969,7 +4989,7 @@ func (c *Client) ModifyApplicationProxyStatus(request *ModifyApplicationProxySta
 }
 
 // ModifyApplicationProxyStatus
-// 修改应用代理的状态
+// 本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例状态](https://cloud.tencent.com/document/product/1552/103408) 。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"

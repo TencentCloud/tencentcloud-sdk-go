@@ -4534,6 +4534,9 @@ type DescribeDevicePackagesRequestParams struct {
 
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 通道id
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type DescribeDevicePackagesRequest struct {
@@ -4550,6 +4553,9 @@ type DescribeDevicePackagesRequest struct {
 
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 通道id
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 func (r *DescribeDevicePackagesRequest) ToJsonString() string {
@@ -4568,6 +4574,7 @@ func (r *DescribeDevicePackagesRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicePackagesRequest has unknown keys!", "")
 	}
@@ -7677,6 +7684,9 @@ type PackageInfo struct {
 	// 订单id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+
+	// 通道id
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 }
 
 type ProductModelDefinition struct {

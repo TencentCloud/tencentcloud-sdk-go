@@ -81,7 +81,7 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //
 // 注:
 //
-// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>
 //
 // - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
@@ -117,7 +117,7 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 //
 // 注:
 //
-// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>
 //
 // - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
@@ -184,7 +184,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //
 // 注:
 //
-// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>
 //
 // - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
@@ -227,7 +227,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //
 // 注:
 //
-// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>
+// - 有对应合同撤销权限的人:  <font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>
 //
 // - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
@@ -415,7 +415,7 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 }
 
 // ChannelCreateBatchCancelFlowUrl
-// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
+// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
 //
 // 
 //
@@ -443,7 +443,7 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 }
 
 // ChannelCreateBatchCancelFlowUrl
-// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
+// 通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
 //
 // 
 //
@@ -5739,19 +5739,23 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // **注**: 
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+// 1. 发起合同时候,  作为<font color="red">发起方的第三方子企业A员工的企业和员工必须经过实名</font>, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名
 //
 // 
 //
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// 2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）`
+// 3. <font color="red">调用接口发起合同成功就会扣减合同的额度</font>, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// 4. <font color="red">静默（自动）签署不支持合同签署方存在填写</font>
+//
+// 
+//
+// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font>[PDF合成完成的回调](https://qian.tencent.com/developers/partner/callback_types_file_resources)或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5889,19 +5893,23 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // **注**: 
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+// 1. 发起合同时候,  作为<font color="red">发起方的第三方子企业A员工的企业和员工必须经过实名</font>, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名
 //
 // 
 //
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// 2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）`
+// 3. <font color="red">调用接口发起合同成功就会扣减合同的额度</font>, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度）
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// 4. <font color="red">静默（自动）签署不支持合同签署方存在填写</font>
+//
+// 
+//
+// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font>[PDF合成完成的回调](https://qian.tencent.com/developers/partner/callback_types_file_resources)或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8212,11 +8220,11 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //
 // 
 //
-// - **新增员工的场景**:    提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
+// - **新增员工的场景**:    通过本接口提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
 //
 // 
 //
-// - **员工离职的场景**: 将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
+// - **员工离职的场景**: 通过本接口将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
 //
 // 
 //
@@ -8265,11 +8273,11 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
 //
 // 
 //
-// - **新增员工的场景**:    提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
+// - **新增员工的场景**:    通过本接口提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起和签署
 //
 // 
 //
-// - **员工离职的场景**: 将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
+// - **员工离职的场景**: 通过本接口将员工置为离职, 员工无法登录控制台和腾讯电子签小程序进行操作了,   同时给此员工分配的openid会被回收可以给其他新员工使用 (离职后员工数据会被置空,  再次加入公司会从零开始) ,  若员工信息有误可通过离职后在新增来解决,  离职员工状态为**离职**
 //
 // 
 //

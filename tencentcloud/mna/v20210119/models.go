@@ -1871,7 +1871,7 @@ type MonitorData struct {
 }
 
 type NetDetails struct {
-	// 流量值（bit）
+	// 流量值（byte）
 	Current *float64 `json:"Current,omitnil" name:"Current"`
 
 	// 时间点，单位：s

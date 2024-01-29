@@ -7884,6 +7884,57 @@ func (r *DescribeErrorLogDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceAlarmEventsRequestParams struct {
+
+}
+
+type DescribeInstanceAlarmEventsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeInstanceAlarmEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAlarmEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceAlarmEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceAlarmEventsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceAlarmEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceAlarmEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceAlarmEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAlarmEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceParamRecordsRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`

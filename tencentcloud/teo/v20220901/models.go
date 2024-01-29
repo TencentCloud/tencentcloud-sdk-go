@@ -3877,27 +3877,33 @@ func (r *DescribeAliasDomainsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationProxiesRequestParams struct {
+	// 站点ID。该参数必填。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 分页查询偏移量。默认为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApplicationProxiesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 站点ID。该参数必填。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
 	// 分页查询偏移量。默认为0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApplicationProxiesRequest) ToJsonString() string {
@@ -3912,9 +3918,10 @@ func (r *DescribeApplicationProxiesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationProxiesRequest has unknown keys!", "")
 	}

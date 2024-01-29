@@ -537,10 +537,12 @@ type CancelFlowRequestParams struct {
 
 	// 合同流程ID, 为32位字符串。
 	// 
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 可登录腾讯电子签控制台，[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 撤销此合同流程的原因，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
+	// 撤销此合同流程的**撤销理由**，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
+	// 
+	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -557,10 +559,12 @@ type CancelFlowRequest struct {
 
 	// 合同流程ID, 为32位字符串。
 	// 
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 可登录腾讯电子签控制台，[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 撤销此合同流程的原因，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
+	// 撤销此合同流程的**撤销理由**，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
+	// 
+	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -1040,7 +1044,7 @@ type CreateBatchCancelFlowUrlRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 需要执行撤回的流程(合同)的编号列表，最多100个.
-	// <br>列表中的流程(合同)编号不要重复.
+	// 列表中的流程(合同)编号不要重复.
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -1056,7 +1060,7 @@ type CreateBatchCancelFlowUrlRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 需要执行撤回的流程(合同)的编号列表，最多100个.
-	// <br>列表中的流程(合同)编号不要重复.
+	// 列表中的流程(合同)编号不要重复.
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -5049,7 +5053,10 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 签署完成后是否自动回跳
 	// <ul><li>**false**：否, 签署完成不会自动跳转回来(默认)</li><li>**true**：是, 签署完成会自动跳转回来</li></ul>
-	// 注:  ` 该参数只针对"APP" 类型的签署链接有效`
+	// 
+	// 注: 
+	// 1. 该参数<font color="red">只针对APP</font> 类型的签署链接有效
+	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil" name:"AutoJumpBack"`
 
 	// 代理企业和员工的信息。
@@ -5125,7 +5132,10 @@ type CreateSchemeUrlRequest struct {
 
 	// 签署完成后是否自动回跳
 	// <ul><li>**false**：否, 签署完成不会自动跳转回来(默认)</li><li>**true**：是, 签署完成会自动跳转回来</li></ul>
-	// 注:  ` 该参数只针对"APP" 类型的签署链接有效`
+	// 
+	// 注: 
+	// 1. 该参数<font color="red">只针对APP</font> 类型的签署链接有效
+	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil" name:"AutoJumpBack"`
 
 	// 代理企业和员工的信息。
@@ -8987,18 +8997,22 @@ type FlowGroupOptions struct {
 
 type FormField struct {
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
-	// TEXT - 文本内容
-	// MULTI_LINE_TEXT - 文本内容
-	// CHECK_BOX - true/false
-	// FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
-	// SELECTOR - 选项值
-	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
+	// TEXT ：  文本内容
+	// MULTI_LINE_TEXT ：文本内容
+	// CHECK_BOX ：true/false
+	// FILL_IMAGE、ATTACHMENT ： 附件的FileId，需要通过UploadFiles接口上传获取
+	// SELECTOR ： 选项值
+	// DYNAMIC_TABLE ：传入json格式的表格内容，具体见数据结构[点击查看](https://qian.tencent.com/developers/company/dynamic_table)
 	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
 
 	// 控件id，和ComponentName选择一项传入即可
+	// 
+	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模版中找到控件ID的方式</a>
 	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
 
 	// 控件名字，最大长度不超过30字符，和ComponentId选择一项传入即可
+	// 
+	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模版中找到控件名字的方式</a>
 	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
 }
 

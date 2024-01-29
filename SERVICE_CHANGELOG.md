@@ -1,102 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 58 次发布
+### 第 152 次发布
 
-发布时间：2024-01-29 01:13:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
-
-	* 新增成员：IsDedicatedCluster
-
-	* <font color="#dd0000">**修改成员**：</font>IsSupportOutsideCluster
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 34 次发布
-
-发布时间：2024-01-29 01:17:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceDetail](https://cloud.tencent.com/document/api/240/38576#InstanceDetail)
-
-	* 新增成员：ZoneList
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 70 次发布
-
-发布时间：2024-01-29 01:18:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceClusterShard](https://cloud.tencent.com/document/api/239/20022#InstanceClusterShard)
-
-	* 新增成员：RunId
-
-* [InstanceSet](https://cloud.tencent.com/document/api/239/20022#InstanceSet)
-
-	* 新增成员：IPv6
-
-* [Instances](https://cloud.tencent.com/document/api/239/20022#Instances)
-
-	* 新增成员：IPv6
-
-
-
-
-## SSL 证书(ssl) 版本：2019-12-05
-
-### 第 53 次发布
-
-发布时间：2024-01-29 01:19:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteCertificate](https://cloud.tencent.com/document/api/400/41675)
-
-	* 新增入参：IsCheckResource
-
-	* 新增出参：TaskId
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 72 次发布
-
-发布时间：2024-01-27 19:39:47
+发布时间：2024-01-30 01:08:20
 
 本次发布包含了以下内容：
 
@@ -104,16 +12,403 @@
 
 新增接口：
 
-* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)
+* [DescribeInstanceAlarmEvents](https://cloud.tencent.com/document/api/236/103572)
 
-新增数据结构：
 
-* [BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData)
-* [BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 26 次发布
+
+发布时间：2024-01-30 01:16:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevicePackages](https://cloud.tencent.com/document/api/1131/95522)
+
+	* 新增入参：ChannelId
+
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 73 次发布
+
+发布时间：2024-01-30 01:24:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)
+
+	* 新增入参：ZoneId
+
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 74 次发布
+
+发布时间：2024-01-30 01:28:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AcquireLock
+* AnalyzeDependentTasks
+* BatchCreateTaskVersionAsync
+* BatchCreateVirtualTaskDs
+* BatchDeleteTasksDsAsync
+* BatchRunTasksDs
+* BatchUpdateTasksDs
+* CheckCustomFunctionPremise
+* CheckTaskNameExistDs
+* CheckTaskPriorityDs
+* ClearRecycleTask
+* CommitWorkflow
+* CompareDsTaskVersionInfo
+* CopyTaskDs
+* CopyWorkflowDs
+* CreateBrowsingHistory
+* CreateFileVersion
+* CreateLink
+* CreatePath
+* CreateProjectParamDs
+* CreateResourceDirectory
+* CreateScriptsImportTasksDs
+* CreateTaskDs
+* CreateTaskFolder
+* CreateTaskInParamDs
+* CreateTaskOutParamDs
+* CreateTaskOutputRegistries
+* CreateTaskOutputRegistry
+* CreateTaskParamDs
+* CreateWorkflowDs
+* DeleteBatchWorkflowDs
+* DeleteDsEvent
+* DeleteDsEventListener
+* DeleteDsEventPublisher
+* DeleteEventListenerByTaskId
+* DeleteLink
+* DeleteProjectParamVersionDs
+* DeleteRecordList
+* DeleteRecycleTask
+* DeleteResourcePath
+* DeleteTaskFolder
+* DeleteTaskInParamDs
+* DeleteTaskOutParamDs
+* DeleteTaskOutputRegistry
+* DescribeAllParamDs
+* DescribeBatchTestRun
+* DescribeBrowsingHistories
+* DescribeChildrenDs
+* DescribeChildrenPathTrees
+* DescribeCodeDetail
+* DescribeCodeDetailV2
+* DescribeCodeSearchAuditInfo
+* DescribeCodeSearchAuditInfoV2
+* DescribeCodeSearchCount
+* DescribeCodeSearchInfo
+* DescribeCodeSearchInfoV2
+* DescribeCrontabTopNDs
+* DescribeCustomFunctionVersionList
+* DescribeDataDevelopTaskType
+* DescribeDataTableImportProgress
+* DescribeDependTasksDevDs
+* DescribeDependencyTasksForProjectClone
+* DescribeDependencyWorkflowForProjectClone
+* DescribeDevelopmentSpaceSupportType
+* DescribeDsEvent
+* DescribeDsEventDetail
+* DescribeDsEventListener
+* DescribeDsEventListenerList
+* DescribeDsEventPublisher
+* DescribeDsEventPublisherList
+* DescribeDsKettleServerFolderTree
+* DescribeDsLatestTaskVersionInfo
+* DescribeDsNotSubmitTasksAndCanRunByWorkflow
+* DescribeDsTaskVersionInfo
+* DescribeDsTaskVersionList
+* DescribeEtlTaskType
+* DescribeEventListenerByTaskId
+* DescribeEventListenerTask
+* DescribeExecutionLog
+* DescribeFatherDatasourceInfoDs
+* DescribeFileVersions
+* DescribeGlobalWorkflowDs
+* DescribeImportableOfflineTask
+* DescribeInfoTransByTypeIdDs
+* DescribeLock
+* DescribeNewSqlTaskResult
+* DescribeParentTask
+* DescribePathTrees
+* DescribeProdWorkflowCanvasInfoDs
+* DescribeProjectParamDs
+* DescribeProjectParamDsPage
+* DescribeProjectParamVersionDs
+* DescribeProjectParamVersionInfoDs
+* DescribeRecordList
+* DescribeRecycleTaskDetail
+* DescribeRecycleTaskList
+* DescribeScriptsImportTaskType
+* DescribeSqlTaskResult
+* DescribeTaskBindVirtualTask
+* DescribeTaskDetailDs
+* DescribeTaskInParamDs
+* DescribeTaskLatestRunTime
+* DescribeTaskListByConditionDs
+* DescribeTaskOutParamDs
+* DescribeTaskOutputRegistries
+* DescribeTaskParamDs
+* DescribeTaskParentRunTime
+* DescribeTaskTypeByScriptType
+* DescribeTasksForProjectClone
+* DescribeTestRun
+* DescribeToken
+* DescribeWorkflowByFordIds
+* DescribeWorkflowCanvasInfoDs
+* DescribeWorkflowCanvasOpLogs
+* DescribeWorkflowCanvasOperators
+* DescribeWorkflowForProjectClone
+* DescribeWorkflowParamDs
+* DescribeWorkflowSchedulerInfoDs
+* DescribeWorkflowTasksForProjectClone
+* DownloadNewSqlResult
+* DownloadSqlResult
+* ExportDsEvent
+* ExportFiles
+* ExportProjectParamDs
+* ExportWorkflowXml
+* ExportWorkflowZip
+* FindDependTaskListDs
+* FindDependTaskListsDs
+* FindFuzzyTasksDs
+* FindTaskByRemotePath
+* GetAdvanceRunParams
+* GetBatchDetailErrorLog
+* GetCosToken
+* GetLatestAnalyseInfo
+* GetLatestTestRunInfo
+* GetPathTrees
+* GetResourceCosPath
+* GetResourcePathTree
+* GetRunSonListDs
+* GetTestRunTaskInstancesStatusInfo
+* HeartBeat
+* ImportDsEvent
+* ImportFiles
+* ImportOfflineTask
+* ImportProjectParamDs
+* ImportTableData
+* ImportWorkflowXml
+* ImportWorkflowZip
+* JudgeResourceFile
+* JudgeTaskListenEvent
+* KillTasksTestRun
+* ListBatchDetail
+* ListBatchJob
+* ModifyTaskFolder
+* ModifyTaskInfoDs
+* ModifyTaskLinksDs
+* ModifyTaskScriptDs
+* MoveFile
+* MoveTasksToFolder
+* PreviewDataTableCsv
+* QueryWorkflowVersion
+* RegisterDsEvent
+* RegisterDsEventListener
+* RegisterDsEventPublisher
+* ReleaseLock
+* RenameFile
+* RenameResource
+* RenameResourceFile
+* RenameResourcePath
+* RenameTaskDs
+* RenewWorkflowDs
+* RenewWorkflowFolderDs
+* RenewWorkflowOwnerDs
+* RenewWorkflowSchedulerInfoDs
+* ReplaceProjectParamVersionDs
+* RestoreRecycleTask
+* RollbackCustomFunctionVersion
+* SavePositionsDs
+* ScriptUsedByOtherTaskDs
+* StopAdhocTask
+* StopTestRun
+* SubmitBatchTestRun
+* SubmitIntegrationTask
+* SubmitPySparkTask
+* SubmitPythonTask
+* SubmitShellTask
+* SubmitTestRun
+* UpdateBatchTaskAdvancedSettings
+* UpdateBatchTaskDatasource
+* UpdateBatchTaskInCharge
+* UpdateBatchTaskParameter
+* UpdateBatchTaskParams
+* UpdateBatchTaskResourceGroup
+* UpdateBatchTaskSchedule
+* UpdateDsEvent
+* UpdateEventListener
+* UpdateTaskDs
+* UpdateWorkflowInfo
+* UploadAdvanceRunParams
+* UploadFilesDs
+* UploadResource
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AdhocRecordInfoDto
+* AdhocSubTaskDto
+* AlarmExtVO
+* AlarmVO
+* AnalyzeDependentTask
+* AsyncResourceVO
+* AttributeItemVO
+* BatchCreateVirtualTaskDTO
+* BatchJobVO
+* BatchResultDs
+* BatchTaskOperateNew
+* BizParams
+* BrowsingHistory
+* CheckTaskNameExistResult
+* CheckTaskPriorityTaskDTO
+* CloneObjectDTO
+* CloneTaskModeInfo
+* CloneTaskModePageInfoInfo
+* CodeDetailResult
+* CodeMatchInfo
+* CodeSearchAuditDTO
+* CodeSearchAuditInfo
+* CodeSearchAuditResult
+* CodeSearchCountInfo
+* CodeSearchInfo
+* CodeSearchInfoPage
+* CodeSearchResult
+* CollectionEventDTO
+* CollectionEventListenerTaskDTO
+* CollectionParamDTO
+* Columns
+* CosTokenResponse
+* CreateTaskOutputRegistry
+* CsvReadDTO
+* CsvRow
+* CustomizeBusinessEntityDTO
+* DeleteUserFileDTO
+* DependencyConfigDsDTO
+* DependencyConfigDsDTONoRecur
+* DependencyConfigDsDTONoRecurV3
+* DependencyStrategy
+* DependencyTaskDTO
+* DependencyWorkflowDTO
+* DescribeLockResp
+* DescribeTestRunBatchItem
+* DescribeWorkflowCanvasOplogRequestFilter
+* DsKettleServerFolderTreeNodeDto
+* EventDsDto
+* EventListenerDTO
+* EventListenerNewDTO
+* EventListenerTaskInfo
+* EventPublisherDTO
+* ExportEventDTO
+* ExportFile
+* ExportRequestInfo
+* ImportRequestInfo
+* ImportTableDTO
+* KillTestRunTasksResponseResult
+* LatestAnalyseInfoTask
+* LatestTestRunInfoTask
+* ListBatchJobPages
+* NewPathDTO
+* ParamDsRequest
+* ParamGetTaskInstancesStatusInfoResponseInstance
+* ParamGetTestRunTaskInstancesStatusInfoTask
+* ParamMapDsDto
+* ParamTaskDsRequest
+* ParameterInfoDsDto
+* ParameterVersionDsDto
+* Params
+* PathTreeNode
+* PathTreeNodeParams
+* ProjectCloneTaskInfo
+* ProjectCloneTaskInfoPageNew
+* ProjectCloneWorkflowInfo
+* ProjectCloneWorkflowInfoPageNew
+* RecycleFilePageInfo
+* RecycleTaskInfo
+* RecycleTaskPageInfo
+* RenameResourceDTO
+* RowColumn
+* ScriptTypeInfo
+* ShareStorageFileDTO
+* ShareStorageFileMappingDTO
+* SparkParameterDTO
+* SubCloneObjectDTO
+* TCHouseXTaskParameter
+* TableHybrisReq
+* TaskBaseInfo
+* TaskDataRegistry
+* TaskDataRegistryDTO
+* TaskDatasourceDTO
+* TaskDatasourceDTOPage
+* TaskDsDTO
+* TaskDsDTOLite
+* TaskDsDTOLiteV3
+* TaskDsDTONoRecur
+* TaskDsDTONoRecurV3
+* TaskDsDTOPage
+* TaskExtVO
+* TaskInfoWithInstance
+* TaskParentSchedulerDependency
+* TaskTypeExtParamVO
+* TaskTypeExtVO
+* TaskTypeVO
+* TaskVersionDsDTO
+* TestRunBatchItem
+* UpdateBatchTaskParameterDTO
+* UploadResourceRequestInfo
+* UserFileDTONew
+* UserFileVersionDto
+* VirtualTaskInfo
+* VirtualTaskInfoPage
+* WorkflowCanvasOpLogResult
+* WorkflowCanvasOperatorsDs
+* WorkflowCanvasOplog
+* WorkflowDsDTO
+* WorkflowDsDTOPage
+* WorkflowScheduleDtoDs
+* WorkflowVersionInfo
 
 
 
@@ -15592,6 +15887,18 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 152 次发布
+
+发布时间：2024-01-30 01:08:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceAlarmEvents](https://cloud.tencent.com/document/api/236/103572)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 151 次发布
 
@@ -73458,6 +73765,28 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 26 次发布
+
+发布时间：2024-01-30 01:16:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevicePackages](https://cloud.tencent.com/document/api/1131/95522)
+
+	* 新增入参：ChannelId
+
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：ChannelId
+
+
 ### 第 25 次发布
 
 发布时间：2024-01-23 01:20:20
@@ -117647,6 +117976,21 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 73 次发布
+
+发布时间：2024-01-30 01:24:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)
+
+	* 新增入参：ZoneId
+
+
 ### 第 72 次发布
 
 发布时间：2024-01-27 19:39:47
@@ -117657,12 +118001,12 @@
 
 新增接口：
 
-* [[DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/103562)
 
 新增数据结构：
 
-* [[BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData)](https://cloud.tencent.com/document/api/1552/80721#[BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData))
-* [[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)](https://cloud.tencent.com/document/api/1552/80721#[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter))
+* [BillingData](https://cloud.tencent.com/document/api/1552/80721#BillingData)
+* [BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)
 
 ### 第 71 次发布
 
@@ -145655,6 +145999,341 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
+### 第 74 次发布
+
+发布时间：2024-01-30 01:28:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AcquireLock
+* AnalyzeDependentTasks
+* BatchCreateTaskVersionAsync
+* BatchCreateVirtualTaskDs
+* BatchDeleteTasksDsAsync
+* BatchRunTasksDs
+* BatchUpdateTasksDs
+* CheckCustomFunctionPremise
+* CheckTaskNameExistDs
+* CheckTaskPriorityDs
+* ClearRecycleTask
+* CommitWorkflow
+* CompareDsTaskVersionInfo
+* CopyTaskDs
+* CopyWorkflowDs
+* CreateBrowsingHistory
+* CreateFileVersion
+* CreateLink
+* CreatePath
+* CreateProjectParamDs
+* CreateResourceDirectory
+* CreateScriptsImportTasksDs
+* CreateTaskDs
+* CreateTaskFolder
+* CreateTaskInParamDs
+* CreateTaskOutParamDs
+* CreateTaskOutputRegistries
+* CreateTaskOutputRegistry
+* CreateTaskParamDs
+* CreateWorkflowDs
+* DeleteBatchWorkflowDs
+* DeleteDsEvent
+* DeleteDsEventListener
+* DeleteDsEventPublisher
+* DeleteEventListenerByTaskId
+* DeleteLink
+* DeleteProjectParamVersionDs
+* DeleteRecordList
+* DeleteRecycleTask
+* DeleteResourcePath
+* DeleteTaskFolder
+* DeleteTaskInParamDs
+* DeleteTaskOutParamDs
+* DeleteTaskOutputRegistry
+* DescribeAllParamDs
+* DescribeBatchTestRun
+* DescribeBrowsingHistories
+* DescribeChildrenDs
+* DescribeChildrenPathTrees
+* DescribeCodeDetail
+* DescribeCodeDetailV2
+* DescribeCodeSearchAuditInfo
+* DescribeCodeSearchAuditInfoV2
+* DescribeCodeSearchCount
+* DescribeCodeSearchInfo
+* DescribeCodeSearchInfoV2
+* DescribeCrontabTopNDs
+* DescribeCustomFunctionVersionList
+* DescribeDataDevelopTaskType
+* DescribeDataTableImportProgress
+* DescribeDependTasksDevDs
+* DescribeDependencyTasksForProjectClone
+* DescribeDependencyWorkflowForProjectClone
+* DescribeDevelopmentSpaceSupportType
+* DescribeDsEvent
+* DescribeDsEventDetail
+* DescribeDsEventListener
+* DescribeDsEventListenerList
+* DescribeDsEventPublisher
+* DescribeDsEventPublisherList
+* DescribeDsKettleServerFolderTree
+* DescribeDsLatestTaskVersionInfo
+* DescribeDsNotSubmitTasksAndCanRunByWorkflow
+* DescribeDsTaskVersionInfo
+* DescribeDsTaskVersionList
+* DescribeEtlTaskType
+* DescribeEventListenerByTaskId
+* DescribeEventListenerTask
+* DescribeExecutionLog
+* DescribeFatherDatasourceInfoDs
+* DescribeFileVersions
+* DescribeGlobalWorkflowDs
+* DescribeImportableOfflineTask
+* DescribeInfoTransByTypeIdDs
+* DescribeLock
+* DescribeNewSqlTaskResult
+* DescribeParentTask
+* DescribePathTrees
+* DescribeProdWorkflowCanvasInfoDs
+* DescribeProjectParamDs
+* DescribeProjectParamDsPage
+* DescribeProjectParamVersionDs
+* DescribeProjectParamVersionInfoDs
+* DescribeRecordList
+* DescribeRecycleTaskDetail
+* DescribeRecycleTaskList
+* DescribeScriptsImportTaskType
+* DescribeSqlTaskResult
+* DescribeTaskBindVirtualTask
+* DescribeTaskDetailDs
+* DescribeTaskInParamDs
+* DescribeTaskLatestRunTime
+* DescribeTaskListByConditionDs
+* DescribeTaskOutParamDs
+* DescribeTaskOutputRegistries
+* DescribeTaskParamDs
+* DescribeTaskParentRunTime
+* DescribeTaskTypeByScriptType
+* DescribeTasksForProjectClone
+* DescribeTestRun
+* DescribeToken
+* DescribeWorkflowByFordIds
+* DescribeWorkflowCanvasInfoDs
+* DescribeWorkflowCanvasOpLogs
+* DescribeWorkflowCanvasOperators
+* DescribeWorkflowForProjectClone
+* DescribeWorkflowParamDs
+* DescribeWorkflowSchedulerInfoDs
+* DescribeWorkflowTasksForProjectClone
+* DownloadNewSqlResult
+* DownloadSqlResult
+* ExportDsEvent
+* ExportFiles
+* ExportProjectParamDs
+* ExportWorkflowXml
+* ExportWorkflowZip
+* FindDependTaskListDs
+* FindDependTaskListsDs
+* FindFuzzyTasksDs
+* FindTaskByRemotePath
+* GetAdvanceRunParams
+* GetBatchDetailErrorLog
+* GetCosToken
+* GetLatestAnalyseInfo
+* GetLatestTestRunInfo
+* GetPathTrees
+* GetResourceCosPath
+* GetResourcePathTree
+* GetRunSonListDs
+* GetTestRunTaskInstancesStatusInfo
+* HeartBeat
+* ImportDsEvent
+* ImportFiles
+* ImportOfflineTask
+* ImportProjectParamDs
+* ImportTableData
+* ImportWorkflowXml
+* ImportWorkflowZip
+* JudgeResourceFile
+* JudgeTaskListenEvent
+* KillTasksTestRun
+* ListBatchDetail
+* ListBatchJob
+* ModifyTaskFolder
+* ModifyTaskInfoDs
+* ModifyTaskLinksDs
+* ModifyTaskScriptDs
+* MoveFile
+* MoveTasksToFolder
+* PreviewDataTableCsv
+* QueryWorkflowVersion
+* RegisterDsEvent
+* RegisterDsEventListener
+* RegisterDsEventPublisher
+* ReleaseLock
+* RenameFile
+* RenameResource
+* RenameResourceFile
+* RenameResourcePath
+* RenameTaskDs
+* RenewWorkflowDs
+* RenewWorkflowFolderDs
+* RenewWorkflowOwnerDs
+* RenewWorkflowSchedulerInfoDs
+* ReplaceProjectParamVersionDs
+* RestoreRecycleTask
+* RollbackCustomFunctionVersion
+* SavePositionsDs
+* ScriptUsedByOtherTaskDs
+* StopAdhocTask
+* StopTestRun
+* SubmitBatchTestRun
+* SubmitIntegrationTask
+* SubmitPySparkTask
+* SubmitPythonTask
+* SubmitShellTask
+* SubmitTestRun
+* UpdateBatchTaskAdvancedSettings
+* UpdateBatchTaskDatasource
+* UpdateBatchTaskInCharge
+* UpdateBatchTaskParameter
+* UpdateBatchTaskParams
+* UpdateBatchTaskResourceGroup
+* UpdateBatchTaskSchedule
+* UpdateDsEvent
+* UpdateEventListener
+* UpdateTaskDs
+* UpdateWorkflowInfo
+* UploadAdvanceRunParams
+* UploadFilesDs
+* UploadResource
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AdhocRecordInfoDto
+* AdhocSubTaskDto
+* AlarmExtVO
+* AlarmVO
+* AnalyzeDependentTask
+* AsyncResourceVO
+* AttributeItemVO
+* BatchCreateVirtualTaskDTO
+* BatchJobVO
+* BatchResultDs
+* BatchTaskOperateNew
+* BizParams
+* BrowsingHistory
+* CheckTaskNameExistResult
+* CheckTaskPriorityTaskDTO
+* CloneObjectDTO
+* CloneTaskModeInfo
+* CloneTaskModePageInfoInfo
+* CodeDetailResult
+* CodeMatchInfo
+* CodeSearchAuditDTO
+* CodeSearchAuditInfo
+* CodeSearchAuditResult
+* CodeSearchCountInfo
+* CodeSearchInfo
+* CodeSearchInfoPage
+* CodeSearchResult
+* CollectionEventDTO
+* CollectionEventListenerTaskDTO
+* CollectionParamDTO
+* Columns
+* CosTokenResponse
+* CreateTaskOutputRegistry
+* CsvReadDTO
+* CsvRow
+* CustomizeBusinessEntityDTO
+* DeleteUserFileDTO
+* DependencyConfigDsDTO
+* DependencyConfigDsDTONoRecur
+* DependencyConfigDsDTONoRecurV3
+* DependencyStrategy
+* DependencyTaskDTO
+* DependencyWorkflowDTO
+* DescribeLockResp
+* DescribeTestRunBatchItem
+* DescribeWorkflowCanvasOplogRequestFilter
+* DsKettleServerFolderTreeNodeDto
+* EventDsDto
+* EventListenerDTO
+* EventListenerNewDTO
+* EventListenerTaskInfo
+* EventPublisherDTO
+* ExportEventDTO
+* ExportFile
+* ExportRequestInfo
+* ImportRequestInfo
+* ImportTableDTO
+* KillTestRunTasksResponseResult
+* LatestAnalyseInfoTask
+* LatestTestRunInfoTask
+* ListBatchJobPages
+* NewPathDTO
+* ParamDsRequest
+* ParamGetTaskInstancesStatusInfoResponseInstance
+* ParamGetTestRunTaskInstancesStatusInfoTask
+* ParamMapDsDto
+* ParamTaskDsRequest
+* ParameterInfoDsDto
+* ParameterVersionDsDto
+* Params
+* PathTreeNode
+* PathTreeNodeParams
+* ProjectCloneTaskInfo
+* ProjectCloneTaskInfoPageNew
+* ProjectCloneWorkflowInfo
+* ProjectCloneWorkflowInfoPageNew
+* RecycleFilePageInfo
+* RecycleTaskInfo
+* RecycleTaskPageInfo
+* RenameResourceDTO
+* RowColumn
+* ScriptTypeInfo
+* ShareStorageFileDTO
+* ShareStorageFileMappingDTO
+* SparkParameterDTO
+* SubCloneObjectDTO
+* TCHouseXTaskParameter
+* TableHybrisReq
+* TaskBaseInfo
+* TaskDataRegistry
+* TaskDataRegistryDTO
+* TaskDatasourceDTO
+* TaskDatasourceDTOPage
+* TaskDsDTO
+* TaskDsDTOLite
+* TaskDsDTOLiteV3
+* TaskDsDTONoRecur
+* TaskDsDTONoRecurV3
+* TaskDsDTOPage
+* TaskExtVO
+* TaskInfoWithInstance
+* TaskParentSchedulerDependency
+* TaskTypeExtParamVO
+* TaskTypeExtVO
+* TaskTypeVO
+* TaskVersionDsDTO
+* TestRunBatchItem
+* UpdateBatchTaskParameterDTO
+* UploadResourceRequestInfo
+* UserFileDTONew
+* UserFileVersionDto
+* VirtualTaskInfo
+* VirtualTaskInfoPage
+* WorkflowCanvasOpLogResult
+* WorkflowCanvasOperatorsDs
+* WorkflowCanvasOplog
+* WorkflowDsDTO
+* WorkflowDsDTOPage
+* WorkflowScheduleDtoDs
+* WorkflowVersionInfo
+
 ### 第 73 次发布
 
 发布时间：2024-01-26 01:25:54
@@ -145665,76 +146344,76 @@
 
 新增接口：
 
-* [CheckCustomFunctionPremise](https://cloud.tencent.com/document/api/1267/103500)
-* [ClearRecycleTask](https://cloud.tencent.com/document/api/1267/103471)
-* [CommitWorkflow](https://cloud.tencent.com/document/api/1267/103470)
-* [CompareDsTaskVersionInfo](https://cloud.tencent.com/document/api/1267/103506)
-* [CopyWorkflowDs](https://cloud.tencent.com/document/api/1267/103469)
-* [CreateBrowsingHistory](https://cloud.tencent.com/document/api/1267/103468)
-* [CreateLink](https://cloud.tencent.com/document/api/1267/103467)
-* [CreateResourceDirectory](https://cloud.tencent.com/document/api/1267/103476)
-* [CreateWorkflowDs](https://cloud.tencent.com/document/api/1267/103466)
-* [DeleteBatchWorkflowDs](https://cloud.tencent.com/document/api/1267/103465)
-* [DeleteDsEvent](https://cloud.tencent.com/document/api/1267/103464)
-* [DeleteEventListenerByTaskId](https://cloud.tencent.com/document/api/1267/103463)
-* [DeleteRecordList](https://cloud.tencent.com/document/api/1267/103497)
-* [DeleteRecycleTask](https://cloud.tencent.com/document/api/1267/103462)
-* [DeleteResourcePath](https://cloud.tencent.com/document/api/1267/103475)
-* [DescribeAllParamDs](https://cloud.tencent.com/document/api/1267/103461)
-* [DescribeBatchTestRun](https://cloud.tencent.com/document/api/1267/103482)
-* [DescribeCustomFunctionVersionList](https://cloud.tencent.com/document/api/1267/103499)
-* [DescribeDataTableImportProgress](https://cloud.tencent.com/document/api/1267/103460)
-* [DescribeDsEventDetail](https://cloud.tencent.com/document/api/1267/103459)
-* [DescribeDsEventListener](https://cloud.tencent.com/document/api/1267/103487)
-* [DescribeDsEventListenerList](https://cloud.tencent.com/document/api/1267/103458)
-* [DescribeDsEventPublisher](https://cloud.tencent.com/document/api/1267/103486)
-* [DescribeDsEventPublisherList](https://cloud.tencent.com/document/api/1267/103457)
-* [DescribeDsLatestTaskVersionInfo](https://cloud.tencent.com/document/api/1267/103505)
-* [DescribeDsNotSubmitTasksAndCanRunByWorkflow](https://cloud.tencent.com/document/api/1267/103504)
-* [DescribeDsTaskVersionInfo](https://cloud.tencent.com/document/api/1267/103503)
-* [DescribeDsTaskVersionList](https://cloud.tencent.com/document/api/1267/103502)
-* [DescribeExecutionLog](https://cloud.tencent.com/document/api/1267/103496)
-* [DescribeFileVersions](https://cloud.tencent.com/document/api/1267/103456)
-* [DescribeGlobalWorkflowDs](https://cloud.tencent.com/document/api/1267/103455)
-* [DescribeNewSqlTaskResult](https://cloud.tencent.com/document/api/1267/103495)
-* [DescribeProdWorkflowCanvasInfoDs](https://cloud.tencent.com/document/api/1267/103454)
-* [DescribeProjectParamDs](https://cloud.tencent.com/document/api/1267/103453)
-* [DescribeProjectParamVersionDs](https://cloud.tencent.com/document/api/1267/103452)
-* [DescribeRecordList](https://cloud.tencent.com/document/api/1267/103494)
-* [DescribeRecycleTaskDetail](https://cloud.tencent.com/document/api/1267/103451)
-* [DescribeRecycleTaskList](https://cloud.tencent.com/document/api/1267/103450)
-* [DescribeSqlTaskResult](https://cloud.tencent.com/document/api/1267/103493)
-* [DescribeTaskInParamDs](https://cloud.tencent.com/document/api/1267/103449)
-* [DescribeTaskOutParamDs](https://cloud.tencent.com/document/api/1267/103448)
-* [DescribeTaskParamDs](https://cloud.tencent.com/document/api/1267/103447)
-* [DescribeTestRun](https://cloud.tencent.com/document/api/1267/103481)
-* [DescribeToken](https://cloud.tencent.com/document/api/1267/103492)
-* [DescribeWorkflowByFordIds](https://cloud.tencent.com/document/api/1267/103446)
-* [DescribeWorkflowCanvasOperators](https://cloud.tencent.com/document/api/1267/103445)
-* [DescribeWorkflowParamDs](https://cloud.tencent.com/document/api/1267/103444)
-* [DownloadNewSqlResult](https://cloud.tencent.com/document/api/1267/103491)
-* [DownloadSqlResult](https://cloud.tencent.com/document/api/1267/103490)
-* [FindTaskByRemotePath](https://cloud.tencent.com/document/api/1267/103443)
-* [GetLatestAnalyseInfo](https://cloud.tencent.com/document/api/1267/103442)
-* [GetLatestTestRunInfo](https://cloud.tencent.com/document/api/1267/103441)
-* [GetResourceCosPath](https://cloud.tencent.com/document/api/1267/103474)
-* [ImportTableData](https://cloud.tencent.com/document/api/1267/103484)
-* [ImportWorkflowXml](https://cloud.tencent.com/document/api/1267/103440)
-* [ImportWorkflowZip](https://cloud.tencent.com/document/api/1267/103439)
-* [JudgeResourceFile](https://cloud.tencent.com/document/api/1267/103473)
-* [KillTasksTestRun](https://cloud.tencent.com/document/api/1267/103485)
-* [PreviewDataTableCsv](https://cloud.tencent.com/document/api/1267/103438)
-* [QueryWorkflowVersion](https://cloud.tencent.com/document/api/1267/103437)
-* [RenameResourcePath](https://cloud.tencent.com/document/api/1267/103472)
-* [ReplaceProjectParamVersionDs](https://cloud.tencent.com/document/api/1267/103436)
-* [RestoreRecycleTask](https://cloud.tencent.com/document/api/1267/103435)
-* [RollbackCustomFunctionVersion](https://cloud.tencent.com/document/api/1267/103498)
-* [StopAdhocTask](https://cloud.tencent.com/document/api/1267/103489)
-* [StopTestRun](https://cloud.tencent.com/document/api/1267/103480)
-* [SubmitBatchTestRun](https://cloud.tencent.com/document/api/1267/103479)
-* [SubmitIntegrationTask](https://cloud.tencent.com/document/api/1267/103488)
-* [SubmitTestRun](https://cloud.tencent.com/document/api/1267/103478)
-* [UpdateWorkflowInfo](https://cloud.tencent.com/document/api/1267/103501)
+* [CheckCustomFunctionPremise](https://cloud.tencent.com/document/api/#/#)
+* [ClearRecycleTask](https://cloud.tencent.com/document/api/#/#)
+* [CommitWorkflow](https://cloud.tencent.com/document/api/#/#)
+* [CompareDsTaskVersionInfo](https://cloud.tencent.com/document/api/#/#)
+* [CopyWorkflowDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateBrowsingHistory](https://cloud.tencent.com/document/api/#/#)
+* [CreateLink](https://cloud.tencent.com/document/api/#/#)
+* [CreateResourceDirectory](https://cloud.tencent.com/document/api/#/#)
+* [CreateWorkflowDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteBatchWorkflowDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [DeleteEventListenerByTaskId](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRecordList](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRecycleTask](https://cloud.tencent.com/document/api/#/#)
+* [DeleteResourcePath](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAllParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBatchTestRun](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCustomFunctionVersionList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDataTableImportProgress](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEventDetail](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEventListener](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEventListenerList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEventPublisher](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEventPublisherList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsLatestTaskVersionInfo](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsNotSubmitTasksAndCanRunByWorkflow](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsTaskVersionInfo](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsTaskVersionList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeExecutionLog](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFileVersions](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGlobalWorkflowDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNewSqlTaskResult](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProdWorkflowCanvasInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjectParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjectParamVersionDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecordList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecycleTaskDetail](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecycleTaskList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSqlTaskResult](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskInParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskOutParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTestRun](https://cloud.tencent.com/document/api/#/#)
+* [DescribeToken](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowByFordIds](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowCanvasOperators](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DownloadNewSqlResult](https://cloud.tencent.com/document/api/#/#)
+* [DownloadSqlResult](https://cloud.tencent.com/document/api/#/#)
+* [FindTaskByRemotePath](https://cloud.tencent.com/document/api/#/#)
+* [GetLatestAnalyseInfo](https://cloud.tencent.com/document/api/#/#)
+* [GetLatestTestRunInfo](https://cloud.tencent.com/document/api/#/#)
+* [GetResourceCosPath](https://cloud.tencent.com/document/api/#/#)
+* [ImportTableData](https://cloud.tencent.com/document/api/#/#)
+* [ImportWorkflowXml](https://cloud.tencent.com/document/api/#/#)
+* [ImportWorkflowZip](https://cloud.tencent.com/document/api/#/#)
+* [JudgeResourceFile](https://cloud.tencent.com/document/api/#/#)
+* [KillTasksTestRun](https://cloud.tencent.com/document/api/#/#)
+* [PreviewDataTableCsv](https://cloud.tencent.com/document/api/#/#)
+* [QueryWorkflowVersion](https://cloud.tencent.com/document/api/#/#)
+* [RenameResourcePath](https://cloud.tencent.com/document/api/#/#)
+* [ReplaceProjectParamVersionDs](https://cloud.tencent.com/document/api/#/#)
+* [RestoreRecycleTask](https://cloud.tencent.com/document/api/#/#)
+* [RollbackCustomFunctionVersion](https://cloud.tencent.com/document/api/#/#)
+* [StopAdhocTask](https://cloud.tencent.com/document/api/#/#)
+* [StopTestRun](https://cloud.tencent.com/document/api/#/#)
+* [SubmitBatchTestRun](https://cloud.tencent.com/document/api/#/#)
+* [SubmitIntegrationTask](https://cloud.tencent.com/document/api/#/#)
+* [SubmitTestRun](https://cloud.tencent.com/document/api/#/#)
+* [UpdateWorkflowInfo](https://cloud.tencent.com/document/api/#/#)
 
 修改接口：
 
@@ -145790,7 +146469,7 @@
 
 	* 新增入参：NeedCheckParentSubmitted
 
-* [DescribeCodeSearchInfo](https://cloud.tencent.com/document/api/1267/103316)
+* [DescribeCodeSearchInfo](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增入参：WorkflowIds, FolderIds, DatasourceIds, FolderPaths, TaskStatus
 
@@ -145818,137 +146497,137 @@
 
 新增接口：
 
-* [AcquireLock](https://cloud.tencent.com/document/api/1267/103330)
-* [AnalyzeDependentTasks](https://cloud.tencent.com/document/api/1267/103304)
-* [BatchCreateTaskVersionAsync](https://cloud.tencent.com/document/api/1267/103303)
-* [BatchCreateVirtualTaskDs](https://cloud.tencent.com/document/api/1267/103356)
-* [BatchDeleteTasksDsAsync](https://cloud.tencent.com/document/api/1267/103355)
-* [BatchRunTasksDs](https://cloud.tencent.com/document/api/1267/103354)
-* [BatchUpdateTasksDs](https://cloud.tencent.com/document/api/1267/103353)
-* [CheckTaskNameExistDs](https://cloud.tencent.com/document/api/1267/103302)
-* [CheckTaskPriorityDs](https://cloud.tencent.com/document/api/1267/103352)
-* [CopyTaskDs](https://cloud.tencent.com/document/api/1267/103301)
-* [CreateFileVersion](https://cloud.tencent.com/document/api/1267/103309)
-* [CreatePath](https://cloud.tencent.com/document/api/1267/103322)
-* [CreateProjectParamDs](https://cloud.tencent.com/document/api/1267/103300)
-* [CreateScriptsImportTasksDs](https://cloud.tencent.com/document/api/1267/103299)
-* [CreateTaskDs](https://cloud.tencent.com/document/api/1267/103298)
-* [CreateTaskFolder](https://cloud.tencent.com/document/api/1267/103297)
-* [CreateTaskInParamDs](https://cloud.tencent.com/document/api/1267/103296)
-* [CreateTaskOutParamDs](https://cloud.tencent.com/document/api/1267/103295)
-* [CreateTaskOutputRegistries](https://cloud.tencent.com/document/api/1267/103294)
-* [CreateTaskOutputRegistry](https://cloud.tencent.com/document/api/1267/103293)
-* [CreateTaskParamDs](https://cloud.tencent.com/document/api/1267/103292)
-* [DeleteDsEventListener](https://cloud.tencent.com/document/api/1267/103291)
-* [DeleteDsEventPublisher](https://cloud.tencent.com/document/api/1267/103290)
-* [DeleteLink](https://cloud.tencent.com/document/api/1267/103289)
-* [DeleteProjectParamVersionDs](https://cloud.tencent.com/document/api/1267/103288)
-* [DeleteTaskFolder](https://cloud.tencent.com/document/api/1267/103287)
-* [DeleteTaskInParamDs](https://cloud.tencent.com/document/api/1267/103286)
-* [DeleteTaskOutParamDs](https://cloud.tencent.com/document/api/1267/103285)
-* [DeleteTaskOutputRegistry](https://cloud.tencent.com/document/api/1267/103284)
-* [DescribeBrowsingHistories](https://cloud.tencent.com/document/api/1267/103283)
-* [DescribeChildrenDs](https://cloud.tencent.com/document/api/1267/103351)
-* [DescribeChildrenPathTrees](https://cloud.tencent.com/document/api/1267/103282)
-* [DescribeCodeDetail](https://cloud.tencent.com/document/api/1267/103321)
-* [DescribeCodeDetailV2](https://cloud.tencent.com/document/api/1267/103320)
-* [DescribeCodeSearchAuditInfo](https://cloud.tencent.com/document/api/1267/103319)
-* [DescribeCodeSearchAuditInfoV2](https://cloud.tencent.com/document/api/1267/103318)
-* [DescribeCodeSearchCount](https://cloud.tencent.com/document/api/1267/103317)
-* [DescribeCodeSearchInfo](https://cloud.tencent.com/document/api/1267/103316)
-* [DescribeCodeSearchInfoV2](https://cloud.tencent.com/document/api/1267/103315)
-* [DescribeCrontabTopNDs](https://cloud.tencent.com/document/api/1267/103350)
-* [DescribeDataDevelopTaskType](https://cloud.tencent.com/document/api/1267/103281)
-* [DescribeDependTasksDevDs](https://cloud.tencent.com/document/api/1267/103349)
-* [DescribeDependencyTasksForProjectClone](https://cloud.tencent.com/document/api/1267/103348)
-* [DescribeDependencyWorkflowForProjectClone](https://cloud.tencent.com/document/api/1267/103347)
-* [DescribeDevelopmentSpaceSupportType](https://cloud.tencent.com/document/api/1267/103280)
-* [DescribeDsEvent](https://cloud.tencent.com/document/api/1267/103279)
-* [DescribeDsKettleServerFolderTree](https://cloud.tencent.com/document/api/1267/103278)
-* [DescribeEtlTaskType](https://cloud.tencent.com/document/api/1267/103277)
-* [DescribeEventListenerByTaskId](https://cloud.tencent.com/document/api/1267/103276)
-* [DescribeEventListenerTask](https://cloud.tencent.com/document/api/1267/103275)
-* [DescribeFatherDatasourceInfoDs](https://cloud.tencent.com/document/api/1267/103346)
-* [DescribeImportableOfflineTask](https://cloud.tencent.com/document/api/1267/103274)
-* [DescribeInfoTransByTypeIdDs](https://cloud.tencent.com/document/api/1267/103345)
-* [DescribeLock](https://cloud.tencent.com/document/api/1267/103329)
-* [DescribeParentTask](https://cloud.tencent.com/document/api/1267/103344)
-* [DescribePathTrees](https://cloud.tencent.com/document/api/1267/103273)
-* [DescribeProjectParamDsPage](https://cloud.tencent.com/document/api/1267/103272)
-* [DescribeProjectParamVersionInfoDs](https://cloud.tencent.com/document/api/1267/103271)
-* [DescribeScriptsImportTaskType](https://cloud.tencent.com/document/api/1267/103270)
-* [DescribeTaskBindVirtualTask](https://cloud.tencent.com/document/api/1267/103269)
-* [DescribeTaskDetailDs](https://cloud.tencent.com/document/api/1267/103343)
-* [DescribeTaskLatestRunTime](https://cloud.tencent.com/document/api/1267/103268)
-* [DescribeTaskListByConditionDs](https://cloud.tencent.com/document/api/1267/103342)
-* [DescribeTaskOutputRegistries](https://cloud.tencent.com/document/api/1267/103267)
-* [DescribeTaskParentRunTime](https://cloud.tencent.com/document/api/1267/103266)
-* [DescribeTaskTypeByScriptType](https://cloud.tencent.com/document/api/1267/103265)
-* [DescribeTasksForProjectClone](https://cloud.tencent.com/document/api/1267/103341)
-* [DescribeWorkflowCanvasInfoDs](https://cloud.tencent.com/document/api/1267/103264)
-* [DescribeWorkflowCanvasOpLogs](https://cloud.tencent.com/document/api/1267/103263)
-* [DescribeWorkflowForProjectClone](https://cloud.tencent.com/document/api/1267/103340)
-* [DescribeWorkflowSchedulerInfoDs](https://cloud.tencent.com/document/api/1267/103262)
-* [DescribeWorkflowTasksForProjectClone](https://cloud.tencent.com/document/api/1267/103339)
-* [ExportDsEvent](https://cloud.tencent.com/document/api/1267/103261)
-* [ExportFiles](https://cloud.tencent.com/document/api/1267/103314)
-* [ExportProjectParamDs](https://cloud.tencent.com/document/api/1267/103260)
-* [ExportWorkflowXml](https://cloud.tencent.com/document/api/1267/103259)
-* [ExportWorkflowZip](https://cloud.tencent.com/document/api/1267/103258)
-* [FindDependTaskListDs](https://cloud.tencent.com/document/api/1267/103257)
-* [FindDependTaskListsDs](https://cloud.tencent.com/document/api/1267/103338)
-* [FindFuzzyTasksDs](https://cloud.tencent.com/document/api/1267/103337)
-* [GetAdvanceRunParams](https://cloud.tencent.com/document/api/1267/103226)
-* [GetBatchDetailErrorLog](https://cloud.tencent.com/document/api/1267/103256)
-* [GetCosToken](https://cloud.tencent.com/document/api/1267/103313)
-* [GetPathTrees](https://cloud.tencent.com/document/api/1267/103255)
-* [GetResourcePathTree](https://cloud.tencent.com/document/api/1267/103308)
-* [GetRunSonListDs](https://cloud.tencent.com/document/api/1267/103336)
-* [GetTestRunTaskInstancesStatusInfo](https://cloud.tencent.com/document/api/1267/103254)
-* [HeartBeat](https://cloud.tencent.com/document/api/1267/103328)
-* [ImportDsEvent](https://cloud.tencent.com/document/api/1267/103253)
-* [ImportFiles](https://cloud.tencent.com/document/api/1267/103312)
-* [ImportOfflineTask](https://cloud.tencent.com/document/api/1267/103252)
-* [ImportProjectParamDs](https://cloud.tencent.com/document/api/1267/103251)
-* [JudgeTaskListenEvent](https://cloud.tencent.com/document/api/1267/103250)
-* [ListBatchDetail](https://cloud.tencent.com/document/api/1267/103249)
-* [ListBatchJob](https://cloud.tencent.com/document/api/1267/103248)
-* [ModifyTaskFolder](https://cloud.tencent.com/document/api/1267/103247)
-* [ModifyTaskInfoDs](https://cloud.tencent.com/document/api/1267/103335)
-* [ModifyTaskLinksDs](https://cloud.tencent.com/document/api/1267/103334)
-* [ModifyTaskScriptDs](https://cloud.tencent.com/document/api/1267/103333)
-* [MoveFile](https://cloud.tencent.com/document/api/1267/103311)
-* [MoveTasksToFolder](https://cloud.tencent.com/document/api/1267/103246)
-* [RegisterDsEvent](https://cloud.tencent.com/document/api/1267/103245)
-* [RegisterDsEventListener](https://cloud.tencent.com/document/api/1267/103244)
-* [RegisterDsEventPublisher](https://cloud.tencent.com/document/api/1267/103243)
-* [ReleaseLock](https://cloud.tencent.com/document/api/1267/103327)
-* [RenameFile](https://cloud.tencent.com/document/api/1267/103310)
-* [RenameResource](https://cloud.tencent.com/document/api/1267/103307)
-* [RenameResourceFile](https://cloud.tencent.com/document/api/1267/103306)
-* [RenameTaskDs](https://cloud.tencent.com/document/api/1267/103242)
-* [RenewWorkflowDs](https://cloud.tencent.com/document/api/1267/103241)
-* [RenewWorkflowFolderDs](https://cloud.tencent.com/document/api/1267/103240)
-* [RenewWorkflowOwnerDs](https://cloud.tencent.com/document/api/1267/103239)
-* [RenewWorkflowSchedulerInfoDs](https://cloud.tencent.com/document/api/1267/103238)
-* [SavePositionsDs](https://cloud.tencent.com/document/api/1267/103332)
-* [ScriptUsedByOtherTaskDs](https://cloud.tencent.com/document/api/1267/103237)
-* [SubmitPySparkTask](https://cloud.tencent.com/document/api/1267/103325)
-* [SubmitPythonTask](https://cloud.tencent.com/document/api/1267/103324)
-* [SubmitShellTask](https://cloud.tencent.com/document/api/1267/103323)
-* [UpdateBatchTaskAdvancedSettings](https://cloud.tencent.com/document/api/1267/103236)
-* [UpdateBatchTaskDatasource](https://cloud.tencent.com/document/api/1267/103235)
-* [UpdateBatchTaskInCharge](https://cloud.tencent.com/document/api/1267/103234)
-* [UpdateBatchTaskParameter](https://cloud.tencent.com/document/api/1267/103233)
-* [UpdateBatchTaskParams](https://cloud.tencent.com/document/api/1267/103232)
-* [UpdateBatchTaskResourceGroup](https://cloud.tencent.com/document/api/1267/103231)
-* [UpdateBatchTaskSchedule](https://cloud.tencent.com/document/api/1267/103230)
-* [UpdateDsEvent](https://cloud.tencent.com/document/api/1267/103229)
-* [UpdateEventListener](https://cloud.tencent.com/document/api/1267/103228)
-* [UpdateTaskDs](https://cloud.tencent.com/document/api/1267/103331)
-* [UploadAdvanceRunParams](https://cloud.tencent.com/document/api/1267/103225)
-* [UploadFilesDs](https://cloud.tencent.com/document/api/1267/103227)
-* [UploadResource](https://cloud.tencent.com/document/api/1267/103305)
+* [AcquireLock](https://cloud.tencent.com/document/api/#/#)
+* [AnalyzeDependentTasks](https://cloud.tencent.com/document/api/#/#)
+* [BatchCreateTaskVersionAsync](https://cloud.tencent.com/document/api/#/#)
+* [BatchCreateVirtualTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [BatchDeleteTasksDsAsync](https://cloud.tencent.com/document/api/#/#)
+* [BatchRunTasksDs](https://cloud.tencent.com/document/api/#/#)
+* [BatchUpdateTasksDs](https://cloud.tencent.com/document/api/#/#)
+* [CheckTaskNameExistDs](https://cloud.tencent.com/document/api/#/#)
+* [CheckTaskPriorityDs](https://cloud.tencent.com/document/api/#/#)
+* [CopyTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateFileVersion](https://cloud.tencent.com/document/api/#/#)
+* [CreatePath](https://cloud.tencent.com/document/api/#/#)
+* [CreateProjectParamDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateScriptsImportTasksDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskFolder](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskInParamDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskOutParamDs](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskOutputRegistries](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskOutputRegistry](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDsEventListener](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDsEventPublisher](https://cloud.tencent.com/document/api/#/#)
+* [DeleteLink](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProjectParamVersionDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteTaskFolder](https://cloud.tencent.com/document/api/#/#)
+* [DeleteTaskInParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteTaskOutParamDs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteTaskOutputRegistry](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBrowsingHistories](https://cloud.tencent.com/document/api/#/#)
+* [DescribeChildrenDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeChildrenPathTrees](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeDetail](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeDetailV2](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeSearchAuditInfo](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeSearchAuditInfoV2](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeSearchCount](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeSearchInfo](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCodeSearchInfoV2](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCrontabTopNDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDataDevelopTaskType](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDependTasksDevDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDependencyTasksForProjectClone](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDependencyWorkflowForProjectClone](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDevelopmentSpaceSupportType](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDsKettleServerFolderTree](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEtlTaskType](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEventListenerByTaskId](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEventListenerTask](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFatherDatasourceInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeImportableOfflineTask](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInfoTransByTypeIdDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLock](https://cloud.tencent.com/document/api/#/#)
+* [DescribeParentTask](https://cloud.tencent.com/document/api/#/#)
+* [DescribePathTrees](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjectParamDsPage](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjectParamVersionInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeScriptsImportTaskType](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskBindVirtualTask](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskDetailDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskLatestRunTime](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskListByConditionDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskOutputRegistries](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskParentRunTime](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskTypeByScriptType](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTasksForProjectClone](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowCanvasInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowCanvasOpLogs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowForProjectClone](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowSchedulerInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWorkflowTasksForProjectClone](https://cloud.tencent.com/document/api/#/#)
+* [ExportDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [ExportFiles](https://cloud.tencent.com/document/api/#/#)
+* [ExportProjectParamDs](https://cloud.tencent.com/document/api/#/#)
+* [ExportWorkflowXml](https://cloud.tencent.com/document/api/#/#)
+* [ExportWorkflowZip](https://cloud.tencent.com/document/api/#/#)
+* [FindDependTaskListDs](https://cloud.tencent.com/document/api/#/#)
+* [FindDependTaskListsDs](https://cloud.tencent.com/document/api/#/#)
+* [FindFuzzyTasksDs](https://cloud.tencent.com/document/api/#/#)
+* [GetAdvanceRunParams](https://cloud.tencent.com/document/api/#/#)
+* [GetBatchDetailErrorLog](https://cloud.tencent.com/document/api/#/#)
+* [GetCosToken](https://cloud.tencent.com/document/api/#/#)
+* [GetPathTrees](https://cloud.tencent.com/document/api/#/#)
+* [GetResourcePathTree](https://cloud.tencent.com/document/api/#/#)
+* [GetRunSonListDs](https://cloud.tencent.com/document/api/#/#)
+* [GetTestRunTaskInstancesStatusInfo](https://cloud.tencent.com/document/api/#/#)
+* [HeartBeat](https://cloud.tencent.com/document/api/#/#)
+* [ImportDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [ImportFiles](https://cloud.tencent.com/document/api/#/#)
+* [ImportOfflineTask](https://cloud.tencent.com/document/api/#/#)
+* [ImportProjectParamDs](https://cloud.tencent.com/document/api/#/#)
+* [JudgeTaskListenEvent](https://cloud.tencent.com/document/api/#/#)
+* [ListBatchDetail](https://cloud.tencent.com/document/api/#/#)
+* [ListBatchJob](https://cloud.tencent.com/document/api/#/#)
+* [ModifyTaskFolder](https://cloud.tencent.com/document/api/#/#)
+* [ModifyTaskInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [ModifyTaskLinksDs](https://cloud.tencent.com/document/api/#/#)
+* [ModifyTaskScriptDs](https://cloud.tencent.com/document/api/#/#)
+* [MoveFile](https://cloud.tencent.com/document/api/#/#)
+* [MoveTasksToFolder](https://cloud.tencent.com/document/api/#/#)
+* [RegisterDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [RegisterDsEventListener](https://cloud.tencent.com/document/api/#/#)
+* [RegisterDsEventPublisher](https://cloud.tencent.com/document/api/#/#)
+* [ReleaseLock](https://cloud.tencent.com/document/api/#/#)
+* [RenameFile](https://cloud.tencent.com/document/api/#/#)
+* [RenameResource](https://cloud.tencent.com/document/api/#/#)
+* [RenameResourceFile](https://cloud.tencent.com/document/api/#/#)
+* [RenameTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [RenewWorkflowDs](https://cloud.tencent.com/document/api/#/#)
+* [RenewWorkflowFolderDs](https://cloud.tencent.com/document/api/#/#)
+* [RenewWorkflowOwnerDs](https://cloud.tencent.com/document/api/#/#)
+* [RenewWorkflowSchedulerInfoDs](https://cloud.tencent.com/document/api/#/#)
+* [SavePositionsDs](https://cloud.tencent.com/document/api/#/#)
+* [ScriptUsedByOtherTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [SubmitPySparkTask](https://cloud.tencent.com/document/api/#/#)
+* [SubmitPythonTask](https://cloud.tencent.com/document/api/#/#)
+* [SubmitShellTask](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskAdvancedSettings](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskDatasource](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskInCharge](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskParameter](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskParams](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskResourceGroup](https://cloud.tencent.com/document/api/#/#)
+* [UpdateBatchTaskSchedule](https://cloud.tencent.com/document/api/#/#)
+* [UpdateDsEvent](https://cloud.tencent.com/document/api/#/#)
+* [UpdateEventListener](https://cloud.tencent.com/document/api/#/#)
+* [UpdateTaskDs](https://cloud.tencent.com/document/api/#/#)
+* [UploadAdvanceRunParams](https://cloud.tencent.com/document/api/#/#)
+* [UploadFilesDs](https://cloud.tencent.com/document/api/#/#)
+* [UploadResource](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 

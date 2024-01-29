@@ -5355,6 +5355,81 @@ func (c *Client) DescribeErrorLogDataWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeInstanceAlarmEventsRequest() (request *DescribeInstanceAlarmEventsRequest) {
+    request = &DescribeInstanceAlarmEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceAlarmEvents")
+    
+    
+    return
+}
+
+func NewDescribeInstanceAlarmEventsResponse() (response *DescribeInstanceAlarmEventsResponse) {
+    response = &DescribeInstanceAlarmEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceAlarmEvents
+// 查询实例发生的事件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) DescribeInstanceAlarmEvents(request *DescribeInstanceAlarmEventsRequest) (response *DescribeInstanceAlarmEventsResponse, err error) {
+    return c.DescribeInstanceAlarmEventsWithContext(context.Background(), request)
+}
+
+// DescribeInstanceAlarmEvents
+// 查询实例发生的事件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) DescribeInstanceAlarmEventsWithContext(ctx context.Context, request *DescribeInstanceAlarmEventsRequest) (response *DescribeInstanceAlarmEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceAlarmEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceAlarmEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceAlarmEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
     request = &DescribeInstanceParamRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

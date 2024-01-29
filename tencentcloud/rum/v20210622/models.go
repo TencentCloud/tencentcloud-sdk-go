@@ -3271,7 +3271,8 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	//  5:1d
 	GroupByType *int64 `json:"GroupByType,omitnil" name:"GroupByType"`
 
-	// 无需关注，是否查询zhiyan
+	// 1: 查询智研
+	// 0: 走旧逻辑，已下线，勿使用
 	IsNewData *int64 `json:"IsNewData,omitnil" name:"IsNewData"`
 }
 
@@ -3345,7 +3346,8 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	//  5:1d
 	GroupByType *int64 `json:"GroupByType,omitnil" name:"GroupByType"`
 
-	// 无需关注，是否查询zhiyan
+	// 1: 查询智研
+	// 0: 走旧逻辑，已下线，勿使用
 	IsNewData *int64 `json:"IsNewData,omitnil" name:"IsNewData"`
 }
 

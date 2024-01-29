@@ -32,20 +32,8 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 创建组织失败。
-	FAILEDOPERATION_CREATEORGFAILED = "FailedOperation.CreateOrgFailed"
-
-	// 执行机不可删除, 执行机状态非已退役、未初始化或心跳超时。
-	FAILEDOPERATION_EXECUTORCANNOTDELETE = "FailedOperation.ExecutorCannotDelete"
-
 	// 查询数据开发资源锁状态-当前用户不持有锁
 	FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
-
-	// 回收站任务还原-任务重名
-	FAILEDOPERATION_RESTORETASKNAMEEXISTS = "FailedOperation.RestoreTaskNameExists"
-
-	// 回收站还原任务失败
-	FAILEDOPERATION_RESTOREUNKNOWNFAILED = "FailedOperation.RestoreUnknownFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -58,9 +46,6 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
-
-	// 告警接收地址不存在。
-	INVALIDPARAMETER_ALARMRECEIVEADDRESSNOTEXIST = "InvalidParameter.AlarmReceiveAddressNotExist"
 
 	// ClientIp未被授权。
 	INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
@@ -115,9 +100,6 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
-
-	// 回收站还原任务-工作流不存在
-	RESOURCENOTFOUND_RESTOREWORKFLOWNOTEXISTS = "ResourceNotFound.RestoreWorkflowNotExists"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
