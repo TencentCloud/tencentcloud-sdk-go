@@ -57,7 +57,7 @@ type AutoScalerBehavior struct {
 }
 
 type AutoScalerPolicy struct {
-	// 类型，Pods或Percent
+	// 类型，Pods
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil" name:"Type"`
 
@@ -71,7 +71,7 @@ type AutoScalerPolicy struct {
 }
 
 type AutoScalerRules struct {
-	// 稳定窗口时间
+	// 稳定窗口时间，扩容时默认0，缩容时默认300
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitnil" name:"StabilizationWindowSeconds"`
 
@@ -79,7 +79,7 @@ type AutoScalerRules struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectPolicy *string `json:"SelectPolicy,omitnil" name:"SelectPolicy"`
 
-	// 扩容策略
+	// 扩缩容策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policies []*AutoScalerPolicy `json:"Policies,omitnil" name:"Policies"`
 }
@@ -508,6 +508,8 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfig struct {
 
 	// 是否开启指标伸缩
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Enabled is deprecated.
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 
 	// 创建时间
@@ -541,14 +543,16 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfig struct {
 
 type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
 	// 指标类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// - Resource
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 指标资源名称
+	// - cpu
+	// - memory
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 
-	// 指标目标类型
+	// 指标目标类型，目前只支持百分比Utilization
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil" name:"TargetType"`
 
@@ -560,6 +564,8 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
 type CloudNativeAPIGatewayStrategyCronScalerConfig struct {
 	// 是否开启定时伸缩
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Enabled is deprecated.
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 
 	// 定时伸缩配置参数列表
@@ -594,11 +600,11 @@ type CloudNativeAPIGatewayStrategyCronScalerConfigParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartAt *string `json:"StartAt,omitnil" name:"StartAt"`
 
-	// 定时伸缩目标节点数
+	// 定时伸缩目标节点数，不超过指标伸缩中定义的最大节点数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetReplicas *int64 `json:"TargetReplicas,omitnil" name:"TargetReplicas"`
 
-	// 定时伸缩cron表达式
+	// 定时伸缩cron表达式，无需输入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Crontab *string `json:"Crontab,omitnil" name:"Crontab"`
 }
@@ -826,6 +832,10 @@ func (r *CreateCloudNativeAPIGatewayPublicNetworkRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayPublicNetworkResponseParams struct {
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreatePublicNetworkResult `json:"Result,omitnil" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1855,6 +1865,20 @@ func (r *CreateNativeGatewayServerGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateNativeGatewayServerGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePublicNetworkResult struct {
+	// 网关实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 客户端公网网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkId *string `json:"NetworkId,omitnil" name:"NetworkId"`
 }
 
 // Predefined struct for user

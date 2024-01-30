@@ -2832,6 +2832,9 @@ func (r *DescribeRoomForbiddenUserResponse) FromJsonString(s string) error {
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 请求RTMP推流链接，0：否，1：是，默认为0。
+	RTMPStreamingURL *uint64 `json:"RTMPStreamingURL,omitnil" name:"RTMPStreamingURL"`
 }
 
 type DescribeRoomRequest struct {
@@ -2839,6 +2842,9 @@ type DescribeRoomRequest struct {
 	
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 请求RTMP推流链接，0：否，1：是，默认为0。
+	RTMPStreamingURL *uint64 `json:"RTMPStreamingURL,omitnil" name:"RTMPStreamingURL"`
 }
 
 func (r *DescribeRoomRequest) ToJsonString() string {
@@ -2854,6 +2860,7 @@ func (r *DescribeRoomRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RoomId")
+	delete(f, "RTMPStreamingURL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomRequest has unknown keys!", "")
 	}
@@ -2960,6 +2967,9 @@ type DescribeRoomResponseParams struct {
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil" name:"RecordBackground"`
+
+	// RTMP推流链接
+	RTMPStreamingURL *string `json:"RTMPStreamingURL,omitnil" name:"RTMPStreamingURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

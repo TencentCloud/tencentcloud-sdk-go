@@ -204,6 +204,47 @@ type AlarmNotice struct {
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
 }
 
+type AlarmShieldInfo struct {
+	// 通知渠道组Id
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// 屏蔽规则id
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 屏蔽开始时间（秒级时间戳）。
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 屏蔽结束时间（秒级时间戳）。
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rule *string `json:"Rule,omitnil" name:"Rule"`
+
+	// 屏蔽原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 规则创建来源。
+	// 1. 控制台，2.api，3.告警通知
+	Source *uint64 `json:"Source,omitnil" name:"Source"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 规则状态。
+	// 0：暂未生效，1：生效中，2：已失效
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 规则创建时间。
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 规则更新时间。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
+
 type AlarmTarget struct {
 	// 日志主题ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1338,6 +1379,98 @@ func (r *CreateAlarmResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAlarmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlarmShieldRequestParams struct {
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// 屏蔽开始时间（秒级时间戳）。
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 屏蔽结束时间（秒级时间戳）。
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 屏蔽原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+	Rule *string `json:"Rule,omitnil" name:"Rule"`
+}
+
+type CreateAlarmShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// 屏蔽开始时间（秒级时间戳）。
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 屏蔽结束时间（秒级时间戳）。
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 屏蔽原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+	Rule *string `json:"Rule,omitnil" name:"Rule"`
+}
+
+func (r *CreateAlarmShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlarmNoticeId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Reason")
+	delete(f, "Rule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlarmShieldResponseParams struct {
+	// 屏蔽规则ID。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAlarmShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlarmShieldResponseParams `json:"Response"`
+}
+
+func (r *CreateAlarmShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3187,6 +3320,67 @@ func (r *DeleteAlarmResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAlarmShieldRequestParams struct {
+	// 屏蔽规则id。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+}
+
+type DeleteAlarmShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 屏蔽规则id。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+}
+
+func (r *DeleteAlarmShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "AlarmNoticeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAlarmShieldResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteAlarmShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAlarmShieldResponseParams `json:"Response"`
+}
+
+func (r *DeleteAlarmShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteConfigExtraRequestParams struct {
 	// 采集规则扩展配置ID
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
@@ -4090,6 +4284,91 @@ func (r *DescribeAlarmNoticesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlarmNoticesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmShieldsRequestParams struct {
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
+	// - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeAlarmShieldsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
+	// - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeAlarmShieldsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmShieldsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlarmNoticeId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmShieldsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmShieldsResponseParams struct {
+	// 符合条件的规则总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 告警屏蔽规则详情
+	AlarmShields []*AlarmShieldInfo `json:"AlarmShields,omitnil" name:"AlarmShields"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAlarmShieldsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmShieldsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmShieldsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmShieldsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7452,6 +7731,109 @@ func (r *ModifyAlarmResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAlarmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAlarmShieldRequestParams struct {
+	// 屏蔽规则ID。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// 屏蔽开始时间（秒级时间戳）。
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 屏蔽结束时间（秒级时间戳）。
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+	Rule *string `json:"Rule,omitnil" name:"Rule"`
+
+	// 屏蔽原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+}
+
+type ModifyAlarmShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 屏蔽规则ID。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 通知渠道组id。
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+
+	// 屏蔽开始时间（秒级时间戳）。
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 屏蔽结束时间（秒级时间戳）。
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+
+	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+	Rule *string `json:"Rule,omitnil" name:"Rule"`
+
+	// 屏蔽原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *ModifyAlarmShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "AlarmNoticeId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Rule")
+	delete(f, "Reason")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAlarmShieldResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAlarmShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAlarmShieldResponseParams `json:"Response"`
+}
+
+func (r *ModifyAlarmShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmShieldResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

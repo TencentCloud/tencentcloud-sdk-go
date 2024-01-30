@@ -3644,7 +3644,7 @@ type InstanceChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *int64 `json:"Period,omitnil" name:"Period"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
@@ -3775,12 +3775,10 @@ type LaunchConfiguration struct {
 	// 镜像ID。
 	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
-	// 启动配置当前状态。取值范围：<br><li>NORMAL：正常<br><li>IMAGE_ABNORMAL：启动配置镜像异常<br><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常<br><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常<br>
+	// 启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
 	LaunchConfigurationStatus *string `json:"LaunchConfigurationStatus,omitnil" name:"LaunchConfigurationStatus"`
 
-	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
-	// <br><li>POSTPAID_BY_HOUR：按小时后付费
-	// <br><li>SPOTPAID：竞价付费
+	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
@@ -3818,9 +3816,7 @@ type LaunchConfiguration struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
 
-	// 云盘类型选择策略。取值范围：
-	// <br><li>ORIGINAL：使用设置的云盘类型
-	// <br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
+	// 云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li>
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitnil" name:"DiskTypePolicy"`
 
 	// 高性能计算集群ID。<br>
@@ -3829,6 +3825,9 @@ type LaunchConfiguration struct {
 
 	// IPv6公网带宽相关信息设置。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitnil" name:"IPv6InternetAccessible"`
+
+	// 置放群组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil" name:"DisasterRecoverGroupIds"`
 }
 
 type LifecycleActionResultInfo struct {

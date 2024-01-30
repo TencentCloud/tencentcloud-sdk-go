@@ -7201,6 +7201,10 @@ func NewDescribeAttackLogInfoResponse() (response *DescribeAttackLogInfoResponse
 }
 
 // DescribeAttackLogInfo
+// DescribeAttackEventInfo 接口替代
+//
+// 
+//
 // 网络攻击日志详情
 //
 // 可能返回的错误码:
@@ -7218,6 +7222,10 @@ func (c *Client) DescribeAttackLogInfo(request *DescribeAttackLogInfoRequest) (r
 }
 
 // DescribeAttackLogInfo
+// DescribeAttackEventInfo 接口替代
+//
+// 
+//
 // 网络攻击日志详情
 //
 // 可能返回的错误码:

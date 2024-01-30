@@ -490,6 +490,71 @@ func (c *Client) CreateAlarmNoticeWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateAlarmShieldRequest() (request *CreateAlarmShieldRequest) {
+    request = &CreateAlarmShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateAlarmShield")
+    
+    
+    return
+}
+
+func NewCreateAlarmShieldResponse() (response *CreateAlarmShieldResponse) {
+    response = &CreateAlarmShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlarmShield
+// 该接口用于创建告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateAlarmShield(request *CreateAlarmShieldRequest) (response *CreateAlarmShieldResponse, err error) {
+    return c.CreateAlarmShieldWithContext(context.Background(), request)
+}
+
+// CreateAlarmShield
+// 该接口用于创建告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateAlarmShieldWithContext(ctx context.Context, request *CreateAlarmShieldRequest) (response *CreateAlarmShieldResponse, err error) {
+    if request == nil {
+        request = NewCreateAlarmShieldRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlarmShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlarmShieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConfigRequest() (request *CreateConfigRequest) {
     request = &CreateConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1616,6 +1681,71 @@ func (c *Client) DeleteAlarmNoticeWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteAlarmShieldRequest() (request *DeleteAlarmShieldRequest) {
+    request = &DeleteAlarmShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteAlarmShield")
+    
+    
+    return
+}
+
+func NewDeleteAlarmShieldResponse() (response *DeleteAlarmShieldResponse) {
+    response = &DeleteAlarmShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAlarmShield
+// 该接口用于删除告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteAlarmShield(request *DeleteAlarmShieldRequest) (response *DeleteAlarmShieldResponse, err error) {
+    return c.DeleteAlarmShieldWithContext(context.Background(), request)
+}
+
+// DeleteAlarmShield
+// 该接口用于删除告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteAlarmShieldWithContext(ctx context.Context, request *DeleteAlarmShieldRequest) (response *DeleteAlarmShieldResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmShieldRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAlarmShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAlarmShieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
     request = &DeleteConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2627,6 +2757,85 @@ func (c *Client) DescribeAlarmNoticesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAlarmNoticesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmShieldsRequest() (request *DescribeAlarmShieldsRequest) {
+    request = &DescribeAlarmShieldsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAlarmShields")
+    
+    
+    return
+}
+
+func NewDescribeAlarmShieldsResponse() (response *DescribeAlarmShieldsResponse) {
+    response = &DescribeAlarmShieldsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAlarmShields
+// 获取告警屏蔽配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmShields(request *DescribeAlarmShieldsRequest) (response *DescribeAlarmShieldsResponse, err error) {
+    return c.DescribeAlarmShieldsWithContext(context.Background(), request)
+}
+
+// DescribeAlarmShields
+// 获取告警屏蔽配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmShieldsWithContext(ctx context.Context, request *DescribeAlarmShieldsRequest) (response *DescribeAlarmShieldsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmShieldsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmShields require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmShieldsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4702,6 +4911,71 @@ func (c *Client) ModifyAlarmNoticeWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyAlarmNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmShieldRequest() (request *ModifyAlarmShieldRequest) {
+    request = &ModifyAlarmShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyAlarmShield")
+    
+    
+    return
+}
+
+func NewModifyAlarmShieldResponse() (response *ModifyAlarmShieldResponse) {
+    response = &ModifyAlarmShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAlarmShield
+// 该接口用于修改告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyAlarmShield(request *ModifyAlarmShieldRequest) (response *ModifyAlarmShieldResponse, err error) {
+    return c.ModifyAlarmShieldWithContext(context.Background(), request)
+}
+
+// ModifyAlarmShield
+// 该接口用于修改告警屏蔽规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyAlarmShieldWithContext(ctx context.Context, request *ModifyAlarmShieldRequest) (response *ModifyAlarmShieldResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmShieldRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAlarmShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAlarmShieldResponse()
     err = c.Send(request, response)
     return
 }

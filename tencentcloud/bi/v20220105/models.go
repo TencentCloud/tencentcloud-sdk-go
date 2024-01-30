@@ -82,6 +82,10 @@ func (r *ApplyEmbedIntervalRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplyEmbedIntervalResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 额外参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -345,6 +349,10 @@ func (r *CreateDatasourceCloudRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDatasourceCloudResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 成功无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IdDTO `json:"Data,omitnil" name:"Data"`
@@ -537,6 +545,10 @@ func (r *CreateDatasourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDatasourceResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IdDTO `json:"Data,omitnil" name:"Data"`
@@ -652,6 +664,10 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEmbedTokenResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -753,6 +769,10 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 额外数据
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
@@ -837,6 +857,10 @@ func (r *CreateUserRoleProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRoleProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -917,6 +941,10 @@ func (r *CreateUserRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRoleResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1147,6 +1175,10 @@ func (r *DeleteDatasourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDatasourceResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
@@ -1225,6 +1257,10 @@ func (r *DeleteProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// ”“
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
@@ -1297,6 +1333,10 @@ func (r *DeleteUserRoleProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserRoleProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1363,6 +1403,10 @@ func (r *DeleteUserRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserRoleResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1471,6 +1515,10 @@ func (r *DescribeDatasourceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatasourceListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 列表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DatasourceInfoData `json:"Data,omitnil" name:"Data"`
@@ -1542,6 +1590,10 @@ func (r *DescribeProjectInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectInfoResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// ""
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1636,6 +1688,10 @@ func (r *DescribeProjectListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1723,6 +1779,10 @@ func (r *DescribeUserProjectListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserProjectListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CorpUserListData `json:"Data,omitnil" name:"Data"`
@@ -1774,6 +1834,9 @@ type DescribeUserRoleListRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 是否只获取绑定企微应用的
+	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil" name:"IsOnlyBindAppUser"`
 }
 
 type DescribeUserRoleListRequest struct {
@@ -1796,6 +1859,9 @@ type DescribeUserRoleListRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 是否只获取绑定企微应用的
+	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil" name:"IsOnlyBindAppUser"`
 }
 
 func (r *DescribeUserRoleListRequest) ToJsonString() string {
@@ -1816,6 +1882,7 @@ func (r *DescribeUserRoleListRequest) FromJsonString(s string) error {
 	delete(f, "UserType")
 	delete(f, "Keyword")
 	delete(f, "ProjectId")
+	delete(f, "IsOnlyBindAppUser")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleListRequest has unknown keys!", "")
 	}
@@ -1824,6 +1891,10 @@ func (r *DescribeUserRoleListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRoleListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1866,6 +1937,9 @@ type DescribeUserRoleProjectListRequestParams struct {
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 是否只获取绑定企微应用的
+	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil" name:"IsOnlyBindAppUser"`
 }
 
 type DescribeUserRoleProjectListRequest struct {
@@ -1879,6 +1953,9 @@ type DescribeUserRoleProjectListRequest struct {
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 是否只获取绑定企微应用的
+	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil" name:"IsOnlyBindAppUser"`
 }
 
 func (r *DescribeUserRoleProjectListRequest) ToJsonString() string {
@@ -1896,6 +1973,7 @@ func (r *DescribeUserRoleProjectListRequest) FromJsonString(s string) error {
 	delete(f, "PageNo")
 	delete(f, "PageSize")
 	delete(f, "ProjectId")
+	delete(f, "IsOnlyBindAppUser")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleProjectListRequest has unknown keys!", "")
 	}
@@ -1904,6 +1982,10 @@ func (r *DescribeUserRoleProjectListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRoleProjectListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -1992,6 +2074,35 @@ type EmbedTokenInfo struct {
 	// 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TicketNum *int64 `json:"TicketNum,omitnil" name:"TicketNum"`
+}
+
+type ErrorInfo struct {
+	// 错误说明字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorTip *string `json:"ErrorTip,omitnil" name:"ErrorTip"`
+
+	// 原始异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
+
+	// 错误等级字段
+	// ERROR
+	// WARN
+	// INFO
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorLevel *string `json:"ErrorLevel,omitnil" name:"ErrorLevel"`
+
+	// 指引文档链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocLink *string `json:"DocLink,omitnil" name:"DocLink"`
+
+	// 快速指引说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FAQ *string `json:"FAQ,omitnil" name:"FAQ"`
+
+	// 预留字段1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReservedField *string `json:"ReservedField,omitnil" name:"ReservedField"`
 }
 
 type IdDTO struct {
@@ -2190,6 +2301,10 @@ func (r *ModifyDatasourceCloudRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDatasourceCloudResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 成功无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
@@ -2389,6 +2504,10 @@ func (r *ModifyDatasourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDatasourceResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
@@ -2511,6 +2630,10 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -2559,6 +2682,9 @@ type ModifyUserRoleProjectRequestParams struct {
 
 	// 用户名
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 企业微信应用用户id
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
 }
 
 type ModifyUserRoleProjectRequest struct {
@@ -2578,6 +2704,9 @@ type ModifyUserRoleProjectRequest struct {
 
 	// 用户名
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 企业微信应用用户id
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
 }
 
 func (r *ModifyUserRoleProjectRequest) ToJsonString() string {
@@ -2597,6 +2726,7 @@ func (r *ModifyUserRoleProjectRequest) FromJsonString(s string) error {
 	delete(f, "RoleIdList")
 	delete(f, "Email")
 	delete(f, "UserName")
+	delete(f, "AppUserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRoleProjectRequest has unknown keys!", "")
 	}
@@ -2605,6 +2735,10 @@ func (r *ModifyUserRoleProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserRoleProjectResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -2656,6 +2790,9 @@ type ModifyUserRoleRequestParams struct {
 
 	// 手机区号
 	AreaCode *string `json:"AreaCode,omitnil" name:"AreaCode"`
+
+	// 企业微信应用用户id
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
 }
 
 type ModifyUserRoleRequest struct {
@@ -2678,6 +2815,9 @@ type ModifyUserRoleRequest struct {
 
 	// 手机区号
 	AreaCode *string `json:"AreaCode,omitnil" name:"AreaCode"`
+
+	// 企业微信应用用户id
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
 }
 
 func (r *ModifyUserRoleRequest) ToJsonString() string {
@@ -2698,6 +2838,7 @@ func (r *ModifyUserRoleRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "PhoneNumber")
 	delete(f, "AreaCode")
+	delete(f, "AppUserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRoleRequest has unknown keys!", "")
 	}
@@ -2706,6 +2847,10 @@ func (r *ModifyUserRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserRoleResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
 	// 扩展
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
@@ -2951,6 +3096,26 @@ type UserIdAndUserName struct {
 	// 手机号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserAliasName *string `json:"AppUserAliasName,omitnil" name:"AppUserAliasName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserName *string `json:"AppUserName,omitnil" name:"AppUserName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InValidateAppRange *bool `json:"InValidateAppRange,omitnil" name:"InValidateAppRange"`
 }
 
 type UserInfo struct {
@@ -3077,4 +3242,20 @@ type UserRoleListDataUserRoleInfo struct {
 	// 是否为企业管理员
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpAdmin *bool `json:"CorpAdmin,omitnil" name:"CorpAdmin"`
+
+	// 企微用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserId *string `json:"AppUserId,omitnil" name:"AppUserId"`
+
+	// 昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserAliasName *string `json:"AppUserAliasName,omitnil" name:"AppUserAliasName"`
+
+	// 应用用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserName *string `json:"AppUserName,omitnil" name:"AppUserName"`
+
+	// 是否在可见范围内
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InValidateAppRange *bool `json:"InValidateAppRange,omitnil" name:"InValidateAppRange"`
 }

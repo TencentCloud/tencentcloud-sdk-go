@@ -4383,6 +4383,20 @@ type OrganizationUserInfo struct {
 	TcMemberType *int64 `json:"TcMemberType,omitnil" name:"TcMemberType"`
 }
 
+type PortRiskAdvanceCFGParamItem struct {
+	// 端口集合,以逗号分隔
+	PortSets *string `json:"PortSets,omitnil" name:"PortSets"`
+
+	// 检测项类型，0-系统定义，1-用户自定义
+	CheckType *int64 `json:"CheckType,omitnil" name:"CheckType"`
+
+	// 检测项描述
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// 是否启用，1-启用，0-禁用
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+}
+
 type PortViewPortRisk struct {
 	// 影响资产
 	NoHandleCount *int64 `json:"NoHandleCount,omitnil" name:"NoHandleCount"`
@@ -4914,6 +4928,9 @@ type Tags struct {
 }
 
 type TaskAdvanceCFG struct {
+	// 端口风险高级配置
+	PortRisk []*PortRiskAdvanceCFGParamItem `json:"PortRisk,omitnil" name:"PortRisk"`
+
 	// 漏洞风险高级配置
 	VulRisk []*TaskCenterVulRiskInputParam `json:"VulRisk,omitnil" name:"VulRisk"`
 

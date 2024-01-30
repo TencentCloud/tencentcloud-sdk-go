@@ -113,6 +113,12 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// DB错误。
+	INTERNALERROR_DBERROR = "InternalError.DbError"
+
+	// 角色非法。
+	INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+
 	// 检索错误
 	INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 
@@ -161,6 +167,9 @@ const (
 	// 同名机器组已经存在。
 	INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
 
+	// 参数错误。
+	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+
 	// 投递规则命名冲突。
 	INVALIDPARAMETER_SHIPPERCONFLICT = "InvalidParameter.ShipperConflict"
 
@@ -202,6 +211,9 @@ const (
 
 	// 分区超过限制。
 	LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"
+
+	// 记录超过限制
+	LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
 
 	// 检索内存超限。
 	LIMITEXCEEDED_SEARCHRESOURCES = "LimitExceeded.SearchResources"
@@ -307,6 +319,12 @@ const (
 
 	// 日志主题不存在。
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

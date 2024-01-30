@@ -53,6 +53,9 @@ type BatchUpdateFirmwareRequestParams struct {
 
 	// 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil" name:"TimeoutInterval"`
+
+	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7。
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 type BatchUpdateFirmwareRequest struct {
@@ -84,6 +87,9 @@ type BatchUpdateFirmwareRequest struct {
 
 	// 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil" name:"TimeoutInterval"`
+
+	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7。
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
@@ -107,6 +113,7 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileSize")
 	delete(f, "DeviceNames")
 	delete(f, "TimeoutInterval")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
 	}
@@ -3663,6 +3670,9 @@ type EditFirmwareRequestParams struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitnil" name:"FirmwareDescription"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 type EditFirmwareRequest struct {
@@ -3679,6 +3689,9 @@ type EditFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitnil" name:"FirmwareDescription"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 func (r *EditFirmwareRequest) ToJsonString() string {
@@ -3697,6 +3710,7 @@ func (r *EditFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FirmwareUserDefined")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditFirmwareRequest has unknown keys!", "")
 	}
@@ -5704,6 +5718,74 @@ func (r *UpdateDevicesEnableStateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateOtaTaskStatusRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 固件升级任务ID
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 固件任务取消状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+}
+
+type UpdateOtaTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 固件升级任务ID
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 固件任务取消状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+}
+
+func (r *UpdateOtaTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOtaTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "TaskId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOtaTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOtaTaskStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateOtaTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOtaTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *UpdateOtaTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOtaTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdatePrivateCARequestParams struct {
 	// CA证书名称
 	CertName *string `json:"CertName,omitnil" name:"CertName"`
@@ -6010,6 +6092,9 @@ type UploadFirmwareRequestParams struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitnil" name:"FirmwareDescription"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 type UploadFirmwareRequest struct {
@@ -6032,6 +6117,9 @@ type UploadFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitnil" name:"FirmwareDescription"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 func (r *UploadFirmwareRequest) ToJsonString() string {
@@ -6052,6 +6140,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileSize")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FirmwareUserDefined")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFirmwareRequest has unknown keys!", "")
 	}

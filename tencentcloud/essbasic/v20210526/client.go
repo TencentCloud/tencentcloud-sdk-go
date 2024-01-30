@@ -5755,7 +5755,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font>[PDF合成完成的回调](https://qian.tencent.com/developers/partner/callback_types_file_resources)或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
+// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font> <a href="https://qian.tencent.com/developers/partner/callback_types_file_resources">PDF合成完成的回调</a>或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5909,7 +5909,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font>[PDF合成完成的回调](https://qian.tencent.com/developers/partner/callback_types_file_resources)或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
+// 5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font> <a href="https://qian.tencent.com/developers/partner/callback_types_file_resources">PDF合成完成的回调</a>或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

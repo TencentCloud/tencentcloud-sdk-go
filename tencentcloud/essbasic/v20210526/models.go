@@ -5896,6 +5896,10 @@ type Component struct {
 	// <ul><li> <b>PageRanges</b> :PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）</li></ul>
 	// <b>参数样例</b>：` "{"PageRange":[{"BeginPage":1,"EndPage":-1}]}"`
 	// 
+	// <font color="red">签署印章旋转功能，当ComponentType为SIGN_SIGNATURE、SIGN_DATE、SIGN_SEAL时</font>，可以通过以下参数设置签署图片的旋转角度：
+	// <ul><li> <b>Rotate</b>：旋转角度，支持范围：-360：360，为正整数时，为顺时针旋转；为负整数时，为逆时针旋转。</li>
+	// <li> <b>RotateRelation</b>：旋转关联控件，用于指定关联旋转的控件。例如：让印章控件和签署日期控件按照印章控件为中心旋转（此时，设置印章控件的RotateRelation为日期控件的ComponentId，设置日期签署控件的RotateRelation为印章控件的ComponentId）。</li></ul>
+	// <b>参数样例</b>：`{"Rotate":-30,"RotateRelation":"Component_Id1"}`
 	// 
 	// <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 	// <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>

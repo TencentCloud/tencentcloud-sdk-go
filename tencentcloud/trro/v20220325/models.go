@@ -1294,6 +1294,10 @@ type Device struct {
 	// 已经绑定licenseId列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseIds []*string `json:"LicenseIds,omitnil" name:"LicenseIds"`
+
+	// 每月license的限定时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonthlyRemainTime *int64 `json:"MonthlyRemainTime,omitnil" name:"MonthlyRemainTime"`
 }
 
 type DeviceInfo struct {
@@ -1507,6 +1511,9 @@ type GetLicenseStatResponseParams struct {
 	// 过期授权
 	Expire *int64 `json:"Expire,omitnil" name:"Expire"`
 
+	// 当月用量超时授权个数
+	MonthlyExpire *int64 `json:"MonthlyExpire,omitnil" name:"MonthlyExpire"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1540,6 +1547,9 @@ type GetLicensesRequestParams struct {
 
 	// DeviceId
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type GetLicensesRequest struct {
@@ -1556,6 +1566,9 @@ type GetLicensesRequest struct {
 
 	// DeviceId
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *GetLicensesRequest) ToJsonString() string {
@@ -1574,6 +1587,7 @@ func (r *GetLicensesRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "ProjectId")
 	delete(f, "DeviceId")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLicensesRequest has unknown keys!", "")
 	}

@@ -65,7 +65,7 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
 }
 
 // BatchUpdateFirmware
-// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
@@ -77,7 +77,7 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
 }
 
 // BatchUpdateFirmware
-// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
@@ -2810,7 +2810,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2821,7 +2821,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3842,6 +3842,67 @@ func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, reques
     return
 }
 
+func NewUpdateOtaTaskStatusRequest() (request *UpdateOtaTaskStatusRequest) {
+    request = &UpdateOtaTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateOtaTaskStatus")
+    
+    
+    return
+}
+
+func NewUpdateOtaTaskStatusResponse() (response *UpdateOtaTaskStatusResponse) {
+    response = &UpdateOtaTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateOtaTaskStatus
+// 本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateOtaTaskStatus(request *UpdateOtaTaskStatusRequest) (response *UpdateOtaTaskStatusResponse, err error) {
+    return c.UpdateOtaTaskStatusWithContext(context.Background(), request)
+}
+
+// UpdateOtaTaskStatus
+// 本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateOtaTaskStatusWithContext(ctx context.Context, request *UpdateOtaTaskStatusRequest) (response *UpdateOtaTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateOtaTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOtaTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOtaTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdatePrivateCARequest() (request *UpdatePrivateCARequest) {
     request = &UpdatePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4078,7 +4139,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件信息 
+// 本接口（UploadFirmware）用于上传设备固件信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4091,7 +4152,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件信息 
+// 本接口（UploadFirmware）用于上传设备固件信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
