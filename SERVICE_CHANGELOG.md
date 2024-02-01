@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API 网关(apigateway) 版本：2018-08-08
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 48 次发布
+### 第 149 次发布
 
-发布时间：2024-01-31 01:06:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Environment](https://cloud.tencent.com/document/api/628/45244#Environment)
-
-	* 新增成员：CreateTime
-
-
-
-
-## 弹性伸缩(as) 版本：2018-04-19
-
-### 第 70 次发布
-
-发布时间：2024-01-31 01:06:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
-
-	* 新增成员：DisasterRecoverGroupIds
-
-
-
-
-## 商业智能分析 BI(bi) 版本：2022-01-05
-
-### 第 9 次发布
-
-发布时间：2024-01-31 01:07:03
+发布时间：2024-01-31 11:46:30
 
 本次发布包含了以下内容：
 
@@ -50,224 +12,22 @@
 
 修改接口：
 
-* [ApplyEmbedInterval](https://cloud.tencent.com/document/api/590/73725)
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
 
-	* 新增出参：ErrorInfo
+	* 新增入参：ReportType
 
-* [CreateDatasource](https://cloud.tencent.com/document/api/590/98854)
+* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
 
-	* 新增出参：ErrorInfo
+	* 新增入参：ReportType
 
-* [CreateDatasourceCloud](https://cloud.tencent.com/document/api/590/98853)
 
-	* 新增出参：ErrorInfo
 
-* [CreateEmbedToken](https://cloud.tencent.com/document/api/590/73724)
 
-	* 新增出参：ErrorInfo
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-* [CreateProject](https://cloud.tencent.com/document/api/590/98838)
+### 第 151 次发布
 
-	* 新增出参：ErrorInfo
-
-* [CreateUserRole](https://cloud.tencent.com/document/api/590/98848)
-
-	* 新增出参：ErrorInfo
-
-* [CreateUserRoleProject](https://cloud.tencent.com/document/api/590/98847)
-
-	* 新增出参：ErrorInfo
-
-* [DeleteDatasource](https://cloud.tencent.com/document/api/590/98852)
-
-	* 新增出参：ErrorInfo
-
-* [DeleteProject](https://cloud.tencent.com/document/api/590/98837)
-
-	* 新增出参：ErrorInfo
-
-* [DeleteUserRole](https://cloud.tencent.com/document/api/590/98846)
-
-	* 新增出参：ErrorInfo
-
-* [DeleteUserRoleProject](https://cloud.tencent.com/document/api/590/98845)
-
-	* 新增出参：ErrorInfo
-
-* [DescribeDatasourceList](https://cloud.tencent.com/document/api/590/98840)
-
-	* 新增出参：ErrorInfo
-
-* [DescribeProjectInfo](https://cloud.tencent.com/document/api/590/98836)
-
-	* 新增出参：ErrorInfo
-
-* [DescribeProjectList](https://cloud.tencent.com/document/api/590/98835)
-
-	* 新增出参：ErrorInfo
-
-* [DescribeUserProjectList](https://cloud.tencent.com/document/api/590/98844)
-
-	* 新增出参：ErrorInfo
-
-* [DescribeUserRoleList](https://cloud.tencent.com/document/api/590/98843)
-
-	* 新增入参：IsOnlyBindAppUser
-
-	* 新增出参：ErrorInfo
-
-* [DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)
-
-	* 新增入参：IsOnlyBindAppUser
-
-	* 新增出参：ErrorInfo
-
-* [ModifyDatasource](https://cloud.tencent.com/document/api/590/98851)
-
-	* 新增出参：ErrorInfo
-
-* [ModifyDatasourceCloud](https://cloud.tencent.com/document/api/590/98850)
-
-	* 新增出参：ErrorInfo
-
-* [ModifyProject](https://cloud.tencent.com/document/api/590/98834)
-
-	* 新增出参：ErrorInfo
-
-* [ModifyUserRole](https://cloud.tencent.com/document/api/590/98878)
-
-	* 新增入参：AppUserId
-
-	* 新增出参：ErrorInfo
-
-* [ModifyUserRoleProject](https://cloud.tencent.com/document/api/590/98842)
-
-	* 新增入参：AppUserId
-
-	* 新增出参：ErrorInfo
-
-
-新增数据结构：
-
-* [ErrorInfo](https://cloud.tencent.com/document/api/590/73726#ErrorInfo)
-
-修改数据结构：
-
-* [UserIdAndUserName](https://cloud.tencent.com/document/api/590/73726#UserIdAndUserName)
-
-	* 新增成员：AppId, AppUserId, AppUserAliasName, AppUserName, InValidateAppRange
-
-* [UserRoleListDataUserRoleInfo](https://cloud.tencent.com/document/api/590/73726#UserRoleListDataUserRoleInfo)
-
-	* 新增成员：AppUserId, AppUserAliasName, AppUserName, InValidateAppRange
-
-	* <font color="#dd0000">**修改成员**：</font>CorpAdmin
-
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 80 次发布
-
-发布时间：2024-01-31 01:10:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAlarmShield](https://cloud.tencent.com/document/api/614/103652)
-* [DeleteAlarmShield](https://cloud.tencent.com/document/api/614/103651)
-* [DescribeAlarmShields](https://cloud.tencent.com/document/api/614/103650)
-* [ModifyAlarmShield](https://cloud.tencent.com/document/api/614/103649)
-
-新增数据结构：
-
-* [AlarmShieldInfo](https://cloud.tencent.com/document/api/614/56471#AlarmShieldInfo)
-
-
-
-## 云安全一体化平台(csip) 版本：2022-11-21
-
-### 第 30 次发布
-
-发布时间：2024-01-31 01:10:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [PortRiskAdvanceCFGParamItem](https://cloud.tencent.com/document/api/664/90825#PortRiskAdvanceCFGParamItem)
-
-修改数据结构：
-
-* [TaskAdvanceCFG](https://cloud.tencent.com/document/api/664/90825#TaskAdvanceCFG)
-
-	* 新增成员：PortRisk
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 107 次发布
-
-发布时间：2024-01-31 01:11:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* DescribeAttackLogInfo
-
-
-
-## 物联网通信(iotcloud) 版本：2021-04-08
-
-### 第 10 次发布
-
-发布时间：2024-01-31 01:16:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateOtaTaskStatus](https://cloud.tencent.com/document/api/634/103653)
-
-修改接口：
-
-* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/73637)
-
-	* 新增入参：Type
-
-* [EditFirmware](https://cloud.tencent.com/document/api/634/73623)
-
-	* 新增入参：FirmwareUserDefined
-
-* [UploadFirmware](https://cloud.tencent.com/document/api/634/73621)
-
-	* 新增入参：FirmwareUserDefined
-
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-
-
-## 实时互动-教育版(lcic) 版本：2022-08-17
-
-### 第 50 次发布
-
-发布时间：2024-01-31 01:17:54
+发布时间：2024-01-31 11:46:10
 
 本次发布包含了以下内容：
 
@@ -275,116 +35,18 @@
 
 修改接口：
 
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
 
-	* 新增入参：RTMPStreamingURL
+	* 新增入参：ReportType
 
-	* 新增出参：RTMPStreamingURL
+* [DescribeChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/83442)
 
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 33 次发布
-
-发布时间：2024-01-31 01:20:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeDataPerformanceProject
-
-
-
-## 远程实时操控(trro) 版本：2022-03-25
-
-### 第 4 次发布
-
-发布时间：2024-01-31 01:25:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetLicenseStat](https://cloud.tencent.com/document/api/1584/89901)
-
-	* 新增出参：MonthlyExpire
-
-* [GetLicenses](https://cloud.tencent.com/document/api/1584/89900)
-
-	* 新增入参：Status
-
-
-修改数据结构：
-
-* [Device](https://cloud.tencent.com/document/api/1584/89828#Device)
-
-	* 新增成员：MonthlyRemainTime
-
-	* <font color="#dd0000">**修改成员**：</font>DeviceId, DeviceName, LicenseCount, RemainDay, ExpireTime, Duration, LicenseIds
+	* 新增入参：ReportType
 
 
 
 
-## 微服务引擎(tse) 版本：2020-12-07
-
-### 第 56 次发布
-
-发布时间：2024-01-31 01:25:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCloudNativeAPIGatewayPublicNetwork](https://cloud.tencent.com/document/api/1364/102778)
-
-	* 新增出参：Result
-
-
-新增数据结构：
-
-* [CreatePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#CreatePublicNetworkResult)
-
-修改数据结构：
-
-* [CloudNativeAPIGatewayStrategyAutoScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyAutoScalerConfig)
-
-* [CloudNativeAPIGatewayStrategyCronScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyCronScalerConfig)
-
-
-
-
-## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
-
-### 第 7 次发布
-
-发布时间：2024-01-31 01:28:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDeviceList](https://cloud.tencent.com/document/api/1693/101482)
-
-	* 新增入参：IsActive, IsCamera
-
-
-修改数据结构：
-
-* [DeviceDataInfo](https://cloud.tencent.com/document/api/1693/97961#DeviceDataInfo)
-
-	* 新增成员：DeviceStatus, Status
-
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
@@ -8865,7 +8527,7 @@
 
 新增数据结构：
 
-* [[ErrorInfo](https://cloud.tencent.com/document/api/590/73726#ErrorInfo)](https://cloud.tencent.com/document/api/590/73726#[ErrorInfo](https://cloud.tencent.com/document/api/590/73726#ErrorInfo))
+* [ErrorInfo](https://cloud.tencent.com/document/api/590/73726#ErrorInfo)
 
 修改数据结构：
 
@@ -30178,14 +29840,14 @@
 
 新增接口：
 
-* [[CreateAlarmShield](https://cloud.tencent.com/document/api/614/103652)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAlarmShield](https://cloud.tencent.com/document/api/614/103651)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAlarmShields](https://cloud.tencent.com/document/api/614/103650)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAlarmShield](https://cloud.tencent.com/document/api/614/103649)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAlarmShield](https://cloud.tencent.com/document/api/614/103652)
+* [DeleteAlarmShield](https://cloud.tencent.com/document/api/614/103651)
+* [DescribeAlarmShields](https://cloud.tencent.com/document/api/614/103650)
+* [ModifyAlarmShield](https://cloud.tencent.com/document/api/614/103649)
 
 新增数据结构：
 
-* [[AlarmShieldInfo](https://cloud.tencent.com/document/api/614/56471#AlarmShieldInfo)](https://cloud.tencent.com/document/api/614/56471#[AlarmShieldInfo](https://cloud.tencent.com/document/api/614/56471#AlarmShieldInfo))
+* [AlarmShieldInfo](https://cloud.tencent.com/document/api/614/56471#AlarmShieldInfo)
 
 ### 第 79 次发布
 
@@ -36380,7 +36042,7 @@
 
 新增数据结构：
 
-* [[PortRiskAdvanceCFGParamItem](https://cloud.tencent.com/document/api/664/90825#PortRiskAdvanceCFGParamItem)](https://cloud.tencent.com/document/api/664/90825#[PortRiskAdvanceCFGParamItem](https://cloud.tencent.com/document/api/664/90825#PortRiskAdvanceCFGParamItem))
+* [PortRiskAdvanceCFGParamItem](https://cloud.tencent.com/document/api/664/90825#PortRiskAdvanceCFGParamItem)
 
 修改数据结构：
 
@@ -58185,6 +57847,25 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 149 次发布
+
+发布时间：2024-01-31 11:46:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+
+	* 新增入参：ReportType
+
+* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
+
+	* 新增入参：ReportType
+
+
 ### 第 148 次发布
 
 发布时间：2024-01-26 01:13:26
@@ -61062,6 +60743,25 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 151 次发布
+
+发布时间：2024-01-31 11:46:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
+
+	* 新增入参：ReportType
+
+* [DescribeChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/83442)
+
+	* 新增入参：ReportType
+
 
 ### 第 150 次发布
 
@@ -71723,7 +71423,7 @@
 
 新增接口：
 
-* [[UpdateOtaTaskStatus](https://cloud.tencent.com/document/api/634/103653)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateOtaTaskStatus](https://cloud.tencent.com/document/api/634/103653)
 
 修改接口：
 
@@ -130508,7 +130208,7 @@
 
 新增数据结构：
 
-* [[CreatePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#CreatePublicNetworkResult)](https://cloud.tencent.com/document/api/1364/54942#[CreatePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#CreatePublicNetworkResult))
+* [CreatePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#CreatePublicNetworkResult)
 
 修改数据结构：
 

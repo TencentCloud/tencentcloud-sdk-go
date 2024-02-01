@@ -783,11 +783,73 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // 
 //
-// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
+// ###  调用流程
+//
+// 该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+//
+// 
+//
+// 
+//
+// ### 填充模版中定义的填写控件
+//
+// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
+//
+// 填充的传参示例如下
+//
+// ```
+//
+//     request.FormFields = [{
+//
+//             "ComponentName": "项目的名字",
+//
+//             "ComponentValue": "休闲山庄"
+//
+//         }, {
+//
+//             "ComponentName": "项目的地址",
+//
+//             "ComponentValue": "凤凰山北侧",
+//
+//         }, {
+//
+//             "ComponentName": "范围",
+//
+//             "ComponentValue": "凤凰山至107国道",
+//
+//         }, {
+//
+//             "ComponentName": "面积",
+//
+//             "ComponentValue": "100亩",
+//
+//         }, {
+//
+//             "ComponentName": "基本情况",
+//
+//             "ComponentValue": "完好",
+//
+//         }, , {
+//
+//             "ComponentName": "用途",
+//
+//             "ComponentValue": "经营农家乐",
+//
+//         }
+//
+//     ]
+//
+// ```
+//
+// 合成后合同样子示例
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -844,11 +906,73 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // 
 //
-// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
+// ###  调用流程
+//
+// 该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+//
+// 
+//
+// 
+//
+// ### 填充模版中定义的填写控件
+//
+// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
+//
+// 填充的传参示例如下
+//
+// ```
+//
+//     request.FormFields = [{
+//
+//             "ComponentName": "项目的名字",
+//
+//             "ComponentValue": "休闲山庄"
+//
+//         }, {
+//
+//             "ComponentName": "项目的地址",
+//
+//             "ComponentValue": "凤凰山北侧",
+//
+//         }, {
+//
+//             "ComponentName": "范围",
+//
+//             "ComponentValue": "凤凰山至107国道",
+//
+//         }, {
+//
+//             "ComponentName": "面积",
+//
+//             "ComponentValue": "100亩",
+//
+//         }, {
+//
+//             "ComponentName": "基本情况",
+//
+//             "ComponentValue": "完好",
+//
+//         }, , {
+//
+//             "ComponentName": "用途",
+//
+//             "ComponentValue": "经营农家乐",
+//
+//         }
+//
+//     ]
+//
+// ```
+//
+// 合成后合同样子示例
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

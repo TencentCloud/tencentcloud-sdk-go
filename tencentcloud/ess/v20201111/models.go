@@ -2478,6 +2478,11 @@ type CreateFlowEvidenceReportRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定申请的报告类型，可选类型如下：
+	// <ul><li> **0** :合同签署报告（默认）</li>
+	// <li> **1** :公证处核验报告</li></ul>
+	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
 }
 
 type CreateFlowEvidenceReportRequest struct {
@@ -2494,6 +2499,11 @@ type CreateFlowEvidenceReportRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定申请的报告类型，可选类型如下：
+	// <ul><li> **0** :合同签署报告（默认）</li>
+	// <li> **1** :公证处核验报告</li></ul>
+	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
 }
 
 func (r *CreateFlowEvidenceReportRequest) ToJsonString() string {
@@ -2511,6 +2521,7 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "Agent")
+	delete(f, "ReportType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowEvidenceReportRequest has unknown keys!", "")
 	}
@@ -7026,6 +7037,11 @@ type DescribeFlowEvidenceReportRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定申请的报告类型，可选类型如下：
+	// <ul><li> **0** :合同签署报告（默认）</li>
+	// <li> **1** :公证处核验报告</li></ul>
+	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
 }
 
 type DescribeFlowEvidenceReportRequest struct {
@@ -7041,6 +7057,11 @@ type DescribeFlowEvidenceReportRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 指定申请的报告类型，可选类型如下：
+	// <ul><li> **0** :合同签署报告（默认）</li>
+	// <li> **1** :公证处核验报告</li></ul>
+	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
 }
 
 func (r *DescribeFlowEvidenceReportRequest) ToJsonString() string {
@@ -7058,6 +7079,7 @@ func (r *DescribeFlowEvidenceReportRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "ReportId")
 	delete(f, "Agent")
+	delete(f, "ReportType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowEvidenceReportRequest has unknown keys!", "")
 	}

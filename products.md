@@ -96,8 +96,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-01-31 01:14:36 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-01-25 01:13:20 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-30 01:14:38 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-31 01:15:04 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-01-31 11:46:30 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-01-31 11:46:10 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-12-15 19:41:44 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-01-12 01:15:37 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-12-25 00:11:01 |

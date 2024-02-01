@@ -5643,7 +5643,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// **整体的逻辑如下**
+// ### 一. 整体的逻辑如下
 //
 // 
 //
@@ -5651,7 +5651,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// **可以作为发起方和签署方的角色列表**
+// ###  二. 可以作为发起方和签署方的角色列表
 //
 // <table>
 //
@@ -5737,7 +5737,69 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// **注**: 
+// ### 三. 填充模版中定义的填写控件
+//
+// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
+//
+// 填充的传参示例如下
+//
+// ```
+//
+//     request.FormFields = [{
+//
+//             "ComponentName": "项目的名字",
+//
+//             "ComponentValue": "休闲山庄"
+//
+//         }, {
+//
+//             "ComponentName": "项目的地址",
+//
+//             "ComponentValue": "凤凰山北侧",
+//
+//         }, {
+//
+//             "ComponentName": "范围",
+//
+//             "ComponentValue": "凤凰山至107国道",
+//
+//         }, {
+//
+//             "ComponentName": "面积",
+//
+//             "ComponentValue": "100亩",
+//
+//         }, {
+//
+//             "ComponentName": "基本情况",
+//
+//             "ComponentValue": "完好",
+//
+//         }, , {
+//
+//             "ComponentName": "用途",
+//
+//             "ComponentValue": "经营农家乐",
+//
+//         }
+//
+//     ]
+//
+// ```
+//
+// 合成后合同样子示例
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// ### 四. 注意 
 //
 // 1. 发起合同时候,  作为<font color="red">发起方的第三方子企业A员工的企业和员工必须经过实名</font>, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名
 //
@@ -5797,7 +5859,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// **整体的逻辑如下**
+// ### 一. 整体的逻辑如下
 //
 // 
 //
@@ -5805,7 +5867,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// **可以作为发起方和签署方的角色列表**
+// ###  二. 可以作为发起方和签署方的角色列表
 //
 // <table>
 //
@@ -5891,7 +5953,69 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// **注**: 
+// ### 三. 填充模版中定义的填写控件
+//
+// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
+//
+// 填充的传参示例如下
+//
+// ```
+//
+//     request.FormFields = [{
+//
+//             "ComponentName": "项目的名字",
+//
+//             "ComponentValue": "休闲山庄"
+//
+//         }, {
+//
+//             "ComponentName": "项目的地址",
+//
+//             "ComponentValue": "凤凰山北侧",
+//
+//         }, {
+//
+//             "ComponentName": "范围",
+//
+//             "ComponentValue": "凤凰山至107国道",
+//
+//         }, {
+//
+//             "ComponentName": "面积",
+//
+//             "ComponentValue": "100亩",
+//
+//         }, {
+//
+//             "ComponentName": "基本情况",
+//
+//             "ComponentValue": "完好",
+//
+//         }, , {
+//
+//             "ComponentName": "用途",
+//
+//             "ComponentValue": "经营农家乐",
+//
+//         }
+//
+//     ]
+//
+// ```
+//
+// 合成后合同样子示例
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// ### 四. 注意 
 //
 // 1. 发起合同时候,  作为<font color="red">发起方的第三方子企业A员工的企业和员工必须经过实名</font>, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名
 //
