@@ -2422,6 +2422,16 @@ type DatasetInfo struct {
 	AnnotationKeyStatus *string `json:"AnnotationKeyStatus,omitnil" name:"AnnotationKeyStatus"`
 }
 
+type DefaultInnerCallInfo struct {
+	// 可以进行调用的VPC-ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcIds []*string `json:"VpcIds,omitnil" name:"VpcIds"`
+
+	// 默认内网调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpAddr *string `json:"InnerHttpAddr,omitnil" name:"InnerHttpAddr"`
+}
+
 type DefaultNginxGatewayCallInfo struct {
 	// host
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3341,7 +3351,7 @@ type DescribeBillingResourceGroupRequestParams struct {
 	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询每页大小，最大30; 默认20
+	// 分页查询每页大小，默认20
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序方向; 枚举值: ASC | DESC；默认DESC
@@ -3369,7 +3379,7 @@ type DescribeBillingResourceGroupRequest struct {
 	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询每页大小，最大30; 默认20
+	// 分页查询每页大小，默认20
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序方向; 枚举值: ASC | DESC；默认DESC
@@ -3438,7 +3448,9 @@ func (r *DescribeBillingResourceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupsRequestParams struct {
-	// 资源组类型; 枚举值 TRAIN:训练 INFERENCE:推理
+	// 资源组类型;
+	// 枚举值:
+	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
@@ -3453,8 +3465,7 @@ type DescribeBillingResourceGroupsRequestParams struct {
 	// 偏移量，默认为0；分页查询起始位置，如：Limit为100，第一页Offset为0，第二页OffSet为100....即每页左边为闭区间
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为30;
-	// 注意：小于0则默认为20；大于30则默认为30
+	// 分页查询每页大小，默认20
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 支持模糊查找资源组id和资源组名
@@ -3469,7 +3480,9 @@ type DescribeBillingResourceGroupsRequestParams struct {
 type DescribeBillingResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源组类型; 枚举值 TRAIN:训练 INFERENCE:推理
+	// 资源组类型;
+	// 枚举值:
+	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
@@ -3484,8 +3497,7 @@ type DescribeBillingResourceGroupsRequest struct {
 	// 偏移量，默认为0；分页查询起始位置，如：Limit为100，第一页Offset为0，第二页OffSet为100....即每页左边为闭区间
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为30;
-	// 注意：小于0则默认为20；大于30则默认为30
+	// 分页查询每页大小，默认20
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 支持模糊查找资源组id和资源组名
@@ -6690,6 +6702,10 @@ type IngressPrivateLinkInfo struct {
 	// 内网https调用地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerHttpsAddr []*string `json:"InnerHttpsAddr,omitnil" name:"InnerHttpsAddr"`
+
+	// 私有连接状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil" name:"State"`
 }
 
 type Instance struct {
@@ -6760,6 +6776,14 @@ type IntranetCallInfo struct {
 	// 共享弹性网卡信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceEIPInfo []*ServiceEIPInfo `json:"ServiceEIPInfo,omitnil" name:"ServiceEIPInfo"`
+
+	// 私有连接信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateLinkInfos []*PrivateLinkInfo `json:"PrivateLinkInfos,omitnil" name:"PrivateLinkInfos"`
+
+	// 默认内网调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultInnerCallInfos []*DefaultInnerCallInfo `json:"DefaultInnerCallInfos,omitnil" name:"DefaultInnerCallInfos"`
 }
 
 type LogConfig struct {
@@ -8209,6 +8233,28 @@ type PreTrainModel struct {
 	ModelName *string `json:"ModelName,omitnil" name:"ModelName"`
 }
 
+type PrivateLinkInfo struct {
+	// 私有连接所在的VPCID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 私有连接所在的子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// HTTP内网调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpAddr []*string `json:"InnerHttpAddr,omitnil" name:"InnerHttpAddr"`
+
+	// HTTPS内网调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpsAddr []*string `json:"InnerHttpsAddr,omitnil" name:"InnerHttpsAddr"`
+
+	// 私有连接状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil" name:"State"`
+}
+
 // Predefined struct for user
 type PushTrainingMetricsRequestParams struct {
 	// 指标数据
@@ -8882,12 +8928,16 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessStatus *string `json:"BusinessStatus,omitnil" name:"BusinessStatus"`
 
-	// 已废弃
+	// 已废弃,以ServiceInfo中的对应为准
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ServiceLimit is deprecated.
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil" name:"ServiceLimit"`
 
-	// 已废弃
+	// 已废弃,以ServiceInfo中的对应为准
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ScheduledAction is deprecated.
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil" name:"ScheduledAction"`
 
 	// 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
@@ -8927,6 +8977,10 @@ type Service struct {
 	// 服务组下服务的最高版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestVersion *string `json:"LatestVersion,omitnil" name:"LatestVersion"`
+
+	// 资源组类别 托管 NORMAL，纳管 SW
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupSWType *string `json:"ResourceGroupSWType,omitnil" name:"ResourceGroupSWType"`
 }
 
 type ServiceCallInfo struct {
@@ -8957,6 +9011,10 @@ type ServiceCallInfo struct {
 	// 调用secret
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppSecret *string `json:"AppSecret,omitnil" name:"AppSecret"`
+
+	// 鉴权是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil" name:"AuthorizationEnable"`
 }
 
 type ServiceEIP struct {
@@ -9062,6 +9120,14 @@ type ServiceGroup struct {
 	//      UPDATE_FAILED 更新失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeightUpdateStatus *string `json:"WeightUpdateStatus,omitnil" name:"WeightUpdateStatus"`
+
+	// 服务组下运行的pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicasCount *uint64 `json:"ReplicasCount,omitnil" name:"ReplicasCount"`
+
+	// 服务组下期望的pod数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableReplicasCount *uint64 `json:"AvailableReplicasCount,omitnil" name:"AvailableReplicasCount"`
 }
 
 type ServiceHistory struct {
@@ -9142,10 +9208,6 @@ type ServiceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil" name:"Weight"`
 
-	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodList []*string `json:"PodList,omitnil" name:"PodList"`
-
 	// 资源总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTotal *ResourceInfo `json:"ResourceTotal,omitnil" name:"ResourceTotal"`
@@ -9183,8 +9245,16 @@ type ServiceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledAction *string `json:"ScheduledAction,omitnil" name:"ScheduledAction"`
 
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: PodList is deprecated.
+	PodList []*string `json:"PodList,omitnil" name:"PodList"`
+
 	// Pod列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Pods is deprecated.
 	Pods *Pod `json:"Pods,omitnil" name:"Pods"`
 
 	// Pod列表信息

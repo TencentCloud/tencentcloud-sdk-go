@@ -16220,6 +16220,21 @@ type DescribeImageAuthorizedInfoResponseParams struct {
 	// 本地未开启扫描镜像数
 	NotScannedLocalImageCnt *uint64 `json:"NotScannedLocalImageCnt,omitnil" name:"NotScannedLocalImageCnt"`
 
+	// 试用镜像授权数
+	TrialAuthorizedCnt *uint64 `json:"TrialAuthorizedCnt,omitnil" name:"TrialAuthorizedCnt"`
+
+	// 已使用试用镜像授权数
+	UsedTrialAuthorizedCnt *uint64 `json:"UsedTrialAuthorizedCnt,omitnil" name:"UsedTrialAuthorizedCnt"`
+
+	// 已购镜像授权数
+	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil" name:"PurchasedAuthorizedCnt"`
+
+	// 已使用已购镜像授权数
+	UsedPurchasedAuthorizedCnt *uint64 `json:"UsedPurchasedAuthorizedCnt,omitnil" name:"UsedPurchasedAuthorizedCnt"`
+
+	// 是否可免费领取镜像授权数
+	CanApplyFreeImageAuthorize *bool `json:"CanApplyFreeImageAuthorize,omitnil" name:"CanApplyFreeImageAuthorize"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

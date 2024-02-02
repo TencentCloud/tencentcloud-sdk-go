@@ -84,6 +84,77 @@ type AutoScalerRules struct {
 	Policies []*AutoScalerPolicy `json:"Policies,omitnil" name:"Policies"`
 }
 
+// Predefined struct for user
+type BindAutoScalerResourceStrategyToGroupsRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 网关分组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+type BindAutoScalerResourceStrategyToGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 网关分组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+func (r *BindAutoScalerResourceStrategyToGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoScalerResourceStrategyToGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAutoScalerResourceStrategyToGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindAutoScalerResourceStrategyToGroupsResponseParams struct {
+	// 是否成功
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type BindAutoScalerResourceStrategyToGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *BindAutoScalerResourceStrategyToGroupsResponseParams `json:"Response"`
+}
+
+func (r *BindAutoScalerResourceStrategyToGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoScalerResourceStrategyToGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BoundK8SInfo struct {
 	// 绑定的kubernetes集群ID
 	BoundClusterId *string `json:"BoundClusterId,omitnil" name:"BoundClusterId"`
@@ -561,6 +632,28 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
 	TargetValue *int64 `json:"TargetValue,omitnil" name:"TargetValue"`
 }
 
+type CloudNativeAPIGatewayStrategyBindingGroupInfo struct {
+	// 网关分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 节点配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeConfig *CloudNativeAPIGatewayNodeConfig `json:"NodeConfig,omitnil" name:"NodeConfig"`
+
+	// 绑定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindTime *string `json:"BindTime,omitnil" name:"BindTime"`
+
+	// 网关分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 绑定状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
 type CloudNativeAPIGatewayStrategyCronScalerConfig struct {
 	// 是否开启定时伸缩
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -617,6 +710,115 @@ type CloudNativeAPIGatewayVpcConfig struct {
 	// 子网ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+}
+
+// Predefined struct for user
+type CreateAutoScalerResourceStrategyRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 指标伸缩配置
+	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitnil" name:"Config"`
+
+	// 定时伸缩配置列表
+	//
+	// Deprecated: CronScalerConfig is deprecated.
+	CronScalerConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronScalerConfig,omitnil" name:"CronScalerConfig"`
+
+	// 最大节点数
+	//
+	// Deprecated: MaxReplicas is deprecated.
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
+
+	// 定时伸缩配置
+	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitnil" name:"CronConfig"`
+}
+
+type CreateAutoScalerResourceStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 指标伸缩配置
+	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitnil" name:"Config"`
+
+	// 定时伸缩配置列表
+	CronScalerConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronScalerConfig,omitnil" name:"CronScalerConfig"`
+
+	// 最大节点数
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
+
+	// 定时伸缩配置
+	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitnil" name:"CronConfig"`
+}
+
+func (r *CreateAutoScalerResourceStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoScalerResourceStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyName")
+	delete(f, "Description")
+	delete(f, "Config")
+	delete(f, "CronScalerConfig")
+	delete(f, "MaxReplicas")
+	delete(f, "CronConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoScalerResourceStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoScalerResourceStrategyResponseParams struct {
+	// 是否成功
+	//
+	// Deprecated: Result is deprecated.
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 策略Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateAutoScalerResourceStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAutoScalerResourceStrategyResponseParams `json:"Response"`
+}
+
+func (r *CreateAutoScalerResourceStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoScalerResourceStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1943,6 +2145,70 @@ func (r *CreateWafDomainsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAutoScalerResourceStrategyRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+}
+
+type DeleteAutoScalerResourceStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+}
+
+func (r *DeleteAutoScalerResourceStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoScalerResourceStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoScalerResourceStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAutoScalerResourceStrategyResponseParams struct {
+	// 是否成功
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteAutoScalerResourceStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAutoScalerResourceStrategyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAutoScalerResourceStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoScalerResourceStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudNativeAPIGatewayCanaryRuleRequestParams struct {
 	// 网关 ID
 	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
@@ -2661,6 +2927,148 @@ func (r *DeleteWafDomainsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWafDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScalerResourceStrategiesRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+}
+
+type DescribeAutoScalerResourceStrategiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+}
+
+func (r *DescribeAutoScalerResourceStrategiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalerResourceStrategiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalerResourceStrategiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScalerResourceStrategiesResponseParams struct {
+	// 获取云原生API网关实例弹性伸缩策略列表响应结果。
+	Result *ListCloudNativeAPIGatewayStrategyResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAutoScalerResourceStrategiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoScalerResourceStrategiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoScalerResourceStrategiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalerResourceStrategiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScalerResourceStrategyBindingGroupsRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询数量限制
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeAutoScalerResourceStrategyBindingGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询数量限制
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeAutoScalerResourceStrategyBindingGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalerResourceStrategyBindingGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalerResourceStrategyBindingGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScalerResourceStrategyBindingGroupsResponseParams struct {
+	// 云原生API网关实例策略绑定网关分组列表响应结果
+	Result *ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAutoScalerResourceStrategyBindingGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoScalerResourceStrategyBindingGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoScalerResourceStrategyBindingGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalerResourceStrategyBindingGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4043,6 +4451,92 @@ func (r *DescribeOneCloudNativeAPIGatewayServiceResponse) FromJsonString(s strin
 }
 
 // Predefined struct for user
+type DescribePublicNetworkRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网关分组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络ID
+	NetworkId *string `json:"NetworkId,omitnil" name:"NetworkId"`
+}
+
+type DescribePublicNetworkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网关分组ID
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 网络ID
+	NetworkId *string `json:"NetworkId,omitnil" name:"NetworkId"`
+}
+
+func (r *DescribePublicNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicNetworkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	delete(f, "NetworkId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicNetworkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePublicNetworkResponseParams struct {
+	// 获取云原生API网关公网详情响应结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribePublicNetworkResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePublicNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePublicNetworkResponseParams `json:"Response"`
+}
+
+func (r *DescribePublicNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicNetworkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicNetworkResult struct {
+	// 网关实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 网关分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 客户端公网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetwork *CloudNativeAPIGatewayConfig `json:"PublicNetwork,omitnil" name:"PublicNetwork"`
+}
+
+// Predefined struct for user
 type DescribeSREInstanceAccessAddressRequestParams struct {
 	// 注册引擎实例Id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -5229,12 +5723,138 @@ type ListCloudNativeAPIGatewayResult struct {
 	GatewayList []*DescribeCloudNativeAPIGatewayResult `json:"GatewayList,omitnil" name:"GatewayList"`
 }
 
+type ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult struct {
+	// 数量
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 云原生API网关实例策略绑定网关分组列表
+	GroupInfos []*CloudNativeAPIGatewayStrategyBindingGroupInfo `json:"GroupInfos,omitnil" name:"GroupInfos"`
+}
+
+type ListCloudNativeAPIGatewayStrategyResult struct {
+	// 总数。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 云原生API网关实例策略列表。
+	StrategyList []*CloudNativeAPIGatewayStrategy `json:"StrategyList,omitnil" name:"StrategyList"`
+}
+
 type ListFilter struct {
 	// 过滤字段
 	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 过滤值
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+// Predefined struct for user
+type ModifyAutoScalerResourceStrategyRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 指标伸缩配置
+	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitnil" name:"Config"`
+
+	// 定时伸缩配置
+	//
+	// Deprecated: CronScalerConfig is deprecated.
+	CronScalerConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronScalerConfig,omitnil" name:"CronScalerConfig"`
+
+	// 最大节点数
+	//
+	// Deprecated: MaxReplicas is deprecated.
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
+
+	// 指标伸缩配置
+	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitnil" name:"CronConfig"`
+}
+
+type ModifyAutoScalerResourceStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 指标伸缩配置
+	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitnil" name:"Config"`
+
+	// 定时伸缩配置
+	CronScalerConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronScalerConfig,omitnil" name:"CronScalerConfig"`
+
+	// 最大节点数
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
+
+	// 指标伸缩配置
+	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitnil" name:"CronConfig"`
+}
+
+func (r *ModifyAutoScalerResourceStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoScalerResourceStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	delete(f, "StrategyName")
+	delete(f, "Description")
+	delete(f, "Config")
+	delete(f, "CronScalerConfig")
+	delete(f, "MaxReplicas")
+	delete(f, "CronConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoScalerResourceStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoScalerResourceStrategyResponseParams struct {
+	// 是否成功
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAutoScalerResourceStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAutoScalerResourceStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAutoScalerResourceStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoScalerResourceStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -6822,6 +7442,77 @@ type StorageOption struct {
 	// 存储容量，[50, 3200]的范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
+}
+
+// Predefined struct for user
+type UnbindAutoScalerResourceStrategyFromGroupsRequestParams struct {
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 网关分组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+type UnbindAutoScalerResourceStrategyFromGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 网关分组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+}
+
+func (r *UnbindAutoScalerResourceStrategyFromGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindAutoScalerResourceStrategyFromGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StrategyId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindAutoScalerResourceStrategyFromGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindAutoScalerResourceStrategyFromGroupsResponseParams struct {
+	// 是否成功
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UnbindAutoScalerResourceStrategyFromGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindAutoScalerResourceStrategyFromGroupsResponseParams `json:"Response"`
+}
+
+func (r *UnbindAutoScalerResourceStrategyFromGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindAutoScalerResourceStrategyFromGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

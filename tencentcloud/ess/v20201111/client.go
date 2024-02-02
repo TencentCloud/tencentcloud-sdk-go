@@ -799,9 +799,15 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
 //
+// 
+//
 // 填充的传参示例如下
+//
+// 
 //
 // ```
 //
@@ -848,6 +854,8 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 // ```
 //
 // 合成后合同样子示例
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
 //
@@ -922,9 +930,15 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
 //
+// 
+//
 // 填充的传参示例如下
+//
+// 
 //
 // ```
 //
@@ -971,6 +985,8 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 // ```
 //
 // 合成后合同样子示例
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
 //
@@ -1914,6 +1930,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
 //  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
 //  INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
 //  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 //  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2136,6 +2153,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
 //  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
 //  INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
 //  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 //  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

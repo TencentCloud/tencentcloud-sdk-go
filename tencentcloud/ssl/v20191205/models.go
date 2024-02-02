@@ -93,6 +93,9 @@ type ApplyCertificateRequestParams struct {
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
 	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil" name:"DeleteDnsAutoRecord"`
+
+	// 域名数组（多域名证书可以上传）。	
+	DnsNames []*string `json:"DnsNames,omitnil" name:"DnsNames"`
 }
 
 type ApplyCertificateRequest struct {
@@ -139,6 +142,9 @@ type ApplyCertificateRequest struct {
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
 	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil" name:"DeleteDnsAutoRecord"`
+
+	// 域名数组（多域名证书可以上传）。	
+	DnsNames []*string `json:"DnsNames,omitnil" name:"DnsNames"`
 }
 
 func (r *ApplyCertificateRequest) ToJsonString() string {
@@ -167,6 +173,7 @@ func (r *ApplyCertificateRequest) FromJsonString(s string) error {
 	delete(f, "OldCertificateId")
 	delete(f, "PackageId")
 	delete(f, "DeleteDnsAutoRecord")
+	delete(f, "DnsNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyCertificateRequest has unknown keys!", "")
 	}

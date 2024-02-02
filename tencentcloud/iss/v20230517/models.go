@@ -215,7 +215,7 @@ type AddDeviceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
-	// 设备编码（即我们为设备生成的20位国标编码）
+	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil" name:"Code"`
 
@@ -1042,10 +1042,10 @@ type AddUserDeviceRequestParams struct {
 	// 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 设备接入协议（1:RTMP,2:GB,3:GW）
+	// 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）
+	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
 	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 设备所属组织ID，从查询组织接口DescribeOrganization中获取
@@ -1077,6 +1077,9 @@ type AddUserDeviceRequestParams struct {
 
 	// 设备用户名（仅网关接入需要）
 	Username *string `json:"Username,omitnil" name:"Username"`
+
+	// 设备 SN，仅IVCP 协议设备需要
+	SNCode *string `json:"SNCode,omitnil" name:"SNCode"`
 }
 
 type AddUserDeviceRequest struct {
@@ -1085,10 +1088,10 @@ type AddUserDeviceRequest struct {
 	// 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 设备接入协议（1:RTMP,2:GB,3:GW）
+	// 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）
+	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
 	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 设备所属组织ID，从查询组织接口DescribeOrganization中获取
@@ -1120,6 +1123,9 @@ type AddUserDeviceRequest struct {
 
 	// 设备用户名（仅网关接入需要）
 	Username *string `json:"Username,omitnil" name:"Username"`
+
+	// 设备 SN，仅IVCP 协议设备需要
+	SNCode *string `json:"SNCode,omitnil" name:"SNCode"`
 }
 
 func (r *AddUserDeviceRequest) ToJsonString() string {
@@ -1147,6 +1153,7 @@ func (r *AddUserDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Ip")
 	delete(f, "Port")
 	delete(f, "Username")
+	delete(f, "SNCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUserDeviceRequest has unknown keys!", "")
 	}

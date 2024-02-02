@@ -1071,6 +1071,10 @@ type FakeURLData struct {
 	// 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditStatus *int64 `json:"AuditStatus,omitnil" name:"AuditStatus"`
+
+	// 下线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitnil" name:"OfflineTime"`
 }
 
 type Filter struct {

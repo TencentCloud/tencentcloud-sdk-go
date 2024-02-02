@@ -22733,6 +22733,20 @@ type DescribeNetAttackSettingResponseParams struct {
 	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil" name:"NetAttackAlarmStatus"`
 
+	// 1 全部旗舰版主机，0 InstanceIds列表主机
+	Scope *uint64 `json:"Scope,omitnil" name:"Scope"`
+
+	// 自选主机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 自选排除主机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
+
+	// 新增资产自动包含 0 不包含 1包含
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -28979,6 +28993,17 @@ type DescribeVulDefenceSettingResponseParams struct {
 
 	// 当前旗舰版主机数量
 	FlagshipCount *uint64 `json:"FlagshipCount,omitnil" name:"FlagshipCount"`
+
+	// 影响主机id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 新增旗舰版主机自动加入;1是，0否 
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
+
+	// 排除的主机id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -41161,6 +41186,18 @@ type ModifyNetAttackSettingRequestParams struct {
 
 	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil" name:"NetAttackAlarmStatus"`
+
+	// 1 全部旗舰版主机，0 Quuids列表主机
+	Scope *uint64 `json:"Scope,omitnil" name:"Scope"`
+
+	// 自选主机
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 自选排除的主机
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
+
+	// 新增资产自动包含 0 不包含 1包含
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
 }
 
 type ModifyNetAttackSettingRequest struct {
@@ -41171,6 +41208,18 @@ type ModifyNetAttackSettingRequest struct {
 
 	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil" name:"NetAttackAlarmStatus"`
+
+	// 1 全部旗舰版主机，0 Quuids列表主机
+	Scope *uint64 `json:"Scope,omitnil" name:"Scope"`
+
+	// 自选主机
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 自选排除的主机
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
+
+	// 新增资产自动包含 0 不包含 1包含
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
 }
 
 func (r *ModifyNetAttackSettingRequest) ToJsonString() string {
@@ -41187,6 +41236,10 @@ func (r *ModifyNetAttackSettingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NetAttackEnable")
 	delete(f, "NetAttackAlarmStatus")
+	delete(f, "Scope")
+	delete(f, "InstanceIds")
+	delete(f, "ExcludeInstanceIds")
+	delete(f, "AutoInclude")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetAttackSettingRequest has unknown keys!", "")
 	}
@@ -41897,8 +41950,17 @@ type ModifyVulDefenceSettingRequestParams struct {
 	// 1 全部旗舰版主机，0 Quuids列表主机
 	Scope *uint64 `json:"Scope,omitnil" name:"Scope"`
 
-	// 作用弄范围内旗舰版主机列表
+	// 作用范围内旗舰版主机列表
 	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+
+	// 排除作用范围内旗舰版主机列表
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
+
+	// 新增资产自动包含 0 不包含 1包含
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
+
+	// 作用范围内旗舰版主机列表
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 type ModifyVulDefenceSettingRequest struct {
@@ -41910,8 +41972,17 @@ type ModifyVulDefenceSettingRequest struct {
 	// 1 全部旗舰版主机，0 Quuids列表主机
 	Scope *uint64 `json:"Scope,omitnil" name:"Scope"`
 
-	// 作用弄范围内旗舰版主机列表
+	// 作用范围内旗舰版主机列表
 	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+
+	// 排除作用范围内旗舰版主机列表
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil" name:"ExcludeInstanceIds"`
+
+	// 新增资产自动包含 0 不包含 1包含
+	AutoInclude *uint64 `json:"AutoInclude,omitnil" name:"AutoInclude"`
+
+	// 作用范围内旗舰版主机列表
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 func (r *ModifyVulDefenceSettingRequest) ToJsonString() string {
@@ -41929,6 +42000,9 @@ func (r *ModifyVulDefenceSettingRequest) FromJsonString(s string) error {
 	delete(f, "Enable")
 	delete(f, "Scope")
 	delete(f, "Quuids")
+	delete(f, "ExcludeInstanceIds")
+	delete(f, "AutoInclude")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulDefenceSettingRequest has unknown keys!", "")
 	}

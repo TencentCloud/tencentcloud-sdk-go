@@ -17,6 +17,9 @@ package v20201207
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 未授权操作错误。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
@@ -44,8 +47,14 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 权限不足。
+	INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+
 	// 创建内部错误。
 	INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+
+	// 解码错误。
+	INTERNALERROR_DECODEERROR = "InternalError.DecodeError"
 
 	// 获取凭证失败。
 	INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
@@ -82,6 +91,9 @@ const (
 
 	// 访问VPC内部错误。
 	INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

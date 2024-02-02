@@ -2689,7 +2689,7 @@ func NewDescribeClusterDatabasesResponse() (response *DescribeClusterDatabasesRe
 }
 
 // DescribeClusterDatabases
-// 获取database列表
+// 获取集群数据库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2731,7 +2731,7 @@ func (c *Client) DescribeClusterDatabases(request *DescribeClusterDatabasesReque
 }
 
 // DescribeClusterDatabases
-// 获取database列表
+// 获取集群数据库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7993,7 +7993,7 @@ func NewSearchClusterDatabasesResponse() (response *SearchClusterDatabasesRespon
 }
 
 // SearchClusterDatabases
-// 本接口(SearchClusterDatabases)搜索集群database列表
+// 本接口(SearchClusterDatabases)搜索集群数据库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -8005,7 +8005,7 @@ func (c *Client) SearchClusterDatabases(request *SearchClusterDatabasesRequest) 
 }
 
 // SearchClusterDatabases
-// 本接口(SearchClusterDatabases)搜索集群database列表
+// 本接口(SearchClusterDatabases)搜索集群数据库列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"

@@ -1399,6 +1399,7 @@ type DescribeClusterNodesRequestParams struct {
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页返回数量，默认值为100，最大值为100。
+	// 如果offset和limit都不填，或者都填0，则返回全部数据
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源类型:支持all/host/pod，默认为all
@@ -1440,6 +1441,7 @@ type DescribeClusterNodesRequest struct {
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页返回数量，默认值为100，最大值为100。
+	// 如果offset和limit都不填，或者都填0，则返回全部数据
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源类型:支持all/host/pod，默认为all
@@ -1624,7 +1626,7 @@ type DescribeEmrApplicationStaticsRequestParams struct {
 	// 页号
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 页容量
+	// 页容量，范围为[10,100]
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
@@ -1661,7 +1663,7 @@ type DescribeEmrApplicationStaticsRequest struct {
 	// 页号
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 页容量
+	// 页容量，范围为[10,100]
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
@@ -2069,7 +2071,8 @@ type DescribeInstancesListRequestParams struct {
 	// 页编号，默认值为0，表示第一页。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页返回数量，默认值为10，最大值为100。
+	// 每页返回数量，默认值为100，最大值为100。
+	// 如果limit和offset都为0，则查询全部记录；
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
@@ -2091,7 +2094,8 @@ type DescribeInstancesListRequest struct {
 	// 页编号，默认值为0，表示第一页。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页返回数量，默认值为10，最大值为100。
+	// 每页返回数量，默认值为100，最大值为100。
+	// 如果limit和offset都为0，则查询全部记录；
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
@@ -2170,7 +2174,7 @@ type DescribeInstancesRequestParams struct {
 	// 页编号，默认值为0，表示第一页。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页返回数量，默认值为10，最大值为100。
+	// 每页返回数量，默认值为100，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 建议必填-1，表示拉取所有项目下的集群。
@@ -2205,7 +2209,7 @@ type DescribeInstancesRequest struct {
 	// 页编号，默认值为0，表示第一页。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页返回数量，默认值为10，最大值为100。
+	// 每页返回数量，默认值为100，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 建议必填-1，表示拉取所有项目下的集群。
@@ -2424,7 +2428,8 @@ type DescribeUsersForUserManagerRequestParams struct {
 	// 页码
 	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
 
-	// 分页的大小
+	// 分页的大小。
+	// 默认查询全部；PageNo和PageSize不合理的设置，都是查询全部
 	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 查询用户列表过滤器
@@ -2443,7 +2448,8 @@ type DescribeUsersForUserManagerRequest struct {
 	// 页码
 	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
 
-	// 分页的大小
+	// 分页的大小。
+	// 默认查询全部；PageNo和PageSize不合理的设置，都是查询全部
 	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 查询用户列表过滤器

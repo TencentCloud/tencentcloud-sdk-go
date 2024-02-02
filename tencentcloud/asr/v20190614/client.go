@@ -1505,6 +1505,69 @@ func (c *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateA
     return
 }
 
+func NewVoicePrintCompareRequest() (request *VoicePrintCompareRequest) {
+    request = &VoicePrintCompareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintCompare")
+    
+    
+    return
+}
+
+func NewVoicePrintCompareResponse() (response *VoicePrintCompareResponse) {
+    response = &VoicePrintCompareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VoicePrintCompare
+// 通过比对两段音频内说话人的声纹，得到一个打分，可通过打分判断两段音频声纹相似度,  打分区间[0 - 100]。 音频要求：16k采样率， 16bit位深，pcm或者wav格式， 单声道，总时长不超过30秒的音频，base64编码数据大小不超过2M，音频内容只有一个说话人声音，并且尽可能清晰，这样结果更加准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEDATA = "InvalidParameterValue.ErrorInvalidVoicedata"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
+func (c *Client) VoicePrintCompare(request *VoicePrintCompareRequest) (response *VoicePrintCompareResponse, err error) {
+    return c.VoicePrintCompareWithContext(context.Background(), request)
+}
+
+// VoicePrintCompare
+// 通过比对两段音频内说话人的声纹，得到一个打分，可通过打分判断两段音频声纹相似度,  打分区间[0 - 100]。 音频要求：16k采样率， 16bit位深，pcm或者wav格式， 单声道，总时长不超过30秒的音频，base64编码数据大小不超过2M，音频内容只有一个说话人声音，并且尽可能清晰，这样结果更加准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEDATA = "InvalidParameterValue.ErrorInvalidVoicedata"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
+func (c *Client) VoicePrintCompareWithContext(ctx context.Context, request *VoicePrintCompareRequest) (response *VoicePrintCompareResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintCompareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintCompare require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintCompareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVoicePrintCountRequest() (request *VoicePrintCountRequest) {
     request = &VoicePrintCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

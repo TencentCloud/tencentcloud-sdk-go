@@ -311,6 +311,20 @@ type AssetInfoDetail struct {
 	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 }
 
+type AssetInstanceTypeMap struct {
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil" name:"Text"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 资产类型和实例类型映射关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypeList []*FilterDataObject `json:"InstanceTypeList,omitnil" name:"InstanceTypeList"`
+}
+
 type AssetTag struct {
 	// 标签的key值,可以是字母、数字、下划线
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -903,6 +917,54 @@ type CVMAssetVO struct {
 	// 1新资产；0 非新资产
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAsset *uint64 `json:"IsNewAsset,omitnil" name:"IsNewAsset"`
+
+	// 0 未安装  1安装 2:安装中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMAgentStatus *int64 `json:"CVMAgentStatus,omitnil" name:"CVMAgentStatus"`
+
+	// 1:开启 0:未开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMStatus *int64 `json:"CVMStatus,omitnil" name:"CVMStatus"`
+
+	// 1:客户端已安装 0：未安装 2: Agentless
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefenseModel *int64 `json:"DefenseModel,omitnil" name:"DefenseModel"`
+
+	// 1:已安装 0:未安装
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TatStatus *int64 `json:"TatStatus,omitnil" name:"TatStatus"`
+
+	// cpu趋势图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTrend []*Element `json:"CpuTrend,omitnil" name:"CpuTrend"`
+
+	// 内存趋势图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemoryTrend []*Element `json:"MemoryTrend,omitnil" name:"MemoryTrend"`
+
+	// 1:agent在线 0:agent离线 2:主机离线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentStatus *int64 `json:"AgentStatus,omitnil" name:"AgentStatus"`
+
+	// 本月防护关闭次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloseDefenseCount *int64 `json:"CloseDefenseCount,omitnil" name:"CloseDefenseCount"`
+
+	// 运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
+
+	// 安全组数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
+
+	// 物理内存占用KB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentMemRss *int64 `json:"AgentMemRss,omitnil" name:"AgentMemRss"`
+
+	// CPU使用率百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentCpuPer *float64 `json:"AgentCpuPer,omitnil" name:"AgentCpuPer"`
 }
 
 type ClbListenerListInfo struct {
@@ -1528,6 +1590,9 @@ func (r *DescribeCVMAssetInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCVMAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -1535,6 +1600,9 @@ type DescribeCVMAssetsRequestParams struct {
 type DescribeCVMAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
 }
@@ -1551,6 +1619,7 @@ func (r *DescribeCVMAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCVMAssetsRequest has unknown keys!", "")
@@ -1603,6 +1672,10 @@ type DescribeCVMAssetsResponseParams struct {
 	// os列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsList []*FilterDataObject `json:"OsList,omitnil" name:"OsList"`
+
+	// 资产类型和实例类型的对应关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetMapInstanceTypeList []*AssetInstanceTypeMap `json:"AssetMapInstanceTypeList,omitnil" name:"AssetMapInstanceTypeList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -3386,6 +3459,9 @@ func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVULRiskAdvanceCFGListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
@@ -3396,6 +3472,9 @@ type DescribeVULRiskAdvanceCFGListRequestParams struct {
 type DescribeVULRiskAdvanceCFGListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil" name:"MemberId"`
+
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
@@ -3415,6 +3494,7 @@ func (r *DescribeVULRiskAdvanceCFGListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "TaskId")
 	delete(f, "Filter")
 	if len(f) > 0 {
@@ -3443,6 +3523,10 @@ type DescribeVULRiskAdvanceCFGListResponseParams struct {
 	// 识别来源过滤列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckFromLists []*FilterDataObject `json:"CheckFromLists,omitnil" name:"CheckFromLists"`
+
+	// 漏洞标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulTagList []*FilterDataObject `json:"VulTagList,omitnil" name:"VulTagList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -3689,6 +3773,16 @@ type DomainAssetVO struct {
 	// bot访问数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotAccessCount *int64 `json:"BotAccessCount,omitnil" name:"BotAccessCount"`
+}
+
+type Element struct {
+	// 统计类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 统计对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type Filter struct {
@@ -4471,14 +4565,14 @@ type RiskCenterStatusKey struct {
 	// 风险ID
 	Id *string `json:"Id,omitnil" name:"Id"`
 
-	// APP ID
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
-
 	// 公网IP/域名
 	PublicIPDomain *string `json:"PublicIPDomain,omitnil" name:"PublicIPDomain"`
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// APP ID
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
 }
 
 type ScanTaskInfo struct {
@@ -4788,6 +4882,25 @@ type ServerRiskSuggestion struct {
 	// 详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil" name:"Body"`
+}
+
+type ServiceSupport struct {
+	// 产品名称:
+	// "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// 已处理的资产总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportHandledCount *int64 `json:"SupportHandledCount,omitnil" name:"SupportHandledCount"`
+
+	// 支持的资产总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportTotalCount *int64 `json:"SupportTotalCount,omitnil" name:"SupportTotalCount"`
+
+	// 是否支持该产品1支持；0不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupport *bool `json:"IsSupport,omitnil" name:"IsSupport"`
 }
 
 // Predefined struct for user
@@ -5122,6 +5235,30 @@ type VULRiskAdvanceCFGList struct {
 	// 影响组件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImpactComponent *string `json:"ImpactComponent,omitnil" name:"ImpactComponent"`
+
+	// 漏洞Payload
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payload *string `json:"Payload,omitnil" name:"Payload"`
+
+	// 技术参考
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References *string `json:"References,omitnil" name:"References"`
+
+	// cvss评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVSS *string `json:"CVSS,omitnil" name:"CVSS"`
+
+	// 攻击热度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackHeat *string `json:"AttackHeat,omitnil" name:"AttackHeat"`
+
+	// 安全产品支持情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceSupport []*ServiceSupport `json:"ServiceSupport,omitnil" name:"ServiceSupport"`
+
+	// 最新检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecentScanTime *string `json:"RecentScanTime,omitnil" name:"RecentScanTime"`
 }
 
 type VULViewVULRisk struct {

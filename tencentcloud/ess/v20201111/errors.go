@@ -308,6 +308,9 @@ const (
 	// 参数包含有敏感词
 	INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 
+	// 参数错误,暂不支持该种签署控件类型
+	INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+
 	// 签署控件参数不合法，请检查后重试。
 	INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 

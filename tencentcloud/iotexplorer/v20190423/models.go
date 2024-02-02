@@ -5480,7 +5480,7 @@ type InstanceDetail struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 实例类型（0 公共实例 1 标准企业实例 2专享企业实例）
+	// 实例类型（0 公共实例 1 标准企业实例 2新企业实例3新公共实例）
 	InstanceType *int64 `json:"InstanceType,omitnil" name:"InstanceType"`
 
 	// 地域字母缩写
@@ -5492,7 +5492,7 @@ type InstanceDetail struct {
 	// 支持设备总数
 	TotalDeviceNum *int64 `json:"TotalDeviceNum,omitnil" name:"TotalDeviceNum"`
 
-	// 以注册设备数
+	// 已注册设备数
 	UsedDeviceNum *int64 `json:"UsedDeviceNum,omitnil" name:"UsedDeviceNum"`
 
 	// 项目数
@@ -5517,6 +5517,14 @@ type InstanceDetail struct {
 	// 激活设备数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivateDevice *int64 `json:"ActivateDevice,omitnil" name:"ActivateDevice"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 // Predefined struct for user
@@ -6855,6 +6863,10 @@ type ProductEntry struct {
 	// 绑定策略（1：强踢；2：非强踢；0：表示无意义）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindStrategy *uint64 `json:"BindStrategy,omitnil" name:"BindStrategy"`
+
+	// 设备数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceCount *int64 `json:"DeviceCount,omitnil" name:"DeviceCount"`
 }
 
 type ProductModelDefinition struct {
@@ -7904,6 +7916,9 @@ type UploadFirmwareRequestParams struct {
 
 	// 固件升级模块；可选值 mcu|moudule
 	FwType *string `json:"FwType,omitnil" name:"FwType"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 type UploadFirmwareRequest struct {
@@ -7929,6 +7944,9 @@ type UploadFirmwareRequest struct {
 
 	// 固件升级模块；可选值 mcu|moudule
 	FwType *string `json:"FwType,omitnil" name:"FwType"`
+
+	// 固件用户自定义配置信息
+	FirmwareUserDefined *string `json:"FirmwareUserDefined,omitnil" name:"FirmwareUserDefined"`
 }
 
 func (r *UploadFirmwareRequest) ToJsonString() string {
@@ -7950,6 +7968,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
 	delete(f, "FwType")
+	delete(f, "FirmwareUserDefined")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFirmwareRequest has unknown keys!", "")
 	}

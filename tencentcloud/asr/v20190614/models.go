@@ -2184,6 +2184,94 @@ type VoicePrintBaseData struct {
 	SpeakerNick *string `json:"SpeakerNick,omitnil" name:"SpeakerNick"`
 }
 
+type VoicePrintCompareData struct {
+	// 匹配度 取值范围(0.0 - 100.0)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *string `json:"Score,omitnil" name:"Score"`
+
+	// 验证结果 0: 未通过 1: 通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Decision *int64 `json:"Decision,omitnil" name:"Decision"`
+}
+
+// Predefined struct for user
+type VoicePrintCompareRequestParams struct {
+	// 音频格式 0: pcm, 1: wav；pcm和wav音频无损压缩，识别准确度更高
+	VoiceFormat *int64 `json:"VoiceFormat,omitnil" name:"VoiceFormat"`
+
+	// 音频采样率，目前仅支持16k，请填写16000
+	SampleRate *int64 `json:"SampleRate,omitnil" name:"SampleRate"`
+
+	// 对比源音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+	SrcAudioData *string `json:"SrcAudioData,omitnil" name:"SrcAudioData"`
+
+	// 对比目标音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+	DestAudioData *string `json:"DestAudioData,omitnil" name:"DestAudioData"`
+}
+
+type VoicePrintCompareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音频格式 0: pcm, 1: wav；pcm和wav音频无损压缩，识别准确度更高
+	VoiceFormat *int64 `json:"VoiceFormat,omitnil" name:"VoiceFormat"`
+
+	// 音频采样率，目前仅支持16k，请填写16000
+	SampleRate *int64 `json:"SampleRate,omitnil" name:"SampleRate"`
+
+	// 对比源音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+	SrcAudioData *string `json:"SrcAudioData,omitnil" name:"SrcAudioData"`
+
+	// 对比目标音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+	DestAudioData *string `json:"DestAudioData,omitnil" name:"DestAudioData"`
+}
+
+func (r *VoicePrintCompareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintCompareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceFormat")
+	delete(f, "SampleRate")
+	delete(f, "SrcAudioData")
+	delete(f, "DestAudioData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintCompareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintCompareResponseParams struct {
+	// 音频声纹比对结果，包含相似度打分
+	Data *VoicePrintCompareData `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type VoicePrintCompareResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintCompareResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintCompareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintCompareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type VoicePrintCountData struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。

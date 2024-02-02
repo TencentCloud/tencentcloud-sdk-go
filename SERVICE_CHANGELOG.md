@@ -1,10 +1,53 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 149 次发布
+### 第 32 次发布
 
-发布时间：2024-01-31 11:46:30
+发布时间：2024-02-02 01:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [VoicePrintCompare](https://cloud.tencent.com/document/api/1093/103720)
+
+新增数据结构：
+
+* [VoicePrintCompareData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintCompareData)
+
+
+
+## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 11 次发布
+
+发布时间：2024-02-02 01:06:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：OfflineTime
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 31 次发布
+
+发布时间：2024-02-02 01:09:24
 
 本次发布包含了以下内容：
 
@@ -12,22 +55,101 @@
 
 修改接口：
 
-* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+* [DescribeCVMAssets](https://cloud.tencent.com/document/api/664/90821)
 
-	* 新增入参：ReportType
+	* 新增入参：MemberId
 
-* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
+	* 新增出参：AssetMapInstanceTypeList
 
-	* 新增入参：ReportType
+* [DescribeVULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/100951)
+
+	* 新增入参：MemberId
+
+	* 新增出参：VulTagList
+
+
+新增数据结构：
+
+* [AssetInstanceTypeMap](https://cloud.tencent.com/document/api/664/90825#AssetInstanceTypeMap)
+* [Element](https://cloud.tencent.com/document/api/664/90825#Element)
+* [ServiceSupport](https://cloud.tencent.com/document/api/664/90825#ServiceSupport)
+
+修改数据结构：
+
+* [CVMAssetVO](https://cloud.tencent.com/document/api/664/90825#CVMAssetVO)
+
+	* 新增成员：CVMAgentStatus, CVMStatus, DefenseModel, TatStatus, CpuTrend, MemoryTrend, AgentStatus, CloseDefenseCount, InstanceState, SecurityGroupIds, AgentMemRss, AgentCpuPer
+
+* [RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey)
+
+	* <font color="#dd0000">**修改成员**：</font>AppId
+
+* [VULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/90825#VULRiskAdvanceCFGList)
+
+	* 新增成员：Payload, References, CVSS, AttackHeat, ServiceSupport, RecentScanTime
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 108 次发布
+
+发布时间：2024-02-02 01:09:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetAttackSetting](https://cloud.tencent.com/document/api/296/99476)
+
+	* 新增出参：Scope, InstanceIds, ExcludeInstanceIds, AutoInclude
+
+* [DescribeVulDefenceSetting](https://cloud.tencent.com/document/api/296/99659)
+
+	* 新增出参：InstanceIds, AutoInclude, ExcludeInstanceIds
+
+* [ModifyNetAttackSetting](https://cloud.tencent.com/document/api/296/99456)
+
+	* 新增入参：Scope, InstanceIds, ExcludeInstanceIds, AutoInclude
+
+* [ModifyVulDefenceSetting](https://cloud.tencent.com/document/api/296/99545)
+
+	* 新增入参：ExcludeInstanceIds, AutoInclude, InstanceIds
 
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 151 次发布
+### 第 152 次发布
 
-发布时间：2024-01-31 11:46:10
+发布时间：2024-02-02 01:13:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RegistrationOrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#RegistrationOrganizationInfo)
+
+	* 新增成员：BusinessLicense
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 55 次发布
+
+发布时间：2024-02-02 01:15:04
 
 本次发布包含了以下内容：
 
@@ -35,18 +157,160 @@
 
 修改接口：
 
-* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
+* [UploadFirmware](https://cloud.tencent.com/document/api/1081/53872)
 
-	* 新增入参：ReportType
-
-* [DescribeChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/83442)
-
-	* 新增入参：ReportType
+	* 新增入参：FirmwareUserDefined
 
 
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/1081/34988#InstanceDetail)
+
+	* 新增成员：Description, Status
+
+* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
+
+	* 新增成员：DeviceCount
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 11 次发布
+
+发布时间：2024-02-02 01:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddUserDevice](https://cloud.tencent.com/document/api/1344/95876)
+
+	* 新增入参：SNCode
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 54 次发布
+
+发布时间：2024-02-02 01:20:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyCertificate](https://cloud.tencent.com/document/api/400/41678)
+
+	* 新增入参：DnsNames
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 60 次发布
+
+发布时间：2024-02-02 01:21:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImageAuthorizedInfo](https://cloud.tencent.com/document/api/1285/65473)
+
+	* 新增出参：TrialAuthorizedCnt, UsedTrialAuthorizedCnt, PurchasedAuthorizedCnt, UsedPurchasedAuthorizedCnt, CanApplyFreeImageAuthorize
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 51 次发布
+
+发布时间：2024-02-02 01:23:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DefaultInnerCallInfo](https://cloud.tencent.com/document/api/851/75051#DefaultInnerCallInfo)
+* [PrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#PrivateLinkInfo)
+
+修改数据结构：
+
+* [InferCodeInfo](https://cloud.tencent.com/document/api/851/75051#InferCodeInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CosPathInfo
+
+* [IngressPrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#IngressPrivateLinkInfo)
+
+	* 新增成员：State
+
+* [IntranetCallInfo](https://cloud.tencent.com/document/api/851/75051#IntranetCallInfo)
+
+	* 新增成员：PrivateLinkInfos, DefaultInnerCallInfos
+
+* [Service](https://cloud.tencent.com/document/api/851/75051#Service)
+
+	* 新增成员：ResourceGroupSWType
+
+* [ServiceCallInfo](https://cloud.tencent.com/document/api/851/75051#ServiceCallInfo)
+
+	* 新增成员：AuthorizationEnable
+
+* [ServiceGroup](https://cloud.tencent.com/document/api/851/75051#ServiceGroup)
+
+	* 新增成员：ReplicasCount, AvailableReplicasCount
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PodList
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 57 次发布
+
+发布时间：2024-02-02 01:24:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindAutoScalerResourceStrategyToGroups](https://cloud.tencent.com/document/api/1364/103728)
+* [CreateAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103727)
+* [DeleteAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103726)
+* [DescribeAutoScalerResourceStrategies](https://cloud.tencent.com/document/api/1364/103725)
+* [DescribeAutoScalerResourceStrategyBindingGroups](https://cloud.tencent.com/document/api/1364/103724)
+* [DescribePublicNetwork](https://cloud.tencent.com/document/api/1364/103723)
+* [ModifyAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103722)
+* [UnbindAutoScalerResourceStrategyFromGroups](https://cloud.tencent.com/document/api/1364/103721)
+
+新增数据结构：
+
+* [CloudNativeAPIGatewayStrategyBindingGroupInfo](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyBindingGroupInfo)
+* [DescribePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#DescribePublicNetworkResult)
+* [ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult)
+* [ListCloudNativeAPIGatewayStrategyResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyResult)
 
 
 
@@ -6413,6 +6677,22 @@
 
 ## 语音识别(asr) 版本：2019-06-14
 
+### 第 32 次发布
+
+发布时间：2024-02-02 01:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[VoicePrintCompare](https://cloud.tencent.com/document/api/1093/103720)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VoicePrintCompareData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintCompareData)](https://cloud.tencent.com/document/api/1093/37824#[VoicePrintCompareData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintCompareData))
+
 ### 第 31 次发布
 
 发布时间：2023-09-22 01:10:19
@@ -10672,6 +10952,21 @@
 
 
 ## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 11 次发布
+
+发布时间：2024-02-02 01:06:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：OfflineTime
+
 
 ### 第 10 次发布
 
@@ -36032,6 +36327,50 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 31 次发布
+
+发布时间：2024-02-02 01:09:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCVMAssets](https://cloud.tencent.com/document/api/664/90821)
+
+	* 新增入参：MemberId
+
+	* 新增出参：AssetMapInstanceTypeList
+
+* [DescribeVULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/100951)
+
+	* 新增入参：MemberId
+
+	* 新增出参：VulTagList
+
+
+新增数据结构：
+
+* [[AssetInstanceTypeMap](https://cloud.tencent.com/document/api/664/90825#AssetInstanceTypeMap)](https://cloud.tencent.com/document/api/664/90825#[AssetInstanceTypeMap](https://cloud.tencent.com/document/api/664/90825#AssetInstanceTypeMap))
+* [[Element](https://cloud.tencent.com/document/api/664/90825#Element)](https://cloud.tencent.com/document/api/664/90825#[Element](https://cloud.tencent.com/document/api/664/90825#Element))
+* [[ServiceSupport](https://cloud.tencent.com/document/api/664/90825#ServiceSupport)](https://cloud.tencent.com/document/api/664/90825#[ServiceSupport](https://cloud.tencent.com/document/api/664/90825#ServiceSupport))
+
+修改数据结构：
+
+* [CVMAssetVO](https://cloud.tencent.com/document/api/664/90825#CVMAssetVO)
+
+	* 新增成员：CVMAgentStatus, CVMStatus, DefenseModel, TatStatus, CpuTrend, MemoryTrend, AgentStatus, CloseDefenseCount, InstanceState, SecurityGroupIds, AgentMemRss, AgentCpuPer
+
+* [RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey)
+
+	* <font color="#dd0000">**修改成员**：</font>AppId
+
+* [VULRiskAdvanceCFGList](https://cloud.tencent.com/document/api/664/90825#VULRiskAdvanceCFGList)
+
+	* 新增成员：Payload, References, CVSS, AttackHeat, ServiceSupport, RecentScanTime
+
+
 ### 第 30 次发布
 
 发布时间：2024-01-31 01:10:44
@@ -39020,6 +39359,33 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 108 次发布
+
+发布时间：2024-02-02 01:09:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetAttackSetting](https://cloud.tencent.com/document/api/296/99476)
+
+	* 新增出参：Scope, InstanceIds, ExcludeInstanceIds, AutoInclude
+
+* [DescribeVulDefenceSetting](https://cloud.tencent.com/document/api/296/99659)
+
+	* 新增出参：InstanceIds, AutoInclude, ExcludeInstanceIds
+
+* [ModifyNetAttackSetting](https://cloud.tencent.com/document/api/296/99456)
+
+	* 新增入参：Scope, InstanceIds, ExcludeInstanceIds, AutoInclude
+
+* [ModifyVulDefenceSetting](https://cloud.tencent.com/document/api/296/99545)
+
+	* 新增入参：ExcludeInstanceIds, AutoInclude, InstanceIds
+
 
 ### 第 107 次发布
 
@@ -60744,6 +61110,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 152 次发布
+
+发布时间：2024-02-02 01:13:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RegistrationOrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#RegistrationOrganizationInfo)
+
+	* 新增成员：BusinessLicense
+
+
 ### 第 151 次发布
 
 发布时间：2024-01-31 11:46:10
@@ -71698,6 +72079,32 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 55 次发布
+
+发布时间：2024-02-02 01:15:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UploadFirmware](https://cloud.tencent.com/document/api/1081/53872)
+
+	* 新增入参：FirmwareUserDefined
+
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/1081/34988#InstanceDetail)
+
+	* 新增成员：Description, Status
+
+* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
+
+	* 新增成员：DeviceCount
+
+
 ### 第 54 次发布
 
 发布时间：2023-10-16 01:17:51
@@ -74820,6 +75227,21 @@
 
 
 ## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 11 次发布
+
+发布时间：2024-02-02 01:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddUserDevice](https://cloud.tencent.com/document/api/1344/95876)
+
+	* 新增入参：SNCode
+
 
 ### 第 10 次发布
 
@@ -102981,6 +103403,21 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 54 次发布
+
+发布时间：2024-02-02 01:20:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyCertificate](https://cloud.tencent.com/document/api/400/41678)
+
+	* 新增入参：DnsNames
+
+
 ### 第 53 次发布
 
 发布时间：2024-01-29 01:19:48
@@ -110874,6 +111311,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 60 次发布
+
+发布时间：2024-02-02 01:21:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImageAuthorizedInfo](https://cloud.tencent.com/document/api/1285/65473)
+
+	* 新增出参：TrialAuthorizedCnt, UsedTrialAuthorizedCnt, PurchasedAuthorizedCnt, UsedPurchasedAuthorizedCnt, CanApplyFreeImageAuthorize
+
 
 ### 第 59 次发布
 
@@ -122034,6 +122486,50 @@
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
+### 第 51 次发布
+
+发布时间：2024-02-02 01:23:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[DefaultInnerCallInfo](https://cloud.tencent.com/document/api/851/75051#DefaultInnerCallInfo)](https://cloud.tencent.com/document/api/851/75051#[DefaultInnerCallInfo](https://cloud.tencent.com/document/api/851/75051#DefaultInnerCallInfo))
+* [[PrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#PrivateLinkInfo)](https://cloud.tencent.com/document/api/851/75051#[PrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#PrivateLinkInfo))
+
+修改数据结构：
+
+* [InferCodeInfo](https://cloud.tencent.com/document/api/851/75051#InferCodeInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CosPathInfo
+
+* [IngressPrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#IngressPrivateLinkInfo)
+
+	* 新增成员：State
+
+* [IntranetCallInfo](https://cloud.tencent.com/document/api/851/75051#IntranetCallInfo)
+
+	* 新增成员：PrivateLinkInfos, DefaultInnerCallInfos
+
+* [Service](https://cloud.tencent.com/document/api/851/75051#Service)
+
+	* 新增成员：ResourceGroupSWType
+
+* [ServiceCallInfo](https://cloud.tencent.com/document/api/851/75051#ServiceCallInfo)
+
+	* 新增成员：AuthorizationEnable
+
+* [ServiceGroup](https://cloud.tencent.com/document/api/851/75051#ServiceGroup)
+
+	* 新增成员：ReplicasCount, AvailableReplicasCount
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PodList
+
+
 ### 第 50 次发布
 
 发布时间：2024-01-24 16:03:05
@@ -130190,6 +130686,32 @@
 
 
 ## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 57 次发布
+
+发布时间：2024-02-02 01:24:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindAutoScalerResourceStrategyToGroups](https://cloud.tencent.com/document/api/1364/103728)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103727)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103726)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAutoScalerResourceStrategies](https://cloud.tencent.com/document/api/1364/103725)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAutoScalerResourceStrategyBindingGroups](https://cloud.tencent.com/document/api/1364/103724)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePublicNetwork](https://cloud.tencent.com/document/api/1364/103723)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAutoScalerResourceStrategy](https://cloud.tencent.com/document/api/1364/103722)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindAutoScalerResourceStrategyFromGroups](https://cloud.tencent.com/document/api/1364/103721)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CloudNativeAPIGatewayStrategyBindingGroupInfo](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyBindingGroupInfo)](https://cloud.tencent.com/document/api/1364/54942#[CloudNativeAPIGatewayStrategyBindingGroupInfo](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyBindingGroupInfo))
+* [[DescribePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#DescribePublicNetworkResult)](https://cloud.tencent.com/document/api/1364/54942#[DescribePublicNetworkResult](https://cloud.tencent.com/document/api/1364/54942#DescribePublicNetworkResult))
+* [[ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult)](https://cloud.tencent.com/document/api/1364/54942#[ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyBindingGroupInfoResult))
+* [[ListCloudNativeAPIGatewayStrategyResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyResult)](https://cloud.tencent.com/document/api/1364/54942#[ListCloudNativeAPIGatewayStrategyResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayStrategyResult))
 
 ### 第 56 次发布
 

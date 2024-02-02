@@ -3116,7 +3116,7 @@ type DescribeCdnDataRequestParams struct {
 	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// 多域名查询时，默认（false)返回多个域名的汇总数据
-	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
+	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
 	Detail *bool `json:"Detail,omitnil" name:"Detail"`
 
 	// 查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
@@ -3215,7 +3215,7 @@ type DescribeCdnDataRequest struct {
 	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// 多域名查询时，默认（false)返回多个域名的汇总数据
-	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
+	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
 	Detail *bool `json:"Detail,omitnil" name:"Detail"`
 
 	// 查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
@@ -4786,7 +4786,7 @@ type DescribeOriginDataRequestParams struct {
 	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// Domains 传入多个时，默认（false)返回多个域名的汇总数据
-	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
+	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
 	Detail *bool `json:"Detail,omitnil" name:"Detail"`
 
 	// 指定服务地域查询，不填充表示查询中国境内 CDN 数据
@@ -4841,7 +4841,7 @@ type DescribeOriginDataRequest struct {
 	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// Domains 传入多个时，默认（false)返回多个域名的汇总数据
-	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
+	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
 	Detail *bool `json:"Detail,omitnil" name:"Detail"`
 
 	// 指定服务地域查询，不填充表示查询中国境内 CDN 数据
