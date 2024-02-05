@@ -640,9 +640,6 @@ func (se *structEncoder) encode(e *encodeState, v reflect.Value, opts encOpts) {
 	first := true
 	for i, f := range se.fields {
 		fv := fieldByIndex(v, f.index)
-		if !fv.IsValid() || f.omitEmpty && isEmptyValue(fv) {
-			continue
-		}
 		if !fv.IsValid() || f.omitNil && isNilValue(fv) {
 			continue
 		}
@@ -1046,12 +1043,11 @@ type field struct {
 	nameBytes []byte                 // []byte(name)
 	equalFold func(s, t []byte) bool // bytes.EqualFold or equivalent
 
-	tag       bool
-	index     []int
-	typ       reflect.Type
-	omitEmpty bool
-	omitNil   bool
-	quoted    bool
+	tag     bool
+	index   []int
+	typ     reflect.Type
+	omitNil bool
+	quoted  bool
 }
 
 func fillField(f field) field {
@@ -1164,13 +1160,12 @@ func typeFields(t reflect.Type) []field {
 						name = sf.Name
 					}
 					fields = append(fields, fillField(field{
-						name:      name,
-						tag:       tagged,
-						index:     index,
-						typ:       ft,
-						omitEmpty: opts.Contains("omitempty"),
-						omitNil:   opts.Contains("omitnil"),
-						quoted:    quoted,
+						name:    name,
+						tag:     tagged,
+						index:   index,
+						typ:     ft,
+						omitNil: opts.Contains("omitnil"),
+						quoted:  quoted,
 					}))
 					if count[f.typ] > 1 {
 						// If there were multiple instances, add a second,
