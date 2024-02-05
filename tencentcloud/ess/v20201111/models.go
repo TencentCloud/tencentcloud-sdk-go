@@ -926,7 +926,7 @@ type Component struct {
 	// 
 	// <font color="red">ComponentType为SIGN_SEAL类型时</font>，支持以下参数：
 	// <ul><li> <b>PageRanges</b> :PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）</li></ul>
-	// <b>参数样例</b>：` "{"PageRange":[{"BeginPage":1,"EndPage":-1}]}"`
+	// <b>参数样例</b>：` "{"PageRanges":[{"BeginPage":1,"EndPage":-1}]}"`
 	// 
 	// 
 	// <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>

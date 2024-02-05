@@ -154,6 +154,96 @@ type InputRecognizeTargetAudience struct {
 	DeviceList []*Device `json:"DeviceList,omitnil" name:"DeviceList"`
 }
 
+type ManagePortraitRiskInput struct {
+	// 请求时间戳秒
+	PostTime *int64 `json:"PostTime,omitnil" name:"PostTime"`
+
+	// 用户公网ip（仅支持IPv4）
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+
+	// 渠道号
+	Channel *int64 `json:"Channel,omitnil" name:"Channel"`
+}
+
+type ManagePortraitRiskOutput struct {
+	// 返回码（0，成功，其他失败）
+	Code *int64 `json:"Code,omitnil" name:"Code"`
+
+	// 返回码对应的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *ManagePortraitRiskValueOutput `json:"Value,omitnil" name:"Value"`
+}
+
+// Predefined struct for user
+type ManagePortraitRiskRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+}
+
+type ManagePortraitRiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+}
+
+func (r *ManagePortraitRiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ManagePortraitRiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManagePortraitRiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ManagePortraitRiskResponseParams struct {
+	// 业务出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ManagePortraitRiskOutput `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ManagePortraitRiskResponse struct {
+	*tchttp.BaseResponse
+	Response *ManagePortraitRiskResponseParams `json:"Response"`
+}
+
+func (r *ManagePortraitRiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ManagePortraitRiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ManagePortraitRiskValueOutput struct {
+	// 对应的IP
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+
+	// 返回风险等级, 0 - 4，0代表无风险，数值越大，风险越高
+	Level *int64 `json:"Level,omitnil" name:"Level"`
+}
+
 type OutputRecognizeTargetAudience struct {
 	// 返回码（0，成功，其他失败）
 	Code *int64 `json:"Code,omitnil" name:"Code"`

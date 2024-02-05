@@ -5894,7 +5894,7 @@ type Component struct {
 	// 
 	// <font color="red">ComponentType为SIGN_SEAL类型时</font>，支持以下参数：
 	// <ul><li> <b>PageRanges</b> :PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）</li></ul>
-	// <b>参数样例</b>：` "{"PageRange":[{"BeginPage":1,"EndPage":-1}]}"`
+	// <b>参数样例</b>：` "{"PageRanges":[{"BeginPage":1,"EndPage":-1}]}"`
 	// 
 	// <font color="red">签署印章旋转功能，当ComponentType为SIGN_SIGNATURE、SIGN_DATE、SIGN_SEAL时</font>，可以通过以下参数设置签署图片的旋转角度：
 	// <ul><li> <b>Rotate</b>：旋转角度，支持范围：-360：360，为正整数时，为顺时针旋转；为负整数时，为逆时针旋转。</li>

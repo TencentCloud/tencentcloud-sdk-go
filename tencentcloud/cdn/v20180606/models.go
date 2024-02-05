@@ -3414,7 +3414,7 @@ func (r *DescribeCdnDomainLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCdnDomainLogsResponseParams struct {
 	// 日志包下载链接。
-	// 下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。
+	// 下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。链接有效期1天。
 	DomainLogs []*DomainLog `json:"DomainLogs,omitnil" name:"DomainLogs"`
 
 	// 查询到的总条数

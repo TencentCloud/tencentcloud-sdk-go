@@ -6926,6 +6926,14 @@ type GroupTriggerConditionInfo struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type HighLightItem struct {
+	// 高亮的日志Key
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 高亮的语法
+	Values []*string `json:"Values,omitnil" name:"Values"`
+}
+
 type HistogramInfo struct {
 	// 统计周期内的日志条数
 	Count *int64 `json:"Count,omitnil" name:"Count"`
@@ -7119,6 +7127,10 @@ type LogContextInfo struct {
 	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStatus *string `json:"IndexStatus,omitnil" name:"IndexStatus"`
+
+	// 日志内容的高亮描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighLights []*HighLightItem `json:"HighLights,omitnil" name:"HighLights"`
 }
 
 type LogInfo struct {
@@ -10491,29 +10503,29 @@ type TopicInfo struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
 
-	// 日志主题ID
+	// 主题ID
 	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
-	// 日志主题名称
+	// 主题名称
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 主题分区个数
 	PartitionCount *int64 `json:"PartitionCount,omitnil" name:"PartitionCount"`
 
-	// 是否开启索引
+	// 主题是否开启索引（主题类型需为日志主题）
 	Index *bool `json:"Index,omitnil" name:"Index"`
 
-	// 云产品标识，日志主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+	// 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssumerName *string `json:"AssumerName,omitnil" name:"AssumerName"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
-	// 日主主题是否开启采集
+	// 主题是否开启采集
 	Status *bool `json:"Status,omitnil" name:"Status"`
 
-	// 日志主题绑定的标签信息
+	// 主题绑定的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
@@ -10525,7 +10537,7 @@ type TopicInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
 
-	// 日主题的存储类型
+	// 主题的存储类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 
@@ -10537,12 +10549,12 @@ type TopicInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAssumerName *string `json:"SubAssumerName,omitnil" name:"SubAssumerName"`
 
-	// 日志主题描述
+	// 主题描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describes *string `json:"Describes,omitnil" name:"Describes"`
 
-	// 开启日志沉降，热存储的生命周期， hotPeriod < Period。
-	// 热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
+	// 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
+	// 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
 

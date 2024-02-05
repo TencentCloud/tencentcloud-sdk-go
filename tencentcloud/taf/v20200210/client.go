@@ -45,6 +45,49 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewManagePortraitRiskRequest() (request *ManagePortraitRiskRequest) {
+    request = &ManagePortraitRiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("taf", APIVersion, "ManagePortraitRisk")
+    
+    
+    return
+}
+
+func NewManagePortraitRiskResponse() (response *ManagePortraitRiskResponse) {
+    response = &ManagePortraitRiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ManagePortraitRisk
+// 虚假流量识别
+func (c *Client) ManagePortraitRisk(request *ManagePortraitRiskRequest) (response *ManagePortraitRiskResponse, err error) {
+    return c.ManagePortraitRiskWithContext(context.Background(), request)
+}
+
+// ManagePortraitRisk
+// 虚假流量识别
+func (c *Client) ManagePortraitRiskWithContext(ctx context.Context, request *ManagePortraitRiskRequest) (response *ManagePortraitRiskResponse, err error) {
+    if request == nil {
+        request = NewManagePortraitRiskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManagePortraitRisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewManagePortraitRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeCustomizedAudienceRequest() (request *RecognizeCustomizedAudienceRequest) {
     request = &RecognizeCustomizedAudienceRequest{
         BaseRequest: &tchttp.BaseRequest{},

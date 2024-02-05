@@ -21,7 +21,11 @@ import (
 )
 
 type AccountInfo struct {
-	// 账号类型
+	// 用户账号类型（默认开通QQopenid、手机号MD5；如需使用微信开放账号，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号）
+	// 1：QQ开放账号
+	// 2：微信开放账号
+	// 8：设备号（imei/imeiMD5/idfa/idfaMd5）
+	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
 	AccountType *uint64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// QQ账号信息，AccountType是1时，该字段必填。
@@ -30,7 +34,7 @@ type AccountInfo struct {
 	// 微信账号信息，AccountType是2时，该字段必填。
 	WeChatAccount *WeChatAccountInfo `json:"WeChatAccount,omitnil" name:"WeChatAccount"`
 
-	// 其它账号信息，AccountType是0、4、8或10004时，该字段必填。
+	// 其它账号信息，AccountType是8或10004时，该字段必填。
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil" name:"OtherAccount"`
 }
 
@@ -184,35 +188,34 @@ type InputFrontRisk struct {
 }
 
 type InputManageMarketingRisk struct {
-	// 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微
-	// 信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信
-	// 开放账号）： 
-	// 1：QQ 开放账号。 
-	// 2：微信开放账号。 
-	// 4：手机号（暂仅支持国内手机号）。 
-	// 8：设备号（imei/imeiMD5/idfa/idfaMd5）。 
-	// 0： 其他。 
-	// 10004：手机号 MD5。
+	// 用户账号类型（默认开通 QQ 开放账号，手机 MD5 账号类型查询。如需使用微信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信开放账号）： 
+	// 1：QQ 开放账号；
+	// 2：微信开放账号；
+	// 8：设备号（imei/imeiMD5/idfa/idfaMd5）；
+	// 10004：手机号 MD5。
 	Account *AccountInfo `json:"Account,omitnil" name:"Account"`
 
-	// 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
-	// 例如：e_register_protection_1521184361
-	// 控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；
+	// 场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
+	// 控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root
+	// 活动防刷默认场景码：e_activity_antirush 
+	// 登陆保护默认场景码：e_login_protection
+	// 注册保护默认场景码：e_register_protection
 	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
 
-	// 登录来源的外网IP
+	// 用户外网ip（传入用户非外网ip会影响判断结果）。
 	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
-	// 时间戳
+	// 用户操作时间戳，精确到秒。
 	PostTime *uint64 `json:"PostTime,omitnil" name:"PostTime"`
 
-	// 用户唯一标识。
+	// 业务平台用户唯一标识。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 设备指纹token。
+	// 设备指纹Devicetoken值，集成设备指纹后获取，
+	// 如果集成了相应的设备指纹，该字段必填。
 	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
 
-	// 设备指纹BusinessId
+	// 设备指纹 BusinessId。
 	DeviceBusinessId *int64 `json:"DeviceBusinessId,omitnil" name:"DeviceBusinessId"`
 
 	// 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
@@ -247,27 +250,26 @@ type InputManageMarketingRisk struct {
 	// 手机制造商ID，如果手机注册，请带上此信息。
 	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
 
-	// 设备类型，账号类型为8时必填： 
-	// 0:未知 
-	// 1:Imei;国际移动设备识别号（15-17位数字） 
-	// 2:ImeiMd5；国际移动设备识别号，通过MD5加密后32位的小写字符串 
-	// 3:Idfa; 
-	// 4:IdfaMD5;
+	// 设备类型，账号类型（AccountType）为8时填写。
+	// 1:Imei；国际移动设备识别号（15-17位数字）；
+	// 2:ImeiMd5；国际移动设备识别号，通过MD5加密后取32位小写值；
+	// 3:Idfa；
+	// 4:IdfaMD5； 国际移动设备识别号，通过MD5加密后取32位小写值。
 	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
 
-	// 详细信息
+	// 扩展字段。
 	Details []*InputDetails `json:"Details,omitnil" name:"Details"`
 
-	// 可选填写。详情请跳转至SponsorInfo查看。
+	// 邀请助力场景相关信息。
 	Sponsor *SponsorInfo `json:"Sponsor,omitnil" name:"Sponsor"`
 
-	// 可选填写。详情请跳转至OnlineScamInfo查看。
+	// 详情请跳转至OnlineScamInfo查看。
 	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitnil" name:"OnlineScam"`
 
-	// 1：安卓
-	// 2：iOS 
-	// 3：H5 
-	// 4：小程序 
+	// 1：安卓；
+	// 2：iOS ；
+	// 3：H5 ；
+	// 4：小程序 。
 	Platform *string `json:"Platform,omitnil" name:"Platform"`
 }
 
@@ -357,22 +359,18 @@ type OnlineScamInfo struct {
 }
 
 type OtherAccountInfo struct {
-	// 其它账号信息：  
-	// AccountType 是 4 时，填入真实的手机号（如 13123456789）。 
-	// AccountType 是 8 时，支持 imei、idfa、imeiMD5、idfaMD5入参。  
-	// AccountType 是 0 时，填入账号信息。  
-	// AccountType 是 10004 时，填入手机号的 MD5 值。 
-	// 注：imeiMd5 加密方式为：  
-	// imei 明文小写后，进行 MD5 加密，加密后取小写值。  
-	// IdfaMd5 加密方式为：idfa 明文大写后，进行 MD5 加密，加密后取小写值。
+	// 其他账号信息；
+	// AccountType是8时，填入设备号（imei/imeimd5/idfa/idfamd5）
+	// AccountType是10004时，填入中国大陆标准11位手机号的MD5值
+	// 注释：
+	// MD5手机号加密方式，中国大陆11位手机号进行MD5加密，加密后取32位小写值
+	// imeiMD5/IdfaMd5加密方式，对imei/IdfaMd5明文进行MD5加密，加密后取32位小写值。
 	AccountId *string `json:"AccountId,omitnil" name:"AccountId"`
 
-	// 手机号，若 AccountType 是 4（手机号）、或 10004（手机号 MD5），则无需重复填写 
-	// 否则填入对应的手机号（如 13123456789）。
+	// MD5手机号,AccountType是10004时，此处无需重复填写。
 	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
-	// 用户设备号。若 AccountType 是 8（设备号），则无需重复填写，否则填入对应的设备 
-	// 号。 
+	// 用户设备号，AccountType是8时，此处无需重复填写。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
@@ -432,9 +430,7 @@ type OutputManageMarketingRiskValue struct {
 	// 账号ID。对应输入参数：
 	// AccountType是1时，对应QQ的OpenID。
 	// AccountType是2时，对应微信的OpenID/UnionID。
-	// AccountType是4时，对应手机号。
 	// AccountType是8时，对应imei、idfa、imeiMD5或者idfaMD5。
-	// AccountType是0时，对应账号信息。
 	// AccountType是10004时，对应手机号的MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
@@ -443,7 +439,7 @@ type OutputManageMarketingRiskValue struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostTime *uint64 `json:"PostTime,omitnil" name:"PostTime"`
 
-	// 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
+	// 业务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
@@ -451,10 +447,10 @@ type OutputManageMarketingRiskValue struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
-	// 风险值
-	// pass : 无恶意
-	// review：需要人工审核
-	// reject：拒绝，高风险恶意
+	// 风险等级
+	// pass：无恶意
+	// review：低风险，需要人工审核
+	// reject：高风险，建议拦截
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
@@ -487,11 +483,11 @@ type OutputManageMarketingRiskValue struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
 
-	// 唯一ID
+	// 设备指纹ID，如果集成了设备指纹，并传入了正确的DeviceToken和Platform，该字段正常输出；如果DeviceToken异常（校验不通过），则会在RiskType中返回"-1"标签，ConstId字段为空；如果没有集成设备指纹ConstId字段默认为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConstId *string `json:"ConstId,omitnil" name:"ConstId"`
 
-	// 扩展信息
+	// 风险扩展数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInformation *string `json:"RiskInformation,omitnil" name:"RiskInformation"`
 }
@@ -506,27 +502,29 @@ type QQAccountInfo struct {
 	// 用于标识QQ用户登录后所关联业务自身的账号ID。
 	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
-	// 账号绑定的手机号。
+	// 账号绑定的MD5手机号，
+	// 注释：只支中国大陆11位手机号MD5加密后位的32位小写字符串。
 	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
-	// 用户设备号。
+	// 用户设备号，支持imei/imeiMD5/Idfa/IdfaMd5
+	// 注释：imeiMD5/IdfaMd5加密方式，对imei/IdfaMd5明文进行MD5加密，加密后取32位小写值。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 type SponsorInfo struct {
-	// OpenID
+	// 助力场景建议填写：活动发起人微信 OpenID
 	SponsorOpenId *string `json:"SponsorOpenId,omitnil" name:"SponsorOpenId"`
 
-	// 设备号
+	// 助力场景建议填写：发起人设备号
 	SponsorDeviceNumber *string `json:"SponsorDeviceNumber,omitnil" name:"SponsorDeviceNumber"`
 
-	// 手机号
+	// 助力场景建议填写：发起人的MD5手机号
 	SponsorPhone *string `json:"SponsorPhone,omitnil" name:"SponsorPhone"`
 
-	// IP
+	// 助力场景建议填写：发起人IP
 	SponsorIp *string `json:"SponsorIp,omitnil" name:"SponsorIp"`
 
-	// 链接
+	// 助力场景建议填写：活动链接
 	CampaignUrl *string `json:"CampaignUrl,omitnil" name:"CampaignUrl"`
 }
 
@@ -542,15 +540,18 @@ type WeChatAccountInfo struct {
 	// 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
 	RandStr *string `json:"RandStr,omitnil" name:"RandStr"`
 
-	// token
+	// 如果WeChatSubType 是1，填入授权的 access_token（注意：不是普通 access_token，详情请参阅官方说明文档。获取网页版本的 access_token 时，scope 字段必需填写snsapi_userinfo
+	// 如果WeChatSubType是2，填入以session_key 为密钥签名随机数RandStr（hmac_sha256签名算法）得到的字符串。
 	WeChatAccessToken *string `json:"WeChatAccessToken,omitnil" name:"WeChatAccessToken"`
 
 	// 用于标识微信用户登录后所关联业务自身的账号ID。
 	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
-	// 账号绑定的手机号。
+	// 账号绑定的MD5手机号，
+	// 注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
 	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
-	// 用户设备号。
+	// 用户设备号，支持imei/imeiMD5/Idfa/IdfaMd5
+	// 注释：imeiMD5/IdfaMd5加密方式，对imei/IdfaMd5明文进行MD5加密，加密后取32位小写值。
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }

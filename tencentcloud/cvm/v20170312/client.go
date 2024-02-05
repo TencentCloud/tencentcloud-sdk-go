@@ -1398,7 +1398,7 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 //
 // * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
 //
-// * 每个地域最多只支持创建50个自定义镜像，删除镜像可以释放账户的配额。
+// * 每个地域最多只支持创建500个自定义镜像，删除镜像可以释放账户的配额。
 //
 // * 当镜像正在被其它账户分享时，不允许删除。
 //
@@ -1423,7 +1423,7 @@ func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteIma
 //
 // * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
 //
-// * 每个地域最多只支持创建50个自定义镜像，删除镜像可以释放账户的配额。
+// * 每个地域最多只支持创建500个自定义镜像，删除镜像可以释放账户的配额。
 //
 // * 当镜像正在被其它账户分享时，不允许删除。
 //
@@ -5592,7 +5592,7 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
 //
 // * 共享镜像后，被共享账户可以通过该镜像创建实例。
 //
-// * 每个自定义镜像最多可共享给50个账户。
+// * 每个自定义镜像最多可共享给500个账户。
 //
 // * 共享镜像无法更改名称，描述，仅可用于创建实例。
 //
@@ -5630,7 +5630,7 @@ func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionR
 //
 // * 共享镜像后，被共享账户可以通过该镜像创建实例。
 //
-// * 每个自定义镜像最多可共享给50个账户。
+// * 每个自定义镜像最多可共享给500个账户。
 //
 // * 共享镜像无法更改名称，描述，仅可用于创建实例。
 //
@@ -8697,7 +8697,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 //
 // * 该接口支持多个同步地域。
 //
-// * 单个账号在每个地域最多支持存在50个自定义镜像。
+// * 单个账号在每个地域最多支持存在500个自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
@@ -8730,7 +8730,7 @@ func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesRes
 //
 // * 该接口支持多个同步地域。
 //
-// * 单个账号在每个地域最多支持存在50个自定义镜像。
+// * 单个账号在每个地域最多支持存在500个自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
