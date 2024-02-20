@@ -7006,6 +7006,12 @@ type RecognizeForeignPermanentResidentIdCardResponseParams struct {
 	// 证件号码。
 	No *string `json:"No,omitnil" name:"No"`
 
+	// 曾持证件号码。
+	PreviousNumber *string `json:"PreviousNumber,omitnil" name:"PreviousNumber"`
+
+	// 签发机关。
+	IssuedAuthority *string `json:"IssuedAuthority,omitnil" name:"IssuedAuthority"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -11073,6 +11079,8 @@ type VatInvoice struct {
 	// 102：通用机打电子发票
 	// 61：电子发票（航空运输电子客票行程单）
 	// 83：电子发票（铁路电子发票）
+	// 0915：全电纸质（二手车统一销售发票）
+	// 0903：全电纸质（机动车统一发票）
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单

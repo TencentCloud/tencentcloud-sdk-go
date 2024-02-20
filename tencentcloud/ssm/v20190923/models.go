@@ -1800,6 +1800,7 @@ type SecretMetadata struct {
 	// 1 -- 云产品凭据；
 	// 2 -- SSH密钥对凭据；
 	// 3 -- 云API密钥对凭据；
+	// 4 -- Redis类型凭据；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretType *int64 `json:"SecretType,omitnil" name:"SecretType"`
 

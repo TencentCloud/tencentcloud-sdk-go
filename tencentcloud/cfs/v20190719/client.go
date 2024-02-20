@@ -2981,7 +2981,7 @@ func NewUpdateFileSystemBandwidthLimitResponse() (response *UpdateFileSystemBand
 }
 
 // UpdateFileSystemBandwidthLimit
-// 更新文件系统带宽
+// 更新文件系统吞吐
 //
 // 仅吞吐型支持此接口
 //
@@ -2995,7 +2995,7 @@ func (c *Client) UpdateFileSystemBandwidthLimit(request *UpdateFileSystemBandwid
 }
 
 // UpdateFileSystemBandwidthLimit
-// 更新文件系统带宽
+// 更新文件系统吞吐
 //
 // 仅吞吐型支持此接口
 //

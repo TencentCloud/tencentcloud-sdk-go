@@ -1419,7 +1419,7 @@ type DescribeQueuesResponseParams struct {
 	// 队列概览信息列表。
 	QueueSet []*QueueOverview `json:"QueueSet,omitnil" name:"QueueSet"`
 
-	// 符合条件的节点数量。
+	// 符合条件的队列数量。
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -5718,6 +5718,9 @@ type ScaleOutClusterRequestParams struct {
 
 	// 子网，默认是集群创建时的子网
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 扩容指定配置组
+	ScaleOutServiceConfGroupsInfo []*ScaleOutServiceConfGroupsInfo `json:"ScaleOutServiceConfGroupsInfo,omitnil" name:"ScaleOutServiceConfGroupsInfo"`
 }
 
 type ScaleOutClusterRequest struct {
@@ -5785,6 +5788,9 @@ type ScaleOutClusterRequest struct {
 
 	// 子网，默认是集群创建时的子网
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 扩容指定配置组
+	ScaleOutServiceConfGroupsInfo []*ScaleOutServiceConfGroupsInfo `json:"ScaleOutServiceConfGroupsInfo,omitnil" name:"ScaleOutServiceConfGroupsInfo"`
 }
 
 func (r *ScaleOutClusterRequest) ToJsonString() string {
@@ -5818,6 +5824,7 @@ func (r *ScaleOutClusterRequest) FromJsonString(s string) error {
 	delete(f, "ResourceSpec")
 	delete(f, "Zone")
 	delete(f, "SubnetId")
+	delete(f, "ScaleOutServiceConfGroupsInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutClusterRequest has unknown keys!", "")
 	}
@@ -6137,6 +6144,15 @@ type ScaleOutNodeConfig struct {
 
 	// 扩容节点数量
 	NodeCount *uint64 `json:"NodeCount,omitnil" name:"NodeCount"`
+}
+
+type ScaleOutServiceConfGroupsInfo struct {
+	// 组件版本名称 如 HDFS-2.8.5
+	ServiceComponentName *string `json:"ServiceComponentName,omitnil" name:"ServiceComponentName"`
+
+	// 配置组名 如hdfs-core-defaultGroup    ConfGroupName参数传入 代表配置组维度 
+	//                                                              ConfGroupName参数不传 默认 代表集群维度
+	ConfGroupName *string `json:"ConfGroupName,omitnil" name:"ConfGroupName"`
 }
 
 type SceneSoftwareConfig struct {

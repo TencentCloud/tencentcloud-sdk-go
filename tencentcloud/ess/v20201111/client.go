@@ -67,6 +67,10 @@ func NewBindEmployeeUserIdWithClientOpenIdResponse() (response *BindEmployeeUser
 // BindEmployeeUserIdWithClientOpenId
 // 此接口（BindEmployeeUserIdWithClientOpenId）用于将电子签系统员工UserId与客户系统员工OpenId进行绑定。
 //
+// 
+//
+// 此OpenId只在 [更新企业员工信息 ](https://qian.tencent.com/developers/companyApis/staffs/UpdateIntegrationEmployees)、[移除企业员工](https://qian.tencent.com/developers/companyApis/staffs/DeleteIntegrationEmployees) 等场景下可以使用
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -79,6 +83,10 @@ func (c *Client) BindEmployeeUserIdWithClientOpenId(request *BindEmployeeUserIdW
 
 // BindEmployeeUserIdWithClientOpenId
 // 此接口（BindEmployeeUserIdWithClientOpenId）用于将电子签系统员工UserId与客户系统员工OpenId进行绑定。
+//
+// 
+//
+// 此OpenId只在 [更新企业员工信息 ](https://qian.tencent.com/developers/companyApis/staffs/UpdateIntegrationEmployees)、[移除企业员工](https://qian.tencent.com/developers/companyApis/staffs/DeleteIntegrationEmployees) 等场景下可以使用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -795,9 +803,9 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // 
 //
-// ### 填充模版中定义的填写控件
+// ### 填充模板中定义的填写控件
 //
-// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
 // 
 //
@@ -926,9 +934,9 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // 
 //
-// ### 填充模版中定义的填写控件
+// ### 填充模板中定义的填写控件
 //
-// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
 // 
 //
@@ -1312,7 +1320,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //
 // 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a><br>
 //
-// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/flow_document_start.mp4" target="_blank">用模版创建发起合同</a><br>
+// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/flow_document_start.mp4" target="_blank">用模板创建发起合同</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1472,7 +1480,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //
 // 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/createflow_seversign.mp4" target="_blank">创建静默（自动）签署模板和开通自动签署</a><br>
 //
-// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/flow_document_start.mp4" target="_blank">用模版创建发起合同</a><br>
+// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/flow_document_start.mp4" target="_blank">用模板创建发起合同</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3163,6 +3171,8 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //
 // **催办的效果**: 对方会收到如下的短信通知
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
 //
 // 
@@ -3196,6 +3206,8 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 // 
 //
 // **催办的效果**: 对方会收到如下的短信通知
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
 //
@@ -3639,9 +3651,9 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // <td>普通saas员工</td>
 //
-// <td>不需要传递 InvitationNotifyType</td>
+// <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>短信</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
 //
 // </tr>
 //
@@ -3649,7 +3661,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // <td>企微员工</td>
 //
-// <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+// <td>将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，需<font color="red">确保该企微员工在应用的可见范围内</font></td>
 //
 // <td>企微内部实名消息</td>
 //
@@ -3659,9 +3671,9 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // <td>H5端 saas员工</td>
 //
-// <td>传递 InvitationNotifyType = H5，不支持企微</td>
+// <td>传递 InvitationNotifyType = H5，将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号，<font color="red">此场景不支持企微</font></td>
 //
-// <td>生成H5链接</td>
+// <td>生成认证加入企业的H5链接，贵方可以通过自己的渠道触达到此员工</td>
 //
 // </tr>
 //
@@ -3716,9 +3728,9 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // <td>普通saas员工</td>
 //
-// <td>不需要传递 InvitationNotifyType</td>
+// <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>短信</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
 //
 // </tr>
 //
@@ -3726,7 +3738,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // <td>企微员工</td>
 //
-// <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+// <td>将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，需<font color="red">确保该企微员工在应用的可见范围内</font></td>
 //
 // <td>企微内部实名消息</td>
 //
@@ -3736,9 +3748,9 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // <td>H5端 saas员工</td>
 //
-// <td>传递 InvitationNotifyType = H5，不支持企微</td>
+// <td>传递 InvitationNotifyType = H5，将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号，<font color="red">此场景不支持企微</font></td>
 //
-// <td>生成H5链接</td>
+// <td>生成认证加入企业的H5链接，贵方可以通过自己的渠道触达到此员工</td>
 //
 // </tr>
 //

@@ -415,7 +415,9 @@ type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)；或者通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取。
+	// 
+	// 通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取，也可登录腾讯电子签控制台查看
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/97cfffabb0caa61df16999cd395d7850.png)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
@@ -434,7 +436,9 @@ type BindEmployeeUserIdWithClientOpenIdRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)；或者通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取。
+	// 
+	// 通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取，也可登录腾讯电子签控制台查看
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/97cfffabb0caa61df16999cd395d7850.png)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
@@ -537,12 +541,12 @@ type CancelFlowRequestParams struct {
 
 	// 合同流程ID, 为32位字符串。
 	// 
-	// 可登录腾讯电子签控制台，[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// 可登录腾讯电子签控制台，[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 撤销此合同流程的**撤销理由**，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
 	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -559,12 +563,12 @@ type CancelFlowRequest struct {
 
 	// 合同流程ID, 为32位字符串。
 	// 
-	// 可登录腾讯电子签控制台，[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// 可登录腾讯电子签控制台，[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 撤销此合同流程的**撤销理由**，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
 	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -2432,7 +2436,7 @@ type CreateFlowByFilesResponseParams struct {
 	// 
 	// 注: 如果是预览模式(即NeedPreview设置为true)时, 此处不会有值返回。
 	// 
-	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 合同预览链接URL。
@@ -3251,7 +3255,7 @@ type CreateFlowResponseParams struct {
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 
 	// 注:
-	// 此返回的合同流程ID，需再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口将合同开始后，合同才能进入签署环节，[点击产看FlowId在控制台中的位置（只在进如签署环节后有效）](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// 此返回的合同流程ID，需再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口将合同开始后，合同才能进入签署环节，[点击查看FlowId在控制台中的位置（只在进入签署环节后有效）](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	// 
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
@@ -6870,7 +6874,7 @@ type DescribeFlowBriefsRequestParams struct {
 	// 
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	// 
-	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -6890,7 +6894,7 @@ type DescribeFlowBriefsRequest struct {
 	// 
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	// 
-	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -9029,12 +9033,12 @@ type FormField struct {
 
 	// 控件id，和ComponentName选择一项传入即可
 	// 
-	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模版中找到控件ID的方式</a>
+	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模板中找到控件ID的方式</a>
 	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
 
 	// 控件名字，最大长度不超过30字符，和ComponentId选择一项传入即可
 	// 
-	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模版中找到控件名字的方式</a>
+	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/component_name.mp4" target="_blank">点击查看在模板中找到控件名字的方式</a>
 	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
 }
 
@@ -10548,7 +10552,9 @@ type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// 
+	// 通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取，也可登录腾讯电子签控制台查看
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/97cfffabb0caa61df16999cd395d7850.png)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
@@ -10568,7 +10574,9 @@ type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// 
+	// 通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取，也可登录腾讯电子签控制台查看
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/97cfffabb0caa61df16999cd395d7850.png)
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。

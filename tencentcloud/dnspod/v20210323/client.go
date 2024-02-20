@@ -3949,7 +3949,7 @@ func NewDescribeUserDetailResponse() (response *DescribeUserDetailResponse) {
 }
 
 // DescribeUserDetail
-// 获取帐户信息
+// 获取账户信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3964,7 +3964,7 @@ func (c *Client) DescribeUserDetail(request *DescribeUserDetailRequest) (respons
 }
 
 // DescribeUserDetail
-// 获取帐户信息
+// 获取账户信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

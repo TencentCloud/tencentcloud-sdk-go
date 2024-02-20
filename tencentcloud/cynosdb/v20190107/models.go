@@ -803,6 +803,146 @@ type BinlogItem struct {
 	BinlogId *int64 `json:"BinlogId,omitnil" name:"BinlogId"`
 }
 
+type BizTaskInfo struct {
+	// 任务id
+	ID *int64 `json:"ID,omitnil" name:"ID"`
+
+	// 用户appid
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 延迟执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayTime *string `json:"DelayTime,omitnil" name:"DelayTime"`
+
+	// 任务失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
+
+	// 异步任务流id
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 任务输入信息
+	Input *string `json:"Input,omitnil" name:"Input"`
+
+	// 实例组id
+	//
+	// Deprecated: InstanceGrpId is deprecated.
+	InstanceGrpId *string `json:"InstanceGrpId,omitnil" name:"InstanceGrpId"`
+
+	// 实例组id
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil" name:"InstanceGroupId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 任务操作对象id
+	ObjectId *string `json:"ObjectId,omitnil" name:"ObjectId"`
+
+	// 任务操作对象类型
+	ObjectType *string `json:"ObjectType,omitnil" name:"ObjectType"`
+
+	// 操作者uin
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 任务输出信息
+	Output *string `json:"Output,omitnil" name:"Output"`
+
+	// 任务状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
+
+	// 触发本任务的父任务ID
+	TriggerTaskId *int64 `json:"TriggerTaskId,omitnil" name:"TriggerTaskId"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 任务进度
+	Process *int64 `json:"Process,omitnil" name:"Process"`
+
+	// 修改参数任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyParamsData []*ModifyParamsData `json:"ModifyParamsData,omitnil" name:"ModifyParamsData"`
+
+	// 创建集群任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateClustersData *CreateClustersData `json:"CreateClustersData,omitnil" name:"CreateClustersData"`
+
+	// 集群回档任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollbackData *RollbackData `json:"RollbackData,omitnil" name:"RollbackData"`
+
+	// 实例变配任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyInstanceData *ModifyInstanceData `json:"ModifyInstanceData,omitnil" name:"ModifyInstanceData"`
+
+	// 手动备份任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManualBackupData *ManualBackupData `json:"ManualBackupData,omitnil" name:"ManualBackupData"`
+
+	// 修改内核版本任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyDbVersionData *ModifyDbVersionData `json:"ModifyDbVersionData,omitnil" name:"ModifyDbVersionData"`
+
+	// 集群可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterSlaveData *ClusterSlaveData `json:"ClusterSlaveData,omitnil" name:"ClusterSlaveData"`
+
+	// 转换集群日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchClusterLogBin *SwitchClusterLogBin `json:"SwitchClusterLogBin,omitnil" name:"SwitchClusterLogBin"`
+
+	// 修改实例参数数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyInstanceParamsData *BizTaskModifyParamsData `json:"ModifyInstanceParamsData,omitnil" name:"ModifyInstanceParamsData"`
+
+	// 维护时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskMaintainInfo *TaskMaintainInfo `json:"TaskMaintainInfo,omitnil" name:"TaskMaintainInfo"`
+}
+
+type BizTaskModifyInstanceParam struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例参数修改任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyInstanceParamList []*ModifyParamItem `json:"ModifyInstanceParamList,omitnil" name:"ModifyInstanceParamList"`
+}
+
+type BizTaskModifyParamsData struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 集群参数修改数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterParamList []*ModifyParamItem `json:"ClusterParamList,omitnil" name:"ClusterParamList"`
+
+	// 实例参数修改数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyInstanceParams []*BizTaskModifyInstanceParam `json:"ModifyInstanceParams,omitnil" name:"ModifyInstanceParams"`
+}
+
 // Predefined struct for user
 type CloseAuditServiceRequestParams struct {
 	// 实例ID。
@@ -1130,6 +1270,24 @@ type ClusterParamModifyLog struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type ClusterSlaveData struct {
+	// 旧主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldMasterZone *string `json:"OldMasterZone,omitnil" name:"OldMasterZone"`
+
+	// 旧从可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldSlaveZone []*string `json:"OldSlaveZone,omitnil" name:"OldSlaveZone"`
+
+	// 新主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewMasterZone *string `json:"NewMasterZone,omitnil" name:"NewMasterZone"`
+
+	// 新从可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewSlaveZone []*string `json:"NewSlaveZone,omitnil" name:"NewSlaveZone"`
 }
 
 // Predefined struct for user
@@ -1620,6 +1778,17 @@ func (r *CreateClusterDatabaseResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateClusterDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClustersData struct {
+	// 实例CPU
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 实例内存
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 集群存储上限
+	StorageLimit *int64 `json:"StorageLimit,omitnil" name:"StorageLimit"`
 }
 
 // Predefined struct for user
@@ -7573,6 +7742,94 @@ func (r *DescribeSupportProxyVersionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 任务开始时间起始值
+	StartTimeBegin *string `json:"StartTimeBegin,omitnil" name:"StartTimeBegin"`
+
+	// 任务开始时间结束值
+	StartTimeEnd *string `json:"StartTimeEnd,omitnil" name:"StartTimeEnd"`
+
+	// 过滤条件
+	Filters []*QueryFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询列表长度
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询列表偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务开始时间起始值
+	StartTimeBegin *string `json:"StartTimeBegin,omitnil" name:"StartTimeBegin"`
+
+	// 任务开始时间结束值
+	StartTimeEnd *string `json:"StartTimeEnd,omitnil" name:"StartTimeEnd"`
+
+	// 过滤条件
+	Filters []*QueryFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询列表长度
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询列表偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTimeBegin")
+	delete(f, "StartTimeEnd")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 任务列表总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 任务列表
+	TaskList []*BizTaskInfo `json:"TaskList,omitnil" name:"TaskList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeZonesRequestParams struct {
 	// 是否包含虚拟区
 	IncludeVirtualZones *bool `json:"IncludeVirtualZones,omitnil" name:"IncludeVirtualZones"`
@@ -8692,6 +8949,17 @@ type LogicBackupConfigInfo struct {
 	// 逻辑备份所跨地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogicCrossRegions []*string `json:"LogicCrossRegions,omitnil" name:"LogicCrossRegions"`
+}
+
+type ManualBackupData struct {
+	// 备份类型。snapshot-快照备份
+	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
+
+	// 备份方式。auto-自动备份，manual-手动
+	BackupMethod *string `json:"BackupMethod,omitnil" name:"BackupMethod"`
+
+	// 备份时间
+	SnapshotTime *string `json:"SnapshotTime,omitnil" name:"SnapshotTime"`
 }
 
 type ModifiableInfo struct {
@@ -9941,6 +10209,40 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDbVersionData struct {
+	// 修改前版本
+	OldVersion *string `json:"OldVersion,omitnil" name:"OldVersion"`
+
+	// 修改后版本
+	NewVersion *string `json:"NewVersion,omitnil" name:"NewVersion"`
+
+	// 升级方式
+	UpgradeType *string `json:"UpgradeType,omitnil" name:"UpgradeType"`
+}
+
+type ModifyInstanceData struct {
+	// 变配后CPU
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 变配后内存
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 变配后存储上限
+	StorageLimit *int64 `json:"StorageLimit,omitnil" name:"StorageLimit"`
+
+	// 变配前CPU
+	OldCpu *int64 `json:"OldCpu,omitnil" name:"OldCpu"`
+
+	// 变配前内存
+	OldMemory *int64 `json:"OldMemory,omitnil" name:"OldMemory"`
+
+	// 变配前存储上限
+	OldStorageLimit *int64 `json:"OldStorageLimit,omitnil" name:"OldStorageLimit"`
+
+	// 升级方式。升级完成后切换或维护时间内切换
+	UpgradeType *string `json:"UpgradeType,omitnil" name:"UpgradeType"`
+}
+
 // Predefined struct for user
 type ModifyInstanceNameRequestParams struct {
 	// 实例ID
@@ -10247,6 +10549,17 @@ func (r *ModifyParamTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyParamsData struct {
+	// 参数名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 修改前参数值
+	OldValue *string `json:"OldValue,omitnil" name:"OldValue"`
+
+	// 修改后参数值
+	CurValue *string `json:"CurValue,omitnil" name:"CurValue"`
 }
 
 // Predefined struct for user
@@ -12486,6 +12799,53 @@ func (r *RollBackClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RollbackData struct {
+	// 实例CPU
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 实例内存
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 集群存储上限
+	StorageLimit *int64 `json:"StorageLimit,omitnil" name:"StorageLimit"`
+
+	// 原集群id
+	OriginalClusterId *string `json:"OriginalClusterId,omitnil" name:"OriginalClusterId"`
+
+	// 原集群名
+	OriginalClusterName *string `json:"OriginalClusterName,omitnil" name:"OriginalClusterName"`
+
+	// 回档方式
+	RollbackStrategy *string `json:"RollbackStrategy,omitnil" name:"RollbackStrategy"`
+
+	// 快照时间
+	SnapshotTime *string `json:"SnapshotTime,omitnil" name:"SnapshotTime"`
+
+	// 回档到serverlessls集群时最小CPU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinCpu *int64 `json:"MinCpu,omitnil" name:"MinCpu"`
+
+	// 回档到serverlessls集群时最大CPU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxCpu *int64 `json:"MaxCpu,omitnil" name:"MaxCpu"`
+
+	// 快照ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapShotId *uint64 `json:"SnapShotId,omitnil" name:"SnapShotId"`
+
+	// 回档数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitnil" name:"RollbackDatabases"`
+
+	// 回档数据表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollbackTables []*RollbackTable `json:"RollbackTables,omitnil" name:"RollbackTables"`
+
+	// 备份文件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupFileName *string `json:"BackupFileName,omitnil" name:"BackupFileName"`
+}
+
 type RollbackDatabase struct {
 	// 旧数据库名称
 	OldDatabase *string `json:"OldDatabase,omitnil" name:"OldDatabase"`
@@ -12934,6 +13294,12 @@ type SlowQueriesItem struct {
 	SqlMd5 *string `json:"SqlMd5,omitnil" name:"SqlMd5"`
 }
 
+type SwitchClusterLogBin struct {
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
 // Predefined struct for user
 type SwitchClusterVpcRequestParams struct {
 	// 集群ID
@@ -13195,6 +13561,20 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+}
+
+type TaskMaintainInfo struct {
+	// 执行开始时间(距离0点的秒数)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainStartTime *int64 `json:"MaintainStartTime,omitnil" name:"MaintainStartTime"`
+
+	// 持续的时间(单位：秒)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainDuration *int64 `json:"MaintainDuration,omitnil" name:"MaintainDuration"`
+
+	// 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil" name:"MaintainWeekDays"`
 }
 
 type TemplateParamInfo struct {

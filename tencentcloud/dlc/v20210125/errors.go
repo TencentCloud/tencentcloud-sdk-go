@@ -431,6 +431,9 @@ const (
 	// 无效的工作组名。
 	INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
 
+	// 您当前仅允许查看100条结果数据，若需调整，请与我们联系
+	INVALIDPARAMETER_MAXRESULTONLYSUPPORTHUNDRED = "InvalidParameter.MaxResultOnlySupportHundred"
+
 	// 提交的SQL数量范围限制为1~50
 	INVALIDPARAMETER_NUMBEROFSQLEXCEEDSTHELIMIT = "InvalidParameter.NumberOfSQLExceedsTheLimit"
 

@@ -10363,6 +10363,12 @@ type NetworkStorageRange struct {
 
 	// 总模块数量
 	MaxModuleNum *int64 `json:"MaxModuleNum,omitnil" name:"MaxModuleNum"`
+
+	// 是否支持cbs
+	CBSSupported *bool `json:"CBSSupported,omitnil" name:"CBSSupported"`
+
+	// 磁盘数量限制
+	DiskNumLimit *int64 `json:"DiskNumLimit,omitnil" name:"DiskNumLimit"`
 }
 
 type Node struct {
@@ -10547,6 +10553,10 @@ type Position struct {
 
 	// 实例所在的Region的信息。
 	RegionInfo *RegionInfo `json:"RegionInfo,omitnil" name:"RegionInfo"`
+
+	// 实例是否支持ipv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Supported *bool `json:"Ipv6Supported,omitnil" name:"Ipv6Supported"`
 }
 
 type PriceDetail struct {
@@ -12796,6 +12806,10 @@ type VirtualPrivateCloud struct {
 
 	// 为弹性网卡指定随机生成的 IPv6 地址数量。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil" name:"Ipv6AddressCount"`
+
+	// runInstances接口创建三网ipv6地址使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6SubnetIds []*string `json:"Ipv6SubnetIds,omitnil" name:"Ipv6SubnetIds"`
 }
 
 type VpcInfo struct {

@@ -1,53 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 73 次发布
+### 第 79 次发布
 
-发布时间：2024-02-20 01:15:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Node](https://cloud.tencent.com/document/api/1108/42574#Node)
-
-	* <font color="#dd0000">**修改成员**：</font>LBSupported
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 153 次发布
-
-发布时间：2024-02-20 01:16:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeBillUsageDetail
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* BillUsageDetail
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 65 次发布
-
-发布时间：2024-02-19 10:37:21
+发布时间：2024-02-21 01:12:48
 
 本次发布包含了以下内容：
 
@@ -55,7 +12,133 @@
 
 新增接口：
 
-* [ModifyServiceAccountPassword](https://cloud.tencent.com/document/api/1141/103857)
+* [DescribeTasks](https://cloud.tencent.com/document/api/1003/103866)
+
+新增数据结构：
+
+* [BizTaskInfo](https://cloud.tencent.com/document/api/1003/48097#BizTaskInfo)
+* [BizTaskModifyInstanceParam](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyInstanceParam)
+* [BizTaskModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyParamsData)
+* [ClusterSlaveData](https://cloud.tencent.com/document/api/1003/48097#ClusterSlaveData)
+* [CreateClustersData](https://cloud.tencent.com/document/api/1003/48097#CreateClustersData)
+* [ManualBackupData](https://cloud.tencent.com/document/api/1003/48097#ManualBackupData)
+* [ModifyDbVersionData](https://cloud.tencent.com/document/api/1003/48097#ModifyDbVersionData)
+* [ModifyInstanceData](https://cloud.tencent.com/document/api/1003/48097#ModifyInstanceData)
+* [ModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#ModifyParamsData)
+* [RollbackData](https://cloud.tencent.com/document/api/1003/48097#RollbackData)
+* [SwitchClusterLogBin](https://cloud.tencent.com/document/api/1003/48097#SwitchClusterLogBin)
+* [TaskMaintainInfo](https://cloud.tencent.com/document/api/1003/48097#TaskMaintainInfo)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 80 次发布
+
+发布时间：2024-02-21 01:13:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResultInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResultInfo)
+
+	* 新增成员：QueryResultTime
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 74 次发布
+
+发布时间：2024-02-21 01:14:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* <font color="#dd0000">**修改成员**：</font>DisableWanIp
+
+* [NetworkStorageRange](https://cloud.tencent.com/document/api/1108/42574#NetworkStorageRange)
+
+	* 新增成员：CBSSupported, DiskNumLimit
+
+* [Position](https://cloud.tencent.com/document/api/1108/42574#Position)
+
+	* 新增成员：Ipv6Supported
+
+* [VirtualPrivateCloud](https://cloud.tencent.com/document/api/1108/42574#VirtualPrivateCloud)
+
+	* 新增成员：Ipv6SubnetIds
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 59 次发布
+
+发布时间：2024-02-21 01:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutCluster](https://cloud.tencent.com/document/api/589/83952)
+
+	* 新增入参：ScaleOutServiceConfGroupsInfo
+
+
+新增数据结构：
+
+* [ScaleOutServiceConfGroupsInfo](https://cloud.tencent.com/document/api/589/33981#ScaleOutServiceConfGroupsInfo)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 130 次发布
+
+发布时间：2024-02-21 01:20:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeForeignPermanentResidentIdCard](https://cloud.tencent.com/document/api/866/103033)
+
+	* 新增出参：PreviousNumber, IssuedAuthority
+
+
+
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 10 次发布
+
+发布时间：2024-02-21 01:22:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
+
+	* <font color="#dd0000">**修改成员**：</font>RotationFrequency, ResourceID, RotationBeginTime
+
 
 
 
@@ -42570,6 +42653,33 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 79 次发布
+
+发布时间：2024-02-21 01:12:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTasks](https://cloud.tencent.com/document/api/1003/103866)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BizTaskInfo](https://cloud.tencent.com/document/api/1003/48097#BizTaskInfo)](https://cloud.tencent.com/document/api/1003/48097#[BizTaskInfo](https://cloud.tencent.com/document/api/1003/48097#BizTaskInfo))
+* [[BizTaskModifyInstanceParam](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyInstanceParam)](https://cloud.tencent.com/document/api/1003/48097#[BizTaskModifyInstanceParam](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyInstanceParam))
+* [[BizTaskModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyParamsData)](https://cloud.tencent.com/document/api/1003/48097#[BizTaskModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#BizTaskModifyParamsData))
+* [[ClusterSlaveData](https://cloud.tencent.com/document/api/1003/48097#ClusterSlaveData)](https://cloud.tencent.com/document/api/1003/48097#[ClusterSlaveData](https://cloud.tencent.com/document/api/1003/48097#ClusterSlaveData))
+* [[CreateClustersData](https://cloud.tencent.com/document/api/1003/48097#CreateClustersData)](https://cloud.tencent.com/document/api/1003/48097#[CreateClustersData](https://cloud.tencent.com/document/api/1003/48097#CreateClustersData))
+* [[ManualBackupData](https://cloud.tencent.com/document/api/1003/48097#ManualBackupData)](https://cloud.tencent.com/document/api/1003/48097#[ManualBackupData](https://cloud.tencent.com/document/api/1003/48097#ManualBackupData))
+* [[ModifyDbVersionData](https://cloud.tencent.com/document/api/1003/48097#ModifyDbVersionData)](https://cloud.tencent.com/document/api/1003/48097#[ModifyDbVersionData](https://cloud.tencent.com/document/api/1003/48097#ModifyDbVersionData))
+* [[ModifyInstanceData](https://cloud.tencent.com/document/api/1003/48097#ModifyInstanceData)](https://cloud.tencent.com/document/api/1003/48097#[ModifyInstanceData](https://cloud.tencent.com/document/api/1003/48097#ModifyInstanceData))
+* [[ModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#ModifyParamsData)](https://cloud.tencent.com/document/api/1003/48097#[ModifyParamsData](https://cloud.tencent.com/document/api/1003/48097#ModifyParamsData))
+* [[RollbackData](https://cloud.tencent.com/document/api/1003/48097#RollbackData)](https://cloud.tencent.com/document/api/1003/48097#[RollbackData](https://cloud.tencent.com/document/api/1003/48097#RollbackData))
+* [[SwitchClusterLogBin](https://cloud.tencent.com/document/api/1003/48097#SwitchClusterLogBin)](https://cloud.tencent.com/document/api/1003/48097#[SwitchClusterLogBin](https://cloud.tencent.com/document/api/1003/48097#SwitchClusterLogBin))
+* [[TaskMaintainInfo](https://cloud.tencent.com/document/api/1003/48097#TaskMaintainInfo)](https://cloud.tencent.com/document/api/1003/48097#[TaskMaintainInfo](https://cloud.tencent.com/document/api/1003/48097#TaskMaintainInfo))
+
 ### 第 78 次发布
 
 发布时间：2024-01-25 01:10:23
@@ -48055,6 +48165,21 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 80 次发布
+
+发布时间：2024-02-21 01:13:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResultInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResultInfo)
+
+	* 新增成员：QueryResultTime
+
+
 ### 第 79 次发布
 
 发布时间：2023-12-15 19:29:56
@@ -53306,6 +53431,33 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 74 次发布
+
+发布时间：2024-02-21 01:14:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* <font color="#dd0000">**修改成员**：</font>DisableWanIp
+
+* [NetworkStorageRange](https://cloud.tencent.com/document/api/1108/42574#NetworkStorageRange)
+
+	* 新增成员：CBSSupported, DiskNumLimit
+
+* [Position](https://cloud.tencent.com/document/api/1108/42574#Position)
+
+	* 新增成员：Ipv6Supported
+
+* [VirtualPrivateCloud](https://cloud.tencent.com/document/api/1108/42574#VirtualPrivateCloud)
+
+	* 新增成员：Ipv6SubnetIds
+
+
 ### 第 73 次发布
 
 发布时间：2024-02-20 01:15:12
@@ -55486,6 +55638,25 @@
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 59 次发布
+
+发布时间：2024-02-21 01:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutCluster](https://cloud.tencent.com/document/api/589/83952)
+
+	* 新增入参：ScaleOutServiceConfGroupsInfo
+
+
+新增数据结构：
+
+* [[ScaleOutServiceConfGroupsInfo](https://cloud.tencent.com/document/api/589/33981#ScaleOutServiceConfGroupsInfo)](https://cloud.tencent.com/document/api/589/33981#[ScaleOutServiceConfGroupsInfo](https://cloud.tencent.com/document/api/589/33981#ScaleOutServiceConfGroupsInfo))
 
 ### 第 58 次发布
 
@@ -91202,6 +91373,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 130 次发布
+
+发布时间：2024-02-21 01:20:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeForeignPermanentResidentIdCard](https://cloud.tencent.com/document/api/866/103033)
+
+	* 新增出参：PreviousNumber, IssuedAuthority
+
+
 ### 第 129 次发布
 
 发布时间：2024-01-26 01:18:14
@@ -104316,6 +104502,21 @@
 
 ## 凭据管理系统(ssm) 版本：2019-09-23
 
+### 第 10 次发布
+
+发布时间：2024-02-21 01:22:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
+
+	* <font color="#dd0000">**修改成员**：</font>RotationFrequency, ResourceID, RotationBeginTime
+
+
 ### 第 9 次发布
 
 发布时间：2023-05-12 01:46:03
@@ -109939,7 +110140,7 @@
 
 新增接口：
 
-* [[ModifyServiceAccountPassword](https://cloud.tencent.com/document/api/1141/103857)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyServiceAccountPassword](https://cloud.tencent.com/document/api/1141/103857)
 
 ### 第 64 次发布
 

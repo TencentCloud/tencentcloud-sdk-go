@@ -12239,6 +12239,10 @@ type TaskResultInfo struct {
 
 	// 任务耗时，单位： ms
 	TotalTime *int64 `json:"TotalTime,omitnil" name:"TotalTime"`
+
+	// 获取结果消耗的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryResultTime *float64 `json:"QueryResultTime,omitnil" name:"QueryResultTime"`
 }
 
 type TasksInfo struct {

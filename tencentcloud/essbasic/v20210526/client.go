@@ -5737,9 +5737,9 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// ### 三. 填充模版中定义的填写控件
+// ### 三. 填充模板中定义的填写控件
 //
-// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
 // 
 //
@@ -5959,9 +5959,9 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// ### 三. 填充模版中定义的填写控件
+// ### 三. 填充模板中定义的填写控件
 //
-// 模版中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
 //
 // 
 //

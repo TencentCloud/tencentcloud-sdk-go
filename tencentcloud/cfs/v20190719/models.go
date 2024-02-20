@@ -331,7 +331,7 @@ type CreateCfsFileSystemRequestParams struct {
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
 	CidrBlock *string `json:"CidrBlock,omitnil" name:"CidrBlock"`
 
-	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
+	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 文件系统快照ID
@@ -386,7 +386,7 @@ type CreateCfsFileSystemRequest struct {
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
 	CidrBlock *string `json:"CidrBlock,omitnil" name:"CidrBlock"`
 
-	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
+	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 文件系统快照ID
