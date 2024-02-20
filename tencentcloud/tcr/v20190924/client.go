@@ -6666,6 +6666,63 @@ func (c *Client) ModifyServiceAccountWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyServiceAccountPasswordRequest() (request *ModifyServiceAccountPasswordRequest) {
+    request = &ModifyServiceAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyServiceAccountPassword")
+    
+    
+    return
+}
+
+func NewModifyServiceAccountPasswordResponse() (response *ModifyServiceAccountPasswordResponse) {
+    response = &ModifyServiceAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyServiceAccountPassword
+// 更新服务级账号密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyServiceAccountPassword(request *ModifyServiceAccountPasswordRequest) (response *ModifyServiceAccountPasswordResponse, err error) {
+    return c.ModifyServiceAccountPasswordWithContext(context.Background(), request)
+}
+
+// ModifyServiceAccountPassword
+// 更新服务级账号密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyServiceAccountPasswordWithContext(ctx context.Context, request *ModifyServiceAccountPasswordRequest) (response *ModifyServiceAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceAccountPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyServiceAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyServiceAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTagRetentionRuleRequest() (request *ModifyTagRetentionRuleRequest) {
     request = &ModifyTagRetentionRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

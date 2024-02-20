@@ -246,83 +246,6 @@ type BaseFlowInfo struct {
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 }
 
-type BillUsageDetail struct {
-	// 合同流程ID，为32位字符串。
-	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
-
-	// 合同经办人名称
-	// 如果有多个经办人用分号隔开。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
-
-	// 发起方组织机构名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil" name:"CreateOrganizationName"`
-
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	// 该名称还将用于合同签署完成后的下载文件名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
-
-	// 当前合同状态,如下是状态码对应的状态。
-	// 0-还没有发起
-	// 1-等待签署
-	// 2-部分签署 
-	// 3-拒签
-	// 4-已签署 
-	// 5-已过期 
-	// 6-已撤销 
-	// 7-还没有预发起
-	// 8-等待填写
-	// 9-部分填写 
-	// 10-拒填
-	// 11-已解除
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
-
-	// 套餐类型
-	// 对应关系如下
-	// CloudEnterprise-企业版合同
-	// SingleSignature-单方签章
-	// CloudProve-签署报告
-	// CloudOnlineSign-腾讯会议在线签约
-	// ChannelWeCard-微工卡
-	// SignFlow-合同套餐
-	// SignFace-签署意愿（人脸识别）
-	// SignPassword-签署意愿（密码）
-	// SignSMS-签署意愿（短信）
-	// PersonalEssAuth-签署人实名（腾讯电子签认证）
-	// PersonalThirdAuth-签署人实名（信任第三方认证）
-	// OrgEssAuth-签署企业实名
-	// FlowNotify-短信通知
-	// AuthService-企业工商信息查询
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
-
-	// 合同使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
-
-	// 消耗的时间戳，格式为Unix标准时间戳（秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
-
-	// 消耗的套餐名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
-
-	// 消耗类型
-	// 1.扣费 2.撤销返还
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
-
-	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
-}
-
 type CcInfo struct {
 	// 被抄送人手机号，大陆11位手机号
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
@@ -4058,7 +3981,11 @@ type ChannelCreateWebThemeConfigRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
-	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	// <ul>
+	// <li>EMBED_WEB_THEME，web页面嵌入的主题风格配置</li>
+	// <li>COMPANY_AUTHENTICATE，子客认证主题配置， 对当前第三方应用号生效，
+	// 目前支持的有，背景图替换，隐藏企业认证页面导航栏和隐藏企业认证顶部logo</li>
+	// </ul>
 	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
 
 	// 主题配置
@@ -4072,7 +3999,11 @@ type ChannelCreateWebThemeConfigRequest struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
-	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	// <ul>
+	// <li>EMBED_WEB_THEME，web页面嵌入的主题风格配置</li>
+	// <li>COMPANY_AUTHENTICATE，子客认证主题配置， 对当前第三方应用号生效，
+	// 目前支持的有，背景图替换，隐藏企业认证页面导航栏和隐藏企业认证顶部logo</li>
+	// </ul>
 	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
 
 	// 主题配置
@@ -7227,7 +7158,7 @@ type CreateSignUrlsRequestParams struct {
 	// 
 	// **注：**动态签署人场景，如果签署链接类型设置为`APP`，则仅支持跳转到封面页。
 	// 
-	// 详细使用场景可以参数接口说明中的 **主要使用场景可以更加EndPoint分类如下**
+	// 详细使用场景可以参考接口描述说明中的 **主要使用场景EndPoint分类**
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 
 	// 签署链接生成类型，可以选择的类型如下
@@ -7333,7 +7264,7 @@ type CreateSignUrlsRequest struct {
 	// 
 	// **注：**动态签署人场景，如果签署链接类型设置为`APP`，则仅支持跳转到封面页。
 	// 
-	// 详细使用场景可以参数接口说明中的 **主要使用场景可以更加EndPoint分类如下**
+	// 详细使用场景可以参考接口描述说明中的 **主要使用场景EndPoint分类**
 	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 
 	// 签署链接生成类型，可以选择的类型如下
@@ -7557,131 +7488,6 @@ func (r *DescribeBatchOrganizationRegistrationUrlsResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBatchOrganizationRegistrationUrlsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBillUsageDetailRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
-
-	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
-
-	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
-
-	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
-	// 对应关系如下
-	// CloudEnterprise-企业版合同
-	// SingleSignature-单方签章
-	// CloudProve-签署报告
-	// CloudOnlineSign-腾讯会议在线签约
-	// ChannelWeCard-微工卡
-	// SignFlow-合同套餐
-	// SignFace-签署意愿（人脸识别）
-	// SignPassword-签署意愿（密码）
-	// SignSMS-签署意愿（短信）
-	// PersonalEssAuth-签署人实名（腾讯电子签认证）
-	// PersonalThirdAuth-签署人实名（信任第三方认证）
-	// OrgEssAuth-签署企业实名
-	// FlowNotify-短信通知
-	// AuthService-企业工商信息查询
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
-
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
-
-	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-}
-
-type DescribeBillUsageDetailRequest struct {
-	*tchttp.BaseRequest
-	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
-
-	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
-
-	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
-
-	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
-	// 对应关系如下
-	// CloudEnterprise-企业版合同
-	// SingleSignature-单方签章
-	// CloudProve-签署报告
-	// CloudOnlineSign-腾讯会议在线签约
-	// ChannelWeCard-微工卡
-	// SignFlow-合同套餐
-	// SignFace-签署意愿（人脸识别）
-	// SignPassword-签署意愿（密码）
-	// SignSMS-签署意愿（短信）
-	// PersonalEssAuth-签署人实名（腾讯电子签认证）
-	// PersonalThirdAuth-签署人实名（信任第三方认证）
-	// OrgEssAuth-签署企业实名
-	// FlowNotify-短信通知
-	// AuthService-企业工商信息查询
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
-
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
-
-	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
-}
-
-func (r *DescribeBillUsageDetailRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBillUsageDetailRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Agent")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "QuotaType")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillUsageDetailRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBillUsageDetailResponseParams struct {
-	// 返回查询记录总数
-	Total *int64 `json:"Total,omitnil" name:"Total"`
-
-	// 消耗记录详情
-	Details []*BillUsageDetail `json:"Details,omitnil" name:"Details"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeBillUsageDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeBillUsageDetailResponseParams `json:"Response"`
-}
-
-func (r *DescribeBillUsageDetailResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

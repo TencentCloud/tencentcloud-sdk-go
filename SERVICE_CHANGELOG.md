@@ -1,33 +1,53 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 81 次发布
+### 第 73 次发布
 
-发布时间：2024-02-05 10:48:52
+发布时间：2024-02-20 01:15:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
-
-* [HighLightItem](https://cloud.tencent.com/document/api/614/56471#HighLightItem)
-
 修改数据结构：
 
-* [LogContextInfo](https://cloud.tencent.com/document/api/614/56471#LogContextInfo)
+* [Node](https://cloud.tencent.com/document/api/1108/42574#Node)
 
-	* 新增成员：HighLights
-
-
+	* <font color="#dd0000">**修改成员**：</font>LBSupported
 
 
-## 流量反欺诈(taf) 版本：2020-02-10
 
-### 第 18 次发布
 
-发布时间：2024-02-05 01:21:52
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 153 次发布
+
+发布时间：2024-02-20 01:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBillUsageDetail
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BillUsageDetail
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 65 次发布
+
+发布时间：2024-02-19 10:37:21
 
 本次发布包含了以下内容：
 
@@ -35,13 +55,7 @@
 
 新增接口：
 
-* [ManagePortraitRisk](https://cloud.tencent.com/document/api/1031/103776)
-
-新增数据结构：
-
-* [ManagePortraitRiskInput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskInput)
-* [ManagePortraitRiskOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskOutput)
-* [ManagePortraitRiskValueOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskValueOutput)
+* [ModifyServiceAccountPassword](https://cloud.tencent.com/document/api/1141/103857)
 
 
 
@@ -29866,7 +29880,7 @@
 
 新增数据结构：
 
-* [[HighLightItem](https://cloud.tencent.com/document/api/614/56471#HighLightItem)](https://cloud.tencent.com/document/api/614/56471#[HighLightItem](https://cloud.tencent.com/document/api/614/56471#HighLightItem))
+* [HighLightItem](https://cloud.tencent.com/document/api/614/56471#HighLightItem)
 
 修改数据结构：
 
@@ -53292,6 +53306,21 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 73 次发布
+
+发布时间：2024-02-20 01:15:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Node](https://cloud.tencent.com/document/api/1108/42574#Node)
+
+	* <font color="#dd0000">**修改成员**：</font>LBSupported
+
+
 ### 第 72 次发布
 
 发布时间：2023-10-23 00:10:30
@@ -60859,6 +60888,22 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 153 次发布
+
+发布时间：2024-02-20 01:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBillUsageDetail
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BillUsageDetail
 
 ### 第 152 次发布
 
@@ -104689,13 +104734,13 @@
 
 新增接口：
 
-* [[ManagePortraitRisk](https://cloud.tencent.com/document/api/1031/103776)](https://cloud.tencent.com/document/api/#/#)
+* [ManagePortraitRisk](https://cloud.tencent.com/document/api/1031/103776)
 
 新增数据结构：
 
-* [[ManagePortraitRiskInput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskInput)](https://cloud.tencent.com/document/api/1031/43310#[ManagePortraitRiskInput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskInput))
-* [[ManagePortraitRiskOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskOutput)](https://cloud.tencent.com/document/api/1031/43310#[ManagePortraitRiskOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskOutput))
-* [[ManagePortraitRiskValueOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskValueOutput)](https://cloud.tencent.com/document/api/1031/43310#[ManagePortraitRiskValueOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskValueOutput))
+* [ManagePortraitRiskInput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskInput)
+* [ManagePortraitRiskOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskOutput)
+* [ManagePortraitRiskValueOutput](https://cloud.tencent.com/document/api/1031/43310#ManagePortraitRiskValueOutput)
 
 ### 第 17 次发布
 
@@ -109883,6 +109928,18 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 65 次发布
+
+发布时间：2024-02-19 10:37:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyServiceAccountPassword](https://cloud.tencent.com/document/api/1141/103857)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 64 次发布
 

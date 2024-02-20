@@ -91,15 +91,15 @@
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2024-01-17 01:14:14 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2023-09-13 01:42:58 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2023-08-17 03:03:04 |
-| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2023-12-20 01:36:00 |
+| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2024-02-20 01:15:12 |
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2023-05-18 01:25:40 |
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-02-02 01:13:14 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-01-25 01:13:20 |
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-02-05 01:14:36 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-02-05 01:14:50 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-02-20 01:16:04 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-12-15 19:41:44 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-01-12 01:15:37 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-02-20 01:16:27 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-12-25 00:11:01 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2023-08-17 03:12:58 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2023-11-14 01:16:54 |
@@ -154,7 +154,7 @@
 | nlp | [NLP 服务](https://cloud.tencent.com/document/product/271) | 2023-09-15 02:14:19 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2024-01-19 01:18:01 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-02-05 01:19:36 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-02-19 10:34:29 |
 | omics | [腾讯健康组学平台](https://cloud.tencent.com/document/product/1643) | 2024-01-05 01:21:57 |
 | organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | 2024-01-17 01:19:45 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2024-01-23 01:25:29 |
@@ -162,7 +162,7 @@
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2024-01-24 01:33:35 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2024-01-19 01:18:43 |
 | pts | [云压测](https://cloud.tencent.com/document/product/1484) | 2023-12-12 02:16:34 |
-| rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2024-02-05 01:20:26 |
+| rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2024-02-19 10:35:18 |
 | redis | [云数据库Redis](https://cloud.tencent.com/document/product/239) | 2024-01-29 01:18:51 |
 | region | [地域管理系统](https://cloud.tencent.com/document/product/1596) | 2023-10-13 01:22:28 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2023-12-25 00:16:39 |
@@ -198,7 +198,7 @@
 | tchd | [腾讯云健康看板](https://cloud.tencent.com/document/product/1688) | 2023-11-28 01:24:39 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcm | [服务网格](https://cloud.tencent.com/document/product/1261) | 2023-10-09 01:23:14 |
-| tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2023-12-12 02:27:39 |
+| tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2024-02-19 10:37:21 |
 | tcss | [容器安全服务](https://cloud.tencent.com/document/product/1285) | 2024-02-02 01:21:42 |
 | tdcpg | [TDSQL-C PostgreSQL 版](https://cloud.tencent.com/document/product/1556) | 2023-06-21 01:36:25 |
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2024-01-23 01:28:41 |

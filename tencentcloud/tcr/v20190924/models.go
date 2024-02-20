@@ -7774,6 +7774,84 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyServiceAccountPasswordRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
+
+	// 服务级账号名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 是否随机生成密码
+	Random *bool `json:"Random,omitnil" name:"Random"`
+
+	// 服务级账号密码，长度在8到20之间且需包含至少一个大写字符，一个小写字符和一个数字
+	Password *string `json:"Password,omitnil" name:"Password"`
+}
+
+type ModifyServiceAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
+
+	// 服务级账号名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 是否随机生成密码
+	Random *bool `json:"Random,omitnil" name:"Random"`
+
+	// 服务级账号密码，长度在8到20之间且需包含至少一个大写字符，一个小写字符和一个数字
+	Password *string `json:"Password,omitnil" name:"Password"`
+}
+
+func (r *ModifyServiceAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceAccountPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "Name")
+	delete(f, "Random")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceAccountPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceAccountPasswordResponseParams struct {
+	// 自定义用户密码，仅展示一次，请注意留存	
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyServiceAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceAccountPasswordResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceAccountPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyServiceAccountRequestParams struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitnil" name:"RegistryId"`
