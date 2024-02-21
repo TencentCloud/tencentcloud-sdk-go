@@ -2883,6 +2883,7 @@ type IntentionActionResult struct {
 	// -803: "用户主动关闭链接/异常断开链接"   
 	// -998: "系统数据异常"   
 	// -999: "系统未知错误，请联系人工核实"   
+	// 若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinalResultDetailCode *int64 `json:"FinalResultDetailCode,omitnil" name:"FinalResultDetailCode"`
 
@@ -2934,6 +2935,7 @@ type IntentionQuestionResult struct {
 	// -803: "用户主动关闭链接/异常断开链接"   
 	// -998: "系统数据异常"   
 	// -999: "系统未知错误，请联系人工核实"   
+	// 若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinalResultDetailCode *int64 `json:"FinalResultDetailCode,omitnil" name:"FinalResultDetailCode"`
 

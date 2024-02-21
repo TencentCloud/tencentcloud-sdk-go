@@ -4718,8 +4718,11 @@ type DescribeSlowLogResponseParams struct {
 	// 慢查询总数。
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 慢查询详情。
+	// 该参数存在命名不规范问题，建议用参数InstanceSlowLogDetail取代。慢查询详情。
 	InstanceSlowlogDetail []*InstanceSlowlogDetail `json:"InstanceSlowlogDetail,omitnil" name:"InstanceSlowlogDetail"`
+
+	// 慢查询详情。
+	InstanceSlowLogDetail []*InstanceSlowlogDetail `json:"InstanceSlowLogDetail,omitnil" name:"InstanceSlowLogDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

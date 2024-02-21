@@ -725,6 +725,63 @@ func (c *Client) DeletePhoneEmailWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteReservedPreDomainInfoRequest() (request *DeleteReservedPreDomainInfoRequest) {
+    request = &DeleteReservedPreDomainInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DeleteReservedPreDomainInfo")
+    
+    
+    return
+}
+
+func NewDeleteReservedPreDomainInfoResponse() (response *DeleteReservedPreDomainInfoResponse) {
+    response = &DeleteReservedPreDomainInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteReservedPreDomainInfo
+// 用于清除多余的预定域名信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+func (c *Client) DeleteReservedPreDomainInfo(request *DeleteReservedPreDomainInfoRequest) (response *DeleteReservedPreDomainInfoResponse, err error) {
+    return c.DeleteReservedPreDomainInfoWithContext(context.Background(), request)
+}
+
+// DeleteReservedPreDomainInfo
+// 用于清除多余的预定域名信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+func (c *Client) DeleteReservedPreDomainInfoWithContext(ctx context.Context, request *DeleteReservedPreDomainInfoRequest) (response *DeleteReservedPreDomainInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteReservedPreDomainInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReservedPreDomainInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReservedPreDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTemplateRequest() (request *DeleteTemplateRequest) {
     request = &DeleteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1222,6 +1279,108 @@ func (c *Client) DescribePhoneEmailListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribePreDomainListRequest() (request *DescribePreDomainListRequest) {
+    request = &DescribePreDomainListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribePreDomainList")
+    
+    
+    return
+}
+
+func NewDescribePreDomainListResponse() (response *DescribePreDomainListResponse) {
+    response = &DescribePreDomainListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePreDomainList
+// 用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribePreDomainList(request *DescribePreDomainListRequest) (response *DescribePreDomainListResponse, err error) {
+    return c.DescribePreDomainListWithContext(context.Background(), request)
+}
+
+// DescribePreDomainList
+// 用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribePreDomainListWithContext(ctx context.Context, request *DescribePreDomainListRequest) (response *DescribePreDomainListResponse, err error) {
+    if request == nil {
+        request = NewDescribePreDomainListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePreDomainList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePreDomainListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReservedPreDomainInfoRequest() (request *DescribeReservedPreDomainInfoRequest) {
+    request = &DescribeReservedPreDomainInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeReservedPreDomainInfo")
+    
+    
+    return
+}
+
+func NewDescribeReservedPreDomainInfoResponse() (response *DescribeReservedPreDomainInfoResponse) {
+    response = &DescribeReservedPreDomainInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReservedPreDomainInfo
+// 合作商用于查询预约预释放状态信息内容
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribeReservedPreDomainInfo(request *DescribeReservedPreDomainInfoRequest) (response *DescribeReservedPreDomainInfoResponse, err error) {
+    return c.DescribeReservedPreDomainInfoWithContext(context.Background(), request)
+}
+
+// DescribeReservedPreDomainInfo
+// 合作商用于查询预约预释放状态信息内容
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribeReservedPreDomainInfoWithContext(ctx context.Context, request *DescribeReservedPreDomainInfoRequest) (response *DescribeReservedPreDomainInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedPreDomainInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedPreDomainInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReservedPreDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
     request = &DescribeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1693,6 +1852,57 @@ func (c *Client) RenewDomainBatchWithContext(ctx context.Context, request *Renew
     request.SetContext(ctx)
     
     response = NewRenewDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReservedPreDomainsRequest() (request *ReservedPreDomainsRequest) {
+    request = &ReservedPreDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "ReservedPreDomains")
+    
+    
+    return
+}
+
+func NewReservedPreDomainsResponse() (response *ReservedPreDomainsResponse) {
+    response = &ReservedPreDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReservedPreDomains
+// 用于合作商对预释放域名进行预留。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) ReservedPreDomains(request *ReservedPreDomainsRequest) (response *ReservedPreDomainsResponse, err error) {
+    return c.ReservedPreDomainsWithContext(context.Background(), request)
+}
+
+// ReservedPreDomains
+// 用于合作商对预释放域名进行预留。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) ReservedPreDomainsWithContext(ctx context.Context, request *ReservedPreDomainsRequest) (response *ReservedPreDomainsResponse, err error) {
+    if request == nil {
+        request = NewReservedPreDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReservedPreDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReservedPreDomainsResponse()
     err = c.Send(request, response)
     return
 }

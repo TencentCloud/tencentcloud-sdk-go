@@ -923,6 +923,60 @@ func (r *DeletePhoneEmailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteReservedPreDomainInfoRequestParams struct {
+	// 资源ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitnil" name:"ResourceIdList"`
+}
+
+type DeleteReservedPreDomainInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitnil" name:"ResourceIdList"`
+}
+
+func (r *DeleteReservedPreDomainInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReservedPreDomainInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReservedPreDomainInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReservedPreDomainInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteReservedPreDomainInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteReservedPreDomainInfoResponseParams `json:"Response"`
+}
+
+func (r *DeleteReservedPreDomainInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReservedPreDomainInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTemplateRequestParams struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
@@ -1536,6 +1590,161 @@ func (r *DescribePhoneEmailListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePreDomainListRequestParams struct {
+	// 页码
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+
+	// 条数
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+}
+
+type DescribePreDomainListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	Page *int64 `json:"Page,omitnil" name:"Page"`
+
+	// 条数
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+}
+
+func (r *DescribePreDomainListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreDomainListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "Size")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreDomainListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreDomainListResponseParams struct {
+	// 预释放预约列表数据
+	ReservedDomainList []*ReservedDomainInfo `json:"ReservedDomainList,omitnil" name:"ReservedDomainList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePreDomainListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreDomainListResponseParams `json:"Response"`
+}
+
+func (r *DescribePreDomainListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreDomainListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedPreDomainInfoRequestParams struct {
+	// 域名,每次最多支持500条域名查询
+	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+
+	// 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+	ReservedStatus *int64 `json:"ReservedStatus,omitnil" name:"ReservedStatus"`
+
+	// 根据预约时间排序，仅支持："desc","asc"。
+	ReservedTimeSort *string `json:"ReservedTimeSort,omitnil" name:"ReservedTimeSort"`
+
+	// 条数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeReservedPreDomainInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名,每次最多支持500条域名查询
+	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+
+	// 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+	ReservedStatus *int64 `json:"ReservedStatus,omitnil" name:"ReservedStatus"`
+
+	// 根据预约时间排序，仅支持："desc","asc"。
+	ReservedTimeSort *string `json:"ReservedTimeSort,omitnil" name:"ReservedTimeSort"`
+
+	// 条数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeReservedPreDomainInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedPreDomainInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainList")
+	delete(f, "ReservedStatus")
+	delete(f, "ReservedTimeSort")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedPreDomainInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedPreDomainInfoResponseParams struct {
+	// 预释放预约列表
+	ReservedPreDomainInfoList []*ReservedPreDomainInfo `json:"ReservedPreDomainInfoList,omitnil" name:"ReservedPreDomainInfoList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeReservedPreDomainInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReservedPreDomainInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeReservedPreDomainInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedPreDomainInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTemplateListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -1973,6 +2182,16 @@ type DomainSimpleInfo struct {
 	RegistrantName *string `json:"RegistrantName,omitnil" name:"RegistrantName"`
 }
 
+type FailReservedDomainInfo struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 预约失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
+}
+
 // Predefined struct for user
 type ModifyCustomDnsHostRequestParams struct {
 	// 域名实例ID
@@ -2397,6 +2616,121 @@ func (r *RenewDomainBatchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RenewDomainBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReservedDomainInfo struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 注册时间
+	RegTime *string `json:"RegTime,omitnil" name:"RegTime"`
+
+	// 到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 续费时间结束
+	RenewEndTime *string `json:"RenewEndTime,omitnil" name:"RenewEndTime"`
+
+	// 赎回结束时间
+	RestoreEndTime *string `json:"RestoreEndTime,omitnil" name:"RestoreEndTime"`
+
+	// 域名预约结束时间
+	ReservedEndTime *string `json:"ReservedEndTime,omitnil" name:"ReservedEndTime"`
+}
+
+type ReservedPreDomainInfo struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成
+	ReservedStatus *int64 `json:"ReservedStatus,omitnil" name:"ReservedStatus"`
+
+	// 域名预定失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
+
+	// 预计变更所有权时间（仅用于参考，实际时间会存在误差）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeOwnerTime *string `json:"ChangeOwnerTime,omitnil" name:"ChangeOwnerTime"`
+
+	// 注册时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegTime *string `json:"RegTime,omitnil" name:"RegTime"`
+
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 资源ID，用于删除资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+}
+
+// Predefined struct for user
+type ReservedPreDomainsRequestParams struct {
+	// 预约预释放域名列表
+	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+}
+
+type ReservedPreDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预约预释放域名列表
+	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+}
+
+func (r *ReservedPreDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReservedPreDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainList")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReservedPreDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReservedPreDomainsResponseParams struct {
+	// 预定成功域名列表
+	SucDomainList []*string `json:"SucDomainList,omitnil" name:"SucDomainList"`
+
+	// 预定失败域名列表
+	FailDomainList []*FailReservedDomainInfo `json:"FailDomainList,omitnil" name:"FailDomainList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ReservedPreDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *ReservedPreDomainsResponseParams `json:"Response"`
+}
+
+func (r *ReservedPreDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReservedPreDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

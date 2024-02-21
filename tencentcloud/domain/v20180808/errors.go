@@ -80,6 +80,9 @@ const (
 	// 域名提交转入失败，请稍后重试。
 	FAILEDOPERATION_TRANSFERINDOMAINFAILED = "FailedOperation.TransferInDomainFailed"
 
+	// 用户不再白名单列表，无法调用该接口
+	FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+
 	// 上传图片操作失败。
 	FAILEDOPERATION_UPLOADIMAGEFAILED = "FailedOperation.UploadImageFailed"
 

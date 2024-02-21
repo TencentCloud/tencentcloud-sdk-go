@@ -69,7 +69,7 @@ type FileTranslateRequestParams struct {
 	// 需要翻译文件url，文件需小于100MB。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 原始文档类型
+	// 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
 	BasicDocumentType *string `json:"BasicDocumentType,omitnil" name:"BasicDocumentType"`
 
 	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
@@ -129,7 +129,7 @@ type FileTranslateRequest struct {
 	// 需要翻译文件url，文件需小于100MB。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 原始文档类型
+	// 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
 	BasicDocumentType *string `json:"BasicDocumentType,omitnil" name:"BasicDocumentType"`
 
 	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
