@@ -2646,14 +2646,14 @@ func (r *DisableRestProxyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableRestProxyRequestParams struct {
-	// 对应于appid
+	// 集群 ID。
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type EnableRestProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 对应于appid
+	// 集群 ID。
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 

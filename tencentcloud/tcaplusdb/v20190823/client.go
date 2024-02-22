@@ -1884,7 +1884,7 @@ func NewEnableRestProxyResponse() (response *EnableRestProxyResponse) {
 }
 
 // EnableRestProxy
-// 当restful api为关闭状态时，可以通过此接口开启restful apu
+// 当restful api为关闭状态时，可以通过此接口开启restful api。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1906,7 +1906,7 @@ func (c *Client) EnableRestProxy(request *EnableRestProxyRequest) (response *Ena
 }
 
 // EnableRestProxy
-// 当restful api为关闭状态时，可以通过此接口开启restful apu
+// 当restful api为关闭状态时，可以通过此接口开启restful api。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

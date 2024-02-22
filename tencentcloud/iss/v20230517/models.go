@@ -1207,7 +1207,7 @@ type BatchOperateDeviceRequestParams struct {
 	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
 	DeviceIds []*string `json:"DeviceIds,omitnil" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除）
+	// 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
 	Cmd *string `json:"Cmd,omitnil" name:"Cmd"`
 }
 
@@ -1217,7 +1217,7 @@ type BatchOperateDeviceRequest struct {
 	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
 	DeviceIds []*string `json:"DeviceIds,omitnil" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除）
+	// 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
 	Cmd *string `json:"Cmd,omitnil" name:"Cmd"`
 }
 
@@ -5916,14 +5916,23 @@ type ListTasksRequestParams struct {
 	// 页码，默认为1
 	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
-	// 每页数量，默认为10
+	// 每页数量，默认为20
 	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
-	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，
+	// BatchUpgradeDevice，
+	// BatchResetDevice,
+	// BatchRebootDevice
 	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
-	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-未执行，2-执行中，3-完成，4-取消
 	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type ListTasksRequest struct {
@@ -5932,14 +5941,23 @@ type ListTasksRequest struct {
 	// 页码，默认为1
 	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
-	// 每页数量，默认为10
+	// 每页数量，默认为20
 	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
-	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，
+	// BatchUpgradeDevice，
+	// BatchResetDevice,
+	// BatchRebootDevice
 	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
-	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-未执行，2-执行中，3-完成，4-取消
 	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *ListTasksRequest) ToJsonString() string {
@@ -5958,6 +5976,8 @@ func (r *ListTasksRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Operation")
 	delete(f, "Status")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTasksRequest has unknown keys!", "")
 	}
@@ -6427,6 +6447,22 @@ type SubTaskData struct {
 
 	// 任务运行时间，单位ms
 	Runtime *int64 `json:"Runtime,omitnil" name:"Runtime"`
+
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 通道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 通道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 }
 
 type TaskData struct {
@@ -6478,6 +6514,22 @@ type TaskData struct {
 
 	// 任务运行时间，单位ms
 	Runtime *int64 `json:"Runtime,omitnil" name:"Runtime"`
+
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+
+	// 通道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	//  通道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 }
 
 type Timeline struct {

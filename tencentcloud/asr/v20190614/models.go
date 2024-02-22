@@ -333,6 +333,8 @@ type CreateCustomizationRequestParams struct {
 	ModelType *string `json:"ModelType,omitnil" name:"ModelType"`
 
 	// 标签信息
+	//
+	// Deprecated: TagInfos is deprecated.
 	TagInfos []*string `json:"TagInfos,omitnil" name:"TagInfos"`
 }
 
@@ -1315,6 +1317,8 @@ func (r *GetAsrVocabResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCustomizationListRequestParams struct {
 	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+	//
+	// Deprecated: TagInfos is deprecated.
 	TagInfos []*string `json:"TagInfos,omitnil" name:"TagInfos"`
 
 	// 分页大小，默认1000

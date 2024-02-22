@@ -7745,6 +7745,9 @@ type DescribeTaskResultRequestParams struct {
 
 	// 返回结果的最大行数，范围0~1000，默认为1000.
 	MaxResults *int64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 是否转化数据类型
+	IsTransformDataType *bool `json:"IsTransformDataType,omitnil" name:"IsTransformDataType"`
 }
 
 type DescribeTaskResultRequest struct {
@@ -7758,6 +7761,9 @@ type DescribeTaskResultRequest struct {
 
 	// 返回结果的最大行数，范围0~1000，默认为1000.
 	MaxResults *int64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 是否转化数据类型
+	IsTransformDataType *bool `json:"IsTransformDataType,omitnil" name:"IsTransformDataType"`
 }
 
 func (r *DescribeTaskResultRequest) ToJsonString() string {
@@ -7775,6 +7781,7 @@ func (r *DescribeTaskResultRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "NextToken")
 	delete(f, "MaxResults")
+	delete(f, "IsTransformDataType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskResultRequest has unknown keys!", "")
 	}

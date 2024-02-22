@@ -20,6 +20,28 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AdvancedObjectsItem struct {
+	// 对象类型,可能得值有：account,index,shardkey,schema
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *string `json:"ObjectType,omitnil" name:"ObjectType"`
+
+	// 源端分块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcChunk *string `json:"SrcChunk,omitnil" name:"SrcChunk"`
+
+	// 目标端分块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstChunk *string `json:"DstChunk,omitnil" name:"DstChunk"`
+
+	// 源端值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcItem *string `json:"SrcItem,omitnil" name:"SrcItem"`
+
+	// 目标端值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstItem *string `json:"DstItem,omitnil" name:"DstItem"`
+}
+
 type CheckStep struct {
 	// 步骤编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -146,6 +168,18 @@ type CompareDetailInfo struct {
 	// 跳过校验的表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Skipped *SkippedDetail `json:"Skipped,omitnil" name:"Skipped"`
+
+	// 数据库不一致的详情，mongodb业务用到
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DifferenceAdvancedObjects *DifferenceAdvancedObjectsDetail `json:"DifferenceAdvancedObjects,omitnil" name:"DifferenceAdvancedObjects"`
+
+	// 数据不一致的详情，mongodb业务用到
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DifferenceData *DifferenceDataDetail `json:"DifferenceData,omitnil" name:"DifferenceData"`
+
+	// 数据行不一致的详情，mongodb业务用到
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DifferenceRow *DifferenceRowDetail `json:"DifferenceRow,omitnil" name:"DifferenceRow"`
 }
 
 type CompareObject struct {
@@ -3665,6 +3699,56 @@ type DetailCheckItem struct {
 	SkipInfo *string `json:"SkipInfo,omitnil" name:"SkipInfo"`
 }
 
+type DifferenceAdvancedObjectsDetail struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 不一致详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AdvancedObjectsItem `json:"Items,omitnil" name:"Items"`
+}
+
+type DifferenceData struct {
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Db *string `json:"Db,omitnil" name:"Db"`
+
+	// 集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 源端ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcChunk *string `json:"SrcChunk,omitnil" name:"SrcChunk"`
+
+	// 目标端ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstChunk *string `json:"DstChunk,omitnil" name:"DstChunk"`
+
+	// 源端值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcItem *string `json:"SrcItem,omitnil" name:"SrcItem"`
+
+	// 目标端值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstItem *string `json:"DstItem,omitnil" name:"DstItem"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+}
+
+type DifferenceDataDetail struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// mongo数据不一致详细列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DifferenceData `json:"Items,omitnil" name:"Items"`
+}
+
 type DifferenceDetail struct {
 	// 数据不一致的表数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3715,6 +3799,16 @@ type DifferenceItem struct {
 	// 完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitnil" name:"FinishedAt"`
+}
+
+type DifferenceRowDetail struct {
+	// 不一致总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 不一致列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*RowsCountDifference `json:"Items,omitnil" name:"Items"`
 }
 
 type DistributeRule struct {
@@ -6229,6 +6323,24 @@ type RoleItem struct {
 	// 迁移后的角色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewRoleName *string `json:"NewRoleName,omitnil" name:"NewRoleName"`
+}
+
+type RowsCountDifference struct {
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Db *string `json:"Db,omitnil" name:"Db"`
+
+	// 集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 源端行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcCount *int64 `json:"SrcCount,omitnil" name:"SrcCount"`
+
+	// 目标端行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstCount *int64 `json:"DstCount,omitnil" name:"DstCount"`
 }
 
 // Predefined struct for user

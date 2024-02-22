@@ -445,6 +445,20 @@ type ApproveType struct {
 	Classification *string `json:"Classification,omitnil" name:"Classification"`
 }
 
+type AttributeItemDTO struct {
+	// key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
 type AttributeItemDsVO struct {
 	// Key值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -25663,6 +25677,58 @@ type InstanceInfo struct {
 	CurRunDate *string `json:"CurRunDate,omitnil" name:"CurRunDate"`
 }
 
+type InstanceLifeCycleOpsDto struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitnil" name:"CurRunDate"`
+
+	// 实例生命次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeRound *int64 `json:"LifeRound,omitnil" name:"LifeRound"`
+
+	// 运行类型 重跑/补录/周期/非周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunType *string `json:"RunType,omitnil" name:"RunType"`
+
+	// 重跑次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tries *int64 `json:"Tries,omitnil" name:"Tries"`
+
+	// 实例生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLifeDetailDtoList []*InstanceLifeDetailDto `json:"InstanceLifeDetailDtoList,omitnil" name:"InstanceLifeDetailDtoList"`
+
+	// Runner运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunnerState *string `json:"RunnerState,omitnil" name:"RunnerState"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorDesc *string `json:"ErrorDesc,omitnil" name:"ErrorDesc"`
+
+	// 错误告警级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeLevel *string `json:"ErrorCodeLevel,omitnil" name:"ErrorCodeLevel"`
+
+	// 实例日志简略信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLogListOpsDto *InstanceLogInfo `json:"InstanceLogListOpsDto,omitnil" name:"InstanceLogListOpsDto"`
+}
+
+type InstanceLifeDetailDto struct {
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil" name:"State"`
+
+	// 该状态开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+}
+
 type InstanceList struct {
 	// 耗费时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -25796,6 +25862,10 @@ type InstanceLogInfo struct {
 	// 实例代码文件，为空表示对应代码文件不存在，可能是因为执行机未升级/对应类型任务无代码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeFileName *string `json:"CodeFileName,omitnil" name:"CodeFileName"`
+
+	// 扩展属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtensionInfo []*AttributeItemDTO `json:"ExtensionInfo,omitnil" name:"ExtensionInfo"`
 }
 
 type InstanceLogInfoOpsDto struct {
@@ -26096,6 +26166,30 @@ type InstanceOpsDto struct {
 	// 资源组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil" name:"ExecutorGroupName"`
+
+	// 关联实例信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedInstanceList []*InstanceOpsDto `json:"RelatedInstanceList,omitnil" name:"RelatedInstanceList"`
+
+	// 关联实例信息数量，不和RelatedInstanceList强关联。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedInstanceSize *int64 `json:"RelatedInstanceSize,omitnil" name:"RelatedInstanceSize"`
+
+	// ownerId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerId *string `json:"OwnerId,omitnil" name:"OwnerId"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 实例生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLifeCycleOpsDto *InstanceLifeCycleOpsDto `json:"InstanceLifeCycleOpsDto,omitnil" name:"InstanceLifeCycleOpsDto"`
+
+	// 自动重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryAttempts *uint64 `json:"RetryAttempts,omitnil" name:"RetryAttempts"`
 }
 
 type InstanceOpsInfoPage struct {
