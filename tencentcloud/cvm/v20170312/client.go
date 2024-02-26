@@ -1453,6 +1453,55 @@ func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteIma
     return
 }
 
+func NewDeleteInstancesActionTimerRequest() (request *DeleteInstancesActionTimerRequest) {
+    request = &DeleteInstancesActionTimerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DeleteInstancesActionTimer")
+    
+    
+    return
+}
+
+func NewDeleteInstancesActionTimerResponse() (response *DeleteInstancesActionTimerResponse) {
+    response = &DeleteInstancesActionTimerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInstancesActionTimer
+// 本接口 (DeleteInstancesActionTimer) 用于删除定时任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+func (c *Client) DeleteInstancesActionTimer(request *DeleteInstancesActionTimerRequest) (response *DeleteInstancesActionTimerResponse, err error) {
+    return c.DeleteInstancesActionTimerWithContext(context.Background(), request)
+}
+
+// DeleteInstancesActionTimer
+// 本接口 (DeleteInstancesActionTimer) 用于删除定时任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+func (c *Client) DeleteInstancesActionTimerWithContext(ctx context.Context, request *DeleteInstancesActionTimerRequest) (response *DeleteInstancesActionTimerResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstancesActionTimerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstancesActionTimer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstancesActionTimerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteKeyPairsRequest() (request *DeleteKeyPairsRequest) {
     request = &DeleteKeyPairsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2862,6 +2911,59 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeInstancesActionTimerRequest() (request *DescribeInstancesActionTimerRequest) {
+    request = &DescribeInstancesActionTimerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstancesActionTimer")
+    
+    
+    return
+}
+
+func NewDescribeInstancesActionTimerResponse() (response *DescribeInstancesActionTimerResponse) {
+    response = &DescribeInstancesActionTimerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancesActionTimer
+// 本接口 (DescribeInstancesActionTimer) 用于查询定时任务信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+func (c *Client) DescribeInstancesActionTimer(request *DescribeInstancesActionTimerRequest) (response *DescribeInstancesActionTimerResponse, err error) {
+    return c.DescribeInstancesActionTimerWithContext(context.Background(), request)
+}
+
+// DescribeInstancesActionTimer
+// 本接口 (DescribeInstancesActionTimer) 用于查询定时任务信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+func (c *Client) DescribeInstancesActionTimerWithContext(ctx context.Context, request *DescribeInstancesActionTimerRequest) (response *DescribeInstancesActionTimerResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesActionTimerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesActionTimer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesActionTimerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesModificationRequest() (request *DescribeInstancesModificationRequest) {
     request = &DescribeInstancesModificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4136,6 +4238,67 @@ func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImag
     request.SetContext(ctx)
     
     response = NewImportImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportInstancesActionTimerRequest() (request *ImportInstancesActionTimerRequest) {
+    request = &ImportInstancesActionTimerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "ImportInstancesActionTimer")
+    
+    
+    return
+}
+
+func NewImportInstancesActionTimerResponse() (response *ImportInstancesActionTimerResponse) {
+    response = &ImportInstancesActionTimerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportInstancesActionTimer
+// 导入定时任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MUTACTIONTIMEREXIST = "FailedOperation.MutActionTimerExist"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = "UnsupportedOperation.NotSupportImportInstancesActionTimer"
+func (c *Client) ImportInstancesActionTimer(request *ImportInstancesActionTimerRequest) (response *ImportInstancesActionTimerResponse, err error) {
+    return c.ImportInstancesActionTimerWithContext(context.Background(), request)
+}
+
+// ImportInstancesActionTimer
+// 导入定时任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MUTACTIONTIMEREXIST = "FailedOperation.MutActionTimerExist"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = "UnsupportedOperation.NotSupportImportInstancesActionTimer"
+func (c *Client) ImportInstancesActionTimerWithContext(ctx context.Context, request *ImportInstancesActionTimerRequest) (response *ImportInstancesActionTimerResponse, err error) {
+    if request == nil {
+        request = NewImportInstancesActionTimerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportInstancesActionTimer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportInstancesActionTimerResponse()
     err = c.Send(request, response)
     return
 }
@@ -7927,15 +8090,17 @@ func NewResizeInstanceDisksResponse() (response *ResizeInstanceDisksResponse) {
 }
 
 // ResizeInstanceDisks
-// 本接口 (ResizeInstanceDisks) 用于扩容实例的数据盘。
+// 本接口 (ResizeInstanceDisks) 用于扩容实例的磁盘。
 //
 // 
 //
-// * 目前只支持扩容非弹性盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。
+// * 目前只支持扩容非弹性盘（[ DescribeDisks ](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。
 //
-// * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+// * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[ DescribeAccountBalance ](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 //
 // * 目前只支持扩容一块数据盘。
+//
+// * 默认扩容方式为关机后扩容。
 //
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
@@ -7982,15 +8147,17 @@ func (c *Client) ResizeInstanceDisks(request *ResizeInstanceDisksRequest) (respo
 }
 
 // ResizeInstanceDisks
-// 本接口 (ResizeInstanceDisks) 用于扩容实例的数据盘。
+// 本接口 (ResizeInstanceDisks) 用于扩容实例的磁盘。
 //
 // 
 //
-// * 目前只支持扩容非弹性盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。
+// * 目前只支持扩容非弹性盘（[ DescribeDisks ](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。
 //
-// * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+// * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[ DescribeAccountBalance ](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 //
 // * 目前只支持扩容一块数据盘。
+//
+// * 默认扩容方式为关机后扩容。
 //
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //

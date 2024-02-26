@@ -1917,6 +1917,14 @@ type OrderFlowPackageRequestParams struct {
 
 	// 区域标识，0：国内，1：国外
 	PackageRegion *int64 `json:"PackageRegion,omitnil" name:"PackageRegion"`
+
+	// 是否自动选择代金券，默认false。
+	// 有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
+
+	// 指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+	// 注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
+	VoucherIds []*string `json:"VoucherIds,omitnil" name:"VoucherIds"`
 }
 
 type OrderFlowPackageRequest struct {
@@ -1945,6 +1953,14 @@ type OrderFlowPackageRequest struct {
 
 	// 区域标识，0：国内，1：国外
 	PackageRegion *int64 `json:"PackageRegion,omitnil" name:"PackageRegion"`
+
+	// 是否自动选择代金券，默认false。
+	// 有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil" name:"AutoVoucher"`
+
+	// 指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+	// 注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
+	VoucherIds []*string `json:"VoucherIds,omitnil" name:"VoucherIds"`
 }
 
 func (r *OrderFlowPackageRequest) ToJsonString() string {
@@ -1963,6 +1979,8 @@ func (r *OrderFlowPackageRequest) FromJsonString(s string) error {
 	delete(f, "DeviceList")
 	delete(f, "AutoRenewFlag")
 	delete(f, "PackageRegion")
+	delete(f, "AutoVoucher")
+	delete(f, "VoucherIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OrderFlowPackageRequest has unknown keys!", "")
 	}

@@ -2541,6 +2541,70 @@ func (r *DescribeDeviceDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceFirmWareRequestParams struct {
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+}
+
+type DescribeDeviceFirmWareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+}
+
+func (r *DescribeDeviceFirmWareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceFirmWareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceFirmWareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceFirmWareResponseParams struct {
+	// 固件信息
+	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDeviceFirmWareResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceFirmWareResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceFirmWareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceFirmWareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceLocationSolveRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`

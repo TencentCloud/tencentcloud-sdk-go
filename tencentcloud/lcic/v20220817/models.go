@@ -657,7 +657,8 @@ type BatchUserRequest struct {
 	// 用户名称。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 用户在客户系统的Id，需要在同一应用下唯一。
+	// 用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId
+	// 。
 	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 
 	// 用户头像。

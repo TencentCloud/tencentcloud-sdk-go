@@ -227,8 +227,10 @@ type InstanceListInfo struct {
 
 type TagInfo struct {
 	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }

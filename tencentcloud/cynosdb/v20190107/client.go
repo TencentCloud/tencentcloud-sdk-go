@@ -2922,6 +2922,67 @@ func (c *Client) DescribeClusterDetailDatabasesWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeClusterInstanceGroupsRequest() (request *DescribeClusterInstanceGroupsRequest) {
+    request = &DescribeClusterInstanceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterInstanceGroups")
+    
+    
+    return
+}
+
+func NewDescribeClusterInstanceGroupsResponse() (response *DescribeClusterInstanceGroupsResponse) {
+    response = &DescribeClusterInstanceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterInstanceGroups
+// 本接口（DescribeClusterInstanceGrps）用于查询实例组信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterInstanceGroups(request *DescribeClusterInstanceGroupsRequest) (response *DescribeClusterInstanceGroupsResponse, err error) {
+    return c.DescribeClusterInstanceGroupsWithContext(context.Background(), request)
+}
+
+// DescribeClusterInstanceGroups
+// 本接口（DescribeClusterInstanceGrps）用于查询实例组信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterInstanceGroupsWithContext(ctx context.Context, request *DescribeClusterInstanceGroupsRequest) (response *DescribeClusterInstanceGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterInstanceGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterInstanceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterInstanceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInstanceGrpsRequest() (request *DescribeClusterInstanceGrpsRequest) {
     request = &DescribeClusterInstanceGrpsRequest{
         BaseRequest: &tchttp.BaseRequest{},

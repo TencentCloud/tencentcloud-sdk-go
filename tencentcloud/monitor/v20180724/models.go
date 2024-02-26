@@ -421,6 +421,10 @@ type AlarmPolicy struct {
 	// 是否支持告警标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportAlarmTag *int64 `json:"IsSupportAlarmTag,omitnil" name:"IsSupportAlarmTag"`
+
+	// 多标签交/并集关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagOperation *string `json:"TagOperation,omitnil" name:"TagOperation"`
 }
 
 type AlarmPolicyCondition struct {
@@ -752,6 +756,9 @@ type BindingPolicyTagRequestParams struct {
 
 	// 事件配置的告警
 	EbSubject *string `json:"EbSubject,omitnil" name:"EbSubject"`
+
+	// 标识标签取交/并集关系
+	TagOperation *string `json:"TagOperation,omitnil" name:"TagOperation"`
 }
 
 type BindingPolicyTagRequest struct {
@@ -783,6 +790,9 @@ type BindingPolicyTagRequest struct {
 
 	// 事件配置的告警
 	EbSubject *string `json:"EbSubject,omitnil" name:"EbSubject"`
+
+	// 标识标签取交/并集关系
+	TagOperation *string `json:"TagOperation,omitnil" name:"TagOperation"`
 }
 
 func (r *BindingPolicyTagRequest) ToJsonString() string {
@@ -806,6 +816,7 @@ func (r *BindingPolicyTagRequest) FromJsonString(s string) error {
 	delete(f, "BatchTag")
 	delete(f, "EbEventFlag")
 	delete(f, "EbSubject")
+	delete(f, "TagOperation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindingPolicyTagRequest has unknown keys!", "")
 	}

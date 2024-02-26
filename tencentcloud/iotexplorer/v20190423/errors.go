@@ -338,6 +338,9 @@ const (
 	// 存在重复设备。
 	RESOURCENOTFOUND_DEVICEDUPKEYEXIST = "ResourceNotFound.DeviceDupKeyExist"
 
+	// 设备固件信息不存在。
+	RESOURCENOTFOUND_DEVICEFIRMWARENOTEXIST = "ResourceNotFound.DeviceFirmWareNotExist"
+
 	// 固件不存在。
 	RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 

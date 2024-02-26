@@ -650,6 +650,12 @@ type CreateHpcClusterRequestParams struct {
 
 	// 高性能计算集群备注。
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 高性能计算集群类型。
+	HpcClusterType *string `json:"HpcClusterType,omitnil" name:"HpcClusterType"`
+
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
+	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil" name:"HpcClusterBusinessId"`
 }
 
 type CreateHpcClusterRequest struct {
@@ -663,6 +669,12 @@ type CreateHpcClusterRequest struct {
 
 	// 高性能计算集群备注。
 	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 高性能计算集群类型。
+	HpcClusterType *string `json:"HpcClusterType,omitnil" name:"HpcClusterType"`
+
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
+	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil" name:"HpcClusterBusinessId"`
 }
 
 func (r *CreateHpcClusterRequest) ToJsonString() string {
@@ -680,6 +692,8 @@ func (r *CreateHpcClusterRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Name")
 	delete(f, "Remark")
+	delete(f, "HpcClusterType")
+	delete(f, "HpcClusterBusinessId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHpcClusterRequest has unknown keys!", "")
 	}
@@ -1679,6 +1693,60 @@ func (r *DeleteImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteInstancesActionTimerRequestParams struct {
+	// 定时任务ID列表，可以通过DescribeInstancesActionTimer接口查询。只能删除未执行的定时任务。
+	ActionTimerIds []*string `json:"ActionTimerIds,omitnil" name:"ActionTimerIds"`
+}
+
+type DeleteInstancesActionTimerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 定时任务ID列表，可以通过DescribeInstancesActionTimer接口查询。只能删除未执行的定时任务。
+	ActionTimerIds []*string `json:"ActionTimerIds,omitnil" name:"ActionTimerIds"`
+}
+
+func (r *DeleteInstancesActionTimerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstancesActionTimerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActionTimerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstancesActionTimerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstancesActionTimerResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteInstancesActionTimerResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInstancesActionTimerResponseParams `json:"Response"`
+}
+
+func (r *DeleteInstancesActionTimerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstancesActionTimerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteKeyPairsRequestParams struct {
 	// 一个或多个待操作的密钥对ID。每次请求批量密钥对的上限为100。<br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。</li><br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。</li>
 	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
@@ -2330,6 +2398,12 @@ type DescribeHpcClustersRequestParams struct {
 
 	// 本次请求量, 默认值20。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 高性能计算集群类型。
+	HpcClusterType *string `json:"HpcClusterType,omitnil" name:"HpcClusterType"`
+
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
+	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil" name:"HpcClusterBusinessId"`
 }
 
 type DescribeHpcClustersRequest struct {
@@ -2349,6 +2423,12 @@ type DescribeHpcClustersRequest struct {
 
 	// 本次请求量, 默认值20。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 高性能计算集群类型。
+	HpcClusterType *string `json:"HpcClusterType,omitnil" name:"HpcClusterType"`
+
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
+	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil" name:"HpcClusterBusinessId"`
 }
 
 func (r *DescribeHpcClustersRequest) ToJsonString() string {
@@ -2368,6 +2448,8 @@ func (r *DescribeHpcClustersRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "HpcClusterType")
+	delete(f, "HpcClusterBusinessId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHpcClustersRequest has unknown keys!", "")
 	}
@@ -2922,6 +3004,98 @@ func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesActionTimerRequestParams struct {
+	// 定时任务ID列表。
+	ActionTimerIds []*string `json:"ActionTimerIds,omitnil" name:"ActionTimerIds"`
+
+	// 按照一个或者多个实例ID查询。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 定时任务执行时间，格式如：2018-05-01 19:00:00，必须大于当前时间5分钟。
+	TimerAction *string `json:"TimerAction,omitnil" name:"TimerAction"`
+
+	// 执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	EndActionTime *string `json:"EndActionTime,omitnil" name:"EndActionTime"`
+
+	// 执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	StartActionTime *string `json:"StartActionTime,omitnil" name:"StartActionTime"`
+
+	// 定时任务状态列表。<br><li>UNDO：未执行<br><li>DOING：正在执行<br><li>DONE：执行完成。
+	StatusList []*string `json:"StatusList,omitnil" name:"StatusList"`
+}
+
+type DescribeInstancesActionTimerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 定时任务ID列表。
+	ActionTimerIds []*string `json:"ActionTimerIds,omitnil" name:"ActionTimerIds"`
+
+	// 按照一个或者多个实例ID查询。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 定时任务执行时间，格式如：2018-05-01 19:00:00，必须大于当前时间5分钟。
+	TimerAction *string `json:"TimerAction,omitnil" name:"TimerAction"`
+
+	// 执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	EndActionTime *string `json:"EndActionTime,omitnil" name:"EndActionTime"`
+
+	// 执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	StartActionTime *string `json:"StartActionTime,omitnil" name:"StartActionTime"`
+
+	// 定时任务状态列表。<br><li>UNDO：未执行<br><li>DOING：正在执行<br><li>DONE：执行完成。
+	StatusList []*string `json:"StatusList,omitnil" name:"StatusList"`
+}
+
+func (r *DescribeInstancesActionTimerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesActionTimerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActionTimerIds")
+	delete(f, "InstanceIds")
+	delete(f, "TimerAction")
+	delete(f, "EndActionTime")
+	delete(f, "StartActionTime")
+	delete(f, "StatusList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesActionTimerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesActionTimerResponseParams struct {
+	// 定时任务信息列表。
+	ActionTimers []*ActionTimer `json:"ActionTimers,omitnil" name:"ActionTimers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstancesActionTimerResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesActionTimerResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesActionTimerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesActionTimerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4729,6 +4903,14 @@ type HpcClusterInfo struct {
 	// 集群内实例ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 高性能计算集群类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpcClusterType *string `json:"HpcClusterType,omitnil" name:"HpcClusterType"`
+
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil" name:"HpcClusterBusinessId"`
 }
 
 type Image struct {
@@ -4940,6 +5122,70 @@ func (r *ImportImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImportImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportInstancesActionTimerRequestParams struct {
+	// 实例id列表，可以通过DescribeInstances接口查询到。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 定时器任务信息，目前仅支持定时销毁。
+	ActionTimer *ActionTimer `json:"ActionTimer,omitnil" name:"ActionTimer"`
+}
+
+type ImportInstancesActionTimerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id列表，可以通过DescribeInstances接口查询到。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// 定时器任务信息，目前仅支持定时销毁。
+	ActionTimer *ActionTimer `json:"ActionTimer,omitnil" name:"ActionTimer"`
+}
+
+func (r *ImportInstancesActionTimerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportInstancesActionTimerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "ActionTimer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportInstancesActionTimerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportInstancesActionTimerResponseParams struct {
+	// 定时器id列表
+	ActionTimerIds []*string `json:"ActionTimerIds,omitnil" name:"ActionTimerIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ImportInstancesActionTimerResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportInstancesActionTimerResponseParams `json:"Response"`
+}
+
+func (r *ImportInstancesActionTimerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportInstancesActionTimerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

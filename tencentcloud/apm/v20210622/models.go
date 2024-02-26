@@ -233,13 +233,13 @@ type CreateApmInstanceRequestParams struct {
 	// 实例描述信息
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// Trace数据保存时长
+	// Trace数据保存时长，单位为天默认存储为3天
 	TraceDuration *int64 `json:"TraceDuration,omitnil" name:"TraceDuration"`
 
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil" name:"Tags"`
 
-	// 实例上报额度值
+	// 实例上报额度值，默认赋值为0表示不限制上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil" name:"SpanDailyCounters"`
 
 	// 实例的计费模式
@@ -255,13 +255,13 @@ type CreateApmInstanceRequest struct {
 	// 实例描述信息
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// Trace数据保存时长
+	// Trace数据保存时长，单位为天默认存储为3天
 	TraceDuration *int64 `json:"TraceDuration,omitnil" name:"TraceDuration"`
 
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil" name:"Tags"`
 
-	// 实例上报额度值
+	// 实例上报额度值，默认赋值为0表示不限制上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil" name:"SpanDailyCounters"`
 
 	// 实例的计费模式

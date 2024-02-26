@@ -1192,10 +1192,14 @@ func NewOrderFlowPackageResponse() (response *OrderFlowPackageResponse) {
 // 购买预付费流量包
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+//  OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
+//  OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -1208,10 +1212,14 @@ func (c *Client) OrderFlowPackage(request *OrderFlowPackageRequest) (response *O
 // 购买预付费流量包
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+//  OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
+//  OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"

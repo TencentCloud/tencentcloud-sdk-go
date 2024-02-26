@@ -2302,6 +2302,75 @@ func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDeviceFirmWareRequest() (request *DescribeDeviceFirmWareRequest) {
+    request = &DescribeDeviceFirmWareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceFirmWare")
+    
+    
+    return
+}
+
+func NewDescribeDeviceFirmWareResponse() (response *DescribeDeviceFirmWareResponse) {
+    response = &DescribeDeviceFirmWareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceFirmWare
+// 获取设备固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICEFIRMWARENOTEXIST = "ResourceNotFound.DeviceFirmWareNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeDeviceFirmWare(request *DescribeDeviceFirmWareRequest) (response *DescribeDeviceFirmWareResponse, err error) {
+    return c.DescribeDeviceFirmWareWithContext(context.Background(), request)
+}
+
+// DescribeDeviceFirmWare
+// 获取设备固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICEFIRMWARENOTEXIST = "ResourceNotFound.DeviceFirmWareNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeDeviceFirmWareWithContext(ctx context.Context, request *DescribeDeviceFirmWareRequest) (response *DescribeDeviceFirmWareResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceFirmWareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceFirmWare require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceFirmWareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceLocationSolveRequest() (request *DescribeDeviceLocationSolveRequest) {
     request = &DescribeDeviceLocationSolveRequest{
         BaseRequest: &tchttp.BaseRequest{},

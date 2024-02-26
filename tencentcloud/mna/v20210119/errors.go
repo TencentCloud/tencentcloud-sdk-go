@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 交易流程异常
+	FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -80,8 +83,17 @@ const (
 	// 输入SN对应的硬件不存在。
 	OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
 
+	// 余额不足
+	OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+
+	// 无支付权限
+	OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
+
 	// 请求运营商加速超时。
 	OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
+
+	// 未实名认证
+	OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
 
 	// 该用户加速已取消，不处于加速状态。
 	OPERATIONDENIED_USERNONACCELERATED = "OperationDenied.UserNonAccelerated"

@@ -59,6 +59,9 @@ const (
 	// 请求不支持`EMR`的实例`ins-xxxxxxxx`。
 	FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
 
+	// 该实例已存在指定的定时任务
+	FAILEDOPERATION_MUTACTIONTIMEREXIST = "FailedOperation.MutActionTimerExist"
+
 	// 子网可用IP已耗尽。
 	FAILEDOPERATION_NOAVAILABLEIPADDRESSCOUNTINSUBNET = "FailedOperation.NoAvailableIpAddressCountInSubnet"
 
