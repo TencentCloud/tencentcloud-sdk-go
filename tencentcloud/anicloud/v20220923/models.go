@@ -23,20 +23,20 @@ import (
 // Predefined struct for user
 type CheckAppidExistRequestParams struct {
 	// 业务的appid
-	SDKAppid *string `json:"SDKAppid,omitnil" name:"SDKAppid"`
+	SDKAppid *string `json:"SDKAppid,omitnil,omitempty" name:"SDKAppid"`
 
 	// sub product code
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CheckAppidExistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务的appid
-	SDKAppid *string `json:"SDKAppid,omitnil" name:"SDKAppid"`
+	SDKAppid *string `json:"SDKAppid,omitnil,omitempty" name:"SDKAppid"`
 
 	// sub product code
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CheckAppidExistRequest) ToJsonString() string {
@@ -62,16 +62,16 @@ func (r *CheckAppidExistRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckAppidExistResponseParams struct {
 	// appid是否存在
-	Exist *bool `json:"Exist,omitnil" name:"Exist"`
+	Exist *bool `json:"Exist,omitnil,omitempty" name:"Exist"`
 
 	// 请求是否成功
-	HasError *bool `json:"HasError,omitnil" name:"HasError"`
+	HasError *bool `json:"HasError,omitnil,omitempty" name:"HasError"`
 
 	// 出错消息
-	Msg *string `json:"Msg,omitnil" name:"Msg"`
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckAppidExistResponse struct {
@@ -93,32 +93,32 @@ func (r *CheckAppidExistResponse) FromJsonString(s string) error {
 type GoodsDetail struct {
 	// 按照四层接入的产品需要传入产品标签,例如:p_cvm
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 四层定义的子产品标签,例如:sp_cvm_s1
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubProductCode *string `json:"SubProductCode,omitnil" name:"SubProductCode"`
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type []*string `json:"Type,omitnil" name:"Type"`
+	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 资源数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GoodsNum *int64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 }
 
 // Predefined struct for user
 type QueryResourceInfoRequestParams struct {
 	// 资源id
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type QueryResourceInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源id
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *QueryResourceInfoRequest) ToJsonString() string {
@@ -144,10 +144,10 @@ func (r *QueryResourceInfoRequest) FromJsonString(s string) error {
 type QueryResourceInfoResponseParams struct {
 	// 资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Resource *Resource `json:"Resource,omitnil" name:"Resource"`
+	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryResourceInfoResponse struct {
@@ -169,26 +169,26 @@ func (r *QueryResourceInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryResourceRequestParams struct {
 	// 0: sdk 1:material
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页起始页
-	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 分页大小
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type QueryResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 0: sdk 1:material
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页起始页
-	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 分页大小
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *QueryResourceRequest) ToJsonString() string {
@@ -216,14 +216,14 @@ func (r *QueryResourceRequest) FromJsonString(s string) error {
 type QueryResourceResponseParams struct {
 	// 资源信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Resources []*Resource `json:"Resources,omitnil" name:"Resources"`
+	Resources []*Resource `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryResourceResponse struct {
@@ -245,81 +245,81 @@ func (r *QueryResourceResponse) FromJsonString(s string) error {
 type Resource struct {
 	// 资源拥有者
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UIN *string `json:"UIN,omitnil" name:"UIN"`
+	UIN *string `json:"UIN,omitnil,omitempty" name:"UIN"`
 
 	// 云平台应用ID，一般来说与uin存在一一对应的关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 资源id，会展示到通知内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 区域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 资源状态，1正常，2隔离，3销毁(如果资源已经删除或销毁，不需要返回)，4冻结/封禁
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 资源隔离时间，未隔离传"0000-00-00 00:00:00"，资源由隔离变回正常传"0000-00-00 00:00:00"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil" name:"IsolatedTimestamp"`
+	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil,omitempty" name:"IsolatedTimestamp"`
 
 	// 资源创建时间，用于更新新购订单的资源开始时间，按时长退费时的资源结束时间取自订单的资源结束时间，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 0后付费 1预付费 2预留实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 资源名称，账单中资源别名，生命周期通知中的资源名称，不返回则通知中展示为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 购买详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GoodsDetail *GoodsDetail `json:"GoodsDetail,omitnil" name:"GoodsDetail"`
+	GoodsDetail *GoodsDetail `json:"GoodsDetail,omitnil,omitempty" name:"GoodsDetail"`
 
 	// 预付费必填 ，自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// （仅预付费）资源到期时间，无到期概念传"0000-00-00 00:00:00"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 地域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *int64 `json:"Region,omitnil" name:"Region"`
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// sdk appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SdkAppId *string `json:"SdkAppId,omitnil" name:"SdkAppId"`
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// app名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// app的package名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 资源链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	URL *string `json:"URL,omitnil" name:"URL"`
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
 	// app的entry
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Entry *string `json:"Entry,omitnil" name:"Entry"`
+	Entry *string `json:"Entry,omitnil,omitempty" name:"Entry"`
 
 	// 0：sdk 1：素材
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstType *int64 `json:"InstType,omitnil" name:"InstType"`
+	InstType *int64 `json:"InstType,omitnil,omitempty" name:"InstType"`
 
 	// license的秘钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }

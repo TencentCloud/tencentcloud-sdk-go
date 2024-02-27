@@ -22,11 +22,11 @@ import (
 
 type AlgorithmResult struct {
 	// 算法ID
-	AlgoId *string `json:"AlgoId,omitnil" name:"AlgoId"`
+	AlgoId *string `json:"AlgoId,omitnil,omitempty" name:"AlgoId"`
 
 	// 算法名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlgoName *string `json:"AlgoName,omitnil" name:"AlgoName"`
+	AlgoName *string `json:"AlgoName,omitnil,omitempty" name:"AlgoName"`
 
 	// 算法返回的结果。
 	// - 当算法类型为“OCR（1）”时，结果为文本字符串
@@ -45,11 +45,11 @@ type AlgorithmResult struct {
 	//   - Entity：实体类型
 	//   - Content：实体文本内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *string `json:"Result,omitnil" name:"Result"`
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 算法调用错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Error *string `json:"Error,omitnil" name:"Error"`
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 算法类型：
 	// 1：OCR算法
@@ -58,20 +58,20 @@ type AlgorithmResult struct {
 	// 4：合同要素抽取算法
 	// 5、实体识别算法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlgoType *int64 `json:"AlgoType,omitnil" name:"AlgoType"`
+	AlgoType *int64 `json:"AlgoType,omitnil,omitempty" name:"AlgoType"`
 }
 
 // Predefined struct for user
 type DescribeInvocationResultRequestParams struct {
 	// 调用id，为调用InvokeService接口返回的RequestId
-	InvokeId *string `json:"InvokeId,omitnil" name:"InvokeId"`
+	InvokeId *string `json:"InvokeId,omitnil,omitempty" name:"InvokeId"`
 }
 
 type DescribeInvocationResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 调用id，为调用InvokeService接口返回的RequestId
-	InvokeId *string `json:"InvokeId,omitnil" name:"InvokeId"`
+	InvokeId *string `json:"InvokeId,omitnil,omitempty" name:"InvokeId"`
 }
 
 func (r *DescribeInvocationResultRequest) ToJsonString() string {
@@ -96,15 +96,15 @@ func (r *DescribeInvocationResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInvocationResultResponseParams struct {
 	// 服务的调用结果
-	Results []*AlgorithmResult `json:"Results,omitnil" name:"Results"`
+	Results []*AlgorithmResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 0:获取结果失败
 	// 1：结果还没有生成，继续轮询
 	// 2：获取结果成功
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeInvocationResultResponse struct {
@@ -126,32 +126,32 @@ func (r *DescribeInvocationResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeServiceRequestParams struct {
 	// 待调用的服务ID。
-	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 要调用服务的状态：0表示调试版本，1表示上线版本
-	ServiceStatus *int64 `json:"ServiceStatus,omitnil" name:"ServiceStatus"`
+	ServiceStatus *int64 `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
 	// 用于测试的文档的URL。
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 type InvokeServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待调用的服务ID。
-	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 要调用服务的状态：0表示调试版本，1表示上线版本
-	ServiceStatus *int64 `json:"ServiceStatus,omitnil" name:"ServiceStatus"`
+	ServiceStatus *int64 `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
 	// 用于测试的文档的URL。
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 func (r *InvokeServiceRequest) ToJsonString() string {
@@ -179,7 +179,7 @@ func (r *InvokeServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeServiceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type InvokeServiceResponse struct {

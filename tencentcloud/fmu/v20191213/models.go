@@ -24,29 +24,29 @@ import (
 type BeautifyPicRequestParams struct {
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
-	Whitening *uint64 `json:"Whitening,omitnil" name:"Whitening"`
+	Whitening *uint64 `json:"Whitening,omitnil,omitempty" name:"Whitening"`
 
 	// 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值10。
-	Smoothing *uint64 `json:"Smoothing,omitnil" name:"Smoothing"`
+	Smoothing *uint64 `json:"Smoothing,omitnil,omitempty" name:"Smoothing"`
 
 	// 瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
-	FaceLifting *uint64 `json:"FaceLifting,omitnil" name:"FaceLifting"`
+	FaceLifting *uint64 `json:"FaceLifting,omitnil,omitempty" name:"FaceLifting"`
 
 	// 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
-	EyeEnlarging *uint64 `json:"EyeEnlarging,omitnil" name:"EyeEnlarging"`
+	EyeEnlarging *uint64 `json:"EyeEnlarging,omitnil,omitempty" name:"EyeEnlarging"`
 
 	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 type BeautifyPicRequest struct {
@@ -54,29 +54,29 @@ type BeautifyPicRequest struct {
 	
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
-	Whitening *uint64 `json:"Whitening,omitnil" name:"Whitening"`
+	Whitening *uint64 `json:"Whitening,omitnil,omitempty" name:"Whitening"`
 
 	// 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值10。
-	Smoothing *uint64 `json:"Smoothing,omitnil" name:"Smoothing"`
+	Smoothing *uint64 `json:"Smoothing,omitnil,omitempty" name:"Smoothing"`
 
 	// 瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
-	FaceLifting *uint64 `json:"FaceLifting,omitnil" name:"FaceLifting"`
+	FaceLifting *uint64 `json:"FaceLifting,omitnil,omitempty" name:"FaceLifting"`
 
 	// 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
-	EyeEnlarging *uint64 `json:"EyeEnlarging,omitnil" name:"EyeEnlarging"`
+	EyeEnlarging *uint64 `json:"EyeEnlarging,omitnil,omitempty" name:"EyeEnlarging"`
 
 	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 func (r *BeautifyPicRequest) ToJsonString() string {
@@ -108,14 +108,14 @@ func (r *BeautifyPicRequest) FromJsonString(s string) error {
 type BeautifyPicResponseParams struct {
 	// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultUrl *string `json:"ResultUrl,omitnil" name:"ResultUrl"`
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BeautifyPicResponse struct {
@@ -137,56 +137,56 @@ func (r *BeautifyPicResponse) FromJsonString(s string) error {
 type BeautifyVideoOutput struct {
 	// 视频美颜输出的url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoUrl *string `json:"VideoUrl,omitnil" name:"VideoUrl"`
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 视频美颜输出的视频MD5，用于校验
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoMD5 *string `json:"VideoMD5,omitnil" name:"VideoMD5"`
+	VideoMD5 *string `json:"VideoMD5,omitnil,omitempty" name:"VideoMD5"`
 
 	// 美颜输出的视频封面图base64字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CoverImage *string `json:"CoverImage,omitnil" name:"CoverImage"`
+	CoverImage *string `json:"CoverImage,omitnil,omitempty" name:"CoverImage"`
 
 	// 视频宽度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 视频高度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 每秒传输帧数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Fps *float64 `json:"Fps,omitnil" name:"Fps"`
+	Fps *float64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
 	// 视频播放时长，单位为秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DurationInSec *float64 `json:"DurationInSec,omitnil" name:"DurationInSec"`
+	DurationInSec *float64 `json:"DurationInSec,omitnil,omitempty" name:"DurationInSec"`
 }
 
 // Predefined struct for user
 type BeautifyVideoRequestParams struct {
 	// 视频url地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
-	BeautyParam []*BeautyParam `json:"BeautyParam,omitnil" name:"BeautyParam"`
+	BeautyParam []*BeautyParam `json:"BeautyParam,omitnil,omitempty" name:"BeautyParam"`
 
 	// 目前只支持mp4
-	OutputVideoType *string `json:"OutputVideoType,omitnil" name:"OutputVideoType"`
+	OutputVideoType *string `json:"OutputVideoType,omitnil,omitempty" name:"OutputVideoType"`
 }
 
 type BeautifyVideoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 视频url地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
-	BeautyParam []*BeautyParam `json:"BeautyParam,omitnil" name:"BeautyParam"`
+	BeautyParam []*BeautyParam `json:"BeautyParam,omitnil,omitempty" name:"BeautyParam"`
 
 	// 目前只支持mp4
-	OutputVideoType *string `json:"OutputVideoType,omitnil" name:"OutputVideoType"`
+	OutputVideoType *string `json:"OutputVideoType,omitnil,omitempty" name:"OutputVideoType"`
 }
 
 func (r *BeautifyVideoRequest) ToJsonString() string {
@@ -213,13 +213,13 @@ func (r *BeautifyVideoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BeautifyVideoResponseParams struct {
 	// 视频美颜任务的Job id
-	JobId *string `json:"JobId,omitnil" name:"JobId"`
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 预估处理时间，粒度为秒
-	EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitnil" name:"EstimatedProcessTime"`
+	EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitnil,omitempty" name:"EstimatedProcessTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BeautifyVideoResponse struct {
@@ -240,29 +240,29 @@ func (r *BeautifyVideoResponse) FromJsonString(s string) error {
 
 type BeautyParam struct {
 	// 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
-	WhitenLevel *uint64 `json:"WhitenLevel,omitnil" name:"WhitenLevel"`
+	WhitenLevel *uint64 `json:"WhitenLevel,omitnil,omitempty" name:"WhitenLevel"`
 
 	// 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值30。
-	SmoothingLevel *uint64 `json:"SmoothingLevel,omitnil" name:"SmoothingLevel"`
+	SmoothingLevel *uint64 `json:"SmoothingLevel,omitnil,omitempty" name:"SmoothingLevel"`
 
 	// 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
-	EyeEnlargeLevel *uint64 `json:"EyeEnlargeLevel,omitnil" name:"EyeEnlargeLevel"`
+	EyeEnlargeLevel *uint64 `json:"EyeEnlargeLevel,omitnil,omitempty" name:"EyeEnlargeLevel"`
 
 	// 瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
-	FaceShrinkLevel *uint64 `json:"FaceShrinkLevel,omitnil" name:"FaceShrinkLevel"`
+	FaceShrinkLevel *uint64 `json:"FaceShrinkLevel,omitnil,omitempty" name:"FaceShrinkLevel"`
 }
 
 // Predefined struct for user
 type CancelBeautifyVideoJobRequestParams struct {
 	// 美颜视频的Job id
-	JobId *string `json:"JobId,omitnil" name:"JobId"`
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type CancelBeautifyVideoJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 美颜视频的Job id
-	JobId *string `json:"JobId,omitnil" name:"JobId"`
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 func (r *CancelBeautifyVideoJobRequest) ToJsonString() string {
@@ -287,7 +287,7 @@ func (r *CancelBeautifyVideoJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelBeautifyVideoJobResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CancelBeautifyVideoJobResponse struct {
@@ -309,20 +309,20 @@ func (r *CancelBeautifyVideoJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateModelRequestParams struct {
 	// 图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
-	LUTFile *string `json:"LUTFile,omitnil" name:"LUTFile"`
+	LUTFile *string `json:"LUTFile,omitnil,omitempty" name:"LUTFile"`
 
 	// 文件描述信息，可用于备注。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
-	LUTFile *string `json:"LUTFile,omitnil" name:"LUTFile"`
+	LUTFile *string `json:"LUTFile,omitnil,omitempty" name:"LUTFile"`
 
 	// 文件描述信息，可用于备注。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -348,10 +348,10 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateModelResponseParams struct {
 	// 唇色素材ID。
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateModelResponse struct {
@@ -373,14 +373,14 @@ func (r *CreateModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteModelRequestParams struct {
 	// 素材ID。
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 
 type DeleteModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 素材ID。
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 
 func (r *DeleteModelRequest) ToJsonString() string {
@@ -405,7 +405,7 @@ func (r *DeleteModelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteModelResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteModelResponse struct {
@@ -426,35 +426,35 @@ func (r *DeleteModelResponse) FromJsonString(s string) error {
 
 type FaceRect struct {
 	// 人脸框左上角横坐标。
-	X *int64 `json:"X,omitnil" name:"X"`
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 人脸框左上角纵坐标。
-	Y *int64 `json:"Y,omitnil" name:"Y"`
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 人脸框宽度。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 人脸框高度。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 // Predefined struct for user
 type GetModelListRequestParams struct {
 	// 起始序号，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type GetModelListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始序号，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *GetModelListRequest) ToJsonString() string {
@@ -480,14 +480,14 @@ func (r *GetModelListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetModelListResponseParams struct {
 	// 唇色素材总数量。
-	ModelIdNum *int64 `json:"ModelIdNum,omitnil" name:"ModelIdNum"`
+	ModelIdNum *int64 `json:"ModelIdNum,omitnil,omitempty" name:"ModelIdNum"`
 
 	// 素材数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModelInfos []*ModelInfo `json:"ModelInfos,omitnil" name:"ModelInfos"`
+	ModelInfos []*ModelInfo `json:"ModelInfos,omitnil,omitempty" name:"ModelInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetModelListResponse struct {
@@ -508,42 +508,42 @@ func (r *GetModelListResponse) FromJsonString(s string) error {
 
 type LipColorInfo struct {
 	// 使用RGBA模型试唇色。
-	RGBA *RGBAInfo `json:"RGBA,omitnil" name:"RGBA"`
+	RGBA *RGBAInfo `json:"RGBA,omitnil,omitempty" name:"RGBA"`
 
 	// 使用已注册的 LUT 文件试唇色。  
 	// ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId。
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 	// 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
-	FaceRect *FaceRect `json:"FaceRect,omitnil" name:"FaceRect"`
+	FaceRect *FaceRect `json:"FaceRect,omitnil,omitempty" name:"FaceRect"`
 
 	// 涂妆浓淡[0,100]。建议取值50。本参数仅控制ModelId对应的涂妆浓淡。
-	ModelAlpha *int64 `json:"ModelAlpha,omitnil" name:"ModelAlpha"`
+	ModelAlpha *int64 `json:"ModelAlpha,omitnil,omitempty" name:"ModelAlpha"`
 }
 
 type ModelInfo struct {
 	// 唇色素材ID
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 唇色素材 url 。 LUT 文件 url 5分钟有效。
-	LUTFileUrl *string `json:"LUTFileUrl,omitnil" name:"LUTFileUrl"`
+	LUTFileUrl *string `json:"LUTFileUrl,omitnil,omitempty" name:"LUTFileUrl"`
 
 	// 文件描述信息。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
 type QueryBeautifyVideoJobRequestParams struct {
 	// 视频美颜Job id
-	JobId *string `json:"JobId,omitnil" name:"JobId"`
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type QueryBeautifyVideoJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 视频美颜Job id
-	JobId *string `json:"JobId,omitnil" name:"JobId"`
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 func (r *QueryBeautifyVideoJobRequest) ToJsonString() string {
@@ -568,17 +568,17 @@ func (r *QueryBeautifyVideoJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryBeautifyVideoJobResponseParams struct {
 	// 当前任务状态：排队中、处理中、处理失败或者处理完成
-	JobStatus *string `json:"JobStatus,omitnil" name:"JobStatus"`
+	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
 	// 视频美颜输出的结果信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BeautifyVideoOutput *BeautifyVideoOutput `json:"BeautifyVideoOutput,omitnil" name:"BeautifyVideoOutput"`
+	BeautifyVideoOutput *BeautifyVideoOutput `json:"BeautifyVideoOutput,omitnil,omitempty" name:"BeautifyVideoOutput"`
 
 	// 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
-	JobStatusCode *int64 `json:"JobStatusCode,omitnil" name:"JobStatusCode"`
+	JobStatusCode *int64 `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryBeautifyVideoJobResponse struct {
@@ -599,40 +599,40 @@ func (r *QueryBeautifyVideoJobResponse) FromJsonString(s string) error {
 
 type RGBAInfo struct {
 	// R通道数值。[0,255]。
-	R *int64 `json:"R,omitnil" name:"R"`
+	R *int64 `json:"R,omitnil,omitempty" name:"R"`
 
 	// G通道数值。[0,255]。
-	G *int64 `json:"G,omitnil" name:"G"`
+	G *int64 `json:"G,omitnil,omitempty" name:"G"`
 
 	// B通道数值。[0,255]。
-	B *int64 `json:"B,omitnil" name:"B"`
+	B *int64 `json:"B,omitnil,omitempty" name:"B"`
 
 	// A通道数值。[0,100]。建议取值50。
-	A *int64 `json:"A,omitnil" name:"A"`
+	A *int64 `json:"A,omitnil,omitempty" name:"A"`
 }
 
 // Predefined struct for user
 type StyleImageProRequestParams struct {
 	// 滤镜类型，取值如下： 
 	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后；31.活力；32.朦胧；33.悦动；34.时尚；35.气泡；36.柠檬；37.棉花糖；38.小溪；39.丽人；40.咖啡；41.嫩芽；42.热情；43.渐暖；44.早餐；45.白茶；46.白嫩；47.圣代；48.森林；49.冲浪；50.奶咖；51.清澈；52.微风；53.日落；54.水光；55.日系；56.星光；57.阳光；58.落叶；59.生机；60.甜心；61.清逸；62.春意；63.罗马；64.青涩；65.清风；66.暖心；67.海水；68.神秘；69.旧调1；70.旧调2；71.雪顶；72.日光；73.浮云；74.流彩；75.胶片；76.回味；77.奶酪；78.蝴蝶。
-	FilterType *int64 `json:"FilterType,omitnil" name:"FilterType"`
+	FilterType *int64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
-	FilterDegree *int64 `json:"FilterDegree,omitnil" name:"FilterDegree"`
+	FilterDegree *int64 `json:"FilterDegree,omitnil,omitempty" name:"FilterDegree"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认为base64。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 type StyleImageProRequest struct {
@@ -640,24 +640,24 @@ type StyleImageProRequest struct {
 	
 	// 滤镜类型，取值如下： 
 	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后；31.活力；32.朦胧；33.悦动；34.时尚；35.气泡；36.柠檬；37.棉花糖；38.小溪；39.丽人；40.咖啡；41.嫩芽；42.热情；43.渐暖；44.早餐；45.白茶；46.白嫩；47.圣代；48.森林；49.冲浪；50.奶咖；51.清澈；52.微风；53.日落；54.水光；55.日系；56.星光；57.阳光；58.落叶；59.生机；60.甜心；61.清逸；62.春意；63.罗马；64.青涩；65.清风；66.暖心；67.海水；68.神秘；69.旧调1；70.旧调2；71.雪顶；72.日光；73.浮云；74.流彩；75.胶片；76.回味；77.奶酪；78.蝴蝶。
-	FilterType *int64 `json:"FilterType,omitnil" name:"FilterType"`
+	FilterType *int64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
-	FilterDegree *int64 `json:"FilterDegree,omitnil" name:"FilterDegree"`
+	FilterDegree *int64 `json:"FilterDegree,omitnil,omitempty" name:"FilterDegree"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认为base64。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 func (r *StyleImageProRequest) ToJsonString() string {
@@ -687,14 +687,14 @@ func (r *StyleImageProRequest) FromJsonString(s string) error {
 type StyleImageProResponseParams struct {
 	// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultUrl *string `json:"ResultUrl,omitnil" name:"ResultUrl"`
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type StyleImageProResponse struct {
@@ -717,24 +717,24 @@ func (r *StyleImageProResponse) FromJsonString(s string) error {
 type StyleImageRequestParams struct {
 	// 滤镜类型，取值如下： 
 	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后。
-	FilterType *int64 `json:"FilterType,omitnil" name:"FilterType"`
+	FilterType *int64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
-	FilterDegree *int64 `json:"FilterDegree,omitnil" name:"FilterDegree"`
+	FilterDegree *int64 `json:"FilterDegree,omitnil,omitempty" name:"FilterDegree"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 type StyleImageRequest struct {
@@ -742,24 +742,24 @@ type StyleImageRequest struct {
 	
 	// 滤镜类型，取值如下： 
 	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后。
-	FilterType *int64 `json:"FilterType,omitnil" name:"FilterType"`
+	FilterType *int64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
-	FilterDegree *int64 `json:"FilterDegree,omitnil" name:"FilterDegree"`
+	FilterDegree *int64 `json:"FilterDegree,omitnil,omitempty" name:"FilterDegree"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 func (r *StyleImageRequest) ToJsonString() string {
@@ -789,14 +789,14 @@ func (r *StyleImageRequest) FromJsonString(s string) error {
 type StyleImageResponseParams struct {
 	// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultUrl *string `json:"ResultUrl,omitnil" name:"ResultUrl"`
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type StyleImageResponse struct {
@@ -819,21 +819,21 @@ func (r *StyleImageResponse) FromJsonString(s string) error {
 type TryLipstickPicRequestParams struct {
 	// 唇色信息。 
 	// 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
-	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitnil" name:"LipColorInfos"`
+	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitnil,omitempty" name:"LipColorInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过6M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过6M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 type TryLipstickPicRequest struct {
@@ -841,21 +841,21 @@ type TryLipstickPicRequest struct {
 	
 	// 唇色信息。 
 	// 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
-	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitnil" name:"LipColorInfos"`
+	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitnil,omitempty" name:"LipColorInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过6M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url ，对应图片 base64 编码后大小不可超过6M。 
 	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
 func (r *TryLipstickPicRequest) ToJsonString() string {
@@ -883,13 +883,13 @@ func (r *TryLipstickPicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TryLipstickPicResponseParams struct {
 	// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
-	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
-	ResultUrl *string `json:"ResultUrl,omitnil" name:"ResultUrl"`
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TryLipstickPicResponse struct {

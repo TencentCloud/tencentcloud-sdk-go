@@ -1,62 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 124 次发布
-
-发布时间：2024-02-27 01:11:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteInstancesActionTimer](https://cloud.tencent.com/document/api/213/103951)
-* [DescribeInstancesActionTimer](https://cloud.tencent.com/document/api/213/103950)
-* [ImportInstancesActionTimer](https://cloud.tencent.com/document/api/213/103949)
-
-修改接口：
-
-* [CreateHpcCluster](https://cloud.tencent.com/document/api/213/83222)
-
-	* 新增入参：HpcClusterType, HpcClusterBusinessId
-
-* [DescribeHpcClusters](https://cloud.tencent.com/document/api/213/83220)
-
-	* 新增入参：HpcClusterType, HpcClusterBusinessId
-
-
-修改数据结构：
-
-* [HpcClusterInfo](https://cloud.tencent.com/document/api/213/15753#HpcClusterInfo)
-
-	* 新增成员：HpcClusterType, HpcClusterBusinessId
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 80 次发布
-
-发布时间：2024-02-26 01:12:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/api/1003/103934)
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 费用中心(billing) 版本：2018-07-09
 
 ### 第 56 次发布
 
-发布时间：2024-02-26 01:17:19
+发布时间：2024-02-28 01:08:46
 
 本次发布包含了以下内容：
 
@@ -64,58 +12,32 @@
 
 新增接口：
 
-* [DescribeDeviceFirmWare](https://cloud.tencent.com/document/api/1081/103935)
+* [DescribeCostExplorerSummary](https://cloud.tencent.com/document/api/555/103991)
+
+新增数据结构：
+
+* [AnalyseActionTypeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseActionTypeDetail)
+* [AnalyseAmountDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseAmountDetail)
+* [AnalyseBusinessDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseBusinessDetail)
+* [AnalyseConditionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseConditionDetail)
+* [AnalyseConditions](https://cloud.tencent.com/document/api/555/19183#AnalyseConditions)
+* [AnalyseDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseDetail)
+* [AnalyseHeaderDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderDetail)
+* [AnalyseHeaderTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderTimeDetail)
+* [AnalyseOwnerUinDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseOwnerUinDetail)
+* [AnalysePayModeDetail](https://cloud.tencent.com/document/api/555/19183#AnalysePayModeDetail)
+* [AnalyseProjectDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseProjectDetail)
+* [AnalyseRegionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseRegionDetail)
+* [AnalyseTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseTimeDetail)
+* [AnalyseZoneDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseZoneDetail)
 
 
 
-## 实时互动-教育版(lcic) 版本：2022-08-17
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 51 次发布
+### 第 153 次发布
 
-发布时间：2024-02-27 01:18:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AnswerInfo](https://cloud.tencent.com/document/api/1639/81423#AnswerInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>Name, Answer, CostTime, UserId, IsCorrect
-
-* [BatchUserInfo](https://cloud.tencent.com/document/api/1639/81423#BatchUserInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>SdkAppId, UserId, OriginId
-
-* [GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>GroupId, GroupName, TeacherId, GroupType, SubGroupIds
-
-* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
-
-	* <font color="#dd0000">**修改成员**：</font>IPAddress, Location, Device, PerMemberMicCount, PerMemberMessageCount, Role, GroupId, SubGroupId, Stage, CurrentState
-
-* [MessageList](https://cloud.tencent.com/document/api/1639/81423#MessageList)
-
-	* <font color="#dd0000">**修改成员**：</font>Timestamp, FromAccount, Seq, MessageBody
-
-* [TextMarkConfig](https://cloud.tencent.com/document/api/1639/81423#TextMarkConfig)
-
-	* <font color="#dd0000">**修改成员**：</font>Text, Color
-
-* [WatermarkConfig](https://cloud.tencent.com/document/api/1639/81423#WatermarkConfig)
-
-	* <font color="#dd0000">**修改成员**：</font>Url, Width, Height, LocationX, LocationY
-
-
-
-
-## 多网聚合加速(mna) 版本：2021-01-19
-
-### 第 16 次发布
-
-发布时间：2024-02-26 01:19:32
+发布时间：2024-02-28 01:09:55
 
 本次发布包含了以下内容：
 
@@ -123,36 +45,41 @@
 
 修改接口：
 
-* [OrderFlowPackage](https://cloud.tencent.com/document/api/1385/102108)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854)
 
-	* 新增入参：AutoVoucher, VoucherIds
-
-
+	* 新增入参：OpResourceId
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 106 次发布
 
-发布时间：2024-02-26 01:19:42
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 60 次发布
+
+发布时间：2024-02-28 01:16:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+* [AddMetricScaleStrategy](https://cloud.tencent.com/document/api/589/103997)
+* [DeleteAutoScaleStrategy](https://cloud.tencent.com/document/api/589/103996)
+* [DescribeAutoScaleGroupGlobalConf](https://cloud.tencent.com/document/api/589/103999)
+* [DescribeAutoScaleStrategies](https://cloud.tencent.com/document/api/589/103998)
+* [ModifyAutoScaleStrategy](https://cloud.tencent.com/document/api/589/103995)
 
-	* 新增入参：TagOperation
+新增数据结构：
 
-
-修改数据结构：
-
-* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
-
-	* 新增成员：TagOperation
-
+* [AutoScaleResourceConf](https://cloud.tencent.com/document/api/589/33981#AutoScaleResourceConf)
+* [DayRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#DayRepeatStrategy)
+* [GroupGlobalConfs](https://cloud.tencent.com/document/api/589/33981#GroupGlobalConfs)
+* [MonthRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#MonthRepeatStrategy)
+* [NotRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#NotRepeatStrategy)
+* [RepeatStrategy](https://cloud.tencent.com/document/api/589/33981#RepeatStrategy)
+* [TimeAutoScaleStrategy](https://cloud.tencent.com/document/api/589/33981#TimeAutoScaleStrategy)
+* [WeekRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#WeekRepeatStrategy)
 
 
 
@@ -8858,6 +8785,35 @@
 
 ## 费用中心(billing) 版本：2018-07-09
 
+### 第 56 次发布
+
+发布时间：2024-02-28 01:08:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCostExplorerSummary](https://cloud.tencent.com/document/api/555/103991)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AnalyseActionTypeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseActionTypeDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseActionTypeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseActionTypeDetail))
+* [[AnalyseAmountDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseAmountDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseAmountDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseAmountDetail))
+* [[AnalyseBusinessDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseBusinessDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseBusinessDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseBusinessDetail))
+* [[AnalyseConditionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseConditionDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseConditionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseConditionDetail))
+* [[AnalyseConditions](https://cloud.tencent.com/document/api/555/19183#AnalyseConditions)](https://cloud.tencent.com/document/api/555/19183#[AnalyseConditions](https://cloud.tencent.com/document/api/555/19183#AnalyseConditions))
+* [[AnalyseDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseDetail))
+* [[AnalyseHeaderDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseHeaderDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderDetail))
+* [[AnalyseHeaderTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderTimeDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseHeaderTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseHeaderTimeDetail))
+* [[AnalyseOwnerUinDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseOwnerUinDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseOwnerUinDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseOwnerUinDetail))
+* [[AnalysePayModeDetail](https://cloud.tencent.com/document/api/555/19183#AnalysePayModeDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalysePayModeDetail](https://cloud.tencent.com/document/api/555/19183#AnalysePayModeDetail))
+* [[AnalyseProjectDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseProjectDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseProjectDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseProjectDetail))
+* [[AnalyseRegionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseRegionDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseRegionDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseRegionDetail))
+* [[AnalyseTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseTimeDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseTimeDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseTimeDetail))
+* [[AnalyseZoneDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseZoneDetail)](https://cloud.tencent.com/document/api/555/19183#[AnalyseZoneDetail](https://cloud.tencent.com/document/api/555/19183#AnalyseZoneDetail))
+
 ### 第 55 次发布
 
 发布时间：2024-01-18 01:09:19
@@ -15831,6 +15787,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 153 次发布
+
+发布时间：2024-02-28 01:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854)
+
+	* 新增入参：OpResourceId
+
 
 ### 第 152 次发布
 
@@ -36961,9 +36932,9 @@
 
 新增接口：
 
-* [[DeleteInstancesActionTimer](https://cloud.tencent.com/document/api/213/103951)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstancesActionTimer](https://cloud.tencent.com/document/api/213/103950)](https://cloud.tencent.com/document/api/#/#)
-* [[ImportInstancesActionTimer](https://cloud.tencent.com/document/api/213/103949)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteInstancesActionTimer](https://cloud.tencent.com/document/api/213/103951)
+* [DescribeInstancesActionTimer](https://cloud.tencent.com/document/api/213/103950)
+* [ImportInstancesActionTimer](https://cloud.tencent.com/document/api/213/103949)
 
 修改接口：
 
@@ -42724,7 +42695,7 @@
 
 新增接口：
 
-* [[DescribeClusterInstanceGroups](https://cloud.tencent.com/document/api/1003/103934)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/api/1003/103934)
 
 ### 第 79 次发布
 
@@ -55771,6 +55742,33 @@
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 60 次发布
+
+发布时间：2024-02-28 01:16:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddMetricScaleStrategy](https://cloud.tencent.com/document/api/589/103997)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAutoScaleStrategy](https://cloud.tencent.com/document/api/589/103996)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAutoScaleGroupGlobalConf](https://cloud.tencent.com/document/api/589/103999)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAutoScaleStrategies](https://cloud.tencent.com/document/api/589/103998)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAutoScaleStrategy](https://cloud.tencent.com/document/api/589/103995)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AutoScaleResourceConf](https://cloud.tencent.com/document/api/589/33981#AutoScaleResourceConf)](https://cloud.tencent.com/document/api/589/33981#[AutoScaleResourceConf](https://cloud.tencent.com/document/api/589/33981#AutoScaleResourceConf))
+* [[DayRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#DayRepeatStrategy)](https://cloud.tencent.com/document/api/589/33981#[DayRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#DayRepeatStrategy))
+* [[GroupGlobalConfs](https://cloud.tencent.com/document/api/589/33981#GroupGlobalConfs)](https://cloud.tencent.com/document/api/589/33981#[GroupGlobalConfs](https://cloud.tencent.com/document/api/589/33981#GroupGlobalConfs))
+* [[MonthRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#MonthRepeatStrategy)](https://cloud.tencent.com/document/api/589/33981#[MonthRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#MonthRepeatStrategy))
+* [[NotRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#NotRepeatStrategy)](https://cloud.tencent.com/document/api/589/33981#[NotRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#NotRepeatStrategy))
+* [[RepeatStrategy](https://cloud.tencent.com/document/api/589/33981#RepeatStrategy)](https://cloud.tencent.com/document/api/589/33981#[RepeatStrategy](https://cloud.tencent.com/document/api/589/33981#RepeatStrategy))
+* [[TimeAutoScaleStrategy](https://cloud.tencent.com/document/api/589/33981#TimeAutoScaleStrategy)](https://cloud.tencent.com/document/api/589/33981#[TimeAutoScaleStrategy](https://cloud.tencent.com/document/api/589/33981#TimeAutoScaleStrategy))
+* [[WeekRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#WeekRepeatStrategy)](https://cloud.tencent.com/document/api/589/33981#[WeekRepeatStrategy](https://cloud.tencent.com/document/api/589/33981#WeekRepeatStrategy))
 
 ### 第 59 次发布
 
@@ -72188,7 +72186,7 @@
 
 新增接口：
 
-* [[DescribeDeviceFirmWare](https://cloud.tencent.com/document/api/1081/103935)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDeviceFirmWare](https://cloud.tencent.com/document/api/1081/103935)
 
 ### 第 55 次发布
 

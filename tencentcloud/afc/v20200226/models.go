@@ -22,25 +22,25 @@ import (
 
 type AntiFraudVipCryptoFilter struct {
 	// 约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
-	CryptoType *string `json:"CryptoType,omitnil" name:"CryptoType"`
+	CryptoType *string `json:"CryptoType,omitnil,omitempty" name:"CryptoType"`
 
 	// 约定用入参，默认不涉及
-	CryptoContent *string `json:"CryptoContent,omitnil" name:"CryptoContent"`
+	CryptoContent *string `json:"CryptoContent,omitnil,omitempty" name:"CryptoContent"`
 }
 
 type AntiFraudVipFilter struct {
 	// 业务方账号 ID
-	CustomerUin *string `json:"CustomerUin,omitnil" name:"CustomerUin"`
+	CustomerUin *string `json:"CustomerUin,omitnil,omitempty" name:"CustomerUin"`
 
 	// 业务方APPID
-	CustomerAppid *string `json:"CustomerAppid,omitnil" name:"CustomerAppid"`
+	CustomerAppid *string `json:"CustomerAppid,omitnil,omitempty" name:"CustomerAppid"`
 
 	// 身份证号
 	// 注 1：下方 idCryptoType 为指定
 	// 加密方式
 	// 注 2：若 idNumber 加密则必传加
 	// 密方式
-	IdNumber *string `json:"IdNumber,omitnil" name:"IdNumber"`
+	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 手机号码（注：不需要带国家代码
 	// 例如：13430421011）
@@ -48,82 +48,82 @@ type AntiFraudVipFilter struct {
 	// 指定加密方式:
 	// 注 2：若 phoneNumber 加密则必
 	// 传加密方式
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 业务场景 ID
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 默认不使用，业务方子
 	// 账号，若接口使用密钥对应是子账
 	// 号则必填
-	CustomerSubUin *string `json:"CustomerSubUin,omitnil" name:"CustomerSubUin"`
+	CustomerSubUin *string `json:"CustomerSubUin,omitnil,omitempty" name:"CustomerSubUin"`
 
 	// 已获取约定标识则传 1；
 	// 用于基于特定需求而传的标识字段
 	// 注：有约定则是必传，若未传则查
 	// 询接口失败
-	Authorization *string `json:"Authorization,omitnil" name:"Authorization"`
+	Authorization *string `json:"Authorization,omitnil,omitempty" name:"Authorization"`
 
 	// 姓名
 	// 注 ：不支持加密
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 银行卡号
-	BankCardNumber *string `json:"BankCardNumber,omitnil" name:"BankCardNumber"`
+	BankCardNumber *string `json:"BankCardNumber,omitnil,omitempty" name:"BankCardNumber"`
 
 	// 用户请求来源 IP
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 国际移动设备识别码
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// ios 系统广告标示符
-	Idfa *string `json:"Idfa,omitnil" name:"Idfa"`
+	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// 用户邮箱地址
-	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 用户住址
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// MAC 地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// 国际移动用户识别码
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// 关联的腾讯帐号 QQ：1；
 	// 开放帐号微信： 2；
-	AccountType *string `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 可选的 QQ 或微信 openid
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// qq 或微信分配给网站或应用的
 	// appid，用来唯一标识网站或应用
-	AppIdU *string `json:"AppIdU,omitnil" name:"AppIdU"`
+	AppIdU *string `json:"AppIdU,omitnil,omitempty" name:"AppIdU"`
 
 	// ＷＩＦＩＭＡＣ
-	WifiMac *string `json:"WifiMac,omitnil" name:"WifiMac"`
+	WifiMac *string `json:"WifiMac,omitnil,omitempty" name:"WifiMac"`
 
 	// WIFI 服务集标识
-	WifiSSID *string `json:"WifiSSID,omitnil" name:"WifiSSID"`
+	WifiSSID *string `json:"WifiSSID,omitnil,omitempty" name:"WifiSSID"`
 
 	// WIFI-BSSID
-	WifiBSSID *string `json:"WifiBSSID,omitnil" name:"WifiBSSID"`
+	WifiBSSID *string `json:"WifiBSSID,omitnil,omitempty" name:"WifiBSSID"`
 
 	// 拓展字段类型 ID
 	// 注：默认不填写，需要时天御侧将
 	// 提供
-	ExtensionId *string `json:"ExtensionId,omitnil" name:"ExtensionId"`
+	ExtensionId *string `json:"ExtensionId,omitnil,omitempty" name:"ExtensionId"`
 
 	// 拓展字段内容
 	// 注：默认不填，需要时天御侧将提
 	// 供
-	ExtensionIn *string `json:"ExtensionIn,omitnil" name:"ExtensionIn"`
+	ExtensionIn *string `json:"ExtensionIn,omitnil,omitempty" name:"ExtensionIn"`
 
 	// 业务 ID，默认不传
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 身份证加密类型
 	// 0：不加密（默认值）
@@ -132,7 +132,7 @@ type AntiFraudVipFilter struct {
 	// 3：SM3
 	// 注：若 idNumber 加密则必传加密
 	// 方式
-	IdCryptoType *string `json:"IdCryptoType,omitnil" name:"IdCryptoType"`
+	IdCryptoType *string `json:"IdCryptoType,omitnil,omitempty" name:"IdCryptoType"`
 
 	// 手机号加密类型
 	// 0：不加密（默认值）
@@ -141,63 +141,63 @@ type AntiFraudVipFilter struct {
 	// 3：SM3
 	// 注：若 phoneNumber 加密则必传
 	// 加密方式
-	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil" name:"PhoneCryptoType"`
+	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil,omitempty" name:"PhoneCryptoType"`
 
 	// 姓名加密类型：——注：已经不支持加
 	// 密，该字段存在是为了兼容可能历史客户
 	// 版本；
 	// 0：不加密（默认值）
 	// 1：md5
-	NameCryptoType *string `json:"NameCryptoType,omitnil" name:"NameCryptoType"`
+	NameCryptoType *string `json:"NameCryptoType,omitnil,omitempty" name:"NameCryptoType"`
 }
 
 type AntiFraudVipRecord struct {
 	// 公共错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 业务侧错误码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeDesc *string `json:"CodeDesc,omitnil" name:"CodeDesc"`
+	CodeDesc *string `json:"CodeDesc,omitnil,omitempty" name:"CodeDesc"`
 
 	// 业务侧错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 表示该条记录能否查到：1 为能查到；-1 为查不到，此时 RiskScore 返回-1；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Found *string `json:"Found,omitnil" name:"Found"`
+	Found *string `json:"Found,omitnil,omitempty" name:"Found"`
 
 	// 表示该条记录中的身份 ID 能否查到
 	// 1 为能查到
 	// -1 为查不到
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdFound *string `json:"IdFound,omitnil" name:"IdFound"`
+	IdFound *string `json:"IdFound,omitnil,omitempty" name:"IdFound"`
 
 	// 当可查到时，返回 0~100 区间，值越高 欺诈可
 	// 能性越大。
 	// 当查不到时（即 found=-1），返回-1
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskScore *string `json:"RiskScore,omitnil" name:"RiskScore"`
+	RiskScore *string `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 
 	// 扩展字段，对风险类型的说明。扩展字段并非必
 	// 然出现。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*SimpleKindRiskDetail `json:"RiskInfo,omitnil" name:"RiskInfo"`
+	RiskInfo []*SimpleKindRiskDetail `json:"RiskInfo,omitnil,omitempty" name:"RiskInfo"`
 
 	// 默认出现，提供模型版本号说明及多模型返回需
 	// 要时用到；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OtherModelScores []*OtherModelScores `json:"OtherModelScores,omitnil" name:"OtherModelScores"`
+	OtherModelScores []*OtherModelScores `json:"OtherModelScores,omitnil,omitempty" name:"OtherModelScores"`
 
 	// 表示请求时间，标准 sunix 时间戳，非必然出现
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostTime *string `json:"PostTime,omitnil" name:"PostTime"`
+	PostTime *string `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// 拓展字段，非必然出现，和 ExtensionIn 对应；
 	// 注：非必然出现，需要返回时天御侧将说明；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtensionOut *string `json:"ExtensionOut,omitnil" name:"ExtensionOut"`
+	ExtensionOut *string `json:"ExtensionOut,omitnil,omitempty" name:"ExtensionOut"`
 }
 
 // Predefined struct for user
@@ -205,13 +205,13 @@ type GetAntiFraudVipRequestParams struct {
 	// 默认不传，约定用原始业务
 	// 入参(二选一BusinessSecurityData 或
 	// BusinessCryptoData)。
-	BusinessSecurityData *AntiFraudVipFilter `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *AntiFraudVipFilter `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 
 	// 默认不传，约定用密文业务
 	// 入参(二选一
 	// BusinessSecurityData 或
 	// BusinessCryptoData)。
-	BusinessCryptoData *AntiFraudVipCryptoFilter `json:"BusinessCryptoData,omitnil" name:"BusinessCryptoData"`
+	BusinessCryptoData *AntiFraudVipCryptoFilter `json:"BusinessCryptoData,omitnil,omitempty" name:"BusinessCryptoData"`
 }
 
 type GetAntiFraudVipRequest struct {
@@ -220,13 +220,13 @@ type GetAntiFraudVipRequest struct {
 	// 默认不传，约定用原始业务
 	// 入参(二选一BusinessSecurityData 或
 	// BusinessCryptoData)。
-	BusinessSecurityData *AntiFraudVipFilter `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *AntiFraudVipFilter `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 
 	// 默认不传，约定用密文业务
 	// 入参(二选一
 	// BusinessSecurityData 或
 	// BusinessCryptoData)。
-	BusinessCryptoData *AntiFraudVipCryptoFilter `json:"BusinessCryptoData,omitnil" name:"BusinessCryptoData"`
+	BusinessCryptoData *AntiFraudVipCryptoFilter `json:"BusinessCryptoData,omitnil,omitempty" name:"BusinessCryptoData"`
 }
 
 func (r *GetAntiFraudVipRequest) ToJsonString() string {
@@ -252,10 +252,10 @@ func (r *GetAntiFraudVipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAntiFraudVipResponseParams struct {
 	// 反欺诈评分接口结果
-	Data *AntiFraudVipRecord `json:"Data,omitnil" name:"Data"`
+	Data *AntiFraudVipRecord `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetAntiFraudVipResponse struct {
@@ -276,177 +276,177 @@ func (r *GetAntiFraudVipResponse) FromJsonString(s string) error {
 
 type OtherModelScores struct {
 	// 模型类型
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 该模型评分
-	ModelScore *string `json:"ModelScore,omitnil" name:"ModelScore"`
+	ModelScore *string `json:"ModelScore,omitnil,omitempty" name:"ModelScore"`
 }
 
 // Predefined struct for user
 type QueryAntiFraudVipRequestParams struct {
 	// 电话号码(五选二)
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// Id号(五选二)
-	IdNumber *string `json:"IdNumber,omitnil" name:"IdNumber"`
+	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 银行卡号(五选二)
-	BankCardNumber *string `json:"BankCardNumber,omitnil" name:"BankCardNumber"`
+	BankCardNumber *string `json:"BankCardNumber,omitnil,omitempty" name:"BankCardNumber"`
 
 	// 用户请求来源 IP(五选二)
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 国际移动设备识别码(五选二)
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// ios 系统广告标示符(五选二)
-	Idfa *string `json:"Idfa,omitnil" name:"Idfa"`
+	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// 业务场景 ID，需要找技术对接
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 姓名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 用户邮箱地址
-	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 用户住址
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 关联的腾讯帐号 QQ：1；
 	// 开放帐号微信： 2；
-	AccountType *string `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 可选的 QQ 或微信 openid
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// qq 或微信分配给网站或应用的 appid，用来
 	// 唯一标识网站或应用
-	AppIdU *string `json:"AppIdU,omitnil" name:"AppIdU"`
+	AppIdU *string `json:"AppIdU,omitnil,omitempty" name:"AppIdU"`
 
 	// WIFI MAC
-	WifiMac *string `json:"WifiMac,omitnil" name:"WifiMac"`
+	WifiMac *string `json:"WifiMac,omitnil,omitempty" name:"WifiMac"`
 
 	// WIFI 服务集标识
-	WifiSSID *string `json:"WifiSSID,omitnil" name:"WifiSSID"`
+	WifiSSID *string `json:"WifiSSID,omitnil,omitempty" name:"WifiSSID"`
 
 	// WIFI-BSSID
-	WifiBSSID *string `json:"WifiBSSID,omitnil" name:"WifiBSSID"`
+	WifiBSSID *string `json:"WifiBSSID,omitnil,omitempty" name:"WifiBSSID"`
 
 	// 业务 ID，在多个业务中使用此服务，通过此
 	// ID 区分统计数据
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// Id加密类型
 	// 0：不加密（默认值）
 	// 1：md5
 	// 2：sha256
 	// 3：SM3
-	IdCryptoType *string `json:"IdCryptoType,omitnil" name:"IdCryptoType"`
+	IdCryptoType *string `json:"IdCryptoType,omitnil,omitempty" name:"IdCryptoType"`
 
 	// 手机号加密类型
 	// 0：不加密（默认值）
 	// 1：md5, 2：sha256
 	// 3：SM3
-	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil" name:"PhoneCryptoType"`
+	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil,omitempty" name:"PhoneCryptoType"`
 
 	// MAC 地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// 国际移动用户识别码
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// 姓名加密类型
 	// 0：不加密（默认值）
 	// 1：md5
 	// 2：sha256
 	// 3：SM3
-	NameCryptoType *string `json:"NameCryptoType,omitnil" name:"NameCryptoType"`
+	NameCryptoType *string `json:"NameCryptoType,omitnil,omitempty" name:"NameCryptoType"`
 }
 
 type QueryAntiFraudVipRequest struct {
 	*tchttp.BaseRequest
 	
 	// 电话号码(五选二)
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// Id号(五选二)
-	IdNumber *string `json:"IdNumber,omitnil" name:"IdNumber"`
+	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 银行卡号(五选二)
-	BankCardNumber *string `json:"BankCardNumber,omitnil" name:"BankCardNumber"`
+	BankCardNumber *string `json:"BankCardNumber,omitnil,omitempty" name:"BankCardNumber"`
 
 	// 用户请求来源 IP(五选二)
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 国际移动设备识别码(五选二)
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// ios 系统广告标示符(五选二)
-	Idfa *string `json:"Idfa,omitnil" name:"Idfa"`
+	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// 业务场景 ID，需要找技术对接
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 姓名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 用户邮箱地址
-	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 用户住址
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 关联的腾讯帐号 QQ：1；
 	// 开放帐号微信： 2；
-	AccountType *string `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 可选的 QQ 或微信 openid
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// qq 或微信分配给网站或应用的 appid，用来
 	// 唯一标识网站或应用
-	AppIdU *string `json:"AppIdU,omitnil" name:"AppIdU"`
+	AppIdU *string `json:"AppIdU,omitnil,omitempty" name:"AppIdU"`
 
 	// WIFI MAC
-	WifiMac *string `json:"WifiMac,omitnil" name:"WifiMac"`
+	WifiMac *string `json:"WifiMac,omitnil,omitempty" name:"WifiMac"`
 
 	// WIFI 服务集标识
-	WifiSSID *string `json:"WifiSSID,omitnil" name:"WifiSSID"`
+	WifiSSID *string `json:"WifiSSID,omitnil,omitempty" name:"WifiSSID"`
 
 	// WIFI-BSSID
-	WifiBSSID *string `json:"WifiBSSID,omitnil" name:"WifiBSSID"`
+	WifiBSSID *string `json:"WifiBSSID,omitnil,omitempty" name:"WifiBSSID"`
 
 	// 业务 ID，在多个业务中使用此服务，通过此
 	// ID 区分统计数据
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// Id加密类型
 	// 0：不加密（默认值）
 	// 1：md5
 	// 2：sha256
 	// 3：SM3
-	IdCryptoType *string `json:"IdCryptoType,omitnil" name:"IdCryptoType"`
+	IdCryptoType *string `json:"IdCryptoType,omitnil,omitempty" name:"IdCryptoType"`
 
 	// 手机号加密类型
 	// 0：不加密（默认值）
 	// 1：md5, 2：sha256
 	// 3：SM3
-	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil" name:"PhoneCryptoType"`
+	PhoneCryptoType *string `json:"PhoneCryptoType,omitnil,omitempty" name:"PhoneCryptoType"`
 
 	// MAC 地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// 国际移动用户识别码
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// 姓名加密类型
 	// 0：不加密（默认值）
 	// 1：md5
 	// 2：sha256
 	// 3：SM3
-	NameCryptoType *string `json:"NameCryptoType,omitnil" name:"NameCryptoType"`
+	NameCryptoType *string `json:"NameCryptoType,omitnil,omitempty" name:"NameCryptoType"`
 }
 
 func (r *QueryAntiFraudVipRequest) ToJsonString() string {
@@ -492,24 +492,24 @@ func (r *QueryAntiFraudVipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryAntiFraudVipResponseParams struct {
 	// 表示该条记录能否查到：1为能查到，-1为查不到
-	Found *int64 `json:"Found,omitnil" name:"Found"`
+	Found *int64 `json:"Found,omitnil,omitempty" name:"Found"`
 
 	// 表示该条Id能否查到：1为能查到，-1为查不到
-	IdFound *int64 `json:"IdFound,omitnil" name:"IdFound"`
+	IdFound *int64 `json:"IdFound,omitnil,omitempty" name:"IdFound"`
 
 	// 0~100;值越高 欺诈可能性越大
-	RiskScore *uint64 `json:"RiskScore,omitnil" name:"RiskScore"`
+	RiskScore *uint64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 
 	// 扩展字段，对风险类型的说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*RiskDetail `json:"RiskInfo,omitnil" name:"RiskInfo"`
+	RiskInfo []*RiskDetail `json:"RiskInfo,omitnil,omitempty" name:"RiskInfo"`
 
 	// 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeDesc *string `json:"CodeDesc,omitnil" name:"CodeDesc"`
+	CodeDesc *string `json:"CodeDesc,omitnil,omitempty" name:"CodeDesc"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryAntiFraudVipResponse struct {
@@ -530,55 +530,55 @@ func (r *QueryAntiFraudVipResponse) FromJsonString(s string) error {
 
 type RiskDetail struct {
 	// 风险码
-	RiskCode *uint64 `json:"RiskCode,omitnil" name:"RiskCode"`
+	RiskCode *uint64 `json:"RiskCode,omitnil,omitempty" name:"RiskCode"`
 }
 
 type SimpleKindRiskDetail struct {
 	// 风险码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCode *string `json:"RiskCode,omitnil" name:"RiskCode"`
+	RiskCode *string `json:"RiskCode,omitnil,omitempty" name:"RiskCode"`
 
 	// 风险码详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCodeValue *string `json:"RiskCodeValue,omitnil" name:"RiskCodeValue"`
+	RiskCodeValue *string `json:"RiskCodeValue,omitnil,omitempty" name:"RiskCodeValue"`
 }
 
 type TransportGeneralInterfaceInput struct {
 	// 公证处请求接口名
-	InterfaceName *string `json:"InterfaceName,omitnil" name:"InterfaceName"`
+	InterfaceName *string `json:"InterfaceName,omitnil,omitempty" name:"InterfaceName"`
 
 	// 公证处业务详情二层入参
-	NotarizationInput *string `json:"NotarizationInput,omitnil" name:"NotarizationInput"`
+	NotarizationInput *string `json:"NotarizationInput,omitnil,omitempty" name:"NotarizationInput"`
 
 	// 业务二层详情入参的哈希签名
-	NotarizationSign *string `json:"NotarizationSign,omitnil" name:"NotarizationSign"`
+	NotarizationSign *string `json:"NotarizationSign,omitnil,omitempty" name:"NotarizationSign"`
 }
 
 type TransportGeneralInterfaceOutput struct {
 	// 错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 回包信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 公证处业务回包
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NotarizationData *string `json:"NotarizationData,omitnil" name:"NotarizationData"`
+	NotarizationData *string `json:"NotarizationData,omitnil,omitempty" name:"NotarizationData"`
 }
 
 // Predefined struct for user
 type TransportGeneralInterfaceRequestParams struct {
 	// 业务入参
-	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 }
 
 type TransportGeneralInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务入参
-	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 }
 
 func (r *TransportGeneralInterfaceRequest) ToJsonString() string {
@@ -604,10 +604,10 @@ func (r *TransportGeneralInterfaceRequest) FromJsonString(s string) error {
 type TransportGeneralInterfaceResponseParams struct {
 	// 业务出参
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *TransportGeneralInterfaceOutput `json:"Data,omitnil" name:"Data"`
+	Data *TransportGeneralInterfaceOutput `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TransportGeneralInterfaceResponse struct {

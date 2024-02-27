@@ -52,10 +52,10 @@ func (r *DescribeSdkAppidRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSdkAppidResponseParams struct {
 	// 表示 appid 对应的 SdkAppid 的数据
-	SdkAppids []*int64 `json:"SdkAppids,omitnil" name:"SdkAppids"`
+	SdkAppids []*int64 `json:"SdkAppids,omitnil,omitempty" name:"SdkAppids"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSdkAppidResponse struct {

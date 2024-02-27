@@ -22,54 +22,54 @@ import (
 
 type BRIRequest struct {
 	// 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
-	Service *string `json:"Service,omitnil" name:"Service"`
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// QQ号 (业务名为bri_social时必填, 除非已填Wechat)
-	QQ *string `json:"QQ,omitnil" name:"QQ"`
+	QQ *string `json:"QQ,omitnil,omitempty" name:"QQ"`
 
 	// QQ号的可疑标签
-	QQTag *string `json:"QQTag,omitnil" name:"QQTag"`
+	QQTag *string `json:"QQTag,omitnil,omitempty" name:"QQTag"`
 
 	// 网址 (业务名为bri_url时必填)
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
-	CertMd5 *string `json:"CertMd5,omitnil" name:"CertMd5"`
+	CertMd5 *string `json:"CertMd5,omitnil,omitempty" name:"CertMd5"`
 
 	// Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
-	FileMd5 *string `json:"FileMd5,omitnil" name:"FileMd5"`
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 
 	// 业务场景 (1-注册, 2-登录, 3-发消息)
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 电话号码 (业务名为bri_num时必填)
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
-	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 点分格式的IP (业务名为bri_ip时必填)
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 安卓设备的Imei (业务名为bri_dev时必填)
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// 微信号 (业务名为bri_social时必填, 除非已填QQ)
-	Wechat *string `json:"Wechat,omitnil" name:"Wechat"`
+	Wechat *string `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 
 	// 微信号的可疑标签
-	WechatTag *string `json:"WechatTag,omitnil" name:"WechatTag"`
+	WechatTag *string `json:"WechatTag,omitnil,omitempty" name:"WechatTag"`
 
 	// 子客户ID
-	SubAppid *string `json:"SubAppid,omitnil" name:"SubAppid"`
+	SubAppid *string `json:"SubAppid,omitnil,omitempty" name:"SubAppid"`
 }
 
 type BRIResponse struct {
 	// 风险分值，取值[0,100], 分值越高风险越高
-	Score *float64 `json:"Score,omitnil" name:"Score"`
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 当Service为bri_num时,返回的风险标签有:
 	// 1) 疑似垃圾流量     说明: 结合号码的历史数据表现，判断该号码历史用互联网业务作恶行为，其产生的互联网行为对于其他业务来说属于作弊或垃圾流量。 
@@ -96,26 +96,26 @@ type BRIResponse struct {
 	// 2) 一般   说明: APK为未发现问题的正常应用
 	// 3) 风险   说明: APK为外挂或色情等风险应用
 	// 4) 病毒   说明: APK为包含恶意代码的恶意软件,可能破坏系统或者其他app正常使用
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
 type DescribeBRIRequestParams struct {
 	// 业务风险情报请求体
-	RequestData *BRIRequest `json:"RequestData,omitnil" name:"RequestData"`
+	RequestData *BRIRequest `json:"RequestData,omitnil,omitempty" name:"RequestData"`
 
 	// 客户用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type DescribeBRIRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务风险情报请求体
-	RequestData *BRIRequest `json:"RequestData,omitnil" name:"RequestData"`
+	RequestData *BRIRequest `json:"RequestData,omitnil,omitempty" name:"RequestData"`
 
 	// 客户用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *DescribeBRIRequest) ToJsonString() string {
@@ -141,10 +141,10 @@ func (r *DescribeBRIRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBRIResponseParams struct {
 	// 业务风险情报响应体
-	ResponseData *BRIResponse `json:"ResponseData,omitnil" name:"ResponseData"`
+	ResponseData *BRIResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeBRIResponse struct {

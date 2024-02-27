@@ -23,20 +23,20 @@ import (
 // Predefined struct for user
 type DeleteCertRequestParams struct {
 	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 }
 
 type DeleteCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 }
 
 func (r *DeleteCertRequest) ToJsonString() string {
@@ -62,7 +62,7 @@ func (r *DeleteCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCertResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteCertResponse struct {
@@ -84,56 +84,56 @@ func (r *DeleteCertResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertListRequestParams struct {
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
 	// 页数，默认第一页。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页条数，默认每页20条。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键字。
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 证书ID。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否同时获取证书内容。
-	WithCert *string `json:"WithCert,omitnil" name:"WithCert"`
+	WithCert *string `json:"WithCert,omitnil,omitempty" name:"WithCert"`
 
 	// 如传，则只返回可以给该域名使用的证书。
-	AltDomain *string `json:"AltDomain,omitnil" name:"AltDomain"`
+	AltDomain *string `json:"AltDomain,omitnil,omitempty" name:"AltDomain"`
 }
 
 type DescribeCertListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
 	// 页数，默认第一页。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页条数，默认每页20条。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键字。
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 证书ID。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否同时获取证书内容。
-	WithCert *string `json:"WithCert,omitnil" name:"WithCert"`
+	WithCert *string `json:"WithCert,omitnil,omitempty" name:"WithCert"`
 
 	// 如传，则只返回可以给该域名使用的证书。
-	AltDomain *string `json:"AltDomain,omitnil" name:"AltDomain"`
+	AltDomain *string `json:"AltDomain,omitnil,omitempty" name:"AltDomain"`
 }
 
 func (r *DescribeCertListRequest) ToJsonString() string {
@@ -165,13 +165,13 @@ func (r *DescribeCertListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertListResponseParams struct {
 	// 总数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 列表。
-	CertificateSet []*SSLCertificate `json:"CertificateSet,omitnil" name:"CertificateSet"`
+	CertificateSet []*SSLCertificate `json:"CertificateSet,omitnil,omitempty" name:"CertificateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertListResponse struct {
@@ -193,176 +193,176 @@ func (r *DescribeCertListResponse) FromJsonString(s string) error {
 type SSLCertificate struct {
 	// 所属账户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源：trustasia = 亚洲诚信， upload = 用户上传
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	From *string `json:"From,omitnil" name:"From"`
+	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 证书办法者名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductZhName *string `json:"ProductZhName,omitnil" name:"ProductZhName"`
+	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 主域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil" name:"VulnerabilityStatus"`
+	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusMsg *string `json:"StatusMsg,omitnil" name:"StatusMsg"`
+	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 验证类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 证书生效时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertBeginTime *string `json:"CertBeginTime,omitnil" name:"CertBeginTime"`
+	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
 	// 证书过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertEndTime *string `json:"CertEndTime,omitnil" name:"CertEndTime"`
+	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectInfo *SSLProjectInfo `json:"ProjectInfo,omitnil" name:"ProjectInfo"`
+	ProjectInfo *SSLProjectInfo `json:"ProjectInfo,omitnil,omitempty" name:"ProjectInfo"`
 
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 证书包含的多个域名（包含主域名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitnil" name:"SubjectAltName"`
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TypeName *string `json:"TypeName,omitnil" name:"TypeName"`
+	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
 	// 状态名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusName *string `json:"StatusName,omitnil" name:"StatusName"`
+	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 是否为 VIP 客户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVip *bool `json:"IsVip,omitnil" name:"IsVip"`
+	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否我 DV 版证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDv *bool `json:"IsDv,omitnil" name:"IsDv"`
+	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否为泛域名证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWildcard *bool `json:"IsWildcard,omitnil" name:"IsWildcard"`
+	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否启用了漏洞扫描功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVulnerability *bool `json:"IsVulnerability,omitnil" name:"IsVulnerability"`
+	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cert *string `json:"Cert,omitnil" name:"Cert"`
+	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 }
 
 type SSLProjectInfo struct {
 	// 项目ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 项目所属的 uin（默认项目为0）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *int64 `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *int64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 创建项目的 uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatorUin *int64 `json:"CreatorUin,omitnil" name:"CreatorUin"`
+	CreatorUin *int64 `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
 	// 项目创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 项目说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Info *string `json:"Info,omitnil" name:"Info"`
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 // Predefined struct for user
 type UploadCertRequestParams struct {
 	// 证书内容。
-	Cert *string `json:"Cert,omitnil" name:"Cert"`
+	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
 	// 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
 	// 证书私钥，certType=SVR 时必填。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 证书备注。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 type UploadCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书内容。
-	Cert *string `json:"Cert,omitnil" name:"Cert"`
+	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
 	// 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 模块名称，应填 ssl。
-	ModuleType *string `json:"ModuleType,omitnil" name:"ModuleType"`
+	ModuleType *string `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
 	// 证书私钥，certType=SVR 时必填。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 证书备注。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 func (r *UploadCertRequest) ToJsonString() string {
@@ -392,10 +392,10 @@ func (r *UploadCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadCertResponseParams struct {
 	// 证书ID。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadCertResponse struct {

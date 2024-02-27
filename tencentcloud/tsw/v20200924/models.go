@@ -23,35 +23,35 @@ import (
 type AgentShell struct {
 	// 鉴权token
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Token *string `json:"Token,omitnil" name:"Token"`
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// 数据接收Ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EtlIp *string `json:"EtlIp,omitnil" name:"EtlIp"`
+	EtlIp *string `json:"EtlIp,omitnil,omitempty" name:"EtlIp"`
 
 	// 数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EtlPort *string `json:"EtlPort,omitnil" name:"EtlPort"`
+	EtlPort *string `json:"EtlPort,omitnil,omitempty" name:"EtlPort"`
 
 	// 手动接入脚本串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ByHandAccess *string `json:"ByHandAccess,omitnil" name:"ByHandAccess"`
+	ByHandAccess *string `json:"ByHandAccess,omitnil,omitempty" name:"ByHandAccess"`
 
 	// 自动接入脚本串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ByShellAccess *string `json:"ByShellAccess,omitnil" name:"ByShellAccess"`
+	ByShellAccess *string `json:"ByShellAccess,omitnil,omitempty" name:"ByShellAccess"`
 
 	// SkyWalking数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SkyWalkingPort *string `json:"SkyWalkingPort,omitnil" name:"SkyWalkingPort"`
+	SkyWalkingPort *string `json:"SkyWalkingPort,omitnil,omitempty" name:"SkyWalkingPort"`
 
 	// Zipkin数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZipkinPort *string `json:"ZipkinPort,omitnil" name:"ZipkinPort"`
+	ZipkinPort *string `json:"ZipkinPort,omitnil,omitempty" name:"ZipkinPort"`
 
 	// Jaeger数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JaegerPort *string `json:"JaegerPort,omitnil" name:"JaegerPort"`
+	JaegerPort *string `json:"JaegerPort,omitnil,omitempty" name:"JaegerPort"`
 }
 
 // Predefined struct for user
@@ -87,10 +87,10 @@ func (r *DescribeAgentShellRequest) FromJsonString(s string) error {
 type DescribeAgentShellResponseParams struct {
 	// 接入信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *AgentShell `json:"Result,omitnil" name:"Result"`
+	Result *AgentShell `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAgentShellResponse struct {

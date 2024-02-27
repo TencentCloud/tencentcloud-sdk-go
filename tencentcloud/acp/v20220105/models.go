@@ -22,160 +22,160 @@ import (
 
 type AppInfoItem struct {
 	// App包名
-	AppPackage *string `json:"AppPackage,omitnil" name:"AppPackage"`
+	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// App名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// App版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// App隐私诊断报告下载链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// App隐私诊断报告名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportTitle *string `json:"ReportTitle,omitnil" name:"ReportTitle"`
+	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// App诊断堆栈报告下载链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BehaviorUrl *string `json:"BehaviorUrl,omitnil" name:"BehaviorUrl"`
+	BehaviorUrl *string `json:"BehaviorUrl,omitnil,omitempty" name:"BehaviorUrl"`
 
 	// App诊断堆栈报告名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BehaviorTitle *string `json:"BehaviorTitle,omitnil" name:"BehaviorTitle"`
+	BehaviorTitle *string `json:"BehaviorTitle,omitnil,omitempty" name:"BehaviorTitle"`
 
 	// 诊断高风险项数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HighRiskCount *int64 `json:"HighRiskCount,omitnil" name:"HighRiskCount"`
+	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
 
 	// 隐私申明文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivacyTextName *string `json:"PrivacyTextName,omitnil" name:"PrivacyTextName"`
+	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件MD5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SoftwareMD5 *string `json:"SoftwareMD5,omitnil" name:"SoftwareMD5"`
+	SoftwareMD5 *string `json:"SoftwareMD5,omitnil,omitempty" name:"SoftwareMD5"`
 
 	// 隐私文本MD5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil" name:"PrivacyTextMD5"`
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
 type AppTaskData struct {
 	// 任务ID
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
-	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskErrMsg *string `json:"TaskErrMsg,omitnil" name:"TaskErrMsg"`
+	TaskErrMsg *string `json:"TaskErrMsg,omitnil,omitempty" name:"TaskErrMsg"`
 
 	// 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用信息
-	AppInfo *AppInfoItem `json:"AppInfo,omitnil" name:"AppInfo"`
+	AppInfo *AppInfoItem `json:"AppInfo,omitnil,omitempty" name:"AppInfo"`
 
 	// 任务启动时间
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务完成时间(更新时间)
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 联系人信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactName *string `json:"ContactName,omitnil" name:"ContactName"`
+	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
 }
 
 // Predefined struct for user
 type CreateAppScanTaskRepeatRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 原诊断任务ID
-	OrgTaskID *string `json:"OrgTaskID,omitnil" name:"OrgTaskID"`
+	OrgTaskID *string `json:"OrgTaskID,omitnil,omitempty" name:"OrgTaskID"`
 
 	// App包名
-	AppPackage *string `json:"AppPackage,omitnil" name:"AppPackage"`
+	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// 上传的文件ID(任务来源为1时必填)
-	FileID *string `json:"FileID,omitnil" name:"FileID"`
+	FileID *string `json:"FileID,omitnil,omitempty" name:"FileID"`
 
 	// 软件下载链接地址(任务来源为2时必填)
-	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil" name:"AppDownloadUrl"`
+	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil,omitempty" name:"AppDownloadUrl"`
 
 	// 隐私文本下载地址(任务来源为2时必填)
-	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil" name:"PrivacyTextUrl"`
+	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil,omitempty" name:"PrivacyTextUrl"`
 
 	// 应用名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 隐私申明文件名称
-	PrivacyTextName *string `json:"PrivacyTextName,omitnil" name:"PrivacyTextName"`
+	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件Sha1值(PrivacyTextMD5不为空时必填)
-	AppSha1 *string `json:"AppSha1,omitnil" name:"AppSha1"`
+	AppSha1 *string `json:"AppSha1,omitnil,omitempty" name:"AppSha1"`
 
 	// 隐私申明文本md5(AppSha1不为空时必填)
-	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil" name:"PrivacyTextMD5"`
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
 type CreateAppScanTaskRepeatRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 原诊断任务ID
-	OrgTaskID *string `json:"OrgTaskID,omitnil" name:"OrgTaskID"`
+	OrgTaskID *string `json:"OrgTaskID,omitnil,omitempty" name:"OrgTaskID"`
 
 	// App包名
-	AppPackage *string `json:"AppPackage,omitnil" name:"AppPackage"`
+	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// 上传的文件ID(任务来源为1时必填)
-	FileID *string `json:"FileID,omitnil" name:"FileID"`
+	FileID *string `json:"FileID,omitnil,omitempty" name:"FileID"`
 
 	// 软件下载链接地址(任务来源为2时必填)
-	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil" name:"AppDownloadUrl"`
+	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil,omitempty" name:"AppDownloadUrl"`
 
 	// 隐私文本下载地址(任务来源为2时必填)
-	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil" name:"PrivacyTextUrl"`
+	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil,omitempty" name:"PrivacyTextUrl"`
 
 	// 应用名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 隐私申明文件名称
-	PrivacyTextName *string `json:"PrivacyTextName,omitnil" name:"PrivacyTextName"`
+	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件Sha1值(PrivacyTextMD5不为空时必填)
-	AppSha1 *string `json:"AppSha1,omitnil" name:"AppSha1"`
+	AppSha1 *string `json:"AppSha1,omitnil,omitempty" name:"AppSha1"`
 
 	// 隐私申明文本md5(AppSha1不为空时必填)
-	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil" name:"PrivacyTextMD5"`
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
 func (r *CreateAppScanTaskRepeatRequest) ToJsonString() string {
@@ -211,13 +211,13 @@ func (r *CreateAppScanTaskRepeatRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAppScanTaskRepeatResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAppScanTaskRepeatResponse struct {
@@ -239,122 +239,122 @@ func (r *CreateAppScanTaskRepeatResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAppScanTaskRequestParams struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// App包名
-	AppPackage *string `json:"AppPackage,omitnil" name:"AppPackage"`
+	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// App名称(任务来源为2时必填)
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// App版本
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 上传的软件文件ID(任务来源为1时必填)
-	FileID *string `json:"FileID,omitnil" name:"FileID"`
+	FileID *string `json:"FileID,omitnil,omitempty" name:"FileID"`
 
 	// 软件下载链接地址(任务来源为2时必填)
-	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil" name:"AppDownloadUrl"`
+	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil,omitempty" name:"AppDownloadUrl"`
 
 	// 隐私文本下载地址(任务来源为2时必填)
-	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil" name:"PrivacyTextUrl"`
+	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil,omitempty" name:"PrivacyTextUrl"`
 
 	// 联系人信息
-	ContactName *string `json:"ContactName,omitnil" name:"ContactName"`
+	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
 
 	// 联系电话
-	TelNumber *string `json:"TelNumber,omitnil" name:"TelNumber"`
+	TelNumber *string `json:"TelNumber,omitnil,omitempty" name:"TelNumber"`
 
 	// 公司邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 公司名称
-	CorpName *string `json:"CorpName,omitnil" name:"CorpName"`
+	CorpName *string `json:"CorpName,omitnil,omitempty" name:"CorpName"`
 
 	// 商务对接人员
-	SalesPerson *string `json:"SalesPerson,omitnil" name:"SalesPerson"`
+	SalesPerson *string `json:"SalesPerson,omitnil,omitempty" name:"SalesPerson"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 是否同意隐私条款，0:不同意(默认), 1:同意
-	IsAgreePrivacy *int64 `json:"IsAgreePrivacy,omitnil" name:"IsAgreePrivacy"`
+	IsAgreePrivacy *int64 `json:"IsAgreePrivacy,omitnil,omitempty" name:"IsAgreePrivacy"`
 
 	// 隐私申明文件名称
-	PrivacyTextName *string `json:"PrivacyTextName,omitnil" name:"PrivacyTextName"`
+	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件Sha1值(PrivacyTextMD5不为空时必填)
-	AppSha1 *string `json:"AppSha1,omitnil" name:"AppSha1"`
+	AppSha1 *string `json:"AppSha1,omitnil,omitempty" name:"AppSha1"`
 
 	// 隐私申明文本md5(AppSha1不为空时必填)
-	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil" name:"PrivacyTextMD5"`
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
 type CreateAppScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// App包名
-	AppPackage *string `json:"AppPackage,omitnil" name:"AppPackage"`
+	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// App名称(任务来源为2时必填)
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// App版本
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 上传的软件文件ID(任务来源为1时必填)
-	FileID *string `json:"FileID,omitnil" name:"FileID"`
+	FileID *string `json:"FileID,omitnil,omitempty" name:"FileID"`
 
 	// 软件下载链接地址(任务来源为2时必填)
-	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil" name:"AppDownloadUrl"`
+	AppDownloadUrl *string `json:"AppDownloadUrl,omitnil,omitempty" name:"AppDownloadUrl"`
 
 	// 隐私文本下载地址(任务来源为2时必填)
-	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil" name:"PrivacyTextUrl"`
+	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitnil,omitempty" name:"PrivacyTextUrl"`
 
 	// 联系人信息
-	ContactName *string `json:"ContactName,omitnil" name:"ContactName"`
+	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
 
 	// 联系电话
-	TelNumber *string `json:"TelNumber,omitnil" name:"TelNumber"`
+	TelNumber *string `json:"TelNumber,omitnil,omitempty" name:"TelNumber"`
 
 	// 公司邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 公司名称
-	CorpName *string `json:"CorpName,omitnil" name:"CorpName"`
+	CorpName *string `json:"CorpName,omitnil,omitempty" name:"CorpName"`
 
 	// 商务对接人员
-	SalesPerson *string `json:"SalesPerson,omitnil" name:"SalesPerson"`
+	SalesPerson *string `json:"SalesPerson,omitnil,omitempty" name:"SalesPerson"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 是否同意隐私条款，0:不同意(默认), 1:同意
-	IsAgreePrivacy *int64 `json:"IsAgreePrivacy,omitnil" name:"IsAgreePrivacy"`
+	IsAgreePrivacy *int64 `json:"IsAgreePrivacy,omitnil,omitempty" name:"IsAgreePrivacy"`
 
 	// 隐私申明文件名称
-	PrivacyTextName *string `json:"PrivacyTextName,omitnil" name:"PrivacyTextName"`
+	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件Sha1值(PrivacyTextMD5不为空时必填)
-	AppSha1 *string `json:"AppSha1,omitnil" name:"AppSha1"`
+	AppSha1 *string `json:"AppSha1,omitnil,omitempty" name:"AppSha1"`
 
 	// 隐私申明文本md5(AppSha1不为空时必填)
-	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil" name:"PrivacyTextMD5"`
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
 func (r *CreateAppScanTaskRequest) ToJsonString() string {
@@ -397,14 +397,14 @@ func (r *CreateAppScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAppScanTaskResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAppScanTaskResponse struct {
@@ -426,44 +426,44 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeChannelTaskReportUrlRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1: iOS，2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
 	// 子渠道APP MD5值
-	AppMD5 *string `json:"AppMD5,omitnil" name:"AppMD5"`
+	AppMD5 *string `json:"AppMD5,omitnil,omitempty" name:"AppMD5"`
 }
 
 type DescribeChannelTaskReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1: iOS，2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
 	// 子渠道APP MD5值
-	AppMD5 *string `json:"AppMD5,omitnil" name:"AppMD5"`
+	AppMD5 *string `json:"AppMD5,omitnil,omitempty" name:"AppMD5"`
 }
 
 func (r *DescribeChannelTaskReportUrlRequest) ToJsonString() string {
@@ -493,16 +493,16 @@ func (r *DescribeChannelTaskReportUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeChannelTaskReportUrlResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 诊断报告/堆栈信息/报告json结果下载链接
-	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 诊断报告/堆栈/报告json结果的名称
-	ReportTitle *string `json:"ReportTitle,omitnil" name:"ReportTitle"`
+	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeChannelTaskReportUrlResponse struct {
@@ -524,20 +524,20 @@ func (r *DescribeChannelTaskReportUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileTicketRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type DescribeFileTicketRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 func (r *DescribeFileTicketRequest) ToJsonString() string {
@@ -563,21 +563,21 @@ func (r *DescribeFileTicketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileTicketResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
-	UploadUrl *string `json:"UploadUrl,omitnil" name:"UploadUrl"`
+	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
 
 	// 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UploadSign *string `json:"UploadSign,omitnil" name:"UploadSign"`
+	UploadSign *string `json:"UploadSign,omitnil,omitempty" name:"UploadSign"`
 
 	// 上传文件ID(任务来源为1时提交诊断任务需要)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FildID *string `json:"FildID,omitnil" name:"FildID"`
+	FildID *string `json:"FildID,omitnil,omitempty" name:"FildID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFileTicketResponse struct {
@@ -599,32 +599,32 @@ func (r *DescribeFileTicketResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceUsageInfoRequestParams struct {
 	// 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
-	PriceName *string `json:"PriceName,omitnil" name:"PriceName"`
+	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
 
 	// 任务类型, 0:基础版, 1:专家版
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 应用平台, 0:android
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type DescribeResourceUsageInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
-	PriceName *string `json:"PriceName,omitnil" name:"PriceName"`
+	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
 
 	// 任务类型, 0:基础版, 1:专家版
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 应用平台, 0:android
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
@@ -652,13 +652,13 @@ func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceUsageInfoResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 资源使用信息
-	Data *ResourceUsageInfoData `json:"Data,omitnil" name:"Data"`
+	Data *ResourceUsageInfoData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeResourceUsageInfoResponse struct {
@@ -680,62 +680,62 @@ func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskListRequestParams struct {
 	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
-	TaskStatuses *string `json:"TaskStatuses,omitnil" name:"TaskStatuses"`
+	TaskStatuses *string `json:"TaskStatuses,omitnil,omitempty" name:"TaskStatuses"`
 
 	// 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
-	TaskTypes *string `json:"TaskTypes,omitnil" name:"TaskTypes"`
+	TaskTypes *string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 
 	// 页码
-	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 页码大小
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 应用名称或小程序名称(可选参数)
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
-	TaskStatuses *string `json:"TaskStatuses,omitnil" name:"TaskStatuses"`
+	TaskStatuses *string `json:"TaskStatuses,omitnil,omitempty" name:"TaskStatuses"`
 
 	// 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
-	TaskTypes *string `json:"TaskTypes,omitnil" name:"TaskTypes"`
+	TaskTypes *string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 
 	// 页码
-	PageNo *int64 `json:"PageNo,omitnil" name:"PageNo"`
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 页码大小
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 应用名称或小程序名称(可选参数)
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeScanTaskListRequest) ToJsonString() string {
@@ -768,17 +768,17 @@ func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskListResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 任务总数量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 诊断任务数据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*AppTaskData `json:"Data,omitnil" name:"Data"`
+	Data []*AppTaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeScanTaskListResponse struct {
@@ -800,38 +800,38 @@ func (r *DescribeScanTaskListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskReportUrlRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 type DescribeScanTaskReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 func (r *DescribeScanTaskReportUrlRequest) ToJsonString() string {
@@ -860,22 +860,22 @@ func (r *DescribeScanTaskReportUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskReportUrlResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 诊断报告/堆栈信息/报告json结果下载链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 诊断报告/堆栈/报告json结果的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportTitle *string `json:"ReportTitle,omitnil" name:"ReportTitle"`
+	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// 诊断json结果内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportResult *string `json:"ReportResult,omitnil" name:"ReportResult"`
+	ReportResult *string `json:"ReportResult,omitnil,omitempty" name:"ReportResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeScanTaskReportUrlResponse struct {
@@ -897,32 +897,32 @@ func (r *DescribeScanTaskReportUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskStatusRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 type DescribeScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
-	Source *int64 `json:"Source,omitnil" name:"Source"`
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 任务id
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 func (r *DescribeScanTaskStatusRequest) ToJsonString() string {
@@ -950,21 +950,21 @@ func (r *DescribeScanTaskStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskStatusResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
-	Result *int64 `json:"Result,omitnil" name:"Result"`
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 诊断失败的错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 任务流详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitnil" name:"FlowSteps"`
+	FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitnil,omitempty" name:"FlowSteps"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeScanTaskStatusResponse struct {
@@ -985,35 +985,35 @@ func (r *DescribeScanTaskStatusResponse) FromJsonString(s string) error {
 
 type ResourceUsageInfoData struct {
 	// 资源计费项名称
-	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 资源总数
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 未使用资源数
-	UnusedCount *int64 `json:"UnusedCount,omitnil" name:"UnusedCount"`
+	UnusedCount *int64 `json:"UnusedCount,omitnil,omitempty" name:"UnusedCount"`
 }
 
 type TaskFlowStepsInfo struct {
 	// 流程编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowNo *string `json:"FlowNo,omitnil" name:"FlowNo"`
+	FlowNo *string `json:"FlowNo,omitnil,omitempty" name:"FlowNo"`
 
 	// 流程名称
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 流程状态, 其他值:进行中, 2:成功, 3:失败
-	FlowStatus *int64 `json:"FlowStatus,omitnil" name:"FlowStatus"`
+	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 流程状态描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowStateDesc *string `json:"FlowStateDesc,omitnil" name:"FlowStateDesc"`
+	FlowStateDesc *string `json:"FlowStateDesc,omitnil,omitempty" name:"FlowStateDesc"`
 
 	// 流程启动时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 流程完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }

@@ -27,19 +27,19 @@ type ChatProRequestParams struct {
 	// 1.长度最多为40, 按对话时间从旧到新在数组中排列。
 	// 2.Message的Role当前可选值：system、user、assistant，其中，system角色是可选的，如果存在，必须位于列表的最开始。user和assistant需要交替出现(一问一答)，最后一个为user提问, 且Content不能为空。
 	// 3.Messages中Content总长度不超过16000 token，超过则会截断最前面的内容，只保留尾部内容。建议不超过4000 token。
-	Messages []*Message `json:"Messages,omitnil" name:"Messages"`
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 说明：
 	// 1.影响输出文本的多样性，取值越大，生成文本的多样性越强。
 	// 2.默认1.0，取值区间为[0.0, 1.0]。
 	// 3.非必要不建议使用, 不合理的取值会影响效果。
-	TopP *float64 `json:"TopP,omitnil" name:"TopP"`
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
 	// 1.较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
 	// 2.默认1.0，取值区间为[0.0，2.0]。
 	// 3.非必要不建议使用,不合理的取值会影响效果。
-	Temperature *float64 `json:"Temperature,omitnil" name:"Temperature"`
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 type ChatProRequest struct {
@@ -50,19 +50,19 @@ type ChatProRequest struct {
 	// 1.长度最多为40, 按对话时间从旧到新在数组中排列。
 	// 2.Message的Role当前可选值：system、user、assistant，其中，system角色是可选的，如果存在，必须位于列表的最开始。user和assistant需要交替出现(一问一答)，最后一个为user提问, 且Content不能为空。
 	// 3.Messages中Content总长度不超过16000 token，超过则会截断最前面的内容，只保留尾部内容。建议不超过4000 token。
-	Messages []*Message `json:"Messages,omitnil" name:"Messages"`
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 说明：
 	// 1.影响输出文本的多样性，取值越大，生成文本的多样性越强。
 	// 2.默认1.0，取值区间为[0.0, 1.0]。
 	// 3.非必要不建议使用, 不合理的取值会影响效果。
-	TopP *float64 `json:"TopP,omitnil" name:"TopP"`
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
 	// 1.较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
 	// 2.默认1.0，取值区间为[0.0，2.0]。
 	// 3.非必要不建议使用,不合理的取值会影响效果。
-	Temperature *float64 `json:"Temperature,omitnil" name:"Temperature"`
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 func (r *ChatProRequest) ToJsonString() string {
@@ -97,19 +97,19 @@ type ChatStdRequestParams struct {
 	// 1.长度最多为40, 按对话时间从旧到新在数组中排列。
 	// 2.Message的Role当前可选值：user、assistant，其中，user和assistant需要交替出现(一问一答)，最后一个为user提问, 且Content不能为空。
 	// 3.Messages中Content总长度不超过16000 token，超过则会截断最前面的内容，只保留尾部内容。建议不超过4000 token。
-	Messages []*Message `json:"Messages,omitnil" name:"Messages"`
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 说明：
 	// 1.影响输出文本的多样性，取值越大，生成文本的多样性越强。
 	// 2.默认1.0，取值区间为[0.0, 1.0]。
 	// 3.非必要不建议使用, 不合理的取值会影响效果。
-	TopP *float64 `json:"TopP,omitnil" name:"TopP"`
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
 	// 1.较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
 	// 2.默认1.0，取值区间为[0.0，2.0]。
 	// 3.非必要不建议使用,不合理的取值会影响效果。
-	Temperature *float64 `json:"Temperature,omitnil" name:"Temperature"`
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 type ChatStdRequest struct {
@@ -120,19 +120,19 @@ type ChatStdRequest struct {
 	// 1.长度最多为40, 按对话时间从旧到新在数组中排列。
 	// 2.Message的Role当前可选值：user、assistant，其中，user和assistant需要交替出现(一问一答)，最后一个为user提问, 且Content不能为空。
 	// 3.Messages中Content总长度不超过16000 token，超过则会截断最前面的内容，只保留尾部内容。建议不超过4000 token。
-	Messages []*Message `json:"Messages,omitnil" name:"Messages"`
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 说明：
 	// 1.影响输出文本的多样性，取值越大，生成文本的多样性越强。
 	// 2.默认1.0，取值区间为[0.0, 1.0]。
 	// 3.非必要不建议使用, 不合理的取值会影响效果。
-	TopP *float64 `json:"TopP,omitnil" name:"TopP"`
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
 	// 1.较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
 	// 2.默认1.0，取值区间为[0.0，2.0]。
 	// 3.非必要不建议使用,不合理的取值会影响效果。
-	Temperature *float64 `json:"Temperature,omitnil" name:"Temperature"`
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 func (r *ChatStdRequest) ToJsonString() string {
@@ -162,63 +162,63 @@ func (r *ChatStdRequest) FromJsonString(s string) error {
 
 type Choice struct {
 	// 流式结束标志位，为 stop 则表示尾包。
-	FinishReason *string `json:"FinishReason,omitnil" name:"FinishReason"`
+	FinishReason *string `json:"FinishReason,omitnil,omitempty" name:"FinishReason"`
 
 	// 返回值。
-	Delta *Delta `json:"Delta,omitnil" name:"Delta"`
+	Delta *Delta `json:"Delta,omitnil,omitempty" name:"Delta"`
 }
 
 type Delta struct {
 	// 角色名称。
-	Role *string `json:"Role,omitnil" name:"Role"`
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 内容详情。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type EmbeddingData struct {
 	// embedding 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Embedding []*float64 `json:"Embedding,omitnil" name:"Embedding"`
+	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
 
 	// 下标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// embedding
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Object *string `json:"Object,omitnil" name:"Object"`
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
 }
 
 type EmbeddingUsage struct {
 	// 输入Token数。
-	PromptTokens *int64 `json:"PromptTokens,omitnil" name:"PromptTokens"`
+	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
 
 	// 总Token数。
-	TotalTokens *int64 `json:"TotalTokens,omitnil" name:"TotalTokens"`
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
 type ErrorMsg struct {
 	// 错误提示信息。
-	Msg *string `json:"Msg,omitnil" name:"Msg"`
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 错误码。
 	// 4000 服务内部异常。
 	// 4001 请求模型超时。
-	Code *int64 `json:"Code,omitnil" name:"Code"`
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 }
 
 // Predefined struct for user
 type GetEmbeddingRequestParams struct {
 	// 输入文本。总长度不超过1024 个token, 超过则会截断最后面的内容。
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 type GetEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 输入文本。总长度不超过1024 个token, 超过则会截断最后面的内容。
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 func (r *GetEmbeddingRequest) ToJsonString() string {
@@ -243,13 +243,13 @@ func (r *GetEmbeddingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetEmbeddingResponseParams struct {
 	// 返回的 embedding 信息。
-	Data []*EmbeddingData `json:"Data,omitnil" name:"Data"`
+	Data []*EmbeddingData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// token 使用计数，按照总token数量收费。
-	Usage *EmbeddingUsage `json:"Usage,omitnil" name:"Usage"`
+	Usage *EmbeddingUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetEmbeddingResponse struct {
@@ -271,14 +271,14 @@ func (r *GetEmbeddingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTokenCountRequestParams struct {
 	// 输入文本
-	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type GetTokenCountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 输入文本
-	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 func (r *GetTokenCountRequest) ToJsonString() string {
@@ -303,16 +303,16 @@ func (r *GetTokenCountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTokenCountResponseParams struct {
 	// token计数
-	TokenCount *int64 `json:"TokenCount,omitnil" name:"TokenCount"`
+	TokenCount *int64 `json:"TokenCount,omitnil,omitempty" name:"TokenCount"`
 
 	// 字符计数
-	CharacterCount *int64 `json:"CharacterCount,omitnil" name:"CharacterCount"`
+	CharacterCount *int64 `json:"CharacterCount,omitnil,omitempty" name:"CharacterCount"`
 
 	// 切分后的列表
-	Tokens []*string `json:"Tokens,omitnil" name:"Tokens"`
+	Tokens []*string `json:"Tokens,omitnil,omitempty" name:"Tokens"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetTokenCountResponse struct {
@@ -333,19 +333,19 @@ func (r *GetTokenCountResponse) FromJsonString(s string) error {
 
 type Message struct {
 	// 角色
-	Role *string `json:"Role,omitnil" name:"Role"`
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 消息的内容
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type Usage struct {
 	// 输入 token 数量。
-	PromptTokens *int64 `json:"PromptTokens,omitnil" name:"PromptTokens"`
+	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
 
 	// 输出 token 数量。
-	CompletionTokens *int64 `json:"CompletionTokens,omitnil" name:"CompletionTokens"`
+	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
 
 	// 总 token 数量。
-	TotalTokens *int64 `json:"TotalTokens,omitnil" name:"TotalTokens"`
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }

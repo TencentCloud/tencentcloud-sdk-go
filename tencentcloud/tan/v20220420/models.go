@@ -23,26 +23,26 @@ import (
 // Predefined struct for user
 type CreateBlockNodeRecordsRequestParams struct {
 	// 盘查组id，可在“盘查组概览”功能中获取。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 节点id，可在“数据接入管理”中获取。
-	NodeId *string `json:"NodeId,omitnil" name:"NodeId"`
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
-	Records *string `json:"Records,omitnil" name:"Records"`
+	Records *string `json:"Records,omitnil,omitempty" name:"Records"`
 }
 
 type CreateBlockNodeRecordsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 盘查组id，可在“盘查组概览”功能中获取。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 节点id，可在“数据接入管理”中获取。
-	NodeId *string `json:"NodeId,omitnil" name:"NodeId"`
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
-	Records *string `json:"Records,omitnil" name:"Records"`
+	Records *string `json:"Records,omitnil,omitempty" name:"Records"`
 }
 
 func (r *CreateBlockNodeRecordsRequest) ToJsonString() string {
@@ -69,7 +69,7 @@ func (r *CreateBlockNodeRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBlockNodeRecordsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateBlockNodeRecordsResponse struct {

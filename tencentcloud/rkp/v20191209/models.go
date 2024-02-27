@@ -22,54 +22,54 @@ import (
 
 type DevInfoQ struct {
 	// devid
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 风险值
-	RiskScore *int64 `json:"RiskScore,omitnil" name:"RiskScore"`
+	RiskScore *int64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 
 	// 风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*RiskDetail `json:"RiskInfo,omitnil" name:"RiskInfo"`
+	RiskInfo []*RiskDetail `json:"RiskInfo,omitnil,omitempty" name:"RiskInfo"`
 
 	// 概率值
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 // Predefined struct for user
 type GetOpenIdRequestParams struct {
 	// dev临时token，通过sdk接口获取
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
 	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *int64 `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 业务侧账号体系下的用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitnil" name:"BusinessUserId"`
+	BusinessUserId *string `json:"BusinessUserId,omitnil,omitempty" name:"BusinessUserId"`
 
 	// 平台：0-Android， 1-iOS， 2-web
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 选项
-	Option *string `json:"Option,omitnil" name:"Option"`
+	Option *string `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 type GetOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// dev临时token，通过sdk接口获取
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
 	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *int64 `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 业务侧账号体系下的用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitnil" name:"BusinessUserId"`
+	BusinessUserId *string `json:"BusinessUserId,omitnil,omitempty" name:"BusinessUserId"`
 
 	// 平台：0-Android， 1-iOS， 2-web
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 选项
-	Option *string `json:"Option,omitnil" name:"Option"`
+	Option *string `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 func (r *GetOpenIdRequest) ToJsonString() string {
@@ -99,14 +99,14 @@ func (r *GetOpenIdRequest) FromJsonString(s string) error {
 type GetOpenIdResponseParams struct {
 	// 设备ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 设备风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*RiskInfo `json:"RiskInfo,omitnil" name:"RiskInfo"`
+	RiskInfo []*RiskInfo `json:"RiskInfo,omitnil,omitempty" name:"RiskInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetOpenIdResponse struct {
@@ -128,44 +128,44 @@ func (r *GetOpenIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTokenRequestParams struct {
 	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *int64 `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 业务子场景
-	Scene *int64 `json:"Scene,omitnil" name:"Scene"`
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 业务侧账号体系下的用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitnil" name:"BusinessUserId"`
+	BusinessUserId *string `json:"BusinessUserId,omitnil,omitempty" name:"BusinessUserId"`
 
 	// 用户侧的IP
-	AppClientIp *string `json:"AppClientIp,omitnil" name:"AppClientIp"`
+	AppClientIp *string `json:"AppClientIp,omitnil,omitempty" name:"AppClientIp"`
 
 	// 过期时间
-	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 上一个token
-	OldToken *string `json:"OldToken,omitnil" name:"OldToken"`
+	OldToken *string `json:"OldToken,omitnil,omitempty" name:"OldToken"`
 }
 
 type GetTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *int64 `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 业务子场景
-	Scene *int64 `json:"Scene,omitnil" name:"Scene"`
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 业务侧账号体系下的用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitnil" name:"BusinessUserId"`
+	BusinessUserId *string `json:"BusinessUserId,omitnil,omitempty" name:"BusinessUserId"`
 
 	// 用户侧的IP
-	AppClientIp *string `json:"AppClientIp,omitnil" name:"AppClientIp"`
+	AppClientIp *string `json:"AppClientIp,omitnil,omitempty" name:"AppClientIp"`
 
 	// 过期时间
-	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 上一个token
-	OldToken *string `json:"OldToken,omitnil" name:"OldToken"`
+	OldToken *string `json:"OldToken,omitnil,omitempty" name:"OldToken"`
 }
 
 func (r *GetTokenRequest) ToJsonString() string {
@@ -195,13 +195,13 @@ func (r *GetTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTokenResponseParams struct {
 	// 返回token
-	Token *string `json:"Token,omitnil" name:"Token"`
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// 过期时间
-	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetTokenResponse struct {
@@ -223,152 +223,152 @@ func (r *GetTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryDevAndRiskRequestParams struct {
 	// 设备类型 0表示Android， 1表示IOS
-	DevType *int64 `json:"DevType,omitnil" name:"DevType"`
+	DevType *int64 `json:"DevType,omitnil,omitempty" name:"DevType"`
 
 	// Android Imei号
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// Mac地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// android  Aid
-	Aid *string `json:"Aid,omitnil" name:"Aid"`
+	Aid *string `json:"Aid,omitnil,omitempty" name:"Aid"`
 
 	// Android Cid
-	Cid *string `json:"Cid,omitnil" name:"Cid"`
+	Cid *string `json:"Cid,omitnil,omitempty" name:"Cid"`
 
 	// 手机Imsi
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// Df 磁盘分区信息
-	Df *string `json:"Df,omitnil" name:"Df"`
+	Df *string `json:"Df,omitnil,omitempty" name:"Df"`
 
 	// 内核版本
-	KernelVer *string `json:"KernelVer,omitnil" name:"KernelVer"`
+	KernelVer *string `json:"KernelVer,omitnil,omitempty" name:"KernelVer"`
 
 	// 存储大小
-	Storage *string `json:"Storage,omitnil" name:"Storage"`
+	Storage *string `json:"Storage,omitnil,omitempty" name:"Storage"`
 
 	// 设备驱动指纹
-	Dfp *string `json:"Dfp,omitnil" name:"Dfp"`
+	Dfp *string `json:"Dfp,omitnil,omitempty" name:"Dfp"`
 
 	// 启动时间
-	BootTime *string `json:"BootTime,omitnil" name:"BootTime"`
+	BootTime *string `json:"BootTime,omitnil,omitempty" name:"BootTime"`
 
 	// 分辨率 水平*垂直 格式
-	Resolution *string `json:"Resolution,omitnil" name:"Resolution"`
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 铃声列表
-	RingList *string `json:"RingList,omitnil" name:"RingList"`
+	RingList *string `json:"RingList,omitnil,omitempty" name:"RingList"`
 
 	// 字体列表
-	FontList *string `json:"FontList,omitnil" name:"FontList"`
+	FontList *string `json:"FontList,omitnil,omitempty" name:"FontList"`
 
 	// 传感器列表
-	SensorList *string `json:"SensorList,omitnil" name:"SensorList"`
+	SensorList *string `json:"SensorList,omitnil,omitempty" name:"SensorList"`
 
 	// CPU型号
-	CpuType *string `json:"CpuType,omitnil" name:"CpuType"`
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 
 	// 电池容量
-	Battery *string `json:"Battery,omitnil" name:"Battery"`
+	Battery *string `json:"Battery,omitnil,omitempty" name:"Battery"`
 
 	// 信通院广告ID
-	Oaid *string `json:"Oaid,omitnil" name:"Oaid"`
+	Oaid *string `json:"Oaid,omitnil,omitempty" name:"Oaid"`
 
 	// IOS 广告ID
-	Idfa *string `json:"Idfa,omitnil" name:"Idfa"`
+	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// IOS 应用ID
-	Idfv *string `json:"Idfv,omitnil" name:"Idfv"`
+	Idfv *string `json:"Idfv,omitnil,omitempty" name:"Idfv"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// IOS手机型号
-	IphoneModel *string `json:"IphoneModel,omitnil" name:"IphoneModel"`
+	IphoneModel *string `json:"IphoneModel,omitnil,omitempty" name:"IphoneModel"`
 
 	// Android 指纹
-	Fingerprint *string `json:"Fingerprint,omitnil" name:"Fingerprint"`
+	Fingerprint *string `json:"Fingerprint,omitnil,omitempty" name:"Fingerprint"`
 
 	// Android序列号
-	SerialId *string `json:"SerialId,omitnil" name:"SerialId"`
+	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 }
 
 type QueryDevAndRiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备类型 0表示Android， 1表示IOS
-	DevType *int64 `json:"DevType,omitnil" name:"DevType"`
+	DevType *int64 `json:"DevType,omitnil,omitempty" name:"DevType"`
 
 	// Android Imei号
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// Mac地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// android  Aid
-	Aid *string `json:"Aid,omitnil" name:"Aid"`
+	Aid *string `json:"Aid,omitnil,omitempty" name:"Aid"`
 
 	// Android Cid
-	Cid *string `json:"Cid,omitnil" name:"Cid"`
+	Cid *string `json:"Cid,omitnil,omitempty" name:"Cid"`
 
 	// 手机Imsi
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// Df 磁盘分区信息
-	Df *string `json:"Df,omitnil" name:"Df"`
+	Df *string `json:"Df,omitnil,omitempty" name:"Df"`
 
 	// 内核版本
-	KernelVer *string `json:"KernelVer,omitnil" name:"KernelVer"`
+	KernelVer *string `json:"KernelVer,omitnil,omitempty" name:"KernelVer"`
 
 	// 存储大小
-	Storage *string `json:"Storage,omitnil" name:"Storage"`
+	Storage *string `json:"Storage,omitnil,omitempty" name:"Storage"`
 
 	// 设备驱动指纹
-	Dfp *string `json:"Dfp,omitnil" name:"Dfp"`
+	Dfp *string `json:"Dfp,omitnil,omitempty" name:"Dfp"`
 
 	// 启动时间
-	BootTime *string `json:"BootTime,omitnil" name:"BootTime"`
+	BootTime *string `json:"BootTime,omitnil,omitempty" name:"BootTime"`
 
 	// 分辨率 水平*垂直 格式
-	Resolution *string `json:"Resolution,omitnil" name:"Resolution"`
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 铃声列表
-	RingList *string `json:"RingList,omitnil" name:"RingList"`
+	RingList *string `json:"RingList,omitnil,omitempty" name:"RingList"`
 
 	// 字体列表
-	FontList *string `json:"FontList,omitnil" name:"FontList"`
+	FontList *string `json:"FontList,omitnil,omitempty" name:"FontList"`
 
 	// 传感器列表
-	SensorList *string `json:"SensorList,omitnil" name:"SensorList"`
+	SensorList *string `json:"SensorList,omitnil,omitempty" name:"SensorList"`
 
 	// CPU型号
-	CpuType *string `json:"CpuType,omitnil" name:"CpuType"`
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 
 	// 电池容量
-	Battery *string `json:"Battery,omitnil" name:"Battery"`
+	Battery *string `json:"Battery,omitnil,omitempty" name:"Battery"`
 
 	// 信通院广告ID
-	Oaid *string `json:"Oaid,omitnil" name:"Oaid"`
+	Oaid *string `json:"Oaid,omitnil,omitempty" name:"Oaid"`
 
 	// IOS 广告ID
-	Idfa *string `json:"Idfa,omitnil" name:"Idfa"`
+	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// IOS 应用ID
-	Idfv *string `json:"Idfv,omitnil" name:"Idfv"`
+	Idfv *string `json:"Idfv,omitnil,omitempty" name:"Idfv"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// IOS手机型号
-	IphoneModel *string `json:"IphoneModel,omitnil" name:"IphoneModel"`
+	IphoneModel *string `json:"IphoneModel,omitnil,omitempty" name:"IphoneModel"`
 
 	// Android 指纹
-	Fingerprint *string `json:"Fingerprint,omitnil" name:"Fingerprint"`
+	Fingerprint *string `json:"Fingerprint,omitnil,omitempty" name:"Fingerprint"`
 
 	// Android序列号
-	SerialId *string `json:"SerialId,omitnil" name:"SerialId"`
+	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 }
 
 func (r *QueryDevAndRiskRequest) ToJsonString() string {
@@ -416,18 +416,18 @@ func (r *QueryDevAndRiskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryDevAndRiskResponseParams struct {
 	// 是否查得
-	Found *int64 `json:"Found,omitnil" name:"Found"`
+	Found *int64 `json:"Found,omitnil,omitempty" name:"Found"`
 
 	// 匹配数量级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AllCnt *int64 `json:"AllCnt,omitnil" name:"AllCnt"`
+	AllCnt *int64 `json:"AllCnt,omitnil,omitempty" name:"AllCnt"`
 
 	// 匹配到的设备信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Matches []*DevInfoQ `json:"Matches,omitnil" name:"Matches"`
+	Matches []*DevInfoQ `json:"Matches,omitnil,omitempty" name:"Matches"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryDevAndRiskResponse struct {
@@ -448,18 +448,18 @@ func (r *QueryDevAndRiskResponse) FromJsonString(s string) error {
 
 type RiskDetail struct {
 	// 风险码
-	RiskCode *int64 `json:"RiskCode,omitnil" name:"RiskCode"`
+	RiskCode *int64 `json:"RiskCode,omitnil,omitempty" name:"RiskCode"`
 
 	// 风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCodeValue *string `json:"RiskCodeValue,omitnil" name:"RiskCodeValue"`
+	RiskCodeValue *string `json:"RiskCodeValue,omitnil,omitempty" name:"RiskCodeValue"`
 }
 
 type RiskInfo struct {
 	// 风险码
-	Key *int64 `json:"Key,omitnil" name:"Key"`
+	Key *int64 `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

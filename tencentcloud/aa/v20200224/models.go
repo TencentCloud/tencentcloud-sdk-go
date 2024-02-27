@@ -23,40 +23,40 @@ import (
 // Predefined struct for user
 type QueryActivityAntiRushRequestParams struct {
 	// 账号类型
-	AccountType *string `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// uid值
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 用户的真实外网 IP。若填入非外网有效ip，会返回level=0的风控结果，risktype中会有205的风险码返回作为标识
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 用户操作时间戳。
-	PostTime *string `json:"PostTime,omitnil" name:"PostTime"`
+	PostTime *string `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// accountType 是QQ开放账号时，该参数必填，表示 QQ 开放平台分配给网站或应用的 AppID，用来唯一标识网站或应用。
-	AppIdU *string `json:"AppIdU,omitnil" name:"AppIdU"`
+	AppIdU *string `json:"AppIdU,omitnil,omitempty" name:"AppIdU"`
 
 	// 昵称，UTF-8 编码。
-	NickName *string `json:"NickName,omitnil" name:"NickName"`
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
 	// 手机号
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 用户邮箱地址。
-	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 注册时间戳。
-	RegisterTime *string `json:"RegisterTime,omitnil" name:"RegisterTime"`
+	RegisterTime *string `json:"RegisterTime,omitnil,omitempty" name:"RegisterTime"`
 
 	// 注册来源的外网 IP。
-	RegisterIp *string `json:"RegisterIp,omitnil" name:"RegisterIp"`
+	RegisterIp *string `json:"RegisterIp,omitnil,omitempty" name:"RegisterIp"`
 
 	// 用户 HTTP 请求中的 cookie 进行2次 hash 的值，只要保证相同 cookie 的 hash 值一致即可。
-	CookieHash *string `json:"CookieHash,omitnil" name:"CookieHash"`
+	CookieHash *string `json:"CookieHash,omitnil,omitempty" name:"CookieHash"`
 
 	// 地址。
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 登录来源：
 	// 0：其他。
@@ -64,112 +64,112 @@ type QueryActivityAntiRushRequestParams struct {
 	// 2：移动页面。
 	// 3：App。
 	// 4：微信公众号。
-	LoginSource *string `json:"LoginSource,omitnil" name:"LoginSource"`
+	LoginSource *string `json:"LoginSource,omitnil,omitempty" name:"LoginSource"`
 
 	// 登录方式：
 	// 0：其他。
 	// 1：手动账号密码输入。
 	// 2：动态短信密码登录。
 	// 3：二维码扫描登录。
-	LoginType *string `json:"LoginType,omitnil" name:"LoginType"`
+	LoginType *string `json:"LoginType,omitnil,omitempty" name:"LoginType"`
 
 	// 登录耗时，单位：秒。
-	LoginSpend *string `json:"LoginSpend,omitnil" name:"LoginSpend"`
+	LoginSpend *string `json:"LoginSpend,omitnil,omitempty" name:"LoginSpend"`
 
 	// 用户操作的目的 ID，如点赞等，该字段就是被点赞的消息 ID，如果是投票，则为被投号码的 ID。
-	RootId *string `json:"RootId,omitnil" name:"RootId"`
+	RootId *string `json:"RootId,omitnil,omitempty" name:"RootId"`
 
 	// 用户 HTTP 请求的 referer 值。
-	Referer *string `json:"Referer,omitnil" name:"Referer"`
+	Referer *string `json:"Referer,omitnil,omitempty" name:"Referer"`
 
 	// 登录成功后跳转页面。
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 用户 HTTP 请求的 userAgent。
-	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 
 	// 用户 HTTP 请求中的 x_forward_for。
-	XForwardedFor *string `json:"XForwardedFor,omitnil" name:"XForwardedFor"`
+	XForwardedFor *string `json:"XForwardedFor,omitnil,omitempty" name:"XForwardedFor"`
 
 	// 用户操作过程中鼠标单击次数。
-	MouseClickCount *string `json:"MouseClickCount,omitnil" name:"MouseClickCount"`
+	MouseClickCount *string `json:"MouseClickCount,omitnil,omitempty" name:"MouseClickCount"`
 
 	// 用户操作过程中键盘单击次数。
-	KeyboardClickCount *string `json:"KeyboardClickCount,omitnil" name:"KeyboardClickCount"`
+	KeyboardClickCount *string `json:"KeyboardClickCount,omitnil,omitempty" name:"KeyboardClickCount"`
 
 	// MAC 地址或设备唯一标识。
-	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil,omitempty" name:"MacAddress"`
 
 	// 手机制造商 ID，如果手机注册，请带上此信息。
-	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
+	VendorId *string `json:"VendorId,omitnil,omitempty" name:"VendorId"`
 
 	// 手机设备号。支持以下格式：
 	// 1.imei明文
 	// 2.idfa明文,
 	// 3.imei小写后MD5值小写
 	// 4.idfa大写后MD5值小写
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// App 客户端版本。
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 业务 ID 网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 1：微信公众号。
 	// 2：微信小程序。
-	WxSubType *string `json:"WxSubType,omitnil" name:"WxSubType"`
+	WxSubType *string `json:"WxSubType,omitnil,omitempty" name:"WxSubType"`
 
 	// Token 签名随机数，WxSubType为微信小程序时必填，建议16个字符。
-	RandNum *string `json:"RandNum,omitnil" name:"RandNum"`
+	RandNum *string `json:"RandNum,omitnil,omitempty" name:"RandNum"`
 
 	// token
-	WxToken *string `json:"WxToken,omitnil" name:"WxToken"`
+	WxToken *string `json:"WxToken,omitnil,omitempty" name:"WxToken"`
 
 	// 是否识别设备异常：
 	// 0：不识别。
 	// 1：识别。
-	CheckDevice *string `json:"CheckDevice,omitnil" name:"CheckDevice"`
+	CheckDevice *string `json:"CheckDevice,omitnil,omitempty" name:"CheckDevice"`
 }
 
 type QueryActivityAntiRushRequest struct {
 	*tchttp.BaseRequest
 	
 	// 账号类型
-	AccountType *string `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// uid值
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 用户的真实外网 IP。若填入非外网有效ip，会返回level=0的风控结果，risktype中会有205的风险码返回作为标识
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 用户操作时间戳。
-	PostTime *string `json:"PostTime,omitnil" name:"PostTime"`
+	PostTime *string `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// accountType 是QQ开放账号时，该参数必填，表示 QQ 开放平台分配给网站或应用的 AppID，用来唯一标识网站或应用。
-	AppIdU *string `json:"AppIdU,omitnil" name:"AppIdU"`
+	AppIdU *string `json:"AppIdU,omitnil,omitempty" name:"AppIdU"`
 
 	// 昵称，UTF-8 编码。
-	NickName *string `json:"NickName,omitnil" name:"NickName"`
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
 	// 手机号
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 用户邮箱地址。
-	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 注册时间戳。
-	RegisterTime *string `json:"RegisterTime,omitnil" name:"RegisterTime"`
+	RegisterTime *string `json:"RegisterTime,omitnil,omitempty" name:"RegisterTime"`
 
 	// 注册来源的外网 IP。
-	RegisterIp *string `json:"RegisterIp,omitnil" name:"RegisterIp"`
+	RegisterIp *string `json:"RegisterIp,omitnil,omitempty" name:"RegisterIp"`
 
 	// 用户 HTTP 请求中的 cookie 进行2次 hash 的值，只要保证相同 cookie 的 hash 值一致即可。
-	CookieHash *string `json:"CookieHash,omitnil" name:"CookieHash"`
+	CookieHash *string `json:"CookieHash,omitnil,omitempty" name:"CookieHash"`
 
 	// 地址。
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 登录来源：
 	// 0：其他。
@@ -177,72 +177,72 @@ type QueryActivityAntiRushRequest struct {
 	// 2：移动页面。
 	// 3：App。
 	// 4：微信公众号。
-	LoginSource *string `json:"LoginSource,omitnil" name:"LoginSource"`
+	LoginSource *string `json:"LoginSource,omitnil,omitempty" name:"LoginSource"`
 
 	// 登录方式：
 	// 0：其他。
 	// 1：手动账号密码输入。
 	// 2：动态短信密码登录。
 	// 3：二维码扫描登录。
-	LoginType *string `json:"LoginType,omitnil" name:"LoginType"`
+	LoginType *string `json:"LoginType,omitnil,omitempty" name:"LoginType"`
 
 	// 登录耗时，单位：秒。
-	LoginSpend *string `json:"LoginSpend,omitnil" name:"LoginSpend"`
+	LoginSpend *string `json:"LoginSpend,omitnil,omitempty" name:"LoginSpend"`
 
 	// 用户操作的目的 ID，如点赞等，该字段就是被点赞的消息 ID，如果是投票，则为被投号码的 ID。
-	RootId *string `json:"RootId,omitnil" name:"RootId"`
+	RootId *string `json:"RootId,omitnil,omitempty" name:"RootId"`
 
 	// 用户 HTTP 请求的 referer 值。
-	Referer *string `json:"Referer,omitnil" name:"Referer"`
+	Referer *string `json:"Referer,omitnil,omitempty" name:"Referer"`
 
 	// 登录成功后跳转页面。
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 用户 HTTP 请求的 userAgent。
-	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 
 	// 用户 HTTP 请求中的 x_forward_for。
-	XForwardedFor *string `json:"XForwardedFor,omitnil" name:"XForwardedFor"`
+	XForwardedFor *string `json:"XForwardedFor,omitnil,omitempty" name:"XForwardedFor"`
 
 	// 用户操作过程中鼠标单击次数。
-	MouseClickCount *string `json:"MouseClickCount,omitnil" name:"MouseClickCount"`
+	MouseClickCount *string `json:"MouseClickCount,omitnil,omitempty" name:"MouseClickCount"`
 
 	// 用户操作过程中键盘单击次数。
-	KeyboardClickCount *string `json:"KeyboardClickCount,omitnil" name:"KeyboardClickCount"`
+	KeyboardClickCount *string `json:"KeyboardClickCount,omitnil,omitempty" name:"KeyboardClickCount"`
 
 	// MAC 地址或设备唯一标识。
-	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil,omitempty" name:"MacAddress"`
 
 	// 手机制造商 ID，如果手机注册，请带上此信息。
-	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
+	VendorId *string `json:"VendorId,omitnil,omitempty" name:"VendorId"`
 
 	// 手机设备号。支持以下格式：
 	// 1.imei明文
 	// 2.idfa明文,
 	// 3.imei小写后MD5值小写
 	// 4.idfa大写后MD5值小写
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// App 客户端版本。
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 业务 ID 网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 1：微信公众号。
 	// 2：微信小程序。
-	WxSubType *string `json:"WxSubType,omitnil" name:"WxSubType"`
+	WxSubType *string `json:"WxSubType,omitnil,omitempty" name:"WxSubType"`
 
 	// Token 签名随机数，WxSubType为微信小程序时必填，建议16个字符。
-	RandNum *string `json:"RandNum,omitnil" name:"RandNum"`
+	RandNum *string `json:"RandNum,omitnil,omitempty" name:"RandNum"`
 
 	// token
-	WxToken *string `json:"WxToken,omitnil" name:"WxToken"`
+	WxToken *string `json:"WxToken,omitnil,omitempty" name:"WxToken"`
 
 	// 是否识别设备异常：
 	// 0：不识别。
 	// 1：识别。
-	CheckDevice *string `json:"CheckDevice,omitnil" name:"CheckDevice"`
+	CheckDevice *string `json:"CheckDevice,omitnil,omitempty" name:"CheckDevice"`
 }
 
 func (r *QueryActivityAntiRushRequest) ToJsonString() string {
@@ -298,15 +298,15 @@ func (r *QueryActivityAntiRushRequest) FromJsonString(s string) error {
 type QueryActivityAntiRushResponseParams struct {
 	// 操作时间戳，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostTime *string `json:"PostTime,omitnil" name:"PostTime"`
+	PostTime *string `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// 用户操作的真实外网 IP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 0：表示无恶意。
 	// 1 - 4：恶意等级由低到高。
-	Level *int64 `json:"Level,omitnil" name:"Level"`
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 风险类型。
 	// 
@@ -327,27 +327,27 @@ type QueryActivityAntiRushResponseParams struct {
 	// 201，环境异常，操作ip/设备/环境存在异常。当前ip为非常用ip或恶意ip段；
 	// 205，非公网有效ip，传进来的IP地址为内网ip地址或者ip保留地址；
 	// 206，设备异常，该设备存在异常的使用行为
-	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
+	RiskType []*int64 `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// accountType是QQ或微信开放账号时，用于标识QQ或微信用户登录后关联业务自身的账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
+	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
 	// uid值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 用户操作的目的ID 
 	// 比如：点赞，该字段就是被点 赞的消息 id，如果是投票，就是被投号码的 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RootId *string `json:"RootId,omitnil" name:"RootId"`
+	RootId *string `json:"RootId,omitnil,omitempty" name:"RootId"`
 
 	// 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeDesc *string `json:"CodeDesc,omitnil" name:"CodeDesc"`
+	CodeDesc *string `json:"CodeDesc,omitnil,omitempty" name:"CodeDesc"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryActivityAntiRushResponse struct {

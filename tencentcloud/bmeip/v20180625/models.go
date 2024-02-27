@@ -23,14 +23,14 @@ import (
 // Predefined struct for user
 type BindEipAclsRequestParams struct {
 	// 待关联的 EIP 与 ACL关系列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil" name:"EipIdAclIdList"`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil,omitempty" name:"EipIdAclIdList"`
 }
 
 type BindEipAclsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待关联的 EIP 与 ACL关系列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil" name:"EipIdAclIdList"`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *BindEipAclsRequest) ToJsonString() string {
@@ -55,7 +55,7 @@ func (r *BindEipAclsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindEipAclsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BindEipAclsResponse struct {
@@ -77,20 +77,20 @@ func (r *BindEipAclsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindHostedRequestParams struct {
 	// Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 托管机器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type BindHostedRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 托管机器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *BindHostedRequest) ToJsonString() string {
@@ -116,10 +116,10 @@ func (r *BindHostedRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindHostedResponseParams struct {
 	// 异步任务ID，可以通过EipBmQueryTask查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BindHostedResponse struct {
@@ -141,20 +141,20 @@ func (r *BindHostedResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindRsRequestParams struct {
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 物理服务器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type BindRsRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 物理服务器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *BindRsRequest) ToJsonString() string {
@@ -180,10 +180,10 @@ func (r *BindRsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindRsResponseParams struct {
 	// 绑定黑石物理机异步任务ID，可以通过DescribeEipTask查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BindRsResponse struct {
@@ -205,26 +205,26 @@ func (r *BindRsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindVpcIpRequestParams struct {
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定的VPC内IP地址
-	VpcIp *string `json:"VpcIp,omitnil" name:"VpcIp"`
+	VpcIp *string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 }
 
 type BindVpcIpRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定的VPC内IP地址
-	VpcIp *string `json:"VpcIp,omitnil" name:"VpcIp"`
+	VpcIp *string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 }
 
 func (r *BindVpcIpRequest) ToJsonString() string {
@@ -251,10 +251,10 @@ func (r *BindVpcIpRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindVpcIpResponseParams struct {
 	// EIP绑定VPC网络IP异步任务ID，可以通过查询EIP任务状态查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BindVpcIpResponse struct {
@@ -276,20 +276,20 @@ func (r *BindVpcIpResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEipAclRequestParams struct {
 	// ACL 名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 状态 0：无状态，1：有状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CreateEipAclRequest struct {
 	*tchttp.BaseRequest
 	
 	// ACL 名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 状态 0：无状态，1：有状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *CreateEipAclRequest) ToJsonString() string {
@@ -315,19 +315,19 @@ func (r *CreateEipAclRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEipAclResponseParams struct {
 	// ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// ACL 实例状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// ACL 实例名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 实例创建时间
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateEipAclResponse struct {
@@ -349,50 +349,50 @@ func (r *CreateEipAclResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEipRequestParams struct {
 	// 申请数量，默认为1, 最大 20
-	GoodsNum *uint64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// EIP计费方式，flow-流量计费；bandwidth-带宽计费
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 带宽设定值（只在带宽计费时生效）
-	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// EIP模式，目前支持tunnel和fullnat
-	SetType *string `json:"SetType,omitnil" name:"SetType"`
+	SetType *string `json:"SetType,omitnil,omitempty" name:"SetType"`
 
 	// 是否使用独占集群，0：不使用，1：使用。默认为0
-	Exclusive *uint64 `json:"Exclusive,omitnil" name:"Exclusive"`
+	Exclusive *uint64 `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 
 	// EIP归属私有网络ID，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 指定申请的IP列表
-	IpList []*string `json:"IpList,omitnil" name:"IpList"`
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 type CreateEipRequest struct {
 	*tchttp.BaseRequest
 	
 	// 申请数量，默认为1, 最大 20
-	GoodsNum *uint64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// EIP计费方式，flow-流量计费；bandwidth-带宽计费
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 带宽设定值（只在带宽计费时生效）
-	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// EIP模式，目前支持tunnel和fullnat
-	SetType *string `json:"SetType,omitnil" name:"SetType"`
+	SetType *string `json:"SetType,omitnil,omitempty" name:"SetType"`
 
 	// 是否使用独占集群，0：不使用，1：使用。默认为0
-	Exclusive *uint64 `json:"Exclusive,omitnil" name:"Exclusive"`
+	Exclusive *uint64 `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 
 	// EIP归属私有网络ID，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 指定申请的IP列表
-	IpList []*string `json:"IpList,omitnil" name:"IpList"`
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 func (r *CreateEipRequest) ToJsonString() string {
@@ -423,13 +423,13 @@ func (r *CreateEipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEipResponseParams struct {
 	// EIP列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateEipResponse struct {
@@ -451,14 +451,14 @@ func (r *CreateEipResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEipAclRequestParams struct {
 	// 待删除的 ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 }
 
 type DeleteEipAclRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除的 ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 }
 
 func (r *DeleteEipAclRequest) ToJsonString() string {
@@ -483,7 +483,7 @@ func (r *DeleteEipAclRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEipAclResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteEipAclResponse struct {
@@ -505,14 +505,14 @@ func (r *DeleteEipAclResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEipRequestParams struct {
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 }
 
 type DeleteEipRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 }
 
 func (r *DeleteEipRequest) ToJsonString() string {
@@ -537,10 +537,10 @@ func (r *DeleteEipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEipResponseParams struct {
 	// 任务Id
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteEipResponse struct {
@@ -562,68 +562,68 @@ func (r *DeleteEipResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipAclsRequestParams struct {
 	// ACL 名称，支持模糊查找
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 实例 ID 列表，数组下标从 0 开始
-	AclIds []*string `json:"AclIds,omitnil" name:"AclIds"`
+	AclIds []*string `json:"AclIds,omitnil,omitempty" name:"AclIds"`
 
 	// 分页参数。偏移量，默认为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页参数。每一页的 EIPACL 列表数目
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// EIP IP地址列表
-	EipIps []*string `json:"EipIps,omitnil" name:"EipIps"`
+	EipIps []*string `json:"EipIps,omitnil,omitempty" name:"EipIps"`
 
 	// EIP名称列表
-	EipNames []*string `json:"EipNames,omitnil" name:"EipNames"`
+	EipNames []*string `json:"EipNames,omitnil,omitempty" name:"EipNames"`
 
 	// 排序字段
-	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方式，取值：0:增序(默认)，1:降序
-	Order *uint64 `json:"Order,omitnil" name:"Order"`
+	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// ACL名称列表，支持模糊查找
-	AclNames []*string `json:"AclNames,omitnil" name:"AclNames"`
+	AclNames []*string `json:"AclNames,omitnil,omitempty" name:"AclNames"`
 }
 
 type DescribeEipAclsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ACL 名称，支持模糊查找
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 实例 ID 列表，数组下标从 0 开始
-	AclIds []*string `json:"AclIds,omitnil" name:"AclIds"`
+	AclIds []*string `json:"AclIds,omitnil,omitempty" name:"AclIds"`
 
 	// 分页参数。偏移量，默认为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页参数。每一页的 EIPACL 列表数目
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// EIP IP地址列表
-	EipIps []*string `json:"EipIps,omitnil" name:"EipIps"`
+	EipIps []*string `json:"EipIps,omitnil,omitempty" name:"EipIps"`
 
 	// EIP名称列表
-	EipNames []*string `json:"EipNames,omitnil" name:"EipNames"`
+	EipNames []*string `json:"EipNames,omitnil,omitempty" name:"EipNames"`
 
 	// 排序字段
-	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方式，取值：0:增序(默认)，1:降序
-	Order *uint64 `json:"Order,omitnil" name:"Order"`
+	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// ACL名称列表，支持模糊查找
-	AclNames []*string `json:"AclNames,omitnil" name:"AclNames"`
+	AclNames []*string `json:"AclNames,omitnil,omitempty" name:"AclNames"`
 }
 
 func (r *DescribeEipAclsRequest) ToJsonString() string {
@@ -657,13 +657,13 @@ func (r *DescribeEipAclsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipAclsResponseParams struct {
 	// 返回 EIPACL 列表总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// EIPACL列表
-	EipAclList []*EipAcl `json:"EipAclList,omitnil" name:"EipAclList"`
+	EipAclList []*EipAcl `json:"EipAclList,omitnil,omitempty" name:"EipAclList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeEipAclsResponse struct {
@@ -714,22 +714,22 @@ func (r *DescribeEipQuotaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipQuotaResponseParams struct {
 	// 能拥有的EIP个数的总配额，默认是100个
-	EipNumQuota *int64 `json:"EipNumQuota,omitnil" name:"EipNumQuota"`
+	EipNumQuota *int64 `json:"EipNumQuota,omitnil,omitempty" name:"EipNumQuota"`
 
 	// 当前已使用的EIP个数，包括创建中、绑定中、已绑定、解绑中、未绑定几种状态的EIP个数总和
-	CurrentEipNum *int64 `json:"CurrentEipNum,omitnil" name:"CurrentEipNum"`
+	CurrentEipNum *int64 `json:"CurrentEipNum,omitnil,omitempty" name:"CurrentEipNum"`
 
 	// 当天申请EIP次数
-	DailyApplyCount *int64 `json:"DailyApplyCount,omitnil" name:"DailyApplyCount"`
+	DailyApplyCount *int64 `json:"DailyApplyCount,omitnil,omitempty" name:"DailyApplyCount"`
 
 	// 每日申请EIP的次数限制
-	DailyApplyQuota *int64 `json:"DailyApplyQuota,omitnil" name:"DailyApplyQuota"`
+	DailyApplyQuota *int64 `json:"DailyApplyQuota,omitnil,omitempty" name:"DailyApplyQuota"`
 
 	// BatchApplyMax
-	BatchApplyMax *int64 `json:"BatchApplyMax,omitnil" name:"BatchApplyMax"`
+	BatchApplyMax *int64 `json:"BatchApplyMax,omitnil,omitempty" name:"BatchApplyMax"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeEipQuotaResponse struct {
@@ -751,14 +751,14 @@ func (r *DescribeEipQuotaResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipTaskRequestParams struct {
 	// EIP查询任务ID
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeEipTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// EIP查询任务ID
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeEipTaskRequest) ToJsonString() string {
@@ -783,10 +783,10 @@ func (r *DescribeEipTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipTaskResponseParams struct {
 	// 当前任务状态码：0-成功，1-失败，2-进行中
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeEipTaskResponse struct {
@@ -808,98 +808,98 @@ func (r *DescribeEipTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipsRequestParams struct {
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// EIP IP 列表
-	Eips []*string `json:"Eips,omitnil" name:"Eips"`
+	Eips []*string `json:"Eips,omitnil,omitempty" name:"Eips"`
 
 	// 主机实例ID 列表
-	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// EIP名称,模糊匹配
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 状态列表, 默认所有
-	Status []*int64 `json:"Status,omitnil" name:"Status"`
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回EIP数量，默认 20, 最大值 100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 排序字段，支持： EipId,Eip,Status, InstanceId,CreatedAt
-	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方式 0:递增 1:递减(默认)
-	Order *int64 `json:"Order,omitnil" name:"Order"`
+	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 计费模式,流量：flow，带宽：bandwidth
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
-	BindTypes []*int64 `json:"BindTypes,omitnil" name:"BindTypes"`
+	BindTypes []*int64 `json:"BindTypes,omitnil,omitempty" name:"BindTypes"`
 
 	// 独占标志，0：共享，1：独占
-	ExclusiveTag *int64 `json:"ExclusiveTag,omitnil" name:"ExclusiveTag"`
+	ExclusiveTag *int64 `json:"ExclusiveTag,omitnil,omitempty" name:"ExclusiveTag"`
 
 	// EIP ACL实例ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
-	BindAcl *int64 `json:"BindAcl,omitnil" name:"BindAcl"`
+	BindAcl *int64 `json:"BindAcl,omitnil,omitempty" name:"BindAcl"`
 }
 
 type DescribeEipsRequest struct {
 	*tchttp.BaseRequest
 	
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// EIP IP 列表
-	Eips []*string `json:"Eips,omitnil" name:"Eips"`
+	Eips []*string `json:"Eips,omitnil,omitempty" name:"Eips"`
 
 	// 主机实例ID 列表
-	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// EIP名称,模糊匹配
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 状态列表, 默认所有
-	Status []*int64 `json:"Status,omitnil" name:"Status"`
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回EIP数量，默认 20, 最大值 100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 排序字段，支持： EipId,Eip,Status, InstanceId,CreatedAt
-	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方式 0:递增 1:递减(默认)
-	Order *int64 `json:"Order,omitnil" name:"Order"`
+	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 计费模式,流量：flow，带宽：bandwidth
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
-	BindTypes []*int64 `json:"BindTypes,omitnil" name:"BindTypes"`
+	BindTypes []*int64 `json:"BindTypes,omitnil,omitempty" name:"BindTypes"`
 
 	// 独占标志，0：共享，1：独占
-	ExclusiveTag *int64 `json:"ExclusiveTag,omitnil" name:"ExclusiveTag"`
+	ExclusiveTag *int64 `json:"ExclusiveTag,omitnil,omitempty" name:"ExclusiveTag"`
 
 	// EIP ACL实例ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
-	BindAcl *int64 `json:"BindAcl,omitnil" name:"BindAcl"`
+	BindAcl *int64 `json:"BindAcl,omitnil,omitempty" name:"BindAcl"`
 }
 
 func (r *DescribeEipsRequest) ToJsonString() string {
@@ -938,13 +938,13 @@ func (r *DescribeEipsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEipsResponseParams struct {
 	// 返回EIP信息数组
-	EipSet []*EipInfo `json:"EipSet,omitnil" name:"EipSet"`
+	EipSet []*EipInfo `json:"EipSet,omitnil,omitempty" name:"EipSet"`
 
 	// 返回EIP数量
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeEipsResponse struct {
@@ -965,181 +965,181 @@ func (r *DescribeEipsResponse) FromJsonString(s string) error {
 
 type EipAcl struct {
 	// ACL 实例 ID。
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// ACL 实例名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 状态。0：无状态，1：有状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// EIPACL 创建时间
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// EIPACL 已关联的 eip 数目
-	EipNum *int64 `json:"EipNum,omitnil" name:"EipNum"`
+	EipNum *int64 `json:"EipNum,omitnil,omitempty" name:"EipNum"`
 
 	// 出站规则
-	OutRules []*EipAclRule `json:"OutRules,omitnil" name:"OutRules"`
+	OutRules []*EipAclRule `json:"OutRules,omitnil,omitempty" name:"OutRules"`
 
 	// 入站规则
-	InRules []*EipAclRule `json:"InRules,omitnil" name:"InRules"`
+	InRules []*EipAclRule `json:"InRules,omitnil,omitempty" name:"InRules"`
 }
 
 type EipAclMap struct {
 	// EIP 实例 ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 }
 
 type EipAclRule struct {
 	// 源 IP
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 目标端口
-	Port *string `json:"Port,omitnil" name:"Port"`
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 协议(TCP/UDP/ICMP/ANY)
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 策略（accept/drop）
-	Action *string `json:"Action,omitnil" name:"Action"`
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 备注
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type EipInfo struct {
 	// EIP实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP名称
-	EipName *string `json:"EipName,omitnil" name:"EipName"`
+	EipName *string `json:"EipName,omitnil,omitempty" name:"EipName"`
 
 	// EIP地址
-	Eip *string `json:"Eip,omitnil" name:"Eip"`
+	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 
 	// 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
-	IspId *int64 `json:"IspId,omitnil" name:"IspId"`
+	IspId *int64 `json:"IspId,omitnil,omitempty" name:"IspId"`
 
 	// 状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否欠费隔离 1： 欠费隔离； 0： 正常。处在欠费隔离情况下的EIP不能进行任何管理操作。
-	Arrears *int64 `json:"Arrears,omitnil" name:"Arrears"`
+	Arrears *int64 `json:"Arrears,omitnil,omitempty" name:"Arrears"`
 
 	// EIP所绑定的服务器实例ID，未绑定则为空
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务器别名
-	InstanceAlias *string `json:"InstanceAlias,omitnil" name:"InstanceAlias"`
+	InstanceAlias *string `json:"InstanceAlias,omitnil,omitempty" name:"InstanceAlias"`
 
 	// EIP解绑时间
-	FreeAt *string `json:"FreeAt,omitnil" name:"FreeAt"`
+	FreeAt *string `json:"FreeAt,omitnil,omitempty" name:"FreeAt"`
 
 	// EIP创建时间
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// EIP更新时间
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// EIP未绑定服务器时长（单位：秒）
-	FreeSecond *int64 `json:"FreeSecond,omitnil" name:"FreeSecond"`
+	FreeSecond *int64 `json:"FreeSecond,omitnil,omitempty" name:"FreeSecond"`
 
 	// EIP所绑定的资源类型，-1：未绑定资源；0：黑石物理机，字段对应unInstanceId；1：Nat网关，字段对应natUid；2：云服务器字段对应vpcIp; 3: 托管机器，字段对应HInstanceId, HInstanceAlias
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// EIP带宽计费模式下的带宽上限（单位：MB）
-	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 最近一次操作变更的EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
-	LatestPayMode *string `json:"LatestPayMode,omitnil" name:"LatestPayMode"`
+	LatestPayMode *string `json:"LatestPayMode,omitnil,omitempty" name:"LatestPayMode"`
 
 	// 最近一次操作变更的EIP计费模式对应的带宽上限值，仅在带宽计费模式下有效（单位：MB）
-	LatestBandwidth *int64 `json:"LatestBandwidth,omitnil" name:"LatestBandwidth"`
+	LatestBandwidth *int64 `json:"LatestBandwidth,omitnil,omitempty" name:"LatestBandwidth"`
 
 	// 私有网络名称
-	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
 	// EIP所绑定的NAT网关的数字ID，形如：1001,，未绑定则为空
-	NatId *int64 `json:"NatId,omitnil" name:"NatId"`
+	NatId *int64 `json:"NatId,omitnil,omitempty" name:"NatId"`
 
 	// EIP所绑定的NAT网关实例ID，形如："nat-n47xxxxx"，未绑定则为空
-	NatUid *string `json:"NatUid,omitnil" name:"NatUid"`
+	NatUid *string `json:"NatUid,omitnil,omitempty" name:"NatUid"`
 
 	// EIP所绑定的云服务器IP(托管或者云服务器的IP），形如："10.1.1.3"。 注意：IP资源需要通过bmvpc模块注册或者申请后才可以绑定eip，接口使用申请子网IP和注册子网IP：,未绑定则为空
-	VpcIp *string `json:"VpcIp,omitnil" name:"VpcIp"`
+	VpcIp *string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 
 	// 私有网络实例ID
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 是否为独占类型EIP
-	Exclusive *int64 `json:"Exclusive,omitnil" name:"Exclusive"`
+	Exclusive *int64 `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 
 	// 私有网络的cidr
-	VpcCidr *string `json:"VpcCidr,omitnil" name:"VpcCidr"`
+	VpcCidr *string `json:"VpcCidr,omitnil,omitempty" name:"VpcCidr"`
 
 	// EIP ACL实例ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// EIP ACL名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// 托管机器实例ID
-	HInstanceId *string `json:"HInstanceId,omitnil" name:"HInstanceId"`
+	HInstanceId *string `json:"HInstanceId,omitnil,omitempty" name:"HInstanceId"`
 
 	// 托管机器别名
-	HInstanceAlias *string `json:"HInstanceAlias,omitnil" name:"HInstanceAlias"`
+	HInstanceAlias *string `json:"HInstanceAlias,omitnil,omitempty" name:"HInstanceAlias"`
 }
 
 type EipRsMap struct {
 	// EIP实例 ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 黑石物理机实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 // Predefined struct for user
 type ModifyEipAclRequestParams struct {
 	// ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// ACL 名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 状态。0：无状态 1：有状态
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则类型（in/out）。in：入站规则 out：出站规则
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// ACL规则列表
-	Rules []*EipAclRule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*EipAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ModifyEipAclRequest struct {
 	*tchttp.BaseRequest
 	
 	// ACL 实例 ID
-	AclId *string `json:"AclId,omitnil" name:"AclId"`
+	AclId *string `json:"AclId,omitnil,omitempty" name:"AclId"`
 
 	// ACL 名称
-	AclName *string `json:"AclName,omitnil" name:"AclName"`
+	AclName *string `json:"AclName,omitnil,omitempty" name:"AclName"`
 
 	// ACL 状态。0：无状态 1：有状态
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则类型（in/out）。in：入站规则 out：出站规则
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// ACL规则列表
-	Rules []*EipAclRule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*EipAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *ModifyEipAclRequest) ToJsonString() string {
@@ -1168,7 +1168,7 @@ func (r *ModifyEipAclRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEipAclResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyEipAclResponse struct {
@@ -1190,26 +1190,26 @@ func (r *ModifyEipAclResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEipChargeRequestParams struct {
 	// EIP计费方式，flow-流量计费；bandwidth-带宽计费
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// 带宽设定值（只在带宽计费时生效）
-	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 type ModifyEipChargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// EIP计费方式，flow-流量计费；bandwidth-带宽计费
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitnil" name:"EipIds"`
+	EipIds []*string `json:"EipIds,omitnil,omitempty" name:"EipIds"`
 
 	// 带宽设定值（只在带宽计费时生效）
-	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 func (r *ModifyEipChargeRequest) ToJsonString() string {
@@ -1236,10 +1236,10 @@ func (r *ModifyEipChargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEipChargeResponseParams struct {
 	// 修改计费模式的异步任务ID，可以通过查询EIP任务状态查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyEipChargeResponse struct {
@@ -1261,20 +1261,20 @@ func (r *ModifyEipChargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEipNameRequestParams struct {
 	// Eip实例ID，可通过/v2/DescribeEip 接口返回字段中的 eipId获取
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP 实例别名
-	EipName *string `json:"EipName,omitnil" name:"EipName"`
+	EipName *string `json:"EipName,omitnil,omitempty" name:"EipName"`
 }
 
 type ModifyEipNameRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID，可通过/v2/DescribeEip 接口返回字段中的 eipId获取
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP 实例别名
-	EipName *string `json:"EipName,omitnil" name:"EipName"`
+	EipName *string `json:"EipName,omitnil,omitempty" name:"EipName"`
 }
 
 func (r *ModifyEipNameRequest) ToJsonString() string {
@@ -1300,7 +1300,7 @@ func (r *ModifyEipNameRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEipNameResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyEipNameResponse struct {
@@ -1322,14 +1322,14 @@ func (r *ModifyEipNameResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindEipAclsRequestParams struct {
 	// 待解关联的 EIP 与 ACL列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil" name:"EipIdAclIdList"`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil,omitempty" name:"EipIdAclIdList"`
 }
 
 type UnbindEipAclsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待解关联的 EIP 与 ACL列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil" name:"EipIdAclIdList"`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitnil,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *UnbindEipAclsRequest) ToJsonString() string {
@@ -1354,7 +1354,7 @@ func (r *UnbindEipAclsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindEipAclsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UnbindEipAclsResponse struct {
@@ -1376,26 +1376,26 @@ func (r *UnbindEipAclsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindHostedRequestParams struct {
 	// 托管机器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 弹性IP。Eip和EipId参数必须要填写一个。
-	Eip *string `json:"Eip,omitnil" name:"Eip"`
+	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 }
 
 type UnbindHostedRequest struct {
 	*tchttp.BaseRequest
 	
 	// 托管机器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 弹性IP。Eip和EipId参数必须要填写一个。
-	Eip *string `json:"Eip,omitnil" name:"Eip"`
+	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 }
 
 func (r *UnbindHostedRequest) ToJsonString() string {
@@ -1422,10 +1422,10 @@ func (r *UnbindHostedRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindHostedResponseParams struct {
 	// 异步任务ID，可以通过EipBmQueryTask查询任务状态
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UnbindHostedResponse struct {
@@ -1447,14 +1447,14 @@ func (r *UnbindHostedResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindRsListRequestParams struct {
 	// 物理机绑定的EIP列表
-	EipRsList []*EipRsMap `json:"EipRsList,omitnil" name:"EipRsList"`
+	EipRsList []*EipRsMap `json:"EipRsList,omitnil,omitempty" name:"EipRsList"`
 }
 
 type UnbindRsListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 物理机绑定的EIP列表
-	EipRsList []*EipRsMap `json:"EipRsList,omitnil" name:"EipRsList"`
+	EipRsList []*EipRsMap `json:"EipRsList,omitnil,omitempty" name:"EipRsList"`
 }
 
 func (r *UnbindRsListRequest) ToJsonString() string {
@@ -1479,10 +1479,10 @@ func (r *UnbindRsListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindRsListResponseParams struct {
 	// 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UnbindRsListResponse struct {
@@ -1504,20 +1504,20 @@ func (r *UnbindRsListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindRsRequestParams struct {
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 物理服务器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type UnbindRsRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// 物理服务器实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *UnbindRsRequest) ToJsonString() string {
@@ -1543,10 +1543,10 @@ func (r *UnbindRsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindRsResponseParams struct {
 	// 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UnbindRsResponse struct {
@@ -1568,26 +1568,26 @@ func (r *UnbindRsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindVpcIpRequestParams struct {
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定的VPC内IP地址
-	VpcIp *string `json:"VpcIp,omitnil" name:"VpcIp"`
+	VpcIp *string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 }
 
 type UnbindVpcIpRequest struct {
 	*tchttp.BaseRequest
 	
 	// Eip实例ID
-	EipId *string `json:"EipId,omitnil" name:"EipId"`
+	EipId *string `json:"EipId,omitnil,omitempty" name:"EipId"`
 
 	// EIP归属VpcId，例如vpc-k7j1t2x1
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 绑定的VPC内IP地址
-	VpcIp *string `json:"VpcIp,omitnil" name:"VpcIp"`
+	VpcIp *string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 }
 
 func (r *UnbindVpcIpRequest) ToJsonString() string {
@@ -1614,10 +1614,10 @@ func (r *UnbindVpcIpRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindVpcIpResponseParams struct {
 	// 绑定黑石物理机异步任务ID，可以通过查询EIP任务状态查询任务状态
-	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UnbindVpcIpResponse struct {

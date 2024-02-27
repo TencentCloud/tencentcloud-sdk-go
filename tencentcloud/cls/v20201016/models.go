@@ -23,22 +23,22 @@ import (
 // Predefined struct for user
 type AddMachineGroupInfoRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
 	// 目前type支持 ip 和 label
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 }
 
 type AddMachineGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
 	// 目前type支持 ip 和 label
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 }
 
 func (r *AddMachineGroupInfoRequest) ToJsonString() string {
@@ -64,7 +64,7 @@ func (r *AddMachineGroupInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddMachineGroupInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AddMachineGroupInfoResponse struct {
@@ -86,297 +86,297 @@ func (r *AddMachineGroupInfoResponse) FromJsonString(s string) error {
 type AlarmAnalysisConfig struct {
 	// 键
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type AlarmClassification struct {
 	// 分类键
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 分类值
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type AlarmInfo struct {
 	// 告警策略名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTargetInfo `json:"AlarmTargets,omitnil" name:"AlarmTargets"`
+	AlarmTargets []*AlarmTargetInfo `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
 	// 监控任务运行时间点。
-	MonitorTime *MonitorTime `json:"MonitorTime,omitnil" name:"MonitorTime"`
+	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
 	// 单触发条件。与MultiConditions参数互斥。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期。单位是min。取值范围是0~1440。
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 开启状态。
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 创建时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近更新时间。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 自定义通知模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
+	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 自定义回调模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallBack *CallBackInfo `json:"CallBack,omitnil" name:"CallBack"`
+	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分组触发状态。1：开启，0：关闭（默认）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 多触发条件。与
 	// Condition互斥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 }
 
 type AlarmNotice struct {
 	// 告警通知模板名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 告警模板的类型。可选值：
 	// <br><li> Trigger - 告警触发</li>
 	// <br><li> Recovery - 告警恢复</li>
 	// <br><li> All - 告警触发和告警恢复</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 告警通知模板接收者信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 告警通知模板回调信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 告警通知模板ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 通知规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
 
 type AlarmShieldInfo struct {
 	// 通知渠道组Id
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 屏蔽规则id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 屏蔽开始时间（秒级时间戳）。
-	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 屏蔽结束时间（秒级时间戳）。
-	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 屏蔽原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 规则创建来源。
 	// 1. 控制台，2.api，3.告警通知
-	Source *uint64 `json:"Source,omitnil" name:"Source"`
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 操作者。
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 规则状态。
 	// 0：暂未生效，1：生效中，2：已失效
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则创建时间。
-	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 规则更新时间。
-	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type AlarmTarget struct {
 	// 日志主题ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询语句。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 告警对象序号；从1开始递增。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Number *int64 `json:"Number,omitnil" name:"Number"`
+	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTimeOffset *int64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
+	StartTimeOffset *int64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
+	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
 	// 日志集ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type AlarmTargetInfo struct {
 	// 日志集ID。
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集名称。
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题ID。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名称。
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 查询语句。
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 告警对象序号。
-	Number *int64 `json:"Number,omitnil" name:"Number"`
+	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
-	StartTimeOffset *int64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
+	StartTimeOffset *int64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
-	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
+	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 
 type AlertHistoryNotice struct {
 	// 通知渠道组名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知渠道组ID
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 type AlertHistoryRecord struct {
 	// 告警历史ID
-	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 告警策略ID
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 告警策略名称
-	AlarmName *string `json:"AlarmName,omitnil" name:"AlarmName"`
+	AlarmName *string `json:"AlarmName,omitnil,omitempty" name:"AlarmName"`
 
 	// 监控对象ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 监控对象名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 监控对象所属地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 触发条件
-	Trigger *string `json:"Trigger,omitnil" name:"Trigger"`
+	Trigger *string `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
 	// 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警通知发送频率，单位为分钟
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 通知渠道组
-	Notices []*AlertHistoryNotice `json:"Notices,omitnil" name:"Notices"`
+	Notices []*AlertHistoryNotice `json:"Notices,omitnil,omitempty" name:"Notices"`
 
 	// 告警持续时间，单位为分钟
-	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 告警状态，0代表未恢复，1代表已恢复，2代表已失效
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 告警发生时间，毫秒级Unix时间戳
-	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 告警分组触发时对应的分组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupTriggerCondition []*GroupTriggerConditionInfo `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*GroupTriggerConditionInfo `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 监控对象类型。
 	// 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 }
 
 type AnalysisDimensional struct {
 	// 分析名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分析类型：query，field ，original
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分析内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 多维分析配置。
 	// 
@@ -422,26 +422,26 @@ type AnalysisDimensional struct {
 	//     "Value": "0"//0:Lucene, 1:CQL
 	// }
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConfigInfo []*AlarmAnalysisConfig `json:"ConfigInfo,omitnil" name:"ConfigInfo"`
+	ConfigInfo []*AlarmAnalysisConfig `json:"ConfigInfo,omitnil,omitempty" name:"ConfigInfo"`
 }
 
 // Predefined struct for user
 type ApplyConfigToMachineGroupRequestParams struct {
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type ApplyConfigToMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *ApplyConfigToMachineGroupRequest) ToJsonString() string {
@@ -467,7 +467,7 @@ func (r *ApplyConfigToMachineGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyConfigToMachineGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ApplyConfigToMachineGroupResponse struct {
@@ -488,36 +488,36 @@ func (r *ApplyConfigToMachineGroupResponse) FromJsonString(s string) error {
 
 type CallBackInfo struct {
 	// 回调时的Body
-	Body *string `json:"Body,omitnil" name:"Body"`
+	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// 回调时的Headers
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Headers []*string `json:"Headers,omitnil" name:"Headers"`
+	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 }
 
 // Predefined struct for user
 type CheckFunctionRequestParams struct {
 	// 用户输入的加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工任务目的topic_id以及别名
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 数据加工目标主题的类型. 1 固定主题 2动态创建
-	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 }
 
 type CheckFunctionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户输入的加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工任务目的topic_id以及别名
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 数据加工目标主题的类型. 1 固定主题 2动态创建
-	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 }
 
 func (r *CheckFunctionRequest) ToJsonString() string {
@@ -544,13 +544,13 @@ func (r *CheckFunctionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckFunctionResponseParams struct {
 	// 失败错误码
-	ErrorCode *int64 `json:"ErrorCode,omitnil" name:"ErrorCode"`
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
 	// 失败错误信息
-	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckFunctionResponse struct {
@@ -572,42 +572,42 @@ func (r *CheckFunctionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckRechargeKafkaServerRequestParams struct {
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时，KafkaInstance必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
 	// KafkaType为1时，ServerAddr必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。IsEncryptionAddr参数为true时必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type CheckRechargeKafkaServerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时，KafkaInstance必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
 	// KafkaType为1时，ServerAddr必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。IsEncryptionAddr参数为true时必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 func (r *CheckRechargeKafkaServerRequest) ToJsonString() string {
@@ -637,10 +637,10 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 type CheckRechargeKafkaServerResponseParams struct {
 	// Kafka集群可访问状态，0：可正常访问 ...
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckRechargeKafkaServerResponse struct {
@@ -661,35 +661,35 @@ func (r *CheckRechargeKafkaServerResponse) FromJsonString(s string) error {
 
 type Ckafka struct {
 	// Ckafka 的 Vip
-	Vip *string `json:"Vip,omitnil" name:"Vip"`
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// Ckafka 的 Vport
-	Vport *string `json:"Vport,omitnil" name:"Vport"`
+	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
 	// Ckafka 的 InstanceId
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Ckafka 的 InstanceName
-	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// Ckafka 的 TopicId
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Ckafka 的 TopicName
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 // Predefined struct for user
 type CloseKafkaConsumerRequestParams struct {
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
 type CloseKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
 func (r *CloseKafkaConsumerRequest) ToJsonString() string {
@@ -714,7 +714,7 @@ func (r *CloseKafkaConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CloseKafkaConsumerResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CloseKafkaConsumerResponse struct {
@@ -735,86 +735,86 @@ func (r *CloseKafkaConsumerResponse) FromJsonString(s string) error {
 
 type Column struct {
 	// 列的名字
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 列的属性
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CompressInfo struct {
 	// 压缩格式，支持gzip、lzop、snappy和none不压缩
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 }
 
 type ConfigExtraInfo struct {
 	// 采集规则扩展配置ID
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 采集规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 类型：container_stdout、container_file、host_file
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 节点文件配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostFile *HostFileInfo `json:"HostFile,omitnil" name:"HostFile"`
+	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil" name:"ContainerFile"`
+	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil" name:"ContainerStdout"`
+	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户自定义解析字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConfigFlag *string `json:"ConfigFlag,omitnil" name:"ConfigFlag"`
+	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -822,50 +822,50 @@ type ConfigExtraInfo struct {
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ConfigInfo struct {
 	// 采集规则配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志格式化方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 日志采集路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 采集配置所属日志主题ID即TopicId
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户自定义解析字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -873,209 +873,209 @@ type ConfigInfo struct {
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ConsumerContent struct {
 	// 是否投递 TAG 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableTag *bool `json:"EnableTag,omitnil" name:"EnableTag"`
+	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
 
 	// 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetaFields []*string `json:"MetaFields,omitnil" name:"MetaFields"`
+	MetaFields []*string `json:"MetaFields,omitnil,omitempty" name:"MetaFields"`
 
 	// 当EnableTag为true时，必须填写TagJsonNotTiled字段，TagJsonNotTiled用于标识tag信息是否json平铺，TagJsonNotTiled为true时不平铺，false时平铺
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagJsonNotTiled *bool `json:"TagJsonNotTiled,omitnil" name:"TagJsonNotTiled"`
+	TagJsonNotTiled *bool `json:"TagJsonNotTiled,omitnil,omitempty" name:"TagJsonNotTiled"`
 
 	// 投递时间戳精度，可选项 [1:秒；2:毫秒] ，默认是秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimestampAccuracy *int64 `json:"TimestampAccuracy,omitnil" name:"TimestampAccuracy"`
+	TimestampAccuracy *int64 `json:"TimestampAccuracy,omitnil,omitempty" name:"TimestampAccuracy"`
 }
 
 type ContainerFileInfo struct {
 	// namespace可以多个，用分隔号分割,例如A,B
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 容器名称
-	Container *string `json:"Container,omitnil" name:"Container"`
+	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// 日志文件夹
-	LogPath *string `json:"LogPath,omitnil" name:"LogPath"`
+	LogPath *string `json:"LogPath,omitnil,omitempty" name:"LogPath"`
 
 	// 日志名称
-	FilePattern *string `json:"FilePattern,omitnil" name:"FilePattern"`
+	FilePattern *string `json:"FilePattern,omitnil,omitempty" name:"FilePattern"`
 
 	// 日志文件信息
-	FilePaths []*FilePathInfo `json:"FilePaths,omitnil" name:"FilePaths"`
+	FilePaths []*FilePathInfo `json:"FilePaths,omitnil,omitempty" name:"FilePaths"`
 
 	// pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IncludeLabels []*string `json:"IncludeLabels,omitnil" name:"IncludeLabels"`
+	IncludeLabels []*string `json:"IncludeLabels,omitnil,omitempty" name:"IncludeLabels"`
 
 	// 工作负载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkLoad *ContainerWorkLoadInfo `json:"WorkLoad,omitnil" name:"WorkLoad"`
+	WorkLoad *ContainerWorkLoadInfo `json:"WorkLoad,omitnil,omitempty" name:"WorkLoad"`
 
 	// 需要排除的namespace可以多个，用分隔号分割,例如A,B
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil" name:"ExcludeNamespace"`
+	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil,omitempty" name:"ExcludeNamespace"`
 
 	// 需要排除的pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludeLabels []*string `json:"ExcludeLabels,omitnil" name:"ExcludeLabels"`
+	ExcludeLabels []*string `json:"ExcludeLabels,omitnil,omitempty" name:"ExcludeLabels"`
 
 	// metadata信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomLabels []*string `json:"CustomLabels,omitnil" name:"CustomLabels"`
+	CustomLabels []*string `json:"CustomLabels,omitnil,omitempty" name:"CustomLabels"`
 }
 
 type ContainerStdoutInfo struct {
 	// 是否所有容器
-	AllContainers *bool `json:"AllContainers,omitnil" name:"AllContainers"`
+	AllContainers *bool `json:"AllContainers,omitnil,omitempty" name:"AllContainers"`
 
 	// container为空表所有的，不为空采集指定的容器
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Container *string `json:"Container,omitnil" name:"Container"`
+	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// namespace可以多个，用分隔号分割,例如A,B；为空或者没有这个字段，表示所有namespace
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IncludeLabels []*string `json:"IncludeLabels,omitnil" name:"IncludeLabels"`
+	IncludeLabels []*string `json:"IncludeLabels,omitnil,omitempty" name:"IncludeLabels"`
 
 	// 工作负载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkLoads []*ContainerWorkLoadInfo `json:"WorkLoads,omitnil" name:"WorkLoads"`
+	WorkLoads []*ContainerWorkLoadInfo `json:"WorkLoads,omitnil,omitempty" name:"WorkLoads"`
 
 	// 需要排除的namespace可以多个，用分隔号分割,例如A,B
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil" name:"ExcludeNamespace"`
+	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil,omitempty" name:"ExcludeNamespace"`
 
 	// 需要排除的pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludeLabels []*string `json:"ExcludeLabels,omitnil" name:"ExcludeLabels"`
+	ExcludeLabels []*string `json:"ExcludeLabels,omitnil,omitempty" name:"ExcludeLabels"`
 
 	// metadata信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomLabels []*string `json:"CustomLabels,omitnil" name:"CustomLabels"`
+	CustomLabels []*string `json:"CustomLabels,omitnil,omitempty" name:"CustomLabels"`
 }
 
 type ContainerWorkLoadInfo struct {
 	// 工作负载的类型
-	Kind *string `json:"Kind,omitnil" name:"Kind"`
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 工作负载的名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 容器名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Container *string `json:"Container,omitnil" name:"Container"`
+	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type ContentInfo struct {
 	// 内容格式，支持json、csv
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// csv格式内容描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Csv *CsvInfo `json:"Csv,omitnil" name:"Csv"`
+	Csv *CsvInfo `json:"Csv,omitnil,omitempty" name:"Csv"`
 
 	// json格式内容描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Json *JsonInfo `json:"Json,omitnil" name:"Json"`
+	Json *JsonInfo `json:"Json,omitnil,omitempty" name:"Json"`
 
 	// parquet格式内容描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Parquet *ParquetInfo `json:"Parquet,omitnil" name:"Parquet"`
+	Parquet *ParquetInfo `json:"Parquet,omitnil,omitempty" name:"Parquet"`
 }
 
 type CosRechargeInfo struct {
 	// COS导入配置ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// COS导入任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// COS存储桶
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// COS存储桶所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// COS文件所在文件夹的前缀
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否启用:   0： 未启用  ， 1：启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 进度条百分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// supported: "", "gzip", "lzop", "snappy”; 默认空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Compress *string `json:"Compress,omitnil" name:"Compress"`
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 见： ExtractRuleInfo 结构描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil" name:"ExtractRuleInfo"`
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
 }
 
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
 	// 通知渠道组名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
 	// <li> Trigger - 告警触发 </li>
 	// <li> Recovery - 告警恢复</li>
 	// <li> All - 告警触发和告警恢复</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
 	// 
@@ -1083,26 +1083,26 @@ type CreateAlarmNoticeRequestParams struct {
 	// 
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// 
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
 
 type CreateAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 通知渠道组名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
 	// <li> Trigger - 告警触发 </li>
 	// <li> Recovery - 告警恢复</li>
 	// <li> All - 告警触发和告警恢复</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
 	// 
@@ -1110,7 +1110,7 @@ type CreateAlarmNoticeRequest struct {
 	// 
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// 
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -1139,10 +1139,10 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAlarmNoticeResponseParams struct {
 	// 告警模板ID
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAlarmNoticeResponse struct {
@@ -1164,160 +1164,160 @@ func (r *CreateAlarmNoticeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAlarmRequestParams struct {
 	// 告警策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil" name:"AlarmTargets"`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
 	// 监控任务运行时间点。
-	MonitorTime *MonitorTime `json:"MonitorTime,omitnil" name:"MonitorTime"`
+	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别
 	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
 	// 注意:  
 	// - 不填则默认为0。
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 多触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
 	// 
-	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
 	// 是否开启告警策略。
 	// 默认值为true
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
-	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
+	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 用户自定义回调
-	CallBack *CallBackInfo `json:"CallBack,omitnil" name:"CallBack"`
+	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析
-	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分组触发状态。
 	// 默认值false
-	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
-	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
 	// 
 	// 最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	// 不填则默认为0。
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
 	// Classifications元素个数不能超过20个。
 	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
-	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
+	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 }
 
 type CreateAlarmRequest struct {
 	*tchttp.BaseRequest
 	
 	// 告警策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil" name:"AlarmTargets"`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
 	// 监控任务运行时间点。
-	MonitorTime *MonitorTime `json:"MonitorTime,omitnil" name:"MonitorTime"`
+	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别
 	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
 	// 注意:  
 	// - 不填则默认为0。
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 多触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	// 
 	// 
-	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
 	// 是否开启告警策略。
 	// 默认值为true
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
-	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
+	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 用户自定义回调
-	CallBack *CallBackInfo `json:"CallBack,omitnil" name:"CallBack"`
+	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析
-	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分组触发状态。
 	// 默认值false
-	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
-	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
 	// 
 	// 最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	// 不填则默认为0。
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
 	// Classifications元素个数不能超过20个。
 	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
-	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
+	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 }
 
 func (r *CreateAlarmRequest) ToJsonString() string {
@@ -1360,10 +1360,10 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAlarmResponseParams struct {
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAlarmResponse struct {
@@ -1385,44 +1385,44 @@ func (r *CreateAlarmResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAlarmShieldRequestParams struct {
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 屏蔽开始时间（秒级时间戳）。
-	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 屏蔽结束时间（秒级时间戳）。
-	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 }
 
 type CreateAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 屏蔽开始时间（秒级时间戳）。
-	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 屏蔽结束时间（秒级时间戳）。
-	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 }
 
 func (r *CreateAlarmShieldRequest) ToJsonString() string {
@@ -1452,10 +1452,10 @@ func (r *CreateAlarmShieldRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAlarmShieldResponseParams struct {
 	// 屏蔽规则ID。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAlarmShieldResponse struct {
@@ -1477,124 +1477,124 @@ func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigExtraRequestParams struct {
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 类型：container_stdout、container_file、host_file
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 采集配置标
-	ConfigFlag *string `json:"ConfigFlag,omitnil" name:"ConfigFlag"`
+	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集id
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 节点文件配置信息
-	HostFile *HostFileInfo `json:"HostFile,omitnil" name:"HostFile"`
+	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
-	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil" name:"ContainerFile"`
+	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
-	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil" name:"ContainerStdout"`
+	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 绑定的机器组id
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 绑定的机器组id列表
-	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type CreateConfigExtraRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 类型：container_stdout、container_file、host_file
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 采集配置标
-	ConfigFlag *string `json:"ConfigFlag,omitnil" name:"ConfigFlag"`
+	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集id
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 节点文件配置信息
-	HostFile *HostFileInfo `json:"HostFile,omitnil" name:"HostFile"`
+	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
-	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil" name:"ContainerFile"`
+	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
-	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil" name:"ContainerStdout"`
+	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 绑定的机器组id
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 绑定的机器组id列表
-	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *CreateConfigExtraRequest) ToJsonString() string {
@@ -1636,10 +1636,10 @@ func (r *CreateConfigExtraRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigExtraResponseParams struct {
 	// 采集配置扩展信息ID
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateConfigExtraResponse struct {
@@ -1661,64 +1661,64 @@ func (r *CreateConfigExtraResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigRequestParams struct {
 	// 采集配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 采集配置所属日志主题ID即TopicId
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 日志采集路径,包含文件名
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type CreateConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 采集配置所属日志主题ID即TopicId
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 日志采集路径,包含文件名
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -1750,10 +1750,10 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigResponseParams struct {
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateConfigResponse struct {
@@ -1775,38 +1775,38 @@ func (r *CreateConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConsumerRequestParams struct {
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 是否投递日志的元数据信息，默认为 true
-	NeedContent *bool `json:"NeedContent,omitnil" name:"NeedContent"`
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
 
 	// 如果需要投递元数据信息，元数据信息的描述
-	Content *ConsumerContent `json:"Content,omitnil" name:"Content"`
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// CKafka的描述
-	Ckafka *Ckafka `json:"Ckafka,omitnil" name:"Ckafka"`
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
 type CreateConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 是否投递日志的元数据信息，默认为 true
-	NeedContent *bool `json:"NeedContent,omitnil" name:"NeedContent"`
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
 
 	// 如果需要投递元数据信息，元数据信息的描述
-	Content *ConsumerContent `json:"Content,omitnil" name:"Content"`
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// CKafka的描述
-	Ckafka *Ckafka `json:"Ckafka,omitnil" name:"Ckafka"`
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
 func (r *CreateConsumerRequest) ToJsonString() string {
@@ -1835,7 +1835,7 @@ func (r *CreateConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConsumerResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateConsumerResponse struct {
@@ -1857,66 +1857,66 @@ func (r *CreateConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCosRechargeRequestParams struct {
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 投递任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// COS存储桶。
 	// 存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// COS存储桶所在地域。地域和访问域名：https://cloud.tencent.com/document/product/436/6224
-	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// COS文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// supported: "", "gzip", "lzop", "snappy"; 默认空
-	Compress *string `json:"Compress,omitnil" name:"Compress"`
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil" name:"ExtractRuleInfo"`
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
 }
 
 type CreateCosRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 投递任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// COS存储桶。
 	// 存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// COS存储桶所在地域。地域和访问域名：https://cloud.tencent.com/document/product/436/6224
-	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// COS文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// supported: "", "gzip", "lzop", "snappy"; 默认空
-	Compress *string `json:"Compress,omitnil" name:"Compress"`
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil" name:"ExtractRuleInfo"`
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
 }
 
 func (r *CreateCosRechargeRequest) ToJsonString() string {
@@ -1950,10 +1950,10 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 type CreateCosRechargeResponseParams struct {
 	// cos_recharge记录id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateCosRechargeResponse struct {
@@ -1975,56 +1975,56 @@ func (r *CreateCosRechargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDataTransformRequestParams struct {
 	// 任务类型. 1: 指定主题；2:动态创建
-	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 加工任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工类型  1 使用源日志主题中的随机数据，进行加工预览 :2 使用用户自定义测试数据，进行加工预览 3 创建真实加工任务
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务启动状态.   默认为1:开启,  2:关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 用于预览加工结果的测试数据
-	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil" name:"PreviewLogStatistics"`
+	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 }
 
 type CreateDataTransformRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务类型. 1: 指定主题；2:动态创建
-	FuncType *int64 `json:"FuncType,omitnil" name:"FuncType"`
+	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 加工任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工类型  1 使用源日志主题中的随机数据，进行加工预览 :2 使用用户自定义测试数据，进行加工预览 3 创建真实加工任务
-	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务启动状态.   默认为1:开启,  2:关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 用于预览加工结果的测试数据
-	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil" name:"PreviewLogStatistics"`
+	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 }
 
 func (r *CreateDataTransformRequest) ToJsonString() string {
@@ -2056,10 +2056,10 @@ func (r *CreateDataTransformRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDataTransformResponseParams struct {
 	// 任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateDataTransformResponse struct {
@@ -2081,44 +2081,44 @@ func (r *CreateDataTransformResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDeliverCloudFunctionRequestParams struct {
 	// 投递规则属于的 topic id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递的云函数名字
-	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 函数版本
-	Qualifier *string `json:"Qualifier,omitnil" name:"Qualifier"`
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
 
 	// 投递最长等待时间，单位：秒
-	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 投递最大消息数
-	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil" name:"MaxMsgNum"`
+	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil,omitempty" name:"MaxMsgNum"`
 }
 
 type CreateDeliverCloudFunctionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递规则属于的 topic id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递的云函数名字
-	FunctionName *string `json:"FunctionName,omitnil" name:"FunctionName"`
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 函数版本
-	Qualifier *string `json:"Qualifier,omitnil" name:"Qualifier"`
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
 
 	// 投递最长等待时间，单位：秒
-	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 投递最大消息数
-	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil" name:"MaxMsgNum"`
+	MaxMsgNum *uint64 `json:"MaxMsgNum,omitnil,omitempty" name:"MaxMsgNum"`
 }
 
 func (r *CreateDeliverCloudFunctionRequest) ToJsonString() string {
@@ -2148,7 +2148,7 @@ func (r *CreateDeliverCloudFunctionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDeliverCloudFunctionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateDeliverCloudFunctionResponse struct {
@@ -2170,58 +2170,58 @@ func (r *CreateDeliverCloudFunctionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateExportRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志导出数量,  最大值5000万
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 日志导出起始时间，毫秒时间戳
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 日志导出结束时间，毫秒时间戳
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 日志导出时间排序。desc，asc，默认为desc
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 日志导出数据格式。json，csv，默认为json
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 语法规则,  默认值为0。
 	// 0：Lucene语法，1：CQL语法。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type CreateExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志导出数量,  最大值5000万
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 日志导出起始时间，毫秒时间戳
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 日志导出结束时间，毫秒时间戳
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 日志导出时间排序。desc，asc，默认为desc
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 日志导出数据格式。json，csv，默认为json
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 语法规则,  默认值为0。
 	// 0：Lucene语法，1：CQL语法。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 func (r *CreateExportRequest) ToJsonString() string {
@@ -2253,10 +2253,10 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateExportResponseParams struct {
 	// 日志导出ID。
-	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateExportResponse struct {
@@ -2278,48 +2278,48 @@ func (r *CreateExportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIndexRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 索引规则
-	Rule *RuleInfo `json:"Rule,omitnil" name:"Rule"`
+	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 是否生效，默认为true
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
 	// * false:不包含
 	// * true:包含
-	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil" name:"IncludeInternalFields"`
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
-	MetadataFlag *uint64 `json:"MetadataFlag,omitnil" name:"MetadataFlag"`
+	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 }
 
 type CreateIndexRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 索引规则
-	Rule *RuleInfo `json:"Rule,omitnil" name:"Rule"`
+	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 是否生效，默认为true
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
 	// * false:不包含
 	// * true:包含
-	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil" name:"IncludeInternalFields"`
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
-	MetadataFlag *uint64 `json:"MetadataFlag,omitnil" name:"MetadataFlag"`
+	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 }
 
 func (r *CreateIndexRequest) ToJsonString() string {
@@ -2348,7 +2348,7 @@ func (r *CreateIndexRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIndexResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateIndexResponse struct {
@@ -2370,78 +2370,78 @@ func (r *CreateIndexResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKafkaRechargeRequestParams struct {
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Kafka导入配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 导入数据位置，-2:最早（默认），-1：最晚
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址，KafkaType为1时必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接，KafkaType为1时必填
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组名称
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则。
 	// 必填字段。
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 type CreateKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Kafka导入配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 导入数据位置，-2:最早（默认），-1：最晚
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址，KafkaType为1时必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接，KafkaType为1时必填
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组名称
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则。
 	// 必填字段。
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 func (r *CreateKafkaRechargeRequest) ToJsonString() string {
@@ -2476,10 +2476,10 @@ func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKafkaRechargeResponseParams struct {
 	// Kafka导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateKafkaRechargeResponse struct {
@@ -2501,20 +2501,20 @@ func (r *CreateKafkaRechargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLogsetRequestParams struct {
 	// 日志集名字，不能重名
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateLogsetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志集名字，不能重名
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateLogsetRequest) ToJsonString() string {
@@ -2540,10 +2540,10 @@ func (r *CreateLogsetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLogsetResponseParams struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateLogsetResponse struct {
@@ -2565,62 +2565,62 @@ func (r *CreateLogsetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMachineGroupRequestParams struct {
 	// 机器组名字，不能重复
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
-	AutoUpdate *bool `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组元数据信息列表
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
 	// 系统类型，默认0，0：Linux，1: Windows
-	OSType *uint64 `json:"OSType,omitnil" name:"OSType"`
+	OSType *uint64 `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
 type CreateMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组名字，不能重复
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
-	AutoUpdate *bool `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组元数据信息列表
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
 	// 系统类型，默认0，0：Linux，1: Windows
-	OSType *uint64 `json:"OSType,omitnil" name:"OSType"`
+	OSType *uint64 `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
 func (r *CreateMachineGroupRequest) ToJsonString() string {
@@ -2653,10 +2653,10 @@ func (r *CreateMachineGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMachineGroupResponseParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateMachineGroupResponse struct {
@@ -2678,86 +2678,86 @@ func (r *CreateMachineGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateScheduledSqlRequestParams struct {
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务启动状态.  1开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析目标日志主题
-	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil" name:"DstResource"`
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
 	// 查询语句
-	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil" name:"ScheduledSqlContent"`
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
 	// 调度开始时间,Unix时间戳，单位ms
-	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil" name:"ProcessStartTime"`
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
 	// 调度类型，1:持续运行 2:指定时间范围
-	ProcessType *int64 `json:"ProcessType,omitnil" name:"ProcessType"`
+	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
 	// 调度周期(分钟)
-	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil" name:"ProcessPeriod"`
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
 	// 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
-	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil" name:"ProcessTimeWindow"`
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
 	// 执行延迟(秒)
-	ProcessDelay *int64 `json:"ProcessDelay,omitnil" name:"ProcessDelay"`
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
 	// 源topicId的地域信息
-	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil" name:"SrcTopicRegion"`
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
-	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil" name:"ProcessEndTime"`
+	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
 	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type CreateScheduledSqlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务启动状态.  1开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析目标日志主题
-	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil" name:"DstResource"`
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
 	// 查询语句
-	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil" name:"ScheduledSqlContent"`
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
 	// 调度开始时间,Unix时间戳，单位ms
-	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil" name:"ProcessStartTime"`
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
 	// 调度类型，1:持续运行 2:指定时间范围
-	ProcessType *int64 `json:"ProcessType,omitnil" name:"ProcessType"`
+	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
 	// 调度周期(分钟)
-	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil" name:"ProcessPeriod"`
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
 	// 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
-	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil" name:"ProcessTimeWindow"`
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
 	// 执行延迟(秒)
-	ProcessDelay *int64 `json:"ProcessDelay,omitnil" name:"ProcessDelay"`
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
 	// 源topicId的地域信息
-	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil" name:"SrcTopicRegion"`
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
-	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil" name:"ProcessEndTime"`
+	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
 	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 func (r *CreateScheduledSqlRequest) ToJsonString() string {
@@ -2794,10 +2794,10 @@ func (r *CreateScheduledSqlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateScheduledSqlResponseParams struct {
 	// 任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateScheduledSqlResponse struct {
@@ -2819,92 +2819,92 @@ func (r *CreateScheduledSqlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateShipperRequestParams struct {
 	// 创建的投递规则所属的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 创建的投递规则投递的bucket
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 创建的投递规则投递目录的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的名字
-	ShipperName *string `json:"ShipperName,omitnil" name:"ShipperName"`
+	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
 	// 投递的时间间隔，单位 秒，默认300，范围 300-900
-	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
-	MaxSize *uint64 `json:"MaxSize,omitnil" name:"MaxSize"`
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
-	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil" name:"FilterRules"`
+	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
 	// 投递日志的分区规则，支持strftime的时间格式表示
-	Partition *string `json:"Partition,omitnil" name:"Partition"`
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 投递日志的压缩配置
-	Compress *CompressInfo `json:"Compress,omitnil" name:"Compress"`
+	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 投递日志的内容格式配置
-	Content *ContentInfo `json:"Content,omitnil" name:"Content"`
+	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
 	// 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// cos桶存储类型
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type CreateShipperRequest struct {
 	*tchttp.BaseRequest
 	
 	// 创建的投递规则所属的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 创建的投递规则投递的bucket
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 创建的投递规则投递目录的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的名字
-	ShipperName *string `json:"ShipperName,omitnil" name:"ShipperName"`
+	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
 	// 投递的时间间隔，单位 秒，默认300，范围 300-900
-	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
-	MaxSize *uint64 `json:"MaxSize,omitnil" name:"MaxSize"`
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
-	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil" name:"FilterRules"`
+	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
 	// 投递日志的分区规则，支持strftime的时间格式表示
-	Partition *string `json:"Partition,omitnil" name:"Partition"`
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 投递日志的压缩配置
-	Compress *CompressInfo `json:"Compress,omitnil" name:"Compress"`
+	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 投递日志的内容格式配置
-	Content *ContentInfo `json:"Content,omitnil" name:"Content"`
+	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
 	// 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// cos桶存储类型
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *CreateShipperRequest) ToJsonString() string {
@@ -2942,10 +2942,10 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateShipperResponseParams struct {
 	// 投递任务ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateShipperResponse struct {
@@ -2967,76 +2967,76 @@ func (r *CreateShipperResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTopicRequestParams struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志主题分区个数。默认创建1个，最大支持创建10个分区。
-	PartitionCount *int64 `json:"PartitionCount,omitnil" name:"PartitionCount"`
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启自动分裂，默认值为true
-	AutoSplit *bool `json:"AutoSplit,omitnil" name:"AutoSplit"`
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
-	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题描述
-	Describes *string `json:"Describes,omitnil" name:"Describes"`
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
 	// 0：关闭日志沉降。
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
-	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关； false: 关闭 true： 开启
-	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
 
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志主题分区个数。默认创建1个，最大支持创建10个分区。
-	PartitionCount *int64 `json:"PartitionCount,omitnil" name:"PartitionCount"`
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启自动分裂，默认值为true
-	AutoSplit *bool `json:"AutoSplit,omitnil" name:"AutoSplit"`
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
-	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题描述
-	Describes *string `json:"Describes,omitnil" name:"Describes"`
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
 	// 0：关闭日志沉降。
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
-	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关； false: 关闭 true： 开启
-	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -3071,10 +3071,10 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTopicResponseParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTopicResponse struct {
@@ -3095,133 +3095,133 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 type CsvInfo struct {
 	// csv首行是否打印key
-	PrintKey *bool `json:"PrintKey,omitnil" name:"PrintKey"`
+	PrintKey *bool `json:"PrintKey,omitnil,omitempty" name:"PrintKey"`
 
 	// 每列key的名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keys []*string `json:"Keys,omitnil" name:"Keys"`
+	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
 	// 各字段间的分隔符
-	Delimiter *string `json:"Delimiter,omitnil" name:"Delimiter"`
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 
 	// 若字段内容中包含分隔符，则使用该转义符包裹改字段，只能填写单引号、双引号、空字符串
-	EscapeChar *string `json:"EscapeChar,omitnil" name:"EscapeChar"`
+	EscapeChar *string `json:"EscapeChar,omitnil,omitempty" name:"EscapeChar"`
 
 	// 对于上面指定的不存在字段使用该内容填充
-	NonExistingField *string `json:"NonExistingField,omitnil" name:"NonExistingField"`
+	NonExistingField *string `json:"NonExistingField,omitnil,omitempty" name:"NonExistingField"`
 }
 
 type DashboardInfo struct {
 	// 仪表盘id
-	DashboardId *string `json:"DashboardId,omitnil" name:"DashboardId"`
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
 	// 仪表盘名字
-	DashboardName *string `json:"DashboardName,omitnil" name:"DashboardName"`
+	DashboardName *string `json:"DashboardName,omitnil,omitempty" name:"DashboardName"`
 
 	// 仪表盘数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 创建仪表盘的时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// AssumerUin非空则表示创建该日志主题的服务方Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssumerUin *uint64 `json:"AssumerUin,omitnil" name:"AssumerUin"`
+	AssumerUin *uint64 `json:"AssumerUin,omitnil,omitempty" name:"AssumerUin"`
 
 	// RoleName非空则表示创建该日志主题的服务方使用的角色
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// AssumerName非空则表示创建该日志主题的服务方名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssumerName *string `json:"AssumerName,omitnil" name:"AssumerName"`
+	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
 	// 日志主题绑定的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 仪表盘所在地域： 为了兼容老的地域。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DashboardRegion *string `json:"DashboardRegion,omitnil" name:"DashboardRegion"`
+	DashboardRegion *string `json:"DashboardRegion,omitnil,omitempty" name:"DashboardRegion"`
 
 	// 修改仪表盘的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 仪表盘对应的topic相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DashboardTopicInfos []*DashboardTopicInfo `json:"DashboardTopicInfos,omitnil" name:"DashboardTopicInfos"`
+	DashboardTopicInfos []*DashboardTopicInfo `json:"DashboardTopicInfos,omitnil,omitempty" name:"DashboardTopicInfos"`
 }
 
 type DashboardTopicInfo struct {
 	// 主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// topic所在的地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type DataTransformResouceInfo struct {
 	// 目标主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 别名
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 type DataTransformTaskInfo struct {
 	// 数据加工任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 数据加工任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务启用状态，默认为1，正常开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 加工任务类型，1： DSL， 2：SQL
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 加工任务创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 最后启用时间，如果需要重建集群，修改该时间
-	LastEnableTime *string `json:"LastEnableTime,omitnil" name:"LastEnableTime"`
+	LastEnableTime *string `json:"LastEnableTime,omitnil,omitempty" name:"LastEnableTime"`
 
 	// 日志主题名称
-	SrcTopicName *string `json:"SrcTopicName,omitnil" name:"SrcTopicName"`
+	SrcTopicName *string `json:"SrcTopicName,omitnil,omitempty" name:"SrcTopicName"`
 
 	// 日志集id
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 加工任务目的topic_id以及别名
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 加工逻辑函数
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 }
 
 // Predefined struct for user
 type DeleteAlarmNoticeRequestParams struct {
 	// 通知渠道组ID
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 type DeleteAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 通知渠道组ID
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 func (r *DeleteAlarmNoticeRequest) ToJsonString() string {
@@ -3246,7 +3246,7 @@ func (r *DeleteAlarmNoticeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAlarmNoticeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAlarmNoticeResponse struct {
@@ -3268,14 +3268,14 @@ func (r *DeleteAlarmNoticeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAlarmRequestParams struct {
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 }
 
 type DeleteAlarmRequest struct {
 	*tchttp.BaseRequest
 	
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 }
 
 func (r *DeleteAlarmRequest) ToJsonString() string {
@@ -3300,7 +3300,7 @@ func (r *DeleteAlarmRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAlarmResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAlarmResponse struct {
@@ -3322,20 +3322,20 @@ func (r *DeleteAlarmResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAlarmShieldRequestParams struct {
 	// 屏蔽规则id。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 type DeleteAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
 	// 屏蔽规则id。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 func (r *DeleteAlarmShieldRequest) ToJsonString() string {
@@ -3361,7 +3361,7 @@ func (r *DeleteAlarmShieldRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAlarmShieldResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAlarmShieldResponse struct {
@@ -3383,14 +3383,14 @@ func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigExtraRequestParams struct {
 	// 采集规则扩展配置ID
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 }
 
 type DeleteConfigExtraRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集规则扩展配置ID
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 }
 
 func (r *DeleteConfigExtraRequest) ToJsonString() string {
@@ -3415,7 +3415,7 @@ func (r *DeleteConfigExtraRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigExtraResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteConfigExtraResponse struct {
@@ -3437,20 +3437,20 @@ func (r *DeleteConfigExtraResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigFromMachineGroupRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DeleteConfigFromMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 func (r *DeleteConfigFromMachineGroupRequest) ToJsonString() string {
@@ -3476,7 +3476,7 @@ func (r *DeleteConfigFromMachineGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigFromMachineGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteConfigFromMachineGroupResponse struct {
@@ -3498,14 +3498,14 @@ func (r *DeleteConfigFromMachineGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigRequestParams struct {
 	// 采集规则配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DeleteConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集规则配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 func (r *DeleteConfigRequest) ToJsonString() string {
@@ -3530,7 +3530,7 @@ func (r *DeleteConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteConfigResponse struct {
@@ -3552,14 +3552,14 @@ func (r *DeleteConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConsumerRequestParams struct {
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DeleteConsumerRequest) ToJsonString() string {
@@ -3584,7 +3584,7 @@ func (r *DeleteConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConsumerResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteConsumerResponse struct {
@@ -3606,14 +3606,14 @@ func (r *DeleteConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDataTransformRequestParams struct {
 	// 数据加工任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DeleteDataTransformRequest struct {
 	*tchttp.BaseRequest
 	
 	// 数据加工任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DeleteDataTransformRequest) ToJsonString() string {
@@ -3638,7 +3638,7 @@ func (r *DeleteDataTransformRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDataTransformResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteDataTransformResponse struct {
@@ -3660,14 +3660,14 @@ func (r *DeleteDataTransformResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteExportRequestParams struct {
 	// 日志导出ID
-	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 type DeleteExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志导出ID
-	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 func (r *DeleteExportRequest) ToJsonString() string {
@@ -3692,7 +3692,7 @@ func (r *DeleteExportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteExportResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteExportResponse struct {
@@ -3714,14 +3714,14 @@ func (r *DeleteExportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIndexRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteIndexRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DeleteIndexRequest) ToJsonString() string {
@@ -3746,7 +3746,7 @@ func (r *DeleteIndexRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIndexResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteIndexResponse struct {
@@ -3768,20 +3768,20 @@ func (r *DeleteIndexResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteKafkaRechargeRequestParams struct {
 	// Kafka导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// Kafka导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DeleteKafkaRechargeRequest) ToJsonString() string {
@@ -3807,7 +3807,7 @@ func (r *DeleteKafkaRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteKafkaRechargeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteKafkaRechargeResponse struct {
@@ -3829,14 +3829,14 @@ func (r *DeleteKafkaRechargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLogsetRequestParams struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 type DeleteLogsetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 func (r *DeleteLogsetRequest) ToJsonString() string {
@@ -3861,7 +3861,7 @@ func (r *DeleteLogsetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLogsetResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteLogsetResponse struct {
@@ -3883,22 +3883,22 @@ func (r *DeleteLogsetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineGroupInfoRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
 	// 目前type支持 ip 和 label
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 }
 
 type DeleteMachineGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
 	// 目前type支持 ip 和 label
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 }
 
 func (r *DeleteMachineGroupInfoRequest) ToJsonString() string {
@@ -3924,7 +3924,7 @@ func (r *DeleteMachineGroupInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineGroupInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMachineGroupInfoResponse struct {
@@ -3946,14 +3946,14 @@ func (r *DeleteMachineGroupInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineGroupRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DeleteMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DeleteMachineGroupRequest) ToJsonString() string {
@@ -3978,7 +3978,7 @@ func (r *DeleteMachineGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMachineGroupResponse struct {
@@ -4000,20 +4000,20 @@ func (r *DeleteMachineGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteScheduledSqlRequestParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 源日志主题ID
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 }
 
 type DeleteScheduledSqlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 源日志主题ID
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 }
 
 func (r *DeleteScheduledSqlRequest) ToJsonString() string {
@@ -4039,7 +4039,7 @@ func (r *DeleteScheduledSqlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteScheduledSqlResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteScheduledSqlResponse struct {
@@ -4061,14 +4061,14 @@ func (r *DeleteScheduledSqlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteShipperRequestParams struct {
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 }
 
 type DeleteShipperRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 }
 
 func (r *DeleteShipperRequest) ToJsonString() string {
@@ -4093,7 +4093,7 @@ func (r *DeleteShipperRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteShipperResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteShipperResponse struct {
@@ -4115,14 +4115,14 @@ func (r *DeleteShipperResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTopicRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteTopicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DeleteTopicRequest) ToJsonString() string {
@@ -4147,7 +4147,7 @@ func (r *DeleteTopicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTopicResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTopicResponse struct {
@@ -4192,13 +4192,13 @@ type DescribeAlarmNoticesRequestParams struct {
 	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAlarmNoticesRequest struct {
@@ -4228,13 +4228,13 @@ type DescribeAlarmNoticesRequest struct {
 	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAlarmNoticesRequest) ToJsonString() string {
@@ -4262,13 +4262,13 @@ func (r *DescribeAlarmNoticesRequest) FromJsonString(s string) error {
 type DescribeAlarmNoticesResponseParams struct {
 	// 告警通知模板列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmNotices []*AlarmNotice `json:"AlarmNotices,omitnil" name:"AlarmNotices"`
+	AlarmNotices []*AlarmNotice `json:"AlarmNotices,omitnil,omitempty" name:"AlarmNotices"`
 
 	// 符合条件的告警通知模板总数。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAlarmNoticesResponse struct {
@@ -4290,36 +4290,36 @@ func (r *DescribeAlarmNoticesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlarmShieldsRequestParams struct {
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
 	// - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAlarmShieldsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
 	// - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAlarmShieldsRequest) ToJsonString() string {
@@ -4347,13 +4347,13 @@ func (r *DescribeAlarmShieldsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlarmShieldsResponseParams struct {
 	// 符合条件的规则总数目
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 告警屏蔽规则详情
-	AlarmShields []*AlarmShieldInfo `json:"AlarmShields,omitnil" name:"AlarmShields"`
+	AlarmShields []*AlarmShieldInfo `json:"AlarmShields,omitnil,omitempty" name:"AlarmShields"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAlarmShieldsResponse struct {
@@ -4396,13 +4396,13 @@ type DescribeAlarmsRequestParams struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAlarmsRequest struct {
@@ -4430,13 +4430,13 @@ type DescribeAlarmsRequest struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAlarmsRequest) ToJsonString() string {
@@ -4463,13 +4463,13 @@ func (r *DescribeAlarmsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlarmsResponseParams struct {
 	// 告警策略列表。
-	Alarms []*AlarmInfo `json:"Alarms,omitnil" name:"Alarms"`
+	Alarms []*AlarmInfo `json:"Alarms,omitnil,omitempty" name:"Alarms"`
 
 	// 符合查询条件的告警策略数目。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAlarmsResponse struct {
@@ -4491,16 +4491,16 @@ func (r *DescribeAlarmsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlertRecordHistoryRequestParams struct {
 	// 查询时间范围启始时间，毫秒级unix时间戳
-	From *uint64 `json:"From,omitnil" name:"From"`
+	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 查询时间范围结束时间，毫秒级unix时间戳
-	To *uint64 `json:"To,omitnil" name:"To"`
+	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// - alertId：按照告警策略ID进行过滤。类型：String 必选：否
 	// - topicId：按照监控对象ID进行过滤。类型：String 必选：否
@@ -4508,23 +4508,23 @@ type DescribeAlertRecordHistoryRequestParams struct {
 	// - alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAlertRecordHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询时间范围启始时间，毫秒级unix时间戳
-	From *uint64 `json:"From,omitnil" name:"From"`
+	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 查询时间范围结束时间，毫秒级unix时间戳
-	To *uint64 `json:"To,omitnil" name:"To"`
+	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// - alertId：按照告警策略ID进行过滤。类型：String 必选：否
 	// - topicId：按照监控对象ID进行过滤。类型：String 必选：否
@@ -4532,7 +4532,7 @@ type DescribeAlertRecordHistoryRequest struct {
 	// - alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAlertRecordHistoryRequest) ToJsonString() string {
@@ -4561,13 +4561,13 @@ func (r *DescribeAlertRecordHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlertRecordHistoryResponseParams struct {
 	// 告警历史总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 告警历史详情
-	Records []*AlertHistoryRecord `json:"Records,omitnil" name:"Records"`
+	Records []*AlertHistoryRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAlertRecordHistoryResponse struct {
@@ -4589,26 +4589,26 @@ func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigExtrasRequestParams struct {
 	// 支持的key： topicId,name, configExtraId, machineGroupId
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeConfigExtrasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 支持的key： topicId,name, configExtraId, machineGroupId
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeConfigExtrasRequest) ToJsonString() string {
@@ -4636,13 +4636,13 @@ func (r *DescribeConfigExtrasRequest) FromJsonString(s string) error {
 type DescribeConfigExtrasResponseParams struct {
 	// 采集配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Configs []*ConfigExtraInfo `json:"Configs,omitnil" name:"Configs"`
+	Configs []*ConfigExtraInfo `json:"Configs,omitnil,omitempty" name:"Configs"`
 
 	// 过滤到的总数目
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConfigExtrasResponse struct {
@@ -4664,14 +4664,14 @@ func (r *DescribeConfigExtrasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigMachineGroupsRequestParams struct {
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DescribeConfigMachineGroupsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 func (r *DescribeConfigMachineGroupsRequest) ToJsonString() string {
@@ -4697,10 +4697,10 @@ func (r *DescribeConfigMachineGroupsRequest) FromJsonString(s string) error {
 type DescribeConfigMachineGroupsResponseParams struct {
 	// 采集规则配置绑定的机器组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitnil" name:"MachineGroups"`
+	MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitnil,omitempty" name:"MachineGroups"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConfigMachineGroupsResponse struct {
@@ -4737,13 +4737,13 @@ type DescribeConfigsRequestParams struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeConfigsRequest struct {
@@ -4765,13 +4765,13 @@ type DescribeConfigsRequest struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeConfigsRequest) ToJsonString() string {
@@ -4799,13 +4799,13 @@ func (r *DescribeConfigsRequest) FromJsonString(s string) error {
 type DescribeConfigsResponseParams struct {
 	// 采集配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Configs []*ConfigInfo `json:"Configs,omitnil" name:"Configs"`
+	Configs []*ConfigInfo `json:"Configs,omitnil,omitempty" name:"Configs"`
 
 	// 过滤到的总数目
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConfigsResponse struct {
@@ -4827,14 +4827,14 @@ func (r *DescribeConfigsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConsumerRequestParams struct {
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DescribeConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DescribeConsumerRequest) ToJsonString() string {
@@ -4859,24 +4859,24 @@ func (r *DescribeConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConsumerResponseParams struct {
 	// 投递任务是否生效
-	Effective *bool `json:"Effective,omitnil" name:"Effective"`
+	Effective *bool `json:"Effective,omitnil,omitempty" name:"Effective"`
 
 	// 是否投递日志的元数据信息
-	NeedContent *bool `json:"NeedContent,omitnil" name:"NeedContent"`
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
 
 	// 如果需要投递元数据信息，元数据信息的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *ConsumerContent `json:"Content,omitnil" name:"Content"`
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// CKafka的描述
-	Ckafka *Ckafka `json:"Ckafka,omitnil" name:"Ckafka"`
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConsumerResponse struct {
@@ -4898,26 +4898,26 @@ func (r *DescribeConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCosRechargesRequestParams struct {
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否启用:   0： 未启用  ， 1：启用
-	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type DescribeCosRechargesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否启用:   0： 未启用  ， 1：启用
-	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 func (r *DescribeCosRechargesRequest) ToJsonString() string {
@@ -4945,10 +4945,10 @@ func (r *DescribeCosRechargesRequest) FromJsonString(s string) error {
 type DescribeCosRechargesResponseParams struct {
 	// 见: CosRechargeInfo 结构描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CosRechargeInfo `json:"Data,omitnil" name:"Data"`
+	Data []*CosRechargeInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCosRechargesResponse struct {
@@ -4970,10 +4970,10 @@ func (r *DescribeCosRechargesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDashboardsRequestParams struct {
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <br><li>dashboardId
 	// 
@@ -5013,20 +5013,20 @@ type DescribeDashboardsRequestParams struct {
 	// 必选：否</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按照topicId和regionId过滤。
-	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitnil" name:"TopicIdRegionFilter"`
+	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitnil,omitempty" name:"TopicIdRegionFilter"`
 }
 
 type DescribeDashboardsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <br><li>dashboardId
 	// 
@@ -5066,10 +5066,10 @@ type DescribeDashboardsRequest struct {
 	// 必选：否</li>
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按照topicId和regionId过滤。
-	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitnil" name:"TopicIdRegionFilter"`
+	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitnil,omitempty" name:"TopicIdRegionFilter"`
 }
 
 func (r *DescribeDashboardsRequest) ToJsonString() string {
@@ -5097,13 +5097,13 @@ func (r *DescribeDashboardsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDashboardsResponseParams struct {
 	// 仪表盘的数量
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 仪表盘详细明细
-	DashboardInfos []*DashboardInfo `json:"DashboardInfos,omitnil" name:"DashboardInfos"`
+	DashboardInfos []*DashboardInfo `json:"DashboardInfos,omitnil,omitempty" name:"DashboardInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDashboardsResponse struct {
@@ -5146,19 +5146,19 @@ type DescribeDataTransformInfoRequestParams struct {
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 默认值为2.   1: 获取单个任务的详细信息 2：获取任务列表
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type为1， 此参数必填
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeDataTransformInfoRequest struct {
@@ -5186,19 +5186,19 @@ type DescribeDataTransformInfoRequest struct {
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 默认值为2.   1: 获取单个任务的详细信息 2：获取任务列表
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type为1， 此参数必填
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeDataTransformInfoRequest) ToJsonString() string {
@@ -5227,13 +5227,13 @@ func (r *DescribeDataTransformInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDataTransformInfoResponseParams struct {
 	// 数据加工任务列表信息
-	DataTransformTaskInfos []*DataTransformTaskInfo `json:"DataTransformTaskInfos,omitnil" name:"DataTransformTaskInfos"`
+	DataTransformTaskInfos []*DataTransformTaskInfo `json:"DataTransformTaskInfos,omitnil,omitempty" name:"DataTransformTaskInfos"`
 
 	// 任务总次数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDataTransformInfoResponse struct {
@@ -5255,26 +5255,26 @@ func (r *DescribeDataTransformInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportsRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeExportsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeExportsRequest) ToJsonString() string {
@@ -5301,13 +5301,13 @@ func (r *DescribeExportsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportsResponseParams struct {
 	// 日志导出列表
-	Exports []*ExportInfo `json:"Exports,omitnil" name:"Exports"`
+	Exports []*ExportInfo `json:"Exports,omitnil,omitempty" name:"Exports"`
 
 	// 总数目
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeExportsResponse struct {
@@ -5329,14 +5329,14 @@ func (r *DescribeExportsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIndexRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DescribeIndexRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DescribeIndexRequest) ToJsonString() string {
@@ -5361,33 +5361,33 @@ func (r *DescribeIndexRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIndexResponseParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 是否生效
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rule *RuleInfo `json:"Rule,omitnil" name:"Rule"`
+	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 索引修改时间，初始值为索引创建时间。
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 	// * false:不包含
 	// * true:包含
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil" name:"IncludeInternalFields"`
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetadataFlag *uint64 `json:"MetadataFlag,omitnil" name:"MetadataFlag"`
+	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeIndexResponse struct {
@@ -5409,14 +5409,14 @@ func (r *DescribeIndexResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaConsumerRequestParams struct {
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
 type DescribeKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
 func (r *DescribeKafkaConsumerRequest) ToJsonString() string {
@@ -5441,19 +5441,19 @@ func (r *DescribeKafkaConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaConsumerResponseParams struct {
 	// Kafka协议消费是否打开
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// KafkaConsumer 消费时使用的Topic参数
-	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
-	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil" name:"ConsumerContent"`
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKafkaConsumerResponse struct {
@@ -5475,26 +5475,26 @@ func (r *DescribeKafkaConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaRechargesRequestParams struct {
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 状态   status 1: 运行中, 2: 暂停...
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeKafkaRechargesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 状态   status 1: 运行中, 2: 暂停...
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *DescribeKafkaRechargesRequest) ToJsonString() string {
@@ -5521,13 +5521,13 @@ func (r *DescribeKafkaRechargesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaRechargesResponseParams struct {
 	// KafkaRechargeInfo 信息列表
-	Infos []*KafkaRechargeInfo `json:"Infos,omitnil" name:"Infos"`
+	Infos []*KafkaRechargeInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
 
 	// Kafka导入信息总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKafkaRechargesResponse struct {
@@ -5549,14 +5549,14 @@ func (r *DescribeKafkaRechargesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaUserRequestParams struct {
 	// kafka消费用户名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type DescribeKafkaUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// kafka消费用户名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 func (r *DescribeKafkaUserRequest) ToJsonString() string {
@@ -5581,10 +5581,10 @@ func (r *DescribeKafkaUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKafkaUserResponseParams struct {
 	// kafka消费用户名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKafkaUserResponse struct {
@@ -5606,44 +5606,44 @@ func (r *DescribeKafkaUserResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogContextRequestParams struct {
 	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志时间,  格式: YYYY-mm-dd HH:MM:SS.FFF
-	BTime *string `json:"BTime,omitnil" name:"BTime"`
+	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
 	// 日志包序号
-	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// 日志包内一条日志的序号
-	PkgLogId *int64 `json:"PkgLogId,omitnil" name:"PkgLogId"`
+	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 上文日志条数,  默认值10
-	PrevLogs *int64 `json:"PrevLogs,omitnil" name:"PrevLogs"`
+	PrevLogs *int64 `json:"PrevLogs,omitnil,omitempty" name:"PrevLogs"`
 
 	// 下文日志条数,  默认值10
-	NextLogs *int64 `json:"NextLogs,omitnil" name:"NextLogs"`
+	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
 }
 
 type DescribeLogContextRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志时间,  格式: YYYY-mm-dd HH:MM:SS.FFF
-	BTime *string `json:"BTime,omitnil" name:"BTime"`
+	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
 	// 日志包序号
-	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// 日志包内一条日志的序号
-	PkgLogId *int64 `json:"PkgLogId,omitnil" name:"PkgLogId"`
+	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 上文日志条数,  默认值10
-	PrevLogs *int64 `json:"PrevLogs,omitnil" name:"PrevLogs"`
+	PrevLogs *int64 `json:"PrevLogs,omitnil,omitempty" name:"PrevLogs"`
 
 	// 下文日志条数,  默认值10
-	NextLogs *int64 `json:"NextLogs,omitnil" name:"NextLogs"`
+	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
 }
 
 func (r *DescribeLogContextRequest) ToJsonString() string {
@@ -5673,16 +5673,16 @@ func (r *DescribeLogContextRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogContextResponseParams struct {
 	// 日志上下文信息集合
-	LogContextInfos []*LogContextInfo `json:"LogContextInfos,omitnil" name:"LogContextInfos"`
+	LogContextInfos []*LogContextInfo `json:"LogContextInfos,omitnil,omitempty" name:"LogContextInfos"`
 
 	// 上文日志是否已经返回
-	PrevOver *bool `json:"PrevOver,omitnil" name:"PrevOver"`
+	PrevOver *bool `json:"PrevOver,omitnil,omitempty" name:"PrevOver"`
 
 	// 下文日志是否已经返回
-	NextOver *bool `json:"NextOver,omitnil" name:"NextOver"`
+	NextOver *bool `json:"NextOver,omitnil,omitempty" name:"NextOver"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLogContextResponse struct {
@@ -5704,48 +5704,48 @@ func (r *DescribeLogContextResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogHistogramRequestParams struct {
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询语句
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
-	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type DescribeLogHistogramRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询语句
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
-	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 func (r *DescribeLogHistogramRequest) ToJsonString() string {
@@ -5775,16 +5775,16 @@ func (r *DescribeLogHistogramRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogHistogramResponseParams struct {
 	// 统计周期： 单位ms
-	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 命中关键字的日志总条数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 周期内统计结果详情
-	HistogramInfos []*HistogramInfo `json:"HistogramInfos,omitnil" name:"HistogramInfos"`
+	HistogramInfos []*HistogramInfo `json:"HistogramInfos,omitnil,omitempty" name:"HistogramInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLogHistogramResponse struct {
@@ -5826,13 +5826,13 @@ type DescribeLogsetsRequestParams struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeLogsetsRequest struct {
@@ -5859,13 +5859,13 @@ type DescribeLogsetsRequest struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeLogsetsRequest) ToJsonString() string {
@@ -5892,13 +5892,13 @@ func (r *DescribeLogsetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogsetsResponseParams struct {
 	// 分页的总数目
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 日志集列表
-	Logsets []*LogsetInfo `json:"Logsets,omitnil" name:"Logsets"`
+	Logsets []*LogsetInfo `json:"Logsets,omitnil,omitempty" name:"Logsets"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLogsetsResponse struct {
@@ -5920,14 +5920,14 @@ func (r *DescribeLogsetsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachineGroupConfigsRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeMachineGroupConfigsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DescribeMachineGroupConfigsRequest) ToJsonString() string {
@@ -5953,10 +5953,10 @@ func (r *DescribeMachineGroupConfigsRequest) FromJsonString(s string) error {
 type DescribeMachineGroupConfigsResponseParams struct {
 	// 采集规则配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Configs []*ConfigInfo `json:"Configs,omitnil" name:"Configs"`
+	Configs []*ConfigInfo `json:"Configs,omitnil,omitempty" name:"Configs"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMachineGroupConfigsResponse struct {
@@ -6003,13 +6003,13 @@ type DescribeMachineGroupsRequestParams struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeMachineGroupsRequest struct {
@@ -6041,13 +6041,13 @@ type DescribeMachineGroupsRequest struct {
 	// - 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeMachineGroupsRequest) ToJsonString() string {
@@ -6075,13 +6075,13 @@ func (r *DescribeMachineGroupsRequest) FromJsonString(s string) error {
 type DescribeMachineGroupsResponseParams struct {
 	// 机器组信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitnil" name:"MachineGroups"`
+	MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitnil,omitempty" name:"MachineGroups"`
 
 	// 分页的总数目
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMachineGroupsResponse struct {
@@ -6103,14 +6103,14 @@ func (r *DescribeMachineGroupsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachinesRequestParams struct {
 	// 查询的机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeMachinesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询的机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DescribeMachinesRequest) ToJsonString() string {
@@ -6135,25 +6135,25 @@ func (r *DescribeMachinesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachinesResponseParams struct {
 	// 机器状态信息组
-	Machines []*MachineInfo `json:"Machines,omitnil" name:"Machines"`
+	Machines []*MachineInfo `json:"Machines,omitnil,omitempty" name:"Machines"`
 
 	// 机器组是否开启自动升级功能
-	AutoUpdate *int64 `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *int64 `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 机器组自动升级功能预设开始时间
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 机器组自动升级功能预设结束时间
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 当前用户可用最新的Loglistener版本
-	LatestAgentVersion *string `json:"LatestAgentVersion,omitnil" name:"LatestAgentVersion"`
+	LatestAgentVersion *string `json:"LatestAgentVersion,omitnil,omitempty" name:"LatestAgentVersion"`
 
 	// 是否开启服务日志
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMachinesResponse struct {
@@ -6175,14 +6175,14 @@ func (r *DescribeMachinesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePartitionsRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DescribePartitionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 func (r *DescribePartitionsRequest) ToJsonString() string {
@@ -6207,10 +6207,10 @@ func (r *DescribePartitionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePartitionsResponseParams struct {
 	// 分区列表
-	Partitions []*PartitionInfo `json:"Partitions,omitnil" name:"Partitions"`
+	Partitions []*PartitionInfo `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePartitionsResponse struct {
@@ -6232,16 +6232,16 @@ func (r *DescribePartitionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScheduledSqlInfoRequestParams struct {
 	// 分页的偏移量，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 任务名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务id。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
@@ -6251,23 +6251,23 @@ type DescribeScheduledSqlInfoRequestParams struct {
 	// <li>status按照【任务状态】进行过滤，1:运行 2:停止。类型：String。必选：否</li>
 	// <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeScheduledSqlInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页的偏移量，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 任务名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务id。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
@@ -6277,7 +6277,7 @@ type DescribeScheduledSqlInfoRequest struct {
 	// <li>status按照【任务状态】进行过滤，1:运行 2:停止。类型：String。必选：否</li>
 	// <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeScheduledSqlInfoRequest) ToJsonString() string {
@@ -6306,13 +6306,13 @@ func (r *DescribeScheduledSqlInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScheduledSqlInfoResponseParams struct {
 	// ScheduledSQL任务列表信息
-	ScheduledSqlTaskInfos []*ScheduledSqlTaskInfo `json:"ScheduledSqlTaskInfos,omitnil" name:"ScheduledSqlTaskInfos"`
+	ScheduledSqlTaskInfos []*ScheduledSqlTaskInfo `json:"ScheduledSqlTaskInfos,omitnil,omitempty" name:"ScheduledSqlTaskInfos"`
 
 	// 任务总次数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeScheduledSqlInfoResponse struct {
@@ -6334,26 +6334,26 @@ func (r *DescribeScheduledSqlInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShipperTasksRequestParams struct {
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 查询的开始时间戳，支持最近3天的查询， 毫秒
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询的结束时间戳， 毫秒
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeShipperTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 查询的开始时间戳，支持最近3天的查询， 毫秒
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询的结束时间戳， 毫秒
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeShipperTasksRequest) ToJsonString() string {
@@ -6381,10 +6381,10 @@ func (r *DescribeShipperTasksRequest) FromJsonString(s string) error {
 type DescribeShipperTasksResponseParams struct {
 	// 投递任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tasks []*ShipperTaskInfo `json:"Tasks,omitnil" name:"Tasks"`
+	Tasks []*ShipperTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeShipperTasksResponse struct {
@@ -6410,13 +6410,13 @@ type DescribeShippersRequestParams struct {
 	// - topicId：按照【日志主题】进行过滤。类型：String。必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeShippersRequest struct {
@@ -6427,13 +6427,13 @@ type DescribeShippersRequest struct {
 	// - topicId：按照【日志主题】进行过滤。类型：String。必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页的限制数目，默认值为20，最大值100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeShippersRequest) ToJsonString() string {
@@ -6461,13 +6461,13 @@ func (r *DescribeShippersRequest) FromJsonString(s string) error {
 type DescribeShippersResponseParams struct {
 	// 投递规则列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Shippers []*ShipperInfo `json:"Shippers,omitnil" name:"Shippers"`
+	Shippers []*ShipperInfo `json:"Shippers,omitnil,omitempty" name:"Shippers"`
 
 	// 本次查询获取到的总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeShippersResponse struct {
@@ -6489,50 +6489,50 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicsRequestParams struct {
 	// <li> topicName按照【日志主题名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 控制Filters相关字段是否为精确匹配。
 	// - 0: 默认值，topicName和logsetName模糊匹配
 	// - 1: topicName精确匹配
 	// - 2: logsetName精确匹配
 	// - 3: topicName和logsetName都精确匹配
-	PreciseSearch *uint64 `json:"PreciseSearch,omitnil" name:"PreciseSearch"`
+	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
 	// - 0:日志主题，默认值
 	// - 1:指标主题
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
 type DescribeTopicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// <li> topicName按照【日志主题名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 控制Filters相关字段是否为精确匹配。
 	// - 0: 默认值，topicName和logsetName模糊匹配
 	// - 1: topicName精确匹配
 	// - 2: logsetName精确匹配
 	// - 3: topicName和logsetName都精确匹配
-	PreciseSearch *uint64 `json:"PreciseSearch,omitnil" name:"PreciseSearch"`
+	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
 	// - 0:日志主题，默认值
 	// - 1:指标主题
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
 func (r *DescribeTopicsRequest) ToJsonString() string {
@@ -6561,13 +6561,13 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicsResponseParams struct {
 	// 日志主题列表
-	Topics []*TopicInfo `json:"Topics,omitnil" name:"Topics"`
+	Topics []*TopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 总数目
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTopicsResponse struct {
@@ -6589,252 +6589,252 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 type DynamicIndex struct {
 	// 动态索引配置开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type EventLog struct {
 	// 事件通道，支持Application，Security，Setup，System，ALL
-	EventChannel *string `json:"EventChannel,omitnil" name:"EventChannel"`
+	EventChannel *string `json:"EventChannel,omitnil,omitempty" name:"EventChannel"`
 
 	// 时间类型，1:用户自定义，2:当前时间
-	TimeType *uint64 `json:"TimeType,omitnil" name:"TimeType"`
+	TimeType *uint64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
 	// 时间，用户选择自定义时间类型时，需要指定时间
-	Timestamp *uint64 `json:"Timestamp,omitnil" name:"Timestamp"`
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 事件ID过滤列表
-	EventIDs []*string `json:"EventIDs,omitnil" name:"EventIDs"`
+	EventIDs []*string `json:"EventIDs,omitnil,omitempty" name:"EventIDs"`
 }
 
 type ExcludePathInfo struct {
 	// 类型，选填File或Path
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type对应的具体内容
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ExportInfo struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志导出任务ID
-	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 
 	// 日志导出查询语句
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 日志导出文件名
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 日志文件大小
-	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 日志导出时间排序
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 日志导出格式
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 日志导出数量
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 日志导出起始时间
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 日志导出结束时间
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 日志导出路径
-	CosPath *string `json:"CosPath,omitnil" name:"CosPath"`
+	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
 
 	// 日志导出创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 语法规则。 默认值为0。
 	// 0：Lucene语法，1：CQL语法。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type ExtractRuleInfo struct {
 	// 时间字段的key名字，time_key和time_format必须成对出现
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeKey *string `json:"TimeKey,omitnil" name:"TimeKey"`
+	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
 
 	// 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeFormat *string `json:"TimeFormat,omitnil" name:"TimeFormat"`
+	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
 
 	// 分隔符类型日志的分隔符，只有log_type为delimiter_log时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Delimiter *string `json:"Delimiter,omitnil" name:"Delimiter"`
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 
 	// 整条日志匹配规则，只有log_type为fullregex_log时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogRegex *string `json:"LogRegex,omitnil" name:"LogRegex"`
+	LogRegex *string `json:"LogRegex,omitnil,omitempty" name:"LogRegex"`
 
 	// 行首匹配规则，只有log_type为multiline_log或fullregex_log时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BeginRegex *string `json:"BeginRegex,omitnil" name:"BeginRegex"`
+	BeginRegex *string `json:"BeginRegex,omitnil,omitempty" name:"BeginRegex"`
 
 	// 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keys []*string `json:"Keys,omitnil" name:"Keys"`
+	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
 	// 需要过滤日志的key，及其对应的regex
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterKeyRegex []*KeyRegexInfo `json:"FilterKeyRegex,omitnil" name:"FilterKeyRegex"`
+	FilterKeyRegex []*KeyRegexInfo `json:"FilterKeyRegex,omitnil,omitempty" name:"FilterKeyRegex"`
 
 	// 解析失败日志是否上传，true表示上传，false表示不上传
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnMatchUpLoadSwitch *bool `json:"UnMatchUpLoadSwitch,omitnil" name:"UnMatchUpLoadSwitch"`
+	UnMatchUpLoadSwitch *bool `json:"UnMatchUpLoadSwitch,omitnil,omitempty" name:"UnMatchUpLoadSwitch"`
 
 	// 失败日志的key
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil" name:"UnMatchLogKey"`
+	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
 	// 增量采集模式下的回溯数据量，默认-1（全量采集）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Backtracking *int64 `json:"Backtracking,omitnil" name:"Backtracking"`
+	Backtracking *int64 `json:"Backtracking,omitnil,omitempty" name:"Backtracking"`
 
 	// 是否为Gbk编码.   0: 否, 1: 是
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsGBK *int64 `json:"IsGBK,omitnil" name:"IsGBK"`
+	IsGBK *int64 `json:"IsGBK,omitnil,omitempty" name:"IsGBK"`
 
 	// 是否为标准json.   0: 否, 1: 是
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JsonStandard *int64 `json:"JsonStandard,omitnil" name:"JsonStandard"`
+	JsonStandard *int64 `json:"JsonStandard,omitnil,omitempty" name:"JsonStandard"`
 
 	// syslog传输协议，取值为tcp或者udp。
 	// 该字段适用于：创建采集规则配置、修改采集规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
 	// 该字段适用于：创建采集规则配置、修改采集规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 	// rfc5424：指定系统日志采集使用RFC5424协议解析日志。
 	// auto：自动匹配rfc3164或者rfc5424其中一种协议
 	// 该字段适用于：创建采集规则配置、修改采集规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ParseProtocol *string `json:"ParseProtocol,omitnil" name:"ParseProtocol"`
+	ParseProtocol *string `json:"ParseProtocol,omitnil,omitempty" name:"ParseProtocol"`
 
 	// 元数据类型，0: 不使用元数据信息，1:使用机器组元数据，2:使用用户自定义元数据，3:使用采集配置路径，
-	MetadataType *int64 `json:"MetadataType,omitnil" name:"MetadataType"`
+	MetadataType *int64 `json:"MetadataType,omitnil,omitempty" name:"MetadataType"`
 
 	// 采集配置路径正则表达式，MetadataType为3时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PathRegex *string `json:"PathRegex,omitnil" name:"PathRegex"`
+	PathRegex *string `json:"PathRegex,omitnil,omitempty" name:"PathRegex"`
 
 	// 用户自定义元数据信息，MetadataType为2时必填
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
 	// Windows事件日志采集
-	EventLogRules []*EventLog `json:"EventLogRules,omitnil" name:"EventLogRules"`
+	EventLogRules []*EventLog `json:"EventLogRules,omitnil,omitempty" name:"EventLogRules"`
 }
 
 type FilePathInfo struct {
 	// 文件路径
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 文件名称
-	File *string `json:"File,omitnil" name:"File"`
+	File *string `json:"File,omitnil,omitempty" name:"File"`
 }
 
 type Filter struct {
 	// 需要过滤的字段。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 需要过滤的值。
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type FilterRuleInfo struct {
 	// 过滤规则Key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 过滤规则
-	Regex *string `json:"Regex,omitnil" name:"Regex"`
+	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
 
 	// 过滤规则Value
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type FullTextInfo struct {
 	// 是否大小写敏感
-	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 全文索引的分词符，其中的每个字符代表一个分词符；
 	// 仅支持英文符号、\n\t\r及转义符\；
 	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
-	Tokenizer *string `json:"Tokenizer,omitnil" name:"Tokenizer"`
+	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
 
 	// 是否包含中文
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainZH *bool `json:"ContainZH,omitnil" name:"ContainZH"`
+	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
 }
 
 // Predefined struct for user
 type GetAlarmLogRequestParams struct {
 	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询过滤条件，例如：
 	// - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
 	// - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
 	// - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
 	// - 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 单次查询返回的执行详情条数，最大值为1000
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	Sort *string `json:"Sort,omitnil" name:"Sort"`
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 如果Query包含SQL语句，UseNewAnalysis为true时响应参数AnalysisRecords和Columns有效， UseNewAnalysis为false时响应参数AnalysisResults和ColNames有效
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 type GetAlarmLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询过滤条件，例如：
 	// - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
 	// - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
 	// - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
 	// - 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 单次查询返回的执行详情条数，最大值为1000
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	Sort *string `json:"Sort,omitnil" name:"Sort"`
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 如果Query包含SQL语句，UseNewAnalysis为true时响应参数AnalysisRecords和Columns有效， UseNewAnalysis为false时响应参数AnalysisResults和ColNames有效
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 func (r *GetAlarmLogRequest) ToJsonString() string {
@@ -6865,41 +6865,41 @@ func (r *GetAlarmLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAlarmLogResponseParams struct {
 	// 加载后续详情的Context
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 指定时间范围内的告警执行详情是否完整返回
-	ListOver *bool `json:"ListOver,omitnil" name:"ListOver"`
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
 	// 返回的结果是否为SQL分析结果
-	Analysis *bool `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；
 	// 否则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ColNames []*string `json:"ColNames,omitnil" name:"ColNames"`
+	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
 	// 执行详情查询结果。
 	// 
 	// 当Query字段无SQL语句时，返回查询结果。
 	// 当Query字段有SQL语句时，可能返回null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*LogInfo `json:"Results,omitnil" name:"Results"`
+	Results []*LogInfo `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 执行详情统计分析结果。当Query字段有SQL语句时，返回sql统计结果，否则可能返回null。
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil" name:"AnalysisResults"`
+	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
 
 	// 执行详情统计分析结果; UseNewAnalysis为true有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnalysisRecords []*string `json:"AnalysisRecords,omitnil" name:"AnalysisRecords"`
+	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
 
 	// 分析结果的列名， UseNewAnalysis为true有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Columns []*Column `json:"Columns,omitnil" name:"Columns"`
+	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetAlarmLogResponse struct {
@@ -6920,167 +6920,167 @@ func (r *GetAlarmLogResponse) FromJsonString(s string) error {
 
 type GroupTriggerConditionInfo struct {
 	// 分组触发字段名称
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 分组触发字段值
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type HighLightItem struct {
 	// 高亮的日志Key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 高亮的语法
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type HistogramInfo struct {
 	// 统计周期内的日志条数
-	Count *int64 `json:"Count,omitnil" name:"Count"`
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 按 period 取整后的 unix timestamp： 单位毫秒
-	BTime *int64 `json:"BTime,omitnil" name:"BTime"`
+	BTime *int64 `json:"BTime,omitnil,omitempty" name:"BTime"`
 }
 
 type HostFileInfo struct {
 	// 日志文件夹
-	LogPath *string `json:"LogPath,omitnil" name:"LogPath"`
+	LogPath *string `json:"LogPath,omitnil,omitempty" name:"LogPath"`
 
 	// 日志文件名
-	FilePattern *string `json:"FilePattern,omitnil" name:"FilePattern"`
+	FilePattern *string `json:"FilePattern,omitnil,omitempty" name:"FilePattern"`
 
 	// metadata信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomLabels []*string `json:"CustomLabels,omitnil" name:"CustomLabels"`
+	CustomLabels []*string `json:"CustomLabels,omitnil,omitempty" name:"CustomLabels"`
 }
 
 type JsonInfo struct {
 	// 启用标志
-	EnableTag *bool `json:"EnableTag,omitnil" name:"EnableTag"`
+	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
 
 	// 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetaFields []*string `json:"MetaFields,omitnil" name:"MetaFields"`
+	MetaFields []*string `json:"MetaFields,omitnil,omitempty" name:"MetaFields"`
 
 	// 投递Json格式，0：字符串方式投递；1:以结构化方式投递
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JsonType *int64 `json:"JsonType,omitnil" name:"JsonType"`
+	JsonType *int64 `json:"JsonType,omitnil,omitempty" name:"JsonType"`
 }
 
 type KafkaConsumerContent struct {
 	// 消费格式 0:全文；1:json
-	Format *int64 `json:"Format,omitnil" name:"Format"`
+	Format *int64 `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 是否投递 TAG 信息
 	// Format为0时，此字段不需要赋值
-	EnableTag *bool `json:"EnableTag,omitnil" name:"EnableTag"`
+	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
 
 	// 元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
 	// 、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
 	// Format为0时，此字段不需要赋值
-	MetaFields []*string `json:"MetaFields,omitnil" name:"MetaFields"`
+	MetaFields []*string `json:"MetaFields,omitnil,omitempty" name:"MetaFields"`
 
 	// tag数据处理方式：
 	// 1:不平铺（默认值）
 	// 2:平铺
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagTransaction *int64 `json:"TagTransaction,omitnil" name:"TagTransaction"`
+	TagTransaction *int64 `json:"TagTransaction,omitnil,omitempty" name:"TagTransaction"`
 
 	// 消费数据Json格式：
 	// 1：不转义（默认格式）
 	// 2：转义
-	JsonType *int64 `json:"JsonType,omitnil" name:"JsonType"`
+	JsonType *int64 `json:"JsonType,omitnil,omitempty" name:"JsonType"`
 }
 
 type KafkaProtocolInfo struct {
 	// 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
 	// 入参必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
 	// 当Protocol为sasl_plaintext或sasl_ssl时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Mechanism *string `json:"Mechanism,omitnil" name:"Mechanism"`
+	Mechanism *string `json:"Mechanism,omitnil,omitempty" name:"Mechanism"`
 
 	// 用户名。
 	// 当Protocol为sasl_plaintext或sasl_ssl时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 用户密码。
 	// 当Protocol为sasl_plaintext或sasl_ssl时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Password *string `json:"Password,omitnil" name:"Password"`
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type KafkaRechargeInfo struct {
 	// 主键ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Kafka导入任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议，IsEncryptionAddr参数为true时必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 用户Kafka消费组名称	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 状态   status 1: 运行中, 2: 暂停 ...
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 导入数据位置，-2:最早（默认），-1：最晚
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 日志导入规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 type KeyRegexInfo struct {
 	// 需要过滤日志的key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// key对应的过滤规则regex
-	Regex *string `json:"Regex,omitnil" name:"Regex"`
+	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
 }
 
 type KeyValueInfo struct {
@@ -7091,274 +7091,274 @@ type KeyValueInfo struct {
 	// 2，键值索引（KeyValue）及元字段索引（Tag）中的Key总数不能超过300
 	// 3，Key的层级不能超过10层，例如a.b.c.d.e.f.g.h.j.k
 	// 4，不允许同时包含json父子级字段，例如a及a.b
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 字段的索引描述信息
-	Value *ValueInfo `json:"Value,omitnil" name:"Value"`
+	Value *ValueInfo `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type LogContextInfo struct {
 	// 日志来源设备
-	Source *string `json:"Source,omitnil" name:"Source"`
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 采集路径
-	Filename *string `json:"Filename,omitnil" name:"Filename"`
+	Filename *string `json:"Filename,omitnil,omitempty" name:"Filename"`
 
 	// 日志内容
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 日志包序号
-	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// 日志包内一条日志的序号
-	PkgLogId *int64 `json:"PkgLogId,omitnil" name:"PkgLogId"`
+	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 日志时间戳
-	BTime *int64 `json:"BTime,omitnil" name:"BTime"`
+	BTime *int64 `json:"BTime,omitnil,omitempty" name:"BTime"`
 
 	// 日志来源主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostName *string `json:"HostName,omitnil" name:"HostName"`
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 原始日志(仅在日志创建索引异常时有值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RawLog *string `json:"RawLog,omitnil" name:"RawLog"`
+	RawLog *string `json:"RawLog,omitnil,omitempty" name:"RawLog"`
 
 	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexStatus *string `json:"IndexStatus,omitnil" name:"IndexStatus"`
+	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
 
 	// 日志内容的高亮描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HighLights []*HighLightItem `json:"HighLights,omitnil" name:"HighLights"`
+	HighLights []*HighLightItem `json:"HighLights,omitnil,omitempty" name:"HighLights"`
 }
 
 type LogInfo struct {
 	// 日志时间，单位ms
-	Time *int64 `json:"Time,omitnil" name:"Time"`
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志来源IP
-	Source *string `json:"Source,omitnil" name:"Source"`
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 日志文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 日志上报请求包的ID
-	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// 请求包内日志的ID
-	PkgLogId *string `json:"PkgLogId,omitnil" name:"PkgLogId"`
+	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 日志内容的Json序列化字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogJson *string `json:"LogJson,omitnil" name:"LogJson"`
+	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
 
 	// 日志来源主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostName *string `json:"HostName,omitnil" name:"HostName"`
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 原始日志(仅在日志创建索引异常时有值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RawLog *string `json:"RawLog,omitnil" name:"RawLog"`
+	RawLog *string `json:"RawLog,omitnil,omitempty" name:"RawLog"`
 
 	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexStatus *string `json:"IndexStatus,omitnil" name:"IndexStatus"`
+	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
 }
 
 type LogItem struct {
 	// 日志Key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 日志Value
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type LogItems struct {
 	// 分析结果返回的KV数据对
-	Data []*LogItem `json:"Data,omitnil" name:"Data"`
+	Data []*LogItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type LogRechargeRuleInfo struct {
 	// 导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则
-	RechargeType *string `json:"RechargeType,omitnil" name:"RechargeType"`
+	RechargeType *string `json:"RechargeType,omitnil,omitempty" name:"RechargeType"`
 
 	// 解析编码格式，0: UTF-8（默认值），1: GBK
-	EncodingFormat *uint64 `json:"EncodingFormat,omitnil" name:"EncodingFormat"`
+	EncodingFormat *uint64 `json:"EncodingFormat,omitnil,omitempty" name:"EncodingFormat"`
 
 	// 使用默认时间，true：开启（默认值）， flase：关闭
-	DefaultTimeSwitch *bool `json:"DefaultTimeSwitch,omitnil" name:"DefaultTimeSwitch"`
+	DefaultTimeSwitch *bool `json:"DefaultTimeSwitch,omitnil,omitempty" name:"DefaultTimeSwitch"`
 
 	// 整条日志匹配规则，只有RechargeType为fullregex_log时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogRegex *string `json:"LogRegex,omitnil" name:"LogRegex"`
+	LogRegex *string `json:"LogRegex,omitnil,omitempty" name:"LogRegex"`
 
 	// 解析失败日志是否上传，true表示上传，false表示不上传
-	UnMatchLogSwitch *bool `json:"UnMatchLogSwitch,omitnil" name:"UnMatchLogSwitch"`
+	UnMatchLogSwitch *bool `json:"UnMatchLogSwitch,omitnil,omitempty" name:"UnMatchLogSwitch"`
 
 	// 解析失败日志的键名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil" name:"UnMatchLogKey"`
+	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
 	// 解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnMatchLogTimeSrc *uint64 `json:"UnMatchLogTimeSrc,omitnil" name:"UnMatchLogTimeSrc"`
+	UnMatchLogTimeSrc *uint64 `json:"UnMatchLogTimeSrc,omitnil,omitempty" name:"UnMatchLogTimeSrc"`
 
 	// 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultTimeSrc *uint64 `json:"DefaultTimeSrc,omitnil" name:"DefaultTimeSrc"`
+	DefaultTimeSrc *uint64 `json:"DefaultTimeSrc,omitnil,omitempty" name:"DefaultTimeSrc"`
 
 	// 时间字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeKey *string `json:"TimeKey,omitnil" name:"TimeKey"`
+	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
 
 	// 时间提取正则表达式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeRegex *string `json:"TimeRegex,omitnil" name:"TimeRegex"`
+	TimeRegex *string `json:"TimeRegex,omitnil,omitempty" name:"TimeRegex"`
 
 	// 时间字段格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeFormat *string `json:"TimeFormat,omitnil" name:"TimeFormat"`
+	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
 
 	// 时间字段时区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeZone *string `json:"TimeZone,omitnil" name:"TimeZone"`
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
 	// 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Metadata []*string `json:"Metadata,omitnil" name:"Metadata"`
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
 	// 日志Key列表，RechargeType为full_regex_log时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keys []*string `json:"Keys,omitnil" name:"Keys"`
+	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 }
 
 type LogsetInfo struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集名称
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssumerName *string `json:"AssumerName,omitnil" name:"AssumerName"`
+	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
 	// 日志集绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 日志集下日志主题的数目
-	TopicCount *int64 `json:"TopicCount,omitnil" name:"TopicCount"`
+	TopicCount *int64 `json:"TopicCount,omitnil,omitempty" name:"TopicCount"`
 
 	// 若AssumerName非空，则表示创建该日志集的服务方角色
-	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 }
 
 type MachineGroupInfo struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组名称
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 机器组类型
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 机器组绑定的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoUpdate *string `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *string `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组元数据信息列表
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
 	// 操作系统类型，0: Linux，1: windows
-	OSType *uint64 `json:"OSType,omitnil" name:"OSType"`
+	OSType *uint64 `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
 type MachineGroupTypeInfo struct {
 	// 机器组类型，ip表示该机器组Values中存的是采集机器的IP地址，label表示该机器组Values中存储的是机器的标签
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 机器描述列表
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type MachineInfo struct {
 	// 机器的IP
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 机器实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 机器状态，0:异常，1:正常
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 机器离线时间，空为正常，异常返回具体时间
-	OfflineTime *string `json:"OfflineTime,omitnil" name:"OfflineTime"`
+	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// 机器是否开启自动升级。0:关闭，1:开启
-	AutoUpdate *int64 `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *int64 `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 机器当前版本号。
-	Version *string `json:"Version,omitnil" name:"Version"`
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 机器升级功能状态。
-	UpdateStatus *int64 `json:"UpdateStatus,omitnil" name:"UpdateStatus"`
+	UpdateStatus *int64 `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
 
 	// 机器升级结果标识。
-	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 机器升级结果信息。
-	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 // Predefined struct for user
 type MergePartitionRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 合并的PartitionId
-	PartitionId *int64 `json:"PartitionId,omitnil" name:"PartitionId"`
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 }
 
 type MergePartitionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 合并的PartitionId
-	PartitionId *int64 `json:"PartitionId,omitnil" name:"PartitionId"`
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 }
 
 func (r *MergePartitionRequest) ToJsonString() string {
@@ -7384,10 +7384,10 @@ func (r *MergePartitionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type MergePartitionResponseParams struct {
 	// 合并结果集
-	Partitions []*PartitionInfo `json:"Partitions,omitnil" name:"Partitions"`
+	Partitions []*PartitionInfo `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type MergePartitionResponse struct {
@@ -7408,41 +7408,41 @@ func (r *MergePartitionResponse) FromJsonString(s string) error {
 
 type MetaTagInfo struct {
 	// 元数据key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 元数据value
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type MetricLabel struct {
 	// 指标名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 指标内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
 	// 通知渠道组ID。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 通知渠道组名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
 	// <li> Trigger - 告警触发</li>
 	// <li> Recovery - 告警恢复</li>
 	// <li> All - 告警触发和告警恢复</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
 	// 
@@ -7450,29 +7450,29 @@ type ModifyAlarmNoticeRequestParams struct {
 	// 
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// - 传其中一组数据，则另一组数据置空。
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
 
 type ModifyAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 通知渠道组ID。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 通知渠道组名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
 	// <li> Trigger - 告警触发</li>
 	// <li> Recovery - 告警恢复</li>
 	// <li> All - 告警触发和告警恢复</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
 	// 
@@ -7480,7 +7480,7 @@ type ModifyAlarmNoticeRequest struct {
 	// 
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// - 传其中一组数据，则另一组数据置空。
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil" name:"NoticeRules"`
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -7510,7 +7510,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmNoticeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAlarmNoticeResponse struct {
@@ -7532,19 +7532,19 @@ func (r *ModifyAlarmNoticeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmRequestParams struct {
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 告警策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控任务运行时间点。
-	MonitorTime *MonitorTime `json:"MonitorTime,omitnil" name:"MonitorTime"`
+	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
 	// 触发条件。
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别。
 	// 
@@ -7552,78 +7552,78 @@ type ModifyAlarmRequestParams struct {
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 多触发条件。 
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil" name:"AlarmTargets"`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
 	// 是否开启告警策略。
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
-	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
+	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 用户自定义回调
-	CallBack *CallBackInfo `json:"CallBack,omitnil" name:"CallBack"`
+	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析
-	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分组触发状态。true：开启，false：关闭（默认）
-	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
-	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
 	// Classifications元素个数不能超过20个。
 	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
-	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
+	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 }
 
 type ModifyAlarmRequest struct {
 	*tchttp.BaseRequest
 	
 	// 告警策略ID。
-	AlarmId *string `json:"AlarmId,omitnil" name:"AlarmId"`
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 告警策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控任务运行时间点。
-	MonitorTime *MonitorTime `json:"MonitorTime,omitnil" name:"MonitorTime"`
+	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
 	// 触发条件。
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别。
 	// 
@@ -7631,59 +7631,59 @@ type ModifyAlarmRequest struct {
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 多触发条件。 
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil" name:"MultiConditions"`
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
-	TriggerCount *int64 `json:"TriggerCount,omitnil" name:"TriggerCount"`
+	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
-	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil" name:"AlarmPeriod"`
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil" name:"AlarmNoticeIds"`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil" name:"AlarmTargets"`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
 	// 是否开启告警策略。
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
-	MessageTemplate *string `json:"MessageTemplate,omitnil" name:"MessageTemplate"`
+	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 用户自定义回调
-	CallBack *CallBackInfo `json:"CallBack,omitnil" name:"CallBack"`
+	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析
-	Analysis []*AnalysisDimensional `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 分组触发状态。true：开启，false：关闭（默认）
-	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil" name:"GroupTriggerStatus"`
+	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
-	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil" name:"GroupTriggerCondition"`
+	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil" name:"MonitorObjectType"`
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警附加分类信息列表。
 	// Classifications元素个数不能超过20个。
 	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
 	// Classifications元素的Value长度不能超过200个字符。
-	Classifications []*AlarmClassification `json:"Classifications,omitnil" name:"Classifications"`
+	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 }
 
 func (r *ModifyAlarmRequest) ToJsonString() string {
@@ -7727,7 +7727,7 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAlarmResponse struct {
@@ -7749,56 +7749,56 @@ func (r *ModifyAlarmResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmShieldRequestParams struct {
 	// 屏蔽规则ID。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 屏蔽开始时间（秒级时间戳）。
-	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 屏蔽结束时间（秒级时间戳）。
-	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 屏蔽原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
 	// 屏蔽规则ID。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 通知渠道组id。
-	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil" name:"AlarmNoticeId"`
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 屏蔽开始时间（秒级时间戳）。
-	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 屏蔽结束时间（秒级时间戳）。
-	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 屏蔽原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ModifyAlarmShieldRequest) ToJsonString() string {
@@ -7830,7 +7830,7 @@ func (r *ModifyAlarmShieldRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmShieldResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAlarmShieldResponse struct {
@@ -7852,124 +7852,124 @@ func (r *ModifyAlarmShieldResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConfigExtraRequestParams struct {
 	// 采集配置扩展信息id
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 节点文件配置信息
-	HostFile *HostFileInfo `json:"HostFile,omitnil" name:"HostFile"`
+	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
-	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil" name:"ContainerFile"`
+	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
-	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil" name:"ContainerStdout"`
+	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 日志格式化方式
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 类型：container_stdout、container_file、host_file
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
-	ConfigFlag *string `json:"ConfigFlag,omitnil" name:"ConfigFlag"`
+	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题name
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConfigExtraRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置扩展信息id
-	ConfigExtraId *string `json:"ConfigExtraId,omitnil" name:"ConfigExtraId"`
+	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 节点文件配置信息
-	HostFile *HostFileInfo `json:"HostFile,omitnil" name:"HostFile"`
+	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
-	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil" name:"ContainerFile"`
+	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
-	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil" name:"ContainerStdout"`
+	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 日志格式化方式
-	LogFormat *string `json:"LogFormat,omitnil" name:"LogFormat"`
+	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 用户自定义采集规则，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 类型：container_stdout、container_file、host_file
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
-	ConfigFlag *string `json:"ConfigFlag,omitnil" name:"ConfigFlag"`
+	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题name
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *ModifyConfigExtraRequest) ToJsonString() string {
@@ -8011,7 +8011,7 @@ func (r *ModifyConfigExtraRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConfigExtraResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyConfigExtraResponse struct {
@@ -8033,70 +8033,70 @@ func (r *ModifyConfigExtraResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConfigRequestParams struct {
 	// 采集规则配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志采集路径，包含文件名
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 采集配置关联的日志主题（TopicId）
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 用户自定义解析字符串，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集规则配置ID
-	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志采集路径，包含文件名
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	LogType *string `json:"LogType,omitnil" name:"LogType"`
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil" name:"ExtractRule"`
+	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
-	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil" name:"ExcludePaths"`
+	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
 	// 采集配置关联的日志主题（TopicId）
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 用户自定义解析字符串，Json格式序列化的字符串
-	UserDefineRule *string `json:"UserDefineRule,omitnil" name:"UserDefineRule"`
+	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	AdvancedConfig *string `json:"AdvancedConfig,omitnil" name:"AdvancedConfig"`
+	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *ModifyConfigRequest) ToJsonString() string {
@@ -8129,7 +8129,7 @@ func (r *ModifyConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyConfigResponse struct {
@@ -8151,44 +8151,44 @@ func (r *ModifyConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConsumerRequestParams struct {
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递任务是否生效，默认不生效
-	Effective *bool `json:"Effective,omitnil" name:"Effective"`
+	Effective *bool `json:"Effective,omitnil,omitempty" name:"Effective"`
 
 	// 是否投递日志的元数据信息，默认为 false
-	NeedContent *bool `json:"NeedContent,omitnil" name:"NeedContent"`
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
 
 	// 如果需要投递元数据信息，元数据信息的描述
-	Content *ConsumerContent `json:"Content,omitnil" name:"Content"`
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// CKafka的描述
-	Ckafka *Ckafka `json:"Ckafka,omitnil" name:"Ckafka"`
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
 type ModifyConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递任务绑定的日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递任务是否生效，默认不生效
-	Effective *bool `json:"Effective,omitnil" name:"Effective"`
+	Effective *bool `json:"Effective,omitnil,omitempty" name:"Effective"`
 
 	// 是否投递日志的元数据信息，默认为 false
-	NeedContent *bool `json:"NeedContent,omitnil" name:"NeedContent"`
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
 
 	// 如果需要投递元数据信息，元数据信息的描述
-	Content *ConsumerContent `json:"Content,omitnil" name:"Content"`
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// CKafka的描述
-	Ckafka *Ckafka `json:"Ckafka,omitnil" name:"Ckafka"`
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
 func (r *ModifyConsumerRequest) ToJsonString() string {
@@ -8218,7 +8218,7 @@ func (r *ModifyConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConsumerResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyConsumerResponse struct {
@@ -8240,32 +8240,32 @@ func (r *ModifyConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCosRechargeRequestParams struct {
 	// COS导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// COS导入任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否启用:   0： 未启用  ， 1：启用
-	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type ModifyCosRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// COS导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// COS导入任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否启用:   0： 未启用  ， 1：启用
-	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 func (r *ModifyCosRechargeRequest) ToJsonString() string {
@@ -8293,7 +8293,7 @@ func (r *ModifyCosRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCosRechargeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyCosRechargeResponse struct {
@@ -8315,44 +8315,44 @@ func (r *ModifyCosRechargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDataTransformRequestParams struct {
 	// 加工任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 加工任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 任务启动状态. 默认为1，开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 加工任务目的topic_id以及别名
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 是否开启投递服务日志。1关闭，2开启
-	HasServicesLog *uint64 `json:"HasServicesLog,omitnil" name:"HasServicesLog"`
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 type ModifyDataTransformRequest struct {
 	*tchttp.BaseRequest
 	
 	// 加工任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 加工任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句
-	EtlContent *string `json:"EtlContent,omitnil" name:"EtlContent"`
+	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 任务启动状态. 默认为1，开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 加工任务目的topic_id以及别名
-	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil" name:"DstResources"`
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 是否开启投递服务日志。1关闭，2开启
-	HasServicesLog *uint64 `json:"HasServicesLog,omitnil" name:"HasServicesLog"`
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 func (r *ModifyDataTransformRequest) ToJsonString() string {
@@ -8382,7 +8382,7 @@ func (r *ModifyDataTransformRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDataTransformResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyDataTransformResponse struct {
@@ -8404,48 +8404,48 @@ func (r *ModifyDataTransformResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyIndexRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 默认不生效
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引规则
-	Rule *RuleInfo `json:"Rule,omitnil" name:"Rule"`
+	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
 	// * false:不包含
 	// * true:包含
-	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil" name:"IncludeInternalFields"`
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
-	MetadataFlag *uint64 `json:"MetadataFlag,omitnil" name:"MetadataFlag"`
+	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 }
 
 type ModifyIndexRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 默认不生效
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引规则
-	Rule *RuleInfo `json:"Rule,omitnil" name:"Rule"`
+	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
 	// * false:不包含
 	// * true:包含
-	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil" name:"IncludeInternalFields"`
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
-	MetadataFlag *uint64 `json:"MetadataFlag,omitnil" name:"MetadataFlag"`
+	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 }
 
 func (r *ModifyIndexRequest) ToJsonString() string {
@@ -8474,7 +8474,7 @@ func (r *ModifyIndexRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyIndexResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyIndexResponse struct {
@@ -8496,26 +8496,26 @@ func (r *ModifyIndexResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyKafkaConsumerRequestParams struct {
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
-	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil" name:"ConsumerContent"`
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
 }
 
 type ModifyKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
-	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil" name:"ConsumerContent"`
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
 }
 
 func (r *ModifyKafkaConsumerRequest) ToJsonString() string {
@@ -8542,7 +8542,7 @@ func (r *ModifyKafkaConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyKafkaConsumerResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyKafkaConsumerResponse struct {
@@ -8564,80 +8564,80 @@ func (r *ModifyKafkaConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyKafkaRechargeRequestParams struct {
 	// Kafka导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Kafka导入配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议，IsEncryptionAddr参数为true时必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 用户Kafka消费组名称
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
 	// 导入控制，1：暂停，2：继续
-	StatusControl *uint64 `json:"StatusControl,omitnil" name:"StatusControl"`
+	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 }
 
 type ModifyKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// Kafka导入配置ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 导入CLS目标topic ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// Kafka导入配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议，IsEncryptionAddr参数为true时必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 用户Kafka消费组名称
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
 	// 导入控制，1：暂停，2：继续
-	StatusControl *uint64 `json:"StatusControl,omitnil" name:"StatusControl"`
+	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 }
 
 func (r *ModifyKafkaRechargeRequest) ToJsonString() string {
@@ -8673,7 +8673,7 @@ func (r *ModifyKafkaRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyKafkaRechargeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyKafkaRechargeResponse struct {
@@ -8695,26 +8695,26 @@ func (r *ModifyKafkaRechargeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLogsetRequestParams struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集名称
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyLogsetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集名称
-	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyLogsetRequest) ToJsonString() string {
@@ -8741,7 +8741,7 @@ func (r *ModifyLogsetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLogsetResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLogsetResponse struct {
@@ -8763,62 +8763,62 @@ func (r *ModifyLogsetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMachineGroupRequestParams struct {
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组名称
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 机器组类型
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
-	AutoUpdate *bool `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组元数据信息列表
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 }
 
 type ModifyMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器组ID
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组名称
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 机器组类型
-	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil" name:"MachineGroupType"`
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
-	AutoUpdate *bool `json:"AutoUpdate,omitnil" name:"AutoUpdate"`
+	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
-	UpdateStartTime *string `json:"UpdateStartTime,omitnil" name:"UpdateStartTime"`
+	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
-	UpdateEndTime *string `json:"UpdateEndTime,omitnil" name:"UpdateEndTime"`
+	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-	ServiceLogging *bool `json:"ServiceLogging,omitnil" name:"ServiceLogging"`
+	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组元数据信息列表
-	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil" name:"MetaTags"`
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 }
 
 func (r *ModifyMachineGroupRequest) ToJsonString() string {
@@ -8851,7 +8851,7 @@ func (r *ModifyMachineGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMachineGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyMachineGroupResponse struct {
@@ -8873,74 +8873,74 @@ func (r *ModifyMachineGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyScheduledSqlRequestParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 任务启动状态.   1开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析的目标日志主题
-	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil" name:"DstResource"`
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
 	// 查询语句
-	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil" name:"ScheduledSqlContent"`
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
 	// 调度周期(分钟)
-	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil" name:"ProcessPeriod"`
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
 	// 单次查询的时间窗口. 例子中为近15分钟
-	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil" name:"ProcessTimeWindow"`
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
 	// 执行延迟(秒)
-	ProcessDelay *int64 `json:"ProcessDelay,omitnil" name:"ProcessDelay"`
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
 	// 源topicId的地域信息
-	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil" name:"SrcTopicRegion"`
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type ModifyScheduledSqlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 源日志主题
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 任务启动状态.   1开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析的目标日志主题
-	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil" name:"DstResource"`
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
 	// 查询语句
-	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil" name:"ScheduledSqlContent"`
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
 	// 调度周期(分钟)
-	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil" name:"ProcessPeriod"`
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
 	// 单次查询的时间窗口. 例子中为近15分钟
-	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil" name:"ProcessTimeWindow"`
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
 	// 执行延迟(秒)
-	ProcessDelay *int64 `json:"ProcessDelay,omitnil" name:"ProcessDelay"`
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
 	// 源topicId的地域信息
-	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil" name:"SrcTopicRegion"`
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 func (r *ModifyScheduledSqlRequest) ToJsonString() string {
@@ -8975,7 +8975,7 @@ func (r *ModifyScheduledSqlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyScheduledSqlResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyScheduledSqlResponse struct {
@@ -8997,86 +8997,86 @@ func (r *ModifyScheduledSqlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyShipperRequestParams struct {
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 投递规则投递的新的bucket
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 投递规则投递的新的目录前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的开关状态
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 投递规则的名字
-	ShipperName *string `json:"ShipperName,omitnil" name:"ShipperName"`
+	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
 	// 投递的时间间隔，单位 秒，默认300，范围 300-900
-	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
-	MaxSize *uint64 `json:"MaxSize,omitnil" name:"MaxSize"`
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
-	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil" name:"FilterRules"`
+	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
 	// 投递日志的分区规则，支持strftime的时间格式表示
-	Partition *string `json:"Partition,omitnil" name:"Partition"`
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 投递日志的压缩配置
-	Compress *CompressInfo `json:"Compress,omitnil" name:"Compress"`
+	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 投递日志的内容格式配置
-	Content *ContentInfo `json:"Content,omitnil" name:"Content"`
+	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
 	// cos桶类型
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type ModifyShipperRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 投递规则投递的新的bucket
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 投递规则投递的新的目录前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的开关状态
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 投递规则的名字
-	ShipperName *string `json:"ShipperName,omitnil" name:"ShipperName"`
+	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
 	// 投递的时间间隔，单位 秒，默认300，范围 300-900
-	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
-	MaxSize *uint64 `json:"MaxSize,omitnil" name:"MaxSize"`
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
-	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil" name:"FilterRules"`
+	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
 	// 投递日志的分区规则，支持strftime的时间格式表示
-	Partition *string `json:"Partition,omitnil" name:"Partition"`
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 投递日志的压缩配置
-	Compress *CompressInfo `json:"Compress,omitnil" name:"Compress"`
+	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 投递日志的内容格式配置
-	Content *ContentInfo `json:"Content,omitnil" name:"Content"`
+	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
 	// cos桶类型
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *ModifyShipperRequest) ToJsonString() string {
@@ -9113,7 +9113,7 @@ func (r *ModifyShipperRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyShipperResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyShipperResponse struct {
@@ -9135,70 +9135,70 @@ func (r *ModifyShipperResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该日志主题是否开始采集
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否开启自动分裂
-	AutoSplit *bool `json:"AutoSplit,omitnil" name:"AutoSplit"`
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 若开启最大分裂，该主题能够能够允许的最大分区数
-	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题描述
-	Describes *string `json:"Describes,omitnil" name:"Describes"`
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
 	// 0：关闭日志沉降。
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
-	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关； false: 关闭 true: 开启
-	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
 
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该日志主题是否开始采集
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否开启自动分裂
-	AutoSplit *bool `json:"AutoSplit,omitnil" name:"AutoSplit"`
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 若开启最大分裂，该主题能够能够允许的最大分区数
-	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题描述
-	Describes *string `json:"Describes,omitnil" name:"Describes"`
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
 	// 0：关闭日志沉降。
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
-	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关； false: 关闭 true: 开启
-	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -9232,7 +9232,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTopicResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyTopicResponse struct {
@@ -9255,29 +9255,29 @@ type MonitorTime struct {
 	// 可选值：
 	// <br><li> Period - 周期执行
 	// <br><li> Fixed - 定期执行
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
-	Time *int64 `json:"Time,omitnil" name:"Time"`
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 type MultiCondition struct {
 	// 触发条件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Condition *string `json:"Condition,omitnil" name:"Condition"`
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
 	// <li> 不填则默认为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmLevel *uint64 `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 }
 
 type MultiTopicSearchInformation struct {
 	// 要检索分析的日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
 type NoticeReceiver struct {
@@ -9285,65 +9285,65 @@ type NoticeReceiver struct {
 	// <br><li> Uin - 用户ID
 	// <br><li> Group - 用户组ID
 	// 暂不支持其余接收者类型。
-	ReceiverType *string `json:"ReceiverType,omitnil" name:"ReceiverType"`
+	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
 	// 接收者。
-	ReceiverIds []*int64 `json:"ReceiverIds,omitnil" name:"ReceiverIds"`
+	ReceiverIds []*int64 `json:"ReceiverIds,omitnil,omitempty" name:"ReceiverIds"`
 
 	// 通知接收渠道。
 	// <br><li> Email - 邮件
 	// <br><li> Sms - 短信
 	// <br><li> WeChat - 微信
 	// <br><li> Phone - 电话
-	ReceiverChannels []*string `json:"ReceiverChannels,omitnil" name:"ReceiverChannels"`
+	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
 	// 允许接收信息的开始时间。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 允许接收信息的结束时间。
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 位序
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 type NoticeRule struct {
 	// 告警通知模板接收者信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil" name:"NoticeReceivers"`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 告警通知模板回调信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil" name:"WebCallbacks"`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 匹配规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 }
 
 // Predefined struct for user
 type OpenKafkaConsumerRequestParams struct {
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
-	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil" name:"ConsumerContent"`
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
 }
 
 type OpenKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	FromTopicId *string `json:"FromTopicId,omitnil" name:"FromTopicId"`
+	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	Compression *int64 `json:"Compression,omitnil" name:"Compression"`
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
-	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil" name:"ConsumerContent"`
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
 }
 
 func (r *OpenKafkaConsumerRequest) ToJsonString() string {
@@ -9370,10 +9370,10 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenKafkaConsumerResponseParams struct {
 	// KafkaConsumer 消费时使用的Topic参数
-	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type OpenKafkaConsumerResponse struct {
@@ -9394,115 +9394,115 @@ func (r *OpenKafkaConsumerResponse) FromJsonString(s string) error {
 
 type ParquetInfo struct {
 	// ParquetKeyInfo数组
-	ParquetKeyInfo []*ParquetKeyInfo `json:"ParquetKeyInfo,omitnil" name:"ParquetKeyInfo"`
+	ParquetKeyInfo []*ParquetKeyInfo `json:"ParquetKeyInfo,omitnil,omitempty" name:"ParquetKeyInfo"`
 }
 
 type ParquetKeyInfo struct {
 	// 键值名称
-	KeyName *string `json:"KeyName,omitnil" name:"KeyName"`
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
 
 	// 数据类型，目前支持6种类型：string、boolean、int32、int64、float、double
-	KeyType *string `json:"KeyType,omitnil" name:"KeyType"`
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
 
 	// 解析失败赋值信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyNonExistingField *string `json:"KeyNonExistingField,omitnil" name:"KeyNonExistingField"`
+	KeyNonExistingField *string `json:"KeyNonExistingField,omitnil,omitempty" name:"KeyNonExistingField"`
 }
 
 type PartitionInfo struct {
 	// 分区ID
-	PartitionId *int64 `json:"PartitionId,omitnil" name:"PartitionId"`
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 
 	// 分区的状态（readwrite或者是readonly）
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 分区哈希键起始key
-	InclusiveBeginKey *string `json:"InclusiveBeginKey,omitnil" name:"InclusiveBeginKey"`
+	InclusiveBeginKey *string `json:"InclusiveBeginKey,omitnil,omitempty" name:"InclusiveBeginKey"`
 
 	// 分区哈希键结束key
-	ExclusiveEndKey *string `json:"ExclusiveEndKey,omitnil" name:"ExclusiveEndKey"`
+	ExclusiveEndKey *string `json:"ExclusiveEndKey,omitnil,omitempty" name:"ExclusiveEndKey"`
 
 	// 分区创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 只读分区数据停止写入时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastWriteTime *string `json:"LastWriteTime,omitnil" name:"LastWriteTime"`
+	LastWriteTime *string `json:"LastWriteTime,omitnil,omitempty" name:"LastWriteTime"`
 }
 
 // Predefined struct for user
 type PreviewKafkaRechargeRequestParams struct {
 	// 预览类型，1:源数据预览，2:导出结果预览
-	PreviewType *uint64 `json:"PreviewType,omitnil" name:"PreviewType"`
+	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 导入数据位置，-2:最早（默认），-1：最晚
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时KafkaInstance必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
 	// KafkaType为1时ServerAddr必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接。。
 	// KafkaType为1时有效。
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 type PreviewKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预览类型，1:源数据预览，2:导出结果预览
-	PreviewType *uint64 `json:"PreviewType,omitnil" name:"PreviewType"`
+	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
 	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-	KafkaType *uint64 `json:"KafkaType,omitnil" name:"KafkaType"`
+	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
-	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil" name:"UserKafkaTopics"`
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
 	// 导入数据位置，-2:最早（默认），-1：最晚
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时KafkaInstance必填
-	KafkaInstance *string `json:"KafkaInstance,omitnil" name:"KafkaInstance"`
+	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
 	// KafkaType为1时ServerAddr必填
-	ServerAddr *string `json:"ServerAddr,omitnil" name:"ServerAddr"`
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接。。
 	// KafkaType为1时有效。
-	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil" name:"IsEncryptionAddr"`
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
-	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil" name:"LogRechargeRule"`
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 func (r *PreviewKafkaRechargeRequest) ToJsonString() string {
@@ -9536,14 +9536,14 @@ func (r *PreviewKafkaRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PreviewKafkaRechargeResponseParams struct {
 	// 日志样例，PreviewType为2时返回
-	LogSample *string `json:"LogSample,omitnil" name:"LogSample"`
+	LogSample *string `json:"LogSample,omitnil,omitempty" name:"LogSample"`
 
 	// 日志预览结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogData *string `json:"LogData,omitnil" name:"LogData"`
+	LogData *string `json:"LogData,omitnil,omitempty" name:"LogData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PreviewKafkaRechargeResponse struct {
@@ -9564,48 +9564,48 @@ func (r *PreviewKafkaRechargeResponse) FromJsonString(s string) error {
 
 type PreviewLogStatistic struct {
 	// 日志内容
-	LogContent *string `json:"LogContent,omitnil" name:"LogContent"`
+	LogContent *string `json:"LogContent,omitnil,omitempty" name:"LogContent"`
 
 	// 行号
-	LineNum *int64 `json:"LineNum,omitnil" name:"LineNum"`
+	LineNum *int64 `json:"LineNum,omitnil,omitempty" name:"LineNum"`
 
 	// 目标日志主题
-	DstTopicId *string `json:"DstTopicId,omitnil" name:"DstTopicId"`
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
 
 	// 失败错误码， 空字符串""表示正常
-	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 日志时间戳
-	Time *string `json:"Time,omitnil" name:"Time"`
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 目标topic-name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DstTopicName *string `json:"DstTopicName,omitnil" name:"DstTopicName"`
+	DstTopicName *string `json:"DstTopicName,omitnil,omitempty" name:"DstTopicName"`
 }
 
 // Predefined struct for user
 type QueryMetricRequestParams struct {
 	// 查询语句，使用PromQL语法	
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 指标主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询时间，秒级Unix时间戳	
-	Time *uint64 `json:"Time,omitnil" name:"Time"`
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 type QueryMetricRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询语句，使用PromQL语法	
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 指标主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询时间，秒级Unix时间戳	
-	Time *uint64 `json:"Time,omitnil" name:"Time"`
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 func (r *QueryMetricRequest) ToJsonString() string {
@@ -9632,13 +9632,13 @@ func (r *QueryMetricRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryMetricResponseParams struct {
 	// 指标查询结果类型
-	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
+	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
 	// 指标查询结果
-	Result *string `json:"Result,omitnil" name:"Result"`
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryMetricResponse struct {
@@ -9660,38 +9660,38 @@ func (r *QueryMetricResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryRangeMetricRequestParams struct {
 	// 指标主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询语句，使用PromQL语法
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 查询起始时间，秒级Unix时间戳
-	Start *uint64 `json:"Start,omitnil" name:"Start"`
+	Start *uint64 `json:"Start,omitnil,omitempty" name:"Start"`
 
 	// 查询结束时间，秒级Unix时间戳
-	End *uint64 `json:"End,omitnil" name:"End"`
+	End *uint64 `json:"End,omitnil,omitempty" name:"End"`
 
 	// 查询时间间隔，单位秒
-	Step *uint64 `json:"Step,omitnil" name:"Step"`
+	Step *uint64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
 type QueryRangeMetricRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指标主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询语句，使用PromQL语法
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 查询起始时间，秒级Unix时间戳
-	Start *uint64 `json:"Start,omitnil" name:"Start"`
+	Start *uint64 `json:"Start,omitnil,omitempty" name:"Start"`
 
 	// 查询结束时间，秒级Unix时间戳
-	End *uint64 `json:"End,omitnil" name:"End"`
+	End *uint64 `json:"End,omitnil,omitempty" name:"End"`
 
 	// 查询时间间隔，单位秒
-	Step *uint64 `json:"Step,omitnil" name:"Step"`
+	Step *uint64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
 func (r *QueryRangeMetricRequest) ToJsonString() string {
@@ -9720,13 +9720,13 @@ func (r *QueryRangeMetricRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryRangeMetricResponseParams struct {
 	// 指标查询结果类型
-	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
+	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
 	// 指标查询结果
-	Result *string `json:"Result,omitnil" name:"Result"`
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type QueryRangeMetricResponse struct {
@@ -9748,20 +9748,20 @@ func (r *QueryRangeMetricResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RetryShipperTaskRequestParams struct {
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 投递任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type RetryShipperTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 投递任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *RetryShipperTaskRequest) ToJsonString() string {
@@ -9787,7 +9787,7 @@ func (r *RetryShipperTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RetryShipperTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RetryShipperTaskResponse struct {
@@ -9809,176 +9809,176 @@ func (r *RetryShipperTaskResponse) FromJsonString(s string) error {
 type RuleInfo struct {
 	// 全文索引配置, 如果为空时代表未开启全文索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FullText *FullTextInfo `json:"FullText,omitnil" name:"FullText"`
+	FullText *FullTextInfo `json:"FullText,omitnil,omitempty" name:"FullText"`
 
 	// 键值索引配置，如果为空时代表未开启键值索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyValue *RuleKeyValueInfo `json:"KeyValue,omitnil" name:"KeyValue"`
+	KeyValue *RuleKeyValueInfo `json:"KeyValue,omitnil,omitempty" name:"KeyValue"`
 
 	// 元字段索引配置，如果为空时代表未开启元字段索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag *RuleTagInfo `json:"Tag,omitnil" name:"Tag"`
+	Tag *RuleTagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 动态索引配置，为空时代表未开启动态索引。
 	// 启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DynamicIndex *DynamicIndex `json:"DynamicIndex,omitnil" name:"DynamicIndex"`
+	DynamicIndex *DynamicIndex `json:"DynamicIndex,omitnil,omitempty" name:"DynamicIndex"`
 }
 
 type RuleKeyValueInfo struct {
 	// 是否大小写敏感
-	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 需要建立索引的键值对信息
-	KeyValues []*KeyValueInfo `json:"KeyValues,omitnil" name:"KeyValues"`
+	KeyValues []*KeyValueInfo `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
 }
 
 type RuleTagInfo struct {
 	// 是否大小写敏感
-	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 元字段索引配置中的字段信息
-	KeyValues []*KeyValueInfo `json:"KeyValues,omitnil" name:"KeyValues"`
+	KeyValues []*KeyValueInfo `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
 }
 
 type ScheduledSqlResouceInfo struct {
 	// 目标主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 主题的地域信息
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 主题类型：0为日志主题，1为指标主题
-	BizType *int64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *int64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 指标名称。当BizType为1时，MetricName需要填写
-	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 指标名称
 	// BizType为1时，优先使用MetricNames字段多指标只能填充到MetricNames字段，单指标建议填充到MetricName字段
-	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
+	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 指标维度，不接受时间类型。
-	MetricLabels []*string `json:"MetricLabels,omitnil" name:"MetricLabels"`
+	MetricLabels []*string `json:"MetricLabels,omitnil,omitempty" name:"MetricLabels"`
 
 	// 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间、TimeStamp，精度毫秒）为指标时间戳。
-	CustomTime *string `json:"CustomTime,omitnil" name:"CustomTime"`
+	CustomTime *string `json:"CustomTime,omitnil,omitempty" name:"CustomTime"`
 
 	// 除了MetricLabels，您还可以使用该参数，为指标补充静态的维度。
 	// 维度名以字母或下划线开头，后面可以跟字母、数字或下划线，长度小于等于1024 字节
-	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil" name:"CustomMetricLabels"`
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
 }
 
 type ScheduledSqlTaskInfo struct {
 	// ScheduledSql任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// ScheduledSql任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 源日志主题id
-	SrcTopicId *string `json:"SrcTopicId,omitnil" name:"SrcTopicId"`
+	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 源日志主题名称
-	SrcTopicName *string `json:"SrcTopicName,omitnil" name:"SrcTopicName"`
+	SrcTopicName *string `json:"SrcTopicName,omitnil,omitempty" name:"SrcTopicName"`
 
 	// 定时SQL分析目标主题
-	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil" name:"DstResource"`
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
 	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 任务更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
 	// 
 	// 5: 访问权限问题 6:内部故障 7:其他故障
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务启用状态，1开启,  2关闭
-	EnableFlag *int64 `json:"EnableFlag,omitnil" name:"EnableFlag"`
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 查询语句
-	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil" name:"ScheduledSqlContent"`
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
 	// 调度开始时间
-	ProcessStartTime *string `json:"ProcessStartTime,omitnil" name:"ProcessStartTime"`
+	ProcessStartTime *string `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
 	// 调度类型，1:持续运行 2:指定时间范围
-	ProcessType *int64 `json:"ProcessType,omitnil" name:"ProcessType"`
+	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
 	// 调度结束时间，当process_type=2时为必传字段
-	ProcessEndTime *string `json:"ProcessEndTime,omitnil" name:"ProcessEndTime"`
+	ProcessEndTime *string `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
 	// 调度周期(分钟)
-	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil" name:"ProcessPeriod"`
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
 	// 查询的时间窗口. @m-15m, @m，意为近15分钟
-	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil" name:"ProcessTimeWindow"`
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
 	// 执行延迟(秒)
-	ProcessDelay *int64 `json:"ProcessDelay,omitnil" name:"ProcessDelay"`
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
 	// 源topicId的地域信息
-	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil" name:"SrcTopicRegion"`
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 语法规则，0：Lucene语法，1：CQL语法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 // Predefined struct for user
 type SearchCosRechargeInfoRequestParams struct {
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 投递任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 存储桶。
 	// 存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 存储桶所在地域。
 	// 地域和访问域名：https://cloud.tencent.com/document/product/436/6224
-	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// cos文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
-	Compress *string `json:"Compress,omitnil" name:"Compress"`
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 }
 
 type SearchCosRechargeInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题 ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 投递任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 存储桶。
 	// 存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 存储桶所在地域。
 	// 地域和访问域名：https://cloud.tencent.com/document/product/436/6224
-	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// cos文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
-	Compress *string `json:"Compress,omitnil" name:"Compress"`
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 }
 
 func (r *SearchCosRechargeInfoRequest) ToJsonString() string {
@@ -10010,24 +10010,24 @@ func (r *SearchCosRechargeInfoRequest) FromJsonString(s string) error {
 type SearchCosRechargeInfoResponseParams struct {
 	// 匹配到的存储桶下的某个文件的前几行数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*string `json:"Data,omitnil" name:"Data"`
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 匹配到的存储桶下的文件个数
-	Sum *uint64 `json:"Sum,omitnil" name:"Sum"`
+	Sum *uint64 `json:"Sum,omitnil,omitempty" name:"Sum"`
 
 	// 当前预览文件路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 预览获取数据失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitnil" name:"Msg"`
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 状态
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchCosRechargeInfoResponse struct {
@@ -10049,146 +10049,146 @@ func (r *SearchCosRechargeInfoResponse) FromJsonString(s string) error {
 type SearchLogErrors struct {
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil" name:"ErrorCodeStr"`
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
 }
 
 type SearchLogInfos struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志存储生命周期
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
 	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 检索分析语句，最大长度为12KB
 	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
 	// 使用*或空字符串可查询所有日志
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
 	// * 透传该参数时，请勿修改除该参数外的其它参数
 	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
 	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
-	Sort *string `json:"Sort,omitnil" name:"Sort"`
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 
 	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
 	// 0：自动采样;
 	// 0～1：按指定采样率采样，例如0.02;
 	// 1：不采样，即精确分析
 	// 默认值为1
-	SamplingRate *float64 `json:"SamplingRate,omitnil" name:"SamplingRate"`
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
 	// - 要检索分析的日志主题列表，最大支持20个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
 	// - 不能同时使用TopicId和Topics。
-	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil" name:"Topics"`
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 }
 
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
-	From *int64 `json:"From,omitnil" name:"From"`
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
 	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
-	To *int64 `json:"To,omitnil" name:"To"`
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 检索分析语句，最大长度为12KB
 	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
 	// 使用*或空字符串可查询所有日志
-	Query *string `json:"Query,omitnil" name:"Query"`
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
 	// * 透传该参数时，请勿修改除该参数外的其它参数
 	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
 	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
-	Sort *string `json:"Sort,omitnil" name:"Sort"`
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 
 	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
 	// 0：自动采样;
 	// 0～1：按指定采样率采样，例如0.02;
 	// 1：不采样，即精确分析
 	// 默认值为1
-	SamplingRate *float64 `json:"SamplingRate,omitnil" name:"SamplingRate"`
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
 	// - 要检索分析的日志主题列表，最大支持20个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
 	// - 不能同时使用TopicId和Topics。
-	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil" name:"Topics"`
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -10225,49 +10225,49 @@ type SearchLogResponseParams struct {
 	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
 	// 注意：
 	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
 	// 注意：仅当检索分析语句(Query)不包含SQL时有效
-	ListOver *bool `json:"ListOver,omitnil" name:"ListOver"`
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
 	// 返回的是否为统计分析（即SQL）结果
-	Analysis *bool `json:"Analysis,omitnil" name:"Analysis"`
+	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
 	// 匹配检索条件的原始日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*LogInfo `json:"Results,omitnil" name:"Results"`
+	Results []*LogInfo `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 日志统计分析结果的列名
 	// 当UseNewAnalysis为false时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ColNames []*string `json:"ColNames,omitnil" name:"ColNames"`
+	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
 	// 日志统计分析结果
 	// 当UseNewAnalysis为false时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil" name:"AnalysisResults"`
+	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
 
 	// 日志统计分析结果
 	// 当UseNewAnalysis为true时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnalysisRecords []*string `json:"AnalysisRecords,omitnil" name:"AnalysisRecords"`
+	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
 
 	// 日志统计分析结果的列属性
 	// 当UseNewAnalysis为true时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Columns []*Column `json:"Columns,omitnil" name:"Columns"`
+	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
 	// 本次统计分析使用的采样率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SamplingRate *float64 `json:"SamplingRate,omitnil" name:"SamplingRate"`
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
 	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Topics *SearchLogTopics `json:"Topics,omitnil" name:"Topics"`
+	Topics *SearchLogTopics `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchLogResponse struct {
@@ -10289,75 +10289,75 @@ func (r *SearchLogResponse) FromJsonString(s string) error {
 type SearchLogTopics struct {
 	// 多日志主题检索对应的错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Errors []*SearchLogErrors `json:"Errors,omitnil" name:"Errors"`
+	Errors []*SearchLogErrors `json:"Errors,omitnil,omitempty" name:"Errors"`
 
 	// 多日志主题检索各日志主题信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Infos []*SearchLogInfos `json:"Infos,omitnil" name:"Infos"`
+	Infos []*SearchLogInfos `json:"Infos,omitnil,omitempty" name:"Infos"`
 }
 
 type ShipperInfo struct {
 	// 投递规则ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递的bucket地址
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 投递的前缀目录
-	Prefix *string `json:"Prefix,omitnil" name:"Prefix"`
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的名字
-	ShipperName *string `json:"ShipperName,omitnil" name:"ShipperName"`
+	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
 	// 投递的时间间隔，单位 秒
-	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 投递的文件的最大值，单位 MB
-	MaxSize *uint64 `json:"MaxSize,omitnil" name:"MaxSize"`
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 是否生效
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 投递日志的过滤规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil" name:"FilterRules"`
+	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
 	// 投递日志的分区规则，支持strftime的时间格式表示
-	Partition *string `json:"Partition,omitnil" name:"Partition"`
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 投递日志的压缩配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Compress *CompressInfo `json:"Compress,omitnil" name:"Compress"`
+	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
 	// 投递日志的内容格式配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *ContentInfo `json:"Content,omitnil" name:"Content"`
+	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 投递日志的创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilenameMode *uint64 `json:"FilenameMode,omitnil" name:"FilenameMode"`
+	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
 	// 投递数据范围的开始时间点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 投递数据范围的结束时间点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Progress *float64 `json:"Progress,omitnil" name:"Progress"`
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RemainTime *int64 `json:"RemainTime,omitnil" name:"RemainTime"`
+	RemainTime *int64 `json:"RemainTime,omitnil,omitempty" name:"RemainTime"`
 
 	// 历史任务状态：
 	// 0：实时任务
@@ -10366,71 +10366,71 @@ type ShipperInfo struct {
 	// 3：任务运行异常
 	// 4：任务运行结束
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HistoryStatus *int64 `json:"HistoryStatus,omitnil" name:"HistoryStatus"`
+	HistoryStatus *int64 `json:"HistoryStatus,omitnil,omitempty" name:"HistoryStatus"`
 
 	// cos桶类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type ShipperTaskInfo struct {
 	// 投递任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 投递信息ID
-	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
+	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 本批投递的日志的开始时间戳，毫秒
-	RangeStart *int64 `json:"RangeStart,omitnil" name:"RangeStart"`
+	RangeStart *int64 `json:"RangeStart,omitnil,omitempty" name:"RangeStart"`
 
 	// 本批投递的日志的结束时间戳， 毫秒
-	RangeEnd *int64 `json:"RangeEnd,omitnil" name:"RangeEnd"`
+	RangeEnd *int64 `json:"RangeEnd,omitnil,omitempty" name:"RangeEnd"`
 
 	// 本次投递任务的开始时间戳， 毫秒
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 本次投递任务的结束时间戳， 毫秒
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 本次投递的结果，"success","running","failed"
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 结果的详细信息
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 // Predefined struct for user
 type SplitPartitionRequestParams struct {
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 待分裂分区ID
-	PartitionId *int64 `json:"PartitionId,omitnil" name:"PartitionId"`
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 
 	// 分区切分的哈希key的位置，只在Number=2时有意义
-	SplitKey *string `json:"SplitKey,omitnil" name:"SplitKey"`
+	SplitKey *string `json:"SplitKey,omitnil,omitempty" name:"SplitKey"`
 
 	// 分区分裂个数(可选)，默认等于2
-	Number *int64 `json:"Number,omitnil" name:"Number"`
+	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
 type SplitPartitionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 待分裂分区ID
-	PartitionId *int64 `json:"PartitionId,omitnil" name:"PartitionId"`
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 
 	// 分区切分的哈希key的位置，只在Number=2时有意义
-	SplitKey *string `json:"SplitKey,omitnil" name:"SplitKey"`
+	SplitKey *string `json:"SplitKey,omitnil,omitempty" name:"SplitKey"`
 
 	// 分区分裂个数(可选)，默认等于2
-	Number *int64 `json:"Number,omitnil" name:"Number"`
+	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
 func (r *SplitPartitionRequest) ToJsonString() string {
@@ -10458,10 +10458,10 @@ func (r *SplitPartitionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SplitPartitionResponseParams struct {
 	// 分裂结果集
-	Partitions []*PartitionInfo `json:"Partitions,omitnil" name:"Partitions"`
+	Partitions []*PartitionInfo `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SplitPartitionResponse struct {
@@ -10483,117 +10483,117 @@ func (r *SplitPartitionResponse) FromJsonString(s string) error {
 type Tag struct {
 	// 标签键
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type TopicIdAndRegion struct {
 	// 日志主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题id 所在的地域id
 	// 地域ID - 访问链接查看详情：https://iwiki.woa.com/pages/viewpage.action?pageId=780556968#id-地域码表-一.region大区（标准地域）
-	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type TopicInfo struct {
 	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 主题ID
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 主题名称
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 主题分区个数
-	PartitionCount *int64 `json:"PartitionCount,omitnil" name:"PartitionCount"`
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 主题是否开启索引（主题类型需为日志主题）
-	Index *bool `json:"Index,omitnil" name:"Index"`
+	Index *bool `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssumerName *string `json:"AssumerName,omitnil" name:"AssumerName"`
+	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主题是否开启采集
-	Status *bool `json:"Status,omitnil" name:"Status"`
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 主题绑定的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该主题是否开启自动分裂
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoSplit *bool `json:"AutoSplit,omitnil" name:"AutoSplit"`
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 若开启自动分裂的话，该主题能够允许的最大分区数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil" name:"MaxSplitPartitions"`
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 主题的存储类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Period *int64 `json:"Period,omitnil" name:"Period"`
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubAssumerName *string `json:"SubAssumerName,omitnil" name:"SubAssumerName"`
+	SubAssumerName *string `json:"SubAssumerName,omitnil,omitempty" name:"SubAssumerName"`
 
 	// 主题描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Describes *string `json:"Describes,omitnil" name:"Describes"`
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
 	// 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
 	// 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 主题类型。
 	// - 0: 日志主题 
 	// - 1: 指标主题
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 免鉴权开关。
 	// - false: 关闭
 	// - true: 开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
 
 // Predefined struct for user
 type UploadLogRequestParams struct {
 	// 主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 根据 hashkey 写入相应范围的主题分区
-	HashKey *string `json:"HashKey,omitnil" name:"HashKey"`
+	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
 	// 压缩方法
-	CompressType *string `json:"CompressType,omitnil" name:"CompressType"`
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type UploadLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 主题id
-	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 根据 hashkey 写入相应范围的主题分区
-	HashKey *string `json:"HashKey,omitnil" name:"HashKey"`
+	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
 	// 压缩方法
-	CompressType *string `json:"CompressType,omitnil" name:"CompressType"`
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 func (r *UploadLogRequest) ToJsonString() string {
@@ -10620,7 +10620,7 @@ func (r *UploadLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadLogResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadLogResponse struct {
@@ -10641,48 +10641,48 @@ func (r *UploadLogResponse) FromJsonString(s string) error {
 
 type ValueInfo struct {
 	// 字段类型，目前支持的类型有：long、text、double
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 字段的分词符，其中的每个字符代表一个分词符；
 	// 仅支持英文符号、\n\t\r及转义符\；
 	// long及double类型字段需为空；
 	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
-	Tokenizer *string `json:"Tokenizer,omitnil" name:"Tokenizer"`
+	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
 
 	// 字段是否开启分析功能
-	SqlFlag *bool `json:"SqlFlag,omitnil" name:"SqlFlag"`
+	SqlFlag *bool `json:"SqlFlag,omitnil,omitempty" name:"SqlFlag"`
 
 	// 是否包含中文，long及double类型字段需为false
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainZH *bool `json:"ContainZH,omitnil" name:"ContainZH"`
+	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
 }
 
 type WebCallback struct {
 	// 回调地址。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 回调的类型。可选值：
 	// <li> WeCom
 	// <li> Http
-	CallbackType *string `json:"CallbackType,omitnil" name:"CallbackType"`
+	CallbackType *string `json:"CallbackType,omitnil,omitempty" name:"CallbackType"`
 
 	// 回调方法。可选值：
 	// <li> POST
 	// <li> PUT
 	// 默认值为POST。CallbackType为Http时为必选。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitnil" name:"Method"`
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 请求头。
 	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求头。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Headers []*string `json:"Headers,omitnil" name:"Headers"`
+	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 请求内容。
 	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Body *string `json:"Body,omitnil" name:"Body"`
+	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// 序号
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }

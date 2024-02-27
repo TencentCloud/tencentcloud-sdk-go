@@ -22,129 +22,129 @@ import (
 
 type ApiGatewayInstanceDetail struct {
 	// 实例ID
-	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 实例名称
-	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 使用协议
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type ApiGatewayInstanceList struct {
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// apigateway实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下apigateway实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 // Predefined struct for user
 type ApplyCertificateRequestParams struct {
 	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
-	DvAuthMethod *string `json:"DvAuthMethod,omitnil" name:"DvAuthMethod"`
+	DvAuthMethod *string `json:"DvAuthMethod,omitnil,omitempty" name:"DvAuthMethod"`
 
 	// 域名。
-	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
-	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 邮箱。
-	ContactEmail *string `json:"ContactEmail,omitnil" name:"ContactEmail"`
+	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 手机。
-	ContactPhone *string `json:"ContactPhone,omitnil" name:"ContactPhone"`
+	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
 	// 有效期，默认12个月，目前仅支持12个月。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 加密算法，支持 RSA及ECC。
-	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil" name:"CsrEncryptAlgo"`
+	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
 	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
-	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil" name:"CsrKeyParameter"`
+	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。
-	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil" name:"CsrKeyPassword"`
+	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil,omitempty" name:"CsrKeyPassword"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 原证书 ID，用于重新申请。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 权益包ID，用于免费证书扩容包使用
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
-	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil" name:"DeleteDnsAutoRecord"`
+	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
 	// 域名数组（多域名证书可以上传）。	
-	DnsNames []*string `json:"DnsNames,omitnil" name:"DnsNames"`
+	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 }
 
 type ApplyCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
-	DvAuthMethod *string `json:"DvAuthMethod,omitnil" name:"DvAuthMethod"`
+	DvAuthMethod *string `json:"DvAuthMethod,omitnil,omitempty" name:"DvAuthMethod"`
 
 	// 域名。
-	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
-	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 邮箱。
-	ContactEmail *string `json:"ContactEmail,omitnil" name:"ContactEmail"`
+	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 手机。
-	ContactPhone *string `json:"ContactPhone,omitnil" name:"ContactPhone"`
+	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
 	// 有效期，默认12个月，目前仅支持12个月。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 加密算法，支持 RSA及ECC。
-	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil" name:"CsrEncryptAlgo"`
+	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
 	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
-	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil" name:"CsrKeyParameter"`
+	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。
-	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil" name:"CsrKeyPassword"`
+	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil,omitempty" name:"CsrKeyPassword"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 原证书 ID，用于重新申请。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 权益包ID，用于免费证书扩容包使用
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
-	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil" name:"DeleteDnsAutoRecord"`
+	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
 	// 域名数组（多域名证书可以上传）。	
-	DnsNames []*string `json:"DnsNames,omitnil" name:"DnsNames"`
+	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 }
 
 func (r *ApplyCertificateRequest) ToJsonString() string {
@@ -183,10 +183,10 @@ func (r *ApplyCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyCertificateResponseParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ApplyCertificateResponse struct {
@@ -208,31 +208,31 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 type BindResourceRegionResult struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 关联资源总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type BindResourceResult struct {
 	// 资源类型：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 绑定资源地域结果
-	BindResourceRegionResult []*BindResourceRegionResult `json:"BindResourceRegionResult,omitnil" name:"BindResourceRegionResult"`
+	BindResourceRegionResult []*BindResourceRegionResult `json:"BindResourceRegionResult,omitnil,omitempty" name:"BindResourceRegionResult"`
 }
 
 // Predefined struct for user
 type CancelAuditCertificateRequestParams struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type CancelAuditCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *CancelAuditCertificateRequest) ToJsonString() string {
@@ -257,10 +257,10 @@ func (r *CancelAuditCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelAuditCertificateResponseParams struct {
 	// 操作是否成功
-	Result *bool `json:"Result,omitnil" name:"Result"`
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CancelAuditCertificateResponse struct {
@@ -282,14 +282,14 @@ func (r *CancelAuditCertificateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelCertificateOrderRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type CancelCertificateOrderRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *CancelCertificateOrderRequest) ToJsonString() string {
@@ -314,10 +314,10 @@ func (r *CancelCertificateOrderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelCertificateOrderResponseParams struct {
 	// 取消订单成功的证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CancelCertificateOrderResponse struct {
@@ -338,307 +338,307 @@ func (r *CancelCertificateOrderResponse) FromJsonString(s string) error {
 
 type CdnInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 已部署证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 域名状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 域名计费状态
-	HttpsBillingSwitch *string `json:"HttpsBillingSwitch,omitnil" name:"HttpsBillingSwitch"`
+	HttpsBillingSwitch *string `json:"HttpsBillingSwitch,omitnil,omitempty" name:"HttpsBillingSwitch"`
 }
 
 type CdnInstanceList struct {
 	// 该地域下CDN域名总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// cdn域名详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 }
 
 type CertTaskId struct {
 	// 证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 异步任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type Certificate struct {
 	// 证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 证书绑定的域名
-	DnsNames []*string `json:"DnsNames,omitnil" name:"DnsNames"`
+	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 
 	// 根证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertCaId *string `json:"CertCaId,omitnil" name:"CertCaId"`
+	CertCaId *string `json:"CertCaId,omitnil,omitempty" name:"CertCaId"`
 
 	// 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SSLMode *string `json:"SSLMode,omitnil" name:"SSLMode"`
+	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
 }
 
 type CertificateExtra struct {
 	// 证书可配置域名数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainNumber *string `json:"DomainNumber,omitnil" name:"DomainNumber"`
+	DomainNumber *string `json:"DomainNumber,omitnil,omitempty" name:"DomainNumber"`
 
 	// 原始证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginCertificateId *string `json:"OriginCertificateId,omitnil" name:"OriginCertificateId"`
+	OriginCertificateId *string `json:"OriginCertificateId,omitnil,omitempty" name:"OriginCertificateId"`
 
 	// 重颁发证书原始 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplacedBy *string `json:"ReplacedBy,omitnil" name:"ReplacedBy"`
+	ReplacedBy *string `json:"ReplacedBy,omitnil,omitempty" name:"ReplacedBy"`
 
 	// 重颁发证书新 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplacedFor *string `json:"ReplacedFor,omitnil" name:"ReplacedFor"`
+	ReplacedFor *string `json:"ReplacedFor,omitnil,omitempty" name:"ReplacedFor"`
 
 	// 新订单证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewOrder *string `json:"RenewOrder,omitnil" name:"RenewOrder"`
+	RenewOrder *string `json:"RenewOrder,omitnil,omitempty" name:"RenewOrder"`
 
 	// 是否是国密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SMCert *int64 `json:"SMCert,omitnil" name:"SMCert"`
+	SMCert *int64 `json:"SMCert,omitnil,omitempty" name:"SMCert"`
 
 	// 公司类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CompanyType *int64 `json:"CompanyType,omitnil" name:"CompanyType"`
+	CompanyType *int64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 }
 
 type Certificates struct {
 	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	From *string `json:"From,omitnil" name:"From"`
+	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书套餐类型：
 	// 2 = TrustAsia TLS RSA CA，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 颁发者。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductZhName *string `json:"ProductZhName,omitnil" name:"ProductZhName"`
+	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 主域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 备注名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 状态。0：审核中，1：已通过，2：审核失败，3：已过期，4：验证方式为 DNS_AUTO 类型的证书， 已添加DNS记录，5：企业证书，待提交，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函，9：证书吊销中，10：已吊销，11：重颁发中，12：待上传吊销确认函，13：免费证书待提交资料状态，14：已退款，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 证书扩展信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil" name:"CertificateExtra"`
+	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
 	// 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil" name:"VulnerabilityStatus"`
+	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 状态信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusMsg *string `json:"StatusMsg,omitnil" name:"StatusMsg"`
+	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 证书生效时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertBeginTime *string `json:"CertBeginTime,omitnil" name:"CertBeginTime"`
+	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
 	// 证书过期时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertEndTime *string `json:"CertEndTime,omitnil" name:"CertEndTime"`
+	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期，单位（月）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitnil" name:"SubjectAltName"`
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageTypeName *string `json:"PackageTypeName,omitnil" name:"PackageTypeName"`
+	PackageTypeName *string `json:"PackageTypeName,omitnil,omitempty" name:"PackageTypeName"`
 
 	// 状态名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusName *string `json:"StatusName,omitnil" name:"StatusName"`
+	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVip *bool `json:"IsVip,omitnil" name:"IsVip"`
+	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否为 DV 版证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDv *bool `json:"IsDv,omitnil" name:"IsDv"`
+	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否为泛域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWildcard *bool `json:"IsWildcard,omitnil" name:"IsWildcard"`
+	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否启用了漏洞扫描功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVulnerability *bool `json:"IsVulnerability,omitnil" name:"IsVulnerability"`
+	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 是否可续费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewAble *bool `json:"RenewAble,omitnil" name:"RenewAble"`
+	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
 	// 项目信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitnil" name:"ProjectInfo"`
+	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitnil,omitempty" name:"ProjectInfo"`
 
 	// 关联的云资源，暂不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BoundResource []*string `json:"BoundResource,omitnil" name:"BoundResource"`
+	BoundResource []*string `json:"BoundResource,omitnil,omitempty" name:"BoundResource"`
 
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Deployable *bool `json:"Deployable,omitnil" name:"Deployable"`
+	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否已忽略到期通知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsIgnore *bool `json:"IsIgnore,omitnil" name:"IsIgnore"`
+	IsIgnore *bool `json:"IsIgnore,omitnil,omitempty" name:"IsIgnore"`
 
 	// 是否国密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsSM *bool `json:"IsSM,omitnil" name:"IsSM"`
+	IsSM *bool `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
 	// 证书算法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil" name:"EncryptAlgorithm"`
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// 上传CA证书的加密算法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil" name:"CAEncryptAlgorithms"`
+	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
 	// 上传CA证书的过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CAEndTimes []*string `json:"CAEndTimes,omitnil" name:"CAEndTimes"`
+	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
 	// 上传CA证书的通用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CACommonNames []*string `json:"CACommonNames,omitnil" name:"CACommonNames"`
+	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
 	// 证书预审核信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PreAuditInfo *PreAuditInfo `json:"PreAuditInfo,omitnil" name:"PreAuditInfo"`
+	PreAuditInfo *PreAuditInfo `json:"PreAuditInfo,omitnil,omitempty" name:"PreAuditInfo"`
 
 	// 是否自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostingStatus *int64 `json:"HostingStatus,omitnil" name:"HostingStatus"`
+	HostingStatus *int64 `json:"HostingStatus,omitnil,omitempty" name:"HostingStatus"`
 
 	// 托管完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostingCompleteTime *string `json:"HostingCompleteTime,omitnil" name:"HostingCompleteTime"`
+	HostingCompleteTime *string `json:"HostingCompleteTime,omitnil,omitempty" name:"HostingCompleteTime"`
 
 	// 托管新证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil" name:"HostingRenewCertId"`
+	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil,omitempty" name:"HostingRenewCertId"`
 
 	// 存在的续费证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasRenewOrder *string `json:"HasRenewOrder,omitnil" name:"HasRenewOrder"`
+	HasRenewOrder *string `json:"HasRenewOrder,omitnil,omitempty" name:"HasRenewOrder"`
 
 	// 重颁发证书原证书是否删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplaceOriCertIsDelete *bool `json:"ReplaceOriCertIsDelete,omitnil" name:"ReplaceOriCertIsDelete"`
+	ReplaceOriCertIsDelete *bool `json:"ReplaceOriCertIsDelete,omitnil,omitempty" name:"ReplaceOriCertIsDelete"`
 
 	// 是否即将过期， 证书即将到期的30天内为即将过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsExpiring *bool `json:"IsExpiring,omitnil" name:"IsExpiring"`
+	IsExpiring *bool `json:"IsExpiring,omitnil,omitempty" name:"IsExpiring"`
 
 	// DV证书添加验证截止时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil" name:"DVAuthDeadline"`
+	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil,omitempty" name:"DVAuthDeadline"`
 
 	// 域名验证通过时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil" name:"ValidationPassedTime"`
+	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil,omitempty" name:"ValidationPassedTime"`
 
 	// 证书关联的多域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertSANs []*string `json:"CertSANs,omitnil" name:"CertSANs"`
+	CertSANs []*string `json:"CertSANs,omitnil,omitempty" name:"CertSANs"`
 
 	// 域名验证驳回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AwaitingValidationMsg *string `json:"AwaitingValidationMsg,omitnil" name:"AwaitingValidationMsg"`
+	AwaitingValidationMsg *string `json:"AwaitingValidationMsg,omitnil,omitempty" name:"AwaitingValidationMsg"`
 
 	// 是否允许下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
+	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
 	// 证书域名是否全部在DNSPOD托管解析
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDNSPODResolve *bool `json:"IsDNSPODResolve,omitnil" name:"IsDNSPODResolve"`
+	IsDNSPODResolve *bool `json:"IsDNSPODResolve,omitnil,omitempty" name:"IsDNSPODResolve"`
 
 	// 是否是权益点购买的证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsPackage *bool `json:"IsPackage,omitnil" name:"IsPackage"`
+	IsPackage *bool `json:"IsPackage,omitnil,omitempty" name:"IsPackage"`
 
 	// 是否存在私钥密码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyPasswordCustomFlag *bool `json:"KeyPasswordCustomFlag,omitnil" name:"KeyPasswordCustomFlag"`
+	KeyPasswordCustomFlag *bool `json:"KeyPasswordCustomFlag,omitnil,omitempty" name:"KeyPasswordCustomFlag"`
 
 	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil" name:"SupportDownloadType"`
+	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
 }
 
 // Predefined struct for user
 type CheckCertificateChainRequestParams struct {
 	// 待检查的证书链
-	CertificateChain *string `json:"CertificateChain,omitnil" name:"CertificateChain"`
+	CertificateChain *string `json:"CertificateChain,omitnil,omitempty" name:"CertificateChain"`
 }
 
 type CheckCertificateChainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待检查的证书链
-	CertificateChain *string `json:"CertificateChain,omitnil" name:"CertificateChain"`
+	CertificateChain *string `json:"CertificateChain,omitnil,omitempty" name:"CertificateChain"`
 }
 
 func (r *CheckCertificateChainRequest) ToJsonString() string {
@@ -663,16 +663,16 @@ func (r *CheckCertificateChainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckCertificateChainResponseParams struct {
 	// true为通过检查，false为未通过检查。
-	IsValid *bool `json:"IsValid,omitnil" name:"IsValid"`
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
 
 	// true为可信CA，false为不可信CA。
-	IsTrustedCA *bool `json:"IsTrustedCA,omitnil" name:"IsTrustedCA"`
+	IsTrustedCA *bool `json:"IsTrustedCA,omitnil,omitempty" name:"IsTrustedCA"`
 
 	// 包含证书链中每一段证书的通用名称。
-	Chains []*string `json:"Chains,omitnil" name:"Chains"`
+	Chains []*string `json:"Chains,omitnil,omitempty" name:"Chains"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckCertificateChainResponse struct {
@@ -693,90 +693,90 @@ func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
 
 type ClbInstanceDetail struct {
 	// CLB实例ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// CLB实例名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitnil" name:"LoadBalancerName"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// CLB监听器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Listeners []*ClbListener `json:"Listeners,omitnil" name:"Listeners"`
+	Listeners []*ClbListener `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 }
 
 type ClbInstanceList struct {
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// clb实例详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下Clb实例总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type ClbListener struct {
 	// 监听器ID
-	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 监听器名称
-	ListenerName *string `json:"ListenerName,omitnil" name:"ListenerName"`
+	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 是否开启SNI，1为开启，0为关闭
-	SniSwitch *uint64 `json:"SniSwitch,omitnil" name:"SniSwitch"`
+	SniSwitch *uint64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 监听器协议类型， HTTPS|TCP_SSL
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 监听器绑定的证书数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificate *Certificate `json:"Certificate,omitnil" name:"Certificate"`
+	Certificate *Certificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
 	// 监听器规则列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*ClbListenerRule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*ClbListenerRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 不匹配域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoMatchDomains []*string `json:"NoMatchDomains,omitnil" name:"NoMatchDomains"`
+	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
 }
 
 type ClbListenerRule struct {
 	// 规则ID
-	LocationId *string `json:"LocationId,omitnil" name:"LocationId"`
+	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 规则绑定的域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 规则是否匹配待绑定证书的域名
-	IsMatch *bool `json:"IsMatch,omitnil" name:"IsMatch"`
+	IsMatch *bool `json:"IsMatch,omitnil,omitempty" name:"IsMatch"`
 
 	// 规则已绑定的证书数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificate *Certificate `json:"Certificate,omitnil" name:"Certificate"`
+	Certificate *Certificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
 	// 不匹配域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoMatchDomains []*string `json:"NoMatchDomains,omitnil" name:"NoMatchDomains"`
+	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
 }
 
 // Predefined struct for user
 type CommitCertificateInformationRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 域名验证方式
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 type CommitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 域名验证方式
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 func (r *CommitCertificateInformationRequest) ToJsonString() string {
@@ -802,13 +802,13 @@ func (r *CommitCertificateInformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CommitCertificateInformationResponseParams struct {
 	// CA机构侧订单号。
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CommitCertificateInformationResponse struct {
@@ -829,46 +829,46 @@ func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
 
 type CompanyInfo struct {
 	// 公司名称
-	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
 	// 公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 公司所在国家
-	CompanyCountry *string `json:"CompanyCountry,omitnil" name:"CompanyCountry"`
+	CompanyCountry *string `json:"CompanyCountry,omitnil,omitempty" name:"CompanyCountry"`
 
 	// 公司所在省份
-	CompanyProvince *string `json:"CompanyProvince,omitnil" name:"CompanyProvince"`
+	CompanyProvince *string `json:"CompanyProvince,omitnil,omitempty" name:"CompanyProvince"`
 
 	// 公司所在城市
-	CompanyCity *string `json:"CompanyCity,omitnil" name:"CompanyCity"`
+	CompanyCity *string `json:"CompanyCity,omitnil,omitempty" name:"CompanyCity"`
 
 	// 公司所在详细地址
-	CompanyAddress *string `json:"CompanyAddress,omitnil" name:"CompanyAddress"`
+	CompanyAddress *string `json:"CompanyAddress,omitnil,omitempty" name:"CompanyAddress"`
 
 	// 公司电话
-	CompanyPhone *string `json:"CompanyPhone,omitnil" name:"CompanyPhone"`
+	CompanyPhone *string `json:"CompanyPhone,omitnil,omitempty" name:"CompanyPhone"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdType *string `json:"IdType,omitnil" name:"IdType"`
+	IdType *string `json:"IdType,omitnil,omitempty" name:"IdType"`
 
 	// ID号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdNumber *string `json:"IdNumber,omitnil" name:"IdNumber"`
+	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 }
 
 // Predefined struct for user
 type CompleteCertificateRequestParams struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type CompleteCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *CompleteCertificateRequest) ToJsonString() string {
@@ -893,10 +893,10 @@ func (r *CompleteCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CompleteCertificateResponseParams struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CompleteCertificateResponse struct {
@@ -917,42 +917,42 @@ func (r *CompleteCertificateResponse) FromJsonString(s string) error {
 
 type CosInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 已绑定的证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// ENABLED: 域名上线状态
 	// DISABLED:域名下线状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 存储桶名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 存储桶地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 // Predefined struct for user
 type CreateCertificateBindResourceSyncTaskRequestParams struct {
 	// 证书ID列表，总数不能超过100
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 }
 
 type CreateCertificateBindResourceSyncTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID列表，总数不能超过100
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 }
 
 func (r *CreateCertificateBindResourceSyncTaskRequest) ToJsonString() string {
@@ -978,10 +978,10 @@ func (r *CreateCertificateBindResourceSyncTaskRequest) FromJsonString(s string) 
 // Predefined struct for user
 type CreateCertificateBindResourceSyncTaskResponseParams struct {
 	// 证书关联云资源异步任务ID列表
-	CertTaskIds []*CertTaskId `json:"CertTaskIds,omitnil" name:"CertTaskIds"`
+	CertTaskIds []*CertTaskId `json:"CertTaskIds,omitnil,omitempty" name:"CertTaskIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateCertificateBindResourceSyncTaskResponse struct {
@@ -1003,110 +1003,110 @@ func (r *CreateCertificateBindResourceSyncTaskResponse) FromJsonString(s string)
 // Predefined struct for user
 type CreateCertificateByPackageRequestParams struct {
 	// 证书产品PID。
-	ProductPid *uint64 `json:"ProductPid,omitnil" name:"ProductPid"`
+	ProductPid *uint64 `json:"ProductPid,omitnil,omitempty" name:"ProductPid"`
 
 	// 要消耗的权益包ID。
-	PackageIds []*string `json:"PackageIds,omitnil" name:"PackageIds"`
+	PackageIds []*string `json:"PackageIds,omitnil,omitempty" name:"PackageIds"`
 
 	// 证书域名数量。
-	DomainCount *string `json:"DomainCount,omitnil" name:"DomainCount"`
+	DomainCount *string `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
 	// 多年期证书年限。
-	Period *uint64 `json:"Period,omitnil" name:"Period"`
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 要续费的原证书ID（续费时填写）。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 续费时CSR生成方式（original、upload、online）。
-	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitnil" name:"RenewGenCsrMethod"`
+	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitnil,omitempty" name:"RenewGenCsrMethod"`
 
 	// 续费时选择上传CSR时填写CSR。
-	RenewCsr *string `json:"RenewCsr,omitnil" name:"RenewCsr"`
+	RenewCsr *string `json:"RenewCsr,omitnil,omitempty" name:"RenewCsr"`
 
 	// 续费证书CSR的算法类型。
-	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil" name:"RenewAlgorithmType"`
+	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil,omitempty" name:"RenewAlgorithmType"`
 
 	// 续费证书CSR的算法参数。
-	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil" name:"RenewAlgorithmParam"`
+	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil,omitempty" name:"RenewAlgorithmParam"`
 
 	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签。
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 续费证书的私钥密码。
-	RenewKeyPass *string `json:"RenewKeyPass,omitnil" name:"RenewKeyPass"`
+	RenewKeyPass *string `json:"RenewKeyPass,omitnil,omitempty" name:"RenewKeyPass"`
 
 	// 批量购买证书时预填写的域名。
-	DomainNames *string `json:"DomainNames,omitnil" name:"DomainNames"`
+	DomainNames *string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
 
 	// 批量购买证书数量。
-	CertificateCount *uint64 `json:"CertificateCount,omitnil" name:"CertificateCount"`
+	CertificateCount *uint64 `json:"CertificateCount,omitnil,omitempty" name:"CertificateCount"`
 
 	// 预填写的管理人ID。
-	ManagerId *uint64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *uint64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 预填写的公司ID。
-	CompanyId *uint64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *uint64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 验证方式
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 type CreateCertificateByPackageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书产品PID。
-	ProductPid *uint64 `json:"ProductPid,omitnil" name:"ProductPid"`
+	ProductPid *uint64 `json:"ProductPid,omitnil,omitempty" name:"ProductPid"`
 
 	// 要消耗的权益包ID。
-	PackageIds []*string `json:"PackageIds,omitnil" name:"PackageIds"`
+	PackageIds []*string `json:"PackageIds,omitnil,omitempty" name:"PackageIds"`
 
 	// 证书域名数量。
-	DomainCount *string `json:"DomainCount,omitnil" name:"DomainCount"`
+	DomainCount *string `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
 	// 多年期证书年限。
-	Period *uint64 `json:"Period,omitnil" name:"Period"`
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 要续费的原证书ID（续费时填写）。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 续费时CSR生成方式（original、upload、online）。
-	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitnil" name:"RenewGenCsrMethod"`
+	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitnil,omitempty" name:"RenewGenCsrMethod"`
 
 	// 续费时选择上传CSR时填写CSR。
-	RenewCsr *string `json:"RenewCsr,omitnil" name:"RenewCsr"`
+	RenewCsr *string `json:"RenewCsr,omitnil,omitempty" name:"RenewCsr"`
 
 	// 续费证书CSR的算法类型。
-	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil" name:"RenewAlgorithmType"`
+	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil,omitempty" name:"RenewAlgorithmType"`
 
 	// 续费证书CSR的算法参数。
-	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil" name:"RenewAlgorithmParam"`
+	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil,omitempty" name:"RenewAlgorithmParam"`
 
 	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签。
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 续费证书的私钥密码。
-	RenewKeyPass *string `json:"RenewKeyPass,omitnil" name:"RenewKeyPass"`
+	RenewKeyPass *string `json:"RenewKeyPass,omitnil,omitempty" name:"RenewKeyPass"`
 
 	// 批量购买证书时预填写的域名。
-	DomainNames *string `json:"DomainNames,omitnil" name:"DomainNames"`
+	DomainNames *string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
 
 	// 批量购买证书数量。
-	CertificateCount *uint64 `json:"CertificateCount,omitnil" name:"CertificateCount"`
+	CertificateCount *uint64 `json:"CertificateCount,omitnil,omitempty" name:"CertificateCount"`
 
 	// 预填写的管理人ID。
-	ManagerId *uint64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *uint64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 预填写的公司ID。
-	CompanyId *uint64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *uint64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 验证方式
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 func (r *CreateCertificateByPackageRequest) ToJsonString() string {
@@ -1147,13 +1147,13 @@ func (r *CreateCertificateByPackageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCertificateByPackageResponseParams struct {
 	// 证书ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 批量购买证书时返回多个证书ID。
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateCertificateByPackageResponse struct {
@@ -1175,26 +1175,26 @@ func (r *CreateCertificateByPackageResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCertificateRequestParams struct {
 	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
-	ProductId *int64 `json:"ProductId,omitnil" name:"ProductId"`
+	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 证书包含的域名数量
-	DomainNum *int64 `json:"DomainNum,omitnil" name:"DomainNum"`
+	DomainNum *int64 `json:"DomainNum,omitnil,omitempty" name:"DomainNum"`
 
 	// 证书年限，当前只支持 1 年证书的购买
-	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 }
 
 type CreateCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
-	ProductId *int64 `json:"ProductId,omitnil" name:"ProductId"`
+	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 证书包含的域名数量
-	DomainNum *int64 `json:"DomainNum,omitnil" name:"DomainNum"`
+	DomainNum *int64 `json:"DomainNum,omitnil,omitempty" name:"DomainNum"`
 
 	// 证书年限，当前只支持 1 年证书的购买
-	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 }
 
 func (r *CreateCertificateRequest) ToJsonString() string {
@@ -1221,13 +1221,13 @@ func (r *CreateCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCertificateResponseParams struct {
 	// 证书ID列表
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 订单号列表
-	DealIds []*string `json:"DealIds,omitnil" name:"DealIds"`
+	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateCertificateResponse struct {
@@ -1248,48 +1248,48 @@ func (r *CreateCertificateResponse) FromJsonString(s string) error {
 
 type DdosInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 协议类型
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 转发端口
-	VirtualPort *string `json:"VirtualPort,omitnil" name:"VirtualPort"`
+	VirtualPort *string `json:"VirtualPort,omitnil,omitempty" name:"VirtualPort"`
 }
 
 type DdosInstanceList struct {
 	// 该地域下ddos域名总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// ddos实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 }
 
 // Predefined struct for user
 type DeleteCertificateRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
-	IsCheckResource *bool `json:"IsCheckResource,omitnil" name:"IsCheckResource"`
+	IsCheckResource *bool `json:"IsCheckResource,omitnil,omitempty" name:"IsCheckResource"`
 }
 
 type DeleteCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
-	IsCheckResource *bool `json:"IsCheckResource,omitnil" name:"IsCheckResource"`
+	IsCheckResource *bool `json:"IsCheckResource,omitnil,omitempty" name:"IsCheckResource"`
 }
 
 func (r *DeleteCertificateRequest) ToJsonString() string {
@@ -1315,14 +1315,14 @@ func (r *DeleteCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCertificateResponseParams struct {
 	// 删除结果（true：删除成功，false：删除失败）
-	DeleteResult *bool `json:"DeleteResult,omitnil" name:"DeleteResult"`
+	DeleteResult *bool `json:"DeleteResult,omitnil,omitempty" name:"DeleteResult"`
 
 	// 异步删除的任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteCertificateResponse struct {
@@ -1344,14 +1344,14 @@ func (r *DeleteCertificateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteManagerRequestParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 type DeleteManagerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 func (r *DeleteManagerRequest) ToJsonString() string {
@@ -1376,10 +1376,10 @@ func (r *DeleteManagerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteManagerResponseParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteManagerResponse struct {
@@ -1401,40 +1401,40 @@ func (r *DeleteManagerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployCertificateInstanceRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署实例列表
-	InstanceIdList []*string `json:"InstanceIdList,omitnil" name:"InstanceIdList"`
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
 	// 部署的云资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署云资源状态：
 	// 云直播：
 	// -1：域名未关联证书。
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DeployCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署实例列表
-	InstanceIdList []*string `json:"InstanceIdList,omitnil" name:"InstanceIdList"`
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
 	// 部署的云资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署云资源状态：
 	// 云直播：
 	// -1：域名未关联证书。
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *DeployCertificateInstanceRequest) ToJsonString() string {
@@ -1463,13 +1463,13 @@ func (r *DeployCertificateInstanceRequest) FromJsonString(s string) error {
 type DeployCertificateInstanceResponseParams struct {
 	// 云资源部署任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployRecordId *uint64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 部署状态，1表示部署成功，0表示部署失败
-	DeployStatus *int64 `json:"DeployStatus,omitnil" name:"DeployStatus"`
+	DeployStatus *int64 `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeployCertificateInstanceResponse struct {
@@ -1491,20 +1491,20 @@ func (r *DeployCertificateInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployCertificateRecordRetryRequestParams struct {
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 待重试部署记录详情ID
-	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil" name:"DeployRecordDetailId"`
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 type DeployCertificateRecordRetryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 待重试部署记录详情ID
-	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil" name:"DeployRecordDetailId"`
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 func (r *DeployCertificateRecordRetryRequest) ToJsonString() string {
@@ -1530,7 +1530,7 @@ func (r *DeployCertificateRecordRetryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployCertificateRecordRetryResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeployCertificateRecordRetryResponse struct {
@@ -1552,14 +1552,14 @@ func (r *DeployCertificateRecordRetryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployCertificateRecordRollbackRequestParams struct {
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type DeployCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 func (r *DeployCertificateRecordRollbackRequest) ToJsonString() string {
@@ -1584,10 +1584,10 @@ func (r *DeployCertificateRecordRollbackRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DeployCertificateRecordRollbackResponseParams struct {
 	// 回滚部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeployCertificateRecordRollbackResponse struct {
@@ -1608,157 +1608,157 @@ func (r *DeployCertificateRecordRollbackResponse) FromJsonString(s string) error
 
 type DeployRecordDetail struct {
 	// 部署记录详情ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 部署证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 原绑定证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldCertId *string `json:"OldCertId,omitnil" name:"OldCertId"`
+	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
 
 	// 部署实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 部署实例名称
-	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 部署监听器ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 部署域名列表
-	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 部署监听器协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 部署状态
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 部署记录详情创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 部署记录详情最后一次更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 部署监听器名称
-	ListenerName *string `json:"ListenerName,omitnil" name:"ListenerName"`
+	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 是否开启SNI
-	SniSwitch *int64 `json:"SniSwitch,omitnil" name:"SniSwitch"`
+	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// COS存储桶名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 命名空间名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// secret名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Port *int64 `json:"Port,omitnil" name:"Port"`
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// TCB环境ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 部署的TCB类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TCBType *string `json:"TCBType,omitnil" name:"TCBType"`
+	TCBType *string `json:"TCBType,omitnil,omitempty" name:"TCBType"`
 
 	// 部署的TCB地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type DeployRecordInfo struct {
 	// 部署记录ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 部署证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 部署状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近一次更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type DeployedResources struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 数量
-	Count *int64 `json:"Count,omitnil" name:"Count"`
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 资源标识:clb,cdn,live,waf,antiddos
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 不建议使用。字段返回和Resources相同。本字段后续只返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceIds []*string `json:"ResourceIds,omitnil" name:"ResourceIds"`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 关联资源ID或关联域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Resources []*string `json:"Resources,omitnil" name:"Resources"`
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskDetailRequestParams struct {
 	// 任务ID，根据任务ID查询绑定云资源结果
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 当前偏移量
-	Offset *string `json:"Offset,omitnil" name:"Offset"`
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询资源类型的结果详情， 不传则查询所有
-	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
 type DescribeCertificateBindResourceTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID，根据任务ID查询绑定云资源结果
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 当前偏移量
-	Offset *string `json:"Offset,omitnil" name:"Offset"`
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询资源类型的结果详情， 不传则查询所有
-	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
 func (r *DescribeCertificateBindResourceTaskDetailRequest) ToJsonString() string {
@@ -1788,56 +1788,56 @@ func (r *DescribeCertificateBindResourceTaskDetailRequest) FromJsonString(s stri
 type DescribeCertificateBindResourceTaskDetailResponseParams struct {
 	// 关联clb资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CLB []*ClbInstanceList `json:"CLB,omitnil" name:"CLB"`
+	CLB []*ClbInstanceList `json:"CLB,omitnil,omitempty" name:"CLB"`
 
 	// 关联cdn资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CDN []*CdnInstanceList `json:"CDN,omitnil" name:"CDN"`
+	CDN []*CdnInstanceList `json:"CDN,omitnil,omitempty" name:"CDN"`
 
 	// 关联waf资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WAF []*WafInstanceList `json:"WAF,omitnil" name:"WAF"`
+	WAF []*WafInstanceList `json:"WAF,omitnil,omitempty" name:"WAF"`
 
 	// 关联ddos资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DDOS []*DdosInstanceList `json:"DDOS,omitnil" name:"DDOS"`
+	DDOS []*DdosInstanceList `json:"DDOS,omitnil,omitempty" name:"DDOS"`
 
 	// 关联live资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LIVE []*LiveInstanceList `json:"LIVE,omitnil" name:"LIVE"`
+	LIVE []*LiveInstanceList `json:"LIVE,omitnil,omitempty" name:"LIVE"`
 
 	// 关联vod资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VOD []*VODInstanceList `json:"VOD,omitnil" name:"VOD"`
+	VOD []*VODInstanceList `json:"VOD,omitnil,omitempty" name:"VOD"`
 
 	// 关联tke资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TKE []*TkeInstanceList `json:"TKE,omitnil" name:"TKE"`
+	TKE []*TkeInstanceList `json:"TKE,omitnil,omitempty" name:"TKE"`
 
 	// 关联apigateway资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	APIGATEWAY []*ApiGatewayInstanceList `json:"APIGATEWAY,omitnil" name:"APIGATEWAY"`
+	APIGATEWAY []*ApiGatewayInstanceList `json:"APIGATEWAY,omitnil,omitempty" name:"APIGATEWAY"`
 
 	// 关联tcb资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TCB []*TCBInstanceList `json:"TCB,omitnil" name:"TCB"`
+	TCB []*TCBInstanceList `json:"TCB,omitnil,omitempty" name:"TCB"`
 
 	// 关联teo资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TEO []*TeoInstanceList `json:"TEO,omitnil" name:"TEO"`
+	TEO []*TeoInstanceList `json:"TEO,omitnil,omitempty" name:"TEO"`
 
 	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当前结果缓存时间
-	CacheTime *string `json:"CacheTime,omitnil" name:"CacheTime"`
+	CacheTime *string `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 
 	// 关联tse资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TSE []*TSEInstanceList `json:"TSE,omitnil" name:"TSE"`
+	TSE []*TSEInstanceList `json:"TSE,omitnil,omitempty" name:"TSE"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificateBindResourceTaskDetailResponse struct {
@@ -1859,14 +1859,14 @@ func (r *DescribeCertificateBindResourceTaskDetailResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskResultRequestParams struct {
 	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
-	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
 type DescribeCertificateBindResourceTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
-	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
 func (r *DescribeCertificateBindResourceTaskResultRequest) ToJsonString() string {
@@ -1892,10 +1892,10 @@ func (r *DescribeCertificateBindResourceTaskResultRequest) FromJsonString(s stri
 type DescribeCertificateBindResourceTaskResultResponseParams struct {
 	// 异步任务绑定关联云资源结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SyncTaskBindResourceResult []*SyncTaskBindResourceResult `json:"SyncTaskBindResourceResult,omitnil" name:"SyncTaskBindResourceResult"`
+	SyncTaskBindResourceResult []*SyncTaskBindResourceResult `json:"SyncTaskBindResourceResult,omitnil,omitempty" name:"SyncTaskBindResourceResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificateBindResourceTaskResultResponse struct {
@@ -1917,14 +1917,14 @@ func (r *DescribeCertificateBindResourceTaskResultResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeCertificateDetailRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type DescribeCertificateDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *DescribeCertificateDetailRequest) ToJsonString() string {
@@ -1950,170 +1950,170 @@ func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
 type DescribeCertificateDetailResponseParams struct {
 	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	From *string `json:"From,omitnil" name:"From"`
+	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书套餐类型：null = 用户上传证书（没有套餐类型），1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 颁发者。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductZhName *string `json:"ProductZhName,omitnil" name:"ProductZhName"`
+	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 备注名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusMsg *string `json:"StatusMsg,omitnil" name:"StatusMsg"`
+	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 漏洞扫描状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil" name:"VulnerabilityStatus"`
+	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 证书生效时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertBeginTime *string `json:"CertBeginTime,omitnil" name:"CertBeginTime"`
+	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
 	// 证书失效时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertEndTime *string `json:"CertEndTime,omitnil" name:"CertEndTime"`
+	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期：单位（月）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 申请时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 订单 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 证书扩展信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil" name:"CertificateExtra"`
+	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
 	// 证书私钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 证书公钥（即证书内容）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
 	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil" name:"DvAuthDetail"`
+	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil,omitempty" name:"DvAuthDetail"`
 
 	// 漏洞扫描评估报告。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil" name:"VulnerabilityReport"`
+	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil,omitempty" name:"VulnerabilityReport"`
 
 	// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 证书类型名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TypeName *string `json:"TypeName,omitnil" name:"TypeName"`
+	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
 	// 状态描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusName *string `json:"StatusName,omitnil" name:"StatusName"`
+	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitnil" name:"SubjectAltName"`
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 是否为付费证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVip *bool `json:"IsVip,omitnil" name:"IsVip"`
+	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否为泛域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWildcard *bool `json:"IsWildcard,omitnil" name:"IsWildcard"`
+	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否为 DV 版证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDv *bool `json:"IsDv,omitnil" name:"IsDv"`
+	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否启用了漏洞扫描功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVulnerability *bool `json:"IsVulnerability,omitnil" name:"IsVulnerability"`
+	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 提交的资料信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmittedData *SubmittedData `json:"SubmittedData,omitnil" name:"SubmittedData"`
+	SubmittedData *SubmittedData `json:"SubmittedData,omitnil,omitempty" name:"SubmittedData"`
 
 	// 是否可续费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewAble *bool `json:"RenewAble,omitnil" name:"RenewAble"`
+	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Deployable *bool `json:"Deployable,omitnil" name:"Deployable"`
+	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 关联标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 根证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RootCert *RootCertificates `json:"RootCert,omitnil" name:"RootCert"`
+	RootCert *RootCertificates `json:"RootCert,omitnil,omitempty" name:"RootCert"`
 
 	// 国密加密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EncryptCert *string `json:"EncryptCert,omitnil" name:"EncryptCert"`
+	EncryptCert *string `json:"EncryptCert,omitnil,omitempty" name:"EncryptCert"`
 
 	// 国密加密私钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitnil" name:"EncryptPrivateKey"`
+	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitnil,omitempty" name:"EncryptPrivateKey"`
 
 	// 签名证书 SHA1指纹
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertFingerprint *string `json:"CertFingerprint,omitnil" name:"CertFingerprint"`
+	CertFingerprint *string `json:"CertFingerprint,omitnil,omitempty" name:"CertFingerprint"`
 
 	// 加密证书 SHA1指纹 （国密证书特有）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitnil" name:"EncryptCertFingerprint"`
+	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitnil,omitempty" name:"EncryptCertFingerprint"`
 
 	// 证书算法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil" name:"EncryptAlgorithm"`
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// DV证书吊销验证值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil" name:"DvRevokeAuthDetail"`
+	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil,omitempty" name:"DvRevokeAuthDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificateDetailResponse struct {
@@ -2135,32 +2135,32 @@ func (r *DescribeCertificateDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertificateOperateLogsRequestParams struct {
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 请求日志数量，默认为20。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 开始时间，默认15天前。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间，默认现在时间。
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeCertificateOperateLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 请求日志数量，默认为20。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 开始时间，默认15天前。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间，默认现在时间。
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeCertificateOperateLogsRequest) ToJsonString() string {
@@ -2188,17 +2188,17 @@ func (r *DescribeCertificateOperateLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertificateOperateLogsResponseParams struct {
 	// 当前查询条件日志总数。
-	AllTotal *uint64 `json:"AllTotal,omitnil" name:"AllTotal"`
+	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 本次请求返回的日志数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书操作日志列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateLogs []*OperationLog `json:"OperateLogs,omitnil" name:"OperateLogs"`
+	OperateLogs []*OperationLog `json:"OperateLogs,omitnil,omitempty" name:"OperateLogs"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificateOperateLogsResponse struct {
@@ -2220,14 +2220,14 @@ func (r *DescribeCertificateOperateLogsResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeCertificateRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type DescribeCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *DescribeCertificateRequest) ToJsonString() string {
@@ -2253,150 +2253,150 @@ func (r *DescribeCertificateRequest) FromJsonString(s string) error {
 type DescribeCertificateResponseParams struct {
 	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	From *string `json:"From,omitnil" name:"From"`
+	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 证书颁发者名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductZhName *string `json:"ProductZhName,omitnil" name:"ProductZhName"`
+	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 备注名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusMsg *string `json:"StatusMsg,omitnil" name:"StatusMsg"`
+	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 漏洞扫描状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil" name:"VulnerabilityStatus"`
+	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 证书生效时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertBeginTime *string `json:"CertBeginTime,omitnil" name:"CertBeginTime"`
+	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
 	// 证书失效时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertEndTime *string `json:"CertEndTime,omitnil" name:"CertEndTime"`
+	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期：单位(月)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidityPeriod *string `json:"ValidityPeriod,omitnil" name:"ValidityPeriod"`
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 申请时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 订单 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 证书扩展信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil" name:"CertificateExtra"`
+	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
 	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil" name:"DvAuthDetail"`
+	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil,omitempty" name:"DvAuthDetail"`
 
 	// 漏洞扫描评估报告。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil" name:"VulnerabilityReport"`
+	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil,omitempty" name:"VulnerabilityReport"`
 
 	// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 证书类型名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageTypeName *string `json:"PackageTypeName,omitnil" name:"PackageTypeName"`
+	PackageTypeName *string `json:"PackageTypeName,omitnil,omitempty" name:"PackageTypeName"`
 
 	// 状态描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusName *string `json:"StatusName,omitnil" name:"StatusName"`
+	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitnil" name:"SubjectAltName"`
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVip *bool `json:"IsVip,omitnil" name:"IsVip"`
+	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否为泛域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWildcard *bool `json:"IsWildcard,omitnil" name:"IsWildcard"`
+	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否为 DV 版证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDv *bool `json:"IsDv,omitnil" name:"IsDv"`
+	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否启用了漏洞扫描功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsVulnerability *bool `json:"IsVulnerability,omitnil" name:"IsVulnerability"`
+	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 是否可重颁发证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewAble *bool `json:"RenewAble,omitnil" name:"RenewAble"`
+	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
 	// 提交的资料信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmittedData *SubmittedData `json:"SubmittedData,omitnil" name:"SubmittedData"`
+	SubmittedData *SubmittedData `json:"SubmittedData,omitnil,omitempty" name:"SubmittedData"`
 
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Deployable *bool `json:"Deployable,omitnil" name:"Deployable"`
+	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// CA证书的所有加密方式	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil" name:"CAEncryptAlgorithms"`
+	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
 	// CA证书的所有通用名称	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CACommonNames []*string `json:"CACommonNames,omitnil" name:"CACommonNames"`
+	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
 	// CA证书所有的到期时间	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CAEndTimes []*string `json:"CAEndTimes,omitnil" name:"CAEndTimes"`
+	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
 	// DV证书吊销验证值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil" name:"DvRevokeAuthDetail"`
+	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil,omitempty" name:"DvRevokeAuthDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificateResponse struct {
@@ -2418,104 +2418,104 @@ func (r *DescribeCertificateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertificatesRequestParams struct {
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。最大1000
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 按到期时间排序：DESC = 降序， ASC = 升序。
-	ExpirationSort *string `json:"ExpirationSort,omitnil" name:"ExpirationSort"`
+	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
-	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil" name:"CertificateStatus"`
+	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
-	Deployable *uint64 `json:"Deployable,omitnil" name:"Deployable"`
+	Deployable *uint64 `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 是否筛选上传托管的 1筛选，0不筛选
-	Upload *int64 `json:"Upload,omitnil" name:"Upload"`
+	Upload *int64 `json:"Upload,omitnil,omitempty" name:"Upload"`
 
 	// 是否筛选可续期证书 1筛选 0不筛选
-	Renew *int64 `json:"Renew,omitnil" name:"Renew"`
+	Renew *int64 `json:"Renew,omitnil,omitempty" name:"Renew"`
 
 	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
-	FilterSource *string `json:"FilterSource,omitnil" name:"FilterSource"`
+	FilterSource *string `json:"FilterSource,omitnil,omitempty" name:"FilterSource"`
 
 	// 是否筛选国密证书。1:筛选  0:不筛选
-	IsSM *int64 `json:"IsSM,omitnil" name:"IsSM"`
+	IsSM *int64 `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
 	// 筛选证书是否即将过期，传1是筛选，0不筛选
-	FilterExpiring *uint64 `json:"FilterExpiring,omitnil" name:"FilterExpiring"`
+	FilterExpiring *uint64 `json:"FilterExpiring,omitnil,omitempty" name:"FilterExpiring"`
 
 	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
-	Hostable *uint64 `json:"Hostable,omitnil" name:"Hostable"`
+	Hostable *uint64 `json:"Hostable,omitnil,omitempty" name:"Hostable"`
 
 	// 筛选指定标签的证书
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
-	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil" name:"IsPendingIssue"`
+	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 }
 
 type DescribeCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。最大1000
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 按到期时间排序：DESC = 降序， ASC = 升序。
-	ExpirationSort *string `json:"ExpirationSort,omitnil" name:"ExpirationSort"`
+	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
-	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil" name:"CertificateStatus"`
+	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
-	Deployable *uint64 `json:"Deployable,omitnil" name:"Deployable"`
+	Deployable *uint64 `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 是否筛选上传托管的 1筛选，0不筛选
-	Upload *int64 `json:"Upload,omitnil" name:"Upload"`
+	Upload *int64 `json:"Upload,omitnil,omitempty" name:"Upload"`
 
 	// 是否筛选可续期证书 1筛选 0不筛选
-	Renew *int64 `json:"Renew,omitnil" name:"Renew"`
+	Renew *int64 `json:"Renew,omitnil,omitempty" name:"Renew"`
 
 	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
-	FilterSource *string `json:"FilterSource,omitnil" name:"FilterSource"`
+	FilterSource *string `json:"FilterSource,omitnil,omitempty" name:"FilterSource"`
 
 	// 是否筛选国密证书。1:筛选  0:不筛选
-	IsSM *int64 `json:"IsSM,omitnil" name:"IsSM"`
+	IsSM *int64 `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
 	// 筛选证书是否即将过期，传1是筛选，0不筛选
-	FilterExpiring *uint64 `json:"FilterExpiring,omitnil" name:"FilterExpiring"`
+	FilterExpiring *uint64 `json:"FilterExpiring,omitnil,omitempty" name:"FilterExpiring"`
 
 	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
-	Hostable *uint64 `json:"Hostable,omitnil" name:"Hostable"`
+	Hostable *uint64 `json:"Hostable,omitnil,omitempty" name:"Hostable"`
 
 	// 筛选指定标签的证书
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
-	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil" name:"IsPendingIssue"`
+	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -2556,14 +2556,14 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 type DescribeCertificatesResponseParams struct {
 	// 总数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificates []*Certificates `json:"Certificates,omitnil" name:"Certificates"`
+	Certificates []*Certificates `json:"Certificates,omitnil,omitempty" name:"Certificates"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCertificatesResponse struct {
@@ -2585,26 +2585,26 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCompaniesRequestParams struct {
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页每页限制数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 }
 
 type DescribeCompaniesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页每页限制数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 }
 
 func (r *DescribeCompaniesRequest) ToJsonString() string {
@@ -2631,13 +2631,13 @@ func (r *DescribeCompaniesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCompaniesResponseParams struct {
 	// 公司列表
-	Companies []*CompanyInfo `json:"Companies,omitnil" name:"Companies"`
+	Companies []*CompanyInfo `json:"Companies,omitnil,omitempty" name:"Companies"`
 
 	// 公司总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCompaniesResponse struct {
@@ -2659,20 +2659,20 @@ func (r *DescribeCompaniesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeployedResourcesRequestParams struct {
 	// 证书ID
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 资源类型:clb,cdn,live,waf,antiddos
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeDeployedResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 资源类型:clb,cdn,live,waf,antiddos
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeDeployedResourcesRequest) ToJsonString() string {
@@ -2698,10 +2698,10 @@ func (r *DescribeDeployedResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeployedResourcesResponseParams struct {
 	// 资源详情
-	DeployedResources []*DeployedResources `json:"DeployedResources,omitnil" name:"DeployedResources"`
+	DeployedResources []*DeployedResources `json:"DeployedResources,omitnil,omitempty" name:"DeployedResources"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDeployedResourcesResponse struct {
@@ -2723,38 +2723,38 @@ func (r *DescribeDeployedResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostApiGatewayInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostApiGatewayInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostApiGatewayInstanceListRequest) ToJsonString() string {
@@ -2784,13 +2784,13 @@ func (r *DescribeHostApiGatewayInstanceListRequest) FromJsonString(s string) err
 type DescribeHostApiGatewayInstanceListResponseParams struct {
 	// apiGateway实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostApiGatewayInstanceListResponse struct {
@@ -2812,56 +2812,56 @@ func (r *DescribeHostApiGatewayInstanceListResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeHostCdnInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 分页偏移量，从0开始。	
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。	
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 type DescribeHostCdnInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 分页偏移量，从0开始。	
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。	
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 func (r *DescribeHostCdnInstanceListRequest) ToJsonString() string {
@@ -2894,26 +2894,26 @@ func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostCdnInstanceListResponseParams struct {
 	// CDN实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// CDN域名总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异步刷新总数	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil" name:"AsyncTotalNum"`
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncOffset *int64 `json:"AsyncOffset,omitnil" name:"AsyncOffset"`
+	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil" name:"AsyncCacheTime"`
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostCdnInstanceListResponse struct {
@@ -2935,50 +2935,50 @@ func (r *DescribeHostCdnInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostClbInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 是否异步缓存
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostClbInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 是否异步缓存
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostClbInstanceListRequest) ToJsonString() string {
@@ -3010,26 +3010,26 @@ func (r *DescribeHostClbInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostClbInstanceListResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// CLB实例监听器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 异步刷新总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil" name:"AsyncTotalNum"`
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncOffset *int64 `json:"AsyncOffset,omitnil" name:"AsyncOffset"`
+	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil" name:"AsyncCacheTime"`
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostClbInstanceListResponse struct {
@@ -3051,32 +3051,32 @@ func (r *DescribeHostClbInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostCosInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 cos
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeHostCosInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 cos
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeHostCosInstanceListRequest) ToJsonString() string {
@@ -3105,26 +3105,26 @@ func (r *DescribeHostCosInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostCosInstanceListResponseParams struct {
 	// COS实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*CosInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*CosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异步刷新总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil" name:"AsyncTotalNum"`
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncOffset *int64 `json:"AsyncOffset,omitnil" name:"AsyncOffset"`
+	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil" name:"AsyncCacheTime"`
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostCosInstanceListResponse struct {
@@ -3146,38 +3146,38 @@ func (r *DescribeHostCosInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostDdosInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostDdosInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostDdosInstanceListRequest) ToJsonString() string {
@@ -3207,10 +3207,10 @@ func (r *DescribeHostDdosInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostDdosInstanceListResponseParams struct {
 	// DDOS实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostDdosInstanceListResponse struct {
@@ -3232,26 +3232,26 @@ func (r *DescribeHostDdosInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostDeployRecordDetailRequestParams struct {
 	// 部署记录ID
-	DeployRecordId *string `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeHostDeployRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 部署记录ID
-	DeployRecordId *string `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeHostDeployRecordDetailRequest) ToJsonString() string {
@@ -3279,26 +3279,26 @@ func (r *DescribeHostDeployRecordDetailRequest) FromJsonString(s string) error {
 type DescribeHostDeployRecordDetailResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployRecordDetailList []*DeployRecordDetail `json:"DeployRecordDetailList,omitnil" name:"DeployRecordDetailList"`
+	DeployRecordDetailList []*DeployRecordDetail `json:"DeployRecordDetailList,omitnil,omitempty" name:"DeployRecordDetailList"`
 
 	// 成功总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil" name:"SuccessTotalCount"`
+	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
 
 	// 失败总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil" name:"FailedTotalCount"`
+	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
 
 	// 部署中总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil" name:"RunningTotalCount"`
+	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostDeployRecordDetailResponse struct {
@@ -3320,32 +3320,32 @@ func (r *DescribeHostDeployRecordDetailResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeHostDeployRecordRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeHostDeployRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeHostDeployRecordRequest) ToJsonString() string {
@@ -3374,14 +3374,14 @@ func (r *DescribeHostDeployRecordRequest) FromJsonString(s string) error {
 type DescribeHostDeployRecordResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployRecordList []*DeployRecordInfo `json:"DeployRecordList,omitnil" name:"DeployRecordList"`
+	DeployRecordList []*DeployRecordInfo `json:"DeployRecordList,omitnil,omitempty" name:"DeployRecordList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostDeployRecordResponse struct {
@@ -3403,32 +3403,32 @@ func (r *DescribeHostDeployRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostLighthouseInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 lighthouse
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeHostLighthouseInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 lighthouse
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeHostLighthouseInstanceListRequest) ToJsonString() string {
@@ -3457,14 +3457,14 @@ func (r *DescribeHostLighthouseInstanceListRequest) FromJsonString(s string) err
 type DescribeHostLighthouseInstanceListResponseParams struct {
 	// Lighthouse实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*LighthouseInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*LighthouseInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostLighthouseInstanceListResponse struct {
@@ -3486,38 +3486,38 @@ func (r *DescribeHostLighthouseInstanceListResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeHostLiveInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostLiveInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostLiveInstanceListRequest) ToJsonString() string {
@@ -3547,10 +3547,10 @@ func (r *DescribeHostLiveInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostLiveInstanceListResponseParams struct {
 	// live实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostLiveInstanceListResponse struct {
@@ -3572,56 +3572,56 @@ func (r *DescribeHostLiveInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostTeoInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。	
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 type DescribeHostTeoInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。	
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 func (r *DescribeHostTeoInstanceListRequest) ToJsonString() string {
@@ -3654,13 +3654,13 @@ func (r *DescribeHostTeoInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostTeoInstanceListResponseParams struct {
 	// teo实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostTeoInstanceListResponse struct {
@@ -3682,50 +3682,50 @@ func (r *DescribeHostTeoInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostTkeInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 是否异步缓存
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostTkeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 是否异步缓存
-	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostTkeInstanceListRequest) ToJsonString() string {
@@ -3757,26 +3757,26 @@ func (r *DescribeHostTkeInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostTkeInstanceListResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// CLB实例监听器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 异步刷新总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil" name:"AsyncTotalNum"`
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncOffset *int64 `json:"AsyncOffset,omitnil" name:"AsyncOffset"`
+	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil" name:"AsyncCacheTime"`
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostTkeInstanceListResponse struct {
@@ -3798,26 +3798,26 @@ func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailRequestParams struct {
 	// 一键更新记录ID
-	DeployRecordId *string `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，从0开始。
-	Offset *string `json:"Offset,omitnil" name:"Offset"`
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeHostUpdateRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 一键更新记录ID
-	DeployRecordId *string `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，从0开始。
-	Offset *string `json:"Offset,omitnil" name:"Offset"`
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeHostUpdateRecordDetailRequest) ToJsonString() string {
@@ -3845,26 +3845,26 @@ func (r *DescribeHostUpdateRecordDetailRequest) FromJsonString(s string) error {
 type DescribeHostUpdateRecordDetailResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordDetailList []*UpdateRecordDetails `json:"RecordDetailList,omitnil" name:"RecordDetailList"`
+	RecordDetailList []*UpdateRecordDetails `json:"RecordDetailList,omitnil,omitempty" name:"RecordDetailList"`
 
 	// 成功总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil" name:"SuccessTotalCount"`
+	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
 
 	// 失败总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil" name:"FailedTotalCount"`
+	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
 
 	// 部署中总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil" name:"RunningTotalCount"`
+	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostUpdateRecordDetailResponse struct {
@@ -3886,32 +3886,32 @@ func (r *DescribeHostUpdateRecordDetailResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeHostUpdateRecordRequestParams struct {
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 新证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostUpdateRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 新证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 原证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostUpdateRecordRequest) ToJsonString() string {
@@ -3940,14 +3940,14 @@ func (r *DescribeHostUpdateRecordRequest) FromJsonString(s string) error {
 type DescribeHostUpdateRecordResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployRecordList []*UpdateRecordInfo `json:"DeployRecordList,omitnil" name:"DeployRecordList"`
+	DeployRecordList []*UpdateRecordInfo `json:"DeployRecordList,omitnil,omitempty" name:"DeployRecordList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostUpdateRecordResponse struct {
@@ -3969,38 +3969,38 @@ func (r *DescribeHostUpdateRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostVodInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 vod
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostVodInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型 vod
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostVodInstanceListRequest) ToJsonString() string {
@@ -4030,14 +4030,14 @@ func (r *DescribeHostVodInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostVodInstanceListResponseParams struct {
 	// Vod实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostVodInstanceListResponse struct {
@@ -4059,38 +4059,38 @@ func (r *DescribeHostVodInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostWafInstanceListRequestParams struct {
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type DescribeHostWafInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
-	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已部署的证书ID
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 func (r *DescribeHostWafInstanceListRequest) ToJsonString() string {
@@ -4120,10 +4120,10 @@ func (r *DescribeHostWafInstanceListRequest) FromJsonString(s string) error {
 type DescribeHostWafInstanceListResponseParams struct {
 	// WAF实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHostWafInstanceListResponse struct {
@@ -4145,26 +4145,26 @@ func (r *DescribeHostWafInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeManagerDetailRequestParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 分页每页数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeManagerDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 分页每页数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeManagerDetailRequest) ToJsonString() string {
@@ -4191,66 +4191,66 @@ func (r *DescribeManagerDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeManagerDetailResponseParams struct {
 	// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 管理人姓名
-	ManagerFirstName *string `json:"ManagerFirstName,omitnil" name:"ManagerFirstName"`
+	ManagerFirstName *string `json:"ManagerFirstName,omitnil,omitempty" name:"ManagerFirstName"`
 
 	// 管理人邮箱
-	ManagerMail *string `json:"ManagerMail,omitnil" name:"ManagerMail"`
+	ManagerMail *string `json:"ManagerMail,omitnil,omitempty" name:"ManagerMail"`
 
 	// 联系人姓名
-	ContactFirstName *string `json:"ContactFirstName,omitnil" name:"ContactFirstName"`
+	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
 	// 管理人姓名
-	ManagerLastName *string `json:"ManagerLastName,omitnil" name:"ManagerLastName"`
+	ManagerLastName *string `json:"ManagerLastName,omitnil,omitempty" name:"ManagerLastName"`
 
 	// 联系人职位
-	ContactPosition *string `json:"ContactPosition,omitnil" name:"ContactPosition"`
+	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 
 	// 管理人职位
-	ManagerPosition *string `json:"ManagerPosition,omitnil" name:"ManagerPosition"`
+	ManagerPosition *string `json:"ManagerPosition,omitnil,omitempty" name:"ManagerPosition"`
 
 	// 核验通过时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyTime *string `json:"VerifyTime,omitnil" name:"VerifyTime"`
+	VerifyTime *string `json:"VerifyTime,omitnil,omitempty" name:"VerifyTime"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 核验过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 联系人姓名
-	ContactLastName *string `json:"ContactLastName,omitnil" name:"ContactLastName"`
+	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
 	// 管理人电话
-	ManagerPhone *string `json:"ManagerPhone,omitnil" name:"ManagerPhone"`
+	ManagerPhone *string `json:"ManagerPhone,omitnil,omitempty" name:"ManagerPhone"`
 
 	// 联系人电话
-	ContactPhone *string `json:"ContactPhone,omitnil" name:"ContactPhone"`
+	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
 	// 联系人邮箱
-	ContactMail *string `json:"ContactMail,omitnil" name:"ContactMail"`
+	ContactMail *string `json:"ContactMail,omitnil,omitempty" name:"ContactMail"`
 
 	// 管理人所属部门
-	ManagerDepartment *string `json:"ManagerDepartment,omitnil" name:"ManagerDepartment"`
+	ManagerDepartment *string `json:"ManagerDepartment,omitnil,omitempty" name:"ManagerDepartment"`
 
 	// 管理人所属公司信息
-	CompanyInfo *CompanyInfo `json:"CompanyInfo,omitnil" name:"CompanyInfo"`
+	CompanyInfo *CompanyInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
 
 	// 管理人公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 审核状态详细信息
-	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil" name:"StatusInfo"`
+	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeManagerDetailResponse struct {
@@ -4272,19 +4272,19 @@ func (r *DescribeManagerDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeManagersRequestParams struct {
 	// 公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页每页数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 管理人姓名（将废弃），请使用SearchKey
-	ManagerName *string `json:"ManagerName,omitnil" name:"ManagerName"`
+	ManagerName *string `json:"ManagerName,omitnil,omitempty" name:"ManagerName"`
 
 	// 模糊查询管理人邮箱（将废弃），请使用SearchKey
-	ManagerMail *string `json:"ManagerMail,omitnil" name:"ManagerMail"`
+	ManagerMail *string `json:"ManagerMail,omitnil,omitempty" name:"ManagerMail"`
 
 	// 根据管理人状态进行筛选，取值有
 	// 'none' 未提交审核
@@ -4294,29 +4294,29 @@ type DescribeManagersRequestParams struct {
 	// 'invalid'  审核失败
 	// 'expiring'  即将过期
 	// 'expired' 已过期
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 管理人姓/管理人名/邮箱/部门精准匹配
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
 type DescribeManagersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 分页偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页每页数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 管理人姓名（将废弃），请使用SearchKey
-	ManagerName *string `json:"ManagerName,omitnil" name:"ManagerName"`
+	ManagerName *string `json:"ManagerName,omitnil,omitempty" name:"ManagerName"`
 
 	// 模糊查询管理人邮箱（将废弃），请使用SearchKey
-	ManagerMail *string `json:"ManagerMail,omitnil" name:"ManagerMail"`
+	ManagerMail *string `json:"ManagerMail,omitnil,omitempty" name:"ManagerMail"`
 
 	// 根据管理人状态进行筛选，取值有
 	// 'none' 未提交审核
@@ -4326,10 +4326,10 @@ type DescribeManagersRequest struct {
 	// 'invalid'  审核失败
 	// 'expiring'  即将过期
 	// 'expired' 已过期
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 管理人姓/管理人名/邮箱/部门精准匹配
-	SearchKey *string `json:"SearchKey,omitnil" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeManagersRequest) ToJsonString() string {
@@ -4360,13 +4360,13 @@ func (r *DescribeManagersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeManagersResponseParams struct {
 	// 公司管理人列表
-	Managers []*ManagerInfo `json:"Managers,omitnil" name:"Managers"`
+	Managers []*ManagerInfo `json:"Managers,omitnil,omitempty" name:"Managers"`
 
 	// 公司管理人总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeManagersResponse struct {
@@ -4388,50 +4388,50 @@ func (r *DescribeManagersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePackagesRequestParams struct {
 	// 偏移量，默认0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 限制数目，默认20。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 按状态筛选。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 按过期时间升序或降序排列。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 按权益包ID搜索。
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 按权益包类型搜索。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 子产品编号
-	Pid *int64 `json:"Pid,omitnil" name:"Pid"`
+	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 }
 
 type DescribePackagesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量，默认0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 限制数目，默认20。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 按状态筛选。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 按过期时间升序或降序排列。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 按权益包ID搜索。
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 按权益包类型搜索。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 子产品编号
-	Pid *int64 `json:"Pid,omitnil" name:"Pid"`
+	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 }
 
 func (r *DescribePackagesRequest) ToJsonString() string {
@@ -4462,16 +4462,16 @@ func (r *DescribePackagesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePackagesResponseParams struct {
 	// 权益包列表。
-	Packages []*PackageInfo `json:"Packages,omitnil" name:"Packages"`
+	Packages []*PackageInfo `json:"Packages,omitnil,omitempty" name:"Packages"`
 
 	// 总条数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 权益点总余额。
-	TotalBalance *uint64 `json:"TotalBalance,omitnil" name:"TotalBalance"`
+	TotalBalance *uint64 `json:"TotalBalance,omitnil,omitempty" name:"TotalBalance"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePackagesResponse struct {
@@ -4493,14 +4493,14 @@ func (r *DescribePackagesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadCertificateRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type DownloadCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *DownloadCertificateRequest) ToJsonString() string {
@@ -4526,14 +4526,14 @@ func (r *DownloadCertificateRequest) FromJsonString(s string) error {
 type DownloadCertificateResponseParams struct {
 	// ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// MIME 类型：application/zip = ZIP 压缩文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DownloadCertificateResponse struct {
@@ -4555,182 +4555,182 @@ func (r *DownloadCertificateResponse) FromJsonString(s string) error {
 type DvAuthDetail struct {
 	// DV 认证密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthKey *string `json:"DvAuthKey,omitnil" name:"DvAuthKey"`
+	DvAuthKey *string `json:"DvAuthKey,omitnil,omitempty" name:"DvAuthKey"`
 
 	// DV 认证值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthValue *string `json:"DvAuthValue,omitnil" name:"DvAuthValue"`
+	DvAuthValue *string `json:"DvAuthValue,omitnil,omitempty" name:"DvAuthValue"`
 
 	// DV 认证值域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthDomain *string `json:"DvAuthDomain,omitnil" name:"DvAuthDomain"`
+	DvAuthDomain *string `json:"DvAuthDomain,omitnil,omitempty" name:"DvAuthDomain"`
 
 	// DV 认证值路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthPath *string `json:"DvAuthPath,omitnil" name:"DvAuthPath"`
+	DvAuthPath *string `json:"DvAuthPath,omitnil,omitempty" name:"DvAuthPath"`
 
 	// DV 认证子域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthKeySubDomain *string `json:"DvAuthKeySubDomain,omitnil" name:"DvAuthKeySubDomain"`
+	DvAuthKeySubDomain *string `json:"DvAuthKeySubDomain,omitnil,omitempty" name:"DvAuthKeySubDomain"`
 
 	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuths []*DvAuths `json:"DvAuths,omitnil" name:"DvAuths"`
+	DvAuths []*DvAuths `json:"DvAuths,omitnil,omitempty" name:"DvAuths"`
 }
 
 type DvAuths struct {
 	// DV 认证密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthKey *string `json:"DvAuthKey,omitnil" name:"DvAuthKey"`
+	DvAuthKey *string `json:"DvAuthKey,omitnil,omitempty" name:"DvAuthKey"`
 
 	// DV 认证值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthValue *string `json:"DvAuthValue,omitnil" name:"DvAuthValue"`
+	DvAuthValue *string `json:"DvAuthValue,omitnil,omitempty" name:"DvAuthValue"`
 
 	// DV 认证值域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthDomain *string `json:"DvAuthDomain,omitnil" name:"DvAuthDomain"`
+	DvAuthDomain *string `json:"DvAuthDomain,omitnil,omitempty" name:"DvAuthDomain"`
 
 	// DV 认证值路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthPath *string `json:"DvAuthPath,omitnil" name:"DvAuthPath"`
+	DvAuthPath *string `json:"DvAuthPath,omitnil,omitempty" name:"DvAuthPath"`
 
 	// DV 认证子域名，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitnil" name:"DvAuthSubDomain"`
+	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitnil,omitempty" name:"DvAuthSubDomain"`
 
 	// DV 认证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitnil" name:"DvAuthVerifyType"`
+	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitnil,omitempty" name:"DvAuthVerifyType"`
 }
 
 type Error struct {
 	// 异常错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 异常错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 type Filter struct {
 	// 过滤参数key
-	FilterKey *string `json:"FilterKey,omitnil" name:"FilterKey"`
+	FilterKey *string `json:"FilterKey,omitnil,omitempty" name:"FilterKey"`
 
 	// 过滤参数值
-	FilterValue *string `json:"FilterValue,omitnil" name:"FilterValue"`
+	FilterValue *string `json:"FilterValue,omitnil,omitempty" name:"FilterValue"`
 }
 
 type GatewayCertificate struct {
 	// 网关证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 网关证书名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 绑定域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
 
 	// 证书来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertSource *string `json:"CertSource,omitnil" name:"CertSource"`
+	CertSource *string `json:"CertSource,omitnil,omitempty" name:"CertSource"`
 
 	// 当前绑定的SSL证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type LighthouseInstanceDetail struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// IP地址
-	IP []*string `json:"IP,omitnil" name:"IP"`
+	IP []*string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 可选择域名
-	Domain []*string `json:"Domain,omitnil" name:"Domain"`
+	Domain []*string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type LiveInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 已绑定的证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// -1：域名未关联证书。
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type LiveInstanceList struct {
 	// 该地域下live实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// live实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 }
 
 type ManagerInfo struct {
 	// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 管理人姓名
-	ManagerFirstName *string `json:"ManagerFirstName,omitnil" name:"ManagerFirstName"`
+	ManagerFirstName *string `json:"ManagerFirstName,omitnil,omitempty" name:"ManagerFirstName"`
 
 	// 管理人姓名
-	ManagerLastName *string `json:"ManagerLastName,omitnil" name:"ManagerLastName"`
+	ManagerLastName *string `json:"ManagerLastName,omitnil,omitempty" name:"ManagerLastName"`
 
 	// 管理人职位
-	ManagerPosition *string `json:"ManagerPosition,omitnil" name:"ManagerPosition"`
+	ManagerPosition *string `json:"ManagerPosition,omitnil,omitempty" name:"ManagerPosition"`
 
 	// 管理人电话
-	ManagerPhone *string `json:"ManagerPhone,omitnil" name:"ManagerPhone"`
+	ManagerPhone *string `json:"ManagerPhone,omitnil,omitempty" name:"ManagerPhone"`
 
 	// 管理人邮箱
-	ManagerMail *string `json:"ManagerMail,omitnil" name:"ManagerMail"`
+	ManagerMail *string `json:"ManagerMail,omitnil,omitempty" name:"ManagerMail"`
 
 	// 管理人所属部门
-	ManagerDepartment *string `json:"ManagerDepartment,omitnil" name:"ManagerDepartment"`
+	ManagerDepartment *string `json:"ManagerDepartment,omitnil,omitempty" name:"ManagerDepartment"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 管理人域名数量
-	DomainCount *int64 `json:"DomainCount,omitnil" name:"DomainCount"`
+	DomainCount *int64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
 	// 管理人证书数量
-	CertCount *int64 `json:"CertCount,omitnil" name:"CertCount"`
+	CertCount *int64 `json:"CertCount,omitnil,omitempty" name:"CertCount"`
 
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 审核有效到期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 最近一次提交审核时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmitAuditTime *string `json:"SubmitAuditTime,omitnil" name:"SubmitAuditTime"`
+	SubmitAuditTime *string `json:"SubmitAuditTime,omitnil,omitempty" name:"SubmitAuditTime"`
 
 	// 审核通过时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyTime *string `json:"VerifyTime,omitnil" name:"VerifyTime"`
+	VerifyTime *string `json:"VerifyTime,omitnil,omitempty" name:"VerifyTime"`
 
 	// 具体审核状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil" name:"StatusInfo"`
+	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
 }
 
 type ManagerStatusInfo struct {
@@ -4740,20 +4740,20 @@ type ManagerStatusInfo struct {
 // Predefined struct for user
 type ModifyCertificateAliasRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 type ModifyCertificateAliasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 func (r *ModifyCertificateAliasRequest) ToJsonString() string {
@@ -4779,10 +4779,10 @@ func (r *ModifyCertificateAliasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificateAliasResponseParams struct {
 	// 修改成功的证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyCertificateAliasResponse struct {
@@ -4804,20 +4804,20 @@ func (r *ModifyCertificateAliasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificateProjectRequestParams struct {
 	// 需要修改所属项目的证书 ID 集合，最多100个证书。
-	CertificateIdList []*string `json:"CertificateIdList,omitnil" name:"CertificateIdList"`
+	CertificateIdList []*string `json:"CertificateIdList,omitnil,omitempty" name:"CertificateIdList"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type ModifyCertificateProjectRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改所属项目的证书 ID 集合，最多100个证书。
-	CertificateIdList []*string `json:"CertificateIdList,omitnil" name:"CertificateIdList"`
+	CertificateIdList []*string `json:"CertificateIdList,omitnil,omitempty" name:"CertificateIdList"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *ModifyCertificateProjectRequest) ToJsonString() string {
@@ -4844,14 +4844,14 @@ func (r *ModifyCertificateProjectRequest) FromJsonString(s string) error {
 type ModifyCertificateProjectResponseParams struct {
 	// 修改所属项目成功的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccessCertificates []*string `json:"SuccessCertificates,omitnil" name:"SuccessCertificates"`
+	SuccessCertificates []*string `json:"SuccessCertificates,omitnil,omitempty" name:"SuccessCertificates"`
 
 	// 修改所属项目失败的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailCertificates []*string `json:"FailCertificates,omitnil" name:"FailCertificates"`
+	FailCertificates []*string `json:"FailCertificates,omitnil,omitempty" name:"FailCertificates"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyCertificateProjectResponse struct {
@@ -4873,14 +4873,14 @@ func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificateResubmitRequestParams struct {
 	// 证书ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type ModifyCertificateResubmitRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *ModifyCertificateResubmitRequest) ToJsonString() string {
@@ -4905,10 +4905,10 @@ func (r *ModifyCertificateResubmitRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificateResubmitResponseParams struct {
 	// 证书ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyCertificateResubmitResponse struct {
@@ -4930,20 +4930,20 @@ func (r *ModifyCertificateResubmitResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificatesExpiringNotificationSwitchRequestParams struct {
 	// 证书ID列表。最多50个
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 0:不忽略通知。1:忽略通知
-	SwitchStatus *uint64 `json:"SwitchStatus,omitnil" name:"SwitchStatus"`
+	SwitchStatus *uint64 `json:"SwitchStatus,omitnil,omitempty" name:"SwitchStatus"`
 }
 
 type ModifyCertificatesExpiringNotificationSwitchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID列表。最多50个
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 0:不忽略通知。1:忽略通知
-	SwitchStatus *uint64 `json:"SwitchStatus,omitnil" name:"SwitchStatus"`
+	SwitchStatus *uint64 `json:"SwitchStatus,omitnil,omitempty" name:"SwitchStatus"`
 }
 
 func (r *ModifyCertificatesExpiringNotificationSwitchRequest) ToJsonString() string {
@@ -4969,10 +4969,10 @@ func (r *ModifyCertificatesExpiringNotificationSwitchRequest) FromJsonString(s s
 // Predefined struct for user
 type ModifyCertificatesExpiringNotificationSwitchResponseParams struct {
 	// 证书ID列表
-	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyCertificatesExpiringNotificationSwitchResponse struct {
@@ -4993,195 +4993,195 @@ func (r *ModifyCertificatesExpiringNotificationSwitchResponse) FromJsonString(s 
 
 type OperationLog struct {
 	// 操作证书动作。
-	Action *string `json:"Action,omitnil" name:"Action"`
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 操作时间。
-	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 主账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubAccountUin *string `json:"SubAccountUin,omitnil" name:"SubAccountUin"`
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 操作
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type PackageInfo struct {
 	// 权益包ID。
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 权益包内权益点总量。
-	Total *uint64 `json:"Total,omitnil" name:"Total"`
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 权益包内权益点余量。
-	Balance *uint64 `json:"Balance,omitnil" name:"Balance"`
+	Balance *uint64 `json:"Balance,omitnil,omitempty" name:"Balance"`
 
 	// 权益包名称。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 权益点是转入时，来源信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SourceUin *uint64 `json:"SourceUin,omitnil" name:"SourceUin"`
+	SourceUin *uint64 `json:"SourceUin,omitnil,omitempty" name:"SourceUin"`
 
 	// 权益点状态。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 过期时间。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 更新时间。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 生成时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 来源类型。
-	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 转移信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransferOutInfos []*PackageTransferOutInfo `json:"TransferOutInfos,omitnil" name:"TransferOutInfos"`
+	TransferOutInfos []*PackageTransferOutInfo `json:"TransferOutInfos,omitnil,omitempty" name:"TransferOutInfos"`
 }
 
 type PackageTransferOutInfo struct {
 	// 权益包ID。
-	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 转移码。
-	TransferCode *string `json:"TransferCode,omitnil" name:"TransferCode"`
+	TransferCode *string `json:"TransferCode,omitnil,omitempty" name:"TransferCode"`
 
 	// 本次转移点数。
-	TransferCount *uint64 `json:"TransferCount,omitnil" name:"TransferCount"`
+	TransferCount *uint64 `json:"TransferCount,omitnil,omitempty" name:"TransferCount"`
 
 	// 转入的PackageID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReceivePackageId *string `json:"ReceivePackageId,omitnil" name:"ReceivePackageId"`
+	ReceivePackageId *string `json:"ReceivePackageId,omitnil,omitempty" name:"ReceivePackageId"`
 
 	// 本次转移过期时间。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 本次转移生成时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 本次转移更新时间。
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 转移状态。
-	TransferStatus *string `json:"TransferStatus,omitnil" name:"TransferStatus"`
+	TransferStatus *string `json:"TransferStatus,omitnil,omitempty" name:"TransferStatus"`
 
 	// 接收者uin。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReceiverUin *uint64 `json:"ReceiverUin,omitnil" name:"ReceiverUin"`
+	ReceiverUin *uint64 `json:"ReceiverUin,omitnil,omitempty" name:"ReceiverUin"`
 
 	// 接收时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReceiveTime *string `json:"ReceiveTime,omitnil" name:"ReceiveTime"`
+	ReceiveTime *string `json:"ReceiveTime,omitnil,omitempty" name:"ReceiveTime"`
 }
 
 type PreAuditInfo struct {
 	// 证书总年限
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalPeriod *int64 `json:"TotalPeriod,omitnil" name:"TotalPeriod"`
+	TotalPeriod *int64 `json:"TotalPeriod,omitnil,omitempty" name:"TotalPeriod"`
 
 	// 证书当前年限
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NowPeriod *int64 `json:"NowPeriod,omitnil" name:"NowPeriod"`
+	NowPeriod *int64 `json:"NowPeriod,omitnil,omitempty" name:"NowPeriod"`
 
 	// 证书预审核管理人ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ManagerId *string `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *string `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 type ProjectInfo struct {
 	// 项目名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 项目创建用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectCreatorUin *uint64 `json:"ProjectCreatorUin,omitnil" name:"ProjectCreatorUin"`
+	ProjectCreatorUin *uint64 `json:"ProjectCreatorUin,omitnil,omitempty" name:"ProjectCreatorUin"`
 
 	// 项目创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectCreateTime *string `json:"ProjectCreateTime,omitnil" name:"ProjectCreateTime"`
+	ProjectCreateTime *string `json:"ProjectCreateTime,omitnil,omitempty" name:"ProjectCreateTime"`
 
 	// 项目信息简述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectResume *string `json:"ProjectResume,omitnil" name:"ProjectResume"`
+	ProjectResume *string `json:"ProjectResume,omitnil,omitempty" name:"ProjectResume"`
 
 	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnerUin *uint64 `json:"OwnerUin,omitnil" name:"OwnerUin"`
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 // Predefined struct for user
 type ReplaceCertificateRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
-	ValidType *string `json:"ValidType,omitnil" name:"ValidType"`
+	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
 	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
-	CsrType *string `json:"CsrType,omitnil" name:"CsrType"`
+	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容。
-	CsrContent *string `json:"CsrContent,omitnil" name:"CsrContent"`
+	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// KEY 密码。
-	CsrkeyPassword *string `json:"CsrkeyPassword,omitnil" name:"CsrkeyPassword"`
+	CsrkeyPassword *string `json:"CsrkeyPassword,omitnil,omitempty" name:"CsrkeyPassword"`
 
 	// 重颁发原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// CSR加密方式，可选：RSA、ECC、SM2
 	// （CsrType为Online才可选）， 默认为RSA
-	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitnil" name:"CertCSREncryptAlgo"`
+	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitnil,omitempty" name:"CertCSREncryptAlgo"`
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
-	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil" name:"CertCSRKeyParameter"`
+	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
 }
 
 type ReplaceCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
-	ValidType *string `json:"ValidType,omitnil" name:"ValidType"`
+	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
 	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
-	CsrType *string `json:"CsrType,omitnil" name:"CsrType"`
+	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容。
-	CsrContent *string `json:"CsrContent,omitnil" name:"CsrContent"`
+	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// KEY 密码。
-	CsrkeyPassword *string `json:"CsrkeyPassword,omitnil" name:"CsrkeyPassword"`
+	CsrkeyPassword *string `json:"CsrkeyPassword,omitnil,omitempty" name:"CsrkeyPassword"`
 
 	// 重颁发原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// CSR加密方式，可选：RSA、ECC、SM2
 	// （CsrType为Online才可选）， 默认为RSA
-	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitnil" name:"CertCSREncryptAlgo"`
+	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitnil,omitempty" name:"CertCSREncryptAlgo"`
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
-	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil" name:"CertCSRKeyParameter"`
+	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -5213,10 +5213,10 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReplaceCertificateResponseParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ReplaceCertificateResponse struct {
@@ -5237,29 +5237,29 @@ func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
 
 type ResourceTypeRegions struct {
 	// 云资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 地域列表
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
 // Predefined struct for user
 type RevokeCertificateRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 吊销证书原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type RevokeCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 吊销证书原因。
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 func (r *RevokeCertificateRequest) ToJsonString() string {
@@ -5286,10 +5286,10 @@ func (r *RevokeCertificateRequest) FromJsonString(s string) error {
 type RevokeCertificateResponseParams struct {
 	// 吊销证书域名验证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitnil" name:"RevokeDomainValidateAuths"`
+	RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitnil,omitempty" name:"RevokeDomainValidateAuths"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RevokeCertificateResponse struct {
@@ -5311,46 +5311,46 @@ func (r *RevokeCertificateResponse) FromJsonString(s string) error {
 type RevokeDomainValidateAuths struct {
 	// DV 认证值路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainValidateAuthPath *string `json:"DomainValidateAuthPath,omitnil" name:"DomainValidateAuthPath"`
+	DomainValidateAuthPath *string `json:"DomainValidateAuthPath,omitnil,omitempty" name:"DomainValidateAuthPath"`
 
 	// DV 认证 KEY。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainValidateAuthKey *string `json:"DomainValidateAuthKey,omitnil" name:"DomainValidateAuthKey"`
+	DomainValidateAuthKey *string `json:"DomainValidateAuthKey,omitnil,omitempty" name:"DomainValidateAuthKey"`
 
 	// DV 认证值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainValidateAuthValue *string `json:"DomainValidateAuthValue,omitnil" name:"DomainValidateAuthValue"`
+	DomainValidateAuthValue *string `json:"DomainValidateAuthValue,omitnil,omitempty" name:"DomainValidateAuthValue"`
 
 	// DV 认证域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitnil" name:"DomainValidateAuthDomain"`
+	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitnil,omitempty" name:"DomainValidateAuthDomain"`
 }
 
 type RootCertificates struct {
 	// 国密签名证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Sign *string `json:"Sign,omitnil" name:"Sign"`
+	Sign *string `json:"Sign,omitnil,omitempty" name:"Sign"`
 
 	// 国密加密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Encrypt *string `json:"Encrypt,omitnil" name:"Encrypt"`
+	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 标准证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Standard *string `json:"Standard,omitnil" name:"Standard"`
+	Standard *string `json:"Standard,omitnil,omitempty" name:"Standard"`
 }
 
 // Predefined struct for user
 type SubmitAuditManagerRequestParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 type SubmitAuditManagerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 func (r *SubmitAuditManagerRequest) ToJsonString() string {
@@ -5375,10 +5375,10 @@ func (r *SubmitAuditManagerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitAuditManagerResponseParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SubmitAuditManagerResponse struct {
@@ -5400,164 +5400,164 @@ func (r *SubmitAuditManagerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitCertificateInformationRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// CSR 生成方式：online = 在线生成, parse = 手动上传。
-	CsrType *string `json:"CsrType,omitnil" name:"CsrType"`
+	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// 上传的 CSR 内容。
-	CsrContent *string `json:"CsrContent,omitnil" name:"CsrContent"`
+	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// 绑定证书的域名。
-	CertificateDomain *string `json:"CertificateDomain,omitnil" name:"CertificateDomain"`
+	CertificateDomain *string `json:"CertificateDomain,omitnil,omitempty" name:"CertificateDomain"`
 
 	// 上传的域名数组（多域名证书可以上传）。
-	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
 	// 私钥密码（非必填）。
-	KeyPassword *string `json:"KeyPassword,omitnil" name:"KeyPassword"`
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 
 	// 公司名称。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 部门名称。
-	OrganizationDivision *string `json:"OrganizationDivision,omitnil" name:"OrganizationDivision"`
+	OrganizationDivision *string `json:"OrganizationDivision,omitnil,omitempty" name:"OrganizationDivision"`
 
 	// 公司详细地址。
-	OrganizationAddress *string `json:"OrganizationAddress,omitnil" name:"OrganizationAddress"`
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
 	// 国家名称，如中国：CN 。
-	OrganizationCountry *string `json:"OrganizationCountry,omitnil" name:"OrganizationCountry"`
+	OrganizationCountry *string `json:"OrganizationCountry,omitnil,omitempty" name:"OrganizationCountry"`
 
 	// 公司所在城市。
-	OrganizationCity *string `json:"OrganizationCity,omitnil" name:"OrganizationCity"`
+	OrganizationCity *string `json:"OrganizationCity,omitnil,omitempty" name:"OrganizationCity"`
 
 	// 公司所在省份。
-	OrganizationRegion *string `json:"OrganizationRegion,omitnil" name:"OrganizationRegion"`
+	OrganizationRegion *string `json:"OrganizationRegion,omitnil,omitempty" name:"OrganizationRegion"`
 
 	// 公司邮编。
-	PostalCode *string `json:"PostalCode,omitnil" name:"PostalCode"`
+	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
 	// 公司座机区号。
-	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil" name:"PhoneAreaCode"`
+	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil,omitempty" name:"PhoneAreaCode"`
 
 	// 公司座机号码。
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 管理人名。
-	AdminFirstName *string `json:"AdminFirstName,omitnil" name:"AdminFirstName"`
+	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
 	// 管理人姓。
-	AdminLastName *string `json:"AdminLastName,omitnil" name:"AdminLastName"`
+	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
 	// 管理人手机号码。
-	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil" name:"AdminPhoneNum"`
+	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil,omitempty" name:"AdminPhoneNum"`
 
 	// 管理人邮箱地址。
-	AdminEmail *string `json:"AdminEmail,omitnil" name:"AdminEmail"`
+	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
 	// 管理人职位。
-	AdminPosition *string `json:"AdminPosition,omitnil" name:"AdminPosition"`
+	AdminPosition *string `json:"AdminPosition,omitnil,omitempty" name:"AdminPosition"`
 
 	// 联系人名。
-	ContactFirstName *string `json:"ContactFirstName,omitnil" name:"ContactFirstName"`
+	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
 	// 联系人姓。
-	ContactLastName *string `json:"ContactLastName,omitnil" name:"ContactLastName"`
+	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
 	// 联系人邮箱地址。
-	ContactEmail *string `json:"ContactEmail,omitnil" name:"ContactEmail"`
+	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 联系人手机号码。
-	ContactNumber *string `json:"ContactNumber,omitnil" name:"ContactNumber"`
+	ContactNumber *string `json:"ContactNumber,omitnil,omitempty" name:"ContactNumber"`
 
 	// 联系人职位。
-	ContactPosition *string `json:"ContactPosition,omitnil" name:"ContactPosition"`
+	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 }
 
 type SubmitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// CSR 生成方式：online = 在线生成, parse = 手动上传。
-	CsrType *string `json:"CsrType,omitnil" name:"CsrType"`
+	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// 上传的 CSR 内容。
-	CsrContent *string `json:"CsrContent,omitnil" name:"CsrContent"`
+	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// 绑定证书的域名。
-	CertificateDomain *string `json:"CertificateDomain,omitnil" name:"CertificateDomain"`
+	CertificateDomain *string `json:"CertificateDomain,omitnil,omitempty" name:"CertificateDomain"`
 
 	// 上传的域名数组（多域名证书可以上传）。
-	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
 	// 私钥密码（非必填）。
-	KeyPassword *string `json:"KeyPassword,omitnil" name:"KeyPassword"`
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 
 	// 公司名称。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 部门名称。
-	OrganizationDivision *string `json:"OrganizationDivision,omitnil" name:"OrganizationDivision"`
+	OrganizationDivision *string `json:"OrganizationDivision,omitnil,omitempty" name:"OrganizationDivision"`
 
 	// 公司详细地址。
-	OrganizationAddress *string `json:"OrganizationAddress,omitnil" name:"OrganizationAddress"`
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
 	// 国家名称，如中国：CN 。
-	OrganizationCountry *string `json:"OrganizationCountry,omitnil" name:"OrganizationCountry"`
+	OrganizationCountry *string `json:"OrganizationCountry,omitnil,omitempty" name:"OrganizationCountry"`
 
 	// 公司所在城市。
-	OrganizationCity *string `json:"OrganizationCity,omitnil" name:"OrganizationCity"`
+	OrganizationCity *string `json:"OrganizationCity,omitnil,omitempty" name:"OrganizationCity"`
 
 	// 公司所在省份。
-	OrganizationRegion *string `json:"OrganizationRegion,omitnil" name:"OrganizationRegion"`
+	OrganizationRegion *string `json:"OrganizationRegion,omitnil,omitempty" name:"OrganizationRegion"`
 
 	// 公司邮编。
-	PostalCode *string `json:"PostalCode,omitnil" name:"PostalCode"`
+	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
 	// 公司座机区号。
-	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil" name:"PhoneAreaCode"`
+	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil,omitempty" name:"PhoneAreaCode"`
 
 	// 公司座机号码。
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 管理人名。
-	AdminFirstName *string `json:"AdminFirstName,omitnil" name:"AdminFirstName"`
+	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
 	// 管理人姓。
-	AdminLastName *string `json:"AdminLastName,omitnil" name:"AdminLastName"`
+	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
 	// 管理人手机号码。
-	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil" name:"AdminPhoneNum"`
+	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil,omitempty" name:"AdminPhoneNum"`
 
 	// 管理人邮箱地址。
-	AdminEmail *string `json:"AdminEmail,omitnil" name:"AdminEmail"`
+	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
 	// 管理人职位。
-	AdminPosition *string `json:"AdminPosition,omitnil" name:"AdminPosition"`
+	AdminPosition *string `json:"AdminPosition,omitnil,omitempty" name:"AdminPosition"`
 
 	// 联系人名。
-	ContactFirstName *string `json:"ContactFirstName,omitnil" name:"ContactFirstName"`
+	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
 	// 联系人姓。
-	ContactLastName *string `json:"ContactLastName,omitnil" name:"ContactLastName"`
+	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
 	// 联系人邮箱地址。
-	ContactEmail *string `json:"ContactEmail,omitnil" name:"ContactEmail"`
+	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 联系人手机号码。
-	ContactNumber *string `json:"ContactNumber,omitnil" name:"ContactNumber"`
+	ContactNumber *string `json:"ContactNumber,omitnil,omitempty" name:"ContactNumber"`
 
 	// 联系人职位。
-	ContactPosition *string `json:"ContactPosition,omitnil" name:"ContactPosition"`
+	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 }
 
 func (r *SubmitCertificateInformationRequest) ToJsonString() string {
@@ -5607,10 +5607,10 @@ func (r *SubmitCertificateInformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitCertificateInformationResponseParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SubmitCertificateInformationResponse struct {
@@ -5632,455 +5632,455 @@ func (r *SubmitCertificateInformationResponse) FromJsonString(s string) error {
 type SubmittedData struct {
 	// CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CsrType *string `json:"CsrType,omitnil" name:"CsrType"`
+	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CsrContent *string `json:"CsrContent,omitnil" name:"CsrContent"`
+	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// 域名信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateDomain *string `json:"CertificateDomain,omitnil" name:"CertificateDomain"`
+	CertificateDomain *string `json:"CertificateDomain,omitnil,omitempty" name:"CertificateDomain"`
 
 	// DNS 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainList []*string `json:"DomainList,omitnil" name:"DomainList"`
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
 	// 私钥密码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyPassword *string `json:"KeyPassword,omitnil" name:"KeyPassword"`
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 
 	// 企业或单位名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 部门。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationDivision *string `json:"OrganizationDivision,omitnil" name:"OrganizationDivision"`
+	OrganizationDivision *string `json:"OrganizationDivision,omitnil,omitempty" name:"OrganizationDivision"`
 
 	// 地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationAddress *string `json:"OrganizationAddress,omitnil" name:"OrganizationAddress"`
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
 	// 国家。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationCountry *string `json:"OrganizationCountry,omitnil" name:"OrganizationCountry"`
+	OrganizationCountry *string `json:"OrganizationCountry,omitnil,omitempty" name:"OrganizationCountry"`
 
 	// 市。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationCity *string `json:"OrganizationCity,omitnil" name:"OrganizationCity"`
+	OrganizationCity *string `json:"OrganizationCity,omitnil,omitempty" name:"OrganizationCity"`
 
 	// 省。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationRegion *string `json:"OrganizationRegion,omitnil" name:"OrganizationRegion"`
+	OrganizationRegion *string `json:"OrganizationRegion,omitnil,omitempty" name:"OrganizationRegion"`
 
 	// 邮政编码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostalCode *string `json:"PostalCode,omitnil" name:"PostalCode"`
+	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
 	// 座机区号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil" name:"PhoneAreaCode"`
+	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil,omitempty" name:"PhoneAreaCode"`
 
 	// 座机号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 管理员名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdminFirstName *string `json:"AdminFirstName,omitnil" name:"AdminFirstName"`
+	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
 	// 管理员姓。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdminLastName *string `json:"AdminLastName,omitnil" name:"AdminLastName"`
+	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
 	// 管理员电话号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil" name:"AdminPhoneNum"`
+	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil,omitempty" name:"AdminPhoneNum"`
 
 	// 管理员邮箱地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdminEmail *string `json:"AdminEmail,omitnil" name:"AdminEmail"`
+	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
 	// 管理员职位。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdminPosition *string `json:"AdminPosition,omitnil" name:"AdminPosition"`
+	AdminPosition *string `json:"AdminPosition,omitnil,omitempty" name:"AdminPosition"`
 
 	// 联系人名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactFirstName *string `json:"ContactFirstName,omitnil" name:"ContactFirstName"`
+	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
 	// 联系人姓。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactLastName *string `json:"ContactLastName,omitnil" name:"ContactLastName"`
+	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
 	// 联系人电话号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactNumber *string `json:"ContactNumber,omitnil" name:"ContactNumber"`
+	ContactNumber *string `json:"ContactNumber,omitnil,omitempty" name:"ContactNumber"`
 
 	// 联系人邮箱地址，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactEmail *string `json:"ContactEmail,omitnil" name:"ContactEmail"`
+	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 联系人职位。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContactPosition *string `json:"ContactPosition,omitnil" name:"ContactPosition"`
+	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 
 	// 验证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 type SupportDownloadType struct {
 	// 是否可以下载nginx可用格式
-	NGINX *bool `json:"NGINX,omitnil" name:"NGINX"`
+	NGINX *bool `json:"NGINX,omitnil,omitempty" name:"NGINX"`
 
 	// 是否可以下载apache可用格式
-	APACHE *bool `json:"APACHE,omitnil" name:"APACHE"`
+	APACHE *bool `json:"APACHE,omitnil,omitempty" name:"APACHE"`
 
 	// 是否可以下载tomcat可用格式
-	TOMCAT *bool `json:"TOMCAT,omitnil" name:"TOMCAT"`
+	TOMCAT *bool `json:"TOMCAT,omitnil,omitempty" name:"TOMCAT"`
 
 	// 是否可以下载iis可用格式
-	IIS *bool `json:"IIS,omitnil" name:"IIS"`
+	IIS *bool `json:"IIS,omitnil,omitempty" name:"IIS"`
 
 	// 是否可以下载JKS可用格式
-	JKS *bool `json:"JKS,omitnil" name:"JKS"`
+	JKS *bool `json:"JKS,omitnil,omitempty" name:"JKS"`
 
 	// 是否可以下载其他格式
-	OTHER *bool `json:"OTHER,omitnil" name:"OTHER"`
+	OTHER *bool `json:"OTHER,omitnil,omitempty" name:"OTHER"`
 
 	// 是否可以下载根证书
-	ROOT *bool `json:"ROOT,omitnil" name:"ROOT"`
+	ROOT *bool `json:"ROOT,omitnil,omitempty" name:"ROOT"`
 }
 
 type SyncTaskBindResourceResult struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 关联云资源结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindResourceResult []*BindResourceResult `json:"BindResourceResult,omitnil" name:"BindResourceResult"`
+	BindResourceResult []*BindResourceResult `json:"BindResourceResult,omitnil,omitempty" name:"BindResourceResult"`
 
 	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 关联云资源错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Error *Error `json:"Error,omitnil" name:"Error"`
+	Error *Error `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 当前结果缓存时间
-	CacheTime *string `json:"CacheTime,omitnil" name:"CacheTime"`
+	CacheTime *string `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 }
 
 type TCBAccessInstance struct {
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 统一域名状态
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnionStatus *int64 `json:"UnionStatus,omitnil" name:"UnionStatus"`
+	UnionStatus *int64 `json:"UnionStatus,omitnil,omitempty" name:"UnionStatus"`
 
 	// 是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsPreempted *bool `json:"IsPreempted,omitnil" name:"IsPreempted"`
+	IsPreempted *bool `json:"IsPreempted,omitnil,omitempty" name:"IsPreempted"`
 
 	// icp黑名单封禁状态，0-未封禁，1-封禁
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ICPStatus *int64 `json:"ICPStatus,omitnil" name:"ICPStatus"`
+	ICPStatus *int64 `json:"ICPStatus,omitnil,omitempty" name:"ICPStatus"`
 
 	// 已绑定证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type TCBAccessService struct {
 	// 实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TCBAccessInstance `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TCBAccessInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type TCBEnvironment struct {
 	// 唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ID *string `json:"ID,omitnil" name:"ID"`
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *string `json:"Source,omitnil" name:"Source"`
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TCBEnvironments struct {
 	// tcb环境	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environment *TCBEnvironment `json:"Environment,omitnil" name:"Environment"`
+	Environment *TCBEnvironment `json:"Environment,omitnil,omitempty" name:"Environment"`
 
 	// 访问服务	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessService *TCBAccessService `json:"AccessService,omitnil" name:"AccessService"`
+	AccessService *TCBAccessService `json:"AccessService,omitnil,omitempty" name:"AccessService"`
 
 	// 静态托管	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostService *TCBHostService `json:"HostService,omitnil" name:"HostService"`
+	HostService *TCBHostService `json:"HostService,omitnil,omitempty" name:"HostService"`
 }
 
 type TCBHostInstance struct {
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 解析状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DNSStatus *string `json:"DNSStatus,omitnil" name:"DNSStatus"`
+	DNSStatus *string `json:"DNSStatus,omitnil,omitempty" name:"DNSStatus"`
 
 	// 已绑定证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type TCBHostService struct {
 	// 实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TCBHostInstance `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TCBHostInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type TCBInstanceList struct {
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// tcb环境实例详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environments []*TCBEnvironments `json:"Environments,omitnil" name:"Environments"`
+	Environments []*TCBEnvironments `json:"Environments,omitnil,omitempty" name:"Environments"`
 }
 
 type TSEInstanceDetail struct {
 	// 网关ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GatewayName *string `json:"GatewayName,omitnil" name:"GatewayName"`
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
 	// 网关证书列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificateList []*GatewayCertificate `json:"CertificateList,omitnil" name:"CertificateList"`
+	CertificateList []*GatewayCertificate `json:"CertificateList,omitnil,omitempty" name:"CertificateList"`
 }
 
 type TSEInstanceList struct {
 	// TSE实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TSEInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TSEInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下TSE实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 地域	
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type Tags struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TeoInstanceDetail struct {
 	// 域名
-	Host *string `json:"Host,omitnil" name:"Host"`
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 区域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 域名状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TeoInstanceList struct {
 	// edgeone实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// edgeone实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type TkeIngressDetail struct {
 	// ingress名称
-	IngressName *string `json:"IngressName,omitnil" name:"IngressName"`
+	IngressName *string `json:"IngressName,omitnil,omitempty" name:"IngressName"`
 
 	// tls域名列表
-	TlsDomains []*string `json:"TlsDomains,omitnil" name:"TlsDomains"`
+	TlsDomains []*string `json:"TlsDomains,omitnil,omitempty" name:"TlsDomains"`
 
 	// ingress域名列表
-	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 }
 
 type TkeInstanceDetail struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群命名空间列表
-	NamespaceList []*TkeNameSpaceDetail `json:"NamespaceList,omitnil" name:"NamespaceList"`
+	NamespaceList []*TkeNameSpaceDetail `json:"NamespaceList,omitnil,omitempty" name:"NamespaceList"`
 
 	// 集群类型
-	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群版本
-	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 }
 
 type TkeInstanceList struct {
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// tke实例详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下tke实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type TkeNameSpaceDetail struct {
 	// namespace名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// secret列表
-	SecretList []*TkeSecretDetail `json:"SecretList,omitnil" name:"SecretList"`
+	SecretList []*TkeSecretDetail `json:"SecretList,omitnil,omitempty" name:"SecretList"`
 }
 
 type TkeSecretDetail struct {
 	// secret名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// ingress列表
-	IngressList []*TkeIngressDetail `json:"IngressList,omitnil" name:"IngressList"`
+	IngressList []*TkeIngressDetail `json:"IngressList,omitnil,omitempty" name:"IngressList"`
 
 	// 和新证书不匹配的域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoMatchDomains []*string `json:"NoMatchDomains,omitnil" name:"NoMatchDomains"`
+	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
 }
 
 // Predefined struct for user
 type UpdateCertificateInstanceRequestParams struct {
 	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
-	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 一键更新新证书ID，不传该则证书公钥和私钥必传
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
 	//
 	// Deprecated: Regions is deprecated.
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
-	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil" name:"ResourceTypesRegions"`
+	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
 	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
-	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
 	// 证书私钥，若上传证书公钥， 则CertificateId不用传
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
-	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil" name:"ExpiringNotificationSwitch"`
+	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
 	// 相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
-	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
 	// 是否允许下载，若选择上传证书， 则可以配置该参数
-	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
+	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
 	// 标签列表，若选择上传证书， 则可以配置该参数
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 项目 ID，若选择上传证书， 则可以配置该参数
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type UpdateCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
-	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
-	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 一键更新新证书ID，不传该则证书公钥和私钥必传
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
-	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil" name:"ResourceTypesRegions"`
+	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
 	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
-	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
 	// 证书私钥，若上传证书公钥， 则CertificateId不用传
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
-	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil" name:"ExpiringNotificationSwitch"`
+	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
 	// 相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
-	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
 	// 是否允许下载，若选择上传证书， 则可以配置该参数
-	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
+	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
 	// 标签列表，若选择上传证书， 则可以配置该参数
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 项目 ID，若选择上传证书， 则可以配置该参数
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *UpdateCertificateInstanceRequest) ToJsonString() string {
@@ -6117,17 +6117,17 @@ func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
 type UpdateCertificateInstanceResponseParams struct {
 	// 云资源部署任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployRecordId *uint64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 部署状态，1表示部署成功，0表示部署失败
-	DeployStatus *int64 `json:"DeployStatus,omitnil" name:"DeployStatus"`
+	DeployStatus *int64 `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
 	// 更新异步创建任务进度详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateSyncProgress []*UpdateSyncProgress `json:"UpdateSyncProgress,omitnil" name:"UpdateSyncProgress"`
+	UpdateSyncProgress []*UpdateSyncProgress `json:"UpdateSyncProgress,omitnil,omitempty" name:"UpdateSyncProgress"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateCertificateInstanceResponse struct {
@@ -6149,20 +6149,20 @@ func (r *UpdateCertificateInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCertificateRecordRetryRequestParams struct {
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 待重试部署记录详情ID
-	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil" name:"DeployRecordDetailId"`
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 type UpdateCertificateRecordRetryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 待重试部署记录详情ID
-	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil" name:"DeployRecordDetailId"`
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 func (r *UpdateCertificateRecordRetryRequest) ToJsonString() string {
@@ -6188,7 +6188,7 @@ func (r *UpdateCertificateRecordRetryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCertificateRecordRetryResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateCertificateRecordRetryResponse struct {
@@ -6210,14 +6210,14 @@ func (r *UpdateCertificateRecordRetryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCertificateRecordRollbackRequestParams struct {
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type UpdateCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待重试部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 func (r *UpdateCertificateRecordRollbackRequest) ToJsonString() string {
@@ -6242,10 +6242,10 @@ func (r *UpdateCertificateRecordRollbackRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type UpdateCertificateRecordRollbackResponseParams struct {
 	// 回滚部署记录ID
-	DeployRecordId *int64 `json:"DeployRecordId,omitnil" name:"DeployRecordId"`
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateCertificateRecordRollbackResponse struct {
@@ -6266,210 +6266,210 @@ func (r *UpdateCertificateRecordRollbackResponse) FromJsonString(s string) error
 
 type UpdateRecordDetail struct {
 	// 详情记录id
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 新证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 旧证书ID
-	OldCertId *string `json:"OldCertId,omitnil" name:"OldCertId"`
+	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
 
 	// 部署域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domains []*string `json:"Domains,omitnil" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 部署状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 部署时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后一次更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 部署实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 部署实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 部署监听器ID（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 部署监听器名称（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ListenerName *string `json:"ListenerName,omitnil" name:"ListenerName"`
+	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 是否开启SNI（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SniSwitch *uint64 `json:"SniSwitch,omitnil" name:"SniSwitch"`
+	SniSwitch *uint64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// bucket名称（COS专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Port *int64 `json:"Port,omitnil" name:"Port"`
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 命名空间（TKE专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// secret名称（TKE专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 环境ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// TCB部署类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TCBType *string `json:"TCBType,omitnil" name:"TCBType"`
+	TCBType *string `json:"TCBType,omitnil,omitempty" name:"TCBType"`
 }
 
 type UpdateRecordDetails struct {
 	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署资源详情列表
-	List []*UpdateRecordDetail `json:"List,omitnil" name:"List"`
+	List []*UpdateRecordDetail `json:"List,omitnil,omitempty" name:"List"`
 
 	// 该部署资源总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type UpdateRecordInfo struct {
 	// 记录ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 新证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 原证书ID
-	OldCertId *string `json:"OldCertId,omitnil" name:"OldCertId"`
+	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
 
 	// 部署资源类型列表
-	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 部署地域列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 部署状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后一次更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type UpdateSyncProgress struct {
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 地域结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateSyncProgressRegions []*UpdateSyncProgressRegion `json:"UpdateSyncProgressRegions,omitnil" name:"UpdateSyncProgressRegions"`
+	UpdateSyncProgressRegions []*UpdateSyncProgressRegion `json:"UpdateSyncProgressRegions,omitnil,omitempty" name:"UpdateSyncProgressRegions"`
 
 	// 异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type UpdateSyncProgressRegion struct {
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 执行完成数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OffsetCount *int64 `json:"OffsetCount,omitnil" name:"OffsetCount"`
+	OffsetCount *int64 `json:"OffsetCount,omitnil,omitempty" name:"OffsetCount"`
 
 	// 异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
 type UploadCertificateRequestParams struct {
 	// 证书内容。
-	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
-	CertificateUse *string `json:"CertificateUse,omitnil" name:"CertificateUse"`
+	CertificateUse *string `json:"CertificateUse,omitnil,omitempty" name:"CertificateUse"`
 
 	// 标签列表
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 相同的证书是否允许重复上传
-	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 }
 
 type UploadCertificateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书内容。
-	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
-	CertificateType *string `json:"CertificateType,omitnil" name:"CertificateType"`
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 备注名称。
-	Alias *string `json:"Alias,omitnil" name:"Alias"`
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 项目 ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
-	CertificateUse *string `json:"CertificateUse,omitnil" name:"CertificateUse"`
+	CertificateUse *string `json:"CertificateUse,omitnil,omitempty" name:"CertificateUse"`
 
 	// 标签列表
-	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 相同的证书是否允许重复上传
-	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -6501,14 +6501,14 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadCertificateResponseParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 重复证书的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RepeatCertId *string `json:"RepeatCertId,omitnil" name:"RepeatCertId"`
+	RepeatCertId *string `json:"RepeatCertId,omitnil,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadCertificateResponse struct {
@@ -6530,20 +6530,20 @@ func (r *UploadCertificateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadConfirmLetterRequestParams struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
-	ConfirmLetter *string `json:"ConfirmLetter,omitnil" name:"ConfirmLetter"`
+	ConfirmLetter *string `json:"ConfirmLetter,omitnil,omitempty" name:"ConfirmLetter"`
 }
 
 type UploadConfirmLetterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
-	ConfirmLetter *string `json:"ConfirmLetter,omitnil" name:"ConfirmLetter"`
+	ConfirmLetter *string `json:"ConfirmLetter,omitnil,omitempty" name:"ConfirmLetter"`
 }
 
 func (r *UploadConfirmLetterRequest) ToJsonString() string {
@@ -6569,13 +6569,13 @@ func (r *UploadConfirmLetterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadConfirmLetterResponseParams struct {
 	// 证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否成功
-	IsSuccess *bool `json:"IsSuccess,omitnil" name:"IsSuccess"`
+	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadConfirmLetterResponse struct {
@@ -6597,20 +6597,20 @@ func (r *UploadConfirmLetterResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadRevokeLetterRequestParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
-	RevokeLetter *string `json:"RevokeLetter,omitnil" name:"RevokeLetter"`
+	RevokeLetter *string `json:"RevokeLetter,omitnil,omitempty" name:"RevokeLetter"`
 }
 
 type UploadRevokeLetterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
-	RevokeLetter *string `json:"RevokeLetter,omitnil" name:"RevokeLetter"`
+	RevokeLetter *string `json:"RevokeLetter,omitnil,omitempty" name:"RevokeLetter"`
 }
 
 func (r *UploadRevokeLetterRequest) ToJsonString() string {
@@ -6636,13 +6636,13 @@ func (r *UploadRevokeLetterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadRevokeLetterResponseParams struct {
 	// 证书 ID。
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否成功。
-	IsSuccess *bool `json:"IsSuccess,omitnil" name:"IsSuccess"`
+	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadRevokeLetterResponse struct {
@@ -6664,23 +6664,23 @@ func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
 type VODInstanceList struct {
 	// vod实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下vod实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 // Predefined struct for user
 type VerifyManagerRequestParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 type VerifyManagerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 func (r *VerifyManagerRequest) ToJsonString() string {
@@ -6705,10 +6705,10 @@ func (r *VerifyManagerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyManagerResponseParams struct {
 	// 管理人ID
-	ManagerId *int64 `json:"ManagerId,omitnil" name:"ManagerId"`
+	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type VerifyManagerResponse struct {
@@ -6729,33 +6729,33 @@ func (r *VerifyManagerResponse) FromJsonString(s string) error {
 
 type VodInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 证书ID
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type WafInstanceDetail struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitnil" name:"CertId"`
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 是否保持长连接，1是，0 否
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keepalive *uint64 `json:"Keepalive,omitnil" name:"Keepalive"`
+	Keepalive *uint64 `json:"Keepalive,omitnil,omitempty" name:"Keepalive"`
 }
 
 type WafInstanceList struct {
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// waf实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*WafInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+	InstanceList []*WafInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下waf实例总数	
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }

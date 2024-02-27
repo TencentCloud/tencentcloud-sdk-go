@@ -23,14 +23,14 @@ import (
 // Predefined struct for user
 type AuthTestTidRequestParams struct {
 	// 设备端SDK填入测试TID参数后生成的加密数据串
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type AuthTestTidRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备端SDK填入测试TID参数后生成的加密数据串
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 func (r *AuthTestTidRequest) ToJsonString() string {
@@ -55,10 +55,10 @@ func (r *AuthTestTidRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AuthTestTidResponseParams struct {
 	// 认证结果
-	Pass *bool `json:"Pass,omitnil" name:"Pass"`
+	Pass *bool `json:"Pass,omitnil,omitempty" name:"Pass"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AuthTestTidResponse struct {
@@ -80,20 +80,20 @@ func (r *AuthTestTidResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BurnTidNotifyRequestParams struct {
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// TID编号
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 }
 
 type BurnTidNotifyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// TID编号
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 }
 
 func (r *BurnTidNotifyRequest) ToJsonString() string {
@@ -119,10 +119,10 @@ func (r *BurnTidNotifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BurnTidNotifyResponseParams struct {
 	// 接收回执成功的TID
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BurnTidNotifyResponse struct {
@@ -144,20 +144,20 @@ func (r *BurnTidNotifyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeliverTidNotifyRequestParams struct {
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// TID编号
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 }
 
 type DeliverTidNotifyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// TID编号
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 }
 
 func (r *DeliverTidNotifyRequest) ToJsonString() string {
@@ -183,16 +183,16 @@ func (r *DeliverTidNotifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeliverTidNotifyResponseParams struct {
 	// 剩余空发数量
-	RemaindCount *uint64 `json:"RemaindCount,omitnil" name:"RemaindCount"`
+	RemaindCount *uint64 `json:"RemaindCount,omitnil,omitempty" name:"RemaindCount"`
 
 	// 已回执的TID编码
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 
 	// 产品公钥
-	ProductKey *string `json:"ProductKey,omitnil" name:"ProductKey"`
+	ProductKey *string `json:"ProductKey,omitnil,omitempty" name:"ProductKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeliverTidNotifyResponse struct {
@@ -214,20 +214,20 @@ func (r *DeliverTidNotifyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeliverTidsRequestParams struct {
 	// 订单ID
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 数量，1~100
-	Quantity *uint64 `json:"Quantity,omitnil" name:"Quantity"`
+	Quantity *uint64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 }
 
 type DeliverTidsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单ID
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 数量，1~100
-	Quantity *uint64 `json:"Quantity,omitnil" name:"Quantity"`
+	Quantity *uint64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 }
 
 func (r *DeliverTidsRequest) ToJsonString() string {
@@ -254,13 +254,13 @@ func (r *DeliverTidsRequest) FromJsonString(s string) error {
 type DeliverTidsResponseParams struct {
 	// 空发的TID信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TidSet []*TidKeysInfo `json:"TidSet,omitnil" name:"TidSet"`
+	TidSet []*TidKeysInfo `json:"TidSet,omitnil,omitempty" name:"TidSet"`
 
 	// 产品公钥
-	ProductKey *string `json:"ProductKey,omitnil" name:"ProductKey"`
+	ProductKey *string `json:"ProductKey,omitnil,omitempty" name:"ProductKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeliverTidsResponse struct {
@@ -282,14 +282,14 @@ func (r *DeliverTidsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAvailableLibCountRequestParams struct {
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
 type DescribeAvailableLibCountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
 func (r *DescribeAvailableLibCountRequest) ToJsonString() string {
@@ -314,10 +314,10 @@ func (r *DescribeAvailableLibCountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAvailableLibCountResponseParams struct {
 	// 可空发的白盒密钥数量
-	Quantity *uint64 `json:"Quantity,omitnil" name:"Quantity"`
+	Quantity *uint64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAvailableLibCountResponse struct {
@@ -368,16 +368,16 @@ func (r *DescribePermissionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePermissionResponseParams struct {
 	// 企业用户
-	EnterpriseUser *bool `json:"EnterpriseUser,omitnil" name:"EnterpriseUser"`
+	EnterpriseUser *bool `json:"EnterpriseUser,omitnil,omitempty" name:"EnterpriseUser"`
 
 	// 下载控制台权限
-	DownloadPermission *string `json:"DownloadPermission,omitnil" name:"DownloadPermission"`
+	DownloadPermission *string `json:"DownloadPermission,omitnil,omitempty" name:"DownloadPermission"`
 
 	// 使用控制台权限
-	UsePermission *string `json:"UsePermission,omitnil" name:"UsePermission"`
+	UsePermission *string `json:"UsePermission,omitnil,omitempty" name:"UsePermission"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePermissionResponse struct {
@@ -399,20 +399,20 @@ func (r *DescribePermissionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadTidsRequestParams struct {
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 下载数量：1~10
-	Quantity *uint64 `json:"Quantity,omitnil" name:"Quantity"`
+	Quantity *uint64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 }
 
 type DownloadTidsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 下载数量：1~10
-	Quantity *uint64 `json:"Quantity,omitnil" name:"Quantity"`
+	Quantity *uint64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 }
 
 func (r *DownloadTidsRequest) ToJsonString() string {
@@ -439,10 +439,10 @@ func (r *DownloadTidsRequest) FromJsonString(s string) error {
 type DownloadTidsResponseParams struct {
 	// 下载的TID信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TidSet []*TidKeysInfo `json:"TidSet,omitnil" name:"TidSet"`
+	TidSet []*TidKeysInfo `json:"TidSet,omitnil,omitempty" name:"TidSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DownloadTidsResponse struct {
@@ -463,41 +463,41 @@ func (r *DownloadTidsResponse) FromJsonString(s string) error {
 
 type TidKeysInfo struct {
 	// TID号码
-	Tid *string `json:"Tid,omitnil" name:"Tid"`
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 
 	// 公钥
-	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
 
 	// 私钥
-	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
 	// 共享密钥
-	Psk *string `json:"Psk,omitnil" name:"Psk"`
+	Psk *string `json:"Psk,omitnil,omitempty" name:"Psk"`
 
 	// 软加固白盒密钥下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 软加固设备标识码
-	DeviceCode *string `json:"DeviceCode,omitnil" name:"DeviceCode"`
+	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
 }
 
 // Predefined struct for user
 type UploadDeviceUniqueCodeRequestParams struct {
 	// 硬件唯一标识码
-	CodeSet []*string `json:"CodeSet,omitnil" name:"CodeSet"`
+	CodeSet []*string `json:"CodeSet,omitnil,omitempty" name:"CodeSet"`
 
 	// 硬件标识码绑定的申请编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
 type UploadDeviceUniqueCodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 硬件唯一标识码
-	CodeSet []*string `json:"CodeSet,omitnil" name:"CodeSet"`
+	CodeSet []*string `json:"CodeSet,omitnil,omitempty" name:"CodeSet"`
 
 	// 硬件标识码绑定的申请编号
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
 func (r *UploadDeviceUniqueCodeRequest) ToJsonString() string {
@@ -523,21 +523,21 @@ func (r *UploadDeviceUniqueCodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadDeviceUniqueCodeResponseParams struct {
 	// 本次已上传数量
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 重复的硬件唯一标识码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExistedCodeSet []*string `json:"ExistedCodeSet,omitnil" name:"ExistedCodeSet"`
+	ExistedCodeSet []*string `json:"ExistedCodeSet,omitnil,omitempty" name:"ExistedCodeSet"`
 
 	// 剩余可上传数量
-	LeftQuantity *uint64 `json:"LeftQuantity,omitnil" name:"LeftQuantity"`
+	LeftQuantity *uint64 `json:"LeftQuantity,omitnil,omitempty" name:"LeftQuantity"`
 
 	// 错误的硬件唯一标识码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IllegalCodeSet []*string `json:"IllegalCodeSet,omitnil" name:"IllegalCodeSet"`
+	IllegalCodeSet []*string `json:"IllegalCodeSet,omitnil,omitempty" name:"IllegalCodeSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadDeviceUniqueCodeResponse struct {
@@ -559,14 +559,14 @@ func (r *UploadDeviceUniqueCodeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyChipBurnInfoRequestParams struct {
 	// 验证数据
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type VerifyChipBurnInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证数据
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 func (r *VerifyChipBurnInfoRequest) ToJsonString() string {
@@ -591,16 +591,16 @@ func (r *VerifyChipBurnInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyChipBurnInfoResponseParams struct {
 	// 验证结果
-	Pass *bool `json:"Pass,omitnil" name:"Pass"`
+	Pass *bool `json:"Pass,omitnil,omitempty" name:"Pass"`
 
 	// 已验证次数
-	VerifiedTimes *uint64 `json:"VerifiedTimes,omitnil" name:"VerifiedTimes"`
+	VerifiedTimes *uint64 `json:"VerifiedTimes,omitnil,omitempty" name:"VerifiedTimes"`
 
 	// 剩余验证次数
-	LeftTimes *uint64 `json:"LeftTimes,omitnil" name:"LeftTimes"`
+	LeftTimes *uint64 `json:"LeftTimes,omitnil,omitempty" name:"LeftTimes"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type VerifyChipBurnInfoResponse struct {

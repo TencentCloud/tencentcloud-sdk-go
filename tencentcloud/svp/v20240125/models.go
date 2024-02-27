@@ -23,62 +23,62 @@ import (
 // Predefined struct for user
 type CreateSavingPlanOrderRequestParams struct {
 	// 地域编码
-	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 区域编码
-	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 预付费类型
-	PrePayType *string `json:"PrePayType,omitnil" name:"PrePayType"`
+	PrePayType *string `json:"PrePayType,omitnil,omitempty" name:"PrePayType"`
 
 	// 时长
-	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 时长单位
-	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 商品唯一标识
-	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
+	CommodityCode *string `json:"CommodityCode,omitnil,omitempty" name:"CommodityCode"`
 
 	// 承诺时长内的小额金额（单位：元）
-	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
+	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil,omitempty" name:"PromiseUseAmount"`
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
-	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil,omitempty" name:"SpecifyEffectTime"`
 
 	// 可重入ID
-	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type CreateSavingPlanOrderRequest struct {
 	*tchttp.BaseRequest
 	
 	// 地域编码
-	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 区域编码
-	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 预付费类型
-	PrePayType *string `json:"PrePayType,omitnil" name:"PrePayType"`
+	PrePayType *string `json:"PrePayType,omitnil,omitempty" name:"PrePayType"`
 
 	// 时长
-	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 时长单位
-	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 商品唯一标识
-	CommodityCode *string `json:"CommodityCode,omitnil" name:"CommodityCode"`
+	CommodityCode *string `json:"CommodityCode,omitnil,omitempty" name:"CommodityCode"`
 
 	// 承诺时长内的小额金额（单位：元）
-	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil" name:"PromiseUseAmount"`
+	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil,omitempty" name:"PromiseUseAmount"`
 
 	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
-	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil" name:"SpecifyEffectTime"`
+	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil,omitempty" name:"SpecifyEffectTime"`
 
 	// 可重入ID
-	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateSavingPlanOrderRequest) ToJsonString() string {
@@ -111,10 +111,10 @@ func (r *CreateSavingPlanOrderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSavingPlanOrderResponseParams struct {
 	// 订单号
-	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSavingPlanOrderResponse struct {

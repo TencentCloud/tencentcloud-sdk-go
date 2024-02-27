@@ -22,130 +22,130 @@ import (
 
 type Age struct {
 	// 人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type AttributesOptions struct {
 	// 返回年龄信息
-	Age *bool `json:"Age,omitnil" name:"Age"`
+	Age *bool `json:"Age,omitnil,omitempty" name:"Age"`
 
 	// 返回随身挎包信息
-	Bag *bool `json:"Bag,omitnil" name:"Bag"`
+	Bag *bool `json:"Bag,omitnil,omitempty" name:"Bag"`
 
 	// 返回性别信息
-	Gender *bool `json:"Gender,omitnil" name:"Gender"`
+	Gender *bool `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 返回朝向信息
-	Orientation *bool `json:"Orientation,omitnil" name:"Orientation"`
+	Orientation *bool `json:"Orientation,omitnil,omitempty" name:"Orientation"`
 
 	// 返回上装信息
-	UpperBodyCloth *bool `json:"UpperBodyCloth,omitnil" name:"UpperBodyCloth"`
+	UpperBodyCloth *bool `json:"UpperBodyCloth,omitnil,omitempty" name:"UpperBodyCloth"`
 
 	// 返回下装信息
-	LowerBodyCloth *bool `json:"LowerBodyCloth,omitnil" name:"LowerBodyCloth"`
+	LowerBodyCloth *bool `json:"LowerBodyCloth,omitnil,omitempty" name:"LowerBodyCloth"`
 }
 
 type Bag struct {
 	// 挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type BodyAttributeInfo struct {
 	// 人体年龄信息。 
 	// AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Age *Age `json:"Age,omitnil" name:"Age"`
+	Age *Age `json:"Age,omitnil,omitempty" name:"Age"`
 
 	// 人体是否挎包。 
 	// AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bag *Bag `json:"Bag,omitnil" name:"Bag"`
+	Bag *Bag `json:"Bag,omitnil,omitempty" name:"Bag"`
 
 	// 人体性别信息。 
 	// AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Gender *Gender `json:"Gender,omitnil" name:"Gender"`
+	Gender *Gender `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 人体朝向信息。   
 	// AttributesType 不含 UpperBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Orientation *Orientation `json:"Orientation,omitnil" name:"Orientation"`
+	Orientation *Orientation `json:"Orientation,omitnil,omitempty" name:"Orientation"`
 
 	// 人体上衣属性信息。
 	// AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpperBodyCloth *UpperBodyCloth `json:"UpperBodyCloth,omitnil" name:"UpperBodyCloth"`
+	UpperBodyCloth *UpperBodyCloth `json:"UpperBodyCloth,omitnil,omitempty" name:"UpperBodyCloth"`
 
 	// 人体下衣属性信息。  
 	// AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LowerBodyCloth *LowerBodyCloth `json:"LowerBodyCloth,omitnil" name:"LowerBodyCloth"`
+	LowerBodyCloth *LowerBodyCloth `json:"LowerBodyCloth,omitnil,omitempty" name:"LowerBodyCloth"`
 }
 
 type BodyDetectResult struct {
 	// 检测出的人体置信度。 
 	// 误识率百分之十对应的阈值是0.14；误识率百分之五对应的阈值是0.32；误识率百分之二对应的阈值是0.62；误识率百分之一对应的阈值是0.81。 
 	// 通常情况建议使用阈值0.32，可适用大多数情况。
-	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
 	// 图中检测出来的人体框
-	BodyRect *BodyRect `json:"BodyRect,omitnil" name:"BodyRect"`
+	BodyRect *BodyRect `json:"BodyRect,omitnil,omitempty" name:"BodyRect"`
 
 	// 图中检测出的人体属性信息。
-	BodyAttributeInfo *BodyAttributeInfo `json:"BodyAttributeInfo,omitnil" name:"BodyAttributeInfo"`
+	BodyAttributeInfo *BodyAttributeInfo `json:"BodyAttributeInfo,omitnil,omitempty" name:"BodyAttributeInfo"`
 }
 
 type BodyJointsResult struct {
 	// 图中检测出来的人体框。
-	BoundBox *BoundRect `json:"BoundBox,omitnil" name:"BoundBox"`
+	BoundBox *BoundRect `json:"BoundBox,omitnil,omitempty" name:"BoundBox"`
 
 	// 14个人体关键点的坐标，人体关键点详见KeyPointInfo。
-	BodyJoints []*KeyPointInfo `json:"BodyJoints,omitnil" name:"BodyJoints"`
+	BodyJoints []*KeyPointInfo `json:"BodyJoints,omitnil,omitempty" name:"BodyJoints"`
 
 	// 检测出的人体置信度，0-1之间，数值越高越准确。
-	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 }
 
 type BodyRect struct {
 	// 人体框左上角横坐标。
-	X *uint64 `json:"X,omitnil" name:"X"`
+	X *uint64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 人体框左上角纵坐标。
-	Y *uint64 `json:"Y,omitnil" name:"Y"`
+	Y *uint64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 人体宽度。
-	Width *uint64 `json:"Width,omitnil" name:"Width"`
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 人体高度。
-	Height *uint64 `json:"Height,omitnil" name:"Height"`
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 type BoundRect struct {
 	// 人体框左上角横坐标。
-	X *int64 `json:"X,omitnil" name:"X"`
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 人体框左上角纵坐标。
-	Y *int64 `json:"Y,omitnil" name:"Y"`
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 人体宽度。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 人体高度。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 type Candidate struct {
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人体动作轨迹ID。
-	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 候选者的匹配得分。 
 	// 十万人体库下，误识率百分之五对应的分数为70分；误识率百分之二对应的分数为80分；误识率百分之一对应的分数为90分。
@@ -153,42 +153,42 @@ type Candidate struct {
 	// 二十万人体库下，误识率百分之五对应的分数为80分；误识率百分之二对应的分数为90分；误识率百分之一对应的分数为95分。
 	//  
 	// 通常情况建议使用分数80分（保召回）。若希望获得较高精度，建议使用分数90分（保准确）。
-	Score *float64 `json:"Score,omitnil" name:"Score"`
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 // Predefined struct for user
 type CreateGroupRequestParams struct {
 	// 人体库名称，[1,60]个字符，可修改，不可重复。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 人体库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体库信息备注，[0，40]个字符。
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 人体识别所用的算法模型版本。 
 	// 目前入参仅支持 “1.0”1个输入。 默认为"1.0"。  
 	// 不同算法模型版本对应的人体识别算法不同，新版本的整体效果会优于旧版本，后续我们将推出更新版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 }
 
 type CreateGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人体库名称，[1,60]个字符，可修改，不可重复。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 人体库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体库信息备注，[0，40]个字符。
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 人体识别所用的算法模型版本。 
 	// 目前入参仅支持 “1.0”1个输入。 默认为"1.0"。  
 	// 不同算法模型版本对应的人体识别算法不同，新版本的整体效果会优于旧版本，后续我们将推出更新版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 }
 
 func (r *CreateGroupRequest) ToJsonString() string {
@@ -216,7 +216,7 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateGroupResponse struct {
@@ -238,34 +238,34 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePersonRequestParams struct {
 	// 待加入的人员库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人员名称。[1，60]个字符，可修改，可重复。
-	PersonName *string `json:"PersonName,omitnil" name:"PersonName"`
+	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 
 	// 人员ID，单个腾讯云账号下不可修改，不可重复。 
 	// 支持英文、数字、-%@#&_，，长度限制64B。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 }
 
 type CreatePersonRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待加入的人员库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人员名称。[1，60]个字符，可修改，可重复。
-	PersonName *string `json:"PersonName,omitnil" name:"PersonName"`
+	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 
 	// 人员ID，单个腾讯云账号下不可修改，不可重复。 
 	// 支持英文、数字、-%@#&_，，长度限制64B。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -293,23 +293,23 @@ func (r *CreatePersonRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePersonResponseParams struct {
 	// 人员动作轨迹唯一标识。
-	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
 	// -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
-	InputRetCode *int64 `json:"InputRetCode,omitnil" name:"InputRetCode"`
+	InputRetCode *int64 `json:"InputRetCode,omitnil,omitempty" name:"InputRetCode"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
 	// RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
-	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil" name:"InputRetCodeDetails"`
+	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil,omitempty" name:"InputRetCodeDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreatePersonResponse struct {
@@ -331,30 +331,30 @@ func (r *CreatePersonResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSegmentationTaskRequestParams struct {
 	// 需要分割的视频URL，可外网访问。
-	VideoUrl *string `json:"VideoUrl,omitnil" name:"VideoUrl"`
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 背景图片URL。 
 	// 可以将视频背景替换为输入的图片。 
 	// 如果不输入背景图片，则输出人像区域mask。
-	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil" name:"BackgroundImageUrl"`
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil,omitempty" name:"BackgroundImageUrl"`
 
 	// 预留字段，后期用于展示更多识别信息。
-	Config *string `json:"Config,omitnil" name:"Config"`
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type CreateSegmentationTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要分割的视频URL，可外网访问。
-	VideoUrl *string `json:"VideoUrl,omitnil" name:"VideoUrl"`
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 背景图片URL。 
 	// 可以将视频背景替换为输入的图片。 
 	// 如果不输入背景图片，则输出人像区域mask。
-	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil" name:"BackgroundImageUrl"`
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil,omitempty" name:"BackgroundImageUrl"`
 
 	// 预留字段，后期用于展示更多识别信息。
-	Config *string `json:"Config,omitnil" name:"Config"`
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 func (r *CreateSegmentationTaskRequest) ToJsonString() string {
@@ -381,13 +381,13 @@ func (r *CreateSegmentationTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSegmentationTaskResponseParams struct {
 	// 任务标识ID,可以用与追溯任务状态，查看任务结果
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 预估处理时间，单位为秒
-	EstimatedProcessingTime *float64 `json:"EstimatedProcessingTime,omitnil" name:"EstimatedProcessingTime"`
+	EstimatedProcessingTime *float64 `json:"EstimatedProcessingTime,omitnil,omitempty" name:"EstimatedProcessingTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSegmentationTaskResponse struct {
@@ -409,20 +409,20 @@ func (r *CreateSegmentationTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTraceRequestParams struct {
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 }
 
 type CreateTraceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 }
 
 func (r *CreateTraceRequest) ToJsonString() string {
@@ -448,22 +448,22 @@ func (r *CreateTraceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTraceResponseParams struct {
 	// 人员动作轨迹唯一标识。
-	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
 	// -1001: 输入图片不合法。-1002: 输入图片不能构成轨迹。
-	InputRetCode *int64 `json:"InputRetCode,omitnil" name:"InputRetCode"`
+	InputRetCode *int64 `json:"InputRetCode,omitnil,omitempty" name:"InputRetCode"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
-	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil" name:"InputRetCodeDetails"`
+	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil,omitempty" name:"InputRetCodeDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTraceResponse struct {
@@ -485,14 +485,14 @@ func (r *CreateTraceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupRequestParams struct {
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DeleteGroupRequest) ToJsonString() string {
@@ -517,7 +517,7 @@ func (r *DeleteGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteGroupResponse struct {
@@ -539,14 +539,14 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePersonRequestParams struct {
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 }
 
 type DeletePersonRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 }
 
 func (r *DeletePersonRequest) ToJsonString() string {
@@ -571,7 +571,7 @@ func (r *DeletePersonRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePersonResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeletePersonResponse struct {
@@ -593,14 +593,14 @@ func (r *DeletePersonResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSegmentationTaskRequestParams struct {
 	// 在提交分割任务成功时返回的任务标识ID。
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 type DescribeSegmentationTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 在提交分割任务成功时返回的任务标识ID。
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 func (r *DescribeSegmentationTaskRequest) ToJsonString() string {
@@ -628,26 +628,26 @@ type DescribeSegmentationTaskResponseParams struct {
 	// QUEUING 排队中
 	// PROCESSING 处理中
 	// FINISHED 处理完成
-	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 分割后视频URL, 存储于腾讯云COS
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil" name:"ResultVideoUrl"`
+	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
 
 	// 分割后视频MD5，用于校验
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultVideoMD5 *string `json:"ResultVideoMD5,omitnil" name:"ResultVideoMD5"`
+	ResultVideoMD5 *string `json:"ResultVideoMD5,omitnil,omitempty" name:"ResultVideoMD5"`
 
 	// 视频基本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoBasicInformation *VideoBasicInformation `json:"VideoBasicInformation,omitnil" name:"VideoBasicInformation"`
+	VideoBasicInformation *VideoBasicInformation `json:"VideoBasicInformation,omitnil,omitempty" name:"VideoBasicInformation"`
 
 	// 分割任务错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSegmentationTaskResponse struct {
@@ -670,19 +670,19 @@ func (r *DescribeSegmentationTaskResponse) FromJsonString(s string) error {
 type DetectBodyJointsRequestParams struct {
 	// 图片 base64 数据，base64 编码后大小不可超过5M。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
 	// 
 	// 注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
-	LocalBodySwitch *bool `json:"LocalBodySwitch,omitnil" name:"LocalBodySwitch"`
+	LocalBodySwitch *bool `json:"LocalBodySwitch,omitnil,omitempty" name:"LocalBodySwitch"`
 }
 
 type DetectBodyJointsRequest struct {
@@ -690,19 +690,19 @@ type DetectBodyJointsRequest struct {
 	
 	// 图片 base64 数据，base64 编码后大小不可超过5M。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
 	// 
 	// 注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
-	LocalBodySwitch *bool `json:"LocalBodySwitch,omitnil" name:"LocalBodySwitch"`
+	LocalBodySwitch *bool `json:"LocalBodySwitch,omitnil,omitempty" name:"LocalBodySwitch"`
 }
 
 func (r *DetectBodyJointsRequest) ToJsonString() string {
@@ -729,10 +729,10 @@ func (r *DetectBodyJointsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectBodyJointsResponseParams struct {
 	// 图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
-	BodyJointsResults []*BodyJointsResult `json:"BodyJointsResults,omitnil" name:"BodyJointsResults"`
+	BodyJointsResults []*BodyJointsResult `json:"BodyJointsResults,omitnil,omitempty" name:"BodyJointsResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DetectBodyJointsResponse struct {
@@ -757,10 +757,10 @@ type DetectBodyRequestParams struct {
 	// 图片 base64 编码后大小不可超过5M。
 	// 图片分辨率不得超过 1920 * 1080 。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
-	MaxBodyNum *uint64 `json:"MaxBodyNum,omitnil" name:"MaxBodyNum"`
+	MaxBodyNum *uint64 `json:"MaxBodyNum,omitnil,omitempty" name:"MaxBodyNum"`
 
 	// 人体图片 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -769,7 +769,7 @@ type DetectBodyRequestParams struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 是否返回年龄、性别、朝向等属性。 
 	// 可选项有 Age、Bag、Gender、UpperBodyCloth、LowerBodyCloth、Orientation。  
@@ -777,7 +777,7 @@ type DetectBodyRequestParams struct {
 	// 需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
 	// 关于各属性的详细描述，参见下文出参。 
 	// 最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的 BodyAttributesInfo 不具备参考意义。
-	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitnil" name:"AttributesOptions"`
+	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitnil,omitempty" name:"AttributesOptions"`
 }
 
 type DetectBodyRequest struct {
@@ -787,10 +787,10 @@ type DetectBodyRequest struct {
 	// 图片 base64 编码后大小不可超过5M。
 	// 图片分辨率不得超过 1920 * 1080 。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
-	MaxBodyNum *uint64 `json:"MaxBodyNum,omitnil" name:"MaxBodyNum"`
+	MaxBodyNum *uint64 `json:"MaxBodyNum,omitnil,omitempty" name:"MaxBodyNum"`
 
 	// 人体图片 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -799,7 +799,7 @@ type DetectBodyRequest struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 是否返回年龄、性别、朝向等属性。 
 	// 可选项有 Age、Bag、Gender、UpperBodyCloth、LowerBodyCloth、Orientation。  
@@ -807,7 +807,7 @@ type DetectBodyRequest struct {
 	// 需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
 	// 关于各属性的详细描述，参见下文出参。 
 	// 最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的 BodyAttributesInfo 不具备参考意义。
-	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitnil" name:"AttributesOptions"`
+	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitnil,omitempty" name:"AttributesOptions"`
 }
 
 func (r *DetectBodyRequest) ToJsonString() string {
@@ -835,13 +835,13 @@ func (r *DetectBodyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectBodyResponseParams struct {
 	// 图中检测出来的人体框。
-	BodyDetectResults []*BodyDetectResult `json:"BodyDetectResults,omitnil" name:"BodyDetectResults"`
+	BodyDetectResults []*BodyDetectResult `json:"BodyDetectResults,omitnil,omitempty" name:"BodyDetectResults"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DetectBodyResponse struct {
@@ -862,29 +862,29 @@ func (r *DetectBodyResponse) FromJsonString(s string) error {
 
 type Gender struct {
 	// 性别信息，返回值为以下集合中的一个 {男性, 女性}
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 // Predefined struct for user
 type GetGroupListRequestParams struct {
 	// 起始序号，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为1000。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type GetGroupListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始序号，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为1000。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *GetGroupListRequest) ToJsonString() string {
@@ -910,13 +910,13 @@ func (r *GetGroupListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetGroupListResponseParams struct {
 	// 返回的人体库信息。
-	GroupInfos []*GroupInfo `json:"GroupInfos,omitnil" name:"GroupInfos"`
+	GroupInfos []*GroupInfo `json:"GroupInfos,omitnil,omitempty" name:"GroupInfos"`
 
 	// 人体库总数量。
-	GroupNum *uint64 `json:"GroupNum,omitnil" name:"GroupNum"`
+	GroupNum *uint64 `json:"GroupNum,omitnil,omitempty" name:"GroupNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetGroupListResponse struct {
@@ -938,26 +938,26 @@ func (r *GetGroupListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPersonListRequestParams struct {
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 起始序号，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为1000。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type GetPersonListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 起始序号，默认值为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认值为10，最大值为1000。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *GetPersonListRequest) ToJsonString() string {
@@ -984,16 +984,16 @@ func (r *GetPersonListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPersonListResponseParams struct {
 	// 返回的人员信息。
-	PersonInfos []*PersonInfo `json:"PersonInfos,omitnil" name:"PersonInfos"`
+	PersonInfos []*PersonInfo `json:"PersonInfos,omitnil,omitempty" name:"PersonInfos"`
 
 	// 该人体库的人员数量。
-	PersonNum *uint64 `json:"PersonNum,omitnil" name:"PersonNum"`
+	PersonNum *uint64 `json:"PersonNum,omitnil,omitempty" name:"PersonNum"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetPersonListResponse struct {
@@ -1044,16 +1044,16 @@ func (r *GetSummaryInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSummaryInfoResponseParams struct {
 	// 人体库总数量。
-	GroupCount *uint64 `json:"GroupCount,omitnil" name:"GroupCount"`
+	GroupCount *uint64 `json:"GroupCount,omitnil,omitempty" name:"GroupCount"`
 
 	// 人员总数量
-	PersonCount *uint64 `json:"PersonCount,omitnil" name:"PersonCount"`
+	PersonCount *uint64 `json:"PersonCount,omitnil,omitempty" name:"PersonCount"`
 
 	// 人员轨迹总数量
-	TraceCount *uint64 `json:"TraceCount,omitnil" name:"TraceCount"`
+	TraceCount *uint64 `json:"TraceCount,omitnil,omitempty" name:"TraceCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetSummaryInfoResponse struct {
@@ -1074,111 +1074,111 @@ func (r *GetSummaryInfoResponse) FromJsonString(s string) error {
 
 type GroupInfo struct {
 	// 人体库名称。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体库信息备注。
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。  
 	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
-	CreationTimestamp *uint64 `json:"CreationTimestamp,omitnil" name:"CreationTimestamp"`
+	CreationTimestamp *uint64 `json:"CreationTimestamp,omitnil,omitempty" name:"CreationTimestamp"`
 }
 
 type ImageRect struct {
 	// 左上角横坐标。
-	X *int64 `json:"X,omitnil" name:"X"`
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 左上角纵坐标。
-	Y *int64 `json:"Y,omitnil" name:"Y"`
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 人体宽度。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 人体高度。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分割选项名称。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type KeyPointInfo struct {
 	// 代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
-	KeyPointType *string `json:"KeyPointType,omitnil" name:"KeyPointType"`
+	KeyPointType *string `json:"KeyPointType,omitnil,omitempty" name:"KeyPointType"`
 
 	// 人体关键点横坐标
-	X *float64 `json:"X,omitnil" name:"X"`
+	X *float64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 人体关键点纵坐标
-	Y *float64 `json:"Y,omitnil" name:"Y"`
+	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 关键点坐标置信度，分数取值在0-1之间，阈值建议为0.25，小于0.25认为在图中无人体关键点。
-	BodyScore *float64 `json:"BodyScore,omitnil" name:"BodyScore"`
+	BodyScore *float64 `json:"BodyScore,omitnil,omitempty" name:"BodyScore"`
 }
 
 type LowerBodyCloth struct {
 	// 下衣颜色信息。
-	Color *LowerBodyClothColor `json:"Color,omitnil" name:"Color"`
+	Color *LowerBodyClothColor `json:"Color,omitnil,omitempty" name:"Color"`
 
 	// 下衣长度信息 。
-	Length *LowerBodyClothLength `json:"Length,omitnil" name:"Length"`
+	Length *LowerBodyClothLength `json:"Length,omitnil,omitempty" name:"Length"`
 
 	// 下衣类型信息。
-	Type *LowerBodyClothType `json:"Type,omitnil" name:"Type"`
+	Type *LowerBodyClothType `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type LowerBodyClothColor struct {
 	// 下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type LowerBodyClothLength struct {
 	// 下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type LowerBodyClothType struct {
 	// 下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 // Predefined struct for user
 type ModifyGroupRequestParams struct {
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体库名称。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 人体库信息备注。
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体库名称。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 人体库信息备注。
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
 func (r *ModifyGroupRequest) ToJsonString() string {
@@ -1205,7 +1205,7 @@ func (r *ModifyGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyGroupResponse struct {
@@ -1227,20 +1227,20 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonInfoRequestParams struct {
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人员名称。
-	PersonName *string `json:"PersonName,omitnil" name:"PersonName"`
+	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 }
 
 type ModifyPersonInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 人员名称。
-	PersonName *string `json:"PersonName,omitnil" name:"PersonName"`
+	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 }
 
 func (r *ModifyPersonInfoRequest) ToJsonString() string {
@@ -1266,7 +1266,7 @@ func (r *ModifyPersonInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyPersonInfoResponse struct {
@@ -1287,58 +1287,58 @@ func (r *ModifyPersonInfoResponse) FromJsonString(s string) error {
 
 type Orientation struct {
 	// 人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type PersonInfo struct {
 	// 人员名称。
-	PersonName *string `json:"PersonName,omitnil" name:"PersonName"`
+	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 
 	// 人员ID。
-	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
 	// 包含的人体动作轨迹图片信息列表。
-	TraceInfos []*TraceInfo `json:"TraceInfos,omitnil" name:"TraceInfos"`
+	TraceInfos []*TraceInfo `json:"TraceInfos,omitnil,omitempty" name:"TraceInfos"`
 }
 
 // Predefined struct for user
 type SearchTraceRequestParams struct {
 	// 希望搜索的人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 
 	// 单张被识别的人体动作轨迹返回的最相似人员数量。
 	// 默认值为5，最大值为100。
 	//  例，设MaxPersonNum为8，则返回Top8相似的人员信息。 值越大，需要处理的时间越长。建议不要超过10。
-	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil" name:"MaxPersonNum"`
+	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
 	// 出参Score中，只有超过TraceMatchThreshold值的结果才会返回。
 	// 默认为0。范围[0, 100.0]。
-	TraceMatchThreshold *float64 `json:"TraceMatchThreshold,omitnil" name:"TraceMatchThreshold"`
+	TraceMatchThreshold *float64 `json:"TraceMatchThreshold,omitnil,omitempty" name:"TraceMatchThreshold"`
 }
 
 type SearchTraceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 希望搜索的人体库ID。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 人体动作轨迹信息。
-	Trace *Trace `json:"Trace,omitnil" name:"Trace"`
+	Trace *Trace `json:"Trace,omitnil,omitempty" name:"Trace"`
 
 	// 单张被识别的人体动作轨迹返回的最相似人员数量。
 	// 默认值为5，最大值为100。
 	//  例，设MaxPersonNum为8，则返回Top8相似的人员信息。 值越大，需要处理的时间越长。建议不要超过10。
-	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil" name:"MaxPersonNum"`
+	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
 	// 出参Score中，只有超过TraceMatchThreshold值的结果才会返回。
 	// 默认为0。范围[0, 100.0]。
-	TraceMatchThreshold *float64 `json:"TraceMatchThreshold,omitnil" name:"TraceMatchThreshold"`
+	TraceMatchThreshold *float64 `json:"TraceMatchThreshold,omitnil,omitempty" name:"TraceMatchThreshold"`
 }
 
 func (r *SearchTraceRequest) ToJsonString() string {
@@ -1366,22 +1366,22 @@ func (r *SearchTraceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchTraceResponseParams struct {
 	// 识别出的最相似候选人。
-	Candidates []*Candidate `json:"Candidates,omitnil" name:"Candidates"`
+	Candidates []*Candidate `json:"Candidates,omitnil,omitempty" name:"Candidates"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
 	// -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
-	InputRetCode *int64 `json:"InputRetCode,omitnil" name:"InputRetCode"`
+	InputRetCode *int64 `json:"InputRetCode,omitnil,omitempty" name:"InputRetCode"`
 
 	// 输入的人体动作轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
-	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil" name:"InputRetCodeDetails"`
+	InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitnil,omitempty" name:"InputRetCodeDetails"`
 
 	// 人体识别所用的算法模型版本。
-	BodyModelVersion *string `json:"BodyModelVersion,omitnil" name:"BodyModelVersion"`
+	BodyModelVersion *string `json:"BodyModelVersion,omitnil,omitempty" name:"BodyModelVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchTraceResponse struct {
@@ -1403,12 +1403,12 @@ func (r *SearchTraceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SegmentCustomizedPortraitPicRequestParams struct {
 	// 此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
-	SegmentationOptions *SegmentationOptions `json:"SegmentationOptions,omitnil" name:"SegmentationOptions"`
+	SegmentationOptions *SegmentationOptions `json:"SegmentationOptions,omitnil,omitempty" name:"SegmentationOptions"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 图片分辨率须小于2000*2000。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -1416,19 +1416,19 @@ type SegmentCustomizedPortraitPicRequestParams struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type SegmentCustomizedPortraitPicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
-	SegmentationOptions *SegmentationOptions `json:"SegmentationOptions,omitnil" name:"SegmentationOptions"`
+	SegmentationOptions *SegmentationOptions `json:"SegmentationOptions,omitnil,omitempty" name:"SegmentationOptions"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 图片分辨率须小于2000*2000。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -1436,7 +1436,7 @@ type SegmentCustomizedPortraitPicRequest struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 func (r *SegmentCustomizedPortraitPicRequest) ToJsonString() string {
@@ -1463,17 +1463,17 @@ func (r *SegmentCustomizedPortraitPicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SegmentCustomizedPortraitPicResponseParams struct {
 	// 根据指定标签分割输出的透明背景人像图片的 base64 数据。
-	PortraitImage *string `json:"PortraitImage,omitnil" name:"PortraitImage"`
+	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
 	// 指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
-	MaskImage *string `json:"MaskImage,omitnil" name:"MaskImage"`
+	MaskImage *string `json:"MaskImage,omitnil,omitempty" name:"MaskImage"`
 
 	// 坐标信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageRects []*ImageRect `json:"ImageRects,omitnil" name:"ImageRects"`
+	ImageRects []*ImageRect `json:"ImageRects,omitnil,omitempty" name:"ImageRects"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SegmentCustomizedPortraitPicResponse struct {
@@ -1497,7 +1497,7 @@ type SegmentPortraitPicRequestParams struct {
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 图片分辨率须小于2000*2000。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -1505,16 +1505,16 @@ type SegmentPortraitPicRequestParams struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 适用场景类型。
 	// 
 	// 取值：GEN/GS。GEN为通用场景模式；GS为绿幕场景模式，针对绿幕场景下的人像分割效果更好。
 	// 两种模式选择一种传入，默认为GEN。
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 type SegmentPortraitPicRequest struct {
@@ -1523,7 +1523,7 @@ type SegmentPortraitPicRequest struct {
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 图片分辨率须小于2000*2000。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
@@ -1531,16 +1531,16 @@ type SegmentPortraitPicRequest struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
-	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 适用场景类型。
 	// 
 	// 取值：GEN/GS。GEN为通用场景模式；GS为绿幕场景模式，针对绿幕场景下的人像分割效果更好。
 	// 两种模式选择一种传入，默认为GEN。
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 func (r *SegmentPortraitPicRequest) ToJsonString() string {
@@ -1569,26 +1569,26 @@ func (r *SegmentPortraitPicRequest) FromJsonString(s string) error {
 type SegmentPortraitPicResponseParams struct {
 	// 处理后的图片 base64 数据，透明背景图。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// 一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultMask *string `json:"ResultMask,omitnil" name:"ResultMask"`
+	ResultMask *string `json:"ResultMask,omitnil,omitempty" name:"ResultMask"`
 
 	// 图片是否存在前景。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasForeground *bool `json:"HasForeground,omitnil" name:"HasForeground"`
+	HasForeground *bool `json:"HasForeground,omitnil,omitempty" name:"HasForeground"`
 
 	// 支持将处理过的图片 base64 数据，透明背景图以Url的形式返回值，Url有效期为30分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultImageUrl *string `json:"ResultImageUrl,omitnil" name:"ResultImageUrl"`
+	ResultImageUrl *string `json:"ResultImageUrl,omitnil,omitempty" name:"ResultImageUrl"`
 
 	// 一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以Url形式的返回值；Url有效期为30分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultMaskUrl *string `json:"ResultMaskUrl,omitnil" name:"ResultMaskUrl"`
+	ResultMaskUrl *string `json:"ResultMaskUrl,omitnil,omitempty" name:"ResultMaskUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SegmentPortraitPicResponse struct {
@@ -1609,80 +1609,80 @@ func (r *SegmentPortraitPicResponse) FromJsonString(s string) error {
 
 type SegmentationOptions struct {
 	// 分割选项-背景
-	Background *bool `json:"Background,omitnil" name:"Background"`
+	Background *bool `json:"Background,omitnil,omitempty" name:"Background"`
 
 	// 分割选项-头发
-	Hair *bool `json:"Hair,omitnil" name:"Hair"`
+	Hair *bool `json:"Hair,omitnil,omitempty" name:"Hair"`
 
 	// 分割选项-左眉
-	LeftEyebrow *bool `json:"LeftEyebrow,omitnil" name:"LeftEyebrow"`
+	LeftEyebrow *bool `json:"LeftEyebrow,omitnil,omitempty" name:"LeftEyebrow"`
 
 	// 分割选项-右眉
-	RightEyebrow *bool `json:"RightEyebrow,omitnil" name:"RightEyebrow"`
+	RightEyebrow *bool `json:"RightEyebrow,omitnil,omitempty" name:"RightEyebrow"`
 
 	// 分割选项-左眼
-	LeftEye *bool `json:"LeftEye,omitnil" name:"LeftEye"`
+	LeftEye *bool `json:"LeftEye,omitnil,omitempty" name:"LeftEye"`
 
 	// 分割选项-右眼
-	RightEye *bool `json:"RightEye,omitnil" name:"RightEye"`
+	RightEye *bool `json:"RightEye,omitnil,omitempty" name:"RightEye"`
 
 	// 分割选项-鼻子
-	Nose *bool `json:"Nose,omitnil" name:"Nose"`
+	Nose *bool `json:"Nose,omitnil,omitempty" name:"Nose"`
 
 	// 分割选项-上唇
-	UpperLip *bool `json:"UpperLip,omitnil" name:"UpperLip"`
+	UpperLip *bool `json:"UpperLip,omitnil,omitempty" name:"UpperLip"`
 
 	// 分割选项-下唇
-	LowerLip *bool `json:"LowerLip,omitnil" name:"LowerLip"`
+	LowerLip *bool `json:"LowerLip,omitnil,omitempty" name:"LowerLip"`
 
 	// 分割选项-牙齿
-	Tooth *bool `json:"Tooth,omitnil" name:"Tooth"`
+	Tooth *bool `json:"Tooth,omitnil,omitempty" name:"Tooth"`
 
 	// 分割选项-口腔（不包含牙齿）
-	Mouth *bool `json:"Mouth,omitnil" name:"Mouth"`
+	Mouth *bool `json:"Mouth,omitnil,omitempty" name:"Mouth"`
 
 	// 分割选项-左耳
-	LeftEar *bool `json:"LeftEar,omitnil" name:"LeftEar"`
+	LeftEar *bool `json:"LeftEar,omitnil,omitempty" name:"LeftEar"`
 
 	// 分割选项-右耳
-	RightEar *bool `json:"RightEar,omitnil" name:"RightEar"`
+	RightEar *bool `json:"RightEar,omitnil,omitempty" name:"RightEar"`
 
 	// 分割选项-面部(不包含眼、耳、口、鼻等五官及头发。)
-	Face *bool `json:"Face,omitnil" name:"Face"`
+	Face *bool `json:"Face,omitnil,omitempty" name:"Face"`
 
 	// 复合分割选项-头部(包含所有的头部元素，相关装饰除外)
-	Head *bool `json:"Head,omitnil" name:"Head"`
+	Head *bool `json:"Head,omitnil,omitempty" name:"Head"`
 
 	// 分割选项-身体（包含脖子）
-	Body *bool `json:"Body,omitnil" name:"Body"`
+	Body *bool `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// 分割选项-帽子
-	Hat *bool `json:"Hat,omitnil" name:"Hat"`
+	Hat *bool `json:"Hat,omitnil,omitempty" name:"Hat"`
 
 	// 分割选项-头饰
-	Headdress *bool `json:"Headdress,omitnil" name:"Headdress"`
+	Headdress *bool `json:"Headdress,omitnil,omitempty" name:"Headdress"`
 
 	// 分割选项-耳环
-	Earrings *bool `json:"Earrings,omitnil" name:"Earrings"`
+	Earrings *bool `json:"Earrings,omitnil,omitempty" name:"Earrings"`
 
 	// 分割选项-项链
-	Necklace *bool `json:"Necklace,omitnil" name:"Necklace"`
+	Necklace *bool `json:"Necklace,omitnil,omitempty" name:"Necklace"`
 
 	// 分割选项-随身物品（ 例如伞、包、手机等。 ）
-	Belongings *bool `json:"Belongings,omitnil" name:"Belongings"`
+	Belongings *bool `json:"Belongings,omitnil,omitempty" name:"Belongings"`
 }
 
 // Predefined struct for user
 type TerminateSegmentationTaskRequestParams struct {
 	// 在提交分割任务成功时返回的任务标识ID。
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 type TerminateSegmentationTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 在提交分割任务成功时返回的任务标识ID。
-	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 func (r *TerminateSegmentationTaskRequest) ToJsonString() string {
@@ -1707,7 +1707,7 @@ func (r *TerminateSegmentationTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TerminateSegmentationTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TerminateSegmentationTaskResponse struct {
@@ -1731,7 +1731,7 @@ type Trace struct {
 	// 数组长度最小为1最大为5。 
 	// 单个图片 base64 编码后大小不可超过2M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitnil" name:"Images"`
+	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
 	// 人体动作轨迹图片 Url 数组。 
 	// 数组长度最小为1最大为5。 
@@ -1740,71 +1740,71 @@ type Trace struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 若输入的Images 和 Urls 是已经裁剪后的人体小图，则可以忽略本参数。 
 	// 若否，或图片中包含多个人体，则需要通过本参数来指定图片中的人体框。 
 	// 顺序对应 Images 或 Urls 中的顺序。  
 	// 当不输入本参数时，我们将认为输入图片已是经过裁剪后的人体小图，不会进行人体检测而直接进行特征提取处理。
-	BodyRects []*BodyRect `json:"BodyRects,omitnil" name:"BodyRects"`
+	BodyRects []*BodyRect `json:"BodyRects,omitnil,omitempty" name:"BodyRects"`
 }
 
 type TraceInfo struct {
 	// 人体动作轨迹ID。
-	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 包含的人体动作轨迹图片Id列表。
-	BodyIds []*string `json:"BodyIds,omitnil" name:"BodyIds"`
+	BodyIds []*string `json:"BodyIds,omitnil,omitempty" name:"BodyIds"`
 }
 
 type UpperBodyCloth struct {
 	// 上衣纹理信息。
-	Texture *UpperBodyClothTexture `json:"Texture,omitnil" name:"Texture"`
+	Texture *UpperBodyClothTexture `json:"Texture,omitnil,omitempty" name:"Texture"`
 
 	// 上衣颜色信息。
-	Color *UpperBodyClothColor `json:"Color,omitnil" name:"Color"`
+	Color *UpperBodyClothColor `json:"Color,omitnil,omitempty" name:"Color"`
 
 	// 上衣衣袖信息。
-	Sleeve *UpperBodyClothSleeve `json:"Sleeve,omitnil" name:"Sleeve"`
+	Sleeve *UpperBodyClothSleeve `json:"Sleeve,omitnil,omitempty" name:"Sleeve"`
 }
 
 type UpperBodyClothColor struct {
 	// 上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type UpperBodyClothSleeve struct {
 	// 上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type UpperBodyClothTexture struct {
 	// 上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
-	Probability *float64 `json:"Probability,omitnil" name:"Probability"`
+	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
 type VideoBasicInformation struct {
 	// 视频宽度
-	FrameWidth *int64 `json:"FrameWidth,omitnil" name:"FrameWidth"`
+	FrameWidth *int64 `json:"FrameWidth,omitnil,omitempty" name:"FrameWidth"`
 
 	// 视频高度
-	FrameHeight *int64 `json:"FrameHeight,omitnil" name:"FrameHeight"`
+	FrameHeight *int64 `json:"FrameHeight,omitnil,omitempty" name:"FrameHeight"`
 
 	// 视频帧速率(FPS)
-	FramesPerSecond *int64 `json:"FramesPerSecond,omitnil" name:"FramesPerSecond"`
+	FramesPerSecond *int64 `json:"FramesPerSecond,omitnil,omitempty" name:"FramesPerSecond"`
 
 	// 视频时长
-	Duration *float64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 视频帧数
-	TotalFrames *int64 `json:"TotalFrames,omitnil" name:"TotalFrames"`
+	TotalFrames *int64 `json:"TotalFrames,omitnil,omitempty" name:"TotalFrames"`
 }

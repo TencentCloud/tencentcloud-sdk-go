@@ -22,79 +22,79 @@ import (
 
 type CdsAuditInstance struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户AppId
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户Uin
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 项目ID
-	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 续费标识
-	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 所属地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 付费模式（数据安全审计只支持预付费：1）
-	PayMode *uint64 `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss
-	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil" name:"IsolatedTimestamp"`
+	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil,omitempty" name:"IsolatedTimestamp"`
 
 	// 实例创建时间，格式： yyyy-mm-dd HH:ii:ss
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例公网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 实例私网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIp *string `json:"PrivateIp,omitnil" name:"PrivateIp"`
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 实例类型（版本）
-	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Pdomain *string `json:"Pdomain,omitnil" name:"Pdomain"`
+	Pdomain *string `json:"Pdomain,omitnil,omitempty" name:"Pdomain"`
 }
 
 type DbauditTypesInfo struct {
 	// 规格描述
-	InstanceVersionName *string `json:"InstanceVersionName,omitnil" name:"InstanceVersionName"`
+	InstanceVersionName *string `json:"InstanceVersionName,omitnil,omitempty" name:"InstanceVersionName"`
 
 	// 规格名称
-	InstanceVersionKey *string `json:"InstanceVersionKey,omitnil" name:"InstanceVersionKey"`
+	InstanceVersionKey *string `json:"InstanceVersionKey,omitnil,omitempty" name:"InstanceVersionKey"`
 
 	// 最大吞吐量
-	Qps *uint64 `json:"Qps,omitnil" name:"Qps"`
+	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 最大实例数
-	MaxInstances *uint64 `json:"MaxInstances,omitnil" name:"MaxInstances"`
+	MaxInstances *uint64 `json:"MaxInstances,omitnil,omitempty" name:"MaxInstances"`
 
 	// 入库速率（每小时）
-	InsertSpeed *uint64 `json:"InsertSpeed,omitnil" name:"InsertSpeed"`
+	InsertSpeed *uint64 `json:"InsertSpeed,omitnil,omitempty" name:"InsertSpeed"`
 
 	// 最大在线存储量，单位：条
-	OnlineStorageCapacity *uint64 `json:"OnlineStorageCapacity,omitnil" name:"OnlineStorageCapacity"`
+	OnlineStorageCapacity *uint64 `json:"OnlineStorageCapacity,omitnil,omitempty" name:"OnlineStorageCapacity"`
 
 	// 最大归档存储量，单位：条
-	ArchivingStorageCapacity *uint64 `json:"ArchivingStorageCapacity,omitnil" name:"ArchivingStorageCapacity"`
+	ArchivingStorageCapacity *uint64 `json:"ArchivingStorageCapacity,omitnil,omitempty" name:"ArchivingStorageCapacity"`
 }
 
 // Predefined struct for user
@@ -129,13 +129,13 @@ func (r *DescribeDasbImageIdsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDasbImageIdsResponseParams struct {
 	// 基础镜像ID
-	BaseImageId *string `json:"BaseImageId,omitnil" name:"BaseImageId"`
+	BaseImageId *string `json:"BaseImageId,omitnil,omitempty" name:"BaseImageId"`
 
 	// AI镜像ID
-	AiImageId *string `json:"AiImageId,omitnil" name:"AiImageId"`
+	AiImageId *string `json:"AiImageId,omitnil,omitempty" name:"AiImageId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDasbImageIdsResponse struct {
@@ -186,10 +186,10 @@ func (r *DescribeDbauditInstanceTypeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDbauditInstanceTypeResponseParams struct {
 	// 数据安全审计产品规格信息列表
-	DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitnil" name:"DbauditTypesSet"`
+	DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitnil,omitempty" name:"DbauditTypesSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDbauditInstanceTypeResponse struct {
@@ -211,26 +211,26 @@ func (r *DescribeDbauditInstanceTypeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDbauditInstancesRequestParams struct {
 	// 查询条件地域
-	SearchRegion *string `json:"SearchRegion,omitnil" name:"SearchRegion"`
+	SearchRegion *string `json:"SearchRegion,omitnil,omitempty" name:"SearchRegion"`
 
 	// 限制数目，默认10， 最大50
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认1
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeDbauditInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询条件地域
-	SearchRegion *string `json:"SearchRegion,omitnil" name:"SearchRegion"`
+	SearchRegion *string `json:"SearchRegion,omitnil,omitempty" name:"SearchRegion"`
 
 	// 限制数目，默认10， 最大50
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认1
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDbauditInstancesRequest) ToJsonString() string {
@@ -257,13 +257,13 @@ func (r *DescribeDbauditInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDbauditInstancesResponseParams struct {
 	// 总实例数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 数据安全审计实例信息列表
-	CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitnil" name:"CdsAuditInstanceSet"`
+	CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitnil,omitempty" name:"CdsAuditInstanceSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDbauditInstancesResponse struct {
@@ -314,10 +314,10 @@ func (r *DescribeDbauditUsedRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDbauditUsedRegionsResponseParams struct {
 	// 可售卖地域信息列表
-	RegionSet []*RegionInfo `json:"RegionSet,omitnil" name:"RegionSet"`
+	RegionSet []*RegionInfo `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDbauditUsedRegionsResponse struct {
@@ -339,38 +339,38 @@ func (r *DescribeDbauditUsedRegionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type InquiryPriceDbauditInstanceRequestParams struct {
 	// 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
-	InstanceVersion *string `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
 	// 询价类型： renew，续费；newbuy，新购
-	InquiryType *string `json:"InquiryType,omitnil" name:"InquiryType"`
+	InquiryType *string `json:"InquiryType,omitnil,omitempty" name:"InquiryType"`
 
 	// 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
-	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 购买时长单位，y：年；m：月
-	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 实例所在地域
-	ServiceRegion *string `json:"ServiceRegion,omitnil" name:"ServiceRegion"`
+	ServiceRegion *string `json:"ServiceRegion,omitnil,omitempty" name:"ServiceRegion"`
 }
 
 type InquiryPriceDbauditInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
-	InstanceVersion *string `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
 	// 询价类型： renew，续费；newbuy，新购
-	InquiryType *string `json:"InquiryType,omitnil" name:"InquiryType"`
+	InquiryType *string `json:"InquiryType,omitnil,omitempty" name:"InquiryType"`
 
 	// 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
-	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 购买时长单位，y：年；m：月
-	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 实例所在地域
-	ServiceRegion *string `json:"ServiceRegion,omitnil" name:"ServiceRegion"`
+	ServiceRegion *string `json:"ServiceRegion,omitnil,omitempty" name:"ServiceRegion"`
 }
 
 func (r *InquiryPriceDbauditInstanceRequest) ToJsonString() string {
@@ -399,13 +399,13 @@ func (r *InquiryPriceDbauditInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquiryPriceDbauditInstanceResponseParams struct {
 	// 总价，单位：元
-	TotalPrice *float64 `json:"TotalPrice,omitnil" name:"TotalPrice"`
+	TotalPrice *float64 `json:"TotalPrice,omitnil,omitempty" name:"TotalPrice"`
 
 	// 真实价钱，预支费用的折扣价，单位：元
-	RealTotalCost *float64 `json:"RealTotalCost,omitnil" name:"RealTotalCost"`
+	RealTotalCost *float64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type InquiryPriceDbauditInstanceResponse struct {
@@ -427,20 +427,20 @@ func (r *InquiryPriceDbauditInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDbauditInstancesRenewFlagRequestParams struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 type ModifyDbauditInstancesRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *ModifyDbauditInstancesRenewFlagRequest) ToJsonString() string {
@@ -466,7 +466,7 @@ func (r *ModifyDbauditInstancesRenewFlagRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyDbauditInstancesRenewFlagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyDbauditInstancesRenewFlagResponse struct {
@@ -487,14 +487,14 @@ func (r *ModifyDbauditInstancesRenewFlagResponse) FromJsonString(s string) error
 
 type RegionInfo struct {
 	// 地域ID
-	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 地域描述
-	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地域可用状态
-	RegionState *int64 `json:"RegionState,omitnil" name:"RegionState"`
+	RegionState *int64 `json:"RegionState,omitnil,omitempty" name:"RegionState"`
 }

@@ -1071,6 +1071,57 @@ func (c *Client) DescribeCostDetailWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCostExplorerSummaryRequest() (request *DescribeCostExplorerSummaryRequest) {
+    request = &DescribeCostExplorerSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostExplorerSummary")
+    
+    
+    return
+}
+
+func NewDescribeCostExplorerSummaryResponse() (response *DescribeCostExplorerSummaryResponse) {
+    response = &DescribeCostExplorerSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCostExplorerSummary
+// 查看成本分析明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeCostExplorerSummary(request *DescribeCostExplorerSummaryRequest) (response *DescribeCostExplorerSummaryResponse, err error) {
+    return c.DescribeCostExplorerSummaryWithContext(context.Background(), request)
+}
+
+// DescribeCostExplorerSummary
+// 查看成本分析明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeCostExplorerSummaryWithContext(ctx context.Context, request *DescribeCostExplorerSummaryRequest) (response *DescribeCostExplorerSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostExplorerSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCostExplorerSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCostExplorerSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCostSummaryByProductRequest() (request *DescribeCostSummaryByProductRequest) {
     request = &DescribeCostSummaryByProductRequest{
         BaseRequest: &tchttp.BaseRequest{},

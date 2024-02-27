@@ -24,26 +24,26 @@ type Agent struct {
 	// 应用的唯一标识(由电子签平台自动生成)。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。位置如下:
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/fac77e0d3f28aaec56669f67e65c8db8.png)
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
-	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
-	ProxyOperator *UserInfo `json:"ProxyOperator,omitnil" name:"ProxyOperator"`
+	ProxyOperator *UserInfo `json:"ProxyOperator,omitnil,omitempty" name:"ProxyOperator"`
 
 	// **不用填写**，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
-	ProxyAppId *string `json:"ProxyAppId,omitnil" name:"ProxyAppId"`
+	ProxyAppId *string `json:"ProxyAppId,omitnil,omitempty" name:"ProxyAppId"`
 
 	// 内部参数，暂未开放使用
 	//
 	// Deprecated: ProxyOrganizationId is deprecated.
-	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitnil" name:"ProxyOrganizationId"`
+	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitnil,omitempty" name:"ProxyOrganizationId"`
 }
 
 type ApproverComponentLimitType struct {
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
 	// 
@@ -54,7 +54,7 @@ type ApproverComponentLimitType struct {
 	// <li>OCR_ESIGN-AI智能识别手写签名</li>
 	// <li>SYSTEM_ESIGN-系统签名</li>
 	// </ul>
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type ApproverItem struct {
@@ -62,34 +62,34 @@ type ApproverItem struct {
 	// 
 	// 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignId *string `json:"SignId,omitnil" name:"SignId"`
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 签署方角色编号
 	// 
 	// 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署方角色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 }
 
 type ApproverOption struct {
 	// 是否可以拒签 默认false-可以拒签 true-不可以拒签
-	NoRefuse *bool `json:"NoRefuse,omitnil" name:"NoRefuse"`
+	NoRefuse *bool `json:"NoRefuse,omitnil,omitempty" name:"NoRefuse"`
 
 	// 是否可以转发 默认false-可以转发 true-不可以转发
-	NoTransfer *bool `json:"NoTransfer,omitnil" name:"NoTransfer"`
+	NoTransfer *bool `json:"NoTransfer,omitnil,omitempty" name:"NoTransfer"`
 
 	// 是否隐藏一键签署 默认false-不隐藏true-隐藏
-	HideOneKeySign *bool `json:"HideOneKeySign,omitnil" name:"HideOneKeySign"`
+	HideOneKeySign *bool `json:"HideOneKeySign,omitnil,omitempty" name:"HideOneKeySign"`
 
 	// 签署人信息补充类型，默认无需补充。
 	// 
 	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
 	// </ul>
-	FillType *int64 `json:"FillType,omitnil" name:"FillType"`
+	FillType *int64 `json:"FillType,omitnil,omitempty" name:"FillType"`
 
 	// 签署人阅读合同限制参数
 	//  <br/>取值：
@@ -99,85 +99,85 @@ type ApproverOption struct {
 	// <li> LimitBottom，阅读合同仅限制必须阅读到底</li>
 	// <li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
 	// </ul>
-	FlowReadLimit *string `json:"FlowReadLimit,omitnil" name:"FlowReadLimit"`
+	FlowReadLimit *string `json:"FlowReadLimit,omitnil,omitempty" name:"FlowReadLimit"`
 }
 
 type ApproverRestriction struct {
 	// 指定签署人姓名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 指定签署人手机号，11位数字
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 指定签署人证件类型，ID_CARD-身份证，HONGKONG_AND_MACAO-港澳居民来往内地通行证，HONGKONG_MACAO_AND_TAIWAN-港澳台居民居住证
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 指定签署人证件号码，其中字母大写
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 }
 
 type AuthFailMessage struct {
 	// 第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
 	// 
 	// 一个第三方平台子客企业主体与子客企业 ProxyOrganizationOpenId 是一一对应的，不可更改，不可重复使用。例如，可以使用企业名称的哈希值，或者社会统一信用代码的哈希值，或者随机哈希值。
-	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 错误信息
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 type AuthInfoDetail struct {
 	// 扩展服务类型，和入参一致	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 扩展服务名称	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 授权员工列表	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil" name:"HasAuthUserList"`
+	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil,omitempty" name:"HasAuthUserList"`
 
 	// 授权企业列表（企业自动签时，该字段有值）	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil" name:"HasAuthOrganizationList"`
+	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil,omitempty" name:"HasAuthOrganizationList"`
 
 	// 授权员工列表总数	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil" name:"AuthUserTotal"`
+	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil,omitempty" name:"AuthUserTotal"`
 
 	// 授权企业列表总数	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil" name:"AuthOrganizationTotal"`
+	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil,omitempty" name:"AuthOrganizationTotal"`
 }
 
 type AuthorizedUser struct {
 	// 第三方应用平台的用户openid
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 }
 
 type AutoSignConfig struct {
 	// 自动签开通个人用户信息, 包括名字,身份证等
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 是否回调证书信息:
 	// <ul><li>**false**: 不需要(默认)</li>
 	// <li>**true**:需要</li></ul>
-	CertInfoCallback *bool `json:"CertInfoCallback,omitnil" name:"CertInfoCallback"`
+	CertInfoCallback *bool `json:"CertInfoCallback,omitnil,omitempty" name:"CertInfoCallback"`
 
 	// 是否支持用户自定义签名印章:
 	// <ul><li>**false**: 不能自己定义(默认)</li>
 	// <li>**true**: 可以自己定义</li></ul>
-	UserDefineSeal *bool `json:"UserDefineSeal,omitnil" name:"UserDefineSeal"`
+	UserDefineSeal *bool `json:"UserDefineSeal,omitnil,omitempty" name:"UserDefineSeal"`
 
 	// 回调中是否需要自动签将要使用的印章（签名）图片的 base64:
 	// <ul><li>**false**: 不需要(默认)</li>
 	// <li>**true**: 需要</li></ul>
-	SealImgCallback *bool `json:"SealImgCallback,omitnil" name:"SealImgCallback"`
+	SealImgCallback *bool `json:"SealImgCallback,omitnil,omitempty" name:"SealImgCallback"`
 
 	// 回调链接，如果渠道已经配置了，可以不传
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 开通时候的身份验证方式, 取值为：
 	// <ul><li>**WEIXINAPP** : 微信人脸识别</li>
@@ -186,38 +186,38 @@ type AutoSignConfig struct {
 	// 注：
 	// <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
 	// <li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
-	VerifyChannels []*string `json:"VerifyChannels,omitnil" name:"VerifyChannels"`
+	VerifyChannels []*string `json:"VerifyChannels,omitnil,omitempty" name:"VerifyChannels"`
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。
 	// 
 	// <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
 	// <li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
-	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
 type BaseFlowInfo struct {
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
-	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 合同流程的签署顺序类型：
 	// **false**：(默认)有序签署, 本合同多个参与人需要依次签署
 	// **true**：无序签署, 本合同多个参与人没有先后签署限制
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
 
 	// 是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
-	IntelligentStatus *string `json:"IntelligentStatus,omitnil" name:"IntelligentStatus"`
+	IntelligentStatus *string `json:"IntelligentStatus,omitnil,omitempty" name:"IntelligentStatus"`
 
 	// 填写控件内容， 填写的控制的ID-填写的内容对列表
-	FormFields []*FormField `json:"FormFields,omitnil" name:"FormFields"`
+	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
@@ -226,41 +226,41 @@ type BaseFlowInfo struct {
 	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的回调通知模块。
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
 	// 
 	// 若设置为true，发起审核结果需通过接口 [提交企业签署流程审批结果](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignReview)通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
 	// 
-	NeedCreateReview *bool `json:"NeedCreateReview,omitnil" name:"NeedCreateReview"`
+	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
 
 	// 填写控件：文件发起使用
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
 type CcInfo struct {
 	// 被抄送人手机号，大陆11位手机号
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 被抄送人姓名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 被抄送人类型
 	// 0--个人. 1--员工
-	CcType *int64 `json:"CcType,omitnil" name:"CcType"`
+	CcType *int64 `json:"CcType,omitnil,omitempty" name:"CcType"`
 
 	// 被抄送人权限
 	// 0--可查看
 	// 1--可查看也可下载
-	CcPermission *int64 `json:"CcPermission,omitnil" name:"CcPermission"`
+	CcPermission *int64 `json:"CcPermission,omitnil,omitempty" name:"CcPermission"`
 }
 
 // Predefined struct for user
@@ -274,15 +274,15 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
 	// 
 	// 备注:`如果不传递撤回原因，那么默认撤回原因是 "自动撤销（通过接口实现）"`
-	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
+	CancelMessage *string `json:"CancelMessage,omitnil,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 	// 
@@ -295,12 +295,12 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	// 
-	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelBatchCancelFlowsRequest struct {
@@ -315,15 +315,15 @@ type ChannelBatchCancelFlowsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
 	// 
 	// 备注:`如果不传递撤回原因，那么默认撤回原因是 "自动撤销（通过接口实现）"`
-	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
+	CancelMessage *string `json:"CancelMessage,omitnil,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 	// 
@@ -336,10 +336,10 @@ type ChannelBatchCancelFlowsRequest struct {
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f16cf37dbb3a09d6569877f093b92204/channel_ChannelCancelFlow.png)
 	// 
-	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelBatchCancelFlowsRequest) ToJsonString() string {
@@ -370,10 +370,10 @@ type ChannelBatchCancelFlowsResponseParams struct {
 	// 签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
 	// 
 	// 注:  `如果全部撤销成功, 此数组为空数组`
-	FailMessages []*string `json:"FailMessages,omitnil" name:"FailMessages"`
+	FailMessages []*string `json:"FailMessages,omitnil,omitempty" name:"FailMessages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelBatchCancelFlowsResponse struct {
@@ -394,17 +394,17 @@ func (r *ChannelBatchCancelFlowsResponse) FromJsonString(s string) error {
 
 type ChannelBillUsageDetail struct {
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 合同经办人名称
 	// 如果有多个经办人用分号隔开。
-	OperatorName *string `json:"OperatorName,omitnil" name:"OperatorName"`
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
 
 	// 发起方组织机构名称
-	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil" name:"CreateOrganizationName"`
+	CreateOrganizationName *string `json:"CreateOrganizationName,omitnil,omitempty" name:"CreateOrganizationName"`
 
 	// 合同流程的名称。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值
 	// <ul>
@@ -418,7 +418,7 @@ type ChannelBillUsageDetail struct {
 	// <li>**WILLEXPIRE**: 合同即将过期</li>
 	// <li>**EXCEPTION**: 合同异常</li>
 	// </ul>
-	FlowStatus *string `json:"FlowStatus,omitnil" name:"FlowStatus"`
+	FlowStatus *string `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 查询的套餐类型
 	// 对应关系如下:
@@ -438,31 +438,31 @@ type ChannelBillUsageDetail struct {
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
 	// </ul>
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
 	// 合同使用量
 	// 注: `如果消耗类型是撤销返还，此值为负值代表返还的合同数量`
-	UseCount *int64 `json:"UseCount,omitnil" name:"UseCount"`
+	UseCount *int64 `json:"UseCount,omitnil,omitempty" name:"UseCount"`
 
 	// 消耗的时间戳，格式为Unix标准时间戳（秒）。
-	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
+	CostTime *int64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 消耗的套餐名称
-	QuotaName *string `json:"QuotaName,omitnil" name:"QuotaName"`
+	QuotaName *string `json:"QuotaName,omitnil,omitempty" name:"QuotaName"`
 
 	// 消耗类型
 	// **1**.扣费 
 	// **2**.撤销返还
-	CostType *int64 `json:"CostType,omitnil" name:"CostType"`
+	CostType *int64 `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 备注
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user
 type ChannelCancelFlowRequestParams struct {
 	// 要撤销的合同流程ID
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -473,10 +473,10 @@ type ChannelCancelFlowRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
-	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
+	CancelMessage *string `json:"CancelMessage,omitnil,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 	// 
@@ -488,19 +488,19 @@ type ChannelCancelFlowRequestParams struct {
 	// 注: `CancelMessage为撤销当前合同的理由`
 	// 
 	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
-	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCancelFlowRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要撤销的合同流程ID
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -511,10 +511,10 @@ type ChannelCancelFlowRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
-	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
+	CancelMessage *string `json:"CancelMessage,omitnil,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 	// 
@@ -526,10 +526,10 @@ type ChannelCancelFlowRequest struct {
 	// 注: `CancelMessage为撤销当前合同的理由`
 	// 
 	// ![image](https://dyn.ess.tencent.cn/guide/capi/channel_ChannelCancelFlow.png)
-	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil" name:"CancelMessageFormat"`
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitnil,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCancelFlowRequest) ToJsonString() string {
@@ -558,7 +558,7 @@ func (r *ChannelCancelFlowRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCancelFlowResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCancelFlowResponse struct {
@@ -588,15 +588,15 @@ type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
-	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
+	QrCodeId *string `json:"QrCodeId,omitnil,omitempty" name:"QrCodeId"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCancelMultiFlowSignQRCodeRequest struct {
@@ -611,13 +611,13 @@ type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
-	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
+	QrCodeId *string `json:"QrCodeId,omitnil,omitempty" name:"QrCodeId"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCancelMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -644,7 +644,7 @@ func (r *ChannelCancelMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ChannelCancelMultiFlowSignQRCodeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCancelMultiFlowSignQRCodeResponse struct {
@@ -666,34 +666,34 @@ func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ChannelCancelUserAutoSignEnableUrlRequestParams struct {
 	// 渠道应用相关信息
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 }
 
 type ChannelCancelUserAutoSignEnableUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 渠道应用相关信息
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 }
 
 func (r *ChannelCancelUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -721,7 +721,7 @@ func (r *ChannelCancelUserAutoSignEnableUrlRequest) FromJsonString(s string) err
 // Predefined struct for user
 type ChannelCancelUserAutoSignEnableUrlResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCancelUserAutoSignEnableUrlResponse struct {
@@ -751,15 +751,15 @@ type ChannelCreateBatchCancelFlowUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateBatchCancelFlowUrlRequest struct {
@@ -774,13 +774,13 @@ type ChannelCreateBatchCancelFlowUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要撤销的合同流程ID列表，最多100个，超过100不处理
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateBatchCancelFlowUrlRequest) ToJsonString() string {
@@ -809,17 +809,17 @@ type ChannelCreateBatchCancelFlowUrlResponseParams struct {
 	// 批量撤销合同的URL链接, 需要在手机端打开, 有效期24小时
 	// 
 	// 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-	BatchCancelFlowUrl *string `json:"BatchCancelFlowUrl,omitnil" name:"BatchCancelFlowUrl"`
+	BatchCancelFlowUrl *string `json:"BatchCancelFlowUrl,omitnil,omitempty" name:"BatchCancelFlowUrl"`
 
 	// 与入参的FlowIds数组一致,   成功生成到撤销链接中,则为"",   不能撤销合同则为失败原因
-	FailMessages []*string `json:"FailMessages,omitnil" name:"FailMessages"`
+	FailMessages []*string `json:"FailMessages,omitnil,omitempty" name:"FailMessages"`
 
 	// 签署撤销链接的过期时间(格式为:年-月-日 时:分:秒), 默认是生成链接的24小时后失效
 	// 
-	UrlExpireOn *string `json:"UrlExpireOn,omitnil" name:"UrlExpireOn"`
+	UrlExpireOn *string `json:"UrlExpireOn,omitnil,omitempty" name:"UrlExpireOn"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateBatchCancelFlowUrlResponse struct {
@@ -845,21 +845,21 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// `1. ApproverType目前只支持个人类型的签署人。`
 	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	// `3. 当需要通过短信验证码签署时，手机号ApproverMobile需要与发起合同时填写的用户手机号一致。`
-	FlowApproverInfo *FlowApproverInfo `json:"FlowApproverInfo,omitnil" name:"FlowApproverInfo"`
+	FlowApproverInfo *FlowApproverInfo `json:"FlowApproverInfo,omitnil,omitempty" name:"FlowApproverInfo"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 批量签署的合同流程ID数组。
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组编号
 	// 注：`该参数和合同流程ID数组必须二选一`
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 指定批量签署合同的签名类型，可传递以下值：
 	// <ul><li>**0**：手写签名(默认)</li>
@@ -871,7 +871,7 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// <ul><li>默认情况下，签名类型为手写签名</li>
 	// <li>您可以传递多种值，表示可用多种签名类型。</li>
 	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
-	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
+	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
@@ -880,14 +880,14 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// 注：
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
-	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 
 	// 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
-	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
 }
 
 type ChannelCreateBatchQuickSignUrlRequest struct {
@@ -898,21 +898,21 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// `1. ApproverType目前只支持个人类型的签署人。`
 	// `2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	// `3. 当需要通过短信验证码签署时，手机号ApproverMobile需要与发起合同时填写的用户手机号一致。`
-	FlowApproverInfo *FlowApproverInfo `json:"FlowApproverInfo,omitnil" name:"FlowApproverInfo"`
+	FlowApproverInfo *FlowApproverInfo `json:"FlowApproverInfo,omitnil,omitempty" name:"FlowApproverInfo"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 批量签署的合同流程ID数组。
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组编号
 	// 注：`该参数和合同流程ID数组必须二选一`
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 指定批量签署合同的签名类型，可传递以下值：
 	// <ul><li>**0**：手写签名(默认)</li>
@@ -924,7 +924,7 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// <ul><li>默认情况下，签名类型为手写签名</li>
 	// <li>您可以传递多种值，表示可用多种签名类型。</li>
 	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
-	SignatureTypes []*int64 `json:"SignatureTypes,omitnil" name:"SignatureTypes"`
+	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
 	// 指定批量签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
@@ -933,14 +933,14 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// 注：
 	// <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
-	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 
 	// 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
-	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
 }
 
 func (r *ChannelCreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -972,10 +972,10 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateBatchQuickSignUrlResponseParams struct {
 	// 签署人签署链接信息
-	FlowApproverUrlInfo *FlowApproverUrlInfo `json:"FlowApproverUrlInfo,omitnil" name:"FlowApproverUrlInfo"`
+	FlowApproverUrlInfo *FlowApproverUrlInfo `json:"FlowApproverUrlInfo,omitnil,omitempty" name:"FlowApproverUrlInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateBatchQuickSignUrlResponse struct {
@@ -1005,23 +1005,23 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`请确保和合同中填入的一致`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
 	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>**ID_CARD** : 居民身份证 (默认值)</li>
@@ -1029,7 +1029,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
@@ -1037,18 +1037,18 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
 	// <ul>
 	// <li>**NONE** : 不通知（默认）</li>
 	// <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
 	// </ul>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 批量签署的合同流程ID数组。
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 目标签署人的企业名称，签署人如果是企业员工身份，需要传此参数。
 	// 
@@ -1059,14 +1059,14 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
 	// <li>暂时仅支持给`自建应用集成企业` 生成员工批签链接，不支持子客企业。</li>
 	// </ul>
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 是否直接跳转至合同内容页面进行签署
 	// <ul>
 	// <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
 	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
 	// </ul>
-	JumpToDetail *bool `json:"JumpToDetail,omitnil" name:"JumpToDetail"`
+	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
 }
 
 type ChannelCreateBatchSignUrlRequest struct {
@@ -1081,23 +1081,23 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`请确保和合同中填入的一致`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
 	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>**ID_CARD** : 居民身份证 (默认值)</li>
@@ -1105,7 +1105,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
@@ -1113,18 +1113,18 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
 	// <ul>
 	// <li>**NONE** : 不通知（默认）</li>
 	// <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
 	// </ul>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 批量签署的合同流程ID数组。
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 目标签署人的企业名称，签署人如果是企业员工身份，需要传此参数。
 	// 
@@ -1135,14 +1135,14 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
 	// <li>暂时仅支持给`自建应用集成企业` 生成员工批签链接，不支持子客企业。</li>
 	// </ul>
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 是否直接跳转至合同内容页面进行签署
 	// <ul>
 	// <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
 	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
 	// </ul>
-	JumpToDetail *bool `json:"JumpToDetail,omitnil" name:"JumpToDetail"`
+	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
 }
 
 func (r *ChannelCreateBatchSignUrlRequest) ToJsonString() string {
@@ -1180,20 +1180,20 @@ type ChannelCreateBatchSignUrlResponseParams struct {
 	// 注: 
 	// 1. 非小程序和APP集成使用
 	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
+	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
 	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 	// 
 	// 注: 
 	// 1. 小程序和APP集成使用
 	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-	MiniAppPath *string `json:"MiniAppPath,omitnil" name:"MiniAppPath"`
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateBatchSignUrlResponse struct {
@@ -1223,15 +1223,15 @@ type ChannelCreateBoundFlowsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证,  合同会领取给对应的Agent.ProxyOperator.OpenId指定的员工来处理
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要领取的合同流程的ID列表
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateBoundFlowsRequest struct {
@@ -1246,13 +1246,13 @@ type ChannelCreateBoundFlowsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证,  合同会领取给对应的Agent.ProxyOperator.OpenId指定的员工来处理
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要领取的合同流程的ID列表
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateBoundFlowsRequest) ToJsonString() string {
@@ -1279,7 +1279,7 @@ func (r *ChannelCreateBoundFlowsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateBoundFlowsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateBoundFlowsResponse struct {
@@ -1309,7 +1309,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要进行转换的资源文件类型
 	// 支持的文件类型如下：
@@ -1323,27 +1323,27 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// <li>bmp</li>
 	// <li>html</li>
 	// <li>txt</li></ul>
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 需要进行转换操作的文件资源名称，带资源后缀名。
 	// 
 	// 注:  `资源名称长度限制为256个字符`
-	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。
 	// 
 	// 注:  `目前，此接口仅支持单个文件进行转换。`
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 调用方用户信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 暂未开放
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 type ChannelCreateConvertTaskApiRequest struct {
@@ -1358,7 +1358,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要进行转换的资源文件类型
 	// 支持的文件类型如下：
@@ -1372,23 +1372,23 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// <li>bmp</li>
 	// <li>html</li>
 	// <li>txt</li></ul>
-	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 需要进行转换操作的文件资源名称，带资源后缀名。
 	// 
 	// 注:  `资源名称长度限制为256个字符`
-	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。
 	// 
 	// 注:  `目前，此接口仅支持单个文件进行转换。`
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 调用方用户信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 func (r *ChannelCreateConvertTaskApiRequest) ToJsonString() string {
@@ -1418,10 +1418,10 @@ func (r *ChannelCreateConvertTaskApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateConvertTaskApiResponseParams struct {
 	// 接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateConvertTaskApiResponse struct {
@@ -1451,7 +1451,7 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
 	// 
@@ -1466,7 +1466,7 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
 	// </ul>
-	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
+	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
 	// 
@@ -1475,15 +1475,15 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
 	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
 	// </ul>
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
-	HiddenComponents *bool `json:"HiddenComponents,omitnil" name:"HiddenComponents"`
+	HiddenComponents *bool `json:"HiddenComponents,omitnil,omitempty" name:"HiddenComponents"`
 
 	// 渠道操作者信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 用户自定义参数
 	// <ul>
@@ -1496,7 +1496,7 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// </ul>
 	// </li>
 	// </ul>
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type ChannelCreateEmbedWebUrlRequest struct {
@@ -1511,7 +1511,7 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
 	// 
@@ -1526,7 +1526,7 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
 	// </ul>
-	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
+	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
 	// 
@@ -1535,13 +1535,13 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
 	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
 	// </ul>
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
-	HiddenComponents *bool `json:"HiddenComponents,omitnil" name:"HiddenComponents"`
+	HiddenComponents *bool `json:"HiddenComponents,omitnil,omitempty" name:"HiddenComponents"`
 
 	// 渠道操作者信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 用户自定义参数
 	// <ul>
@@ -1554,7 +1554,7 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// </ul>
 	// </li>
 	// </ul>
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 func (r *ChannelCreateEmbedWebUrlRequest) ToJsonString() string {
@@ -1584,10 +1584,10 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlResponseParams struct {
 	// 嵌入的web链接，5分钟有效
-	WebUrl *string `json:"WebUrl,omitnil" name:"WebUrl"`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateEmbedWebUrlResponse struct {
@@ -1617,25 +1617,25 @@ type ChannelCreateFlowApproversRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 补充企业签署人信息。
 	// 
 	// - 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
 	// 
 	// - 如果不指定，则使用姓名和手机号进行补充。
-	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
+	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 签署人信息补充方式
 	// 
 	// <ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
-	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
+	FillApproverType *int64 `json:"FillApproverType,omitnil,omitempty" name:"FillApproverType"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateFlowApproversRequest struct {
@@ -1650,25 +1650,25 @@ type ChannelCreateFlowApproversRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 补充企业签署人信息。
 	// 
 	// - 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
 	// 
 	// - 如果不指定，则使用姓名和手机号进行补充。
-	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
+	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 签署人信息补充方式
 	// 
 	// <ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
-	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
+	FillApproverType *int64 `json:"FillApproverType,omitnil,omitempty" name:"FillApproverType"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowApproversRequest) ToJsonString() string {
@@ -1699,10 +1699,10 @@ type ChannelCreateFlowApproversResponseParams struct {
 	// 批量补充签署人时，补充失败的报错说明 
 	// 注:`目前仅补充动态签署人时会返回补充失败的原因`	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FillError []*FillError `json:"FillError,omitnil" name:"FillError"`
+	FillError []*FillError `json:"FillError,omitnil,omitempty" name:"FillError"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowApproversResponse struct {
@@ -1731,23 +1731,23 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
-	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
 	// 
 	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
-	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
 	// 
 	// 注: `目前，此接口仅支持单个文件发起。`
-	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	// <ul><li>单行文本控件</li>
@@ -1756,11 +1756,11 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// <li>数字控件</li>
 	// <li>图片控件</li>
 	// <li>数据表格等填写控件</li></ul>
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
 	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
@@ -1768,16 +1768,16 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 
 	// 注:
 	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的签署顺序类型：
 	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
 	// **注**: `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 	// <ul><li>{合同名称}   </li>
@@ -1793,12 +1793,12 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 发起方：腾讯公司(张三) 
 	// 签署方：李四
 	// 
-	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
+	CustomShowMap *string `json:"CustomShowMap,omitnil,omitempty" name:"CustomShowMap"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。
-	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
+	CustomerData *string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
@@ -1807,37 +1807,37 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
 
 	// 签署方签署控件（印章/签名等）的生成方式：
 	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
 	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
 	// **注**: `发起后添加控件功能不支持添加签批控件`
-	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
+	SignBeanTag *int64 `json:"SignBeanTag,omitnil,omitempty" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
 	// <ul><li> **0**：合同发起时通知（默认值）</li>
 	// <li> **1**：签署完成后通知</li></ul>
-	CcNotifyType *int64 `json:"CcNotifyType,omitnil" name:"CcNotifyType"`
+	CcNotifyType *int64 `json:"CcNotifyType,omitnil,omitempty" name:"CcNotifyType"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
-	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
+	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
 
 	// 操作者的信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -1851,23 +1851,23 @@ type ChannelCreateFlowByFilesRequest struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
-	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
 	// 
 	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
-	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
 	// 
 	// 注: `目前，此接口仅支持单个文件发起。`
-	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	// <ul><li>单行文本控件</li>
@@ -1876,11 +1876,11 @@ type ChannelCreateFlowByFilesRequest struct {
 	// <li>数字控件</li>
 	// <li>图片控件</li>
 	// <li>数据表格等填写控件</li></ul>
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
 	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
@@ -1888,16 +1888,16 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 
 	// 注:
 	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的签署顺序类型：
 	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
 	// **注**: `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 	// <ul><li>{合同名称}   </li>
@@ -1913,12 +1913,12 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 发起方：腾讯公司(张三) 
 	// 签署方：李四
 	// 
-	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
+	CustomShowMap *string `json:"CustomShowMap,omitnil,omitempty" name:"CustomShowMap"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。
-	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
+	CustomerData *string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
@@ -1927,35 +1927,35 @@ type ChannelCreateFlowByFilesRequest struct {
 	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
 
 	// 签署方签署控件（印章/签名等）的生成方式：
 	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
 	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
 	// **注**: `发起后添加控件功能不支持添加签批控件`
-	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
+	SignBeanTag *int64 `json:"SignBeanTag,omitnil,omitempty" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
 	// <ul><li> **0**：合同发起时通知（默认值）</li>
 	// <li> **1**：签署完成后通知</li></ul>
-	CcNotifyType *int64 `json:"CcNotifyType,omitnil" name:"CcNotifyType"`
+	CcNotifyType *int64 `json:"CcNotifyType,omitnil,omitempty" name:"CcNotifyType"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
-	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
+	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
 
 	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -2002,14 +2002,14 @@ type ChannelCreateFlowByFilesResponseParams struct {
 	// 
 	// [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署方信息，如角色ID、角色名称等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
+	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowByFilesResponse struct {
@@ -2031,10 +2031,10 @@ func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
-	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil" name:"FlowFileInfos"`
+	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil,omitempty" name:"FlowFileInfos"`
 
 	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -2045,7 +2045,7 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同组中签署人校验和认证的方式：
 	// <ul><li>**VerifyCheck**：人脸识别（默认）</li>
@@ -2053,25 +2053,25 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 注意：
 	// `1. MobileCheck 方式，未实名的个人/自然人签署方无需进行人脸识别实名认证即可查看合同（但签署合同时仍然需要人脸实名），企业签署方需经过人脸认证。`
 	// `2. 合同组的校验和认证的方式会优先使用，会覆盖合同组中单个合同和合同签署方认证方式的限制配置。`
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
 
 	// 合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
-	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
 
 	// 操作者的信息，此参数不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateFlowGroupByFilesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
-	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil" name:"FlowFileInfos"`
+	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitnil,omitempty" name:"FlowFileInfos"`
 
 	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -2082,7 +2082,7 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同组中签署人校验和认证的方式：
 	// <ul><li>**VerifyCheck**：人脸识别（默认）</li>
@@ -2090,13 +2090,13 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 	// 注意：
 	// `1. MobileCheck 方式，未实名的个人/自然人签署方无需进行人脸识别实名认证即可查看合同（但签署合同时仍然需要人脸实名），企业签署方需经过人脸认证。`
 	// `2. 合同组的校验和认证的方式会优先使用，会覆盖合同组中单个合同和合同签署方认证方式的限制配置。`
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
 
 	// 合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
-	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
 
 	// 操作者的信息，此参数不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowGroupByFilesRequest) ToJsonString() string {
@@ -2128,17 +2128,17 @@ type ChannelCreateFlowGroupByFilesResponseParams struct {
 	// 合同组ID，为32位字符串。
 	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同组中每个合同流程ID，每个ID均为32位字符串。
 	// 
 	// 注:
 	// `此数组的顺序和入参中的FlowGroupInfos顺序一致`
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowGroupByFilesResponse struct {
@@ -2168,13 +2168,13 @@ type ChannelCreateFlowGroupByTemplatesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 }
 
 type ChannelCreateFlowGroupByTemplatesRequest struct {
@@ -2189,13 +2189,13 @@ type ChannelCreateFlowGroupByTemplatesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 }
 
 func (r *ChannelCreateFlowGroupByTemplatesRequest) ToJsonString() string {
@@ -2223,20 +2223,20 @@ func (r *ChannelCreateFlowGroupByTemplatesRequest) FromJsonString(s string) erro
 type ChannelCreateFlowGroupByTemplatesResponseParams struct {
 	// 合同组ID，为32位字符串。
 	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同组中每个合同流程ID，每个ID均为32位字符串。
 	// 
 	// 注:
 	// `此数组的顺序和入参中的FlowInfos顺序一致`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
-	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil" name:"TaskInfos"`
+	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil,omitempty" name:"TaskInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowGroupByTemplatesResponse struct {
@@ -2266,10 +2266,10 @@ type ChannelCreateFlowRemindsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需执行催办的合同流程ID数组，最多支持100个。
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 }
 
 type ChannelCreateFlowRemindsRequest struct {
@@ -2284,10 +2284,10 @@ type ChannelCreateFlowRemindsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需执行催办的合同流程ID数组，最多支持100个。
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 }
 
 func (r *ChannelCreateFlowRemindsRequest) ToJsonString() string {
@@ -2313,10 +2313,10 @@ func (r *ChannelCreateFlowRemindsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateFlowRemindsResponseParams struct {
 	// 合同催办结果的详细信息列表。
-	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitnil" name:"RemindFlowRecords"`
+	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitnil,omitempty" name:"RemindFlowRecords"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowRemindsResponse struct {
@@ -2346,33 +2346,33 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 企业内部审核结果
 	// <ul><li>PASS: 审核通过（流程可以继续签署或者发起）</li>
 	// <li>REJECT: 审核拒绝（流程状态不变，可以继续调用审核接口通过审核）</li>
 	// <li>SIGN_REJECT:拒签(流程终止，流程状态变为拒签状态)</li></ul>
-	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+	ReviewType *string `json:"ReviewType,omitnil,omitempty" name:"ReviewType"`
 
 	// 审核结果原因
 	// <ul><li>字符串长度不超过200</li>
 	// <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
 	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 
 	// 审核节点的签署人标志，用于指定当前审核的签署方
 	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 流程审核操作类型，取值如下：
 	// <ul><li>**SignReview**：（默认）签署审核</li>
 	// <li>**CreateReview**：发起审核</li>
 	// <li>注意：`该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程`</li></ul>
 	// 
-	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 }
 
 type ChannelCreateFlowSignReviewRequest struct {
@@ -2387,33 +2387,33 @@ type ChannelCreateFlowSignReviewRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 企业内部审核结果
 	// <ul><li>PASS: 审核通过（流程可以继续签署或者发起）</li>
 	// <li>REJECT: 审核拒绝（流程状态不变，可以继续调用审核接口通过审核）</li>
 	// <li>SIGN_REJECT:拒签(流程终止，流程状态变为拒签状态)</li></ul>
-	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+	ReviewType *string `json:"ReviewType,omitnil,omitempty" name:"ReviewType"`
 
 	// 审核结果原因
 	// <ul><li>字符串长度不超过200</li>
 	// <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
 	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 
 	// 审核节点的签署人标志，用于指定当前审核的签署方
 	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 流程审核操作类型，取值如下：
 	// <ul><li>**SignReview**：（默认）签署审核</li>
 	// <li>**CreateReview**：发起审核</li>
 	// <li>注意：`该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程`</li></ul>
 	// 
-	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 }
 
 func (r *ChannelCreateFlowSignReviewRequest) ToJsonString() string {
@@ -2443,7 +2443,7 @@ func (r *ChannelCreateFlowSignReviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateFlowSignReviewResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowSignReviewResponse struct {
@@ -2473,32 +2473,32 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 流程签署人列表，其中结构体的Name，Mobile和ApproverType必传，企业签署人则还需传OrganizationName、OpenId、OrganizationOpenId，其他可不传。
 	// 
 	// 注:
 	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
-	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
+	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
 	// 用户信息，暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 机构信息，暂未开放
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 链接类型，支持指定以下类型
 	// <ul><li>0 : 签署链接 (默认值)</li>
@@ -2506,7 +2506,7 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 	// 注:
 	// `1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
 	// `2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
-	UrlType *int64 `json:"UrlType,omitnil" name:"UrlType"`
+	UrlType *int64 `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 }
 
 type ChannelCreateFlowSignUrlRequest struct {
@@ -2521,28 +2521,28 @@ type ChannelCreateFlowSignUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 流程签署人列表，其中结构体的Name，Mobile和ApproverType必传，企业签署人则还需传OrganizationName、OpenId、OrganizationOpenId，其他可不传。
 	// 
 	// 注:
 	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
-	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
+	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
 	// 用户信息，暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 机构信息，暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 链接类型，支持指定以下类型
 	// <ul><li>0 : 签署链接 (默认值)</li>
@@ -2550,7 +2550,7 @@ type ChannelCreateFlowSignUrlRequest struct {
 	// 注:
 	// `1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
 	// `2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
-	UrlType *int64 `json:"UrlType,omitnil" name:"UrlType"`
+	UrlType *int64 `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 }
 
 func (r *ChannelCreateFlowSignUrlRequest) ToJsonString() string {
@@ -2581,10 +2581,10 @@ func (r *ChannelCreateFlowSignUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateFlowSignUrlResponseParams struct {
 	// 签署人签署链接信息
-	FlowApproverUrlInfos []*FlowApproverUrlInfo `json:"FlowApproverUrlInfos,omitnil" name:"FlowApproverUrlInfos"`
+	FlowApproverUrlInfos []*FlowApproverUrlInfo `json:"FlowApproverUrlInfos,omitnil,omitempty" name:"FlowApproverUrlInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateFlowSignUrlResponse struct {
@@ -2614,45 +2614,45 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
-	MaxFlowNum *int64 `json:"MaxFlowNum,omitnil" name:"MaxFlowNum"`
+	MaxFlowNum *int64 `json:"MaxFlowNum,omitnil,omitempty" name:"MaxFlowNum"`
 
 	// 合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
-	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitnil" name:"FlowEffectiveDay"`
+	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitnil,omitempty" name:"FlowEffectiveDay"`
 
 	// 二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
-	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil" name:"QrEffectiveDay"`
+	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil,omitempty" name:"QrEffectiveDay"`
 
 	// 指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
-	Restrictions []*ApproverRestriction `json:"Restrictions,omitnil" name:"Restrictions"`
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitnil,omitempty" name:"Restrictions"`
 
 	// 指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
-	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil" name:"ApproverComponentLimitTypes"`
+	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil,omitempty" name:"ApproverComponentLimitTypes"`
 
 	// 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
 	// <br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
 	// <br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
 	//
 	// Deprecated: CallbackUrl is deprecated.
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 限制二维码用户条件（已弃用）
 	//
 	// Deprecated: ApproverRestrictions is deprecated.
-	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil" name:"ApproverRestrictions"`
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil,omitempty" name:"ApproverRestrictions"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
@@ -2667,39 +2667,39 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
-	MaxFlowNum *int64 `json:"MaxFlowNum,omitnil" name:"MaxFlowNum"`
+	MaxFlowNum *int64 `json:"MaxFlowNum,omitnil,omitempty" name:"MaxFlowNum"`
 
 	// 合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
-	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitnil" name:"FlowEffectiveDay"`
+	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitnil,omitempty" name:"FlowEffectiveDay"`
 
 	// 二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
-	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil" name:"QrEffectiveDay"`
+	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil,omitempty" name:"QrEffectiveDay"`
 
 	// 指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
-	Restrictions []*ApproverRestriction `json:"Restrictions,omitnil" name:"Restrictions"`
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitnil,omitempty" name:"Restrictions"`
 
 	// 指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
-	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil" name:"ApproverComponentLimitTypes"`
+	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil,omitempty" name:"ApproverComponentLimitTypes"`
 
 	// 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
 	// <br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
 	// <br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 限制二维码用户条件（已弃用）
-	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil" name:"ApproverRestrictions"`
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil,omitempty" name:"ApproverRestrictions"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -2734,13 +2734,13 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ChannelCreateMultiFlowSignQRCodeResponseParams struct {
 	// 一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
-	QrCode *SignQrCode `json:"QrCode,omitnil" name:"QrCode"`
+	QrCode *SignQrCode `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
 	// 一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
-	SignUrls *SignUrl `json:"SignUrls,omitnil" name:"SignUrls"`
+	SignUrls *SignUrl `json:"SignUrls,omitnil,omitempty" name:"SignUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeResponse struct {
@@ -2762,44 +2762,44 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ChannelCreateOrganizationBatchSignUrlRequestParams struct {
 	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。 - 1. 若OpenId为空，Name和Mobile 必须提供。 - 2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`请确保和合同中填入的一致`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 }
 
 type ChannelCreateOrganizationBatchSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。 - 1. 若OpenId为空，Name和Mobile 必须提供。 - 2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`请确保和合同中填入的一致`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 }
 
 func (r *ChannelCreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -2828,13 +2828,13 @@ func (r *ChannelCreateOrganizationBatchSignUrlRequest) FromJsonString(s string) 
 // Predefined struct for user
 type ChannelCreateOrganizationBatchSignUrlResponseParams struct {
 	// 批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。	
-	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
+	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
 	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateOrganizationBatchSignUrlResponse struct {
@@ -2863,7 +2863,7 @@ type ChannelCreateOrganizationModifyQrCodeRequestParams struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type ChannelCreateOrganizationModifyQrCodeRequest struct {
@@ -2877,7 +2877,7 @@ type ChannelCreateOrganizationModifyQrCodeRequest struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 func (r *ChannelCreateOrganizationModifyQrCodeRequest) ToJsonString() string {
@@ -2902,13 +2902,13 @@ func (r *ChannelCreateOrganizationModifyQrCodeRequest) FromJsonString(s string) 
 // Predefined struct for user
 type ChannelCreateOrganizationModifyQrCodeResponseParams struct {
 	// 二维码下载链接
-	QrCodeUrl *string `json:"QrCodeUrl,omitnil" name:"QrCodeUrl"`
+	QrCodeUrl *string `json:"QrCodeUrl,omitnil,omitempty" name:"QrCodeUrl"`
 
 	// 二维码失效时间 UNIX 时间戳 精确到秒
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateOrganizationModifyQrCodeResponse struct {
@@ -2932,10 +2932,10 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
 	// <li> **2**：文件（默认值）</li></ul>
-	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 要创建的合同信息
-	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil" name:"FlowInfo"`
+	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -2946,7 +2946,7 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 资源id，与ResourceType相对应，取值范围：
 	// <ul>
@@ -2954,32 +2954,32 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
-	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
+	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
 	// 合同签署人信息
-	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
+	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
 	//
 	// Deprecated: NeedPreview is deprecated.
-	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
+	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 企业机构信息，不用传
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreatePrepareFlowRequest struct {
@@ -2988,10 +2988,10 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
 	// <li> **2**：文件（默认值）</li></ul>
-	ResourceType *int64 `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 要创建的合同信息
-	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil" name:"FlowInfo"`
+	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -3002,7 +3002,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 资源id，与ResourceType相对应，取值范围：
 	// <ul>
@@ -3010,26 +3010,26 @@ type ChannelCreatePrepareFlowRequest struct {
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
-	FlowOption *CreateFlowOption `json:"FlowOption,omitnil" name:"FlowOption"`
+	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
 	// 合同签署人信息
-	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil" name:"FlowApproverList"`
+	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
-	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
+	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 企业机构信息，不用传
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreatePrepareFlowRequest) ToJsonString() string {
@@ -3063,13 +3063,13 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreatePrepareFlowResponseParams struct {
 	// 发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
-	PrepareFlowUrl *string `json:"PrepareFlowUrl,omitnil" name:"PrepareFlowUrl"`
+	PrepareFlowUrl *string `json:"PrepareFlowUrl,omitnil,omitempty" name:"PrepareFlowUrl"`
 
 	// 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
-	PreviewFlowUrl *string `json:"PreviewFlowUrl,omitnil" name:"PreviewFlowUrl"`
+	PreviewFlowUrl *string `json:"PreviewFlowUrl,omitnil,omitempty" name:"PreviewFlowUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreatePrepareFlowResponse struct {
@@ -3091,28 +3091,28 @@ func (r *ChannelCreatePrepareFlowResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreatePreparedPersonalEsignRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 个人用户姓名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件号码, 应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 电子印章名字，1-50个中文字符
 	// 注:`同一企业下电子印章名字不能相同`
-	SealName *string `json:"SealName,omitnil" name:"SealName"`
+	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
 	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
 	// 
-	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
+	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
@@ -3121,50 +3121,50 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 	// <li>OTHER_CARD_TYPE : 其他</li></ul>
 	// 
 	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
-	SealImageCompress *bool `json:"SealImageCompress,omitnil" name:"SealImageCompress"`
+	SealImageCompress *bool `json:"SealImageCompress,omitnil,omitempty" name:"SealImageCompress"`
 
 	// 手机号码；当需要开通自动签时，该参数必传
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
-	EnableAutoSign *bool `json:"EnableAutoSign,omitnil" name:"EnableAutoSign"`
+	EnableAutoSign *bool `json:"EnableAutoSign,omitnil,omitempty" name:"EnableAutoSign"`
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
-	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 }
 
 type ChannelCreatePreparedPersonalEsignRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 个人用户姓名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件号码, 应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 电子印章名字，1-50个中文字符
 	// 注:`同一企业下电子印章名字不能相同`
-	SealName *string `json:"SealName,omitnil" name:"SealName"`
+	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
 	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
 	// 
-	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
+	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
@@ -3173,22 +3173,22 @@ type ChannelCreatePreparedPersonalEsignRequest struct {
 	// <li>OTHER_CARD_TYPE : 其他</li></ul>
 	// 
 	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
-	SealImageCompress *bool `json:"SealImageCompress,omitnil" name:"SealImageCompress"`
+	SealImageCompress *bool `json:"SealImageCompress,omitnil,omitempty" name:"SealImageCompress"`
 
 	// 手机号码；当需要开通自动签时，该参数必传
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
-	EnableAutoSign *bool `json:"EnableAutoSign,omitnil" name:"EnableAutoSign"`
+	EnableAutoSign *bool `json:"EnableAutoSign,omitnil,omitempty" name:"EnableAutoSign"`
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
-	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 }
 
 func (r *ChannelCreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -3226,10 +3226,10 @@ type ChannelCreatePreparedPersonalEsignResponseParams struct {
 	// 电子印章ID，为32位字符串。
 	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreatePreparedPersonalEsignResponse struct {
@@ -3259,16 +3259,16 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 待解除的签署流程编号(即原签署流程的编号)。
 	// 
 	// 
 	// [点击查看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil,omitempty" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容, 包括解除理由等信息。
-	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil,omitempty" name:"ReliveInfo"`
 
 	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
@@ -3278,33 +3278,33 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	// <li>只能更换自己企业的签署人，不支持更换个人类型或者其他企业的签署人</li>
 	// <li>可以不指定替换签署人，使用原流程的签署人</li>
 	// </ul>
-	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符
 	//
 	// Deprecated: CallbackUrl is deprecated.
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 暂未开放
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳(秒)，如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 调用方自定义的个性化字段，该字段的值可以是字符串JSON或其他字符串形式，客户可以根据自身需求自定义数据格式并在需要时进行解析。该字段的信息将以Base64编码的形式传输，支持的最大数据大小为20480长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
 	// 
 	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type ChannelCreateReleaseFlowRequest struct {
@@ -3319,16 +3319,16 @@ type ChannelCreateReleaseFlowRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 待解除的签署流程编号(即原签署流程的编号)。
 	// 
 	// 
 	// [点击查看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil,omitempty" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容, 包括解除理由等信息。
-	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil,omitempty" name:"ReliveInfo"`
 
 	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
@@ -3338,27 +3338,27 @@ type ChannelCreateReleaseFlowRequest struct {
 	// <li>只能更换自己企业的签署人，不支持更换个人类型或者其他企业的签署人</li>
 	// <li>可以不指定替换签署人，使用原流程的签署人</li>
 	// </ul>
-	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳(秒)，如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 调用方自定义的个性化字段，该字段的值可以是字符串JSON或其他字符串形式，客户可以根据自身需求自定义数据格式并在需要时进行解析。该字段的信息将以Base64编码的形式传输，支持的最大数据大小为20480长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
 	// 
 	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
-	UserData *string `json:"UserData,omitnil" name:"UserData"`
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 func (r *ChannelCreateReleaseFlowRequest) ToJsonString() string {
@@ -3391,10 +3391,10 @@ func (r *ChannelCreateReleaseFlowRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateReleaseFlowResponseParams struct {
 	// 解除协议流程编号
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateReleaseFlowResponse struct {
@@ -3416,7 +3416,7 @@ func (r *ChannelCreateReleaseFlowResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateRoleRequestParams struct {
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -3427,20 +3427,20 @@ type ChannelCreateRoleRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色描述，最大长度为50个字符
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
-	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 type ChannelCreateRoleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -3451,13 +3451,13 @@ type ChannelCreateRoleRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色描述，最大长度为50个字符
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
-	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 func (r *ChannelCreateRoleRequest) ToJsonString() string {
@@ -3485,10 +3485,10 @@ func (r *ChannelCreateRoleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateRoleResponseParams struct {
 	// 角色id
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateRoleResponse struct {
@@ -3517,12 +3517,12 @@ type ChannelCreateSealPolicyRequestParams struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 电子印章ID，为32位字符串。
 	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
@@ -3531,17 +3531,17 @@ type ChannelCreateSealPolicyRequestParams struct {
 	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	// 指定待授权的用户ID数组,电子签的用户ID
 	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 操作人（用户）信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 企业机构信息，不用传
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 type ChannelCreateSealPolicyRequest struct {
@@ -3555,12 +3555,12 @@ type ChannelCreateSealPolicyRequest struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 电子印章ID，为32位字符串。
 	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
@@ -3569,13 +3569,13 @@ type ChannelCreateSealPolicyRequest struct {
 	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	// 指定待授权的用户ID数组,电子签的用户ID
 	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 操作人（用户）信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 企业机构信息，不用传
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 func (r *ChannelCreateSealPolicyRequest) ToJsonString() string {
@@ -3605,10 +3605,10 @@ func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
 type ChannelCreateSealPolicyResponseParams struct {
 	// 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
 	// 请求参数填写OpenId时，返回授权成功的 Openid。
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateSealPolicyResponse struct {
@@ -3630,68 +3630,68 @@ func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateUserAutoSignEnableUrlRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 自动签开通配置信息, 包括开通的人员的信息等
-	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil" name:"AutoSignConfig"`
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil,omitempty" name:"AutoSignConfig"`
 
 	// 生成的链接类型：
 	// <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
 	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
-	UrlType *string `json:"UrlType,omitnil" name:"UrlType"`
+	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
 	// 是否通知开通方，通知类型:
 	// <ul><li>默认不设置为不通知开通方</li>
 	// <li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
-	NotifyAddress *string `json:"NotifyAddress,omitnil" name:"NotifyAddress"`
+	NotifyAddress *string `json:"NotifyAddress,omitnil,omitempty" name:"NotifyAddress"`
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type ChannelCreateUserAutoSignEnableUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 自动签开通配置信息, 包括开通的人员的信息等
-	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil" name:"AutoSignConfig"`
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil,omitempty" name:"AutoSignConfig"`
 
 	// 生成的链接类型：
 	// <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
 	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
-	UrlType *string `json:"UrlType,omitnil" name:"UrlType"`
+	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
 	// 是否通知开通方，通知类型:
 	// <ul><li>默认不设置为不通知开通方</li>
 	// <li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
-	NotifyAddress *string `json:"NotifyAddress,omitnil" name:"NotifyAddress"`
+	NotifyAddress *string `json:"NotifyAddress,omitnil,omitempty" name:"NotifyAddress"`
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *ChannelCreateUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -3723,35 +3723,35 @@ func (r *ChannelCreateUserAutoSignEnableUrlRequest) FromJsonString(s string) err
 // Predefined struct for user
 type ChannelCreateUserAutoSignEnableUrlResponseParams struct {
 	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 	// 
 	// 注: `如果获取的是H5链接, 则不会返回此值`
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 	// 
 	// 注: `如果获取的是H5链接, 则不会返回此值`
-	AppOriginalId *string `json:"AppOriginalId,omitnil" name:"AppOriginalId"`
+	AppOriginalId *string `json:"AppOriginalId,omitnil,omitempty" name:"AppOriginalId"`
 
 	// 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 	// 
 	// 注: `如果获取的是H5链接, 则不会返回此值`
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
 	// 
 	// 注: `如果获取的是H5链接, 则不会返回此二维码图片`
-	QrCode *string `json:"QrCode,omitnil" name:"QrCode"`
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
 	// 返回的链接类型
 	// <ul><li> 空: 默认小程序端链接</li>
 	// <li> **H5SIGN** : h5端链接</li></ul>
-	UrlType *string `json:"UrlType,omitnil" name:"UrlType"`
+	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateUserAutoSignEnableUrlResponse struct {
@@ -3773,42 +3773,42 @@ func (r *ChannelCreateUserAutoSignEnableUrlResponse) FromJsonString(s string) er
 // Predefined struct for user
 type ChannelCreateUserAutoSignSealUrlRequestParams struct {
 	// 渠道应用相关信息。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 自动签开通个人用户信息，包括名字，身份证等。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type ChannelCreateUserAutoSignSealUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 渠道应用相关信息。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 自动签开通个人用户信息，包括名字，身份证等。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *ChannelCreateUserAutoSignSealUrlRequest) ToJsonString() string {
@@ -3837,22 +3837,22 @@ func (r *ChannelCreateUserAutoSignSealUrlRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ChannelCreateUserAutoSignSealUrlResponseParams struct {
 	// 腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
-	AppOriginalId *string `json:"AppOriginalId,omitnil" name:"AppOriginalId"`
+	AppOriginalId *string `json:"AppOriginalId,omitnil,omitempty" name:"AppOriginalId"`
 
 	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
-	QrCode *string `json:"QrCode,omitnil" name:"QrCode"`
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateUserAutoSignSealUrlResponse struct {
@@ -3882,21 +3882,21 @@ type ChannelCreateUserRolesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 绑定角色的角色id列表，最多 100 个
-	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 
 	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
-	OpenIds []*string `json:"OpenIds,omitnil" name:"OpenIds"`
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
 
 	// 操作者信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelCreateUserRolesRequest struct {
@@ -3911,19 +3911,19 @@ type ChannelCreateUserRolesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 绑定角色的角色id列表，最多 100 个
-	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 
 	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
-	OpenIds []*string `json:"OpenIds,omitnil" name:"OpenIds"`
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
 
 	// 操作者信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateUserRolesRequest) ToJsonString() string {
@@ -3952,10 +3952,10 @@ func (r *ChannelCreateUserRolesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateUserRolesResponseParams struct {
 	// 绑定失败的用户角色列表
-	FailedCreateRoleData []*FailedCreateRoleData `json:"FailedCreateRoleData,omitnil" name:"FailedCreateRoleData"`
+	FailedCreateRoleData []*FailedCreateRoleData `json:"FailedCreateRoleData,omitnil,omitempty" name:"FailedCreateRoleData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateUserRolesResponse struct {
@@ -3977,7 +3977,7 @@ func (r *ChannelCreateUserRolesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateWebThemeConfigRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
 	// <ul>
@@ -3985,17 +3985,17 @@ type ChannelCreateWebThemeConfigRequestParams struct {
 	// <li>COMPANY_AUTHENTICATE，子客认证主题配置， 对当前第三方应用号生效，
 	// 目前支持的有，背景图替换，隐藏企业认证页面导航栏和隐藏企业认证顶部logo</li>
 	// </ul>
-	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
+	ThemeType *string `json:"ThemeType,omitnil,omitempty" name:"ThemeType"`
 
 	// 主题配置
-	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil" name:"WebThemeConfig"`
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil,omitempty" name:"WebThemeConfig"`
 }
 
 type ChannelCreateWebThemeConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
 	// <ul>
@@ -4003,10 +4003,10 @@ type ChannelCreateWebThemeConfigRequest struct {
 	// <li>COMPANY_AUTHENTICATE，子客认证主题配置， 对当前第三方应用号生效，
 	// 目前支持的有，背景图替换，隐藏企业认证页面导航栏和隐藏企业认证顶部logo</li>
 	// </ul>
-	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
+	ThemeType *string `json:"ThemeType,omitnil,omitempty" name:"ThemeType"`
 
 	// 主题配置
-	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil" name:"WebThemeConfig"`
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil,omitempty" name:"WebThemeConfig"`
 }
 
 func (r *ChannelCreateWebThemeConfigRequest) ToJsonString() string {
@@ -4033,7 +4033,7 @@ func (r *ChannelCreateWebThemeConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelCreateWebThemeConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelCreateWebThemeConfigResponse struct {
@@ -4063,10 +4063,10 @@ type ChannelDeleteRoleRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色id，最多20个
-	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type ChannelDeleteRoleRequest struct {
@@ -4081,10 +4081,10 @@ type ChannelDeleteRoleRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色id，最多20个
-	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 func (r *ChannelDeleteRoleRequest) ToJsonString() string {
@@ -4110,7 +4110,7 @@ func (r *ChannelDeleteRoleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDeleteRoleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDeleteRoleResponse struct {
@@ -4132,40 +4132,40 @@ func (r *ChannelDeleteRoleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDeleteRoleUsersRequestParams struct {
 	// 代理信息此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色Id（非超管或法人角色Id）
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 操作人信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
-	OpenIds []*string `json:"OpenIds,omitnil" name:"OpenIds"`
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
 }
 
 type ChannelDeleteRoleUsersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 代理信息此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色Id（非超管或法人角色Id）
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
-	OpenIds []*string `json:"OpenIds,omitnil" name:"OpenIds"`
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
 }
 
 func (r *ChannelDeleteRoleUsersRequest) ToJsonString() string {
@@ -4194,10 +4194,10 @@ func (r *ChannelDeleteRoleUsersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDeleteRoleUsersResponseParams struct {
 	// 角色id
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDeleteRoleUsersResponse struct {
@@ -4219,46 +4219,46 @@ func (r *ChannelDeleteRoleUsersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDeleteSealPoliciesRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作的印章ID
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 需要删除授权的用户ID数组，可以传入电子签系统用户ID或OpenId。
 	// 注: 
 	// 1. `填写OpenId时，系统会通过组织+渠道+OpenId查询得到对应的UserId进行授权取消操作`
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelDeleteSealPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作的印章ID
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 需要删除授权的用户ID数组，可以传入电子签系统用户ID或OpenId。
 	// 注: 
 	// 1. `填写OpenId时，系统会通过组织+渠道+OpenId查询得到对应的UserId进行授权取消操作`
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDeleteSealPoliciesRequest) ToJsonString() string {
@@ -4287,7 +4287,7 @@ func (r *ChannelDeleteSealPoliciesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDeleteSealPoliciesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDeleteSealPoliciesResponse struct {
@@ -4317,13 +4317,13 @@ type ChannelDescribeBillUsageDetailRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
 	// 目前支持:
@@ -4344,13 +4344,13 @@ type ChannelDescribeBillUsageDetailRequestParams struct {
 	// <li>**AuthService**: 企业工商信息查询</li>
 	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type ChannelDescribeBillUsageDetailRequest struct {
@@ -4365,13 +4365,13 @@ type ChannelDescribeBillUsageDetailRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的套餐类型 （选填 ）不传则查询所有套餐；
 	// 目前支持:
@@ -4392,13 +4392,13 @@ type ChannelDescribeBillUsageDetailRequest struct {
 	// <li>**AuthService**: 企业工商信息查询</li>
 	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
-	QuotaType *string `json:"QuotaType,omitnil" name:"QuotaType"`
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *ChannelDescribeBillUsageDetailRequest) ToJsonString() string {
@@ -4428,13 +4428,13 @@ func (r *ChannelDescribeBillUsageDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeBillUsageDetailResponseParams struct {
 	// 返回查询记录总数
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 消耗记录详情
-	Details []*ChannelBillUsageDetail `json:"Details,omitnil" name:"Details"`
+	Details []*ChannelBillUsageDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeBillUsageDetailResponse struct {
@@ -4464,10 +4464,10 @@ type ChannelDescribeEmployeesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询的关键字段，支持Key-Values查询。可选键值如下：
 	// <ul>
@@ -4476,16 +4476,16 @@ type ChannelDescribeEmployeesRequestParams struct {
 	//   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 	// </ul>
 	// 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。
 	// 页码从 0 开始，即首页为 0，最大20000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelDescribeEmployeesRequest struct {
@@ -4500,10 +4500,10 @@ type ChannelDescribeEmployeesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询的关键字段，支持Key-Values查询。可选键值如下：
 	// <ul>
@@ -4512,14 +4512,14 @@ type ChannelDescribeEmployeesRequest struct {
 	//   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 	// </ul>
 	// 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。
 	// 页码从 0 开始，即首页为 0，最大20000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDescribeEmployeesRequest) ToJsonString() string {
@@ -4549,20 +4549,20 @@ func (r *ChannelDescribeEmployeesRequest) FromJsonString(s string) error {
 type ChannelDescribeEmployeesResponseParams struct {
 	// 员工信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
+	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 符合条件的员工数量。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeEmployeesResponse struct {
@@ -4592,10 +4592,10 @@ type ChannelDescribeFlowComponentsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要获取填写控件填写内容的合同流程ID
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type ChannelDescribeFlowComponentsRequest struct {
@@ -4610,10 +4610,10 @@ type ChannelDescribeFlowComponentsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要获取填写控件填写内容的合同流程ID
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 func (r *ChannelDescribeFlowComponentsRequest) ToJsonString() string {
@@ -4639,10 +4639,10 @@ func (r *ChannelDescribeFlowComponentsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeFlowComponentsResponseParams struct {
 	// 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
-	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil" name:"RecipientComponentInfos"`
+	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil,omitempty" name:"RecipientComponentInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeFlowComponentsResponse struct {
@@ -4672,25 +4672,25 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 返回最大数量，最大为100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询信息类型
 	// 支持的值如下：
 	// <ul><li>0-默认，不返回授权用户信息</li>
 	// <li>1-返回授权用户信息</li>
 	// </ul>
-	InfoType *int64 `json:"InfoType,omitnil" name:"InfoType"`
+	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
 	// 印章id（没有输入返回所有）
 	// 
 	// 注:  `没有输入返回所有记录，最大返回100条。`
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
@@ -4701,7 +4701,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// </ul>
 	// 
 	// 注:  `为空时查询所有类型的印章。`
-	SealTypes []*string `json:"SealTypes,omitnil" name:"SealTypes"`
+	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 }
 
 type ChannelDescribeOrganizationSealsRequest struct {
@@ -4716,25 +4716,25 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 返回最大数量，最大为100
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询信息类型
 	// 支持的值如下：
 	// <ul><li>0-默认，不返回授权用户信息</li>
 	// <li>1-返回授权用户信息</li>
 	// </ul>
-	InfoType *int64 `json:"InfoType,omitnil" name:"InfoType"`
+	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
 	// 印章id（没有输入返回所有）
 	// 
 	// 注:  `没有输入返回所有记录，最大返回100条。`
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
@@ -4745,7 +4745,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// </ul>
 	// 
 	// 注:  `为空时查询所有类型的印章。`
-	SealTypes []*string `json:"SealTypes,omitnil" name:"SealTypes"`
+	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 }
 
 func (r *ChannelDescribeOrganizationSealsRequest) ToJsonString() string {
@@ -4775,13 +4775,13 @@ func (r *ChannelDescribeOrganizationSealsRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ChannelDescribeOrganizationSealsResponseParams struct {
 	// 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询到的印章结果数组
-	Seals []*OccupiedSeal `json:"Seals,omitnil" name:"Seals"`
+	Seals []*OccupiedSeal `json:"Seals,omitnil,omitempty" name:"Seals"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeOrganizationSealsResponse struct {
@@ -4811,12 +4811,12 @@ type ChannelDescribeRolesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
 	// 
 	// 注: `因为历史原因, 此字段为字符串类型`
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询的关键字段:
 	// Key:"**RoleType**",Values:["**1**"]查询系统角色，
@@ -4827,19 +4827,19 @@ type ChannelDescribeRolesRequestParams struct {
 	// Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对应的权限树字段
 	// 
 	// 注: `同名字的Key的过滤条件会冲突, 只能填写一个`
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
 	// 
 	// 注：
 	// 1.`offset从0开始，即第一页为0。`
 	// 2.`默认从第一页返回。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 操作人信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelDescribeRolesRequest struct {
@@ -4854,12 +4854,12 @@ type ChannelDescribeRolesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
 	// 
 	// 注: `因为历史原因, 此字段为字符串类型`
-	Limit *string `json:"Limit,omitnil" name:"Limit"`
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询的关键字段:
 	// Key:"**RoleType**",Values:["**1**"]查询系统角色，
@@ -4870,17 +4870,17 @@ type ChannelDescribeRolesRequest struct {
 	// Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对应的权限树字段
 	// 
 	// 注: `同名字的Key的过滤条件会冲突, 只能填写一个`
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
 	// 
 	// 注：
 	// 1.`offset从0开始，即第一页为0。`
 	// 2.`默认从第一页返回。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDescribeRolesRequest) ToJsonString() string {
@@ -4909,20 +4909,20 @@ func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeRolesResponseParams struct {
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询角色的总数量
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询的角色信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChannelRoles []*ChannelRole `json:"ChannelRoles,omitnil" name:"ChannelRoles"`
+	ChannelRoles []*ChannelRole `json:"ChannelRoles,omitnil,omitempty" name:"ChannelRoles"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeRolesResponse struct {
@@ -4944,36 +4944,36 @@ func (r *ChannelDescribeRolesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeUserAutoSignStatusRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 要查询状态的用户信息, 包括名字,身份证等
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelDescribeUserAutoSignStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 要查询状态的用户信息, 包括名字,身份证等
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDescribeUserAutoSignStatusRequest) ToJsonString() string {
@@ -5001,25 +5001,25 @@ func (r *ChannelDescribeUserAutoSignStatusRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type ChannelDescribeUserAutoSignStatusResponseParams struct {
 	// 查询用户是否已开通自动签
-	IsOpen *bool `json:"IsOpen,omitnil" name:"IsOpen"`
+	IsOpen *bool `json:"IsOpen,omitnil,omitempty" name:"IsOpen"`
 
 	// 自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
 	// 
 	// 值为unix时间戳,单位为秒。
-	LicenseFrom *int64 `json:"LicenseFrom,omitnil" name:"LicenseFrom"`
+	LicenseFrom *int64 `json:"LicenseFrom,omitnil,omitempty" name:"LicenseFrom"`
 
 	// 自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
 	// 
 	// 值为unix时间戳,单位为秒。
-	LicenseTo *int64 `json:"LicenseTo,omitnil" name:"LicenseTo"`
+	LicenseTo *int64 `json:"LicenseTo,omitnil,omitempty" name:"LicenseTo"`
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。
 	// 
 	// <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
-	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDescribeUserAutoSignStatusResponse struct {
@@ -5041,36 +5041,36 @@ func (r *ChannelDescribeUserAutoSignStatusResponse) FromJsonString(s string) err
 // Predefined struct for user
 type ChannelDisableUserAutoSignRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 需要关闭自动签的个人的信息，如姓名，证件信息等。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelDisableUserAutoSignRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自动签使用的场景值, 可以选择的场景值如下:
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
 	// 需要关闭自动签的个人的信息，如姓名，证件信息等。
-	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDisableUserAutoSignRequest) ToJsonString() string {
@@ -5098,7 +5098,7 @@ func (r *ChannelDisableUserAutoSignRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDisableUserAutoSignResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelDisableUserAutoSignResponse struct {
@@ -5128,20 +5128,20 @@ type ChannelGetTaskResultApiRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 操作者的信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 暂未开放
 	//
 	// Deprecated: Organization is deprecated.
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 type ChannelGetTaskResultApiRequest struct {
@@ -5156,16 +5156,16 @@ type ChannelGetTaskResultApiRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitnil" name:"Organization"`
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 
 func (r *ChannelGetTaskResultApiRequest) ToJsonString() string {
@@ -5193,7 +5193,7 @@ func (r *ChannelGetTaskResultApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelGetTaskResultApiResponseParams struct {
 	// 任务Id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务状态，需要关注的状态
 	// <ul><li>**0**  :NeedTranform   - 任务已提交</li>
@@ -5202,7 +5202,7 @@ type ChannelGetTaskResultApiResponseParams struct {
 	// <li>**-2** :DownloadFailed - 下载失败</li>
 	// <li>**-6** :ProcessFailed  - 转换失败</li>
 	// <li>**-13**:ProcessTimeout - 转换文件超时</li></ul>
-	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 状态描述，需要关注的状态
 	// <ul><li> **NeedTranform** : 任务已提交</li>
@@ -5211,20 +5211,20 @@ type ChannelGetTaskResultApiResponseParams struct {
 	// <li> **DownloadFailed** : 下载失败</li>
 	// <li> **ProcessFailed** : 转换失败</li>
 	// <li> **ProcessTimeout** : 转换文件超时</li></ul>
-	TaskMessage *string `json:"TaskMessage,omitnil" name:"TaskMessage"`
+	TaskMessage *string `json:"TaskMessage,omitnil,omitempty" name:"TaskMessage"`
 
 	// 资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 预览文件Url，有效期30分钟 
 	// 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: PreviewUrl is deprecated.
-	PreviewUrl *string `json:"PreviewUrl,omitnil" name:"PreviewUrl"`
+	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelGetTaskResultApiResponse struct {
@@ -5246,38 +5246,38 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelModifyRoleRequestParams struct {
 	// 代理企业和员工的信息。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 角色Id，可通过接口 ChannelDescribeRoles 查询获取
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色描述，最大长度为50个字符
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
-	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 type ChannelModifyRoleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 代理企业和员工的信息。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 角色Id，可通过接口 ChannelDescribeRoles 查询获取
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色描述，最大长度为50个字符
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
-	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 func (r *ChannelModifyRoleRequest) ToJsonString() string {
@@ -5306,10 +5306,10 @@ func (r *ChannelModifyRoleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelModifyRoleResponseParams struct {
 	// 角色id
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelModifyRoleResponse struct {
@@ -5330,32 +5330,32 @@ func (r *ChannelModifyRoleResponse) FromJsonString(s string) error {
 
 type ChannelOrganizationInfo struct {
 	// 电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
-	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
+	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 第三方平台子客企业的唯一标识
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业名称
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 企业的统一社会信用代码
-	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil" name:"UnifiedSocialCreditCode"`
+	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
 
 	// 企业法定代表人的姓名
-	LegalName *string `json:"LegalName,omitnil" name:"LegalName"`
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 企业法定代表人作为第三方平台子客企业员工的唯一标识
-	LegalOpenId *string `json:"LegalOpenId,omitnil" name:"LegalOpenId"`
+	LegalOpenId *string `json:"LegalOpenId,omitnil,omitempty" name:"LegalOpenId"`
 
 	// 企业超级管理员的姓名
-	AdminName *string `json:"AdminName,omitnil" name:"AdminName"`
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
 	// 企业超级管理员作为第三方平台子客企业员工的唯一标识
-	AdminOpenId *string `json:"AdminOpenId,omitnil" name:"AdminOpenId"`
+	AdminOpenId *string `json:"AdminOpenId,omitnil,omitempty" name:"AdminOpenId"`
 
 	// 企业超级管理员的手机号码
 	// **注**：`手机号码脱敏（隐藏部分用*替代）`
-	AdminMobile *string `json:"AdminMobile,omitnil" name:"AdminMobile"`
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
 
 	// 企业认证状态字段。值如下：
 	// <ul>
@@ -5366,7 +5366,7 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"VERIFYING"**： 认证中的企业</li>
 	//   <li>**"VERIFIED"**： 已认证的企业</li>
 	// </ul>
-	AuthorizationStatus *string `json:"AuthorizationStatus,omitnil" name:"AuthorizationStatus"`
+	AuthorizationStatus *string `json:"AuthorizationStatus,omitnil,omitempty" name:"AuthorizationStatus"`
 
 	// 企业认证方式字段。值如下：
 	// <ul>
@@ -5375,67 +5375,67 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>
 	//   <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
 	// </ul>
-	AuthorizationType *string `json:"AuthorizationType,omitnil" name:"AuthorizationType"`
+	AuthorizationType *string `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
 }
 
 type ChannelRole struct {
 	// 角色ID,为32位字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// 此角色状态
 	// 1: 已经启用
 	// 2: 已经禁用
-	RoleStatus *uint64 `json:"RoleStatus,omitnil" name:"RoleStatus"`
+	RoleStatus *uint64 `json:"RoleStatus,omitnil,omitempty" name:"RoleStatus"`
 
 	// 此角色对应的权限列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 // Predefined struct for user
 type ChannelUpdateSealStatusRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 印章状态，目前支持传入以下类型：
 	// <ul><li>DISABLE-停用印章</li></ul>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 印章ID
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 更新印章状态原因说明
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 操作者的信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelUpdateSealStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 印章状态，目前支持传入以下类型：
 	// <ul><li>DISABLE-停用印章</li></ul>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 印章ID
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 更新印章状态原因说明
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelUpdateSealStatusRequest) ToJsonString() string {
@@ -5464,7 +5464,7 @@ func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelUpdateSealStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelUpdateSealStatusResponse struct {
@@ -5486,7 +5486,7 @@ func (r *ChannelUpdateSealStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelVerifyPdfRequestParams struct {
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -5497,19 +5497,19 @@ type ChannelVerifyPdfRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type ChannelVerifyPdfRequest struct {
 	*tchttp.BaseRequest
 	
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -5520,10 +5520,10 @@ type ChannelVerifyPdfRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *ChannelVerifyPdfRequest) ToJsonString() string {
@@ -5556,19 +5556,19 @@ type ChannelVerifyPdfResponseParams struct {
 	// <li>**3**：文件被篡改。</li>
 	// <li>**4**：异常：文件内没有签名域。(如果合同还没有签署也会返回此代码)</li>
 	// <li>**5**：异常：文件签名格式错误。</li></ul>
-	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
+	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
 
 	// 验签结果详情，所有签署区(包括签名区, 印章区, 日期签署区,骑缝章等)的签署验签结果
-	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitnil" name:"PdfVerifyResults"`
+	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitnil,omitempty" name:"PdfVerifyResults"`
 
 	// 验签序列号, 为11为数组组成的字符串
-	VerifySerialNo *string `json:"VerifySerialNo,omitnil" name:"VerifySerialNo"`
+	VerifySerialNo *string `json:"VerifySerialNo,omitnil,omitempty" name:"VerifySerialNo"`
 
 	// 合同文件MD5哈希值
-	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil" name:"PdfResourceMd5"`
+	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil,omitempty" name:"PdfResourceMd5"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ChannelVerifyPdfResponse struct {
@@ -5589,7 +5589,7 @@ func (r *ChannelVerifyPdfResponse) FromJsonString(s string) error {
 
 type CommonApproverOption struct {
 	// 是否允许修改签署人信息
-	CanEditApprover *bool `json:"CanEditApprover,omitnil" name:"CanEditApprover"`
+	CanEditApprover *bool `json:"CanEditApprover,omitnil,omitempty" name:"CanEditApprover"`
 }
 
 type CommonFlowApprover struct {
@@ -5598,7 +5598,7 @@ type CommonFlowApprover struct {
 	// <li>false: 默认值，第三方平台子客企业下员工</li>
 	// <li>true: SaaS平台企业下的员工</li>
 	// </ul>
-	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
+	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil,omitempty" name:"NotChannelOrganization"`
 
 	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 	// 
@@ -5609,29 +5609,29 @@ type CommonFlowApprover struct {
 	// 注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
 	// 使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -> 企业设置 -> 扩展服务 -> 企业自动签。
 	// 使用文件发起自动签时使用前请联系对接的客户经理沟通。
-	ApproverType *int64 `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *int64 `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 电子签平台给企业生成的企业id
-	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
+	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 电子签平台给企业员工或者自热人生成的用户id
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 第三方平台子客企业员工的唯一标识
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
 	// 签署人手机号，saas企业签署人，个人签署人必传
-	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
@@ -5640,36 +5640,36 @@ type CommonFlowApprover struct {
 	// <li>OTHER_CARD_TYPE : 其他证件</li></ul>
 	// 
 	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil" name:"ApproverIdCardType"`
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil" name:"ApproverIdCardNumber"`
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
 	// 注意：模板发起时该字段必填
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
-	PreReadTime *int64 `json:"PreReadTime,omitnil" name:"PreReadTime"`
+	PreReadTime *int64 `json:"PreReadTime,omitnil,omitempty" name:"PreReadTime"`
 
 	// 签署前置条件：阅读全文限制
-	IsFullText *bool `json:"IsFullText,omitnil" name:"IsFullText"`
+	IsFullText *bool `json:"IsFullText,omitnil,omitempty" name:"IsFullText"`
 
 	// 通知签署方经办人的方式, 有以下途径:
 	// <ul><li> **SMS** :(默认)短信</li>
 	// <li> **NONE** : 不通知</li></ul>
 	// 
 	// 注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 签署人配置，用于控制签署人相关属性
-	ApproverOption *CommonApproverOption `json:"ApproverOption,omitnil" name:"ApproverOption"`
+	ApproverOption *CommonApproverOption `json:"ApproverOption,omitnil,omitempty" name:"ApproverOption"`
 
 	// 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
-	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
+	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
 	// 指定个人签署方查看合同的校验方式,可以传值如下:
 	// <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
@@ -5678,7 +5678,7 @@ type CommonFlowApprover struct {
 	// 注: 
 	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
 	// <li>此字段可传多个校验方式</li></ul>
-	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil,omitempty" name:"ApproverVerifyTypes"`
 
 	// 签署人签署合同时的认证方式
 	// <ul><li> **1** :人脸认证</li>
@@ -5690,7 +5690,7 @@ type CommonFlowApprover struct {
 	// 注: 
 	// 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
 	// 2. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/partner/mobile_support)得到具体的支持说明
-	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 }
 
 type Component struct {
@@ -5710,7 +5710,7 @@ type Component struct {
 	// 
 	// 注：`控件ID可以在一个PDF中不可重复`
 	// <a href="https://qcloudimg.tencent-cloud.cn/raw/93178569d07b4d7dbbe0967ae679e35c.png" target="_blank">点击查看ComponentId在模板页面的位置</a>
-	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *string `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// **如果是Component填写控件类型，则可选的字段为**：
 	// 
@@ -5741,7 +5741,7 @@ type Component struct {
 	// <li> <b>SIGN_PERSONAL_SEAL</b> : 个人签署印章控件（使用文件发起暂不支持此类型）；</li></ul>
 	//  
 	// 注：` 表单域的控件不能作为印章和签名控件`
-	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
 	// **在绝对定位方式方式下**，ComponentName为控件名，长度不能超过20，只能由中文、字母、数字和下划线组成，可以在后续的操作中使用该名称来引用控件。
 	// 
@@ -5750,44 +5750,44 @@ type Component struct {
 	// 注：`控件名可以在一个PDF中可以重复`
 	// 
 	// <a href="https://qcloudimg.tencent-cloud.cn/raw/93178569d07b4d7dbbe0967ae679e35c.png" target="_blank">点击查看ComponentName在模板页面的位置</a>
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 如果是<b>填写控件</b>，ComponentRequired表示在填写页面此控件是否必填
 	// <ul><li>false（默认）：可以不填写</li>
 	// <li>true ：必须填写此填写控件</li></ul>
 	// 如果是<b>签署控件</b>，签批控件中签署意见等可以不填写， 其他签署控件不受此字段影响
-	ComponentRequired *bool `json:"ComponentRequired,omitnil" name:"ComponentRequired"`
+	ComponentRequired *bool `json:"ComponentRequired,omitnil,omitempty" name:"ComponentRequired"`
 
 	// **在通过接口拉取控件信息场景下**，为出参参数，此控件归属的参与方的角色ID角色（即RecipientId），**发起合同时候不要填写此字段留空即可**
-	ComponentRecipientId *string `json:"ComponentRecipientId,omitnil" name:"ComponentRecipientId"`
+	ComponentRecipientId *string `json:"ComponentRecipientId,omitnil,omitempty" name:"ComponentRecipientId"`
 
 	// <font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
-	FileIndex *int64 `json:"FileIndex,omitnil" name:"FileIndex"`
+	FileIndex *int64 `json:"FileIndex,omitnil,omitempty" name:"FileIndex"`
 
 	// 控件生成的方式：
 	// <ul><li> <b>NORMAL</b> : 绝对定位控件</li>
 	// <li> <b>FIELD</b> : 表单域</li>
 	// <li> <b>KEYWORD</b> : 关键字（设置关键字时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找）</li></ul>
-	GenerateMode *string `json:"GenerateMode,omitnil" name:"GenerateMode"`
+	GenerateMode *string `json:"GenerateMode,omitnil,omitempty" name:"GenerateMode"`
 
 	// **在绝对定位方式和关键字定位方式下**，指定控件宽度，控件宽度是指控件在PDF文件中的宽度，单位为pt（点）。
-	ComponentWidth *float64 `json:"ComponentWidth,omitnil" name:"ComponentWidth"`
+	ComponentWidth *float64 `json:"ComponentWidth,omitnil,omitempty" name:"ComponentWidth"`
 
 	// **在绝对定位方式和关键字定位方式下**，指定控件的高度， 控件高度是指控件在PDF文件中的高度，单位为pt（点）。
-	ComponentHeight *float64 `json:"ComponentHeight,omitnil" name:"ComponentHeight"`
+	ComponentHeight *float64 `json:"ComponentHeight,omitnil,omitempty" name:"ComponentHeight"`
 
 	// **在绝对定位方式方式下**，指定控件所在PDF文件上的页码
 	// 
 	// 注：
 	// 1. 页码编号是从<font color="red">1</font>开始编号的。
 	// 2.  <font color="red">页面编号不能超过PDF文件的页码总数</font>。如果指定的页码超过了PDF文件的页码总数，在填写和签署时会出现错误，导致无法正常进行操作。
-	ComponentPage *int64 `json:"ComponentPage,omitnil" name:"ComponentPage"`
+	ComponentPage *int64 `json:"ComponentPage,omitnil,omitempty" name:"ComponentPage"`
 
 	// **在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
-	ComponentPosX *float64 `json:"ComponentPosX,omitnil" name:"ComponentPosX"`
+	ComponentPosX *float64 `json:"ComponentPosX,omitnil,omitempty" name:"ComponentPosX"`
 
 	// **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
-	ComponentPosY *float64 `json:"ComponentPosY,omitnil" name:"ComponentPosY"`
+	ComponentPosY *float64 `json:"ComponentPosY,omitnil,omitempty" name:"ComponentPosY"`
 
 	// **在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 	// 
@@ -5835,7 +5835,7 @@ type Component struct {
 	// <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 	// 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
 	// <b>参数样例</b>：` "{"IgnoreKeywordError":1}"`
-	ComponentExtra *string `json:"ComponentExtra,omitnil" name:"ComponentExtra"`
+	ComponentExtra *string `json:"ComponentExtra,omitnil,omitempty" name:"ComponentExtra"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
 	// <ul><li> <b>TEXT</b> : 文本内容</li>
@@ -5852,37 +5852,37 @@ type Component struct {
 	// <b>控件值约束说明</b>：
 	// <table> <thead> <tr> <th>特殊控件</th> <th>填写约束</th> </tr> </thead> <tbody> <tr> <td>企业全称控件</td> <td>企业名称中文字符中文括号</td> </tr> <tr> <td>统一社会信用代码控件</td> <td>企业注册的统一社会信用代码</td> </tr> <tr> <td>法人名称控件</td> <td>最大50个字符，2到25个汉字或者1到50个字母</td> </tr> <tr> <td>签署意见控件</td> <td>签署意见最大长度为50字符</td> </tr> <tr> <td>签署人手机号控件</td> <td>国内手机号 13,14,15,16,17,18,19号段长度11位</td> </tr> <tr> <td>签署人身份证控件</td> <td>合法的身份证号码检查</td> </tr> <tr> <td>控件名称</td> <td>控件名称最大长度为20字符，不支持表情</td> </tr> <tr> <td>单行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>多行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>勾选框控件</td> <td>选择填字符串true，不选填字符串false</td> </tr> <tr> <td>选择器控件</td> <td>同单行文本控件约束，填写选择值中的字符串</td> </tr> <tr> <td>数字控件</td> <td>请输入有效的数字(可带小数点)</td> </tr> <tr> <td>日期控件</td> <td>格式：yyyy年mm月dd日</td> </tr> <tr> <td>附件控件</td> <td>JPG或PNG图片，上传数量限制，1到6个，最大6个附件，填写上传的资源ID</td> </tr> <tr> <td>图片控件</td> <td>JPG或PNG图片，填写上传的图片资源ID</td> </tr> <tr> <td>邮箱控件</td> <td>有效的邮箱地址, w3c标准</td> </tr> <tr> <td>地址控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>省市区控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>性别控件</td> <td>选择值中的字符串</td> </tr> <tr> <td>学历控件</td> <td>选择值中的字符串</td> </tr> </tbody> </table>
 	// 注：   `部分特殊控件需要在控制台配置模板形式创建`
-	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
+	ComponentValue *string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 
 	// <font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
-	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitnil" name:"ComponentDateFontSize"`
+	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitnil,omitempty" name:"ComponentDateFontSize"`
 
 	// <font color="red">【暂未使用】</font>控件归属的文档的ID， **发起合同时候不要填写此字段留空即可**
-	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil,omitempty" name:"DocumentId"`
 
 	// <font color="red">【暂未使用】</font>控件描述，用户自定义，不影响合同发起流程
-	ComponentDescription *string `json:"ComponentDescription,omitnil" name:"ComponentDescription"`
+	ComponentDescription *string `json:"ComponentDescription,omitnil,omitempty" name:"ComponentDescription"`
 
 	// **如果控件是关键字定位方式**，可以对关键字定位出来的区域进行横坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏左或偏右，可以通过调整横坐标方向的参数来使控件位置更加准确。
 	// 注意： `向左调整设置为负数， 向右调整设置成正数`
-	OffsetX *float64 `json:"OffsetX,omitnil" name:"OffsetX"`
+	OffsetX *float64 `json:"OffsetX,omitnil,omitempty" name:"OffsetX"`
 
 	// **如果控件是关键字定位方式**，可以对关键字定位出来的区域进行纵坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏上或偏下，可以通过调整纵坐标方向的参数来使控件位置更加准确。
 	// 注意： `向上调整设置为负数， 向下调整设置成正数`
-	OffsetY *float64 `json:"OffsetY,omitnil" name:"OffsetY"`
+	OffsetY *float64 `json:"OffsetY,omitnil,omitempty" name:"OffsetY"`
 
 	// <font color="red">【暂未使用】</font>第三方应用集成平台模板控件 ID 标识
-	ChannelComponentId *string `json:"ChannelComponentId,omitnil" name:"ChannelComponentId"`
+	ChannelComponentId *string `json:"ChannelComponentId,omitnil,omitempty" name:"ChannelComponentId"`
 
 	// **如果控件是关键字定位方式**，指定关键字排序规则时，可以选择Positive或Reverse两种排序方式。
 	// <ul><li> <b>Positive</b> :表示正序，即根据关键字在PDF文件内的顺序进行排列</li>
 	// <li> <b>Reverse</b> :表示倒序，即根据关键字在PDF文件内的反序进行排列</li></ul>
 	// 
 	// 在指定KeywordIndexes时，如果使用Positive排序方式，0代表在PDF内查找内容时，查找到的第一个关键字；如果使用Reverse排序方式，0代表在PDF内查找内容时，查找到的最后一个关键字。
-	KeywordOrder *string `json:"KeywordOrder,omitnil" name:"KeywordOrder"`
+	KeywordOrder *string `json:"KeywordOrder,omitnil,omitempty" name:"KeywordOrder"`
 
 	// **如果控件是关键字定位方式**，在KeywordPage中指定关键字页码时，将只会在该页码中查找关键字，非该页码的关键字将不会查询出来。如果不设置查找所有页面中的关键字。
-	KeywordPage *int64 `json:"KeywordPage,omitnil" name:"KeywordPage"`
+	KeywordPage *int64 `json:"KeywordPage,omitnil,omitempty" name:"KeywordPage"`
 
 	// **如果控件是关键字定位方式**，关键字生成的区域的对齐方式， 可以设置下面的值
 	// <ul><li> <b>Middle</b> :居中</li>
@@ -5891,29 +5891,29 @@ type Component struct {
 	// <li> <b>LowerRight</b> :右上角</li>
 	// <li> <b>UpperRight</b> :右下角。</li></ul>
 	// 示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
-	RelativeLocation *string `json:"RelativeLocation,omitnil" name:"RelativeLocation"`
+	RelativeLocation *string `json:"RelativeLocation,omitnil,omitempty" name:"RelativeLocation"`
 
 	// **如果控件是关键字定位方式**，关键字索引是指在PDF文件中存在多个相同的关键字时，通过索引指定使用哪一个关键字作为最后的结果。可以通过指定多个索引来同时使用多个关键字。例如，[0,2]表示使用PDF文件内第1个和第3个关键字位置作为最后的结果。
 	// 
 	// 注意：关键字索引是从0开始计数的
-	KeywordIndexes []*int64 `json:"KeywordIndexes,omitnil" name:"KeywordIndexes"`
+	KeywordIndexes []*int64 `json:"KeywordIndexes,omitnil,omitempty" name:"KeywordIndexes"`
 
 	// 填写控件在腾讯电子签小程序填写界面展示的提示信息，例如，在身份证号码填写控件中，提示信息可以设置成“请输入18位身份证号码”。
 	// 注：`签署控件设置此字段无效`
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Placeholder *string `json:"Placeholder,omitnil" name:"Placeholder"`
+	Placeholder *string `json:"Placeholder,omitnil,omitempty" name:"Placeholder"`
 
 	// **web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 	// <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
 	// <li>true：锁定控件值，在页面编辑控件值</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LockComponentValue *bool `json:"LockComponentValue,omitnil" name:"LockComponentValue"`
+	LockComponentValue *bool `json:"LockComponentValue,omitnil,omitempty" name:"LockComponentValue"`
 
 	// **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 	// <ul><li> <b>false（默认）</b> :不禁止移动和删除控件</li>
 	// <li> <b>true</b> : 可以移动和删除控件</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil" name:"ForbidMoveAndDelete"`
+	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil,omitempty" name:"ForbidMoveAndDelete"`
 }
 
 type ComponentLimit struct {
@@ -5922,7 +5922,7 @@ type ComponentLimit struct {
 	// <li>SIGN_PAGING_SEAL : 骑缝章控件</li>
 	// <li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
 	// <li>SIGN_SIGNATURE : 用户签名控件</li></ul>
-	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
 	// 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
 	// 
@@ -5936,7 +5936,7 @@ type ComponentLimit struct {
 	// <li>SYSTEM_ESIGN : 系统印章</li></ul>
 	// 
 	// 3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
-	ComponentValue []*string `json:"ComponentValue,omitnil" name:"ComponentValue"`
+	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 }
 
 // Predefined struct for user
@@ -5950,11 +5950,11 @@ type CreateBatchOrganizationRegistrationTasksRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 当前应用下子客的组织机构注册信息。
 	// 一次最多支持10条认证流
-	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil" name:"RegistrationOrganizations"`
+	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil,omitempty" name:"RegistrationOrganizations"`
 
 	// 生成链接的类型：
 	// <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
@@ -5964,7 +5964,7 @@ type CreateBatchOrganizationRegistrationTasksRequestParams struct {
 	// <li>**H5**：第三方H5跳转到电子签H5长链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 	// <li>**SHORT_H5**：第三方H5跳转到电子签H5短链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li></ul>
 	// 示例值：PC
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type CreateBatchOrganizationRegistrationTasksRequest struct {
@@ -5979,11 +5979,11 @@ type CreateBatchOrganizationRegistrationTasksRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 当前应用下子客的组织机构注册信息。
 	// 一次最多支持10条认证流
-	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil" name:"RegistrationOrganizations"`
+	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil,omitempty" name:"RegistrationOrganizations"`
 
 	// 生成链接的类型：
 	// <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
@@ -5993,7 +5993,7 @@ type CreateBatchOrganizationRegistrationTasksRequest struct {
 	// <li>**H5**：第三方H5跳转到电子签H5长链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 	// <li>**SHORT_H5**：第三方H5跳转到电子签H5短链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li></ul>
 	// 示例值：PC
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *CreateBatchOrganizationRegistrationTasksRequest) ToJsonString() string {
@@ -6022,16 +6022,16 @@ type CreateBatchOrganizationRegistrationTasksResponseParams struct {
 	// 生成注册链接的任务Id，
 	// 根据这个id， 调用DescribeBatchOrganizationRegistrationUrls 获取生成的链接，进入认证流程
 	// 若存在其中任意一条链接错误，则返回具体的错误描述, 不会返回TaskId
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 批量生成企业认证链接的详细错误信息，
 	// 顺序与输入参数保持一致。
 	// 若企业认证均成功生成，则不返回错误信息；
 	// 若存在任何错误，则返回具体的错误描述。
-	ErrorMessages []*string `json:"ErrorMessages,omitnil" name:"ErrorMessages"`
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateBatchOrganizationRegistrationTasksResponse struct {
@@ -6061,21 +6061,21 @@ type CreateChannelFlowEvidenceReportRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定申请的报告类型，可选类型如下：
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 type CreateChannelFlowEvidenceReportRequest struct {
@@ -6090,19 +6090,19 @@ type CreateChannelFlowEvidenceReportRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定申请的报告类型，可选类型如下：
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 func (r *CreateChannelFlowEvidenceReportRequest) ToJsonString() string {
@@ -6131,21 +6131,21 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 type CreateChannelFlowEvidenceReportResponseParams struct {
 	// 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
+	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 出证任务执行的状态, 状态含义如下：
 	// 
 	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
 	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 废除，字段无效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateChannelFlowEvidenceReportResponse struct {
@@ -6175,19 +6175,19 @@ type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
 	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
-	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+	ChangeType *uint64 `json:"ChangeType,omitnil,omitempty" name:"ChangeType"`
 
 	// 变更链接类型：
 	// <ul>
 	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
 	// <li>**APP** : 创建变更小程序链接，可从第三方App或者小程序跳转到微信腾讯电子签小程序进行更换。</li>
 	// </ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type CreateChannelOrganizationInfoChangeUrlRequest struct {
@@ -6202,19 +6202,19 @@ type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 企业信息变更类型，可选类型如下：
 	// <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 	// <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
-	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+	ChangeType *uint64 `json:"ChangeType,omitnil,omitempty" name:"ChangeType"`
 
 	// 变更链接类型：
 	// <ul>
 	// <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
 	// <li>**APP** : 创建变更小程序链接，可从第三方App或者小程序跳转到微信腾讯电子签小程序进行更换。</li>
 	// </ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *CreateChannelOrganizationInfoChangeUrlRequest) ToJsonString() string {
@@ -6241,13 +6241,13 @@ func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string)
 // Predefined struct for user
 type CreateChannelOrganizationInfoChangeUrlResponseParams struct {
 	// 创建的企业信息变更链接。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 链接过期时间。链接7天有效。
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateChannelOrganizationInfoChangeUrlResponse struct {
@@ -6278,23 +6278,23 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// `1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
 	// `2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
 	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
 	//  `2、该名称需要与Agent.ProxyOrganizationOpenId相匹配,  企业激活后Agent.ProxyOrganizationOpenId会跟此企业名称一一绑定; 如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。 `
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 子客企业统一社会信用代码，最大长度200个字符
 	// 注意：`如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效`。
-	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil" name:"UniformSocialCreditCode"`
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 子客企业员工的姓名，最大长度50个字符,  员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`该姓名需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该姓名会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人名字传入将不会生效`
-	ProxyOperatorName *string `json:"ProxyOperatorName,omitnil" name:"ProxyOperatorName"`
+	ProxyOperatorName *string `json:"ProxyOperatorName,omitnil,omitempty" name:"ProxyOperatorName"`
 
 	// Web控制台登录后进入的功能模块,  支持的模块包括：
 	// <ul>
@@ -6306,20 +6306,20 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 注意：
 	// 1、如果EndPoint选择"CHANNEL"或"APP"，该参数仅支持传递"SEAL"，进入印章管理模块
 	// 2、该参数**仅在企业和员工激活已经完成，登录控制台场景才生效**。
-	Module *string `json:"Module,omitnil" name:"Module"`
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
 	// 该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
 	// 
 	// 根据Module参数的不同所代表的含义不同(ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到)。当前支持：
 	// <table> <thead> <tr> <th>Module传值</th> <th>ModuleId传值</th> <th>进入的目标页面</th> </tr> </thead> <tbody> <tr> <td>SEAL</td> <td>印章ID</td> <td>查看指定印章的详情页面</td> </tr> <tr> <td>TEMPLATE</td> <td>合同模板ID</td> <td>指定模板的详情页面</td> </tr> <tr> <td>DOCUMENT</td> <td>合同ID</td> <td>指定合同的详情页面</td> </tr> </tbody> </table>
 	// 注意：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
-	ModuleId *string `json:"ModuleId,omitnil" name:"ModuleId"`
+	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
 	// 是否展示左侧菜单栏 
 	// <ul><li> **ENABLE** : (默认)进入web控制台展示左侧菜单栏</li>
 	// <li> **DISABLE** : 进入web控制台不展示左侧菜单栏</li></ul>
 	// 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
-	MenuStatus *string `json:"MenuStatus,omitnil" name:"MenuStatus"`
+	MenuStatus *string `json:"MenuStatus,omitnil,omitempty" name:"MenuStatus"`
 
 	// 生成链接的类型：
 	// <ul><li>**PC**：(默认)<font color="red">web控制台</font>链接, 需要在PC浏览器中打开</li>
@@ -6328,11 +6328,11 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// <li>**APP**：<font color="red">APP或小程序</font>跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li>
 	// <li>**H5**：<font color="red">H5长链接</font>跳转H5链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 	// <li>**SHORT_H5**：<font color="red">H5短链</font>跳转H5的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签H5页面</li></ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 	// <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
-	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil" name:"AutoJumpBackEvent"`
+	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
 
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
 	// <ul><li>1：上传授权书</li>
@@ -6343,20 +6343,20 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// <li>选择信任第三方认证源时，请先通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/SyncProxyOrganization" target="_blank">同步企业信息</a>接口同步信息。</li>
 	// <li>该参数仅在企业未激活时生效</li>
 	// </ul>
-	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil" name:"AuthorizationTypes"`
+	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 子客经办人身份证
 	// 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持居民身份证类型`。
-	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil" name:"ProxyOperatorIdCardNumber"`
+	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil,omitempty" name:"ProxyOperatorIdCardNumber"`
 
 	// 认证完成跳转链接
 	// 注意：`只在H5生效，域名需要联系我们开白`。
-	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil" name:"AutoJumpUrl"`
+	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
 }
 
 type CreateConsoleLoginUrlRequest struct {
@@ -6372,23 +6372,23 @@ type CreateConsoleLoginUrlRequest struct {
 	// `1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
 	// `2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
 	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
 	//  `2、该名称需要与Agent.ProxyOrganizationOpenId相匹配,  企业激活后Agent.ProxyOrganizationOpenId会跟此企业名称一一绑定; 如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。 `
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 子客企业统一社会信用代码，最大长度200个字符
 	// 注意：`如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效`。
-	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil" name:"UniformSocialCreditCode"`
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 子客企业员工的姓名，最大长度50个字符,  员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
 	// 注：`该姓名需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该姓名会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人名字传入将不会生效`
-	ProxyOperatorName *string `json:"ProxyOperatorName,omitnil" name:"ProxyOperatorName"`
+	ProxyOperatorName *string `json:"ProxyOperatorName,omitnil,omitempty" name:"ProxyOperatorName"`
 
 	// Web控制台登录后进入的功能模块,  支持的模块包括：
 	// <ul>
@@ -6400,20 +6400,20 @@ type CreateConsoleLoginUrlRequest struct {
 	// 注意：
 	// 1、如果EndPoint选择"CHANNEL"或"APP"，该参数仅支持传递"SEAL"，进入印章管理模块
 	// 2、该参数**仅在企业和员工激活已经完成，登录控制台场景才生效**。
-	Module *string `json:"Module,omitnil" name:"Module"`
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
 	// 该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
 	// 
 	// 根据Module参数的不同所代表的含义不同(ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到)。当前支持：
 	// <table> <thead> <tr> <th>Module传值</th> <th>ModuleId传值</th> <th>进入的目标页面</th> </tr> </thead> <tbody> <tr> <td>SEAL</td> <td>印章ID</td> <td>查看指定印章的详情页面</td> </tr> <tr> <td>TEMPLATE</td> <td>合同模板ID</td> <td>指定模板的详情页面</td> </tr> <tr> <td>DOCUMENT</td> <td>合同ID</td> <td>指定合同的详情页面</td> </tr> </tbody> </table>
 	// 注意：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
-	ModuleId *string `json:"ModuleId,omitnil" name:"ModuleId"`
+	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
 	// 是否展示左侧菜单栏 
 	// <ul><li> **ENABLE** : (默认)进入web控制台展示左侧菜单栏</li>
 	// <li> **DISABLE** : 进入web控制台不展示左侧菜单栏</li></ul>
 	// 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
-	MenuStatus *string `json:"MenuStatus,omitnil" name:"MenuStatus"`
+	MenuStatus *string `json:"MenuStatus,omitnil,omitempty" name:"MenuStatus"`
 
 	// 生成链接的类型：
 	// <ul><li>**PC**：(默认)<font color="red">web控制台</font>链接, 需要在PC浏览器中打开</li>
@@ -6422,11 +6422,11 @@ type CreateConsoleLoginUrlRequest struct {
 	// <li>**APP**：<font color="red">APP或小程序</font>跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li>
 	// <li>**H5**：<font color="red">H5长链接</font>跳转H5链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 	// <li>**SHORT_H5**：<font color="red">H5短链</font>跳转H5的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签H5页面</li></ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 	// <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
-	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil" name:"AutoJumpBackEvent"`
+	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
 
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
 	// <ul><li>1：上传授权书</li>
@@ -6437,18 +6437,18 @@ type CreateConsoleLoginUrlRequest struct {
 	// <li>选择信任第三方认证源时，请先通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/SyncProxyOrganization" target="_blank">同步企业信息</a>接口同步信息。</li>
 	// <li>该参数仅在企业未激活时生效</li>
 	// </ul>
-	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil" name:"AuthorizationTypes"`
+	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 子客经办人身份证
 	// 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持居民身份证类型`。
-	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil" name:"ProxyOperatorIdCardNumber"`
+	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil,omitempty" name:"ProxyOperatorIdCardNumber"`
 
 	// 认证完成跳转链接
 	// 注意：`只在H5生效，域名需要联系我们开白`。
-	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil" name:"AutoJumpUrl"`
+	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -6491,23 +6491,23 @@ type CreateConsoleLoginUrlResponseParams struct {
 	// 1. <font color="red">链接仅单次有效</font>，每次登录需要需要重新创建新的链接
 	// 2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-	ConsoleUrl *string `json:"ConsoleUrl,omitnil" name:"ConsoleUrl"`
+	ConsoleUrl *string `json:"ConsoleUrl,omitnil,omitempty" name:"ConsoleUrl"`
 
 	// 子客企业是否已开通腾讯电子签，
 	// <ul><li> **true** :已经开通腾讯电子签</li>
 	// <li> **false** :还未开通腾讯电子签</li></ul>
 	// 
 	// 注：`企业是否实名根据传参Agent.ProxyOrganizationOpenId进行判断，非企业名称或者社会信用代码`
-	IsActivated *bool `json:"IsActivated,omitnil" name:"IsActivated"`
+	IsActivated *bool `json:"IsActivated,omitnil,omitempty" name:"IsActivated"`
 
 	// 当前经办人是否已认证并加入功能
 	// <ul><li> **true** : 已经认证加入公司</li>
 	// <li> **false** : 还未认证加入公司</li></ul>
 	// 注意：**员工是否实名是根据Agent.ProxyOperator.OpenId判断，非经办人姓名**
-	ProxyOperatorIsVerified *bool `json:"ProxyOperatorIsVerified,omitnil" name:"ProxyOperatorIsVerified"`
+	ProxyOperatorIsVerified *bool `json:"ProxyOperatorIsVerified,omitnil,omitempty" name:"ProxyOperatorIsVerified"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateConsoleLoginUrlResponse struct {
@@ -6537,16 +6537,16 @@ type CreateFlowGroupSignReviewRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	//   合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时返回。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 提交的审核结果，审核结果有下面三种情况
 	// <ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
 	// <li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
 	// <li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
-	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+	ReviewType *string `json:"ReviewType,omitnil,omitempty" name:"ReviewType"`
 
 	// 需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
 	// 
@@ -6557,12 +6557,12 @@ type CreateFlowGroupSignReviewRequestParams struct {
 	// 企业：二选一  （选择其中任意信息组合即可）
 	// <ul><li>企业名+姓名+证件类型+证件号</li>
 	// <li>企业名+姓名+手机号</li></ul>
-	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil" name:"ApproverInfo"`
+	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil,omitempty" name:"ApproverInfo"`
 
 	// 审核不通过的原因，该字段的字符串长度不超过200个字符。
 	// 
 	// 注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 }
 
 type CreateFlowGroupSignReviewRequest struct {
@@ -6577,16 +6577,16 @@ type CreateFlowGroupSignReviewRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	//   合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时返回。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 提交的审核结果，审核结果有下面三种情况
 	// <ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
 	// <li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
 	// <li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
-	ReviewType *string `json:"ReviewType,omitnil" name:"ReviewType"`
+	ReviewType *string `json:"ReviewType,omitnil,omitempty" name:"ReviewType"`
 
 	// 需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
 	// 
@@ -6597,12 +6597,12 @@ type CreateFlowGroupSignReviewRequest struct {
 	// 企业：二选一  （选择其中任意信息组合即可）
 	// <ul><li>企业名+姓名+证件类型+证件号</li>
 	// <li>企业名+姓名+手机号</li></ul>
-	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil" name:"ApproverInfo"`
+	ApproverInfo *NeedReviewApproverInfo `json:"ApproverInfo,omitnil,omitempty" name:"ApproverInfo"`
 
 	// 审核不通过的原因，该字段的字符串长度不超过200个字符。
 	// 
 	// 注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
-	ReviewMessage *string `json:"ReviewMessage,omitnil" name:"ReviewMessage"`
+	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 }
 
 func (r *CreateFlowGroupSignReviewRequest) ToJsonString() string {
@@ -6631,7 +6631,7 @@ func (r *CreateFlowGroupSignReviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFlowGroupSignReviewResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateFlowGroupSignReviewResponse struct {
@@ -6654,42 +6654,42 @@ type CreateFlowOption struct {
 	// 是否允许修改合同信息，
 	// **true**：可以
 	// **false**：（默认）不可以
-	CanEditFlow *bool `json:"CanEditFlow,omitnil" name:"CanEditFlow"`
+	CanEditFlow *bool `json:"CanEditFlow,omitnil,omitempty" name:"CanEditFlow"`
 
 	// 是否允许发起合同弹窗隐藏合同名称
 	// **true**：允许
 	// **false**：（默认）不允许
-	HideShowFlowName *bool `json:"HideShowFlowName,omitnil" name:"HideShowFlowName"`
+	HideShowFlowName *bool `json:"HideShowFlowName,omitnil,omitempty" name:"HideShowFlowName"`
 
 	// 是否允许发起合同弹窗隐藏合同类型，
 	// **true**：允许
 	// **false**：（默认）不允许
-	HideShowFlowType *bool `json:"HideShowFlowType,omitnil" name:"HideShowFlowType"`
+	HideShowFlowType *bool `json:"HideShowFlowType,omitnil,omitempty" name:"HideShowFlowType"`
 
 	// 是否允许发起合同弹窗隐藏合同到期时间
 	// **true**：允许
 	// **false**：（默认）不允许
-	HideShowDeadline *bool `json:"HideShowDeadline,omitnil" name:"HideShowDeadline"`
+	HideShowDeadline *bool `json:"HideShowDeadline,omitnil,omitempty" name:"HideShowDeadline"`
 
 	// 是否允许发起合同步骤跳过指定签署方步骤
 	// **true**：允许
 	// **false**：（默认）不允许
-	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitnil" name:"CanSkipAddApprover"`
+	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitnil,omitempty" name:"CanSkipAddApprover"`
 
 	// 定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
-	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitnil" name:"CustomCreateFlowDescription"`
+	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitnil,omitempty" name:"CustomCreateFlowDescription"`
 
 	// 禁止编辑填写控件
 	// 
 	// **true**：禁止编辑填写控件
 	// **false**：（默认）允许编辑填写控件
-	ForbidEditFillComponent *bool `json:"ForbidEditFillComponent,omitnil" name:"ForbidEditFillComponent"`
+	ForbidEditFillComponent *bool `json:"ForbidEditFillComponent,omitnil,omitempty" name:"ForbidEditFillComponent"`
 
 	// 跳过上传文件步骤
 	// 
 	// **true**：跳过
 	// **false**：（默认）不跳过，需要传ResourceId
-	SkipUploadFile *bool `json:"SkipUploadFile,omitnil" name:"SkipUploadFile"`
+	SkipUploadFile *bool `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
 }
 
 // Predefined struct for user
@@ -6702,10 +6702,10 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要创建的合同信息列表，最多支持一次创建20个合同
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 是否为预览模式，取值如下：
 	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
@@ -6714,18 +6714,18 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 注:
 	// 
 	// `如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
-	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
+	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
 	// <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
-	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
+	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
 	// 操作者的信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type CreateFlowsByTemplatesRequest struct {
@@ -6739,10 +6739,10 @@ type CreateFlowsByTemplatesRequest struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要创建的合同信息列表，最多支持一次创建20个合同
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 是否为预览模式，取值如下：
 	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
@@ -6751,16 +6751,16 @@ type CreateFlowsByTemplatesRequest struct {
 	// 注:
 	// 
 	// `如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
-	NeedPreview *bool `json:"NeedPreview,omitnil" name:"NeedPreview"`
+	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
 	// <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
-	PreviewType *int64 `json:"PreviewType,omitnil" name:"PreviewType"`
+	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
 	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *CreateFlowsByTemplatesRequest) ToJsonString() string {
@@ -6792,29 +6792,29 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
 	// 
 	// [点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
-	CustomerData []*string `json:"CustomerData,omitnil" name:"CustomerData"`
+	CustomerData []*string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 创建消息，对应多个合同ID，
 	// 成功为“”,创建失败则对应失败消息
-	ErrorMessages []*string `json:"ErrorMessages,omitnil" name:"ErrorMessages"`
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
 
 	// 合同预览链接URL数组。
 	// 
 	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-	PreviewUrls []*string `json:"PreviewUrls,omitnil" name:"PreviewUrls"`
+	PreviewUrls []*string `json:"PreviewUrls,omitnil,omitempty" name:"PreviewUrls"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
-	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil" name:"TaskInfos"`
+	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil,omitempty" name:"TaskInfos"`
 
 	// 签署方信息，如角色ID、角色名称等
-	FlowApprovers []*FlowApproverItem `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+	FlowApprovers []*FlowApproverItem `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateFlowsByTemplatesResponse struct {
@@ -6844,15 +6844,15 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
-	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil" name:"AuthorizedOrganizationId"`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
 	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
-	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
@@ -6867,15 +6867,15 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
-	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil" name:"AuthorizedOrganizationId"`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
 	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
-	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -6903,16 +6903,16 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 type CreatePartnerAutoSignAuthUrlResponseParams struct {
 	// 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
-	MiniAppPath *string `json:"MiniAppPath,omitnil" name:"MiniAppPath"`
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
 	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreatePartnerAutoSignAuthUrlResponse struct {
@@ -6942,29 +6942,29 @@ type CreateSealByImageRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 电子印章名字，1-50个中文字符
 	// 注:`同一企业下电子印章名字不能相同`
-	SealName *string `json:"SealName,omitnil" name:"SealName"`
+	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
 	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
 	// 
 	// 注: `通过图片创建的电子印章，需电子签平台人工审核`
 	// 
-	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
+	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
 	// 操作者的信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 电子印章生成方式
 	// <ul>
 	// <li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
 	// <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
 	// </ul>
-	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
+	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
@@ -6974,30 +6974,30 @@ type CreateSealByImageRequestParams struct {
 	// <li>**INVOICE**: 发票专用章</li>
 	// </ul>
 	// 注: `同企业下只能有一个公章, 重复创建会报错`
-	SealType *string `json:"SealType,omitnil" name:"SealType"`
+	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
 	// 横向文字的位置如下图中的"印章横向文字在这里"
 	// 
 	// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
-	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
+	SealHorizontalText *string `json:"SealHorizontalText,omitnil,omitempty" name:"SealHorizontalText"`
 
 	// 印章样式, 可以选择的样式如下: 
 	// <ul><li>**circle**:(默认)圆形印章</li>
 	// <li>**ellipse**:椭圆印章</li></ul>
-	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
+	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 
 	// <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **40_40**: 圆形企业印章直径40mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li>
 	// <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
-	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
+	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
 	// 企业税号
 	// 注: `1.印章类型SealType是INVOICE类型时，此参数才会生效`
 	// `2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号`
-	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil" name:"TaxIdentifyCode"`
+	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
 }
 
 type CreateSealByImageRequest struct {
@@ -7012,27 +7012,27 @@ type CreateSealByImageRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 电子印章名字，1-50个中文字符
 	// 注:`同一企业下电子印章名字不能相同`
-	SealName *string `json:"SealName,omitnil" name:"SealName"`
+	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
 	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
 	// 
 	// 注: `通过图片创建的电子印章，需电子签平台人工审核`
 	// 
-	SealImage *string `json:"SealImage,omitnil" name:"SealImage"`
+	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
 	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 电子印章生成方式
 	// <ul>
 	// <li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
 	// <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
 	// </ul>
-	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
+	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
 	// 电子印章类型 , 可选类型如下: 
 	// <ul><li>**OFFICIAL**: (默认)公章</li>
@@ -7042,30 +7042,30 @@ type CreateSealByImageRequest struct {
 	// <li>**INVOICE**: 发票专用章</li>
 	// </ul>
 	// 注: `同企业下只能有一个公章, 重复创建会报错`
-	SealType *string `json:"SealType,omitnil" name:"SealType"`
+	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
 	// 横向文字的位置如下图中的"印章横向文字在这里"
 	// 
 	// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
-	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
+	SealHorizontalText *string `json:"SealHorizontalText,omitnil,omitempty" name:"SealHorizontalText"`
 
 	// 印章样式, 可以选择的样式如下: 
 	// <ul><li>**circle**:(默认)圆形印章</li>
 	// <li>**ellipse**:椭圆印章</li></ul>
-	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
+	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
 	// 印章尺寸取值描述, 可以选择的尺寸如下: 
 	// <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **40_40**: 圆形企业印章直径40mm, 当SealStyle是圆形的时候才有效</li>
 	// <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li>
 	// <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
-	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
+	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
 	// 企业税号
 	// 注: `1.印章类型SealType是INVOICE类型时，此参数才会生效`
 	// `2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号`
-	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil" name:"TaxIdentifyCode"`
+	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
 }
 
 func (r *CreateSealByImageRequest) ToJsonString() string {
@@ -7100,16 +7100,16 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 type CreateSealByImageResponseParams struct {
 	// 电子印章ID，为32位字符串。
 	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章预览链接地址，地址默认失效时间为24小时。
 	// 
 	// 注:`图片上传生成的电子印章无预览链接地址`
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSealByImageResponse struct {
@@ -7139,15 +7139,15 @@ type CreateSignUrlsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID数组，最多支持100个。
 	// 注: `该参数和合同组编号必须二选一`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组编号
 	// 注：`该参数和合同流程ID数组必须二选一`
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 签署链接类型,可以设置的参数如下
 	// <ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li>
@@ -7158,7 +7158,7 @@ type CreateSignUrlsRequestParams struct {
 	// **注：**动态签署人场景，如果签署链接类型设置为`APP`，则仅支持跳转到封面页。
 	// 
 	// 详细使用场景可以参考接口描述说明中的 **主要使用场景EndPoint分类**
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，可以选择的类型如下
 	// 
@@ -7168,54 +7168,54 @@ type CreateSignUrlsRequestParams struct {
 	// <li>**PERSON**：个人/自然人签署方</li>
 	// <li>**FOLLOWER**：关注方，目前是合同抄送方</li>
 	// <li>**RECIPIENT**：获取RecipientId对应的签署链接，可用于生成动态签署人补充链接</li></ul>
-	GenerateType *string `json:"GenerateType,omitnil" name:"GenerateType"`
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// SaaS平台企业员工签署方的企业名称
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
 	// 
 	// 注: `GenerateType为"NOT_CHANNEL"时必填`
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边参与方的姓名。
 	// 注: `GenerateType为"PERSON"(即个人签署方)时必填`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId
 	// 注: `GenerateType为"CHANNEL"时必填`
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	// 
 	// 注： 
 	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
-	AutoJumpBack *bool `json:"AutoJumpBack,omitnil" name:"AutoJumpBack"`
+	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 生成的签署链接在签署页面隐藏的按钮列表，可设置如下：
 	// 
@@ -7225,12 +7225,12 @@ type CreateSignUrlsRequestParams struct {
 	// <li> **3** :签署成功页的查看详情按钮</li></ul>
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
-	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+	Hides []*int64 `json:"Hides,omitnil,omitempty" name:"Hides"`
 
 	// 参与方角色ID，用于生成动态签署人链接完成领取。
 	// 
 	// 注：`使用此参数需要与flow_ids数量一致并且一一对应, 表示在对应同序号的流程中的参与角色ID`，
-	RecipientIds []*string `json:"RecipientIds,omitnil" name:"RecipientIds"`
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -7245,15 +7245,15 @@ type CreateSignUrlsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID数组，最多支持100个。
 	// 注: `该参数和合同组编号必须二选一`
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组编号
 	// 注：`该参数和合同流程ID数组必须二选一`
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 签署链接类型,可以设置的参数如下
 	// <ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li>
@@ -7264,7 +7264,7 @@ type CreateSignUrlsRequest struct {
 	// **注：**动态签署人场景，如果签署链接类型设置为`APP`，则仅支持跳转到封面页。
 	// 
 	// 详细使用场景可以参考接口描述说明中的 **主要使用场景EndPoint分类**
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，可以选择的类型如下
 	// 
@@ -7274,52 +7274,52 @@ type CreateSignUrlsRequest struct {
 	// <li>**PERSON**：个人/自然人签署方</li>
 	// <li>**FOLLOWER**：关注方，目前是合同抄送方</li>
 	// <li>**RECIPIENT**：获取RecipientId对应的签署链接，可用于生成动态签署人补充链接</li></ul>
-	GenerateType *string `json:"GenerateType,omitnil" name:"GenerateType"`
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// SaaS平台企业员工签署方的企业名称
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
 	// 
 	// 注: `GenerateType为"NOT_CHANNEL"时必填`
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边参与方的姓名。
 	// 注: `GenerateType为"PERSON"(即个人签署方)时必填`
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId
 	// 注: `GenerateType为"CHANNEL"时必填`
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	// 
 	// 注： 
 	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
-	AutoJumpBack *bool `json:"AutoJumpBack,omitnil" name:"AutoJumpBack"`
+	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 生成的签署链接在签署页面隐藏的按钮列表，可设置如下：
 	// 
@@ -7329,12 +7329,12 @@ type CreateSignUrlsRequest struct {
 	// <li> **3** :签署成功页的查看详情按钮</li></ul>
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
-	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+	Hides []*int64 `json:"Hides,omitnil,omitempty" name:"Hides"`
 
 	// 参与方角色ID，用于生成动态签署人链接完成领取。
 	// 
 	// 注：`使用此参数需要与flow_ids数量一致并且一一对应, 表示在对应同序号的流程中的参与角色ID`，
-	RecipientIds []*string `json:"RecipientIds,omitnil" name:"RecipientIds"`
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -7375,13 +7375,13 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSignUrlsResponseParams struct {
 	// 签署参与者签署H5链接信息数组
-	SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitnil" name:"SignUrlInfos"`
+	SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitnil,omitempty" name:"SignUrlInfos"`
 
 	// 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
-	ErrorMessages []*string `json:"ErrorMessages,omitnil" name:"ErrorMessages"`
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSignUrlsResponse struct {
@@ -7403,11 +7403,11 @@ func (r *CreateSignUrlsResponse) FromJsonString(s string) error {
 type Department struct {
 	// 部门id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DepartmentId *string `json:"DepartmentId,omitnil" name:"DepartmentId"`
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
 	// 部门名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DepartmentName *string `json:"DepartmentName,omitnil" name:"DepartmentName"`
+	DepartmentName *string `json:"DepartmentName,omitnil,omitempty" name:"DepartmentName"`
 }
 
 // Predefined struct for user
@@ -7421,10 +7421,10 @@ type DescribeBatchOrganizationRegistrationUrlsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeBatchOrganizationRegistrationUrlsRequest struct {
@@ -7439,10 +7439,10 @@ type DescribeBatchOrganizationRegistrationUrlsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeBatchOrganizationRegistrationUrlsRequest) ToJsonString() string {
@@ -7468,10 +7468,10 @@ func (r *DescribeBatchOrganizationRegistrationUrlsRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeBatchOrganizationRegistrationUrlsResponseParams struct {
 	// 企业批量注册链接信息
-	OrganizationAuthUrls []*OrganizationAuthUrl `json:"OrganizationAuthUrls,omitnil" name:"OrganizationAuthUrls"`
+	OrganizationAuthUrls []*OrganizationAuthUrl `json:"OrganizationAuthUrls,omitnil,omitempty" name:"OrganizationAuthUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeBatchOrganizationRegistrationUrlsResponse struct {
@@ -7501,20 +7501,20 @@ type DescribeChannelFlowEvidenceReportRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
-	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
+	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定申请的报告类型，可选类型如下：
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 type DescribeChannelFlowEvidenceReportRequest struct {
@@ -7529,18 +7529,18 @@ type DescribeChannelFlowEvidenceReportRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
-	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
+	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定申请的报告类型，可选类型如下：
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
-	ReportType *int64 `json:"ReportType,omitnil" name:"ReportType"`
+	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 }
 
 func (r *DescribeChannelFlowEvidenceReportRequest) ToJsonString() string {
@@ -7569,17 +7569,17 @@ func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) erro
 type DescribeChannelFlowEvidenceReportResponseParams struct {
 	// 出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 出证任务执行的状态, 状态含义如下：
 	// 
 	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
 	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeChannelFlowEvidenceReportResponse struct {
@@ -7609,15 +7609,15 @@ type DescribeChannelOrganizationsRequestParams struct {
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 200。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
 	// 
 	// **注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 可以按照当前企业的认证状态进行过滤。可值如下：
 	// <ul><li>**"UNVERIFIED"**： 未认证的企业</li>
@@ -7626,10 +7626,10 @@ type DescribeChannelOrganizationsRequestParams struct {
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
 	//   <li>**"VERIFYING"**： 认证进行中的企业</li>
 	//   <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
-	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil" name:"AuthorizationStatusList"`
+	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil,omitempty" name:"AuthorizationStatusList"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeChannelOrganizationsRequest struct {
@@ -7644,15 +7644,15 @@ type DescribeChannelOrganizationsRequest struct {
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 200。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
 	// 
 	// **注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 可以按照当前企业的认证状态进行过滤。可值如下：
 	// <ul><li>**"UNVERIFIED"**： 未认证的企业</li>
@@ -7661,10 +7661,10 @@ type DescribeChannelOrganizationsRequest struct {
 	//   <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
 	//   <li>**"VERIFYING"**： 认证进行中的企业</li>
 	//   <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
-	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil" name:"AuthorizationStatusList"`
+	AuthorizationStatusList []*string `json:"AuthorizationStatusList,omitnil,omitempty" name:"AuthorizationStatusList"`
 
 	// 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeChannelOrganizationsRequest) ToJsonString() string {
@@ -7693,19 +7693,19 @@ func (r *DescribeChannelOrganizationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeChannelOrganizationsResponseParams struct {
 	// 满足查询条件的企业信息列表。
-	ChannelOrganizationInfos []*ChannelOrganizationInfo `json:"ChannelOrganizationInfos,omitnil" name:"ChannelOrganizationInfos"`
+	ChannelOrganizationInfos []*ChannelOrganizationInfo `json:"ChannelOrganizationInfos,omitnil,omitempty" name:"ChannelOrganizationInfos"`
 
 	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 200。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 满足查询条件的企业总数量。
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeChannelOrganizationsResponse struct {
@@ -7734,17 +7734,17 @@ type DescribeChannelSealPolicyWorkflowUrlRequestParams struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 用印审批单的ID，可通过用印申请回调获取。
-	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
 
 	// 生成链接的类型：
 	// 生成链接的类型
 	// <ul><li>**LongLink**：(默认)长链接，H5跳转到电子签小程序链接，链接有效期为1年</li>
 	// <li>**ShortLink**：H5跳转到电子签小程序链接，一般用于发送短信中带的链接，打开后进入腾讯电子签小程序，链接有效期为7天</li>
 	// <li>**App**：第三方APP或小程序跳转电子签小程序链接，一般用于贵方小程序或者APP跳转过来，打开后进入腾讯电子签小程序，链接有效期为1年</li></ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type DescribeChannelSealPolicyWorkflowUrlRequest struct {
@@ -7758,17 +7758,17 @@ type DescribeChannelSealPolicyWorkflowUrlRequest struct {
 	// 第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
 	// 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 用印审批单的ID，可通过用印申请回调获取。
-	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil" name:"WorkflowInstanceId"`
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
 
 	// 生成链接的类型：
 	// 生成链接的类型
 	// <ul><li>**LongLink**：(默认)长链接，H5跳转到电子签小程序链接，链接有效期为1年</li>
 	// <li>**ShortLink**：H5跳转到电子签小程序链接，一般用于发送短信中带的链接，打开后进入腾讯电子签小程序，链接有效期为7天</li>
 	// <li>**App**：第三方APP或小程序跳转电子签小程序链接，一般用于贵方小程序或者APP跳转过来，打开后进入腾讯电子签小程序，链接有效期为1年</li></ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *DescribeChannelSealPolicyWorkflowUrlRequest) ToJsonString() string {
@@ -7795,10 +7795,10 @@ func (r *DescribeChannelSealPolicyWorkflowUrlRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeChannelSealPolicyWorkflowUrlResponseParams struct {
 	// 用印审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转方式查看）。
-	WorkflowUrl *string `json:"WorkflowUrl,omitnil" name:"WorkflowUrl"`
+	WorkflowUrl *string `json:"WorkflowUrl,omitnil,omitempty" name:"WorkflowUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeChannelSealPolicyWorkflowUrlResponse struct {
@@ -7828,20 +7828,20 @@ type DescribeExtendedServiceAuthDetailRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要查询的扩展服务类型。
 	// 如下所示：
 	// <ul><li> AUTO_SIGN：企业静默签署</li>
 	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
-	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeExtendedServiceAuthDetailRequest struct {
@@ -7856,20 +7856,20 @@ type DescribeExtendedServiceAuthDetailRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 要查询的扩展服务类型。
 	// 如下所示：
 	// <ul><li> AUTO_SIGN：企业静默签署</li>
 	// <li>BATCH_SIGN：批量签署</li>
 	// </ul>
-	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
+	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeExtendedServiceAuthDetailRequest) ToJsonString() string {
@@ -7898,10 +7898,10 @@ func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) erro
 type DescribeExtendedServiceAuthDetailResponseParams struct {
 	// 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil" name:"AuthInfoDetail"`
+	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil,omitempty" name:"AuthInfoDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeExtendedServiceAuthDetailResponse struct {
@@ -7931,7 +7931,7 @@ type DescribeExtendedServiceAuthInfoRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type DescribeExtendedServiceAuthInfoRequest struct {
@@ -7946,7 +7946,7 @@ type DescribeExtendedServiceAuthInfoRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 func (r *DescribeExtendedServiceAuthInfoRequest) ToJsonString() string {
@@ -7972,10 +7972,10 @@ func (r *DescribeExtendedServiceAuthInfoRequest) FromJsonString(s string) error 
 type DescribeExtendedServiceAuthInfoResponseParams struct {
 	// 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthInfo []*ExtentServiceAuthInfo `json:"AuthInfo,omitnil" name:"AuthInfo"`
+	AuthInfo []*ExtentServiceAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeExtendedServiceAuthInfoResponse struct {
@@ -8005,21 +8005,21 @@ type DescribeFlowDetailInfoRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要查询的流程ID列表，最多可传入100个ID。
 	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。
 	// 
 	// 合同组由<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type DescribeFlowDetailInfoRequest struct {
@@ -8034,19 +8034,19 @@ type DescribeFlowDetailInfoRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要查询的流程ID列表，最多可传入100个ID。
 	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。
 	// 
 	// 合同组由<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *DescribeFlowDetailInfoRequest) ToJsonString() string {
@@ -8074,26 +8074,26 @@ func (r *DescribeFlowDetailInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFlowDetailInfoResponseParams struct {
 	// 合同归属的第三方平台应用号ID
-	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 合同归属的第三方平台子客企业OpenId
-	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 合同流程的详细信息。
 	// 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitnil" name:"FlowInfo"`
+	FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
 	// 合同组ID，只有在查询合同组信息时才会返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同组名称，只有在查询合同组信息时才会返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFlowDetailInfoResponse struct {
@@ -8123,15 +8123,15 @@ type DescribeResourceUrlsByFlowsRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要下载的合同流程的ID,  至少需要1个,  做多50个
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 操作者的信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type DescribeResourceUrlsByFlowsRequest struct {
@@ -8146,13 +8146,13 @@ type DescribeResourceUrlsByFlowsRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 需要下载的合同流程的ID,  至少需要1个,  做多50个
-	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *DescribeResourceUrlsByFlowsRequest) ToJsonString() string {
@@ -8179,14 +8179,14 @@ func (r *DescribeResourceUrlsByFlowsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceUrlsByFlowsResponseParams struct {
 	// 合同流程PDF下载链接
-	FlowResourceUrlInfos []*FlowResourceUrlInfo `json:"FlowResourceUrlInfos,omitnil" name:"FlowResourceUrlInfos"`
+	FlowResourceUrlInfos []*FlowResourceUrlInfo `json:"FlowResourceUrlInfos,omitnil,omitempty" name:"FlowResourceUrlInfos"`
 
 	// 如果某个序号的合同流程生成PDF下载链接成功, 对应序号的值为空
 	// 如果某个序号的合同流程生成PDF下载链接失败, 对应序号的值为错误的原因
-	ErrorMessages []*string `json:"ErrorMessages,omitnil" name:"ErrorMessages"`
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeResourceUrlsByFlowsResponse struct {
@@ -8216,20 +8216,20 @@ type DescribeTemplatesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
 	// 
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
 	// 
 	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 查询模板的内容
 	// 
 	// <ul><li>**0**：（默认）模板列表及详情</li>
 	// <li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
-	ContentType *int64 `json:"ContentType,omitnil" name:"ContentType"`
+	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持200个模板的批量查询。
 	// 
@@ -8240,30 +8240,30 @@ type DescribeTemplatesRequestParams struct {
 	// 
 	// 
 	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-	TemplateIds []*string `json:"TemplateIds,omitnil" name:"TemplateIds"`
+	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
 	// 
 	// 注：`1.默认值为20，单页做大值为200。`
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 	// 
 	// 注：`1.offset从0开始，即第一页为0。`
 	// `2.默认从第一页返回。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
-	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
-	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil" name:"ChannelTemplateId"`
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil,omitempty" name:"ChannelTemplateId"`
 
 	// 返回控件的范围, 是只返回发起方自己的还是所有参与方的
 	// 
 	// <ul><li>**false**：（默认）只返回发起方控件</li>
 	// <li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
-	QueryAllComponents *bool `json:"QueryAllComponents,omitnil" name:"QueryAllComponents"`
+	QueryAllComponents *bool `json:"QueryAllComponents,omitnil,omitempty" name:"QueryAllComponents"`
 
 	// 是否获取模板预览链接。
 	// 
@@ -8271,7 +8271,7 @@ type DescribeTemplatesRequestParams struct {
 	// <li>**true**：获取</li></ul>
 	// 
 	// 设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil,omitempty" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接。
 	// 
@@ -8281,12 +8281,12 @@ type DescribeTemplatesRequestParams struct {
 	// 设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
 	// 
 	// 注: `此功能为白名单功能，使用前请联系对接的客户经理沟通。`
-	WithPdfUrl *bool `json:"WithPdfUrl,omitnil" name:"WithPdfUrl"`
+	WithPdfUrl *bool `json:"WithPdfUrl,omitnil,omitempty" name:"WithPdfUrl"`
 
 	// 操作者的信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -8301,20 +8301,20 @@ type DescribeTemplatesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同模板ID，为32位字符串。
 	// 
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
 	// 
 	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 查询模板的内容
 	// 
 	// <ul><li>**0**：（默认）模板列表及详情</li>
 	// <li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
-	ContentType *int64 `json:"ContentType,omitnil" name:"ContentType"`
+	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持200个模板的批量查询。
 	// 
@@ -8325,30 +8325,30 @@ type DescribeTemplatesRequest struct {
 	// 
 	// 
 	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-	TemplateIds []*string `json:"TemplateIds,omitnil" name:"TemplateIds"`
+	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
 	// 
 	// 注：`1.默认值为20，单页做大值为200。`
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 	// 
 	// 注：`1.offset从0开始，即第一页为0。`
 	// `2.默认从第一页返回。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
-	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
-	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil" name:"ChannelTemplateId"`
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil,omitempty" name:"ChannelTemplateId"`
 
 	// 返回控件的范围, 是只返回发起方自己的还是所有参与方的
 	// 
 	// <ul><li>**false**：（默认）只返回发起方控件</li>
 	// <li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
-	QueryAllComponents *bool `json:"QueryAllComponents,omitnil" name:"QueryAllComponents"`
+	QueryAllComponents *bool `json:"QueryAllComponents,omitnil,omitempty" name:"QueryAllComponents"`
 
 	// 是否获取模板预览链接。
 	// 
@@ -8356,7 +8356,7 @@ type DescribeTemplatesRequest struct {
 	// <li>**true**：获取</li></ul>
 	// 
 	// 设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil" name:"WithPreviewUrl"`
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitnil,omitempty" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接。
 	// 
@@ -8366,10 +8366,10 @@ type DescribeTemplatesRequest struct {
 	// 设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
 	// 
 	// 注: `此功能为白名单功能，使用前请联系对接的客户经理沟通。`
-	WithPdfUrl *bool `json:"WithPdfUrl,omitnil" name:"WithPdfUrl"`
+	WithPdfUrl *bool `json:"WithPdfUrl,omitnil,omitempty" name:"WithPdfUrl"`
 
 	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -8405,19 +8405,19 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTemplatesResponseParams struct {
 	// 模板详情列表数据
-	Templates []*TemplateInfo `json:"Templates,omitnil" name:"Templates"`
+	Templates []*TemplateInfo `json:"Templates,omitnil,omitempty" name:"Templates"`
 
 	// 查询到的模板总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 每页返回的数据条数
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTemplatesResponse struct {
@@ -8444,37 +8444,37 @@ type DescribeUsageRequestParams struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
 	// 
 	// 注: `查询日期范围区间长度大于90天`。
-	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
 	// 查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
 	// 
 	// 注: `查询日期范围区间长度大于90天`。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
 	// <ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
 	// <li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
-	NeedAggregate *bool `json:"NeedAggregate,omitnil" name:"NeedAggregate"`
+	NeedAggregate *bool `json:"NeedAggregate,omitnil,omitempty" name:"NeedAggregate"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
 	// 
 	// 注: `默认值为1000，单页做大值为1000`
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 	// 
 	// 注：`offset从0开始，即第一页为0。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type DescribeUsageRequest struct {
@@ -8486,35 +8486,35 @@ type DescribeUsageRequest struct {
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
 	// 
 	// 注: `查询日期范围区间长度大于90天`。
-	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
 	// 查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
 	// 
 	// 注: `查询日期范围区间长度大于90天`。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
 	// <ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
 	// <li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
-	NeedAggregate *bool `json:"NeedAggregate,omitnil" name:"NeedAggregate"`
+	NeedAggregate *bool `json:"NeedAggregate,omitnil,omitempty" name:"NeedAggregate"`
 
 	// 指定每页返回的数据条数，和Offset参数配合使用。
 	// 
 	// 注: `默认值为1000，单页做大值为1000`
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 	// 
 	// 注：`offset从0开始，即第一页为0。`
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *DescribeUsageRequest) ToJsonString() string {
@@ -8545,14 +8545,14 @@ func (r *DescribeUsageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsageResponseParams struct {
 	// 用量明细条数
-	Total *uint64 `json:"Total,omitnil" name:"Total"`
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 用量明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*UsageDetail `json:"Details,omitnil" name:"Details"`
+	Details []*UsageDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeUsageResponse struct {
@@ -8573,10 +8573,10 @@ func (r *DescribeUsageResponse) FromJsonString(s string) error {
 
 type DownloadFlowInfo struct {
 	// 文件夹名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 签署流程的标识数组
-	FlowIdList []*string `json:"FlowIdList,omitnil" name:"FlowIdList"`
+	FlowIdList []*string `json:"FlowIdList,omitnil,omitempty" name:"FlowIdList"`
 }
 
 type ExtentServiceAuthInfo struct {
@@ -8590,121 +8590,121 @@ type ExtentServiceAuthInfo struct {
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 扩展服务名称 
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扩展服务的开通状态
 	// **ENABLE**：开通 
 	// **DISABLE**：未开通	
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作扩展服务的操作人第三方应用平台的用户openid
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperatorOpenId *string `json:"OperatorOpenId,omitnil" name:"OperatorOpenId"`
+	OperatorOpenId *string `json:"OperatorOpenId,omitnil,omitempty" name:"OperatorOpenId"`
 
 	// 扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateOn *int64 `json:"OperateOn,omitnil" name:"OperateOn"`
+	OperateOn *int64 `json:"OperateOn,omitnil,omitempty" name:"OperateOn"`
 }
 
 type FailedCreateRoleData struct {
 	// 用户userId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 角色RoleId列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type FillApproverInfo struct {
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 指定企业经办签署人OpenId
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署人姓名
-	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
 	// 签署人手机号码
-	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 企业名称
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 企业OpenId
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传
-	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
+	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil,omitempty" name:"NotChannelOrganization"`
 }
 
 type FillError struct {
 	// 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 补充失败错误说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrMessage *string `json:"ErrMessage,omitnil" name:"ErrMessage"`
+	ErrMessage *string `json:"ErrMessage,omitnil,omitempty" name:"ErrMessage"`
 }
 
 type FilledComponent struct {
 	// 填写控件ID
-	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *string `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// 控件名称
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 此填写控件的填写状态
 	//  **0** : 此填写控件**未填写**
 	// **1** : 此填写控件**已填写**
-	ComponentFillStatus *string `json:"ComponentFillStatus,omitnil" name:"ComponentFillStatus"`
+	ComponentFillStatus *string `json:"ComponentFillStatus,omitnil,omitempty" name:"ComponentFillStatus"`
 
 	// 控件填写内容
-	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
+	ComponentValue *string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 
 	// 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
 	// 
 	// 注: `链接不是永久链接,  默认有效期5分钟后, 到期后链接失效`
-	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type Filter struct {
 	// 查询过滤条件的Key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 查询过滤条件的Value列表
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type FlowApproverDetail struct {
 	// 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
-	ReceiptId *string `json:"ReceiptId,omitnil" name:"ReceiptId"`
+	ReceiptId *string `json:"ReceiptId,omitnil,omitempty" name:"ReceiptId"`
 
 	// 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 第三方平台子客企业员工的唯一标识
-	ProxyOperatorOpenId *string `json:"ProxyOperatorOpenId,omitnil" name:"ProxyOperatorOpenId"`
+	ProxyOperatorOpenId *string `json:"ProxyOperatorOpenId,omitnil,omitempty" name:"ProxyOperatorOpenId"`
 
 	// 第三方平台子客企业名称，与企业营业执照中注册的名称一致。
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 签署人手机号
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 签署顺序，如果是有序签署，签署顺序从小到大
-	SignOrder *int64 `json:"SignOrder,omitnil" name:"SignOrder"`
+	SignOrder *int64 `json:"SignOrder,omitnil,omitempty" name:"SignOrder"`
 
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproveName *string `json:"ApproveName,omitnil" name:"ApproveName"`
+	ApproveName *string `json:"ApproveName,omitnil,omitempty" name:"ApproveName"`
 
 	// 当前签署人的状态, 状态如下
 	// <ul><li> **PENDING** :待签署</li>
@@ -8720,30 +8720,30 @@ type FlowApproverDetail struct {
 	// <li> **STOP** :流程已终止</li>
 	// <li> **RELIEVED** :解除协议（已解除）</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproveStatus *string `json:"ApproveStatus,omitnil" name:"ApproveStatus"`
+	ApproveStatus *string `json:"ApproveStatus,omitnil,omitempty" name:"ApproveStatus"`
 
 	// 签署人拒签等情况的时候填写的原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproveMessage *string `json:"ApproveMessage,omitnil" name:"ApproveMessage"`
+	ApproveMessage *string `json:"ApproveMessage,omitnil,omitempty" name:"ApproveMessage"`
 
 	// 签署人签署时间戳，单位秒
-	ApproveTime *int64 `json:"ApproveTime,omitnil" name:"ApproveTime"`
+	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
 
 	// 参与者类型 
 	// <ul><li> **ORGANIZATION** :企业签署人</li>
 	// <li> **PERSON** :个人签署人</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproveType *string `json:"ApproveType,omitnil" name:"ApproveType"`
+	ApproveType *string `json:"ApproveType,omitnil,omitempty" name:"ApproveType"`
 
 	// 自定义签署人的角色名, 如: 收款人、开具人、见证人等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 }
 
 type FlowApproverInfo struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
@@ -8752,29 +8752,29 @@ type FlowApproverInfo struct {
 	// <li>OTHER_CARD_TYPE : 其他证件</li></ul>
 	// 
 	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)， 不支持海外手机号。
 	// 请确认手机号所有方为此合同签署方。
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 组织机构名称。
 	// 请确认该名称与企业营业执照中注册的名称一致。
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
 	// <ul>
 	// <li>false: 默认值，第三方平台子客企业下员工</li>
 	// <li>true: SaaS平台企业下的员工</li>
 	// </ul>
-	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
+	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil,omitempty" name:"NotChannelOrganization"`
 
 	// 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成
 	// 
@@ -8782,10 +8782,10 @@ type FlowApproverInfo struct {
 	// 
 	// 注： 
 	// 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 同应用下第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样，签署方为非发起方企业场景下必传，最大长度64个字符
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 	// <ul><li> **PERSON** :个人/自然人</li>
@@ -8799,30 +8799,30 @@ type FlowApproverInfo struct {
 	// <ul><li>条件1：ApproverType 设置为ENTERPRISESERVER</li>
 	// <li>条件2：子客之间完成授权</li>
 	// <li>条件3：联系对接的客户经理沟通如何使用</li></ul>
-	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）
 	// 
 	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 签署完回调url，最大长度1000个字符
 	//
 	// Deprecated: CallbackUrl is deprecated.
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
-	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
+	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
 	// 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
 	// 	HANDWRITE – 手写签名
 	// 	OCR_ESIGN -- AI智能识别手写签名
 	// 	ESIGN -- 个人印章类型
 	// 	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
-	ComponentLimitType []*string `json:"ComponentLimitType,omitnil" name:"ComponentLimitType"`
+	ComponentLimitType []*string `json:"ComponentLimitType,omitnil,omitempty" name:"ComponentLimitType"`
 
 	// 签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
 	// 
@@ -8832,14 +8832,14 @@ type FlowApproverInfo struct {
 	// <li>合同页数为3到5页，阅读时间为5秒；</li>
 	// <li>合同页数大于等于6页，阅读时间为10秒。</li>
 	// </ul>
-	PreReadTime *int64 `json:"PreReadTime,omitnil" name:"PreReadTime"`
+	PreReadTime *int64 `json:"PreReadTime,omitnil,omitempty" name:"PreReadTime"`
 
 	// 签署完前端跳转的url，此字段的用法场景请联系客户经理确认
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人、是否为动态补充签署人等。
 	// 详细操作可以参考开发者中心的ApproverOption结构体。
-	ApproverOption *ApproverOption `json:"ApproverOption,omitnil" name:"ApproverOption"`
+	ApproverOption *ApproverOption `json:"ApproverOption,omitnil,omitempty" name:"ApproverOption"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 	// <ul><li>**false**：（默认）不需要审批，直接签署。</li>
@@ -8849,7 +8849,7 @@ type FlowApproverInfo struct {
 	// <li>如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil" name:"ApproverNeedSignReview"`
+	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil,omitempty" name:"ApproverNeedSignReview"`
 
 	// 指定个人签署方查看合同的校验方式,可以传值如下:
 	// <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
@@ -8858,7 +8858,7 @@ type FlowApproverInfo struct {
 	// 注: 
 	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
 	// <li>此字段可传多个校验方式</li></ul>
-	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil,omitempty" name:"ApproverVerifyTypes"`
 
 	// 签署人签署合同时的认证方式
 	// <ul><li> **1** :人脸认证</li>
@@ -8870,46 +8870,46 @@ type FlowApproverInfo struct {
 	// 注: 
 	// 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
 	// 2. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/partner/mobile_support)得到具体的支持说明
-	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 
 	// 签署ID
 	// - 发起流程时系统自动补充
 	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
-	SignId *string `json:"SignId,omitnil" name:"SignId"`
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 通知签署方经办人的方式, 有以下途径:
 	// <ul><li> **SMS** :(默认)短信</li>
 	// <li> **NONE** : 不通知</li></ul>
 	// 
 	// 注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
 	// 
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
-	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
+	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil,omitempty" name:"AddSignComponentsLimits"`
 
 	// 可以自定义签署人角色名：收款人、开具人、见证人等，长度不能超过20，只能由中文、字母、数字和下划线组成。
 	// 
 	// 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
-	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 
 	// 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 	// <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 	// <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
-	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil" name:"SignTypeSelector"`
+	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
 }
 
 type FlowApproverItem struct {
 	// 合同编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署方信息，如角色ID、角色名称等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
+	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 }
 
 type FlowApproverUrlInfo struct {
@@ -8919,17 +8919,17 @@ type FlowApproverUrlInfo struct {
 	// 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
 	// 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
+	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
 	// 签署人类型。
 	// - **PERSON**: 个人
-	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 签署人姓名。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署人手机号。
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 签署长链接。
 	// 
@@ -8938,18 +8938,18 @@ type FlowApproverUrlInfo struct {
 	// 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LongUrl *string `json:"LongUrl,omitnil" name:"LongUrl"`
+	LongUrl *string `json:"LongUrl,omitnil,omitempty" name:"LongUrl"`
 }
 
 type FlowDetailInfo struct {
 	// 合同流程ID，为32位字符串。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的类别分类（如销售合同/入职合同等）。
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值
 	// <ul><li> **INIT** :合同创建</li>
@@ -8960,91 +8960,91 @@ type FlowDetailInfo struct {
 	// <li> **CANCEL** :合同撤回</li>
 	// <li> **RELIEVED** :解除协议（已解除）</li></ul>
 	//  
-	FlowStatus *string `json:"FlowStatus,omitnil" name:"FlowStatus"`
+	FlowStatus *string `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 当合同流程状态为已拒签（即 FlowStatus=REJECT）或已撤销（即 FlowStatus=CANCEL ）时，此字段 FlowMessage 为拒签或撤销原因。
-	FlowMessage *string `json:"FlowMessage,omitnil" name:"FlowMessage"`
+	FlowMessage *string `json:"FlowMessage,omitnil,omitempty" name:"FlowMessage"`
 
 	// 合同流程的创建时间戳，格式为Unix标准时间戳（秒）。
-	CreateOn *int64 `json:"CreateOn,omitnil" name:"CreateOn"`
+	CreateOn *int64 `json:"CreateOn,omitnil,omitempty" name:"CreateOn"`
 
 	// 签署流程的签署截止时间, 值为unix时间戳, 精确到秒。
-	DeadLine *int64 `json:"DeadLine,omitnil" name:"DeadLine"`
+	DeadLine *int64 `json:"DeadLine,omitnil,omitempty" name:"DeadLine"`
 
 	// 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 1000长度。
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
-	CustomData *string `json:"CustomData,omitnil" name:"CustomData"`
+	CustomData *string `json:"CustomData,omitnil,omitempty" name:"CustomData"`
 
 	// 合同流程的签署方数组
-	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitnil" name:"FlowApproverInfos"`
+	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
 	// 合同流程的关注方信息数组
-	CcInfos []*FlowApproverDetail `json:"CcInfos,omitnil" name:"CcInfos"`
+	CcInfos []*FlowApproverDetail `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 是否需要发起前审批
 	// <ul><li>当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程</li>
 	// <li>当NeedCreateReview为false，不需要发起前审核的合同</li></ul>
-	NeedCreateReview *bool `json:"NeedCreateReview,omitnil" name:"NeedCreateReview"`
+	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
 }
 
 type FlowFileInfo struct {
 	// 签署文件资源Id列表，目前仅支持单个文件
-	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
 	// 签署流程名称，长度不超过200个字符
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 签署流程签约方列表，最多不超过5个参与方
-	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 签署流程的描述，长度不超过1000个字符
-	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 签署流程的类型，长度不超过255个字符
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 签署流程回调地址，长度不超过255个字符
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
-	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
+	CustomerData *string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
-	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
 
 	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
-	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
+	CustomShowMap *string `json:"CustomShowMap,omitnil,omitempty" name:"CustomShowMap"`
 
 	// 本企业(发起方企业)是否需要签署审批
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 }
 
 type FlowGroupOptions struct {
 	// 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
 	// <ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
 	// <li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
-	SelfOrganizationApproverSignEach *bool `json:"SelfOrganizationApproverSignEach,omitnil" name:"SelfOrganizationApproverSignEach"`
+	SelfOrganizationApproverSignEach *bool `json:"SelfOrganizationApproverSignEach,omitnil,omitempty" name:"SelfOrganizationApproverSignEach"`
 
 	// 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
 	// <ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
 	// <li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
-	OtherApproverSignEach *bool `json:"OtherApproverSignEach,omitnil" name:"OtherApproverSignEach"`
+	OtherApproverSignEach *bool `json:"OtherApproverSignEach,omitnil,omitempty" name:"OtherApproverSignEach"`
 }
 
 type FlowInfo struct {
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	// 示例值：1604912664
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
 	// 如果使用模板发起接口，此参数为必填。
@@ -9052,33 +9052,33 @@ type FlowInfo struct {
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在**企业模板**中得到合同模板ID。
 	// 
 	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 多个签署人信息，最大支持50个签署方
-	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 发起方角色的填写控件的填充内容。
 	// 
 	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。(<font color="red">白名单功能需要联系对接经理开通，否则模板编辑时无法将填写控件分配给发起方</font>)。
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b1d3978140ee2b44e2c9fdc96e467a5d.png)
-	FormFields []*FormField `json:"FormFields,omitnil" name:"FormFields"`
+	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
 	// 合同状态变动结的通知回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性，最大长度1000个字符。
 	// 
 	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
 	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
-	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
-	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的回调通知模块。
-	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
+	CustomerData *string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 	// <ul><li>{合同名称}   </li>
@@ -9095,10 +9095,10 @@ type FlowInfo struct {
 	// 签署方：李四
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/628f0928cac15d2e3bfa6088f53f5998.png)
-	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
+	CustomShowMap *string `json:"CustomShowMap,omitnil,omitempty" name:"CustomShowMap"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
@@ -9107,27 +9107,27 @@ type FlowInfo struct {
 	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
-	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
+	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
 	// 若在创建签署流程时指定了关注人CcInfos，此参数可设定向关注人发送短信通知的类型：
 	// <ul><li> **0** :合同发起时通知通知对方来查看合同（默认）</li>
 	// <li> **1** : 签署完成后通知对方来查看合同</li></ul>
-	CcNotifyType *int64 `json:"CcNotifyType,omitnil" name:"CcNotifyType"`
+	CcNotifyType *int64 `json:"CcNotifyType,omitnil,omitempty" name:"CcNotifyType"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
-	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
+	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
 }
 
 type FlowResourceUrlInfo struct {
 	// 合同流程的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 对应的合同流程的PDF下载链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceUrlInfos []*ResourceUrlInfo `json:"ResourceUrlInfos,omitnil" name:"ResourceUrlInfos"`
+	ResourceUrlInfos []*ResourceUrlInfo `json:"ResourceUrlInfos,omitnil,omitempty" name:"ResourceUrlInfos"`
 }
 
 type FormField struct {
@@ -9142,24 +9142,24 @@ type FormField struct {
 	// <li>DATE - 日期控件；格式为 <b>xxxx年xx月xx日</b> 字符串；</li>
 	// <li>DISTRICT - 省市区行政区控件，需填写ComponentValue为省市区行政区字符串内容；</li>
 	// </ul>
-	ComponentValue *string `json:"ComponentValue,omitnil" name:"ComponentValue"`
+	ComponentValue *string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 
 	// 表单域或控件的ID，跟ComponentName二选一，不能全为空；
 	// CreateFlowsByTemplates 接口不使用此字段。
 	// 
 	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件ID的获取方式</a>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComponentId *string `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *string `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// 控件的名字，跟ComponentId二选一，不能全为空
 	// 
 	// <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件名字的获取方式</a>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 是否锁定模板控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LockComponentValue *bool `json:"LockComponentValue,omitnil" name:"LockComponentValue"`
+	LockComponentValue *bool `json:"LockComponentValue,omitnil,omitempty" name:"LockComponentValue"`
 }
 
 // Predefined struct for user
@@ -9173,7 +9173,7 @@ type GetDownloadFlowUrlRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 流程合同ID列表,  可将这些流程ID组织成合同组的形式, 下载时候每个文件夹会是一个zip压缩包,  每个文件夹对多20个合同, 所有文件夹最多50个合同
 	// 
@@ -9183,12 +9183,12 @@ type GetDownloadFlowUrlRequestParams struct {
 	// **2023入职合同.zip** 压缩包会有`yDwivUUckpor6wobUuogwQHvdGfvDi5K`的文件
 	// 
 	// ![image](	https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl_DownLoadFlows.png)
-	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitnil" name:"DownLoadFlows"`
+	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitnil,omitempty" name:"DownLoadFlows"`
 
 	// 操作者的信息，不用传
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type GetDownloadFlowUrlRequest struct {
@@ -9203,7 +9203,7 @@ type GetDownloadFlowUrlRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 流程合同ID列表,  可将这些流程ID组织成合同组的形式, 下载时候每个文件夹会是一个zip压缩包,  每个文件夹对多20个合同, 所有文件夹最多50个合同
 	// 
@@ -9213,10 +9213,10 @@ type GetDownloadFlowUrlRequest struct {
 	// **2023入职合同.zip** 压缩包会有`yDwivUUckpor6wobUuogwQHvdGfvDi5K`的文件
 	// 
 	// ![image](	https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl_DownLoadFlows.png)
-	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitnil" name:"DownLoadFlows"`
+	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitnil,omitempty" name:"DownLoadFlows"`
 
 	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *GetDownloadFlowUrlRequest) ToJsonString() string {
@@ -9243,10 +9243,10 @@ func (r *GetDownloadFlowUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDownloadFlowUrlResponseParams struct {
 	// 跳转控制台合同下载页面链接 , 5分钟之内有效，且只能访问一次
-	DownLoadUrl *string `json:"DownLoadUrl,omitnil" name:"DownLoadUrl"`
+	DownLoadUrl *string `json:"DownLoadUrl,omitnil,omitempty" name:"DownLoadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetDownloadFlowUrlResponse struct {
@@ -9268,23 +9268,23 @@ func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
 type HasAuthOrganization struct {
 	// 授权企业openid，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 授权企业名称	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 被授权企业openid，
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizedOrganizationOpenId *string `json:"AuthorizedOrganizationOpenId,omitnil" name:"AuthorizedOrganizationOpenId"`
+	AuthorizedOrganizationOpenId *string `json:"AuthorizedOrganizationOpenId,omitnil,omitempty" name:"AuthorizedOrganizationOpenId"`
 
 	// 被授权企业名称	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil" name:"AuthorizedOrganizationName"`
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
 	// 授权时间，格式为时间戳，单位s	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil" name:"AuthorizeTime"`
+	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil,omitempty" name:"AuthorizeTime"`
 }
 
 type HasAuthUser struct {
@@ -9292,7 +9292,7 @@ type HasAuthUser struct {
 	// 
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 }
 
 // Predefined struct for user
@@ -9306,7 +9306,7 @@ type ModifyExtendedServiceRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	//   扩展服务类型
 	// <ul>
@@ -9318,21 +9318,21 @@ type ModifyExtendedServiceRequestParams struct {
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
-	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 操作类型
 	// <ul>
 	// <li>OPEN : 开通</li>
 	// <li>CLOSE : 关闭</li>
 	// </ul>
-	Operate *string `json:"Operate,omitnil" name:"Operate"`
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
 
 	// 链接跳转类型，支持以下类型
 	// <ul>
 	// <li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
 	// <li>APP : 第三方APP或小程序跳转电子签小程序</li>
 	// </ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type ModifyExtendedServiceRequest struct {
@@ -9347,7 +9347,7 @@ type ModifyExtendedServiceRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	//   扩展服务类型
 	// <ul>
@@ -9359,21 +9359,21 @@ type ModifyExtendedServiceRequest struct {
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
 	// </ul>
-	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 操作类型
 	// <ul>
 	// <li>OPEN : 开通</li>
 	// <li>CLOSE : 关闭</li>
 	// </ul>
-	Operate *string `json:"Operate,omitnil" name:"Operate"`
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
 
 	// 链接跳转类型，支持以下类型
 	// <ul>
 	// <li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
 	// <li>APP : 第三方APP或小程序跳转电子签小程序</li>
 	// </ul>
-	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *ModifyExtendedServiceRequest) ToJsonString() string {
@@ -9405,10 +9405,10 @@ type ModifyExtendedServiceResponseParams struct {
 	// 
 	// 当操作类型是 OPEN 且 扩展服务类型是 AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
 	// 返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作
-	OperateUrl *string `json:"OperateUrl,omitnil" name:"OperateUrl"`
+	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyExtendedServiceResponse struct {
@@ -9430,42 +9430,42 @@ func (r *ModifyExtendedServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyFlowDeadlineRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
 	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 签署方角色编号，为32位字符串
 	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
 	// <li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
 	// <li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
 type ModifyFlowDeadlineRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程ID，为32位字符串。
 	// <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
 	// <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 签署方角色编号，为32位字符串
 	// <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
 	// <li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
 	// <li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
 func (r *ModifyFlowDeadlineRequest) ToJsonString() string {
@@ -9493,7 +9493,7 @@ func (r *ModifyFlowDeadlineRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyFlowDeadlineResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyFlowDeadlineResponse struct {
@@ -9516,13 +9516,13 @@ type NeedReviewApproverInfo struct {
 	// 签署方经办人的类型，支持以下类型
 	// <ul><li> ORGANIZATION 企业（含企业自动签）</li>
 	// <li>PERSON 个人（含个人自动签）</li></ul>
-	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
 	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
-	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD 居民身份证  (默认值)</li>
@@ -9531,55 +9531,55 @@ type NeedReviewApproverInfo struct {
 	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
 	// 
 	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil" name:"ApproverIdCardType"`
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil" name:"ApproverIdCardNumber"`
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 组织机构名称。
 	// 请确认该名称与企业营业执照中注册的名称一致。
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
 	// 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type OccupiedSeal struct {
 	// 电子印章编号
-	SealId *string `json:"SealId,omitnil" name:"SealId"`
+	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章名称
-	SealName *string `json:"SealName,omitnil" name:"SealName"`
+	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
 	// 电子印章授权时间戳，单位秒
-	CreateOn *int64 `json:"CreateOn,omitnil" name:"CreateOn"`
+	CreateOn *int64 `json:"CreateOn,omitnil,omitempty" name:"CreateOn"`
 
 	// 电子印章授权人，电子签的UserId
-	Creator *string `json:"Creator,omitnil" name:"Creator"`
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
 	// 电子印章策略Id
-	SealPolicyId *string `json:"SealPolicyId,omitnil" name:"SealPolicyId"`
+	SealPolicyId *string `json:"SealPolicyId,omitnil,omitempty" name:"SealPolicyId"`
 
 	// 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
-	SealStatus *string `json:"SealStatus,omitnil" name:"SealStatus"`
+	SealStatus *string `json:"SealStatus,omitnil,omitempty" name:"SealStatus"`
 
 	// 审核失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 印章图片url，5分钟内有效
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 印章类型，OFFICIAL-企业公章，CONTRACT-合同专用章，LEGAL_PERSON_SEAL-法人章
-	SealType *string `json:"SealType,omitnil" name:"SealType"`
+	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 用印申请是否为永久授权
-	IsAllTime *bool `json:"IsAllTime,omitnil" name:"IsAllTime"`
+	IsAllTime *bool `json:"IsAllTime,omitnil,omitempty" name:"IsAllTime"`
 
 	// 授权人列表
-	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil" name:"AuthorizedUsers"`
+	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
 }
 
 // Predefined struct for user
@@ -9590,7 +9590,7 @@ type OperateChannelTemplateRequestParams struct {
 	// <ul>
 	// <li>渠道应用标识: Agent.AppId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作类型，可取值如下:
 	// <ul>
@@ -9598,14 +9598,14 @@ type OperateChannelTemplateRequestParams struct {
 	// <li>DELETE:  删除</li>
 	// <li>UPDATE: 更新</li>
 	// </ul>
-	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
 	// 合同模板ID，为32位字符串。
 	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
-	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
+	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 模板可见范围, 可以设置的值如下:
 	// 
@@ -9614,7 +9614,7 @@ type OperateChannelTemplateRequestParams struct {
 	// 
 	// 对应控制台的位置
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
-	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
+	AuthTag *string `json:"AuthTag,omitnil,omitempty" name:"AuthTag"`
 
 	// 当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
 	// <ul>
@@ -9626,12 +9626,12 @@ type OperateChannelTemplateRequestParams struct {
 	// 
 	// 停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
 	// 如果Available更新失败，会直接返回错误。
-	Available *int64 `json:"Available,omitnil" name:"Available"`
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type OperateChannelTemplateRequest struct {
@@ -9643,7 +9643,7 @@ type OperateChannelTemplateRequest struct {
 	// <ul>
 	// <li>渠道应用标识: Agent.AppId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作类型，可取值如下:
 	// <ul>
@@ -9651,14 +9651,14 @@ type OperateChannelTemplateRequest struct {
 	// <li>DELETE:  删除</li>
 	// <li>UPDATE: 更新</li>
 	// </ul>
-	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
 	// 合同模板ID，为32位字符串。
 	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
-	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
+	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 模板可见范围, 可以设置的值如下:
 	// 
@@ -9667,7 +9667,7 @@ type OperateChannelTemplateRequest struct {
 	// 
 	// 对应控制台的位置
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
-	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
+	AuthTag *string `json:"AuthTag,omitnil,omitempty" name:"AuthTag"`
 
 	// 当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
 	// <ul>
@@ -9679,10 +9679,10 @@ type OperateChannelTemplateRequest struct {
 	// 
 	// 停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
 	// 如果Available更新失败，会直接返回错误。
-	Available *int64 `json:"Available,omitnil" name:"Available"`
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *OperateChannelTemplateRequest) ToJsonString() string {
@@ -9714,11 +9714,11 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 type OperateChannelTemplateResponseParams struct {
 	// 第三方应用平台的应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *string `json:"AppId,omitnil" name:"AppId"`
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 合同模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 描述模板可见性更改的结果。
 	// <ul>
@@ -9727,24 +9727,24 @@ type OperateChannelTemplateResponseParams struct {
 	// <li>fail:全部失败, 失败的会在FailMessageList中展示</li>
 	// </ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateResult *string `json:"OperateResult,omitnil" name:"OperateResult"`
+	OperateResult *string `json:"OperateResult,omitnil,omitempty" name:"OperateResult"`
 
 	// 模板可见范围:
 	// **all**: 所有本第三方应用合作企业可见
 	// **part**: 指定的本第三方应用合作企业
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthTag *string `json:"AuthTag,omitnil" name:"AuthTag"`
+	AuthTag *string `json:"AuthTag,omitnil,omitempty" name:"AuthTag"`
 
 	// 第三方平台子客企业标识列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil" name:"ProxyOrganizationOpenIds"`
+	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 操作失败信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailMessageList []*AuthFailMessage `json:"FailMessageList,omitnil" name:"FailMessageList"`
+	FailMessageList []*AuthFailMessage `json:"FailMessageList,omitnil,omitempty" name:"FailMessageList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type OperateChannelTemplateResponse struct {
@@ -9769,31 +9769,31 @@ type OrganizationAuthUrl struct {
 	// 注： 
 	// `1.链接仅单次有效，每次登录需要需要重新创建新的链接`
 	// `2.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
-	AuthUrl *string `json:"AuthUrl,omitnil" name:"AuthUrl"`
+	AuthUrl *string `json:"AuthUrl,omitnil,omitempty" name:"AuthUrl"`
 
 	// 企业批量注册的错误信息，例如：企业三要素不通过
-	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type OrganizationInfo struct {
 	// 用户在渠道的机构编号
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 机构在平台的编号
-	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
+	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 用户渠道
-	Channel *string `json:"Channel,omitnil" name:"Channel"`
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// 用户真实的IP
 	//
 	// Deprecated: ClientIp is deprecated.
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 机构的代理IP
 	//
 	// Deprecated: ProxyIp is deprecated.
-	ProxyIp *string `json:"ProxyIp,omitnil" name:"ProxyIp"`
+	ProxyIp *string `json:"ProxyIp,omitnil,omitempty" name:"ProxyIp"`
 }
 
 type PdfVerifyResult struct {
@@ -9803,12 +9803,12 @@ type PdfVerifyResult struct {
 	// <li> **3** :验签失败</li>
 	// <li> **4** :pdf文件没有签名域</li>
 	// <li> **5** :文件签名格式错误</li></ul>
-	VerifyResult *int64 `json:"VerifyResult,omitnil" name:"VerifyResult"`
+	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
 
 	// 签署平台
 	// 如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
 	// 如果文件不在腾讯电子签平台签署，则为**其他平台**。
-	SignPlatform *string `json:"SignPlatform,omitnil" name:"SignPlatform"`
+	SignPlatform *string `json:"SignPlatform,omitnil,omitempty" name:"SignPlatform"`
 
 	// 申请证书的主体的名字
 	// 
@@ -9817,140 +9817,140 @@ type PdfVerifyResult struct {
 	// **个人**: ESS@个人姓名@证件号@平台生成的数字编码
 	// 
 	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
-	SignerName *string `json:"SignerName,omitnil" name:"SignerName"`
+	SignerName *string `json:"SignerName,omitnil,omitempty" name:"SignerName"`
 
 	// 签署时间的Unix时间戳，单位毫秒
-	SignTime *int64 `json:"SignTime,omitnil" name:"SignTime"`
+	SignTime *int64 `json:"SignTime,omitnil,omitempty" name:"SignTime"`
 
 	// 证书签名算法,  如SHA1withRSA等算法
-	SignAlgorithm *string `json:"SignAlgorithm,omitnil" name:"SignAlgorithm"`
+	SignAlgorithm *string `json:"SignAlgorithm,omitnil,omitempty" name:"SignAlgorithm"`
 
 	// CA供应商下发给用户的证书编号
 	// 
 	// 注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
-	CertSn *string `json:"CertSn,omitnil" name:"CertSn"`
+	CertSn *string `json:"CertSn,omitnil,omitempty" name:"CertSn"`
 
 	// 证书起始时间的Unix时间戳，单位毫秒
-	CertNotBefore *int64 `json:"CertNotBefore,omitnil" name:"CertNotBefore"`
+	CertNotBefore *int64 `json:"CertNotBefore,omitnil,omitempty" name:"CertNotBefore"`
 
 	// 证书过期时间的时间戳，单位毫秒
-	CertNotAfter *int64 `json:"CertNotAfter,omitnil" name:"CertNotAfter"`
+	CertNotAfter *int64 `json:"CertNotAfter,omitnil,omitempty" name:"CertNotAfter"`
 
 	// 签名类型, 保留字段, 现在全部为0
 	// 
-	SignType *int64 `json:"SignType,omitnil" name:"SignType"`
+	SignType *int64 `json:"SignType,omitnil,omitempty" name:"SignType"`
 
 	// 签名域横坐标，单位px
-	ComponentPosX *float64 `json:"ComponentPosX,omitnil" name:"ComponentPosX"`
+	ComponentPosX *float64 `json:"ComponentPosX,omitnil,omitempty" name:"ComponentPosX"`
 
 	// 签名域纵坐标，单位px
-	ComponentPosY *float64 `json:"ComponentPosY,omitnil" name:"ComponentPosY"`
+	ComponentPosY *float64 `json:"ComponentPosY,omitnil,omitempty" name:"ComponentPosY"`
 
 	// 签名域宽度，单位px
-	ComponentWidth *float64 `json:"ComponentWidth,omitnil" name:"ComponentWidth"`
+	ComponentWidth *float64 `json:"ComponentWidth,omitnil,omitempty" name:"ComponentWidth"`
 
 	// 签名域高度，单位px
-	ComponentHeight *float64 `json:"ComponentHeight,omitnil" name:"ComponentHeight"`
+	ComponentHeight *float64 `json:"ComponentHeight,omitnil,omitempty" name:"ComponentHeight"`
 
 	// 签名域所在页码，1～N
-	ComponentPage *int64 `json:"ComponentPage,omitnil" name:"ComponentPage"`
+	ComponentPage *int64 `json:"ComponentPage,omitnil,omitempty" name:"ComponentPage"`
 }
 
 type Permission struct {
 	// 权限名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 权限key
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 权限类型 1前端，2后端
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否隐藏
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Hide *int64 `json:"Hide,omitnil" name:"Hide"`
+	Hide *int64 `json:"Hide,omitnil,omitempty" name:"Hide"`
 
 	// 数据权限标签 1:表示根节点，2:表示叶子结点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataLabel *int64 `json:"DataLabel,omitnil" name:"DataLabel"`
+	DataLabel *int64 `json:"DataLabel,omitnil,omitempty" name:"DataLabel"`
 
 	// 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataType *int64 `json:"DataType,omitnil" name:"DataType"`
+	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataRange *int64 `json:"DataRange,omitnil" name:"DataRange"`
+	DataRange *int64 `json:"DataRange,omitnil,omitempty" name:"DataRange"`
 
 	// 关联权限, 表示这个功能权限要受哪个数据权限管控
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataTo *string `json:"DataTo,omitnil" name:"DataTo"`
+	DataTo *string `json:"DataTo,omitnil,omitempty" name:"DataTo"`
 
 	// 父级权限key
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ParentKey *string `json:"ParentKey,omitnil" name:"ParentKey"`
+	ParentKey *string `json:"ParentKey,omitnil,omitempty" name:"ParentKey"`
 
 	// 是否选中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsChecked *bool `json:"IsChecked,omitnil" name:"IsChecked"`
+	IsChecked *bool `json:"IsChecked,omitnil,omitempty" name:"IsChecked"`
 
 	// 子权限集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Children []*Permission `json:"Children,omitnil" name:"Children"`
+	Children []*Permission `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
 type PermissionGroup struct {
 	// 权限组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 权限组key
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupKey *string `json:"GroupKey,omitnil" name:"GroupKey"`
+	GroupKey *string `json:"GroupKey,omitnil,omitempty" name:"GroupKey"`
 
 	// 是否隐藏分组，0否1是
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Hide *int64 `json:"Hide,omitnil" name:"Hide"`
+	Hide *int64 `json:"Hide,omitnil,omitempty" name:"Hide"`
 
 	// 权限集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Permissions []*Permission `json:"Permissions,omitnil" name:"Permissions"`
+	Permissions []*Permission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
 // Predefined struct for user
 type PrepareFlowsRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最大支持20个签署流程。
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 操作完成后的跳转地址，最大长度200
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type PrepareFlowsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最大支持20个签署流程。
-	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil" name:"FlowInfos"`
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitnil,omitempty" name:"FlowInfos"`
 
 	// 操作完成后的跳转地址，最大长度200
-	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *PrepareFlowsRequest) ToJsonString() string {
@@ -9978,10 +9978,10 @@ func (r *PrepareFlowsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PrepareFlowsResponseParams struct {
 	// 待发起文件确认页
-	ConfirmUrl *string `json:"ConfirmUrl,omitnil" name:"ConfirmUrl"`
+	ConfirmUrl *string `json:"ConfirmUrl,omitnil,omitempty" name:"ConfirmUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PrepareFlowsResponse struct {
@@ -10002,135 +10002,135 @@ func (r *PrepareFlowsResponse) FromJsonString(s string) error {
 
 type ProxyOrganizationOperator struct {
 	// 员工的唯一标识(即OpenId),  定义Agent中的OpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 员工的姓名，最大长度50个字符
 	// 员工的姓名将用于身份认证和电子签名，请确保填写的姓名为真实姓名，而非昵称等代名。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 经办人证件号
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 员工的手机号，支持国内手机号11位数字(无需加+86前缀或其他字符)，不支持海外手机号。
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 预先分配员工的角色, 可以分配的角色如下:
 	// <table> <thead> <tr> <th>可以分配的角色</th> <th>角色名称</th> <th>角色描述</th> </tr> </thead> <tbody> <tr> <td>admin</td> <td>业务管理员（IT 系统负责人，e.g. CTO）</td> <td>有企业合同模块、印章模块、模板模块等全量功能及数据权限。</td> </tr> <tr> <td>channel-normal-operator</td> <td>经办人（企业法务负责人）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看企业所有合同数据。</td> </tr> <tr> <td>channel-sales-man</td> <td>业务员（一般为销售员、采购员）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看自己相关所有合同数据。</td> </tr> </tbody> </table>
-	DefaultRole *string `json:"DefaultRole,omitnil" name:"DefaultRole"`
+	DefaultRole *string `json:"DefaultRole,omitnil,omitempty" name:"DefaultRole"`
 }
 
 type Recipient struct {
 	// 合同参与方的角色ID
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 参与者类型, 可以选择的类型如下:
 	// <ul><li> **ENTERPRISE** :此角色为企业参与方</li>
 	// <li> **INDIVIDUAL** :此角色为个人参与方</li>
 	// <li> **PROMOTER** :此角色是发起方</li></ul>
-	RecipientType *string `json:"RecipientType,omitnil" name:"RecipientType"`
+	RecipientType *string `json:"RecipientType,omitnil,omitempty" name:"RecipientType"`
 
 	// 合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。
-	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// 是否需要校验，
 	// true-是，
 	// false-否
-	RequireValidation *bool `json:"RequireValidation,omitnil" name:"RequireValidation"`
+	RequireValidation *bool `json:"RequireValidation,omitnil,omitempty" name:"RequireValidation"`
 
 	// 是否必须填写，
 	// true-是，
 	// false-否
-	RequireSign *bool `json:"RequireSign,omitnil" name:"RequireSign"`
+	RequireSign *bool `json:"RequireSign,omitnil,omitempty" name:"RequireSign"`
 
 	// 内部字段，签署类型
-	SignType *int64 `json:"SignType,omitnil" name:"SignType"`
+	SignType *int64 `json:"SignType,omitnil,omitempty" name:"SignType"`
 
 	// 签署顺序：数字越小优先级越高
-	RoutingOrder *int64 `json:"RoutingOrder,omitnil" name:"RoutingOrder"`
+	RoutingOrder *int64 `json:"RoutingOrder,omitnil,omitempty" name:"RoutingOrder"`
 
 	// 是否是发起方，
 	// true-是 
 	// false-否
-	IsPromoter *bool `json:"IsPromoter,omitnil" name:"IsPromoter"`
+	IsPromoter *bool `json:"IsPromoter,omitnil,omitempty" name:"IsPromoter"`
 
 	// 签署人查看合同校验方式, 支持的类型如下:
 	// <ul><li> 1 :实名认证查看</li>
 	// <li> 2 :手机号校验查看</li></ul>
-	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil,omitempty" name:"ApproverVerifyTypes"`
 
 	// 签署人进行合同签署时的认证方式，支持的类型如下:
 	// <ul><li> 1 :人脸认证</li>
 	// <li> 2 :签署密码</li>
 	// <li> 3 :运营商三要素认证</li>
 	// <li> 4 :UKey认证</li></ul>
-	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 }
 
 type RecipientComponentInfo struct {
 	// 参与方的角色ID
-	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 参与方填写状态
 	// 
 	// <ul><li> **0** : 还没有填写</li>
 	// <li> **1** : 已经填写</li></ul>
-	RecipientFillStatus *string `json:"RecipientFillStatus,omitnil" name:"RecipientFillStatus"`
+	RecipientFillStatus *string `json:"RecipientFillStatus,omitnil,omitempty" name:"RecipientFillStatus"`
 
 	// 此角色是否是发起方角色
 	// 
 	// <ul><li> **true** : 是发起方角色</li>
 	// <li> **false** : 不是发起方角色</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsPromoter *bool `json:"IsPromoter,omitnil" name:"IsPromoter"`
+	IsPromoter *bool `json:"IsPromoter,omitnil,omitempty" name:"IsPromoter"`
 
 	// 此角色的填写控件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Components []*FilledComponent `json:"Components,omitnil" name:"Components"`
+	Components []*FilledComponent `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
 type RegistrationOrganizationInfo struct {
 	// 组织机构名称。
 	// 请确认该名称与企业营业执照中注册的名称一致。
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 机构在贵司业务系统中的唯一标识，用于与腾讯电子签企业账号进行映射，确保在同一应用内不会出现重复。
 	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一应用内不会出现重复。
 	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 组织机构企业统一社会信用代码。
 	// 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
-	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil" name:"UniformSocialCreditCode"`
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 组织机构法人的姓名。
 	// 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
-	LegalName *string `json:"LegalName,omitnil" name:"LegalName"`
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 组织机构企业注册地址。
 	// 请确认该企业注册地址与企业营业执照中注册的地址一致。
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 组织机构超管姓名。
 	// 在注册流程中，必须是超管本人进行操作。
 	// 如果法人作为超管管理组织机构,超管姓名就是法人姓名
-	AdminName *string `json:"AdminName,omitnil" name:"AdminName"`
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
 	// 组织机构超管姓名。
 	// 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
-	AdminMobile *string `json:"AdminMobile,omitnil" name:"AdminMobile"`
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
 
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
 	// 1：上传授权书
@@ -10142,138 +10142,138 @@ type RegistrationOrganizationInfo struct {
 	// `1. 当前仅支持一种认证方式`
 	// `2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
 	// `3. 如果当前操作人是法人,则是法人认证`
-	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil" name:"AuthorizationTypes"`
+	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
 	// 经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	AdminIdCardType *string `json:"AdminIdCardType,omitnil" name:"AdminIdCardType"`
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
 	// 经办人的证件号
-	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil" name:"AdminIdCardNumber"`
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
-	BusinessLicense *string `json:"BusinessLicense,omitnil" name:"BusinessLicense"`
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 }
 
 type ReleasedApprover struct {
 	// 签署人在原合同签署人列表中的顺序序号(从0开始，按顺序依次递增)。</br>
 	// 可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人列表。
-	ApproverNumber *uint64 `json:"ApproverNumber,omitnil" name:"ApproverNumber"`
+	ApproverNumber *uint64 `json:"ApproverNumber,omitnil,omitempty" name:"ApproverNumber"`
 
 	// 指定签署人类型，目前支持
 	// <ul><li> **ORGANIZATION**：企业(默认值)</li>
 	// <li> **ENTERPRISESERVER**：企业静默签</li></ul>
-	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 签署人姓名，最大长度50个字。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证(默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 签署人手机号。
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 组织机构名称。
 	// 请确认该名称与企业营业执照中注册的名称一致。
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
 	// 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>。</br>
 	// 当为子客企业指定经办人时，此OrganizationOpenId必传。
-	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成。</br>
 	// 当签署方为同一第三方平台下的员工时，此OpenId必传。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署控件类型，支持自定义企业签署方的签署控件类型
 	// <ul><li> **SIGN_SEAL**：默认为印章控件类型(默认值)</li>
 	// <li> **SIGN_SIGNATURE**：手写签名控件类型</li></ul>
-	ApproverSignComponentType *string `json:"ApproverSignComponentType,omitnil" name:"ApproverSignComponentType"`
+	ApproverSignComponentType *string `json:"ApproverSignComponentType,omitnil,omitempty" name:"ApproverSignComponentType"`
 
 	// 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。</br>
 	// 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
-	ApproverSignRole *string `json:"ApproverSignRole,omitnil" name:"ApproverSignRole"`
+	ApproverSignRole *string `json:"ApproverSignRole,omitnil,omitempty" name:"ApproverSignRole"`
 }
 
 type RelieveInfo struct {
 	// 解除理由，最大支持200个字
-	Reason *string `json:"Reason,omitnil" name:"Reason"`
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 解除后仍然有效的条款，保留条款，最大支持200个字
-	RemainInForceItem *string `json:"RemainInForceItem,omitnil" name:"RemainInForceItem"`
+	RemainInForceItem *string `json:"RemainInForceItem,omitnil,omitempty" name:"RemainInForceItem"`
 
 	// 原合同事项处理-费用结算，最大支持200个字
-	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitnil" name:"OriginalExpenseSettlement"`
+	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitnil,omitempty" name:"OriginalExpenseSettlement"`
 
 	// 原合同事项处理-其他事项，最大支持200个字
-	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitnil" name:"OriginalOtherSettlement"`
+	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitnil,omitempty" name:"OriginalOtherSettlement"`
 
 	// 其他约定，最大支持200个字
-	OtherDeals *string `json:"OtherDeals,omitnil" name:"OtherDeals"`
+	OtherDeals *string `json:"OtherDeals,omitnil,omitempty" name:"OtherDeals"`
 }
 
 type RemindFlowRecords struct {
 	// 合同流程是否可以催办： true - 可以，false - 不可以。 若无法催办，将返回RemindMessage以解释原因。	
-	CanRemind *bool `json:"CanRemind,omitnil" name:"CanRemind"`
+	CanRemind *bool `json:"CanRemind,omitnil,omitempty" name:"CanRemind"`
 
 	// 合同流程ID，为32位字符串。	
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。	
-	RemindMessage *string `json:"RemindMessage,omitnil" name:"RemindMessage"`
+	RemindMessage *string `json:"RemindMessage,omitnil,omitempty" name:"RemindMessage"`
 }
 
 type ResourceUrlInfo struct {
 	// 资源链接地址，过期时间5分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 资源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type SignQrCode struct {
 	// 二维码ID，为32位字符串。	
 	// 
 	// 注: 需要保留此二维码ID, 用于后序通过<a href="https://qian.tencent.com/developers/partnerApis/templates/ChannelCancelMultiFlowSignQRCode" target="_blank">取消一码多扫二维码</a>关闭这个二维码的签署功能。	
-	QrCodeId *string `json:"QrCodeId,omitnil" name:"QrCodeId"`
+	QrCodeId *string `json:"QrCodeId,omitnil,omitempty" name:"QrCodeId"`
 
 	// 二维码URL，可通过转换二维码的工具或代码组件将此URL转化为二维码，以便用户扫描进行流程签署。	
-	QrCodeUrl *string `json:"QrCodeUrl,omitnil" name:"QrCodeUrl"`
+	QrCodeUrl *string `json:"QrCodeUrl,omitnil,omitempty" name:"QrCodeUrl"`
 
 	// 二维码的有截止时间，格式为Unix标准时间戳（秒），可以通过入参的QrEffectiveDay来设置有效期，默认为7天有效期。 
 	// 一旦超过二维码的有效期限，该二维码将自动失效。	
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type SignUrl struct {
 	// 跳转至电子签名小程序签署的链接地址。 适用于客户端APP及小程序直接唤起电子签名小程序。	
-	AppSignUrl *string `json:"AppSignUrl,omitnil" name:"AppSignUrl"`
+	AppSignUrl *string `json:"AppSignUrl,omitnil,omitempty" name:"AppSignUrl"`
 
 	// 签署链接有效时间，格式类似"2022-08-05 15:55:01"	
-	EffectiveTime *string `json:"EffectiveTime,omitnil" name:"EffectiveTime"`
+	EffectiveTime *string `json:"EffectiveTime,omitnil,omitempty" name:"EffectiveTime"`
 
 	// 跳转至电子签名小程序签署的链接地址，格式类似于https://essurl.cn/xxx。 打开此链接将会展示H5中间页面，随后唤起电子签名小程序以进行合同签署。	
-	HttpSignUrl *string `json:"HttpSignUrl,omitnil" name:"HttpSignUrl"`
+	HttpSignUrl *string `json:"HttpSignUrl,omitnil,omitempty" name:"HttpSignUrl"`
 }
 
 type SignUrlInfo struct {
@@ -10281,121 +10281,121 @@ type SignUrlInfo struct {
 	// 
 	// 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignUrl *string `json:"SignUrl,omitnil" name:"SignUrl"`
+	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
 	// 合同过期时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignOrder *int64 `json:"SignOrder,omitnil" name:"SignOrder"`
+	SignOrder *int64 `json:"SignOrder,omitnil,omitempty" name:"SignOrder"`
 
 	// 签署人编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignId *string `json:"SignId,omitnil" name:"SignId"`
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 自定义用户编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: CustomUserId is deprecated.
-	CustomUserId *string `json:"CustomUserId,omitnil" name:"CustomUserId"`
+	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
 	// 用户姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 用户手机号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 签署参与者机构名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 参与者类型, 类型如下:
 	// **ORGANIZATION**:企业经办人
 	// **PERSON**: 自然人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 经办人身份证号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 签署链接对应流程Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 企业经办人 用户在渠道的编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 合同组签署链接对应的合同组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 二维码，在生成动态签署人跳转封面页链接时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignQrcodeUrl *string `json:"SignQrcodeUrl,omitnil" name:"SignQrcodeUrl"`
+	SignQrcodeUrl *string `json:"SignQrcodeUrl,omitnil,omitempty" name:"SignQrcodeUrl"`
 }
 
 type Staff struct {
 	// 员工在电子签平台的用户ID
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 显示的员工名
-	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// 员工手机号
-	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 员工邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 员工在第三方应用平台的用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 员工角色
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Roles []*StaffRole `json:"Roles,omitnil" name:"Roles"`
+	Roles []*StaffRole `json:"Roles,omitnil,omitempty" name:"Roles"`
 
 	// 员工部门
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Department *Department `json:"Department,omitnil" name:"Department"`
+	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 员工是否实名
-	Verified *bool `json:"Verified,omitnil" name:"Verified"`
+	Verified *bool `json:"Verified,omitnil,omitempty" name:"Verified"`
 
 	// 员工创建时间戳，单位秒
-	CreatedOn *int64 `json:"CreatedOn,omitnil" name:"CreatedOn"`
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 员工实名时间戳，单位秒
-	VerifiedOn *int64 `json:"VerifiedOn,omitnil" name:"VerifiedOn"`
+	VerifiedOn *int64 `json:"VerifiedOn,omitnil,omitempty" name:"VerifiedOn"`
 
 	// 员工是否离职：0-未离职，1-离职
-	QuiteJob *int64 `json:"QuiteJob,omitnil" name:"QuiteJob"`
+	QuiteJob *int64 `json:"QuiteJob,omitnil,omitempty" name:"QuiteJob"`
 }
 
 type StaffRole struct {
 	// 角色id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 }
 
 type SyncFailReason struct {
 	// 企业员工标识(即OpenId)
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 // Predefined struct for user
@@ -10408,21 +10408,21 @@ type SyncProxyOrganizationOperatorsRequestParams struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
 	// 第三方平台子客企业必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作类型，对应的操作
 	// <ul><li> **CREATE** :新增员工</li>
 	// <li> **UPDATE** :修改员工</li>
 	// <li> **RESIGN** :离职员工</li></ul>
-	OperatorType *string `json:"OperatorType,omitnil" name:"OperatorType"`
+	OperatorType *string `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 
 	// 员工信息列表，最多支持200个
-	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitnil" name:"ProxyOrganizationOperators"`
+	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitnil,omitempty" name:"ProxyOrganizationOperators"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type SyncProxyOrganizationOperatorsRequest struct {
@@ -10436,19 +10436,19 @@ type SyncProxyOrganizationOperatorsRequest struct {
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
 	// 第三方平台子客企业必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作类型，对应的操作
 	// <ul><li> **CREATE** :新增员工</li>
 	// <li> **UPDATE** :修改员工</li>
 	// <li> **RESIGN** :离职员工</li></ul>
-	OperatorType *string `json:"OperatorType,omitnil" name:"OperatorType"`
+	OperatorType *string `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 
 	// 员工信息列表，最多支持200个
-	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitnil" name:"ProxyOrganizationOperators"`
+	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitnil,omitempty" name:"ProxyOrganizationOperators"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *SyncProxyOrganizationOperatorsRequest) ToJsonString() string {
@@ -10480,14 +10480,14 @@ type SyncProxyOrganizationOperatorsResponseParams struct {
 	// <ul><li> **1** :全部成功</li>
 	// <li> **2** :部分成功</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 同步失败员工ID及其失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedList []*SyncFailReason `json:"FailedList,omitnil" name:"FailedList"`
+	FailedList []*SyncFailReason `json:"FailedList,omitnil,omitempty" name:"FailedList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SyncProxyOrganizationOperatorsResponse struct {
@@ -10515,39 +10515,39 @@ type SyncProxyOrganizationRequestParams struct {
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 	// 注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
-	BusinessLicense *string `json:"BusinessLicense,omitnil" name:"BusinessLicense"`
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 
 	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
-	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil" name:"UniformSocialCreditCode"`
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 第三方平台子客企业法定代表人的名字
-	ProxyLegalName *string `json:"ProxyLegalName,omitnil" name:"ProxyLegalName"`
+	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证 (默认值)</li></ul>
 	// 注: `现在仅支持ID_CARD居民身份证类型`
-	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil" name:"ProxyLegalIdCardType"`
+	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
 	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
-	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil" name:"ProxyLegalIdCardNumber"`
+	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil,omitempty" name:"ProxyLegalIdCardNumber"`
 
 	// 第三方平台子客企业详细住所，最大长度500个字符
 	// 
 	// 注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
-	ProxyAddress *string `json:"ProxyAddress,omitnil" name:"ProxyAddress"`
+	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 }
 
 type SyncProxyOrganizationRequest struct {
@@ -10560,37 +10560,37 @@ type SyncProxyOrganizationRequest struct {
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 	// </ul>
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 	// 注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
-	BusinessLicense *string `json:"BusinessLicense,omitnil" name:"BusinessLicense"`
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 
 	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
-	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil" name:"UniformSocialCreditCode"`
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 第三方平台子客企业法定代表人的名字
-	ProxyLegalName *string `json:"ProxyLegalName,omitnil" name:"ProxyLegalName"`
+	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
 
 	// 暂未开放
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证 (默认值)</li></ul>
 	// 注: `现在仅支持ID_CARD居民身份证类型`
-	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil" name:"ProxyLegalIdCardType"`
+	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
 	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
-	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil" name:"ProxyLegalIdCardNumber"`
+	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil,omitempty" name:"ProxyLegalIdCardNumber"`
 
 	// 第三方平台子客企业详细住所，最大长度500个字符
 	// 
 	// 注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
-	ProxyAddress *string `json:"ProxyAddress,omitnil" name:"ProxyAddress"`
+	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 }
 
 func (r *SyncProxyOrganizationRequest) ToJsonString() string {
@@ -10623,7 +10623,7 @@ func (r *SyncProxyOrganizationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncProxyOrganizationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SyncProxyOrganizationResponse struct {
@@ -10645,88 +10645,88 @@ func (r *SyncProxyOrganizationResponse) FromJsonString(s string) error {
 type TaskInfo struct {
 	// 合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type TemplateInfo struct {
 	// 模板ID，模板的唯一标识
-	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名
-	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 模板描述信息
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 模板的填充控件列表
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
-	Recipients []*Recipient `json:"Recipients,omitnil" name:"Recipients"`
+	Recipients []*Recipient `json:"Recipients,omitnil,omitempty" name:"Recipients"`
 
 	// 此模板中的签署控件列表
-	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
+	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板
-	TemplateType *int64 `json:"TemplateType,omitnil" name:"TemplateType"`
+	TemplateType *int64 `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 是否是发起人 ,已弃用
 	//
 	// Deprecated: IsPromoter is deprecated.
-	IsPromoter *bool `json:"IsPromoter,omitnil" name:"IsPromoter"`
+	IsPromoter *bool `json:"IsPromoter,omitnil,omitempty" name:"IsPromoter"`
 
 	// 模板的创建者名字
-	Creator *string `json:"Creator,omitnil" name:"Creator"`
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
 	// 模板创建的时间戳，格式为Unix标准时间戳（秒）
-	CreatedOn *int64 `json:"CreatedOn,omitnil" name:"CreatedOn"`
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 模板的H5预览链接,有效期5分钟。
 	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PreviewUrl *string `json:"PreviewUrl,omitnil" name:"PreviewUrl"`
+	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 
 	// 第三方应用集成-模板PDF文件链接，有效期5分钟。
 	// 请求参数WithPdfUrl=true时返回
 	// （此功能开放需要联系客户经理）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PdfUrl *string `json:"PdfUrl,omitnil" name:"PdfUrl"`
+	PdfUrl *string `json:"PdfUrl,omitnil,omitempty" name:"PdfUrl"`
 
 	// 本模板关联的第三方应用平台企业模板ID
-	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil" name:"ChannelTemplateId"`
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitnil,omitempty" name:"ChannelTemplateId"`
 
 	// 本模板关联的三方应用平台平台企业模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChannelTemplateName *string `json:"ChannelTemplateName,omitnil" name:"ChannelTemplateName"`
+	ChannelTemplateName *string `json:"ChannelTemplateName,omitnil,omitempty" name:"ChannelTemplateName"`
 
 	// 0-需要子客企业手动领取平台企业的模板(默认); 
 	// 1-平台自动设置子客模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChannelAutoSave *int64 `json:"ChannelAutoSave,omitnil" name:"ChannelAutoSave"`
+	ChannelAutoSave *int64 `json:"ChannelAutoSave,omitnil,omitempty" name:"ChannelAutoSave"`
 
 	// 模板版本，由全数字字符组成。
 	// 默认为空，模板版本号由日期和序号组成，初始版本为yyyyMMdd001，yyyyMMdd002表示第二个版本，以此类推。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateVersion *string `json:"TemplateVersion,omitnil" name:"TemplateVersion"`
+	TemplateVersion *string `json:"TemplateVersion,omitnil,omitempty" name:"TemplateVersion"`
 
 	// 模板可用状态的取值通常为以下两种：
 	// 
 	// <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 	// <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Available *int64 `json:"Available,omitnil" name:"Available"`
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 }
 
 type UploadFile struct {
 	// Base64编码后的文件内容
-	FileBody *string `json:"FileBody,omitnil" name:"FileBody"`
+	FileBody *string `json:"FileBody,omitnil,omitempty" name:"FileBody"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
 // Predefined struct for user
@@ -10740,21 +10740,21 @@ type UploadFilesRequestParams struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 
 	// 文件对应业务类型,可以选择的类型如下
 	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
 	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
-	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
+	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，最多支持上传20个文件。
-	FileInfos []*UploadFile `json:"FileInfos,omitnil" name:"FileInfos"`
+	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 操作者的信息
 	//
 	// Deprecated: Operator is deprecated.
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type UploadFilesRequest struct {
@@ -10769,19 +10769,19 @@ type UploadFilesRequest struct {
 	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
 	// 第三方平台子客企业和员工必须已经经过实名认证
-	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 
 	// 文件对应业务类型,可以选择的类型如下
 	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
 	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
-	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
+	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，最多支持上传20个文件。
-	FileInfos []*UploadFile `json:"FileInfos,omitnil" name:"FileInfos"`
+	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *UploadFilesRequest) ToJsonString() string {
@@ -10810,18 +10810,18 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 type UploadFilesResponseParams struct {
 	// 上传成功文件数量
 	// 注: `如果一个文件上传失败, 则全部文件皆上传失败`
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 文件资源ID数组，每个文件资源ID为32位字符串。
 	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
 	// 注:`有效期一个小时, 有效期内此文件id可以反复使用, 超过有效期无法使用`
-	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
 	// 对应上传文件的下载链接，过期时间5分钟
-	FileUrls []*string `json:"FileUrls,omitnil" name:"FileUrls"`
+	FileUrls []*string `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UploadFilesResponse struct {
@@ -10842,26 +10842,26 @@ func (r *UploadFilesResponse) FromJsonString(s string) error {
 
 type UsageDetail struct {
 	// 子客企业标识
-	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil" name:"ProxyOrganizationOpenId"`
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitnil,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 子客企业名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil" name:"ProxyOrganizationName"`
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
 	// 对应的消耗日期, **如果是汇总数据则为1970-01-01**
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Date *string `json:"Date,omitnil" name:"Date"`
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 消耗合同数量
-	Usage *uint64 `json:"Usage,omitnil" name:"Usage"`
+	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 撤回合同数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cancel *uint64 `json:"Cancel,omitnil" name:"Cancel"`
+	Cancel *uint64 `json:"Cancel,omitnil,omitempty" name:"Cancel"`
 
 	// 消耗渠道
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowChannel *string `json:"FlowChannel,omitnil" name:"FlowChannel"`
+	FlowChannel *string `json:"FlowChannel,omitnil,omitempty" name:"FlowChannel"`
 }
 
 type UserInfo struct {
@@ -10873,68 +10873,68 @@ type UserInfo struct {
 	// 2. 可使用用户在贵方企业系统中的Userid或者hash值作为子客企业的员工OpenId
 	// 3. **员工加入企业后**, 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录子客控制台后, 在**组织架构**模块查看员工们的OpenId, 样式如下图
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb67fb66c926759df3a0af5838fdafd5.png)
-	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 内部参数，暂未开放使用
 	//
 	// Deprecated: Channel is deprecated.
-	Channel *string `json:"Channel,omitnil" name:"Channel"`
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// 内部参数，暂未开放使用
 	//
 	// Deprecated: CustomUserId is deprecated.
-	CustomUserId *string `json:"CustomUserId,omitnil" name:"CustomUserId"`
+	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
 	// 内部参数，暂未开放使用
 	//
 	// Deprecated: ClientIp is deprecated.
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 内部参数，暂未开放使用
 	//
 	// Deprecated: ProxyIp is deprecated.
-	ProxyIp *string `json:"ProxyIp,omitnil" name:"ProxyIp"`
+	ProxyIp *string `json:"ProxyIp,omitnil,omitempty" name:"ProxyIp"`
 }
 
 type UserThreeFactor struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
-	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 }
 
 type WebThemeConfig struct {
 	// 是否显示页面底部电子签logo，取值如下：
 	// <ul><li> **true**：页面底部显示电子签logo</li>
 	// <li> **false**：页面底部不显示电子签logo（默认）</li></ul>
-	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitnil" name:"DisplaySignBrandLogo"`
+	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitnil,omitempty" name:"DisplaySignBrandLogo"`
 
 	// 主题颜色：
 	// 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
 	// <br/>
-	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil" name:"WebEmbedThemeColor"`
+	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil,omitempty" name:"WebEmbedThemeColor"`
 
 	// 企业认证页背景图（base64图片）
-	AuthenticateBackground *string `json:"AuthenticateBackground,omitnil" name:"AuthenticateBackground"`
+	AuthenticateBackground *string `json:"AuthenticateBackground,omitnil,omitempty" name:"AuthenticateBackground"`
 
 	// 隐藏企业认证页面导航栏，取值如下：
 	// <ul><li> **true**：隐藏企业认证页面导航栏</li>
 	// <li> **false**：显示企业认证页面导航栏（默认）</li></ul>
-	HideAuthenticateNavigationBar *bool `json:"HideAuthenticateNavigationBar,omitnil" name:"HideAuthenticateNavigationBar"`
+	HideAuthenticateNavigationBar *bool `json:"HideAuthenticateNavigationBar,omitnil,omitempty" name:"HideAuthenticateNavigationBar"`
 
 	// 隐藏企业认证顶部logo，取值如下：
 	// <ul><li> **true**：隐藏企业认证顶部logo</li>
 	// <li> **false**：显示企业认证顶部logo（默认）</li></ul>
-	HideAuthenticateTopLogo *bool `json:"HideAuthenticateTopLogo,omitnil" name:"HideAuthenticateTopLogo"`
+	HideAuthenticateTopLogo *bool `json:"HideAuthenticateTopLogo,omitnil,omitempty" name:"HideAuthenticateTopLogo"`
 }

@@ -23,92 +23,92 @@ import (
 type CodeDetail struct {
 	// 二维码文本的编码格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrCharset *string `json:"StrCharset,omitnil" name:"StrCharset"`
+	StrCharset *string `json:"StrCharset,omitnil,omitempty" name:"StrCharset"`
 
 	// 二维码在图片中的位置，由边界点的坐标表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QrCodePosition []*CodePosition `json:"QrCodePosition,omitnil" name:"QrCodePosition"`
+	QrCodePosition []*CodePosition `json:"QrCodePosition,omitnil,omitempty" name:"QrCodePosition"`
 
 	// 二维码的文本内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrQrCodeText *string `json:"StrQrCodeText,omitnil" name:"StrQrCodeText"`
+	StrQrCodeText *string `json:"StrQrCodeText,omitnil,omitempty" name:"StrQrCodeText"`
 
 	// 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uint32QrCodeType *int64 `json:"Uint32QrCodeType,omitnil" name:"Uint32QrCodeType"`
+	Uint32QrCodeType *int64 `json:"Uint32QrCodeType,omitnil,omitempty" name:"Uint32QrCodeType"`
 
 	// 二维码文本的编码格式（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeCharset *string `json:"CodeCharset,omitnil" name:"CodeCharset"`
+	CodeCharset *string `json:"CodeCharset,omitnil,omitempty" name:"CodeCharset"`
 
 	// 二维码在图片中的位置，由边界点的坐标表示（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodePosition []*CodePosition `json:"CodePosition,omitnil" name:"CodePosition"`
+	CodePosition []*CodePosition `json:"CodePosition,omitnil,omitempty" name:"CodePosition"`
 
 	// 二维码的文本内容（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeText *string `json:"CodeText,omitnil" name:"CodeText"`
+	CodeText *string `json:"CodeText,omitnil,omitempty" name:"CodeText"`
 
 	// 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeType *int64 `json:"CodeType,omitnil" name:"CodeType"`
+	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 }
 
 type CodeDetect struct {
 	// 检测是否成功，0：成功，-1：出错
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModerationCode *int64 `json:"ModerationCode,omitnil" name:"ModerationCode"`
+	ModerationCode *int64 `json:"ModerationCode,omitnil,omitempty" name:"ModerationCode"`
 
 	// 从图片中检测到的二维码，可能为多个
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitnil" name:"ModerationDetail"`
+	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitnil,omitempty" name:"ModerationDetail"`
 }
 
 type CodePosition struct {
 	// 二维码边界点X轴坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FloatX *float64 `json:"FloatX,omitnil" name:"FloatX"`
+	FloatX *float64 `json:"FloatX,omitnil,omitempty" name:"FloatX"`
 
 	// 二维码边界点Y轴坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FloatY *float64 `json:"FloatY,omitnil" name:"FloatY"`
+	FloatY *float64 `json:"FloatY,omitnil,omitempty" name:"FloatY"`
 }
 
 type Coordinate struct {
 	// 宽度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 左上角纵坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cy *int64 `json:"Cy,omitnil" name:"Cy"`
+	Cy *int64 `json:"Cy,omitnil,omitempty" name:"Cy"`
 
 	// 左上角横坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cx *int64 `json:"Cx,omitnil" name:"Cx"`
+	Cx *int64 `json:"Cx,omitnil,omitempty" name:"Cx"`
 
 	// 高度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 // Predefined struct for user
 type CreateKeywordsSamplesRequestParams struct {
 	// 关键词库信息：单次限制写入2000个，词库总容量不可超过10000个。
-	UserKeywords []*UserKeyword `json:"UserKeywords,omitnil" name:"UserKeywords"`
+	UserKeywords []*UserKeyword `json:"UserKeywords,omitnil,omitempty" name:"UserKeywords"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 }
 
 type CreateKeywordsSamplesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关键词库信息：单次限制写入2000个，词库总容量不可超过10000个。
-	UserKeywords []*UserKeyword `json:"UserKeywords,omitnil" name:"UserKeywords"`
+	UserKeywords []*UserKeyword `json:"UserKeywords,omitnil,omitempty" name:"UserKeywords"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 }
 
 func (r *CreateKeywordsSamplesRequest) ToJsonString() string {
@@ -135,21 +135,21 @@ func (r *CreateKeywordsSamplesRequest) FromJsonString(s string) error {
 type CreateKeywordsSamplesResponseParams struct {
 	// 添加成功的关键词ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SampleIDs []*string `json:"SampleIDs,omitnil" name:"SampleIDs"`
+	SampleIDs []*string `json:"SampleIDs,omitnil,omitempty" name:"SampleIDs"`
 
 	// 成功入库关键词列表
-	SuccessInfos []*UserKeywordInfo `json:"SuccessInfos,omitnil" name:"SuccessInfos"`
+	SuccessInfos []*UserKeywordInfo `json:"SuccessInfos,omitnil,omitempty" name:"SuccessInfos"`
 
 	// 重复关键词列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DupInfos []*UserKeywordInfo `json:"DupInfos,omitnil" name:"DupInfos"`
+	DupInfos []*UserKeywordInfo `json:"DupInfos,omitnil,omitempty" name:"DupInfos"`
 
 	// 无效关键词列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvalidSamples []*InvalidSample `json:"InvalidSamples,omitnil" name:"InvalidSamples"`
+	InvalidSamples []*InvalidSample `json:"InvalidSamples,omitnil,omitempty" name:"InvalidSamples"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateKeywordsSamplesResponse struct {
@@ -170,41 +170,41 @@ func (r *CreateKeywordsSamplesResponse) FromJsonString(s string) error {
 
 type CustomResult struct {
 	// 命中的自定义关键词
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 自定义词库名称
-	LibName *string `json:"LibName,omitnil" name:"LibName"`
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 自定义库id
-	LibId *string `json:"LibId,omitnil" name:"LibId"`
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 命中的自定义关键词的类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
 type DeleteLibSamplesRequestParams struct {
 	// 关键词ID列表
-	SampleIDs []*string `json:"SampleIDs,omitnil" name:"SampleIDs"`
+	SampleIDs []*string `json:"SampleIDs,omitnil,omitempty" name:"SampleIDs"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 
 	// 关键词内容列表
-	SampleContents []*string `json:"SampleContents,omitnil" name:"SampleContents"`
+	SampleContents []*string `json:"SampleContents,omitnil,omitempty" name:"SampleContents"`
 }
 
 type DeleteLibSamplesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关键词ID列表
-	SampleIDs []*string `json:"SampleIDs,omitnil" name:"SampleIDs"`
+	SampleIDs []*string `json:"SampleIDs,omitnil,omitempty" name:"SampleIDs"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 
 	// 关键词内容列表
-	SampleContents []*string `json:"SampleContents,omitnil" name:"SampleContents"`
+	SampleContents []*string `json:"SampleContents,omitnil,omitempty" name:"SampleContents"`
 }
 
 func (r *DeleteLibSamplesRequest) ToJsonString() string {
@@ -231,13 +231,13 @@ func (r *DeleteLibSamplesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLibSamplesResponseParams struct {
 	// 删除成功的数量
-	Count *int64 `json:"Count,omitnil" name:"Count"`
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 每个关键词删除的结果
-	Details []*DeleteSampleDetails `json:"Details,omitnil" name:"Details"`
+	Details []*DeleteSampleDetails `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteLibSamplesResponse struct {
@@ -258,41 +258,41 @@ func (r *DeleteLibSamplesResponse) FromJsonString(s string) error {
 
 type DeleteSampleDetails struct {
 	// 关键词ID
-	SampleID *string `json:"SampleID,omitnil" name:"SampleID"`
+	SampleID *string `json:"SampleID,omitnil,omitempty" name:"SampleID"`
 
 	// 关键词内容
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 是否删除成功
-	Deleted *bool `json:"Deleted,omitnil" name:"Deleted"`
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
 
 	// 错误信息
-	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 }
 
 // Predefined struct for user
 type DescribeKeywordsLibsRequestParams struct {
 	// 单页条数，最大为100条
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 条数偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤器(支持LibName模糊查询,CustomLibIDs词库id列表过滤)
-	Filters []*Filters `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeKeywordsLibsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 单页条数，最大为100条
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 条数偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤器(支持LibName模糊查询,CustomLibIDs词库id列表过滤)
-	Filters []*Filters `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeKeywordsLibsRequest) ToJsonString() string {
@@ -319,13 +319,13 @@ func (r *DescribeKeywordsLibsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeywordsLibsResponseParams struct {
 	// 词库记录数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 词库详情
-	Infos []*KeywordsLibInfo `json:"Infos,omitnil" name:"Infos"`
+	Infos []*KeywordsLibInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKeywordsLibsResponse struct {
@@ -347,44 +347,44 @@ func (r *DescribeKeywordsLibsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLibSamplesRequestParams struct {
 	// 单页条数，最大为100条
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 条数偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 
 	// 词内容过滤
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 违规类型列表过滤
-	EvilTypeList []*int64 `json:"EvilTypeList,omitnil" name:"EvilTypeList"`
+	EvilTypeList []*int64 `json:"EvilTypeList,omitnil,omitempty" name:"EvilTypeList"`
 
 	// 样本词ID列表过滤
-	SampleIDs []*string `json:"SampleIDs,omitnil" name:"SampleIDs"`
+	SampleIDs []*string `json:"SampleIDs,omitnil,omitempty" name:"SampleIDs"`
 }
 
 type DescribeLibSamplesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 单页条数，最大为100条
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 条数偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 词库ID
-	LibID *string `json:"LibID,omitnil" name:"LibID"`
+	LibID *string `json:"LibID,omitnil,omitempty" name:"LibID"`
 
 	// 词内容过滤
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 违规类型列表过滤
-	EvilTypeList []*int64 `json:"EvilTypeList,omitnil" name:"EvilTypeList"`
+	EvilTypeList []*int64 `json:"EvilTypeList,omitnil,omitempty" name:"EvilTypeList"`
 
 	// 样本词ID列表过滤
-	SampleIDs []*string `json:"SampleIDs,omitnil" name:"SampleIDs"`
+	SampleIDs []*string `json:"SampleIDs,omitnil,omitempty" name:"SampleIDs"`
 }
 
 func (r *DescribeLibSamplesRequest) ToJsonString() string {
@@ -414,13 +414,13 @@ func (r *DescribeLibSamplesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLibSamplesResponseParams struct {
 	// 词记录数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 词详情
-	Infos []*UserKeywordInfo `json:"Infos,omitnil" name:"Infos"`
+	Infos []*UserKeywordInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLibSamplesResponse struct {
@@ -441,7 +441,7 @@ func (r *DescribeLibSamplesResponse) FromJsonString(s string) error {
 
 type DetailResult struct {
 	// 该标签下命中的关键词
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 恶意类型
 	// 100：正常
@@ -451,44 +451,44 @@ type DetailResult struct {
 	// 20007：谩骂
 	// 20105：广告引流 
 	// 24001：暴恐
-	EvilType *uint64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *uint64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 该标签模型命中的分值
-	Score *uint64 `json:"Score,omitnil" name:"Score"`
+	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
-	EvilLabel *string `json:"EvilLabel,omitnil" name:"EvilLabel"`
+	EvilLabel *string `json:"EvilLabel,omitnil,omitempty" name:"EvilLabel"`
 }
 
 type Device struct {
 	// IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
-	IDFV *string `json:"IDFV,omitnil" name:"IDFV"`
+	IDFV *string `json:"IDFV,omitnil,omitempty" name:"IDFV"`
 
 	// 设备指纹Token
-	TokenId *string `json:"TokenId,omitnil" name:"TokenId"`
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
 
 	// 用户IP
-	IP *string `json:"IP,omitnil" name:"IP"`
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// Mac地址
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// IOS设备，Identifier For Advertising（广告标识符）
-	IDFA *string `json:"IDFA,omitnil" name:"IDFA"`
+	IDFA *string `json:"IDFA,omitnil,omitempty" name:"IDFA"`
 
 	// 设备指纹ID
-	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备序列号
-	IMEI *string `json:"IMEI,omitnil" name:"IMEI"`
+	IMEI *string `json:"IMEI,omitnil,omitempty" name:"IMEI"`
 }
 
 type Filters struct {
 	// 查询字段
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 查询值
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type ImageData struct {
@@ -500,113 +500,113 @@ type ImageData struct {
 	// 20007：谩骂 
 	// 20103：性感
 	// 24001：暴恐
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 图片性感详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HotDetect *ImageHotDetect `json:"HotDetect,omitnil" name:"HotDetect"`
+	HotDetect *ImageHotDetect `json:"HotDetect,omitnil,omitempty" name:"HotDetect"`
 
 	// 是否恶意 0：正常 1：可疑
-	EvilFlag *int64 `json:"EvilFlag,omitnil" name:"EvilFlag"`
+	EvilFlag *int64 `json:"EvilFlag,omitnil,omitempty" name:"EvilFlag"`
 
 	// 图片二维码详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeDetect *CodeDetect `json:"CodeDetect,omitnil" name:"CodeDetect"`
+	CodeDetect *CodeDetect `json:"CodeDetect,omitnil,omitempty" name:"CodeDetect"`
 
 	// 图片涉政详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolityDetect *ImagePolityDetect `json:"PolityDetect,omitnil" name:"PolityDetect"`
+	PolityDetect *ImagePolityDetect `json:"PolityDetect,omitnil,omitempty" name:"PolityDetect"`
 
 	// 图片违法详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IllegalDetect *ImageIllegalDetect `json:"IllegalDetect,omitnil" name:"IllegalDetect"`
+	IllegalDetect *ImageIllegalDetect `json:"IllegalDetect,omitnil,omitempty" name:"IllegalDetect"`
 
 	// 图片涉黄详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PornDetect *ImagePornDetect `json:"PornDetect,omitnil" name:"PornDetect"`
+	PornDetect *ImagePornDetect `json:"PornDetect,omitnil,omitempty" name:"PornDetect"`
 
 	// 图片暴恐详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TerrorDetect *ImageTerrorDetect `json:"TerrorDetect,omitnil" name:"TerrorDetect"`
+	TerrorDetect *ImageTerrorDetect `json:"TerrorDetect,omitnil,omitempty" name:"TerrorDetect"`
 
 	// 图片OCR详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OCRDetect *OCRDetect `json:"OCRDetect,omitnil" name:"OCRDetect"`
+	OCRDetect *OCRDetect `json:"OCRDetect,omitnil,omitempty" name:"OCRDetect"`
 
 	// logo详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogoDetect *LogoDetail `json:"LogoDetect,omitnil" name:"LogoDetect"`
+	LogoDetect *LogoDetail `json:"LogoDetect,omitnil,omitempty" name:"LogoDetect"`
 
 	// 图片相似度详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Similar *Similar `json:"Similar,omitnil" name:"Similar"`
+	Similar *Similar `json:"Similar,omitnil,omitempty" name:"Similar"`
 
 	// 手机检测详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneDetect *PhoneDetect `json:"PhoneDetect,omitnil" name:"PhoneDetect"`
+	PhoneDetect *PhoneDetect `json:"PhoneDetect,omitnil,omitempty" name:"PhoneDetect"`
 }
 
 type ImageHotDetect struct {
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 恶意类型
 	// 100：正常
 	// 20103：性感
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 性感标签：性感特征中文描述
-	Labels []*string `json:"Labels,omitnil" name:"Labels"`
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 性感分：分值范围 0-100，分数越高性感倾向越明显
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 处置判定 0：正常 1：可疑
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 }
 
 type ImageIllegalDetect struct {
 	// 恶意类型
 	// 100：正常 
 	// 20006：涉毒违法
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 违法标签：返回违法特征中文描述，如赌桌，枪支
-	Labels []*string `json:"Labels,omitnil" name:"Labels"`
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 违法分：分值范围 0-100，分数越高违法倾向越明显
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 // Predefined struct for user
 type ImageModerationRequestParams struct {
 	// 文件地址
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 文件MD5值
-	FileMD5 *string `json:"FileMD5,omitnil" name:"FileMD5"`
+	FileMD5 *string `json:"FileMD5,omitnil,omitempty" name:"FileMD5"`
 
 	// 文件内容 Base64,与FileUrl必须二填一
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 }
 
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件地址
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 文件MD5值
-	FileMD5 *string `json:"FileMD5,omitnil" name:"FileMD5"`
+	FileMD5 *string `json:"FileMD5,omitnil,omitempty" name:"FileMD5"`
 
 	// 文件内容 Base64,与FileUrl必须二填一
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 }
 
 func (r *ImageModerationRequest) ToJsonString() string {
@@ -633,13 +633,13 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImageModerationResponseParams struct {
 	// 业务返回码
-	BusinessCode *int64 `json:"BusinessCode,omitnil" name:"BusinessCode"`
+	BusinessCode *int64 `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
 	// 识别结果
-	Data *ImageData `json:"Data,omitnil" name:"Data"`
+	Data *ImageData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ImageModerationResponse struct {
@@ -662,166 +662,166 @@ type ImagePolityDetect struct {
 	// 恶意类型
 	// 100：正常 
 	// 20001：政治
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 处置判定  0：正常 1：可疑
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 命中的人脸名称
-	FaceNames []*string `json:"FaceNames,omitnil" name:"FaceNames"`
+	FaceNames []*string `json:"FaceNames,omitnil,omitempty" name:"FaceNames"`
 
 	// 命中的logo标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolityLogoDetail []*Logo `json:"PolityLogoDetail,omitnil" name:"PolityLogoDetail"`
+	PolityLogoDetail []*Logo `json:"PolityLogoDetail,omitnil,omitempty" name:"PolityLogoDetail"`
 
 	// 命中的政治物品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolityItems []*string `json:"PolityItems,omitnil" name:"PolityItems"`
+	PolityItems []*string `json:"PolityItems,omitnil,omitempty" name:"PolityItems"`
 
 	// 政治（人脸）分：分值范围 0-100，分数越高可疑程度越高
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
 type ImagePornDetect struct {
 	// 恶意类型
 	// 100：正常
 	// 20002：色情
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 色情标签：色情特征中文描述
-	Labels []*string `json:"Labels,omitnil" name:"Labels"`
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 色情分：分值范围 0-100，分数越高色情倾向越明显
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type ImageTerrorDetect struct {
 	// 关键词明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 恶意类型
 	// 100：正常
 	// 24001：暴恐
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 暴恐标签：返回暴恐特征中文描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels []*string `json:"Labels,omitnil" name:"Labels"`
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 暴恐分：分值范围0--100，分数越高暴恐倾向越明显
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 处置判定 0：正常 1：可疑
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 }
 
 type InvalidSample struct {
 	// 关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 无效代码:1-标签不存在;2-词过长;3-词类型不匹配;4-备注超长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvalidCode *int64 `json:"InvalidCode,omitnil" name:"InvalidCode"`
+	InvalidCode *int64 `json:"InvalidCode,omitnil,omitempty" name:"InvalidCode"`
 
 	// 无效描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvalidMessage *string `json:"InvalidMessage,omitnil" name:"InvalidMessage"`
+	InvalidMessage *string `json:"InvalidMessage,omitnil,omitempty" name:"InvalidMessage"`
 }
 
 type KeywordsLibInfo struct {
 	// 关键词库ID
-	ID *string `json:"ID,omitnil" name:"ID"`
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 关键词库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibName *string `json:"LibName,omitnil" name:"LibName"`
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 关键词库描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Describe *string `json:"Describe,omitnil" name:"Describe"`
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 关键词库创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 审核建议(Review/Block)
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 匹配模式(ExactMatch/FuzzyMatch)
-	MatchType *string `json:"MatchType,omitnil" name:"MatchType"`
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
 	// 关联策略BizType列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BizTypes []*string `json:"BizTypes,omitnil" name:"BizTypes"`
+	BizTypes []*string `json:"BizTypes,omitnil,omitempty" name:"BizTypes"`
 }
 
 type Logo struct {
 	// logo图标置信度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
 	// logo图标坐标信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RrectF *RrectF `json:"RrectF,omitnil" name:"RrectF"`
+	RrectF *RrectF `json:"RrectF,omitnil,omitempty" name:"RrectF"`
 
 	// logo图标名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type LogoDetail struct {
 	// 命中的Applogo详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppLogoDetail []*Logo `json:"AppLogoDetail,omitnil" name:"AppLogoDetail"`
+	AppLogoDetail []*Logo `json:"AppLogoDetail,omitnil,omitempty" name:"AppLogoDetail"`
 }
 
 type OCRDetect struct {
 	// 识别到的详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Item []*OCRItem `json:"Item,omitnil" name:"Item"`
+	Item []*OCRItem `json:"Item,omitnil,omitempty" name:"Item"`
 
 	// 识别到的文本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextInfo *string `json:"TextInfo,omitnil" name:"TextInfo"`
+	TextInfo *string `json:"TextInfo,omitnil,omitempty" name:"TextInfo"`
 }
 
 type OCRItem struct {
 	// 检测到的文本坐标信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextPosition *Coordinate `json:"TextPosition,omitnil" name:"TextPosition"`
+	TextPosition *Coordinate `json:"TextPosition,omitnil,omitempty" name:"TextPosition"`
 
 	// 文本命中恶意违规类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 检测到的文本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextContent *string `json:"TextContent,omitnil" name:"TextContent"`
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 
 	// 文本涉嫌违规分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rate *int64 `json:"Rate,omitnil" name:"Rate"`
+	Rate *int64 `json:"Rate,omitnil,omitempty" name:"Rate"`
 
 	// 文本命中具体标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilLabel *string `json:"EvilLabel,omitnil" name:"EvilLabel"`
+	EvilLabel *string `json:"EvilLabel,omitnil,omitempty" name:"EvilLabel"`
 
 	// 文本命中违规的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
 type PhoneDetect struct {
@@ -829,55 +829,55 @@ type PhoneDetect struct {
 	// 100：正常
 	// 21000：综合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 特征中文描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels []*string `json:"Labels,omitnil" name:"Labels"`
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 分值范围 0-100，分数越高倾向越明显
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 处置判定 0：正常 1：可疑
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 }
 
 type RiskDetails struct {
 	// 预留字段，暂时不使用
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 预留字段，暂时不用
-	Lable *string `json:"Lable,omitnil" name:"Lable"`
+	Lable *string `json:"Lable,omitnil,omitempty" name:"Lable"`
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 风险等级，1:疑似，2：恶意
-	Level *int64 `json:"Level,omitnil" name:"Level"`
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 }
 
 type RrectF struct {
 	// logo图标宽度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *float64 `json:"Width,omitnil" name:"Width"`
+	Width *float64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// logo纵坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cy *float64 `json:"Cy,omitnil" name:"Cy"`
+	Cy *float64 `json:"Cy,omitnil,omitempty" name:"Cy"`
 
 	// logo横坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cx *float64 `json:"Cx,omitnil" name:"Cx"`
+	Cx *float64 `json:"Cx,omitnil,omitempty" name:"Cx"`
 
 	// logo图标中心旋转度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rotate *float64 `json:"Rotate,omitnil" name:"Rotate"`
+	Rotate *float64 `json:"Rotate,omitnil,omitempty" name:"Rotate"`
 
 	// logo图标高度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *float64 `json:"Height,omitnil" name:"Height"`
+	Height *float64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 type Similar struct {
@@ -888,14 +888,14 @@ type Similar struct {
 	// 20006：涉毒违法
 	// 20007：谩骂 
 	// 24001：暴恐
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 处置判定 0：未匹配到 1：恶意 2：白样本
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 返回的种子url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SeedUrl *string `json:"SeedUrl,omitnil" name:"SeedUrl"`
+	SeedUrl *string `json:"SeedUrl,omitnil,omitempty" name:"SeedUrl"`
 }
 
 type TextData struct {
@@ -907,92 +907,92 @@ type TextData struct {
 	// 20007：谩骂
 	// 20105：广告引流 
 	// 24001：暴恐
-	EvilType *int64 `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *int64 `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 是否恶意 0：正常 1：可疑
-	EvilFlag *int64 `json:"EvilFlag,omitnil" name:"EvilFlag"`
+	EvilFlag *int64 `json:"EvilFlag,omitnil,omitempty" name:"EvilFlag"`
 
 	// 和请求中的DataId一致，原样返回
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 输出的其他信息，不同客户内容不同
-	Extra *string `json:"Extra,omitnil" name:"Extra"`
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 最终使用的BizType
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 消息类输出结果
-	Res *TextOutputRes `json:"Res,omitnil" name:"Res"`
+	Res *TextOutputRes `json:"Res,omitnil,omitempty" name:"Res"`
 
 	// 账号风险检测结果
-	RiskDetails []*RiskDetails `json:"RiskDetails,omitnil" name:"RiskDetails"`
+	RiskDetails []*RiskDetails `json:"RiskDetails,omitnil,omitempty" name:"RiskDetails"`
 
 	// 消息类ID信息
-	ID *TextOutputID `json:"ID,omitnil" name:"ID"`
+	ID *TextOutputID `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 命中的模型分值
-	Score *uint64 `json:"Score,omitnil" name:"Score"`
+	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 消息类公共相关参数
-	Common *TextOutputComm `json:"Common,omitnil" name:"Common"`
+	Common *TextOutputComm `json:"Common,omitnil,omitempty" name:"Common"`
 
 	// 建议值,Block：打击,Review：待复审,Normal：正常
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 命中的关键词
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 返回的详细结果
-	DetailResult []*DetailResult `json:"DetailResult,omitnil" name:"DetailResult"`
+	DetailResult []*DetailResult `json:"DetailResult,omitnil,omitempty" name:"DetailResult"`
 
 	// 返回的自定义词库结果
-	CustomResult []*CustomResult `json:"CustomResult,omitnil" name:"CustomResult"`
+	CustomResult []*CustomResult `json:"CustomResult,omitnil,omitempty" name:"CustomResult"`
 
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
-	EvilLabel *string `json:"EvilLabel,omitnil" name:"EvilLabel"`
+	EvilLabel *string `json:"EvilLabel,omitnil,omitempty" name:"EvilLabel"`
 }
 
 // Predefined struct for user
 type TextModerationRequestParams struct {
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 数据ID，英文字母、下划线、-组成，不超过64个字符
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 用户相关信息
-	User *User `json:"User,omitnil" name:"User"`
+	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 业务应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 设备相关信息
-	Device *Device `json:"Device,omitnil" name:"Device"`
+	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 }
 
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 数据ID，英文字母、下划线、-组成，不超过64个字符
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
-	BizType *uint64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 用户相关信息
-	User *User `json:"User,omitnil" name:"User"`
+	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 业务应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 设备相关信息
-	Device *Device `json:"Device,omitnil" name:"Device"`
+	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 }
 
 func (r *TextModerationRequest) ToJsonString() string {
@@ -1022,14 +1022,14 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TextModerationResponseParams struct {
 	// 业务返回码
-	BusinessCode *int64 `json:"BusinessCode,omitnil" name:"BusinessCode"`
+	BusinessCode *int64 `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
 	// 识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *TextData `json:"Data,omitnil" name:"Data"`
+	Data *TextData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TextModerationResponse struct {
@@ -1050,96 +1050,96 @@ func (r *TextModerationResponse) FromJsonString(s string) error {
 
 type TextOutputComm struct {
 	// 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
-	BUCtrlID *int64 `json:"BUCtrlID,omitnil" name:"BUCtrlID"`
+	BUCtrlID *int64 `json:"BUCtrlID,omitnil,omitempty" name:"BUCtrlID"`
 
 	// 消息发送时间
-	SendTime *int64 `json:"SendTime,omitnil" name:"SendTime"`
+	SendTime *int64 `json:"SendTime,omitnil,omitempty" name:"SendTime"`
 
 	// 接入业务的唯一ID
-	AppID *int64 `json:"AppID,omitnil" name:"AppID"`
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
 	// 请求字段里的Common.Uin
-	Uin *int64 `json:"Uin,omitnil" name:"Uin"`
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 type TextOutputID struct {
 	// 接入业务的唯一ID
-	MsgID *string `json:"MsgID,omitnil" name:"MsgID"`
+	MsgID *string `json:"MsgID,omitnil,omitempty" name:"MsgID"`
 
 	// 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 type TextOutputRes struct {
 	// 操作人,信安处理人企业微信ID
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）
-	ResultType *int64 `json:"ResultType,omitnil" name:"ResultType"`
+	ResultType *int64 `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
 	// 恶意操作码，
 	// 删除（1）， 通过（2）， 先审后发（100012）
-	ResultCode *int64 `json:"ResultCode,omitnil" name:"ResultCode"`
+	ResultCode *int64 `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
 	// 操作结果备注说明
-	ResultMsg *string `json:"ResultMsg,omitnil" name:"ResultMsg"`
+	ResultMsg *string `json:"ResultMsg,omitnil,omitempty" name:"ResultMsg"`
 }
 
 type User struct {
 	// 用户等级，默认0 未知 1 低 2 中 3 高
-	Level *int64 `json:"Level,omitnil" name:"Level"`
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 性别 默认0 未知 1 男性 2 女性
-	Gender *int64 `json:"Gender,omitnil" name:"Gender"`
+	Gender *int64 `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 年龄 默认0 未知
-	Age *int64 `json:"Age,omitnil" name:"Age"`
+	Age *int64 `json:"Age,omitnil,omitempty" name:"Age"`
 
 	// 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 手机号
-	Phone *string `json:"Phone,omitnil" name:"Phone"`
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
-	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 用户昵称
-	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 }
 
 type UserKeyword struct {
 	// 关键词内容：最多40个字符，并且符合词类型的规则
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 关键词类型，取值范围为："Normal","Polity","Porn","Ad","Illegal","Abuse","Terror","Spam"
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 关键词备注：最多100个字符。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 词类型：Default,Pinyin,English,CompoundWord,ExclusionWord,AffixWord
-	WordType *string `json:"WordType,omitnil" name:"WordType"`
+	WordType *string `json:"WordType,omitnil,omitempty" name:"WordType"`
 }
 
 type UserKeywordInfo struct {
 	// 关键词条ID
-	ID *string `json:"ID,omitnil" name:"ID"`
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 关键词内容
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 关键词标签；取值范围为："Normal","Polity","Porn","Sexy","Ad","Illegal","Abuse","Terror","Spam","Moan"
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 词类型：Default,Pinyin,English,CompoundWord,ExclusionWord,AffixWord
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WordType *string `json:"WordType,omitnil" name:"WordType"`
+	WordType *string `json:"WordType,omitnil,omitempty" name:"WordType"`
 }

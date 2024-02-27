@@ -22,97 +22,97 @@ import (
 
 type CertInfo struct {
 	// 证书sha1
-	Hash *string `json:"Hash,omitnil" name:"Hash"`
+	Hash *string `json:"Hash,omitnil,omitempty" name:"Hash"`
 
 	// 证书通用名称
-	CN *string `json:"CN,omitnil" name:"CN"`
+	CN *string `json:"CN,omitnil,omitempty" name:"CN"`
 
 	// 备用名称
-	SANs *string `json:"SANs,omitnil" name:"SANs"`
+	SANs *string `json:"SANs,omitnil,omitempty" name:"SANs"`
 
 	// 公钥算法
-	KeyAlgo *string `json:"KeyAlgo,omitnil" name:"KeyAlgo"`
+	KeyAlgo *string `json:"KeyAlgo,omitnil,omitempty" name:"KeyAlgo"`
 
 	// 颁发者
-	Issuer *string `json:"Issuer,omitnil" name:"Issuer"`
+	Issuer *string `json:"Issuer,omitnil,omitempty" name:"Issuer"`
 
 	// 有效期开始
-	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 有效期结束
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 剩余天数
-	Days *int64 `json:"Days,omitnil" name:"Days"`
+	Days *int64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 信任状态
-	TrustStatus *string `json:"TrustStatus,omitnil" name:"TrustStatus"`
+	TrustStatus *string `json:"TrustStatus,omitnil,omitempty" name:"TrustStatus"`
 
 	// 证书类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertType *string `json:"CertType,omitnil" name:"CertType"`
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 }
 
 type ChartHistogram struct {
 	// 项目名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 项目值
-	Children []*ChartNameValue `json:"Children,omitnil" name:"Children"`
+	Children []*ChartNameValue `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
 type ChartNameValue struct {
 	// 图表项名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 图表项值
-	Value *int64 `json:"Value,omitnil" name:"Value"`
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
 type CreateDomainRequestParams struct {
 	// 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
-	ServerType *int64 `json:"ServerType,omitnil" name:"ServerType"`
+	ServerType *int64 `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 
 	// 添加的域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 添加的端口
-	Port *string `json:"Port,omitnil" name:"Port"`
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 指定域名的IP
-	IP *string `json:"IP,omitnil" name:"IP"`
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 是否开启通知告警；true：开启通知告警，false：关闭通知告警
-	Notice *bool `json:"Notice,omitnil" name:"Notice"`
+	Notice *bool `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 给域名添加标签，多个以逗号隔开
-	Tags *string `json:"Tags,omitnil" name:"Tags"`
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
-	ServerType *int64 `json:"ServerType,omitnil" name:"ServerType"`
+	ServerType *int64 `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 
 	// 添加的域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 添加的端口
-	Port *string `json:"Port,omitnil" name:"Port"`
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 指定域名的IP
-	IP *string `json:"IP,omitnil" name:"IP"`
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 是否开启通知告警；true：开启通知告警，false：关闭通知告警
-	Notice *bool `json:"Notice,omitnil" name:"Notice"`
+	Notice *bool `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 给域名添加标签，多个以逗号隔开
-	Tags *string `json:"Tags,omitnil" name:"Tags"`
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -142,7 +142,7 @@ func (r *CreateDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDomainResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateDomainResponse struct {
@@ -163,35 +163,35 @@ func (r *CreateDomainResponse) FromJsonString(s string) error {
 
 type DashboardResult struct {
 	// 安全等级图表
-	SecurityLevelPie []*ChartNameValue `json:"SecurityLevelPie,omitnil" name:"SecurityLevelPie"`
+	SecurityLevelPie []*ChartNameValue `json:"SecurityLevelPie,omitnil,omitempty" name:"SecurityLevelPie"`
 
 	// 证书品牌图表
-	CertBrandsPie []*ChartNameValue `json:"CertBrandsPie,omitnil" name:"CertBrandsPie"`
+	CertBrandsPie []*ChartNameValue `json:"CertBrandsPie,omitnil,omitempty" name:"CertBrandsPie"`
 
 	// 证书有效时间图表
-	CertValidTimePie []*ChartNameValue `json:"CertValidTimePie,omitnil" name:"CertValidTimePie"`
+	CertValidTimePie []*ChartNameValue `json:"CertValidTimePie,omitnil,omitempty" name:"CertValidTimePie"`
 
 	// 证书类型图表
-	CertTypePie []*ChartNameValue `json:"CertTypePie,omitnil" name:"CertTypePie"`
+	CertTypePie []*ChartNameValue `json:"CertTypePie,omitnil,omitempty" name:"CertTypePie"`
 
 	// ssl bugs图表
-	SSLBugsLoopholeHistogram []*ChartHistogram `json:"SSLBugsLoopholeHistogram,omitnil" name:"SSLBugsLoopholeHistogram"`
+	SSLBugsLoopholeHistogram []*ChartHistogram `json:"SSLBugsLoopholeHistogram,omitnil,omitempty" name:"SSLBugsLoopholeHistogram"`
 
 	// 合规图表
-	ComplianceHistogram []*ChartHistogram `json:"ComplianceHistogram,omitnil" name:"ComplianceHistogram"`
+	ComplianceHistogram []*ChartHistogram `json:"ComplianceHistogram,omitnil,omitempty" name:"ComplianceHistogram"`
 }
 
 // Predefined struct for user
 type DeleteDomainRequestParams struct {
 	// 域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type DeleteDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 func (r *DeleteDomainRequest) ToJsonString() string {
@@ -216,7 +216,7 @@ func (r *DeleteDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDomainResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteDomainResponse struct {
@@ -268,10 +268,10 @@ func (r *DescribeDashboardRequest) FromJsonString(s string) error {
 type DescribeDashboardResponseParams struct {
 	// dashboard面板数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *DashboardResult `json:"Data,omitnil" name:"Data"`
+	Data *DashboardResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDashboardResponse struct {
@@ -293,14 +293,14 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainCertsRequestParams struct {
 	// 域名ID，可通过搜索域名接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type DescribeDomainCertsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名ID，可通过搜索域名接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 func (r *DescribeDomainCertsRequest) ToJsonString() string {
@@ -325,10 +325,10 @@ func (r *DescribeDomainCertsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainCertsResponseParams struct {
 	// 证书信息
-	Data []*CertInfo `json:"Data,omitnil" name:"Data"`
+	Data []*CertInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDomainCertsResponse struct {
@@ -379,10 +379,10 @@ func (r *DescribeDomainTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainTagsResponseParams struct {
 	// Tag数组
-	Data []*string `json:"Data,omitnil" name:"Data"`
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDomainTagsResponse struct {
@@ -404,31 +404,31 @@ func (r *DescribeDomainTagsResponse) FromJsonString(s string) error {
 type DescribeDomains struct {
 	// 列表数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*DomainSiteInfo `json:"Result,omitnil" name:"Result"`
+	Result []*DomainSiteInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 搜索出来的数量
-	SearchTotal *int64 `json:"SearchTotal,omitnil" name:"SearchTotal"`
+	SearchTotal *int64 `json:"SearchTotal,omitnil,omitempty" name:"SearchTotal"`
 
 	// 总数
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 允许的监控数量
-	AllowMonitoringCount *int64 `json:"AllowMonitoringCount,omitnil" name:"AllowMonitoringCount"`
+	AllowMonitoringCount *int64 `json:"AllowMonitoringCount,omitnil,omitempty" name:"AllowMonitoringCount"`
 
 	// 当前监控的数量
-	CurrentMonitoringCount *int64 `json:"CurrentMonitoringCount,omitnil" name:"CurrentMonitoringCount"`
+	CurrentMonitoringCount *int64 `json:"CurrentMonitoringCount,omitnil,omitempty" name:"CurrentMonitoringCount"`
 
 	// 允许添加域名总数
-	AllowMaxAddDomain *int64 `json:"AllowMaxAddDomain,omitnil" name:"AllowMaxAddDomain"`
+	AllowMaxAddDomain *int64 `json:"AllowMaxAddDomain,omitnil,omitempty" name:"AllowMaxAddDomain"`
 }
 
 // Predefined struct for user
 type DescribeDomainsRequestParams struct {
 	// 偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 获取数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
 	// 选tags，入参请填Tag，
@@ -438,41 +438,41 @@ type DescribeDomainsRequestParams struct {
 	// 选hash，入参请填Hash
 	// 选limit，标识只返回数量信息
 	// 选domain，入参请填Domain
-	SearchType *string `json:"SearchType,omitnil" name:"SearchType"`
+	SearchType *string `json:"SearchType,omitnil,omitempty" name:"SearchType"`
 
 	// 标签，多个标签用逗号分隔
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 等级
-	Grade *string `json:"Grade,omitnil" name:"Grade"`
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 混合搜索
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 证书指纹
-	Hash *string `json:"Hash,omitnil" name:"Hash"`
+	Hash *string `json:"Hash,omitnil,omitempty" name:"Hash"`
 
 	// 搜索图标类型
-	Item *string `json:"Item,omitnil" name:"Item"`
+	Item *string `json:"Item,omitnil,omitempty" name:"Item"`
 
 	// 搜索图标值
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 搜索域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 获取数量
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
 	// 选tags，入参请填Tag，
@@ -482,31 +482,31 @@ type DescribeDomainsRequest struct {
 	// 选hash，入参请填Hash
 	// 选limit，标识只返回数量信息
 	// 选domain，入参请填Domain
-	SearchType *string `json:"SearchType,omitnil" name:"SearchType"`
+	SearchType *string `json:"SearchType,omitnil,omitempty" name:"SearchType"`
 
 	// 标签，多个标签用逗号分隔
-	Tag *string `json:"Tag,omitnil" name:"Tag"`
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 等级
-	Grade *string `json:"Grade,omitnil" name:"Grade"`
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 混合搜索
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 证书指纹
-	Hash *string `json:"Hash,omitnil" name:"Hash"`
+	Hash *string `json:"Hash,omitnil,omitempty" name:"Hash"`
 
 	// 搜索图标类型
-	Item *string `json:"Item,omitnil" name:"Item"`
+	Item *string `json:"Item,omitnil,omitempty" name:"Item"`
 
 	// 搜索图标值
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 搜索域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -541,10 +541,10 @@ func (r *DescribeDomainsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainsResponseParams struct {
 	// 列表数据
-	Data *DescribeDomains `json:"Data,omitnil" name:"Data"`
+	Data *DescribeDomains `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDomainsResponse struct {
@@ -595,10 +595,10 @@ func (r *DescribeNoticeInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNoticeInfoResponseParams struct {
 	// 通知信息结果
-	Data *NoticeInfoResult `json:"Data,omitnil" name:"Data"`
+	Data *NoticeInfoResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeNoticeInfoResponse struct {
@@ -619,16 +619,16 @@ func (r *DescribeNoticeInfoResponse) FromJsonString(s string) error {
 
 type DomainSiteInfo struct {
 	// ID标识
-	Id *int64 `json:"Id,omitnil" name:"Id"`
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// IP地址
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 是否自动获取IP：true：是，false:否
-	AutoIP *bool `json:"AutoIP,omitnil" name:"AutoIP"`
+	AutoIP *bool `json:"AutoIP,omitnil,omitempty" name:"AutoIP"`
 
 	// 评级
 	// "A+"，
@@ -640,17 +640,17 @@ type DomainSiteInfo struct {
 	//  "E"，
 	//  "F"，
 	// "T"，
-	Grade *string `json:"Grade,omitnil" name:"Grade"`
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
 
 	// 证书品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 监控服务类型
 	// 0 :Web
 	// 1: SMTP
 	// 2: IMAP
 	// 3: POP3
-	ServerType *int64 `json:"ServerType,omitnil" name:"ServerType"`
+	ServerType *int64 `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 
 	// 评级Code
 	// 0："unknown"，
@@ -663,17 +663,17 @@ type DomainSiteInfo struct {
 	// 7： "E"，
 	// 8： "F"，
 	// 9："T"，
-	GradeCode *int64 `json:"GradeCode,omitnil" name:"GradeCode"`
+	GradeCode *int64 `json:"GradeCode,omitnil,omitempty" name:"GradeCode"`
 
 	// 是否监控告警；true：是，false:否
-	Notice *bool `json:"Notice,omitnil" name:"Notice"`
+	Notice *bool `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 账号域名关系ID
-	AccountDomainId *int64 `json:"AccountDomainId,omitnil" name:"AccountDomainId"`
+	AccountDomainId *int64 `json:"AccountDomainId,omitnil,omitempty" name:"AccountDomainId"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 域名状态:
 	// 连接异常，
@@ -687,10 +687,10 @@ type DomainSiteInfo struct {
 	// 证书即将过期，少于30天，
 	// 正常，
 	// 部分异常
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 域名端口
-	Port *string `json:"Port,omitnil" name:"Port"`
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type LimitInfo struct {
@@ -698,32 +698,32 @@ type LimitInfo struct {
 	// limit_emai：邮件
 	// limit_wechat：微信
 	// limit_phone：手机
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 总量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 已发送
-	Sent *int64 `json:"Sent,omitnil" name:"Sent"`
+	Sent *int64 `json:"Sent,omitnil,omitempty" name:"Sent"`
 }
 
 // Predefined struct for user
 type ModifyDomainTagsRequestParams struct {
 	// 账号下域名ID
-	AccountDomainId *int64 `json:"AccountDomainId,omitnil" name:"AccountDomainId"`
+	AccountDomainId *int64 `json:"AccountDomainId,omitnil,omitempty" name:"AccountDomainId"`
 
 	// 更新后的tag，多个以逗号隔开
-	Tags *string `json:"Tags,omitnil" name:"Tags"`
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyDomainTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 账号下域名ID
-	AccountDomainId *int64 `json:"AccountDomainId,omitnil" name:"AccountDomainId"`
+	AccountDomainId *int64 `json:"AccountDomainId,omitnil,omitempty" name:"AccountDomainId"`
 
 	// 更新后的tag，多个以逗号隔开
-	Tags *string `json:"Tags,omitnil" name:"Tags"`
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyDomainTagsRequest) ToJsonString() string {
@@ -749,7 +749,7 @@ func (r *ModifyDomainTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainTagsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyDomainTagsResponse struct {
@@ -770,26 +770,26 @@ func (r *ModifyDomainTagsResponse) FromJsonString(s string) error {
 
 type NoticeInfoResult struct {
 	// 通知ID
-	Id *int64 `json:"Id,omitnil" name:"Id"`
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 通知开关信息；0：关闭；15开启
-	NoticeType *int64 `json:"NoticeType,omitnil" name:"NoticeType"`
+	NoticeType *int64 `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
 	// 额度信息
-	LimitInfos []*LimitInfo `json:"LimitInfos,omitnil" name:"LimitInfos"`
+	LimitInfos []*LimitInfo `json:"LimitInfos,omitnil,omitempty" name:"LimitInfos"`
 }
 
 // Predefined struct for user
 type RefreshDomainRequestParams struct {
 	// 域名列表中的ID，可通过搜索域名接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type RefreshDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名列表中的ID，可通过搜索域名接口获得
-	DomainId *int64 `json:"DomainId,omitnil" name:"DomainId"`
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 func (r *RefreshDomainRequest) ToJsonString() string {
@@ -814,7 +814,7 @@ func (r *RefreshDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RefreshDomainResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RefreshDomainResponse struct {
@@ -836,14 +836,14 @@ func (r *RefreshDomainResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ResolveDomainRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type ResolveDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *ResolveDomainRequest) ToJsonString() string {
@@ -868,10 +868,10 @@ func (r *ResolveDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResolveDomainResponseParams struct {
 	// 响应数据
-	Data []*string `json:"Data,omitnil" name:"Data"`
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ResolveDomainResponse struct {

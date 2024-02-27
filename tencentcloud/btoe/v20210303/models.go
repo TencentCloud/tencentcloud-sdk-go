@@ -23,56 +23,56 @@ import (
 // Predefined struct for user
 type CreateAudioDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateAudioDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateAudioDepositRequest) ToJsonString() string {
@@ -105,13 +105,13 @@ func (r *CreateAudioDepositRequest) FromJsonString(s string) error {
 type CreateAudioDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAudioDepositResponse struct {
@@ -133,44 +133,44 @@ func (r *CreateAudioDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDataDepositRequestParams struct {
 	// 业务数据明文(json格式字符串)，最大256kb
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateDataDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务数据明文(json格式字符串)，最大256kb
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateDataDepositRequest) ToJsonString() string {
@@ -201,13 +201,13 @@ func (r *CreateDataDepositRequest) FromJsonString(s string) error {
 type CreateDataDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateDataDepositResponse struct {
@@ -229,56 +229,56 @@ func (r *CreateDataDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDocDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateDocDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateDocDepositRequest) ToJsonString() string {
@@ -311,13 +311,13 @@ func (r *CreateDocDepositRequest) FromJsonString(s string) error {
 type CreateDocDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateDocDepositResponse struct {
@@ -339,32 +339,32 @@ func (r *CreateDocDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHashDepositNoCertRequestParams struct {
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 业务扩展信息
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 }
 
 type CreateHashDepositNoCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 业务扩展信息
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 }
 
 func (r *CreateHashDepositNoCertRequest) ToJsonString() string {
@@ -393,22 +393,22 @@ func (r *CreateHashDepositNoCertRequest) FromJsonString(s string) error {
 type CreateHashDepositNoCertResponseParams struct {
 	// 透传字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 上链时间
-	EvidenceTime *string `json:"EvidenceTime,omitnil" name:"EvidenceTime"`
+	EvidenceTime *string `json:"EvidenceTime,omitnil,omitempty" name:"EvidenceTime"`
 
 	// 区块链交易哈希
-	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil" name:"EvidenceTxHash"`
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil,omitempty" name:"EvidenceTxHash"`
 
 	// 区块高度
-	BlockchainHeight *uint64 `json:"BlockchainHeight,omitnil" name:"BlockchainHeight"`
+	BlockchainHeight *uint64 `json:"BlockchainHeight,omitnil,omitempty" name:"BlockchainHeight"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateHashDepositNoCertResponse struct {
@@ -430,32 +430,32 @@ func (r *CreateHashDepositNoCertResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHashDepositNoSealRequestParams struct {
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 业务扩展信息
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 }
 
 type CreateHashDepositNoSealRequest struct {
 	*tchttp.BaseRequest
 	
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 业务扩展信息
-	EvidenceInfo *string `json:"EvidenceInfo,omitnil" name:"EvidenceInfo"`
+	EvidenceInfo *string `json:"EvidenceInfo,omitnil,omitempty" name:"EvidenceInfo"`
 }
 
 func (r *CreateHashDepositNoSealRequest) ToJsonString() string {
@@ -484,22 +484,22 @@ func (r *CreateHashDepositNoSealRequest) FromJsonString(s string) error {
 type CreateHashDepositNoSealResponseParams struct {
 	// 透传字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 上链时间
-	EvidenceTime *string `json:"EvidenceTime,omitnil" name:"EvidenceTime"`
+	EvidenceTime *string `json:"EvidenceTime,omitnil,omitempty" name:"EvidenceTime"`
 
 	// 区块链交易哈希
-	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil" name:"EvidenceTxHash"`
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil,omitempty" name:"EvidenceTxHash"`
 
 	// 区块高度
-	BlockchainHeight *uint64 `json:"BlockchainHeight,omitnil" name:"BlockchainHeight"`
+	BlockchainHeight *uint64 `json:"BlockchainHeight,omitnil,omitempty" name:"BlockchainHeight"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateHashDepositNoSealResponse struct {
@@ -521,38 +521,38 @@ func (r *CreateHashDepositNoSealResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHashDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateHashDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 数据hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateHashDepositRequest) ToJsonString() string {
@@ -582,13 +582,13 @@ func (r *CreateHashDepositRequest) FromJsonString(s string) error {
 type CreateHashDepositResponseParams struct {
 	// 透传字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateHashDepositResponse struct {
@@ -610,56 +610,56 @@ func (r *CreateHashDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateImageDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称 test.png
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateImageDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称 test.png
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateImageDepositRequest) ToJsonString() string {
@@ -692,13 +692,13 @@ func (r *CreateImageDepositRequest) FromJsonString(s string) error {
 type CreateImageDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateImageDepositResponse struct {
@@ -720,56 +720,56 @@ func (r *CreateImageDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVideoDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateVideoDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 对应数据Base64文件名称
-	FileName *string `json:"FileName,omitnil" name:"FileName"`
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件hash
-	EvidenceHash *string `json:"EvidenceHash,omitnil" name:"EvidenceHash"`
+	EvidenceHash *string `json:"EvidenceHash,omitnil,omitempty" name:"EvidenceHash"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 数据Base64编码，大小不超过5M
-	FileContent *string `json:"FileContent,omitnil" name:"FileContent"`
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 资源访问链接 与fileContent必须二选一
-	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateVideoDepositRequest) ToJsonString() string {
@@ -802,13 +802,13 @@ func (r *CreateVideoDepositRequest) FromJsonString(s string) error {
 type CreateVideoDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateVideoDepositResponse struct {
@@ -830,38 +830,38 @@ func (r *CreateVideoDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWebpageDepositRequestParams struct {
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 网页链接
-	EvidenceUrl *string `json:"EvidenceUrl,omitnil" name:"EvidenceUrl"`
+	EvidenceUrl *string `json:"EvidenceUrl,omitnil,omitempty" name:"EvidenceUrl"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 type CreateWebpageDepositRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证名称(长度最大30)
-	EvidenceName *string `json:"EvidenceName,omitnil" name:"EvidenceName"`
+	EvidenceName *string `json:"EvidenceName,omitnil,omitempty" name:"EvidenceName"`
 
 	// 网页链接
-	EvidenceUrl *string `json:"EvidenceUrl,omitnil" name:"EvidenceUrl"`
+	EvidenceUrl *string `json:"EvidenceUrl,omitnil,omitempty" name:"EvidenceUrl"`
 
 	// 业务ID 透传 长度最大不超过64
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
-	HashType *uint64 `json:"HashType,omitnil" name:"HashType"`
+	HashType *uint64 `json:"HashType,omitnil,omitempty" name:"HashType"`
 
 	// 存证描述
-	EvidenceDescription *string `json:"EvidenceDescription,omitnil" name:"EvidenceDescription"`
+	EvidenceDescription *string `json:"EvidenceDescription,omitnil,omitempty" name:"EvidenceDescription"`
 }
 
 func (r *CreateWebpageDepositRequest) ToJsonString() string {
@@ -891,13 +891,13 @@ func (r *CreateWebpageDepositRequest) FromJsonString(s string) error {
 type CreateWebpageDepositResponseParams struct {
 	// 业务ID 透传 长度最大不超过64
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateWebpageDepositResponse struct {
@@ -919,14 +919,14 @@ func (r *CreateWebpageDepositResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositCertRequestParams struct {
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 type GetDepositCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 func (r *GetDepositCertRequest) ToJsonString() string {
@@ -951,13 +951,13 @@ func (r *GetDepositCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositCertResponseParams struct {
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 存证证书文件临时链接
-	EvidenceCert *string `json:"EvidenceCert,omitnil" name:"EvidenceCert"`
+	EvidenceCert *string `json:"EvidenceCert,omitnil,omitempty" name:"EvidenceCert"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetDepositCertResponse struct {
@@ -979,14 +979,14 @@ func (r *GetDepositCertResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositFileRequestParams struct {
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 type GetDepositFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 func (r *GetDepositFileRequest) ToJsonString() string {
@@ -1011,13 +1011,13 @@ func (r *GetDepositFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositFileResponseParams struct {
 	// 存证编号
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 存证文件临时链接
-	EvidenceFile *string `json:"EvidenceFile,omitnil" name:"EvidenceFile"`
+	EvidenceFile *string `json:"EvidenceFile,omitnil,omitempty" name:"EvidenceFile"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetDepositFileResponse struct {
@@ -1039,14 +1039,14 @@ func (r *GetDepositFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositInfoRequestParams struct {
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 type GetDepositInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 存证编码
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 }
 
 func (r *GetDepositInfoRequest) ToJsonString() string {
@@ -1071,19 +1071,19 @@ func (r *GetDepositInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDepositInfoResponseParams struct {
 	// 存证编号
-	EvidenceId *string `json:"EvidenceId,omitnil" name:"EvidenceId"`
+	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
 	// 上链时间
-	EvidenceTime *string `json:"EvidenceTime,omitnil" name:"EvidenceTime"`
+	EvidenceTime *string `json:"EvidenceTime,omitnil,omitempty" name:"EvidenceTime"`
 
 	// 区块链交易哈希
-	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil" name:"EvidenceTxHash"`
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil,omitempty" name:"EvidenceTxHash"`
 
 	// 区块高度
-	BlockchainHeight *int64 `json:"BlockchainHeight,omitnil" name:"BlockchainHeight"`
+	BlockchainHeight *int64 `json:"BlockchainHeight,omitnil,omitempty" name:"BlockchainHeight"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetDepositInfoResponse struct {

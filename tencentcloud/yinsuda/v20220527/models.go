@@ -22,56 +22,56 @@ import (
 
 type AMEMusicBaseInfo struct {
 	// 歌曲 Id。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 歌手列表。
-	SingerSet []*string `json:"SingerSet,omitnil" name:"SingerSet"`
+	SingerSet []*string `json:"SingerSet,omitnil,omitempty" name:"SingerSet"`
 }
 
 // Predefined struct for user
 type ApplyChorusRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 房间号。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 歌曲 Id。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 最大合唱人数，默认值为 8，最大值为 20。
-	MaxChorusNum *uint64 `json:"MaxChorusNum,omitnil" name:"MaxChorusNum"`
+	MaxChorusNum *uint64 `json:"MaxChorusNum,omitnil,omitempty" name:"MaxChorusNum"`
 
 	// 合唱用户标识列表。
-	ChorusUserIds []*string `json:"ChorusUserIds,omitnil" name:"ChorusUserIds"`
+	ChorusUserIds []*string `json:"ChorusUserIds,omitnil,omitempty" name:"ChorusUserIds"`
 }
 
 type ApplyChorusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 房间号。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 歌曲 Id。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 最大合唱人数，默认值为 8，最大值为 20。
-	MaxChorusNum *uint64 `json:"MaxChorusNum,omitnil" name:"MaxChorusNum"`
+	MaxChorusNum *uint64 `json:"MaxChorusNum,omitnil,omitempty" name:"MaxChorusNum"`
 
 	// 合唱用户标识列表。
-	ChorusUserIds []*string `json:"ChorusUserIds,omitnil" name:"ChorusUserIds"`
+	ChorusUserIds []*string `json:"ChorusUserIds,omitnil,omitempty" name:"ChorusUserIds"`
 }
 
 func (r *ApplyChorusRequest) ToJsonString() string {
@@ -101,10 +101,10 @@ func (r *ApplyChorusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyChorusResponseParams struct {
 	// 合唱 Token。
-	ChorusToken *string `json:"ChorusToken,omitnil" name:"ChorusToken"`
+	ChorusToken *string `json:"ChorusToken,omitnil,omitempty" name:"ChorusToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ApplyChorusResponse struct {
@@ -126,46 +126,46 @@ func (r *ApplyChorusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDescribeKTVMusicDetailsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 列表。
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 玩家用户标识
-	GuestUserId *string `json:"GuestUserId,omitnil" name:"GuestUserId"`
+	GuestUserId *string `json:"GuestUserId,omitnil,omitempty" name:"GuestUserId"`
 
 	// 房间Id
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type BatchDescribeKTVMusicDetailsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 列表。
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 玩家用户标识
-	GuestUserId *string `json:"GuestUserId,omitnil" name:"GuestUserId"`
+	GuestUserId *string `json:"GuestUserId,omitnil,omitempty" name:"GuestUserId"`
 
 	// 房间Id
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 func (r *BatchDescribeKTVMusicDetailsRequest) ToJsonString() string {
@@ -195,13 +195,13 @@ func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDescribeKTVMusicDetailsResponseParams struct {
 	// 歌曲详细信息列表。
-	KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitnil" name:"KTVMusicDetailInfoSet"`
+	KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitnil,omitempty" name:"KTVMusicDetailInfoSet"`
 
 	// 不存在歌曲Id列表。
-	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitnil" name:"NotExistMusicIdSet"`
+	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitnil,omitempty" name:"NotExistMusicIdSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BatchDescribeKTVMusicDetailsResponse struct {
@@ -222,49 +222,49 @@ func (r *BatchDescribeKTVMusicDetailsResponse) FromJsonString(s string) error {
 
 type ChorusClip struct {
 	// 开始时间，单位：毫秒。
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间，单位：毫秒。
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 // Predefined struct for user
 type CreateKTVRobotRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 进房参数。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// 创建机器人时初始化参数。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 type CreateKTVRobotRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 进房参数。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// 创建机器人时初始化参数。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 func (r *CreateKTVRobotRequest) ToJsonString() string {
@@ -293,10 +293,10 @@ func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKTVRobotResponseParams struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateKTVRobotResponse struct {
@@ -318,26 +318,26 @@ func (r *CreateKTVRobotResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMatchMusicsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 匹配规则列表。
-	Rules []*KTVMatchRule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*KTVMatchRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type DescribeKTVMatchMusicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 匹配规则列表。
-	Rules []*KTVMatchRule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*KTVMatchRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *DescribeKTVMatchMusicsRequest) ToJsonString() string {
@@ -364,13 +364,13 @@ func (r *DescribeKTVMatchMusicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMatchMusicsResponseParams struct {
 	// 匹配到的歌曲列表。
-	MatchMusicSet []*KTVMatchMusic `json:"MatchMusicSet,omitnil" name:"MatchMusicSet"`
+	MatchMusicSet []*KTVMatchMusic `json:"MatchMusicSet,omitnil,omitempty" name:"MatchMusicSet"`
 
 	// 未匹配的规则列表。
-	NotMatchRuleSet []*KTVMatchRule `json:"NotMatchRuleSet,omitnil" name:"NotMatchRuleSet"`
+	NotMatchRuleSet []*KTVMatchRule `json:"NotMatchRuleSet,omitnil,omitempty" name:"NotMatchRuleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMatchMusicsResponse struct {
@@ -392,40 +392,40 @@ func (r *DescribeKTVMatchMusicsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMusicAccompanySegmentUrlRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 房间Id
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type DescribeKTVMusicAccompanySegmentUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 房间Id
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 func (r *DescribeKTVMusicAccompanySegmentUrlRequest) ToJsonString() string {
@@ -459,29 +459,29 @@ type DescribeKTVMusicAccompanySegmentUrlResponseParams struct {
 	// 2：没权限
 	// 3：没伴奏
 	// 当返回2时，其他参数有可能全部为空
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 伴奏链接
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 伴奏类型，如mkv，mp3等
-	ExtName *string `json:"ExtName,omitnil" name:"ExtName"`
+	ExtName *string `json:"ExtName,omitnil,omitempty" name:"ExtName"`
 
 	// 高潮开始时间
-	SegmentBegin *int64 `json:"SegmentBegin,omitnil" name:"SegmentBegin"`
+	SegmentBegin *int64 `json:"SegmentBegin,omitnil,omitempty" name:"SegmentBegin"`
 
 	// 高潮结束时间
-	SegmentEnd *int64 `json:"SegmentEnd,omitnil" name:"SegmentEnd"`
+	SegmentEnd *int64 `json:"SegmentEnd,omitnil,omitempty" name:"SegmentEnd"`
 
 	// 链接文件大小 单位 字节
-	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 其它片段时间（可用于抢唱）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OtherSegments []*KTVOtherSegments `json:"OtherSegments,omitnil" name:"OtherSegments"`
+	OtherSegments []*KTVOtherSegments `json:"OtherSegments,omitnil,omitempty" name:"OtherSegments"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMusicAccompanySegmentUrlResponse struct {
@@ -503,26 +503,26 @@ func (r *DescribeKTVMusicAccompanySegmentUrlResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeKTVMusicAccompanySegmentUrlVipRequestParams struct {
 	// 应用名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 }
 
 type DescribeKTVMusicAccompanySegmentUrlVipRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌曲 Id 
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 }
 
 func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) ToJsonString() string {
@@ -549,25 +549,25 @@ func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeKTVMusicAccompanySegmentUrlVipResponseParams struct {
 	// 0:成功获取 1:歌曲下架 2:无权限 3: 非包月会员 4:没有对应的链接
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 伴奏链接
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 伴奏类型，如mkv，mp3等
-	ExtName *string `json:"ExtName,omitnil" name:"ExtName"`
+	ExtName *string `json:"ExtName,omitnil,omitempty" name:"ExtName"`
 
 	// 高潮开始时间
-	SegmentBegin *int64 `json:"SegmentBegin,omitnil" name:"SegmentBegin"`
+	SegmentBegin *int64 `json:"SegmentBegin,omitnil,omitempty" name:"SegmentBegin"`
 
 	// 高潮结束时间
-	SegmentEnd *int64 `json:"SegmentEnd,omitnil" name:"SegmentEnd"`
+	SegmentEnd *int64 `json:"SegmentEnd,omitnil,omitempty" name:"SegmentEnd"`
 
 	// 链接文件大小 (单位:字节)
-	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMusicAccompanySegmentUrlVipResponse struct {
@@ -589,58 +589,58 @@ func (r *DescribeKTVMusicAccompanySegmentUrlVipResponse) FromJsonString(s string
 // Predefined struct for user
 type DescribeKTVMusicsByTagRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 标签 Id。
-	TagId *string `json:"TagId,omitnil" name:"TagId"`
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数限制，默认 20，最大 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 type DescribeKTVMusicsByTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 标签 Id。
-	TagId *string `json:"TagId,omitnil" name:"TagId"`
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数限制，默认 20，最大 50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 func (r *DescribeKTVMusicsByTagRequest) ToJsonString() string {
@@ -671,13 +671,13 @@ func (r *DescribeKTVMusicsByTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMusicsByTagResponseParams struct {
 	// 歌曲信息列表。
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMusicsByTagResponse struct {
@@ -699,66 +699,66 @@ func (r *DescribeKTVMusicsByTagResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistDetailRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌单 Id。
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数，默认：20，最大：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 type DescribeKTVPlaylistDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 歌单 Id。
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数，默认：20，最大：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 func (r *DescribeKTVPlaylistDetailRequest) ToJsonString() string {
@@ -790,13 +790,13 @@ func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistDetailResponseParams struct {
 	// 歌曲信息列表。
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVPlaylistDetailResponse struct {
@@ -818,44 +818,44 @@ func (r *DescribeKTVPlaylistDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 类型列表，取值有：
 	// <li>OfficialRec：官方推荐；</li>
 	// <li>Customize：自定义。</li>
 	// 默认值为 OfficialRec。
-	Types []*string `json:"Types,omitnil" name:"Types"`
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：20，最大值：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVPlaylistsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 类型列表，取值有：
 	// <li>OfficialRec：官方推荐；</li>
 	// <li>Customize：自定义。</li>
 	// 默认值为 OfficialRec。
-	Types []*string `json:"Types,omitnil" name:"Types"`
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：20，最大值：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVPlaylistsRequest) ToJsonString() string {
@@ -884,13 +884,13 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistsResponseParams struct {
 	// 歌单基础信息。
-	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitnil" name:"PlaylistBaseInfoSet"`
+	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitnil,omitempty" name:"PlaylistBaseInfoSet"`
 
 	// 歌单总数。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVPlaylistsResponse struct {
@@ -912,58 +912,58 @@ func (r *DescribeKTVPlaylistsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVRobotsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id列表。
-	RobotIds []*string `json:"RobotIds,omitnil" name:"RobotIds"`
+	RobotIds []*string `json:"RobotIds,omitnil,omitempty" name:"RobotIds"`
 
 	// 机器人状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil,omitempty" name:"Statuses"`
 
 	// 匹配创建时间在此时间段内的机器人。
 	// <li>包含所指定的头尾时间点。</li>
-	CreateTime *TimeRange `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：10。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVRobotsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id列表。
-	RobotIds []*string `json:"RobotIds,omitnil" name:"RobotIds"`
+	RobotIds []*string `json:"RobotIds,omitnil,omitempty" name:"RobotIds"`
 
 	// 机器人状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil,omitempty" name:"Statuses"`
 
 	// 匹配创建时间在此时间段内的机器人。
 	// <li>包含所指定的头尾时间点。</li>
-	CreateTime *TimeRange `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：10。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVRobotsRequest) ToJsonString() string {
@@ -994,13 +994,13 @@ func (r *DescribeKTVRobotsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVRobotsResponseParams struct {
 	// 机器人总数。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 机器人信息集合。
-	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitnil" name:"KTVRobotInfoSet"`
+	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitnil,omitempty" name:"KTVRobotInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVRobotsResponse struct {
@@ -1022,26 +1022,26 @@ func (r *DescribeKTVRobotsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSuggestionsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 搜索词。
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 }
 
 type DescribeKTVSuggestionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 搜索词。
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 }
 
 func (r *DescribeKTVSuggestionsRequest) ToJsonString() string {
@@ -1068,10 +1068,10 @@ func (r *DescribeKTVSuggestionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSuggestionsResponseParams struct {
 	// 联想词信息列表。
-	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitnil" name:"KTVSuggestionInfoSet"`
+	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitnil,omitempty" name:"KTVSuggestionInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVSuggestionsResponse struct {
@@ -1093,20 +1093,20 @@ func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVTagsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeKTVTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *DescribeKTVTagsRequest) ToJsonString() string {
@@ -1132,10 +1132,10 @@ func (r *DescribeKTVTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVTagsResponseParams struct {
 	// 标签分组列表。
-	TagGroupInfoSet []*KTVTagGroupInfo `json:"TagGroupInfoSet,omitnil" name:"TagGroupInfoSet"`
+	TagGroupInfoSet []*KTVTagGroupInfo `json:"TagGroupInfoSet,omitnil,omitempty" name:"TagGroupInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVTagsResponse struct {
@@ -1157,54 +1157,54 @@ func (r *DescribeKTVTagsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveVipTradeInfosRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 交易流水号集合，匹配集合指定所有流水号 。
 	// <li>数组长度限制：10。</li>
-	TradeSerialNos []*string `json:"TradeSerialNos,omitnil" name:"TradeSerialNos"`
+	TradeSerialNos []*string `json:"TradeSerialNos,omitnil,omitempty" name:"TradeSerialNos"`
 
 	// 用户标识集合，匹配集合指定所有用户标识 。
 	// <li>数组长度限制：10。</li>
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：20，最大值：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeLiveVipTradeInfosRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 交易流水号集合，匹配集合指定所有流水号 。
 	// <li>数组长度限制：10。</li>
-	TradeSerialNos []*string `json:"TradeSerialNos,omitnil" name:"TradeSerialNos"`
+	TradeSerialNos []*string `json:"TradeSerialNos,omitnil,omitempty" name:"TradeSerialNos"`
 
 	// 用户标识集合，匹配集合指定所有用户标识 。
 	// <li>数组长度限制：10。</li>
-	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：20，最大值：50。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeLiveVipTradeInfosRequest) ToJsonString() string {
@@ -1235,13 +1235,13 @@ func (r *DescribeLiveVipTradeInfosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveVipTradeInfosResponseParams struct {
 	// 直播会员充值流水信息列表
-	LiveVipTradeInfoSet []*LiveVipTradeInfo `json:"LiveVipTradeInfoSet,omitnil" name:"LiveVipTradeInfoSet"`
+	LiveVipTradeInfoSet []*LiveVipTradeInfo `json:"LiveVipTradeInfoSet,omitnil,omitempty" name:"LiveVipTradeInfoSet"`
 
 	// 直播会员充值流水总数。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLiveVipTradeInfosResponse struct {
@@ -1263,20 +1263,20 @@ func (r *DescribeLiveVipTradeInfosResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserInfoRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *DescribeUserInfoRequest) ToJsonString() string {
@@ -1302,10 +1302,10 @@ func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserInfoResponseParams struct {
 	// 用户信息。
-	UserInfo *UserInfo `json:"UserInfo,omitnil" name:"UserInfo"`
+	UserInfo *UserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeUserInfoResponse struct {
@@ -1327,20 +1327,20 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVipUserInfoRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeVipUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *DescribeVipUserInfoRequest) ToJsonString() string {
@@ -1366,22 +1366,22 @@ func (r *DescribeVipUserInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVipUserInfoResponseParams struct {
 	// 是否是会员。（0:不是会员 1:是会员）
-	IsVip *int64 `json:"IsVip,omitnil" name:"IsVip"`
+	IsVip *int64 `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 主播id
-	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+	AnchorId *string `json:"AnchorId,omitnil,omitempty" name:"AnchorId"`
 
 	// 房间id
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 会员过期时间
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVipUserInfoResponse struct {
@@ -1403,26 +1403,26 @@ func (r *DescribeVipUserInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyKTVRobotRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 }
 
 type DestroyKTVRobotRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 }
 
 func (r *DestroyKTVRobotRequest) ToJsonString() string {
@@ -1449,7 +1449,7 @@ func (r *DestroyKTVRobotRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyKTVRobotResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DestroyKTVRobotResponse struct {
@@ -1470,7 +1470,7 @@ func (r *DestroyKTVRobotResponse) FromJsonString(s string) error {
 
 type JoinRoomInput struct {
 	// TRTC进房参数
-	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitnil" name:"TRTCJoinRoomInput"`
+	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitnil,omitempty" name:"TRTCJoinRoomInput"`
 }
 
 type KTVBPMInfo struct {
@@ -1479,218 +1479,218 @@ type KTVBPMInfo struct {
 	// <li>Middle：中等；</li>
 	// <li>Fast：快；</li>
 	// <li>Unknown：未知。</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// BPM 值。
-	Value *int64 `json:"Value,omitnil" name:"Value"`
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type KTVMatchMusic struct {
 	// 匹配到的歌曲基础信息。
-	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil" name:"KTVMusicBaseInfo"`
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil,omitempty" name:"KTVMusicBaseInfo"`
 
 	// 命中规则。
-	MatchRule *KTVMatchRule `json:"MatchRule,omitnil" name:"MatchRule"`
+	MatchRule *KTVMatchRule `json:"MatchRule,omitnil,omitempty" name:"MatchRule"`
 
 	// AME 歌曲基础信息，仅在使用音速达歌曲 Id 匹配 AME 曲库时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AMEMusicBaseInfo *AMEMusicBaseInfo `json:"AMEMusicBaseInfo,omitnil" name:"AMEMusicBaseInfo"`
+	AMEMusicBaseInfo *AMEMusicBaseInfo `json:"AMEMusicBaseInfo,omitnil,omitempty" name:"AMEMusicBaseInfo"`
 }
 
 type KTVMatchRule struct {
 	// AME 曲库 Id。
-	AMEMusicId *string `json:"AMEMusicId,omitnil" name:"AMEMusicId"`
+	AMEMusicId *string `json:"AMEMusicId,omitnil,omitempty" name:"AMEMusicId"`
 
 	// 歌曲匹配信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicInfo *KTVMatchRuleMusicInfo `json:"MusicInfo,omitnil" name:"MusicInfo"`
+	MusicInfo *KTVMatchRuleMusicInfo `json:"MusicInfo,omitnil,omitempty" name:"MusicInfo"`
 
 	// 音速达歌曲 Id，用于匹配 AME 曲库歌曲。
-	MusicIdToMatchAME *string `json:"MusicIdToMatchAME,omitnil" name:"MusicIdToMatchAME"`
+	MusicIdToMatchAME *string `json:"MusicIdToMatchAME,omitnil,omitempty" name:"MusicIdToMatchAME"`
 }
 
 type KTVMatchRuleMusicInfo struct {
 	// 歌曲名称。
-	MusicName *string `json:"MusicName,omitnil" name:"MusicName"`
+	MusicName *string `json:"MusicName,omitnil,omitempty" name:"MusicName"`
 
 	// 歌手列表。
-	SingerSet []*string `json:"SingerSet,omitnil" name:"SingerSet"`
+	SingerSet []*string `json:"SingerSet,omitnil,omitempty" name:"SingerSet"`
 }
 
 type KTVMusicBaseInfo struct {
 	// 歌曲Id。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 歌手名称。
-	SingerSet []*string `json:"SingerSet,omitnil" name:"SingerSet"`
+	SingerSet []*string `json:"SingerSet,omitnil,omitempty" name:"SingerSet"`
 
 	// 播放时长。
-	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 歌手图片链接。
-	SingerImageUrl *string `json:"SingerImageUrl,omitnil" name:"SingerImageUrl"`
+	SingerImageUrl *string `json:"SingerImageUrl,omitnil,omitempty" name:"SingerImageUrl"`
 
 	// 专辑信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbumInfo *MusicAlbumInfo `json:"AlbumInfo,omitnil" name:"AlbumInfo"`
+	AlbumInfo *MusicAlbumInfo `json:"AlbumInfo,omitnil,omitempty" name:"AlbumInfo"`
 
 	// 权益列表，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightSet []*string `json:"RightSet,omitnil" name:"RightSet"`
+	RightSet []*string `json:"RightSet,omitnil,omitempty" name:"RightSet"`
 
 	// 推荐类型，取值有：
 	// <li>Featured：精选；</li>
 	// <li>Other：其他。</li>
-	RecommendType *string `json:"RecommendType,omitnil" name:"RecommendType"`
+	RecommendType *string `json:"RecommendType,omitnil,omitempty" name:"RecommendType"`
 }
 
 type KTVMusicDetailInfo struct {
 	// 歌曲基础信息。
-	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil" name:"KTVMusicBaseInfo"`
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil,omitempty" name:"KTVMusicBaseInfo"`
 
 	// 播放凭证。
-	PlayToken *string `json:"PlayToken,omitnil" name:"PlayToken"`
+	PlayToken *string `json:"PlayToken,omitnil,omitempty" name:"PlayToken"`
 
 	// 歌词下载链接。
-	LyricsUrl *string `json:"LyricsUrl,omitnil" name:"LyricsUrl"`
+	LyricsUrl *string `json:"LyricsUrl,omitnil,omitempty" name:"LyricsUrl"`
 
 	// 音高数据下载链接。
-	MidiUrl *string `json:"MidiUrl,omitnil" name:"MidiUrl"`
+	MidiUrl *string `json:"MidiUrl,omitnil,omitempty" name:"MidiUrl"`
 
 	// 副歌片段信息。
-	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil" name:"ChorusClipSet"`
+	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil,omitempty" name:"ChorusClipSet"`
 
 	// 前奏间隔。
-	PreludeInterval *int64 `json:"PreludeInterval,omitnil" name:"PreludeInterval"`
+	PreludeInterval *int64 `json:"PreludeInterval,omitnil,omitempty" name:"PreludeInterval"`
 
 	// 歌曲流派列表。
-	GenreSet []*string `json:"GenreSet,omitnil" name:"GenreSet"`
+	GenreSet []*string `json:"GenreSet,omitnil,omitempty" name:"GenreSet"`
 
 	// 节拍信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BPMInfo *KTVBPMInfo `json:"BPMInfo,omitnil" name:"BPMInfo"`
+	BPMInfo *KTVBPMInfo `json:"BPMInfo,omitnil,omitempty" name:"BPMInfo"`
 }
 
 type KTVOtherSegments struct {
 	// 片段开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentBegin *int64 `json:"SegmentBegin,omitnil" name:"SegmentBegin"`
+	SegmentBegin *int64 `json:"SegmentBegin,omitnil,omitempty" name:"SegmentBegin"`
 
 	// 片段结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentEnd *int64 `json:"SegmentEnd,omitnil" name:"SegmentEnd"`
+	SegmentEnd *int64 `json:"SegmentEnd,omitnil,omitempty" name:"SegmentEnd"`
 }
 
 type KTVPlaylistBaseInfo struct {
 	// 歌单Id。
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 歌单标题。
-	Title *string `json:"Title,omitnil" name:"Title"`
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 }
 
 type KTVRobotInfo struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 播放列表。
-	Playlists []*string `json:"Playlists,omitnil" name:"Playlists"`
+	Playlists []*string `json:"Playlists,omitnil,omitempty" name:"Playlists"`
 
 	// 当前歌单索引位置。
-	CurIndex *int64 `json:"CurIndex,omitnil" name:"CurIndex"`
+	CurIndex *int64 `json:"CurIndex,omitnil,omitempty" name:"CurIndex"`
 
 	// 播放进度，单位：毫秒。
-	Position *uint64 `json:"Position,omitnil" name:"Position"`
+	Position *uint64 `json:"Position,omitnil,omitempty" name:"Position"`
 
 	// 音频参数。
-	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitnil" name:"SetAudioParamInput"`
+	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitnil,omitempty" name:"SetAudioParamInput"`
 
 	// 进房信息。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 播放模式，PlayMode取值有：
 	// <li>RepeatPlaylist：列表循环</li>
 	// <li>Order：顺序播放</li>
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
-	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitnil" name:"SetPlayModeInput"`
+	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitnil,omitempty" name:"SetPlayModeInput"`
 }
 
 type KTVSuggestionInfo struct {
 	// 联想词。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
 type KTVTagGroupInfo struct {
 	// 分组 Id。
-	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组名。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签列表。
-	TagInfoSet []*KTVTagInfo `json:"TagInfoSet,omitnil" name:"TagInfoSet"`
+	TagInfoSet []*KTVTagInfo `json:"TagInfoSet,omitnil,omitempty" name:"TagInfoSet"`
 }
 
 type KTVTagInfo struct {
 	// 标签 Id。
-	TagId *string `json:"TagId,omitnil" name:"TagId"`
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 标签名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type LiveVipTradeInfo struct {
 	// 交易流水号。
-	TradeSerialNo *string `json:"TradeSerialNo,omitnil" name:"TradeSerialNo"`
+	TradeSerialNo *string `json:"TradeSerialNo,omitnil,omitempty" name:"TradeSerialNo"`
 
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 房间标识。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 充值会员天数。
 	// 取值有： 
 	// <li>31</li> <li>93</li><li>186</li> <li>372</li>
-	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+	VipDays *int64 `json:"VipDays,omitnil,omitempty" name:"VipDays"`
 
 	// 订单状态。 
 	// 取值有： 
 	// <li>Success：成功</li><li>Fail：失败</li><li>Processing：订单处理中</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type LiveVipUserInfo struct {
 	// 房间标识。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 直播会员结束时间。
-	LiveVipEndTime *string `json:"LiveVipEndTime,omitnil" name:"LiveVipEndTime"`
+	LiveVipEndTime *string `json:"LiveVipEndTime,omitnil,omitempty" name:"LiveVipEndTime"`
 
 	// 会员生效状态
 	// <li>Valid：生效</li><li>Invalid：无效</li>
-	LiveVipStatus *string `json:"LiveVipStatus,omitnil" name:"LiveVipStatus"`
+	LiveVipStatus *string `json:"LiveVipStatus,omitnil,omitempty" name:"LiveVipStatus"`
 }
 
 type MusicAlbumCoverInfo struct {
@@ -1698,38 +1698,38 @@ type MusicAlbumCoverInfo struct {
 	// <li>Mini：150 x 150 尺寸；</li>
 	// <li>Small：240 x 240 尺寸；</li>
 	// <li>Medium：480 x 480 尺寸。</li>
-	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 
 	// 下载链接。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type MusicAlbumInfo struct {
 	// 专辑名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 封面列表。
-	CoverInfoSet []*MusicAlbumCoverInfo `json:"CoverInfoSet,omitnil" name:"CoverInfoSet"`
+	CoverInfoSet []*MusicAlbumCoverInfo `json:"CoverInfoSet,omitnil,omitempty" name:"CoverInfoSet"`
 }
 
 type PlayCommandInput struct {
 	// 歌曲位置索引。
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 // Predefined struct for user
 type RechargeLiveVipRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
-	TradeSerialNo *string `json:"TradeSerialNo,omitnil" name:"TradeSerialNo"`
+	TradeSerialNo *string `json:"TradeSerialNo,omitnil,omitempty" name:"TradeSerialNo"`
 
 	// 房间标识。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 充值会员天数。
 	// 取值有：
@@ -1737,30 +1737,30 @@ type RechargeLiveVipRequestParams struct {
 	// <li>93</li>
 	// <li>186</li>
 	// <li>372</li>
-	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+	VipDays *int64 `json:"VipDays,omitnil,omitempty" name:"VipDays"`
 
 	// 充值分类。取值有：room_card-包月房卡; 其他-保留。
-	GiveType *string `json:"GiveType,omitnil" name:"GiveType"`
+	GiveType *string `json:"GiveType,omitnil,omitempty" name:"GiveType"`
 
 	// 播放场景。默认为Live
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 }
 
 type RechargeLiveVipRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
-	TradeSerialNo *string `json:"TradeSerialNo,omitnil" name:"TradeSerialNo"`
+	TradeSerialNo *string `json:"TradeSerialNo,omitnil,omitempty" name:"TradeSerialNo"`
 
 	// 房间标识。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 充值会员天数。
 	// 取值有：
@@ -1768,14 +1768,14 @@ type RechargeLiveVipRequest struct {
 	// <li>93</li>
 	// <li>186</li>
 	// <li>372</li>
-	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+	VipDays *int64 `json:"VipDays,omitnil,omitempty" name:"VipDays"`
 
 	// 充值分类。取值有：room_card-包月房卡; 其他-保留。
-	GiveType *string `json:"GiveType,omitnil" name:"GiveType"`
+	GiveType *string `json:"GiveType,omitnil,omitempty" name:"GiveType"`
 
 	// 播放场景。默认为Live
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 }
 
 func (r *RechargeLiveVipRequest) ToJsonString() string {
@@ -1806,10 +1806,10 @@ func (r *RechargeLiveVipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RechargeLiveVipResponseParams struct {
 	// 直播会员信息。
-	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitnil" name:"LiveVipUserInfo"`
+	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitnil,omitempty" name:"LiveVipUserInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RechargeLiveVipResponse struct {
@@ -1831,38 +1831,38 @@ func (r *RechargeLiveVipResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RechargeVipRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 房间Id。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 充值会员天数。(取值有：31、93、186、372)
-	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+	VipDays *int64 `json:"VipDays,omitnil,omitempty" name:"VipDays"`
 
 	// 主播id。
-	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+	AnchorId *string `json:"AnchorId,omitnil,omitempty" name:"AnchorId"`
 }
 
 type RechargeVipRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 房间Id。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 充值会员天数。(取值有：31、93、186、372)
-	VipDays *int64 `json:"VipDays,omitnil" name:"VipDays"`
+	VipDays *int64 `json:"VipDays,omitnil,omitempty" name:"VipDays"`
 
 	// 主播id。
-	AnchorId *string `json:"AnchorId,omitnil" name:"AnchorId"`
+	AnchorId *string `json:"AnchorId,omitnil,omitempty" name:"AnchorId"`
 }
 
 func (r *RechargeVipRequest) ToJsonString() string {
@@ -1891,16 +1891,16 @@ func (r *RechargeVipRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RechargeVipResponseParams struct {
 	// 厂商订单号。
-	PartnerNo *string `json:"PartnerNo,omitnil" name:"PartnerNo"`
+	PartnerNo *string `json:"PartnerNo,omitnil,omitempty" name:"PartnerNo"`
 
 	// TME订单号。
-	OrderNo *string `json:"OrderNo,omitnil" name:"OrderNo"`
+	OrderNo *string `json:"OrderNo,omitnil,omitempty" name:"OrderNo"`
 
 	// 订单创建时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RechargeVipResponse struct {
@@ -1922,66 +1922,66 @@ func (r *RechargeVipResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchKTVMusicsRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 关键词。
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数限制，默认 20，最大 50.
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 type SearchKTVMusicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 关键词。
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 
 	// 滚动标记。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 返回条数限制，默认 20，最大 50.
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 权益过滤，取值有：
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
-	RightFilters []*string `json:"RightFilters,omitnil" name:"RightFilters"`
+	RightFilters []*string `json:"RightFilters,omitnil,omitempty" name:"RightFilters"`
 
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
-	PlayScene *string `json:"PlayScene,omitnil" name:"PlayScene"`
+	PlayScene *string `json:"PlayScene,omitnil,omitempty" name:"PlayScene"`
 
 	// 物料过滤，取值有：
 	// <li>Lyrics：含有歌词；</li>
 	// <li>Midi：含有音高线。</li>
-	MaterialFilters []*string `json:"MaterialFilters,omitnil" name:"MaterialFilters"`
+	MaterialFilters []*string `json:"MaterialFilters,omitnil,omitempty" name:"MaterialFilters"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -2013,13 +2013,13 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchKTVMusicsResponseParams struct {
 	// 歌曲信息列表。
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
-	ScrollToken *string `json:"ScrollToken,omitnil" name:"ScrollToken"`
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchKTVMusicsResponse struct {
@@ -2040,22 +2040,22 @@ func (r *SearchKTVMusicsResponse) FromJsonString(s string) error {
 
 type SeekCommandInput struct {
 	// 播放位置，单位：毫秒。
-	Position *uint64 `json:"Position,omitnil" name:"Position"`
+	Position *uint64 `json:"Position,omitnil,omitempty" name:"Position"`
 }
 
 type SendMessageCommandInput struct {
 	// 自定义消息，json格式字符串。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 消息重复次数，默认为 1。
-	Repeat *uint64 `json:"Repeat,omitnil" name:"Repeat"`
+	Repeat *uint64 `json:"Repeat,omitnil,omitempty" name:"Repeat"`
 }
 
 type SetAudioParamCommandInput struct {
 	// 音频类型，取值有：
 	// <li>Original：原唱</li>
 	// <li>Accompaniment：伴奏</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type SetDestroyModeCommandInput struct {
@@ -2063,10 +2063,10 @@ type SetDestroyModeCommandInput struct {
 	// <li>Auto：房间没人时自动销毁</li>
 	// <li>Expire：房间没人时过期自动销毁</li>
 	// <li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
-	DestroyMode *string `json:"DestroyMode,omitnil" name:"DestroyMode"`
+	DestroyMode *string `json:"DestroyMode,omitnil,omitempty" name:"DestroyMode"`
 
 	// 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
-	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitnil" name:"DestroyExpireTime"`
+	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitnil,omitempty" name:"DestroyExpireTime"`
 }
 
 type SetPlayModeCommandInput struct {
@@ -2075,7 +2075,7 @@ type SetPlayModeCommandInput struct {
 	// <li>Order：顺序播放</li>
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
-	PlayMode *string `json:"PlayMode,omitnil" name:"PlayMode"`
+	PlayMode *string `json:"PlayMode,omitnil,omitempty" name:"PlayMode"`
 }
 
 type SetPlaylistCommandInput struct {
@@ -2084,50 +2084,50 @@ type SetPlaylistCommandInput struct {
 	// <li>Delete：删除</li>
 	// <li>ClearList：清空歌曲列表</li>
 	// <li>Move：移动歌曲</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 歌单索引位置，
 	// 当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
 	// 当 Type 取 Delete 时，表示待删除歌曲的位置；
 	// 当 Type 取 Move 时，表示待调整歌曲的位置。
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
-	ChangedIndex *int64 `json:"ChangedIndex,omitnil" name:"ChangedIndex"`
+	ChangedIndex *int64 `json:"ChangedIndex,omitnil,omitempty" name:"ChangedIndex"`
 
 	// 歌曲 ID 列表，当 Type 取 Add 时，必填。
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 }
 
 // Predefined struct for user
 type SyncKTVRobotCommandRequestParams struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 指令及指令参数数组。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 type SyncKTVRobotCommandRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 指令及指令参数数组。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
@@ -2155,7 +2155,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncKTVRobotCommandResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SyncKTVRobotCommandResponse struct {
@@ -2186,42 +2186,42 @@ type SyncRobotCommand struct {
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
 	// <li>SetDestroyMode：设置销毁模式</li>
-	Command *string `json:"Command,omitnil" name:"Command"`
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 播放参数。
-	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil" name:"PlayCommandInput"`
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil,omitempty" name:"PlayCommandInput"`
 
 	// 播放列表变更信息，当Command取SetPlaylist时，必填。
-	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil" name:"SetPlaylistCommandInput"`
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil,omitempty" name:"SetPlaylistCommandInput"`
 
 	// 播放进度，当Command取Seek时，必填。
-	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil" name:"SeekCommandInput"`
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil,omitempty" name:"SeekCommandInput"`
 
 	// 音频参数，当Command取SetAudioParam时，必填。
-	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil" name:"SetAudioParamCommandInput"`
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil,omitempty" name:"SetAudioParamCommandInput"`
 
 	// 自定义消息，当Command取SendMessage时，必填。
-	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil" name:"SendMessageCommandInput"`
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil,omitempty" name:"SendMessageCommandInput"`
 
 	// 播放模式，当Command取SetPlayMode时，必填。
-	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil" name:"SetPlayModeCommandInput"`
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil,omitempty" name:"SetPlayModeCommandInput"`
 
 	// 销毁模式，当Command取SetDestroyMode时，必填。
-	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil" name:"SetDestroyModeCommandInput"`
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil,omitempty" name:"SetDestroyModeCommandInput"`
 }
 
 type TRTCJoinRoomInput struct {
 	// 签名。
-	Sign *string `json:"Sign,omitnil" name:"Sign"`
+	Sign *string `json:"Sign,omitnil,omitempty" name:"Sign"`
 
 	// 房间号。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 推流应用ID。
-	SdkAppId *string `json:"SdkAppId,omitnil" name:"SdkAppId"`
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 用户唯一标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// TRTC房间号的类型：
 	// 
@@ -2229,32 +2229,32 @@ type TRTCJoinRoomInput struct {
 	// String：字符串类型
 	// 默认为：Integer 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoomIdType *string `json:"RoomIdType,omitnil" name:"RoomIdType"`
+	RoomIdType *string `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 }
 
 type TimeRange struct {
 	// <li>大于等于此时间（起始时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
-	Before *string `json:"Before,omitnil" name:"Before"`
+	Before *string `json:"Before,omitnil,omitempty" name:"Before"`
 
 	// <li>小于此时间（结束时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
-	After *string `json:"After,omitnil" name:"After"`
+	After *string `json:"After,omitnil,omitempty" name:"After"`
 }
 
 type UserInfo struct {
 	// 应用名称。
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 用户标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 直播会员详细信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitnil" name:"LiveVipUserInfo"`
+	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitnil,omitempty" name:"LiveVipUserInfo"`
 
 	// 用户类型
 	// <li>Normal：普通用户</li>
 	// <li>LiveVip：直播会员用户</li>
-	UserType *string `json:"UserType,omitnil" name:"UserType"`
+	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 }

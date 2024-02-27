@@ -44,6 +44,9 @@ const (
 	// 调去询价中心服务失败
 	FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 
+	// 不允许更多的扩缩容规则。
+	FAILEDOPERATION_MORESTRATEGYNOTALLOWED = "FailedOperation.MoreStrategyNotAllowed"
+
 	// 操作失败，不支持pod。
 	FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"
 
@@ -161,8 +164,14 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDCOMMONDISKTYPE = "InvalidParameter.InvalidCommonDiskType"
 
+	// 不合法的指标比较方法。
+	INVALIDPARAMETER_INVALIDCOMPAREMETHOD = "InvalidParameter.InvalidCompareMethod"
+
 	// 无效的组件。
 	INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
+
+	// 至少需要一个触发条件。
+	INVALIDPARAMETER_INVALIDCONDITIONNUM = "InvalidParameter.InvalidConditionNum"
 
 	// Core节点数量无效。
 	INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
@@ -245,6 +254,9 @@ const (
 	// 无效的NodeType。
 	INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
 
+	// 无效的SoftInfo。
+	INVALIDPARAMETER_INVALIDPARAMTERINVALIDSOFTINFO = "InvalidParameter.InvalidParamterInvalidSoftInfo"
+
 	// 无效密码。
 	INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
 
@@ -253,6 +265,9 @@ const (
 
 	// 无效的引导操作脚本。
 	INVALIDPARAMETER_INVALIDPREEXECUTEDFILE = "InvalidParameter.InvalidPreExecutedFile"
+
+	// 不合法的指标处理方法。
+	INVALIDPARAMETER_INVALIDPROCESSMETHOD = "InvalidParameter.InvalidProcessMethod"
 
 	// 无效参数，不符合EMR版本。
 	INVALIDPARAMETER_INVALIDPRODUCT = "InvalidParameter.InvalidProduct"
@@ -274,6 +289,9 @@ const (
 
 	// 无效的资源规格。
 	INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+
+	// 无效的扩缩容动作。
+	INVALIDPARAMETER_INVALIDSCALEACTION = "InvalidParameter.InvalidScaleAction"
 
 	// 不合法的引导脚本执行参数。
 	INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = "InvalidParameter.InvalidScriptBootstrapActionConfig"
@@ -308,6 +326,21 @@ const (
 	// invalid Parameter StartTime or EndTime.参数无效
 	INVALIDPARAMETER_INVALIDSTARTTIMEORENDTIME = "InvalidParameter.InvalidStartTimeOrEndTime"
 
+	// invalid Parameter StatisticPeriod or TriggerThreshold.参数无效
+	INVALIDPARAMETER_INVALIDSTATISTICPERIODORTRIGGERTHRESHOLD = "InvalidParameter.InvalidStatisticPeriodOrTriggerThreshold"
+
+	// 参数错误。
+	INVALIDPARAMETER_INVALIDSTRATEGY = "InvalidParameter.InvalidStrategy"
+
+	// 无效的规则优先级。
+	INVALIDPARAMETER_INVALIDSTRATEGYPRIORITY = "InvalidParameter.InvalidStrategyPriority"
+
+	// 无效的规格。
+	INVALIDPARAMETER_INVALIDSTRATEGYSPEC = "InvalidParameter.InvalidStrategySpec"
+
+	// 不支持的扩缩容策略类型。
+	INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+
 	// 无效的子网ID。
 	INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
 
@@ -319,6 +352,9 @@ const (
 
 	// task的数量不能超过20。
 	INVALIDPARAMETER_INVALIDTASKCOUNT = "InvalidParameter.InvalidTaskCount"
+
+	// 参数错误。
+	INVALIDPARAMETER_INVALIDTIMELAYOUT = "InvalidParameter.InvalidTimeLayout"
 
 	// 无效的timespan。
 	INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
@@ -352,6 +388,12 @@ const (
 
 	// 项目与资源不匹配。
 	INVALIDPARAMETER_PROJECTRESOURCENOTMATCH = "InvalidParameter.ProjectResourceNotMatch"
+
+	// 执行时间重复。
+	INVALIDPARAMETER_REPEATEDEXECUTIONTIME = "InvalidParameter.RepeatedExecutionTime"
+
+	// 扩缩容规则名重复。
+	INVALIDPARAMETER_REPEATEDSTRATEGYNAME = "InvalidParameter.RepeatedStrategyName"
 
 	// 存在无效的产品组件。
 	INVALIDPARAMETER_SOFTWARENOTINPRODUCT = "InvalidParameter.SoftwareNotInProduct"
@@ -406,6 +448,9 @@ const (
 
 	// 无法找到监控元数据。
 	RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+
+	// 未找到相应扩缩容规则。
+	RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
 
 	// 找不到对应的子网。
 	RESOURCENOTFOUND_SUBNETNOTFOUND = "ResourceNotFound.SubnetNotFound"

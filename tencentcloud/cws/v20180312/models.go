@@ -23,44 +23,44 @@ import (
 // Predefined struct for user
 type CreateMonitorsRequestParams struct {
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描周期，单位小时，每X小时执行一次
-	Crontab *uint64 `json:"Crontab,omitnil" name:"Crontab"`
+	Crontab *uint64 `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
 	// 首次扫描开始时间
-	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil" name:"FirstScanStartTime"`
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil,omitempty" name:"FirstScanStartTime"`
 }
 
 type CreateMonitorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描周期，单位小时，每X小时执行一次
-	Crontab *uint64 `json:"Crontab,omitnil" name:"Crontab"`
+	Crontab *uint64 `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
 	// 首次扫描开始时间
-	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil" name:"FirstScanStartTime"`
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil,omitempty" name:"FirstScanStartTime"`
 }
 
 func (r *CreateMonitorsRequest) ToJsonString() string {
@@ -90,7 +90,7 @@ func (r *CreateMonitorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMonitorsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateMonitorsResponse struct {
@@ -112,20 +112,20 @@ func (r *CreateMonitorsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSitesRequestParams struct {
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 访问网站的客户端标识
-	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 }
 
 type CreateSitesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 访问网站的客户端标识
-	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 }
 
 func (r *CreateSitesRequest) ToJsonString() string {
@@ -151,13 +151,13 @@ func (r *CreateSitesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSitesResponseParams struct {
 	// 新增站点数。
-	Number *uint64 `json:"Number,omitnil" name:"Number"`
+	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 站点数组
-	Sites []*MiniSite `json:"Sites,omitnil" name:"Sites"`
+	Sites []*MiniSite `json:"Sites,omitnil,omitempty" name:"Sites"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSitesResponse struct {
@@ -179,26 +179,26 @@ func (r *CreateSitesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSitesScansRequestParams struct {
 	// 站点的ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 }
 
 type CreateSitesScansRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点的ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 }
 
 func (r *CreateSitesScansRequest) ToJsonString() string {
@@ -225,7 +225,7 @@ func (r *CreateSitesScansRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSitesScansResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateSitesScansResponse struct {
@@ -247,14 +247,14 @@ func (r *CreateSitesScansResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulsMisinformationRequestParams struct {
 	// 漏洞ID列表
-	VulIds []*uint64 `json:"VulIds,omitnil" name:"VulIds"`
+	VulIds []*uint64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
 }
 
 type CreateVulsMisinformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞ID列表
-	VulIds []*uint64 `json:"VulIds,omitnil" name:"VulIds"`
+	VulIds []*uint64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
 }
 
 func (r *CreateVulsMisinformationRequest) ToJsonString() string {
@@ -279,7 +279,7 @@ func (r *CreateVulsMisinformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulsMisinformationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateVulsMisinformationResponse struct {
@@ -301,20 +301,20 @@ func (r *CreateVulsMisinformationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulsReportRequestParams struct {
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 监控任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 }
 
 type CreateVulsReportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 监控任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 }
 
 func (r *CreateVulsReportRequest) ToJsonString() string {
@@ -340,10 +340,10 @@ func (r *CreateVulsReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulsReportResponseParams struct {
 	// 报告下载地址
-	ReportFileUrl *string `json:"ReportFileUrl,omitnil" name:"ReportFileUrl"`
+	ReportFileUrl *string `json:"ReportFileUrl,omitnil,omitempty" name:"ReportFileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateVulsReportResponse struct {
@@ -365,14 +365,14 @@ func (r *CreateVulsReportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMonitorsRequestParams struct {
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitnil" name:"MonitorIds"`
+	MonitorIds []*uint64 `json:"MonitorIds,omitnil,omitempty" name:"MonitorIds"`
 }
 
 type DeleteMonitorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitnil" name:"MonitorIds"`
+	MonitorIds []*uint64 `json:"MonitorIds,omitnil,omitempty" name:"MonitorIds"`
 }
 
 func (r *DeleteMonitorsRequest) ToJsonString() string {
@@ -397,7 +397,7 @@ func (r *DeleteMonitorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMonitorsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMonitorsResponse struct {
@@ -419,14 +419,14 @@ func (r *DeleteMonitorsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSitesRequestParams struct {
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 }
 
 type DeleteSitesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 }
 
 func (r *DeleteSitesRequest) ToJsonString() string {
@@ -451,7 +451,7 @@ func (r *DeleteSitesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSitesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteSitesResponse struct {
@@ -502,25 +502,25 @@ func (r *DescribeConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigResponseParams struct {
 	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示。
-	NoticeLevel *string `json:"NoticeLevel,omitnil" name:"NoticeLevel"`
+	NoticeLevel *string `json:"NoticeLevel,omitnil,omitempty" name:"NoticeLevel"`
 
 	// 配置ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 记录创建时间。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 记录更新新建。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 内容检测通知等级-1:通知,0-不通知
-	ContentLevel *uint64 `json:"ContentLevel,omitnil" name:"ContentLevel"`
+	ContentLevel *uint64 `json:"ContentLevel,omitnil,omitempty" name:"ContentLevel"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConfigResponse struct {
@@ -542,32 +542,32 @@ func (r *DescribeConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorsRequestParams struct {
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitnil" name:"MonitorIds"`
+	MonitorIds []*uint64 `json:"MonitorIds,omitnil,omitempty" name:"MonitorIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeMonitorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitnil" name:"MonitorIds"`
+	MonitorIds []*uint64 `json:"MonitorIds,omitnil,omitempty" name:"MonitorIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeMonitorsRequest) ToJsonString() string {
@@ -595,13 +595,13 @@ func (r *DescribeMonitorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorsResponseParams struct {
 	// 监控任务列表。
-	Monitors []*MonitorsDetail `json:"Monitors,omitnil" name:"Monitors"`
+	Monitors []*MonitorsDetail `json:"Monitors,omitnil,omitempty" name:"Monitors"`
 
 	// 监控任务数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMonitorsResponse struct {
@@ -652,16 +652,16 @@ func (r *DescribeSiteQuotaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSiteQuotaResponseParams struct {
 	// 已购买的扫描次数。
-	Total *uint64 `json:"Total,omitnil" name:"Total"`
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 已使用的扫描次数。
-	Used *uint64 `json:"Used,omitnil" name:"Used"`
+	Used *uint64 `json:"Used,omitnil,omitempty" name:"Used"`
 
 	// 剩余可用的扫描次数。
-	Available *uint64 `json:"Available,omitnil" name:"Available"`
+	Available *uint64 `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSiteQuotaResponse struct {
@@ -683,32 +683,32 @@ func (r *DescribeSiteQuotaResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSitesRequestParams struct {
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeSitesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitnil" name:"SiteIds"`
+	SiteIds []*uint64 `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeSitesRequest) ToJsonString() string {
@@ -736,13 +736,13 @@ func (r *DescribeSitesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSitesResponseParams struct {
 	// 站点数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 站点信息列表。
-	Sites []*Site `json:"Sites,omitnil" name:"Sites"`
+	Sites []*Site `json:"Sites,omitnil,omitempty" name:"Sites"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSitesResponse struct {
@@ -764,14 +764,14 @@ func (r *DescribeSitesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSitesVerificationRequestParams struct {
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 type DescribeSitesVerificationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 func (r *DescribeSitesVerificationRequest) ToJsonString() string {
@@ -796,13 +796,13 @@ func (r *DescribeSitesVerificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSitesVerificationResponseParams struct {
 	// 验证信息数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 验证信息列表。
-	SitesVerification []*SitesVerification `json:"SitesVerification,omitnil" name:"SitesVerification"`
+	SitesVerification []*SitesVerification `json:"SitesVerification,omitnil,omitempty" name:"SitesVerification"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSitesVerificationResponse struct {
@@ -853,34 +853,34 @@ func (r *DescribeVulsNumberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulsNumberResponseParams struct {
 	// 受影响的网站总数。
-	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitnil" name:"ImpactSiteNumber"`
+	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitnil,omitempty" name:"ImpactSiteNumber"`
 
 	// 已验证的网站总数。
-	SiteNumber *uint64 `json:"SiteNumber,omitnil" name:"SiteNumber"`
+	SiteNumber *uint64 `json:"SiteNumber,omitnil,omitempty" name:"SiteNumber"`
 
 	// 高风险漏洞总数。
-	VulsHighNumber *uint64 `json:"VulsHighNumber,omitnil" name:"VulsHighNumber"`
+	VulsHighNumber *uint64 `json:"VulsHighNumber,omitnil,omitempty" name:"VulsHighNumber"`
 
 	// 中风险漏洞总数。
-	VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitnil" name:"VulsMiddleNumber"`
+	VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitnil,omitempty" name:"VulsMiddleNumber"`
 
 	// 低高风险漏洞总数。
-	VulsLowNumber *uint64 `json:"VulsLowNumber,omitnil" name:"VulsLowNumber"`
+	VulsLowNumber *uint64 `json:"VulsLowNumber,omitnil,omitempty" name:"VulsLowNumber"`
 
 	// 风险提示总数。
-	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitnil" name:"VulsNoticeNumber"`
+	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitnil,omitempty" name:"VulsNoticeNumber"`
 
 	// 扫描页面总数。
-	PageCount *uint64 `json:"PageCount,omitnil" name:"PageCount"`
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
 
 	// 已验证的网站列表。
-	Sites []*MonitorMiniSite `json:"Sites,omitnil" name:"Sites"`
+	Sites []*MonitorMiniSite `json:"Sites,omitnil,omitempty" name:"Sites"`
 
 	// 受影响的网站列表。
-	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitnil" name:"ImpactSites"`
+	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitnil,omitempty" name:"ImpactSites"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulsNumberResponse struct {
@@ -931,13 +931,13 @@ func (r *DescribeVulsNumberTimelineRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulsNumberTimelineResponseParams struct {
 	// 统计数据记录数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 用户漏洞数随时间变化统计数据。
-	VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitnil" name:"VulsTimeline"`
+	VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitnil,omitempty" name:"VulsTimeline"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulsNumberTimelineResponse struct {
@@ -959,38 +959,38 @@ func (r *DescribeVulsNumberTimelineResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulsRequestParams struct {
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 监控任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeVulsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 监控任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeVulsRequest) ToJsonString() string {
@@ -1019,13 +1019,13 @@ func (r *DescribeVulsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulsResponseParams struct {
 	// 漏洞数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 漏洞信息列表。
-	Vuls []*Vul `json:"Vuls,omitnil" name:"Vuls"`
+	Vuls []*Vul `json:"Vuls,omitnil,omitempty" name:"Vuls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulsResponse struct {
@@ -1046,31 +1046,31 @@ func (r *DescribeVulsResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 过滤键的名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type MiniSite struct {
 	// 站点ID。
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 站点Url。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
 type ModifyConfigAttributeRequestParams struct {
 	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
-	NoticeLevel *string `json:"NoticeLevel,omitnil" name:"NoticeLevel"`
+	NoticeLevel *string `json:"NoticeLevel,omitnil,omitempty" name:"NoticeLevel"`
 }
 
 type ModifyConfigAttributeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
-	NoticeLevel *string `json:"NoticeLevel,omitnil" name:"NoticeLevel"`
+	NoticeLevel *string `json:"NoticeLevel,omitnil,omitempty" name:"NoticeLevel"`
 }
 
 func (r *ModifyConfigAttributeRequest) ToJsonString() string {
@@ -1095,7 +1095,7 @@ func (r *ModifyConfigAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyConfigAttributeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyConfigAttributeResponse struct {
@@ -1117,56 +1117,56 @@ func (r *ModifyConfigAttributeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMonitorAttributeRequestParams struct {
 	// 监测任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描周期，单位小时，每X小时执行一次
-	Crontab *uint64 `json:"Crontab,omitnil" name:"Crontab"`
+	Crontab *uint64 `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
 	// 首次扫描开始时间
-	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil" name:"FirstScanStartTime"`
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil,omitempty" name:"FirstScanStartTime"`
 
 	// 监测状态：1-监测中；2-暂停监测
-	MonitorStatus *uint64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 }
 
 type ModifyMonitorAttributeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 监测任务ID
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
 	// 任务名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描周期，单位小时，每X小时执行一次
-	Crontab *uint64 `json:"Crontab,omitnil" name:"Crontab"`
+	Crontab *uint64 `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
 	// 扫描速率限制，每秒发送X个HTTP请求
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
 	// 首次扫描开始时间
-	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil" name:"FirstScanStartTime"`
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil,omitempty" name:"FirstScanStartTime"`
 
 	// 监测状态：1-监测中；2-暂停监测
-	MonitorStatus *uint64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 }
 
 func (r *ModifyMonitorAttributeRequest) ToJsonString() string {
@@ -1198,7 +1198,7 @@ func (r *ModifyMonitorAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMonitorAttributeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyMonitorAttributeResponse struct {
@@ -1220,50 +1220,50 @@ func (r *ModifyMonitorAttributeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySiteAttributeRequestParams struct {
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 站点名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要
-	NeedLogin *int64 `json:"NeedLogin,omitnil" name:"NeedLogin"`
+	NeedLogin *int64 `json:"NeedLogin,omitnil,omitempty" name:"NeedLogin"`
 
 	// 登录后的cookie
-	LoginCookie *string `json:"LoginCookie,omitnil" name:"LoginCookie"`
+	LoginCookie *string `json:"LoginCookie,omitnil,omitempty" name:"LoginCookie"`
 
 	// 用于测试cookie是否有效的URL
-	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil" name:"LoginCheckUrl"`
+	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil,omitempty" name:"LoginCheckUrl"`
 
 	// 用于测试cookie是否有效的关键字
-	LoginCheckKw *string `json:"LoginCheckKw,omitnil" name:"LoginCheckKw"`
+	LoginCheckKw *string `json:"LoginCheckKw,omitnil,omitempty" name:"LoginCheckKw"`
 
 	// 禁止扫描器扫描的目录关键字
-	ScanDisallow *string `json:"ScanDisallow,omitnil" name:"ScanDisallow"`
+	ScanDisallow *string `json:"ScanDisallow,omitnil,omitempty" name:"ScanDisallow"`
 }
 
 type ModifySiteAttributeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点ID
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 站点名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要
-	NeedLogin *int64 `json:"NeedLogin,omitnil" name:"NeedLogin"`
+	NeedLogin *int64 `json:"NeedLogin,omitnil,omitempty" name:"NeedLogin"`
 
 	// 登录后的cookie
-	LoginCookie *string `json:"LoginCookie,omitnil" name:"LoginCookie"`
+	LoginCookie *string `json:"LoginCookie,omitnil,omitempty" name:"LoginCookie"`
 
 	// 用于测试cookie是否有效的URL
-	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil" name:"LoginCheckUrl"`
+	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil,omitempty" name:"LoginCheckUrl"`
 
 	// 用于测试cookie是否有效的关键字
-	LoginCheckKw *string `json:"LoginCheckKw,omitnil" name:"LoginCheckKw"`
+	LoginCheckKw *string `json:"LoginCheckKw,omitnil,omitempty" name:"LoginCheckKw"`
 
 	// 禁止扫描器扫描的目录关键字
-	ScanDisallow *string `json:"ScanDisallow,omitnil" name:"ScanDisallow"`
+	ScanDisallow *string `json:"ScanDisallow,omitnil,omitempty" name:"ScanDisallow"`
 }
 
 func (r *ModifySiteAttributeRequest) ToJsonString() string {
@@ -1294,7 +1294,7 @@ func (r *ModifySiteAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySiteAttributeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifySiteAttributeResponse struct {
@@ -1315,247 +1315,247 @@ func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
 
 type Monitor struct {
 	// 监控任务ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 监控名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监测状态：1-监测中；2-暂停监测。
-	MonitorStatus *uint64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 
 	// 监测模式，normal-正常扫描；deep-深度扫描。
-	ScannerType *string `json:"ScannerType,omitnil" name:"ScannerType"`
+	ScannerType *string `json:"ScannerType,omitnil,omitempty" name:"ScannerType"`
 
 	// 扫描周期，单位小时，每X小时执行一次。
-	Crontab *uint64 `json:"Crontab,omitnil" name:"Crontab"`
+	Crontab *uint64 `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
 	// 指定扫描类型，3位数每位依次表示：扫描Web漏洞、扫描系统漏洞、扫描系统端口。
-	IncludedVulsTypes *string `json:"IncludedVulsTypes,omitnil" name:"IncludedVulsTypes"`
+	IncludedVulsTypes *string `json:"IncludedVulsTypes,omitnil,omitempty" name:"IncludedVulsTypes"`
 
 	// 速率限制，每秒发送X个HTTP请求。
-	RateLimit *uint64 `json:"RateLimit,omitnil" name:"RateLimit"`
+	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
 	// 首次扫描开始时间。
-	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil" name:"FirstScanStartTime"`
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitnil,omitempty" name:"FirstScanStartTime"`
 
 	// 扫描状态：0-待扫描（无任何扫描结果）；1-扫描中（正在进行扫描）；2-已扫描（有扫描结果且不正在扫描）；3-扫描完成待同步结果。
-	ScanStatus *uint64 `json:"ScanStatus,omitnil" name:"ScanStatus"`
+	ScanStatus *uint64 `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 上一次扫描完成时间。
-	LastScanFinishTime *string `json:"LastScanFinishTime,omitnil" name:"LastScanFinishTime"`
+	LastScanFinishTime *string `json:"LastScanFinishTime,omitnil,omitempty" name:"LastScanFinishTime"`
 
 	// 当前扫描开始时间，如扫描完成则为上一次扫描的开始时间。
-	CurrentScanStartTime *string `json:"CurrentScanStartTime,omitnil" name:"CurrentScanStartTime"`
+	CurrentScanStartTime *string `json:"CurrentScanStartTime,omitnil,omitempty" name:"CurrentScanStartTime"`
 
 	// CreatedAt。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// UpdatedAt。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 扫描状态：0-待检测；1-检测完成
-	ContentScanStatus *uint64 `json:"ContentScanStatus,omitnil" name:"ContentScanStatus"`
+	ContentScanStatus *uint64 `json:"ContentScanStatus,omitnil,omitempty" name:"ContentScanStatus"`
 }
 
 type MonitorMiniSite struct {
 	// 站点ID。
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 站点Url。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type MonitorsDetail struct {
 	// 监控任务基础信息。
-	Basic *Monitor `json:"Basic,omitnil" name:"Basic"`
+	Basic *Monitor `json:"Basic,omitnil,omitempty" name:"Basic"`
 
 	// 监控任务包含的站点列表。
-	Sites []*MonitorMiniSite `json:"Sites,omitnil" name:"Sites"`
+	Sites []*MonitorMiniSite `json:"Sites,omitnil,omitempty" name:"Sites"`
 
 	// 监控任务包含的站点列表数量。
-	SiteNumber *uint64 `json:"SiteNumber,omitnil" name:"SiteNumber"`
+	SiteNumber *uint64 `json:"SiteNumber,omitnil,omitempty" name:"SiteNumber"`
 
 	// 监控任务包含的受漏洞威胁的站点列表。
-	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitnil" name:"ImpactSites"`
+	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitnil,omitempty" name:"ImpactSites"`
 
 	// 监控任务包含的受漏洞威胁的站点列表数量。
-	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitnil" name:"ImpactSiteNumber"`
+	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitnil,omitempty" name:"ImpactSiteNumber"`
 
 	// 高风险漏洞数量。
-	VulsHighNumber *uint64 `json:"VulsHighNumber,omitnil" name:"VulsHighNumber"`
+	VulsHighNumber *uint64 `json:"VulsHighNumber,omitnil,omitempty" name:"VulsHighNumber"`
 
 	// 中风险漏洞数量。
-	VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitnil" name:"VulsMiddleNumber"`
+	VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitnil,omitempty" name:"VulsMiddleNumber"`
 
 	// 低风险漏洞数量。
-	VulsLowNumber *uint64 `json:"VulsLowNumber,omitnil" name:"VulsLowNumber"`
+	VulsLowNumber *uint64 `json:"VulsLowNumber,omitnil,omitempty" name:"VulsLowNumber"`
 
 	// 提示数量。
-	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitnil" name:"VulsNoticeNumber"`
+	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitnil,omitempty" name:"VulsNoticeNumber"`
 
 	// 监控任务包含的站点列表的平均扫描进度。
-	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 扫描页面总数。
-	PageCount *uint64 `json:"PageCount,omitnil" name:"PageCount"`
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
 
 	// 内容检测数量。
-	ContentNumber *uint64 `json:"ContentNumber,omitnil" name:"ContentNumber"`
+	ContentNumber *uint64 `json:"ContentNumber,omitnil,omitempty" name:"ContentNumber"`
 }
 
 type Site struct {
 	// 站点ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 监控任务ID，为0时表示未加入监控任务。
-	MonitorId *uint64 `json:"MonitorId,omitnil" name:"MonitorId"`
+	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 站点url。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 站点名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 验证状态：0-未验证；1-已验证；2-验证失效，待重新验证。
-	VerifyStatus *uint64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
+	VerifyStatus *uint64 `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
 
 	// 监测状态：0-未监测；1-监测中；2-暂停监测。
-	MonitorStatus *uint64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 
 	// 扫描状态：0-待扫描（无任何扫描结果）；1-扫描中（正在进行扫描）；2-已扫描（有扫描结果且不正在扫描）；3-扫描完成待同步结果。
-	ScanStatus *uint64 `json:"ScanStatus,omitnil" name:"ScanStatus"`
+	ScanStatus *uint64 `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 最近一次的AIScanner的扫描任务id，注意取消的情况。
-	LastScanTaskId *uint64 `json:"LastScanTaskId,omitnil" name:"LastScanTaskId"`
+	LastScanTaskId *uint64 `json:"LastScanTaskId,omitnil,omitempty" name:"LastScanTaskId"`
 
 	// 最近一次扫描开始时间。
-	LastScanStartTime *string `json:"LastScanStartTime,omitnil" name:"LastScanStartTime"`
+	LastScanStartTime *string `json:"LastScanStartTime,omitnil,omitempty" name:"LastScanStartTime"`
 
 	// 最近一次扫描完成时间。
-	LastScanFinishTime *string `json:"LastScanFinishTime,omitnil" name:"LastScanFinishTime"`
+	LastScanFinishTime *string `json:"LastScanFinishTime,omitnil,omitempty" name:"LastScanFinishTime"`
 
 	// 最近一次取消时间，取消即使用上一次扫描结果。
-	LastScanCancelTime *string `json:"LastScanCancelTime,omitnil" name:"LastScanCancelTime"`
+	LastScanCancelTime *string `json:"LastScanCancelTime,omitnil,omitempty" name:"LastScanCancelTime"`
 
 	// 最近一次扫描扫描的页面数。
-	LastScanPageCount *uint64 `json:"LastScanPageCount,omitnil" name:"LastScanPageCount"`
+	LastScanPageCount *uint64 `json:"LastScanPageCount,omitnil,omitempty" name:"LastScanPageCount"`
 
 	// normal-正常扫描；deep-深度扫描。
-	LastScanScannerType *string `json:"LastScanScannerType,omitnil" name:"LastScanScannerType"`
+	LastScanScannerType *string `json:"LastScanScannerType,omitnil,omitempty" name:"LastScanScannerType"`
 
 	// 最近一次扫描高风险漏洞数量。
-	LastScanVulsHighNum *uint64 `json:"LastScanVulsHighNum,omitnil" name:"LastScanVulsHighNum"`
+	LastScanVulsHighNum *uint64 `json:"LastScanVulsHighNum,omitnil,omitempty" name:"LastScanVulsHighNum"`
 
 	// 最近一次扫描中风险漏洞数量。
-	LastScanVulsMiddleNum *uint64 `json:"LastScanVulsMiddleNum,omitnil" name:"LastScanVulsMiddleNum"`
+	LastScanVulsMiddleNum *uint64 `json:"LastScanVulsMiddleNum,omitnil,omitempty" name:"LastScanVulsMiddleNum"`
 
 	// 最近一次扫描低风险漏洞数量。
-	LastScanVulsLowNum *uint64 `json:"LastScanVulsLowNum,omitnil" name:"LastScanVulsLowNum"`
+	LastScanVulsLowNum *uint64 `json:"LastScanVulsLowNum,omitnil,omitempty" name:"LastScanVulsLowNum"`
 
 	// 最近一次扫描提示信息数量。
-	LastScanVulsNoticeNum *uint64 `json:"LastScanVulsNoticeNum,omitnil" name:"LastScanVulsNoticeNum"`
+	LastScanVulsNoticeNum *uint64 `json:"LastScanVulsNoticeNum,omitnil,omitempty" name:"LastScanVulsNoticeNum"`
 
 	// 记录添加时间。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 记录最近修改时间。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 速率限制，每秒发送X个HTTP请求。
-	LastScanRateLimit *uint64 `json:"LastScanRateLimit,omitnil" name:"LastScanRateLimit"`
+	LastScanRateLimit *uint64 `json:"LastScanRateLimit,omitnil,omitempty" name:"LastScanRateLimit"`
 
 	// 最近一次扫描漏洞总数量。
-	LastScanVulsNum *uint64 `json:"LastScanVulsNum,omitnil" name:"LastScanVulsNum"`
+	LastScanVulsNum *uint64 `json:"LastScanVulsNum,omitnil,omitempty" name:"LastScanVulsNum"`
 
 	// 最近一次扫描提示总数量
-	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum,omitnil" name:"LastScanNoticeNum"`
+	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum,omitnil,omitempty" name:"LastScanNoticeNum"`
 
 	// 扫描进度，百分比整数
-	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 云用户标识。
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
-	NeedLogin *int64 `json:"NeedLogin,omitnil" name:"NeedLogin"`
+	NeedLogin *int64 `json:"NeedLogin,omitnil,omitempty" name:"NeedLogin"`
 
 	// 登录后的cookie。
-	LoginCookie *string `json:"LoginCookie,omitnil" name:"LoginCookie"`
+	LoginCookie *string `json:"LoginCookie,omitnil,omitempty" name:"LoginCookie"`
 
 	// 登录后的cookie是否有效：0-无效；1-有效。
-	LoginCookieValid *uint64 `json:"LoginCookieValid,omitnil" name:"LoginCookieValid"`
+	LoginCookieValid *uint64 `json:"LoginCookieValid,omitnil,omitempty" name:"LoginCookieValid"`
 
 	// 用于测试cookie是否有效的URL。
-	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil" name:"LoginCheckUrl"`
+	LoginCheckUrl *string `json:"LoginCheckUrl,omitnil,omitempty" name:"LoginCheckUrl"`
 
 	// 用于测试cookie是否有效的关键字。
-	LoginCheckKw *string `json:"LoginCheckKw,omitnil" name:"LoginCheckKw"`
+	LoginCheckKw *string `json:"LoginCheckKw,omitnil,omitempty" name:"LoginCheckKw"`
 
 	// 禁止扫描器扫描的目录关键字。
-	ScanDisallow *string `json:"ScanDisallow,omitnil" name:"ScanDisallow"`
+	ScanDisallow *string `json:"ScanDisallow,omitnil,omitempty" name:"ScanDisallow"`
 
 	// 访问网站的客户端标识。
-	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 
 	// 内容检测状态：0-未检测；1-已检测；
-	ContentStatus *uint64 `json:"ContentStatus,omitnil" name:"ContentStatus"`
+	ContentStatus *uint64 `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
 
 	// 最近一次扫描内容检测数量
-	LastScanContentNum *uint64 `json:"LastScanContentNum,omitnil" name:"LastScanContentNum"`
+	LastScanContentNum *uint64 `json:"LastScanContentNum,omitnil,omitempty" name:"LastScanContentNum"`
 }
 
 type SitesVerification struct {
 	// 根域名。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// txt解析域名验证的name。
-	TxtName *string `json:"TxtName,omitnil" name:"TxtName"`
+	TxtName *string `json:"TxtName,omitnil,omitempty" name:"TxtName"`
 
 	// txt解析域名验证的text。
-	TxtText *string `json:"TxtText,omitnil" name:"TxtText"`
+	TxtText *string `json:"TxtText,omitnil,omitempty" name:"TxtText"`
 
 	// 验证有效期，在此之前有效。
-	ValidTo *string `json:"ValidTo,omitnil" name:"ValidTo"`
+	ValidTo *string `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
 	// 验证状态：0-未验证；1-已验证；2-验证失效，待重新验证。
-	VerifyStatus *uint64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
+	VerifyStatus *uint64 `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
 
 	// CreatedAt。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// UpdatedAt。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云用户appid
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 用于验证站点的url，即访问该url获取验证数据。
-	VerifyUrl *string `json:"VerifyUrl,omitnil" name:"VerifyUrl"`
+	VerifyUrl *string `json:"VerifyUrl,omitnil,omitempty" name:"VerifyUrl"`
 
 	// 获取验证验证文件的url。
-	VerifyFileUrl *string `json:"VerifyFileUrl,omitnil" name:"VerifyFileUrl"`
+	VerifyFileUrl *string `json:"VerifyFileUrl,omitnil,omitempty" name:"VerifyFileUrl"`
 }
 
 // Predefined struct for user
 type VerifySitesRequestParams struct {
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 type VerifySitesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitnil" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 func (r *VerifySitesRequest) ToJsonString() string {
@@ -1580,13 +1580,13 @@ func (r *VerifySitesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifySitesResponseParams struct {
 	// 验证成功的根域名数量。
-	SuccessNumber *uint64 `json:"SuccessNumber,omitnil" name:"SuccessNumber"`
+	SuccessNumber *uint64 `json:"SuccessNumber,omitnil,omitempty" name:"SuccessNumber"`
 
 	// 验证失败的根域名数量。
-	FailNumber *uint64 `json:"FailNumber,omitnil" name:"FailNumber"`
+	FailNumber *uint64 `json:"FailNumber,omitnil,omitempty" name:"FailNumber"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type VerifySitesResponse struct {
@@ -1607,94 +1607,94 @@ func (r *VerifySitesResponse) FromJsonString(s string) error {
 
 type Vul struct {
 	// 漏洞ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 站点ID。
-	SiteId *uint64 `json:"SiteId,omitnil" name:"SiteId"`
+	SiteId *uint64 `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 扫描引擎的扫描任务ID。
-	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 漏洞级别：high、middle、low、notice。
-	Level *string `json:"Level,omitnil" name:"Level"`
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 漏洞名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 出现漏洞的url。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 网址/细节。
-	Html *string `json:"Html,omitnil" name:"Html"`
+	Html *string `json:"Html,omitnil,omitempty" name:"Html"`
 
 	// 漏洞类型。
-	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 危害说明。
-	Harm *string `json:"Harm,omitnil" name:"Harm"`
+	Harm *string `json:"Harm,omitnil,omitempty" name:"Harm"`
 
 	// 漏洞描述。
-	Describe *string `json:"Describe,omitnil" name:"Describe"`
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 解决方案。
-	Solution *string `json:"Solution,omitnil" name:"Solution"`
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 漏洞参考。
-	From *string `json:"From,omitnil" name:"From"`
+	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 漏洞通过该参数攻击。
-	Parameter *string `json:"Parameter,omitnil" name:"Parameter"`
+	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
 
 	// CreatedAt。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// UpdatedAt。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 是否已经添加误报，0-否，1-是。
-	IsReported *uint64 `json:"IsReported,omitnil" name:"IsReported"`
+	IsReported *uint64 `json:"IsReported,omitnil,omitempty" name:"IsReported"`
 
 	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 云用户标识。
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 type VulsTimeline struct {
 	// ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 日期。
-	Date *string `json:"Date,omitnil" name:"Date"`
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 扫描页面总数量。
-	PageCount *uint64 `json:"PageCount,omitnil" name:"PageCount"`
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
 
 	// 已验证网站总数量。
-	SiteNum *uint64 `json:"SiteNum,omitnil" name:"SiteNum"`
+	SiteNum *uint64 `json:"SiteNum,omitnil,omitempty" name:"SiteNum"`
 
 	// 受影响的网站总数量。
-	ImpactSiteNum *uint64 `json:"ImpactSiteNum,omitnil" name:"ImpactSiteNum"`
+	ImpactSiteNum *uint64 `json:"ImpactSiteNum,omitnil,omitempty" name:"ImpactSiteNum"`
 
 	// 高危漏洞总数量。
-	VulsHighNum *uint64 `json:"VulsHighNum,omitnil" name:"VulsHighNum"`
+	VulsHighNum *uint64 `json:"VulsHighNum,omitnil,omitempty" name:"VulsHighNum"`
 
 	// 中危漏洞总数量。
-	VulsMiddleNum *uint64 `json:"VulsMiddleNum,omitnil" name:"VulsMiddleNum"`
+	VulsMiddleNum *uint64 `json:"VulsMiddleNum,omitnil,omitempty" name:"VulsMiddleNum"`
 
 	// 低危漏洞总数量。
-	VulsLowNum *uint64 `json:"VulsLowNum,omitnil" name:"VulsLowNum"`
+	VulsLowNum *uint64 `json:"VulsLowNum,omitnil,omitempty" name:"VulsLowNum"`
 
 	// 风险提示总数量
-	VulsNoticeNum *uint64 `json:"VulsNoticeNum,omitnil" name:"VulsNoticeNum"`
+	VulsNoticeNum *uint64 `json:"VulsNoticeNum,omitnil,omitempty" name:"VulsNoticeNum"`
 
 	// 记录添加时间。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 记录最近修改时间。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 }

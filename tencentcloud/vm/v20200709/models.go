@@ -25,7 +25,7 @@ type AudioResult struct {
 	// 0 未命中
 	// 1 命中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 命中的标签
 	// Porn 色情
@@ -36,116 +36,116 @@ type AudioResult struct {
 	// Ad 广告
 	// Moan 呻吟
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分，0-100
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 音频ASR文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitnil" name:"Text"`
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 音频片段存储URL，有效期为1天
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 音频时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *string `json:"Duration,omitnil" name:"Duration"`
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 拓展字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extra *string `json:"Extra,omitnil" name:"Extra"`
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 文本审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitnil" name:"TextResults"`
+	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitnil,omitempty" name:"TextResults"`
 
 	// 音频呻吟审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitnil" name:"MoanResults"`
+	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitnil,omitempty" name:"MoanResults"`
 
 	// 音频语种检测结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitnil" name:"LanguageResults"`
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitnil,omitempty" name:"LanguageResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
 	// 语种
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 得分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *float64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *float64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 子标签码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubLabelCode *string `json:"SubLabelCode,omitnil" name:"SubLabelCode"`
+	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 }
 
 type AudioResultDetailMoanResult struct {
 	// 固定为Moan
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 分数
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 开始时间
-	StartTime *float64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *float64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 子标签码
-	SubLabelCode *string `json:"SubLabelCode,omitnil" name:"SubLabelCode"`
+	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 }
 
 type AudioResultDetailTextResult struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 命中的LibId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibId *string `json:"LibId,omitnil" name:"LibId"`
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 命中的LibName
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibName *string `json:"LibName,omitnil" name:"LibName"`
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 得分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 词库类型 1 黑白库 2 自定义库
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibType *int64 `json:"LibType,omitnil" name:"LibType"`
+	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
 	// 审核建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
 type AudioSegments struct {
@@ -153,35 +153,35 @@ type AudioSegments struct {
 	// 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 	// 直播流：该值为时间戳，例如：1594650717
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OffsetTime *string `json:"OffsetTime,omitnil" name:"OffsetTime"`
+	OffsetTime *string `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
 
 	// 结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *AudioResult `json:"Result,omitnil" name:"Result"`
+	Result *AudioResult `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
 type BucketInfo struct {
 	// 腾讯云对象存储，存储桶名称
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 对象Key
-	Object *string `json:"Object,omitnil" name:"Object"`
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
 }
 
 // Predefined struct for user
 type CancelTaskRequestParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type CancelTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *CancelTaskRequest) ToJsonString() string {
@@ -206,7 +206,7 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CancelTaskResponse struct {
@@ -228,32 +228,32 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBizConfigRequestParams struct {
 	// 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
-	BizType *string `json:"BizType,omitnil" name:"BizType"`
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 审核分类信息
-	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitnil" name:"MediaModeration"`
+	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitnil,omitempty" name:"MediaModeration"`
 
 	// 业务名称，用于标识业务场景，长度不超过32位
-	BizName *string `json:"BizName,omitnil" name:"BizName"`
+	BizName *string `json:"BizName,omitnil,omitempty" name:"BizName"`
 
 	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告); Custom (自定义);
-	ModerationCategories []*string `json:"ModerationCategories,omitnil" name:"ModerationCategories"`
+	ModerationCategories []*string `json:"ModerationCategories,omitnil,omitempty" name:"ModerationCategories"`
 }
 
 type CreateBizConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
-	BizType *string `json:"BizType,omitnil" name:"BizType"`
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 审核分类信息
-	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitnil" name:"MediaModeration"`
+	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitnil,omitempty" name:"MediaModeration"`
 
 	// 业务名称，用于标识业务场景，长度不超过32位
-	BizName *string `json:"BizName,omitnil" name:"BizName"`
+	BizName *string `json:"BizName,omitnil,omitempty" name:"BizName"`
 
 	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告); Custom (自定义);
-	ModerationCategories []*string `json:"ModerationCategories,omitnil" name:"ModerationCategories"`
+	ModerationCategories []*string `json:"ModerationCategories,omitnil,omitempty" name:"ModerationCategories"`
 }
 
 func (r *CreateBizConfigRequest) ToJsonString() string {
@@ -281,7 +281,7 @@ func (r *CreateBizConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBizConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateBizConfigResponse struct {
@@ -303,44 +303,44 @@ func (r *CreateBizConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVideoModerationTaskRequestParams struct {
 	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
-	BizType *string `json:"BizType,omitnil" name:"BizType"`
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitnil" name:"Tasks"`
+	Tasks []*TaskInput `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 回调签名key，具体可以查看签名文档。
-	Seed *string `json:"Seed,omitnil" name:"Seed"`
+	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
-	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type CreateVideoModerationTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
-	BizType *string `json:"BizType,omitnil" name:"BizType"`
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitnil" name:"Tasks"`
+	Tasks []*TaskInput `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 回调签名key，具体可以查看签名文档。
-	Seed *string `json:"Seed,omitnil" name:"Seed"`
+	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
-	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 func (r *CreateVideoModerationTaskRequest) ToJsonString() string {
@@ -371,10 +371,10 @@ func (r *CreateVideoModerationTaskRequest) FromJsonString(s string) error {
 type CreateVideoModerationTaskResponseParams struct {
 	// 任务创建结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*TaskResult `json:"Results,omitnil" name:"Results"`
+	Results []*TaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateVideoModerationTaskResponse struct {
@@ -396,20 +396,20 @@ func (r *CreateVideoModerationTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
 	// 任务ID，创建任务后返回的TaskId字段
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 是否展示所有分片，默认只展示命中规则的分片
-	ShowAllSegments *bool `json:"ShowAllSegments,omitnil" name:"ShowAllSegments"`
+	ShowAllSegments *bool `json:"ShowAllSegments,omitnil,omitempty" name:"ShowAllSegments"`
 }
 
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID，创建任务后返回的TaskId字段
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 是否展示所有分片，默认只展示命中规则的分片
-	ShowAllSegments *bool `json:"ShowAllSegments,omitnil" name:"ShowAllSegments"`
+	ShowAllSegments *bool `json:"ShowAllSegments,omitnil,omitempty" name:"ShowAllSegments"`
 }
 
 func (r *DescribeTaskDetailRequest) ToJsonString() string {
@@ -436,19 +436,19 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 type DescribeTaskDetailResponseParams struct {
 	// 任务Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 审核时传入的数据Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 业务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BizType *string `json:"BizType,omitnil" name:"BizType"`
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 状态，可选值：
 	// FINISH 已完成
@@ -457,11 +457,11 @@ type DescribeTaskDetailResponseParams struct {
 	// ERROR 出错
 	// CANCELLED 已取消
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 审核建议
 	// 可选：
@@ -469,39 +469,39 @@ type DescribeTaskDetailResponseParams struct {
 	// Reveiw 建议复审
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels []*TaskLabel `json:"Labels,omitnil" name:"Labels"`
+	Labels []*TaskLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 媒体解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MediaInfo *MediaInfo `json:"MediaInfo,omitnil" name:"MediaInfo"`
+	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
 
 	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InputInfo *InputInfo `json:"InputInfo,omitnil" name:"InputInfo"`
+	InputInfo *InputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 在秒后重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TryInSeconds *int64 `json:"TryInSeconds,omitnil" name:"TryInSeconds"`
+	TryInSeconds *int64 `json:"TryInSeconds,omitnil,omitempty" name:"TryInSeconds"`
 
 	// 图片结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageSegments []*ImageSegments `json:"ImageSegments,omitnil" name:"ImageSegments"`
+	ImageSegments []*ImageSegments `json:"ImageSegments,omitnil,omitempty" name:"ImageSegments"`
 
 	// 音频结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil" name:"AudioSegments"`
+	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
 
 	// 如果返回的状态为ERROR，该字段会标记错误类型。
 	// 可选值：：
@@ -509,14 +509,14 @@ type DescribeTaskDetailResponseParams struct {
 	// URL_ERROR：下载地址验证失败。
 	// TIMEOUT_ERROR：处理超时。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorType *string `json:"ErrorType,omitnil" name:"ErrorType"`
+	ErrorType *string `json:"ErrorType,omitnil,omitempty" name:"ErrorType"`
 
 	// 审核任务错误日志。当Error不为空时，会展示该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorDescription *string `json:"ErrorDescription,omitnil" name:"ErrorDescription"`
+	ErrorDescription *string `json:"ErrorDescription,omitnil,omitempty" name:"ErrorDescription"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTaskDetailResponse struct {
@@ -538,20 +538,20 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVideoStatRequestParams struct {
 	// 审核类型 1: 机器审核; 2: 人工审核
-	AuditType *int64 `json:"AuditType,omitnil" name:"AuditType"`
+	AuditType *int64 `json:"AuditType,omitnil,omitempty" name:"AuditType"`
 
 	// 查询条件
-	Filters []*Filters `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeVideoStatRequest struct {
 	*tchttp.BaseRequest
 	
 	// 审核类型 1: 机器审核; 2: 人工审核
-	AuditType *int64 `json:"AuditType,omitnil" name:"AuditType"`
+	AuditType *int64 `json:"AuditType,omitnil,omitempty" name:"AuditType"`
 
 	// 查询条件
-	Filters []*Filters `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeVideoStatRequest) ToJsonString() string {
@@ -577,16 +577,16 @@ func (r *DescribeVideoStatRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVideoStatResponseParams struct {
 	// 识别结果统计
-	Overview *Overview `json:"Overview,omitnil" name:"Overview"`
+	Overview *Overview `json:"Overview,omitnil,omitempty" name:"Overview"`
 
 	// 识别量统计
-	TrendCount []*TrendCount `json:"TrendCount,omitnil" name:"TrendCount"`
+	TrendCount []*TrendCount `json:"TrendCount,omitnil,omitempty" name:"TrendCount"`
 
 	// 违规数据分布
-	EvilCount []*EvilCount `json:"EvilCount,omitnil" name:"EvilCount"`
+	EvilCount []*EvilCount `json:"EvilCount,omitnil,omitempty" name:"EvilCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVideoStatResponse struct {
@@ -615,21 +615,21 @@ type EvilCount struct {
 	// Illegal	20006	
 	// Spam	25001	
 	// Moan	26001
-	EvilType *string `json:"EvilType,omitnil" name:"EvilType"`
+	EvilType *string `json:"EvilType,omitnil,omitempty" name:"EvilType"`
 
 	// 分布类型总量
-	Count *int64 `json:"Count,omitnil" name:"Count"`
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type FileOutput struct {
 	// 存储的Bucket
-	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// Cos Region
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 对象前缀
-	ObjectPrefix *string `json:"ObjectPrefix,omitnil" name:"ObjectPrefix"`
+	ObjectPrefix *string `json:"ObjectPrefix,omitnil,omitempty" name:"ObjectPrefix"`
 }
 
 type Filters struct {
@@ -637,10 +637,10 @@ type Filters struct {
 	// 策略BizType
 	// 子账号SubUin
 	// 日期区间DateRange
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 查询值
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type ImageResult struct {
@@ -648,7 +648,7 @@ type ImageResult struct {
 	// 0 未命中
 	// 1 命中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 命中的标签
 	// Porn 色情
@@ -659,30 +659,30 @@ type ImageResult struct {
 	// Terror 暴恐
 	// Ad 广告
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 画面截帧图片结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*ImageResultResult `json:"Results,omitnil" name:"Results"`
+	Results []*ImageResultResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 图片URL地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 附加字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extra *string `json:"Extra,omitnil" name:"Extra"`
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type ImageResultResult struct {
@@ -695,217 +695,217 @@ type ImageResultResult struct {
 	// Terror 暴恐
 	// Ad 广告
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scene *string `json:"Scene,omitnil" name:"Scene"`
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 是否命中
 	// 0 未命中
 	// 1 命中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HitFlag *int64 `json:"HitFlag,omitnil" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 子标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubLabel *string `json:"SubLabel,omitnil" name:"SubLabel"`
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 如果命中场景为涉政，则该数据为人物姓名列表，否则null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Names []*string `json:"Names,omitnil" name:"Names"`
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
 
 	// 图片OCR文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitnil" name:"Text"`
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 其他详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*ImageResultsResultDetail `json:"Details,omitnil" name:"Details"`
+	Details []*ImageResultsResultDetail `json:"Details,omitnil,omitempty" name:"Details"`
 }
 
 type ImageResultsResultDetail struct {
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// OCR识别文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitnil" name:"Text"`
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 位置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Location *ImageResultsResultDetailLocation `json:"Location,omitnil" name:"Location"`
+	Location *ImageResultsResultDetailLocation `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 库ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibId *string `json:"LibId,omitnil" name:"LibId"`
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LibName *string `json:"LibName,omitnil" name:"LibName"`
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitnil" name:"Keywords"`
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 子标签码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubLabelCode *string `json:"SubLabelCode,omitnil" name:"SubLabelCode"`
+	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 }
 
 type ImageResultsResultDetailLocation struct {
 	// x坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	X *float64 `json:"X,omitnil" name:"X"`
+	X *float64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// y坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Y *float64 `json:"Y,omitnil" name:"Y"`
+	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
 
 	// 宽度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 高度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 旋转角度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rotate *float64 `json:"Rotate,omitnil" name:"Rotate"`
+	Rotate *float64 `json:"Rotate,omitnil,omitempty" name:"Rotate"`
 }
 
 type ImageSegments struct {
 	// 截帧时间。
 	// 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 	// 直播流：该值为时间戳，例如：1594650717
-	OffsetTime *string `json:"OffsetTime,omitnil" name:"OffsetTime"`
+	OffsetTime *string `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
 
 	// 画面截帧结果详情
-	Result *ImageResult `json:"Result,omitnil" name:"Result"`
+	Result *ImageResult `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
 type InputInfo struct {
 	// 传入的类型可选：URL，COS
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Url地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 桶信息。当输入当时COS时，该字段不为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketInfo *string `json:"BucketInfo,omitnil" name:"BucketInfo"`
+	BucketInfo *string `json:"BucketInfo,omitnil,omitempty" name:"BucketInfo"`
 }
 
 type MediaInfo struct {
 	// 编码格式
-	Codecs *string `json:"Codecs,omitnil" name:"Codecs"`
+	Codecs *string `json:"Codecs,omitnil,omitempty" name:"Codecs"`
 
 	// 流检测时分片时长
 	// 注意：此字段可能返回 0，表示取不到有效值。
-	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 宽，单位为像素
-	Width *int64 `json:"Width,omitnil" name:"Width"`
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 高，单位为像素
-	Height *int64 `json:"Height,omitnil" name:"Height"`
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 type MediaModerationConfig struct {
 	// 是否使用OCR，默认为true
-	UseOCR *bool `json:"UseOCR,omitnil" name:"UseOCR"`
+	UseOCR *bool `json:"UseOCR,omitnil,omitempty" name:"UseOCR"`
 
 	// 是否使用音频，默认为true。视频场景下，默认为 false
-	UseAudio *bool `json:"UseAudio,omitnil" name:"UseAudio"`
+	UseAudio *bool `json:"UseAudio,omitnil,omitempty" name:"UseAudio"`
 
 	// 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
-	ImageFrequency *int64 `json:"ImageFrequency,omitnil" name:"ImageFrequency"`
+	ImageFrequency *int64 `json:"ImageFrequency,omitnil,omitempty" name:"ImageFrequency"`
 
 	// 音频片段长度。单位为：秒
-	AudioFrequency *int64 `json:"AudioFrequency,omitnil" name:"AudioFrequency"`
+	AudioFrequency *int64 `json:"AudioFrequency,omitnil,omitempty" name:"AudioFrequency"`
 
 	// 临时文件存储位置
-	SegmentOutput *FileOutput `json:"SegmentOutput,omitnil" name:"SegmentOutput"`
+	SegmentOutput *FileOutput `json:"SegmentOutput,omitnil,omitempty" name:"SegmentOutput"`
 
 	// 回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 }
 
 type Overview struct {
 	// 总调用量
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 总调用时长
-	TotalHour *int64 `json:"TotalHour,omitnil" name:"TotalHour"`
+	TotalHour *int64 `json:"TotalHour,omitnil,omitempty" name:"TotalHour"`
 
 	// 通过量
-	PassCount *int64 `json:"PassCount,omitnil" name:"PassCount"`
+	PassCount *int64 `json:"PassCount,omitnil,omitempty" name:"PassCount"`
 
 	// 通过时长
-	PassHour *int64 `json:"PassHour,omitnil" name:"PassHour"`
+	PassHour *int64 `json:"PassHour,omitnil,omitempty" name:"PassHour"`
 
 	// 违规量
-	EvilCount *int64 `json:"EvilCount,omitnil" name:"EvilCount"`
+	EvilCount *int64 `json:"EvilCount,omitnil,omitempty" name:"EvilCount"`
 
 	// 违规时长
-	EvilHour *int64 `json:"EvilHour,omitnil" name:"EvilHour"`
+	EvilHour *int64 `json:"EvilHour,omitnil,omitempty" name:"EvilHour"`
 
 	// 疑似违规量
-	SuspectCount *int64 `json:"SuspectCount,omitnil" name:"SuspectCount"`
+	SuspectCount *int64 `json:"SuspectCount,omitnil,omitempty" name:"SuspectCount"`
 
 	// 疑似违规时长
-	SuspectHour *int64 `json:"SuspectHour,omitnil" name:"SuspectHour"`
+	SuspectHour *int64 `json:"SuspectHour,omitnil,omitempty" name:"SuspectHour"`
 }
 
 type StorageInfo struct {
 	// 类型 可选：
 	// URL 资源链接类型
 	// COS 腾讯云对象存储类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 资源链接
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 腾讯云存储桶信息
-	BucketInfo *BucketInfo `json:"BucketInfo,omitnil" name:"BucketInfo"`
+	BucketInfo *BucketInfo `json:"BucketInfo,omitnil,omitempty" name:"BucketInfo"`
 }
 
 type TaskInput struct {
 	// 数据ID
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 任务名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务输入
-	Input *StorageInfo `json:"Input,omitnil" name:"Input"`
+	Input *StorageInfo `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 type TaskLabel struct {
@@ -918,63 +918,63 @@ type TaskLabel struct {
 	// Terror 暴恐
 	// Ad 广告
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitnil" name:"Label"`
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分，分数是 0 ～ 100
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *int64 `json:"Score,omitnil" name:"Score"`
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type TaskResult struct {
 	// 请求时传入的DataId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataId *string `json:"DataId,omitnil" name:"DataId"`
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// TaskId，任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 如果错误，该字段表示错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 type TrendCount struct {
 	// 总调用量
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 总调用时长
-	TotalHour *int64 `json:"TotalHour,omitnil" name:"TotalHour"`
+	TotalHour *int64 `json:"TotalHour,omitnil,omitempty" name:"TotalHour"`
 
 	// 通过量
-	PassCount *int64 `json:"PassCount,omitnil" name:"PassCount"`
+	PassCount *int64 `json:"PassCount,omitnil,omitempty" name:"PassCount"`
 
 	// 通过时长
-	PassHour *int64 `json:"PassHour,omitnil" name:"PassHour"`
+	PassHour *int64 `json:"PassHour,omitnil,omitempty" name:"PassHour"`
 
 	// 违规量
-	EvilCount *int64 `json:"EvilCount,omitnil" name:"EvilCount"`
+	EvilCount *int64 `json:"EvilCount,omitnil,omitempty" name:"EvilCount"`
 
 	// 违规时长
-	EvilHour *int64 `json:"EvilHour,omitnil" name:"EvilHour"`
+	EvilHour *int64 `json:"EvilHour,omitnil,omitempty" name:"EvilHour"`
 
 	// 疑似违规量
-	SuspectCount *int64 `json:"SuspectCount,omitnil" name:"SuspectCount"`
+	SuspectCount *int64 `json:"SuspectCount,omitnil,omitempty" name:"SuspectCount"`
 
 	// 疑似违规时长
-	SuspectHour *int64 `json:"SuspectHour,omitnil" name:"SuspectHour"`
+	SuspectHour *int64 `json:"SuspectHour,omitnil,omitempty" name:"SuspectHour"`
 
 	// 日期
-	Date *string `json:"Date,omitnil" name:"Date"`
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 }

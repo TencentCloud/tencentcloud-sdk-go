@@ -23,14 +23,14 @@ import (
 // Predefined struct for user
 type DescribeFraudBaseRequestParams struct {
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 type DescribeFraudBaseRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 func (r *DescribeFraudBaseRequest) ToJsonString() string {
@@ -55,40 +55,40 @@ func (r *DescribeFraudBaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFraudBaseResponseParams struct {
 	// App版本信息
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 客户端IP
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 机型
-	Model *string `json:"Model,omitnil" name:"Model"`
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 网络类型
-	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 应用包名
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 系统版本
-	SystemVersion *string `json:"SystemVersion,omitnil" name:"SystemVersion"`
+	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
 	// SDK版本号
-	SdkBuildNo *string `json:"SdkBuildNo,omitnil" name:"SdkBuildNo"`
+	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
 	// 实时风险信息
-	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil" name:"RiskInfos"`
+	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
 	// 离线风险信息
-	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil" name:"HistRiskInfos"`
+	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFraudBaseResponse struct {
@@ -110,14 +110,14 @@ func (r *DescribeFraudBaseResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFraudPremiumRequestParams struct {
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 type DescribeFraudPremiumRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 func (r *DescribeFraudPremiumRequest) ToJsonString() string {
@@ -142,43 +142,43 @@ func (r *DescribeFraudPremiumRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFraudPremiumResponseParams struct {
 	// App版本信息
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 客户端IP
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 机型
-	Model *string `json:"Model,omitnil" name:"Model"`
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 网络类型
-	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 应用包名
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 系统版本
-	SystemVersion *string `json:"SystemVersion,omitnil" name:"SystemVersion"`
+	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
 	// SDK版本号
-	SdkBuildNo *string `json:"SdkBuildNo,omitnil" name:"SdkBuildNo"`
+	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
 	// 实时风险信息
-	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil" name:"RiskInfos"`
+	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
 	// 离线风险信息
-	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil" name:"HistRiskInfos"`
+	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
 	// 设备匿名标识
-	Openid *string `json:"Openid,omitnil" name:"Openid"`
+	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFraudPremiumResponse struct {
@@ -200,62 +200,62 @@ func (r *DescribeFraudPremiumResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFraudUltimateRequestParams struct {
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
 	// 使用场景。目前仅支持login-登录场景、register-注册场景
-	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 用户唯一标识
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 事件时间戳（毫秒）
-	EventTime *uint64 `json:"EventTime,omitnil" name:"EventTime"`
+	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
 	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
-	ElapsedTime *uint64 `json:"ElapsedTime,omitnil" name:"ElapsedTime"`
+	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
 	// 微信的OpenId
-	WeChatOpenId *string `json:"WeChatOpenId,omitnil" name:"WeChatOpenId"`
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
 	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 客户端IP
-	ClientIP *string `json:"ClientIP,omitnil" name:"ClientIP"`
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
 	// QQ的OpenId
-	QQOpenId *string `json:"QQOpenId,omitnil" name:"QQOpenId"`
+	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 }
 
 type DescribeFraudUltimateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
 	// 使用场景。目前仅支持login-登录场景、register-注册场景
-	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 用户唯一标识
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 事件时间戳（毫秒）
-	EventTime *uint64 `json:"EventTime,omitnil" name:"EventTime"`
+	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
 	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
-	ElapsedTime *uint64 `json:"ElapsedTime,omitnil" name:"ElapsedTime"`
+	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
 	// 微信的OpenId
-	WeChatOpenId *string `json:"WeChatOpenId,omitnil" name:"WeChatOpenId"`
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
 	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
-	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 客户端IP
-	ClientIP *string `json:"ClientIP,omitnil" name:"ClientIP"`
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
 	// QQ的OpenId
-	QQOpenId *string `json:"QQOpenId,omitnil" name:"QQOpenId"`
+	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 }
 
 func (r *DescribeFraudUltimateRequest) ToJsonString() string {
@@ -288,52 +288,52 @@ func (r *DescribeFraudUltimateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFraudUltimateResponseParams struct {
 	// App版本信息
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 客户端IP
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 机型
-	Model *string `json:"Model,omitnil" name:"Model"`
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 网络类型
-	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 应用包名
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 系统版本
-	SystemVersion *string `json:"SystemVersion,omitnil" name:"SystemVersion"`
+	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
 	// SDK版本号
-	SdkBuildNo *string `json:"SdkBuildNo,omitnil" name:"SdkBuildNo"`
+	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
 	// 实时风险信息
-	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil" name:"RiskInfos"`
+	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
 	// 离线风险信息
-	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil" name:"HistRiskInfos"`
+	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
 	// 设备匿名标识
-	Openid *string `json:"Openid,omitnil" name:"Openid"`
+	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
 	// 场景风险信息
-	SceneRiskInfos []*RiskInfo `json:"SceneRiskInfos,omitnil" name:"SceneRiskInfos"`
+	SceneRiskInfos []*RiskInfo `json:"SceneRiskInfos,omitnil,omitempty" name:"SceneRiskInfos"`
 
 	// 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
-	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil" name:"SuggestionLevel"`
+	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil,omitempty" name:"SuggestionLevel"`
 
 	// 图灵盾统一ID
-	Unionid *string `json:"Unionid,omitnil" name:"Unionid"`
+	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFraudUltimateResponse struct {
@@ -355,14 +355,14 @@ func (r *DescribeFraudUltimateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTrustedIDRequestParams struct {
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 type DescribeTrustedIDRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端通过SDK获取的设备Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 func (r *DescribeTrustedIDRequest) ToJsonString() string {
@@ -387,37 +387,37 @@ func (r *DescribeTrustedIDRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTrustedIDResponseParams struct {
 	// 设备匿名标识
-	Openid *string `json:"Openid,omitnil" name:"Openid"`
+	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
 	// App版本信息
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 品牌
-	Brand *string `json:"Brand,omitnil" name:"Brand"`
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
 	// 客户端IP
-	ClientIp *string `json:"ClientIp,omitnil" name:"ClientIp"`
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 机型
-	Model *string `json:"Model,omitnil" name:"Model"`
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 网络类型
-	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 应用包名
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 系统版本
-	SystemVersion *string `json:"SystemVersion,omitnil" name:"SystemVersion"`
+	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
 	// SDK版本号
-	SdkBuildNo *string `json:"SdkBuildNo,omitnil" name:"SdkBuildNo"`
+	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTrustedIDResponse struct {
@@ -438,8 +438,8 @@ func (r *DescribeTrustedIDResponse) FromJsonString(s string) error {
 
 type RiskInfo struct {
 	// 风险类型
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 风险等级
-	Level *uint64 `json:"Level,omitnil" name:"Level"`
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 }

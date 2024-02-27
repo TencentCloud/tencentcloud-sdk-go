@@ -23,86 +23,86 @@ import (
 // Predefined struct for user
 type CreateRuleRequestParams struct {
 	// 自动化规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 推送的API地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量阈值
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 心跳移动距离阈值
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 盲点时间阈值，天
-	LostDay *int64 `json:"LostDay,omitnil" name:"LostDay"`
+	LostDay *int64 `json:"LostDay,omitnil,omitempty" name:"LostDay"`
 
 	// 标签ID集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 资费计划
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 }
 
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 推送的API地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量阈值
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 心跳移动距离阈值
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 盲点时间阈值，天
-	LostDay *int64 `json:"LostDay,omitnil" name:"LostDay"`
+	LostDay *int64 `json:"LostDay,omitnil,omitempty" name:"LostDay"`
 
 	// 标签ID集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 资费计划
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -139,7 +139,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateRuleResponse struct {
@@ -161,116 +161,116 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTacticRequestParams struct {
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否自动执行
-	IsAuto *int64 `json:"IsAuto,omitnil" name:"IsAuto"`
+	IsAuto *int64 `json:"IsAuto,omitnil,omitempty" name:"IsAuto"`
 
 	// 心跳上报间隔(s)
-	PingInterval *int64 `json:"PingInterval,omitnil" name:"PingInterval"`
+	PingInterval *int64 `json:"PingInterval,omitnil,omitempty" name:"PingInterval"`
 
 	// 是否开启弱信号检测
-	IsWeak *int64 `json:"IsWeak,omitnil" name:"IsWeak"`
+	IsWeak *int64 `json:"IsWeak,omitnil,omitempty" name:"IsWeak"`
 
 	// 弱信号阈值（-dbm）
-	WeakThreshold *int64 `json:"WeakThreshold,omitnil" name:"WeakThreshold"`
+	WeakThreshold *int64 `json:"WeakThreshold,omitnil,omitempty" name:"WeakThreshold"`
 
 	// 是否开启时延切换
-	IsDelay *int64 `json:"IsDelay,omitnil" name:"IsDelay"`
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 网络时延阈值（ms）
-	DelayThreshold *int64 `json:"DelayThreshold,omitnil" name:"DelayThreshold"`
+	DelayThreshold *int64 `json:"DelayThreshold,omitnil,omitempty" name:"DelayThreshold"`
 
 	// 是否开启假信号检测
-	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
 	// 假信号检测IP字符串，用逗号分隔
-	FakeIP *string `json:"FakeIP,omitnil" name:"FakeIP"`
+	FakeIP *string `json:"FakeIP,omitnil,omitempty" name:"FakeIP"`
 
 	// 假信号检测间隔（s）
-	FakeInterval *int64 `json:"FakeInterval,omitnil" name:"FakeInterval"`
+	FakeInterval *int64 `json:"FakeInterval,omitnil,omitempty" name:"FakeInterval"`
 
 	// 是否开启网络制式检测
-	IsNet *int64 `json:"IsNet,omitnil" name:"IsNet"`
+	IsNet *int64 `json:"IsNet,omitnil,omitempty" name:"IsNet"`
 
 	// 网络回落制式 1 2G、 2 3G 、 3 2/3G
-	Network *int64 `json:"Network,omitnil" name:"Network"`
+	Network *int64 `json:"Network,omitnil,omitempty" name:"Network"`
 
 	// 是否开启移动检测
-	IsMove *int64 `json:"IsMove,omitnil" name:"IsMove"`
+	IsMove *int64 `json:"IsMove,omitnil,omitempty" name:"IsMove"`
 
 	// 是否开启最优先运营商
-	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil" name:"IsPriorityTele"`
+	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil,omitempty" name:"IsPriorityTele"`
 
 	// 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
-	PriorityTele *int64 `json:"PriorityTele,omitnil" name:"PriorityTele"`
+	PriorityTele *int64 `json:"PriorityTele,omitnil,omitempty" name:"PriorityTele"`
 
 	// 是否开启最不优先运营商
-	IsBottomTele *int64 `json:"IsBottomTele,omitnil" name:"IsBottomTele"`
+	IsBottomTele *int64 `json:"IsBottomTele,omitnil,omitempty" name:"IsBottomTele"`
 
 	// 最不优先运营商 1 移动、 2 联通、 3 电信
-	BottomTele *int64 `json:"BottomTele,omitnil" name:"BottomTele"`
+	BottomTele *int64 `json:"BottomTele,omitnil,omitempty" name:"BottomTele"`
 
 	// 最优先信号选取策略
-	IsBestSignal *int64 `json:"IsBestSignal,omitnil" name:"IsBestSignal"`
+	IsBestSignal *int64 `json:"IsBestSignal,omitnil,omitempty" name:"IsBestSignal"`
 }
 
 type CreateTacticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否自动执行
-	IsAuto *int64 `json:"IsAuto,omitnil" name:"IsAuto"`
+	IsAuto *int64 `json:"IsAuto,omitnil,omitempty" name:"IsAuto"`
 
 	// 心跳上报间隔(s)
-	PingInterval *int64 `json:"PingInterval,omitnil" name:"PingInterval"`
+	PingInterval *int64 `json:"PingInterval,omitnil,omitempty" name:"PingInterval"`
 
 	// 是否开启弱信号检测
-	IsWeak *int64 `json:"IsWeak,omitnil" name:"IsWeak"`
+	IsWeak *int64 `json:"IsWeak,omitnil,omitempty" name:"IsWeak"`
 
 	// 弱信号阈值（-dbm）
-	WeakThreshold *int64 `json:"WeakThreshold,omitnil" name:"WeakThreshold"`
+	WeakThreshold *int64 `json:"WeakThreshold,omitnil,omitempty" name:"WeakThreshold"`
 
 	// 是否开启时延切换
-	IsDelay *int64 `json:"IsDelay,omitnil" name:"IsDelay"`
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 网络时延阈值（ms）
-	DelayThreshold *int64 `json:"DelayThreshold,omitnil" name:"DelayThreshold"`
+	DelayThreshold *int64 `json:"DelayThreshold,omitnil,omitempty" name:"DelayThreshold"`
 
 	// 是否开启假信号检测
-	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
 	// 假信号检测IP字符串，用逗号分隔
-	FakeIP *string `json:"FakeIP,omitnil" name:"FakeIP"`
+	FakeIP *string `json:"FakeIP,omitnil,omitempty" name:"FakeIP"`
 
 	// 假信号检测间隔（s）
-	FakeInterval *int64 `json:"FakeInterval,omitnil" name:"FakeInterval"`
+	FakeInterval *int64 `json:"FakeInterval,omitnil,omitempty" name:"FakeInterval"`
 
 	// 是否开启网络制式检测
-	IsNet *int64 `json:"IsNet,omitnil" name:"IsNet"`
+	IsNet *int64 `json:"IsNet,omitnil,omitempty" name:"IsNet"`
 
 	// 网络回落制式 1 2G、 2 3G 、 3 2/3G
-	Network *int64 `json:"Network,omitnil" name:"Network"`
+	Network *int64 `json:"Network,omitnil,omitempty" name:"Network"`
 
 	// 是否开启移动检测
-	IsMove *int64 `json:"IsMove,omitnil" name:"IsMove"`
+	IsMove *int64 `json:"IsMove,omitnil,omitempty" name:"IsMove"`
 
 	// 是否开启最优先运营商
-	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil" name:"IsPriorityTele"`
+	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil,omitempty" name:"IsPriorityTele"`
 
 	// 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
-	PriorityTele *int64 `json:"PriorityTele,omitnil" name:"PriorityTele"`
+	PriorityTele *int64 `json:"PriorityTele,omitnil,omitempty" name:"PriorityTele"`
 
 	// 是否开启最不优先运营商
-	IsBottomTele *int64 `json:"IsBottomTele,omitnil" name:"IsBottomTele"`
+	IsBottomTele *int64 `json:"IsBottomTele,omitnil,omitempty" name:"IsBottomTele"`
 
 	// 最不优先运营商 1 移动、 2 联通、 3 电信
-	BottomTele *int64 `json:"BottomTele,omitnil" name:"BottomTele"`
+	BottomTele *int64 `json:"BottomTele,omitnil,omitempty" name:"BottomTele"`
 
 	// 最优先信号选取策略
-	IsBestSignal *int64 `json:"IsBestSignal,omitnil" name:"IsBestSignal"`
+	IsBestSignal *int64 `json:"IsBestSignal,omitnil,omitempty" name:"IsBestSignal"`
 }
 
 func (r *CreateTacticRequest) ToJsonString() string {
@@ -312,7 +312,7 @@ func (r *CreateTacticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTacticResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTacticResponse struct {
@@ -334,20 +334,20 @@ func (r *CreateTacticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTagRequestParams struct {
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 备注
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type CreateTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 备注
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 func (r *CreateTagRequest) ToJsonString() string {
@@ -373,7 +373,7 @@ func (r *CreateTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTagResponse struct {
@@ -395,14 +395,14 @@ func (r *CreateTagResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRuleRequestParams struct {
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 func (r *DeleteRuleRequest) ToJsonString() string {
@@ -427,7 +427,7 @@ func (r *DeleteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteRuleResponse struct {
@@ -449,14 +449,14 @@ func (r *DeleteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTacticRequestParams struct {
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 type DeleteTacticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 func (r *DeleteTacticRequest) ToJsonString() string {
@@ -481,7 +481,7 @@ func (r *DeleteTacticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTacticResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTacticResponse struct {
@@ -503,14 +503,14 @@ func (r *DeleteTacticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTagRequestParams struct {
 	// 标签ID
-	TagID *int64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *int64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 }
 
 type DeleteTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标签ID
-	TagID *int64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *int64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 }
 
 func (r *DeleteTagRequest) ToJsonString() string {
@@ -535,7 +535,7 @@ func (r *DeleteTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTagResponse struct {
@@ -557,20 +557,20 @@ func (r *DeleteTagResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLinkRequestParams struct {
 	// 云兔卡ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 type DescribeLinkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔卡ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 func (r *DescribeLinkRequest) ToJsonString() string {
@@ -596,10 +596,10 @@ func (r *DescribeLinkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLinkResponseParams struct {
 	// 云兔连接详细信息
-	Data *LinkDetailInfo `json:"Data,omitnil" name:"Data"`
+	Data *LinkDetailInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLinkResponse struct {
@@ -621,74 +621,74 @@ func (r *DescribeLinkResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLinksRequestParams struct {
 	// 云兔卡ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 运营商ICCID
-	ICCID *string `json:"ICCID,omitnil" name:"ICCID"`
+	ICCID *string `json:"ICCID,omitnil,omitempty" name:"ICCID"`
 
 	// 设备码
-	IMEI *string `json:"IMEI,omitnil" name:"IMEI"`
+	IMEI *string `json:"IMEI,omitnil,omitempty" name:"IMEI"`
 
 	// 卡片状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 运营商 1移动 2联通 3电信
-	TeleOperator *uint64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *uint64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 
 	// 标签ID
-	TagID *uint64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *uint64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 
 	// 策略ID
-	TacticID *uint64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *uint64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 设备在线状态 0 未激活 1 在线 2 离线
-	LinkedState *int64 `json:"LinkedState,omitnil" name:"LinkedState"`
+	LinkedState *int64 `json:"LinkedState,omitnil,omitempty" name:"LinkedState"`
 
 	// 标签ID 集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 翻页大小, 默认翻页大小为10，最大数量为500
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页起始
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeLinksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔卡ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 运营商ICCID
-	ICCID *string `json:"ICCID,omitnil" name:"ICCID"`
+	ICCID *string `json:"ICCID,omitnil,omitempty" name:"ICCID"`
 
 	// 设备码
-	IMEI *string `json:"IMEI,omitnil" name:"IMEI"`
+	IMEI *string `json:"IMEI,omitnil,omitempty" name:"IMEI"`
 
 	// 卡片状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 运营商 1移动 2联通 3电信
-	TeleOperator *uint64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *uint64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 
 	// 标签ID
-	TagID *uint64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *uint64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 
 	// 策略ID
-	TacticID *uint64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *uint64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 设备在线状态 0 未激活 1 在线 2 离线
-	LinkedState *int64 `json:"LinkedState,omitnil" name:"LinkedState"`
+	LinkedState *int64 `json:"LinkedState,omitnil,omitempty" name:"LinkedState"`
 
 	// 标签ID 集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 翻页大小, 默认翻页大小为10，最大数量为500
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页起始
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeLinksRequest) ToJsonString() string {
@@ -724,10 +724,10 @@ func (r *DescribeLinksRequest) FromJsonString(s string) error {
 type DescribeLinksResponseParams struct {
 	// 云兔连接响应信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *LinkInfos `json:"Data,omitnil" name:"Data"`
+	Data *LinkInfos `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLinksResponse struct {
@@ -749,44 +749,44 @@ func (r *DescribeLinksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrdersRequestParams struct {
 	// 子订单ID
-	DealName *string `json:"DealName,omitnil" name:"DealName"`
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 审批状态 0全部 1通过 2驳回 3待审核
-	AuditStatus *int64 `json:"AuditStatus,omitnil" name:"AuditStatus"`
+	AuditStatus *int64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// 翻页大小
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页偏移
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 开始时间,例如2022-06-30 00:00:00
-	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间,例如2022-06-30 00:00:00
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeOrdersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 子订单ID
-	DealName *string `json:"DealName,omitnil" name:"DealName"`
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 审批状态 0全部 1通过 2驳回 3待审核
-	AuditStatus *int64 `json:"AuditStatus,omitnil" name:"AuditStatus"`
+	AuditStatus *int64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// 翻页大小
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页偏移
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 开始时间,例如2022-06-30 00:00:00
-	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间,例如2022-06-30 00:00:00
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeOrdersRequest) ToJsonString() string {
@@ -816,10 +816,10 @@ func (r *DescribeOrdersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrdersResponseParams struct {
 	// 订单列表
-	Data *Orders `json:"Data,omitnil" name:"Data"`
+	Data *Orders `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeOrdersResponse struct {
@@ -841,14 +841,14 @@ func (r *DescribeOrdersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleRequestParams struct {
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 type DescribeRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 func (r *DescribeRuleRequest) ToJsonString() string {
@@ -873,10 +873,10 @@ func (r *DescribeRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleResponseParams struct {
 	// 策略信息
-	Data *RuleDetail `json:"Data,omitnil" name:"Data"`
+	Data *RuleDetail `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeRuleResponse struct {
@@ -898,50 +898,50 @@ func (r *DescribeRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRulesRequestParams struct {
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 自动化规则ID
-	RuleIDs []*int64 `json:"RuleIDs,omitnil" name:"RuleIDs"`
+	RuleIDs []*int64 `json:"RuleIDs,omitnil,omitempty" name:"RuleIDs"`
 
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 类型
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *int64 `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *int64 `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 翻页大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页偏移
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 自动化规则ID
-	RuleIDs []*int64 `json:"RuleIDs,omitnil" name:"RuleIDs"`
+	RuleIDs []*int64 `json:"RuleIDs,omitnil,omitempty" name:"RuleIDs"`
 
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 类型
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *int64 `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *int64 `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 翻页大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 翻页偏移
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeRulesRequest) ToJsonString() string {
@@ -973,10 +973,10 @@ func (r *DescribeRulesRequest) FromJsonString(s string) error {
 type DescribeRulesResponseParams struct {
 	// 自动化规则列表集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *RuleInfos `json:"Data,omitnil" name:"Data"`
+	Data *RuleInfos `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeRulesResponse struct {
@@ -998,14 +998,14 @@ func (r *DescribeRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTacticRequestParams struct {
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 type DescribeTacticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 func (r *DescribeTacticRequest) ToJsonString() string {
@@ -1030,10 +1030,10 @@ func (r *DescribeTacticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTacticResponseParams struct {
 	// 策略信息
-	Data *Tactic `json:"Data,omitnil" name:"Data"`
+	Data *Tactic `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTacticResponse struct {
@@ -1055,20 +1055,20 @@ func (r *DescribeTacticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTacticsRequestParams struct {
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeTacticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeTacticsRequest) ToJsonString() string {
@@ -1094,10 +1094,10 @@ func (r *DescribeTacticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTacticsResponseParams struct {
 	// 策略集合信息
-	Data *TacticInfos `json:"Data,omitnil" name:"Data"`
+	Data *TacticInfos `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTacticsResponse struct {
@@ -1119,14 +1119,14 @@ func (r *DescribeTacticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTagsRequestParams struct {
 	// 标签名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标签名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {
@@ -1151,10 +1151,10 @@ func (r *DescribeTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTagsResponseParams struct {
 	// 列表
-	Data *TagInfos `json:"Data,omitnil" name:"Data"`
+	Data *TagInfos `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTagsResponse struct {
@@ -1175,231 +1175,231 @@ func (r *DescribeTagsResponse) FromJsonString(s string) error {
 
 type DeviceReport struct {
 	// 移动设备ID
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// 经度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Lng *string `json:"Lng,omitnil" name:"Lng"`
+	Lng *string `json:"Lng,omitnil,omitempty" name:"Lng"`
 
 	// 维度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Lat *string `json:"Lat,omitnil" name:"Lat"`
+	Lat *string `json:"Lat,omitnil,omitempty" name:"Lat"`
 
 	// 运营商基站ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Lac *string `json:"Lac,omitnil" name:"Lac"`
+	Lac *string `json:"Lac,omitnil,omitempty" name:"Lac"`
 
 	// 小区CellID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cell *string `json:"Cell,omitnil" name:"Cell"`
+	Cell *string `json:"Cell,omitnil,omitempty" name:"Cell"`
 
 	// 当前上报运营商ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 信号强度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rss *int64 `json:"Rss,omitnil" name:"Rss"`
+	Rss *int64 `json:"Rss,omitnil,omitempty" name:"Rss"`
 
 	// 运营商: 1 移动 2 联通 3 电信
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tele *int64 `json:"Tele,omitnil" name:"Tele"`
+	Tele *int64 `json:"Tele,omitnil,omitempty" name:"Tele"`
 
 	// 当前设备策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tid *int64 `json:"Tid,omitnil" name:"Tid"`
+	Tid *int64 `json:"Tid,omitnil,omitempty" name:"Tid"`
 
 	// 心跳间隔,单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ping *int64 `json:"Ping,omitnil" name:"Ping"`
+	Ping *int64 `json:"Ping,omitnil,omitempty" name:"Ping"`
 
 	// 网络延迟,单位毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Delay *int64 `json:"Delay,omitnil" name:"Delay"`
+	Delay *int64 `json:"Delay,omitnil,omitempty" name:"Delay"`
 
 	// 高级日志启停状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Log *int64 `json:"Log,omitnil" name:"Log"`
+	Log *int64 `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 设备型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevType *string `json:"DevType,omitnil" name:"DevType"`
+	DevType *string `json:"DevType,omitnil,omitempty" name:"DevType"`
 
 	// 设备型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevModel *string `json:"DevModel,omitnil" name:"DevModel"`
+	DevModel *string `json:"DevModel,omitnil,omitempty" name:"DevModel"`
 
 	// 设备版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitnil" name:"Version"`
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 设备刷新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UploadTime *string `json:"UploadTime,omitnil" name:"UploadTime"`
+	UploadTime *string `json:"UploadTime,omitnil,omitempty" name:"UploadTime"`
 
 	// 网络环境: 0 正常 1 弱网
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 每月第一次上报心跳时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MonthFirstTime *string `json:"MonthFirstTime,omitnil" name:"MonthFirstTime"`
+	MonthFirstTime *string `json:"MonthFirstTime,omitnil,omitempty" name:"MonthFirstTime"`
 }
 
 type LinkDetailInfo struct {
 	// 云兔连接ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 卡片状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 激活时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveTime *string `json:"ActiveTime,omitnil" name:"ActiveTime"`
+	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 数据用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataUse *float64 `json:"DataUse,omitnil" name:"DataUse"`
+	DataUse *float64 `json:"DataUse,omitnil,omitempty" name:"DataUse"`
 
 	// 语音用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioUse *int64 `json:"AudioUse,omitnil" name:"AudioUse"`
+	AudioUse *int64 `json:"AudioUse,omitnil,omitempty" name:"AudioUse"`
 
 	// 短信用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmsUse *int64 `json:"SmsUse,omitnil" name:"SmsUse"`
+	SmsUse *int64 `json:"SmsUse,omitnil,omitempty" name:"SmsUse"`
 
 	// 在线状态 0 未激活 1 在线 2 离线
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LinkedState *int64 `json:"LinkedState,omitnil" name:"LinkedState"`
+	LinkedState *int64 `json:"LinkedState,omitnil,omitempty" name:"LinkedState"`
 
 	// 预期策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 策略下发状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticStatus *int64 `json:"TacticStatus,omitnil" name:"TacticStatus"`
+	TacticStatus *int64 `json:"TacticStatus,omitnil,omitempty" name:"TacticStatus"`
 
 	// 策略下发成功过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticExpireTime *string `json:"TacticExpireTime,omitnil" name:"TacticExpireTime"`
+	TacticExpireTime *string `json:"TacticExpireTime,omitnil,omitempty" name:"TacticExpireTime"`
 
 	// 高级日志预期状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsActiveLog *bool `json:"IsActiveLog,omitnil" name:"IsActiveLog"`
+	IsActiveLog *bool `json:"IsActiveLog,omitnil,omitempty" name:"IsActiveLog"`
 
 	// 运营商 1移动 2联通 3电信
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TeleOperator *int64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *int64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 
 	// 设备最新上报信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Report *DeviceReport `json:"Report,omitnil" name:"Report"`
+	Report *DeviceReport `json:"Report,omitnil,omitempty" name:"Report"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 运营商ICCID信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cards []*TeleOperatorCard `json:"Cards,omitnil" name:"Cards"`
+	Cards []*TeleOperatorCard `json:"Cards,omitnil,omitempty" name:"Cards"`
 
 	// 云兔实际卡片ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CardID *string `json:"CardID,omitnil" name:"CardID"`
+	CardID *string `json:"CardID,omitnil,omitempty" name:"CardID"`
 }
 
 type LinkInfo struct {
 	// 云兔连接ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 卡片状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 激活时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveTime *string `json:"ActiveTime,omitnil" name:"ActiveTime"`
+	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 数据用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataUse *float64 `json:"DataUse,omitnil" name:"DataUse"`
+	DataUse *float64 `json:"DataUse,omitnil,omitempty" name:"DataUse"`
 
 	// 语音用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioUse *int64 `json:"AudioUse,omitnil" name:"AudioUse"`
+	AudioUse *int64 `json:"AudioUse,omitnil,omitempty" name:"AudioUse"`
 
 	// 短信用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmsUse *int64 `json:"SmsUse,omitnil" name:"SmsUse"`
+	SmsUse *int64 `json:"SmsUse,omitnil,omitempty" name:"SmsUse"`
 
 	// 在线状态 0 未激活 1 在线 2 离线
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LinkedState *int64 `json:"LinkedState,omitnil" name:"LinkedState"`
+	LinkedState *int64 `json:"LinkedState,omitnil,omitempty" name:"LinkedState"`
 
 	// 预期策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 策略下发状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticStatus *int64 `json:"TacticStatus,omitnil" name:"TacticStatus"`
+	TacticStatus *int64 `json:"TacticStatus,omitnil,omitempty" name:"TacticStatus"`
 
 	// 策略下发成功过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TacticExpireTime *string `json:"TacticExpireTime,omitnil" name:"TacticExpireTime"`
+	TacticExpireTime *string `json:"TacticExpireTime,omitnil,omitempty" name:"TacticExpireTime"`
 
 	// 高级日志预期状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsActiveLog *bool `json:"IsActiveLog,omitnil" name:"IsActiveLog"`
+	IsActiveLog *bool `json:"IsActiveLog,omitnil,omitempty" name:"IsActiveLog"`
 
 	// 运营商 1移动 2联通 3电信
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TeleOperator *int64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *int64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 
 	// 设备最新上报信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Report *DeviceReport `json:"Report,omitnil" name:"Report"`
+	Report *DeviceReport `json:"Report,omitnil,omitempty" name:"Report"`
 }
 
 type LinkInfos struct {
 	// 总量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 云兔连接列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*LinkInfo `json:"List,omitnil" name:"List"`
+	List []*LinkInfo `json:"List,omitnil,omitempty" name:"List"`
 }
 
 // Predefined struct for user
 type ModifyLinkAdvancedLogRequestParams struct {
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 是否激活高级日志 0 关闭 1激活
-	IsAdLog *int64 `json:"IsAdLog,omitnil" name:"IsAdLog"`
+	IsAdLog *int64 `json:"IsAdLog,omitnil,omitempty" name:"IsAdLog"`
 }
 
 type ModifyLinkAdvancedLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 是否激活高级日志 0 关闭 1激活
-	IsAdLog *int64 `json:"IsAdLog,omitnil" name:"IsAdLog"`
+	IsAdLog *int64 `json:"IsAdLog,omitnil,omitempty" name:"IsAdLog"`
 }
 
 func (r *ModifyLinkAdvancedLogRequest) ToJsonString() string {
@@ -1425,7 +1425,7 @@ func (r *ModifyLinkAdvancedLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLinkAdvancedLogResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLinkAdvancedLogResponse struct {
@@ -1447,20 +1447,20 @@ func (r *ModifyLinkAdvancedLogResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLinkTacticRequestParams struct {
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 type ModifyLinkTacticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 }
 
 func (r *ModifyLinkTacticRequest) ToJsonString() string {
@@ -1486,7 +1486,7 @@ func (r *ModifyLinkTacticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLinkTacticResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLinkTacticResponse struct {
@@ -1508,20 +1508,20 @@ func (r *ModifyLinkTacticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLinkTeleRequestParams struct {
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 运营商 1 移动 2 联通 3 电信
-	TeleOperator *int64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *int64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 }
 
 type ModifyLinkTeleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 运营商 1 移动 2 联通 3 电信
-	TeleOperator *int64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *int64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 }
 
 func (r *ModifyLinkTeleRequest) ToJsonString() string {
@@ -1547,7 +1547,7 @@ func (r *ModifyLinkTeleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLinkTeleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLinkTeleResponse struct {
@@ -1569,92 +1569,92 @@ func (r *ModifyLinkTeleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRuleRequestParams struct {
 	// 自动化规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 推送的API地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量阈值
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 心跳移动距离阈值
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 标签ID集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 资费计划
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 type ModifyRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 自动化规则ID
-	RuleID *int64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 邮箱
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 推送的API地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量阈值
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 心跳移动距离阈值
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 标签ID集合
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 资费计划
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -1692,7 +1692,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyRuleResponse struct {
@@ -1714,20 +1714,20 @@ func (r *ModifyRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRuleStatusRequestParams struct {
 	// 自动化规则ID
-	RuleID *uint64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *uint64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 }
 
 type ModifyRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动化规则ID
-	RuleID *uint64 `json:"RuleID,omitnil" name:"RuleID"`
+	RuleID *uint64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 是否激活
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 }
 
 func (r *ModifyRuleStatusRequest) ToJsonString() string {
@@ -1753,7 +1753,7 @@ func (r *ModifyRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRuleStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyRuleStatusResponse struct {
@@ -1775,122 +1775,122 @@ func (r *ModifyRuleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTacticRequestParams struct {
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否自动执行
-	IsAuto *int64 `json:"IsAuto,omitnil" name:"IsAuto"`
+	IsAuto *int64 `json:"IsAuto,omitnil,omitempty" name:"IsAuto"`
 
 	// 心跳上报间隔(s)
-	PingInterval *int64 `json:"PingInterval,omitnil" name:"PingInterval"`
+	PingInterval *int64 `json:"PingInterval,omitnil,omitempty" name:"PingInterval"`
 
 	// 是否开启弱信号检测
-	IsWeak *int64 `json:"IsWeak,omitnil" name:"IsWeak"`
+	IsWeak *int64 `json:"IsWeak,omitnil,omitempty" name:"IsWeak"`
 
 	// 弱信号阈值（-dbm）
-	WeakThreshold *int64 `json:"WeakThreshold,omitnil" name:"WeakThreshold"`
+	WeakThreshold *int64 `json:"WeakThreshold,omitnil,omitempty" name:"WeakThreshold"`
 
 	// 是否开启时延切换
-	IsDelay *int64 `json:"IsDelay,omitnil" name:"IsDelay"`
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 网络时延阈值（ms）
-	DelayThreshold *int64 `json:"DelayThreshold,omitnil" name:"DelayThreshold"`
+	DelayThreshold *int64 `json:"DelayThreshold,omitnil,omitempty" name:"DelayThreshold"`
 
 	// 是否开启假信号检测
-	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
 	// 假信号检测间隔（s）
-	FakeInterval *int64 `json:"FakeInterval,omitnil" name:"FakeInterval"`
+	FakeInterval *int64 `json:"FakeInterval,omitnil,omitempty" name:"FakeInterval"`
 
 	// 是否开启网络制式检测
-	IsNet *int64 `json:"IsNet,omitnil" name:"IsNet"`
+	IsNet *int64 `json:"IsNet,omitnil,omitempty" name:"IsNet"`
 
 	// 网络回落制式 1 2G、 2 3G 、 3 2/3G
-	Network *int64 `json:"Network,omitnil" name:"Network"`
+	Network *int64 `json:"Network,omitnil,omitempty" name:"Network"`
 
 	// 是否开启移动检测
-	IsMove *int64 `json:"IsMove,omitnil" name:"IsMove"`
+	IsMove *int64 `json:"IsMove,omitnil,omitempty" name:"IsMove"`
 
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 是否开启最优先运营商
-	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil" name:"IsPriorityTele"`
+	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil,omitempty" name:"IsPriorityTele"`
 
 	// 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
-	PriorityTele *int64 `json:"PriorityTele,omitnil" name:"PriorityTele"`
+	PriorityTele *int64 `json:"PriorityTele,omitnil,omitempty" name:"PriorityTele"`
 
 	// 是否开启最不优先运营商
-	IsBottomTele *int64 `json:"IsBottomTele,omitnil" name:"IsBottomTele"`
+	IsBottomTele *int64 `json:"IsBottomTele,omitnil,omitempty" name:"IsBottomTele"`
 
 	// 最不优先运营商 1 移动、 2 联通、 3 电信
-	BottomTele *int64 `json:"BottomTele,omitnil" name:"BottomTele"`
+	BottomTele *int64 `json:"BottomTele,omitnil,omitempty" name:"BottomTele"`
 
 	// 是否最优先信号选取策略
-	IsBestSignal *int64 `json:"IsBestSignal,omitnil" name:"IsBestSignal"`
+	IsBestSignal *int64 `json:"IsBestSignal,omitnil,omitempty" name:"IsBestSignal"`
 
 	// 假信号检测IP字符串，用逗号分隔
-	FakeIP *string `json:"FakeIP,omitnil" name:"FakeIP"`
+	FakeIP *string `json:"FakeIP,omitnil,omitempty" name:"FakeIP"`
 }
 
 type ModifyTacticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否自动执行
-	IsAuto *int64 `json:"IsAuto,omitnil" name:"IsAuto"`
+	IsAuto *int64 `json:"IsAuto,omitnil,omitempty" name:"IsAuto"`
 
 	// 心跳上报间隔(s)
-	PingInterval *int64 `json:"PingInterval,omitnil" name:"PingInterval"`
+	PingInterval *int64 `json:"PingInterval,omitnil,omitempty" name:"PingInterval"`
 
 	// 是否开启弱信号检测
-	IsWeak *int64 `json:"IsWeak,omitnil" name:"IsWeak"`
+	IsWeak *int64 `json:"IsWeak,omitnil,omitempty" name:"IsWeak"`
 
 	// 弱信号阈值（-dbm）
-	WeakThreshold *int64 `json:"WeakThreshold,omitnil" name:"WeakThreshold"`
+	WeakThreshold *int64 `json:"WeakThreshold,omitnil,omitempty" name:"WeakThreshold"`
 
 	// 是否开启时延切换
-	IsDelay *int64 `json:"IsDelay,omitnil" name:"IsDelay"`
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 网络时延阈值（ms）
-	DelayThreshold *int64 `json:"DelayThreshold,omitnil" name:"DelayThreshold"`
+	DelayThreshold *int64 `json:"DelayThreshold,omitnil,omitempty" name:"DelayThreshold"`
 
 	// 是否开启假信号检测
-	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
 	// 假信号检测间隔（s）
-	FakeInterval *int64 `json:"FakeInterval,omitnil" name:"FakeInterval"`
+	FakeInterval *int64 `json:"FakeInterval,omitnil,omitempty" name:"FakeInterval"`
 
 	// 是否开启网络制式检测
-	IsNet *int64 `json:"IsNet,omitnil" name:"IsNet"`
+	IsNet *int64 `json:"IsNet,omitnil,omitempty" name:"IsNet"`
 
 	// 网络回落制式 1 2G、 2 3G 、 3 2/3G
-	Network *int64 `json:"Network,omitnil" name:"Network"`
+	Network *int64 `json:"Network,omitnil,omitempty" name:"Network"`
 
 	// 是否开启移动检测
-	IsMove *int64 `json:"IsMove,omitnil" name:"IsMove"`
+	IsMove *int64 `json:"IsMove,omitnil,omitempty" name:"IsMove"`
 
 	// 策略ID
-	TacticID *int64 `json:"TacticID,omitnil" name:"TacticID"`
+	TacticID *int64 `json:"TacticID,omitnil,omitempty" name:"TacticID"`
 
 	// 是否开启最优先运营商
-	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil" name:"IsPriorityTele"`
+	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil,omitempty" name:"IsPriorityTele"`
 
 	// 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
-	PriorityTele *int64 `json:"PriorityTele,omitnil" name:"PriorityTele"`
+	PriorityTele *int64 `json:"PriorityTele,omitnil,omitempty" name:"PriorityTele"`
 
 	// 是否开启最不优先运营商
-	IsBottomTele *int64 `json:"IsBottomTele,omitnil" name:"IsBottomTele"`
+	IsBottomTele *int64 `json:"IsBottomTele,omitnil,omitempty" name:"IsBottomTele"`
 
 	// 最不优先运营商 1 移动、 2 联通、 3 电信
-	BottomTele *int64 `json:"BottomTele,omitnil" name:"BottomTele"`
+	BottomTele *int64 `json:"BottomTele,omitnil,omitempty" name:"BottomTele"`
 
 	// 是否最优先信号选取策略
-	IsBestSignal *int64 `json:"IsBestSignal,omitnil" name:"IsBestSignal"`
+	IsBestSignal *int64 `json:"IsBestSignal,omitnil,omitempty" name:"IsBestSignal"`
 
 	// 假信号检测IP字符串，用逗号分隔
-	FakeIP *string `json:"FakeIP,omitnil" name:"FakeIP"`
+	FakeIP *string `json:"FakeIP,omitnil,omitempty" name:"FakeIP"`
 }
 
 func (r *ModifyTacticRequest) ToJsonString() string {
@@ -1933,7 +1933,7 @@ func (r *ModifyTacticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTacticResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyTacticResponse struct {
@@ -1955,26 +1955,26 @@ func (r *ModifyTacticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTagRequestParams struct {
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	TagID *int64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *int64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 
 	// 备注
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type ModifyTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	TagID *int64 `json:"TagID,omitnil" name:"TagID"`
+	TagID *int64 `json:"TagID,omitnil,omitempty" name:"TagID"`
 
 	// 备注
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 func (r *ModifyTagRequest) ToJsonString() string {
@@ -2001,7 +2001,7 @@ func (r *ModifyTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyTagResponse struct {
@@ -2022,90 +2022,90 @@ func (r *ModifyTagResponse) FromJsonString(s string) error {
 
 type OrderInfo struct {
 	// 子订单ID
-	DealName *string `json:"DealName,omitnil" name:"DealName"`
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 订单账户
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 购买数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BuyNum *int64 `json:"BuyNum,omitnil" name:"BuyNum"`
+	BuyNum *int64 `json:"BuyNum,omitnil,omitempty" name:"BuyNum"`
 
 	// 行业代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndustryCode *string `json:"IndustryCode,omitnil" name:"IndustryCode"`
+	IndustryCode *string `json:"IndustryCode,omitnil,omitempty" name:"IndustryCode"`
 
 	// 地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 联系人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contact *string `json:"Contact,omitnil" name:"Contact"`
+	Contact *string `json:"Contact,omitnil,omitempty" name:"Contact"`
 
 	// 电话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 卡片规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Specification *string `json:"Specification,omitnil" name:"Specification"`
+	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
 	// 用户订单备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 大订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
 	// 审批状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuditStatus *string `json:"AuditStatus,omitnil" name:"AuditStatus"`
+	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// 发货状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowStatus *string `json:"FlowStatus,omitnil" name:"FlowStatus"`
+	FlowStatus *string `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 审批备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 退费订单
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefundBigDealId *string `json:"RefundBigDealId,omitnil" name:"RefundBigDealId"`
+	RefundBigDealId *string `json:"RefundBigDealId,omitnil,omitempty" name:"RefundBigDealId"`
 }
 
 type Orders struct {
 	// 总数
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 订单集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*OrderInfo `json:"List,omitnil" name:"List"`
+	List []*OrderInfo `json:"List,omitnil,omitempty" name:"List"`
 }
 
 // Predefined struct for user
 type RenewLinkInfoRequestParams struct {
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 type RenewLinkInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云兔ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 具体的账号
-	UinAccount *string `json:"UinAccount,omitnil" name:"UinAccount"`
+	UinAccount *string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 }
 
 func (r *RenewLinkInfoRequest) ToJsonString() string {
@@ -2131,7 +2131,7 @@ func (r *RenewLinkInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewLinkInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RenewLinkInfoResponse struct {
@@ -2152,289 +2152,289 @@ func (r *RenewLinkInfoResponse) FromJsonString(s string) error {
 
 type Rule struct {
 	// 规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则ID
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 删除时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeletedAt *string `json:"DeletedAt,omitnil" name:"DeletedAt"`
+	DeletedAt *string `json:"DeletedAt,omitnil,omitempty" name:"DeletedAt"`
 
 	// 规则类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 回调API地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量类：用量阈值,单位MB
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 移动距离阈值，单位KM
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值(-dbm）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 盲点阈值天数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LostDay *int64 `json:"LostDay,omitnil" name:"LostDay"`
+	LostDay *int64 `json:"LostDay,omitnil,omitempty" name:"LostDay"`
 
 	// 绑定的标签ID集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagIDs []*uint64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*uint64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 绑定的资费计划
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 }
 
 type RuleDetail struct {
 	// 规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则ID
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 删除时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeletedAt *string `json:"DeletedAt,omitnil" name:"DeletedAt"`
+	DeletedAt *string `json:"DeletedAt,omitnil,omitempty" name:"DeletedAt"`
 
 	// 规则类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否激活
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsActive *bool `json:"IsActive,omitnil" name:"IsActive"`
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Notice *int64 `json:"Notice,omitnil" name:"Notice"`
+	Notice *int64 `json:"Notice,omitnil,omitempty" name:"Notice"`
 
 	// 邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 回调API地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 用量类：用量阈值,单位MB
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataThreshold *int64 `json:"DataThreshold,omitnil" name:"DataThreshold"`
+	DataThreshold *int64 `json:"DataThreshold,omitnil,omitempty" name:"DataThreshold"`
 
 	// 行政区类型：1. 省份 2. 城市 3. 区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	District *int64 `json:"District,omitnil" name:"District"`
+	District *int64 `json:"District,omitnil,omitempty" name:"District"`
 
 	// 移动距离阈值，单位KM
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Distance *int64 `json:"Distance,omitnil" name:"Distance"`
+	Distance *int64 `json:"Distance,omitnil,omitempty" name:"Distance"`
 
 	// 信号强度阈值(-dbm）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 盲点阈值天数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LostDay *int64 `json:"LostDay,omitnil" name:"LostDay"`
+	LostDay *int64 `json:"LostDay,omitnil,omitempty" name:"LostDay"`
 
 	// 标签ID集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagIDs []*int64 `json:"TagIDs,omitnil" name:"TagIDs"`
+	TagIDs []*int64 `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
 
 	// 资费信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SalePlan *string `json:"SalePlan,omitnil" name:"SalePlan"`
+	SalePlan *string `json:"SalePlan,omitnil,omitempty" name:"SalePlan"`
 }
 
 type RuleInfos struct {
 	// 总量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*Rule `json:"List,omitnil" name:"List"`
+	List []*Rule `json:"List,omitnil,omitempty" name:"List"`
 }
 
 type Tactic struct {
 	// 策略ID
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 是否自动执行策略
-	IsAuto *int64 `json:"IsAuto,omitnil" name:"IsAuto"`
+	IsAuto *int64 `json:"IsAuto,omitnil,omitempty" name:"IsAuto"`
 
 	// 设备上报信息间隔
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PingInterval *int64 `json:"PingInterval,omitnil" name:"PingInterval"`
+	PingInterval *int64 `json:"PingInterval,omitnil,omitempty" name:"PingInterval"`
 
 	// 是否开启弱信号检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsWeak *int64 `json:"IsWeak,omitnil" name:"IsWeak"`
+	IsWeak *int64 `json:"IsWeak,omitnil,omitempty" name:"IsWeak"`
 
 	// 弱信号阈值（-dbm）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WeakThreshold *int64 `json:"WeakThreshold,omitnil" name:"WeakThreshold"`
+	WeakThreshold *int64 `json:"WeakThreshold,omitnil,omitempty" name:"WeakThreshold"`
 
 	// 忘了时延切换
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDelay *int64 `json:"IsDelay,omitnil" name:"IsDelay"`
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 时延阈值（ms）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DelayThreshold *int64 `json:"DelayThreshold,omitnil" name:"DelayThreshold"`
+	DelayThreshold *int64 `json:"DelayThreshold,omitnil,omitempty" name:"DelayThreshold"`
 
 	// 是否开启假信号检测
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
 	// 假信号检测IP字符串，用逗号分隔
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FakeIP *string `json:"FakeIP,omitnil" name:"FakeIP"`
+	FakeIP *string `json:"FakeIP,omitnil,omitempty" name:"FakeIP"`
 
 	// 假信号检测间隔（s）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FakeInterval *int64 `json:"FakeInterval,omitnil" name:"FakeInterval"`
+	FakeInterval *int64 `json:"FakeInterval,omitnil,omitempty" name:"FakeInterval"`
 
 	// 是否开启网络制式检测
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsNet *int64 `json:"IsNet,omitnil" name:"IsNet"`
+	IsNet *int64 `json:"IsNet,omitnil,omitempty" name:"IsNet"`
 
 	// 网络回落制式 1: 2G、 2: 3G 、 3: 2/3G
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Network *int64 `json:"Network,omitnil" name:"Network"`
+	Network *int64 `json:"Network,omitnil,omitempty" name:"Network"`
 
 	// 是否开启移动检测
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsMove *int64 `json:"IsMove,omitnil" name:"IsMove"`
+	IsMove *int64 `json:"IsMove,omitnil,omitempty" name:"IsMove"`
 
 	// 策略名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否开启最优先运营商
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil" name:"IsPriorityTele"`
+	IsPriorityTele *int64 `json:"IsPriorityTele,omitnil,omitempty" name:"IsPriorityTele"`
 
 	// 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PriorityTele *int64 `json:"PriorityTele,omitnil" name:"PriorityTele"`
+	PriorityTele *int64 `json:"PriorityTele,omitnil,omitempty" name:"PriorityTele"`
 
 	// 是否开启最不优先运营商
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsBottomTele *int64 `json:"IsBottomTele,omitnil" name:"IsBottomTele"`
+	IsBottomTele *int64 `json:"IsBottomTele,omitnil,omitempty" name:"IsBottomTele"`
 
 	// 最不优先运营商 1 移动、 2 联通、 3 电信
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BottomTele *int64 `json:"BottomTele,omitnil" name:"BottomTele"`
+	BottomTele *int64 `json:"BottomTele,omitnil,omitempty" name:"BottomTele"`
 
 	// 是否开启最优先信号选取策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsBestSignal *int64 `json:"IsBestSignal,omitnil" name:"IsBestSignal"`
+	IsBestSignal *int64 `json:"IsBestSignal,omitnil,omitempty" name:"IsBestSignal"`
 }
 
 type TacticInfos struct {
 	// 总量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 策略列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*Tactic `json:"List,omitnil" name:"List"`
+	List []*Tactic `json:"List,omitnil,omitempty" name:"List"`
 }
 
 type Tag struct {
 	// 标签名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	ID *int64 `json:"ID,omitnil" name:"ID"`
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Comment *string `json:"Comment,omitnil" name:"Comment"`
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 }
 
 type TagInfos struct {
 	// 总量
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*Tag `json:"List,omitnil" name:"List"`
+	List []*Tag `json:"List,omitnil,omitempty" name:"List"`
 }
 
 type TeleOperatorCard struct {
 	// 开户时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountTime *string `json:"AccountTime,omitnil" name:"AccountTime"`
+	AccountTime *string `json:"AccountTime,omitnil,omitempty" name:"AccountTime"`
 
 	// 激活时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveTime *string `json:"ActiveTime,omitnil" name:"ActiveTime"`
+	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 运营商ICCID
-	ICCID *string `json:"ICCID,omitnil" name:"ICCID"`
+	ICCID *string `json:"ICCID,omitnil,omitempty" name:"ICCID"`
 
 	// 云兔卡ID
-	LinkID *int64 `json:"LinkID,omitnil" name:"LinkID"`
+	LinkID *int64 `json:"LinkID,omitnil,omitempty" name:"LinkID"`
 
 	// 电话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 移动用户识别码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IMSI *string `json:"IMSI,omitnil" name:"IMSI"`
+	IMSI *string `json:"IMSI,omitnil,omitempty" name:"IMSI"`
 
 	// 运营商: 1 移动 2 联通 3 电信
-	TeleOperator *int64 `json:"TeleOperator,omitnil" name:"TeleOperator"`
+	TeleOperator *int64 `json:"TeleOperator,omitnil,omitempty" name:"TeleOperator"`
 }

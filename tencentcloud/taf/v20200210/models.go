@@ -22,10 +22,10 @@ import (
 
 type Device struct {
 	// 业务入参id
-	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 业务入参类型
-	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
+	DeviceType *int64 `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
 type InputBusinessEncryptData struct {
@@ -34,161 +34,161 @@ type InputBusinessEncryptData struct {
 
 type InputRecognizeTargetAudience struct {
 	// 模型ID列表
-	ModelIdList []*int64 `json:"ModelIdList,omitnil" name:"ModelIdList"`
+	ModelIdList []*int64 `json:"ModelIdList,omitnil,omitempty" name:"ModelIdList"`
 
 	// 设备ID，AccountType指定的类型
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 设备号类型，1.imei 2.imeiMd5（小写后转MD5转小写）3.idfa， 4.idfaMd5（大写后转MD5转小写），5.手机号,256.其它
-	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 用户IP
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 操作系统类型(unknown，android，ios，windows)
-	Os *string `json:"Os,omitnil" name:"Os"`
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
 
 	// 操作系统版本
-	Osv *string `json:"Osv,omitnil" name:"Osv"`
+	Osv *string `json:"Osv,omitnil,omitempty" name:"Osv"`
 
 	// 纬度
-	Lat *string `json:"Lat,omitnil" name:"Lat"`
+	Lat *string `json:"Lat,omitnil,omitempty" name:"Lat"`
 
 	// 经度
-	Lon *string `json:"Lon,omitnil" name:"Lon"`
+	Lon *string `json:"Lon,omitnil,omitempty" name:"Lon"`
 
 	// 设备型号(MI 6)
-	DeviceModel *string `json:"DeviceModel,omitnil" name:"DeviceModel"`
+	DeviceModel *string `json:"DeviceModel,omitnil,omitempty" name:"DeviceModel"`
 
 	// 竞价底价
-	BidFloor *int64 `json:"BidFloor,omitnil" name:"BidFloor"`
+	BidFloor *int64 `json:"BidFloor,omitnil,omitempty" name:"BidFloor"`
 
 	// 年龄
-	Age *int64 `json:"Age,omitnil" name:"Age"`
+	Age *int64 `json:"Age,omitnil,omitempty" name:"Age"`
 
 	// 性别(1.MALE 2.FEMALE)
-	Gender *int64 `json:"Gender,omitnil" name:"Gender"`
+	Gender *int64 `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 用户地址
-	Location *string `json:"Location,omitnil" name:"Location"`
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 投放模式（0=PDB，1=PD，2=RTB，10=其他）
-	DeliveryMode *int64 `json:"DeliveryMode,omitnil" name:"DeliveryMode"`
+	DeliveryMode *int64 `json:"DeliveryMode,omitnil,omitempty" name:"DeliveryMode"`
 
 	// 广告位类型<br />（0=前贴片，1=开屏广告，2=网页头部广告、3=网页中部广告、4=网页底部广告、5=悬浮广告、10=其它）
-	AdvertisingType *int64 `json:"AdvertisingType,omitnil" name:"AdvertisingType"`
+	AdvertisingType *int64 `json:"AdvertisingType,omitnil,omitempty" name:"AdvertisingType"`
 
 	// mac地址，建议提供
-	Mac *string `json:"Mac,omitnil" name:"Mac"`
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
 	// 电话号码
-	Phone *string `json:"Phone,omitnil" name:"Phone"`
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 浏览器类型
-	Ua *string `json:"Ua,omitnil" name:"Ua"`
+	Ua *string `json:"Ua,omitnil,omitempty" name:"Ua"`
 
 	// 客户端应用
-	App *string `json:"App,omitnil" name:"App"`
+	App *string `json:"App,omitnil,omitempty" name:"App"`
 
 	// 应用包名
-	Package *string `json:"Package,omitnil" name:"Package"`
+	Package *string `json:"Package,omitnil,omitempty" name:"Package"`
 
 	// 设备制造商
-	Maker *string `json:"Maker,omitnil" name:"Maker"`
+	Maker *string `json:"Maker,omitnil,omitempty" name:"Maker"`
 
 	// 设备类型（PHONE,TABLET）
-	DeviceType *string `json:"DeviceType,omitnil" name:"DeviceType"`
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 入网方式(wifi,4g,3g,2g)
-	AccessMode *string `json:"AccessMode,omitnil" name:"AccessMode"`
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
 	// 运营商(1.移动 2.联通 3.电信等)
-	Sp *int64 `json:"Sp,omitnil" name:"Sp"`
+	Sp *int64 `json:"Sp,omitnil,omitempty" name:"Sp"`
 
 	// 设备屏幕分辨率宽度像素数
-	DeviceW *int64 `json:"DeviceW,omitnil" name:"DeviceW"`
+	DeviceW *int64 `json:"DeviceW,omitnil,omitempty" name:"DeviceW"`
 
 	// 设备屏幕分辨率高度像素数
-	DeviceH *int64 `json:"DeviceH,omitnil" name:"DeviceH"`
+	DeviceH *int64 `json:"DeviceH,omitnil,omitempty" name:"DeviceH"`
 
 	// 是否全屏插广告(0-否，1-是)
-	FullScreen *int64 `json:"FullScreen,omitnil" name:"FullScreen"`
+	FullScreen *int64 `json:"FullScreen,omitnil,omitempty" name:"FullScreen"`
 
 	// 广告位宽度
-	ImpBannerW *int64 `json:"ImpBannerW,omitnil" name:"ImpBannerW"`
+	ImpBannerW *int64 `json:"ImpBannerW,omitnil,omitempty" name:"ImpBannerW"`
 
 	// 广告位高度
-	ImpBannerH *int64 `json:"ImpBannerH,omitnil" name:"ImpBannerH"`
+	ImpBannerH *int64 `json:"ImpBannerH,omitnil,omitempty" name:"ImpBannerH"`
 
 	// 网址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 上下文信息
-	Context *string `json:"Context,omitnil" name:"Context"`
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 渠道
-	Channel *string `json:"Channel,omitnil" name:"Channel"`
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// 请求ID
-	ReqId *string `json:"ReqId,omitnil" name:"ReqId"`
+	ReqId *string `json:"ReqId,omitnil,omitempty" name:"ReqId"`
 
 	// 请求ID的md5值
-	ReqMd5 *string `json:"ReqMd5,omitnil" name:"ReqMd5"`
+	ReqMd5 *string `json:"ReqMd5,omitnil,omitempty" name:"ReqMd5"`
 
 	// ad_type
-	AdType *int64 `json:"AdType,omitnil" name:"AdType"`
+	AdType *int64 `json:"AdType,omitnil,omitempty" name:"AdType"`
 
 	// app名称
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// app版本描述
-	AppVer *string `json:"AppVer,omitnil" name:"AppVer"`
+	AppVer *string `json:"AppVer,omitnil,omitempty" name:"AppVer"`
 
 	// 竞价模式1：rtb 2:pd
-	ReqType *int64 `json:"ReqType,omitnil" name:"ReqType"`
+	ReqType *int64 `json:"ReqType,omitnil,omitempty" name:"ReqType"`
 
 	// 用户是否授权,1为授权，0为未授权
-	IsAuthorized *uint64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
+	IsAuthorized *uint64 `json:"IsAuthorized,omitnil,omitempty" name:"IsAuthorized"`
 
 	// 设备信息
-	DeviceList []*Device `json:"DeviceList,omitnil" name:"DeviceList"`
+	DeviceList []*Device `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 }
 
 type ManagePortraitRiskInput struct {
 	// 请求时间戳秒
-	PostTime *int64 `json:"PostTime,omitnil" name:"PostTime"`
+	PostTime *int64 `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// 用户公网ip（仅支持IPv4）
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 渠道号
-	Channel *int64 `json:"Channel,omitnil" name:"Channel"`
+	Channel *int64 `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 type ManagePortraitRiskOutput struct {
 	// 返回码（0，成功，其他失败）
-	Code *int64 `json:"Code,omitnil" name:"Code"`
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 返回码对应的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *ManagePortraitRiskValueOutput `json:"Value,omitnil" name:"Value"`
+	Value *ManagePortraitRiskValueOutput `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
 type ManagePortraitRiskRequestParams struct {
 	// 业务入参
-	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 }
 
 type ManagePortraitRiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务入参
-	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
+	BusinessSecurityData *ManagePortraitRiskInput `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
 }
 
 func (r *ManagePortraitRiskRequest) ToJsonString() string {
@@ -214,10 +214,10 @@ func (r *ManagePortraitRiskRequest) FromJsonString(s string) error {
 type ManagePortraitRiskResponseParams struct {
 	// 业务出参
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *ManagePortraitRiskOutput `json:"Data,omitnil" name:"Data"`
+	Data *ManagePortraitRiskOutput `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ManagePortraitRiskResponse struct {
@@ -238,58 +238,58 @@ func (r *ManagePortraitRiskResponse) FromJsonString(s string) error {
 
 type ManagePortraitRiskValueOutput struct {
 	// 对应的IP
-	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 返回风险等级, 0 - 4，0代表无风险，数值越大，风险越高
-	Level *int64 `json:"Level,omitnil" name:"Level"`
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 }
 
 type OutputRecognizeTargetAudience struct {
 	// 返回码（0，成功，其他失败）
-	Code *int64 `json:"Code,omitnil" name:"Code"`
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 返回码对应的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 返回模型结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitnil" name:"Value"`
+	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputRecognizeTargetAudienceValue struct {
 	// 模型ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModelId *uint64 `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *uint64 `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 是否正常返回结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsFound *int64 `json:"IsFound,omitnil" name:"IsFound"`
+	IsFound *int64 `json:"IsFound,omitnil,omitempty" name:"IsFound"`
 
 	// 返回分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *float64 `json:"Score,omitnil" name:"Score"`
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 模型类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModelType *uint64 `json:"ModelType,omitnil" name:"ModelType"`
+	ModelType *uint64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
 	// 入参Uid
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uid *string `json:"Uid,omitnil" name:"Uid"`
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 }
 
 // Predefined struct for user
 type RecognizeCustomizedAudienceRequestParams struct {
 	// 业务入参
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 }
 
 type RecognizeCustomizedAudienceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务入参
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 }
 
 func (r *RecognizeCustomizedAudienceRequest) ToJsonString() string {
@@ -315,10 +315,10 @@ func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
 type RecognizeCustomizedAudienceResponseParams struct {
 	// 业务出参
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputRecognizeTargetAudience `json:"Data,omitnil" name:"Data"`
+	Data *OutputRecognizeTargetAudience `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RecognizeCustomizedAudienceResponse struct {
@@ -340,14 +340,14 @@ func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RecognizePreciseTargetAudienceRequestParams struct {
 	// 业务数据
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 }
 
 type RecognizePreciseTargetAudienceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务数据
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 }
 
 func (r *RecognizePreciseTargetAudienceRequest) ToJsonString() string {
@@ -373,10 +373,10 @@ func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
 type RecognizePreciseTargetAudienceResponseParams struct {
 	// 回包数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputRecognizeTargetAudience `json:"Data,omitnil" name:"Data"`
+	Data *OutputRecognizeTargetAudience `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RecognizePreciseTargetAudienceResponse struct {
@@ -398,20 +398,20 @@ func (r *RecognizePreciseTargetAudienceResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type RecognizeTargetAudienceRequestParams struct {
 	// 业务数据
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 
 	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitnil" name:"BusinessEncryptData"`
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitnil,omitempty" name:"BusinessEncryptData"`
 }
 
 type RecognizeTargetAudienceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务数据
-	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil" name:"BspData"`
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitnil,omitempty" name:"BspData"`
 
 	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitnil" name:"BusinessEncryptData"`
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitnil,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
@@ -438,10 +438,10 @@ func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
 type RecognizeTargetAudienceResponseParams struct {
 	// 回包数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputRecognizeTargetAudience `json:"Data,omitnil" name:"Data"`
+	Data *OutputRecognizeTargetAudience `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RecognizeTargetAudienceResponse struct {

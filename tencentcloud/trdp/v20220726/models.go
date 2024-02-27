@@ -26,231 +26,231 @@ type AccountInfo struct {
 	// 2-IMEI；
 	// 3-IDFA；
 	// 100-SSID类型
-	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 通用账号信息，当AccountType为1、2、3、100时必填
-	UniversalAccount *UniversalAccountInfo `json:"UniversalAccount,omitnil" name:"UniversalAccount"`
+	UniversalAccount *UniversalAccountInfo `json:"UniversalAccount,omitnil,omitempty" name:"UniversalAccount"`
 }
 
 type DeviceDetailInfo struct {
 	// mac地址或唯一设备标识
-	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil,omitempty" name:"MacAddress"`
 
 	// 手机型号
-	Model *string `json:"Model,omitnil" name:"Model"`
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 操作系统(unknown，android，ios，windows)
-	OsSystem *string `json:"OsSystem,omitnil" name:"OsSystem"`
+	OsSystem *string `json:"OsSystem,omitnil,omitempty" name:"OsSystem"`
 
 	// 操作系统版本
-	OsSystemVersion *string `json:"OsSystemVersion,omitnil" name:"OsSystemVersion"`
+	OsSystemVersion *string `json:"OsSystemVersion,omitnil,omitempty" name:"OsSystemVersion"`
 
 	// 竞价底价
-	BidFloor *int64 `json:"BidFloor,omitnil" name:"BidFloor"`
+	BidFloor *int64 `json:"BidFloor,omitnil,omitempty" name:"BidFloor"`
 
 	// 设备版本
-	DeviceVersion *string `json:"DeviceVersion,omitnil" name:"DeviceVersion"`
+	DeviceVersion *string `json:"DeviceVersion,omitnil,omitempty" name:"DeviceVersion"`
 
 	// 设备制造商
-	Maker *string `json:"Maker,omitnil" name:"Maker"`
+	Maker *string `json:"Maker,omitnil,omitempty" name:"Maker"`
 
 	// 设备类型（PHONE,TABLET）
-	DeviceType *string `json:"DeviceType,omitnil" name:"DeviceType"`
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 运营商；-1: 获取失败，0: 其他，1: 移动，2: 联通，3: 电信，4: 铁通
-	Carrier *string `json:"Carrier,omitnil" name:"Carrier"`
+	Carrier *string `json:"Carrier,omitnil,omitempty" name:"Carrier"`
 
 	// 入网方式(wifi,5g,4g,3g,2g)
-	AccessMode *string `json:"AccessMode,omitnil" name:"AccessMode"`
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
 	// 手机芯片信息
-	PhoneChipInfo *string `json:"PhoneChipInfo,omitnil" name:"PhoneChipInfo"`
+	PhoneChipInfo *string `json:"PhoneChipInfo,omitnil,omitempty" name:"PhoneChipInfo"`
 
 	// CPU 型号
-	CpuModel *string `json:"CpuModel,omitnil" name:"CpuModel"`
+	CpuModel *string `json:"CpuModel,omitnil,omitempty" name:"CpuModel"`
 
 	// CPU 核数
-	CpuCore *string `json:"CpuCore,omitnil" name:"CpuCore"`
+	CpuCore *string `json:"CpuCore,omitnil,omitempty" name:"CpuCore"`
 
 	// 内存容量，单位转换为 GB
-	Memory *string `json:"Memory,omitnil" name:"Memory"`
+	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 系统语言
-	Language *string `json:"Language,omitnil" name:"Language"`
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
 	// 手机音量
-	Volume *string `json:"Volume,omitnil" name:"Volume"`
+	Volume *string `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// 电池电量
-	BatteryPower *string `json:"BatteryPower,omitnil" name:"BatteryPower"`
+	BatteryPower *string `json:"BatteryPower,omitnil,omitempty" name:"BatteryPower"`
 
 	// 屏幕分辨率宽，保留整数
-	ResolutionWidth *int64 `json:"ResolutionWidth,omitnil" name:"ResolutionWidth"`
+	ResolutionWidth *int64 `json:"ResolutionWidth,omitnil,omitempty" name:"ResolutionWidth"`
 
 	// 屏幕分辨率高，保留整数
-	ResolutionHeight *int64 `json:"ResolutionHeight,omitnil" name:"ResolutionHeight"`
+	ResolutionHeight *int64 `json:"ResolutionHeight,omitnil,omitempty" name:"ResolutionHeight"`
 
 	// 浏览器类型
-	Ua *string `json:"Ua,omitnil" name:"Ua"`
+	Ua *string `json:"Ua,omitnil,omitempty" name:"Ua"`
 
 	// 客户端应用
-	App *string `json:"App,omitnil" name:"App"`
+	App *string `json:"App,omitnil,omitempty" name:"App"`
 
 	// 应用包名
-	AppPackageName *string `json:"AppPackageName,omitnil" name:"AppPackageName"`
+	AppPackageName *string `json:"AppPackageName,omitnil,omitempty" name:"AppPackageName"`
 
 	// 设备序列号
 	// Android设备
-	SerialNumber *string `json:"SerialNumber,omitnil" name:"SerialNumber"`
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
 	// netOperator MCC+MNC
 	// Android设备
-	MobileCountryAndNetworkCode *string `json:"MobileCountryAndNetworkCode,omitnil" name:"MobileCountryAndNetworkCode"`
+	MobileCountryAndNetworkCode *string `json:"MobileCountryAndNetworkCode,omitnil,omitempty" name:"MobileCountryAndNetworkCode"`
 
 	// 设备品牌 “华为”“oppo”“小米”
 	// Android设备
-	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
+	VendorId *string `json:"VendorId,omitnil,omitempty" name:"VendorId"`
 
 	// Android API等级
 	// Android设备
-	AndroidApiLevel *string `json:"AndroidApiLevel,omitnil" name:"AndroidApiLevel"`
+	AndroidApiLevel *string `json:"AndroidApiLevel,omitnil,omitempty" name:"AndroidApiLevel"`
 
 	// 屏幕亮度
 	// Android设备
-	Brightness *string `json:"Brightness,omitnil" name:"Brightness"`
+	Brightness *string `json:"Brightness,omitnil,omitempty" name:"Brightness"`
 
 	// 蓝牙地址
 	// Android设备
-	BluetoothAddress *string `json:"BluetoothAddress,omitnil" name:"BluetoothAddress"`
+	BluetoothAddress *string `json:"BluetoothAddress,omitnil,omitempty" name:"BluetoothAddress"`
 
 	// 基带版本
 	// Android设备
-	BaseBandVersion *string `json:"BaseBandVersion,omitnil" name:"BaseBandVersion"`
+	BaseBandVersion *string `json:"BaseBandVersion,omitnil,omitempty" name:"BaseBandVersion"`
 
 	// kernel 版本
 	// Android设备
-	KernelVersion *string `json:"KernelVersion,omitnil" name:"KernelVersion"`
+	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
 	// 存储容量，单位转换为 GB
 	// Android设备
-	Storage *string `json:"Storage,omitnil" name:"Storage"`
+	Storage *string `json:"Storage,omitnil,omitempty" name:"Storage"`
 
 	// 软件包名
 	// Android设备
-	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// app 版本号
 	// Android设备
-	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// app 显示名称
 	// Android设备
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
 	// Android设备
-	IsDebug *string `json:"IsDebug,omitnil" name:"IsDebug"`
+	IsDebug *string `json:"IsDebug,omitnil,omitempty" name:"IsDebug"`
 
 	// 是否越狱；0 为正常，1 为越狱；其他值无效
 	// Android设备
-	IsRoot *string `json:"IsRoot,omitnil" name:"IsRoot"`
+	IsRoot *string `json:"IsRoot,omitnil,omitempty" name:"IsRoot"`
 
 	// 是否启动代理；0 为未开启，1 为开启；其他值无效
 	// Android设备
-	IsProxy *string `json:"IsProxy,omitnil" name:"IsProxy"`
+	IsProxy *string `json:"IsProxy,omitnil,omitempty" name:"IsProxy"`
 
 	// 是否模拟器；0 为未开启，1 为开启；其他值无效
 	// Android设备
-	IsEmulator *string `json:"IsEmulator,omitnil" name:"IsEmulator"`
+	IsEmulator *string `json:"IsEmulator,omitnil,omitempty" name:"IsEmulator"`
 
 	// 充电状态；1-不在充电，2-USB充电，3-电源充电
 	// Android设备
-	ChargeStatus *string `json:"ChargeStatus,omitnil" name:"ChargeStatus"`
+	ChargeStatus *string `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
 	// 网络类型：2G/3G/4G/5G/Wi-Fi/WWAN/other
 	// Android设备
-	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// Wi-Fi MAC地址
 	// Android设备
-	WifiMac *string `json:"WifiMac,omitnil" name:"WifiMac"`
+	WifiMac *string `json:"WifiMac,omitnil,omitempty" name:"WifiMac"`
 
 	// 设备名称 "xxx 的 iPhone"，"xxx's IPhone" 等等
 	// IOS设备
-	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 开机时间
 	// IOS设备
-	StartupTime *string `json:"StartupTime,omitnil" name:"StartupTime"`
+	StartupTime *string `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
 	// 所在经度
-	Lon *string `json:"Lon,omitnil" name:"Lon"`
+	Lon *string `json:"Lon,omitnil,omitempty" name:"Lon"`
 
 	// 所在纬度
-	Lat *string `json:"Lat,omitnil" name:"Lat"`
+	Lat *string `json:"Lat,omitnil,omitempty" name:"Lat"`
 }
 
 type DeviceFingerprintInfo struct {
 	// 设备指纹Token
-	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
 	// 设备指纹的客户端SDK对应渠道
-	SdkChannel *string `json:"SdkChannel,omitnil" name:"SdkChannel"`
+	SdkChannel *string `json:"SdkChannel,omitnil,omitempty" name:"SdkChannel"`
 }
 
 // Predefined struct for user
 type EvaluateUserRiskRequestParams struct {
 	// 账号信息
-	Account *AccountInfo `json:"Account,omitnil" name:"Account"`
+	Account *AccountInfo `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 用户信息
-	User *UserInfo `json:"User,omitnil" name:"User"`
+	User *UserInfo `json:"User,omitnil,omitempty" name:"User"`
 
 	// 模型ID
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 设备指纹信息
-	DeviceFingerprint *DeviceFingerprintInfo `json:"DeviceFingerprint,omitnil" name:"DeviceFingerprint"`
+	DeviceFingerprint *DeviceFingerprintInfo `json:"DeviceFingerprint,omitnil,omitempty" name:"DeviceFingerprint"`
 
 	// 场景Code，不传默认活动防刷；
 	// e_activity_antirush；活动防刷场景
 	// e_login_protection；登录保护场景
 	// e_register_protection：注册保护场景
-	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 设备详情
-	DeviceDetail *DeviceDetailInfo `json:"DeviceDetail,omitnil" name:"DeviceDetail"`
+	DeviceDetail *DeviceDetailInfo `json:"DeviceDetail,omitnil,omitempty" name:"DeviceDetail"`
 
 	// 营销信息
-	Marketing *MarketingInfo `json:"Marketing,omitnil" name:"Marketing"`
+	Marketing *MarketingInfo `json:"Marketing,omitnil,omitempty" name:"Marketing"`
 }
 
 type EvaluateUserRiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 账号信息
-	Account *AccountInfo `json:"Account,omitnil" name:"Account"`
+	Account *AccountInfo `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 用户信息
-	User *UserInfo `json:"User,omitnil" name:"User"`
+	User *UserInfo `json:"User,omitnil,omitempty" name:"User"`
 
 	// 模型ID
-	ModelId *string `json:"ModelId,omitnil" name:"ModelId"`
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 设备指纹信息
-	DeviceFingerprint *DeviceFingerprintInfo `json:"DeviceFingerprint,omitnil" name:"DeviceFingerprint"`
+	DeviceFingerprint *DeviceFingerprintInfo `json:"DeviceFingerprint,omitnil,omitempty" name:"DeviceFingerprint"`
 
 	// 场景Code，不传默认活动防刷；
 	// e_activity_antirush；活动防刷场景
 	// e_login_protection；登录保护场景
 	// e_register_protection：注册保护场景
-	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 设备详情
-	DeviceDetail *DeviceDetailInfo `json:"DeviceDetail,omitnil" name:"DeviceDetail"`
+	DeviceDetail *DeviceDetailInfo `json:"DeviceDetail,omitnil,omitempty" name:"DeviceDetail"`
 
 	// 营销信息
-	Marketing *MarketingInfo `json:"Marketing,omitnil" name:"Marketing"`
+	Marketing *MarketingInfo `json:"Marketing,omitnil,omitempty" name:"Marketing"`
 }
 
 func (r *EvaluateUserRiskRequest) ToJsonString() string {
@@ -282,10 +282,10 @@ func (r *EvaluateUserRiskRequest) FromJsonString(s string) error {
 type EvaluateUserRiskResponseParams struct {
 	// 评估结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvaluationResult *EvaluationResult `json:"EvaluationResult,omitnil" name:"EvaluationResult"`
+	EvaluationResult *EvaluationResult `json:"EvaluationResult,omitnil,omitempty" name:"EvaluationResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type EvaluateUserRiskResponse struct {
@@ -306,11 +306,11 @@ func (r *EvaluateUserRiskResponse) FromJsonString(s string) error {
 
 type EvaluationResult struct {
 	// SSID值
-	SSID *string `json:"SSID,omitnil" name:"SSID"`
+	SSID *string `json:"SSID,omitnil,omitempty" name:"SSID"`
 
 	// 风险价值分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *float64 `json:"Score,omitnil" name:"Score"`
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 风险标签，请参考官网风险类型
 	// 账号风险
@@ -392,66 +392,66 @@ type EvaluationResult struct {
 	// 40002 疑似被调试 来源于小程序
 	// 40003 疑似模拟器 来源于小程序
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLabels []*int64 `json:"RiskLabels,omitnil" name:"RiskLabels"`
+	RiskLabels []*int64 `json:"RiskLabels,omitnil,omitempty" name:"RiskLabels"`
 }
 
 type MarketingInfo struct {
 	// 投放模式（0=PDB，1=PD，2=RTB，10=其他）
-	DeliveryMode *int64 `json:"DeliveryMode,omitnil" name:"DeliveryMode"`
+	DeliveryMode *int64 `json:"DeliveryMode,omitnil,omitempty" name:"DeliveryMode"`
 
 	// 广告位类型 （0=前贴片，1=开屏广告，2=网页头部广告、3=网页中部广告、4=网页底部广告、5=悬浮广告、10=其它）
-	AdvertisingType *int64 `json:"AdvertisingType,omitnil" name:"AdvertisingType"`
+	AdvertisingType *int64 `json:"AdvertisingType,omitnil,omitempty" name:"AdvertisingType"`
 
 	// 是否全屏插广告（0-否，1-是）
-	FullScreen *int64 `json:"FullScreen,omitnil" name:"FullScreen"`
+	FullScreen *int64 `json:"FullScreen,omitnil,omitempty" name:"FullScreen"`
 
 	// 广告位宽度
-	AdvertisingSpaceWidth *int64 `json:"AdvertisingSpaceWidth,omitnil" name:"AdvertisingSpaceWidth"`
+	AdvertisingSpaceWidth *int64 `json:"AdvertisingSpaceWidth,omitnil,omitempty" name:"AdvertisingSpaceWidth"`
 
 	// 广告位高度
-	AdvertisingSpaceHeight *int64 `json:"AdvertisingSpaceHeight,omitnil" name:"AdvertisingSpaceHeight"`
+	AdvertisingSpaceHeight *int64 `json:"AdvertisingSpaceHeight,omitnil,omitempty" name:"AdvertisingSpaceHeight"`
 
 	// 网址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type UniversalAccountInfo struct {
 	// 账号值：
 	// 当账户类型为1时，填入手机号，如135****3695；
 	// 当账户类型为2、3或100时，填入对应的值。
-	AccountId *string `json:"AccountId,omitnil" name:"AccountId"`
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 }
 
 type UserInfo struct {
 	// 用户外网IP地址
-	Ip *string `json:"Ip,omitnil" name:"Ip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 来源渠道编码
-	ChannelSource *string `json:"ChannelSource,omitnil" name:"ChannelSource"`
+	ChannelSource *string `json:"ChannelSource,omitnil,omitempty" name:"ChannelSource"`
 
 	// 用户登录平台。1：Android 2：iOS 3：H5 4：小程序
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 姓名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 年龄
-	Age *int64 `json:"Age,omitnil" name:"Age"`
+	Age *int64 `json:"Age,omitnil,omitempty" name:"Age"`
 
 	// 性别：
 	// male（男）
 	// female（女）
-	Gender *string `json:"Gender,omitnil" name:"Gender"`
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 身份证号
-	ResidentIdentityCard *string `json:"ResidentIdentityCard,omitnil" name:"ResidentIdentityCard"`
+	ResidentIdentityCard *string `json:"ResidentIdentityCard,omitnil,omitempty" name:"ResidentIdentityCard"`
 
 	// 邮箱地址
-	Email *string `json:"Email,omitnil" name:"Email"`
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 用户地址
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 用户昵称
-	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 }

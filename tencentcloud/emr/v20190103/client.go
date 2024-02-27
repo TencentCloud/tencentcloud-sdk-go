@@ -45,6 +45,83 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddMetricScaleStrategyRequest() (request *AddMetricScaleStrategyRequest) {
+    request = &AddMetricScaleStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "AddMetricScaleStrategy")
+    
+    
+    return
+}
+
+func NewAddMetricScaleStrategyResponse() (response *AddMetricScaleStrategyResponse) {
+    response = &AddMetricScaleStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddMetricScaleStrategy
+// 添加扩缩容规则，按负载和时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MORESTRATEGYNOTALLOWED = "FailedOperation.MoreStrategyNotAllowed"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDCOMPAREMETHOD = "InvalidParameter.InvalidCompareMethod"
+//  INVALIDPARAMETER_INVALIDCONDITIONNUM = "InvalidParameter.InvalidConditionNum"
+//  INVALIDPARAMETER_INVALIDPARAMTERINVALIDSOFTINFO = "InvalidParameter.InvalidParamterInvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDPROCESSMETHOD = "InvalidParameter.InvalidProcessMethod"
+//  INVALIDPARAMETER_INVALIDSCALEACTION = "InvalidParameter.InvalidScaleAction"
+//  INVALIDPARAMETER_INVALIDSOFTWARE = "InvalidParameter.InvalidSoftWare"
+//  INVALIDPARAMETER_INVALIDSTRATEGY = "InvalidParameter.InvalidStrategy"
+//  INVALIDPARAMETER_INVALIDSTRATEGYSPEC = "InvalidParameter.InvalidStrategySpec"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  INVALIDPARAMETER_INVALIDTIMELAYOUT = "InvalidParameter.InvalidTimeLayout"
+//  INVALIDPARAMETER_REPEATEDEXECUTIONTIME = "InvalidParameter.RepeatedExecutionTime"
+//  INVALIDPARAMETER_REPEATEDSTRATEGYNAME = "InvalidParameter.RepeatedStrategyName"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) AddMetricScaleStrategy(request *AddMetricScaleStrategyRequest) (response *AddMetricScaleStrategyResponse, err error) {
+    return c.AddMetricScaleStrategyWithContext(context.Background(), request)
+}
+
+// AddMetricScaleStrategy
+// 添加扩缩容规则，按负载和时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MORESTRATEGYNOTALLOWED = "FailedOperation.MoreStrategyNotAllowed"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDCOMPAREMETHOD = "InvalidParameter.InvalidCompareMethod"
+//  INVALIDPARAMETER_INVALIDCONDITIONNUM = "InvalidParameter.InvalidConditionNum"
+//  INVALIDPARAMETER_INVALIDPARAMTERINVALIDSOFTINFO = "InvalidParameter.InvalidParamterInvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDPROCESSMETHOD = "InvalidParameter.InvalidProcessMethod"
+//  INVALIDPARAMETER_INVALIDSCALEACTION = "InvalidParameter.InvalidScaleAction"
+//  INVALIDPARAMETER_INVALIDSOFTWARE = "InvalidParameter.InvalidSoftWare"
+//  INVALIDPARAMETER_INVALIDSTRATEGY = "InvalidParameter.InvalidStrategy"
+//  INVALIDPARAMETER_INVALIDSTRATEGYSPEC = "InvalidParameter.InvalidStrategySpec"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  INVALIDPARAMETER_INVALIDTIMELAYOUT = "InvalidParameter.InvalidTimeLayout"
+//  INVALIDPARAMETER_REPEATEDEXECUTIONTIME = "InvalidParameter.RepeatedExecutionTime"
+//  INVALIDPARAMETER_REPEATEDSTRATEGYNAME = "InvalidParameter.RepeatedStrategyName"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) AddMetricScaleStrategyWithContext(ctx context.Context, request *AddMetricScaleStrategyRequest) (response *AddMetricScaleStrategyResponse, err error) {
+    if request == nil {
+        request = NewAddMetricScaleStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddMetricScaleStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddMetricScaleStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddUsersForUserManagerRequest() (request *AddUsersForUserManagerRequest) {
     request = &AddUsersForUserManagerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -410,6 +487,61 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewDeleteAutoScaleStrategyRequest() (request *DeleteAutoScaleStrategyRequest) {
+    request = &DeleteAutoScaleStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DeleteAutoScaleStrategy")
+    
+    
+    return
+}
+
+func NewDeleteAutoScaleStrategyResponse() (response *DeleteAutoScaleStrategyResponse) {
+    response = &DeleteAutoScaleStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAutoScaleStrategy
+// 删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeleteAutoScaleStrategy(request *DeleteAutoScaleStrategyRequest) (response *DeleteAutoScaleStrategyResponse, err error) {
+    return c.DeleteAutoScaleStrategyWithContext(context.Background(), request)
+}
+
+// DeleteAutoScaleStrategy
+// 删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeleteAutoScaleStrategyWithContext(ctx context.Context, request *DeleteAutoScaleStrategyRequest) (response *DeleteAutoScaleStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAutoScaleStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAutoScaleStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAutoScaleStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserManagerUserListRequest() (request *DeleteUserManagerUserListRequest) {
     request = &DeleteUserManagerUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -465,6 +597,61 @@ func (c *Client) DeleteUserManagerUserListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAutoScaleGroupGlobalConfRequest() (request *DescribeAutoScaleGroupGlobalConfRequest) {
+    request = &DescribeAutoScaleGroupGlobalConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeAutoScaleGroupGlobalConf")
+    
+    
+    return
+}
+
+func NewDescribeAutoScaleGroupGlobalConfResponse() (response *DescribeAutoScaleGroupGlobalConfResponse) {
+    response = &DescribeAutoScaleGroupGlobalConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoScaleGroupGlobalConf
+// 获取自动扩缩容全局配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeAutoScaleGroupGlobalConf(request *DescribeAutoScaleGroupGlobalConfRequest) (response *DescribeAutoScaleGroupGlobalConfResponse, err error) {
+    return c.DescribeAutoScaleGroupGlobalConfWithContext(context.Background(), request)
+}
+
+// DescribeAutoScaleGroupGlobalConf
+// 获取自动扩缩容全局配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeAutoScaleGroupGlobalConfWithContext(ctx context.Context, request *DescribeAutoScaleGroupGlobalConfRequest) (response *DescribeAutoScaleGroupGlobalConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScaleGroupGlobalConfRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScaleGroupGlobalConf require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoScaleGroupGlobalConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScaleRecordsRequest() (request *DescribeAutoScaleRecordsRequest) {
     request = &DescribeAutoScaleRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -514,6 +701,63 @@ func (c *Client) DescribeAutoScaleRecordsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeAutoScaleRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoScaleStrategiesRequest() (request *DescribeAutoScaleStrategiesRequest) {
+    request = &DescribeAutoScaleStrategiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeAutoScaleStrategies")
+    
+    
+    return
+}
+
+func NewDescribeAutoScaleStrategiesResponse() (response *DescribeAutoScaleStrategiesResponse) {
+    response = &DescribeAutoScaleStrategiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoScaleStrategies
+// 获取自动扩缩容规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeAutoScaleStrategies(request *DescribeAutoScaleStrategiesRequest) (response *DescribeAutoScaleStrategiesResponse, err error) {
+    return c.DescribeAutoScaleStrategiesWithContext(context.Background(), request)
+}
+
+// DescribeAutoScaleStrategies
+// 获取自动扩缩容规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeAutoScaleStrategiesWithContext(ctx context.Context, request *DescribeAutoScaleStrategiesRequest) (response *DescribeAutoScaleStrategiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScaleStrategiesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScaleStrategies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoScaleStrategiesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1976,6 +2220,77 @@ func (c *Client) InquiryPriceUpdateInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewInquiryPriceUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoScaleStrategyRequest() (request *ModifyAutoScaleStrategyRequest) {
+    request = &ModifyAutoScaleStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyAutoScaleStrategy")
+    
+    
+    return
+}
+
+func NewModifyAutoScaleStrategyResponse() (response *ModifyAutoScaleStrategyResponse) {
+    response = &ModifyAutoScaleStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoScaleStrategy
+// 修改自动扩缩容规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTATISTICPERIODORTRIGGERTHRESHOLD = "InvalidParameter.InvalidStatisticPeriodOrTriggerThreshold"
+//  INVALIDPARAMETER_INVALIDSTRATEGY = "InvalidParameter.InvalidStrategy"
+//  INVALIDPARAMETER_INVALIDSTRATEGYPRIORITY = "InvalidParameter.InvalidStrategyPriority"
+//  INVALIDPARAMETER_INVALIDSTRATEGYSPEC = "InvalidParameter.InvalidStrategySpec"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  INVALIDPARAMETER_INVALIDTIMELAYOUT = "InvalidParameter.InvalidTimeLayout"
+//  INVALIDPARAMETER_REPEATEDEXECUTIONTIME = "InvalidParameter.RepeatedExecutionTime"
+//  INVALIDPARAMETER_REPEATEDSTRATEGYNAME = "InvalidParameter.RepeatedStrategyName"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyAutoScaleStrategy(request *ModifyAutoScaleStrategyRequest) (response *ModifyAutoScaleStrategyResponse, err error) {
+    return c.ModifyAutoScaleStrategyWithContext(context.Background(), request)
+}
+
+// ModifyAutoScaleStrategy
+// 修改自动扩缩容规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTATISTICPERIODORTRIGGERTHRESHOLD = "InvalidParameter.InvalidStatisticPeriodOrTriggerThreshold"
+//  INVALIDPARAMETER_INVALIDSTRATEGY = "InvalidParameter.InvalidStrategy"
+//  INVALIDPARAMETER_INVALIDSTRATEGYPRIORITY = "InvalidParameter.InvalidStrategyPriority"
+//  INVALIDPARAMETER_INVALIDSTRATEGYSPEC = "InvalidParameter.InvalidStrategySpec"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  INVALIDPARAMETER_INVALIDTIMELAYOUT = "InvalidParameter.InvalidTimeLayout"
+//  INVALIDPARAMETER_REPEATEDEXECUTIONTIME = "InvalidParameter.RepeatedExecutionTime"
+//  INVALIDPARAMETER_REPEATEDSTRATEGYNAME = "InvalidParameter.RepeatedStrategyName"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyAutoScaleStrategyWithContext(ctx context.Context, request *ModifyAutoScaleStrategyRequest) (response *ModifyAutoScaleStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoScaleStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoScaleStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoScaleStrategyResponse()
     err = c.Send(request, response)
     return
 }

@@ -23,20 +23,20 @@ import (
 // Predefined struct for user
 type DescribeDrawResourceListRequestParams struct {
 	// PageNumber
-	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// PageSize
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribeDrawResourceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// PageNumber
-	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// PageSize
-	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeDrawResourceListRequest) ToJsonString() string {
@@ -62,13 +62,13 @@ func (r *DescribeDrawResourceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDrawResourceListResponseParams struct {
 	// 返回数据条数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 返回数据内容
-	ResourceDrawList []*ResourceDrawListType `json:"ResourceDrawList,omitnil" name:"ResourceDrawList"`
+	ResourceDrawList []*ResourceDrawListType `json:"ResourceDrawList,omitnil,omitempty" name:"ResourceDrawList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeDrawResourceListResponse struct {
@@ -90,49 +90,49 @@ func (r *DescribeDrawResourceListResponse) FromJsonString(s string) error {
 type ResourceDrawListType struct {
 	// 记录id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 资源记录id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *uint64 `json:"FlowId,omitnil" name:"FlowId"`
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 本订单资源序列号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexId *string `json:"IndexId,omitnil" name:"IndexId"`
+	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
 
 	// 客户的Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 大订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
 	// 小订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmallOrderId *string `json:"SmallOrderId,omitnil" name:"SmallOrderId"`
+	SmallOrderId *string `json:"SmallOrderId,omitnil,omitempty" name:"SmallOrderId"`
 
 	// 资源创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceNewStartTime *string `json:"ResourceNewStartTime,omitnil" name:"ResourceNewStartTime"`
+	ResourceNewStartTime *string `json:"ResourceNewStartTime,omitnil,omitempty" name:"ResourceNewStartTime"`
 
 	// 资源到期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceNewEndTime *string `json:"ResourceNewEndTime,omitnil" name:"ResourceNewEndTime"`
+	ResourceNewEndTime *string `json:"ResourceNewEndTime,omitnil,omitempty" name:"ResourceNewEndTime"`
 
 	// 资源状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceStatus *int64 `json:"ResourceStatus,omitnil" name:"ResourceStatus"`
+	ResourceStatus *int64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 
 	// 本记录状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 项目类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceType *uint64 `json:"ResourceType,omitnil" name:"ResourceType"`
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }

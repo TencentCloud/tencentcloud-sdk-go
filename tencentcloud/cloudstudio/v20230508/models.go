@@ -23,56 +23,56 @@ import (
 // Predefined struct for user
 type CreateWorkspaceRequestParams struct {
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作空间描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
-	Specs *string `json:"Specs,omitnil" name:"Specs"`
+	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
 	// 工作空间基础镜像名称, 默认会使用 All In One 镜像
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// Git 仓库. 工作空间启动时会自动克隆该仓库
-	Repository *GitRepository `json:"Repository,omitnil" name:"Repository"`
+	Repository *GitRepository `json:"Repository,omitnil,omitempty" name:"Repository"`
 
 	// 环境变量. 会被注入到工作空间中
-	Envs []*Env `json:"Envs,omitnil" name:"Envs"`
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 预装插件. 工作空间启动时, 会自动安装这些插件 
-	Extensions []*string `json:"Extensions,omitnil" name:"Extensions"`
+	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
-	Lifecycle *LifeCycle `json:"Lifecycle,omitnil" name:"Lifecycle"`
+	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
 type CreateWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作空间描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
-	Specs *string `json:"Specs,omitnil" name:"Specs"`
+	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
 	// 工作空间基础镜像名称, 默认会使用 All In One 镜像
-	Image *string `json:"Image,omitnil" name:"Image"`
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// Git 仓库. 工作空间启动时会自动克隆该仓库
-	Repository *GitRepository `json:"Repository,omitnil" name:"Repository"`
+	Repository *GitRepository `json:"Repository,omitnil,omitempty" name:"Repository"`
 
 	// 环境变量. 会被注入到工作空间中
-	Envs []*Env `json:"Envs,omitnil" name:"Envs"`
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 预装插件. 工作空间启动时, 会自动安装这些插件 
-	Extensions []*string `json:"Extensions,omitnil" name:"Extensions"`
+	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
-	Lifecycle *LifeCycle `json:"Lifecycle,omitnil" name:"Lifecycle"`
+	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
 func (r *CreateWorkspaceRequest) ToJsonString() string {
@@ -104,13 +104,13 @@ func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWorkspaceResponseParams struct {
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateWorkspaceResponse struct {
@@ -132,26 +132,26 @@ func (r *CreateWorkspaceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWorkspaceTokenRequestParams struct {
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// token过期时间，单位是秒，默认 3600
-	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil" name:"TokenExpiredLimitSec"`
+	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
 	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
-	Policies []*string `json:"Policies,omitnil" name:"Policies"`
+	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
 type CreateWorkspaceTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// token过期时间，单位是秒，默认 3600
-	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil" name:"TokenExpiredLimitSec"`
+	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
 	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
-	Policies []*string `json:"Policies,omitnil" name:"Policies"`
+	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
 func (r *CreateWorkspaceTokenRequest) ToJsonString() string {
@@ -178,13 +178,13 @@ func (r *CreateWorkspaceTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWorkspaceTokenResponseParams struct {
 	// 访问工作空间临时凭证
-	Token *string `json:"Token,omitnil" name:"Token"`
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// token 过期时间
-	ExpiredTime *string `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateWorkspaceTokenResponse struct {
@@ -206,14 +206,14 @@ func (r *CreateWorkspaceTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigRequestParams struct {
 	// 配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 配置名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeConfigRequest) ToJsonString() string {
@@ -239,10 +239,10 @@ func (r *DescribeConfigRequest) FromJsonString(s string) error {
 type DescribeConfigResponseParams struct {
 	// 配置值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeConfigResponse struct {
@@ -293,10 +293,10 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImagesResponseParams struct {
 	// 镜像列表
-	Images []*Image `json:"Images,omitnil" name:"Images"`
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeImagesResponse struct {
@@ -318,14 +318,14 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWorkspacesRequestParams struct {
 	// 工作空间名称过滤条件
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeWorkspacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间名称过滤条件
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeWorkspacesRequest) ToJsonString() string {
@@ -350,10 +350,10 @@ func (r *DescribeWorkspacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWorkspacesResponseParams struct {
 	// 工作空间列表
-	Data []*WorkspaceStatusInfo `json:"Data,omitnil" name:"Data"`
+	Data []*WorkspaceStatusInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWorkspacesResponse struct {
@@ -374,97 +374,97 @@ func (r *DescribeWorkspacesResponse) FromJsonString(s string) error {
 
 type Env struct {
 	// 环境变量 key
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 环境变量 value
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type GitRepository struct {
 	// Git 仓库地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// Git 仓库分支名或 Tag 名
-	Branch *string `json:"Branch,omitnil" name:"Branch"`
+	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 }
 
 type Image struct {
 	// 镜像名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 镜像仓库
-	Repository *string `json:"Repository,omitnil" name:"Repository"`
+	Repository *string `json:"Repository,omitnil,omitempty" name:"Repository"`
 
 	// tag 列表
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type LifeCycle struct {
 	// 工作空间首次初始化时执行
-	Init []*LifeCycleCommand `json:"Init,omitnil" name:"Init"`
+	Init []*LifeCycleCommand `json:"Init,omitnil,omitempty" name:"Init"`
 
 	// 每次工作空间启动时执行
-	Start []*LifeCycleCommand `json:"Start,omitnil" name:"Start"`
+	Start []*LifeCycleCommand `json:"Start,omitnil,omitempty" name:"Start"`
 
 	// 每次工作空间关闭时执行
-	Destroy []*LifeCycleCommand `json:"Destroy,omitnil" name:"Destroy"`
+	Destroy []*LifeCycleCommand `json:"Destroy,omitnil,omitempty" name:"Destroy"`
 }
 
 type LifeCycleCommand struct {
 	// 指令描述
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 具体命令
-	Command *string `json:"Command,omitnil" name:"Command"`
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 }
 
 // Predefined struct for user
 type ModifyWorkspaceRequestParams struct {
 	// 工作空间 SpaceKey. 更新该工作空间的属性
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作空间描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
-	Specs *string `json:"Specs,omitnil" name:"Specs"`
+	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
 	// 环境变量. 会被注入到工作空间中
-	Envs []*Env `json:"Envs,omitnil" name:"Envs"`
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 预装插件. 工作空间启动时, 会自动安装这些插件 
-	Extensions []*string `json:"Extensions,omitnil" name:"Extensions"`
+	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
-	Lifecycle *LifeCycle `json:"Lifecycle,omitnil" name:"Lifecycle"`
+	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
 type ModifyWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间 SpaceKey. 更新该工作空间的属性
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作空间描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
-	Specs *string `json:"Specs,omitnil" name:"Specs"`
+	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
 	// 环境变量. 会被注入到工作空间中
-	Envs []*Env `json:"Envs,omitnil" name:"Envs"`
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 预装插件. 工作空间启动时, 会自动安装这些插件 
-	Extensions []*string `json:"Extensions,omitnil" name:"Extensions"`
+	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
-	Lifecycle *LifeCycle `json:"Lifecycle,omitnil" name:"Lifecycle"`
+	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
 func (r *ModifyWorkspaceRequest) ToJsonString() string {
@@ -495,7 +495,7 @@ func (r *ModifyWorkspaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWorkspaceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyWorkspaceResponse struct {
@@ -517,14 +517,14 @@ func (r *ModifyWorkspaceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RemoveWorkspaceRequestParams struct {
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 type RemoveWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 func (r *RemoveWorkspaceRequest) ToJsonString() string {
@@ -549,7 +549,7 @@ func (r *RemoveWorkspaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RemoveWorkspaceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RemoveWorkspaceResponse struct {
@@ -571,14 +571,14 @@ func (r *RemoveWorkspaceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RunWorkspaceRequestParams struct {
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 type RunWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 func (r *RunWorkspaceRequest) ToJsonString() string {
@@ -603,7 +603,7 @@ func (r *RunWorkspaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunWorkspaceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RunWorkspaceResponse struct {
@@ -625,14 +625,14 @@ func (r *RunWorkspaceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StopWorkspaceRequestParams struct {
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 type StopWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 工作空间 SpaceKey
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 }
 
 func (r *StopWorkspaceRequest) ToJsonString() string {
@@ -657,7 +657,7 @@ func (r *StopWorkspaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopWorkspaceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type StopWorkspaceResponse struct {
@@ -678,52 +678,52 @@ func (r *StopWorkspaceResponse) FromJsonString(s string) error {
 
 type WorkspaceStatusInfo struct {
 	// 工作空间 ID
-	Id *int64 `json:"Id,omitnil" name:"Id"`
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 工作空间名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作空间标识
-	SpaceKey *string `json:"SpaceKey,omitnil" name:"SpaceKey"`
+	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
 	// 工作空间状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// CPU数量
-	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存
-	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 工作空间图标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Icon *string `json:"Icon,omitnil" name:"Icon"`
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
 	// 工作空间状态, 异常原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusReason *string `json:"StatusReason,omitnil" name:"StatusReason"`
+	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 
 	// 工作空间描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkspaceType *string `json:"WorkspaceType,omitnil" name:"WorkspaceType"`
+	WorkspaceType *string `json:"WorkspaceType,omitnil,omitempty" name:"WorkspaceType"`
 
 	// Git 仓库 HTTPS 地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionControlUrl *string `json:"VersionControlUrl,omitnil" name:"VersionControlUrl"`
+	VersionControlUrl *string `json:"VersionControlUrl,omitnil,omitempty" name:"VersionControlUrl"`
 
 	// Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionControlRef *string `json:"VersionControlRef,omitnil" name:"VersionControlRef"`
+	VersionControlRef *string `json:"VersionControlRef,omitnil,omitempty" name:"VersionControlRef"`
 
 	// 最后操作时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastOpsDate *string `json:"LastOpsDate,omitnil" name:"LastOpsDate"`
+	LastOpsDate *string `json:"LastOpsDate,omitnil,omitempty" name:"LastOpsDate"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateDate *string `json:"CreateDate,omitnil" name:"CreateDate"`
+	CreateDate *string `json:"CreateDate,omitnil,omitempty" name:"CreateDate"`
 }

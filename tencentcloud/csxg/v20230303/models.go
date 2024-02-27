@@ -52,7 +52,7 @@ func (r *Create5GInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Create5GInstanceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type Create5GInstanceResponse struct {
@@ -103,7 +103,7 @@ func (r *Delete5GInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Delete5GInstanceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type Delete5GInstanceResponse struct {
@@ -154,7 +154,7 @@ func (r *Describe5GAPNsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Describe5GAPNsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type Describe5GAPNsResponse struct {
@@ -205,7 +205,7 @@ func (r *Describe5GInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Describe5GInstancesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type Describe5GInstancesResponse struct {
@@ -256,7 +256,7 @@ func (r *Modify5GInstanceAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Modify5GInstanceAttributeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type Modify5GInstanceAttributeResponse struct {

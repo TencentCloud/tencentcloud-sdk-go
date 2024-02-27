@@ -22,52 +22,52 @@ import (
 
 type AccessGroup struct {
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 权限组名称
-	AccessGroupName *string `json:"AccessGroupName,omitnil" name:"AccessGroupName"`
+	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
 	// 权限组描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AccessRule struct {
 	// 权限规则ID
-	AccessRuleId *uint64 `json:"AccessRuleId,omitnil" name:"AccessRuleId"`
+	AccessRuleId *uint64 `json:"AccessRuleId,omitnil,omitempty" name:"AccessRuleId"`
 
 	// 权限规则地址（网段或IP）
-	Address *string `json:"Address,omitnil" name:"Address"`
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 权限规则访问模式（1：只读；2：读写）
-	AccessMode *uint64 `json:"AccessMode,omitnil" name:"AccessMode"`
+	AccessMode *uint64 `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
 	// 优先级（取值范围1~100，值越小优先级越高）
-	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type CreateAccessGroupRequestParams struct {
 	// 权限组名称
-	AccessGroupName *string `json:"AccessGroupName,omitnil" name:"AccessGroupName"`
+	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
 	// 权限组描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateAccessGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 权限组名称
-	AccessGroupName *string `json:"AccessGroupName,omitnil" name:"AccessGroupName"`
+	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
 	// 权限组描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateAccessGroupRequest) ToJsonString() string {
@@ -93,10 +93,10 @@ func (r *CreateAccessGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAccessGroupResponseParams struct {
 	// 权限组
-	AccessGroup *AccessGroup `json:"AccessGroup,omitnil" name:"AccessGroup"`
+	AccessGroup *AccessGroup `json:"AccessGroup,omitnil,omitempty" name:"AccessGroup"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAccessGroupResponse struct {
@@ -118,20 +118,20 @@ func (r *CreateAccessGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAccessRulesRequestParams struct {
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitnil" name:"AccessRules"`
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 type CreateAccessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitnil" name:"AccessRules"`
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 func (r *CreateAccessRulesRequest) ToJsonString() string {
@@ -157,7 +157,7 @@ func (r *CreateAccessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAccessRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateAccessRulesResponse struct {
@@ -179,26 +179,26 @@ func (r *CreateAccessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileSystemRequestParams struct {
 	// 文件系统名称
-	FileSystemName *string `json:"FileSystemName,omitnil" name:"FileSystemName"`
+	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
 	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil" name:"CapacityQuota"`
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 
 	// 文件系统描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统名称
-	FileSystemName *string `json:"FileSystemName,omitnil" name:"FileSystemName"`
+	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
 	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil" name:"CapacityQuota"`
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 
 	// 文件系统描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -225,10 +225,10 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileSystemResponseParams struct {
 	// 文件系统
-	FileSystem *FileSystem `json:"FileSystem,omitnil" name:"FileSystem"`
+	FileSystem *FileSystem `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateFileSystemResponse struct {
@@ -250,20 +250,20 @@ func (r *CreateFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLifeCycleRulesRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil" name:"LifeCycleRules"`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 }
 
 type CreateLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil" name:"LifeCycleRules"`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 }
 
 func (r *CreateLifeCycleRulesRequest) ToJsonString() string {
@@ -289,7 +289,7 @@ func (r *CreateLifeCycleRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLifeCycleRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateLifeCycleRulesResponse struct {
@@ -311,44 +311,44 @@ func (r *CreateLifeCycleRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMountPointRequestParams struct {
 	// 挂载点名称
-	MountPointName *string `json:"MountPointName,omitnil" name:"MountPointName"`
+	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// VPC网络ID
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 挂载点状态（1：打开；2：关闭）
-	MountPointStatus *uint64 `json:"MountPointStatus,omitnil" name:"MountPointStatus"`
+	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 
 	// VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
-	VpcType *uint64 `json:"VpcType,omitnil" name:"VpcType"`
+	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 }
 
 type CreateMountPointRequest struct {
 	*tchttp.BaseRequest
 	
 	// 挂载点名称
-	MountPointName *string `json:"MountPointName,omitnil" name:"MountPointName"`
+	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// VPC网络ID
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 挂载点状态（1：打开；2：关闭）
-	MountPointStatus *uint64 `json:"MountPointStatus,omitnil" name:"MountPointStatus"`
+	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 
 	// VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
-	VpcType *uint64 `json:"VpcType,omitnil" name:"VpcType"`
+	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 }
 
 func (r *CreateMountPointRequest) ToJsonString() string {
@@ -378,10 +378,10 @@ func (r *CreateMountPointRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMountPointResponseParams struct {
 	// 挂载点
-	MountPoint *MountPoint `json:"MountPoint,omitnil" name:"MountPoint"`
+	MountPoint *MountPoint `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateMountPointResponse struct {
@@ -403,20 +403,20 @@ func (r *CreateMountPointResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRestoreTasksRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个回热任务，上限为10
-	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil" name:"RestoreTasks"`
+	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil,omitempty" name:"RestoreTasks"`
 }
 
 type CreateRestoreTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个回热任务，上限为10
-	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil" name:"RestoreTasks"`
+	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil,omitempty" name:"RestoreTasks"`
 }
 
 func (r *CreateRestoreTasksRequest) ToJsonString() string {
@@ -442,7 +442,7 @@ func (r *CreateRestoreTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRestoreTasksResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateRestoreTasksResponse struct {
@@ -464,14 +464,14 @@ func (r *CreateRestoreTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessGroupRequestParams struct {
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 type DeleteAccessGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 func (r *DeleteAccessGroupRequest) ToJsonString() string {
@@ -496,7 +496,7 @@ func (r *DeleteAccessGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAccessGroupResponse struct {
@@ -518,14 +518,14 @@ func (r *DeleteAccessGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessRulesRequestParams struct {
 	// 多个权限规则ID，上限为10
-	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitnil" name:"AccessRuleIds"`
+	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitnil,omitempty" name:"AccessRuleIds"`
 }
 
 type DeleteAccessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多个权限规则ID，上限为10
-	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitnil" name:"AccessRuleIds"`
+	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitnil,omitempty" name:"AccessRuleIds"`
 }
 
 func (r *DeleteAccessRulesRequest) ToJsonString() string {
@@ -550,7 +550,7 @@ func (r *DeleteAccessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAccessRulesResponse struct {
@@ -572,14 +572,14 @@ func (r *DeleteAccessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFileSystemRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DeleteFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 func (r *DeleteFileSystemRequest) ToJsonString() string {
@@ -604,7 +604,7 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFileSystemResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteFileSystemResponse struct {
@@ -626,14 +626,14 @@ func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLifeCycleRulesRequestParams struct {
 	// 多个生命周期规则ID，上限为10
-	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitnil" name:"LifeCycleRuleIds"`
+	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitnil,omitempty" name:"LifeCycleRuleIds"`
 }
 
 type DeleteLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多个生命周期规则ID，上限为10
-	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitnil" name:"LifeCycleRuleIds"`
+	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitnil,omitempty" name:"LifeCycleRuleIds"`
 }
 
 func (r *DeleteLifeCycleRulesRequest) ToJsonString() string {
@@ -658,7 +658,7 @@ func (r *DeleteLifeCycleRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLifeCycleRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteLifeCycleRulesResponse struct {
@@ -680,14 +680,14 @@ func (r *DeleteLifeCycleRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMountPointRequestParams struct {
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 }
 
 type DeleteMountPointRequest struct {
 	*tchttp.BaseRequest
 	
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 }
 
 func (r *DeleteMountPointRequest) ToJsonString() string {
@@ -712,7 +712,7 @@ func (r *DeleteMountPointRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMountPointResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMountPointResponse struct {
@@ -734,26 +734,26 @@ func (r *DeleteMountPointResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessGroupsRequestParams struct {
 	// 过滤条件，Name可选“AccessGroupId“和“AccessGroupName”，Values上限为10
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAccessGroupsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件，Name可选“AccessGroupId“和“AccessGroupName”，Values上限为10
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAccessGroupsRequest) ToJsonString() string {
@@ -780,10 +780,10 @@ func (r *DescribeAccessGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessGroupsResponseParams struct {
 	// 权限组列表
-	AccessGroups []*AccessGroup `json:"AccessGroups,omitnil" name:"AccessGroups"`
+	AccessGroups []*AccessGroup `json:"AccessGroups,omitnil,omitempty" name:"AccessGroups"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAccessGroupsResponse struct {
@@ -805,26 +805,26 @@ func (r *DescribeAccessGroupsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessRulesRequestParams struct {
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAccessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAccessRulesRequest) ToJsonString() string {
@@ -851,10 +851,10 @@ func (r *DescribeAccessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessRulesResponseParams struct {
 	// 权限规则列表
-	AccessRules []*AccessRule `json:"AccessRules,omitnil" name:"AccessRules"`
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAccessRulesResponse struct {
@@ -876,14 +876,14 @@ func (r *DescribeAccessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DescribeFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 func (r *DescribeFileSystemRequest) ToJsonString() string {
@@ -908,22 +908,22 @@ func (r *DescribeFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemResponseParams struct {
 	// 文件系统
-	FileSystem *FileSystem `json:"FileSystem,omitnil" name:"FileSystem"`
+	FileSystem *FileSystem `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
 
 	// 文件系统已使用容量（已弃用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSystemCapacityUsed *uint64 `json:"FileSystemCapacityUsed,omitnil" name:"FileSystemCapacityUsed"`
+	FileSystemCapacityUsed *uint64 `json:"FileSystemCapacityUsed,omitnil,omitempty" name:"FileSystemCapacityUsed"`
 
 	// 已使用容量（byte），包括标准和归档存储
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CapacityUsed *uint64 `json:"CapacityUsed,omitnil" name:"CapacityUsed"`
+	CapacityUsed *uint64 `json:"CapacityUsed,omitnil,omitempty" name:"CapacityUsed"`
 
 	// 已使用归档存储容量（byte）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitnil" name:"ArchiveCapacityUsed"`
+	ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitnil,omitempty" name:"ArchiveCapacityUsed"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFileSystemResponse struct {
@@ -945,20 +945,20 @@ func (r *DescribeFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemsRequestParams struct {
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeFileSystemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeFileSystemsRequest) ToJsonString() string {
@@ -984,10 +984,10 @@ func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemsResponseParams struct {
 	// 文件系统列表
-	FileSystems []*FileSystem `json:"FileSystems,omitnil" name:"FileSystems"`
+	FileSystems []*FileSystem `json:"FileSystems,omitnil,omitempty" name:"FileSystems"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeFileSystemsResponse struct {
@@ -1009,14 +1009,14 @@ func (r *DescribeFileSystemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLifeCycleRulesRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DescribeLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 func (r *DescribeLifeCycleRulesRequest) ToJsonString() string {
@@ -1041,10 +1041,10 @@ func (r *DescribeLifeCycleRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLifeCycleRulesResponseParams struct {
 	// 生命周期规则列表
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil" name:"LifeCycleRules"`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLifeCycleRulesResponse struct {
@@ -1066,14 +1066,14 @@ func (r *DescribeLifeCycleRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMountPointRequestParams struct {
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 }
 
 type DescribeMountPointRequest struct {
 	*tchttp.BaseRequest
 	
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 }
 
 func (r *DescribeMountPointRequest) ToJsonString() string {
@@ -1098,10 +1098,10 @@ func (r *DescribeMountPointRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMountPointResponseParams struct {
 	// 挂载点
-	MountPoint *MountPoint `json:"MountPoint,omitnil" name:"MountPoint"`
+	MountPoint *MountPoint `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMountPointResponse struct {
@@ -1124,17 +1124,17 @@ func (r *DescribeMountPointResponse) FromJsonString(s string) error {
 type DescribeMountPointsRequestParams struct {
 	// 文件系统ID
 	// 注意：若根据AccessGroupId查看挂载点列表，则无需设置FileSystemId
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 权限组ID
 	// 注意：若根据FileSystemId查看挂载点列表，则无需设置AccessGroupId
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeMountPointsRequest struct {
@@ -1142,17 +1142,17 @@ type DescribeMountPointsRequest struct {
 	
 	// 文件系统ID
 	// 注意：若根据AccessGroupId查看挂载点列表，则无需设置FileSystemId
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 权限组ID
 	// 注意：若根据FileSystemId查看挂载点列表，则无需设置AccessGroupId
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为所有
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeMountPointsRequest) ToJsonString() string {
@@ -1180,10 +1180,10 @@ func (r *DescribeMountPointsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMountPointsResponseParams struct {
 	// 挂载点列表
-	MountPoints []*MountPoint `json:"MountPoints,omitnil" name:"MountPoints"`
+	MountPoints []*MountPoint `json:"MountPoints,omitnil,omitempty" name:"MountPoints"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMountPointsResponse struct {
@@ -1205,14 +1205,14 @@ func (r *DescribeMountPointsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceTagsRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DescribeResourceTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 func (r *DescribeResourceTagsRequest) ToJsonString() string {
@@ -1237,10 +1237,10 @@ func (r *DescribeResourceTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceTagsResponseParams struct {
 	// 资源标签列表
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeResourceTagsResponse struct {
@@ -1262,14 +1262,14 @@ func (r *DescribeResourceTagsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRestoreTasksRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DescribeRestoreTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 func (r *DescribeRestoreTasksRequest) ToJsonString() string {
@@ -1294,10 +1294,10 @@ func (r *DescribeRestoreTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRestoreTasksResponseParams struct {
 	// 回热任务列表
-	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil" name:"RestoreTasks"`
+	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil,omitempty" name:"RestoreTasks"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeRestoreTasksResponse struct {
@@ -1318,84 +1318,84 @@ func (r *DescribeRestoreTasksResponse) FromJsonString(s string) error {
 
 type FileSystem struct {
 	// appid
-	AppId *uint64 `json:"AppId,omitnil" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 文件系统名称
-	FileSystemName *string `json:"FileSystemName,omitnil" name:"FileSystemName"`
+	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
 	// 文件系统描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 地域
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 文件系统块大小（byte）
-	BlockSize *uint64 `json:"BlockSize,omitnil" name:"BlockSize"`
+	BlockSize *uint64 `json:"BlockSize,omitnil,omitempty" name:"BlockSize"`
 
 	// 文件系统容量（byte）
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil" name:"CapacityQuota"`
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 
 	// 文件系统状态（1：创建中；2：创建成功；3：创建失败）
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type Filter struct {
 	// 过滤字段
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤值
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type LifeCycleRule struct {
 	// 生命周期规则ID
-	LifeCycleRuleId *uint64 `json:"LifeCycleRuleId,omitnil" name:"LifeCycleRuleId"`
+	LifeCycleRuleId *uint64 `json:"LifeCycleRuleId,omitnil,omitempty" name:"LifeCycleRuleId"`
 
 	// 生命周期规则名称
-	LifeCycleRuleName *string `json:"LifeCycleRuleName,omitnil" name:"LifeCycleRuleName"`
+	LifeCycleRuleName *string `json:"LifeCycleRuleName,omitnil,omitempty" name:"LifeCycleRuleName"`
 
 	// 生命周期规则路径（目录或文件）
-	Path *string `json:"Path,omitnil" name:"Path"`
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 生命周期规则转换列表
-	Transitions []*Transition `json:"Transitions,omitnil" name:"Transitions"`
+	Transitions []*Transition `json:"Transitions,omitnil,omitempty" name:"Transitions"`
 
 	// 生命周期规则状态（1：打开；2：关闭）
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type ModifyAccessGroupRequestParams struct {
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 权限组名称
-	AccessGroupName *string `json:"AccessGroupName,omitnil" name:"AccessGroupName"`
+	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
 	// 权限组描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyAccessGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// 权限组名称
-	AccessGroupName *string `json:"AccessGroupName,omitnil" name:"AccessGroupName"`
+	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
 	// 权限组描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *ModifyAccessGroupRequest) ToJsonString() string {
@@ -1422,7 +1422,7 @@ func (r *ModifyAccessGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAccessGroupResponse struct {
@@ -1444,14 +1444,14 @@ func (r *ModifyAccessGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessRulesRequestParams struct {
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitnil" name:"AccessRules"`
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 }
 
 type ModifyAccessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitnil" name:"AccessRules"`
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 }
 
 func (r *ModifyAccessRulesRequest) ToJsonString() string {
@@ -1476,7 +1476,7 @@ func (r *ModifyAccessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAccessRulesResponse struct {
@@ -1498,34 +1498,34 @@ func (r *ModifyAccessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyFileSystemRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统名称
-	FileSystemName *string `json:"FileSystemName,omitnil" name:"FileSystemName"`
+	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
 	// 文件系统描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
 	// 注意：修改的文件系统容量不能小于当前使用量
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil" name:"CapacityQuota"`
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 }
 
 type ModifyFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统名称
-	FileSystemName *string `json:"FileSystemName,omitnil" name:"FileSystemName"`
+	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
 	// 文件系统描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
 	// 注意：修改的文件系统容量不能小于当前使用量
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil" name:"CapacityQuota"`
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 }
 
 func (r *ModifyFileSystemRequest) ToJsonString() string {
@@ -1553,7 +1553,7 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyFileSystemResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyFileSystemResponse struct {
@@ -1575,14 +1575,14 @@ func (r *ModifyFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLifeCycleRulesRequestParams struct {
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil" name:"LifeCycleRules"`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 }
 
 type ModifyLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil" name:"LifeCycleRules"`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 }
 
 func (r *ModifyLifeCycleRulesRequest) ToJsonString() string {
@@ -1607,7 +1607,7 @@ func (r *ModifyLifeCycleRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLifeCycleRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLifeCycleRulesResponse struct {
@@ -1629,32 +1629,32 @@ func (r *ModifyLifeCycleRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMountPointRequestParams struct {
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 
 	// 挂载点名称
-	MountPointName *string `json:"MountPointName,omitnil" name:"MountPointName"`
+	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
 	// 挂载点状态
-	MountPointStatus *uint64 `json:"MountPointStatus,omitnil" name:"MountPointStatus"`
+	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 type ModifyMountPointRequest struct {
 	*tchttp.BaseRequest
 	
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 
 	// 挂载点名称
-	MountPointName *string `json:"MountPointName,omitnil" name:"MountPointName"`
+	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
 	// 挂载点状态
-	MountPointStatus *uint64 `json:"MountPointStatus,omitnil" name:"MountPointStatus"`
+	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 func (r *ModifyMountPointRequest) ToJsonString() string {
@@ -1682,7 +1682,7 @@ func (r *ModifyMountPointRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMountPointResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyMountPointResponse struct {
@@ -1704,20 +1704,20 @@ func (r *ModifyMountPointResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyResourceTagsRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个资源标签，可以为空数组
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyResourceTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 多个资源标签，可以为空数组
-	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyResourceTagsRequest) ToJsonString() string {
@@ -1743,7 +1743,7 @@ func (r *ModifyResourceTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyResourceTagsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyResourceTagsResponse struct {
@@ -1764,62 +1764,62 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
 
 type MountPoint struct {
 	// 挂载点ID
-	MountPointId *string `json:"MountPointId,omitnil" name:"MountPointId"`
+	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 
 	// 挂载点名称
-	MountPointName *string `json:"MountPointName,omitnil" name:"MountPointName"`
+	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 权限组ID
-	AccessGroupId *string `json:"AccessGroupId,omitnil" name:"AccessGroupId"`
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 
 	// VPC网络ID
-	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 挂载点状态（1：打开；2：关闭）
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// VPC网络类型
-	VpcType *uint64 `json:"VpcType,omitnil" name:"VpcType"`
+	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 }
 
 type RestoreTask struct {
 	// 回热任务ID
-	RestoreTaskId *uint64 `json:"RestoreTaskId,omitnil" name:"RestoreTaskId"`
+	RestoreTaskId *uint64 `json:"RestoreTaskId,omitnil,omitempty" name:"RestoreTaskId"`
 
 	// 回热任务文件路径
-	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 回热任务类型（1：标准；2：极速；3：批量）
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 指定恢复出的临时副本的有效时长（单位天）
-	Days *uint64 `json:"Days,omitnil" name:"Days"`
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type Tag struct {
 	// 标签键
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Transition struct {
 	// 触发时间（单位天）
-	Days *uint64 `json:"Days,omitnil" name:"Days"`
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 转换类型（1：归档；2：删除）
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }

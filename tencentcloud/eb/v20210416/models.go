@@ -22,29 +22,29 @@ import (
 
 type APIGWParams struct {
 	// HTTPS
-	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// POST
-	Method *string `json:"Method,omitnil" name:"Method"`
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 }
 
 // Predefined struct for user
 type CheckRuleRequestParams struct {
 	// Event信息
-	Event *string `json:"Event,omitnil" name:"Event"`
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
 
 	// EventPattern信息
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 }
 
 type CheckRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// Event信息
-	Event *string `json:"Event,omitnil" name:"Event"`
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
 
 	// EventPattern信息
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 }
 
 func (r *CheckRuleRequest) ToJsonString() string {
@@ -70,7 +70,7 @@ func (r *CheckRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckRuleResponse struct {
@@ -92,20 +92,20 @@ func (r *CheckRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckTransformationRequestParams struct {
 	// 待处理的json字符串
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 一个转换规则列表
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 type CheckTransformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待处理的json字符串
-	Input *string `json:"Input,omitnil" name:"Input"`
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 一个转换规则列表
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 func (r *CheckTransformationRequest) ToJsonString() string {
@@ -131,10 +131,10 @@ func (r *CheckTransformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckTransformationResponseParams struct {
 	// 经过Transformations处理之后的数据
-	Output *string `json:"Output,omitnil" name:"Output"`
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CheckTransformationResponse struct {
@@ -155,132 +155,132 @@ func (r *CheckTransformationResponse) FromJsonString(s string) error {
 
 type CkafkaDeliveryParams struct {
 	// ckafka topic name
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// ckafka资源qcs六段式
-	ResourceDescription *string `json:"ResourceDescription,omitnil" name:"ResourceDescription"`
+	ResourceDescription *string `json:"ResourceDescription,omitnil,omitempty" name:"ResourceDescription"`
 }
 
 type CkafkaParams struct {
 	// kafka offset
-	Offset *string `json:"Offset,omitnil" name:"Offset"`
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// ckafka  topic
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type CkafkaTargetParams struct {
 	// 要投递到的ckafka topic
-	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 重试策略
-	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil" name:"RetryPolicy"`
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 type Connection struct {
 	// 状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 更新时间
-	ModTime *string `json:"ModTime,omitnil" name:"ModTime"`
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	AddTime *string `json:"AddTime,omitnil" name:"AddTime"`
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 连接器描述
-	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil" name:"ConnectionDescription"`
+	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil,omitempty" name:"ConnectionDescription"`
 
 	// 连接器名称
-	ConnectionName *string `json:"ConnectionName,omitnil" name:"ConnectionName"`
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 
 	// 类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ConnectionBrief struct {
 	// 连接器类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 连接器状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ConnectionDescription struct {
 	// 资源qcs六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)
-	ResourceDescription *string `json:"ResourceDescription,omitnil" name:"ResourceDescription"`
+	ResourceDescription *string `json:"ResourceDescription,omitnil,omitempty" name:"ResourceDescription"`
 
 	// apigw参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	APIGWParams *APIGWParams `json:"APIGWParams,omitnil" name:"APIGWParams"`
+	APIGWParams *APIGWParams `json:"APIGWParams,omitnil,omitempty" name:"APIGWParams"`
 
 	// ckafka参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CkafkaParams *CkafkaParams `json:"CkafkaParams,omitnil" name:"CkafkaParams"`
+	CkafkaParams *CkafkaParams `json:"CkafkaParams,omitnil,omitempty" name:"CkafkaParams"`
 
 	// data transfer service (DTS)参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DTSParams *DTSParams `json:"DTSParams,omitnil" name:"DTSParams"`
+	DTSParams *DTSParams `json:"DTSParams,omitnil,omitempty" name:"DTSParams"`
 
 	// tdmq参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TDMQParams *TDMQParams `json:"TDMQParams,omitnil" name:"TDMQParams"`
+	TDMQParams *TDMQParams `json:"TDMQParams,omitnil,omitempty" name:"TDMQParams"`
 }
 
 // Predefined struct for user
 type CreateConnectionRequestParams struct {
 	// 连接器描述
-	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil" name:"ConnectionDescription"`
+	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil,omitempty" name:"ConnectionDescription"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 连接器名称
-	ConnectionName *string `json:"ConnectionName,omitnil" name:"ConnectionName"`
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CreateConnectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器描述
-	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil" name:"ConnectionDescription"`
+	ConnectionDescription *ConnectionDescription `json:"ConnectionDescription,omitnil,omitempty" name:"ConnectionDescription"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 连接器名称
-	ConnectionName *string `json:"ConnectionName,omitnil" name:"ConnectionName"`
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CreateConnectionRequest) ToJsonString() string {
@@ -310,10 +310,10 @@ func (r *CreateConnectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConnectionResponseParams struct {
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateConnectionResponse struct {
@@ -335,32 +335,32 @@ func (r *CreateConnectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEventBusRequestParams struct {
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// EB存储时长
-	SaveDays *int64 `json:"SaveDays,omitnil" name:"SaveDays"`
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
 	// EB是否开启存储
-	EnableStore *bool `json:"EnableStore,omitnil" name:"EnableStore"`
+	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 type CreateEventBusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// EB存储时长
-	SaveDays *int64 `json:"SaveDays,omitnil" name:"SaveDays"`
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
 	// EB是否开启存储
-	EnableStore *bool `json:"EnableStore,omitnil" name:"EnableStore"`
+	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 func (r *CreateEventBusRequest) ToJsonString() string {
@@ -388,10 +388,10 @@ func (r *CreateEventBusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEventBusResponseParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateEventBusResponse struct {
@@ -413,38 +413,38 @@ func (r *CreateEventBusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRuleRequestParams struct {
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
 	// 事件集ID。
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 使能开关。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
 	// 事件集ID。
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 使能开关。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -473,10 +473,10 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRuleResponseParams struct {
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateRuleResponse struct {
@@ -498,10 +498,10 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTargetRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 目标描述;scf类型示例:
 	// {"ResourceDescription":"qcs::scf:ap-guangzhou:uin/2252646423:namespace/default/function/john-test-0326/$LATEST"};
@@ -513,20 +513,20 @@ type CreateTargetRequestParams struct {
 	// {"ResourceDescription":"qcs::eb-amp:ap-guangzhou:uin/100012505002:","AMPParams":{"NotificationTemplateId":10181,"Lang":"cn","NoticeReceivers":[{"UserType":"User","UserIds":["9424525"],"TimeWindow":{"From":"09:30:00","To":"23:30:00"},"Channels":["Email","SMS"]}]}}
 	// es类型示例:
 	// {"ResourceDescription":"qcs::es:ap-guangzhou:uin/1500000688:instance/es-7cplmhsd","ESTargetParams":{"EsVersion":"7.14.2","UserName":"elastic","Password":"xxxxx","NetMode":"privateLink","IndexPrefix":"auto-test","IndexSuffixMode":"default","RotationInterval":"none","IndexTemplateType":"","OutputMode":"default"}}
-	TargetDescription *TargetDescription `json:"TargetDescription,omitnil" name:"TargetDescription"`
+	TargetDescription *TargetDescription `json:"TargetDescription,omitnil,omitempty" name:"TargetDescription"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type CreateTargetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 目标描述;scf类型示例:
 	// {"ResourceDescription":"qcs::scf:ap-guangzhou:uin/2252646423:namespace/default/function/john-test-0326/$LATEST"};
@@ -538,10 +538,10 @@ type CreateTargetRequest struct {
 	// {"ResourceDescription":"qcs::eb-amp:ap-guangzhou:uin/100012505002:","AMPParams":{"NotificationTemplateId":10181,"Lang":"cn","NoticeReceivers":[{"UserType":"User","UserIds":["9424525"],"TimeWindow":{"From":"09:30:00","To":"23:30:00"},"Channels":["Email","SMS"]}]}}
 	// es类型示例:
 	// {"ResourceDescription":"qcs::es:ap-guangzhou:uin/1500000688:instance/es-7cplmhsd","ESTargetParams":{"EsVersion":"7.14.2","UserName":"elastic","Password":"xxxxx","NetMode":"privateLink","IndexPrefix":"auto-test","IndexSuffixMode":"default","RotationInterval":"none","IndexTemplateType":"","OutputMode":"default"}}
-	TargetDescription *TargetDescription `json:"TargetDescription,omitnil" name:"TargetDescription"`
+	TargetDescription *TargetDescription `json:"TargetDescription,omitnil,omitempty" name:"TargetDescription"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *CreateTargetRequest) ToJsonString() string {
@@ -569,10 +569,10 @@ func (r *CreateTargetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTargetResponseParams struct {
 	// 目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTargetResponse struct {
@@ -594,26 +594,26 @@ func (r *CreateTargetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTransformationRequestParams struct {
 	// 事件总线 id
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则id
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 type CreateTransformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件总线 id
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则id
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 func (r *CreateTransformationRequest) ToJsonString() string {
@@ -640,10 +640,10 @@ func (r *CreateTransformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTransformationResponseParams struct {
 	// 生成的转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateTransformationResponse struct {
@@ -664,42 +664,42 @@ func (r *CreateTransformationResponse) FromJsonString(s string) error {
 
 type DTSParams struct {
 	// Consumer Group Name
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil" name:"ConsumerGroupName"`
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 账户名
-	Account *string `json:"Account,omitnil" name:"Account"`
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 密码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Password *string `json:"Password,omitnil" name:"Password"`
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type DeadLetterConfig struct {
 	// 支持dlq、丢弃、忽略错误继续传递三种模式, 分别对应: DLQ,DROP,IGNORE_ERROR
-	DisposeMethod *string `json:"DisposeMethod,omitnil" name:"DisposeMethod"`
+	DisposeMethod *string `json:"DisposeMethod,omitnil,omitempty" name:"DisposeMethod"`
 
 	// 设置了DLQ方式后,此选项必填. 错误消息会被投递到对应的kafka topic中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CkafkaDeliveryParams *CkafkaDeliveryParams `json:"CkafkaDeliveryParams,omitnil" name:"CkafkaDeliveryParams"`
+	CkafkaDeliveryParams *CkafkaDeliveryParams `json:"CkafkaDeliveryParams,omitnil,omitempty" name:"CkafkaDeliveryParams"`
 }
 
 // Predefined struct for user
 type DeleteConnectionRequestParams struct {
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type DeleteConnectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 func (r *DeleteConnectionRequest) ToJsonString() string {
@@ -725,7 +725,7 @@ func (r *DeleteConnectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteConnectionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteConnectionResponse struct {
@@ -747,14 +747,14 @@ func (r *DeleteConnectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEventBusRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type DeleteEventBusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 func (r *DeleteEventBusRequest) ToJsonString() string {
@@ -779,7 +779,7 @@ func (r *DeleteEventBusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEventBusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteEventBusResponse struct {
@@ -801,20 +801,20 @@ func (r *DeleteEventBusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRuleRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DeleteRuleRequest) ToJsonString() string {
@@ -840,7 +840,7 @@ func (r *DeleteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteRuleResponse struct {
@@ -862,26 +862,26 @@ func (r *DeleteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTargetRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DeleteTargetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DeleteTargetRequest) ToJsonString() string {
@@ -908,7 +908,7 @@ func (r *DeleteTargetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTargetResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTargetResponse struct {
@@ -930,26 +930,26 @@ func (r *DeleteTargetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTransformationRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 }
 
 type DeleteTransformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 }
 
 func (r *DeleteTransformationRequest) ToJsonString() string {
@@ -976,7 +976,7 @@ func (r *DeleteTransformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTransformationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTransformationResponse struct {
@@ -998,50 +998,50 @@ func (r *DeleteTransformationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogTagValueRequestParams struct {
 	// 起始时间
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
-	GroupField *string `json:"GroupField,omitnil" name:"GroupField"`
+	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 
 	// 页数
-	Page *int64 `json:"Page,omitnil" name:"Page"`
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选条件
-	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
+	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeLogTagValueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始时间
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
-	GroupField *string `json:"GroupField,omitnil" name:"GroupField"`
+	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 
 	// 页数
-	Page *int64 `json:"Page,omitnil" name:"Page"`
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选条件
-	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
+	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 func (r *DescribeLogTagValueRequest) ToJsonString() string {
@@ -1073,10 +1073,10 @@ func (r *DescribeLogTagValueRequest) FromJsonString(s string) error {
 type DescribeLogTagValueResponseParams struct {
 	// 事件查询维度值结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*string `json:"Results,omitnil" name:"Results"`
+	Results []*string `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLogTagValueResponse struct {
@@ -1097,110 +1097,110 @@ func (r *DescribeLogTagValueResponse) FromJsonString(s string) error {
 
 type ESTargetParams struct {
 	// 网络连接类型
-	NetMode *string `json:"NetMode,omitnil" name:"NetMode"`
+	NetMode *string `json:"NetMode,omitnil,omitempty" name:"NetMode"`
 
 	// 索引前缀
-	IndexPrefix *string `json:"IndexPrefix,omitnil" name:"IndexPrefix"`
+	IndexPrefix *string `json:"IndexPrefix,omitnil,omitempty" name:"IndexPrefix"`
 
 	// es日志轮换粒度
-	RotationInterval *string `json:"RotationInterval,omitnil" name:"RotationInterval"`
+	RotationInterval *string `json:"RotationInterval,omitnil,omitempty" name:"RotationInterval"`
 
 	// DTS事件配置
-	OutputMode *string `json:"OutputMode,omitnil" name:"OutputMode"`
+	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
 
 	// DTS索引配置
-	IndexSuffixMode *string `json:"IndexSuffixMode,omitnil" name:"IndexSuffixMode"`
+	IndexSuffixMode *string `json:"IndexSuffixMode,omitnil,omitempty" name:"IndexSuffixMode"`
 
 	// es模版类型
-	IndexTemplateType *string `json:"IndexTemplateType,omitnil" name:"IndexTemplateType"`
+	IndexTemplateType *string `json:"IndexTemplateType,omitnil,omitempty" name:"IndexTemplateType"`
 }
 
 type EtlFilter struct {
 	// 语法Rule规则保持一致
-	Filter *string `json:"Filter,omitnil" name:"Filter"`
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type Event struct {
 	// 事件源的信息,新产品上报必须符合EB的规范
-	Source *string `json:"Source,omitnil" name:"Source"`
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 事件数据，内容由创建事件的系统来控制，当前datacontenttype仅支持application/json;charset=utf-8，所以该字段是json字符串
-	Data *string `json:"Data,omitnil" name:"Data"`
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 事件类型，可自定义，选填。云服务默认写 COS:Created:PostObject，用“：”分割类型字段
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 事件来源详细描述，可自定义，选填。云服务默认为标准qcs资源表示语法：qcs::dts:ap-guangzhou:appid/uin:xxx
-	Subject *string `json:"Subject,omitnil" name:"Subject"`
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// 事件发生的毫秒时间戳，
 	// time.Now().UnixNano()/1e6
-	Time *int64 `json:"Time,omitnil" name:"Time"`
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 type EventBus struct {
 	// 更新时间
-	ModTime *string `json:"ModTime,omitnil" name:"ModTime"`
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	AddTime *string `json:"AddTime,omitnil" name:"AddTime"`
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件集类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 计费模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 连接器基础信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConnectionBriefs []*ConnectionBrief `json:"ConnectionBriefs,omitnil" name:"ConnectionBriefs"`
+	ConnectionBriefs []*ConnectionBrief `json:"ConnectionBriefs,omitnil,omitempty" name:"ConnectionBriefs"`
 
 	// 目标简要信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TargetBriefs []*TargetBrief `json:"TargetBriefs,omitnil" name:"TargetBriefs"`
+	TargetBriefs []*TargetBrief `json:"TargetBriefs,omitnil,omitempty" name:"TargetBriefs"`
 }
 
 type Extraction struct {
 	// JsonPath, 不指定则使用默认值$.
-	ExtractionInputPath *string `json:"ExtractionInputPath,omitnil" name:"ExtractionInputPath"`
+	ExtractionInputPath *string `json:"ExtractionInputPath,omitnil,omitempty" name:"ExtractionInputPath"`
 
 	// 取值: TEXT/JSON
-	Format *string `json:"Format,omitnil" name:"Format"`
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 仅在Text需要传递
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextParams *TextParams `json:"TextParams,omitnil" name:"TextParams"`
+	TextParams *TextParams `json:"TextParams,omitnil,omitempty" name:"TextParams"`
 }
 
 type Filter struct {
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 过滤键的名称。EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 // Predefined struct for user
 type GetEventBusRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type GetEventBusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 func (r *GetEventBusRequest) ToJsonString() string {
@@ -1225,50 +1225,50 @@ func (r *GetEventBusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetEventBusResponseParams struct {
 	// 更新时间
-	ModTime *string `json:"ModTime,omitnil" name:"ModTime"`
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 事件集描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 日志主题ID
-	ClsTopicId *string `json:"ClsTopicId,omitnil" name:"ClsTopicId"`
+	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
 	// 创建时间
-	AddTime *string `json:"AddTime,omitnil" name:"AddTime"`
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 日志集ID
-	ClsLogsetId *string `json:"ClsLogsetId,omitnil" name:"ClsLogsetId"`
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
 	// 事件集名称
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// （已废弃）事件集类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 计费模式
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// EB日志存储时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SaveDays *int64 `json:"SaveDays,omitnil" name:"SaveDays"`
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
 	// EB日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
 	// 是否开启存储
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableStore *bool `json:"EnableStore,omitnil" name:"EnableStore"`
+	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 
 	// 消息序列，是否有序
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LinkMode *string `json:"LinkMode,omitnil" name:"LinkMode"`
+	LinkMode *string `json:"LinkMode,omitnil,omitempty" name:"LinkMode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetEventBusResponse struct {
@@ -1290,14 +1290,14 @@ func (r *GetEventBusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPlatformEventTemplateRequestParams struct {
 	// 平台产品事件类型
-	EventType *string `json:"EventType,omitnil" name:"EventType"`
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
 type GetPlatformEventTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 平台产品事件类型
-	EventType *string `json:"EventType,omitnil" name:"EventType"`
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
 func (r *GetPlatformEventTemplateRequest) ToJsonString() string {
@@ -1322,10 +1322,10 @@ func (r *GetPlatformEventTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPlatformEventTemplateResponseParams struct {
 	// 平台产品事件模板
-	EventTemplate *string `json:"EventTemplate,omitnil" name:"EventTemplate"`
+	EventTemplate *string `json:"EventTemplate,omitnil,omitempty" name:"EventTemplate"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetPlatformEventTemplateResponse struct {
@@ -1347,20 +1347,20 @@ func (r *GetPlatformEventTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRuleRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type GetRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *GetRuleRequest) ToJsonString() string {
@@ -1386,34 +1386,34 @@ func (r *GetRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRuleResponseParams struct {
 	// 事件集id
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则id
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件规则名称
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 事件规则状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 事件规则描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 事件模式
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
 	// 创建时间
-	AddTime *string `json:"AddTime,omitnil" name:"AddTime"`
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 更新时间
-	ModTime *string `json:"ModTime,omitnil" name:"ModTime"`
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetRuleResponse struct {
@@ -1435,26 +1435,26 @@ func (r *GetRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTransformationRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 }
 
 type GetTransformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 }
 
 func (r *GetTransformationRequest) ToJsonString() string {
@@ -1481,10 +1481,10 @@ func (r *GetTransformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTransformationResponseParams struct {
 	// 转换规则列表
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type GetTransformationResponse struct {
@@ -1506,38 +1506,38 @@ func (r *GetTransformationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListConnectionsRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListConnectionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *ListConnectionsRequest) ToJsonString() string {
@@ -1566,13 +1566,13 @@ func (r *ListConnectionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListConnectionsResponseParams struct {
 	// 连接器信息
-	Connections []*Connection `json:"Connections,omitnil" name:"Connections"`
+	Connections []*Connection `json:"Connections,omitnil,omitempty" name:"Connections"`
 
 	// 连接器总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListConnectionsResponse struct {
@@ -1594,38 +1594,38 @@ func (r *ListConnectionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEventBusesRequestParams struct {
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListEventBusesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *ListEventBusesRequest) ToJsonString() string {
@@ -1654,13 +1654,13 @@ func (r *ListEventBusesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEventBusesResponseParams struct {
 	// 事件集信息
-	EventBuses []*EventBus `json:"EventBuses,omitnil" name:"EventBuses"`
+	EventBuses []*EventBus `json:"EventBuses,omitnil,omitempty" name:"EventBuses"`
 
 	// 事件集总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListEventBusesResponse struct {
@@ -1682,14 +1682,14 @@ func (r *ListEventBusesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPlatformEventNamesRequestParams struct {
 	// 平台产品类型
-	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type ListPlatformEventNamesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 平台产品类型
-	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *ListPlatformEventNamesRequest) ToJsonString() string {
@@ -1714,10 +1714,10 @@ func (r *ListPlatformEventNamesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPlatformEventNamesResponseParams struct {
 	// 平台产品列表
-	EventNames []*PlatformEventDetail `json:"EventNames,omitnil" name:"EventNames"`
+	EventNames []*PlatformEventDetail `json:"EventNames,omitnil,omitempty" name:"EventNames"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListPlatformEventNamesResponse struct {
@@ -1739,14 +1739,14 @@ func (r *ListPlatformEventNamesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPlatformEventPatternsRequestParams struct {
 	// 平台产品类型
-	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type ListPlatformEventPatternsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 平台产品类型
-	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *ListPlatformEventPatternsRequest) ToJsonString() string {
@@ -1771,10 +1771,10 @@ func (r *ListPlatformEventPatternsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPlatformEventPatternsResponseParams struct {
 	// 平台产品事件匹配规则
-	EventPatterns []*PlatformEventSummary `json:"EventPatterns,omitnil" name:"EventPatterns"`
+	EventPatterns []*PlatformEventSummary `json:"EventPatterns,omitnil,omitempty" name:"EventPatterns"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListPlatformEventPatternsResponse struct {
@@ -1825,10 +1825,10 @@ func (r *ListPlatformProductsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPlatformProductsResponseParams struct {
 	// 平台产品列表
-	PlatformProducts []*PlatformProduct `json:"PlatformProducts,omitnil" name:"PlatformProducts"`
+	PlatformProducts []*PlatformProduct `json:"PlatformProducts,omitnil,omitempty" name:"PlatformProducts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListPlatformProductsResponse struct {
@@ -1850,38 +1850,38 @@ func (r *ListPlatformProductsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListRulesRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type ListRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 func (r *ListRulesRequest) ToJsonString() string {
@@ -1910,13 +1910,13 @@ func (r *ListRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListRulesResponseParams struct {
 	// 事件规则信息
-	Rules []*Rule `json:"Rules,omitnil" name:"Rules"`
+	Rules []*Rule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 事件规则总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListRulesResponse struct {
@@ -1938,44 +1938,44 @@ func (r *ListRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListTargetsRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type ListTargetsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 func (r *ListTargetsRequest) ToJsonString() string {
@@ -2005,13 +2005,13 @@ func (r *ListTargetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListTargetsResponseParams struct {
 	// 目标总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 目标信息
-	Targets []*Target `json:"Targets,omitnil" name:"Targets"`
+	Targets []*Target `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListTargetsResponse struct {
@@ -2032,88 +2032,88 @@ func (r *ListTargetsResponse) FromJsonString(s string) error {
 
 type LogFilter struct {
 	// 过滤字段名称
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 运算符，全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤值,范围运算需要同时输入两个值，以英文逗号分隔
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 该层级filters逻辑关系，取值 "AND" 或 "OR"
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// LogFilters数组
-	Filters []*LogFilters `json:"Filters,omitnil" name:"Filters"`
+	Filters []*LogFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type LogFilters struct {
 	// 过滤字段名称，取值范围如下:region(地域)，type(事件类型)，source(事件源)，status(事件状态)
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤值，范围运算需要同时输入两个值，以英文逗号分隔
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputStructParam struct {
 	// 对应输出json中的key
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 可以填json-path也可以支持常量或者内置关键字date类型
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// value的数据类型, 可选值: STRING, NUMBER,BOOLEAN,NULL,SYS_VARIABLE,JSONPATH
-	ValueType *string `json:"ValueType,omitnil" name:"ValueType"`
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 }
 
 type PlatformEventDetail struct {
 	// 事件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventName *string `json:"EventName,omitnil" name:"EventName"`
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
 	// 事件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventType *string `json:"EventType,omitnil" name:"EventType"`
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
 type PlatformEventSummary struct {
 	// 平台事件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventName *string `json:"EventName,omitnil" name:"EventName"`
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
 	// 平台事件匹配规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 }
 
 type PlatformProduct struct {
 	// 平台产品名称
-	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 平台产品类型
-	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 // Predefined struct for user
 type PublishEventRequestParams struct {
 	// 事件列表
-	EventList []*Event `json:"EventList,omitnil" name:"EventList"`
+	EventList []*Event `json:"EventList,omitnil,omitempty" name:"EventList"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type PublishEventRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件列表
-	EventList []*Event `json:"EventList,omitnil" name:"EventList"`
+	EventList []*Event `json:"EventList,omitnil,omitempty" name:"EventList"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 func (r *PublishEventRequest) ToJsonString() string {
@@ -2139,7 +2139,7 @@ func (r *PublishEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PublishEventResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PublishEventResponse struct {
@@ -2161,20 +2161,20 @@ func (r *PublishEventResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type PutEventsRequestParams struct {
 	// 事件列表
-	EventList []*Event `json:"EventList,omitnil" name:"EventList"`
+	EventList []*Event `json:"EventList,omitnil,omitempty" name:"EventList"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type PutEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件列表
-	EventList []*Event `json:"EventList,omitnil" name:"EventList"`
+	EventList []*Event `json:"EventList,omitnil,omitempty" name:"EventList"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 func (r *PutEventsRequest) ToJsonString() string {
@@ -2200,7 +2200,7 @@ func (r *PutEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PutEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PutEventsResponse struct {
@@ -2221,110 +2221,110 @@ func (r *PutEventsResponse) FromJsonString(s string) error {
 
 type RetryPolicy struct {
 	// 重试间隔 单位:秒
-	RetryInterval *uint64 `json:"RetryInterval,omitnil" name:"RetryInterval"`
+	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
 	// 最大重试次数
-	MaxRetryAttempts *uint64 `json:"MaxRetryAttempts,omitnil" name:"MaxRetryAttempts"`
+	MaxRetryAttempts *uint64 `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
 }
 
 type Rule struct {
 	// 状态
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 修改时间
-	ModTime *string `json:"ModTime,omitnil" name:"ModTime"`
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 创建时间
-	AddTime *string `json:"AddTime,omitnil" name:"AddTime"`
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// Target 简要信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Targets []*TargetBrief `json:"Targets,omitnil" name:"Targets"`
+	Targets []*TargetBrief `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// rule设置的dlq规则. 可能为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitnil" name:"DeadLetterConfig"`
+	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitnil,omitempty" name:"DeadLetterConfig"`
 }
 
 type SCFParams struct {
 	// 批量投递最长等待时间
-	BatchTimeout *int64 `json:"BatchTimeout,omitnil" name:"BatchTimeout"`
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
 	// 批量投递最大事件条数
-	BatchEventCount *int64 `json:"BatchEventCount,omitnil" name:"BatchEventCount"`
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 
 	// 开启批量投递使能
-	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil" name:"EnableBatchDelivery"`
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 }
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
 	// 起始时间unix 毫秒时间戳
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间unix 毫秒时间戳
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 页码
-	Page *int64 `json:"Page,omitnil" name:"Page"`
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
-	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
+	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 事件查询结果排序，["timestamp","subject"]
-	OrderFields []*string `json:"OrderFields,omitnil" name:"OrderFields"`
+	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
 	// 排序方式，asc 从旧到新，desc 从新到旧
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始时间unix 毫秒时间戳
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间unix 毫秒时间戳
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 页码
-	Page *int64 `json:"Page,omitnil" name:"Page"`
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
-	Filter []*LogFilter `json:"Filter,omitnil" name:"Filter"`
+	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 事件查询结果排序，["timestamp","subject"]
-	OrderFields []*string `json:"OrderFields,omitnil" name:"OrderFields"`
+	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
 	// 排序方式，asc 从旧到新，desc 从新到旧
-	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -2357,22 +2357,22 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 type SearchLogResponseParams struct {
 	// 事件总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 每页事件条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 页码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Page *int64 `json:"Page,omitnil" name:"Page"`
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 事件查询结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*SearchLogResult `json:"Results,omitnil" name:"Results"`
+	Results []*SearchLogResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchLogResponse struct {
@@ -2394,162 +2394,162 @@ func (r *SearchLogResponse) FromJsonString(s string) error {
 type SearchLogResult struct {
 	// 单条日志上报时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Timestamp *string `json:"Timestamp,omitnil" name:"Timestamp"`
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 日志内容详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 事件来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *string `json:"Source,omitnil" name:"Source"`
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 事件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 事件匹配规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleIds *string `json:"RuleIds,omitnil" name:"RuleIds"`
+	RuleIds *string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Subject *string `json:"Subject,omitnil" name:"Subject"`
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 事件状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TDMQParams struct {
 	// 集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群支撑网接入点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterEndPoint *string `json:"ClusterEndPoint,omitnil" name:"ClusterEndPoint"`
+	ClusterEndPoint *string `json:"ClusterEndPoint,omitnil,omitempty" name:"ClusterEndPoint"`
 }
 
 type Target struct {
 	// 目标类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 目标描述
-	TargetDescription *TargetDescription `json:"TargetDescription,omitnil" name:"TargetDescription"`
+	TargetDescription *TargetDescription `json:"TargetDescription,omitnil,omitempty" name:"TargetDescription"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 开启批量投递使能
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil" name:"EnableBatchDelivery"`
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 
 	// 批量投递最长等待时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BatchTimeout *int64 `json:"BatchTimeout,omitnil" name:"BatchTimeout"`
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
 	// 批量投递最大事件条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BatchEventCount *int64 `json:"BatchEventCount,omitnil" name:"BatchEventCount"`
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 }
 
 type TargetBrief struct {
 	// 目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 目标类型
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type TargetDescription struct {
 	// QCS资源六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)；scf资源六段式示例[qcs::scf:ap-guangzhou:uin/123:namespace/test(函数命名空间)/function/test(函数名)/$LATEST(函数版本)] amp资源六段式示例[qcs::eb-amp:ap-guangzhou:uin/123:] ckafka资源六段式示例[qcs::ckafka:ap-guangzhou:uin/123:ckafkaId/uin/123/ckafka-123(ckafka实例Id)] cls资源六段式示例[qcs::cls:ap-guangzhou:uin/123:topic/122332442(topicId)] es资源六段式示例[qcs::es:ap-guangzhou:appid/123/uin/456:instance/es-7cplmhsd(es实例Id)]
-	ResourceDescription *string `json:"ResourceDescription,omitnil" name:"ResourceDescription"`
+	ResourceDescription *string `json:"ResourceDescription,omitnil,omitempty" name:"ResourceDescription"`
 
 	// 云函数参数
-	SCFParams *SCFParams `json:"SCFParams,omitnil" name:"SCFParams"`
+	SCFParams *SCFParams `json:"SCFParams,omitnil,omitempty" name:"SCFParams"`
 
 	// Ckafka参数
-	CkafkaTargetParams *CkafkaTargetParams `json:"CkafkaTargetParams,omitnil" name:"CkafkaTargetParams"`
+	CkafkaTargetParams *CkafkaTargetParams `json:"CkafkaTargetParams,omitnil,omitempty" name:"CkafkaTargetParams"`
 
 	// ElasticSearch参数
-	ESTargetParams *ESTargetParams `json:"ESTargetParams,omitnil" name:"ESTargetParams"`
+	ESTargetParams *ESTargetParams `json:"ESTargetParams,omitnil,omitempty" name:"ESTargetParams"`
 }
 
 type TextParams struct {
 	// 逗号、| 、制表符、空格、换行符、%、#，限制长度为 1。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Separator *string `json:"Separator,omitnil" name:"Separator"`
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
 
 	// 填写正则表达式：长度128
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Regex *string `json:"Regex,omitnil" name:"Regex"`
+	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
 }
 
 type Transform struct {
 	// 描述如何数据转换
-	OutputStructs []*OutputStructParam `json:"OutputStructs,omitnil" name:"OutputStructs"`
+	OutputStructs []*OutputStructParam `json:"OutputStructs,omitnil,omitempty" name:"OutputStructs"`
 }
 
 type Transformation struct {
 	// 描述如何提取数据，{"ExtractionInputPath":"$.data.payload","Format":"JSON"}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extraction *Extraction `json:"Extraction,omitnil" name:"Extraction"`
+	Extraction *Extraction `json:"Extraction,omitnil,omitempty" name:"Extraction"`
 
 	// 描述如何过滤数据;{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EtlFilter *EtlFilter `json:"EtlFilter,omitnil" name:"EtlFilter"`
+	EtlFilter *EtlFilter `json:"EtlFilter,omitnil,omitempty" name:"EtlFilter"`
 
 	// 描述如何数据转换;"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"}]
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Transform *Transform `json:"Transform,omitnil" name:"Transform"`
+	Transform *Transform `json:"Transform,omitnil,omitempty" name:"Transform"`
 }
 
 // Predefined struct for user
 type UpdateConnectionRequestParams struct {
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 连接器名称
-	ConnectionName *string `json:"ConnectionName,omitnil" name:"ConnectionName"`
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 }
 
 type UpdateConnectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器ID
-	ConnectionId *string `json:"ConnectionId,omitnil" name:"ConnectionId"`
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 使能开关
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 连接器名称
-	ConnectionName *string `json:"ConnectionName,omitnil" name:"ConnectionName"`
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 }
 
 func (r *UpdateConnectionRequest) ToJsonString() string {
@@ -2578,7 +2578,7 @@ func (r *UpdateConnectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateConnectionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateConnectionResponse struct {
@@ -2600,44 +2600,44 @@ func (r *UpdateConnectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateEventBusRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// EB日志存储时长
-	SaveDays *int64 `json:"SaveDays,omitnil" name:"SaveDays"`
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
 	// EB日志主题ID
-	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
 	// 是否开启存储
-	EnableStore *bool `json:"EnableStore,omitnil" name:"EnableStore"`
+	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 type UpdateEventBusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件集描述，不限字符类型，200字符描述以内
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	EventBusName *string `json:"EventBusName,omitnil" name:"EventBusName"`
+	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
 	// EB日志存储时长
-	SaveDays *int64 `json:"SaveDays,omitnil" name:"SaveDays"`
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
 	// EB日志主题ID
-	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
 	// 是否开启存储
-	EnableStore *bool `json:"EnableStore,omitnil" name:"EnableStore"`
+	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 func (r *UpdateEventBusRequest) ToJsonString() string {
@@ -2667,7 +2667,7 @@ func (r *UpdateEventBusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateEventBusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateEventBusResponse struct {
@@ -2689,44 +2689,44 @@ func (r *UpdateEventBusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRuleRequestParams struct {
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 使能开关。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 规则描述，不限字符类型，200字符描述以内。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
 	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
 type UpdateRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 使能开关。
-	Enable *bool `json:"Enable,omitnil" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 规则描述，不限字符类型，200字符描述以内。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
-	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
 	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
 func (r *UpdateRuleRequest) ToJsonString() string {
@@ -2756,7 +2756,7 @@ func (r *UpdateRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateRuleResponse struct {
@@ -2778,44 +2778,44 @@ func (r *UpdateRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateTargetRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 开启批量投递使能
-	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil" name:"EnableBatchDelivery"`
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 
 	// 批量投递最长等待时间
-	BatchTimeout *int64 `json:"BatchTimeout,omitnil" name:"BatchTimeout"`
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
 	// 批量投递最大事件条数
-	BatchEventCount *int64 `json:"BatchEventCount,omitnil" name:"BatchEventCount"`
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 }
 
 type UpdateTargetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 事件规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件目标ID
-	TargetId *string `json:"TargetId,omitnil" name:"TargetId"`
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 开启批量投递使能
-	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil" name:"EnableBatchDelivery"`
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 
 	// 批量投递最长等待时间
-	BatchTimeout *int64 `json:"BatchTimeout,omitnil" name:"BatchTimeout"`
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
 	// 批量投递最大事件条数
-	BatchEventCount *int64 `json:"BatchEventCount,omitnil" name:"BatchEventCount"`
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 }
 
 func (r *UpdateTargetRequest) ToJsonString() string {
@@ -2845,7 +2845,7 @@ func (r *UpdateTargetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateTargetResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateTargetResponse struct {
@@ -2867,32 +2867,32 @@ func (r *UpdateTargetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateTransformationRequestParams struct {
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 
 	// 一个转换规则列表，当前仅限定一个
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 type UpdateTransformationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件集ID
-	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 转换器id
-	TransformationId *string `json:"TransformationId,omitnil" name:"TransformationId"`
+	TransformationId *string `json:"TransformationId,omitnil,omitempty" name:"TransformationId"`
 
 	// 一个转换规则列表，当前仅限定一个
-	Transformations []*Transformation `json:"Transformations,omitnil" name:"Transformations"`
+	Transformations []*Transformation `json:"Transformations,omitnil,omitempty" name:"Transformations"`
 }
 
 func (r *UpdateTransformationRequest) ToJsonString() string {
@@ -2920,7 +2920,7 @@ func (r *UpdateTransformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateTransformationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UpdateTransformationResponse struct {

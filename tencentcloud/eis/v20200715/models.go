@@ -23,20 +23,20 @@ import (
 // Predefined struct for user
 type DescribeEisConnectorConfigRequestParams struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 }
 
 type DescribeEisConnectorConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 }
 
 func (r *DescribeEisConnectorConfigRequest) ToJsonString() string {
@@ -236,10 +236,10 @@ type DescribeEisConnectorConfigResponseParams struct {
 	//         }
 	//     ]
 	// }
-	ConnectorParameter *string `json:"ConnectorParameter,omitnil" name:"ConnectorParameter"`
+	ConnectorParameter *string `json:"ConnectorParameter,omitnil,omitempty" name:"ConnectorParameter"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeEisConnectorConfigResponse struct {
@@ -260,52 +260,52 @@ func (r *DescribeEisConnectorConfigResponse) FromJsonString(s string) error {
 
 type EisConnectionOperation struct {
 	// 连接器操作名称
-	OperationName *string `json:"OperationName,omitnil" name:"OperationName"`
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
 
 	// 连接器展示名称
-	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// 操作是否为触发器
-	IsTrigger *bool `json:"IsTrigger,omitnil" name:"IsTrigger"`
+	IsTrigger *bool `json:"IsTrigger,omitnil,omitempty" name:"IsTrigger"`
 }
 
 type EisConnectorSummary struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 连接器展示名称
-	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// 连接器对应企业
-	Company *string `json:"Company,omitnil" name:"Company"`
+	Company *string `json:"Company,omitnil,omitempty" name:"Company"`
 
 	// 连接器对应产品
-	Product *string `json:"Product,omitnil" name:"Product"`
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 
 	// 连接器创建时间
-	CreateTime *int64 `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type ListEisConnectorOperationsRequestParams struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 }
 
 type ListEisConnectorOperationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 }
 
 func (r *ListEisConnectorOperationsRequest) ToJsonString() string {
@@ -331,10 +331,10 @@ func (r *ListEisConnectorOperationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorOperationsResponseParams struct {
 	// 连接器列表
-	Operations []*EisConnectionOperation `json:"Operations,omitnil" name:"Operations"`
+	Operations []*EisConnectionOperation `json:"Operations,omitnil,omitempty" name:"Operations"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListEisConnectorOperationsResponse struct {
@@ -356,26 +356,26 @@ func (r *ListEisConnectorOperationsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorsRequestParams struct {
 	// 连接器名称,非必输，如输入则按照输入值模糊匹配
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 分页参数,数据偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页参数,每页显示的条数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type ListEisConnectorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称,非必输，如输入则按照输入值模糊匹配
-	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
 
 	// 分页参数,数据偏移量
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页参数,每页显示的条数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *ListEisConnectorsRequest) ToJsonString() string {
@@ -402,13 +402,13 @@ func (r *ListEisConnectorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorsResponseParams struct {
 	// 连接器总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 连接器列表
-	Connectors []*EisConnectorSummary `json:"Connectors,omitnil" name:"Connectors"`
+	Connectors []*EisConnectorSummary `json:"Connectors,omitnil,omitempty" name:"Connectors"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ListEisConnectorsResponse struct {

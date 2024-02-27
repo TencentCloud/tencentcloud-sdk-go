@@ -52,7 +52,7 @@ func (r *DescribeComponentAlertObjectRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentAlertObjectResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeComponentAlertObjectResponse struct {
@@ -103,7 +103,7 @@ func (r *DescribeServiceAlertObjectRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceAlertObjectResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeServiceAlertObjectResponse struct {
@@ -125,14 +125,14 @@ func (r *DescribeServiceAlertObjectResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTokenRequestParams struct {
 	// 命名空间
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type DescribeTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 命名空间
-	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 func (r *DescribeTokenRequest) ToJsonString() string {
@@ -157,10 +157,10 @@ func (r *DescribeTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTokenResponseParams struct {
 	// token
-	Result *string `json:"Result,omitnil" name:"Result"`
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTokenResponse struct {

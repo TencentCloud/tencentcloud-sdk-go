@@ -22,156 +22,156 @@ import (
 
 type AppInfo struct {
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 应用key
-	Appkey *string `json:"Appkey,omitnil" name:"Appkey"`
+	Appkey *string `json:"Appkey,omitnil,omitempty" name:"Appkey"`
 
 	// 用户appid
-	CloudAppid *string `json:"CloudAppid,omitnil" name:"CloudAppid"`
+	CloudAppid *string `json:"CloudAppid,omitnil,omitempty" name:"CloudAppid"`
 
 	// 应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 应用描述
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 应用类型
-	BizType *int64 `json:"BizType,omitnil" name:"BizType"`
+	BizType *int64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 用户Uin
-	Uin *string `json:"Uin,omitnil" name:"Uin"`
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 type CardInfo struct {
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 卡电话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 卡imsi
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Imsi *string `json:"Imsi,omitnil" name:"Imsi"`
+	Imsi *string `json:"Imsi,omitnil,omitempty" name:"Imsi"`
 
 	// 卡imei
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Imei *string `json:"Imei,omitnil" name:"Imei"`
+	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 运营商编号
-	Teleoperator *int64 `json:"Teleoperator,omitnil" name:"Teleoperator"`
+	Teleoperator *int64 `json:"Teleoperator,omitnil,omitempty" name:"Teleoperator"`
 
 	// 卡片状态 1:未激活 2：激活 3：停卡 5：销卡
-	CardStatus *int64 `json:"CardStatus,omitnil" name:"CardStatus"`
+	CardStatus *int64 `json:"CardStatus,omitnil,omitempty" name:"CardStatus"`
 
 	// 网络状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkStatus *int64 `json:"NetworkStatus,omitnil" name:"NetworkStatus"`
+	NetworkStatus *int64 `json:"NetworkStatus,omitnil,omitempty" name:"NetworkStatus"`
 
 	// 激活时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActivitedTime *string `json:"ActivitedTime,omitnil" name:"ActivitedTime"`
+	ActivitedTime *string `json:"ActivitedTime,omitnil,omitempty" name:"ActivitedTime"`
 
 	// 资费类型，1 单卡，2 流量池
-	Type *int64 `json:"Type,omitnil" name:"Type"`
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 套餐类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 流量池ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PoolId *string `json:"PoolId,omitnil" name:"PoolId"`
+	PoolId *string `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
 	// 周期套餐流量使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataUsedInPeriod *float64 `json:"DataUsedInPeriod,omitnil" name:"DataUsedInPeriod"`
+	DataUsedInPeriod *float64 `json:"DataUsedInPeriod,omitnil,omitempty" name:"DataUsedInPeriod"`
 
 	// 周期套餐总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataTotalInPeriod *float64 `json:"DataTotalInPeriod,omitnil" name:"DataTotalInPeriod"`
+	DataTotalInPeriod *float64 `json:"DataTotalInPeriod,omitnil,omitempty" name:"DataTotalInPeriod"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductExpiredTime *string `json:"ProductExpiredTime,omitnil" name:"ProductExpiredTime"`
+	ProductExpiredTime *string `json:"ProductExpiredTime,omitnil,omitempty" name:"ProductExpiredTime"`
 
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 
 	// 套餐周期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PreorderCnt *int64 `json:"PreorderCnt,omitnil" name:"PreorderCnt"`
+	PreorderCnt *int64 `json:"PreorderCnt,omitnil,omitempty" name:"PreorderCnt"`
 
 	// 激活被回调标志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsActivated *int64 `json:"IsActivated,omitnil" name:"IsActivated"`
+	IsActivated *int64 `json:"IsActivated,omitnil,omitempty" name:"IsActivated"`
 
 	// 订单ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 是否自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoRenew *int64 `json:"AutoRenew,omitnil" name:"AutoRenew"`
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 0 不需要开通达量不停卡 1 需要开通达量不停卡
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AllowArrears *int64 `json:"AllowArrears,omitnil" name:"AllowArrears"`
+	AllowArrears *int64 `json:"AllowArrears,omitnil,omitempty" name:"AllowArrears"`
 
 	// 是否开通短信0:未开短信 1:开通短信
-	NeedSms *int64 `json:"NeedSms,omitnil" name:"NeedSms"`
+	NeedSms *int64 `json:"NeedSms,omitnil,omitempty" name:"NeedSms"`
 
 	// 供应商
-	Provider *int64 `json:"Provider,omitnil" name:"Provider"`
+	Provider *int64 `json:"Provider,omitnil,omitempty" name:"Provider"`
 
 	// 实名认证 0:无 1:未实名 2:已实名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertificationState *int64 `json:"CertificationState,omitnil" name:"CertificationState"`
+	CertificationState *int64 `json:"CertificationState,omitnil,omitempty" name:"CertificationState"`
 
 	// 其他流量信息,流量分离统计其他流量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OtherData *float64 `json:"OtherData,omitnil" name:"OtherData"`
+	OtherData *float64 `json:"OtherData,omitnil,omitempty" name:"OtherData"`
 }
 
 type CardList struct {
 	// 卡片总数
-	Total *string `json:"Total,omitnil" name:"Total"`
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 卡片列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*CardInfo `json:"List,omitnil" name:"List"`
+	List []*CardInfo `json:"List,omitnil,omitempty" name:"List"`
 }
 
 // Predefined struct for user
 type DescribeAppRequestParams struct {
 	// 物联卡应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 }
 
 type DescribeAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 物联卡应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 }
 
 func (r *DescribeAppRequest) ToJsonString() string {
@@ -197,10 +197,10 @@ func (r *DescribeAppRequest) FromJsonString(s string) error {
 type DescribeAppResponseParams struct {
 	// 应用信息详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *AppInfo `json:"Data,omitnil" name:"Data"`
+	Data *AppInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAppResponse struct {
@@ -222,20 +222,20 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCardRequestParams struct {
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 }
 
 type DescribeCardRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 }
 
 func (r *DescribeCardRequest) ToJsonString() string {
@@ -262,10 +262,10 @@ func (r *DescribeCardRequest) FromJsonString(s string) error {
 type DescribeCardResponseParams struct {
 	// 卡片详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CardInfo `json:"Data,omitnil" name:"Data"`
+	Data *CardInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCardResponse struct {
@@ -287,26 +287,26 @@ func (r *DescribeCardResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCardsRequestParams struct {
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 偏移值
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 列表限制
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCardsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 偏移值
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 列表限制
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeCardsRequest) ToJsonString() string {
@@ -333,10 +333,10 @@ func (r *DescribeCardsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCardsResponseParams struct {
 	// 卡片列表信息
-	Data *CardList `json:"Data,omitnil" name:"Data"`
+	Data *CardList `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCardsResponse struct {
@@ -358,56 +358,56 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsRequestParams struct {
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 卡片号码
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 短信类型
-	SmsType *int64 `json:"SmsType,omitnil" name:"SmsType"`
+	SmsType *int64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 开始时间  YYYY-MM-DD HH:mm:ss
-	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间  YYYY-MM-DD HH:mm:ss
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 小于200
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeSmsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 卡片号码
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 短信类型
-	SmsType *int64 `json:"SmsType,omitnil" name:"SmsType"`
+	SmsType *int64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 开始时间  YYYY-MM-DD HH:mm:ss
-	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间  YYYY-MM-DD HH:mm:ss
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 小于200
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeSmsRequest) ToJsonString() string {
@@ -440,14 +440,14 @@ func (r *DescribeSmsRequest) FromJsonString(s string) error {
 type DescribeSmsResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Total *int64 `json:"Total,omitnil" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 短信列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ResSms `json:"List,omitnil" name:"List"`
+	List []*ResSms `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSmsResponse struct {
@@ -469,26 +469,26 @@ func (r *DescribeSmsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUserCardRemarkRequestParams struct {
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 物联卡ICCID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 备注信息，限50字
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyUserCardRemarkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 物联卡ICCID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 备注信息，限50字
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 func (r *ModifyUserCardRemarkRequest) ToJsonString() string {
@@ -515,7 +515,7 @@ func (r *ModifyUserCardRemarkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUserCardRemarkResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyUserCardRemarkResponse struct {
@@ -537,26 +537,26 @@ func (r *ModifyUserCardRemarkResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type PayForExtendDataRequestParams struct {
 	// 卡片ICCID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 套外流量,单位MB
-	ExtentData *uint64 `json:"ExtentData,omitnil" name:"ExtentData"`
+	ExtentData *uint64 `json:"ExtentData,omitnil,omitempty" name:"ExtentData"`
 
 	// 应用ID
-	Sdkappid *uint64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *uint64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 }
 
 type PayForExtendDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卡片ICCID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 套外流量,单位MB
-	ExtentData *uint64 `json:"ExtentData,omitnil" name:"ExtentData"`
+	ExtentData *uint64 `json:"ExtentData,omitnil,omitempty" name:"ExtentData"`
 
 	// 应用ID
-	Sdkappid *uint64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *uint64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 }
 
 func (r *PayForExtendDataRequest) ToJsonString() string {
@@ -583,10 +583,10 @@ func (r *PayForExtendDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PayForExtendDataResponseParams struct {
 	// 订单号
-	Data *ResOrderIds `json:"Data,omitnil" name:"Data"`
+	Data *ResOrderIds `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PayForExtendDataResponse struct {
@@ -608,26 +608,26 @@ func (r *PayForExtendDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewCardsRequestParams struct {
 	// 应用ID
-	Sdkappid *uint64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *uint64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 续费的iccid
-	Iccids []*string `json:"Iccids,omitnil" name:"Iccids"`
+	Iccids []*string `json:"Iccids,omitnil,omitempty" name:"Iccids"`
 
 	// 续费的周期（单位：月）
-	RenewNum *uint64 `json:"RenewNum,omitnil" name:"RenewNum"`
+	RenewNum *uint64 `json:"RenewNum,omitnil,omitempty" name:"RenewNum"`
 }
 
 type RenewCardsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *uint64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *uint64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 续费的iccid
-	Iccids []*string `json:"Iccids,omitnil" name:"Iccids"`
+	Iccids []*string `json:"Iccids,omitnil,omitempty" name:"Iccids"`
 
 	// 续费的周期（单位：月）
-	RenewNum *uint64 `json:"RenewNum,omitnil" name:"RenewNum"`
+	RenewNum *uint64 `json:"RenewNum,omitnil,omitempty" name:"RenewNum"`
 }
 
 func (r *RenewCardsRequest) ToJsonString() string {
@@ -655,10 +655,10 @@ func (r *RenewCardsRequest) FromJsonString(s string) error {
 type RenewCardsResponseParams struct {
 	// 续费成功的订单id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *ResRenew `json:"Data,omitnil" name:"Data"`
+	Data *ResRenew `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RenewCardsResponse struct {
@@ -680,76 +680,76 @@ func (r *RenewCardsResponse) FromJsonString(s string) error {
 type ResOrderIds struct {
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderIds []*string `json:"OrderIds,omitnil" name:"OrderIds"`
+	OrderIds []*string `json:"OrderIds,omitnil,omitempty" name:"OrderIds"`
 }
 
 type ResRenew struct {
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderIds []*string `json:"OrderIds,omitnil" name:"OrderIds"`
+	OrderIds []*string `json:"OrderIds,omitnil,omitempty" name:"OrderIds"`
 }
 
 type ResSms struct {
 	// 卡片ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 卡片号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msisdn *string `json:"Msisdn,omitnil" name:"Msisdn"`
+	Msisdn *string `json:"Msisdn,omitnil,omitempty" name:"Msisdn"`
 
 	// 应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SdkAppid *int64 `json:"SdkAppid,omitnil" name:"SdkAppid"`
+	SdkAppid *int64 `json:"SdkAppid,omitnil,omitempty" name:"SdkAppid"`
 
 	// 短信内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 短信类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmsType *int64 `json:"SmsType,omitnil" name:"SmsType"`
+	SmsType *int64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 发送时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SendTime *string `json:"SendTime,omitnil" name:"SendTime"`
+	SendTime *string `json:"SendTime,omitnil,omitempty" name:"SendTime"`
 
 	// 推送时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportTime *string `json:"ReportTime,omitnil" name:"ReportTime"`
+	ReportTime *string `json:"ReportTime,omitnil,omitempty" name:"ReportTime"`
 
 	// SUCC：成功  FAIL 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil" name:"Remark"`
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 回执状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
 type SendMultiSmsRequestParams struct {
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片列表
-	Iccids []*string `json:"Iccids,omitnil" name:"Iccids"`
+	Iccids []*string `json:"Iccids,omitnil,omitempty" name:"Iccids"`
 
 	// 短信内容 长度限制 70
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type SendMultiSmsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *string `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *string `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片列表
-	Iccids []*string `json:"Iccids,omitnil" name:"Iccids"`
+	Iccids []*string `json:"Iccids,omitnil,omitempty" name:"Iccids"`
 
 	// 短信内容 长度限制 70
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 func (r *SendMultiSmsRequest) ToJsonString() string {
@@ -777,10 +777,10 @@ func (r *SendMultiSmsRequest) FromJsonString(s string) error {
 type SendMultiSmsResponseParams struct {
 	// 短信流水数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*SmsRet `json:"Data,omitnil" name:"Data"`
+	Data []*SmsRet `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SendMultiSmsResponse struct {
@@ -802,26 +802,26 @@ func (r *SendMultiSmsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SendSmsRequestParams struct {
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 短信内容长度70限制
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	Sdkappid *int64 `json:"Sdkappid,omitnil" name:"Sdkappid"`
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 短信内容长度70限制
-	Content *string `json:"Content,omitnil" name:"Content"`
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 func (r *SendSmsRequest) ToJsonString() string {
@@ -849,10 +849,10 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 type SendSmsResponseParams struct {
 	// 短信流水信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *SmsSid `json:"Data,omitnil" name:"Data"`
+	Data *SmsSid `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SendSmsResponse struct {
@@ -873,23 +873,23 @@ func (r *SendSmsResponse) FromJsonString(s string) error {
 
 type SmsRet struct {
 	// 该iccid请求状态
-	Code *string `json:"Code,omitnil" name:"Code"`
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 短信发送返回信息
-	Msg *string `json:"Msg,omitnil" name:"Msg"`
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 卡片ID
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 流水ID
-	Sid *string `json:"Sid,omitnil" name:"Sid"`
+	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
 }
 
 type SmsSid struct {
 	// 卡片ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Iccid *string `json:"Iccid,omitnil" name:"Iccid"`
+	Iccid *string `json:"Iccid,omitnil,omitempty" name:"Iccid"`
 
 	// 信息流水ID
-	Sid *string `json:"Sid,omitnil" name:"Sid"`
+	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
 }

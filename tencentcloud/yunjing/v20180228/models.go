@@ -22,54 +22,54 @@ import (
 
 type Account struct {
 	// 唯一ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一Uuid
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 帐号名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 帐号所属组。
-	Groups *string `json:"Groups,omitnil" name:"Groups"`
+	Groups *string `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 帐号类型。
 	// <li>ORDINARY：普通帐号</li>
 	// <li>SUPPER：超级管理员帐号</li>
-	Privilege *string `json:"Privilege,omitnil" name:"Privilege"`
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
 	// 帐号创建时间。
-	AccountCreateTime *string `json:"AccountCreateTime,omitnil" name:"AccountCreateTime"`
+	AccountCreateTime *string `json:"AccountCreateTime,omitnil,omitempty" name:"AccountCreateTime"`
 
 	// 帐号最后登录时间。
-	LastLoginTime *string `json:"LastLoginTime,omitnil" name:"LastLoginTime"`
+	LastLoginTime *string `json:"LastLoginTime,omitnil,omitempty" name:"LastLoginTime"`
 }
 
 type AccountStatistics struct {
 	// 用户名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 主机数量。
-	MachineNum *uint64 `json:"MachineNum,omitnil" name:"MachineNum"`
+	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
 }
 
 // Predefined struct for user
 type AddLoginWhiteListRequestParams struct {
 	// 白名单规则
-	Rules *LoginWhiteListsRule `json:"Rules,omitnil" name:"Rules"`
+	Rules *LoginWhiteListsRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type AddLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单规则
-	Rules *LoginWhiteListsRule `json:"Rules,omitnil" name:"Rules"`
+	Rules *LoginWhiteListsRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *AddLoginWhiteListRequest) ToJsonString() string {
@@ -94,7 +94,7 @@ func (r *AddLoginWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddLoginWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AddLoginWhiteListResponse struct {
@@ -116,32 +116,32 @@ func (r *AddLoginWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddMachineTagRequestParams struct {
 	// 云服务器ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 标签ID
-	TagId *uint64 `json:"TagId,omitnil" name:"TagId"`
+	TagId *uint64 `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 云服务器地区
-	MRegion *string `json:"MRegion,omitnil" name:"MRegion"`
+	MRegion *string `json:"MRegion,omitnil,omitempty" name:"MRegion"`
 
 	// 云服务器类型(CVM|BM)
-	MArea *string `json:"MArea,omitnil" name:"MArea"`
+	MArea *string `json:"MArea,omitnil,omitempty" name:"MArea"`
 }
 
 type AddMachineTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云服务器ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 标签ID
-	TagId *uint64 `json:"TagId,omitnil" name:"TagId"`
+	TagId *uint64 `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 云服务器地区
-	MRegion *string `json:"MRegion,omitnil" name:"MRegion"`
+	MRegion *string `json:"MRegion,omitnil,omitempty" name:"MRegion"`
 
 	// 云服务器类型(CVM|BM)
-	MArea *string `json:"MArea,omitnil" name:"MArea"`
+	MArea *string `json:"MArea,omitnil,omitempty" name:"MArea"`
 }
 
 func (r *AddMachineTagRequest) ToJsonString() string {
@@ -169,7 +169,7 @@ func (r *AddMachineTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddMachineTagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AddMachineTagResponse struct {
@@ -190,168 +190,168 @@ func (r *AddMachineTagResponse) FromJsonString(s string) error {
 
 type AgentVul struct {
 	// 漏洞ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 漏洞名称。
-	VulName *string `json:"VulName,omitnil" name:"VulName"`
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
 
 	// 漏洞危害等级。
 	// <li>HIGH：高危</li>
 	// <li>MIDDLE：中危</li>
 	// <li>LOW：低危</li>
 	// <li>NOTICE：提示</li>
-	VulLevel *string `json:"VulLevel,omitnil" name:"VulLevel"`
+	VulLevel *string `json:"VulLevel,omitnil,omitempty" name:"VulLevel"`
 
 	// 最后扫描时间。
-	LastScanTime *string `json:"LastScanTime,omitnil" name:"LastScanTime"`
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 漏洞描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 漏洞状态。
 	// <li>UN_OPERATED : 待处理</li>
 	// <li>FIXED : 已修复</li>
-	VulStatus *string `json:"VulStatus,omitnil" name:"VulStatus"`
+	VulStatus *string `json:"VulStatus,omitnil,omitempty" name:"VulStatus"`
 }
 
 type BashEvent struct {
 	// ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 主机内网IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 执行用户名
-	User *string `json:"User,omitnil" name:"User"`
+	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 平台类型
-	Platform *uint64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 执行命令
-	BashCmd *string `json:"BashCmd,omitnil" name:"BashCmd"`
+	BashCmd *string `json:"BashCmd,omitnil,omitempty" name:"BashCmd"`
 
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 规则等级
-	RuleLevel *uint64 `json:"RuleLevel,omitnil" name:"RuleLevel"`
+	RuleLevel *uint64 `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 
 	// 处理状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 发生时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主机名
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 }
 
 type BashRule struct {
 	// 规则ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 危险等级(1: 高危 2:中危 3: 低危)
-	Level *uint64 `json:"Level,omitnil" name:"Level"`
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 正则表达式
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则描述
-	Decription *string `json:"Decription,omitnil" name:"Decription"`
+	Decription *string `json:"Decription,omitnil,omitempty" name:"Decription"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 是否全局规则
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 状态 (0: 有效 1: 无效)
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 主机IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 }
 
 type BruteAttack struct {
 	// 事件ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 破解事件状态
 	// <li>BRUTEATTACK_FAIL_ACCOUNT： 暴力破解事件-失败(存在帐号)  </li>
 	// <li>BRUTEATTACK_FAIL_NOACCOUNT：暴力破解事件-失败(帐号不存在)</li>
 	// <li>BRUTEATTACK_SUCCESS：暴力破解事件-成功</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 用户名称。
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 城市ID。
-	City *uint64 `json:"City,omitnil" name:"City"`
+	City *uint64 `json:"City,omitnil,omitempty" name:"City"`
 
 	// 国家ID。
-	Country *uint64 `json:"Country,omitnil" name:"Country"`
+	Country *uint64 `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省份ID。
-	Province *uint64 `json:"Province,omitnil" name:"Province"`
+	Province *uint64 `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 来源IP。
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 尝试破解次数。
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 发生时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 云镜客户端唯一标识UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 是否专业版。
-	IsProVersion *bool `json:"IsProVersion,omitnil" name:"IsProVersion"`
+	IsProVersion *bool `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
 
 	// 阻断状态。
-	BanStatus *string `json:"BanStatus,omitnil" name:"BanStatus"`
+	BanStatus *string `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 
 	// 机器UUID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type ChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
-	Period *uint64 `json:"Period,omitnil" name:"Period"`
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 自动续费标识。取值范围：
 	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
@@ -359,14 +359,14 @@ type ChargePrepaid struct {
 	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
 	// 
 	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
-	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 // Predefined struct for user
 type CloseProVersionRequestParams struct {
 	// 主机唯一标识Uuid。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type CloseProVersionRequest struct {
@@ -374,7 +374,7 @@ type CloseProVersionRequest struct {
 	
 	// 主机唯一标识Uuid。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 func (r *CloseProVersionRequest) ToJsonString() string {
@@ -399,7 +399,7 @@ func (r *CloseProVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CloseProVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CloseProVersionResponse struct {
@@ -420,104 +420,104 @@ func (r *CloseProVersionResponse) FromJsonString(s string) error {
 
 type Component struct {
 	// 唯一ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 组件版本号。
-	ComponentVersion *string `json:"ComponentVersion,omitnil" name:"ComponentVersion"`
+	ComponentVersion *string `json:"ComponentVersion,omitnil,omitempty" name:"ComponentVersion"`
 
 	// 组件类型。
 	// <li>SYSTEM：系统组件</li>
 	// <li>WEB：Web组件</li>
-	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
 	// 组件名称。
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 组件检测更新时间。
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type ComponentStatistics struct {
 	// 组件ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机数量。
-	MachineNum *uint64 `json:"MachineNum,omitnil" name:"MachineNum"`
+	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
 
 	// 组件名称。
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 组件类型。
 	// <li>WEB：Web组件</li>
 	// <li>SYSTEM：系统组件</li>
-	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
 	// 组件描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
 type CreateBaselineStrategyRequestParams struct {
 	// 策略名称
-	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
 	// 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
-	ScanCycle *uint64 `json:"ScanCycle,omitnil" name:"ScanCycle"`
+	ScanCycle *uint64 `json:"ScanCycle,omitnil,omitempty" name:"ScanCycle"`
 
 	// 定期检测时间，该时间下发扫描. 示例:“22:00”, 表示在22:00下发检测
-	ScanAt *string `json:"ScanAt,omitnil" name:"ScanAt"`
+	ScanAt *string `json:"ScanAt,omitnil,omitempty" name:"ScanAt"`
 
 	// 该策略下选择的基线id数组. 示例: [1,3,5,7]
-	CategoryIds []*uint64 `json:"CategoryIds,omitnil" name:"CategoryIds"`
+	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
 	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 云主机类型：“CVM”：虚拟主机，"BMS"：裸金属，"ECM"：边缘计算主机
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 主机地域. 示例: "ap-bj"
-	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
 
 	// 主机id数组. 示例: ["quuid1","quuid2"]
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 type CreateBaselineStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略名称
-	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
 	// 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
-	ScanCycle *uint64 `json:"ScanCycle,omitnil" name:"ScanCycle"`
+	ScanCycle *uint64 `json:"ScanCycle,omitnil,omitempty" name:"ScanCycle"`
 
 	// 定期检测时间，该时间下发扫描. 示例:“22:00”, 表示在22:00下发检测
-	ScanAt *string `json:"ScanAt,omitnil" name:"ScanAt"`
+	ScanAt *string `json:"ScanAt,omitnil,omitempty" name:"ScanAt"`
 
 	// 该策略下选择的基线id数组. 示例: [1,3,5,7]
-	CategoryIds []*uint64 `json:"CategoryIds,omitnil" name:"CategoryIds"`
+	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
 	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 云主机类型：“CVM”：虚拟主机，"BMS"：裸金属，"ECM"：边缘计算主机
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 主机地域. 示例: "ap-bj"
-	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
 
 	// 主机id数组. 示例: ["quuid1","quuid2"]
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 func (r *CreateBaselineStrategyRequest) ToJsonString() string {
@@ -549,7 +549,7 @@ func (r *CreateBaselineStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBaselineStrategyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateBaselineStrategyResponse struct {
@@ -571,14 +571,14 @@ func (r *CreateBaselineStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOpenPortTaskRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type CreateOpenPortTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *CreateOpenPortTaskRequest) ToJsonString() string {
@@ -603,7 +603,7 @@ func (r *CreateOpenPortTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOpenPortTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateOpenPortTaskResponse struct {
@@ -625,14 +625,14 @@ func (r *CreateOpenPortTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProcessTaskRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type CreateProcessTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *CreateProcessTaskRequest) ToJsonString() string {
@@ -657,7 +657,7 @@ func (r *CreateProcessTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProcessTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateProcessTaskResponse struct {
@@ -679,20 +679,20 @@ func (r *CreateProcessTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUsualLoginPlacesRequestParams struct {
 	// 云镜客户端UUID数组。
-	Uuids []*string `json:"Uuids,omitnil" name:"Uuids"`
+	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
 	// 登录地域信息数组。
-	Places []*Place `json:"Places,omitnil" name:"Places"`
+	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 }
 
 type CreateUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端UUID数组。
-	Uuids []*string `json:"Uuids,omitnil" name:"Uuids"`
+	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
 	// 登录地域信息数组。
-	Places []*Place `json:"Places,omitnil" name:"Places"`
+	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 }
 
 func (r *CreateUsualLoginPlacesRequest) ToJsonString() string {
@@ -718,7 +718,7 @@ func (r *CreateUsualLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUsualLoginPlacesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateUsualLoginPlacesResponse struct {
@@ -739,59 +739,59 @@ func (r *CreateUsualLoginPlacesResponse) FromJsonString(s string) error {
 
 type DefendAttackLog struct {
 	// 日志ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 来源IP
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 来源端口
-	SrcPort *uint64 `json:"SrcPort,omitnil" name:"SrcPort"`
+	SrcPort *uint64 `json:"SrcPort,omitnil,omitempty" name:"SrcPort"`
 
 	// 攻击方式
-	HttpMethod *string `json:"HttpMethod,omitnil" name:"HttpMethod"`
+	HttpMethod *string `json:"HttpMethod,omitnil,omitempty" name:"HttpMethod"`
 
 	// 攻击描述
-	HttpCgi *string `json:"HttpCgi,omitnil" name:"HttpCgi"`
+	HttpCgi *string `json:"HttpCgi,omitnil,omitempty" name:"HttpCgi"`
 
 	// 攻击参数
-	HttpParam *string `json:"HttpParam,omitnil" name:"HttpParam"`
+	HttpParam *string `json:"HttpParam,omitnil,omitempty" name:"HttpParam"`
 
 	// 威胁类型
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 攻击时间
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 目标服务器IP
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 目标服务器名称
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 目标IP
-	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
 	// 目标端口
-	DstPort *uint64 `json:"DstPort,omitnil" name:"DstPort"`
+	DstPort *uint64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
 
 	// 攻击内容
-	HttpContent *string `json:"HttpContent,omitnil" name:"HttpContent"`
+	HttpContent *string `json:"HttpContent,omitnil,omitempty" name:"HttpContent"`
 }
 
 // Predefined struct for user
 type DeleteAttackLogsRequestParams struct {
 	// 日志ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteAttackLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteAttackLogsRequest) ToJsonString() string {
@@ -816,7 +816,7 @@ func (r *DeleteAttackLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAttackLogsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteAttackLogsResponse struct {
@@ -838,14 +838,14 @@ func (r *DeleteAttackLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBashEventsRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteBashEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBashEventsRequest) ToJsonString() string {
@@ -870,7 +870,7 @@ func (r *DeleteBashEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBashEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteBashEventsResponse struct {
@@ -892,14 +892,14 @@ func (r *DeleteBashEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBashRulesRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteBashRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBashRulesRequest) ToJsonString() string {
@@ -924,7 +924,7 @@ func (r *DeleteBashRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBashRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteBashRulesResponse struct {
@@ -946,14 +946,14 @@ func (r *DeleteBashRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBruteAttacksRequestParams struct {
 	// 暴力破解事件Id数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 暴力破解事件Id数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBruteAttacksRequest) ToJsonString() string {
@@ -978,7 +978,7 @@ func (r *DeleteBruteAttacksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBruteAttacksResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteBruteAttacksResponse struct {
@@ -1000,14 +1000,14 @@ func (r *DeleteBruteAttacksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLoginWhiteListRequestParams struct {
 	// 白名单ID
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单ID
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteLoginWhiteListRequest) ToJsonString() string {
@@ -1032,7 +1032,7 @@ func (r *DeleteLoginWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLoginWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteLoginWhiteListResponse struct {
@@ -1054,14 +1054,14 @@ func (r *DeleteLoginWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineRequestParams struct {
 	// 云镜客户端Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DeleteMachineRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DeleteMachineRequest) ToJsonString() string {
@@ -1086,7 +1086,7 @@ func (r *DeleteMachineRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMachineResponse struct {
@@ -1108,14 +1108,14 @@ func (r *DeleteMachineResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineTagRequestParams struct {
 	// 关联的标签ID
-	Rid *uint64 `json:"Rid,omitnil" name:"Rid"`
+	Rid *uint64 `json:"Rid,omitnil,omitempty" name:"Rid"`
 }
 
 type DeleteMachineTagRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关联的标签ID
-	Rid *uint64 `json:"Rid,omitnil" name:"Rid"`
+	Rid *uint64 `json:"Rid,omitnil,omitempty" name:"Rid"`
 }
 
 func (r *DeleteMachineTagRequest) ToJsonString() string {
@@ -1140,7 +1140,7 @@ func (r *DeleteMachineTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineTagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMachineTagResponse struct {
@@ -1162,14 +1162,14 @@ func (r *DeleteMachineTagResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMaliciousRequestsRequestParams struct {
 	// 恶意请求记录ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteMaliciousRequestsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 恶意请求记录ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteMaliciousRequestsRequest) ToJsonString() string {
@@ -1194,7 +1194,7 @@ func (r *DeleteMaliciousRequestsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMaliciousRequestsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMaliciousRequestsResponse struct {
@@ -1216,14 +1216,14 @@ func (r *DeleteMaliciousRequestsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMalwaresRequestParams struct {
 	// 木马记录ID数组
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马记录ID数组
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteMalwaresRequest) ToJsonString() string {
@@ -1248,7 +1248,7 @@ func (r *DeleteMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMalwaresResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteMalwaresResponse struct {
@@ -1270,14 +1270,14 @@ func (r *DeleteMalwaresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteNonlocalLoginPlacesRequestParams struct {
 	// 异地登录事件ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 异地登录事件ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -1302,7 +1302,7 @@ func (r *DeleteNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteNonlocalLoginPlacesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteNonlocalLoginPlacesResponse struct {
@@ -1324,14 +1324,14 @@ func (r *DeleteNonlocalLoginPlacesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivilegeEventsRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeletePrivilegeEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeletePrivilegeEventsRequest) ToJsonString() string {
@@ -1356,7 +1356,7 @@ func (r *DeletePrivilegeEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivilegeEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeletePrivilegeEventsResponse struct {
@@ -1378,14 +1378,14 @@ func (r *DeletePrivilegeEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivilegeRulesRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeletePrivilegeRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeletePrivilegeRulesRequest) ToJsonString() string {
@@ -1410,7 +1410,7 @@ func (r *DeletePrivilegeRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivilegeRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeletePrivilegeRulesResponse struct {
@@ -1432,14 +1432,14 @@ func (r *DeletePrivilegeRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellEventsRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteReverseShellEventsRequest) ToJsonString() string {
@@ -1464,7 +1464,7 @@ func (r *DeleteReverseShellEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteReverseShellEventsResponse struct {
@@ -1486,14 +1486,14 @@ func (r *DeleteReverseShellEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellRulesRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteReverseShellRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteReverseShellRulesRequest) ToJsonString() string {
@@ -1518,7 +1518,7 @@ func (r *DeleteReverseShellRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteReverseShellRulesResponse struct {
@@ -1540,14 +1540,14 @@ func (r *DeleteReverseShellRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTagsRequestParams struct {
 	// 标签ID
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标签ID
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *DeleteTagsRequest) ToJsonString() string {
@@ -1572,7 +1572,7 @@ func (r *DeleteTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTagsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteTagsResponse struct {
@@ -1594,20 +1594,20 @@ func (r *DeleteTagsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUsualLoginPlacesRequestParams struct {
 	// 云镜客户端Uuid
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 已添加常用登录地城市ID数组
-	CityIds []*uint64 `json:"CityIds,omitnil" name:"CityIds"`
+	CityIds []*uint64 `json:"CityIds,omitnil,omitempty" name:"CityIds"`
 }
 
 type DeleteUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端Uuid
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 已添加常用登录地城市ID数组
-	CityIds []*uint64 `json:"CityIds,omitnil" name:"CityIds"`
+	CityIds []*uint64 `json:"CityIds,omitnil,omitempty" name:"CityIds"`
 }
 
 func (r *DeleteUsualLoginPlacesRequest) ToJsonString() string {
@@ -1633,7 +1633,7 @@ func (r *DeleteUsualLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUsualLoginPlacesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DeleteUsualLoginPlacesResponse struct {
@@ -1655,28 +1655,28 @@ func (r *DeleteUsualLoginPlacesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountStatisticsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号用户名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAccountStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号用户名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccountStatisticsRequest) ToJsonString() string {
@@ -1703,13 +1703,13 @@ func (r *DescribeAccountStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountStatisticsResponseParams struct {
 	// 帐号统计列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 帐号统计列表。
-	AccountStatistics []*AccountStatistics `json:"AccountStatistics,omitnil" name:"AccountStatistics"`
+	AccountStatistics []*AccountStatistics `json:"AccountStatistics,omitnil,omitempty" name:"AccountStatistics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAccountStatisticsResponse struct {
@@ -1731,44 +1731,44 @@ func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountsRequestParams struct {
 	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
 	// <li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
 	// <li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -1797,13 +1797,13 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountsResponseParams struct {
 	// 帐号列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 帐号数据列表。
-	Accounts []*Account `json:"Accounts,omitnil" name:"Accounts"`
+	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAccountsResponse struct {
@@ -1828,20 +1828,20 @@ type DescribeAgentVulsRequestParams struct {
 	// <li>WEB: Web应用漏洞</li>
 	// <li>SYSTEM：系统组件漏洞</li>
 	// <li>BASELINE：安全基线</li>
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 客户端UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAgentVulsRequest struct {
@@ -1851,20 +1851,20 @@ type DescribeAgentVulsRequest struct {
 	// <li>WEB: Web应用漏洞</li>
 	// <li>SYSTEM：系统组件漏洞</li>
 	// <li>BASELINE：安全基线</li>
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 客户端UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAgentVulsRequest) ToJsonString() string {
@@ -1893,13 +1893,13 @@ func (r *DescribeAgentVulsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentVulsResponseParams struct {
 	// 记录总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 主机漏洞信息
-	AgentVuls []*AgentVul `json:"AgentVuls,omitnil" name:"AgentVuls"`
+	AgentVuls []*AgentVul `json:"AgentVuls,omitnil,omitempty" name:"AgentVuls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAgentVulsResponse struct {
@@ -1952,25 +1952,25 @@ type DescribeAlarmAttributeResponseParams struct {
 	// 防护软件离线告警状态：
 	// <li>OPEN：告警已开启</li>
 	// <li>CLOSE： 告警已关闭</li>
-	Offline *string `json:"Offline,omitnil" name:"Offline"`
+	Offline *string `json:"Offline,omitnil,omitempty" name:"Offline"`
 
 	// 发现木马告警状态：
 	// <li>OPEN：告警已开启</li>
 	// <li>CLOSE： 告警已关闭</li>
-	Malware *string `json:"Malware,omitnil" name:"Malware"`
+	Malware *string `json:"Malware,omitnil,omitempty" name:"Malware"`
 
 	// 发现异地登录告警状态：
 	// <li>OPEN：告警已开启</li>
 	// <li>CLOSE： 告警已关闭</li>
-	NonlocalLogin *string `json:"NonlocalLogin,omitnil" name:"NonlocalLogin"`
+	NonlocalLogin *string `json:"NonlocalLogin,omitnil,omitempty" name:"NonlocalLogin"`
 
 	// 被暴力破解成功告警状态：
 	// <li>OPEN：告警已开启</li>
 	// <li>CLOSE： 告警已关闭</li>
-	CrackSuccess *string `json:"CrackSuccess,omitnil" name:"CrackSuccess"`
+	CrackSuccess *string `json:"CrackSuccess,omitnil,omitempty" name:"CrackSuccess"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAlarmAttributeResponse struct {
@@ -1992,14 +1992,14 @@ func (r *DescribeAlarmAttributeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAttackLogInfoRequestParams struct {
 	// 日志ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeAttackLogInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeAttackLogInfoRequest) ToJsonString() string {
@@ -2024,55 +2024,55 @@ func (r *DescribeAttackLogInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAttackLogInfoResponseParams struct {
 	// 日志ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 攻击来源端口
-	SrcPort *uint64 `json:"SrcPort,omitnil" name:"SrcPort"`
+	SrcPort *uint64 `json:"SrcPort,omitnil,omitempty" name:"SrcPort"`
 
 	// 攻击来源IP
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 攻击目标端口
-	DstPort *uint64 `json:"DstPort,omitnil" name:"DstPort"`
+	DstPort *uint64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
 
 	// 攻击目标IP
-	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
 	// 攻击方法
-	HttpMethod *string `json:"HttpMethod,omitnil" name:"HttpMethod"`
+	HttpMethod *string `json:"HttpMethod,omitnil,omitempty" name:"HttpMethod"`
 
 	// 攻击目标主机
-	HttpHost *string `json:"HttpHost,omitnil" name:"HttpHost"`
+	HttpHost *string `json:"HttpHost,omitnil,omitempty" name:"HttpHost"`
 
 	// 攻击头信息
-	HttpHead *string `json:"HttpHead,omitnil" name:"HttpHead"`
+	HttpHead *string `json:"HttpHead,omitnil,omitempty" name:"HttpHead"`
 
 	// 攻击者浏览器标识
-	HttpUserAgent *string `json:"HttpUserAgent,omitnil" name:"HttpUserAgent"`
+	HttpUserAgent *string `json:"HttpUserAgent,omitnil,omitempty" name:"HttpUserAgent"`
 
 	// 请求源
-	HttpReferer *string `json:"HttpReferer,omitnil" name:"HttpReferer"`
+	HttpReferer *string `json:"HttpReferer,omitnil,omitempty" name:"HttpReferer"`
 
 	// 威胁类型
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 攻击路径
-	HttpCgi *string `json:"HttpCgi,omitnil" name:"HttpCgi"`
+	HttpCgi *string `json:"HttpCgi,omitnil,omitempty" name:"HttpCgi"`
 
 	// 攻击参数
-	HttpParam *string `json:"HttpParam,omitnil" name:"HttpParam"`
+	HttpParam *string `json:"HttpParam,omitnil,omitempty" name:"HttpParam"`
 
 	// 攻击时间
-	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 攻击内容
-	HttpContent *string `json:"HttpContent,omitnil" name:"HttpContent"`
+	HttpContent *string `json:"HttpContent,omitnil,omitempty" name:"HttpContent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAttackLogInfoResponse struct {
@@ -2094,44 +2094,44 @@ func (r *DescribeAttackLogInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAttackLogsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 主机安全客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 云主机机器ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type DescribeAttackLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 主机安全客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 云主机机器ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAttackLogsRequest) ToJsonString() string {
@@ -2161,13 +2161,13 @@ func (r *DescribeAttackLogsRequest) FromJsonString(s string) error {
 type DescribeAttackLogsResponseParams struct {
 	// 日志列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackLogs []*DefendAttackLog `json:"AttackLogs,omitnil" name:"AttackLogs"`
+	AttackLogs []*DefendAttackLog `json:"AttackLogs,omitnil,omitempty" name:"AttackLogs"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAttackLogsResponse struct {
@@ -2189,28 +2189,28 @@ func (r *DescribeAttackLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBashEventsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeBashEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBashEventsRequest) ToJsonString() string {
@@ -2237,13 +2237,13 @@ func (r *DescribeBashEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBashEventsResponseParams struct {
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 高危命令事件列表
-	List []*BashEvent `json:"List,omitnil" name:"List"`
+	List []*BashEvent `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeBashEventsResponse struct {
@@ -2265,34 +2265,34 @@ func (r *DescribeBashEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBashRulesRequestParams struct {
 	// 0-系统规则; 1-用户规则
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeBashRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 0-系统规则; 1-用户规则
-	Type *uint64 `json:"Type,omitnil" name:"Type"`
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBashRulesRequest) ToJsonString() string {
@@ -2320,13 +2320,13 @@ func (r *DescribeBashRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBashRulesResponseParams struct {
 	// 列表内容
-	List []*BashRule `json:"List,omitnil" name:"List"`
+	List []*BashRule `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeBashRulesResponse struct {
@@ -2348,36 +2348,36 @@ func (r *DescribeBashRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBruteAttacksRequestParams struct {
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  查询状态（FAILED：破解失败 |SUCCESS：破解成功）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  查询状态（FAILED：破解失败 |SUCCESS：破解成功）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeBruteAttacksRequest) ToJsonString() string {
@@ -2405,13 +2405,13 @@ func (r *DescribeBruteAttacksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBruteAttacksResponseParams struct {
 	// 事件数量
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 暴力破解事件列表
-	BruteAttacks []*BruteAttack `json:"BruteAttacks,omitnil" name:"BruteAttacks"`
+	BruteAttacks []*BruteAttack `json:"BruteAttacks,omitnil,omitempty" name:"BruteAttacks"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeBruteAttacksResponse struct {
@@ -2433,14 +2433,14 @@ func (r *DescribeBruteAttacksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentInfoRequestParams struct {
 	// 组件ID。
-	ComponentId *uint64 `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *uint64 `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 }
 
 type DescribeComponentInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 组件ID。
-	ComponentId *uint64 `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *uint64 `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 }
 
 func (r *DescribeComponentInfoRequest) ToJsonString() string {
@@ -2465,24 +2465,24 @@ func (r *DescribeComponentInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentInfoResponseParams struct {
 	// 组件ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 组件名称。
-	ComponentName *string `json:"ComponentName,omitnil" name:"ComponentName"`
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 组件类型。
 	// <li>WEB：web组件</li>
 	// <li>SYSTEM：系统组件</li>
-	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
 	// 组件官网。
-	Homepage *string `json:"Homepage,omitnil" name:"Homepage"`
+	Homepage *string `json:"Homepage,omitnil,omitempty" name:"Homepage"`
 
 	// 组件描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeComponentInfoResponse struct {
@@ -2504,28 +2504,28 @@ func (r *DescribeComponentInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentStatisticsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// ComponentName - String - 是否必填：否 - 组件名称
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeComponentStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// ComponentName - String - 是否必填：否 - 组件名称
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeComponentStatisticsRequest) ToJsonString() string {
@@ -2552,13 +2552,13 @@ func (r *DescribeComponentStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentStatisticsResponseParams struct {
 	// 组件统计列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 组件统计列表数据数组。
-	ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics,omitnil" name:"ComponentStatistics"`
+	ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics,omitnil,omitempty" name:"ComponentStatistics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeComponentStatisticsResponse struct {
@@ -2580,42 +2580,42 @@ func (r *DescribeComponentStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentsRequestParams struct {
 	// 云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
-	ComponentId *uint64 `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *uint64 `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeComponentsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
-	ComponentId *uint64 `json:"ComponentId,omitnil" name:"ComponentId"`
+	ComponentId *uint64 `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeComponentsRequest) ToJsonString() string {
@@ -2644,13 +2644,13 @@ func (r *DescribeComponentsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComponentsResponseParams struct {
 	// 组件列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 组件列表数据。
-	Components []*Component `json:"Components,omitnil" name:"Components"`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeComponentsResponse struct {
@@ -2672,34 +2672,34 @@ func (r *DescribeComponentsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHistoryAccountsRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeHistoryAccountsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeHistoryAccountsRequest) ToJsonString() string {
@@ -2727,13 +2727,13 @@ func (r *DescribeHistoryAccountsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHistoryAccountsResponseParams struct {
 	// 帐号变更历史列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 帐号变更历史数据数组。
-	HistoryAccounts []*HistoryAccount `json:"HistoryAccounts,omitnil" name:"HistoryAccounts"`
+	HistoryAccounts []*HistoryAccount `json:"HistoryAccounts,omitnil,omitempty" name:"HistoryAccounts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeHistoryAccountsResponse struct {
@@ -2755,34 +2755,34 @@ func (r *DescribeHistoryAccountsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImpactedHostsRequestParams struct {
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED：待处理 | FIXED：已修复）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeImpactedHostsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED：待处理 | FIXED：已修复）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeImpactedHostsRequest) ToJsonString() string {
@@ -2810,13 +2810,13 @@ func (r *DescribeImpactedHostsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImpactedHostsResponseParams struct {
 	// 记录总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 漏洞影响机器列表数组
-	ImpactedHosts []*ImpactedHost `json:"ImpactedHosts,omitnil" name:"ImpactedHosts"`
+	ImpactedHosts []*ImpactedHost `json:"ImpactedHosts,omitnil,omitempty" name:"ImpactedHosts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeImpactedHostsResponse struct {
@@ -2838,28 +2838,28 @@ func (r *DescribeImpactedHostsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLoginWhiteListRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeLoginWhiteListRequest) ToJsonString() string {
@@ -2886,13 +2886,13 @@ func (r *DescribeLoginWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLoginWhiteListResponseParams struct {
 	// 记录总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异地登录白名单数组
-	LoginWhiteLists []*LoginWhiteLists `json:"LoginWhiteLists,omitnil" name:"LoginWhiteLists"`
+	LoginWhiteLists []*LoginWhiteLists `json:"LoginWhiteLists,omitnil,omitempty" name:"LoginWhiteLists"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLoginWhiteListResponse struct {
@@ -2914,14 +2914,14 @@ func (r *DescribeLoginWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachineInfoRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeMachineInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DescribeMachineInfoRequest) ToJsonString() string {
@@ -2946,63 +2946,63 @@ func (r *DescribeMachineInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachineInfoResponseParams struct {
 	// 机器ip。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 受云镜保护天数。
-	ProtectDays *uint64 `json:"ProtectDays,omitnil" name:"ProtectDays"`
+	ProtectDays *uint64 `json:"ProtectDays,omitnil,omitempty" name:"ProtectDays"`
 
 	// 操作系统。
-	MachineOs *string `json:"MachineOs,omitnil" name:"MachineOs"`
+	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
 
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 在线状态。
 	// <li>ONLINE： 在线</li>
 	// <li>OFFLINE：离线</li>
-	MachineStatus *string `json:"MachineStatus,omitnil" name:"MachineStatus"`
+	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
 	// CVM或BM主机唯一标识。
-	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主机外网IP。
-	MachineWanIp *string `json:"MachineWanIp,omitnil" name:"MachineWanIp"`
+	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
 	// CVM或BM主机唯一Uuid。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 是否开通专业版。
 	// <li>true：是</li>
 	// <li>false：否</li>
-	IsProVersion *bool `json:"IsProVersion,omitnil" name:"IsProVersion"`
+	IsProVersion *bool `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
 
 	// 专业版开通时间。
-	ProVersionOpenDate *string `json:"ProVersionOpenDate,omitnil" name:"ProVersionOpenDate"`
+	ProVersionOpenDate *string `json:"ProVersionOpenDate,omitnil,omitempty" name:"ProVersionOpenDate"`
 
 	// 云主机类型。
 	// <li>CVM: 虚拟主机</li>
 	// <li>BM: 黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 主机状态。
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 免费木马剩余检测数量。
-	FreeMalwaresLeft *uint64 `json:"FreeMalwaresLeft,omitnil" name:"FreeMalwaresLeft"`
+	FreeMalwaresLeft *uint64 `json:"FreeMalwaresLeft,omitnil,omitempty" name:"FreeMalwaresLeft"`
 
 	// 免费漏洞剩余检测数量。
-	FreeVulsLeft *uint64 `json:"FreeVulsLeft,omitnil" name:"FreeVulsLeft"`
+	FreeVulsLeft *uint64 `json:"FreeVulsLeft,omitnil,omitempty" name:"FreeVulsLeft"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMachineInfoResponse struct {
@@ -3026,23 +3026,23 @@ type DescribeMachinesRequestParams struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeMachinesRequest struct {
@@ -3051,23 +3051,23 @@ type DescribeMachinesRequest struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeMachinesRequest) ToJsonString() string {
@@ -3096,13 +3096,13 @@ func (r *DescribeMachinesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachinesResponseParams struct {
 	// 主机列表
-	Machines []*Machine `json:"Machines,omitnil" name:"Machines"`
+	Machines []*Machine `json:"Machines,omitnil,omitempty" name:"Machines"`
 
 	// 主机数量
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMachinesResponse struct {
@@ -3124,38 +3124,38 @@ func (r *DescribeMachinesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMaliciousRequestsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
 	// <li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 云镜客户端唯一UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeMaliciousRequestsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
 	// <li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 云镜客户端唯一UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DescribeMaliciousRequestsRequest) ToJsonString() string {
@@ -3183,13 +3183,13 @@ func (r *DescribeMaliciousRequestsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMaliciousRequestsResponseParams struct {
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 恶意请求记录数组。
-	MaliciousRequests []*MaliciousRequest `json:"MaliciousRequests,omitnil" name:"MaliciousRequests"`
+	MaliciousRequests []*MaliciousRequest `json:"MaliciousRequests,omitnil,omitempty" name:"MaliciousRequests"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMaliciousRequestsResponse struct {
@@ -3211,38 +3211,38 @@ func (r *DescribeMaliciousRequestsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMalwaresRequestParams struct {
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 木马状态（UN_OPERATED: 未处理 | SEGREGATED: 已隔离|TRUSTED：信任）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 木马状态（UN_OPERATED: 未处理 | SEGREGATED: 已隔离|TRUSTED：信任）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeMalwaresRequest) ToJsonString() string {
@@ -3270,13 +3270,13 @@ func (r *DescribeMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMalwaresResponseParams struct {
 	// 木马总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// Malware数组。
-	Malwares []*Malware `json:"Malwares,omitnil" name:"Malwares"`
+	Malwares []*Malware `json:"Malwares,omitnil,omitempty" name:"Malwares"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMalwaresResponse struct {
@@ -3298,36 +3298,36 @@ func (r *DescribeMalwaresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNonlocalLoginPlacesRequestParams struct {
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  登录状态（NON_LOCAL_LOGIN: 异地登录 | NORMAL_LOGIN : 正常登录）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  登录状态（NON_LOCAL_LOGIN: 异地登录 | NORMAL_LOGIN : 正常登录）</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -3355,13 +3355,13 @@ func (r *DescribeNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNonlocalLoginPlacesResponseParams struct {
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异地登录信息数组。
-	NonLocalLoginPlaces []*NonLocalLoginPlace `json:"NonLocalLoginPlaces,omitnil" name:"NonLocalLoginPlaces"`
+	NonLocalLoginPlaces []*NonLocalLoginPlace `json:"NonLocalLoginPlaces,omitnil,omitempty" name:"NonLocalLoginPlaces"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeNonlocalLoginPlacesResponse struct {
@@ -3383,28 +3383,28 @@ func (r *DescribeNonlocalLoginPlacesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPortStatisticsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeOpenPortStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOpenPortStatisticsRequest) ToJsonString() string {
@@ -3431,13 +3431,13 @@ func (r *DescribeOpenPortStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPortStatisticsResponseParams struct {
 	// 端口统计列表总数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 端口统计数据列表
-	OpenPortStatistics []*OpenPortStatistics `json:"OpenPortStatistics,omitnil" name:"OpenPortStatistics"`
+	OpenPortStatistics []*OpenPortStatistics `json:"OpenPortStatistics,omitnil,omitempty" name:"OpenPortStatistics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeOpenPortStatisticsResponse struct {
@@ -3459,14 +3459,14 @@ func (r *DescribeOpenPortStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPortTaskStatusRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeOpenPortTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DescribeOpenPortTaskStatusRequest) ToJsonString() string {
@@ -3495,10 +3495,10 @@ type DescribeOpenPortTaskStatusResponseParams struct {
 	// <li>AGENT_OFFLINE：云镜客户端离线</li>
 	// <li>COLLECTING：端口获取中</li>
 	// <li>FAILED：进程获取失败</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeOpenPortTaskStatusResponse struct {
@@ -3520,44 +3520,44 @@ func (r *DescribeOpenPortTaskStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPortsRequestParams struct {
 	// 云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
-	Port *uint64 `json:"Port,omitnil" name:"Port"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeOpenPortsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
-	Port *uint64 `json:"Port,omitnil" name:"Port"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOpenPortsRequest) ToJsonString() string {
@@ -3586,13 +3586,13 @@ func (r *DescribeOpenPortsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPortsResponseParams struct {
 	// 端口列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 端口列表。
-	OpenPorts []*OpenPort `json:"OpenPorts,omitnil" name:"OpenPorts"`
+	OpenPorts []*OpenPort `json:"OpenPorts,omitnil,omitempty" name:"OpenPorts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeOpenPortsResponse struct {
@@ -3643,28 +3643,28 @@ func (r *DescribeOverviewStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOverviewStatisticsResponseParams struct {
 	// 服务器在线数。
-	OnlineMachineNum *uint64 `json:"OnlineMachineNum,omitnil" name:"OnlineMachineNum"`
+	OnlineMachineNum *uint64 `json:"OnlineMachineNum,omitnil,omitempty" name:"OnlineMachineNum"`
 
 	// 专业服务器数。
-	ProVersionMachineNum *uint64 `json:"ProVersionMachineNum,omitnil" name:"ProVersionMachineNum"`
+	ProVersionMachineNum *uint64 `json:"ProVersionMachineNum,omitnil,omitempty" name:"ProVersionMachineNum"`
 
 	// 木马文件数。
-	MalwareNum *uint64 `json:"MalwareNum,omitnil" name:"MalwareNum"`
+	MalwareNum *uint64 `json:"MalwareNum,omitnil,omitempty" name:"MalwareNum"`
 
 	// 异地登录数。
-	NonlocalLoginNum *uint64 `json:"NonlocalLoginNum,omitnil" name:"NonlocalLoginNum"`
+	NonlocalLoginNum *uint64 `json:"NonlocalLoginNum,omitnil,omitempty" name:"NonlocalLoginNum"`
 
 	// 暴力破解成功数。
-	BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum,omitnil" name:"BruteAttackSuccessNum"`
+	BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum,omitnil,omitempty" name:"BruteAttackSuccessNum"`
 
 	// 漏洞数。
-	VulNum *uint64 `json:"VulNum,omitnil" name:"VulNum"`
+	VulNum *uint64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
 	// 安全基线数。
-	BaseLineNum *uint64 `json:"BaseLineNum,omitnil" name:"BaseLineNum"`
+	BaseLineNum *uint64 `json:"BaseLineNum,omitnil,omitempty" name:"BaseLineNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeOverviewStatisticsResponse struct {
@@ -3686,28 +3686,28 @@ func (r *DescribeOverviewStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivilegeEventsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrivilegeEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivilegeEventsRequest) ToJsonString() string {
@@ -3734,13 +3734,13 @@ func (r *DescribePrivilegeEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivilegeEventsResponseParams struct {
 	// 数据列表
-	List []*PrivilegeEscalationProcess `json:"List,omitnil" name:"List"`
+	List []*PrivilegeEscalationProcess `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePrivilegeEventsResponse struct {
@@ -3762,28 +3762,28 @@ func (r *DescribePrivilegeEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivilegeRulesRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrivilegeRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivilegeRulesRequest) ToJsonString() string {
@@ -3810,13 +3810,13 @@ func (r *DescribePrivilegeRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivilegeRulesResponseParams struct {
 	// 列表内容
-	List []*PrivilegeRule `json:"List,omitnil" name:"List"`
+	List []*PrivilegeRule `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePrivilegeRulesResponse struct {
@@ -3867,16 +3867,16 @@ func (r *DescribeProVersionInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProVersionInfoResponseParams struct {
 	// 后付费昨日扣费
-	PostPayCost *uint64 `json:"PostPayCost,omitnil" name:"PostPayCost"`
+	PostPayCost *uint64 `json:"PostPayCost,omitnil,omitempty" name:"PostPayCost"`
 
 	// 新增主机是否自动开通专业版
-	IsAutoOpenProVersion *bool `json:"IsAutoOpenProVersion,omitnil" name:"IsAutoOpenProVersion"`
+	IsAutoOpenProVersion *bool `json:"IsAutoOpenProVersion,omitnil,omitempty" name:"IsAutoOpenProVersion"`
 
 	// 开通专业版主机数
-	ProVersionNum *uint64 `json:"ProVersionNum,omitnil" name:"ProVersionNum"`
+	ProVersionNum *uint64 `json:"ProVersionNum,omitnil,omitempty" name:"ProVersionNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeProVersionInfoResponse struct {
@@ -3898,28 +3898,28 @@ func (r *DescribeProVersionInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProcessStatisticsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeProcessStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeProcessStatisticsRequest) ToJsonString() string {
@@ -3946,13 +3946,13 @@ func (r *DescribeProcessStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProcessStatisticsResponseParams struct {
 	// 进程统计列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 进程统计列表数据数组。
-	ProcessStatistics []*ProcessStatistics `json:"ProcessStatistics,omitnil" name:"ProcessStatistics"`
+	ProcessStatistics []*ProcessStatistics `json:"ProcessStatistics,omitnil,omitempty" name:"ProcessStatistics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeProcessStatisticsResponse struct {
@@ -3974,14 +3974,14 @@ func (r *DescribeProcessStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProcessTaskStatusRequestParams struct {
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeProcessTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DescribeProcessTaskStatusRequest) ToJsonString() string {
@@ -4010,10 +4010,10 @@ type DescribeProcessTaskStatusResponseParams struct {
 	// <li>AGENT_OFFLINE：云镜客户端离线</li>
 	// <li>COLLECTING：进程获取中</li>
 	// <li>FAILED：进程获取失败</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeProcessTaskStatusResponse struct {
@@ -4035,42 +4035,42 @@ func (r *DescribeProcessTaskStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProcessesRequestParams struct {
 	// 云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeProcessesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeProcessesRequest) ToJsonString() string {
@@ -4099,13 +4099,13 @@ func (r *DescribeProcessesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProcessesResponseParams struct {
 	// 进程列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 进程列表数据数组。
-	Processes []*Process `json:"Processes,omitnil" name:"Processes"`
+	Processes []*Process `json:"Processes,omitnil,omitempty" name:"Processes"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeProcessesResponse struct {
@@ -4127,28 +4127,28 @@ func (r *DescribeProcessesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellEventsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeReverseShellEventsRequest) ToJsonString() string {
@@ -4175,13 +4175,13 @@ func (r *DescribeReverseShellEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellEventsResponseParams struct {
 	// 列表内容
-	List []*ReverseShell `json:"List,omitnil" name:"List"`
+	List []*ReverseShell `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeReverseShellEventsResponse struct {
@@ -4203,28 +4203,28 @@ func (r *DescribeReverseShellEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellRulesRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeReverseShellRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeReverseShellRulesRequest) ToJsonString() string {
@@ -4251,13 +4251,13 @@ func (r *DescribeReverseShellRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellRulesResponseParams struct {
 	// 列表内容
-	List []*ReverseShellRule `json:"List,omitnil" name:"List"`
+	List []*ReverseShellRule `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeReverseShellRulesResponse struct {
@@ -4279,20 +4279,20 @@ func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityDynamicsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeSecurityDynamicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeSecurityDynamicsRequest) ToJsonString() string {
@@ -4318,13 +4318,13 @@ func (r *DescribeSecurityDynamicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityDynamicsResponseParams struct {
 	// 安全事件消息数组。
-	SecurityDynamics []*SecurityDynamic `json:"SecurityDynamics,omitnil" name:"SecurityDynamics"`
+	SecurityDynamics []*SecurityDynamic `json:"SecurityDynamics,omitnil,omitempty" name:"SecurityDynamics"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSecurityDynamicsResponse struct {
@@ -4346,20 +4346,20 @@ func (r *DescribeSecurityDynamicsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityTrendsRequestParams struct {
 	// 开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 结束时间。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 }
 
 type DescribeSecurityTrendsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 结束时间。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 }
 
 func (r *DescribeSecurityTrendsRequest) ToJsonString() string {
@@ -4385,37 +4385,37 @@ func (r *DescribeSecurityTrendsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityTrendsResponseParams struct {
 	// 木马事件统计数据数组。
-	Malwares []*SecurityTrend `json:"Malwares,omitnil" name:"Malwares"`
+	Malwares []*SecurityTrend `json:"Malwares,omitnil,omitempty" name:"Malwares"`
 
 	// 异地登录事件统计数据数组。
-	NonLocalLoginPlaces []*SecurityTrend `json:"NonLocalLoginPlaces,omitnil" name:"NonLocalLoginPlaces"`
+	NonLocalLoginPlaces []*SecurityTrend `json:"NonLocalLoginPlaces,omitnil,omitempty" name:"NonLocalLoginPlaces"`
 
 	// 密码破解事件统计数据数组。
-	BruteAttacks []*SecurityTrend `json:"BruteAttacks,omitnil" name:"BruteAttacks"`
+	BruteAttacks []*SecurityTrend `json:"BruteAttacks,omitnil,omitempty" name:"BruteAttacks"`
 
 	// 漏洞统计数据数组。
-	Vuls []*SecurityTrend `json:"Vuls,omitnil" name:"Vuls"`
+	Vuls []*SecurityTrend `json:"Vuls,omitnil,omitempty" name:"Vuls"`
 
 	// 基线统计数据数组。
-	BaseLines []*SecurityTrend `json:"BaseLines,omitnil" name:"BaseLines"`
+	BaseLines []*SecurityTrend `json:"BaseLines,omitnil,omitempty" name:"BaseLines"`
 
 	// 恶意请求统计数据数组。
-	MaliciousRequests []*SecurityTrend `json:"MaliciousRequests,omitnil" name:"MaliciousRequests"`
+	MaliciousRequests []*SecurityTrend `json:"MaliciousRequests,omitnil,omitempty" name:"MaliciousRequests"`
 
 	// 高危命令统计数据数组。
-	HighRiskBashs []*SecurityTrend `json:"HighRiskBashs,omitnil" name:"HighRiskBashs"`
+	HighRiskBashs []*SecurityTrend `json:"HighRiskBashs,omitnil,omitempty" name:"HighRiskBashs"`
 
 	// 反弹shell统计数据数组。
-	ReverseShells []*SecurityTrend `json:"ReverseShells,omitnil" name:"ReverseShells"`
+	ReverseShells []*SecurityTrend `json:"ReverseShells,omitnil,omitempty" name:"ReverseShells"`
 
 	// 本地提权统计数据数组。
-	PrivilegeEscalations []*SecurityTrend `json:"PrivilegeEscalations,omitnil" name:"PrivilegeEscalations"`
+	PrivilegeEscalations []*SecurityTrend `json:"PrivilegeEscalations,omitnil,omitempty" name:"PrivilegeEscalations"`
 
 	// 网络攻击统计数据数组。
-	CyberAttacks []*SecurityTrend `json:"CyberAttacks,omitnil" name:"CyberAttacks"`
+	CyberAttacks []*SecurityTrend `json:"CyberAttacks,omitnil,omitempty" name:"CyberAttacks"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeSecurityTrendsResponse struct {
@@ -4437,14 +4437,14 @@ func (r *DescribeSecurityTrendsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTagMachinesRequestParams struct {
 	// 标签ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeTagMachinesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标签ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeTagMachinesRequest) ToJsonString() string {
@@ -4469,10 +4469,10 @@ func (r *DescribeTagMachinesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTagMachinesResponseParams struct {
 	// 列表数据
-	List []*TagMachine `json:"List,omitnil" name:"List"`
+	List []*TagMachine `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTagMachinesResponse struct {
@@ -4496,10 +4496,10 @@ type DescribeTagsRequestParams struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 }
 
 type DescribeTagsRequest struct {
@@ -4508,10 +4508,10 @@ type DescribeTagsRequest struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {
@@ -4537,10 +4537,10 @@ func (r *DescribeTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTagsResponseParams struct {
 	// 列表信息
-	List []*Tag `json:"List,omitnil" name:"List"`
+	List []*Tag `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeTagsResponse struct {
@@ -4562,14 +4562,14 @@ func (r *DescribeTagsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsualLoginPlacesRequestParams struct {
 	// 云镜客户端UUID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云镜客户端UUID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 func (r *DescribeUsualLoginPlacesRequest) ToJsonString() string {
@@ -4594,10 +4594,10 @@ func (r *DescribeUsualLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsualLoginPlacesResponseParams struct {
 	// 常用登录地数组
-	UsualLoginPlaces []*UsualPlace `json:"UsualLoginPlaces,omitnil" name:"UsualLoginPlaces"`
+	UsualLoginPlaces []*UsualPlace `json:"UsualLoginPlaces,omitnil,omitempty" name:"UsualLoginPlaces"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeUsualLoginPlacesResponse struct {
@@ -4619,14 +4619,14 @@ func (r *DescribeUsualLoginPlacesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulInfoRequestParams struct {
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 }
 
 type DescribeVulInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 }
 
 func (r *DescribeVulInfoRequest) ToJsonString() string {
@@ -4651,31 +4651,31 @@ func (r *DescribeVulInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulInfoResponseParams struct {
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 漏洞名称。
-	VulName *string `json:"VulName,omitnil" name:"VulName"`
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
 
 	// 漏洞等级。
-	VulLevel *string `json:"VulLevel,omitnil" name:"VulLevel"`
+	VulLevel *string `json:"VulLevel,omitnil,omitempty" name:"VulLevel"`
 
 	// 漏洞类型。
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 漏洞描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 修复方案。
-	RepairPlan *string `json:"RepairPlan,omitnil" name:"RepairPlan"`
+	RepairPlan *string `json:"RepairPlan,omitnil,omitempty" name:"RepairPlan"`
 
 	// 漏洞CVE。
-	CveId *string `json:"CveId,omitnil" name:"CveId"`
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
 
 	// 参考链接。
-	Reference *string `json:"Reference,omitnil" name:"Reference"`
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulInfoResponse struct {
@@ -4726,22 +4726,22 @@ func (r *DescribeVulScanResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulScanResultResponseParams struct {
 	// 漏洞数量。
-	VulNum *uint64 `json:"VulNum,omitnil" name:"VulNum"`
+	VulNum *uint64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
 	// 专业版机器数。
-	ProVersionNum *uint64 `json:"ProVersionNum,omitnil" name:"ProVersionNum"`
+	ProVersionNum *uint64 `json:"ProVersionNum,omitnil,omitempty" name:"ProVersionNum"`
 
 	// 受影响的专业版主机数。
-	ImpactedHostNum *uint64 `json:"ImpactedHostNum,omitnil" name:"ImpactedHostNum"`
+	ImpactedHostNum *uint64 `json:"ImpactedHostNum,omitnil,omitempty" name:"ImpactedHostNum"`
 
 	// 主机总数。
-	HostNum *uint64 `json:"HostNum,omitnil" name:"HostNum"`
+	HostNum *uint64 `json:"HostNum,omitnil,omitempty" name:"HostNum"`
 
 	// 基础版机器数。
-	BasicVersionNum *uint64 `json:"BasicVersionNum,omitnil" name:"BasicVersionNum"`
+	BasicVersionNum *uint64 `json:"BasicVersionNum,omitnil,omitempty" name:"BasicVersionNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulScanResultResponse struct {
@@ -4766,19 +4766,19 @@ type DescribeVulsRequestParams struct {
 	// <li>WEB：Web应用漏洞</li>
 	// <li>SYSTEM：系统组件漏洞</li>
 	// <li>BASELINE：安全基线</li>
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
 	// 
 	// Status过滤条件值只能取其一，不能是“或”逻辑。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeVulsRequest struct {
@@ -4788,19 +4788,19 @@ type DescribeVulsRequest struct {
 	// <li>WEB：Web应用漏洞</li>
 	// <li>SYSTEM：系统组件漏洞</li>
 	// <li>BASELINE：安全基线</li>
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
 	// 
 	// Status过滤条件值只能取其一，不能是“或”逻辑。
-	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeVulsRequest) ToJsonString() string {
@@ -4828,13 +4828,13 @@ func (r *DescribeVulsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulsResponseParams struct {
 	// 漏洞数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 漏洞列表数组。
-	Vuls []*Vul `json:"Vuls,omitnil" name:"Vuls"`
+	Vuls []*Vul `json:"Vuls,omitnil,omitempty" name:"Vuls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeVulsResponse struct {
@@ -4856,26 +4856,26 @@ func (r *DescribeVulsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportBruteAttacksRequestParams struct {
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeWeeklyReportBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeWeeklyReportBruteAttacksRequest) ToJsonString() string {
@@ -4902,13 +4902,13 @@ func (r *DescribeWeeklyReportBruteAttacksRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeWeeklyReportBruteAttacksResponseParams struct {
 	// 专业周报密码破解数组。
-	WeeklyReportBruteAttacks []*WeeklyReportBruteAttack `json:"WeeklyReportBruteAttacks,omitnil" name:"WeeklyReportBruteAttacks"`
+	WeeklyReportBruteAttacks []*WeeklyReportBruteAttack `json:"WeeklyReportBruteAttacks,omitnil,omitempty" name:"WeeklyReportBruteAttacks"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportBruteAttacksResponse struct {
@@ -4930,14 +4930,14 @@ func (r *DescribeWeeklyReportBruteAttacksResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeWeeklyReportInfoRequestParams struct {
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 }
 
 type DescribeWeeklyReportInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 }
 
 func (r *DescribeWeeklyReportInfoRequest) ToJsonString() string {
@@ -4962,49 +4962,49 @@ func (r *DescribeWeeklyReportInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportInfoResponseParams struct {
 	// 账号所属公司或个人名称。
-	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
 	// 机器总数。
-	MachineNum *uint64 `json:"MachineNum,omitnil" name:"MachineNum"`
+	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
 
 	// 云镜客户端在线数。
-	OnlineMachineNum *uint64 `json:"OnlineMachineNum,omitnil" name:"OnlineMachineNum"`
+	OnlineMachineNum *uint64 `json:"OnlineMachineNum,omitnil,omitempty" name:"OnlineMachineNum"`
 
 	// 云镜客户端离线数。
-	OfflineMachineNum *uint64 `json:"OfflineMachineNum,omitnil" name:"OfflineMachineNum"`
+	OfflineMachineNum *uint64 `json:"OfflineMachineNum,omitnil,omitempty" name:"OfflineMachineNum"`
 
 	// 开通云镜专业版数量。
-	ProVersionMachineNum *uint64 `json:"ProVersionMachineNum,omitnil" name:"ProVersionMachineNum"`
+	ProVersionMachineNum *uint64 `json:"ProVersionMachineNum,omitnil,omitempty" name:"ProVersionMachineNum"`
 
 	// 周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 周报结束时间。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
 	// 安全等级。
 	// <li>HIGH：高</li>
 	// <li>MIDDLE：中</li>
 	// <li>LOW：低</li>
-	Level *string `json:"Level,omitnil" name:"Level"`
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 木马记录数。
-	MalwareNum *uint64 `json:"MalwareNum,omitnil" name:"MalwareNum"`
+	MalwareNum *uint64 `json:"MalwareNum,omitnil,omitempty" name:"MalwareNum"`
 
 	// 异地登录数。
-	NonlocalLoginNum *uint64 `json:"NonlocalLoginNum,omitnil" name:"NonlocalLoginNum"`
+	NonlocalLoginNum *uint64 `json:"NonlocalLoginNum,omitnil,omitempty" name:"NonlocalLoginNum"`
 
 	// 密码破解成功数。
-	BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum,omitnil" name:"BruteAttackSuccessNum"`
+	BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum,omitnil,omitempty" name:"BruteAttackSuccessNum"`
 
 	// 漏洞数。
-	VulNum *uint64 `json:"VulNum,omitnil" name:"VulNum"`
+	VulNum *uint64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
 	// 导出文件下载地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportInfoResponse struct {
@@ -5026,26 +5026,26 @@ func (r *DescribeWeeklyReportInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportMalwaresRequestParams struct {
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeWeeklyReportMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeWeeklyReportMalwaresRequest) ToJsonString() string {
@@ -5072,13 +5072,13 @@ func (r *DescribeWeeklyReportMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportMalwaresResponseParams struct {
 	// 专业周报木马数据。
-	WeeklyReportMalwares []*WeeklyReportMalware `json:"WeeklyReportMalwares,omitnil" name:"WeeklyReportMalwares"`
+	WeeklyReportMalwares []*WeeklyReportMalware `json:"WeeklyReportMalwares,omitnil,omitempty" name:"WeeklyReportMalwares"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportMalwaresResponse struct {
@@ -5100,26 +5100,26 @@ func (r *DescribeWeeklyReportMalwaresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportNonlocalLoginPlacesRequestParams struct {
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeWeeklyReportNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 专业周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeWeeklyReportNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -5146,13 +5146,13 @@ func (r *DescribeWeeklyReportNonlocalLoginPlacesRequest) FromJsonString(s string
 // Predefined struct for user
 type DescribeWeeklyReportNonlocalLoginPlacesResponseParams struct {
 	// 专业周报异地登录数据。
-	WeeklyReportNonlocalLoginPlaces []*WeeklyReportNonlocalLoginPlace `json:"WeeklyReportNonlocalLoginPlaces,omitnil" name:"WeeklyReportNonlocalLoginPlaces"`
+	WeeklyReportNonlocalLoginPlaces []*WeeklyReportNonlocalLoginPlace `json:"WeeklyReportNonlocalLoginPlaces,omitnil,omitempty" name:"WeeklyReportNonlocalLoginPlaces"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportNonlocalLoginPlacesResponse struct {
@@ -5174,26 +5174,26 @@ func (r *DescribeWeeklyReportNonlocalLoginPlacesResponse) FromJsonString(s strin
 // Predefined struct for user
 type DescribeWeeklyReportVulsRequestParams struct {
 	// 专业版周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeWeeklyReportVulsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 专业版周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeWeeklyReportVulsRequest) ToJsonString() string {
@@ -5220,13 +5220,13 @@ func (r *DescribeWeeklyReportVulsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportVulsResponseParams struct {
 	// 专业周报漏洞数据数组。
-	WeeklyReportVuls []*WeeklyReportVul `json:"WeeklyReportVuls,omitnil" name:"WeeklyReportVuls"`
+	WeeklyReportVuls []*WeeklyReportVul `json:"WeeklyReportVuls,omitnil,omitempty" name:"WeeklyReportVuls"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportVulsResponse struct {
@@ -5248,20 +5248,20 @@ func (r *DescribeWeeklyReportVulsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeWeeklyReportsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeWeeklyReportsRequest) ToJsonString() string {
@@ -5287,13 +5287,13 @@ func (r *DescribeWeeklyReportsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWeeklyReportsResponseParams struct {
 	// 专业周报列表数组。
-	WeeklyReports []*WeeklyReport `json:"WeeklyReports,omitnil" name:"WeeklyReports"`
+	WeeklyReports []*WeeklyReport `json:"WeeklyReports,omitnil,omitempty" name:"WeeklyReports"`
 
 	// 记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeWeeklyReportsResponse struct {
@@ -5315,50 +5315,50 @@ func (r *DescribeWeeklyReportsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EditBashRuleRequestParams struct {
 	// 规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 危险等级(1: 高危 2:中危 3: 低危)
-	Level *uint64 `json:"Level,omitnil" name:"Level"`
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 正则表达式
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则ID(新增时不填)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 type EditBashRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 危险等级(1: 高危 2:中危 3: 低危)
-	Level *uint64 `json:"Level,omitnil" name:"Level"`
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 正则表达式
-	Rule *string `json:"Rule,omitnil" name:"Rule"`
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则ID(新增时不填)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 func (r *EditBashRuleRequest) ToJsonString() string {
@@ -5389,7 +5389,7 @@ func (r *EditBashRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EditBashRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type EditBashRuleResponse struct {
@@ -5411,44 +5411,44 @@ func (r *EditBashRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EditPrivilegeRuleRequestParams struct {
 	// 规则ID(新增时请留空)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 是否S权限进程
-	SMode *uint64 `json:"SMode,omitnil" name:"SMode"`
+	SMode *uint64 `json:"SMode,omitnil,omitempty" name:"SMode"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 type EditPrivilegeRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID(新增时请留空)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 是否S权限进程
-	SMode *uint64 `json:"SMode,omitnil" name:"SMode"`
+	SMode *uint64 `json:"SMode,omitnil,omitempty" name:"SMode"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 func (r *EditPrivilegeRuleRequest) ToJsonString() string {
@@ -5478,7 +5478,7 @@ func (r *EditPrivilegeRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EditPrivilegeRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type EditPrivilegeRuleResponse struct {
@@ -5500,50 +5500,50 @@ func (r *EditPrivilegeRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EditReverseShellRuleRequestParams struct {
 	// 规则ID(新增时请留空)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 目标IP
-	DestIp *string `json:"DestIp,omitnil" name:"DestIp"`
+	DestIp *string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
 
 	// 目标端口
-	DestPort *string `json:"DestPort,omitnil" name:"DestPort"`
+	DestPort *string `json:"DestPort,omitnil,omitempty" name:"DestPort"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 type EditReverseShellRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID(新增时请留空)
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 目标IP
-	DestIp *string `json:"DestIp,omitnil" name:"DestIp"`
+	DestIp *string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
 
 	// 目标端口
-	DestPort *string `json:"DestPort,omitnil" name:"DestPort"`
+	DestPort *string `json:"DestPort,omitnil,omitempty" name:"DestPort"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 是否全局规则(默认否)
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
 func (r *EditReverseShellRuleRequest) ToJsonString() string {
@@ -5574,7 +5574,7 @@ func (r *EditReverseShellRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EditReverseShellRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type EditReverseShellRuleResponse struct {
@@ -5596,26 +5596,26 @@ func (r *EditReverseShellRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EditTagsRequestParams struct {
 	// 标签名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// CVM主机ID
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 type EditTagsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标签名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// CVM主机ID
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 func (r *EditTagsRequest) ToJsonString() string {
@@ -5642,7 +5642,7 @@ func (r *EditTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EditTagsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type EditTagsResponse struct {
@@ -5693,13 +5693,13 @@ func (r *ExportAttackLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportAttackLogsResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 导出任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportAttackLogsResponse struct {
@@ -5750,10 +5750,10 @@ func (r *ExportBashEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportBashEventsResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportBashEventsResponse struct {
@@ -5804,10 +5804,10 @@ func (r *ExportBruteAttacksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportBruteAttacksResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportBruteAttacksResponse struct {
@@ -5858,10 +5858,10 @@ func (r *ExportMaliciousRequestsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportMaliciousRequestsResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportMaliciousRequestsResponse struct {
@@ -5912,10 +5912,10 @@ func (r *ExportMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportMalwaresResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportMalwaresResponse struct {
@@ -5966,13 +5966,13 @@ func (r *ExportNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportNonlocalLoginPlacesResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 导出任务ID
-	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportNonlocalLoginPlacesResponse struct {
@@ -6023,10 +6023,10 @@ func (r *ExportPrivilegeEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportPrivilegeEventsResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportPrivilegeEventsResponse struct {
@@ -6077,10 +6077,10 @@ func (r *ExportReverseShellEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportReverseShellEventsResponseParams struct {
 	// 导出文件下载链接地址。
-	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ExportReverseShellEventsResponse struct {
@@ -6101,49 +6101,49 @@ func (r *ExportReverseShellEventsResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 过滤键的名称。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitnil" name:"Values"`
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type HistoryAccount struct {
 	// 唯一ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 帐号名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 帐号变更类型。
 	// <li>CREATE：表示新增帐号</li>
 	// <li>MODIFY：表示修改帐号</li>
 	// <li>DELETE：表示删除帐号</li>
-	ModifyType *string `json:"ModifyType,omitnil" name:"ModifyType"`
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
 	// 变更时间。
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 // Predefined struct for user
 type IgnoreImpactedHostsRequestParams struct {
 	// 漏洞ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type IgnoreImpactedHostsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *IgnoreImpactedHostsRequest) ToJsonString() string {
@@ -6168,7 +6168,7 @@ func (r *IgnoreImpactedHostsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type IgnoreImpactedHostsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type IgnoreImpactedHostsResponse struct {
@@ -6189,53 +6189,53 @@ func (r *IgnoreImpactedHostsResponse) FromJsonString(s string) error {
 
 type ImpactedHost struct {
 	// 漏洞ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 最后检测时间。
-	LastScanTime *string `json:"LastScanTime,omitnil" name:"LastScanTime"`
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 漏洞状态。
 	// <li>UN_OPERATED ：待处理</li>
 	// <li>SCANING : 扫描中</li>
 	// <li>FIXED : 已修复</li>
-	VulStatus *string `json:"VulStatus,omitnil" name:"VulStatus"`
+	VulStatus *string `json:"VulStatus,omitnil,omitempty" name:"VulStatus"`
 
 	// 云镜客户端唯一标识UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 漏洞描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 漏洞种类ID。
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 是否为专业版。
-	IsProVersion *bool `json:"IsProVersion,omitnil" name:"IsProVersion"`
+	IsProVersion *bool `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
 }
 
 // Predefined struct for user
 type InquiryPriceOpenProVersionPrepaidRequestParams struct {
 	// 预付费模式(包年包月)参数设置。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版机器列表数组。
-	Machines []*ProVersionMachine `json:"Machines,omitnil" name:"Machines"`
+	Machines []*ProVersionMachine `json:"Machines,omitnil,omitempty" name:"Machines"`
 }
 
 type InquiryPriceOpenProVersionPrepaidRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预付费模式(包年包月)参数设置。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版机器列表数组。
-	Machines []*ProVersionMachine `json:"Machines,omitnil" name:"Machines"`
+	Machines []*ProVersionMachine `json:"Machines,omitnil,omitempty" name:"Machines"`
 }
 
 func (r *InquiryPriceOpenProVersionPrepaidRequest) ToJsonString() string {
@@ -6261,13 +6261,13 @@ func (r *InquiryPriceOpenProVersionPrepaidRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type InquiryPriceOpenProVersionPrepaidResponseParams struct {
 	// 预支费用的原价，单位：元。
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil" name:"OriginalPrice"`
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
 	// 预支费用的折扣价，单位：元。
-	DiscountPrice *float64 `json:"DiscountPrice,omitnil" name:"DiscountPrice"`
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type InquiryPriceOpenProVersionPrepaidResponse struct {
@@ -6288,235 +6288,235 @@ func (r *InquiryPriceOpenProVersionPrepaidResponse) FromJsonString(s string) err
 
 type LoginWhiteLists struct {
 	// 记录ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 白名单地域
-	Places []*Place `json:"Places,omitnil" name:"Places"`
+	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 
 	// 白名单用户（多个用户逗号隔开）
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 白名单IP（多个IP逗号隔开）
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 是否为全局规则
-	IsGlobal *bool `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 创建白名单时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改白名单时间
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 机器名
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 机器IP
-	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
+	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
 	// 起始时间
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type LoginWhiteListsRule struct {
 	// 加白地域
-	Places []*Place `json:"Places,omitnil" name:"Places"`
+	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 
 	// 加白源IP，支持网段，多个IP以逗号隔开
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 加白用户名，多个用户名以逗号隔开
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 是否对全局生效
-	IsGlobal *bool `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 白名单生效的机器
-	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
+	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
 	// 规则ID，用于更新规则
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 起始时间
-	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type Machine struct {
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 主机系统。
-	MachineOs *string `json:"MachineOs,omitnil" name:"MachineOs"`
+	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
 
 	// 主机状态。
 	// <li>OFFLINE: 离线  </li>
 	// <li>ONLINE: 在线</li>
 	// <li>MACHINE_STOPPED: 已关机</li>
-	MachineStatus *string `json:"MachineStatus,omitnil" name:"MachineStatus"`
+	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
 	// 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// CVM或BM机器唯一Uuid。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 漏洞数。
-	VulNum *int64 `json:"VulNum,omitnil" name:"VulNum"`
+	VulNum *int64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 是否是专业版。
 	// <li>true： 是</li>
 	// <li>false：否</li>
-	IsProVersion *bool `json:"IsProVersion,omitnil" name:"IsProVersion"`
+	IsProVersion *bool `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
 
 	// 主机外网IP。
-	MachineWanIp *string `json:"MachineWanIp,omitnil" name:"MachineWanIp"`
+	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
 	// 主机状态。
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
-	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 木马数。
-	MalwareNum *int64 `json:"MalwareNum,omitnil" name:"MalwareNum"`
+	MalwareNum *int64 `json:"MalwareNum,omitnil,omitempty" name:"MalwareNum"`
 
 	// 标签信息
-	Tag []*MachineTag `json:"Tag,omitnil" name:"Tag"`
+	Tag []*MachineTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 基线风险数。
-	BaselineNum *int64 `json:"BaselineNum,omitnil" name:"BaselineNum"`
+	BaselineNum *int64 `json:"BaselineNum,omitnil,omitempty" name:"BaselineNum"`
 
 	// 网络风险数。
-	CyberAttackNum *int64 `json:"CyberAttackNum,omitnil" name:"CyberAttackNum"`
+	CyberAttackNum *int64 `json:"CyberAttackNum,omitnil,omitempty" name:"CyberAttackNum"`
 
 	// 风险状态。
 	// <li>SAFE：安全</li>
 	// <li>RISK：风险</li>
 	// <li>UNKNOWN：未知</li>
-	SecurityStatus *string `json:"SecurityStatus,omitnil" name:"SecurityStatus"`
+	SecurityStatus *string `json:"SecurityStatus,omitnil,omitempty" name:"SecurityStatus"`
 
 	// 入侵事件数
-	InvasionNum *int64 `json:"InvasionNum,omitnil" name:"InvasionNum"`
+	InvasionNum *int64 `json:"InvasionNum,omitnil,omitempty" name:"InvasionNum"`
 
 	// 地域信息
-	RegionInfo *RegionInfo `json:"RegionInfo,omitnil" name:"RegionInfo"`
+	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
 }
 
 type MachineTag struct {
 	// 关联标签ID
-	Rid *int64 `json:"Rid,omitnil" name:"Rid"`
+	Rid *int64 `json:"Rid,omitnil,omitempty" name:"Rid"`
 
 	// 标签名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签ID
-	TagId *uint64 `json:"TagId,omitnil" name:"TagId"`
+	TagId *uint64 `json:"TagId,omitnil,omitempty" name:"TagId"`
 }
 
 type MaliciousRequest struct {
 	// 记录ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 恶意请求域名。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 恶意请求数。
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 进程名。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 记录状态。
 	// <li>UN_OPERATED：待处理</li>
 	// <li>TRUSTED：已信任</li>
 	// <li>UN_TRUSTED：已取消信任</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 恶意请求域名描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 参考地址。
-	Reference *string `json:"Reference,omitnil" name:"Reference"`
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
 
 	// 发现时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 记录合并时间。
-	MergeTime *string `json:"MergeTime,omitnil" name:"MergeTime"`
+	MergeTime *string `json:"MergeTime,omitnil,omitempty" name:"MergeTime"`
 
 	// 进程MD5
 	// 值。
-	ProcessMd5 *string `json:"ProcessMd5,omitnil" name:"ProcessMd5"`
+	ProcessMd5 *string `json:"ProcessMd5,omitnil,omitempty" name:"ProcessMd5"`
 
 	// 执行命令行。
-	CmdLine *string `json:"CmdLine,omitnil" name:"CmdLine"`
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 
 	// 进程PID。
-	Pid *uint64 `json:"Pid,omitnil" name:"Pid"`
+	Pid *uint64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 }
 
 type Malware struct {
 	// 事件ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 当前木马状态。
 	// <li>UN_OPERATED：未处理</li><li>SEGREGATED：已隔离</li><li>TRUSTED：已信任</li>
 	// <li>SEPARATING：隔离中</li><li>RECOVERING：恢复中</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 木马所在的路径。
-	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 木马描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 主机名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 木马文件创建时间。
-	FileCreateTime *string `json:"FileCreateTime,omitnil" name:"FileCreateTime"`
+	FileCreateTime *string `json:"FileCreateTime,omitnil,omitempty" name:"FileCreateTime"`
 
 	// 木马文件修改时间。
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 云镜客户端唯一标识UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 // Predefined struct for user
 type MisAlarmNonlocalLoginPlacesRequestParams struct {
 	// 异地登录事件Id数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type MisAlarmNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 异地登录事件Id数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *MisAlarmNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -6541,7 +6541,7 @@ func (r *MisAlarmNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type MisAlarmNonlocalLoginPlacesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type MisAlarmNonlocalLoginPlacesResponse struct {
@@ -6567,12 +6567,12 @@ type ModifyAlarmAttributeRequestParams struct {
 	// <li>Malware：发现木马文件</li>
 	// <li>NonlocalLogin：发现异地登录行为</li>
 	// <li>CrackSuccess：被暴力破解成功</li>
-	Attribute *string `json:"Attribute,omitnil" name:"Attribute"`
+	Attribute *string `json:"Attribute,omitnil,omitempty" name:"Attribute"`
 
 	// 告警项目属性。
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ModifyAlarmAttributeRequest struct {
@@ -6583,12 +6583,12 @@ type ModifyAlarmAttributeRequest struct {
 	// <li>Malware：发现木马文件</li>
 	// <li>NonlocalLogin：发现异地登录行为</li>
 	// <li>CrackSuccess：被暴力破解成功</li>
-	Attribute *string `json:"Attribute,omitnil" name:"Attribute"`
+	Attribute *string `json:"Attribute,omitnil,omitempty" name:"Attribute"`
 
 	// 告警项目属性。
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 func (r *ModifyAlarmAttributeRequest) ToJsonString() string {
@@ -6614,7 +6614,7 @@ func (r *ModifyAlarmAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAlarmAttributeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAlarmAttributeResponse struct {
@@ -6638,7 +6638,7 @@ type ModifyAutoOpenProVersionConfigRequestParams struct {
 	// 设置自动开通状态。
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyAutoOpenProVersionConfigRequest struct {
@@ -6647,7 +6647,7 @@ type ModifyAutoOpenProVersionConfigRequest struct {
 	// 设置自动开通状态。
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ModifyAutoOpenProVersionConfigRequest) ToJsonString() string {
@@ -6672,7 +6672,7 @@ func (r *ModifyAutoOpenProVersionConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAutoOpenProVersionConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyAutoOpenProVersionConfigResponse struct {
@@ -6694,14 +6694,14 @@ func (r *ModifyAutoOpenProVersionConfigResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyLoginWhiteListRequestParams struct {
 	// 白名单规则
-	Rules *LoginWhiteListsRule `json:"Rules,omitnil" name:"Rules"`
+	Rules *LoginWhiteListsRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ModifyLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单规则
-	Rules *LoginWhiteListsRule `json:"Rules,omitnil" name:"Rules"`
+	Rules *LoginWhiteListsRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *ModifyLoginWhiteListRequest) ToJsonString() string {
@@ -6726,7 +6726,7 @@ func (r *ModifyLoginWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLoginWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyLoginWhiteListResponse struct {
@@ -6751,10 +6751,10 @@ type ModifyProVersionRenewFlagRequestParams struct {
 	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
 	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
 	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 主机唯一ID，对应CVM的uuid、BM的instanceId。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type ModifyProVersionRenewFlagRequest struct {
@@ -6764,10 +6764,10 @@ type ModifyProVersionRenewFlagRequest struct {
 	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
 	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
 	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 主机唯一ID，对应CVM的uuid、BM的instanceId。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 func (r *ModifyProVersionRenewFlagRequest) ToJsonString() string {
@@ -6793,7 +6793,7 @@ func (r *ModifyProVersionRenewFlagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProVersionRenewFlagResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyProVersionRenewFlagResponse struct {
@@ -6814,95 +6814,95 @@ func (r *ModifyProVersionRenewFlagResponse) FromJsonString(s string) error {
 
 type NonLocalLoginPlace struct {
 	// 事件ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 登录状态
 	// <li>NON_LOCAL_LOGIN：异地登录</li>
 	// <li>NORMAL_LOGIN：正常登录</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 用户名。
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 城市ID。
-	City *uint64 `json:"City,omitnil" name:"City"`
+	City *uint64 `json:"City,omitnil,omitempty" name:"City"`
 
 	// 国家ID。
-	Country *uint64 `json:"Country,omitnil" name:"Country"`
+	Country *uint64 `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省份ID。
-	Province *uint64 `json:"Province,omitnil" name:"Province"`
+	Province *uint64 `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 登录IP。
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 机器名称。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 登录时间。
-	LoginTime *string `json:"LoginTime,omitnil" name:"LoginTime"`
+	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 
 	// 云镜客户端唯一标识Uuid。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type OpenPort struct {
 	// 唯一ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 开放端口号。
-	Port *uint64 `json:"Port,omitnil" name:"Port"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 端口对应进程名。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 端口对应进程Pid。
-	Pid *uint64 `json:"Pid,omitnil" name:"Pid"`
+	Pid *uint64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// 记录创建时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 记录更新时间。
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type OpenPortStatistics struct {
 	// 端口号
-	Port *uint64 `json:"Port,omitnil" name:"Port"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 主机数量
-	MachineNum *uint64 `json:"MachineNum,omitnil" name:"MachineNum"`
+	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
 }
 
 // Predefined struct for user
 type OpenProVersionPrepaidRequestParams struct {
 	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版主机信息数组。
-	Machines []*ProVersionMachine `json:"Machines,omitnil" name:"Machines"`
+	Machines []*ProVersionMachine `json:"Machines,omitnil,omitempty" name:"Machines"`
 }
 
 type OpenProVersionPrepaidRequest struct {
 	*tchttp.BaseRequest
 	
 	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版主机信息数组。
-	Machines []*ProVersionMachine `json:"Machines,omitnil" name:"Machines"`
+	Machines []*ProVersionMachine `json:"Machines,omitnil,omitempty" name:"Machines"`
 }
 
 func (r *OpenProVersionPrepaidRequest) ToJsonString() string {
@@ -6928,10 +6928,10 @@ func (r *OpenProVersionPrepaidRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenProVersionPrepaidResponseParams struct {
 	// 订单ID列表。
-	DealIds []*string `json:"DealIds,omitnil" name:"DealIds"`
+	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type OpenProVersionPrepaidResponse struct {
@@ -6955,18 +6955,18 @@ type OpenProVersionRequestParams struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。
 	// 如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 主机唯一标识Uuid数组。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 
 	// 活动ID。
-	ActivityId *uint64 `json:"ActivityId,omitnil" name:"ActivityId"`
+	ActivityId *uint64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 }
 
 type OpenProVersionRequest struct {
@@ -6975,18 +6975,18 @@ type OpenProVersionRequest struct {
 	// 云主机类型。
 	// <li>CVM：表示虚拟主机</li>
 	// <li>BM:  表示黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 机器所属地域。
 	// 如：ap-guangzhou，ap-shanghai
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 主机唯一标识Uuid数组。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuids []*string `json:"Quuids,omitnil" name:"Quuids"`
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 
 	// 活动ID。
-	ActivityId *uint64 `json:"ActivityId,omitnil" name:"ActivityId"`
+	ActivityId *uint64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 }
 
 func (r *OpenProVersionRequest) ToJsonString() string {
@@ -7014,7 +7014,7 @@ func (r *OpenProVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenProVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type OpenProVersionResponse struct {
@@ -7035,176 +7035,176 @@ func (r *OpenProVersionResponse) FromJsonString(s string) error {
 
 type Place struct {
 	// 城市 ID。
-	CityId *uint64 `json:"CityId,omitnil" name:"CityId"`
+	CityId *uint64 `json:"CityId,omitnil,omitempty" name:"CityId"`
 
 	// 省份 ID。
-	ProvinceId *uint64 `json:"ProvinceId,omitnil" name:"ProvinceId"`
+	ProvinceId *uint64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
 
 	// 国家ID，暂只支持国内：1。
-	CountryId *uint64 `json:"CountryId,omitnil" name:"CountryId"`
+	CountryId *uint64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 }
 
 type PrivilegeEscalationProcess struct {
 	// 数据ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 主机内网IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 进程路径
-	FullPath *string `json:"FullPath,omitnil" name:"FullPath"`
+	FullPath *string `json:"FullPath,omitnil,omitempty" name:"FullPath"`
 
 	// 执行命令
-	CmdLine *string `json:"CmdLine,omitnil" name:"CmdLine"`
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 
 	// 用户名
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 用户组
-	UserGroup *string `json:"UserGroup,omitnil" name:"UserGroup"`
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
 	// 进程文件权限
-	ProcFilePrivilege *string `json:"ProcFilePrivilege,omitnil" name:"ProcFilePrivilege"`
+	ProcFilePrivilege *string `json:"ProcFilePrivilege,omitnil,omitempty" name:"ProcFilePrivilege"`
 
 	// 父进程名
-	ParentProcName *string `json:"ParentProcName,omitnil" name:"ParentProcName"`
+	ParentProcName *string `json:"ParentProcName,omitnil,omitempty" name:"ParentProcName"`
 
 	// 父进程用户名
-	ParentProcUser *string `json:"ParentProcUser,omitnil" name:"ParentProcUser"`
+	ParentProcUser *string `json:"ParentProcUser,omitnil,omitempty" name:"ParentProcUser"`
 
 	// 父进程用户组
-	ParentProcGroup *string `json:"ParentProcGroup,omitnil" name:"ParentProcGroup"`
+	ParentProcGroup *string `json:"ParentProcGroup,omitnil,omitempty" name:"ParentProcGroup"`
 
 	// 父进程路径
-	ParentProcPath *string `json:"ParentProcPath,omitnil" name:"ParentProcPath"`
+	ParentProcPath *string `json:"ParentProcPath,omitnil,omitempty" name:"ParentProcPath"`
 
 	// 进程树
-	ProcTree *string `json:"ProcTree,omitnil" name:"ProcTree"`
+	ProcTree *string `json:"ProcTree,omitnil,omitempty" name:"ProcTree"`
 
 	// 处理状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 发生时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 机器名
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 }
 
 type PrivilegeRule struct {
 	// 规则ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 是否S权限
-	SMode *uint64 `json:"SMode,omitnil" name:"SMode"`
+	SMode *uint64 `json:"SMode,omitnil,omitempty" name:"SMode"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 是否全局规则
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 状态(0: 有效 1: 无效)
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 主机IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 }
 
 type ProVersionMachine struct {
 	// 主机类型。
 	// <li>CVM: 虚拟主机</li>
 	// <li>BM: 黑石物理机</li>
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 主机所在地域。
 	// 如：ap-guangzhou、ap-beijing
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 主机唯一标识Uuid。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type Process struct {
 	// 唯一ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机名。
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 进程Pid。
-	Pid *uint64 `json:"Pid,omitnil" name:"Pid"`
+	Pid *uint64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// 进程Ppid。
-	Ppid *uint64 `json:"Ppid,omitnil" name:"Ppid"`
+	Ppid *uint64 `json:"Ppid,omitnil,omitempty" name:"Ppid"`
 
 	// 进程名。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 进程用户名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 所属平台。
 	// <li>WIN32：windows32位</li>
 	// <li>WIN64：windows64位</li>
 	// <li>LINUX32：Linux32位</li>
 	// <li>LINUX64：Linux64位</li>
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 进程路径。
-	FullPath *string `json:"FullPath,omitnil" name:"FullPath"`
+	FullPath *string `json:"FullPath,omitnil,omitempty" name:"FullPath"`
 
 	// 创建时间。
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type ProcessStatistics struct {
 	// 进程名。
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 主机数量。
-	MachineNum *uint64 `json:"MachineNum,omitnil" name:"MachineNum"`
+	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
 }
 
 // Predefined struct for user
 type RecoverMalwaresRequestParams struct {
 	// 木马Id数组,单次最大删除不能超过200条
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type RecoverMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马Id数组,单次最大删除不能超过200条
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *RecoverMalwaresRequest) ToJsonString() string {
@@ -7229,13 +7229,13 @@ func (r *RecoverMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RecoverMalwaresResponseParams struct {
 	// 恢复成功id数组
-	SuccessIds []*uint64 `json:"SuccessIds,omitnil" name:"SuccessIds"`
+	SuccessIds []*uint64 `json:"SuccessIds,omitnil,omitempty" name:"SuccessIds"`
 
 	// 恢复失败id数组
-	FailedIds []*uint64 `json:"FailedIds,omitnil" name:"FailedIds"`
+	FailedIds []*uint64 `json:"FailedIds,omitnil,omitempty" name:"FailedIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RecoverMalwaresResponse struct {
@@ -7256,35 +7256,35 @@ func (r *RecoverMalwaresResponse) FromJsonString(s string) error {
 
 type RegionInfo struct {
 	// 地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
-	Region *string `json:"Region,omitnil" name:"Region"`
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
-	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地域ID
-	RegionId *uint64 `json:"RegionId,omitnil" name:"RegionId"`
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域代码，如 gz，sh，bj
-	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
 }
 
 // Predefined struct for user
 type RenewProVersionRequestParams struct {
 	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 主机唯一ID，对应CVM的uuid、BM的InstanceId。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 type RenewProVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil" name:"ChargePrepaid"`
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitnil,omitempty" name:"ChargePrepaid"`
 
 	// 主机唯一ID，对应CVM的uuid、BM的InstanceId。
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
 func (r *RenewProVersionRequest) ToJsonString() string {
@@ -7310,7 +7310,7 @@ func (r *RenewProVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewProVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RenewProVersionResponse struct {
@@ -7332,14 +7332,14 @@ func (r *RenewProVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RescanImpactedHostRequestParams struct {
 	// 漏洞ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type RescanImpactedHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *RescanImpactedHostRequest) ToJsonString() string {
@@ -7364,7 +7364,7 @@ func (r *RescanImpactedHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RescanImpactedHostResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type RescanImpactedHostResponse struct {
@@ -7385,104 +7385,104 @@ func (r *RescanImpactedHostResponse) FromJsonString(s string) error {
 
 type ReverseShell struct {
 	// ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜UUID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 主机内网IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 
 	// 目标IP
-	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
 	// 目标端口
-	DstPort *uint64 `json:"DstPort,omitnil" name:"DstPort"`
+	DstPort *uint64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
 
 	// 进程名
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 进程路径
-	FullPath *string `json:"FullPath,omitnil" name:"FullPath"`
+	FullPath *string `json:"FullPath,omitnil,omitempty" name:"FullPath"`
 
 	// 命令详情
-	CmdLine *string `json:"CmdLine,omitnil" name:"CmdLine"`
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 
 	// 执行用户
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 执行用户组
-	UserGroup *string `json:"UserGroup,omitnil" name:"UserGroup"`
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
 	// 父进程名
-	ParentProcName *string `json:"ParentProcName,omitnil" name:"ParentProcName"`
+	ParentProcName *string `json:"ParentProcName,omitnil,omitempty" name:"ParentProcName"`
 
 	// 父进程用户
-	ParentProcUser *string `json:"ParentProcUser,omitnil" name:"ParentProcUser"`
+	ParentProcUser *string `json:"ParentProcUser,omitnil,omitempty" name:"ParentProcUser"`
 
 	// 父进程用户组
-	ParentProcGroup *string `json:"ParentProcGroup,omitnil" name:"ParentProcGroup"`
+	ParentProcGroup *string `json:"ParentProcGroup,omitnil,omitempty" name:"ParentProcGroup"`
 
 	// 父进程路径
-	ParentProcPath *string `json:"ParentProcPath,omitnil" name:"ParentProcPath"`
+	ParentProcPath *string `json:"ParentProcPath,omitnil,omitempty" name:"ParentProcPath"`
 
 	// 处理状态
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 产生时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主机名
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 进程树
-	ProcTree *string `json:"ProcTree,omitnil" name:"ProcTree"`
+	ProcTree *string `json:"ProcTree,omitnil,omitempty" name:"ProcTree"`
 }
 
 type ReverseShellRule struct {
 	// 规则ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 客户端ID
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 目标IP
-	DestIp *string `json:"DestIp,omitnil" name:"DestIp"`
+	DestIp *string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
 
 	// 目标端口
-	DestPort *string `json:"DestPort,omitnil" name:"DestPort"`
+	DestPort *string `json:"DestPort,omitnil,omitempty" name:"DestPort"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitnil" name:"Operator"`
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 是否全局规则
-	IsGlobal *uint64 `json:"IsGlobal,omitnil" name:"IsGlobal"`
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 状态 (0: 有效 1: 无效)
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 主机IP
-	Hostip *string `json:"Hostip,omitnil" name:"Hostip"`
+	Hostip *string `json:"Hostip,omitnil,omitempty" name:"Hostip"`
 }
 
 type SecurityDynamic struct {
 	// 云镜客户端UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 安全事件发生事件。
-	EventTime *string `json:"EventTime,omitnil" name:"EventTime"`
+	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
 	// 安全事件类型。
 	// <li>MALWARE：木马事件</li>
@@ -7490,38 +7490,38 @@ type SecurityDynamic struct {
 	// <li>BRUTEATTACK_SUCCESS：密码破解成功</li>
 	// <li>VUL：漏洞</li>
 	// <li>BASELINE：安全基线</li>
-	EventType *string `json:"EventType,omitnil" name:"EventType"`
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
 	// 安全事件消息。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 安全事件等级。
 	// <li>RISK: 严重</li>
 	// <li>HIGH: 高危</li>
 	// <li>NORMAL: 中危</li>
 	// <li>LOW: 低危</li>
-	SecurityLevel *string `json:"SecurityLevel,omitnil" name:"SecurityLevel"`
+	SecurityLevel *string `json:"SecurityLevel,omitnil,omitempty" name:"SecurityLevel"`
 }
 
 type SecurityTrend struct {
 	// 事件时间。
-	Date *string `json:"Date,omitnil" name:"Date"`
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 事件数量。
-	EventNum *uint64 `json:"EventNum,omitnil" name:"EventNum"`
+	EventNum *uint64 `json:"EventNum,omitnil,omitempty" name:"EventNum"`
 }
 
 // Predefined struct for user
 type SeparateMalwaresRequestParams struct {
 	// 木马事件ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type SeparateMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马事件ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *SeparateMalwaresRequest) ToJsonString() string {
@@ -7546,13 +7546,13 @@ func (r *SeparateMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SeparateMalwaresResponseParams struct {
 	// 隔离成功的id数组。
-	SuccessIds []*uint64 `json:"SuccessIds,omitnil" name:"SuccessIds"`
+	SuccessIds []*uint64 `json:"SuccessIds,omitnil,omitempty" name:"SuccessIds"`
 
 	// 隔离失败的id数组。
-	FailedIds []*uint64 `json:"FailedIds,omitnil" name:"FailedIds"`
+	FailedIds []*uint64 `json:"FailedIds,omitnil,omitempty" name:"FailedIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SeparateMalwaresResponse struct {
@@ -7574,20 +7574,20 @@ func (r *SeparateMalwaresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SetBashEventsStatusRequestParams struct {
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
 	// 新状态(0-待处理 1-高危 2-正常)
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type SetBashEventsStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
 	// 新状态(0-待处理 1-高危 2-正常)
-	Status *uint64 `json:"Status,omitnil" name:"Status"`
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *SetBashEventsStatusRequest) ToJsonString() string {
@@ -7613,7 +7613,7 @@ func (r *SetBashEventsStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetBashEventsStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SetBashEventsStatusResponse struct {
@@ -7635,20 +7635,20 @@ func (r *SetBashEventsStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SwitchBashRulesRequestParams struct {
 	// 规则ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否禁用
-	Disabled *uint64 `json:"Disabled,omitnil" name:"Disabled"`
+	Disabled *uint64 `json:"Disabled,omitnil,omitempty" name:"Disabled"`
 }
 
 type SwitchBashRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否禁用
-	Disabled *uint64 `json:"Disabled,omitnil" name:"Disabled"`
+	Disabled *uint64 `json:"Disabled,omitnil,omitempty" name:"Disabled"`
 }
 
 func (r *SwitchBashRulesRequest) ToJsonString() string {
@@ -7674,7 +7674,7 @@ func (r *SwitchBashRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SwitchBashRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SwitchBashRulesResponse struct {
@@ -7695,49 +7695,49 @@ func (r *SwitchBashRulesResponse) FromJsonString(s string) error {
 
 type Tag struct {
 	// 标签ID
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 标签名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 服务器数
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type TagMachine struct {
 	// ID
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 主机ID
-	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 主机名称
-	MachineName *string `json:"MachineName,omitnil" name:"MachineName"`
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// 主机内网IP
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 主机外网IP
-	MachineWanIp *string `json:"MachineWanIp,omitnil" name:"MachineWanIp"`
+	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
 	// 主机区域
-	MachineRegion *string `json:"MachineRegion,omitnil" name:"MachineRegion"`
+	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// 主机区域类型
-	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 // Predefined struct for user
 type TrustMaliciousRequestRequestParams struct {
 	// 恶意请求记录ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type TrustMaliciousRequestRequest struct {
 	*tchttp.BaseRequest
 	
 	// 恶意请求记录ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *TrustMaliciousRequestRequest) ToJsonString() string {
@@ -7762,7 +7762,7 @@ func (r *TrustMaliciousRequestRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TrustMaliciousRequestResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TrustMaliciousRequestResponse struct {
@@ -7784,14 +7784,14 @@ func (r *TrustMaliciousRequestResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type TrustMalwaresRequestParams struct {
 	// 木马ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type TrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马ID数组。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *TrustMalwaresRequest) ToJsonString() string {
@@ -7816,7 +7816,7 @@ func (r *TrustMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TrustMalwaresResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TrustMalwaresResponse struct {
@@ -7838,14 +7838,14 @@ func (r *TrustMalwaresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UntrustMaliciousRequestRequestParams struct {
 	// 受信任记录ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type UntrustMaliciousRequestRequest struct {
 	*tchttp.BaseRequest
 	
 	// 受信任记录ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *UntrustMaliciousRequestRequest) ToJsonString() string {
@@ -7870,7 +7870,7 @@ func (r *UntrustMaliciousRequestRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UntrustMaliciousRequestResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UntrustMaliciousRequestResponse struct {
@@ -7892,14 +7892,14 @@ func (r *UntrustMaliciousRequestResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UntrustMalwaresRequestParams struct {
 	// 木马ID数组，单次最大处理不能超过200条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type UntrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马ID数组，单次最大处理不能超过200条。
-	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 func (r *UntrustMalwaresRequest) ToJsonString() string {
@@ -7924,7 +7924,7 @@ func (r *UntrustMalwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UntrustMalwaresResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type UntrustMalwaresResponse struct {
@@ -7945,84 +7945,84 @@ func (r *UntrustMalwaresResponse) FromJsonString(s string) error {
 
 type UsualPlace struct {
 	// ID。
-	Id *uint64 `json:"Id,omitnil" name:"Id"`
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 云镜客户端唯一标识UUID。
-	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 国家 ID。
-	CountryId *uint64 `json:"CountryId,omitnil" name:"CountryId"`
+	CountryId *uint64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 
 	// 省份 ID。
-	ProvinceId *uint64 `json:"ProvinceId,omitnil" name:"ProvinceId"`
+	ProvinceId *uint64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
 
 	// 城市 ID。
-	CityId *uint64 `json:"CityId,omitnil" name:"CityId"`
+	CityId *uint64 `json:"CityId,omitnil,omitempty" name:"CityId"`
 }
 
 type Vul struct {
 	// 漏洞种类ID
-	VulId *uint64 `json:"VulId,omitnil" name:"VulId"`
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 漏洞名称
-	VulName *string `json:"VulName,omitnil" name:"VulName"`
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
 
 	// 漏洞危害等级:
 	// HIGH：高危
 	// MIDDLE：中危
 	// LOW：低危
 	// NOTICE：提示
-	VulLevel *string `json:"VulLevel,omitnil" name:"VulLevel"`
+	VulLevel *string `json:"VulLevel,omitnil,omitempty" name:"VulLevel"`
 
 	// 最后扫描时间
-	LastScanTime *string `json:"LastScanTime,omitnil" name:"LastScanTime"`
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 受影响机器数量
-	ImpactedHostNum *uint64 `json:"ImpactedHostNum,omitnil" name:"ImpactedHostNum"`
+	ImpactedHostNum *uint64 `json:"ImpactedHostNum,omitnil,omitempty" name:"ImpactedHostNum"`
 
 	// 漏洞状态
 	// * UN_OPERATED : 待处理
 	// * FIXED : 已修复
-	VulStatus *string `json:"VulStatus,omitnil" name:"VulStatus"`
+	VulStatus *string `json:"VulStatus,omitnil,omitempty" name:"VulStatus"`
 }
 
 type WeeklyReport struct {
 	// 周报开始时间。
-	BeginDate *string `json:"BeginDate,omitnil" name:"BeginDate"`
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
 
 	// 周报结束时间。
-	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 }
 
 type WeeklyReportBruteAttack struct {
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 被破解用户名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 源IP。
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 尝试次数。
-	Count *uint64 `json:"Count,omitnil" name:"Count"`
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 攻击时间。
-	AttackTime *string `json:"AttackTime,omitnil" name:"AttackTime"`
+	AttackTime *string `json:"AttackTime,omitnil,omitempty" name:"AttackTime"`
 }
 
 type WeeklyReportMalware struct {
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 木马文件路径。
-	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 木马文件MD5值。
-	Md5 *string `json:"Md5,omitnil" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
 	// 木马发现时间。
-	FindTime *string `json:"FindTime,omitnil" name:"FindTime"`
+	FindTime *string `json:"FindTime,omitnil,omitempty" name:"FindTime"`
 
 	// 当前木马状态。
 	// <li>UN_OPERATED：未处理</li>
@@ -8030,54 +8030,54 @@ type WeeklyReportMalware struct {
 	// <li>TRUSTED：已信任</li>
 	// <li>SEPARATING：隔离中</li>
 	// <li>RECOVERING：恢复中</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type WeeklyReportNonlocalLoginPlace struct {
 	// 主机IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 用户名。
-	Username *string `json:"Username,omitnil" name:"Username"`
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 源IP。
-	SrcIp *string `json:"SrcIp,omitnil" name:"SrcIp"`
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 国家ID。
-	Country *uint64 `json:"Country,omitnil" name:"Country"`
+	Country *uint64 `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省份ID。
-	Province *uint64 `json:"Province,omitnil" name:"Province"`
+	Province *uint64 `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 城市ID。
-	City *uint64 `json:"City,omitnil" name:"City"`
+	City *uint64 `json:"City,omitnil,omitempty" name:"City"`
 
 	// 登录时间。
-	LoginTime *string `json:"LoginTime,omitnil" name:"LoginTime"`
+	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 }
 
 type WeeklyReportVul struct {
 	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitnil" name:"MachineIp"`
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
 	// 漏洞名称。
-	VulName *string `json:"VulName,omitnil" name:"VulName"`
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
 
 	// 漏洞类型。
 	// <li> WEB : Web漏洞</li>
 	// <li> SYSTEM :系统组件漏洞</li>
 	// <li> BASELINE : 安全基线</li>
-	VulType *string `json:"VulType,omitnil" name:"VulType"`
+	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
 
 	// 漏洞描述。
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 漏洞状态。
 	// <li> UN_OPERATED : 待处理</li>
 	// <li> SCANING : 扫描中</li>
 	// <li> FIXED : 已修复</li>
-	VulStatus *string `json:"VulStatus,omitnil" name:"VulStatus"`
+	VulStatus *string `json:"VulStatus,omitnil,omitempty" name:"VulStatus"`
 
 	// 最后扫描时间。
-	LastScanTime *string `json:"LastScanTime,omitnil" name:"LastScanTime"`
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 }

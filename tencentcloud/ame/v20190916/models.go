@@ -22,71 +22,71 @@ import (
 
 type Album struct {
 	// 专辑名
-	AlbumName *string `json:"AlbumName,omitnil" name:"AlbumName"`
+	AlbumName *string `json:"AlbumName,omitnil,omitempty" name:"AlbumName"`
 
 	// 专辑图片大小及类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImagePathMap []*ImagePath `json:"ImagePathMap,omitnil" name:"ImagePathMap"`
+	ImagePathMap []*ImagePath `json:"ImagePathMap,omitnil,omitempty" name:"ImagePathMap"`
 }
 
 type ApplicationLicenseInput struct {
 	// 应用名称，注：后面三个字段AndroidPackageName、IOSBundleId、PcIdentifier，三者选填一个
-	AppName *string `json:"AppName,omitnil" name:"AppName"`
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// app的安卓包名
-	AndroidPackageName *string `json:"AndroidPackageName,omitnil" name:"AndroidPackageName"`
+	AndroidPackageName *string `json:"AndroidPackageName,omitnil,omitempty" name:"AndroidPackageName"`
 
 	// app的IOS的BundleId名
-	IOSBundleId *string `json:"IOSBundleId,omitnil" name:"IOSBundleId"`
+	IOSBundleId *string `json:"IOSBundleId,omitnil,omitempty" name:"IOSBundleId"`
 
 	// PC标识名
-	PcIdentifier *string `json:"PcIdentifier,omitnil" name:"PcIdentifier"`
+	PcIdentifier *string `json:"PcIdentifier,omitnil,omitempty" name:"PcIdentifier"`
 }
 
 type Artist struct {
 	// 歌手名
-	ArtistName *string `json:"ArtistName,omitnil" name:"ArtistName"`
+	ArtistName *string `json:"ArtistName,omitnil,omitempty" name:"ArtistName"`
 }
 
 type AuthInfo struct {
 	// 主体名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectName *string `json:"SubjectName,omitnil" name:"SubjectName"`
+	SubjectName *string `json:"SubjectName,omitnil,omitempty" name:"SubjectName"`
 
 	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 应用场景
-	AppScene *int64 `json:"AppScene,omitnil" name:"AppScene"`
+	AppScene *int64 `json:"AppScene,omitnil,omitempty" name:"AppScene"`
 
 	// 应用地域
-	AppRegion *int64 `json:"AppRegion,omitnil" name:"AppRegion"`
+	AppRegion *int64 `json:"AppRegion,omitnil,omitempty" name:"AppRegion"`
 
 	// 授权时间
-	AuthPeriod *int64 `json:"AuthPeriod,omitnil" name:"AuthPeriod"`
+	AuthPeriod *int64 `json:"AuthPeriod,omitnil,omitempty" name:"AuthPeriod"`
 
 	// 是否可商业化
-	Commercialization *int64 `json:"Commercialization,omitnil" name:"Commercialization"`
+	Commercialization *int64 `json:"Commercialization,omitnil,omitempty" name:"Commercialization"`
 
 	// 是否可跨平台
-	Platform *int64 `json:"Platform,omitnil" name:"Platform"`
+	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 加密后Id
-	Id *string `json:"Id,omitnil" name:"Id"`
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 // Predefined struct for user
 type BatchDescribeKTVMusicDetailsRequestParams struct {
 	// 歌曲Id列表，注：列表最大长度为50
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 }
 
 type BatchDescribeKTVMusicDetailsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲Id列表，注：列表最大长度为50
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 }
 
 func (r *BatchDescribeKTVMusicDetailsRequest) ToJsonString() string {
@@ -111,13 +111,13 @@ func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDescribeKTVMusicDetailsResponseParams struct {
 	// 歌曲详情列表信息
-	KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitnil" name:"KTVMusicDetailInfoSet"`
+	KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitnil,omitempty" name:"KTVMusicDetailInfoSet"`
 
 	// 不存在的歌曲 ID 列表。
-	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitnil" name:"NotExistMusicIdSet"`
+	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitnil,omitempty" name:"NotExistMusicIdSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type BatchDescribeKTVMusicDetailsResponse struct {
@@ -138,26 +138,26 @@ func (r *BatchDescribeKTVMusicDetailsResponse) FromJsonString(s string) error {
 
 type ChorusClip struct {
 	// 副歌时间，单位：毫秒
-	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 副歌结束时间，单位：毫秒
-	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 // Predefined struct for user
 type CreateKTVRobotRequestParams struct {
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 进房参数。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// license基础信息
-	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitnil" name:"ApplicationLicenseInput"`
+	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitnil,omitempty" name:"ApplicationLicenseInput"`
 
 	// 创建机器人时初始化参数。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 type CreateKTVRobotRequest struct {
@@ -165,16 +165,16 @@ type CreateKTVRobotRequest struct {
 	
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 进房参数。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// license基础信息
-	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitnil" name:"ApplicationLicenseInput"`
+	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitnil,omitempty" name:"ApplicationLicenseInput"`
 
 	// 创建机器人时初始化参数。
-	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil" name:"SyncRobotCommands"`
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitnil,omitempty" name:"SyncRobotCommands"`
 }
 
 func (r *CreateKTVRobotRequest) ToJsonString() string {
@@ -202,10 +202,10 @@ func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKTVRobotResponseParams struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type CreateKTVRobotResponse struct {
@@ -226,47 +226,47 @@ func (r *CreateKTVRobotResponse) FromJsonString(s string) error {
 
 type DataInfo struct {
 	// Song Name
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 歌曲版本
-	Version *string `json:"Version,omitnil" name:"Version"`
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 歌曲总时长（非试听时长）
-	Duration *string `json:"Duration,omitnil" name:"Duration"`
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 试听开始时间
-	AuditionBegin *uint64 `json:"AuditionBegin,omitnil" name:"AuditionBegin"`
+	AuditionBegin *uint64 `json:"AuditionBegin,omitnil,omitempty" name:"AuditionBegin"`
 
 	// 试听结束时间
-	AuditionEnd *uint64 `json:"AuditionEnd,omitnil" name:"AuditionEnd"`
+	AuditionEnd *uint64 `json:"AuditionEnd,omitnil,omitempty" name:"AuditionEnd"`
 
 	// 标签名称
-	TagNames []*string `json:"TagNames,omitnil" name:"TagNames"`
+	TagNames []*string `json:"TagNames,omitnil,omitempty" name:"TagNames"`
 }
 
 // Predefined struct for user
 type DescribeAuthInfoRequestParams struct {
 	// 偏移量：Offset=Offset+Limit
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 数据条数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键字
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type DescribeAuthInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量：Offset=Offset+Limit
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 数据条数
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键字
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 func (r *DescribeAuthInfoRequest) ToJsonString() string {
@@ -293,13 +293,13 @@ func (r *DescribeAuthInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuthInfoResponseParams struct {
 	// 授权项目列表
-	AuthInfo []*AuthInfo `json:"AuthInfo,omitnil" name:"AuthInfo"`
+	AuthInfo []*AuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
 	// 总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeAuthInfoResponse struct {
@@ -321,14 +321,14 @@ func (r *DescribeAuthInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudMusicPurchasedRequestParams struct {
 	// 授权项目Id
-	AuthInfoId *string `json:"AuthInfoId,omitnil" name:"AuthInfoId"`
+	AuthInfoId *string `json:"AuthInfoId,omitnil,omitempty" name:"AuthInfoId"`
 }
 
 type DescribeCloudMusicPurchasedRequest struct {
 	*tchttp.BaseRequest
 	
 	// 授权项目Id
-	AuthInfoId *string `json:"AuthInfoId,omitnil" name:"AuthInfoId"`
+	AuthInfoId *string `json:"AuthInfoId,omitnil,omitempty" name:"AuthInfoId"`
 }
 
 func (r *DescribeCloudMusicPurchasedRequest) ToJsonString() string {
@@ -354,10 +354,10 @@ func (r *DescribeCloudMusicPurchasedRequest) FromJsonString(s string) error {
 type DescribeCloudMusicPurchasedResponseParams struct {
 	// 云音乐列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitnil" name:"MusicOpenDetail"`
+	MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitnil,omitempty" name:"MusicOpenDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCloudMusicPurchasedResponse struct {
@@ -379,28 +379,28 @@ func (r *DescribeCloudMusicPurchasedResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudMusicRequestParams struct {
 	// 歌曲Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲类型，可选值有：
 	// <li>MP3-128K-FTW：含有水印的试听资源；</li>
 	// <li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
 	// <li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
 	// 默认为：MP3-128K-FTW
-	MusicType *string `json:"MusicType,omitnil" name:"MusicType"`
+	MusicType *string `json:"MusicType,omitnil,omitempty" name:"MusicType"`
 }
 
 type DescribeCloudMusicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲类型，可选值有：
 	// <li>MP3-128K-FTW：含有水印的试听资源；</li>
 	// <li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
 	// <li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
 	// 默认为：MP3-128K-FTW
-	MusicType *string `json:"MusicType,omitnil" name:"MusicType"`
+	MusicType *string `json:"MusicType,omitnil,omitempty" name:"MusicType"`
 }
 
 func (r *DescribeCloudMusicRequest) ToJsonString() string {
@@ -426,28 +426,28 @@ func (r *DescribeCloudMusicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudMusicResponseParams struct {
 	// 歌曲Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲名称
-	MusicName *string `json:"MusicName,omitnil" name:"MusicName"`
+	MusicName *string `json:"MusicName,omitnil,omitempty" name:"MusicName"`
 
 	// 歌曲时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 歌曲链接
-	MusicUrl *string `json:"MusicUrl,omitnil" name:"MusicUrl"`
+	MusicUrl *string `json:"MusicUrl,omitnil,omitempty" name:"MusicUrl"`
 
 	// 歌曲图片
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicImageUrl *string `json:"MusicImageUrl,omitnil" name:"MusicImageUrl"`
+	MusicImageUrl *string `json:"MusicImageUrl,omitnil,omitempty" name:"MusicImageUrl"`
 
 	// 歌手列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Singers []*string `json:"Singers,omitnil" name:"Singers"`
+	Singers []*string `json:"Singers,omitnil,omitempty" name:"Singers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeCloudMusicResponse struct {
@@ -469,14 +469,14 @@ func (r *DescribeCloudMusicResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeItemByIdRequestParams struct {
 	// 歌曲ID，目前暂不支持批量查询
-	ItemIDs *string `json:"ItemIDs,omitnil" name:"ItemIDs"`
+	ItemIDs *string `json:"ItemIDs,omitnil,omitempty" name:"ItemIDs"`
 }
 
 type DescribeItemByIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲ID，目前暂不支持批量查询
-	ItemIDs *string `json:"ItemIDs,omitnil" name:"ItemIDs"`
+	ItemIDs *string `json:"ItemIDs,omitnil,omitempty" name:"ItemIDs"`
 }
 
 func (r *DescribeItemByIdRequest) ToJsonString() string {
@@ -502,10 +502,10 @@ func (r *DescribeItemByIdRequest) FromJsonString(s string) error {
 type DescribeItemByIdResponseParams struct {
 	// 歌曲信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*Item `json:"Items,omitnil" name:"Items"`
+	Items []*Item `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeItemByIdResponse struct {
@@ -527,32 +527,32 @@ func (r *DescribeItemByIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeItemsRequestParams struct {
 	// offset (Default = 0)，(当前页-1) * Limit
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 条数，必须大于0，最大值为30
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-	CategoryId *string `json:"CategoryId,omitnil" name:"CategoryId"`
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-	CategoryCode *string `json:"CategoryCode,omitnil" name:"CategoryCode"`
+	CategoryCode *string `json:"CategoryCode,omitnil,omitempty" name:"CategoryCode"`
 }
 
 type DescribeItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// offset (Default = 0)，(当前页-1) * Limit
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 条数，必须大于0，最大值为30
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-	CategoryId *string `json:"CategoryId,omitnil" name:"CategoryId"`
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-	CategoryCode *string `json:"CategoryCode,omitnil" name:"CategoryCode"`
+	CategoryCode *string `json:"CategoryCode,omitnil,omitempty" name:"CategoryCode"`
 }
 
 func (r *DescribeItemsRequest) ToJsonString() string {
@@ -580,24 +580,24 @@ func (r *DescribeItemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeItemsResponseParams struct {
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 当前页歌曲数量
-	Size *uint64 `json:"Size,omitnil" name:"Size"`
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 总数据条数
-	Total *uint64 `json:"Total,omitnil" name:"Total"`
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 剩余数量（total-offset-size），通过这个值判断是否
 	// 还有下一页
-	HaveMore *uint64 `json:"HaveMore,omitnil" name:"HaveMore"`
+	HaveMore *uint64 `json:"HaveMore,omitnil,omitempty" name:"HaveMore"`
 
 	// Items 歌曲列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*Item `json:"Items,omitnil" name:"Items"`
+	Items []*Item `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeItemsResponse struct {
@@ -619,14 +619,14 @@ func (r *DescribeItemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMusicDetailRequestParams struct {
 	// 曲目 Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 }
 
 type DescribeKTVMusicDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 曲目 Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 }
 
 func (r *DescribeKTVMusicDetailRequest) ToJsonString() string {
@@ -651,28 +651,28 @@ func (r *DescribeKTVMusicDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMusicDetailResponseParams struct {
 	// 歌曲基础信息
-	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil" name:"KTVMusicBaseInfo"`
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil,omitempty" name:"KTVMusicBaseInfo"`
 
 	// 播放凭证
-	PlayToken *string `json:"PlayToken,omitnil" name:"PlayToken"`
+	PlayToken *string `json:"PlayToken,omitnil,omitempty" name:"PlayToken"`
 
 	// 歌词下载地址
-	LyricsUrl *string `json:"LyricsUrl,omitnil" name:"LyricsUrl"`
+	LyricsUrl *string `json:"LyricsUrl,omitnil,omitempty" name:"LyricsUrl"`
 
 	// 歌曲规格信息列表
-	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitnil" name:"DefinitionInfoSet"`
+	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitnil,omitempty" name:"DefinitionInfoSet"`
 
 	// 音高数据文件下载地址
-	MidiJsonUrl *string `json:"MidiJsonUrl,omitnil" name:"MidiJsonUrl"`
+	MidiJsonUrl *string `json:"MidiJsonUrl,omitnil,omitempty" name:"MidiJsonUrl"`
 
 	// 副歌片段数据列表
-	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil" name:"ChorusClipSet"`
+	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil,omitempty" name:"ChorusClipSet"`
 
 	// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
-	PreludeInterval *int64 `json:"PreludeInterval,omitnil" name:"PreludeInterval"`
+	PreludeInterval *int64 `json:"PreludeInterval,omitnil,omitempty" name:"PreludeInterval"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMusicDetailResponse struct {
@@ -723,10 +723,10 @@ func (r *DescribeKTVMusicTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVMusicTagsResponseParams struct {
 	// 标签分组列表
-	TagGroupSet []*KTVMusicTagGroup `json:"TagGroupSet,omitnil" name:"TagGroupSet"`
+	TagGroupSet []*KTVMusicTagGroup `json:"TagGroupSet,omitnil,omitempty" name:"TagGroupSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVMusicTagsResponse struct {
@@ -748,26 +748,26 @@ func (r *DescribeKTVMusicTagsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistDetailRequestParams struct {
 	// 歌单Id
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVPlaylistDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌单Id
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVPlaylistDetailRequest) ToJsonString() string {
@@ -794,13 +794,13 @@ func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistDetailResponseParams struct {
 	// 歌曲基础信息列表
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 歌单基础信息
-	PlaylistBaseInfo *KTVPlaylistBaseInfo `json:"PlaylistBaseInfo,omitnil" name:"PlaylistBaseInfo"`
+	PlaylistBaseInfo *KTVPlaylistBaseInfo `json:"PlaylistBaseInfo,omitnil,omitempty" name:"PlaylistBaseInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVPlaylistDetailResponse struct {
@@ -825,15 +825,15 @@ type DescribeKTVPlaylistsRequestParams struct {
 	// ·OfficialRec：官方推荐
 	// ·Normal：自定义
 	// 当该字段未填时，默认为取OfficialRec
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVPlaylistsRequest struct {
@@ -843,15 +843,15 @@ type DescribeKTVPlaylistsRequest struct {
 	// ·OfficialRec：官方推荐
 	// ·Normal：自定义
 	// 当该字段未填时，默认为取OfficialRec
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVPlaylistsRequest) ToJsonString() string {
@@ -878,13 +878,13 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVPlaylistsResponseParams struct {
 	// 推荐歌单列表
-	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitnil" name:"PlaylistBaseInfoSet"`
+	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitnil,omitempty" name:"PlaylistBaseInfoSet"`
 
 	// 推荐歌单列表总数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVPlaylistsResponse struct {
@@ -906,46 +906,46 @@ func (r *DescribeKTVPlaylistsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVRobotsRequestParams struct {
 	// 机器人Id列表。
-	RobotIds []*string `json:"RobotIds,omitnil" name:"RobotIds"`
+	RobotIds []*string `json:"RobotIds,omitnil,omitempty" name:"RobotIds"`
 
 	// 机器人状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil,omitempty" name:"Statuses"`
 
 	// 匹配创建时间在此时间段内的机器人。
 	// <li>包含所指定的头尾时间点。</li>
-	CreateTime *TimeRange `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：10。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVRobotsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器人Id列表。
-	RobotIds []*string `json:"RobotIds,omitnil" name:"RobotIds"`
+	RobotIds []*string `json:"RobotIds,omitnil,omitempty" name:"RobotIds"`
 
 	// 机器人状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil,omitempty" name:"Statuses"`
 
 	// 匹配创建时间在此时间段内的机器人。
 	// <li>包含所指定的头尾时间点。</li>
-	CreateTime *TimeRange `json:"CreateTime,omitnil" name:"CreateTime"`
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：10。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVRobotsRequest) ToJsonString() string {
@@ -974,13 +974,13 @@ func (r *DescribeKTVRobotsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVRobotsResponseParams struct {
 	// 机器人总数。
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 机器人信息集合。
-	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitnil" name:"KTVRobotInfoSet"`
+	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitnil,omitempty" name:"KTVRobotInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVRobotsResponse struct {
@@ -1031,13 +1031,13 @@ func (r *DescribeKTVSingerCategoriesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSingerCategoriesResponseParams struct {
 	// 歌手性别分类列表
-	GenderSet []*KTVSingerCategoryInfo `json:"GenderSet,omitnil" name:"GenderSet"`
+	GenderSet []*KTVSingerCategoryInfo `json:"GenderSet,omitnil,omitempty" name:"GenderSet"`
 
 	// 歌手区域分类列表
-	AreaSet []*KTVSingerCategoryInfo `json:"AreaSet,omitnil" name:"AreaSet"`
+	AreaSet []*KTVSingerCategoryInfo `json:"AreaSet,omitnil,omitempty" name:"AreaSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVSingerCategoriesResponse struct {
@@ -1059,26 +1059,26 @@ func (r *DescribeKTVSingerCategoriesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSingerMusicsRequestParams struct {
 	// 歌手id
-	SingerId *string `json:"SingerId,omitnil" name:"SingerId"`
+	SingerId *string `json:"SingerId,omitnil,omitempty" name:"SingerId"`
 
 	// 分页偏移量，默认值：0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVSingerMusicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌手id
-	SingerId *string `json:"SingerId,omitnil" name:"SingerId"`
+	SingerId *string `json:"SingerId,omitnil,omitempty" name:"SingerId"`
 
 	// 分页偏移量，默认值：0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVSingerMusicsRequest) ToJsonString() string {
@@ -1105,13 +1105,13 @@ func (r *DescribeKTVSingerMusicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSingerMusicsResponseParams struct {
 	// 总曲目数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// KTV 曲目列表
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVSingerMusicsResponse struct {
@@ -1134,27 +1134,27 @@ func (r *DescribeKTVSingerMusicsResponse) FromJsonString(s string) error {
 type DescribeKTVSingersRequestParams struct {
 	// 歌手id集合，精确匹配歌手id
 	// <li> 数组长度限制10</li>
-	SingerIds []*string `json:"SingerIds,omitnil" name:"SingerIds"`
+	SingerIds []*string `json:"SingerIds,omitnil,omitempty" name:"SingerIds"`
 
 	// 歌手性别集合，不传为全部，精确匹配歌手性别类型，
 	// <li>数组长度限制1</li>
 	// <li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
-	Genders []*string `json:"Genders,omitnil" name:"Genders"`
+	Genders []*string `json:"Genders,omitnil,omitempty" name:"Genders"`
 
 	// 歌手区域集合，不传为全部，精确匹配歌手区域
 	// <li>数组长度限制10</li>
 	// <li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
-	Areas []*string `json:"Areas,omitnil" name:"Areas"`
+	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
 
 	// 排序方式。默认按照播放数倒序
 	// <li> Sort.Field 可选 PlayCount。</li>
-	Sort *SortBy `json:"Sort,omitnil" name:"Sort"`
+	Sort *SortBy `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 分页偏移量，默认值：0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeKTVSingersRequest struct {
@@ -1162,27 +1162,27 @@ type DescribeKTVSingersRequest struct {
 	
 	// 歌手id集合，精确匹配歌手id
 	// <li> 数组长度限制10</li>
-	SingerIds []*string `json:"SingerIds,omitnil" name:"SingerIds"`
+	SingerIds []*string `json:"SingerIds,omitnil,omitempty" name:"SingerIds"`
 
 	// 歌手性别集合，不传为全部，精确匹配歌手性别类型，
 	// <li>数组长度限制1</li>
 	// <li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
-	Genders []*string `json:"Genders,omitnil" name:"Genders"`
+	Genders []*string `json:"Genders,omitnil,omitempty" name:"Genders"`
 
 	// 歌手区域集合，不传为全部，精确匹配歌手区域
 	// <li>数组长度限制10</li>
 	// <li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
-	Areas []*string `json:"Areas,omitnil" name:"Areas"`
+	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
 
 	// 排序方式。默认按照播放数倒序
 	// <li> Sort.Field 可选 PlayCount。</li>
-	Sort *SortBy `json:"Sort,omitnil" name:"Sort"`
+	Sort *SortBy `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 分页偏移量，默认值：0。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVSingersRequest) ToJsonString() string {
@@ -1212,13 +1212,13 @@ func (r *DescribeKTVSingersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSingersResponseParams struct {
 	// 总歌手数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// KTV歌手列表
-	KTVSingerInfoSet []*KTVSingerInfo `json:"KTVSingerInfoSet,omitnil" name:"KTVSingerInfoSet"`
+	KTVSingerInfoSet []*KTVSingerInfo `json:"KTVSingerInfoSet,omitnil,omitempty" name:"KTVSingerInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVSingersResponse struct {
@@ -1240,14 +1240,14 @@ func (r *DescribeKTVSingersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSuggestionsRequestParams struct {
 	// 联想关键词
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 }
 
 type DescribeKTVSuggestionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 联想关键词
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 }
 
 func (r *DescribeKTVSuggestionsRequest) ToJsonString() string {
@@ -1272,10 +1272,10 @@ func (r *DescribeKTVSuggestionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVSuggestionsResponseParams struct {
 	// 联想词信息列表。返回总数最大为10。
-	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitnil" name:"KTVSuggestionInfoSet"`
+	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitnil,omitempty" name:"KTVSuggestionInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVSuggestionsResponse struct {
@@ -1298,12 +1298,12 @@ func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 type DescribeKTVTopListRequestParams struct {
 	// 榜单类型。默认Hot
 	// <li> Hot, 热歌榜。</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 榜单周期 默认为Week
 	// <li> Week, 周榜。</li>
 	// <li> Month, 月榜。</li>
-	Period *string `json:"Period,omitnil" name:"Period"`
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 type DescribeKTVTopListRequest struct {
@@ -1311,12 +1311,12 @@ type DescribeKTVTopListRequest struct {
 	
 	// 榜单类型。默认Hot
 	// <li> Hot, 热歌榜。</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 榜单周期 默认为Week
 	// <li> Week, 周榜。</li>
 	// <li> Month, 月榜。</li>
-	Period *string `json:"Period,omitnil" name:"Period"`
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 func (r *DescribeKTVTopListRequest) ToJsonString() string {
@@ -1342,13 +1342,13 @@ func (r *DescribeKTVTopListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKTVTopListResponseParams struct {
 	// 歌曲基础信息列表
-	KTVMusicTopInfoSet []*KTVMusicTopInfo `json:"KTVMusicTopInfoSet,omitnil" name:"KTVMusicTopInfoSet"`
+	KTVMusicTopInfoSet []*KTVMusicTopInfo `json:"KTVMusicTopInfoSet,omitnil,omitempty" name:"KTVMusicTopInfoSet"`
 
 	// 返回总条数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeKTVTopListResponse struct {
@@ -1370,24 +1370,24 @@ func (r *DescribeKTVTopListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLyricRequestParams struct {
 	// 歌曲ID
-	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
 	// 格式，可选项，可不填写，默认值为：LRC-LRC。
 	// <li>LRC-LRC：歌词；</li>
 	// <li>JSON-ST：波形图。</li>
-	SubItemType *string `json:"SubItemType,omitnil" name:"SubItemType"`
+	SubItemType *string `json:"SubItemType,omitnil,omitempty" name:"SubItemType"`
 }
 
 type DescribeLyricRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲ID
-	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
 	// 格式，可选项，可不填写，默认值为：LRC-LRC。
 	// <li>LRC-LRC：歌词；</li>
 	// <li>JSON-ST：波形图。</li>
-	SubItemType *string `json:"SubItemType,omitnil" name:"SubItemType"`
+	SubItemType *string `json:"SubItemType,omitnil,omitempty" name:"SubItemType"`
 }
 
 func (r *DescribeLyricRequest) ToJsonString() string {
@@ -1414,10 +1414,10 @@ func (r *DescribeLyricRequest) FromJsonString(s string) error {
 type DescribeLyricResponseParams struct {
 	// 歌词或者波形图详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Lyric *Lyric `json:"Lyric,omitnil" name:"Lyric"`
+	Lyric *Lyric `json:"Lyric,omitnil,omitempty" name:"Lyric"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeLyricResponse struct {
@@ -1439,36 +1439,36 @@ func (r *DescribeLyricResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMusicRequestParams struct {
 	// 歌曲ID
-	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
 	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
-	IdentityId *string `json:"IdentityId,omitnil" name:"IdentityId"`
+	IdentityId *string `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
 	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
-	SubItemType *string `json:"SubItemType,omitnil" name:"SubItemType"`
+	SubItemType *string `json:"SubItemType,omitnil,omitempty" name:"SubItemType"`
 
 	// CDN URL Protocol:HTTP or HTTPS/SSL
 	// Values:Y , N(default)
-	Ssl *string `json:"Ssl,omitnil" name:"Ssl"`
+	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
 }
 
 type DescribeMusicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲ID
-	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
 	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
-	IdentityId *string `json:"IdentityId,omitnil" name:"IdentityId"`
+	IdentityId *string `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
 	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
-	SubItemType *string `json:"SubItemType,omitnil" name:"SubItemType"`
+	SubItemType *string `json:"SubItemType,omitnil,omitempty" name:"SubItemType"`
 
 	// CDN URL Protocol:HTTP or HTTPS/SSL
 	// Values:Y , N(default)
-	Ssl *string `json:"Ssl,omitnil" name:"Ssl"`
+	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
 }
 
 func (r *DescribeMusicRequest) ToJsonString() string {
@@ -1497,10 +1497,10 @@ func (r *DescribeMusicRequest) FromJsonString(s string) error {
 type DescribeMusicResponseParams struct {
 	// 音乐相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Music *Music `json:"Music,omitnil" name:"Music"`
+	Music *Music `json:"Music,omitnil,omitempty" name:"Music"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMusicResponse struct {
@@ -1522,20 +1522,20 @@ func (r *DescribeMusicResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMusicSaleStatusRequestParams struct {
 	// 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 查询哪个渠道的数据，1为曲库包，2为单曲
-	PurchaseType *int64 `json:"PurchaseType,omitnil" name:"PurchaseType"`
+	PurchaseType *int64 `json:"PurchaseType,omitnil,omitempty" name:"PurchaseType"`
 }
 
 type DescribeMusicSaleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 查询哪个渠道的数据，1为曲库包，2为单曲
-	PurchaseType *int64 `json:"PurchaseType,omitnil" name:"PurchaseType"`
+	PurchaseType *int64 `json:"PurchaseType,omitnil,omitempty" name:"PurchaseType"`
 }
 
 func (r *DescribeMusicSaleStatusRequest) ToJsonString() string {
@@ -1561,10 +1561,10 @@ func (r *DescribeMusicSaleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMusicSaleStatusResponseParams struct {
 	// musicId对应歌曲状态
-	MusicStatusSet []*MusicStatus `json:"MusicStatusSet,omitnil" name:"MusicStatusSet"`
+	MusicStatusSet []*MusicStatus `json:"MusicStatusSet,omitnil,omitempty" name:"MusicStatusSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeMusicSaleStatusResponse struct {
@@ -1586,26 +1586,26 @@ func (r *DescribeMusicSaleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePackageItemsRequestParams struct {
 	// 订单id，从获取已购曲库包列表中获取
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 默认0，Offset=Offset+Length
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 默认20
-	Length *uint64 `json:"Length,omitnil" name:"Length"`
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 type DescribePackageItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单id，从获取已购曲库包列表中获取
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 默认0，Offset=Offset+Length
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 默认20
-	Length *uint64 `json:"Length,omitnil" name:"Length"`
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 func (r *DescribePackageItemsRequest) ToJsonString() string {
@@ -1633,10 +1633,10 @@ func (r *DescribePackageItemsRequest) FromJsonString(s string) error {
 type DescribePackageItemsResponseParams struct {
 	// 已核销歌曲信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageItems []*PackageItem `json:"PackageItems,omitnil" name:"PackageItems"`
+	PackageItems []*PackageItem `json:"PackageItems,omitnil,omitempty" name:"PackageItems"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePackageItemsResponse struct {
@@ -1658,20 +1658,20 @@ func (r *DescribePackageItemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePackagesRequestParams struct {
 	// 默认0，Offset=Offset+Length
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 默认20
-	Length *uint64 `json:"Length,omitnil" name:"Length"`
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 type DescribePackagesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 默认0，Offset=Offset+Length
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 默认20
-	Length *uint64 `json:"Length,omitnil" name:"Length"`
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 func (r *DescribePackagesRequest) ToJsonString() string {
@@ -1698,10 +1698,10 @@ func (r *DescribePackagesRequest) FromJsonString(s string) error {
 type DescribePackagesResponseParams struct {
 	// 已购曲库包列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Packages []*Package `json:"Packages,omitnil" name:"Packages"`
+	Packages []*Package `json:"Packages,omitnil,omitempty" name:"Packages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePackagesResponse struct {
@@ -1723,26 +1723,26 @@ func (r *DescribePackagesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePkgOfflineMusicRequestParams struct {
 	// 订单id
-	PackageOrderId *string `json:"PackageOrderId,omitnil" name:"PackageOrderId"`
+	PackageOrderId *string `json:"PackageOrderId,omitnil,omitempty" name:"PackageOrderId"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribePkgOfflineMusicRequest struct {
 	*tchttp.BaseRequest
 	
 	// 订单id
-	PackageOrderId *string `json:"PackageOrderId,omitnil" name:"PackageOrderId"`
+	PackageOrderId *string `json:"PackageOrderId,omitnil,omitempty" name:"PackageOrderId"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribePkgOfflineMusicRequest) ToJsonString() string {
@@ -1769,13 +1769,13 @@ func (r *DescribePkgOfflineMusicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePkgOfflineMusicResponseParams struct {
 	// 曲库包中不可用歌曲信息
-	OfflineMusicSet []*OfflineMusicDetail `json:"OfflineMusicSet,omitnil" name:"OfflineMusicSet"`
+	OfflineMusicSet []*OfflineMusicDetail `json:"OfflineMusicSet,omitnil,omitempty" name:"OfflineMusicSet"`
 
 	// 返回总量
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribePkgOfflineMusicResponse struct {
@@ -1797,20 +1797,20 @@ func (r *DescribePkgOfflineMusicResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStationsRequestParams struct {
 	// 条数，必须大于0
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// offset (Default = 0)，Offset=Offset+Limit
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeStationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 条数，必须大于0
-	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// offset (Default = 0)，Offset=Offset+Limit
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeStationsRequest) ToJsonString() string {
@@ -1836,23 +1836,23 @@ func (r *DescribeStationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStationsResponseParams struct {
 	// 总数量
-	Total *uint64 `json:"Total,omitnil" name:"Total"`
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 当前页station数量
-	Size *uint64 `json:"Size,omitnil" name:"Size"`
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 剩余数量（total-offset-size），通过这个值判断是否还有下一页
-	HaveMore *uint64 `json:"HaveMore,omitnil" name:"HaveMore"`
+	HaveMore *uint64 `json:"HaveMore,omitnil,omitempty" name:"HaveMore"`
 
 	// Stations 素材库列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Stations []*Station `json:"Stations,omitnil" name:"Stations"`
+	Stations []*Station `json:"Stations,omitnil,omitempty" name:"Stations"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DescribeStationsResponse struct {
@@ -1874,14 +1874,14 @@ func (r *DescribeStationsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyKTVRobotRequestParams struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 }
 
 type DestroyKTVRobotRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 }
 
 func (r *DestroyKTVRobotRequest) ToJsonString() string {
@@ -1906,7 +1906,7 @@ func (r *DestroyKTVRobotRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyKTVRobotResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type DestroyKTVRobotResponse struct {
@@ -1928,63 +1928,63 @@ func (r *DestroyKTVRobotResponse) FromJsonString(s string) error {
 type ImagePath struct {
 	// station图片大小及类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitnil" name:"Key"`
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// station图片地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil" name:"Value"`
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Item struct {
 	// Song ID
-	ItemID *string `json:"ItemID,omitnil" name:"ItemID"`
+	ItemID *string `json:"ItemID,omitnil,omitempty" name:"ItemID"`
 
 	// Song info
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataInfo *DataInfo `json:"DataInfo,omitnil" name:"DataInfo"`
+	DataInfo *DataInfo `json:"DataInfo,omitnil,omitempty" name:"DataInfo"`
 
 	// 专辑信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Album *Album `json:"Album,omitnil" name:"Album"`
+	Album *Album `json:"Album,omitnil,omitempty" name:"Album"`
 
 	// 多个歌手集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Artists []*Artist `json:"Artists,omitnil" name:"Artists"`
+	Artists []*Artist `json:"Artists,omitnil,omitempty" name:"Artists"`
 
 	// 歌曲状态，1:添加进购物车；2:核销进曲库包
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil" name:"Status"`
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type JoinRoomInput struct {
 	// TRTC进房参数
-	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitnil" name:"TRTCJoinRoomInput"`
+	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitnil,omitempty" name:"TRTCJoinRoomInput"`
 }
 
 type KTVMusicBaseInfo struct {
 	// 歌曲 Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 演唱者基础信息列表
-	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitnil" name:"SingerInfoSet"`
+	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitnil,omitempty" name:"SingerInfoSet"`
 
 	// 已弃用，请使用SingerInfoSet
-	SingerSet []*string `json:"SingerSet,omitnil" name:"SingerSet"`
+	SingerSet []*string `json:"SingerSet,omitnil,omitempty" name:"SingerSet"`
 
 	// 作词者列表
-	LyricistSet []*string `json:"LyricistSet,omitnil" name:"LyricistSet"`
+	LyricistSet []*string `json:"LyricistSet,omitnil,omitempty" name:"LyricistSet"`
 
 	// 作曲者列表
-	ComposerSet []*string `json:"ComposerSet,omitnil" name:"ComposerSet"`
+	ComposerSet []*string `json:"ComposerSet,omitnil,omitempty" name:"ComposerSet"`
 
 	// 标签列表
-	TagSet []*string `json:"TagSet,omitnil" name:"TagSet"`
+	TagSet []*string `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 歌曲时长
-	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
 type KTVMusicDefinitionInfo struct {
@@ -1992,206 +1992,206 @@ type KTVMusicDefinitionInfo struct {
 	// <li>audio/mi：低规格；</li>
 	// <li>audio/lo：中规格；</li>
 	// <li>audio/hi：高规格。</li>
-	Definition *string `json:"Definition,omitnil" name:"Definition"`
+	Definition *string `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 码率，单位为 bps。
-	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
+	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 文件大小，单位为字节。
-	Size *int64 `json:"Size,omitnil" name:"Size"`
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 }
 
 type KTVMusicDetailInfo struct {
 	// 即使广播曲库歌曲基础信息
-	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil" name:"KTVMusicBaseInfo"`
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitnil,omitempty" name:"KTVMusicBaseInfo"`
 
 	// 播放凭证
-	PlayToken *string `json:"PlayToken,omitnil" name:"PlayToken"`
+	PlayToken *string `json:"PlayToken,omitnil,omitempty" name:"PlayToken"`
 
 	// 歌词下载地址
-	LyricsUrl *string `json:"LyricsUrl,omitnil" name:"LyricsUrl"`
+	LyricsUrl *string `json:"LyricsUrl,omitnil,omitempty" name:"LyricsUrl"`
 
 	// 歌曲规格信息列表
-	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitnil" name:"DefinitionInfoSet"`
+	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitnil,omitempty" name:"DefinitionInfoSet"`
 
 	// 音高数据文件下载地址
-	MidiJsonUrl *string `json:"MidiJsonUrl,omitnil" name:"MidiJsonUrl"`
+	MidiJsonUrl *string `json:"MidiJsonUrl,omitnil,omitempty" name:"MidiJsonUrl"`
 
 	// 副歌片段数据列表
-	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil" name:"ChorusClipSet"`
+	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitnil,omitempty" name:"ChorusClipSet"`
 
 	// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
-	PreludeInterval *int64 `json:"PreludeInterval,omitnil" name:"PreludeInterval"`
+	PreludeInterval *int64 `json:"PreludeInterval,omitnil,omitempty" name:"PreludeInterval"`
 }
 
 type KTVMusicTagGroup struct {
 	// 标签分组英文名
-	EnglishGroupName *string `json:"EnglishGroupName,omitnil" name:"EnglishGroupName"`
+	EnglishGroupName *string `json:"EnglishGroupName,omitnil,omitempty" name:"EnglishGroupName"`
 
 	// 标签分组中文名
-	ChineseGroupName *string `json:"ChineseGroupName,omitnil" name:"ChineseGroupName"`
+	ChineseGroupName *string `json:"ChineseGroupName,omitnil,omitempty" name:"ChineseGroupName"`
 
 	// 标签分类下标签列表
-	TagSet []*KTVMusicTagInfo `json:"TagSet,omitnil" name:"TagSet"`
+	TagSet []*KTVMusicTagInfo `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type KTVMusicTagInfo struct {
 	// 标签Id
-	TagId *string `json:"TagId,omitnil" name:"TagId"`
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 
 	// 标签
-	TagName *string `json:"TagName,omitnil" name:"TagName"`
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 }
 
 type KTVMusicTopInfo struct {
 	// 歌曲Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 歌曲名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 歌手名称列表
-	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitnil" name:"SingerInfoSet"`
+	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitnil,omitempty" name:"SingerInfoSet"`
 
 	// 歌词名称列表
-	LyricistSet []*string `json:"LyricistSet,omitnil" name:"LyricistSet"`
+	LyricistSet []*string `json:"LyricistSet,omitnil,omitempty" name:"LyricistSet"`
 
 	// 作曲列表
-	ComposerSet []*string `json:"ComposerSet,omitnil" name:"ComposerSet"`
+	ComposerSet []*string `json:"ComposerSet,omitnil,omitempty" name:"ComposerSet"`
 
 	// 标签列表
-	TagSet []*string `json:"TagSet,omitnil" name:"TagSet"`
+	TagSet []*string `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 播放时长
-	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
 type KTVPlaylistBaseInfo struct {
 	// 歌单Id
-	PlaylistId *string `json:"PlaylistId,omitnil" name:"PlaylistId"`
+	PlaylistId *string `json:"PlaylistId,omitnil,omitempty" name:"PlaylistId"`
 
 	// 歌单标题
-	Title *string `json:"Title,omitnil" name:"Title"`
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 歌单介绍
-	Description *string `json:"Description,omitnil" name:"Description"`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 歌曲数量
-	MusicNum *int64 `json:"MusicNum,omitnil" name:"MusicNum"`
+	MusicNum *int64 `json:"MusicNum,omitnil,omitempty" name:"MusicNum"`
 }
 
 type KTVRobotInfo struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 状态，取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
 	// <li>Destroy：销毁</li>
-	Status *string `json:"Status,omitnil" name:"Status"`
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 播放列表。
-	Playlists []*string `json:"Playlists,omitnil" name:"Playlists"`
+	Playlists []*string `json:"Playlists,omitnil,omitempty" name:"Playlists"`
 
 	// 当前歌单索引位置。
-	CurIndex *int64 `json:"CurIndex,omitnil" name:"CurIndex"`
+	CurIndex *int64 `json:"CurIndex,omitnil,omitempty" name:"CurIndex"`
 
 	// 播放进度，单位：毫秒。
-	Position *uint64 `json:"Position,omitnil" name:"Position"`
+	Position *uint64 `json:"Position,omitnil,omitempty" name:"Position"`
 
 	// 音频参数。
-	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitnil" name:"SetAudioParamInput"`
+	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitnil,omitempty" name:"SetAudioParamInput"`
 
 	// 进房信息。
-	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil" name:"JoinRoomInput"`
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitnil,omitempty" name:"JoinRoomInput"`
 
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
-	RTCSystem *string `json:"RTCSystem,omitnil" name:"RTCSystem"`
+	RTCSystem *string `json:"RTCSystem,omitnil,omitempty" name:"RTCSystem"`
 
 	// 播放模式，PlayMode取值有：
 	// <li>RepeatPlaylist：列表循环</li>
 	// <li>Order：顺序播放</li>
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
-	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitnil" name:"SetPlayModeInput"`
+	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitnil,omitempty" name:"SetPlayModeInput"`
 
 	// <del>音量，范围 0~100，默认为 50。</del>（已废弃，请采用 SetRealVolumeInput ）
-	SetVolumeInput *SetVolumeCommandInput `json:"SetVolumeInput,omitnil" name:"SetVolumeInput"`
+	SetVolumeInput *SetVolumeCommandInput `json:"SetVolumeInput,omitnil,omitempty" name:"SetVolumeInput"`
 
 	// 真实音量，范围 0~100，默认为 50。
-	SetRealVolumeInput *SetRealVolumeCommandInput `json:"SetRealVolumeInput,omitnil" name:"SetRealVolumeInput"`
+	SetRealVolumeInput *SetRealVolumeCommandInput `json:"SetRealVolumeInput,omitnil,omitempty" name:"SetRealVolumeInput"`
 }
 
 type KTVSingerBaseInfo struct {
 	// 歌手id
-	SingerId *string `json:"SingerId,omitnil" name:"SingerId"`
+	SingerId *string `json:"SingerId,omitnil,omitempty" name:"SingerId"`
 
 	// 歌手名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type KTVSingerCategoryInfo struct {
 	// 分类中文名
-	ChineseName *string `json:"ChineseName,omitnil" name:"ChineseName"`
+	ChineseName *string `json:"ChineseName,omitnil,omitempty" name:"ChineseName"`
 
 	// 分类英文名
-	EnglishName *string `json:"EnglishName,omitnil" name:"EnglishName"`
+	EnglishName *string `json:"EnglishName,omitnil,omitempty" name:"EnglishName"`
 }
 
 type KTVSingerInfo struct {
 	// 歌手id
-	SingerId *string `json:"SingerId,omitnil" name:"SingerId"`
+	SingerId *string `json:"SingerId,omitnil,omitempty" name:"SingerId"`
 
 	// 歌手名
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 歌手性别: 男，女，组合
-	Gender *string `json:"Gender,omitnil" name:"Gender"`
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
 
 	// 地区: 大陆，港台，欧美，日本
-	Area *string `json:"Area,omitnil" name:"Area"`
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 歌曲数
-	MusicCount *int64 `json:"MusicCount,omitnil" name:"MusicCount"`
+	MusicCount *int64 `json:"MusicCount,omitnil,omitempty" name:"MusicCount"`
 
 	// 歌曲总播放次数
-	PlayCount *int64 `json:"PlayCount,omitnil" name:"PlayCount"`
+	PlayCount *int64 `json:"PlayCount,omitnil,omitempty" name:"PlayCount"`
 }
 
 type KTVSuggestionInfo struct {
 	// 联想词
-	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
 type Lyric struct {
 	// 歌词cdn地址
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 歌词后缀名
-	FileNameExt *string `json:"FileNameExt,omitnil" name:"FileNameExt"`
+	FileNameExt *string `json:"FileNameExt,omitnil,omitempty" name:"FileNameExt"`
 
 	// 歌词类型
-	SubItemType *string `json:"SubItemType,omitnil" name:"SubItemType"`
+	SubItemType *string `json:"SubItemType,omitnil,omitempty" name:"SubItemType"`
 }
 
 // Predefined struct for user
 type ModifyMusicOnShelvesRequestParams struct {
 	// 歌曲变更信息
-	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitnil" name:"MusicDetailInfos"`
+	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitnil,omitempty" name:"MusicDetailInfos"`
 
 	// ame对接资源方密钥
-	AmeKey *string `json:"AmeKey,omitnil" name:"AmeKey"`
+	AmeKey *string `json:"AmeKey,omitnil,omitempty" name:"AmeKey"`
 }
 
 type ModifyMusicOnShelvesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 歌曲变更信息
-	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitnil" name:"MusicDetailInfos"`
+	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitnil,omitempty" name:"MusicDetailInfos"`
 
 	// ame对接资源方密钥
-	AmeKey *string `json:"AmeKey,omitnil" name:"AmeKey"`
+	AmeKey *string `json:"AmeKey,omitnil,omitempty" name:"AmeKey"`
 }
 
 func (r *ModifyMusicOnShelvesRequest) ToJsonString() string {
@@ -2217,7 +2217,7 @@ func (r *ModifyMusicOnShelvesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMusicOnShelvesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ModifyMusicOnShelvesResponse struct {
@@ -2238,206 +2238,206 @@ func (r *ModifyMusicOnShelvesResponse) FromJsonString(s string) error {
 
 type Music struct {
 	// 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
-	Url *string `json:"Url,omitnil" name:"Url"`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 音频文件大小
-	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 音频文件类型
-	FileExtension *string `json:"FileExtension,omitnil" name:"FileExtension"`
+	FileExtension *string `json:"FileExtension,omitnil,omitempty" name:"FileExtension"`
 
 	// Song fragment start.试听片段开始时间，试听时长为auditionEnd-auditionBegin
 	// Unit :ms
-	AuditionBegin *uint64 `json:"AuditionBegin,omitnil" name:"AuditionBegin"`
+	AuditionBegin *uint64 `json:"AuditionBegin,omitnil,omitempty" name:"AuditionBegin"`
 
 	// Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
 	// Unit :ms
-	AuditionEnd *uint64 `json:"AuditionEnd,omitnil" name:"AuditionEnd"`
+	AuditionEnd *uint64 `json:"AuditionEnd,omitnil,omitempty" name:"AuditionEnd"`
 
 	// 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
 	// 如果添加过多个域名只返回第一个添加域名的播放全路径。
-	FullUrl *string `json:"FullUrl,omitnil" name:"FullUrl"`
+	FullUrl *string `json:"FullUrl,omitnil,omitempty" name:"FullUrl"`
 }
 
 type MusicDetailInfo struct {
 	// 资源方音乐Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 资源方识别信息
-	AmeId *string `json:"AmeId,omitnil" name:"AmeId"`
+	AmeId *string `json:"AmeId,omitnil,omitempty" name:"AmeId"`
 
 	// 分类标签
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 关键词
-	HitWords []*string `json:"HitWords,omitnil" name:"HitWords"`
+	HitWords []*string `json:"HitWords,omitnil,omitempty" name:"HitWords"`
 
 	// 节奏信息
-	Bpm *int64 `json:"Bpm,omitnil" name:"Bpm"`
+	Bpm *int64 `json:"Bpm,omitnil,omitempty" name:"Bpm"`
 
 	// 商业化权益
-	Score *float64 `json:"Score,omitnil" name:"Score"`
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 应用歌曲信息,1.图文/短视频,2.网络直播,3.网络电台FM,4.免费游戏,5.商业游戏,6.网店网站设计,7.广告营销,8.网络长视频
-	Scene []*string `json:"Scene,omitnil" name:"Scene"`
+	Scene []*string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 应用地域,1. 中国大陆,2. 中国含港澳台,3. 全球
-	Region []*string `json:"Region,omitnil" name:"Region"`
+	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 授权时间,1. 1年, 5. 随片永久
-	AuthPeriod *string `json:"AuthPeriod,omitnil" name:"AuthPeriod"`
+	AuthPeriod *string `json:"AuthPeriod,omitnil,omitempty" name:"AuthPeriod"`
 
 	// 商业化授权，1. 支持商业化 ,2. 不支持商业化
-	Commercialization *string `json:"Commercialization,omitnil" name:"Commercialization"`
+	Commercialization *string `json:"Commercialization,omitnil,omitempty" name:"Commercialization"`
 
 	// 跨平台传播，1. 支持跨平台传播 ,2. 不支持跨平台传播
-	Platform *string `json:"Platform,omitnil" name:"Platform"`
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 传播渠道
-	Channel *string `json:"Channel,omitnil" name:"Channel"`
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 type MusicOpenDetail struct {
 	// 音乐Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 专辑名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbumName *string `json:"AlbumName,omitnil" name:"AlbumName"`
+	AlbumName *string `json:"AlbumName,omitnil,omitempty" name:"AlbumName"`
 
 	// 专辑图片路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbumImageUrl *string `json:"AlbumImageUrl,omitnil" name:"AlbumImageUrl"`
+	AlbumImageUrl *string `json:"AlbumImageUrl,omitnil,omitempty" name:"AlbumImageUrl"`
 
 	// 音乐名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicName *string `json:"MusicName,omitnil" name:"MusicName"`
+	MusicName *string `json:"MusicName,omitnil,omitempty" name:"MusicName"`
 
 	// 音乐图片路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MusicImageUrl *string `json:"MusicImageUrl,omitnil" name:"MusicImageUrl"`
+	MusicImageUrl *string `json:"MusicImageUrl,omitnil,omitempty" name:"MusicImageUrl"`
 
 	// 歌手
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Singers []*string `json:"Singers,omitnil" name:"Singers"`
+	Singers []*string `json:"Singers,omitnil,omitempty" name:"Singers"`
 
 	// 播放时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 歌词url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LyricUrl *string `json:"LyricUrl,omitnil" name:"LyricUrl"`
+	LyricUrl *string `json:"LyricUrl,omitnil,omitempty" name:"LyricUrl"`
 
 	// 波形图url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WaveformUrl *string `json:"WaveformUrl,omitnil" name:"WaveformUrl"`
+	WaveformUrl *string `json:"WaveformUrl,omitnil,omitempty" name:"WaveformUrl"`
 }
 
 type MusicStatus struct {
 	// 歌曲Id
-	MusicId *string `json:"MusicId,omitnil" name:"MusicId"`
+	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
 	// 在售状态,0为在售，1为临时下架，2为永久下架
-	SaleStatus *int64 `json:"SaleStatus,omitnil" name:"SaleStatus"`
+	SaleStatus *int64 `json:"SaleStatus,omitnil,omitempty" name:"SaleStatus"`
 }
 
 type OfflineMusicDetail struct {
 	// 歌曲Id
-	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
 	// 歌曲名称
-	MusicName *string `json:"MusicName,omitnil" name:"MusicName"`
+	MusicName *string `json:"MusicName,omitnil,omitempty" name:"MusicName"`
 
 	// 不可用原因
-	OffRemark *string `json:"OffRemark,omitnil" name:"OffRemark"`
+	OffRemark *string `json:"OffRemark,omitnil,omitempty" name:"OffRemark"`
 
 	// 不可用时间
-	OffTime *string `json:"OffTime,omitnil" name:"OffTime"`
+	OffTime *string `json:"OffTime,omitnil,omitempty" name:"OffTime"`
 }
 
 type Package struct {
 	// 订单id
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 曲库包名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 授权地区-global: 全球  CN: 中国
-	AuthorizedArea *string `json:"AuthorizedArea,omitnil" name:"AuthorizedArea"`
+	AuthorizedArea *string `json:"AuthorizedArea,omitnil,omitempty" name:"AuthorizedArea"`
 
 	// 授权次数
-	AuthorizedLimit *int64 `json:"AuthorizedLimit,omitnil" name:"AuthorizedLimit"`
+	AuthorizedLimit *int64 `json:"AuthorizedLimit,omitnil,omitempty" name:"AuthorizedLimit"`
 
 	// 套餐有效期，单位:天
-	TermOfValidity *int64 `json:"TermOfValidity,omitnil" name:"TermOfValidity"`
+	TermOfValidity *int64 `json:"TermOfValidity,omitnil,omitempty" name:"TermOfValidity"`
 
 	// 0:不可商业化；1:可商业化
-	Commercial *int64 `json:"Commercial,omitnil" name:"Commercial"`
+	Commercial *int64 `json:"Commercial,omitnil,omitempty" name:"Commercial"`
 
 	// 套餐价格，单位：元
-	PackagePrice *float64 `json:"PackagePrice,omitnil" name:"PackagePrice"`
+	PackagePrice *float64 `json:"PackagePrice,omitnil,omitempty" name:"PackagePrice"`
 
 	// 生效开始时间,格式yyyy-MM-dd HH:mm:ss
-	EffectTime *string `json:"EffectTime,omitnil" name:"EffectTime"`
+	EffectTime *string `json:"EffectTime,omitnil,omitempty" name:"EffectTime"`
 
 	// 生效结束时间,格式yyyy-MM-dd HH:mm:ss
-	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 剩余授权次数
-	UsedCount *int64 `json:"UsedCount,omitnil" name:"UsedCount"`
+	UsedCount *int64 `json:"UsedCount,omitnil,omitempty" name:"UsedCount"`
 
 	// 曲库包用途信息
-	UseRanges []*UseRange `json:"UseRanges,omitnil" name:"UseRanges"`
+	UseRanges []*UseRange `json:"UseRanges,omitnil,omitempty" name:"UseRanges"`
 }
 
 type PackageItem struct {
 	// 订单id
-	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 歌曲名
-	TrackName *string `json:"TrackName,omitnil" name:"TrackName"`
+	TrackName *string `json:"TrackName,omitnil,omitempty" name:"TrackName"`
 
 	// 歌曲ID
-	ItemID *string `json:"ItemID,omitnil" name:"ItemID"`
+	ItemID *string `json:"ItemID,omitnil,omitempty" name:"ItemID"`
 
 	// 专辑图片
-	Img *string `json:"Img,omitnil" name:"Img"`
+	Img *string `json:"Img,omitnil,omitempty" name:"Img"`
 
 	// 歌手名
-	ArtistName *string `json:"ArtistName,omitnil" name:"ArtistName"`
+	ArtistName *string `json:"ArtistName,omitnil,omitempty" name:"ArtistName"`
 
 	// 歌曲时长
-	Duration *string `json:"Duration,omitnil" name:"Duration"`
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 授权区域，global: 全球 CN: 中国
-	AuthorizedArea *string `json:"AuthorizedArea,omitnil" name:"AuthorizedArea"`
+	AuthorizedArea *string `json:"AuthorizedArea,omitnil,omitempty" name:"AuthorizedArea"`
 
 	// 标签数组
-	Tags []*string `json:"Tags,omitnil" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type PlayCommandInput struct {
 	// 歌曲位置索引。
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 // Predefined struct for user
 type PutMusicOnTheShelvesRequestParams struct {
 	// 资源方歌曲Id
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 }
 
 type PutMusicOnTheShelvesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源方歌曲Id
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 }
 
 func (r *PutMusicOnTheShelvesRequest) ToJsonString() string {
@@ -2462,17 +2462,17 @@ func (r *PutMusicOnTheShelvesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PutMusicOnTheShelvesResponseParams struct {
 	// 操作成功数量
-	SuccessNum *int64 `json:"SuccessNum,omitnil" name:"SuccessNum"`
+	SuccessNum *int64 `json:"SuccessNum,omitnil,omitempty" name:"SuccessNum"`
 
 	// 操作失败数量
-	FailedNum *int64 `json:"FailedNum,omitnil" name:"FailedNum"`
+	FailedNum *int64 `json:"FailedNum,omitnil,omitempty" name:"FailedNum"`
 
 	// 失败歌曲Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedMusicIds []*string `json:"FailedMusicIds,omitnil" name:"FailedMusicIds"`
+	FailedMusicIds []*string `json:"FailedMusicIds,omitnil,omitempty" name:"FailedMusicIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type PutMusicOnTheShelvesResponse struct {
@@ -2506,7 +2506,7 @@ type ReportDataRequestParams struct {
 	// 
 	// 详细说明请参考文档reportdata.docx：
 	// https://github.com/tencentyun/ame-documents
-	ReportData *string `json:"ReportData,omitnil" name:"ReportData"`
+	ReportData *string `json:"ReportData,omitnil,omitempty" name:"ReportData"`
 }
 
 type ReportDataRequest struct {
@@ -2525,7 +2525,7 @@ type ReportDataRequest struct {
 	// 
 	// 详细说明请参考文档reportdata.docx：
 	// https://github.com/tencentyun/ame-documents
-	ReportData *string `json:"ReportData,omitnil" name:"ReportData"`
+	ReportData *string `json:"ReportData,omitnil,omitempty" name:"ReportData"`
 }
 
 func (r *ReportDataRequest) ToJsonString() string {
@@ -2550,7 +2550,7 @@ func (r *ReportDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReportDataResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ReportDataResponse struct {
@@ -2572,48 +2572,48 @@ func (r *ReportDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchKTVMusicsRequestParams struct {
 	// 搜索关键词
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 排序方式。默认按照匹配度排序
 	// <li> Sort.Field 可选 CreateTime</li>
 	// <li> Sort.Order 可选 Desc </li>
 	// <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
-	Sort *SortBy `json:"Sort,omitnil" name:"Sort"`
+	Sort *SortBy `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 标签 ID 集合，匹配集合指定所有 ID 。
 	// <li>数组长度限制：10。</li>
-	TagIds []*string `json:"TagIds,omitnil" name:"TagIds"`
+	TagIds []*string `json:"TagIds,omitnil,omitempty" name:"TagIds"`
 }
 
 type SearchKTVMusicsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 搜索关键词
-	KeyWord *string `json:"KeyWord,omitnil" name:"KeyWord"`
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
 	// 取值范围：Offset + Limit 不超过5000。
-	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 排序方式。默认按照匹配度排序
 	// <li> Sort.Field 可选 CreateTime</li>
 	// <li> Sort.Order 可选 Desc </li>
 	// <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
-	Sort *SortBy `json:"Sort,omitnil" name:"Sort"`
+	Sort *SortBy `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 标签 ID 集合，匹配集合指定所有 ID 。
 	// <li>数组长度限制：10。</li>
-	TagIds []*string `json:"TagIds,omitnil" name:"TagIds"`
+	TagIds []*string `json:"TagIds,omitnil,omitempty" name:"TagIds"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -2642,13 +2642,13 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchKTVMusicsResponseParams struct {
 	// 总记录数
-	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// KTV 曲目列表
-	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil" name:"KTVMusicInfoSet"`
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitnil,omitempty" name:"KTVMusicInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SearchKTVMusicsResponse struct {
@@ -2669,15 +2669,15 @@ func (r *SearchKTVMusicsResponse) FromJsonString(s string) error {
 
 type SeekCommandInput struct {
 	// 播放位置，单位：毫秒。
-	Position *uint64 `json:"Position,omitnil" name:"Position"`
+	Position *uint64 `json:"Position,omitnil,omitempty" name:"Position"`
 }
 
 type SendMessageCommandInput struct {
 	// 自定义消息，json格式字符串。
-	Message *string `json:"Message,omitnil" name:"Message"`
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 消息重复次数，默认为 1。
-	Repeat *uint64 `json:"Repeat,omitnil" name:"Repeat"`
+	Repeat *uint64 `json:"Repeat,omitnil,omitempty" name:"Repeat"`
 }
 
 type SetAudioParamCommandInput struct {
@@ -2685,12 +2685,12 @@ type SetAudioParamCommandInput struct {
 	// <li>audio/mi：低规格</li>
 	// <li>audio/lo：中规格</li>
 	// <li>audio/hi：高规格</li>
-	Definition *string `json:"Definition,omitnil" name:"Definition"`
+	Definition *string `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 音频类型，取值有：
 	// <li>Original：原唱</li>
 	// <li>Accompaniment：伴奏</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type SetDestroyModeCommandInput struct {
@@ -2698,10 +2698,10 @@ type SetDestroyModeCommandInput struct {
 	// <li>Auto：房间没人时自动销毁</li>
 	// <li>Expire：房间没人时过期自动销毁</li>
 	// <li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
-	DestroyMode *string `json:"DestroyMode,omitnil" name:"DestroyMode"`
+	DestroyMode *string `json:"DestroyMode,omitnil,omitempty" name:"DestroyMode"`
 
 	// 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
-	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitnil" name:"DestroyExpireTime"`
+	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitnil,omitempty" name:"DestroyExpireTime"`
 }
 
 type SetPlayModeCommandInput struct {
@@ -2710,7 +2710,7 @@ type SetPlayModeCommandInput struct {
 	// <li>Order：顺序播放</li>
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
-	PlayMode *string `json:"PlayMode,omitnil" name:"PlayMode"`
+	PlayMode *string `json:"PlayMode,omitnil,omitempty" name:"PlayMode"`
 }
 
 type SetPlaylistCommandInput struct {
@@ -2719,68 +2719,68 @@ type SetPlaylistCommandInput struct {
 	// <li>Delete：删除</li>
 	// <li>ClearList：清空歌曲列表</li>
 	// <li>Move：移动歌曲</li>
-	Type *string `json:"Type,omitnil" name:"Type"`
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 歌单索引位置，
 	// 当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
 	// 当 Type 取 Delete 时，表示待删除歌曲的位置；
 	// 当 Type 取 Move 时，表示待调整歌曲的位置。
-	Index *int64 `json:"Index,omitnil" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
-	ChangedIndex *int64 `json:"ChangedIndex,omitnil" name:"ChangedIndex"`
+	ChangedIndex *int64 `json:"ChangedIndex,omitnil,omitempty" name:"ChangedIndex"`
 
 	// 歌曲 ID 列表，当 Type 取 Add 时，与MusicURLs必填其中一项。
-	MusicIds []*string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds []*string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 歌曲 URL 列表，当 Type 取 Add 时，与MusicIds必填其中一项。
 	// 注：URL必须以.mp3结尾且必须是mp3编码文件。
-	MusicURLs []*string `json:"MusicURLs,omitnil" name:"MusicURLs"`
+	MusicURLs []*string `json:"MusicURLs,omitnil,omitempty" name:"MusicURLs"`
 }
 
 type SetRealVolumeCommandInput struct {
 	// 真实音量大小，取值范围为 0~100，默认值为 50。
-	RealVolume *int64 `json:"RealVolume,omitnil" name:"RealVolume"`
+	RealVolume *int64 `json:"RealVolume,omitnil,omitempty" name:"RealVolume"`
 }
 
 type SetVolumeCommandInput struct {
 	// 音量大小，取值范围为 0~100，默认值为 50。
-	Volume *int64 `json:"Volume,omitnil" name:"Volume"`
+	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type SortBy struct {
 	// 排序字段
-	Field *string `json:"Field,omitnil" name:"Field"`
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序）
-	Order *string `json:"Order,omitnil" name:"Order"`
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type Station struct {
 	// StationID
-	CategoryID *string `json:"CategoryID,omitnil" name:"CategoryID"`
+	CategoryID *string `json:"CategoryID,omitnil,omitempty" name:"CategoryID"`
 
 	// Station MCCode
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryCode *string `json:"CategoryCode,omitnil" name:"CategoryCode"`
+	CategoryCode *string `json:"CategoryCode,omitnil,omitempty" name:"CategoryCode"`
 
 	// Category Name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// Station的排序值，供参考（返回结果已按其升序）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rank *int64 `json:"Rank,omitnil" name:"Rank"`
+	Rank *int64 `json:"Rank,omitnil,omitempty" name:"Rank"`
 
 	// station图片集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImagePathMap []*ImagePath `json:"ImagePathMap,omitnil" name:"ImagePathMap"`
+	ImagePathMap []*ImagePath `json:"ImagePathMap,omitnil,omitempty" name:"ImagePathMap"`
 }
 
 // Predefined struct for user
 type SyncKTVRobotCommandRequestParams struct {
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 指令，取值有：
 	// <li>Play：播放</li>
@@ -2795,42 +2795,42 @@ type SyncKTVRobotCommandRequestParams struct {
 	// <li>SetDestroyMode：设置销毁模式</li>
 	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
 	// <li>SetRealVolume：设置真实音量</li>
-	Command *string `json:"Command,omitnil" name:"Command"`
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 播放参数。
-	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil" name:"PlayCommandInput"`
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil,omitempty" name:"PlayCommandInput"`
 
 	// 播放列表变更信息，当Command取SetPlaylist时，必填。
-	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil" name:"SetPlaylistCommandInput"`
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil,omitempty" name:"SetPlaylistCommandInput"`
 
 	// 播放进度，当Command取Seek时，必填。
-	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil" name:"SeekCommandInput"`
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil,omitempty" name:"SeekCommandInput"`
 
 	// 音频参数，当Command取SetAudioParam时，必填。
-	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil" name:"SetAudioParamCommandInput"`
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil,omitempty" name:"SetAudioParamCommandInput"`
 
 	// 自定义消息，当Command取SendMessage时，必填。
-	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil" name:"SendMessageCommandInput"`
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil,omitempty" name:"SendMessageCommandInput"`
 
 	// 播放模式，当Command取SetPlayMode时，必填。
-	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil" name:"SetPlayModeCommandInput"`
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil,omitempty" name:"SetPlayModeCommandInput"`
 
 	// 销毁模式，当Command取SetDestroyMode时，必填。
-	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil" name:"SetDestroyModeCommandInput"`
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil,omitempty" name:"SetDestroyModeCommandInput"`
 
 	// <del>音量，当Command取SetVolume时，必填。</del>
 	// （已废弃，请采用 SetRealVolumeCommandInput ）
-	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil" name:"SetVolumeCommandInput"`
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil,omitempty" name:"SetVolumeCommandInput"`
 
 	// 真实音量，当Command取SetRealVolume时，必填。
-	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil" name:"SetRealVolumeCommandInput"`
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 type SyncKTVRobotCommandRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器人Id。
-	RobotId *string `json:"RobotId,omitnil" name:"RobotId"`
+	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
 	// 指令，取值有：
 	// <li>Play：播放</li>
@@ -2845,35 +2845,35 @@ type SyncKTVRobotCommandRequest struct {
 	// <li>SetDestroyMode：设置销毁模式</li>
 	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
 	// <li>SetRealVolume：设置真实音量</li>
-	Command *string `json:"Command,omitnil" name:"Command"`
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 播放参数。
-	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil" name:"PlayCommandInput"`
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil,omitempty" name:"PlayCommandInput"`
 
 	// 播放列表变更信息，当Command取SetPlaylist时，必填。
-	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil" name:"SetPlaylistCommandInput"`
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil,omitempty" name:"SetPlaylistCommandInput"`
 
 	// 播放进度，当Command取Seek时，必填。
-	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil" name:"SeekCommandInput"`
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil,omitempty" name:"SeekCommandInput"`
 
 	// 音频参数，当Command取SetAudioParam时，必填。
-	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil" name:"SetAudioParamCommandInput"`
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil,omitempty" name:"SetAudioParamCommandInput"`
 
 	// 自定义消息，当Command取SendMessage时，必填。
-	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil" name:"SendMessageCommandInput"`
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil,omitempty" name:"SendMessageCommandInput"`
 
 	// 播放模式，当Command取SetPlayMode时，必填。
-	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil" name:"SetPlayModeCommandInput"`
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil,omitempty" name:"SetPlayModeCommandInput"`
 
 	// 销毁模式，当Command取SetDestroyMode时，必填。
-	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil" name:"SetDestroyModeCommandInput"`
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil,omitempty" name:"SetDestroyModeCommandInput"`
 
 	// <del>音量，当Command取SetVolume时，必填。</del>
 	// （已废弃，请采用 SetRealVolumeCommandInput ）
-	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil" name:"SetVolumeCommandInput"`
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil,omitempty" name:"SetVolumeCommandInput"`
 
 	// 真实音量，当Command取SetRealVolume时，必填。
-	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil" name:"SetRealVolumeCommandInput"`
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
@@ -2908,7 +2908,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncKTVRobotCommandResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type SyncKTVRobotCommandResponse struct {
@@ -2941,86 +2941,86 @@ type SyncRobotCommand struct {
 	// <li>SetDestroyMode：设置销毁模式</li>
 	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
 	// <li>SetRealVolume：设置真实音量</li>
-	Command *string `json:"Command,omitnil" name:"Command"`
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 播放参数。
-	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil" name:"PlayCommandInput"`
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitnil,omitempty" name:"PlayCommandInput"`
 
 	// 播放列表变更信息，当Command取SetPlaylist时，必填。
-	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil" name:"SetPlaylistCommandInput"`
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitnil,omitempty" name:"SetPlaylistCommandInput"`
 
 	// 播放进度，当Command取Seek时，必填。
-	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil" name:"SeekCommandInput"`
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitnil,omitempty" name:"SeekCommandInput"`
 
 	// 音频参数，当Command取SetAudioParam时，必填。
-	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil" name:"SetAudioParamCommandInput"`
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitnil,omitempty" name:"SetAudioParamCommandInput"`
 
 	// 自定义消息，当Command取SendMessage时，必填。
-	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil" name:"SendMessageCommandInput"`
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitnil,omitempty" name:"SendMessageCommandInput"`
 
 	// 播放模式，当Command取SetPlayMode时，必填。
-	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil" name:"SetPlayModeCommandInput"`
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitnil,omitempty" name:"SetPlayModeCommandInput"`
 
 	// 销毁模式，当Command取SetDestroyMode时，必填。
-	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil" name:"SetDestroyModeCommandInput"`
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitnil,omitempty" name:"SetDestroyModeCommandInput"`
 
 	// <del>音量，当Command取SetVolume时，必填。</del>
 	// （已废弃，请采用 SetRealVolumeCommandInput）
-	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil" name:"SetVolumeCommandInput"`
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitnil,omitempty" name:"SetVolumeCommandInput"`
 
 	// 真实音量，当Command取SetRealVolume时，必填。
-	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil" name:"SetRealVolumeCommandInput"`
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitnil,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 type TRTCJoinRoomInput struct {
 	// 签名。
-	Sign *string `json:"Sign,omitnil" name:"Sign"`
+	Sign *string `json:"Sign,omitnil,omitempty" name:"Sign"`
 
 	// 房间号。
-	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 推流应用ID。
-	SdkAppId *string `json:"SdkAppId,omitnil" name:"SdkAppId"`
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 用户唯一标识。
-	UserId *string `json:"UserId,omitnil" name:"UserId"`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 进房钥匙，若需要权限控制请携带该参数。
 	//  [privateMapKey 权限设置](/document/product/647/32240) 
-	PrivateMapKey *string `json:"PrivateMapKey,omitnil" name:"PrivateMapKey"`
+	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
 
 	// 用户角色，目前支持两种角色：
 	// <li>anchor：主播</li>
 	// <li>audience：观众</li>
-	Role *string `json:"Role,omitnil" name:"Role"`
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// TRTC房间号的类型：
 	// <li>Integer：数字类型</li>
 	// <li> String：字符串类型</li>
 	// 默认为：Integer 。
-	RoomIdType *string `json:"RoomIdType,omitnil" name:"RoomIdType"`
+	RoomIdType *string `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 }
 
 type TakeMusicOffShelves struct {
 	// 资源方对应音乐Id
-	MusicIds *string `json:"MusicIds,omitnil" name:"MusicIds"`
+	MusicIds *string `json:"MusicIds,omitnil,omitempty" name:"MusicIds"`
 
 	// 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
 	// 在售状态，0在售，1临时下架，2永久下架
-	SaleStatus *string `json:"SaleStatus,omitnil" name:"SaleStatus"`
+	SaleStatus *string `json:"SaleStatus,omitnil,omitempty" name:"SaleStatus"`
 }
 
 // Predefined struct for user
 type TakeMusicOffShelvesRequestParams struct {
 	// 资源方下架必传结构
-	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitnil" name:"TakeMusicOffShelves"`
+	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitnil,omitempty" name:"TakeMusicOffShelves"`
 }
 
 type TakeMusicOffShelvesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源方下架必传结构
-	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitnil" name:"TakeMusicOffShelves"`
+	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitnil,omitempty" name:"TakeMusicOffShelves"`
 }
 
 func (r *TakeMusicOffShelvesRequest) ToJsonString() string {
@@ -3045,17 +3045,17 @@ func (r *TakeMusicOffShelvesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TakeMusicOffShelvesResponseParams struct {
 	// 返回成功数量
-	SuccessNum *int64 `json:"SuccessNum,omitnil" name:"SuccessNum"`
+	SuccessNum *int64 `json:"SuccessNum,omitnil,omitempty" name:"SuccessNum"`
 
 	// 返回失败数量
-	FailedNum *int64 `json:"FailedNum,omitnil" name:"FailedNum"`
+	FailedNum *int64 `json:"FailedNum,omitnil,omitempty" name:"FailedNum"`
 
 	// 返回失败歌曲musicId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedMusicIds []*string `json:"FailedMusicIds,omitnil" name:"FailedMusicIds"`
+	FailedMusicIds []*string `json:"FailedMusicIds,omitnil,omitempty" name:"FailedMusicIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type TakeMusicOffShelvesResponse struct {
@@ -3077,17 +3077,17 @@ func (r *TakeMusicOffShelvesResponse) FromJsonString(s string) error {
 type TimeRange struct {
 	// <li>大于等于此时间（起始时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
-	Before *string `json:"Before,omitnil" name:"Before"`
+	Before *string `json:"Before,omitnil,omitempty" name:"Before"`
 
 	// <li>小于此时间（结束时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
-	After *string `json:"After,omitnil" name:"After"`
+	After *string `json:"After,omitnil,omitempty" name:"After"`
 }
 
 type UseRange struct {
 	// 用途id
-	UseRangeId *int64 `json:"UseRangeId,omitnil" name:"UseRangeId"`
+	UseRangeId *int64 `json:"UseRangeId,omitnil,omitempty" name:"UseRangeId"`
 
 	// 用途范围名称
-	Name *string `json:"Name,omitnil" name:"Name"`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
