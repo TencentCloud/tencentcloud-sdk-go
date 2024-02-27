@@ -72,7 +72,6 @@ func DefaultTkeOIDCRoleArnProvider() (*OIDCRoleArnProvider, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	roleArn := os.Getenv("TKE_ROLE_ARN")
 	if roleArn == "" {
 		return nil, errors.New("env TKE_ROLE_ARN not exist")
@@ -84,6 +83,17 @@ func DefaultTkeOIDCRoleArnProvider() (*OIDCRoleArnProvider, error) {
 }
 
 func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
+	tokenFile := os.Getenv("TKE_WEB_IDENTITY_TOKEN_FILE")
+	if tokenFile == "" {
+		return nil, errors.New("env TKE_WEB_IDENTITY_TOKEN_FILE not exist")
+	}
+	tokenBytes, err := ioutil.ReadFile(tokenFile)
+	if err != nil {
+		return nil, err
+	}
+	r.webIdentityToken = string(tokenBytes)
+	r.roleSessionName = defaultSessionName + strconv.FormatInt(time.Now().UnixNano()/1000, 10)
+
 	const (
 		service = "sts"
 		version = "2018-08-13"
@@ -111,7 +121,7 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 		"RoleSessionName":  r.roleSessionName,
 		"DurationSeconds":  r.durationSeconds,
 	}
-	err := request.SetActionParameters(params)
+	err = request.SetActionParameters(params)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +141,7 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 		roleArn:         r.roleArn,
 		roleSessionName: r.roleSessionName,
 		durationSeconds: r.durationSeconds,
-		expiredTime:     int64(rspSt.Response.ExpiredTime),
+		expiredTime:     int64(rspSt.Response.ExpiredTime) - r.durationSeconds/10*1, // credential's actual duration time is 9/10 of the original
 		token:           rspSt.Response.Credentials.Token,
 		tmpSecretId:     rspSt.Response.Credentials.TmpSecretId,
 		tmpSecretKey:    rspSt.Response.Credentials.TmpSecretKey,

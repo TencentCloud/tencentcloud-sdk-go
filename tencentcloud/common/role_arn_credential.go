@@ -56,6 +56,7 @@ func (c *RoleArnCredential) refresh() {
 	newCre, err := c.source.GetCredential()
 	if err != nil {
 		log.Println(err)
+		return
 	}
 	*c = *newCre.(*RoleArnCredential)
 }
