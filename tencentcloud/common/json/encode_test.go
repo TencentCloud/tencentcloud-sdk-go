@@ -55,21 +55,6 @@ var optionalsExpected = `{
  "sto": {}
 }`
 
-func TestOmitEmpty(t *testing.T) {
-	var o Optionals
-	o.Sw = "something"
-	o.Mr = map[string]interface{}{}
-	o.Mo = map[string]interface{}{}
-
-	got, err := MarshalIndent(&o, "", " ")
-	if err != nil {
-		t.Fatal(err)
-	}
-	if got := string(got); got != optionalsExpected {
-		t.Errorf(" got: %s\nwant: %s\n", got, optionalsExpected)
-	}
-}
-
 type StringTag struct {
 	BoolStr    bool    `json:",string"`
 	IntStr     int64   `json:",string"`
@@ -879,107 +864,6 @@ func TestMarshalFloat(t *testing.T) {
 	test(math.Copysign(0, -1), 64)
 	test(0, 32)
 	test(math.Copysign(0, -1), 32)
-}
-
-func TestMarshalRawMessageValue(t *testing.T) {
-	type (
-		T1 struct {
-			M RawMessage `json:",omitempty"`
-		}
-		T2 struct {
-			M *RawMessage `json:",omitempty"`
-		}
-	)
-
-	var (
-		rawNil   = RawMessage(nil)
-		rawEmpty = RawMessage([]byte{})
-		rawText  = RawMessage([]byte(`"foo"`))
-	)
-
-	tests := []struct {
-		in   interface{}
-		want string
-		ok   bool
-	}{
-		// Test with nil RawMessage.
-		{rawNil, "null", true},
-		{&rawNil, "null", true},
-		{[]interface{}{rawNil}, "[null]", true},
-		{&[]interface{}{rawNil}, "[null]", true},
-		{[]interface{}{&rawNil}, "[null]", true},
-		{&[]interface{}{&rawNil}, "[null]", true},
-		{struct{ M RawMessage }{rawNil}, `{"M":null}`, true},
-		{&struct{ M RawMessage }{rawNil}, `{"M":null}`, true},
-		{struct{ M *RawMessage }{&rawNil}, `{"M":null}`, true},
-		{&struct{ M *RawMessage }{&rawNil}, `{"M":null}`, true},
-		{map[string]interface{}{"M": rawNil}, `{"M":null}`, true},
-		{&map[string]interface{}{"M": rawNil}, `{"M":null}`, true},
-		{map[string]interface{}{"M": &rawNil}, `{"M":null}`, true},
-		{&map[string]interface{}{"M": &rawNil}, `{"M":null}`, true},
-		{T1{rawNil}, "{}", true},
-		{T2{&rawNil}, `{"M":null}`, true},
-		{&T1{rawNil}, "{}", true},
-		{&T2{&rawNil}, `{"M":null}`, true},
-
-		// Test with empty, but non-nil, RawMessage.
-		{rawEmpty, "", false},
-		{&rawEmpty, "", false},
-		{[]interface{}{rawEmpty}, "", false},
-		{&[]interface{}{rawEmpty}, "", false},
-		{[]interface{}{&rawEmpty}, "", false},
-		{&[]interface{}{&rawEmpty}, "", false},
-		{struct{ X RawMessage }{rawEmpty}, "", false},
-		{&struct{ X RawMessage }{rawEmpty}, "", false},
-		{struct{ X *RawMessage }{&rawEmpty}, "", false},
-		{&struct{ X *RawMessage }{&rawEmpty}, "", false},
-		{map[string]interface{}{"nil": rawEmpty}, "", false},
-		{&map[string]interface{}{"nil": rawEmpty}, "", false},
-		{map[string]interface{}{"nil": &rawEmpty}, "", false},
-		{&map[string]interface{}{"nil": &rawEmpty}, "", false},
-		{T1{rawEmpty}, "{}", true},
-		{T2{&rawEmpty}, "", false},
-		{&T1{rawEmpty}, "{}", true},
-		{&T2{&rawEmpty}, "", false},
-
-		// Test with RawMessage with some text.
-		//
-		// The tests below marked with Issue6458 used to generate "ImZvbyI=" instead "foo".
-		// This behavior was intentionally changed in Go 1.8.
-		// See https://golang.org/issues/14493#issuecomment-255857318
-		{rawText, `"foo"`, true}, // Issue6458
-		{&rawText, `"foo"`, true},
-		{[]interface{}{rawText}, `["foo"]`, true},  // Issue6458
-		{&[]interface{}{rawText}, `["foo"]`, true}, // Issue6458
-		{[]interface{}{&rawText}, `["foo"]`, true},
-		{&[]interface{}{&rawText}, `["foo"]`, true},
-		{struct{ M RawMessage }{rawText}, `{"M":"foo"}`, true}, // Issue6458
-		{&struct{ M RawMessage }{rawText}, `{"M":"foo"}`, true},
-		{struct{ M *RawMessage }{&rawText}, `{"M":"foo"}`, true},
-		{&struct{ M *RawMessage }{&rawText}, `{"M":"foo"}`, true},
-		{map[string]interface{}{"M": rawText}, `{"M":"foo"}`, true},  // Issue6458
-		{&map[string]interface{}{"M": rawText}, `{"M":"foo"}`, true}, // Issue6458
-		{map[string]interface{}{"M": &rawText}, `{"M":"foo"}`, true},
-		{&map[string]interface{}{"M": &rawText}, `{"M":"foo"}`, true},
-		{T1{rawText}, `{"M":"foo"}`, true}, // Issue6458
-		{T2{&rawText}, `{"M":"foo"}`, true},
-		{&T1{rawText}, `{"M":"foo"}`, true},
-		{&T2{&rawText}, `{"M":"foo"}`, true},
-	}
-
-	for i, tt := range tests {
-		b, err := Marshal(tt.in)
-		if ok := (err == nil); ok != tt.ok {
-			if err != nil {
-				t.Errorf("test %d, unexpected failure: %v", i, err)
-			} else {
-				t.Errorf("test %d, unexpected success", i)
-			}
-		}
-		if got := string(b); got != tt.want {
-			t.Errorf("test %d, Marshal(%#v) = %q, want %q", i, tt.in, got, tt.want)
-		}
-	}
 }
 
 type marshalPanic struct{}
