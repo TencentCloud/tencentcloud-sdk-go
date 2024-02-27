@@ -87,12 +87,12 @@ func DefaultTkeOIDCRoleArnProvider() (*OIDCRoleArnProvider, error) {
 		provider.webIdentityToken = string(tokenBytes)
 		provider.roleArn = roleArn
 		provider.roleSessionName = sessionName
-		provider.durationSeconds = defaultDurationSeconds
 		return nil
 	}
 
 	provider := &OIDCRoleArnProvider{
-		beforeRefresh: beforeRefresh,
+		beforeRefresh:   beforeRefresh,
+		durationSeconds: defaultDurationSeconds,
 	}
 	return provider, provider.beforeRefresh(provider)
 }
