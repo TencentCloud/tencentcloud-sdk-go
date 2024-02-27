@@ -153,7 +153,7 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 		roleArn:         r.roleArn,
 		roleSessionName: r.roleSessionName,
 		durationSeconds: r.durationSeconds,
-		expiredTime:     int64(rspSt.Response.ExpiredTime) - int64(float64(r.durationSeconds)*0.1),
+		expiredTime:     int64(rspSt.Response.ExpiredTime) - r.durationSeconds/10*1,
 		token:           rspSt.Response.Credentials.Token,
 		tmpSecretId:     rspSt.Response.Credentials.TmpSecretId,
 		tmpSecretKey:    rspSt.Response.Credentials.TmpSecretKey,
