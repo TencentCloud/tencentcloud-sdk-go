@@ -104,6 +104,9 @@ const (
 	// 请求错误。
 	FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 
+	// 扩容云硬盘失败，请稍后重新操作。
+	FAILEDOPERATION_RESIZEDISKSFAILED = "FailedOperation.ResizeDisksFailed"
+
 	// 跨账号共享镜像失败，请稍后重试。
 	FAILEDOPERATION_SHAREBLUEPRINTACROSSACCOUNTFAILED = "FailedOperation.ShareBlueprintAcrossAccountFailed"
 
@@ -260,6 +263,9 @@ const (
 	// 指定的云盘备份点名称不可大于最大长度。
 	INVALIDPARAMETERVALUE_DISKBACKUPNAMETOOLONG = "InvalidParameterValue.DiskBackupNameTooLong"
 
+	// 云硬盘备份点配额小于当前云硬盘备份点数量。
+	INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
+
 	// 云硬盘的可用区与实例的可用区不匹配。
 	INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
 
@@ -268,6 +274,9 @@ const (
 
 	// 磁盘大小发生改变。
 	INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = "InvalidParameterValue.DiskSizeNotMatch"
+
+	// 指定云硬盘大小小于当前云硬盘大小。
+	INVALIDPARAMETERVALUE_DISKSIZESMALLERTHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeSmallerThanCurrentDiskSize"
 
 	// 参数 `KeyName` 已经存在且重复。
 	INVALIDPARAMETERVALUE_DUPLICATEPARAMETERVALUE = "InvalidParameterValue.DuplicateParameterValue"
@@ -313,6 +322,9 @@ const (
 
 	// 参数值非法，磁盘 ID 格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+
+	// 指定云硬盘大小不符合要求。
+	INVALIDPARAMETERVALUE_INVALIDDISKSIZE = "InvalidParameterValue.InvalidDiskSize"
 
 	// 云硬盘类型非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
@@ -704,6 +716,9 @@ const (
 	// 共享镜像不支持此操作。
 	UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = "UnsupportedOperation.NotSupportSharedBlueprint"
 
+	// 国际站不支持该操作。
+	UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTEDININTLSITE = "UnsupportedOperation.OperationNotSupportedInIntlSite"
+
 	// 此接口已下线。
 	UNSUPPORTEDOPERATION_OPERATIONOFFLINE = "UnsupportedOperation.OperationOffline"
 
@@ -715,6 +730,9 @@ const (
 
 	// 资源不支持退换。
 	UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = "UnsupportedOperation.ResourceNotReturnable"
+
+	// 资源变配操作中新旧配置一样，不支持此操作。
+	UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = "UnsupportedOperation.SameWithOldConfig"
 
 	// 快照忙。
 	UNSUPPORTEDOPERATION_SNAPSHOTBUSY = "UnsupportedOperation.SnapshotBusy"

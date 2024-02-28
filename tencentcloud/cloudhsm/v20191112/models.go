@@ -655,7 +655,7 @@ type DescribeVsmsRequestParams struct {
 	// 最大数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询关键字
+	// 资源ID或者资源名字模糊查询的关键字
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 标签过滤条件
@@ -677,7 +677,7 @@ type DescribeVsmsRequest struct {
 	// 最大数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询关键字
+	// 资源ID或者资源名字模糊查询的关键字
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 标签过滤条件

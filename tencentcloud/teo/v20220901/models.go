@@ -8071,6 +8071,9 @@ type L4ProxyRule struct {
 	// <li>fail：部署失败/停用失败。</li>
 	// 注意：L4ProxyRule 在 CreateL4ProxyRules、ModifyL4ProxyRules 作为入参使用时，该参数请勿填写。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// BuID。
+	BuId *string `json:"BuId,omitnil,omitempty" name:"BuId"`
 }
 
 type L7OfflineLog struct {

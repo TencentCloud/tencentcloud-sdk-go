@@ -5558,6 +5558,79 @@ func (c *Client) ModifyDisksAttributeWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyDisksBackupQuotaRequest() (request *ModifyDisksBackupQuotaRequest) {
+    request = &ModifyDisksBackupQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyDisksBackupQuota")
+    
+    
+    return
+}
+
+func NewModifyDisksBackupQuotaResponse() (response *ModifyDisksBackupQuotaResponse) {
+    response = &ModifyDisksBackupQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDisksBackupQuota
+// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTEDININTLSITE = "UnsupportedOperation.OperationNotSupportedInIntlSite"
+//  UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = "UnsupportedOperation.SameWithOldConfig"
+func (c *Client) ModifyDisksBackupQuota(request *ModifyDisksBackupQuotaRequest) (response *ModifyDisksBackupQuotaResponse, err error) {
+    return c.ModifyDisksBackupQuotaWithContext(context.Background(), request)
+}
+
+// ModifyDisksBackupQuota
+// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTEDININTLSITE = "UnsupportedOperation.OperationNotSupportedInIntlSite"
+//  UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = "UnsupportedOperation.SameWithOldConfig"
+func (c *Client) ModifyDisksBackupQuotaWithContext(ctx context.Context, request *ModifyDisksBackupQuotaRequest) (response *ModifyDisksBackupQuotaResponse, err error) {
+    if request == nil {
+        request = NewModifyDisksBackupQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDisksBackupQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDisksBackupQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDisksRenewFlagRequest() (request *ModifyDisksRenewFlagRequest) {
     request = &ModifyDisksRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7271,6 +7344,81 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewResetInstancesPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResizeDisksRequest() (request *ResizeDisksRequest) {
+    request = &ResizeDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ResizeDisks")
+    
+    
+    return
+}
+
+func NewResizeDisksResponse() (response *ResizeDisksResponse) {
+    response = &ResizeDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResizeDisks
+// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_RESIZEDISKSFAILED = "FailedOperation.ResizeDisksFailed"
+//  INVALIDPARAMETERVALUE_DISKSIZESMALLERTHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeSmallerThanCurrentDiskSize"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKSIZE = "InvalidParameterValue.InvalidDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = "UnsupportedOperation.SameWithOldConfig"
+func (c *Client) ResizeDisks(request *ResizeDisksRequest) (response *ResizeDisksResponse, err error) {
+    return c.ResizeDisksWithContext(context.Background(), request)
+}
+
+// ResizeDisks
+// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_RESIZEDISKSFAILED = "FailedOperation.ResizeDisksFailed"
+//  INVALIDPARAMETERVALUE_DISKSIZESMALLERTHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeSmallerThanCurrentDiskSize"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKSIZE = "InvalidParameterValue.InvalidDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = "UnsupportedOperation.SameWithOldConfig"
+func (c *Client) ResizeDisksWithContext(ctx context.Context, request *ResizeDisksRequest) (response *ResizeDisksResponse, err error) {
+    if request == nil {
+        request = NewResizeDisksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResizeDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResizeDisksResponse()
     err = c.Send(request, response)
     return
 }

@@ -11319,7 +11319,7 @@ type ModifyBackupConfigRequestParams struct {
 	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
 	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitnil,omitempty" name:"StartBackupPeriodSaveDate"`
 
-	// 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+	// 是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBackupArchive *string `json:"EnableBackupArchive,omitnil,omitempty" name:"EnableBackupArchive"`
 
 	// 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
@@ -11328,16 +11328,16 @@ type ModifyBackupConfigRequestParams struct {
 	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
 	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitnil,omitempty" name:"BinlogArchiveDays"`
 
-	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+	// 是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitnil,omitempty" name:"EnableBinlogArchive"`
 
-	// 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+	// 是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBackupStandby *string `json:"EnableBackupStandby,omitnil,omitempty" name:"EnableBackupStandby"`
 
 	// 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
 	BackupStandbyDays *int64 `json:"BackupStandbyDays,omitnil,omitempty" name:"BackupStandbyDays"`
 
-	// 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+	// 是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBinlogStandby *string `json:"EnableBinlogStandby,omitnil,omitempty" name:"EnableBinlogStandby"`
 
 	// 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
@@ -11383,7 +11383,7 @@ type ModifyBackupConfigRequest struct {
 	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
 	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitnil,omitempty" name:"StartBackupPeriodSaveDate"`
 
-	// 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+	// 是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBackupArchive *string `json:"EnableBackupArchive,omitnil,omitempty" name:"EnableBackupArchive"`
 
 	// 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
@@ -11392,16 +11392,16 @@ type ModifyBackupConfigRequest struct {
 	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
 	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitnil,omitempty" name:"BinlogArchiveDays"`
 
-	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+	// 是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitnil,omitempty" name:"EnableBinlogArchive"`
 
-	// 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+	// 是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBackupStandby *string `json:"EnableBackupStandby,omitnil,omitempty" name:"EnableBackupStandby"`
 
 	// 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
 	BackupStandbyDays *int64 `json:"BackupStandbyDays,omitnil,omitempty" name:"BackupStandbyDays"`
 
-	// 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+	// 是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
 	EnableBinlogStandby *string `json:"EnableBinlogStandby,omitnil,omitempty" name:"EnableBinlogStandby"`
 
 	// 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数

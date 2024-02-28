@@ -535,6 +535,66 @@ func (r *CancelOrganizationMemberAuthAccountResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type CheckAccountDeleteRequestParams struct {
+	// 成员uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+}
+
+type CheckAccountDeleteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+}
+
+func (r *CheckAccountDeleteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAccountDeleteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAccountDeleteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckAccountDeleteResponseParams struct {
+	// 成员是否允许删除。 true-是、false-否
+	AllowDelete *bool `json:"AllowDelete,omitnil,omitempty" name:"AllowDelete"`
+
+	// 不允许删除原因。
+	NotAllowReason *NotAllowReason `json:"NotAllowReason,omitnil,omitempty" name:"NotAllowReason"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckAccountDeleteResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckAccountDeleteResponseParams `json:"Response"`
+}
+
+func (r *CheckAccountDeleteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAccountDeleteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrganizationIdentityRequestParams struct {
 	// 身份名称
 	IdentityAliasName *string `json:"IdentityAliasName,omitnil,omitempty" name:"IdentityAliasName"`
@@ -3113,6 +3173,44 @@ func (r *MoveOrganizationNodeMembersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MoveOrganizationNodeMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NotAllowReason struct {
+	// 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCreateMember *bool `json:"IsCreateMember,omitnil,omitempty" name:"IsCreateMember"`
+
+	// 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletionPermission *bool `json:"DeletionPermission,omitnil,omitempty" name:"DeletionPermission"`
+
+	// 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAssignManager *bool `json:"IsAssignManager,omitnil,omitempty" name:"IsAssignManager"`
+
+	// 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAuthManager *bool `json:"IsAuthManager,omitnil,omitempty" name:"IsAuthManager"`
+
+	// 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsShareManager *bool `json:"IsShareManager,omitnil,omitempty" name:"IsShareManager"`
+
+	// 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateProcess *bool `json:"OperateProcess,omitnil,omitempty" name:"OperateProcess"`
+
+	// 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingPermission *bool `json:"BillingPermission,omitnil,omitempty" name:"BillingPermission"`
+
+	// 存在的资源列表。账号存在资源时不允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExistResources []*string `json:"ExistResources,omitnil,omitempty" name:"ExistResources"`
+
+	// 检测失败的资源列表。账号有资源检测失败时不允许删除。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectFailedResources []*string `json:"DetectFailedResources,omitnil,omitempty" name:"DetectFailedResources"`
 }
 
 type OrgFinancialByMonth struct {

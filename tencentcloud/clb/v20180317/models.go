@@ -8514,6 +8514,74 @@ func (r *SetLoadBalancerSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SetLoadBalancerStartStatusRequestParams struct {
+	// 操作类型。Start：启动实例，Stop：停止实例。
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 负载均衡实例ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 监听器ID。如果该字段为空，则表示操作负载均衡实例，如果不为空，则表示操作监听器。
+	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
+}
+
+type SetLoadBalancerStartStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作类型。Start：启动实例，Stop：停止实例。
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 负载均衡实例ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 监听器ID。如果该字段为空，则表示操作负载均衡实例，如果不为空，则表示操作监听器。
+	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
+}
+
+func (r *SetLoadBalancerStartStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetLoadBalancerStartStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationType")
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetLoadBalancerStartStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetLoadBalancerStartStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetLoadBalancerStartStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *SetLoadBalancerStartStatusResponseParams `json:"Response"`
+}
+
+func (r *SetLoadBalancerStartStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetLoadBalancerStartStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetSecurityGroupForLoadbalancersRequestParams struct {
 	// 安全组ID，如 sg-12345678
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`

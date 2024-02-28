@@ -5783,6 +5783,81 @@ func (c *Client) SetLoadBalancerSecurityGroupsWithContext(ctx context.Context, r
     return
 }
 
+func NewSetLoadBalancerStartStatusRequest() (request *SetLoadBalancerStartStatusRequest) {
+    request = &SetLoadBalancerStartStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "SetLoadBalancerStartStatus")
+    
+    
+    return
+}
+
+func NewSetLoadBalancerStartStatusResponse() (response *SetLoadBalancerStartStatusResponse) {
+    response = &SetLoadBalancerStartStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetLoadBalancerStartStatus
+// 启停负载均衡实例或者监听器。
+//
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+//
+// 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLISTENERINLB = "FailedOperation.NoListenerInLB"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetLoadBalancerStartStatus(request *SetLoadBalancerStartStatusRequest) (response *SetLoadBalancerStartStatusResponse, err error) {
+    return c.SetLoadBalancerStartStatusWithContext(context.Background(), request)
+}
+
+// SetLoadBalancerStartStatus
+// 启停负载均衡实例或者监听器。
+//
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+//
+// 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLISTENERINLB = "FailedOperation.NoListenerInLB"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetLoadBalancerStartStatusWithContext(ctx context.Context, request *SetLoadBalancerStartStatusRequest) (response *SetLoadBalancerStartStatusResponse, err error) {
+    if request == nil {
+        request = NewSetLoadBalancerStartStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetLoadBalancerStartStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetLoadBalancerStartStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetSecurityGroupForLoadbalancersRequest() (request *SetSecurityGroupForLoadbalancersRequest) {
     request = &SetSecurityGroupForLoadbalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},

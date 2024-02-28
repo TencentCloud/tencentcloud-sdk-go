@@ -2911,7 +2911,7 @@ type DescAcItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location
+	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location,dnsparse
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
@@ -10718,6 +10718,10 @@ type TemplateListInfo struct {
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// 模板包含地址数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPNum *int64 `json:"IPNum,omitnil,omitempty" name:"IPNum"`
 }
 
 type UnHandleEvent struct {
@@ -11017,7 +11021,7 @@ type VpcRuleItem struct {
 	// domain：域名规则，例如*.qq.com
 	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
 
-	// 访问目的类型，类型可以为：net，domain
+	// 访问目的类型，类型可以为：net，domain，dnsparse
 	DestType *string `json:"DestType,omitnil,omitempty" name:"DestType"`
 
 	// 协议，可选的值：

@@ -3336,6 +3336,10 @@ type ColumnBasicInfo struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 精度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 }
 
 type ColumnLineageInfo struct {
@@ -3346,10 +3350,6 @@ type ColumnLineageInfo struct {
 	// 数据源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
-
-	// 表ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
 	// 字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3430,6 +3430,10 @@ type ColumnLineageInfo struct {
 	// 额外参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtParams []*LineageParamRecord `json:"ExtParams,omitnil,omitempty" name:"ExtParams"`
+
+	// 表ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 }
 
 type ColumnMeta struct {
@@ -3472,6 +3476,14 @@ type ColumnMeta struct {
 	// 对应码表字典名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DictionaryName *string `json:"DictionaryName,omitnil,omitempty" name:"DictionaryName"`
+
+	// 安全等级：名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// 安全等级：值范围1-10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelRank *int64 `json:"LevelRank,omitnil,omitempty" name:"LevelRank"`
 }
 
 // Predefined struct for user
@@ -3908,6 +3920,10 @@ type CompareRule struct {
 	// 周期性模板默认周期，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleStep *uint64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
+
+	// o 表示 或，a 表示 且，数字表示items下标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeExpression *string `json:"ComputeExpression,omitnil,omitempty" name:"ComputeExpression"`
 }
 
 type CompareRuleItem struct {
@@ -3915,7 +3931,16 @@ type CompareRuleItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareType *uint64 `json:"CompareType,omitnil,omitempty" name:"CompareType"`
 
-	// 比较操作类型 <  <=  ==  =>  >
+	// 比较操作类型
+	// <  <=  ==  =>  > !=
+	// IRLCRO:在区间内(左闭右开)
+	// IRLORC:在区间内(左开右闭)
+	// IRLCRC:在区间内(左闭右闭)
+	// IRLORO:在区间内(左开右开)
+	// NRLCRO:不在区间内(左闭右开)
+	// NRLORC:不在区间内(左开右闭)
+	// NRLCRC:不在在区间内(左闭右闭)
+	// NRLORO:不在在区间内(左开右开)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
@@ -10118,6 +10143,9 @@ type DescribeColumnsMetaRequestParams struct {
 
 	// 是否查询分区字段，默认false
 	IsPartitionQuery *bool `json:"IsPartitionQuery,omitnil,omitempty" name:"IsPartitionQuery"`
+
+	// 合规组ID
+	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
 }
 
 type DescribeColumnsMetaRequest struct {
@@ -10140,6 +10168,9 @@ type DescribeColumnsMetaRequest struct {
 
 	// 是否查询分区字段，默认false
 	IsPartitionQuery *bool `json:"IsPartitionQuery,omitnil,omitempty" name:"IsPartitionQuery"`
+
+	// 合规组ID
+	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
 }
 
 func (r *DescribeColumnsMetaRequest) ToJsonString() string {
@@ -10160,6 +10191,7 @@ func (r *DescribeColumnsMetaRequest) FromJsonString(s string) error {
 	delete(f, "FilterSet")
 	delete(f, "OrderFieldSet")
 	delete(f, "IsPartitionQuery")
+	delete(f, "ComplianceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeColumnsMetaRequest has unknown keys!", "")
 	}
@@ -13860,6 +13892,12 @@ type DescribeInstanceLogDetailRequestParams struct {
 
 	// 文件Name
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// 起始行
+	StartCount *int64 `json:"StartCount,omitnil,omitempty" name:"StartCount"`
+
+	// 每次查询行数
+	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 }
 
 type DescribeInstanceLogDetailRequest struct {
@@ -13879,6 +13917,12 @@ type DescribeInstanceLogDetailRequest struct {
 
 	// 文件Name
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// 起始行
+	StartCount *int64 `json:"StartCount,omitnil,omitempty" name:"StartCount"`
+
+	// 每次查询行数
+	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 }
 
 func (r *DescribeInstanceLogDetailRequest) ToJsonString() string {
@@ -13898,6 +13942,8 @@ func (r *DescribeInstanceLogDetailRequest) FromJsonString(s string) error {
 	delete(f, "CurRunDate")
 	delete(f, "BrokerIp")
 	delete(f, "OriginFileName")
+	delete(f, "StartCount")
+	delete(f, "LineCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogDetailRequest has unknown keys!", "")
 	}
@@ -25888,6 +25934,10 @@ type InstanceLogInfoOpsDto struct {
 	// 第三方任务日志链接描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdTaskLogUrlDesc *string `json:"ThirdTaskLogUrlDesc,omitnil,omitempty" name:"ThirdTaskLogUrlDesc"`
+
+	// 日志行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 }
 
 type InstanceLogList struct {
@@ -32345,6 +32395,14 @@ type RuleGroup struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否已配置执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyConfig *bool `json:"StrategyConfig,omitnil,omitempty" name:"StrategyConfig"`
+
+	// 是否已配置执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeConfig *bool `json:"SubscribeConfig,omitnil,omitempty" name:"SubscribeConfig"`
 }
 
 type RuleGroupExecResult struct {
@@ -35221,6 +35279,10 @@ type TableBasicInfo struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 存储位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 type TableConfig struct {
@@ -35443,6 +35505,18 @@ type TableLineageInfo struct {
 	// 模块/应用类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelType *string `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// 展示类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayType *string `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
+
+	// 表类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 表类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 }
 
 type TableMeta struct {
@@ -35633,6 +35707,19 @@ type TableMeta struct {
 	// 表字段信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*SearchColumnDocVO `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 表采集类型
+	// TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUAL_VIEW(虚拟视图), MATERIALIZED_VIEW(物化视图), LATERAL_VIEW, INDEX_TABLE(索引表), END_SELECT(查询结构), INSTANCE(中间临时表类型(数据血缘)), CDW(CDW表类型)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaCrawlType *string `json:"MetaCrawlType,omitnil,omitempty" name:"MetaCrawlType"`
+
+	// 是否视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsView *bool `json:"IsView,omitnil,omitempty" name:"IsView"`
+
+	// 存储位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 type TablePropertyScore struct {

@@ -508,6 +508,61 @@ func (c *Client) CancelOrganizationMemberAuthAccountWithContext(ctx context.Cont
     return
 }
 
+func NewCheckAccountDeleteRequest() (request *CheckAccountDeleteRequest) {
+    request = &CheckAccountDeleteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CheckAccountDelete")
+    
+    
+    return
+}
+
+func NewCheckAccountDeleteResponse() (response *CheckAccountDeleteResponse) {
+    response = &CheckAccountDeleteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckAccountDelete
+// 成员账号删除检查
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (response *CheckAccountDeleteResponse, err error) {
+    return c.CheckAccountDeleteWithContext(context.Background(), request)
+}
+
+// CheckAccountDelete
+// 成员账号删除检查
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CheckAccountDeleteWithContext(ctx context.Context, request *CheckAccountDeleteRequest) (response *CheckAccountDeleteResponse, err error) {
+    if request == nil {
+        request = NewCheckAccountDeleteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckAccountDelete require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckAccountDeleteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationRequest() (request *CreateOrganizationRequest) {
     request = &CreateOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

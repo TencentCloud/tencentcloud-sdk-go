@@ -6695,6 +6695,67 @@ func (r *ModifyDisksAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDisksBackupQuotaRequestParams struct {
+	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
+}
+
+type ModifyDisksBackupQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
+}
+
+func (r *ModifyDisksBackupQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDisksBackupQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskIds")
+	delete(f, "DiskBackupQuota")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDisksBackupQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDisksBackupQuotaResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDisksBackupQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDisksBackupQuotaResponseParams `json:"Response"`
+}
+
+func (r *ModifyDisksBackupQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDisksBackupQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDisksRenewFlagRequestParams struct {
 	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
@@ -8190,6 +8251,67 @@ func (r *ResetInstancesPasswordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResetInstancesPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDisksRequestParams struct {
+	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 扩容后的云硬盘大小。单位: GB。高性能云硬盘大小取值范围：[10, 4000] ,SSD云硬盘大小取值范围：[20, 4000]。扩容后的云硬盘大小必须大于当前云硬盘大小。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type ResizeDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 扩容后的云硬盘大小。单位: GB。高性能云硬盘大小取值范围：[10, 4000] ,SSD云硬盘大小取值范围：[20, 4000]。扩容后的云硬盘大小必须大于当前云硬盘大小。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+func (r *ResizeDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskIds")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDisksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResizeDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeDisksResponseParams `json:"Response"`
+}
+
+func (r *ResizeDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

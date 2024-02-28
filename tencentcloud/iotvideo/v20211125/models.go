@@ -1236,6 +1236,9 @@ type CreateCloudStorageRequestParams struct {
 
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 云存存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 }
 
 type CreateCloudStorageRequest struct {
@@ -1281,6 +1284,9 @@ type CreateCloudStorageRequest struct {
 
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 云存存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 }
 
 func (r *CreateCloudStorageRequest) ToJsonString() string {
@@ -1302,6 +1308,7 @@ func (r *CreateCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "PackageQueue")
 	delete(f, "OrderId")
 	delete(f, "ChannelId")
+	delete(f, "StorageRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudStorageRequest has unknown keys!", "")
 	}

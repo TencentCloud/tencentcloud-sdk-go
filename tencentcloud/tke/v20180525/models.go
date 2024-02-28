@@ -2612,10 +2612,10 @@ func (r *CreateClusterVirtualNodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateECMInstancesRequestParams struct {
-	// 集群id
+	// 集群id，边缘集群需要先开启公网访问才能添加ecm节点
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 模块id
+	// 边缘模块id
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
 	// 需要创建实例的可用区及创建数目及运营商的列表
@@ -2652,10 +2652,10 @@ type CreateECMInstancesRequestParams struct {
 type CreateECMInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 集群id，边缘集群需要先开启公网访问才能添加ecm节点
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 模块id
+	// 边缘模块id
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
 	// 需要创建实例的可用区及创建数目及运营商的列表
@@ -3085,7 +3085,7 @@ func (r *CreateEKSContainerInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEdgeCVMInstancesRequestParams struct {
-	// 集群id
+	// 集群id，边缘集群需要先开启公网访问才能添加cvm节点
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
@@ -3110,7 +3110,7 @@ type CreateEdgeCVMInstancesRequestParams struct {
 type CreateEdgeCVMInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 集群id，边缘集群需要先开启公网访问才能添加cvm节点
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
@@ -9368,7 +9368,7 @@ func (r *DescribeEdgeClusterUpgradeInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEdgeClusterUpgradeInfoResponseParams struct {
-	// 可升级的集群组件和
+	// 可升级的集群组件及其版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentVersion *string `json:"ComponentVersion,omitnil,omitempty" name:"ComponentVersion"`
 
@@ -12774,7 +12774,7 @@ type DescribeTKEEdgeScriptRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 网卡名
+	// 网卡名,指定边缘节点上kubelet向apiserver注册使用的网卡
 	Interface *string `json:"Interface,omitnil,omitempty" name:"Interface"`
 
 	// 节点名字
@@ -12793,7 +12793,7 @@ type DescribeTKEEdgeScriptRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 网卡名
+	// 网卡名,指定边缘节点上kubelet向apiserver注册使用的网卡
 	Interface *string `json:"Interface,omitnil,omitempty" name:"Interface"`
 
 	// 节点名字

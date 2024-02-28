@@ -117,6 +117,12 @@ type DescribeGetAuthInfoResponseParams struct {
 	// 认证类型，个人0，企业1
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 大客户标识：
+	// 1004、1003、1002、1001
+	// 
+	// 其余为普通的用户
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

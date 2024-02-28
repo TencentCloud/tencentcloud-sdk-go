@@ -204,6 +204,19 @@ type ApproverInfo struct {
 	// 
 	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
+
+	// 签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// <ul><li>单行文本控件</li>
+	// <li>多行文本控件</li>
+	// <li>勾选框控件</li>
+	// <li>数字控件</li>
+	// <li>图片控件</li>
+	// <li>数据表格等填写控件</li></ul>
+	// 
+	// 具体使用说明可参考[为签署方指定填写控件](https%3A%2F%2Fqian.tencent.cn%2Fdevelopers%2Fcompany%2FcreateFlowByFiles%2F%23%E6%8C%87%E5%AE%9A%E7%AD%BE%E7%BD%B2%E6%96%B9%E5%A1%AB%E5%86%99%E6%8E%A7%E4%BB%B6)
+	// 
+	// 注1：`此参数仅在通过文件发起合同或者合同组时生效`
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
 type ApproverItem struct {
@@ -950,8 +963,8 @@ type Component struct {
 	// <li> <b>SELECTOR</b> : 选项值</li>
 	// <li> <b>DYNAMIC_TABLE</b>  - 传入json格式的表格内容，详见说明：[数据表格](https://qian.tencent.com/developers/company/dynamic_table)</li>
 	// <li> <b>DATE</b> : 默认是格式化为xxxx年xx月xx日</li>
-	// <li> <b>SIGN_SEAL</b> : 印章ID，于控制台查询获取</li>
-	// <li> <b>SIGN_PAGING_SEAL</b> : 可以指定印章ID，于控制台查询获取</li></ul>
+	// <li> <b>SIGN_SEAL</b> : 印章ID，于控制台查询获取， [点击查看在控制台上位置](https://qcloudimg.tencent-cloud.cn/raw/f7b0f2ea4a534aada4b893dbf9671eae.png)</li>
+	// <li> <b>SIGN_PAGING_SEAL</b> : 可以指定印章ID，于控制台查询获取， [点击查看在控制台上位置](https://qcloudimg.tencent-cloud.cn/raw/f7b0f2ea4a534aada4b893dbf9671eae.png)</li></ul>
 	// 
 	// 
 	// <b>控件值约束说明</b>：

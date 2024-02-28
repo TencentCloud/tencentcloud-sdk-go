@@ -88,6 +88,9 @@ type ClusterOption struct {
 	// - KUBERNETES
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 计算集群Service CIDR，不能与VPC网段重合。
+	ServiceCidr *string `json:"ServiceCidr,omitnil,omitempty" name:"ServiceCidr"`
+
 	// 资源配额。
 	ResourceQuota *ResourceQuota `json:"ResourceQuota,omitnil,omitempty" name:"ResourceQuota"`
 
@@ -705,6 +708,12 @@ type Environment struct {
 	// 环境是否可用。环境需要可用才能投递计算任务。
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
+	// 环境是否为默认环境。
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 环境是否为托管环境。
+	IsManaged *bool `json:"IsManaged,omitnil,omitempty" name:"IsManaged"`
+
 	// 环境信息。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
@@ -1149,6 +1158,13 @@ type NFOption struct {
 	// Resume。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resume *bool `json:"Resume,omitnil,omitempty" name:"Resume"`
+
+	// Nextflow引擎版本，取值范围：
+	// - 22.10.4
+	// - 22.10.8 
+	// - 23.10.1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NFVersion *string `json:"NFVersion,omitnil,omitempty" name:"NFVersion"`
 }
 
 type ResourceIds struct {
@@ -1359,9 +1375,6 @@ type RunApplicationRequestParams struct {
 	// 任务输入JSON。需要进行base64编码。
 	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
 
-	// 任务缓存清理时间（小时）。不填表示不清理。
-	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
-
 	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
@@ -1374,6 +1387,9 @@ type RunApplicationRequestParams struct {
 	// 批量投递表格行UUID。不填表示表格全部行。
 	TableRowUuids []*string `json:"TableRowUuids,omitnil,omitempty" name:"TableRowUuids"`
 
+	// 任务缓存清理时间（小时）。不填或0表示不清理。
+	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
+
 	// 应用版本ID。不填表示使用当前最新版本。
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
 
@@ -1382,6 +1398,9 @@ type RunApplicationRequestParams struct {
 
 	// Nextflow运行选项。
 	NFOption *NFOption `json:"NFOption,omitnil,omitempty" name:"NFOption"`
+
+	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 }
 
 type RunApplicationRequest struct {
@@ -1399,9 +1418,6 @@ type RunApplicationRequest struct {
 	// 任务输入JSON。需要进行base64编码。
 	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
 
-	// 任务缓存清理时间（小时）。不填表示不清理。
-	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
-
 	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
@@ -1414,6 +1430,9 @@ type RunApplicationRequest struct {
 	// 批量投递表格行UUID。不填表示表格全部行。
 	TableRowUuids []*string `json:"TableRowUuids,omitnil,omitempty" name:"TableRowUuids"`
 
+	// 任务缓存清理时间（小时）。不填或0表示不清理。
+	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
+
 	// 应用版本ID。不填表示使用当前最新版本。
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
 
@@ -1422,6 +1441,9 @@ type RunApplicationRequest struct {
 
 	// Nextflow运行选项。
 	NFOption *NFOption `json:"NFOption,omitnil,omitempty" name:"NFOption"`
+
+	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1440,14 +1462,15 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "EnvironmentId")
 	delete(f, "InputBase64")
-	delete(f, "CacheClearDelay")
 	delete(f, "ProjectId")
 	delete(f, "Description")
 	delete(f, "TableId")
 	delete(f, "TableRowUuids")
+	delete(f, "CacheClearDelay")
 	delete(f, "ApplicationVersionId")
 	delete(f, "Option")
 	delete(f, "NFOption")
+	delete(f, "WorkDir")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}
@@ -1712,8 +1735,11 @@ type RunWorkflowRequestParams struct {
 	// （InputBase64和InputCosUri必选其一）
 	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
 
-	// 任务缓存清理时间（小时）。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填或0表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
+
+	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 }
 
 type RunWorkflowRequest struct {
@@ -1752,8 +1778,11 @@ type RunWorkflowRequest struct {
 	// （InputBase64和InputCosUri必选其一）
 	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
 
-	// 任务缓存清理时间（小时）。不填表示不清理。
+	// 任务缓存清理时间（小时）。不填或0表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
+
+	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 }
 
 func (r *RunWorkflowRequest) ToJsonString() string {
@@ -1778,6 +1807,7 @@ func (r *RunWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "InputBase64")
 	delete(f, "InputCosUri")
 	delete(f, "CacheClearDelay")
+	delete(f, "WorkDir")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunWorkflowRequest has unknown keys!", "")
 	}
