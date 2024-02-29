@@ -45,6 +45,57 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAbortPredictiveDialingCampaignRequest() (request *AbortPredictiveDialingCampaignRequest) {
+    request = &AbortPredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "AbortPredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewAbortPredictiveDialingCampaignResponse() (response *AbortPredictiveDialingCampaignResponse) {
+    response = &AbortPredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AbortPredictiveDialingCampaign
+// 停止预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AbortPredictiveDialingCampaign(request *AbortPredictiveDialingCampaignRequest) (response *AbortPredictiveDialingCampaignResponse, err error) {
+    return c.AbortPredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// AbortPredictiveDialingCampaign
+// 停止预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AbortPredictiveDialingCampaignWithContext(ctx context.Context, request *AbortPredictiveDialingCampaignRequest) (response *AbortPredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewAbortPredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AbortPredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAbortPredictiveDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindNumberCallOutSkillGroupRequest() (request *BindNumberCallOutSkillGroupRequest) {
     request = &BindNumberCallOutSkillGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -505,6 +556,61 @@ func (c *Client) CreateExtensionWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreatePredictiveDialingCampaignRequest() (request *CreatePredictiveDialingCampaignRequest) {
+    request = &CreatePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreatePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewCreatePredictiveDialingCampaignResponse() (response *CreatePredictiveDialingCampaignResponse) {
+    response = &CreatePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePredictiveDialingCampaign
+// 创建预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+func (c *Client) CreatePredictiveDialingCampaign(request *CreatePredictiveDialingCampaignRequest) (response *CreatePredictiveDialingCampaignResponse, err error) {
+    return c.CreatePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// CreatePredictiveDialingCampaign
+// 创建预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+func (c *Client) CreatePredictiveDialingCampaignWithContext(ctx context.Context, request *CreatePredictiveDialingCampaignRequest) (response *CreatePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewCreatePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePredictiveDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -731,6 +837,57 @@ func (c *Client) DeleteExtensionWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteExtensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePredictiveDialingCampaignRequest() (request *DeletePredictiveDialingCampaignRequest) {
+    request = &DeletePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DeletePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewDeletePredictiveDialingCampaignResponse() (response *DeletePredictiveDialingCampaignResponse) {
+    response = &DeletePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePredictiveDialingCampaign
+// 删除预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeletePredictiveDialingCampaign(request *DeletePredictiveDialingCampaignRequest) (response *DeletePredictiveDialingCampaignResponse, err error) {
+    return c.DeletePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// DeletePredictiveDialingCampaign
+// 删除预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeletePredictiveDialingCampaignWithContext(ctx context.Context, request *DeletePredictiveDialingCampaignRequest) (response *DeletePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewDeletePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePredictiveDialingCampaignResponse()
     err = c.Send(request, response)
     return
 }
@@ -1501,6 +1658,159 @@ func (c *Client) DescribePSTNActiveSessionListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribePredictiveDialingCampaignRequest() (request *DescribePredictiveDialingCampaignRequest) {
+    request = &DescribePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewDescribePredictiveDialingCampaignResponse() (response *DescribePredictiveDialingCampaignResponse) {
+    response = &DescribePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePredictiveDialingCampaign
+// 查询预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingCampaign(request *DescribePredictiveDialingCampaignRequest) (response *DescribePredictiveDialingCampaignResponse, err error) {
+    return c.DescribePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// DescribePredictiveDialingCampaign
+// 查询预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingCampaignWithContext(ctx context.Context, request *DescribePredictiveDialingCampaignRequest) (response *DescribePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewDescribePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePredictiveDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePredictiveDialingCampaignsRequest() (request *DescribePredictiveDialingCampaignsRequest) {
+    request = &DescribePredictiveDialingCampaignsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribePredictiveDialingCampaigns")
+    
+    
+    return
+}
+
+func NewDescribePredictiveDialingCampaignsResponse() (response *DescribePredictiveDialingCampaignsResponse) {
+    response = &DescribePredictiveDialingCampaignsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePredictiveDialingCampaigns
+// 查询预测式外呼任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingCampaigns(request *DescribePredictiveDialingCampaignsRequest) (response *DescribePredictiveDialingCampaignsResponse, err error) {
+    return c.DescribePredictiveDialingCampaignsWithContext(context.Background(), request)
+}
+
+// DescribePredictiveDialingCampaigns
+// 查询预测式外呼任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingCampaignsWithContext(ctx context.Context, request *DescribePredictiveDialingCampaignsRequest) (response *DescribePredictiveDialingCampaignsResponse, err error) {
+    if request == nil {
+        request = NewDescribePredictiveDialingCampaignsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePredictiveDialingCampaigns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePredictiveDialingCampaignsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePredictiveDialingSessionsRequest() (request *DescribePredictiveDialingSessionsRequest) {
+    request = &DescribePredictiveDialingSessionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribePredictiveDialingSessions")
+    
+    
+    return
+}
+
+func NewDescribePredictiveDialingSessionsResponse() (response *DescribePredictiveDialingSessionsResponse) {
+    response = &DescribePredictiveDialingSessionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePredictiveDialingSessions
+// 查询预测式外呼呼叫列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingSessions(request *DescribePredictiveDialingSessionsRequest) (response *DescribePredictiveDialingSessionsResponse, err error) {
+    return c.DescribePredictiveDialingSessionsWithContext(context.Background(), request)
+}
+
+// DescribePredictiveDialingSessions
+// 查询预测式外呼呼叫列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePredictiveDialingSessionsWithContext(ctx context.Context, request *DescribePredictiveDialingSessionsRequest) (response *DescribePredictiveDialingSessionsResponse, err error) {
+    if request == nil {
+        request = NewDescribePredictiveDialingSessionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePredictiveDialingSessions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePredictiveDialingSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProtectedTelCdrRequest() (request *DescribeProtectedTelCdrRequest) {
     request = &DescribeProtectedTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2138,6 +2448,57 @@ func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaf
     return
 }
 
+func NewPausePredictiveDialingCampaignRequest() (request *PausePredictiveDialingCampaignRequest) {
+    request = &PausePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "PausePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewPausePredictiveDialingCampaignResponse() (response *PausePredictiveDialingCampaignResponse) {
+    response = &PausePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PausePredictiveDialingCampaign
+// 暂停预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) PausePredictiveDialingCampaign(request *PausePredictiveDialingCampaignRequest) (response *PausePredictiveDialingCampaignResponse, err error) {
+    return c.PausePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// PausePredictiveDialingCampaign
+// 暂停预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) PausePredictiveDialingCampaignWithContext(ctx context.Context, request *PausePredictiveDialingCampaignRequest) (response *PausePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewPausePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PausePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPausePredictiveDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetExtensionPasswordRequest() (request *ResetExtensionPasswordRequest) {
     request = &ResetExtensionPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2162,13 +2523,7 @@ func NewResetExtensionPasswordResponse() (response *ResetExtensionPasswordRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
-//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
-//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     return c.ResetExtensionPasswordWithContext(context.Background(), request)
 }
@@ -2178,13 +2533,7 @@ func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
-//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
-//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     if request == nil {
         request = NewResetExtensionPasswordRequest()
@@ -2197,6 +2546,57 @@ func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewResetExtensionPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumePredictiveDialingCampaignRequest() (request *ResumePredictiveDialingCampaignRequest) {
+    request = &ResumePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ResumePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewResumePredictiveDialingCampaignResponse() (response *ResumePredictiveDialingCampaignResponse) {
+    response = &ResumePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumePredictiveDialingCampaign
+// 恢复预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResumePredictiveDialingCampaign(request *ResumePredictiveDialingCampaignRequest) (response *ResumePredictiveDialingCampaignResponse, err error) {
+    return c.ResumePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// ResumePredictiveDialingCampaign
+// 恢复预测式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResumePredictiveDialingCampaignWithContext(ctx context.Context, request *ResumePredictiveDialingCampaignRequest) (response *ResumePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewResumePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumePredictiveDialingCampaignResponse()
     err = c.Send(request, response)
     return
 }
@@ -2362,6 +2762,61 @@ func (c *Client) UnbindStaffSkillGroupListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewUnbindStaffSkillGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdatePredictiveDialingCampaignRequest() (request *UpdatePredictiveDialingCampaignRequest) {
+    request = &UpdatePredictiveDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "UpdatePredictiveDialingCampaign")
+    
+    
+    return
+}
+
+func NewUpdatePredictiveDialingCampaignResponse() (response *UpdatePredictiveDialingCampaignResponse) {
+    response = &UpdatePredictiveDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdatePredictiveDialingCampaign
+// 任务未启动前，更新预测式外呼任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdatePredictiveDialingCampaign(request *UpdatePredictiveDialingCampaignRequest) (response *UpdatePredictiveDialingCampaignResponse, err error) {
+    return c.UpdatePredictiveDialingCampaignWithContext(context.Background(), request)
+}
+
+// UpdatePredictiveDialingCampaign
+// 任务未启动前，更新预测式外呼任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdatePredictiveDialingCampaignWithContext(ctx context.Context, request *UpdatePredictiveDialingCampaignRequest) (response *UpdatePredictiveDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewUpdatePredictiveDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdatePredictiveDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdatePredictiveDialingCampaignResponse()
     err = c.Send(request, response)
     return
 }

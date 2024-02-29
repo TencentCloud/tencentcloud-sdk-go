@@ -637,6 +637,42 @@ type AssociatedInstanceInfo struct {
 	CdbId *string `json:"CdbId,omitnil,omitempty" name:"CdbId"`
 }
 
+type BanAndAllowRule struct {
+	// 封禁和放通对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
+
+	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
+
+	// 规则截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 规则评论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 自定义白名单规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
+}
+
+type BanAndAllowRuleDel struct {
+	// 封禁和放通对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
+
+	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
+
+	// 规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+}
+
 type BetaInfoByACL struct {
 	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1018,7 +1054,7 @@ type CreateAlertCenterIsolateRequestParams struct {
 	// 4 内网访问
 	IsolateType []*int64 `json:"IsolateType,omitnil,omitempty" name:"IsolateType"`
 
-	// 运维模式 1 IP白名单 2 身份认证
+	// 运维模式 1 IP白名单 2 身份认证  0 非运维模式
 	OmMode *int64 `json:"OmMode,omitnil,omitempty" name:"OmMode"`
 }
 
@@ -1043,7 +1079,7 @@ type CreateAlertCenterIsolateRequest struct {
 	// 4 内网访问
 	IsolateType []*int64 `json:"IsolateType,omitnil,omitempty" name:"IsolateType"`
 
-	// 运维模式 1 IP白名单 2 身份认证
+	// 运维模式 1 IP白名单 2 身份认证  0 非运维模式
 	OmMode *int64 `json:"OmMode,omitnil,omitempty" name:"OmMode"`
 }
 
@@ -1396,6 +1432,74 @@ func (r *CreateBlockIgnoreRuleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBlockIgnoreRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlockIgnoreRuleNewRequestParams struct {
+	// 非自定义类型规则列表
+	Rules []*BanAndAllowRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
+}
+
+type CreateBlockIgnoreRuleNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 非自定义类型规则列表
+	Rules []*BanAndAllowRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
+}
+
+func (r *CreateBlockIgnoreRuleNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	delete(f, "RuleType")
+	delete(f, "CoverDuplicate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlockIgnoreRuleNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlockIgnoreRuleNewResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBlockIgnoreRuleNewResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBlockIgnoreRuleNewResponseParams `json:"Response"`
+}
+
+func (r *CreateBlockIgnoreRuleNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2489,6 +2593,83 @@ func (r *DeleteBlockIgnoreRuleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlockIgnoreRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBlockIgnoreRuleNewRequestParams struct {
+	// 是否删除全部
+	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
+
+	// 规则列表
+	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 封禁：1，放通：100，
+	// 主要用于全部删除时区分列表类型
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// blocklist 封禁列表 whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+}
+
+type DeleteBlockIgnoreRuleNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否删除全部
+	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
+
+	// 规则列表
+	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 封禁：1，放通：100，
+	// 主要用于全部删除时区分列表类型
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// blocklist 封禁列表 whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+}
+
+func (r *DeleteBlockIgnoreRuleNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeleteAll")
+	delete(f, "Rules")
+	delete(f, "RuleType")
+	delete(f, "ShowType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlockIgnoreRuleNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBlockIgnoreRuleNewResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBlockIgnoreRuleNewResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBlockIgnoreRuleNewResponseParams `json:"Response"`
+}
+
+func (r *DeleteBlockIgnoreRuleNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7636,6 +7817,67 @@ func (r *ModifyBlockIgnoreListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBlockIgnoreListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBlockIgnoreRuleNewRequestParams struct {
+	// 规则
+	Rule *BanAndAllowRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// RuleType: 1放通列表 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+}
+
+type ModifyBlockIgnoreRuleNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则
+	Rule *BanAndAllowRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// RuleType: 1放通列表 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+}
+
+func (r *ModifyBlockIgnoreRuleNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rule")
+	delete(f, "RuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockIgnoreRuleNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBlockIgnoreRuleNewResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBlockIgnoreRuleNewResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBlockIgnoreRuleNewResponseParams `json:"Response"`
+}
+
+func (r *ModifyBlockIgnoreRuleNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

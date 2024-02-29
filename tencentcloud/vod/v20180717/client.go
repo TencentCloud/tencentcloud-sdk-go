@@ -4973,6 +4973,69 @@ func (c *Client) DescribeDailyPlayStatFileListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeDefaultDistributionConfigRequest() (request *DescribeDefaultDistributionConfigRequest) {
+    request = &DescribeDefaultDistributionConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeDefaultDistributionConfig")
+    
+    
+    return
+}
+
+func NewDescribeDefaultDistributionConfigResponse() (response *DescribeDefaultDistributionConfigResponse) {
+    response = &DescribeDefaultDistributionConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDefaultDistributionConfig
+// 该接口用于查询默认分发配置。
+//
+// * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+//
+// * 播放密钥，用于计算播放器签名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDefaultDistributionConfig(request *DescribeDefaultDistributionConfigRequest) (response *DescribeDefaultDistributionConfigResponse, err error) {
+    return c.DescribeDefaultDistributionConfigWithContext(context.Background(), request)
+}
+
+// DescribeDefaultDistributionConfig
+// 该接口用于查询默认分发配置。
+//
+// * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+//
+// * 播放密钥，用于计算播放器签名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDefaultDistributionConfigWithContext(ctx context.Context, request *DescribeDefaultDistributionConfigRequest) (response *DescribeDefaultDistributionConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefaultDistributionConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDefaultDistributionConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDefaultDistributionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDrmDataKeyRequest() (request *DescribeDrmDataKeyRequest) {
     request = &DescribeDrmDataKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8491,6 +8554,75 @@ func (c *Client) ModifyContentReviewTemplateWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewModifyContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDefaultDistributionConfigRequest() (request *ModifyDefaultDistributionConfigRequest) {
+    request = &ModifyDefaultDistributionConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyDefaultDistributionConfig")
+    
+    
+    return
+}
+
+func NewModifyDefaultDistributionConfigResponse() (response *ModifyDefaultDistributionConfigResponse) {
+    response = &ModifyDefaultDistributionConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDefaultDistributionConfig
+// 该接口用于修改默认分发配置。
+//
+// * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+//
+// * 播放密钥，用于计算播放器签名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_SCHEME = "InvalidParameterValue.Scheme"
+//  INVALIDPARAMETERVALUE_SCHEMECONFLICT = "InvalidParameterValue.SchemeConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTDOMAIN = "InvalidParameterValue.UnsupportDomain"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDefaultDistributionConfig(request *ModifyDefaultDistributionConfigRequest) (response *ModifyDefaultDistributionConfigResponse, err error) {
+    return c.ModifyDefaultDistributionConfigWithContext(context.Background(), request)
+}
+
+// ModifyDefaultDistributionConfig
+// 该接口用于修改默认分发配置。
+//
+// * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+//
+// * 播放密钥，用于计算播放器签名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETERVALUE_DOMAINNAME = "InvalidParameterValue.DomainName"
+//  INVALIDPARAMETERVALUE_SCHEME = "InvalidParameterValue.Scheme"
+//  INVALIDPARAMETERVALUE_SCHEMECONFLICT = "InvalidParameterValue.SchemeConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTDOMAIN = "InvalidParameterValue.UnsupportDomain"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDefaultDistributionConfigWithContext(ctx context.Context, request *ModifyDefaultDistributionConfigRequest) (response *ModifyDefaultDistributionConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDefaultDistributionConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDefaultDistributionConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDefaultDistributionConfigResponse()
     err = c.Send(request, response)
     return
 }

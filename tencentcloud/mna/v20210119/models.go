@@ -38,6 +38,9 @@ type ActivateHardware struct {
 
 	// 设备密钥
 	DataKey *string `json:"DataKey,omitnil,omitempty" name:"DataKey"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 }
 
 // Predefined struct for user
@@ -111,6 +114,13 @@ type AddDeviceRequestParams struct {
 
 	// 是否设置预置密钥
 	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
+	// 具体含义：
+	// 公有云网关：即该设备只能接入公有云网关（就近接入）
+	// 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入）
+	// 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 }
 
 type AddDeviceRequest struct {
@@ -127,6 +137,13 @@ type AddDeviceRequest struct {
 
 	// 是否设置预置密钥
 	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
+	// 具体含义：
+	// 公有云网关：即该设备只能接入公有云网关（就近接入）
+	// 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入）
+	// 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 }
 
 func (r *AddDeviceRequest) ToJsonString() string {
@@ -145,6 +162,7 @@ func (r *AddDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "DataKey")
 	delete(f, "Encrypted")
+	delete(f, "AccessScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeviceRequest has unknown keys!", "")
 	}
@@ -668,6 +686,9 @@ type DeviceBaseInfo struct {
 
 	// 设备的备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 }
 
 type DeviceDetails struct {
@@ -865,6 +886,10 @@ type FlowPackageInfo struct {
 	// 流量包状态，0：未生效，1：有效期内，2：已过期
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 购买时间，Unix时间戳格式，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
 	// 生效时间，Unix时间戳格式，单位：秒
 	ActiveTime *int64 `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
@@ -882,6 +907,9 @@ type FlowPackageInfo struct {
 
 	// 自动续费标识。true代表自动续费，false代表不自动续费
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 资源包变更状态，0：未发生变配；1：变配中；2：已变配或已续费
+	ModifyStatus *int64 `json:"ModifyStatus,omitnil,omitempty" name:"ModifyStatus"`
 }
 
 // Predefined struct for user
@@ -1192,6 +1220,12 @@ type GetFlowStatisticRequestParams struct {
 
 	// 时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetFlowStatisticRequest struct {
@@ -1211,6 +1245,12 @@ type GetFlowStatisticRequest struct {
 
 	// 时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 func (r *GetFlowStatisticRequest) ToJsonString() string {
@@ -1230,6 +1270,8 @@ func (r *GetFlowStatisticRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Type")
 	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowStatisticRequest has unknown keys!", "")
 	}
@@ -1363,6 +1405,12 @@ type GetMultiFlowStatisticRequestParams struct {
 
 	// 统计时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetMultiFlowStatisticRequest struct {
@@ -1382,6 +1430,12 @@ type GetMultiFlowStatisticRequest struct {
 
 	// 统计时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 func (r *GetMultiFlowStatisticRequest) ToJsonString() string {
@@ -1401,6 +1455,8 @@ func (r *GetMultiFlowStatisticRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Type")
 	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMultiFlowStatisticRequest has unknown keys!", "")
 	}
@@ -1445,6 +1501,9 @@ type GetNetMonitorRequestParams struct {
 
 	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
 	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetNetMonitorRequest struct {
@@ -1461,6 +1520,9 @@ type GetNetMonitorRequest struct {
 
 	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
 	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 func (r *GetNetMonitorRequest) ToJsonString() string {
@@ -1479,6 +1541,7 @@ func (r *GetNetMonitorRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "Metrics")
+	delete(f, "GatewayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetNetMonitorRequest has unknown keys!", "")
 	}
@@ -1490,6 +1553,13 @@ type GetNetMonitorResponseParams struct {
 	// 监控数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorData []*MonitorData `json:"MonitorData,omitnil,omitempty" name:"MonitorData"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM']
+	// MC=中国大陆
+	// AP=亚太
+	// EU=欧洲
+	// AM=美洲
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1567,7 +1637,7 @@ func (r *GetPublicKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataRequestParams struct {
-	// 设备ID
+	// 设备ID。若不指定设备，可传"-1"
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
@@ -1580,12 +1650,18 @@ type GetStatisticDataRequestParams struct {
 	// 1:按小时统计
 	// 2:按天统计
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetStatisticDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID
+	// 设备ID。若不指定设备，可传"-1"
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
@@ -1598,6 +1674,12 @@ type GetStatisticDataRequest struct {
 	// 1:按小时统计
 	// 2:按天统计
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 func (r *GetStatisticDataRequest) ToJsonString() string {
@@ -1616,6 +1698,8 @@ func (r *GetStatisticDataRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetStatisticDataRequest has unknown keys!", "")
 	}

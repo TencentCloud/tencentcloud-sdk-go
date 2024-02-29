@@ -3928,12 +3928,15 @@ func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDomainVerifyRecordRequestParams struct {
-
+	// 需要接入点播的加速域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type CreateDomainVerifyRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// 需要接入点播的加速域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *CreateDomainVerifyRecordRequest) ToJsonString() string {
@@ -3948,7 +3951,7 @@ func (r *CreateDomainVerifyRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainVerifyRecordRequest has unknown keys!", "")
 	}
@@ -9426,6 +9429,74 @@ func (r *DescribeDailyPlayStatFileListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDailyPlayStatFileListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDefaultDistributionConfigRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type DescribeDefaultDistributionConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeDefaultDistributionConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefaultDistributionConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDefaultDistributionConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDefaultDistributionConfigResponseParams struct {
+	// 分发配置的域名(已废弃）。
+	//
+	// Deprecated: DomainName is deprecated.
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 分发配置的域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分发配置的协议，为 HTTP 或 HTTPS。
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+	PlayKey *string `json:"PlayKey,omitnil,omitempty" name:"PlayKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDefaultDistributionConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDefaultDistributionConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeDefaultDistributionConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefaultDistributionConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16706,6 +16777,81 @@ func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDefaultDistributionConfigRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 分发域名，取值为点播域名列表里的域名。不填或者填空，表示不修改域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分发协议，取值为 HTTP 或者 HTTPS。
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+	PlayKey *string `json:"PlayKey,omitnil,omitempty" name:"PlayKey"`
+}
+
+type ModifyDefaultDistributionConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 分发域名，取值为点播域名列表里的域名。不填或者填空，表示不修改域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分发协议，取值为 HTTP 或者 HTTPS。
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+	PlayKey *string `json:"PlayKey,omitnil,omitempty" name:"PlayKey"`
+}
+
+func (r *ModifyDefaultDistributionConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDefaultDistributionConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Domain")
+	delete(f, "Scheme")
+	delete(f, "PlayKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDefaultDistributionConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDefaultDistributionConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDefaultDistributionConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDefaultDistributionConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyDefaultDistributionConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDefaultDistributionConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

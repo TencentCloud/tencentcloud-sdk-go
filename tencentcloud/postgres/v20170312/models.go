@@ -5951,6 +5951,9 @@ type InquiryPriceUpgradeDBInstanceRequestParams struct {
 
 	// 【废弃参数，不再生效】，实例计费类型。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 实例的Cpu大小，单位Core
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
 type InquiryPriceUpgradeDBInstanceRequest struct {
@@ -5967,6 +5970,9 @@ type InquiryPriceUpgradeDBInstanceRequest struct {
 
 	// 【废弃参数，不再生效】，实例计费类型。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 实例的Cpu大小，单位Core
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
 func (r *InquiryPriceUpgradeDBInstanceRequest) ToJsonString() string {
@@ -5985,6 +5991,7 @@ func (r *InquiryPriceUpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "DBInstanceId")
 	delete(f, "InstanceChargeType")
+	delete(f, "Cpu")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceUpgradeDBInstanceRequest has unknown keys!", "")
 	}
@@ -6274,6 +6281,9 @@ type ModifyBackupPlanRequestParams struct {
 
 	// 实例备份周期，按照星期维度，格式为小写星期英文单词
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
+
+	// 实例日志备份保留时长，取值范围为7-1830，单位是天
+	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
 }
 
 type ModifyBackupPlanRequest struct {
@@ -6293,6 +6303,9 @@ type ModifyBackupPlanRequest struct {
 
 	// 实例备份周期，按照星期维度，格式为小写星期英文单词
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
+
+	// 实例日志备份保留时长，取值范围为7-1830，单位是天
+	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
 }
 
 func (r *ModifyBackupPlanRequest) ToJsonString() string {
@@ -6312,6 +6325,7 @@ func (r *ModifyBackupPlanRequest) FromJsonString(s string) error {
 	delete(f, "MaxBackupStartTime")
 	delete(f, "BaseBackupRetentionPeriod")
 	delete(f, "BackupPeriod")
+	delete(f, "LogBackupRetentionPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupPlanRequest has unknown keys!", "")
 	}
@@ -7018,6 +7032,9 @@ type ModifyDBInstanceSpecRequestParams struct {
 
 	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
 	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 修改后的实例CPU大小，单位Core。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
 type ModifyDBInstanceSpecRequest struct {
@@ -7056,6 +7073,9 @@ type ModifyDBInstanceSpecRequest struct {
 
 	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
 	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 修改后的实例CPU大小，单位Core。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
 func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
@@ -7079,6 +7099,7 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 	delete(f, "SwitchTag")
 	delete(f, "SwitchStartTime")
 	delete(f, "SwitchEndTime")
+	delete(f, "Cpu")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSpecRequest has unknown keys!", "")
 	}

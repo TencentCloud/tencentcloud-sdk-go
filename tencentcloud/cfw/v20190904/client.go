@@ -766,6 +766,61 @@ func (c *Client) CreateBlockIgnoreRuleListWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateBlockIgnoreRuleNewRequest() (request *CreateBlockIgnoreRuleNewRequest) {
+    request = &CreateBlockIgnoreRuleNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateBlockIgnoreRuleNew")
+    
+    
+    return
+}
+
+func NewCreateBlockIgnoreRuleNewResponse() (response *CreateBlockIgnoreRuleNewResponse) {
+    response = &CreateBlockIgnoreRuleNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBlockIgnoreRuleNew
+// 批量添加入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBlockIgnoreRuleNew(request *CreateBlockIgnoreRuleNewRequest) (response *CreateBlockIgnoreRuleNewResponse, err error) {
+    return c.CreateBlockIgnoreRuleNewWithContext(context.Background(), request)
+}
+
+// CreateBlockIgnoreRuleNew
+// 批量添加入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBlockIgnoreRuleNewWithContext(ctx context.Context, request *CreateBlockIgnoreRuleNewRequest) (response *CreateBlockIgnoreRuleNewResponse, err error) {
+    if request == nil {
+        request = NewCreateBlockIgnoreRuleNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBlockIgnoreRuleNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBlockIgnoreRuleNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateChooseVpcsRequest() (request *CreateChooseVpcsRequest) {
     request = &CreateChooseVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1453,6 +1508,61 @@ func (c *Client) DeleteBlockIgnoreRuleListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteBlockIgnoreRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBlockIgnoreRuleNewRequest() (request *DeleteBlockIgnoreRuleNewRequest) {
+    request = &DeleteBlockIgnoreRuleNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteBlockIgnoreRuleNew")
+    
+    
+    return
+}
+
+func NewDeleteBlockIgnoreRuleNewResponse() (response *DeleteBlockIgnoreRuleNewResponse) {
+    response = &DeleteBlockIgnoreRuleNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBlockIgnoreRuleNew
+// 批量删除入侵防御封禁列表、放通列表规则（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBlockIgnoreRuleNew(request *DeleteBlockIgnoreRuleNewRequest) (response *DeleteBlockIgnoreRuleNewResponse, err error) {
+    return c.DeleteBlockIgnoreRuleNewWithContext(context.Background(), request)
+}
+
+// DeleteBlockIgnoreRuleNew
+// 批量删除入侵防御封禁列表、放通列表规则（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBlockIgnoreRuleNewWithContext(ctx context.Context, request *DeleteBlockIgnoreRuleNewRequest) (response *DeleteBlockIgnoreRuleNewResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlockIgnoreRuleNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBlockIgnoreRuleNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBlockIgnoreRuleNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -5190,6 +5300,61 @@ func (c *Client) ModifyBlockIgnoreRuleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyBlockIgnoreRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBlockIgnoreRuleNewRequest() (request *ModifyBlockIgnoreRuleNewRequest) {
+    request = &ModifyBlockIgnoreRuleNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockIgnoreRuleNew")
+    
+    
+    return
+}
+
+func NewModifyBlockIgnoreRuleNewResponse() (response *ModifyBlockIgnoreRuleNewResponse) {
+    response = &ModifyBlockIgnoreRuleNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBlockIgnoreRuleNew
+// 编辑单条入侵防御封禁列表、放通列表规则（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBlockIgnoreRuleNew(request *ModifyBlockIgnoreRuleNewRequest) (response *ModifyBlockIgnoreRuleNewResponse, err error) {
+    return c.ModifyBlockIgnoreRuleNewWithContext(context.Background(), request)
+}
+
+// ModifyBlockIgnoreRuleNew
+// 编辑单条入侵防御封禁列表、放通列表规则（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBlockIgnoreRuleNewWithContext(ctx context.Context, request *ModifyBlockIgnoreRuleNewRequest) (response *ModifyBlockIgnoreRuleNewResponse, err error) {
+    if request == nil {
+        request = NewModifyBlockIgnoreRuleNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlockIgnoreRuleNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBlockIgnoreRuleNewResponse()
     err = c.Send(request, response)
     return
 }

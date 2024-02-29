@@ -1090,6 +1090,12 @@ type BatchDeleteIntegrationTasksRequestParams struct {
 
 	// 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
 	DeleteKFFlag *int64 `json:"DeleteKFFlag,omitnil,omitempty" name:"DeleteKFFlag"`
+
+	// 操作名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 type BatchDeleteIntegrationTasksRequest struct {
@@ -1106,6 +1112,12 @@ type BatchDeleteIntegrationTasksRequest struct {
 
 	// 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
 	DeleteKFFlag *int64 `json:"DeleteKFFlag,omitnil,omitempty" name:"DeleteKFFlag"`
+
+	// 操作名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 func (r *BatchDeleteIntegrationTasksRequest) ToJsonString() string {
@@ -1124,6 +1136,8 @@ func (r *BatchDeleteIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
 	delete(f, "DeleteKFFlag")
+	delete(f, "Name")
+	delete(f, "TaskNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -2005,6 +2019,9 @@ type BatchResumeIntegrationTasksResponseParams struct {
 	// 任务总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2112,27 +2129,33 @@ func (r *BatchRunOpsTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchStartIntegrationTasksRequestParams struct {
-	// 任务id
-	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
-
 	// 任务类型
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 批量运行集成任务，目前仅实时集成用到了这个参数
+	StartTaskInfoSet []*StartTaskInfo `json:"StartTaskInfoSet,omitnil,omitempty" name:"StartTaskInfoSet"`
 }
 
 type BatchStartIntegrationTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
-	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
-
 	// 任务类型
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 批量运行集成任务，目前仅实时集成用到了这个参数
+	StartTaskInfoSet []*StartTaskInfo `json:"StartTaskInfoSet,omitnil,omitempty" name:"StartTaskInfoSet"`
 }
 
 func (r *BatchStartIntegrationTasksRequest) ToJsonString() string {
@@ -2147,9 +2170,10 @@ func (r *BatchStartIntegrationTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TaskIds")
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
+	delete(f, "TaskIds")
+	delete(f, "StartTaskInfoSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStartIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -2166,6 +2190,9 @@ type BatchStartIntegrationTasksResponseParams struct {
 
 	// 任务总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 本次批量操作成功任务id，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2243,6 +2270,9 @@ type BatchStopIntegrationTasksResponseParams struct {
 
 	// 任务总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 本次批量操作涉及成功任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2470,6 +2500,9 @@ type BatchSuspendIntegrationTasksRequestParams struct {
 
 	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
 	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 type BatchSuspendIntegrationTasksRequest struct {
@@ -2486,6 +2519,9 @@ type BatchSuspendIntegrationTasksRequest struct {
 
 	// 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
 	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 func (r *BatchSuspendIntegrationTasksRequest) ToJsonString() string {
@@ -2504,6 +2540,7 @@ func (r *BatchSuspendIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
 	delete(f, "Event")
+	delete(f, "TaskNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSuspendIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -2557,6 +2594,9 @@ type BatchUpdateIntegrationTasksRequestParams struct {
 
 	// 责任人Id（多个责任人用小写分号隔开）
 	InchargeIds *string `json:"InchargeIds,omitnil,omitempty" name:"InchargeIds"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 type BatchUpdateIntegrationTasksRequest struct {
@@ -2576,6 +2616,9 @@ type BatchUpdateIntegrationTasksRequest struct {
 
 	// 责任人Id（多个责任人用小写分号隔开）
 	InchargeIds *string `json:"InchargeIds,omitnil,omitempty" name:"InchargeIds"`
+
+	// 本次批量操作涉及任务，用于审计
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 }
 
 func (r *BatchUpdateIntegrationTasksRequest) ToJsonString() string {
@@ -2595,6 +2638,7 @@ func (r *BatchUpdateIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
 	delete(f, "InchargeIds")
+	delete(f, "TaskNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -34301,6 +34345,24 @@ func (r *StartIntegrationTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartIntegrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartTaskInfo struct {
+	// 批量运行任务类型，比如START，TIMESTAMP，RESTORE，RESUME等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// 任务Id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 批量运行任务配置，目前仅用与实时集成基于时间位点启动。基于时间位点启动，需要设置一个name=timestamp, value=具体时间戳的RecordField的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config []*RecordField `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 操作类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user

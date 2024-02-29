@@ -603,6 +603,95 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateDealsRequest() (request *CreateDealsRequest) {
+    request = &CreateDealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateDeals")
+    
+    
+    return
+}
+
+func NewCreateDealsResponse() (response *CreateDealsResponse) {
+    response = &CreateDealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeals
+// 计费资源购买、续费下单接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeals(request *CreateDealsRequest) (response *CreateDealsResponse, err error) {
+    return c.CreateDealsWithContext(context.Background(), request)
+}
+
+// CreateDeals
+// 计费资源购买、续费下单接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDealsWithContext(ctx context.Context, request *CreateDealsRequest) (response *CreateDealsResponse, err error) {
+    if request == nil {
+        request = NewCreateDealsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeals require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostRequest() (request *CreateHostRequest) {
     request = &CreateHostRequest{
         BaseRequest: &tchttp.BaseRequest{},

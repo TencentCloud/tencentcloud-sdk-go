@@ -20,6 +20,67 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type AbortPredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type AbortPredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *AbortPredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AbortPredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AbortPredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AbortPredictiveDialingCampaignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AbortPredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *AbortPredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *AbortPredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AbortPredictiveDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ActiveCarrierPrivilegeNumber struct {
 	// 实例Id
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -859,6 +920,147 @@ func (r *CreateExtensionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 使用的座席技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 预期呼损率，百分比，5 - 50
+	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
+
+	// 呼叫重试间隔时间，单位秒，60 - 86400
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定的 IVR Id
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 呼叫重试次数，0 - 2
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+}
+
+type CreatePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 使用的座席技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 预期呼损率，百分比，5 - 50
+	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
+
+	// 呼叫重试间隔时间，单位秒，60 - 86400
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定的 IVR Id
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 呼叫重试次数，0 - 2
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+}
+
+func (r *CreatePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Name")
+	delete(f, "Callees")
+	delete(f, "Callers")
+	delete(f, "CallOrder")
+	delete(f, "SkillGroupId")
+	delete(f, "Priority")
+	delete(f, "ExpectedAbandonRate")
+	delete(f, "RetryInterval")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "IVRId")
+	delete(f, "RetryTimes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePredictiveDialingCampaignResponseParams struct {
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *CreatePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePredictiveDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSDKLoginTokenRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1143,6 +1345,67 @@ func (r *DeleteExtensionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteExtensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type DeletePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *DeletePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePredictiveDialingCampaignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *DeletePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePredictiveDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2315,6 +2578,305 @@ func (r *DescribePSTNActiveSessionListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type DescribePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *DescribePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingCampaignResponseParams struct {
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 使用的座席技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 指定的 IVR ID
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 预期呼损率，百分比，5 - 50
+	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
+
+	// 呼叫重试次数，0 - 2
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 呼叫重试间隔时间，单位秒，60 - 86400
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *DescribePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePredictiveDialingCampaignsElement struct {
+	// 任务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务状态 0 待开始 1 进行中 2 已暂停 3 已终止 4 已完成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务状态原因 0 正常 1 手动结束 2 超时结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusReason *int64 `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
+
+	// 被叫号码个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalleeCount *int64 `json:"CalleeCount,omitnil,omitempty" name:"CalleeCount"`
+
+	// 已完成的被叫个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedCalleeCount *int64 `json:"FinishedCalleeCount,omitnil,omitempty" name:"FinishedCalleeCount"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 使用的座席技能组 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingCampaignsRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，最大为 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 查询任务列表名称关键字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询任务列表技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+type DescribePredictiveDialingCampaignsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，最大为 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 查询任务列表名称关键字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询任务列表技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+func (r *DescribePredictiveDialingCampaignsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "Name")
+	delete(f, "SkillGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePredictiveDialingCampaignsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingCampaignsResponseParams struct {
+	// 数据总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CampaignList []*DescribePredictiveDialingCampaignsElement `json:"CampaignList,omitnil,omitempty" name:"CampaignList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePredictiveDialingCampaignsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePredictiveDialingCampaignsResponseParams `json:"Response"`
+}
+
+func (r *DescribePredictiveDialingCampaignsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingCampaignsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingSessionsRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 分页尺寸，最大为 1000
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type DescribePredictiveDialingSessionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 分页尺寸，最大为 1000
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribePredictiveDialingSessionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingSessionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePredictiveDialingSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePredictiveDialingSessionsResponseParams struct {
+	// 数据总量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 呼叫的 session id 列表，通过 https://cloud.tencent.com/document/product/679/47714 可以批量获取呼叫详细话单
+	SessionList []*string `json:"SessionList,omitnil,omitempty" name:"SessionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePredictiveDialingSessionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePredictiveDialingSessionsResponseParams `json:"Response"`
+}
+
+func (r *DescribePredictiveDialingSessionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePredictiveDialingSessionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3541,6 +4103,67 @@ type PackageBuyInfo struct {
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
+// Predefined struct for user
+type PausePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type PausePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *PausePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PausePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PausePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PausePredictiveDialingCampaignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PausePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *PausePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *PausePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PausePredictiveDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PhoneNumBuyInfo struct {
 	// 电话号码
 	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
@@ -3622,6 +4245,67 @@ func (r *ResetExtensionPasswordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResetExtensionPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type ResumePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *ResumePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumePredictiveDialingCampaignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *ResumePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumePredictiveDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4330,6 +5014,151 @@ func (r *UnbindStaffSkillGroupListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindStaffSkillGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePredictiveDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 使用的座席技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 预期呼损率，百分比，5 - 50	
+	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
+
+	// 呼叫重试间隔时间，单位秒，60 - 86400
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定的 IVR ID
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 呼叫重试次数，0 - 2
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+}
+
+type UpdatePredictiveDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 使用的座席技能组 ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 预期呼损率，百分比，5 - 50	
+	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
+
+	// 呼叫重试间隔时间，单位秒，60 - 86400
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定的 IVR ID
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 呼叫重试次数，0 - 2
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+}
+
+func (r *UpdatePredictiveDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePredictiveDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	delete(f, "Name")
+	delete(f, "Callees")
+	delete(f, "Callers")
+	delete(f, "CallOrder")
+	delete(f, "SkillGroupId")
+	delete(f, "Priority")
+	delete(f, "ExpectedAbandonRate")
+	delete(f, "RetryInterval")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "IVRId")
+	delete(f, "RetryTimes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePredictiveDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePredictiveDialingCampaignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdatePredictiveDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePredictiveDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *UpdatePredictiveDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePredictiveDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

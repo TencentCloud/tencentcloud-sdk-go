@@ -4821,10 +4821,10 @@ type DescribeBackupListRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备份文件列表大小，取值范围(0,100]
+	// 返回数量，取值范围(0,100]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 备份文件列表偏移，取值范围[0,INF)
+	// 记录偏移量，取值范围[0,INF)
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 数据库类型，取值范围: 
@@ -4837,7 +4837,7 @@ type DescribeBackupListRequestParams struct {
 	// 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 备份方式，可选值：auto，自动备份；manual，手动备
+	// 备份方式，可选值：auto，自动备份；manual，手动备份
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 快照类型，可选值：full，全量；increment，增量
@@ -4871,10 +4871,10 @@ type DescribeBackupListRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备份文件列表大小，取值范围(0,100]
+	// 返回数量，取值范围(0,100]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 备份文件列表偏移，取值范围[0,INF)
+	// 记录偏移量，取值范围[0,INF)
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 数据库类型，取值范围: 
@@ -4887,7 +4887,7 @@ type DescribeBackupListRequest struct {
 	// 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 备份方式，可选值：auto，自动备份；manual，手动备
+	// 备份方式，可选值：auto，自动备份；manual，手动备份
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 快照类型，可选值：full，全量；increment，增量

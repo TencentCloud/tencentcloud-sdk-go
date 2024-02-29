@@ -213,9 +213,9 @@ type ApproverInfo struct {
 	// <li>图片控件</li>
 	// <li>数据表格等填写控件</li></ul>
 	// 
-	// 具体使用说明可参考[为签署方指定填写控件](https%3A%2F%2Fqian.tencent.cn%2Fdevelopers%2Fcompany%2FcreateFlowByFiles%2F%23%E6%8C%87%E5%AE%9A%E7%AD%BE%E7%BD%B2%E6%96%B9%E5%A1%AB%E5%86%99%E6%8E%A7%E4%BB%B6)
+	// 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/company/createFlowByFiles/#指定签署方填写控件)
 	// 
-	// 注1：`此参数仅在通过文件发起合同或者合同组时生效`
+	// 注：`此参数仅在通过文件发起合同或者合同组时生效`
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
@@ -3050,7 +3050,10 @@ type CreateFlowRequestParams struct {
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
 	// 
-	// 注:  `approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效`
+	// 注:  
+	// <font color="red" > <b> 在发起流程时，需要保证 approver 中的顺序与模板定义顺序一致，否则会发起失败。
+	// 例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/addbc9f12785e4d9d7c5cdeda660631a.png)
 	Approvers []*FlowCreateApprover `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
@@ -3148,7 +3151,10 @@ type CreateFlowRequest struct {
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
 	// 
-	// 注:  `approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效`
+	// 注:  
+	// <font color="red" > <b> 在发起流程时，需要保证 approver 中的顺序与模板定义顺序一致，否则会发起失败。
+	// 例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/addbc9f12785e4d9d7c5cdeda660631a.png)
 	Approvers []*FlowCreateApprover `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。

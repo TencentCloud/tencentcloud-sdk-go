@@ -2585,6 +2585,9 @@ type CreateMachineGroupRequestParams struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
+	// 机器组中机器离线清理时间
+	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
+
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
@@ -2616,6 +2619,9 @@ type CreateMachineGroupRequest struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
+	// 机器组中机器离线清理时间
+	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
+
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
@@ -2642,6 +2648,7 @@ func (r *CreateMachineGroupRequest) FromJsonString(s string) error {
 	delete(f, "UpdateStartTime")
 	delete(f, "UpdateEndTime")
 	delete(f, "ServiceLogging")
+	delete(f, "DelayCleanupTime")
 	delete(f, "MetaTags")
 	delete(f, "OSType")
 	if len(f) > 0 {
@@ -6587,7 +6594,7 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 }
 
 type DynamicIndex struct {
-	// 动态索引配置开关
+	// 键值索引自动配置开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
@@ -7296,6 +7303,10 @@ type MachineGroupInfo struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
+
+	// 机器组中机器离线定期清理时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
@@ -8786,6 +8797,9 @@ type ModifyMachineGroupRequestParams struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
+	// 机器组中机器定期离线清理时间
+	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
+
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 }
@@ -8817,6 +8831,9 @@ type ModifyMachineGroupRequest struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
+	// 机器组中机器定期离线清理时间
+	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
+
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 }
@@ -8841,6 +8858,7 @@ func (r *ModifyMachineGroupRequest) FromJsonString(s string) error {
 	delete(f, "UpdateStartTime")
 	delete(f, "UpdateEndTime")
 	delete(f, "ServiceLogging")
+	delete(f, "DelayCleanupTime")
 	delete(f, "MetaTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMachineGroupRequest has unknown keys!", "")
@@ -9807,20 +9825,20 @@ func (r *RetryShipperTaskResponse) FromJsonString(s string) error {
 }
 
 type RuleInfo struct {
-	// 全文索引配置, 如果为空时代表未开启全文索引
+	// 全文索引配置, 为空时代表未开启全文索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullText *FullTextInfo `json:"FullText,omitnil,omitempty" name:"FullText"`
 
-	// 键值索引配置，如果为空时代表未开启键值索引
+	// 键值索引配置，为空时代表未开启键值索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyValue *RuleKeyValueInfo `json:"KeyValue,omitnil,omitempty" name:"KeyValue"`
 
-	// 元字段索引配置，如果为空时代表未开启元字段索引
+	// 元字段索引配置，为空时代表未开启元字段索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *RuleTagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 动态索引配置，为空时代表未开启动态索引。
-	// 启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
+	// 键值索引自动配置，为空时代表未开启该功能。
+	// 启用后自动将日志内的字段添加到键值索引中，包括日志中后续新增的字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DynamicIndex *DynamicIndex `json:"DynamicIndex,omitnil,omitempty" name:"DynamicIndex"`
 }
