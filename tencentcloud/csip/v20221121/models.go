@@ -3458,6 +3458,63 @@ func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTopAttackInfoRequestParams struct {
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+}
+
+type DescribeTopAttackInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+}
+
+func (r *DescribeTopAttackInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopAttackInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperatedMemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopAttackInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopAttackInfoResponseParams struct {
+	// Top攻击类型/攻击者次数
+	TopAttackInfo []*TagCount `json:"TopAttackInfo,omitnil,omitempty" name:"TopAttackInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopAttackInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopAttackInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopAttackInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopAttackInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVULRiskAdvanceCFGListRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -5028,6 +5085,16 @@ type Tag struct {
 
 	// 标签内容
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TagCount struct {
+	// 产品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type Tags struct {

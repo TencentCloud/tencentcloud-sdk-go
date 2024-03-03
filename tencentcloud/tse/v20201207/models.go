@@ -1968,6 +1968,70 @@ type CreateGatewayServiceResult struct {
 }
 
 // Predefined struct for user
+type CreateGovernanceInstancesRequestParams struct {
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务实例信息。
+	GovernanceInstances []*GovernanceInstanceInput `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+type CreateGovernanceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务实例信息。
+	GovernanceInstances []*GovernanceInstanceInput `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+func (r *CreateGovernanceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGovernanceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GovernanceInstances")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGovernanceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGovernanceInstancesResponseParams struct {
+	// 创建是否成功。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGovernanceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGovernanceInstancesResponseParams `json:"Response"`
+}
+
+func (r *CreateGovernanceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGovernanceInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNativeGatewayServerGroupRequestParams struct {
 	// 网关实例id。
 	// 只支持后付费实例
@@ -2785,6 +2849,70 @@ func (r *DeleteEngineResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGovernanceInstancesRequestParams struct {
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要删除的服务实例信息。
+	GovernanceInstances []*GovernanceInstanceUpdate `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+type DeleteGovernanceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要删除的服务实例信息。
+	GovernanceInstances []*GovernanceInstanceUpdate `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+func (r *DeleteGovernanceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGovernanceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GovernanceInstances")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGovernanceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGovernanceInstancesResponseParams struct {
+	// 操作是否成功。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGovernanceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGovernanceInstancesResponseParams `json:"Response"`
+}
+
+func (r *DeleteGovernanceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGovernanceInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4121,6 +4249,136 @@ type DescribeGatewayInstancePortResult struct {
 	GatewayInstancePortList []*GatewayInstanceSchemeAndPorts `json:"GatewayInstancePortList,omitnil,omitempty" name:"GatewayInstancePortList"`
 }
 
+// Predefined struct for user
+type DescribeGovernanceInstancesRequestParams struct {
+	// 实例所在的服务名。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例所在命名空间名。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 根据实例ip过滤，多个ip使用英文逗号分隔。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 根据实例版本过滤。
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// 根据实例协议过滤。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 根据实例健康状态过滤。false：表示不健康，true：表示健康。
+	HealthStatus *bool `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// 根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。
+	Isolate *bool `json:"Isolate,omitnil,omitempty" name:"Isolate"`
+
+	// 根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGovernanceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例所在的服务名。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例所在命名空间名。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 根据实例ip过滤，多个ip使用英文逗号分隔。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 根据实例版本过滤。
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// 根据实例协议过滤。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 根据实例健康状态过滤。false：表示不健康，true：表示健康。
+	HealthStatus *bool `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// 根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。
+	Isolate *bool `json:"Isolate,omitnil,omitempty" name:"Isolate"`
+
+	// 根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGovernanceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGovernanceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Service")
+	delete(f, "Namespace")
+	delete(f, "InstanceId")
+	delete(f, "Host")
+	delete(f, "InstanceVersion")
+	delete(f, "Protocol")
+	delete(f, "HealthStatus")
+	delete(f, "Isolate")
+	delete(f, "Metadatas")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGovernanceInstancesResponseParams struct {
+	// 服务实例总数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 服务里实例列表。
+	Content []*GovernanceInstance `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGovernanceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGovernanceInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGovernanceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGovernanceInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceRegionInfo struct {
 	// 引擎部署地域信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5255,6 +5513,141 @@ type GatewayInstanceSchemeAndPorts struct {
 	PortList []*uint64 `json:"PortList,omitnil,omitempty" name:"PortList"`
 }
 
+type GovernanceInstance struct {
+	// 实例id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 实例所在服务名。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例所在命名空间名。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 实例ip地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 实例端口信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 通信协议。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 版本信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 负载均衡权重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 是否开启健康检查。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
+
+	// 实例是否健康。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Healthy *bool `json:"Healthy,omitnil,omitempty" name:"Healthy"`
+
+	// 实例是否隔离。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Isolate *bool `json:"Isolate,omitnil,omitempty" name:"Isolate"`
+
+	// 实例创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 实例修改时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 元数据数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+
+	// 上报心跳间隔。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
+}
+
+type GovernanceInstanceInput struct {
+	// 实例所在服务名。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例服务所在命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 实例负载均衡权重信息。不填默认为100。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 实例默认健康信息。不填默认为健康。
+	Healthy *bool `json:"Healthy,omitnil,omitempty" name:"Healthy"`
+
+	// 实例隔离信息。不填默认为非隔离。
+	Isolate *bool `json:"Isolate,omitnil,omitempty" name:"Isolate"`
+
+	// 实例ip。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 实例监听端口。
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 实例使用协议。不填默认为空。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 实例版本。不填默认为空。
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// 是否启用健康检查。不填默认不启用。
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
+
+	// 上报心跳时间间隔。若 EnableHealthCheck 为不启用，则此参数不生效；若 EnableHealthCheck 启用，此参数不填，则默认 ttl 为 5s。
+	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
+}
+
+type GovernanceInstanceUpdate struct {
+	// 实例所在服务名。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例服务所在命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 治理中心服务实例id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 实例负载均衡权重信息。不填默认为100。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 实例默认健康信息。不填默认为健康。
+	Healthy *bool `json:"Healthy,omitnil,omitempty" name:"Healthy"`
+
+	// 实例隔离信息。不填默认为非隔离。
+	Isolate *bool `json:"Isolate,omitnil,omitempty" name:"Isolate"`
+
+	// 实例ip。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 实例监听端口。
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 实例使用协议。不填默认为空。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 实例版本。不填默认为空。
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// 是否启用健康检查。不填默认不启用。
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
+
+	// 上报心跳时间间隔。若 EnableHealthCheck 为不启用，则此参数不生效；若 EnableHealthCheck 启用，此参数不填，则默认 ttl 为 5s。
+	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
+
+	// 元数据信息。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+}
+
 type InstancePort struct {
 	// 监听的 http 端口范围。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5744,6 +6137,16 @@ type ListFilter struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 过滤值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Metadata struct {
+	// 元数据键名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 元数据键值。不填则默认为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -6654,6 +7057,70 @@ func (r *ModifyConsoleNetworkResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyConsoleNetworkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGovernanceInstancesRequestParams struct {
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务实例信息。
+	GovernanceInstances []*GovernanceInstanceUpdate `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+type ModifyGovernanceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// tse实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务实例信息。
+	GovernanceInstances []*GovernanceInstanceUpdate `json:"GovernanceInstances,omitnil,omitempty" name:"GovernanceInstances"`
+}
+
+func (r *ModifyGovernanceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernanceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GovernanceInstances")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGovernanceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGovernanceInstancesResponseParams struct {
+	// 修改是否成功。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGovernanceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGovernanceInstancesResponseParams `json:"Response"`
+}
+
+func (r *ModifyGovernanceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernanceInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

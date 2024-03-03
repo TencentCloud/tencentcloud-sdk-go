@@ -12789,6 +12789,14 @@ type PrometheusAgentOverview struct {
 	// 是否已开启公网访问，true 开启，false 未开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableExternal *bool `json:"EnableExternal,omitnil,omitempty" name:"EnableExternal"`
+
+	// 采集agent期望pod数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredAgentNum *int64 `json:"DesiredAgentNum,omitnil,omitempty" name:"DesiredAgentNum"`
+
+	// 采集agent已正常启动pod数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadyAgentNum *int64 `json:"ReadyAgentNum,omitnil,omitempty" name:"ReadyAgentNum"`
 }
 
 type PrometheusAlertAllowTimeRange struct {

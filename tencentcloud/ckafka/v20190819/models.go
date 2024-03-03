@@ -2063,7 +2063,7 @@ type CreateInstancePreRequestParams struct {
 	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"
+	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
 	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
@@ -2078,7 +2078,7 @@ type CreateInstancePreRequestParams struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
@@ -2130,7 +2130,7 @@ type CreateInstancePreRequest struct {
 	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"
+	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
 	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
@@ -2145,7 +2145,7 @@ type CreateInstancePreRequest struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
@@ -7473,7 +7473,7 @@ type GroupResponse struct {
 
 // Predefined struct for user
 type InquireCkafkaPriceRequestParams struct {
-	// 国内站标准版填写standards2, 国际站标准版填写standard，专业版填写profession
+	// 国内站标准版填写standards2, 国际站标准版填写standard,专业版填写profession,高级版填写premium
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
@@ -7482,10 +7482,10 @@ type InquireCkafkaPriceRequestParams struct {
 	// 购买/续费时购买的实例数量(不填时, 默认为1个)
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 实例内网带宽大小, 单位MB/s (购买时必填，专业版询价时带宽信息必填)
+	// 实例内网带宽大小, 单位MB/s (购买时必填，专业版/高级版询价时带宽信息必填)
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 实例的硬盘购买类型以及大小 (购买时必填，专业版询价时磁盘信息必填)
+	// 实例的硬盘购买类型以及大小 (购买时必填，专业版/高级版询价时磁盘信息必填)
 	InquiryDiskParam *InquiryDiskParam `json:"InquiryDiskParam,omitnil,omitempty" name:"InquiryDiskParam"`
 
 	// 实例消息保留时间大小, 单位小时 (购买时必填)
@@ -7494,7 +7494,7 @@ type InquireCkafkaPriceRequestParams struct {
 	// 购买实例topic数, 单位个 (购买时必填)
 	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 购买实例分区数, 单位个 (购买时必填，专业版询价时带宽信息必填)
+	// 购买实例分区数, 单位个 (购买时必填，专业版/高级版询价时带宽信息必填)
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
@@ -7516,7 +7516,7 @@ type InquireCkafkaPriceRequestParams struct {
 type InquireCkafkaPriceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 国内站标准版填写standards2, 国际站标准版填写standard，专业版填写profession
+	// 国内站标准版填写standards2, 国际站标准版填写standard,专业版填写profession,高级版填写premium
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
@@ -7525,10 +7525,10 @@ type InquireCkafkaPriceRequest struct {
 	// 购买/续费时购买的实例数量(不填时, 默认为1个)
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 实例内网带宽大小, 单位MB/s (购买时必填，专业版询价时带宽信息必填)
+	// 实例内网带宽大小, 单位MB/s (购买时必填，专业版/高级版询价时带宽信息必填)
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 实例的硬盘购买类型以及大小 (购买时必填，专业版询价时磁盘信息必填)
+	// 实例的硬盘购买类型以及大小 (购买时必填，专业版/高级版询价时磁盘信息必填)
 	InquiryDiskParam *InquiryDiskParam `json:"InquiryDiskParam,omitnil,omitempty" name:"InquiryDiskParam"`
 
 	// 实例消息保留时间大小, 单位小时 (购买时必填)
@@ -7537,7 +7537,7 @@ type InquireCkafkaPriceRequest struct {
 	// 购买实例topic数, 单位个 (购买时必填)
 	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 购买实例分区数, 单位个 (购买时必填，专业版询价时带宽信息必填)
+	// 购买实例分区数, 单位个 (购买时必填，专业版/高级版询价时带宽信息必填)
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId

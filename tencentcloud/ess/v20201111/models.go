@@ -3053,7 +3053,8 @@ type CreateFlowRequestParams struct {
 	// 注:  
 	// <font color="red" > <b> 在发起流程时，需要保证 approver 中的顺序与模板定义顺序一致，否则会发起失败。
 	// 例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/addbc9f12785e4d9d7c5cdeda660631a.png)
+	// 
+	// [点击查看模板参与人顺序定义位置](https://qcloudimg.tencent-cloud.cn/raw/d14457b48cc66b29262ccb9d7b3ed556.png)
 	Approvers []*FlowCreateApprover `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
@@ -3154,7 +3155,8 @@ type CreateFlowRequest struct {
 	// 注:  
 	// <font color="red" > <b> 在发起流程时，需要保证 approver 中的顺序与模板定义顺序一致，否则会发起失败。
 	// 例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/addbc9f12785e4d9d7c5cdeda660631a.png)
+	// 
+	// [点击查看模板参与人顺序定义位置](https://qcloudimg.tencent-cloud.cn/raw/d14457b48cc66b29262ccb9d7b3ed556.png)
 	Approvers []*FlowCreateApprover `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。

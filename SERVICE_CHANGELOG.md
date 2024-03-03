@@ -1,38 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 59 次发布
+### 第 32 次发布
 
-发布时间：2024-03-01 01:09:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AbortPredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104035)
-* [CreatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104034)
-* [DeletePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104033)
-* [DescribePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104032)
-* [DescribePredictiveDialingCampaigns](https://cloud.tencent.com/document/api/679/104031)
-* [DescribePredictiveDialingSessions](https://cloud.tencent.com/document/api/679/104030)
-* [PausePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104029)
-* [ResumePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104028)
-* [UpdatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104027)
-
-新增数据结构：
-
-* [DescribePredictiveDialingCampaignsElement](https://cloud.tencent.com/document/api/679/47715#DescribePredictiveDialingCampaignsElement)
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 56 次发布
-
-发布时间：2024-03-01 01:11:09
+发布时间：2024-03-04 01:11:59
 
 本次发布包含了以下内容：
 
@@ -40,133 +12,19 @@
 
 新增接口：
 
-* [CreateBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104038)
-* [DeleteBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104037)
-* [ModifyBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104036)
+* [DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)
 
 新增数据结构：
 
-* [BanAndAllowRule](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRule)
-* [BanAndAllowRuleDel](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRuleDel)
+* [TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount)
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 82 次发布
+### 第 107 次发布
 
-发布时间：2024-03-01 01:12:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateMachineGroup](https://cloud.tencent.com/document/api/614/56440)
-
-	* 新增入参：DelayCleanupTime
-
-* [ModifyMachineGroup](https://cloud.tencent.com/document/api/614/56436)
-
-	* 新增入参：DelayCleanupTime
-
-
-修改数据结构：
-
-* [MachineGroupInfo](https://cloud.tencent.com/document/api/614/56471#MachineGroupInfo)
-
-	* 新增成员：DelayCleanupTime
-
-	* <font color="#dd0000">**修改成员**：</font>MetaTags, OSType
-
-
-
-
-## 多网聚合加速(mna) 版本：2021-01-19
-
-### 第 17 次发布
-
-发布时间：2024-03-01 01:20:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddDevice](https://cloud.tencent.com/document/api/1385/80483)
-
-	* 新增入参：AccessScope
-
-* [GetFlowStatistic](https://cloud.tencent.com/document/api/1385/80486)
-
-	* 新增入参：AccessRegion, GatewayType
-
-* [GetMultiFlowStatistic](https://cloud.tencent.com/document/api/1385/86864)
-
-	* 新增入参：AccessRegion, GatewayType
-
-* [GetNetMonitor](https://cloud.tencent.com/document/api/1385/101384)
-
-	* 新增入参：GatewayType
-
-	* 新增出参：AccessRegion
-
-* [GetStatisticData](https://cloud.tencent.com/document/api/1385/80479)
-
-	* 新增入参：AccessRegion, GatewayType
-
-
-修改数据结构：
-
-* [ActivateHardware](https://cloud.tencent.com/document/api/1385/55846#ActivateHardware)
-
-	* 新增成员：AccessScope
-
-* [DeviceBaseInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceBaseInfo)
-
-	* 新增成员：AccessScope
-
-* [FlowPackageInfo](https://cloud.tencent.com/document/api/1385/55846#FlowPackageInfo)
-
-	* 新增成员：CreateTime, ModifyStatus
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 41 次发布
-
-发布时间：2024-03-01 01:22:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/409/18102)
-
-	* 新增入参：Cpu
-
-* [ModifyBackupPlan](https://cloud.tencent.com/document/api/409/68067)
-
-	* 新增入参：LogBackupRetentionPeriod
-
-* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)
-
-	* 新增入参：Cpu
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 66 次发布
-
-发布时间：2024-03-01 01:27:10
+发布时间：2024-03-04 01:19:57
 
 本次发布包含了以下内容：
 
@@ -174,42 +32,18 @@
 
 修改数据结构：
 
-* [McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText)
+* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)
 
-	* 新增成员：ZOrder
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 179 次发布
-
-发布时间：2024-03-01 01:28:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104040)
-* [ModifyDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104039)
-
-修改接口：
-
-* [CreateDomainVerifyRecord](https://cloud.tencent.com/document/api/266/97950)
-
-	* 新增入参：Domain
+	* 新增成员：DesiredAgentNum, ReadyAgentNum
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+## 腾讯健康组学平台(omics) 版本：2022-11-28
 
-### 第 80 次发布
+### 第 13 次发布
 
-发布时间：2024-03-01 01:29:13
+发布时间：2024-03-04 01:21:08
 
 本次发布包含了以下内容：
 
@@ -217,20 +51,23 @@
 
 新增接口：
 
-* [CreateDeals](https://cloud.tencent.com/document/api/627/104041)
+* [CreateVolume](https://cloud.tencent.com/document/api/1643/104065)
+* [DeleteVolume](https://cloud.tencent.com/document/api/1643/104064)
+* [DeleteVolumeData](https://cloud.tencent.com/document/api/1643/104063)
+* [DescribeVolumes](https://cloud.tencent.com/document/api/1643/104062)
+* [ModifyVolume](https://cloud.tencent.com/document/api/1643/104061)
 
 新增数据结构：
 
-* [CreateDealsGoods](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoods)
-* [CreateDealsGoodsDetail](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoodsDetail)
+* [Volume](https://cloud.tencent.com/document/api/1643/89100#Volume)
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 77 次发布
+### 第 32 次发布
 
-发布时间：2024-03-01 01:29:38
+发布时间：2024-03-04 01:26:24
 
 本次发布包含了以下内容：
 
@@ -238,38 +75,40 @@
 
 修改接口：
 
-* [BatchDeleteIntegrationTasks](https://cloud.tencent.com/document/api/1267/82540)
+* [DescribeCodeBatches](https://cloud.tencent.com/document/api/1458/101819)
 
-	* 新增入参：Name, TaskNames
+	* 新增入参：Status
 
-* [BatchResumeIntegrationTasks](https://cloud.tencent.com/document/api/1267/82535)
+* [DescribeCodeBatchs](https://cloud.tencent.com/document/api/1458/75017)
 
-	* 新增出参：TaskNames
+	* 新增入参：Status
 
-* [BatchStartIntegrationTasks](https://cloud.tencent.com/document/api/1267/82534)
 
-	* 新增入参：StartTaskInfoSet
 
-	* <font color="#dd0000">**修改入参**：</font>TaskIds
 
-	* 新增出参：TaskNames
+## 微服务引擎(tse) 版本：2020-12-07
 
-* [BatchStopIntegrationTasks](https://cloud.tencent.com/document/api/1267/82533)
+### 第 58 次发布
 
-	* 新增出参：TaskNames
+发布时间：2024-03-04 01:26:55
 
-* [BatchSuspendIntegrationTasks](https://cloud.tencent.com/document/api/1267/82532)
+本次发布包含了以下内容：
 
-	* 新增入参：TaskNames
+改善已有的文档。
 
-* [BatchUpdateIntegrationTasks](https://cloud.tencent.com/document/api/1267/82531)
+新增接口：
 
-	* 新增入参：TaskNames
-
+* [CreateGovernanceInstances](https://cloud.tencent.com/document/api/1364/104069)
+* [DeleteGovernanceInstances](https://cloud.tencent.com/document/api/1364/104068)
+* [DescribeGovernanceInstances](https://cloud.tencent.com/document/api/1364/104067)
+* [ModifyGovernanceInstances](https://cloud.tencent.com/document/api/1364/104066)
 
 新增数据结构：
 
-* [StartTaskInfo](https://cloud.tencent.com/document/api/1267/76336#StartTaskInfo)
+* [GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance)
+* [GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput)
+* [GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)
+* [Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata)
 
 
 
@@ -14941,19 +14780,19 @@
 
 新增接口：
 
-* [[AbortPredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104035)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104034)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104033)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104032)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePredictiveDialingCampaigns](https://cloud.tencent.com/document/api/679/104031)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePredictiveDialingSessions](https://cloud.tencent.com/document/api/679/104030)](https://cloud.tencent.com/document/api/#/#)
-* [[PausePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104029)](https://cloud.tencent.com/document/api/#/#)
-* [[ResumePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104028)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104027)](https://cloud.tencent.com/document/api/#/#)
+* [AbortPredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104035)
+* [CreatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104034)
+* [DeletePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104033)
+* [DescribePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104032)
+* [DescribePredictiveDialingCampaigns](https://cloud.tencent.com/document/api/679/104031)
+* [DescribePredictiveDialingSessions](https://cloud.tencent.com/document/api/679/104030)
+* [PausePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104029)
+* [ResumePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104028)
+* [UpdatePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104027)
 
 新增数据结构：
 
-* [[DescribePredictiveDialingCampaignsElement](https://cloud.tencent.com/document/api/679/47715#DescribePredictiveDialingCampaignsElement)](https://cloud.tencent.com/document/api/679/47715#[DescribePredictiveDialingCampaignsElement](https://cloud.tencent.com/document/api/679/47715#DescribePredictiveDialingCampaignsElement))
+* [DescribePredictiveDialingCampaignsElement](https://cloud.tencent.com/document/api/679/47715#DescribePredictiveDialingCampaignsElement)
 
 ### 第 58 次发布
 
@@ -23552,14 +23391,14 @@
 
 新增接口：
 
-* [[CreateBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104038)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104037)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104036)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104038)
+* [DeleteBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104037)
+* [ModifyBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104036)
 
 新增数据结构：
 
-* [[BanAndAllowRule](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRule)](https://cloud.tencent.com/document/api/1132/49071#[BanAndAllowRule](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRule))
-* [[BanAndAllowRuleDel](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRuleDel)](https://cloud.tencent.com/document/api/1132/49071#[BanAndAllowRuleDel](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRuleDel))
+* [BanAndAllowRule](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRule)
+* [BanAndAllowRuleDel](https://cloud.tencent.com/document/api/1132/49071#BanAndAllowRuleDel)
 
 ### 第 55 次发布
 
@@ -36491,6 +36330,22 @@
 
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 32 次发布
+
+发布时间：2024-03-04 01:11:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount)](https://cloud.tencent.com/document/api/664/90825#[TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount))
 
 ### 第 31 次发布
 
@@ -84441,6 +84296,21 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 107 次发布
+
+发布时间：2024-03-04 01:19:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)
+
+	* 新增成员：DesiredAgentNum, ReadyAgentNum
+
+
 ### 第 106 次发布
 
 发布时间：2024-02-26 01:19:42
@@ -94597,6 +94467,26 @@
 
 
 ## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 13 次发布
+
+发布时间：2024-03-04 01:21:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVolume](https://cloud.tencent.com/document/api/1643/104065)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVolume](https://cloud.tencent.com/document/api/1643/104064)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVolumeData](https://cloud.tencent.com/document/api/1643/104063)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVolumes](https://cloud.tencent.com/document/api/1643/104062)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyVolume](https://cloud.tencent.com/document/api/1643/104061)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Volume](https://cloud.tencent.com/document/api/1643/89100#Volume)](https://cloud.tencent.com/document/api/1643/89100#[Volume](https://cloud.tencent.com/document/api/1643/89100#Volume))
 
 ### 第 12 次发布
 
@@ -129480,6 +129370,25 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 32 次发布
+
+发布时间：2024-03-04 01:26:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCodeBatches](https://cloud.tencent.com/document/api/1458/101819)
+
+	* 新增入参：Status
+
+* [DescribeCodeBatchs](https://cloud.tencent.com/document/api/1458/75017)
+
+	* 新增入参：Status
+
+
 ### 第 31 次发布
 
 发布时间：2023-12-29 01:27:21
@@ -131540,6 +131449,28 @@
 
 
 ## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 58 次发布
+
+发布时间：2024-03-04 01:26:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateGovernanceInstances](https://cloud.tencent.com/document/api/1364/104069)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteGovernanceInstances](https://cloud.tencent.com/document/api/1364/104068)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGovernanceInstances](https://cloud.tencent.com/document/api/1364/104067)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyGovernanceInstances](https://cloud.tencent.com/document/api/1364/104066)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance))
+* [[GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput))
+* [[GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate))
+* [[Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata)](https://cloud.tencent.com/document/api/1364/54942#[Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata))
 
 ### 第 57 次发布
 
@@ -136169,8 +136100,8 @@
 
 新增接口：
 
-* [[DescribeDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104040)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104039)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104040)
+* [ModifyDefaultDistributionConfig](https://cloud.tencent.com/document/api/266/104039)
 
 修改接口：
 
@@ -145294,12 +145225,12 @@
 
 新增接口：
 
-* [[CreateDeals](https://cloud.tencent.com/document/api/627/104041)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDeals](https://cloud.tencent.com/document/api/627/104041)
 
 新增数据结构：
 
-* [[CreateDealsGoods](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoods)](https://cloud.tencent.com/document/api/627/53609#[CreateDealsGoods](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoods))
-* [[CreateDealsGoodsDetail](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoodsDetail)](https://cloud.tencent.com/document/api/627/53609#[CreateDealsGoodsDetail](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoodsDetail))
+* [CreateDealsGoods](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoods)
+* [CreateDealsGoodsDetail](https://cloud.tencent.com/document/api/627/53609#CreateDealsGoodsDetail)
 
 ### 第 79 次发布
 
@@ -147443,7 +147374,7 @@
 
 新增数据结构：
 
-* [[StartTaskInfo](https://cloud.tencent.com/document/api/1267/76336#StartTaskInfo)](https://cloud.tencent.com/document/api/1267/76336#[StartTaskInfo](https://cloud.tencent.com/document/api/1267/76336#StartTaskInfo))
+* [StartTaskInfo](https://cloud.tencent.com/document/api/1267/76336#StartTaskInfo)
 
 ### 第 76 次发布
 

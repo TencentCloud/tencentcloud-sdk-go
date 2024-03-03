@@ -179,6 +179,111 @@ func (r *CreateEnvironmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVolumeRequestParams struct {
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 缓存卷类型，取值范围：
+	// * SHARED：多点挂载共享存储
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 缓存卷规格，取值范围：
+	// 
+	// - SD：通用标准型
+	// - HP：通用性能型
+	// - TB：turbo标准型
+	// - TP：turbo性能型
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 缓存卷大小（GB），Turbo系列需要指定。
+	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+}
+
+type CreateVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 缓存卷类型，取值范围：
+	// * SHARED：多点挂载共享存储
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 缓存卷规格，取值范围：
+	// 
+	// - SD：通用标准型
+	// - HP：通用性能型
+	// - TB：turbo标准型
+	// - TP：turbo性能型
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 缓存卷大小（GB），Turbo系列需要指定。
+	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+}
+
+func (r *CreateVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Spec")
+	delete(f, "Description")
+	delete(f, "Capacity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVolumeResponseParams struct {
+	// 缓存卷ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVolumeResponseParams `json:"Response"`
+}
+
+func (r *CreateVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DatabaseOption struct {
 	// 数据库可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
@@ -238,6 +343,121 @@ func (r *DeleteEnvironmentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEnvironmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVolumeDataRequestParams struct {
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 需要删除的路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type DeleteVolumeDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 需要删除的路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+func (r *DeleteVolumeDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VolumeId")
+	delete(f, "Path")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVolumeDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVolumeDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVolumeDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVolumeDataResponseParams `json:"Response"`
+}
+
+func (r *DeleteVolumeDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVolumeRequestParams struct {
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+}
+
+type DeleteVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+}
+
+func (r *DeleteVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VolumeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVolumeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVolumeResponseParams `json:"Response"`
+}
+
+func (r *DeleteVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -675,6 +895,93 @@ func (r *DescribeTablesRowsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTablesRowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVolumesRequestParams struct {
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Name：名称
+	// - IsDefault：是否为默认
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeVolumesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Name：名称
+	// - IsDefault：是否为默认
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVolumesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVolumesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVolumesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVolumesResponseParams struct {
+	// 缓存卷。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Volumes []*Volume `json:"Volumes,omitnil,omitempty" name:"Volumes"`
+
+	// 符合条件的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVolumesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVolumesResponseParams `json:"Response"`
+}
+
+func (r *DescribeVolumesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVolumesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1140,6 +1447,74 @@ type LimitRange struct {
 	// 最大内存设置（单位：Mi，Gi，Ti，M，G，T）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMemory *string `json:"MaxMemory,omitnil,omitempty" name:"MaxMemory"`
+}
+
+// Predefined struct for user
+type ModifyVolumeRequestParams struct {
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 缓存卷ID。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VolumeId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVolumeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVolumeResponseParams `json:"Response"`
+}
+
+func (r *ModifyVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type NFOption struct {
@@ -1989,4 +2364,60 @@ type VPCOption struct {
 
 	// 子网CIDR。
 	SubnetCIDRBlock *string `json:"SubnetCIDRBlock,omitnil,omitempty" name:"SubnetCIDRBlock"`
+}
+
+type Volume struct {
+	// 缓存卷ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+
+	// 名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 环境ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 缓存卷类型，取值范围：
+	// * SHARED：多点挂载共享存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 缓存卷规格，取值范围：
+	// 
+	// - SD：通用标准型
+	// - HP：通用性能型
+	// - TB：turbo标准型
+	// - TP：turbo性能型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 缓存卷大小（GB）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// 缓存卷使用量（Byte）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 缓存卷吞吐上限（MiB/s）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthLimit *float64 `json:"BandwidthLimit,omitnil,omitempty" name:"BandwidthLimit"`
+
+	// 默认挂载路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultMountPath *string `json:"DefaultMountPath,omitnil,omitempty" name:"DefaultMountPath"`
+
+	// 是否为默认缓存卷。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }

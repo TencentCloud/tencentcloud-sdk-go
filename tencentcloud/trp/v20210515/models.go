@@ -1948,6 +1948,9 @@ type DescribeCodeBatchesRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 批次状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeCodeBatchesRequest struct {
@@ -1973,6 +1976,9 @@ type DescribeCodeBatchesRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 批次状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *DescribeCodeBatchesRequest) ToJsonString() string {
@@ -1994,6 +2000,7 @@ func (r *DescribeCodeBatchesRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "BatchType")
 	delete(f, "CorpId")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeBatchesRequest has unknown keys!", "")
 	}
@@ -2050,6 +2057,9 @@ type DescribeCodeBatchsRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 批次状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeCodeBatchsRequest struct {
@@ -2075,6 +2085,9 @@ type DescribeCodeBatchsRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 批次状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *DescribeCodeBatchsRequest) ToJsonString() string {
@@ -2096,6 +2109,7 @@ func (r *DescribeCodeBatchsRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "BatchType")
 	delete(f, "CorpId")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeBatchsRequest has unknown keys!", "")
 	}

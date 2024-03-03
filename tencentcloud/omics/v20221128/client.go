@@ -110,6 +110,71 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateVolumeRequest() (request *CreateVolumeRequest) {
+    request = &CreateVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "CreateVolume")
+    
+    
+    return
+}
+
+func NewCreateVolumeResponse() (response *CreateVolumeResponse) {
+    response = &CreateVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVolume
+// 创建缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateVolume(request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+    return c.CreateVolumeWithContext(context.Background(), request)
+}
+
+// CreateVolume
+// 创建缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+    if request == nil {
+        request = NewCreateVolumeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVolumeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEnvironmentRequest() (request *DeleteEnvironmentRequest) {
     request = &DeleteEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -171,6 +236,136 @@ func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVolumeRequest() (request *DeleteVolumeRequest) {
+    request = &DeleteVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DeleteVolume")
+    
+    
+    return
+}
+
+func NewDeleteVolumeResponse() (response *DeleteVolumeResponse) {
+    response = &DeleteVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVolume
+// 删除缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteVolume(request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+    return c.DeleteVolumeWithContext(context.Background(), request)
+}
+
+// DeleteVolume
+// 删除缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+    if request == nil {
+        request = NewDeleteVolumeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVolumeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVolumeDataRequest() (request *DeleteVolumeDataRequest) {
+    request = &DeleteVolumeDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DeleteVolumeData")
+    
+    
+    return
+}
+
+func NewDeleteVolumeDataResponse() (response *DeleteVolumeDataResponse) {
+    response = &DeleteVolumeDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVolumeData
+// 删除缓存卷数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteVolumeData(request *DeleteVolumeDataRequest) (response *DeleteVolumeDataResponse, err error) {
+    return c.DeleteVolumeDataWithContext(context.Background(), request)
+}
+
+// DeleteVolumeData
+// 删除缓存卷数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteVolumeDataWithContext(ctx context.Context, request *DeleteVolumeDataRequest) (response *DeleteVolumeDataResponse, err error) {
+    if request == nil {
+        request = NewDeleteVolumeDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVolumeData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVolumeDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -478,6 +673,69 @@ func (c *Client) DescribeTablesRowsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeVolumesRequest() (request *DescribeVolumesRequest) {
+    request = &DescribeVolumesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeVolumes")
+    
+    
+    return
+}
+
+func NewDescribeVolumesResponse() (response *DescribeVolumesResponse) {
+    response = &DescribeVolumesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVolumes
+// 查询缓存卷列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVolumes(request *DescribeVolumesRequest) (response *DescribeVolumesResponse, err error) {
+    return c.DescribeVolumesWithContext(context.Background(), request)
+}
+
+// DescribeVolumes
+// 查询缓存卷列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *DescribeVolumesRequest) (response *DescribeVolumesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVolumesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVolumes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVolumesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRunCallsRequest() (request *GetRunCallsRequest) {
     request = &GetRunCallsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -758,6 +1016,71 @@ func (c *Client) ImportTableFileWithContext(ctx context.Context, request *Import
     request.SetContext(ctx)
     
     response = NewImportTableFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVolumeRequest() (request *ModifyVolumeRequest) {
+    request = &ModifyVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "ModifyVolume")
+    
+    
+    return
+}
+
+func NewModifyVolumeResponse() (response *ModifyVolumeResponse) {
+    response = &ModifyVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVolume
+// 修改缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyVolume(request *ModifyVolumeRequest) (response *ModifyVolumeResponse, err error) {
+    return c.ModifyVolumeWithContext(context.Background(), request)
+}
+
+// ModifyVolume
+// 修改缓存卷。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVolumeRequest) (response *ModifyVolumeResponse, err error) {
+    if request == nil {
+        request = NewModifyVolumeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVolumeResponse()
     err = c.Send(request, response)
     return
 }

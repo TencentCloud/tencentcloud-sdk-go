@@ -9068,7 +9068,13 @@ type FlowInfo struct {
 	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 多个签署人信息，最大支持50个签署方
+	// 合同流程的参与方列表，最多可支持50个参与方
+	// 
+	// 注:  
+	// <font color="red" > <b> 在发起流程时，需要保证 FlowApprovers中的顺序与模板定义顺序一致，否则会发起失败。
+	// 例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
+	// 
+	// [点击查看模板参与人顺序定义位置](https://qcloudimg.tencent-cloud.cn/raw/c50e0a204fc5c66aaa2ca70e451ef2d6.png)
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
 
 	// 发起方角色的填写控件的填充内容。
