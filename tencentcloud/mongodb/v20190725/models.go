@@ -1703,6 +1703,9 @@ type DescribeDBInstanceDealResponseParams struct {
 	// 订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
+	// 当前订单的资源Id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

@@ -9412,7 +9412,7 @@ type LoadBalancerPackageNew struct {
 	//     "日本": "jp",
 	//     "弗吉尼亚": "use",
 	//     "北京": "bj",
-	//     "香港": "hk",
+	//     "中国香港": "hk",
 	//     "杭州": "hzec",
 	//     "北京金融": "bjjr",
 	//     "上海金融": "shjr",

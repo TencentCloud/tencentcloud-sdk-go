@@ -1825,7 +1825,7 @@ type CreateTopicRequestParams struct {
 	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 日志集的保存周期，单位：天，默认30天。
+	// 日志集的保存周期，单位：天，默认30天，范围[1, 3600]。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
@@ -1844,7 +1844,7 @@ type CreateTopicRequest struct {
 	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 日志集的保存周期，单位：天，默认30天。
+	// 日志集的保存周期，单位：天，默认30天，范围[1, 3600]。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
@@ -4347,7 +4347,7 @@ type DescribeResourcesRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询可用区资源列表条件，详细的过滤条件如下：
-	// <li> zone - String - 是否必填：否 - （过滤条件）按照 可用区 过滤，如："ap-guangzhou-1"（广州一区）。</li>
+	// <li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
 	// <li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -4362,7 +4362,7 @@ type DescribeResourcesRequest struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询可用区资源列表条件，详细的过滤条件如下：
-	// <li> zone - String - 是否必填：否 - （过滤条件）按照 可用区 过滤，如："ap-guangzhou-1"（广州一区）。</li>
+	// <li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
 	// <li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -5161,7 +5161,7 @@ type InquiryPriceCreateLoadBalancerRequestParams struct {
 	// 询价的收费类型，POSTPAID为按量计费，"PREPAID"为预付费包年包月
 	LoadBalancerChargeType *string `json:"LoadBalancerChargeType,omitnil,omitempty" name:"LoadBalancerChargeType"`
 
-	// 询价的收费周期
+	// 询价的收费周期。（仅包年包月支持该参数）
 	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil,omitempty" name:"LoadBalancerChargePrepaid"`
 
 	// 询价的网络计费方式
@@ -5173,14 +5173,15 @@ type InquiryPriceCreateLoadBalancerRequestParams struct {
 	// 指定可用区询价。如：ap-guangzhou-1
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 包年包月询价时传性能容量型规格，如：clb.c3.small。按量付费询价时传SLA
+	// 包年包月询价时传性能容量型规格，如：<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
+	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
+	// 按量付费询价时传SLA
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
-	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil,omitempty" name:"VipIsp"`
 }
 
@@ -5193,7 +5194,7 @@ type InquiryPriceCreateLoadBalancerRequest struct {
 	// 询价的收费类型，POSTPAID为按量计费，"PREPAID"为预付费包年包月
 	LoadBalancerChargeType *string `json:"LoadBalancerChargeType,omitnil,omitempty" name:"LoadBalancerChargeType"`
 
-	// 询价的收费周期
+	// 询价的收费周期。（仅包年包月支持该参数）
 	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil,omitempty" name:"LoadBalancerChargePrepaid"`
 
 	// 询价的网络计费方式
@@ -5205,14 +5206,15 @@ type InquiryPriceCreateLoadBalancerRequest struct {
 	// 指定可用区询价。如：ap-guangzhou-1
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 包年包月询价时传性能容量型规格，如：clb.c3.small。按量付费询价时传SLA
+	// 包年包月询价时传性能容量型规格，如：<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
+	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
+	// 按量付费询价时传SLA
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 DescribeResources 接口查询一个地域所支持的Isp。
-	// 示例值：CMCC
 	VipIsp *string `json:"VipIsp,omitnil,omitempty" name:"VipIsp"`
 }
 
@@ -5454,18 +5456,18 @@ func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
 }
 
 type InternetAccessible struct {
-	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;
-	// BANDWIDTH_PACKAGE 按带宽包计费;
+	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费; BANDWIDTH_PACKAGE 按带宽包计费;BANDWIDTH_PREPAID按带宽预付费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 最大出带宽，单位Mbps，仅对公网属性的共享型、性能容量型和独占型 CLB 实例、以及内网属性的性能容量型 CLB 实例生效。
 	// - 对于公网属性的共享型和独占型 CLB 实例，最大出带宽的范围为1Mbps-2048Mbps。
 	// - 对于公网属性和内网属性的性能容量型 CLB实例，最大出带宽的范围为1Mbps-61440Mbps。
+	// （调用CreateLoadBalancer创建LB时不指定此参数则设置为默认值10Mbps。此上限可调整）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 带宽包的类型，如SINGLEISP
+	// 带宽包的类型，如SINGLEISP（单线）、BGP（多线）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthpkgSubType *string `json:"BandwidthpkgSubType,omitnil,omitempty" name:"BandwidthpkgSubType"`
 }
@@ -7039,7 +7041,7 @@ type ModifyLoadBalancersProjectRequestParams struct {
 	// 一个或多个待操作的负载均衡实例ID。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 项目ID。
+	// 项目ID。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -7049,7 +7051,7 @@ type ModifyLoadBalancersProjectRequest struct {
 	// 一个或多个待操作的负载均衡实例ID。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 项目ID。
+	// 项目ID。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -8369,12 +8371,12 @@ type SetLoadBalancerClsLogRequestParams struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 日志服务(CLS)的日志集 ID。
-	// <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/56454) 接口获取日志集 ID。</li>
+	// <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/58624) 接口获取日志集 ID。</li>
 	// <li>删除日志主题时，此参数填写为null即可。</li>
 	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
 
 	// 日志服务(CLS)的日志主题 ID。
-	// <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/58624) 接口获取日志主题 ID。</li>
+	// <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/56454) 接口获取日志主题 ID。</li>
 	// <li>删除日志主题时，此参数填写为null即可。</li>
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
@@ -8392,12 +8394,12 @@ type SetLoadBalancerClsLogRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 日志服务(CLS)的日志集 ID。
-	// <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/56454) 接口获取日志集 ID。</li>
+	// <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/58624) 接口获取日志集 ID。</li>
 	// <li>删除日志主题时，此参数填写为null即可。</li>
 	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
 
 	// 日志服务(CLS)的日志主题 ID。
-	// <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/58624) 接口获取日志主题 ID。</li>
+	// <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/56454) 接口获取日志主题 ID。</li>
 	// <li>删除日志主题时，此参数填写为null即可。</li>
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
@@ -8675,11 +8677,14 @@ type SnatIp struct {
 }
 
 type SpecAvailability struct {
-	// 规格类型
+	// 规格类型。
+	// <li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
+	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li><li>shared（共享型）</li>
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecType *string `json:"SpecType,omitnil,omitempty" name:"SpecType"`
 
-	// 规格可用性
+	// 规格可用性。资源可用性，"Available"：可用，"Unavailable"：不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Availability *string `json:"Availability,omitnil,omitempty" name:"Availability"`
 }

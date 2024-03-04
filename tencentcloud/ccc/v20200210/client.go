@@ -2766,6 +2766,61 @@ func (c *Client) UnbindStaffSkillGroupListWithContext(ctx context.Context, reque
     return
 }
 
+func NewUpdateCCCSkillGroupRequest() (request *UpdateCCCSkillGroupRequest) {
+    request = &UpdateCCCSkillGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "UpdateCCCSkillGroup")
+    
+    
+    return
+}
+
+func NewUpdateCCCSkillGroupResponse() (response *UpdateCCCSkillGroupResponse) {
+    response = &UpdateCCCSkillGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCCCSkillGroup
+// 更新技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SKILLGROUPEXIST = "InvalidParameterValue.SkillGroupExist"
+func (c *Client) UpdateCCCSkillGroup(request *UpdateCCCSkillGroupRequest) (response *UpdateCCCSkillGroupResponse, err error) {
+    return c.UpdateCCCSkillGroupWithContext(context.Background(), request)
+}
+
+// UpdateCCCSkillGroup
+// 更新技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SKILLGROUPEXIST = "InvalidParameterValue.SkillGroupExist"
+func (c *Client) UpdateCCCSkillGroupWithContext(ctx context.Context, request *UpdateCCCSkillGroupRequest) (response *UpdateCCCSkillGroupResponse, err error) {
+    if request == nil {
+        request = NewUpdateCCCSkillGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCCCSkillGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCCCSkillGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdatePredictiveDialingCampaignRequest() (request *UpdatePredictiveDialingCampaignRequest) {
     request = &UpdatePredictiveDialingCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},

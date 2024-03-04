@@ -114,7 +114,32 @@ type AnswerStat struct {
 }
 
 type AppConfig struct {
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 应用状态 1正常 2停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 1试用 2轻量版 3标准版 4旗舰版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppVersion *int64 `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 回调
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Callback *string `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// 回调Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
 }
 
 type AppCustomContent struct {
@@ -1105,7 +1130,7 @@ type CreateRoomRequestParams struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -1208,7 +1233,7 @@ type CreateRoomRequest struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -1978,6 +2003,9 @@ type DescribeAppDetailResponseParams struct {
 
 	// 场景配置
 	SceneConfig []*SceneItem `json:"SceneConfig,omitnil,omitempty" name:"SceneConfig"`
+
+	// 转存配置
+	TransferConfig *TransferItem `json:"TransferConfig,omitnil,omitempty" name:"TransferConfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4397,6 +4425,12 @@ type ModifyAppRequestParams struct {
 
 	// 回调key。
 	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
+
+	// 转存id
+	TransferId *string `json:"TransferId,omitnil,omitempty" name:"TransferId"`
+
+	// 转存地址
+	TransferUrl *string `json:"TransferUrl,omitnil,omitempty" name:"TransferUrl"`
 }
 
 type ModifyAppRequest struct {
@@ -4410,6 +4444,12 @@ type ModifyAppRequest struct {
 
 	// 回调key。
 	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
+
+	// 转存id
+	TransferId *string `json:"TransferId,omitnil,omitempty" name:"TransferId"`
+
+	// 转存地址
+	TransferUrl *string `json:"TransferUrl,omitnil,omitempty" name:"TransferUrl"`
 }
 
 func (r *ModifyAppRequest) ToJsonString() string {
@@ -4427,6 +4467,8 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
 	delete(f, "CallbackKey")
+	delete(f, "TransferId")
+	delete(f, "TransferUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAppRequest has unknown keys!", "")
 	}
@@ -5150,7 +5192,24 @@ type RoomItem struct {
 }
 
 type SceneItem struct {
+	// 场景名称
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
+	// logo地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
+
+	// 主页地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HomeUrl *string `json:"HomeUrl,omitnil,omitempty" name:"HomeUrl"`
+
+	// 自定义的js
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JSUrl *string `json:"JSUrl,omitnil,omitempty" name:"JSUrl"`
+
+	// 自定义的css
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CSSUrl *string `json:"CSSUrl,omitnil,omitempty" name:"CSSUrl"`
 }
 
 // Predefined struct for user
@@ -5583,6 +5642,12 @@ type TextMarkConfig struct {
 type TextMsgContent struct {
 	// 文本消息。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type TransferItem struct {
+	// 转存状态， 1正常 2停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
 }
 
 // Predefined struct for user

@@ -5018,6 +5018,88 @@ func (r *UnbindStaffSkillGroupListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateCCCSkillGroupRequestParams struct {
+	// 应用 ID（必填）
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 技能组ID
+	SkillGroupID *int64 `json:"SkillGroupID,omitnil,omitempty" name:"SkillGroupID"`
+
+	// 修改后的技能组名字
+	SkillGroupName *string `json:"SkillGroupName,omitnil,omitempty" name:"SkillGroupName"`
+
+	// 修改后的最大并发数,同振最大为2
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// true同振，false顺振
+	RingAll *bool `json:"RingAll,omitnil,omitempty" name:"RingAll"`
+}
+
+type UpdateCCCSkillGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填）
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 技能组ID
+	SkillGroupID *int64 `json:"SkillGroupID,omitnil,omitempty" name:"SkillGroupID"`
+
+	// 修改后的技能组名字
+	SkillGroupName *string `json:"SkillGroupName,omitnil,omitempty" name:"SkillGroupName"`
+
+	// 修改后的最大并发数,同振最大为2
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// true同振，false顺振
+	RingAll *bool `json:"RingAll,omitnil,omitempty" name:"RingAll"`
+}
+
+func (r *UpdateCCCSkillGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCCCSkillGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SkillGroupID")
+	delete(f, "SkillGroupName")
+	delete(f, "MaxConcurrency")
+	delete(f, "RingAll")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCCCSkillGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCCCSkillGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCCCSkillGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCCCSkillGroupResponseParams `json:"Response"`
+}
+
+func (r *UpdateCCCSkillGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCCCSkillGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdatePredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`

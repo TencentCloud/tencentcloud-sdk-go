@@ -4547,6 +4547,7 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -4570,6 +4571,7 @@ func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttribu
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -4770,6 +4772,7 @@ func NewModifyLoadBalancersProjectResponse() (response *ModifyLoadBalancersProje
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -4786,6 +4789,7 @@ func (c *Client) ModifyLoadBalancersProject(request *ModifyLoadBalancersProjectR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5670,6 +5674,7 @@ func NewSetLoadBalancerClsLogResponse() (response *SetLoadBalancerClsLogResponse
 // 增加、删除、更新负载均衡的日志服务(CLS)主题。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5687,6 +5692,7 @@ func (c *Client) SetLoadBalancerClsLog(request *SetLoadBalancerClsLogRequest) (r
 // 增加、删除、更新负载均衡的日志服务(CLS)主题。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5736,10 +5742,11 @@ func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecuri
 //
 // 绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
 //
-// 解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可不传此参数，或传入空数组。注意：内网负载均衡不支持绑定安全组。
+// 解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可不传此参数，或传入空数组。注意：内网 CLB 绑定 EIP 后，CLB 上的安全组对来自 EIP 的流量不生效，对来自内网 CLB 的流量生效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
@@ -5756,10 +5763,11 @@ func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityG
 //
 // 绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
 //
-// 解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可不传此参数，或传入空数组。注意：内网负载均衡不支持绑定安全组。
+// 解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可不传此参数，或传入空数组。注意：内网 CLB 绑定 EIP 后，CLB 上的安全组对来自 EIP 的流量不生效，对来自内网 CLB 的流量生效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"

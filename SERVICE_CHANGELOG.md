@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云安全一体化平台(csip) 版本：2022-11-21
+## 云联络中心(ccc) 版本：2020-02-10
 
-### 第 32 次发布
+### 第 60 次发布
 
-发布时间：2024-03-04 01:11:59
+发布时间：2024-03-05 01:09:20
 
 本次发布包含了以下内容：
 
@@ -12,19 +12,15 @@
 
 新增接口：
 
-* [DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)
-
-新增数据结构：
-
-* [TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount)
+* [UpdateCCCSkillGroup](https://cloud.tencent.com/document/api/679/104097)
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 107 次发布
+### 第 102 次发布
 
-发布时间：2024-03-04 01:19:57
+发布时间：2024-03-05 01:11:04
 
 本次发布包含了以下内容：
 
@@ -32,42 +28,18 @@
 
 修改数据结构：
 
-* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)
+* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
 
-	* 新增成员：DesiredAgentNum, ReadyAgentNum
-
-
-
-
-## 腾讯健康组学平台(omics) 版本：2022-11-28
-
-### 第 13 次发布
-
-发布时间：2024-03-04 01:21:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateVolume](https://cloud.tencent.com/document/api/1643/104065)
-* [DeleteVolume](https://cloud.tencent.com/document/api/1643/104064)
-* [DeleteVolumeData](https://cloud.tencent.com/document/api/1643/104063)
-* [DescribeVolumes](https://cloud.tencent.com/document/api/1643/104062)
-* [ModifyVolume](https://cloud.tencent.com/document/api/1643/104061)
-
-新增数据结构：
-
-* [Volume](https://cloud.tencent.com/document/api/1643/89100#Volume)
+	* <font color="#dd0000">**修改成员**：</font>SpecType, Availability
 
 
 
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 32 次发布
+## 实时互动-教育版(lcic) 版本：2022-08-17
 
-发布时间：2024-03-04 01:26:24
+### 第 52 次发布
+
+发布时间：2024-03-05 01:18:50
 
 本次发布包含了以下内容：
 
@@ -75,40 +47,52 @@
 
 修改接口：
 
-* [DescribeCodeBatches](https://cloud.tencent.com/document/api/1458/101819)
+* [DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)
 
-	* 新增入参：Status
+	* 新增出参：TransferConfig
 
-* [DescribeCodeBatchs](https://cloud.tencent.com/document/api/1458/75017)
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
 
-	* 新增入参：Status
-
-
+	* 新增入参：TransferId, TransferUrl
 
 
-## 微服务引擎(tse) 版本：2020-12-07
+新增数据结构：
 
-### 第 58 次发布
+* [TransferItem](https://cloud.tencent.com/document/api/1639/81423#TransferItem)
 
-发布时间：2024-03-04 01:26:55
+修改数据结构：
+
+* [AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)
+
+	* 新增成员：ApplicationId, AppName, State, AppVersion, CreatedAt, Callback, CallbackKey
+
+* [SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)
+
+	* 新增成员：Scene, LogoUrl, HomeUrl, JSUrl, CSSUrl
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 35 次发布
+
+发布时间：2024-03-05 01:20:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateGovernanceInstances](https://cloud.tencent.com/document/api/1364/104069)
-* [DeleteGovernanceInstances](https://cloud.tencent.com/document/api/1364/104068)
-* [DescribeGovernanceInstances](https://cloud.tencent.com/document/api/1364/104067)
-* [ModifyGovernanceInstances](https://cloud.tencent.com/document/api/1364/104066)
+* [DescribeDBInstanceDeal](https://cloud.tencent.com/document/api/240/43667)
 
-新增数据结构：
+	* 新增出参：InstanceId
 
-* [GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance)
-* [GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput)
-* [GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)
-* [Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
 
 
@@ -14770,6 +14754,18 @@
 
 ## 云联络中心(ccc) 版本：2020-02-10
 
+### 第 60 次发布
+
+发布时间：2024-03-05 01:09:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateCCCSkillGroup](https://cloud.tencent.com/document/api/679/104097)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 59 次发布
 
 发布时间：2024-03-01 01:09:52
@@ -27498,6 +27494,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 102 次发布
+
+发布时间：2024-03-05 01:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
+
+	* <font color="#dd0000">**修改成员**：</font>SpecType, Availability
+
+
 ### 第 101 次发布
 
 发布时间：2024-02-28 15:22:33
@@ -36341,11 +36352,11 @@
 
 新增接口：
 
-* [[DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)
 
 新增数据结构：
 
-* [[TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount)](https://cloud.tencent.com/document/api/664/90825#[TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount))
+* [TagCount](https://cloud.tencent.com/document/api/664/90825#TagCount)
 
 ### 第 31 次发布
 
@@ -77083,6 +77094,40 @@
 
 ## 实时互动-教育版(lcic) 版本：2022-08-17
 
+### 第 52 次发布
+
+发布时间：2024-03-05 01:18:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)
+
+	* 新增出参：TransferConfig
+
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
+
+	* 新增入参：TransferId, TransferUrl
+
+
+新增数据结构：
+
+* [[TransferItem](https://cloud.tencent.com/document/api/1639/81423#TransferItem)](https://cloud.tencent.com/document/api/1639/81423#[TransferItem](https://cloud.tencent.com/document/api/1639/81423#TransferItem))
+
+修改数据结构：
+
+* [AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)
+
+	* 新增成员：ApplicationId, AppName, State, AppVersion, CreatedAt, Callback, CallbackKey
+
+* [SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)
+
+	* 新增成员：Scene, LogoUrl, HomeUrl, JSUrl, CSSUrl
+
+
 ### 第 51 次发布
 
 发布时间：2024-02-27 01:18:37
@@ -83706,6 +83751,21 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 35 次发布
+
+发布时间：2024-03-05 01:20:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDeal](https://cloud.tencent.com/document/api/240/43667)
+
+	* 新增出参：InstanceId
+
 
 ### 第 34 次发布
 
@@ -94478,15 +94538,15 @@
 
 新增接口：
 
-* [[CreateVolume](https://cloud.tencent.com/document/api/1643/104065)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVolume](https://cloud.tencent.com/document/api/1643/104064)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVolumeData](https://cloud.tencent.com/document/api/1643/104063)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVolumes](https://cloud.tencent.com/document/api/1643/104062)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVolume](https://cloud.tencent.com/document/api/1643/104061)](https://cloud.tencent.com/document/api/#/#)
+* [CreateVolume](https://cloud.tencent.com/document/api/1643/104065)
+* [DeleteVolume](https://cloud.tencent.com/document/api/1643/104064)
+* [DeleteVolumeData](https://cloud.tencent.com/document/api/1643/104063)
+* [DescribeVolumes](https://cloud.tencent.com/document/api/1643/104062)
+* [ModifyVolume](https://cloud.tencent.com/document/api/1643/104061)
 
 新增数据结构：
 
-* [[Volume](https://cloud.tencent.com/document/api/1643/89100#Volume)](https://cloud.tencent.com/document/api/1643/89100#[Volume](https://cloud.tencent.com/document/api/1643/89100#Volume))
+* [Volume](https://cloud.tencent.com/document/api/1643/89100#Volume)
 
 ### 第 12 次发布
 
@@ -131460,17 +131520,17 @@
 
 新增接口：
 
-* [[CreateGovernanceInstances](https://cloud.tencent.com/document/api/1364/104069)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGovernanceInstances](https://cloud.tencent.com/document/api/1364/104068)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGovernanceInstances](https://cloud.tencent.com/document/api/1364/104067)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGovernanceInstances](https://cloud.tencent.com/document/api/1364/104066)](https://cloud.tencent.com/document/api/#/#)
+* [CreateGovernanceInstances](https://cloud.tencent.com/document/api/1364/104069)
+* [DeleteGovernanceInstances](https://cloud.tencent.com/document/api/1364/104068)
+* [DescribeGovernanceInstances](https://cloud.tencent.com/document/api/1364/104067)
+* [ModifyGovernanceInstances](https://cloud.tencent.com/document/api/1364/104066)
 
 新增数据结构：
 
-* [[GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance))
-* [[GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput))
-* [[GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)](https://cloud.tencent.com/document/api/1364/54942#[GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate))
-* [[Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata)](https://cloud.tencent.com/document/api/1364/54942#[Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata))
+* [GovernanceInstance](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstance)
+* [GovernanceInstanceInput](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceInput)
+* [GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)
+* [Metadata](https://cloud.tencent.com/document/api/1364/54942#Metadata)
 
 ### 第 57 次发布
 
