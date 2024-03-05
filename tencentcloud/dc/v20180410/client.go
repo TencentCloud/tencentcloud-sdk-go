@@ -1147,7 +1147,7 @@ func NewModifyDirectConnectTunnelExtraResponse() (response *ModifyDirectConnectT
 }
 
 // ModifyDirectConnectTunnelExtra
-// 本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+// 修改专用通道扩展信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1165,7 +1165,7 @@ func (c *Client) ModifyDirectConnectTunnelExtra(request *ModifyDirectConnectTunn
 }
 
 // ModifyDirectConnectTunnelExtra
-// 本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+// 修改专用通道扩展信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

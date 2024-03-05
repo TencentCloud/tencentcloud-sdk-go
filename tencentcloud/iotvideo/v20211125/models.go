@@ -5651,6 +5651,73 @@ func (r *DescribeModelDefinitionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeP2PInfoRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type DescribeP2PInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeP2PInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeP2PInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeP2PInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeP2PInfoResponseParams struct {
+	// xp2pinfo信息
+	P2PInfo *string `json:"P2PInfo,omitnil,omitempty" name:"P2PInfo"`
+
+	// 上报时间
+	ReportTime *int64 `json:"ReportTime,omitnil,omitempty" name:"ReportTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeP2PInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeP2PInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeP2PInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeP2PInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePackageConsumeTaskRequestParams struct {
 	// 任务id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`

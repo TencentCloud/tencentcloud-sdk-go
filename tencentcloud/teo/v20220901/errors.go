@@ -56,6 +56,15 @@ const (
 	// 当前不支持该配置文件版本。
 	FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = "FailedOperation.ConfigUnsupportedFormatVersion"
 
+	// 创建日志集失败，请检查日志集名是否已存在。
+	FAILEDOPERATION_CREATECLSLOGSETFAILED = "FailedOperation.CreateClsLogSetFailed"
+
+	// 创建日志主题任务失败，请检查日志主题名或任务名是否已存在。
+	FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = "FailedOperation.CreateClsLogTopicTaskFailed"
+
+	// 创建自定义推送任务认证失败, 请检查推送地址是否正确。
+	FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = "FailedOperation.CreateLogTopicTaskAuthFailure"
+
 	// 账户余额不足
 	FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
 
@@ -67,6 +76,12 @@ const (
 
 	// 操作失败。
 	FAILEDOPERATION_MODIFYFAILED = "FailedOperation.ModifyFailed"
+
+	// 实时日志认证失败
+	FAILEDOPERATION_REALTIMELOGAUTHFAILURE = "FailedOperation.RealtimeLogAuthFailure"
+
+	// 实时日志推送任务不存在
+	FAILEDOPERATION_REALTIMELOGNOTFOUND = "FailedOperation.RealtimeLogNotFound"
 
 	// 未知的配置组类型。
 	FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
@@ -544,6 +559,21 @@ const (
 
 	// 实例名称可输入1-50个字符，允许的字符为a-z、0-9、-，- 不能单独注册或连续使用，不能放在开头或结尾。
 	INVALIDPARAMETER_PROXYNAMENOTMATCHED = "InvalidParameter.ProxyNameNotMatched"
+
+	// 推送实例已经创建
+	INVALIDPARAMETER_REALTIMELOGENTITYALREADYCREATED = "InvalidParameter.RealtimeLogEntityAlreadyCreated"
+
+	// 日志推送地域不合法
+	INVALIDPARAMETER_REALTIMELOGINVALIDDELIVERYAREA = "InvalidParameter.RealtimeLogInvalidDeliveryArea"
+
+	// 日志推送类型不合法
+	INVALIDPARAMETER_REALTIMELOGINVALIDLOGTYPE = "InvalidParameter.RealtimeLogInvalidLogType"
+
+	// 实时日志数据投递类型不合法
+	INVALIDPARAMETER_REALTIMELOGINVALIDTASKTYPE = "InvalidParameter.RealtimeLogInvalidTaskType"
+
+	// 实时日志推送任务数据超过了限制
+	INVALIDPARAMETER_REALTIMELOGNUMSEXCEEDLIMIT = "InvalidParameter.RealtimeLogNumsExceedLimit"
 
 	// 无效的响应头header。
 	INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = "InvalidParameter.ResponseHeaderCacheControlNotAllowDelete"

@@ -984,6 +984,17 @@ type CC struct {
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
+type CLSTopic struct {
+	// 腾讯云 CLS 日志集 ID。	
+	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
+
+	// 腾讯云 CLS 日志主题 ID。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 腾讯云 CLS 日志集所在的地域。
+	LogSetRegion *string `json:"LogSetRegion,omitnil,omitempty" name:"LogSetRegion"`
+}
+
 type Cache struct {
 	// 缓存配置开关，取值有：
 	// <li>on：开启；</li>
@@ -1735,6 +1746,67 @@ func (r *CreateApplicationProxyRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCLSIndexRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type CreateCLSIndexRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *CreateCLSIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSIndexResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCLSIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCLSIndexResponseParams `json:"Response"`
+}
+
+func (r *CreateCLSIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConfigGroupVersionRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -2374,6 +2446,173 @@ func (r *CreatePurgeTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRealtimeLogDeliveryTaskRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 实时日志投递任务类型，取值有：
+	// <li>cls: 推送到腾讯云 CLS；</li>
+	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
+	// <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+	// <li>七层域名：domain.example.com；</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7。</li>
+	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
+
+	// 数据投递类型，取值有：
+	// <li>domain：站点加速日志；</li>
+	// <li>application：四层代理日志；</li>
+	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
+	// <li>web-attack：托管规则日志；</li>
+	// <li>web-rule：自定义规则日志；</li>
+	// <li>web-bot：Bot管理日志。</li>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 数据投递区域，取值有：
+	// <li>mainland：中国大陆境内；</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 投递的预设字段列表。
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。
+	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// 日志投递的过滤条件，不填表示投递全量日志。
+	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
+
+	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
+	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
+	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
+
+	// 自定义 HTTP 服务的配置信息。当 TaskType 取值为 custom_endpoint 时，该参数必填。
+	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
+
+	// AWS S3 兼容存储桶的配置信息。当 TaskType 取值为 s3 时，该参数必填。
+	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
+}
+
+type CreateRealtimeLogDeliveryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 实时日志投递任务类型，取值有：
+	// <li>cls: 推送到腾讯云 CLS；</li>
+	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
+	// <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+	// <li>七层域名：domain.example.com；</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7。</li>
+	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
+
+	// 数据投递类型，取值有：
+	// <li>domain：站点加速日志；</li>
+	// <li>application：四层代理日志；</li>
+	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
+	// <li>web-attack：托管规则日志；</li>
+	// <li>web-rule：自定义规则日志；</li>
+	// <li>web-bot：Bot管理日志。</li>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 数据投递区域，取值有：
+	// <li>mainland：中国大陆境内；</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 投递的预设字段列表。
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。
+	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// 日志投递的过滤条件，不填表示投递全量日志。
+	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
+
+	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
+	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
+	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
+
+	// 自定义 HTTP 服务的配置信息。当 TaskType 取值为 custom_endpoint 时，该参数必填。
+	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
+
+	// AWS S3 兼容存储桶的配置信息。当 TaskType 取值为 s3 时，该参数必填。
+	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
+}
+
+func (r *CreateRealtimeLogDeliveryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TaskName")
+	delete(f, "TaskType")
+	delete(f, "EntityList")
+	delete(f, "LogType")
+	delete(f, "Area")
+	delete(f, "Fields")
+	delete(f, "CustomFields")
+	delete(f, "DeliveryConditions")
+	delete(f, "Sample")
+	delete(f, "CLS")
+	delete(f, "CustomEndpoint")
+	delete(f, "S3")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRealtimeLogDeliveryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRealtimeLogDeliveryTaskResponseParams struct {
+	// 创建成功的任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRealtimeLogDeliveryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRealtimeLogDeliveryTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRealtimeLogDeliveryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRealtimeLogDeliveryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRuleRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -2739,6 +2978,45 @@ func (r *CreateZoneResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomEndpoint struct {
+	// 实时日志投递的自定义 HTTP 接口地址，暂仅支持 HTTP/HTTPS 协议。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 填写自定义的 SecretId 用于生成加密签名，如果源站需要鉴权此参数必填。
+	AccessId *string `json:"AccessId,omitnil,omitempty" name:"AccessId"`
+
+	// 填写自定义的 SecretKey 用于生成加密签名，如果源站需要鉴权此参数必填。
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 数据压缩类型，取值有: <li> gzip：使用 gzip 方式压缩。</li>不填表示不启用压缩。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
+
+	// POST 请求投递日志时，使用的应用层协议类型，取值有： 
+	// <li>http：HTTP 协议；</li>
+	// <li>https：HTTPS 协议。</li>如果不填默认根据填写的 URL 地址解析出协议类型。	
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 投递日志时携带的自定义请求头，注意 Content-Type、Accept-Encoding 不支持添加修改。
+	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
+}
+
+type CustomField struct {
+	// 从 HTTP 请求和响应中的指定位置提取数据，取值有：
+	// <li>ReqHeader：从 HTTP 请求头中提取指定字段值；</li>
+	// <li>RspHeader：从 HTTP 响应头中提取指定字段值；</li>
+	// <li>Cookie: 从 Cookie 中提取指定字段值。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 需要提取值的参数名称，例如：Accept-Language。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 是否投递该字段，不填表示不投递此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type DDoS struct {
@@ -3322,6 +3600,67 @@ func (r *DeleteOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRealtimeLogDeliveryTaskRequestParams struct {
+	// 站点 ID。	
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteRealtimeLogDeliveryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。	
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteRealtimeLogDeliveryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRealtimeLogDeliveryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRealtimeLogDeliveryTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRealtimeLogDeliveryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRealtimeLogDeliveryTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteRealtimeLogDeliveryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRealtimeLogDeliveryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRulesRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -3556,6 +3895,14 @@ func (r *DeleteZoneResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliveryCondition struct {
+	// 日志过滤条件，详细的过滤条件如下：
+	// <li>EdgeResponseStatusCode：按照 EdgeOne 节点响应返回给客户端的状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 0 的整数</li>
+	// <li>OriginResponseStatusCode：按照源站响应状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 -1 的整数</li>
+	// <li>SecurityAction：按照请求命中安全规则后的最终处置动作进行过滤。<br>   支持运算符：equal<br>   可选项如下：<br>   -：未知/未命中<br>   Monitor：观察<br>   JSChallenge：JavaScript 挑战<br>   Deny：拦截<br>   Allow：放行<br>   BlockIP：IP 封禁<br>   Redirect：重定向<br>   ReturnCustomPage：返回自定义页面<br>   ManagedChallenge：托管挑战<br>   Silence：静默<br>   LongDelay：长时间等待后响应<br>   ShortDelay：短时间等待后响应</li>
+	Conditions []*QueryCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
 // Predefined struct for user
@@ -5914,6 +6261,95 @@ func (r *DescribePurgeTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealtimeLogDeliveryTasksRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有实时日志投递任务信息。详细的过滤条件如下：
+	// <li>task-id：按照实时日志投递任务 ID进行过滤。不支持模糊查询。</li>
+	// <li>task-name：按照实时日志投递任务名称进行过滤。支持模糊查询，使用模糊查询时，仅支持填写一个实时日志投递任务名称。</li>
+	// <li>entity-list：按照实时日志投递任务对应的实体进行过滤。不支持模糊查询。示例值：domain.example.com 或者 sid-2s69eb5wcms7。</li>
+	// <li>task-type：按照实时日志投递任务类型进行过滤。不支持模糊查询。可选项如下：<br>   cls: 推送到腾讯云 CLS；<br>   custom_endpoint：推送到自定义 HTTP(S) 地址；<br>   s3：推送到 AWS S3 兼容存储桶地址。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRealtimeLogDeliveryTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有实时日志投递任务信息。详细的过滤条件如下：
+	// <li>task-id：按照实时日志投递任务 ID进行过滤。不支持模糊查询。</li>
+	// <li>task-name：按照实时日志投递任务名称进行过滤。支持模糊查询，使用模糊查询时，仅支持填写一个实时日志投递任务名称。</li>
+	// <li>entity-list：按照实时日志投递任务对应的实体进行过滤。不支持模糊查询。示例值：domain.example.com 或者 sid-2s69eb5wcms7。</li>
+	// <li>task-type：按照实时日志投递任务类型进行过滤。不支持模糊查询。可选项如下：<br>   cls: 推送到腾讯云 CLS；<br>   custom_endpoint：推送到自定义 HTTP(S) 地址；<br>   s3：推送到 AWS S3 兼容存储桶地址。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRealtimeLogDeliveryTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealtimeLogDeliveryTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealtimeLogDeliveryTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealtimeLogDeliveryTasksResponseParams struct {
+	// 符合查询条件的实时日志投递任务个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 符合查询条件的所有实时日志投递任务列表。
+	RealtimeLogDeliveryTasks []*RealtimeLogDeliveryTask `json:"RealtimeLogDeliveryTasks,omitnil,omitempty" name:"RealtimeLogDeliveryTasks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRealtimeLogDeliveryTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealtimeLogDeliveryTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealtimeLogDeliveryTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealtimeLogDeliveryTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9384,6 +9820,138 @@ func (r *ModifyOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRealtimeLogDeliveryTaskRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 实时日志投递任务的状态，取值有：
+	// <li>enabled: 启用；</li>
+	// <li>disabled: 停用。</li>不填保持原有配置。
+	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+	// <li>七层域名：domain.example.com；</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
+
+	// 投递的预设字段列表。不填保持原有配置。
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。不填保持原有配置。
+	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// 日志投递的过滤条件。不填表示投递全量日志。
+	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
+
+	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
+
+	// AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
+}
+
+type ModifyRealtimeLogDeliveryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 实时日志投递任务的状态，取值有：
+	// <li>enabled: 启用；</li>
+	// <li>disabled: 停用。</li>不填保持原有配置。
+	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+	// <li>七层域名：domain.example.com；</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
+
+	// 投递的预设字段列表。不填保持原有配置。
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。不填保持原有配置。
+	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// 日志投递的过滤条件。不填表示投递全量日志。
+	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
+
+	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
+
+	// AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
+}
+
+func (r *ModifyRealtimeLogDeliveryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TaskId")
+	delete(f, "TaskName")
+	delete(f, "DeliveryStatus")
+	delete(f, "EntityList")
+	delete(f, "Fields")
+	delete(f, "CustomFields")
+	delete(f, "DeliveryConditions")
+	delete(f, "Sample")
+	delete(f, "CustomEndpoint")
+	delete(f, "S3")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRealtimeLogDeliveryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRealtimeLogDeliveryTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRealtimeLogDeliveryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRealtimeLogDeliveryTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyRealtimeLogDeliveryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRealtimeLogDeliveryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRuleRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -10581,6 +11149,59 @@ type RateLimitUserRule struct {
 	RedirectUrl *string `json:"RedirectUrl,omitnil,omitempty" name:"RedirectUrl"`
 }
 
+type RealtimeLogDeliveryTask struct {
+	// 实时日志投递任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实时日志投递任务的名称。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 实时日志投递任务的状态，取值有： <li>enabled: 已启用；</li> <li>disabled: 已停用；</li><li>deleted: 异常删除状态，请检查目的地腾讯云 CLS 日志集/日志主题是否已被删除。</li>
+	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 实时日志投递任务类型，取值有： <li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下： <li>七层域名：domain.example.com；</li> <li>四层代理实例：sid-2s69eb5wcms7。</li>	
+	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
+
+	// 数据投递类型，取值有： <li>domain：站点加速日志；</li> <li>application：四层代理日志；</li> <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li> <li>web-attack：托管规则日志；</li> <li>web-rule：自定义规则日志；</li> <li>web-bot：Bot管理日志。</li>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 数据投递区域，取值有： <li>mainland：中国大陆境内；</li> <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 投递的预设字段列表。
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 投递的自定义字段列表。
+	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// 日志投递的过滤条件。
+	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
+
+	// 采样比例，采用千分制，取值范围为1-1000，例如：605 表示采样比例为 60.5%。
+	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// CLS 的配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
+
+	// 自定义 HTTP 服务的配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
+
+	// AWS S3 兼容存储桶的配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type Resource struct {
 	// 资源 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -10877,6 +11498,26 @@ type RulesSettingAction struct {
 
 	// 参数信息。
 	Properties []*RulesProperties `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type S3 struct {
+	// 不包含存储桶名称或路径的 URL，例如：`https://storage.googleapis.com`、`https://s3.ap-northeast-2.amazonaws.com`、`https://cos.ap-nanjing.myqcloud.com`。
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 存储桶所在的地域，例如：`ap-northeast-2`。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 存储桶名称和日志存储目录，例如：`your_bucket_name/EO-logs/`。如果存储桶中无此目录则会自动创建。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 访问存储桶使用的 Access Key ID。
+	AccessId *string `json:"AccessId,omitnil,omitempty" name:"AccessId"`
+
+	// 访问存储桶使用的 secret key。
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 数据压缩类型，取值有: <li> gzip：gzip压缩。</li>不填表示不启用压缩。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type SecEntry struct {

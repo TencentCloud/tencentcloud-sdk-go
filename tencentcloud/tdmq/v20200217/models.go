@@ -3053,66 +3053,6 @@ func (r *DeleteProClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteProClustersRequestParams struct {
-	// 集群Id列表
-	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
-}
-
-type DeleteProClustersRequest struct {
-	*tchttp.BaseRequest
-	
-	// 集群Id列表
-	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
-}
-
-func (r *DeleteProClustersRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteProClustersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterIds")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProClustersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteProClustersResponseParams struct {
-	// 退还实例订单号
-	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
-
-	// 集群ID
-	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteProClustersResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteProClustersResponseParams `json:"Response"`
-}
-
-func (r *DeleteProClustersResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteProClustersResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5075,6 +5015,249 @@ func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMqMsgTraceRequestParams struct {
+	// pulsar、rocketmq、rabbitmq、cmq
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 集群id，cmq为空
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间，cmq为空
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 主题，cmq为空，rocketmq查询死信时值为groupId
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// cmq必填，其他协议填空
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 消费组、订阅
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+}
+
+type DescribeMqMsgTraceRequest struct {
+	*tchttp.BaseRequest
+	
+	// pulsar、rocketmq、rabbitmq、cmq
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 集群id，cmq为空
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间，cmq为空
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 主题，cmq为空，rocketmq查询死信时值为groupId
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// cmq必填，其他协议填空
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 消费组、订阅
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+}
+
+func (r *DescribeMqMsgTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMqMsgTraceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Protocol")
+	delete(f, "MsgId")
+	delete(f, "ClusterId")
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "QueueName")
+	delete(f, "GroupName")
+	delete(f, "QueryDlqMsg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMqMsgTraceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMqMsgTraceResponseParams struct {
+	// [
+	//     {
+	//         "Stage": "produce",
+	//         "Data": {
+	//             "ProducerName": "生产者名",
+	//             "ProduceTime": "消息生产时间",
+	//             "ProducerAddr": "客户端地址",
+	//             "Duration": "耗时ms",
+	//             "Status": "状态（0：成功，1：失败）"
+	//         }
+	//     },
+	//     {
+	//         "Stage": "persist",
+	//         "Data": {
+	//             "PersistTime": "存储时间",
+	//             "Duration": "耗时ms",
+	//             "Status": "状态（0：成功，1：失败）"
+	//         }
+	//     },
+	//     {
+	//         "Stage": "consume",
+	//         "Data": {
+	//             "TotalCount": 2,
+	//             "RocketMqConsumeLogs": [
+	//                 {
+	//                     "ConsumerGroup": "消费组",
+	//                     "ConsumeModel": "消费模式",
+	//                     "ConsumerAddr": "消费者地址",
+	//                     "ConsumeTime": "推送时间",
+	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+	//                 },
+	//                 {
+	//                     "ConsumerGroup": "消费组",
+	//                     "ConsumeModel": "消费模式",
+	//                     "ConsumerAddr": "消费者地址",
+	//                     "ConsumeTime": "推送时间",
+	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+	//                 }
+	//             ]    
+	//         }
+	//     }
+	// ]
+	Result []*TraceResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 消息轨迹页展示的topic名称
+	ShowTopicName *string `json:"ShowTopicName,omitnil,omitempty" name:"ShowTopicName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMqMsgTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMqMsgTraceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMqMsgTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMqMsgTraceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgRequestParams struct {
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 主题名。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeMsgRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 主题名。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "MsgId")
+	delete(f, "TopicName")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMsgRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgResponseParams struct {
+	// 消息属性。
+	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 消息体。
+	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 批次ID。
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 生产时间。
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
+
+	// 消息ID。
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 生产者名称。
+	ProducerName *string `json:"ProducerName,omitnil,omitempty" name:"ProducerName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMsgResponseParams `json:"Response"`
+}
+
+func (r *DescribeMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMsgTraceRequestParams struct {
 	// 环境（命名空间）。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
@@ -5972,6 +6155,7 @@ type DescribeRabbitMQQueuesRequestParams struct {
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 排序依据的字段：
+	// ConsumerNumber - 在线消费者数量；
 	// MessageHeapCount - 消息堆积数；
 	// MessageRateInOut - 生产消费速率之和；
 	// MessageRateIn - 生产速率；
@@ -6004,6 +6188,7 @@ type DescribeRabbitMQQueuesRequest struct {
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 排序依据的字段：
+	// ConsumerNumber - 在线消费者数量；
 	// MessageHeapCount - 消息堆积数；
 	// MessageRateInOut - 生产消费速率之和；
 	// MessageRateIn - 生产速率；
@@ -11218,6 +11403,10 @@ type PulsarProClusterInfo struct {
 	// 是否可以修改路由
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditRoute *bool `json:"CanEditRoute,omitnil,omitempty" name:"CanEditRoute"`
+
+	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 }
 
 type PulsarProClusterSpecInfo struct {
@@ -11301,6 +11490,10 @@ type PulsarProInstance struct {
 	// 集群创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 }
 
 type QueueQuota struct {
@@ -11539,6 +11732,14 @@ type RabbitMQQueueListInfo struct {
 	// 消息消费速率，每秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type RabbitMQUser struct {
@@ -11621,6 +11822,14 @@ type RabbitMQVipInstance struct {
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 	// 为了和计费区分开，额外开启一个状态位，用于显示。
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
+
+	// 公网接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitnil,omitempty" name:"PublicAccessEndpoint"`
+
+	// VPC 接入点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 }
 
 type RabbitMQVirtualHostInfo struct {

@@ -3539,6 +3539,59 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeP2PInfoRequest() (request *DescribeP2PInfoRequest) {
+    request = &DescribeP2PInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeP2PInfo")
+    
+    
+    return
+}
+
+func NewDescribeP2PInfoResponse() (response *DescribeP2PInfoResponse) {
+    response = &DescribeP2PInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeP2PInfo
+// 拉取设备p2p信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PInfo(request *DescribeP2PInfoRequest) (response *DescribeP2PInfoResponse, err error) {
+    return c.DescribeP2PInfoWithContext(context.Background(), request)
+}
+
+// DescribeP2PInfo
+// 拉取设备p2p信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PInfoWithContext(ctx context.Context, request *DescribeP2PInfoRequest) (response *DescribeP2PInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeP2PInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeP2PInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeP2PInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackageConsumeTaskRequest() (request *DescribePackageConsumeTaskRequest) {
     request = &DescribePackageConsumeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -418,6 +418,7 @@ func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -431,7 +432,6 @@ func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) 
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (response *BatchRegisterTargetsResponse, err error) {
     return c.BatchRegisterTargetsWithContext(context.Background(), request)
@@ -442,6 +442,7 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -455,7 +456,6 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BatchRegisterTargetsWithContext(ctx context.Context, request *BatchRegisterTargetsRequest) (response *BatchRegisterTargetsResponse, err error) {
     if request == nil {
@@ -497,6 +497,10 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 //
 // 
 //
+// 注：查询实例创建状态可以根据返回值中的requestId访问[DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)接口
+//
+// 
+//
 // 限制说明：
 //
 // 实例属性维度限制
@@ -544,6 +548,7 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -569,6 +574,10 @@ func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (response 
 //
 // 
 //
+// 注：查询实例创建状态可以根据返回值中的requestId访问[DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)接口
+//
+// 
+//
 // 限制说明：
 //
 // 实例属性维度限制
@@ -616,6 +625,7 @@ func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (response 
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1303,6 +1313,7 @@ func NewDeleteLoadBalancerListenersResponse() (response *DeleteLoadBalancerListe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1321,6 +1332,7 @@ func (c *Client) DeleteLoadBalancerListeners(request *DeleteLoadBalancerListener
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1510,6 +1522,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1527,6 +1540,7 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -4839,6 +4853,7 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -4857,6 +4872,7 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"

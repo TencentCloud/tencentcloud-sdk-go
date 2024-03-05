@@ -1645,7 +1645,6 @@ type DescribeInstanceResponseParams struct {
 	// BASIC 基础版
 	// PRO  专业版
 	// PLATINUM 铂金版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例ID
@@ -1715,6 +1714,30 @@ type DescribeInstanceResponseParams struct {
 
 	// 计费模式
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 是否开启弹性TPS
+	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
+
+	// 是否自动续费
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 到期时间
+	ExpiryTime *int64 `json:"ExpiryTime,omitnil,omitempty" name:"ExpiryTime"`
+
+	// 角色数量限制
+	RoleNumLimit *int64 `json:"RoleNumLimit,omitnil,omitempty" name:"RoleNumLimit"`
+
+	// 是否开启 ACL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
+
+	// topic个数免费额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumLowerLimit *int64 `json:"TopicNumLowerLimit,omitnil,omitempty" name:"TopicNumLowerLimit"`
+
+	// 最大可设置的topic个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3002,9 +3025,10 @@ func (r *DescribeTopicStatsOpResponse) FromJsonString(s string) error {
 }
 
 type Endpoint struct {
-	// 接入点类型，
-	// VPC，
-	// PUBLIC 公网
+	// 接入点类型，枚举值如下
+	// VPC: VPC;
+	// PUBLIC: 公网;
+	// INTERNAL: 支撑网;
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 状态，

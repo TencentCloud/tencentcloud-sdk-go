@@ -2150,111 +2150,123 @@ func (r *ModifyDirectConnectTunnelAttributeResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyDirectConnectTunnelExtraRequestParams struct {
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 
-	// 专用通道的Vlan
+	// 专用通道的Vlan。
 	Vlan *int64 `json:"Vlan,omitnil,omitempty" name:"Vlan"`
 
-	// 用户侧BGP，Asn，AuthKey
+	// Bgp参数，包括Asn，AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer,omitnil,omitempty" name:"BgpPeer"`
 
-	// 用户侧过滤网段地址
+	// 用户侧过滤网段地址。
 	RouteFilterPrefixes *RouteFilterPrefix `json:"RouteFilterPrefixes,omitnil,omitempty" name:"RouteFilterPrefixes"`
 
-	// 腾讯侧互联IP
+	// 腾讯侧互联IP。
 	TencentAddress *string `json:"TencentAddress,omitnil,omitempty" name:"TencentAddress"`
 
-	// 腾讯侧备用互联IP
+	// 腾讯侧备用互联IP。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitnil,omitempty" name:"TencentBackupAddress"`
 
-	// 用户侧互联IP
+	// 用户侧互联IP。
 	CustomerAddress *string `json:"CustomerAddress,omitnil,omitempty" name:"CustomerAddress"`
 
-	// 专用通道带宽值
+	// 专用通道带宽值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// BGP community开关
+	// BGP community开关。
 	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitnil,omitempty" name:"EnableBGPCommunity"`
 
-	// 是否开启BFD
+	// 是否开启BFD。
 	BfdEnable *int64 `json:"BfdEnable,omitnil,omitempty" name:"BfdEnable"`
 
-	// 是否开启NQA
+	// 是否开启NQA。
 	NqaEnable *int64 `json:"NqaEnable,omitnil,omitempty" name:"NqaEnable"`
 
-	// BFD配置信息
+	// BFD配置信息。
 	BfdInfo *BFDInfo `json:"BfdInfo,omitnil,omitempty" name:"BfdInfo"`
 
-	// NQA配置信息
+	// NQA配置信息。
 	NqaInfo *NQAInfo `json:"NqaInfo,omitnil,omitempty" name:"NqaInfo"`
 
-	// 0：停用IPv6
-	// 1: 启用IPv6
+	// IPV6使能。0：停用IPv6；1: 启用IPv6。
 	IPv6Enable *int64 `json:"IPv6Enable,omitnil,omitempty" name:"IPv6Enable"`
 
-	// 去往用户侧的路由信息
+	// 去往用户侧的路由信息。
 	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitnil,omitempty" name:"CustomerIDCRoutes"`
 
-	// 是否开启巨帧
-	// 1：开启
-	// 0：不开启
+	// 是否开启巨帧。1：开启；0：不开启。
 	JumboEnable *int64 `json:"JumboEnable,omitnil,omitempty" name:"JumboEnable"`
+
+	// 腾讯侧互联IPv6。
+	TencentIPv6Address *string `json:"TencentIPv6Address,omitnil,omitempty" name:"TencentIPv6Address"`
+
+	// 腾讯侧备用互联IPv6。
+	TencentBackupIPv6Address *string `json:"TencentBackupIPv6Address,omitnil,omitempty" name:"TencentBackupIPv6Address"`
+
+	// 用户侧互联IPv6。
+	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitnil,omitempty" name:"CustomerIPv6Address"`
 }
 
 type ModifyDirectConnectTunnelExtraRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 
-	// 专用通道的Vlan
+	// 专用通道的Vlan。
 	Vlan *int64 `json:"Vlan,omitnil,omitempty" name:"Vlan"`
 
-	// 用户侧BGP，Asn，AuthKey
+	// Bgp参数，包括Asn，AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer,omitnil,omitempty" name:"BgpPeer"`
 
-	// 用户侧过滤网段地址
+	// 用户侧过滤网段地址。
 	RouteFilterPrefixes *RouteFilterPrefix `json:"RouteFilterPrefixes,omitnil,omitempty" name:"RouteFilterPrefixes"`
 
-	// 腾讯侧互联IP
+	// 腾讯侧互联IP。
 	TencentAddress *string `json:"TencentAddress,omitnil,omitempty" name:"TencentAddress"`
 
-	// 腾讯侧备用互联IP
+	// 腾讯侧备用互联IP。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitnil,omitempty" name:"TencentBackupAddress"`
 
-	// 用户侧互联IP
+	// 用户侧互联IP。
 	CustomerAddress *string `json:"CustomerAddress,omitnil,omitempty" name:"CustomerAddress"`
 
-	// 专用通道带宽值
+	// 专用通道带宽值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// BGP community开关
+	// BGP community开关。
 	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitnil,omitempty" name:"EnableBGPCommunity"`
 
-	// 是否开启BFD
+	// 是否开启BFD。
 	BfdEnable *int64 `json:"BfdEnable,omitnil,omitempty" name:"BfdEnable"`
 
-	// 是否开启NQA
+	// 是否开启NQA。
 	NqaEnable *int64 `json:"NqaEnable,omitnil,omitempty" name:"NqaEnable"`
 
-	// BFD配置信息
+	// BFD配置信息。
 	BfdInfo *BFDInfo `json:"BfdInfo,omitnil,omitempty" name:"BfdInfo"`
 
-	// NQA配置信息
+	// NQA配置信息。
 	NqaInfo *NQAInfo `json:"NqaInfo,omitnil,omitempty" name:"NqaInfo"`
 
-	// 0：停用IPv6
-	// 1: 启用IPv6
+	// IPV6使能。0：停用IPv6；1: 启用IPv6。
 	IPv6Enable *int64 `json:"IPv6Enable,omitnil,omitempty" name:"IPv6Enable"`
 
-	// 去往用户侧的路由信息
+	// 去往用户侧的路由信息。
 	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitnil,omitempty" name:"CustomerIDCRoutes"`
 
-	// 是否开启巨帧
-	// 1：开启
-	// 0：不开启
+	// 是否开启巨帧。1：开启；0：不开启。
 	JumboEnable *int64 `json:"JumboEnable,omitnil,omitempty" name:"JumboEnable"`
+
+	// 腾讯侧互联IPv6。
+	TencentIPv6Address *string `json:"TencentIPv6Address,omitnil,omitempty" name:"TencentIPv6Address"`
+
+	// 腾讯侧备用互联IPv6。
+	TencentBackupIPv6Address *string `json:"TencentBackupIPv6Address,omitnil,omitempty" name:"TencentBackupIPv6Address"`
+
+	// 用户侧互联IPv6。
+	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitnil,omitempty" name:"CustomerIPv6Address"`
 }
 
 func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
@@ -2285,6 +2297,9 @@ func (r *ModifyDirectConnectTunnelExtraRequest) FromJsonString(s string) error {
 	delete(f, "IPv6Enable")
 	delete(f, "CustomerIDCRoutes")
 	delete(f, "JumboEnable")
+	delete(f, "TencentIPv6Address")
+	delete(f, "TencentBackupIPv6Address")
+	delete(f, "CustomerIPv6Address")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDirectConnectTunnelExtraRequest has unknown keys!", "")
 	}

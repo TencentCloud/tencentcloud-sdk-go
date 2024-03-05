@@ -1845,85 +1845,6 @@ func (c *Client) DeleteProClusterWithContext(ctx context.Context, request *Delet
     return
 }
 
-func NewDeleteProClustersRequest() (request *DeleteProClustersRequest) {
-    request = &DeleteProClustersRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteProClusters")
-    
-    
-    return
-}
-
-func NewDeleteProClustersResponse() (response *DeleteProClustersResponse) {
-    response = &DeleteProClustersResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteProClusters
-// 接口支持删除多个集群，目前已废弃
-//
-// 
-//
-// 删除专业集群——预付费，仅通过API 调用，支持同时删除多个集群
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
-//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
-//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
-//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-func (c *Client) DeleteProClusters(request *DeleteProClustersRequest) (response *DeleteProClustersResponse, err error) {
-    return c.DeleteProClustersWithContext(context.Background(), request)
-}
-
-// DeleteProClusters
-// 接口支持删除多个集群，目前已废弃
-//
-// 
-//
-// 删除专业集群——预付费，仅通过API 调用，支持同时删除多个集群
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
-//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
-//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
-//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-func (c *Client) DeleteProClustersWithContext(ctx context.Context, request *DeleteProClustersRequest) (response *DeleteProClustersResponse, err error) {
-    if request == nil {
-        request = NewDeleteProClustersRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteProClusters require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteProClustersResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
     request = &DeleteRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3394,6 +3315,120 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMqMsgTraceRequest() (request *DescribeMqMsgTraceRequest) {
+    request = &DescribeMqMsgTraceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeMqMsgTrace")
+    
+    
+    return
+}
+
+func NewDescribeMqMsgTraceResponse() (response *DescribeMqMsgTraceResponse) {
+    response = &DescribeMqMsgTraceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMqMsgTrace
+// 查询消息轨迹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeMqMsgTrace(request *DescribeMqMsgTraceRequest) (response *DescribeMqMsgTraceResponse, err error) {
+    return c.DescribeMqMsgTraceWithContext(context.Background(), request)
+}
+
+// DescribeMqMsgTrace
+// 查询消息轨迹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeMqMsgTraceWithContext(ctx context.Context, request *DescribeMqMsgTraceRequest) (response *DescribeMqMsgTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMqMsgTraceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMqMsgTrace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMqMsgTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMsgRequest() (request *DescribeMsgRequest) {
+    request = &DescribeMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeMsg")
+    
+    
+    return
+}
+
+func NewDescribeMsgResponse() (response *DescribeMsgResponse) {
+    response = &DescribeMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMsg
+// 消息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_MSG = "ResourceNotFound.Msg"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeMsg(request *DescribeMsgRequest) (response *DescribeMsgResponse, err error) {
+    return c.DescribeMsgWithContext(context.Background(), request)
+}
+
+// DescribeMsg
+// 消息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_MSG = "ResourceNotFound.Msg"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeMsgWithContext(ctx context.Context, request *DescribeMsgRequest) (response *DescribeMsgResponse, err error) {
+    if request == nil {
+        request = NewDescribeMsgRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMsg require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMsgResponse()
     err = c.Send(request, response)
     return
 }

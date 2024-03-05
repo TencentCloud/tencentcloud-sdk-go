@@ -1221,7 +1221,7 @@ type GetFlowStatisticRequestParams struct {
 	// 时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
@@ -1246,7 +1246,7 @@ type GetFlowStatisticRequest struct {
 	// 时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
@@ -1406,7 +1406,7 @@ type GetMultiFlowStatisticRequestParams struct {
 	// 统计时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
@@ -1431,7 +1431,7 @@ type GetMultiFlowStatisticRequest struct {
 	// 统计时间粒度（1：按小时统计，2：按天统计）
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
@@ -1651,7 +1651,7 @@ type GetStatisticDataRequestParams struct {
 	// 2:按天统计
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
@@ -1675,7 +1675,7 @@ type GetStatisticDataRequest struct {
 	// 2:按天统计
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。

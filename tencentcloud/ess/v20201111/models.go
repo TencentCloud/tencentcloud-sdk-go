@@ -10484,82 +10484,104 @@ type TemplateInfo struct {
 	// 模板ID，模板的唯一标识
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名
+	// 模板的名字
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
+	// 
+	// [点击查看在模板中配置的签署参与方角色列表的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
+	// 
+	Recipients []*Recipient `json:"Recipients,omitnil,omitempty" name:"Recipients"`
+
+	// 模板的填充控件列表
+	// 
+	// [点击查看在模板中配置的填充控件的样子](https://qcloudimg.tencent-cloud.cn/raw/cb2f58529fca8d909258f9d45a56f7f4.png)
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// 此模板中的签署控件列表
+	// 
+	// [点击查看在模板中配置的签署控件的样子](https://qcloudimg.tencent-cloud.cn/raw/29bc6ed753a5a0fce4a3ab02e2c0d955.png)
+	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
 	// 模板描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 模板关联的资源ID列表
+	// 此模板的资源ID
 	DocumentResourceIds []*string `json:"DocumentResourceIds,omitnil,omitempty" name:"DocumentResourceIds"`
 
 	// 生成模板的文件基础信息
 	FileInfos []*FileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 附件关联的资源ID
+	// 此模板里边附件的资源ID
 	AttachmentResourceIds []*string `json:"AttachmentResourceIds,omitnil,omitempty" name:"AttachmentResourceIds"`
 
-	// 签署顺序
-	// 无序 -1
-	// 有序为序列数字 0,1,2
+	// 签署人参与签署的顺序，可以分为以下两种方式：
+	// 
+	// <b>无序</b>：不限定签署人的签署顺序，签署人可以在任何时间签署。此种方式值为 ：｛-1｝
+	// <b>有序</b>：通过序列数字标识签署顺序，从0开始编码，数字越大签署顺序越靠后，签署人按照指定的顺序依次签署。此种方式值为： ｛0，1，2，3………｝
 	SignOrder []*int64 `json:"SignOrder,omitnil,omitempty" name:"SignOrder"`
 
-	// 模板中的签署参与方列表
-	Recipients []*Recipient `json:"Recipients,omitnil,omitempty" name:"Recipients"`
-
-	// 模板的填充控件列表
-	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
-
-	// 模板中的签署控件列表
-	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
-
-	// 模板状态
-	// -1:不可用
-	// 0:草稿态
-	// 1:正式态，可以正常使用
+	// 此模板的状态可以分为以下几种：
+	// 
+	// <b>-1</b>：不可用状态。
+	// <b>0</b>：草稿态，即模板正在编辑或未发布状态。
+	// <b>1</b>：正式态，只有正式态的模板才可以发起合同。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 模板的创建者信息，电子签系统用户ID
+	// 模板的创建者信息，用户的名字
+	// 
+	// 注： `是创建者的名字，而非创建者的用户ID`
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
 	// 模板创建的时间戳，格式为Unix标准时间戳（秒）
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
-	// 发起方参与信息Promoter
+	// 此模板创建方角色信息。
+	// 
+	// [点击查看在模板中配置的创建方角色的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
 	Promoter *Recipient `json:"Promoter,omitnil,omitempty" name:"Promoter"`
 
-	// 模板类型：
-	// 1  静默签,
-	// 3  普通模板
+	// 模板类型可以分为以下两种：
+	// 
+	// <b>1</b>：带有本企业自动签署的模板，即签署过程无需签署人手动操作，系统自动完成签署。
+	// <b>3</b>：普通模板，即签署人需要手动进行签署操作。
 	TemplateType *int64 `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 模板可用状态：
-	// 1 启用（默认）
-	// 2 停用
+	// 模板可用状态可以分为以下两种：
+	// 
+	// <b>1</b>：（默认）启用状态，即模板可以正常使用。
+	// <b>2</b>：停用状态，即模板暂时无法使用。
+	// 
+	// 可到控制台启停模板
 	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 创建模板的企业ID，电子签的机构ID
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 模板预览链接，有效时间5分钟
+	// 模板创建人用户ID
+	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
+
+	// 模板的H5预览链接,有效期5分钟。
+	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 
-	// 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
+	// 模板版本的编号，旨在标识其独特的版本信息，通常呈现为一串字符串，由日期和递增的数字组成
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitnil,omitempty" name:"TemplateVersion"`
 
-	// 模板是否已发布：
-	// true-已发布
-	// false-未发布
+	// 模板是否已发布可以分为以下两种状态：
+	// 
+	// <b>true</b>：已发布状态，表示该模板已经发布并可以正常使用。
+	// <b>false</b>：未发布状态，表示该模板还未发布，无法使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitnil,omitempty" name:"Published"`
 
-	// 分享来源的模板ID。用在集团账号子企业模板里
+	// <b>集体账号场景下</b>： 集团账号分享给子企业的模板的来源模板ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareTemplateId *string `json:"ShareTemplateId,omitnil,omitempty" name:"ShareTemplateId"`
 
-	// 模板内部指定的印章列表
+	// 此模板配置的预填印章列表（包括自动签署指定的印章）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateSeals []*SealInfo `json:"TemplateSeals,omitnil,omitempty" name:"TemplateSeals"`
 

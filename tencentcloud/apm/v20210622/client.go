@@ -118,7 +118,7 @@ func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
 }
 
 // DescribeApmAgent
-// 获取Apm Agent信息
+// 获取APM Agent信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -136,7 +136,7 @@ func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *D
 }
 
 // DescribeApmAgent
-// 获取Apm Agent信息
+// 获取APM Agent信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

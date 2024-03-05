@@ -465,6 +465,9 @@ type BatchRegisterTargetsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailListenerIdSet []*string `json:"FailListenerIdSet,omitnil,omitempty" name:"FailListenerIdSet"`
 
+	// 绑定失败错误原因信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -502,7 +505,7 @@ type BatchTarget struct {
 	// 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 七层规则 ID。
+	// 七层规则 ID。7层负载均衡该参数必填
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 标签。
@@ -749,7 +752,7 @@ type CloneLoadBalancerRequestParams struct {
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/product/378/4400) 接口获取。不传此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
@@ -760,7 +763,7 @@ type CloneLoadBalancerRequestParams struct {
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
@@ -791,13 +794,14 @@ type CloneLoadBalancerRequestParams struct {
 	// 公网独占集群ID或者CDCId。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 性能容量型规格。
+	// 性能容量型规格。<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
+	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。
+	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。可调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询可用区列表。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
@@ -814,7 +818,7 @@ type CloneLoadBalancerRequest struct {
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/product/378/4400) 接口获取。不传此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
@@ -825,7 +829,7 @@ type CloneLoadBalancerRequest struct {
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
@@ -856,13 +860,14 @@ type CloneLoadBalancerRequest struct {
 	// 公网独占集群ID或者CDCId。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 性能容量型规格。
+	// 性能容量型规格。<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
+	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。
+	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。可调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询可用区列表。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
@@ -938,7 +943,7 @@ type Cluster struct {
 	// 集群类型，如TGW，STGW，VPCGW
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群标签，只有STGW集群有标签
+	// 集群标签，只有TGW/STGW集群有标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
@@ -948,35 +953,35 @@ type Cluster struct {
 	// 集群网络类型，如Public，Private
 	Network *string `json:"Network,omitnil,omitempty" name:"Network"`
 
-	// 最大连接数
+	// 最大连接数（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConn *int64 `json:"MaxConn,omitnil,omitempty" name:"MaxConn"`
 
-	// 最大入带宽
+	// 最大入带宽Mbps
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxInFlow *int64 `json:"MaxInFlow,omitnil,omitempty" name:"MaxInFlow"`
 
-	// 最大入包量
+	// 最大入包量（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxInPkg *int64 `json:"MaxInPkg,omitnil,omitempty" name:"MaxInPkg"`
 
-	// 最大出带宽
+	// 最大出带宽Mbps
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxOutFlow *int64 `json:"MaxOutFlow,omitnil,omitempty" name:"MaxOutFlow"`
 
-	// 最大出包量
+	// 最大出包量（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxOutPkg *int64 `json:"MaxOutPkg,omitnil,omitempty" name:"MaxOutPkg"`
 
-	// 最大新建连接数
+	// 最大新建连接数（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNewConn *int64 `json:"MaxNewConn,omitnil,omitempty" name:"MaxNewConn"`
 
-	// http最大新建连接数
+	// http最大新建连接数（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HTTPMaxNewConn *int64 `json:"HTTPMaxNewConn,omitnil,omitempty" name:"HTTPMaxNewConn"`
 
-	// https最大新建连接数
+	// https最大新建连接数（个/秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HTTPSMaxNewConn *int64 `json:"HTTPSMaxNewConn,omitnil,omitempty" name:"HTTPSMaxNewConn"`
 
@@ -1018,6 +1023,10 @@ type Cluster struct {
 	// 网络出口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
+
+	// IP版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPVersion *string `json:"IPVersion,omitnil,omitempty" name:"IPVersion"`
 }
 
 type ClusterItem struct {
@@ -1097,6 +1106,8 @@ type CreateClsLogSetRequestParams struct {
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志集的保存周期，单位：天。
+	//
+	// Deprecated: Period is deprecated.
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志集类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
@@ -1189,13 +1200,13 @@ type CreateListenerRequestParams struct {
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
-	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。（若选择QUIC_CID，则Protocol必须为UDP，Scheduler必须为WRR，同时只支持ipv4）
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。
@@ -1248,13 +1259,13 @@ type CreateListenerRequest struct {
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
-	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。（若选择QUIC_CID，则Protocol必须为UDP，Scheduler必须为WRR，同时只支持ipv4）
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。
@@ -1375,7 +1386,7 @@ type CreateLoadBalancerRequestParams struct {
 	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 仅对内网属性的性能容量型实例和公网属性的所有实例生效。
+	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
@@ -1466,7 +1477,7 @@ type CreateLoadBalancerRequest struct {
 	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 仅对内网属性的性能容量型实例和公网属性的所有实例生效。
+	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
@@ -1744,7 +1755,7 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组的vpcid属性，不填则使用默认vpc
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标组的默认端口， 后续添加服务器时可使用该默认端口
+	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组绑定的后端服务器
@@ -1760,7 +1771,7 @@ type CreateTargetGroupRequest struct {
 	// 目标组的vpcid属性，不填则使用默认vpc
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标组的默认端口， 后续添加服务器时可使用该默认端口
+	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组绑定的后端服务器
@@ -3978,7 +3989,7 @@ type DescribeLoadBalancersDetailRequestParams struct {
 	// 选择返回的Fields列表，系统仅会返回Fileds中填写的字段，可填写的字段详情请参见<a href="https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail">LoadBalancerDetail</a>。若未在Fileds填写相关字段，则此字段返回null。Fileds中默认添加LoadBalancerId和LoadBalancerName字段。
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
-	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
+	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight、ListenerId、Protocol、Port、LocationId、Domain、Url等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 查询负载均衡详细信息列表条件，详细的过滤条件如下：
@@ -4007,7 +4018,7 @@ type DescribeLoadBalancersDetailRequest struct {
 	// 选择返回的Fields列表，系统仅会返回Fileds中填写的字段，可填写的字段详情请参见<a href="https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail">LoadBalancerDetail</a>。若未在Fileds填写相关字段，则此字段返回null。Fileds中默认添加LoadBalancerId和LoadBalancerName字段。
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
-	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
+	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight、ListenerId、Protocol、Port、LocationId、Domain、Url等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 查询负载均衡详细信息列表条件，详细的过滤条件如下：
@@ -4131,7 +4142,7 @@ type DescribeLoadBalancersRequestParams struct {
 	// 安全组ID，如 sg-m1cc****。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 主可用区ID，如 ："100001" （对应的是广州一区）。
+	// 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
@@ -4140,7 +4151,6 @@ type DescribeLoadBalancersRequestParams struct {
 	// <li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
-	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
 	// <li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge"。</li>
@@ -4203,7 +4213,7 @@ type DescribeLoadBalancersRequest struct {
 	// 安全组ID，如 sg-m1cc****。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 主可用区ID，如 ："100001" （对应的是广州一区）。
+	// 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
@@ -4212,7 +4222,6 @@ type DescribeLoadBalancersRequest struct {
 	// <li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
-	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
 	// <li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge"。</li>
@@ -4801,6 +4810,7 @@ type DescribeTargetsRequestParams struct {
 	// 查询负载均衡绑定的后端服务列表，过滤条件如下：
 	// <li> location-id - String - 是否必填：否 - （过滤条件）按照 规则ID 过滤，如："loc-12345678"。</li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 后端服务内网IP 过滤，如："172.16.1.1"。</li>
+	// <li> tag - String - 是否必填：否 - （过滤条件）按照 标签 过滤，如："tag-test"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4822,6 +4832,7 @@ type DescribeTargetsRequest struct {
 	// 查询负载均衡绑定的后端服务列表，过滤条件如下：
 	// <li> location-id - String - 是否必填：否 - （过滤条件）按照 规则ID 过滤，如："loc-12345678"。</li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 后端服务内网IP 过滤，如："172.16.1.1"。</li>
+	// <li> tag - String - 是否必填：否 - （过滤条件）按照 标签 过滤，如："tag-test"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5058,7 +5069,7 @@ type HealthCheck struct {
 	// 是否开启健康检查：1（开启）、0（关闭）。
 	HealthSwitch *int64 `json:"HealthSwitch,omitnil,omitempty" name:"HealthSwitch"`
 
-	// 健康检查的响应超时时间（仅适用于四层监听器），可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+	// 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOut *int64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
@@ -5108,7 +5119,7 @@ type HealthCheck struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
 
-	// 健康检查使用的协议。取值 TCP | HTTP | HTTPS | GRPC | PING | CUSTOM，UDP监听器支持PING/CUSTOM，TCP监听器支持TCP/HTTP/CUSTOM，TCP_SSL/QUIC监听器支持TCP/HTTP，HTTP规则支持HTTP/GRPC，HTTPS规则支持HTTP/HTTPS/GRPC。
+	// 健康检查使用的协议。取值 TCP | HTTP | HTTPS | GRPC | PING | CUSTOM，UDP监听器支持PING/CUSTOM，TCP监听器支持TCP/HTTP/CUSTOM，TCP_SSL/QUIC监听器支持TCP/HTTP，HTTP规则支持HTTP/GRPC，HTTPS规则支持HTTP/HTTPS/GRPC。HTTP监听器默认值为HTTP;TCP、TCP_SSL、QUIC监听器默认值为TCP;UDP监听器默认为PING;HTTPS监听器的CheckType默认值与后端转发协议一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
@@ -5569,7 +5580,7 @@ type Listener struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 请求的调度方式
+	// 请求的调度方式。 WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
@@ -5640,6 +5651,10 @@ type Listener struct {
 	// 空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
+
+	// 调度时间。触发强制重新调度后，长连接将会在设置的调度时间内断开并完成重新分配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RescheduleInterval *uint64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
 }
 
 type ListenerBackend struct {
@@ -5721,7 +5736,7 @@ type LoadBalancer struct {
 	// 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
 	Forward *uint64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 
-	// 负载均衡实例的域名，仅公网传统型负载均衡实例才提供该字段。逐步下线中，建议用LoadBalancerDomain替代。
+	// 负载均衡实例的域名，仅公网传统型和域名型负载均衡实例才提供该字段。逐步下线中，建议用LoadBalancerDomain替代。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
@@ -5763,6 +5778,8 @@ type LoadBalancer struct {
 
 	// 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Log is deprecated.
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
@@ -5793,7 +5810,7 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *uint64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
-	// 负载均衡IP地址所属的ISP
+	// 负载均衡IP地址所属的运营商。取值范围（BGP、CMCC、CTCC、CUCC）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VipIsp *string `json:"VipIsp,omitnil,omitempty" name:"VipIsp"`
 
@@ -5963,7 +5980,7 @@ type LoadBalancerDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 负载均衡实例IP地址所属的ISP。
+	// 负载均衡实例IP地址所属的ISP。取值范围：BGP（多线）、CMCC（中国移动）、CUCC（中国联通）、CTCC（中国电信）、INTERNAL（内网）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIsp *string `json:"AddressIsp,omitnil,omitempty" name:"AddressIsp"`
 
@@ -5979,7 +5996,7 @@ type LoadBalancerDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 负载均衡实例的计费类型。
+	// 负载均衡实例的计费类型。取值范围：PREPAID预付费、POSTPAID_BY_HOUR按量付费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
@@ -6051,7 +6068,7 @@ type LoadBalancerDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 负载均衡安全组上移特性是否开启标识。
+	// 负载均衡安全组上移特性是否开启标识。取值范围：1表示开启、0表示未开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerPassToTarget *uint64 `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
@@ -6668,21 +6685,24 @@ type ModifyListenerRequestParams struct {
 
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
+	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
+	// 默认值0表示不开启，1表示开启。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
@@ -6721,21 +6741,24 @@ type ModifyListenerRequest struct {
 
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
+	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
+	// 默认值0表示不开启，1表示开启。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
@@ -7118,10 +7141,10 @@ type ModifyRuleRequestParams struct {
 	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 会话保持时间。
+	// 会话保持时间。取值范围0或30-86400（单位：秒）。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC。
+	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、GRPC。仅HTTPS监听器该参数有效。
 	ForwardType *string `json:"ForwardType,omitnil,omitempty" name:"ForwardType"`
 
 	// TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。
@@ -7153,10 +7176,10 @@ type ModifyRuleRequest struct {
 	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 会话保持时间。
+	// 会话保持时间。取值范围0或30-86400（单位：秒）。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC。
+	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、GRPC。仅HTTPS监听器该参数有效。
 	ForwardType *string `json:"ForwardType,omitnil,omitempty" name:"ForwardType"`
 
 	// TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。
@@ -8090,9 +8113,13 @@ type RsWeightRule struct {
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 目标规则的域名，提供LocationId参数时本参数不生效。
+	//
+	// Deprecated: Domain is deprecated.
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 目标规则的URL，提供LocationId参数时本参数不生效。
+	//
+	// Deprecated: Url is deprecated.
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 后端服务修改后的转发权重，取值范围：[0，100]。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Weight参数，即最终的权重值以Target中的Weight参数值为准，仅当Target中的Weight参数为空时，才以RsWeightRule中的Weight参数为准。
@@ -8187,7 +8214,8 @@ type RuleOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *CertificateOutput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 规则的请求转发方式
+	// 规则的请求转发方式。
+	// WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 转发规则所属的监听器 ID
@@ -8215,7 +8243,7 @@ type RuleOutput struct {
 	// 转发规则的创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 后端服务器类型
+	// 后端服务器类型。NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 绑定的目标组基本信息；当规则绑定目标组时，会返回该字段
@@ -8234,7 +8262,7 @@ type RuleOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrpcFunc *string `json:"TrpcFunc,omitnil,omitempty" name:"TrpcFunc"`
 
-	// QUIC状态
+	// QUIC状态。QUIC_ACTIVE表示开启，QUIC_INACTIVE表示未开启。注意，只有HTTPS域名才能开启QUIC。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuicStatus *string `json:"QuicStatus,omitnil,omitempty" name:"QuicStatus"`
 
@@ -8732,7 +8760,7 @@ type TargetGroupAssociation struct {
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 监听器ID
+	// 监听器ID。访问AssociateTargetGroups和DisassociateTargetGroups接口时必传此参数。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 转发规则ID
@@ -8800,7 +8828,7 @@ type TargetGroupInfo struct {
 	// 目标组的修改时间
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 关联到的规则数组
+	// 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitnil,omitempty" name:"AssociatedRule"`
 }
