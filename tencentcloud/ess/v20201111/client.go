@@ -7135,6 +7135,87 @@ func (c *Client) DescribePersonCertificateWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeSignFaceVideoRequest() (request *DescribeSignFaceVideoRequest) {
+    request = &DescribeSignFaceVideoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeSignFaceVideo")
+    
+    
+    return
+}
+
+func NewDescribeSignFaceVideoResponse() (response *DescribeSignFaceVideoResponse) {
+    response = &DescribeSignFaceVideoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSignFaceVideo
+// 该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
+//
+// 
+//
+// 1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸图片。
+//
+// 2. 该接口**不支持小程序端**的签署人脸图片获取。
+//
+// 3. 请在**签署完成后的三天内**获取人脸图片，**过期后将无法获取**。
+//
+// 
+//
+// **注意：该接口需要开通白名单，请联系客户经理开通后使用。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSignFaceVideo(request *DescribeSignFaceVideoRequest) (response *DescribeSignFaceVideoResponse, err error) {
+    return c.DescribeSignFaceVideoWithContext(context.Background(), request)
+}
+
+// DescribeSignFaceVideo
+// 该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
+//
+// 
+//
+// 1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸图片。
+//
+// 2. 该接口**不支持小程序端**的签署人脸图片获取。
+//
+// 3. 请在**签署完成后的三天内**获取人脸图片，**过期后将无法获取**。
+//
+// 
+//
+// **注意：该接口需要开通白名单，请联系客户经理开通后使用。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSignFaceVideoWithContext(ctx context.Context, request *DescribeSignFaceVideoRequest) (response *DescribeSignFaceVideoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSignFaceVideoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSignFaceVideo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSignFaceVideoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeThirdPartyAuthCodeRequest() (request *DescribeThirdPartyAuthCodeRequest) {
     request = &DescribeThirdPartyAuthCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

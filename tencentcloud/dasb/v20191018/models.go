@@ -4050,6 +4050,109 @@ func (r *ModifyDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOAuthSettingRequestParams struct {
+	// 是否开启OAuth认证，false-不开启，true-开启。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// OAuth认证方式。
+	AuthMethod *string `json:"AuthMethod,omitnil,omitempty" name:"AuthMethod"`
+
+	// OAuth认证客户端Id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// OAuth认证客户端密钥
+	ClientSecret *string `json:"ClientSecret,omitnil,omitempty" name:"ClientSecret"`
+
+	// 获取OAuth认证授权码URL
+	CodeUrl *string `json:"CodeUrl,omitnil,omitempty" name:"CodeUrl"`
+
+	// 获取OAuth令牌URL
+	TokenUrl *string `json:"TokenUrl,omitnil,omitempty" name:"TokenUrl"`
+
+	// 获取OAuth用户信息URL
+	UserInfoUrl *string `json:"UserInfoUrl,omitnil,omitempty" name:"UserInfoUrl"`
+
+	// 使用Okta认证时指定范围。为空时默认使用 openid、profile、email。
+	Scopes []*string `json:"Scopes,omitnil,omitempty" name:"Scopes"`
+}
+
+type ModifyOAuthSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否开启OAuth认证，false-不开启，true-开启。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// OAuth认证方式。
+	AuthMethod *string `json:"AuthMethod,omitnil,omitempty" name:"AuthMethod"`
+
+	// OAuth认证客户端Id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// OAuth认证客户端密钥
+	ClientSecret *string `json:"ClientSecret,omitnil,omitempty" name:"ClientSecret"`
+
+	// 获取OAuth认证授权码URL
+	CodeUrl *string `json:"CodeUrl,omitnil,omitempty" name:"CodeUrl"`
+
+	// 获取OAuth令牌URL
+	TokenUrl *string `json:"TokenUrl,omitnil,omitempty" name:"TokenUrl"`
+
+	// 获取OAuth用户信息URL
+	UserInfoUrl *string `json:"UserInfoUrl,omitnil,omitempty" name:"UserInfoUrl"`
+
+	// 使用Okta认证时指定范围。为空时默认使用 openid、profile、email。
+	Scopes []*string `json:"Scopes,omitnil,omitempty" name:"Scopes"`
+}
+
+func (r *ModifyOAuthSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOAuthSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Enable")
+	delete(f, "AuthMethod")
+	delete(f, "ClientId")
+	delete(f, "ClientSecret")
+	delete(f, "CodeUrl")
+	delete(f, "TokenUrl")
+	delete(f, "UserInfoUrl")
+	delete(f, "Scopes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOAuthSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOAuthSettingResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOAuthSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOAuthSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyOAuthSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOAuthSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyResourceRequestParams struct {
 	// 需要开通服务的资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`

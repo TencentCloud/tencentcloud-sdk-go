@@ -1,10 +1,77 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云联络中心(ccc) 版本：2020-02-10
 
-### 第 103 次发布
+### 第 61 次发布
 
-发布时间：2024-03-06 01:10:51
+发布时间：2024-03-07 01:09:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo)
+
+	* 新增成员：RoleId
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 83 次发布
+
+发布时间：2024-03-07 01:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CollectConfig](https://cloud.tencent.com/document/api/614/56471#CollectConfig)
+* [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo)
+
+修改数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+
+	* 新增成员：CollectInfos
+
+* [ConsumerContent](https://cloud.tencent.com/document/api/614/56471#ConsumerContent)
+
+	* 新增成员：JsonType
+
+* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>RawLog, IndexStatus
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 24 次发布
+
+发布时间：2024-03-07 01:13:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyOAuthSetting](https://cloud.tencent.com/document/api/1025/104132)
+
+
+
+## 数据安全治理中心(dsgc) 版本：2019-07-23
+
+### 第 7 次发布
+
+发布时间：2024-03-07 01:14:47
 
 本次发布包含了以下内容：
 
@@ -12,85 +79,49 @@
 
 修改接口：
 
-* [BatchRegisterTargets](https://cloud.tencent.com/document/api/214/38303)
+* [CreateDSPASelfBuildMetaResource](https://cloud.tencent.com/document/api/1087/97178)
 
-	* 新增出参：Message
+	* 新增入参：InstanceType, InstanceValue
 
-* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+* [DescribeDSPADataSourceDbInfo](https://cloud.tencent.com/document/api/1087/97216)
+
+	* 新增入参：DataSourceType
+
+* [DescribeDSPAESDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97144)
+
+	* 新增入参：BuildType, DataSourceType
+
+* [DescribeDSPARDBDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97205)
+
+	* 新增入参：BuildType
+
+* [ModifyDSPACOSTaskResult](https://cloud.tencent.com/document/api/1087/97197)
+
+	* 新增入参：FileName, BucketName, DataSourceId
 
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+* [DspaCOSDataAssetDetail](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDataAssetDetail)
 
-	* 新增成员：IPVersion
+	* 新增成员：IdentifyType, CheckStatus
 
-* [ExtraInfo](https://cloud.tencent.com/document/api/214/30694#ExtraInfo)
+* [DspaDiscoveryTaskDataSource](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskDataSource)
 
-	* <font color="#dd0000">**修改成员**：</font>ZhiTong, TgwGroupName
+	* 新增成员：DataSourceType
 
-* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+* [DspaUserResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaUserResourceMeta)
 
-	* 新增成员：RescheduleInterval
-
-* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
-
-* [RsWeightRule](https://cloud.tencent.com/document/api/214/30694#RsWeightRule)
-
-* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
-
-	* <font color="#dd0000">**修改成员**：</font>LocationId, SessionExpireTime, HealthCheck, Certificate, Scheduler
-
-* [ZoneInfo](https://cloud.tencent.com/document/api/214/30694#ZoneInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>ZoneId, Zone, ZoneName, ZoneRegion, LocalZone, EdgeZone
-
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 25 次发布
-
-发布时间：2024-03-06 01:13:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
-
-	* 新增入参：TencentIPv6Address, TencentBackupIPv6Address, CustomerIPv6Address
+	* 新增成员：InstanceType, InstanceValue
 
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 151 次发布
+### 第 152 次发布
 
-发布时间：2024-03-06 01:15:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
-
-	* 新增成员：CreatorId
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2021-11-25
-
-### 第 29 次发布
-
-发布时间：2024-03-06 01:17:55
+发布时间：2024-03-07 01:16:07
 
 本次发布包含了以下内容：
 
@@ -98,118 +129,69 @@
 
 新增接口：
 
-* [DescribeP2PInfo](https://cloud.tencent.com/document/api/1131/104107)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 103 次发布
-
-发布时间：2024-03-06 01:24:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeMsg](https://cloud.tencent.com/document/api/1179/104108)
-
-### 第 102 次发布
-
-发布时间：2024-03-05 16:41:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeMqMsgTrace](https://cloud.tencent.com/document/api/1179/104106)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DeleteProClusters
-
-修改接口：
-
-* [DescribeRabbitMQQueues](https://cloud.tencent.com/document/api/1179/100809)
-
-	* <font color="#dd0000">**修改入参**：</font>VirtualHost
-
-
-修改数据结构：
-
-* [PulsarProClusterInfo](https://cloud.tencent.com/document/api/1179/46089#PulsarProClusterInfo)
-
-	* 新增成员：BillingLabelVersion
-
-	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Remark, CreateTime, Status, Version, NodeDistribution, MaxStorage, CanEditRoute
-
-* [PulsarProInstance](https://cloud.tencent.com/document/api/1179/46089#PulsarProInstance)
-
-	* 新增成员：BillingLabelVersion
-
-* [RabbitMQQueueListInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQQueueListInfo)
-
-	* 新增成员：CreateTime, ModifyTime
-
-* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
-
-	* 新增成员：PublicAccessEndpoint, Vpcs
-
-	* <font color="#dd0000">**修改成员**：</font>ExceptionInformation, ClusterStatus
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 75 次发布
-
-发布时间：2024-03-06 01:24:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCLSIndex](https://cloud.tencent.com/document/api/1552/104113)
-* [CreateRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104112)
-* [DeleteRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104111)
-* [DescribeRealtimeLogDeliveryTasks](https://cloud.tencent.com/document/api/1552/104110)
-* [ModifyRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104109)
+* [DescribeSignFaceVideo](https://cloud.tencent.com/document/api/1323/104133)
 
 新增数据结构：
 
-* [CLSTopic](https://cloud.tencent.com/document/api/1552/80721#CLSTopic)
-* [CustomEndpoint](https://cloud.tencent.com/document/api/1552/80721#CustomEndpoint)
-* [CustomField](https://cloud.tencent.com/document/api/1552/80721#CustomField)
-* [DeliveryCondition](https://cloud.tencent.com/document/api/1552/80721#DeliveryCondition)
-* [RealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/80721#RealtimeLogDeliveryTask)
-* [S3](https://cloud.tencent.com/document/api/1552/80721#S3)
+* [DetectInfoVideoData](https://cloud.tencent.com/document/api/1323/70369#DetectInfoVideoData)
+* [Intention](https://cloud.tencent.com/document/api/1323/70369#Intention)
+* [IntentionAction](https://cloud.tencent.com/document/api/1323/70369#IntentionAction)
+* [IntentionActionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResult)
+* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResultDetail)
+* [IntentionQuestion](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestion)
+* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestionResult)
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：Intention
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 155 次发布
+
+发布时间：2024-03-07 01:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelDescribeSignFaceVideo](https://cloud.tencent.com/document/api/1420/104134)
+
+新增数据结构：
+
+* [DetectInfoVideoData](https://cloud.tencent.com/document/api/1420/61525#DetectInfoVideoData)
+* [Intention](https://cloud.tencent.com/document/api/1420/61525#Intention)
+* [IntentionAction](https://cloud.tencent.com/document/api/1420/61525#IntentionAction)
+* [IntentionActionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResult)
+* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResultDetail)
+* [IntentionQuestion](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestion)
+* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestionResult)
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：Intention
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2024-03-06 01:26:32
+发布时间：2024-03-07 01:26:39
 
 本次发布包含了以下内容：
 
@@ -217,16 +199,63 @@
 
 修改接口：
 
-* [DescribeInstance](https://cloud.tencent.com/document/api/1493/97866)
+* [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)
 
-	* 新增出参：ScaledTpsEnabled, RenewFlag, ExpiryTime, RoleNumLimit, AclEnabled, TopicNumLowerLimit, TopicNumUpperLimit
+	* 新增入参：PayMode, RenewFlag, TimeSpan, MaxTopicNum
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)
+
+	* 新增入参：MsgTTL
+
+* [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945)
+
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
+
+	* 新增出参：MsgTTL
+
+* [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)
+
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
+
+* [ModifyInstance](https://cloud.tencent.com/document/api/1493/97865)
+
+	* 新增入参：MaxTopicNum
 
 
 修改数据结构：
 
-* [Endpoint](https://cloud.tencent.com/document/api/1493/96031#Endpoint)
+* [SubscriptionData](https://cloud.tencent.com/document/api/1493/96031#SubscriptionData)
 
-	* <font color="#dd0000">**修改成员**：</font>Type, Status, PayMode, EndpointUrl, VpcId, SubnetId, Bandwidth, IpRules
+	* 新增成员：MessageModel
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, Topic, TopicType, TopicQueueNum, ConsumerGroup, IsOnline, ConsumeType, SubString, ExpressionType, Consistency, ConsumerLag, LastUpdateTime, MaxRetryTimes, ConsumeMessageOrderly
+
+* [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem)
+
+	* 新增成员：ClusterIdV4, NamespaceV4, TopicV4, FullNamespaceV4, MsgTTL
+
+
+
+
+## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 59 次发布
+
+发布时间：2024-03-07 01:27:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongUpstreamInfo](https://cloud.tencent.com/document/api/1364/54942#KongUpstreamInfo)
+
+	* 新增成员：ScfCamAuthEnable
+
+* [UpstreamHealthCheckConfig](https://cloud.tencent.com/document/api/1364/54942#UpstreamHealthCheckConfig)
+
+	* 新增成员：IgnoreZeroWeightNodes
 
 
 
@@ -14888,6 +14917,21 @@
 
 
 ## 云联络中心(ccc) 版本：2020-02-10
+
+### 第 61 次发布
+
+发布时间：2024-03-07 01:09:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo)
+
+	* 新增成员：RoleId
+
 
 ### 第 60 次发布
 
@@ -30272,6 +30316,34 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 83 次发布
+
+发布时间：2024-03-07 01:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[CollectConfig](https://cloud.tencent.com/document/api/614/56471#CollectConfig)](https://cloud.tencent.com/document/api/614/56471#[CollectConfig](https://cloud.tencent.com/document/api/614/56471#CollectConfig))
+* [[CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo)](https://cloud.tencent.com/document/api/614/56471#[CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo))
+
+修改数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+
+	* 新增成员：CollectInfos
+
+* [ConsumerContent](https://cloud.tencent.com/document/api/614/56471#ConsumerContent)
+
+	* 新增成员：JsonType
+
+* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>RawLog, IndexStatus
+
+
 ### 第 82 次发布
 
 发布时间：2024-03-01 01:12:07
@@ -44767,6 +44839,18 @@
 
 ## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
 
+### 第 24 次发布
+
+发布时间：2024-03-07 01:13:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyOAuthSetting](https://cloud.tencent.com/document/api/1025/104132)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 23 次发布
 
 发布时间：2024-01-24 01:26:26
@@ -51751,6 +51835,52 @@
 
 ## 数据安全治理中心(dsgc) 版本：2019-07-23
 
+### 第 7 次发布
+
+发布时间：2024-03-07 01:14:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDSPASelfBuildMetaResource](https://cloud.tencent.com/document/api/1087/97178)
+
+	* 新增入参：InstanceType, InstanceValue
+
+* [DescribeDSPADataSourceDbInfo](https://cloud.tencent.com/document/api/1087/97216)
+
+	* 新增入参：DataSourceType
+
+* [DescribeDSPAESDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97144)
+
+	* 新增入参：BuildType, DataSourceType
+
+* [DescribeDSPARDBDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97205)
+
+	* 新增入参：BuildType
+
+* [ModifyDSPACOSTaskResult](https://cloud.tencent.com/document/api/1087/97197)
+
+	* 新增入参：FileName, BucketName, DataSourceId
+
+
+修改数据结构：
+
+* [DspaCOSDataAssetDetail](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDataAssetDetail)
+
+	* 新增成员：IdentifyType, CheckStatus
+
+* [DspaDiscoveryTaskDataSource](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskDataSource)
+
+	* 新增成员：DataSourceType
+
+* [DspaUserResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaUserResourceMeta)
+
+	* 新增成员：InstanceType, InstanceValue
+
+
 ### 第 6 次发布
 
 发布时间：2023-11-21 01:16:05
@@ -58687,6 +58817,35 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 152 次发布
+
+发布时间：2024-03-07 01:16:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSignFaceVideo](https://cloud.tencent.com/document/api/1323/104133)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DetectInfoVideoData](https://cloud.tencent.com/document/api/1323/70369#DetectInfoVideoData)](https://cloud.tencent.com/document/api/1323/70369#[DetectInfoVideoData](https://cloud.tencent.com/document/api/1323/70369#DetectInfoVideoData))
+* [[Intention](https://cloud.tencent.com/document/api/1323/70369#Intention)](https://cloud.tencent.com/document/api/1323/70369#[Intention](https://cloud.tencent.com/document/api/1323/70369#Intention))
+* [[IntentionAction](https://cloud.tencent.com/document/api/1323/70369#IntentionAction)](https://cloud.tencent.com/document/api/1323/70369#[IntentionAction](https://cloud.tencent.com/document/api/1323/70369#IntentionAction))
+* [[IntentionActionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResult)](https://cloud.tencent.com/document/api/1323/70369#[IntentionActionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResult))
+* [[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResultDetail)](https://cloud.tencent.com/document/api/1323/70369#[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1323/70369#IntentionActionResultDetail))
+* [[IntentionQuestion](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestion)](https://cloud.tencent.com/document/api/1323/70369#[IntentionQuestion](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestion))
+* [[IntentionQuestionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestionResult)](https://cloud.tencent.com/document/api/1323/70369#[IntentionQuestionResult](https://cloud.tencent.com/document/api/1323/70369#IntentionQuestionResult))
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：Intention
+
+
 ### 第 151 次发布
 
 发布时间：2024-03-06 01:15:49
@@ -61613,6 +61772,35 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 155 次发布
+
+发布时间：2024-03-07 01:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelDescribeSignFaceVideo](https://cloud.tencent.com/document/api/1420/104134)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DetectInfoVideoData](https://cloud.tencent.com/document/api/1420/61525#DetectInfoVideoData)](https://cloud.tencent.com/document/api/1420/61525#[DetectInfoVideoData](https://cloud.tencent.com/document/api/1420/61525#DetectInfoVideoData))
+* [[Intention](https://cloud.tencent.com/document/api/1420/61525#Intention)](https://cloud.tencent.com/document/api/1420/61525#[Intention](https://cloud.tencent.com/document/api/1420/61525#Intention))
+* [[IntentionAction](https://cloud.tencent.com/document/api/1420/61525#IntentionAction)](https://cloud.tencent.com/document/api/1420/61525#[IntentionAction](https://cloud.tencent.com/document/api/1420/61525#IntentionAction))
+* [[IntentionActionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResult)](https://cloud.tencent.com/document/api/1420/61525#[IntentionActionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResult))
+* [[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResultDetail)](https://cloud.tencent.com/document/api/1420/61525#[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1420/61525#IntentionActionResultDetail))
+* [[IntentionQuestion](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestion)](https://cloud.tencent.com/document/api/1420/61525#[IntentionQuestion](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestion))
+* [[IntentionQuestionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestionResult)](https://cloud.tencent.com/document/api/1420/61525#[IntentionQuestionResult](https://cloud.tencent.com/document/api/1420/61525#IntentionQuestionResult))
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：Intention
+
 
 ### 第 154 次发布
 
@@ -74636,7 +74824,7 @@
 
 新增接口：
 
-* [[DescribeP2PInfo](https://cloud.tencent.com/document/api/1131/104107)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeP2PInfo](https://cloud.tencent.com/document/api/1131/104107)
 
 ### 第 28 次发布
 
@@ -114893,7 +115081,7 @@
 
 新增接口：
 
-* [[DescribeMsg](https://cloud.tencent.com/document/api/1179/104108)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMsg](https://cloud.tencent.com/document/api/1179/104108)
 
 ### 第 102 次发布
 
@@ -114905,7 +115093,7 @@
 
 新增接口：
 
-* [[DescribeMqMsgTrace](https://cloud.tencent.com/document/api/1179/104106)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMqMsgTrace](https://cloud.tencent.com/document/api/1179/104106)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -119427,20 +119615,20 @@
 
 新增接口：
 
-* [[CreateCLSIndex](https://cloud.tencent.com/document/api/1552/104113)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104112)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104111)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRealtimeLogDeliveryTasks](https://cloud.tencent.com/document/api/1552/104110)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104109)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCLSIndex](https://cloud.tencent.com/document/api/1552/104113)
+* [CreateRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104112)
+* [DeleteRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104111)
+* [DescribeRealtimeLogDeliveryTasks](https://cloud.tencent.com/document/api/1552/104110)
+* [ModifyRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104109)
 
 新增数据结构：
 
-* [[CLSTopic](https://cloud.tencent.com/document/api/1552/80721#CLSTopic)](https://cloud.tencent.com/document/api/1552/80721#[CLSTopic](https://cloud.tencent.com/document/api/1552/80721#CLSTopic))
-* [[CustomEndpoint](https://cloud.tencent.com/document/api/1552/80721#CustomEndpoint)](https://cloud.tencent.com/document/api/1552/80721#[CustomEndpoint](https://cloud.tencent.com/document/api/1552/80721#CustomEndpoint))
-* [[CustomField](https://cloud.tencent.com/document/api/1552/80721#CustomField)](https://cloud.tencent.com/document/api/1552/80721#[CustomField](https://cloud.tencent.com/document/api/1552/80721#CustomField))
-* [[DeliveryCondition](https://cloud.tencent.com/document/api/1552/80721#DeliveryCondition)](https://cloud.tencent.com/document/api/1552/80721#[DeliveryCondition](https://cloud.tencent.com/document/api/1552/80721#DeliveryCondition))
-* [[RealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/80721#RealtimeLogDeliveryTask)](https://cloud.tencent.com/document/api/1552/80721#[RealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/80721#RealtimeLogDeliveryTask))
-* [[S3](https://cloud.tencent.com/document/api/1552/80721#S3)](https://cloud.tencent.com/document/api/1552/80721#[S3](https://cloud.tencent.com/document/api/1552/80721#S3))
+* [CLSTopic](https://cloud.tencent.com/document/api/1552/80721#CLSTopic)
+* [CustomEndpoint](https://cloud.tencent.com/document/api/1552/80721#CustomEndpoint)
+* [CustomField](https://cloud.tencent.com/document/api/1552/80721#CustomField)
+* [DeliveryCondition](https://cloud.tencent.com/document/api/1552/80721#DeliveryCondition)
+* [RealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/80721#RealtimeLogDeliveryTask)
+* [S3](https://cloud.tencent.com/document/api/1552/80721#S3)
 
 ### 第 74 次发布
 
@@ -129533,6 +129721,52 @@
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
 
+### 第 11 次发布
+
+发布时间：2024-03-07 01:26:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)
+
+	* 新增入参：PayMode, RenewFlag, TimeSpan, MaxTopicNum
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)
+
+	* 新增入参：MsgTTL
+
+* [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945)
+
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
+
+	* 新增出参：MsgTTL
+
+* [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)
+
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
+
+* [ModifyInstance](https://cloud.tencent.com/document/api/1493/97865)
+
+	* 新增入参：MaxTopicNum
+
+
+修改数据结构：
+
+* [SubscriptionData](https://cloud.tencent.com/document/api/1493/96031#SubscriptionData)
+
+	* 新增成员：MessageModel
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, Topic, TopicType, TopicQueueNum, ConsumerGroup, IsOnline, ConsumeType, SubString, ExpressionType, Consistency, ConsumerLag, LastUpdateTime, MaxRetryTimes, ConsumeMessageOrderly
+
+* [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem)
+
+	* 新增成员：ClusterIdV4, NamespaceV4, TopicV4, FullNamespaceV4, MsgTTL
+
+
 ### 第 10 次发布
 
 发布时间：2024-03-06 01:26:32
@@ -131835,6 +132069,25 @@
 
 
 ## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 59 次发布
+
+发布时间：2024-03-07 01:27:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongUpstreamInfo](https://cloud.tencent.com/document/api/1364/54942#KongUpstreamInfo)
+
+	* 新增成员：ScfCamAuthEnable
+
+* [UpstreamHealthCheckConfig](https://cloud.tencent.com/document/api/1364/54942#UpstreamHealthCheckConfig)
+
+	* 新增成员：IgnoreZeroWeightNodes
+
 
 ### 第 58 次发布
 

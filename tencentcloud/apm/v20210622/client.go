@@ -510,7 +510,7 @@ func NewModifyApmInstanceResponse() (response *ModifyApmInstanceResponse) {
 }
 
 // ModifyApmInstance
-// 修改Apm实例接口
+// 修改APM实例接口
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -529,7 +529,7 @@ func (c *Client) ModifyApmInstance(request *ModifyApmInstanceRequest) (response 
 }
 
 // ModifyApmInstance
-// 修改Apm实例接口
+// 修改APM实例接口
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

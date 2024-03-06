@@ -5491,7 +5491,7 @@ func (r *DescribeIPRegionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIdentificationsRequestParams struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
+	// <li>zone-name：按照站点名称进行过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页查询偏移量。默认值：0。
@@ -5505,7 +5505,7 @@ type DescribeIdentificationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
+	// <li>zone-name：按照站点名称进行过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页查询偏移量。默认值：0。

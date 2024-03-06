@@ -53,6 +53,9 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
+	// 实例Topic数量不能调整到已使用额度以下。
+	UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
+
 	// 资源已存在，请检查后重试。
 	UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 )

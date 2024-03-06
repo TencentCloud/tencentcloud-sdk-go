@@ -2749,6 +2749,71 @@ func (c *Client) ModifyDeviceGroupWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyOAuthSettingRequest() (request *ModifyOAuthSettingRequest) {
+    request = &ModifyOAuthSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyOAuthSetting")
+    
+    
+    return
+}
+
+func NewModifyOAuthSettingResponse() (response *ModifyOAuthSettingResponse) {
+    response = &ModifyOAuthSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOAuthSetting
+// 设置OAuth认证参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyOAuthSetting(request *ModifyOAuthSettingRequest) (response *ModifyOAuthSettingResponse, err error) {
+    return c.ModifyOAuthSettingWithContext(context.Background(), request)
+}
+
+// ModifyOAuthSetting
+// 设置OAuth认证参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyOAuthSettingWithContext(ctx context.Context, request *ModifyOAuthSettingRequest) (response *ModifyOAuthSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyOAuthSettingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOAuthSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOAuthSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceRequest() (request *ModifyResourceRequest) {
     request = &ModifyResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

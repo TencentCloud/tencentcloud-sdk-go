@@ -1333,26 +1333,26 @@ func (r *AssociateDhcpIpWithAddressIpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateDirectConnectGatewayNatGatewayRequestParams struct {
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。形如：vpc-xxx。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关ID。
+	// NAT网关ID。形如：nat-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 专线网关ID。
+	// 专线网关ID。形如：dcg-xxx
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil,omitempty" name:"DirectConnectGatewayId"`
 }
 
 type AssociateDirectConnectGatewayNatGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。形如：vpc-xxx。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关ID。
+	// NAT网关ID。形如：nat-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 专线网关ID。
+	// 专线网关ID。形如：dcg-xxx
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil,omitempty" name:"DirectConnectGatewayId"`
 }
 
@@ -17175,26 +17175,26 @@ func (r *DisassociateDhcpIpWithAddressIpResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DisassociateDirectConnectGatewayNatGatewayRequestParams struct {
-	// 专线网关ID。
+	// VPC实例ID。形如：vpc-xxx。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关ID。
+	// NAT网关ID。形如：nat-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// 专线网关ID。形如：dcg-xxx
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil,omitempty" name:"DirectConnectGatewayId"`
 }
 
 type DisassociateDirectConnectGatewayNatGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专线网关ID。
+	// VPC实例ID。形如：vpc-xxx。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关ID。
+	// NAT网关ID。形如：nat-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// 专线网关ID。形如：dcg-xxx
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitnil,omitempty" name:"DirectConnectGatewayId"`
 }
 
@@ -22164,7 +22164,7 @@ func (r *ModifyTemplateMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVpcAttributeRequestParams struct {
-	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+	// VPC实例ID。形如：vpc-f49l6u0z。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私有网络名称，可任意命名，但不得超过60个字符。
@@ -22186,7 +22186,7 @@ type ModifyVpcAttributeRequestParams struct {
 type ModifyVpcAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+	// VPC实例ID。形如：vpc-f49l6u0z。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私有网络名称，可任意命名，但不得超过60个字符。

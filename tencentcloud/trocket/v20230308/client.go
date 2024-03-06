@@ -2170,6 +2170,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
 func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
     return c.ModifyInstanceWithContext(context.Background(), request)
 }
@@ -2181,6 +2182,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
 func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
     if request == nil {
         request = NewModifyInstanceRequest()
@@ -2223,6 +2225,7 @@ func NewModifyMQTTInsPublicEndpointResponse() (response *ModifyMQTTInsPublicEndp
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
 func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
     return c.ModifyMQTTInsPublicEndpointWithContext(context.Background(), request)
 }
@@ -2234,6 +2237,7 @@ func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpoin
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
 func (c *Client) ModifyMQTTInsPublicEndpointWithContext(ctx context.Context, request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
     if request == nil {
         request = NewModifyMQTTInsPublicEndpointRequest()

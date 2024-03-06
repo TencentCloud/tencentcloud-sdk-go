@@ -155,7 +155,24 @@ type CreateInstanceRequestParams struct {
 	// basic_1k,
 	// basic_2k,
 	// basic_4k,
-	// basic_6k
+	// basic_6k,
+	// pro_4k,
+	// pro_6k,
+	// pro_1w,
+	// pro_2w,
+	// pro_3w,
+	// pro_4w,
+	// pro_5w,
+	// platinum_6k,
+	// platinum_1w,
+	// platinum_2w,
+	// platinum_4w,
+	// platinum_10w,
+	// platinum_15w,
+	// platinum_20w,
+	// platinum_40w,
+	// platinum_60w,
+	// platinum_100w
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 备注信息
@@ -170,14 +187,26 @@ type CreateInstanceRequestParams struct {
 	// 是否开启公网
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
 
-	// 公网带宽
+	// 公网带宽（单位：兆）
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 公网访问白名单
 	IpRules []*IpRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
 
-	// 消息保留时长，小时为单位
+	// 消息保留时长（单位：小时）
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
+
+	// 付费模式（0: 后付费；1: 预付费）
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 购买时长（单位：月）
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 最大可创建主题数
+	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
 }
 
 type CreateInstanceRequest struct {
@@ -198,7 +227,24 @@ type CreateInstanceRequest struct {
 	// basic_1k,
 	// basic_2k,
 	// basic_4k,
-	// basic_6k
+	// basic_6k,
+	// pro_4k,
+	// pro_6k,
+	// pro_1w,
+	// pro_2w,
+	// pro_3w,
+	// pro_4w,
+	// pro_5w,
+	// platinum_6k,
+	// platinum_1w,
+	// platinum_2w,
+	// platinum_4w,
+	// platinum_10w,
+	// platinum_15w,
+	// platinum_20w,
+	// platinum_40w,
+	// platinum_60w,
+	// platinum_100w
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 备注信息
@@ -213,14 +259,26 @@ type CreateInstanceRequest struct {
 	// 是否开启公网
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
 
-	// 公网带宽
+	// 公网带宽（单位：兆）
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 公网访问白名单
 	IpRules []*IpRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
 
-	// 消息保留时长，小时为单位
+	// 消息保留时长（单位：小时）
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
+
+	// 付费模式（0: 后付费；1: 预付费）
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 购买时长（单位：月）
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 最大可创建主题数
+	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -245,6 +303,10 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Bandwidth")
 	delete(f, "IpRules")
 	delete(f, "MessageRetention")
+	delete(f, "PayMode")
+	delete(f, "RenewFlag")
+	delete(f, "TimeSpan")
+	delete(f, "MaxTopicNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -792,6 +854,9 @@ type CreateTopicRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 消息保留时长
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 type CreateTopicRequest struct {
@@ -816,6 +881,9 @@ type CreateTopicRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 消息保留时长
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -835,6 +903,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicType")
 	delete(f, "QueueNum")
 	delete(f, "Remark")
+	delete(f, "MsgTTL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -2782,14 +2851,14 @@ type DescribeTopicListRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTopicListRequest struct {
@@ -2798,14 +2867,14 @@ type DescribeTopicListRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTopicListRequest) ToJsonString() string {
@@ -2821,9 +2890,9 @@ func (r *DescribeTopicListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicListRequest has unknown keys!", "")
 	}
@@ -2867,14 +2936,14 @@ type DescribeTopicRequestParams struct {
 	// 主题
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTopicRequest struct {
@@ -2886,14 +2955,14 @@ type DescribeTopicRequest struct {
 	// 主题
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTopicRequest) ToJsonString() string {
@@ -2910,9 +2979,9 @@ func (r *DescribeTopicRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Topic")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicRequest has unknown keys!", "")
 	}
@@ -2949,6 +3018,9 @@ type DescribeTopicResponseParams struct {
 
 	// 订阅关系列表
 	SubscriptionData []*SubscriptionData `json:"SubscriptionData,omitnil,omitempty" name:"SubscriptionData"`
+
+	// 消息保留时长
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3607,6 +3679,9 @@ type ModifyInstanceRequestParams struct {
 
 	// 是否开启弹性TPS
 	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
+
+	// 最大可创建主题数
+	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
 }
 
 type ModifyInstanceRequest struct {
@@ -3632,6 +3707,9 @@ type ModifyInstanceRequest struct {
 
 	// 是否开启弹性TPS
 	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
+
+	// 最大可创建主题数
+	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -3653,6 +3731,7 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SkuCode")
 	delete(f, "MessageRetention")
 	delete(f, "ScaledTpsEnabled")
+	delete(f, "MaxTopicNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}
@@ -4361,6 +4440,12 @@ type SubscriptionData struct {
 	// 是否顺序消费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
+
+	// 消费模式: 
+	// BROADCASTING 广播模式;
+	// CLUSTERING 集群模式;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageModel *string `json:"MessageModel,omitnil,omitempty" name:"MessageModel"`
 }
 
 type Tag struct {
@@ -4397,6 +4482,26 @@ type TopicItem struct {
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 4.x的集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIdV4 *string `json:"ClusterIdV4,omitnil,omitempty" name:"ClusterIdV4"`
+
+	// 4.x的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
+
+	// 4.x的主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicV4 *string `json:"TopicV4,omitnil,omitempty" name:"TopicV4"`
+
+	// 4.x的完整命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
+
+	// 消息保留时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 type VpcInfo struct {

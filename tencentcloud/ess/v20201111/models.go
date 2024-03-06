@@ -8146,6 +8146,95 @@ func (r *DescribePersonCertificateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSignFaceVideoRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同流程ID，为32位字符串。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeSignFaceVideoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同流程ID，为32位字符串。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeSignFaceVideoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSignFaceVideoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowId")
+	delete(f, "SignId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSignFaceVideoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSignFaceVideoResponseParams struct {
+	// 核身视频结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoData *DetectInfoVideoData `json:"VideoData,omitnil,omitempty" name:"VideoData"`
+
+	// 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitnil,omitempty" name:"IntentionQuestionResult"`
+
+	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitnil,omitempty" name:"IntentionActionResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSignFaceVideoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSignFaceVideoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSignFaceVideoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSignFaceVideoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeThirdPartyAuthCodeRequestParams struct {
 	// 腾讯电子签小程序跳转客户企业小程序时携带的授权查看码，AuthCode由腾讯电子签小程序生成。
 	AuthCode *string `json:"AuthCode,omitnil,omitempty" name:"AuthCode"`
@@ -8320,6 +8409,14 @@ func (r *DescribeUserAutoSignStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserAutoSignStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectInfoVideoData struct {
+	// 活体视频的base64编码，mp4格式
+	// 
+	// 注:`需进行base64解码获取活体视频文件`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveNessVideo *string `json:"LiveNessVideo,omitnil,omitempty" name:"LiveNessVideo"`
 }
 
 // Predefined struct for user
@@ -8921,6 +9018,13 @@ type FlowCreateApprover struct {
 	// 
 	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
+
+	// 视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+	// 
+	// 注:
+	//  `1.视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+	// `2.使用视频认证必须指定签署认证方式为人脸（即ApproverSignTypes）。`
+	Intention *Intention `json:"Intention,omitnil,omitempty" name:"Intention"`
 }
 
 type FlowDetailInfo struct {
@@ -9325,6 +9429,62 @@ type IntegrationDepartment struct {
 	// 序列号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderNo *uint64 `json:"OrderNo,omitnil,omitempty" name:"OrderNo"`
+}
+
+type Intention struct {
+	// 视频认证类型，支持以下类型
+	// <ul><li>1 : 问答模式</li>
+	// <li>2 : 点头模式</li></ul>
+	// 
+	// 注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+	IntentionType *int64 `json:"IntentionType,omitnil,omitempty" name:"IntentionType"`
+
+	// 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitnil,omitempty" name:"IntentionQuestions"`
+
+	// 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+	IntentionActions []*IntentionAction `json:"IntentionActions,omitnil,omitempty" name:"IntentionActions"`
+}
+
+type IntentionAction struct {
+	// 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type IntentionActionResult struct {
+	// 意愿核身结果详细数据，与每段点头确认过程一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*IntentionActionResultDetail `json:"Details,omitnil,omitempty" name:"Details"`
+}
+
+type IntentionActionResultDetail struct {
+	// 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Video *string `json:"Video,omitnil,omitempty" name:"Video"`
+}
+
+type IntentionQuestion struct {
+	// 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	//  当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
+	Answers []*string `json:"Answers,omitnil,omitempty" name:"Answers"`
+}
+
+type IntentionQuestionResult struct {
+	// 视频base64（其中包含全程问题和回答音频，mp4格式）
+	// 
+	// 注：`需进行base64解码获取视频文件`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Video *string `json:"Video,omitnil,omitempty" name:"Video"`
+
+	//  和答案匹配结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode []*string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
+
+	// 回答问题语音识别结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrResult []*string `json:"AsrResult,omitnil,omitempty" name:"AsrResult"`
 }
 
 // Predefined struct for user

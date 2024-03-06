@@ -4346,6 +4346,87 @@ func (c *Client) ChannelDescribeRolesWithContext(ctx context.Context, request *C
     return
 }
 
+func NewChannelDescribeSignFaceVideoRequest() (request *ChannelDescribeSignFaceVideoRequest) {
+    request = &ChannelDescribeSignFaceVideoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeSignFaceVideo")
+    
+    
+    return
+}
+
+func NewChannelDescribeSignFaceVideoResponse() (response *ChannelDescribeSignFaceVideoResponse) {
+    response = &ChannelDescribeSignFaceVideoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChannelDescribeSignFaceVideo
+// 该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
+//
+// 
+//
+// 1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸图片。
+//
+// 2. 该接口**不支持小程序端**的签署人脸图片获取。
+//
+// 3. 请在**签署完成后的三天内**获取人脸图片，**过期后将无法获取**。
+//
+// 
+//
+// **注意：该接口需要开通白名单，请联系客户经理开通后使用。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelDescribeSignFaceVideo(request *ChannelDescribeSignFaceVideoRequest) (response *ChannelDescribeSignFaceVideoResponse, err error) {
+    return c.ChannelDescribeSignFaceVideoWithContext(context.Background(), request)
+}
+
+// ChannelDescribeSignFaceVideo
+// 该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
+//
+// 
+//
+// 1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸图片。
+//
+// 2. 该接口**不支持小程序端**的签署人脸图片获取。
+//
+// 3. 请在**签署完成后的三天内**获取人脸图片，**过期后将无法获取**。
+//
+// 
+//
+// **注意：该接口需要开通白名单，请联系客户经理开通后使用。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelDescribeSignFaceVideoWithContext(ctx context.Context, request *ChannelDescribeSignFaceVideoRequest) (response *ChannelDescribeSignFaceVideoResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeSignFaceVideoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeSignFaceVideo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeSignFaceVideoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDescribeUserAutoSignStatusRequest() (request *ChannelDescribeUserAutoSignStatusRequest) {
     request = &ChannelDescribeUserAutoSignStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

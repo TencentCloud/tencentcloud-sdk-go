@@ -719,7 +719,7 @@ func NewCreateConsumerResponse() (response *CreateConsumerResponse) {
 }
 
 // CreateConsumer
-// 本接口用于创建投递任务
+// 本接口用于创建投递CKafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -738,7 +738,7 @@ func (c *Client) CreateConsumer(request *CreateConsumerRequest) (response *Creat
 }
 
 // CreateConsumer
-// 本接口用于创建投递任务
+// 本接口用于创建投递CKafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3824,7 +3824,7 @@ func NewDescribeLogContextResponse() (response *DescribeLogContextResponse) {
 }
 
 // DescribeLogContext
-// 本接口用于搜索日志上下文附近的内容
+// 本接口用于搜索日志上下文附近的内容，详情参考[上下文检索](https://cloud.tencent.com/document/product/614/53248)。
 //
 // API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
 //
@@ -3851,7 +3851,7 @@ func (c *Client) DescribeLogContext(request *DescribeLogContextRequest) (respons
 }
 
 // DescribeLogContext
-// 本接口用于搜索日志上下文附近的内容
+// 本接口用于搜索日志上下文附近的内容，详情参考[上下文检索](https://cloud.tencent.com/document/product/614/53248)。
 //
 // API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
 //
@@ -5148,7 +5148,7 @@ func NewModifyConsumerResponse() (response *ModifyConsumerResponse) {
 }
 
 // ModifyConsumer
-// 本接口用于修改投递任务
+// 本接口用于修改投递Ckafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5166,7 +5166,7 @@ func (c *Client) ModifyConsumer(request *ModifyConsumerRequest) (response *Modif
 }
 
 // ModifyConsumer
-// 本接口用于修改投递任务
+// 本接口用于修改投递Ckafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

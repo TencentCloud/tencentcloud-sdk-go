@@ -4845,7 +4845,7 @@ type MLIDPassportOCRResponseParams struct {
 	// -9106       证件遮挡告警
 	Warn []*int64 `json:"Warn,omitnil,omitempty" name:"Warn"`
 
-	// 证件图片
+	// 证件中的人像图片base64
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 扩展字段:

@@ -2398,6 +2398,15 @@ type CreateDSPASelfBuildMetaResourceRequestParams struct {
 
 	// 资源名称，1-60个字符。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 实例类型
+	// databse
+	// sid
+	// serviceName
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例值
+	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
 }
 
 type CreateDSPASelfBuildMetaResourceRequest struct {
@@ -2443,6 +2452,15 @@ type CreateDSPASelfBuildMetaResourceRequest struct {
 
 	// 资源名称，1-60个字符。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 实例类型
+	// databse
+	// sid
+	// serviceName
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例值
+	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
 }
 
 func (r *CreateDSPASelfBuildMetaResourceRequest) ToJsonString() string {
@@ -2469,6 +2487,8 @@ func (r *CreateDSPASelfBuildMetaResourceRequest) FromJsonString(s string) error 
 	delete(f, "UserName")
 	delete(f, "Password")
 	delete(f, "ResourceName")
+	delete(f, "InstanceType")
+	delete(f, "InstanceValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPASelfBuildMetaResourceRequest has unknown keys!", "")
 	}
@@ -7195,6 +7215,9 @@ type DescribeDSPADataSourceDbInfoRequestParams struct {
 
 	// 数据源ID
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 数据源类型
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 type DescribeDSPADataSourceDbInfoRequest struct {
@@ -7205,6 +7228,9 @@ type DescribeDSPADataSourceDbInfoRequest struct {
 
 	// 数据源ID
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 数据源类型
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 func (r *DescribeDSPADataSourceDbInfoRequest) ToJsonString() string {
@@ -7221,6 +7247,7 @@ func (r *DescribeDSPADataSourceDbInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "DataSourceId")
+	delete(f, "DataSourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPADataSourceDbInfoRequest has unknown keys!", "")
 	}
@@ -7821,6 +7848,12 @@ type DescribeDSPAESDataAssetByComplianceIdRequestParams struct {
 
 	// 合规组id
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// 云上还是自建
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// 数据源类型
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 type DescribeDSPAESDataAssetByComplianceIdRequest struct {
@@ -7831,6 +7864,12 @@ type DescribeDSPAESDataAssetByComplianceIdRequest struct {
 
 	// 合规组id
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// 云上还是自建
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// 数据源类型
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 func (r *DescribeDSPAESDataAssetByComplianceIdRequest) ToJsonString() string {
@@ -7847,6 +7886,8 @@ func (r *DescribeDSPAESDataAssetByComplianceIdRequest) FromJsonString(s string) 
 	}
 	delete(f, "DspaId")
 	delete(f, "ComplianceId")
+	delete(f, "BuildType")
+	delete(f, "DataSourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAESDataAssetByComplianceIdRequest has unknown keys!", "")
 	}
@@ -8308,6 +8349,9 @@ type DescribeDSPARDBDataAssetByComplianceIdRequestParams struct {
 
 	// 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 自建还是云上
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
 }
 
 type DescribeDSPARDBDataAssetByComplianceIdRequest struct {
@@ -8321,6 +8365,9 @@ type DescribeDSPARDBDataAssetByComplianceIdRequest struct {
 
 	// 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 自建还是云上
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
 }
 
 func (r *DescribeDSPARDBDataAssetByComplianceIdRequest) ToJsonString() string {
@@ -8338,6 +8385,7 @@ func (r *DescribeDSPARDBDataAssetByComplianceIdRequest) FromJsonString(s string)
 	delete(f, "DspaId")
 	delete(f, "ComplianceId")
 	delete(f, "DataSourceType")
+	delete(f, "BuildType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPARDBDataAssetByComplianceIdRequest has unknown keys!", "")
 	}
@@ -9559,6 +9607,16 @@ type DspaCOSDataAssetDetail struct {
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
+
+	// 0-系统识别
+	// 1-人工识别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentifyType *int64 `json:"IdentifyType,omitnil,omitempty" name:"IdentifyType"`
+
+	// 0-系统识别
+	// 1-人工识别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 }
 
 type DspaCOSDiscoveryTask struct {
@@ -10104,6 +10162,10 @@ type DspaDiscoveryTaskDataSource struct {
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 type DspaDiscoveryTaskDbResult struct {
@@ -10512,6 +10574,14 @@ type DspaUserResourceMeta struct {
 
 	// 授权账号名
 	ResourceAuthAccount *string `json:"ResourceAuthAccount,omitnil,omitempty" name:"ResourceAuthAccount"`
+
+	// x
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// x
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
 }
 
 type ESAsset struct {
@@ -12138,6 +12208,15 @@ type ModifyDSPACOSTaskResultRequestParams struct {
 
 	// 是否设置为非敏感文件
 	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitnil,omitempty" name:"IsSetNonSensitiveFile"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 桶名
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 }
 
 type ModifyDSPACOSTaskResultRequest struct {
@@ -12154,6 +12233,15 @@ type ModifyDSPACOSTaskResultRequest struct {
 
 	// 是否设置为非敏感文件
 	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitnil,omitempty" name:"IsSetNonSensitiveFile"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 桶名
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 }
 
 func (r *ModifyDSPACOSTaskResultRequest) ToJsonString() string {
@@ -12172,6 +12260,9 @@ func (r *ModifyDSPACOSTaskResultRequest) FromJsonString(s string) error {
 	delete(f, "ComplianceId")
 	delete(f, "FileResultId")
 	delete(f, "IsSetNonSensitiveFile")
+	delete(f, "FileName")
+	delete(f, "BucketName")
+	delete(f, "DataSourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPACOSTaskResultRequest has unknown keys!", "")
 	}

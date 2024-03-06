@@ -6086,6 +6086,10 @@ type KongUpstreamInfo struct {
 	// upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthStatus *string `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// 云函数是否开启CAM鉴权，不填时默认为开启(true)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScfCamAuthEnable *bool `json:"ScfCamAuthEnable,omitnil,omitempty" name:"ScfCamAuthEnable"`
 }
 
 type KongUpstreamList struct {
@@ -8390,6 +8394,10 @@ type UpstreamHealthCheckConfig struct {
 	// 异常HTTP状态码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhealthyHttpStatuses []*uint64 `json:"UnhealthyHttpStatuses,omitnil,omitempty" name:"UnhealthyHttpStatuses"`
+
+	// 健康检查屏蔽权重为0的节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreZeroWeightNodes *bool `json:"IgnoreZeroWeightNodes,omitnil,omitempty" name:"IgnoreZeroWeightNodes"`
 }
 
 type VpcInfo struct {

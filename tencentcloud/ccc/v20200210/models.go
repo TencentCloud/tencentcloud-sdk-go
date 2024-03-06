@@ -4516,6 +4516,9 @@ type StaffInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
+	// 用户角色id
+	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
 	// 所属技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`

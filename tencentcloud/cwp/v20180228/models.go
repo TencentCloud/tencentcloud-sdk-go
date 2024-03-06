@@ -40134,7 +40134,7 @@ func (r *ModifyLicenseUnBindsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLogKafkaAccessRequestParams struct {
-	// 实例名称 如 云镜测试环境
+	// 实例名称 如 主机安全测试环境
 	KafkaEnvName *string `json:"KafkaEnvName,omitnil,omitempty" name:"KafkaEnvName"`
 
 	// 实例ID
@@ -40186,7 +40186,7 @@ type ModifyLogKafkaAccessRequestParams struct {
 type ModifyLogKafkaAccessRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称 如 云镜测试环境
+	// 实例名称 如 主机安全测试环境
 	KafkaEnvName *string `json:"KafkaEnvName,omitnil,omitempty" name:"KafkaEnvName"`
 
 	// 实例ID
@@ -40375,7 +40375,7 @@ func (r *ModifyLogKafkaDeliverTypeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLogKafkaStateRequestParams struct {
-	// 实例名称 如 云镜测试环境
+	// 实例名称 如 主机安全测试环境
 	KafkaEnvName *string `json:"KafkaEnvName,omitnil,omitempty" name:"KafkaEnvName"`
 
 	// 实例ID
@@ -40418,7 +40418,7 @@ type ModifyLogKafkaStateRequestParams struct {
 type ModifyLogKafkaStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称 如 云镜测试环境
+	// 实例名称 如 主机安全测试环境
 	KafkaEnvName *string `json:"KafkaEnvName,omitnil,omitempty" name:"KafkaEnvName"`
 
 	// 实例ID
