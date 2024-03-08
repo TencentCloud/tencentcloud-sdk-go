@@ -456,6 +456,9 @@ type CreateFileSystemRequestParams struct {
 
 	// GooseFSx构建时要传递的参数
 	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitnil,omitempty" name:"GooseFSxBuildElements"`
+
+	// 客户端集群所属的安全组
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 }
 
 type CreateFileSystemRequest struct {
@@ -484,6 +487,9 @@ type CreateFileSystemRequest struct {
 
 	// GooseFSx构建时要传递的参数
 	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitnil,omitempty" name:"GooseFSxBuildElements"`
+
+	// 客户端集群所属的安全组
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -506,6 +512,7 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Tag")
 	delete(f, "GooseFSxBuildElements")
+	delete(f, "SecurityGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSystemRequest has unknown keys!", "")
 	}

@@ -8386,7 +8386,7 @@ func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) 
 }
 
 // ResetAccountPassword
-// 本接口（ResetAccountPassword）用于重置实例的账户密码。
+// 本接口（ResetAccountPassword）用于重置实例的账号密码。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -8405,7 +8405,7 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
 }
 
 // ResetAccountPassword
-// 本接口（ResetAccountPassword）用于重置实例的账户密码。
+// 本接口（ResetAccountPassword）用于重置实例的账号密码。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

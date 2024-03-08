@@ -261,6 +261,477 @@ func (c *Client) DescribeAccountBalanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeAllocateConditionsRequest() (request *DescribeAllocateConditionsRequest) {
+    request = &DescribeAllocateConditionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocateConditions")
+    
+    
+    return
+}
+
+func NewDescribeAllocateConditionsResponse() (response *DescribeAllocateConditionsResponse) {
+    response = &DescribeAllocateConditionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocateConditions
+// 查询资源目录筛选条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocateConditions(request *DescribeAllocateConditionsRequest) (response *DescribeAllocateConditionsResponse, err error) {
+    return c.DescribeAllocateConditionsWithContext(context.Background(), request)
+}
+
+// DescribeAllocateConditions
+// 查询资源目录筛选条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocateConditionsWithContext(ctx context.Context, request *DescribeAllocateConditionsRequest) (response *DescribeAllocateConditionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocateConditionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocateConditions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocateConditionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationBillConditionsRequest() (request *DescribeAllocationBillConditionsRequest) {
+    request = &DescribeAllocationBillConditionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationBillConditions")
+    
+    
+    return
+}
+
+func NewDescribeAllocationBillConditionsResponse() (response *DescribeAllocationBillConditionsResponse) {
+    response = &DescribeAllocationBillConditionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationBillConditions
+// 查询分账账单筛选条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocationBillConditions(request *DescribeAllocationBillConditionsRequest) (response *DescribeAllocationBillConditionsResponse, err error) {
+    return c.DescribeAllocationBillConditionsWithContext(context.Background(), request)
+}
+
+// DescribeAllocationBillConditions
+// 查询分账账单筛选条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocationBillConditionsWithContext(ctx context.Context, request *DescribeAllocationBillConditionsRequest) (response *DescribeAllocationBillConditionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationBillConditionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationBillConditions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationBillConditionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationBillDetailRequest() (request *DescribeAllocationBillDetailRequest) {
+    request = &DescribeAllocationBillDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationBillDetail")
+    
+    
+    return
+}
+
+func NewDescribeAllocationBillDetailResponse() (response *DescribeAllocationBillDetailResponse) {
+    response = &DescribeAllocationBillDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationBillDetail
+// 查询分账账单明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocationBillDetail(request *DescribeAllocationBillDetailRequest) (response *DescribeAllocationBillDetailResponse, err error) {
+    return c.DescribeAllocationBillDetailWithContext(context.Background(), request)
+}
+
+// DescribeAllocationBillDetail
+// 查询分账账单明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllocationBillDetailWithContext(ctx context.Context, request *DescribeAllocationBillDetailRequest) (response *DescribeAllocationBillDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationBillDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationBillDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationBillDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationMonthOverviewRequest() (request *DescribeAllocationMonthOverviewRequest) {
+    request = &DescribeAllocationMonthOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationMonthOverview")
+    
+    
+    return
+}
+
+func NewDescribeAllocationMonthOverviewResponse() (response *DescribeAllocationMonthOverviewResponse) {
+    response = &DescribeAllocationMonthOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationMonthOverview
+// 查询分账账单月概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationMonthOverview(request *DescribeAllocationMonthOverviewRequest) (response *DescribeAllocationMonthOverviewResponse, err error) {
+    return c.DescribeAllocationMonthOverviewWithContext(context.Background(), request)
+}
+
+// DescribeAllocationMonthOverview
+// 查询分账账单月概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationMonthOverviewWithContext(ctx context.Context, request *DescribeAllocationMonthOverviewRequest) (response *DescribeAllocationMonthOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationMonthOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationMonthOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationMonthOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationOverviewRequest() (request *DescribeAllocationOverviewRequest) {
+    request = &DescribeAllocationOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationOverview")
+    
+    
+    return
+}
+
+func NewDescribeAllocationOverviewResponse() (response *DescribeAllocationOverviewResponse) {
+    response = &DescribeAllocationOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationOverview
+// 查询分账账单日概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationOverview(request *DescribeAllocationOverviewRequest) (response *DescribeAllocationOverviewResponse, err error) {
+    return c.DescribeAllocationOverviewWithContext(context.Background(), request)
+}
+
+// DescribeAllocationOverview
+// 查询分账账单日概览
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationOverviewWithContext(ctx context.Context, request *DescribeAllocationOverviewRequest) (response *DescribeAllocationOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationSummaryByBusinessRequest() (request *DescribeAllocationSummaryByBusinessRequest) {
+    request = &DescribeAllocationSummaryByBusinessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationSummaryByBusiness")
+    
+    
+    return
+}
+
+func NewDescribeAllocationSummaryByBusinessResponse() (response *DescribeAllocationSummaryByBusinessResponse) {
+    response = &DescribeAllocationSummaryByBusinessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationSummaryByBusiness
+// 查询分账账单按产品汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByBusiness(request *DescribeAllocationSummaryByBusinessRequest) (response *DescribeAllocationSummaryByBusinessResponse, err error) {
+    return c.DescribeAllocationSummaryByBusinessWithContext(context.Background(), request)
+}
+
+// DescribeAllocationSummaryByBusiness
+// 查询分账账单按产品汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByBusinessWithContext(ctx context.Context, request *DescribeAllocationSummaryByBusinessRequest) (response *DescribeAllocationSummaryByBusinessResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationSummaryByBusinessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationSummaryByBusiness require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationSummaryByBusinessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationSummaryByItemRequest() (request *DescribeAllocationSummaryByItemRequest) {
+    request = &DescribeAllocationSummaryByItemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationSummaryByItem")
+    
+    
+    return
+}
+
+func NewDescribeAllocationSummaryByItemResponse() (response *DescribeAllocationSummaryByItemResponse) {
+    response = &DescribeAllocationSummaryByItemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationSummaryByItem
+// 查询分账账单按组件汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByItem(request *DescribeAllocationSummaryByItemRequest) (response *DescribeAllocationSummaryByItemResponse, err error) {
+    return c.DescribeAllocationSummaryByItemWithContext(context.Background(), request)
+}
+
+// DescribeAllocationSummaryByItem
+// 查询分账账单按组件汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByItemWithContext(ctx context.Context, request *DescribeAllocationSummaryByItemRequest) (response *DescribeAllocationSummaryByItemResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationSummaryByItemRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationSummaryByItem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationSummaryByItemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationSummaryByResourceRequest() (request *DescribeAllocationSummaryByResourceRequest) {
+    request = &DescribeAllocationSummaryByResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationSummaryByResource")
+    
+    
+    return
+}
+
+func NewDescribeAllocationSummaryByResourceResponse() (response *DescribeAllocationSummaryByResourceResponse) {
+    response = &DescribeAllocationSummaryByResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationSummaryByResource
+// 查询分账账单按资源汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByResource(request *DescribeAllocationSummaryByResourceRequest) (response *DescribeAllocationSummaryByResourceResponse, err error) {
+    return c.DescribeAllocationSummaryByResourceWithContext(context.Background(), request)
+}
+
+// DescribeAllocationSummaryByResource
+// 查询分账账单按资源汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationSummaryByResourceWithContext(ctx context.Context, request *DescribeAllocationSummaryByResourceRequest) (response *DescribeAllocationSummaryByResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationSummaryByResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationSummaryByResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationSummaryByResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationTrendByMonthRequest() (request *DescribeAllocationTrendByMonthRequest) {
+    request = &DescribeAllocationTrendByMonthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationTrendByMonth")
+    
+    
+    return
+}
+
+func NewDescribeAllocationTrendByMonthResponse() (response *DescribeAllocationTrendByMonthResponse) {
+    response = &DescribeAllocationTrendByMonthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationTrendByMonth
+// 查询分账账单费用趋势
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationTrendByMonth(request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
+    return c.DescribeAllocationTrendByMonthWithContext(context.Background(), request)
+}
+
+// DescribeAllocationTrendByMonth
+// 查询分账账单费用趋势
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationTrendByMonthWithContext(ctx context.Context, request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationTrendByMonthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationTrendByMonth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationTrendByMonthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
     request = &DescribeBillDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1518,6 +1989,61 @@ func (c *Client) DescribeDosageDetailListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeDosageDetailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGatherResourceRequest() (request *DescribeGatherResourceRequest) {
+    request = &DescribeGatherResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeGatherResource")
+    
+    
+    return
+}
+
+func NewDescribeGatherResourceResponse() (response *DescribeGatherResourceResponse) {
+    response = &DescribeGatherResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGatherResource
+// 查询分账账单资源归集汇总
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDBFAILED = "FailedOperation.QueryDBFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMCHECKFAILED = "InvalidParameter.ParamCheckFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeGatherResource(request *DescribeGatherResourceRequest) (response *DescribeGatherResourceResponse, err error) {
+    return c.DescribeGatherResourceWithContext(context.Background(), request)
+}
+
+// DescribeGatherResource
+// 查询分账账单资源归集汇总
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDBFAILED = "FailedOperation.QueryDBFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMCHECKFAILED = "InvalidParameter.ParamCheckFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeGatherResourceWithContext(ctx context.Context, request *DescribeGatherResourceRequest) (response *DescribeGatherResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatherResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatherResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatherResourceResponse()
     err = c.Send(request, response)
     return
 }

@@ -239,7 +239,7 @@ type AttachEntityOfPolicy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 关联类型。1 用户关联 ； 2 用户组关联
+	// 关联类型。1 用户关联 ； 2 用户组关联 3 角色关联
 	RelatedType *uint64 `json:"RelatedType,omitnil,omitempty" name:"RelatedType"`
 
 	// 策略关联时间
@@ -904,7 +904,7 @@ type CreatePolicyRequestParams struct {
 	// 策略名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	// 策略文档
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 策略描述
@@ -917,7 +917,7 @@ type CreatePolicyRequest struct {
 	// 策略名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	// 策略文档
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 策略描述
@@ -2956,14 +2956,14 @@ func (r *GetAccountSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetCustomMFATokenInfoRequestParams struct {
-	// 自定义多因子验证Token
+	// 自定义多因子验证Token，针对用户自定义的安全校验方式而生成的，以供查询用户安全校验时使用。
 	MFAToken *string `json:"MFAToken,omitnil,omitempty" name:"MFAToken"`
 }
 
 type GetCustomMFATokenInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自定义多因子验证Token
+	// 自定义多因子验证Token，针对用户自定义的安全校验方式而生成的，以供查询用户安全校验时使用。
 	MFAToken *string `json:"MFAToken,omitnil,omitempty" name:"MFAToken"`
 }
 
@@ -4443,7 +4443,7 @@ type ListGrantServiceAccessService struct {
 
 // Predefined struct for user
 type ListGroupsForUserRequestParams struct {
-	// 子用户 UID
+	// 子用户 UID，入参Uid和SubUin二选一
 	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 每页数量。默认为20。
@@ -4452,14 +4452,14 @@ type ListGroupsForUserRequestParams struct {
 	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 子账号UIN
+	// 子账号UIN，入参Uid和SubUin二选一
 	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
 
 type ListGroupsForUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 子用户 UID
+	// 子用户 UID，入参Uid和SubUin二选一
 	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
 
 	// 每页数量。默认为20。
@@ -4468,7 +4468,7 @@ type ListGroupsForUserRequest struct {
 	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 子账号UIN
+	// 子账号UIN，入参Uid和SubUin二选一
 	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
 
@@ -5119,13 +5119,13 @@ type LoginActionFlagIntl struct {
 }
 
 type LoginActionMfaFlag struct {
-	// 手机
+	// 是否设置手机号为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Phone *uint64 `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 软token
+	// 是否设置软token为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Stoken *uint64 `json:"Stoken,omitnil,omitempty" name:"Stoken"`
 
-	// 微信
+	// 是否设置微信为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Wechat *uint64 `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 }
 
@@ -6116,7 +6116,7 @@ type UpdatePolicyRequestParams struct {
 	// 策略描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	// 策略文档
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 预设策略备注
@@ -6135,7 +6135,7 @@ type UpdatePolicyRequest struct {
 	// 策略描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	// 策略文档
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 预设策略备注

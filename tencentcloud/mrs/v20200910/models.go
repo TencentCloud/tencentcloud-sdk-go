@@ -5914,6 +5914,11 @@ func (r *TurnPDFToObjectAsyncGetResultResponse) FromJsonString(s string) error {
 type TurnPDFToObjectAsyncRequestParams struct {
 	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+
+	// PDF文件中的文字是否为文本内容.
+	// 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+	// 如果该字段为false, 那么始终采用 OCR 方式
+	TextBasedPdfFlag *bool `json:"TextBasedPdfFlag,omitnil,omitempty" name:"TextBasedPdfFlag"`
 }
 
 type TurnPDFToObjectAsyncRequest struct {
@@ -5921,6 +5926,11 @@ type TurnPDFToObjectAsyncRequest struct {
 	
 	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+
+	// PDF文件中的文字是否为文本内容.
+	// 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+	// 如果该字段为false, 那么始终采用 OCR 方式
+	TextBasedPdfFlag *bool `json:"TextBasedPdfFlag,omitnil,omitempty" name:"TextBasedPdfFlag"`
 }
 
 func (r *TurnPDFToObjectAsyncRequest) ToJsonString() string {
@@ -5936,6 +5946,7 @@ func (r *TurnPDFToObjectAsyncRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PdfInfo")
+	delete(f, "TextBasedPdfFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TurnPDFToObjectAsyncRequest has unknown keys!", "")
 	}
@@ -5976,6 +5987,11 @@ func (r *TurnPDFToObjectAsyncResponse) FromJsonString(s string) error {
 type TurnPDFToObjectRequestParams struct {
 	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+
+	// PDF文件中的文字是否为文本内容.
+	// 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+	// 如果该字段为false, 那么始终采用 OCR 方式
+	TextBasedPdfFlag *bool `json:"TextBasedPdfFlag,omitnil,omitempty" name:"TextBasedPdfFlag"`
 }
 
 type TurnPDFToObjectRequest struct {
@@ -5983,6 +5999,11 @@ type TurnPDFToObjectRequest struct {
 	
 	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+
+	// PDF文件中的文字是否为文本内容.
+	// 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+	// 如果该字段为false, 那么始终采用 OCR 方式
+	TextBasedPdfFlag *bool `json:"TextBasedPdfFlag,omitnil,omitempty" name:"TextBasedPdfFlag"`
 }
 
 func (r *TurnPDFToObjectRequest) ToJsonString() string {
@@ -5998,6 +6019,7 @@ func (r *TurnPDFToObjectRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PdfInfo")
+	delete(f, "TextBasedPdfFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TurnPDFToObjectRequest has unknown keys!", "")
 	}

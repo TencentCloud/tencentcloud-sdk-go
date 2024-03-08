@@ -501,7 +501,7 @@ type CreateAccountRequestParams struct {
 	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否创建为只读账号，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
+	// 是否创建为只读账号，0：否:； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
@@ -532,7 +532,7 @@ type CreateAccountRequest struct {
 	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否创建为只读账号，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
+	// 是否创建为只读账号，0：否:； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
@@ -1331,7 +1331,7 @@ type DBAccount struct {
 	// 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+	// 该字段对只读账号有意义，表示选择主备延迟小于该值的备机
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayThresh *int64 `json:"DelayThresh,omitnil,omitempty" name:"DelayThresh"`
 
@@ -6361,7 +6361,7 @@ type SlowLogData struct {
 	// 首次执行时间
 	TsMin *string `json:"TsMin,omitnil,omitempty" name:"TsMin"`
 
-	// 帐号
+	// 账号
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 样例Sql

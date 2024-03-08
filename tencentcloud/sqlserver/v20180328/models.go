@@ -5190,6 +5190,9 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// SSL加密
 	SSLConfig *SSLConfig `json:"SSLConfig,omitnil,omitempty" name:"SSLConfig"`
 
+	// 备机只读信息
+	DrReadableInfo *DrReadableInfo `json:"DrReadableInfo,omitnil,omitempty" name:"DrReadableInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8965,6 +8968,32 @@ func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DrReadableInfo struct {
+	// 备机状态，enable-运行中，disable-不可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveStatus *string `json:"SlaveStatus,omitnil,omitempty" name:"SlaveStatus"`
+
+	// 备机可读状态，enable-已开启，disable-已关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadableStatus *string `json:"ReadableStatus,omitnil,omitempty" name:"ReadableStatus"`
+
+	// 备机只读vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 备机只读端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VPort *int64 `json:"VPort,omitnil,omitempty" name:"VPort"`
+
+	// 备机所在私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 备机所在私有网络子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+}
+
 type EventConfig struct {
 	// 事件类型，slow-设置慢SQL阈值，blocked-设置阻塞、死锁阈值
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
@@ -10018,6 +10047,9 @@ func (r *ModifyBackupStrategyResponse) FromJsonString(s string) error {
 type ModifyCloseWanIpRequestParams struct {
 	// 实例资源ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO只读组Id
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type ModifyCloseWanIpRequest struct {
@@ -10025,6 +10057,9 @@ type ModifyCloseWanIpRequest struct {
 	
 	// 实例资源ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO只读组Id
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 func (r *ModifyCloseWanIpRequest) ToJsonString() string {
@@ -10040,6 +10075,7 @@ func (r *ModifyCloseWanIpRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "RoGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloseWanIpRequest has unknown keys!", "")
 	}
@@ -10301,6 +10337,9 @@ type ModifyDBInstanceNetworkRequestParams struct {
 
 	// 指定VIP地址
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
+	DRNetwork *uint64 `json:"DRNetwork,omitnil,omitempty" name:"DRNetwork"`
 }
 
 type ModifyDBInstanceNetworkRequest struct {
@@ -10320,6 +10359,9 @@ type ModifyDBInstanceNetworkRequest struct {
 
 	// 指定VIP地址
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
+	DRNetwork *uint64 `json:"DRNetwork,omitnil,omitempty" name:"DRNetwork"`
 }
 
 func (r *ModifyDBInstanceNetworkRequest) ToJsonString() string {
@@ -10339,6 +10381,7 @@ func (r *ModifyDBInstanceNetworkRequest) FromJsonString(s string) error {
 	delete(f, "NewSubnetId")
 	delete(f, "OldIpRetainTime")
 	delete(f, "Vip")
+	delete(f, "DRNetwork")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceNetworkRequest has unknown keys!", "")
 	}
@@ -11506,6 +11549,9 @@ func (r *ModifyMigrationResponse) FromJsonString(s string) error {
 type ModifyOpenWanIpRequestParams struct {
 	// 实例资源ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO只读组Id
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type ModifyOpenWanIpRequest struct {
@@ -11513,6 +11559,9 @@ type ModifyOpenWanIpRequest struct {
 	
 	// 实例资源ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO只读组Id
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 func (r *ModifyOpenWanIpRequest) ToJsonString() string {
@@ -11528,6 +11577,7 @@ func (r *ModifyOpenWanIpRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "RoGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOpenWanIpRequest has unknown keys!", "")
 	}
@@ -12081,6 +12131,12 @@ type ReadOnlyGroup struct {
 
 	// 只读实例副本集合
 	ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitnil,omitempty" name:"ReadOnlyInstanceSet"`
+
+	// RO组外网地址域名
+	DnsPodDomain *string `json:"DnsPodDomain,omitnil,omitempty" name:"DnsPodDomain"`
+
+	// RO组外网地址端口
+	TgwWanVPort *uint64 `json:"TgwWanVPort,omitnil,omitempty" name:"TgwWanVPort"`
 }
 
 type ReadOnlyInstance struct {
@@ -12578,7 +12634,7 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetAccountPasswordResponseParams struct {
-	// 修改帐号密码的异步任务流程ID
+	// 修改账号密码的异步任务流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

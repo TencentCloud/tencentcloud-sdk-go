@@ -457,7 +457,7 @@ func NewCreateBaseBackupResponse() (response *CreateBaseBackupResponse) {
 }
 
 // CreateBaseBackup
-// 本接口（CreateBaseBackup）用于创建实例的全量备份。
+// 本接口（CreateBaseBackup）用于创建实例的数据备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
@@ -471,7 +471,7 @@ func (c *Client) CreateBaseBackup(request *CreateBaseBackupRequest) (response *C
 }
 
 // CreateBaseBackup
-// 本接口（CreateBaseBackup）用于创建实例的全量备份。
+// 本接口（CreateBaseBackup）用于创建实例的数据备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
@@ -1564,7 +1564,7 @@ func NewDeleteBaseBackupResponse() (response *DeleteBaseBackupResponse) {
 }
 
 // DeleteBaseBackup
-// 本接口（DeleteBaseBackup）用于删除实例指定全量备份。
+// 本接口（DeleteBaseBackup）用于删除实例指定数据备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
@@ -1577,7 +1577,7 @@ func (c *Client) DeleteBaseBackup(request *DeleteBaseBackupRequest) (response *D
 }
 
 // DeleteBaseBackup
-// 本接口（DeleteBaseBackup）用于删除实例指定全量备份。
+// 本接口（DeleteBaseBackup）用于删除实例指定数据备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
@@ -2486,7 +2486,7 @@ func NewDescribeBaseBackupsResponse() (response *DescribeBaseBackupsResponse) {
 }
 
 // DescribeBaseBackups
-// 本接口（DescribeBaseBackups）用于查询基础备份列表。
+// 本接口（DescribeBaseBackups）用于查询数据备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2498,7 +2498,7 @@ func (c *Client) DescribeBaseBackups(request *DescribeBaseBackupsRequest) (respo
 }
 
 // DescribeBaseBackups
-// 本接口（DescribeBaseBackups）用于查询基础备份列表。
+// 本接口（DescribeBaseBackups）用于查询数据备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5231,7 +5231,7 @@ func NewModifyAccountRemarkResponse() (response *ModifyAccountRemarkResponse) {
 }
 
 // ModifyAccountRemark
-// 本接口（ModifyAccountRemark）用于修改帐号备注。
+// 本接口（ModifyAccountRemark）用于修改账号备注。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5253,7 +5253,7 @@ func (c *Client) ModifyAccountRemark(request *ModifyAccountRemarkRequest) (respo
 }
 
 // ModifyAccountRemark
-// 本接口（ModifyAccountRemark）用于修改帐号备注。
+// 本接口（ModifyAccountRemark）用于修改账号备注。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5430,7 +5430,7 @@ func NewModifyBaseBackupExpireTimeResponse() (response *ModifyBaseBackupExpireTi
 }
 
 // ModifyBaseBackupExpireTime
-// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定全量备份的过期时间。
+// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定数据备份的过期时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
@@ -5442,7 +5442,7 @@ func (c *Client) ModifyBaseBackupExpireTime(request *ModifyBaseBackupExpireTimeR
 }
 
 // ModifyBaseBackupExpireTime
-// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定全量备份的过期时间。
+// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定数据备份的过期时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"

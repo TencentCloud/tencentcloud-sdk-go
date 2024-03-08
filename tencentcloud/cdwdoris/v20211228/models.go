@@ -1546,6 +1546,14 @@ type InstanceInfo struct {
 	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
+
+	// 用户是否可以绑定安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWhiteSGs *bool `json:"IsWhiteSGs,omitnil,omitempty" name:"IsWhiteSGs"`
+
+	// 已绑定的安全组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
 }
 
 type InstanceNode struct {

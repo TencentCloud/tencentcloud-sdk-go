@@ -172,7 +172,7 @@ type AddBandwidthPackageResourcesRequestParams struct {
 	// 带宽包唯一标识ID，形如'bwp-xxxx'
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，当前支持'BGP'类型，表示内部资源是BGP IP。
+	// 带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 资源类型，包括'Address', 'LoadBalance'
@@ -191,7 +191,7 @@ type AddBandwidthPackageResourcesRequest struct {
 	// 带宽包唯一标识ID，形如'bwp-xxxx'
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，当前支持'BGP'类型，表示内部资源是BGP IP。
+	// 带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 资源类型，包括'Address', 'LoadBalance'
@@ -813,7 +813,7 @@ type AllocateIp6AddressesBandwidthRequestParams struct {
 	// 带宽，单位Mbps。默认是1Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 网络计费模式。IPV6当前对标准账户类型支持"TRAFFIC_POSTPAID_BY_HOUR"，对传统账户类型支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
+	// 网络计费模式。IPV6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
@@ -829,7 +829,7 @@ type AllocateIp6AddressesBandwidthRequest struct {
 	// 带宽，单位Mbps。默认是1Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 网络计费模式。IPV6当前对标准账户类型支持"TRAFFIC_POSTPAID_BY_HOUR"，对传统账户类型支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
+	// 网络计费模式。IPV6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
@@ -3070,7 +3070,7 @@ type CreateBandwidthPackageRequestParams struct {
 	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
+	// 带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
 	// <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
 	// <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
 	// <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
@@ -3084,7 +3084,7 @@ type CreateBandwidthPackageRequestParams struct {
 	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitnil,omitempty" name:"BandwidthPackageCount"`
 
-	// 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
@@ -3111,7 +3111,7 @@ type CreateBandwidthPackageRequest struct {
 	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
+	// 带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
 	// <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
 	// <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
 	// <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
@@ -3125,7 +3125,7 @@ type CreateBandwidthPackageRequest struct {
 	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitnil,omitempty" name:"BandwidthPackageCount"`
 
-	// 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
@@ -11666,8 +11666,8 @@ type DescribeIp6AddressesRequestParams struct {
 	// 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
-	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPV6 的 IP 地址过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -11684,8 +11684,8 @@ type DescribeIp6AddressesRequest struct {
 	// 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
-	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPV6 的 IP 地址过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -14215,10 +14215,10 @@ type DescribeSpecificTrafficPackageUsedDetailsRequestParams struct {
 	// 结束时间。不传默认为当前时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 分页参数
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 中的相关小节
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页参数
+	// 返回数量，默认为20。关于Limit的更进一步介绍请参考 API 中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -14243,10 +14243,10 @@ type DescribeSpecificTrafficPackageUsedDetailsRequest struct {
 	// 结束时间。不传默认为当前时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 分页参数
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 中的相关小节
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页参数
+	// 返回数量，默认为20。关于Limit的更进一步介绍请参考 API 中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -16184,16 +16184,16 @@ type DescribeVpnGatewaysRequestParams struct {
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
 	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
-	// <li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL'。</li>
+	// <li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL', 'CCN', 'SSL_CCN'。</li>
 	// <li>public-ip-address- String - （过滤条件）公网IP。</li>
 	// <li>renew-flag - String - （过滤条件）网关续费类型，手动续费：'NOTIFY_AND_MANUAL_RENEW'、自动续费：'NOTIFY_AND_AUTO_RENEW'。</li>
 	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
 	Filters []*FilterObject `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -16207,16 +16207,16 @@ type DescribeVpnGatewaysRequest struct {
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
 	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
-	// <li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL'。</li>
+	// <li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL', 'CCN', 'SSL_CCN'。</li>
 	// <li>public-ip-address- String - （过滤条件）公网IP。</li>
 	// <li>renew-flag - String - （过滤条件）网关续费类型，手动续费：'NOTIFY_AND_MANUAL_RENEW'、自动续费：'NOTIFY_AND_AUTO_RENEW'。</li>
 	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
 	Filters []*FilterObject `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -19427,7 +19427,7 @@ type ModifyAddressAttributeRequestParams struct {
 	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 修改后的 EIP 名称。长度上限为20个字符。
+	// 修改后的 EIP 名称。长度上限为128个字符。
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
 	// 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
@@ -19440,7 +19440,7 @@ type ModifyAddressAttributeRequest struct {
 	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 修改后的 EIP 名称。长度上限为20个字符。
+	// 修改后的 EIP 名称。长度上限为128个字符。
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
 	// 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
@@ -19495,7 +19495,7 @@ type ModifyAddressInternetChargeTypeRequestParams struct {
 	// 弹性公网IP的唯一ID，形如eip-xxx
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 弹性公网IP调整目标计费模式，只支持"BANDWIDTH_PREPAID_BY_MONTH"和"TRAFFIC_POSTPAID_BY_HOUR"
+	// 弹性公网IP调整目标计费模式，支持 "BANDWIDTH_PREPAID_BY_MONTH"、"TRAFFIC_POSTPAID_BY_HOUR"、"BANDWIDTH_POSTPAID_BY_HOUR"
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 弹性公网IP调整目标带宽值
@@ -19511,7 +19511,7 @@ type ModifyAddressInternetChargeTypeRequest struct {
 	// 弹性公网IP的唯一ID，形如eip-xxx
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// 弹性公网IP调整目标计费模式，只支持"BANDWIDTH_PREPAID_BY_MONTH"和"TRAFFIC_POSTPAID_BY_HOUR"
+	// 弹性公网IP调整目标计费模式，支持 "BANDWIDTH_PREPAID_BY_MONTH"、"TRAFFIC_POSTPAID_BY_HOUR"、"BANDWIDTH_POSTPAID_BY_HOUR"
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 弹性公网IP调整目标带宽值
@@ -25083,14 +25083,14 @@ func (r *ResumeSnapshotInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReturnNormalAddressesRequestParams struct {
-	// EIP 的 IP 地址,示例：101.35.139.183
+	// 普通公网IP 的 IP 地址,示例：101.35.139.183
 	AddressIps []*string `json:"AddressIps,omitnil,omitempty" name:"AddressIps"`
 }
 
 type ReturnNormalAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP 的 IP 地址,示例：101.35.139.183
+	// 普通公网IP 的 IP 地址,示例：101.35.139.183
 	AddressIps []*string `json:"AddressIps,omitnil,omitempty" name:"AddressIps"`
 }
 

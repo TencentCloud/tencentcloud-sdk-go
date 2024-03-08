@@ -6687,7 +6687,7 @@ type SlowLogData struct {
 	// 首次执行时间
 	TsMin *string `json:"TsMin,omitnil,omitempty" name:"TsMin"`
 
-	// 帐号
+	// 账号
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 样例Sql

@@ -7354,7 +7354,21 @@ type DescribeRocketMQMsgRequestParams struct {
 	PulsarMsgId *string `json:"PulsarMsgId,omitnil,omitempty" name:"PulsarMsgId"`
 
 	// 查询死信时该值为true，只对Rocketmq有效
+	//
+	// Deprecated: QueryDlqMsg is deprecated.
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据消费组名称过滤消费详情
+	FilterTrackGroup *string `json:"FilterTrackGroup,omitnil,omitempty" name:"FilterTrackGroup"`
 }
 
 type DescribeRocketMQMsgRequest struct {
@@ -7377,6 +7391,18 @@ type DescribeRocketMQMsgRequest struct {
 
 	// 查询死信时该值为true，只对Rocketmq有效
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据消费组名称过滤消费详情
+	FilterTrackGroup *string `json:"FilterTrackGroup,omitnil,omitempty" name:"FilterTrackGroup"`
 }
 
 func (r *DescribeRocketMQMsgRequest) ToJsonString() string {
@@ -7397,6 +7423,10 @@ func (r *DescribeRocketMQMsgRequest) FromJsonString(s string) error {
 	delete(f, "MsgId")
 	delete(f, "PulsarMsgId")
 	delete(f, "QueryDlqMsg")
+	delete(f, "QueryDeadLetterMessage")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FilterTrackGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQMsgRequest has unknown keys!", "")
 	}
@@ -7420,13 +7450,16 @@ type DescribeRocketMQMsgResponseParams struct {
 	// 生产者地址
 	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
 
-	// 消费组消费情况
+	// 消费组消费情况列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTracks []*RocketMQMessageTrack `json:"MessageTracks,omitnil,omitempty" name:"MessageTracks"`
 
 	// 详情页展示的topic名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowTopicName *string `json:"ShowTopicName,omitnil,omitempty" name:"ShowTopicName"`
+
+	// 消费组消费情况列表总数
+	MessageTracksCount *int64 `json:"MessageTracksCount,omitnil,omitempty" name:"MessageTracksCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7662,6 +7695,112 @@ func (r *DescribeRocketMQNamespacesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRocketMQNamespacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQPublicAccessMonitorDataRequestParams struct {
+	// 专享集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，默认为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 监控统计周期，如60。默认为取值为300，单位为s。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type DescribeRocketMQPublicAccessMonitorDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 专享集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，默认为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 监控统计周期，如60。默认为取值为300，单位为s。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *DescribeRocketMQPublicAccessMonitorDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQPublicAccessMonitorDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQPublicAccessMonitorDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQPublicAccessMonitorDataResponseParams struct {
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 监控统计周期，如60。默认为取值为300，单位为s。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 起始时间，如2018-09-22T19:51:23+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 数据点数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPoints []*RocketMQDataPoint `json:"DataPoints,omitnil,omitempty" name:"DataPoints"`
+
+	// 返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQPublicAccessMonitorDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQPublicAccessMonitorDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQPublicAccessMonitorDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQPublicAccessMonitorDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12447,6 +12586,16 @@ type RocketMQConsumerTopic struct {
 	SubRule *string `json:"SubRule,omitnil,omitempty" name:"SubRule"`
 }
 
+type RocketMQDataPoint struct {
+	// 监控值数组，该数组和Timestamps一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamps []*int64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
+
+	// 监控数据点位置，比如一天按分钟划分有1440个点，每个点的序号是0 - 1439之间的一个数，当某个序号不在该数组中，说明掉点了
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type RocketMQGroup struct {
 	// 消费组名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -12582,7 +12731,13 @@ type RocketMQMessageTrack struct {
 	// 消费者组
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 消费状态
+	// 消费状态,
+	// CONSUMED: 已消费
+	// CONSUMED_BUT_FILTERED: 已过滤
+	// NOT_CONSUME: 未消费
+	// ENTER_RETRY: 进入重试队列
+	// ENTER_DLQ: 进入死信队列
+	// UNKNOWN: 查询不到消费状态
 	ConsumeStatus *string `json:"ConsumeStatus,omitnil,omitempty" name:"ConsumeStatus"`
 
 	// 消息track类型

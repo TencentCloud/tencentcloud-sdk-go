@@ -2185,6 +2185,8 @@ type CreateFlowByFilesRequestParams struct {
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	// 如果用户已经在控制台创建了自定义合同类型，可以将这里的类型名称传入。 如果没有创建，我们会自动给发起方公司创建此自定义合同类型。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
@@ -2310,6 +2312,8 @@ type CreateFlowByFilesRequest struct {
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	// 如果用户已经在控制台创建了自定义合同类型，可以将这里的类型名称传入。 如果没有创建，我们会自动给发起方公司创建此自定义合同类型。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
@@ -3066,6 +3070,7 @@ type CreateFlowRequestParams struct {
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	// 此合同类型需要跟模板配置的合同类型保持一致。
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 已经废弃字段，客户端Token，保持接口幂等性,最大长度64个字符
@@ -3168,6 +3173,7 @@ type CreateFlowRequest struct {
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	// 此合同类型需要跟模板配置的合同类型保持一致。
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 已经废弃字段，客户端Token，保持接口幂等性,最大长度64个字符

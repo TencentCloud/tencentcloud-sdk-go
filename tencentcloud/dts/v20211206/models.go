@@ -397,7 +397,7 @@ type ConfigureSubscribeJobRequestParams struct {
 	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 数据库节点信息
@@ -431,7 +431,7 @@ type ConfigureSubscribeJobRequest struct {
 	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 数据库节点信息
@@ -3134,7 +3134,7 @@ type DescribeSubscribeDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
@@ -5619,6 +5619,14 @@ type Options struct {
 	// 自动重试的时间窗口设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
+
+	// 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterBeginCommit *bool `json:"FilterBeginCommit,omitnil,omitempty" name:"FilterBeginCommit"`
+
+	// 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterCheckpoint *bool `json:"FilterCheckpoint,omitnil,omitempty" name:"FilterCheckpoint"`
 }
 
 type PartitionAssignment struct {
@@ -7462,23 +7470,27 @@ type TagItem struct {
 }
 
 type TopicRule struct {
-	// topic名
+	// topic名。单topic时，所有的TopicName必须相同
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
+	// topic分区策略，自定义topic时支持：Random（随机投递），集中投递到单Topic时支持：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)、PartitionByCols(按列分区)
 	PartitionType *string `json:"PartitionType,omitnil,omitempty" name:"PartitionType"`
 
-	// 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
+	// 库名匹配规则，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中最后一项必须为‘Default’
 	DbMatchMode *string `json:"DbMatchMode,omitnil,omitempty" name:"DbMatchMode"`
 
-	// 库名，仅“自定义topic”时，DbMatchMode=Regular生效
+	// 库名，DbMatchMode=Regular时生效
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
+	// 表名匹配规则，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中最后一项必须为‘Default’
 	TableMatchMode *string `json:"TableMatchMode,omitnil,omitempty" name:"TableMatchMode"`
 
-	// 表名，仅“自定义topic”时，TableMatchMode=Regular生效
+	// 表名，仅TableMatchMode=Regular时生效
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 按列分区时需要选择配置列名，可以选择多列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*string `json:"Columns,omitnil,omitempty" name:"Columns"`
 }
 
 type TradeInfo struct {

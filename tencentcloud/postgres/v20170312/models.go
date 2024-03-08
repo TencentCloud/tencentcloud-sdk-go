@@ -166,7 +166,7 @@ type BackupPlan struct {
 	// 备份周期
 	BackupPeriod *string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
-	// 基础备份保留时长
+	// 数据备份保留时长
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
 	// 开始备份的最早时间
@@ -186,16 +186,16 @@ type BackupSummary struct {
 	// 实例日志备份大小。
 	LogBackupSize *uint64 `json:"LogBackupSize,omitnil,omitempty" name:"LogBackupSize"`
 
-	// 手动创建的实例基础备份数量。
+	// 手动创建的实例数据备份数量。
 	ManualBaseBackupCount *uint64 `json:"ManualBaseBackupCount,omitnil,omitempty" name:"ManualBaseBackupCount"`
 
-	// 手动创建的实例基础备份大小。
+	// 手动创建的实例数据备份大小。
 	ManualBaseBackupSize *uint64 `json:"ManualBaseBackupSize,omitnil,omitempty" name:"ManualBaseBackupSize"`
 
-	// 自动创建的实例基础备份数量。
+	// 自动创建的实例数据备份数量。
 	AutoBaseBackupCount *uint64 `json:"AutoBaseBackupCount,omitnil,omitempty" name:"AutoBaseBackupCount"`
 
-	// 自动创建的实例基础备份大小。
+	// 自动创建的实例数据备份大小。
 	AutoBaseBackupSize *uint64 `json:"AutoBaseBackupSize,omitnil,omitempty" name:"AutoBaseBackupSize"`
 
 	// 总备份数量
@@ -640,7 +640,7 @@ func (r *CreateBaseBackupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBaseBackupResponseParams struct {
-	// 基础备份集ID
+	// 数据备份集ID
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2186,7 +2186,7 @@ type DeleteBaseBackupRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份ID。
+	// 数据备份ID。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 }
 
@@ -2196,7 +2196,7 @@ type DeleteBaseBackupRequest struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份ID。
+	// 数据备份ID。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 }
 
@@ -2699,7 +2699,7 @@ type DescribeAccountsResponseParams struct {
 	// 本次调用接口共返回了多少条数据。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 帐号列表详细信息。
+	// 账号列表详细信息。
 	Details []*AccountInfo `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3250,10 +3250,10 @@ func (r *DescribeBaseBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBaseBackupsResponseParams struct {
-	// 查询到的基础备份数量。
+	// 查询到的数据备份数量。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 基础备份详细信息列表。
+	// 数据备份详细信息列表。
 	BaseBackupSet []*BaseBackup `json:"BaseBackupSet,omitnil,omitempty" name:"BaseBackupSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6359,7 +6359,7 @@ type ModifyBaseBackupExpireTimeRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份ID。
+	// 数据备份ID。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 新过期时间。
@@ -6372,7 +6372,7 @@ type ModifyBaseBackupExpireTimeRequest struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份ID。
+	// 数据备份ID。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 新过期时间。
@@ -7730,15 +7730,15 @@ type ParamInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *string `json:"LastModifyTime,omitnil,omitempty" name:"LastModifyTime"`
 
-	// 参数存在主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
+	// 参数主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandbyRelated *int64 `json:"StandbyRelated,omitnil,omitempty" name:"StandbyRelated"`
 
-	// 参数版本关联信息，存储具体内核版本下的具体参数信息
+	// 参数版本关联信息，内容为相应内核版本下的参数详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionRelationSet []*ParamVersionRelation `json:"VersionRelationSet,omitnil,omitempty" name:"VersionRelationSet"`
 
-	// 参数规格关联信息，存储具体规格下具体的参数信息
+	// 参数规格关联信息，内容为相应规格下的参数详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecRelationSet []*ParamSpecRelation `json:"SpecRelationSet,omitnil,omitempty" name:"SpecRelationSet"`
 }

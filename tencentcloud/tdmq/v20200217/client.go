@@ -4792,6 +4792,67 @@ func (c *Client) DescribeRocketMQNamespacesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRocketMQPublicAccessMonitorDataRequest() (request *DescribeRocketMQPublicAccessMonitorDataRequest) {
+    request = &DescribeRocketMQPublicAccessMonitorDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQPublicAccessMonitorData")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQPublicAccessMonitorDataResponse() (response *DescribeRocketMQPublicAccessMonitorDataResponse) {
+    response = &DescribeRocketMQPublicAccessMonitorDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQPublicAccessMonitorData
+// 从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQPublicAccessMonitorData(request *DescribeRocketMQPublicAccessMonitorDataRequest) (response *DescribeRocketMQPublicAccessMonitorDataResponse, err error) {
+    return c.DescribeRocketMQPublicAccessMonitorDataWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQPublicAccessMonitorData
+// 从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQPublicAccessMonitorDataWithContext(ctx context.Context, request *DescribeRocketMQPublicAccessMonitorDataRequest) (response *DescribeRocketMQPublicAccessMonitorDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQPublicAccessMonitorDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQPublicAccessMonitorData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQPublicAccessMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQPublicAccessPointRequest() (request *DescribeRocketMQPublicAccessPointRequest) {
     request = &DescribeRocketMQPublicAccessPointRequest{
         BaseRequest: &tchttp.BaseRequest{},

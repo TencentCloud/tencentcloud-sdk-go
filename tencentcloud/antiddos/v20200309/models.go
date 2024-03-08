@@ -820,7 +820,7 @@ type CcBlackWhiteIpPolicy struct {
 
 type CcGeoIPBlockConfig struct {
 	// 区域类型，取值[
-	// oversea(海外)
+	// oversea(境外)
 	// china(国内)
 	// customized(自定义地区)
 	// ]
@@ -4571,7 +4571,7 @@ type DescribeCCTrendResponseParams struct {
 	// 值个数
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -4977,7 +4977,7 @@ func (r *DescribeDDoSConnectLimitListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSTrendRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 资源实例的IP
@@ -5002,7 +5002,7 @@ type DescribeDDoSTrendRequestParams struct {
 type DescribeDDoSTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 资源实例的IP
@@ -5054,7 +5054,7 @@ type DescribeDDoSTrendResponseParams struct {
 	// 值个数
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -7587,7 +7587,7 @@ type IPLineInfo struct {
 }
 
 type InsL7Rules struct {
-	// 规则在中间状态态不可修改，只可在（0， 2， 8）状态可编辑。
+	// 规则在中间状态不可修改，只可在（0， 2， 8）状态可编辑。
 	// 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 

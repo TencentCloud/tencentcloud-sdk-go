@@ -891,6 +891,9 @@ type CreateJobRequestParams struct {
 
 	// 作业标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 作业描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateJobRequest struct {
@@ -925,6 +928,9 @@ type CreateJobRequest struct {
 
 	// 作业标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 作业描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -949,6 +955,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "FlinkVersion")
 	delete(f, "WorkSpaceId")
 	delete(f, "Tags")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -3662,6 +3669,10 @@ type JobV1 struct {
 	// 作业异常事件信息	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventInfo *JobEventInfo `json:"EventInfo,omitnil,omitempty" name:"EventInfo"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type LogContent struct {
@@ -3804,6 +3815,9 @@ type ModifyJobRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyJobRequest struct {
@@ -3823,6 +3837,9 @@ type ModifyJobRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *ModifyJobRequest) ToJsonString() string {
@@ -3842,6 +3859,7 @@ func (r *ModifyJobRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "TargetFolderId")
 	delete(f, "WorkSpaceId")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJobRequest has unknown keys!", "")
 	}
