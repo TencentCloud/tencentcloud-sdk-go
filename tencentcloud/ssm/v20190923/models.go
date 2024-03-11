@@ -170,7 +170,7 @@ type CreateProductSecretResponseParams struct {
 	// 创建云产品凭据异步任务ID号。
 	FlowID *int64 `json:"FlowID,omitnil,omitempty" name:"FlowID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -280,7 +280,7 @@ type CreateSSHKeyPairSecretResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -404,7 +404,7 @@ type CreateSecretResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -484,7 +484,7 @@ type DeleteSecretResponseParams struct {
 	// 凭据删除的日期，unix时间戳。
 	DeleteTime *int64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -551,7 +551,7 @@ type DeleteSecretVersionResponseParams struct {
 	// 凭据版本号。
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -611,7 +611,7 @@ type DescribeAsyncRequestInfoResponseParams struct {
 	// 任务描述信息。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -680,7 +680,7 @@ type DescribeRotationDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextRotateBeginTime *string `json:"NextRotateBeginTime,omitnil,omitempty" name:"NextRotateBeginTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -740,7 +740,7 @@ type DescribeRotationHistoryResponseParams struct {
 	// 版本号个数，可以给用户展示的版本号个数上限为10个。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -855,7 +855,7 @@ type DescribeSecretResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdditionalConfig *string `json:"AdditionalConfig,omitnil,omitempty" name:"AdditionalConfig"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -917,7 +917,7 @@ type DescribeSupportedProductsResponseParams struct {
 	// 支持的产品个数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -974,7 +974,7 @@ type DisableSecretResponseParams struct {
 	// 停用的凭据名称。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1031,7 +1031,7 @@ type EnableSecretResponseParams struct {
 	// 启用的凭据名称。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1085,7 +1085,7 @@ type GetRegionsResponseParams struct {
 	// region列表。
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1166,7 +1166,7 @@ type GetSSHKeyPairValueResponseParams struct {
 	// 用户可以在CVM侧控制台对密钥对的名称进行修改。
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1243,7 +1243,7 @@ type GetSecretValueResponseParams struct {
 	// SecretBinary和SecretString只有一个不为空。
 	SecretString *string `json:"SecretString,omitnil,omitempty" name:"SecretString"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1304,7 +1304,7 @@ type GetServiceStatusResponseParams struct {
 	// false表示用户暂时不能使用密钥安全托管功能。
 	AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitnil,omitempty" name:"AccessKeyEscrowEnabled"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1365,7 +1365,7 @@ type ListSecretVersionIdsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Versions []*VersionInfo `json:"Versions,omitnil,omitempty" name:"Versions"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1504,7 +1504,7 @@ type ListSecretsResponseParams struct {
 	// 返回凭据信息列表。
 	SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitnil,omitempty" name:"SecretMetadatas"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1629,7 +1629,7 @@ type PutSecretValueResponseParams struct {
 	// 新增加的版本号。
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1686,7 +1686,7 @@ type RestoreSecretResponseParams struct {
 	// 凭据名称。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1743,7 +1743,7 @@ type RotateProductSecretResponseParams struct {
 	// 当凭据类型为云产品凭据时（即SecretType为1，如MySQL、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
 	FlowID *int64 `json:"FlowID,omitnil,omitempty" name:"FlowID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1897,7 +1897,7 @@ type UpdateDescriptionResponseParams struct {
 	// 凭据名称。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1978,7 +1978,7 @@ func (r *UpdateRotationStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRotationStatusResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2061,7 +2061,7 @@ type UpdateSecretResponseParams struct {
 	// 凭据版本号。
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

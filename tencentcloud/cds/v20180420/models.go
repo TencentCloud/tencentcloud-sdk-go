@@ -134,7 +134,7 @@ type DescribeDasbImageIdsResponseParams struct {
 	// AI镜像ID
 	AiImageId *string `json:"AiImageId,omitnil,omitempty" name:"AiImageId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -188,7 +188,7 @@ type DescribeDbauditInstanceTypeResponseParams struct {
 	// 数据安全审计产品规格信息列表
 	DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitnil,omitempty" name:"DbauditTypesSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -262,7 +262,7 @@ type DescribeDbauditInstancesResponseParams struct {
 	// 数据安全审计实例信息列表
 	CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitnil,omitempty" name:"CdsAuditInstanceSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -316,7 +316,7 @@ type DescribeDbauditUsedRegionsResponseParams struct {
 	// 可售卖地域信息列表
 	RegionSet []*RegionInfo `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -404,7 +404,7 @@ type InquiryPriceDbauditInstanceResponseParams struct {
 	// 真实价钱，预支费用的折扣价，单位：元
 	RealTotalCost *float64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -465,7 +465,7 @@ func (r *ModifyDbauditInstancesRenewFlagRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyDbauditInstancesRenewFlagResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

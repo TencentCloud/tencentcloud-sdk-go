@@ -199,7 +199,7 @@ type InitOralProcessResponseParams struct {
 	// 语音段唯一标识，一个完整语音一个SessionId
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -351,7 +351,7 @@ type KeywordEvaluateResponseParams struct {
 	// 语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -612,7 +612,7 @@ type TransmitOralProcessResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitnil,omitempty" name:"UnKeyWordHits"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -917,7 +917,7 @@ type TransmitOralProcessWithInitResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitnil,omitempty" name:"UnKeyWordHits"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

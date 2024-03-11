@@ -88,7 +88,7 @@ func (r *AddDelayLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddDelayLiveStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -211,7 +211,7 @@ func (r *AddLiveDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddLiveDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -323,7 +323,7 @@ type AddLiveWatermarkResponseParams struct {
 	// 水印ID。
 	WatermarkId *uint64 `json:"WatermarkId,omitnil,omitempty" name:"WatermarkId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -404,7 +404,7 @@ type AuthenticateDomainOwnerResponseParams struct {
 	// 同一主域名下的所有域名只需成功验证一次，后续均无需再验证。
 	MainDomain *string `json:"MainDomain,omitnil,omitempty" name:"MainDomain"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -663,7 +663,7 @@ func (r *CancelCommonMixStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelCommonMixStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -979,7 +979,7 @@ func (r *CreateCommonMixStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCommonMixStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1047,7 +1047,7 @@ func (r *CreateLiveCallbackRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveCallbackRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1203,7 +1203,7 @@ type CreateLiveCallbackTemplateResponseParams struct {
 	// 模板ID。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1280,7 +1280,7 @@ func (r *CreateLivePadRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLivePadRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1392,7 +1392,7 @@ type CreateLivePadTemplateResponseParams struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1761,7 +1761,7 @@ type CreateLivePullStreamTaskResponseParams struct {
 	// 任务 Id 。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1915,7 +1915,7 @@ type CreateLiveRecordResponseParams struct {
 	// 任务 ID，全局唯一标识录制任务。
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1992,7 +1992,7 @@ func (r *CreateLiveRecordRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveRecordRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2125,7 +2125,7 @@ type CreateLiveRecordTemplateResponseParams struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2202,7 +2202,7 @@ func (r *CreateLiveSnapshotRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveSnapshotRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2357,7 +2357,7 @@ type CreateLiveSnapshotTemplateResponseParams struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2502,7 +2502,7 @@ type CreateLiveStreamMonitorResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorId *string `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2579,7 +2579,7 @@ func (r *CreateLiveTimeShiftRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveTimeShiftRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2704,7 +2704,7 @@ type CreateLiveTimeShiftTemplateResponseParams struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2779,7 +2779,7 @@ func (r *CreateLiveTranscodeRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveTranscodeRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3043,7 +3043,7 @@ type CreateLiveTranscodeTemplateResponseParams struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3118,7 +3118,7 @@ func (r *CreateLiveWatermarkRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveWatermarkRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3258,7 +3258,7 @@ type CreatePullStreamConfigResponseParams struct {
 	// 配置成功后的 ID。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3368,7 +3368,7 @@ type CreateRecordTaskResponseParams struct {
 	// 任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3478,7 +3478,7 @@ type CreateScreenshotTaskResponseParams struct {
 	// 任务ID，全局唯一标识截图任务。返回TaskId字段说明截图任务创建成功。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3589,7 +3589,7 @@ func (r *DeleteLiveCallbackRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveCallbackRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3647,7 +3647,7 @@ func (r *DeleteLiveCallbackTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveCallbackTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3708,7 +3708,7 @@ func (r *DeleteLiveDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3789,7 +3789,7 @@ func (r *DeleteLivePadRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLivePadRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3843,7 +3843,7 @@ func (r *DeleteLivePadTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLivePadTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3904,7 +3904,7 @@ func (r *DeleteLivePullStreamTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLivePullStreamTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3965,7 +3965,7 @@ func (r *DeleteLiveRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4039,7 +4039,7 @@ func (r *DeleteLiveRecordRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveRecordRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4093,7 +4093,7 @@ func (r *DeleteLiveRecordTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveRecordTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4161,7 +4161,7 @@ func (r *DeleteLiveSnapshotRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveSnapshotRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4219,7 +4219,7 @@ func (r *DeleteLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveSnapshotTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4273,7 +4273,7 @@ func (r *DeleteLiveStreamMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveStreamMonitorResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4347,7 +4347,7 @@ func (r *DeleteLiveTimeShiftRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveTimeShiftRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4401,7 +4401,7 @@ func (r *DeleteLiveTimeShiftTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveTimeShiftTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4476,7 +4476,7 @@ func (r *DeleteLiveTranscodeRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveTranscodeRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4534,7 +4534,7 @@ func (r *DeleteLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveTranscodeTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4592,7 +4592,7 @@ func (r *DeleteLiveWatermarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveWatermarkResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4660,7 +4660,7 @@ func (r *DeleteLiveWatermarkRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLiveWatermarkRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4718,7 +4718,7 @@ func (r *DeletePullStreamConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePullStreamConfigResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4772,7 +4772,7 @@ func (r *DeleteRecordTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRecordTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4826,7 +4826,7 @@ func (r *DeleteScreenshotTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteScreenshotTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4899,7 +4899,7 @@ type DescribeAllStreamPlayInfoListResponseParams struct {
 	// 数据信息列表。
 	DataInfoList []*MonitorStreamPlayInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4970,7 +4970,7 @@ type DescribeAreaBillBandwidthAndFluxListResponseParams struct {
 	// 明细数据信息。
 	DataInfoList []*BillAreaInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5028,7 +5028,7 @@ type DescribeBackupStreamListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamInfoList []*BackupStreamGroupInfo `json:"StreamInfoList,omitnil,omitempty" name:"StreamInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5190,7 +5190,7 @@ type DescribeBillBandwidthAndFluxListResponseParams struct {
 	// 明细数据信息。
 	DataInfoList []*BillDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5323,7 +5323,7 @@ type DescribeCallbackRecordsListResponseParams struct {
 	// 总页数。
 	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5422,7 +5422,7 @@ type DescribeConcurrentRecordStreamNumResponseParams struct {
 	// 统计信息列表。
 	DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5496,7 +5496,7 @@ type DescribeDeliverBandwidthListResponseParams struct {
 	// 转推计费带宽数据
 	DataInfoList []*BandwidthInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5553,7 +5553,7 @@ type DescribeDeliverLogDownListResponseParams struct {
 	// 总条数。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5659,7 +5659,7 @@ type DescribeGroupProIspPlayInfoListResponseParams struct {
 	// 数据内容。
 	DataInfoList []*GroupProIspDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5742,7 +5742,7 @@ type DescribeHttpStatusInfoListResponseParams struct {
 	// 播放状态码列表。
 	DataInfoList []*HttpStatusData `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5796,7 +5796,7 @@ type DescribeLiveCallbackRulesResponseParams struct {
 	// 规则信息列表。
 	Rules []*CallBackRuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5857,7 +5857,7 @@ type DescribeLiveCallbackTemplateResponseParams struct {
 	// 回调模板信息。
 	Template *CallBackTemplateInfo `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5911,7 +5911,7 @@ type DescribeLiveCallbackTemplatesResponseParams struct {
 	// 模板信息列表。
 	Templates []*CallBackTemplateInfo `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5968,7 +5968,7 @@ type DescribeLiveCertResponseParams struct {
 	// 证书信息。
 	CertInfo *CertInfo `json:"CertInfo,omitnil,omitempty" name:"CertInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6022,7 +6022,7 @@ type DescribeLiveCertsResponseParams struct {
 	// 证书信息列表。
 	CertInfoSet []*CertInfo `json:"CertInfoSet,omitnil,omitempty" name:"CertInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6076,7 +6076,7 @@ type DescribeLiveDelayInfoListResponseParams struct {
 	// 延播信息列表。
 	DelayInfoList []*DelayInfo `json:"DelayInfoList,omitnil,omitempty" name:"DelayInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6170,7 +6170,7 @@ type DescribeLiveDomainCertBindingsResponseParams struct {
 	// 总的记录行数，便于分页。
 	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6227,7 +6227,7 @@ type DescribeLiveDomainCertResponseParams struct {
 	// 证书信息。
 	DomainCertInfo *DomainCertInfo `json:"DomainCertInfo,omitnil,omitempty" name:"DomainCertInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6299,7 +6299,7 @@ type DescribeLiveDomainPlayInfoListResponseParams struct {
 	// 分域名的数据情况。
 	DomainInfoList []*DomainInfoList `json:"DomainInfoList,omitnil,omitempty" name:"DomainInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6356,7 +6356,7 @@ type DescribeLiveDomainRefererResponseParams struct {
 	// 域名 Referer 黑白名单配置。
 	RefererAuthConfig *RefererAuthConfig `json:"RefererAuthConfig,omitnil,omitempty" name:"RefererAuthConfig"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6414,7 +6414,7 @@ type DescribeLiveDomainResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainInfo *DomainInfo `json:"DomainInfo,omitnil,omitempty" name:"DomainInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6530,7 +6530,7 @@ type DescribeLiveDomainsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayTypeCount []*int64 `json:"PlayTypeCount,omitnil,omitempty" name:"PlayTypeCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6617,7 +6617,7 @@ type DescribeLiveForbidStreamListResponseParams struct {
 	// 禁推流列表。
 	ForbidStreamList []*ForbidStreamInfo `json:"ForbidStreamList,omitnil,omitempty" name:"ForbidStreamList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6755,7 +6755,7 @@ type DescribeLivePackageInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FluxPackageBillMode *string `json:"FluxPackageBillMode,omitnil,omitempty" name:"FluxPackageBillMode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6809,7 +6809,7 @@ type DescribeLivePadRulesResponseParams struct {
 	// 规则信息列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6866,7 +6866,7 @@ type DescribeLivePadTemplateResponseParams struct {
 	// 直播垫片模板信息。
 	Template *PadTemplate `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6920,7 +6920,7 @@ type DescribeLivePadTemplatesResponseParams struct {
 	// 直播垫片模板信息。
 	Templates []*PadTemplate `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6977,7 +6977,7 @@ type DescribeLivePlayAuthKeyResponseParams struct {
 	// 播放鉴权key信息。
 	PlayAuthKeyInfo *PlayAuthKeyInfo `json:"PlayAuthKeyInfo,omitnil,omitempty" name:"PlayAuthKeyInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7034,7 +7034,7 @@ type DescribeLivePullStreamTaskStatusResponseParams struct {
 	// 任务状态信息。
 	TaskStatusInfo *TaskStatusInfo `json:"TaskStatusInfo,omitnil,omitempty" name:"TaskStatusInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7126,7 +7126,7 @@ type DescribeLivePullStreamTasksResponseParams struct {
 	// 限制可创建的最大任务数。
 	LimitTaskNum *uint64 `json:"LimitTaskNum,omitnil,omitempty" name:"LimitTaskNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7183,7 +7183,7 @@ type DescribeLivePushAuthKeyResponseParams struct {
 	// 推流鉴权key信息。
 	PushAuthKeyInfo *PushAuthKeyInfo `json:"PushAuthKeyInfo,omitnil,omitempty" name:"PushAuthKeyInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7237,7 +7237,7 @@ type DescribeLiveRecordRulesResponseParams struct {
 	// 规则列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7294,7 +7294,7 @@ type DescribeLiveRecordTemplateResponseParams struct {
 	// 录制模板信息。
 	Template *RecordTemplateInfo `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7355,7 +7355,7 @@ type DescribeLiveRecordTemplatesResponseParams struct {
 	// 录制模板信息列表。
 	Templates []*RecordTemplateInfo `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7409,7 +7409,7 @@ type DescribeLiveSnapshotRulesResponseParams struct {
 	// 规则列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7468,7 +7468,7 @@ type DescribeLiveSnapshotTemplateResponseParams struct {
 	// 截图模板信息。
 	Template *SnapshotTemplateInfo `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7522,7 +7522,7 @@ type DescribeLiveSnapshotTemplatesResponseParams struct {
 	// 截图模板列表。
 	Templates []*SnapshotTemplateInfo `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7690,7 +7690,7 @@ type DescribeLiveStreamEventListResponseParams struct {
 	// 总页数。
 	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7759,7 +7759,7 @@ type DescribeLiveStreamMonitorListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStreamMonitors []*LiveStreamMonitorInfo `json:"LiveStreamMonitors,omitnil,omitempty" name:"LiveStreamMonitors"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7817,7 +7817,7 @@ type DescribeLiveStreamMonitorResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStreamMonitor *LiveStreamMonitorInfo `json:"LiveStreamMonitor,omitnil,omitempty" name:"LiveStreamMonitor"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7918,7 +7918,7 @@ type DescribeLiveStreamOnlineListResponseParams struct {
 	// 正在推送流的信息列表。
 	OnlineInfo []*StreamOnlineInfo `json:"OnlineInfo,omitnil,omitempty" name:"OnlineInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8047,7 +8047,7 @@ type DescribeLiveStreamPublishedListResponseParams struct {
 	// 总页数。
 	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8145,7 +8145,7 @@ type DescribeLiveStreamPushInfoListResponseParams struct {
 	// 每页的在线流的个数。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8219,7 +8219,7 @@ type DescribeLiveStreamStateResponseParams struct {
 	// forbid：禁播。
 	StreamState *string `json:"StreamState,omitnil,omitempty" name:"StreamState"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8306,7 +8306,7 @@ type DescribeLiveTimeShiftBillInfoListResponseParams struct {
 	// 时移计费明细数据。
 	DataInfoList []*TimeShiftBillData `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8360,7 +8360,7 @@ type DescribeLiveTimeShiftRulesResponseParams struct {
 	// 规则信息列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8414,7 +8414,7 @@ type DescribeLiveTimeShiftTemplatesResponseParams struct {
 	// 直播时移模板信息。
 	Templates []*TimeShiftTemplate `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8541,7 +8541,7 @@ type DescribeLiveTranscodeDetailInfoResponseParams struct {
 	// 总页数。
 	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8605,7 +8605,7 @@ type DescribeLiveTranscodeRulesResponseParams struct {
 	// 转码规则列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8664,7 +8664,7 @@ type DescribeLiveTranscodeTemplateResponseParams struct {
 	// 模板信息。
 	Template *TemplateInfo `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8725,7 +8725,7 @@ type DescribeLiveTranscodeTemplatesResponseParams struct {
 	// 转码模板列表。
 	Templates []*TemplateInfo `json:"Templates,omitnil,omitempty" name:"Templates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8820,7 +8820,7 @@ type DescribeLiveTranscodeTotalInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataInfoList []*TranscodeTotalInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8877,7 +8877,7 @@ type DescribeLiveWatermarkResponseParams struct {
 	// 水印信息。
 	Watermark *WatermarkInfo `json:"Watermark,omitnil,omitempty" name:"Watermark"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8931,7 +8931,7 @@ type DescribeLiveWatermarkRulesResponseParams struct {
 	// 水印规则列表。
 	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8988,7 +8988,7 @@ type DescribeLiveWatermarksResponseParams struct {
 	// 水印信息列表。
 	WatermarkList []*WatermarkInfo `json:"WatermarkList,omitnil,omitempty" name:"WatermarkList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9072,7 +9072,7 @@ type DescribeLiveXP2PDetailInfoListResponseParams struct {
 	// P2P流统计信息。
 	DataInfoList []*XP2PDetailInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9163,7 +9163,7 @@ type DescribeLogDownloadListResponseParams struct {
 	// 总条数。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9225,7 +9225,7 @@ type DescribeMonitorReportResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiagnoseResult *DiagnoseResult `json:"DiagnoseResult,omitnil,omitempty" name:"DiagnoseResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9336,7 +9336,7 @@ type DescribePlayErrorCodeDetailInfoListResponseParams struct {
 	// 统计类型。
 	StatType *string `json:"StatType,omitnil,omitempty" name:"StatType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9478,7 +9478,7 @@ type DescribePlayErrorCodeSumInfoListResponseParams struct {
 	// 状态码为3开头的总次数。
 	TotalCode3xx *uint64 `json:"TotalCode3xx,omitnil,omitempty" name:"TotalCode3xx"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9622,7 +9622,7 @@ type DescribeProIspPlaySumInfoListResponseParams struct {
 	// 下载速度，单位：MB/s，计算方式：总流量/总时长。
 	AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitnil,omitempty" name:"AvgFluxPerSecond"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9768,7 +9768,7 @@ type DescribeProvinceIspPlayInfoListResponseParams struct {
 	// 统计的类型，和输入参数保持一致。
 	StatType *string `json:"StatType,omitnil,omitempty" name:"StatType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9827,7 +9827,7 @@ type DescribePullStreamConfigsResponseParams struct {
 	// 拉流配置。
 	PullStreamConfigs []*PullStreamConfig `json:"PullStreamConfigs,omitnil,omitempty" name:"PullStreamConfigs"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9993,7 +9993,7 @@ type DescribePushBandwidthAndFluxListResponseParams struct {
 	// 明细数据信息。
 	DataInfoList []*BillDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10088,7 +10088,7 @@ type DescribeRecordTaskResponseParams struct {
 	// 录制任务列表。当该字段为空，说明已返回所有数据。
 	TaskList []*RecordTask `json:"TaskList,omitnil,omitempty" name:"TaskList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10183,7 +10183,7 @@ type DescribeScreenShotSheetNumListResponseParams struct {
 	// 数据信息列表。
 	DataInfoList []*TimeValue `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10278,7 +10278,7 @@ type DescribeScreenshotTaskResponseParams struct {
 	// 截图任务列表。当该字段为空，说明已返回所有数据。
 	TaskList []*ScreenshotTask `json:"TaskList,omitnil,omitempty" name:"TaskList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10390,7 +10390,7 @@ type DescribeStreamDayPlayInfoListResponseParams struct {
 	// 每页个数。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10500,7 +10500,7 @@ type DescribeStreamPlayInfoListResponseParams struct {
 	// 统计信息列表，时间粒度是1分钟。
 	DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10599,7 +10599,7 @@ type DescribeStreamPushInfoListResponseParams struct {
 	// 返回的数据列表。
 	DataInfoList []*PushQualityData `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10699,7 +10699,7 @@ type DescribeTimeShiftRecordDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*TimeShiftRecord `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10804,7 +10804,7 @@ type DescribeTimeShiftStreamListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamList []*TimeShiftStreamInfo `json:"StreamList,omitnil,omitempty" name:"StreamList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10939,7 +10939,7 @@ type DescribeTopClientIpSumInfoListResponseParams struct {
 	// 数据内容。
 	DataInfoList []*ClientIpPlaySumInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11010,7 +11010,7 @@ type DescribeTranscodeTaskNumResponseParams struct {
 	// 任务数列表。
 	DataInfoList []*TranscodeTaskNum `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11104,7 +11104,7 @@ type DescribeUploadStreamNumsResponseParams struct {
 	// 明细数据信息
 	DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11232,7 +11232,7 @@ type DescribeVisitTopSumInfoListResponseParams struct {
 	// 数据内容。
 	DataInfoList []*PlaySumStatInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11436,7 +11436,7 @@ func (r *DropLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DropLiveStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11490,7 +11490,7 @@ func (r *EnableLiveDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableLiveDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11562,7 +11562,7 @@ func (r *EnableOptimalSwitchingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableOptimalSwitchingResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11621,7 +11621,7 @@ func (r *ForbidLiveDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ForbidLiveDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11713,7 +11713,7 @@ func (r *ForbidLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ForbidLiveStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12207,7 +12207,7 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveCallbackTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12304,7 +12304,7 @@ type ModifyLiveDomainCertBindingsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*BatchDomainOperateErrors `json:"Errors,omitnil,omitempty" name:"Errors"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12386,7 +12386,7 @@ func (r *ModifyLiveDomainRefererRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveDomainRefererResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12498,7 +12498,7 @@ func (r *ModifyLivePadTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePadTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12588,7 +12588,7 @@ func (r *ModifyLivePlayAuthKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePlayAuthKeyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12649,7 +12649,7 @@ func (r *ModifyLivePlayDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePlayDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12940,7 +12940,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePullStreamTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13028,7 +13028,7 @@ func (r *ModifyLivePushAuthKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePushAuthKeyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13152,7 +13152,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveRecordTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13301,7 +13301,7 @@ func (r *ModifyLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveSnapshotTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13443,7 +13443,7 @@ func (r *ModifyLiveStreamMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveStreamMonitorResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13572,7 +13572,7 @@ func (r *ModifyLiveTimeShiftTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveTimeShiftTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13812,7 +13812,7 @@ func (r *ModifyLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveTranscodeTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13968,7 +13968,7 @@ func (r *ModifyPullStreamConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPullStreamConfigResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14029,7 +14029,7 @@ func (r *ModifyPullStreamStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPullStreamStatusResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14782,7 +14782,7 @@ func (r *RestartLivePullStreamTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartLivePullStreamTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14850,7 +14850,7 @@ func (r *ResumeDelayLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResumeDelayLiveStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14918,7 +14918,7 @@ func (r *ResumeLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResumeLiveStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15073,7 +15073,7 @@ func (r *StartLiveStreamMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartLiveStreamMonitorResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15134,7 +15134,7 @@ func (r *StopLiveRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopLiveRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15188,7 +15188,7 @@ func (r *StopLiveStreamMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopLiveStreamMonitorResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15242,7 +15242,7 @@ func (r *StopRecordTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopRecordTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15296,7 +15296,7 @@ func (r *StopScreenshotTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopScreenshotTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15454,7 +15454,7 @@ func (r *SwitchBackupStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchBackupStreamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15827,7 +15827,7 @@ func (r *UnBindLiveDomainCertRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UnBindLiveDomainCertResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -15945,7 +15945,7 @@ func (r *UpdateLiveWatermarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateLiveWatermarkResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

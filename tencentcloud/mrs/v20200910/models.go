@@ -1942,7 +1942,7 @@ type ImageMaskAsyncGetResultResponseParams struct {
 	// 脱敏后图片的base64编码
 	MaskedImage *string `json:"MaskedImage,omitnil,omitempty" name:"MaskedImage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2006,7 +2006,7 @@ type ImageMaskAsyncResponseParams struct {
 	// 加密任务ID
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2084,7 +2084,7 @@ type ImageMaskResponseParams struct {
 	// 脱敏后图片的Base64信息
 	MaskedImage *string `json:"MaskedImage,omitnil,omitempty" name:"MaskedImage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2163,7 +2163,7 @@ type ImageToClassResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTypeList []*TextType `json:"TextTypeList,omitnil,omitempty" name:"TextTypeList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2268,7 +2268,7 @@ type ImageToObjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTypeList []*TextType `json:"TextTypeList,omitnil,omitempty" name:"TextTypeList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5127,7 +5127,7 @@ type TextToClassResponseParams struct {
 	// 分类结果
 	TextTypeList []*TextType `json:"TextTypeList,omitnil,omitempty" name:"TextTypeList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5220,7 +5220,7 @@ type TextToObjectResponseParams struct {
 	// 报告结构化结果
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5890,7 +5890,7 @@ type TurnPDFToObjectAsyncGetResultResponseParams struct {
 	// 是否使用Block字段
 	IsBlock *bool `json:"IsBlock,omitnil,omitempty" name:"IsBlock"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5963,7 +5963,7 @@ type TurnPDFToObjectAsyncResponseParams struct {
 	// 5、TaskID 与腾讯云的账号绑定，通过 TurnPDFToObjectAsync 传入PDF文件和通过 TurnPDFToObjectAsyncGetResult 获取 json 结果，必须是同一个腾讯云账号。即其它人就算获取到 TaskID 也无法获取到 json 结果。
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6040,7 +6040,7 @@ type TurnPDFToObjectResponseParams struct {
 	// 是否使用Block字段
 	IsBlock *bool `json:"IsBlock,omitnil,omitempty" name:"IsBlock"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

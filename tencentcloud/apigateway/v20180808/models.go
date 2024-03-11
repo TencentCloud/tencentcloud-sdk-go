@@ -671,7 +671,7 @@ type AttachPluginResponseParams struct {
 	// 绑定操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -857,7 +857,7 @@ type BindApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -962,7 +962,7 @@ type BindEnvironmentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1041,7 +1041,7 @@ type BindIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1106,7 +1106,7 @@ type BindSecretIdsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1216,7 +1216,7 @@ func (r *BindSubDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BindSubDomainResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1273,7 +1273,7 @@ type BuildAPIDocResponseParams struct {
 	// 操作是否成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1403,7 +1403,7 @@ type CreateAPIDocResponseParams struct {
 	// API文档基本信息
 	Result *APIDoc `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1468,7 +1468,7 @@ type CreateApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiAppInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1554,7 +1554,7 @@ type CreateApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiKey `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1983,7 +1983,7 @@ type CreateApiResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *CreateApiResultInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2118,7 +2118,7 @@ type CreateIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *IPStrategy `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2203,7 +2203,7 @@ type CreatePluginResponseParams struct {
 	// 新建的插件详情。
 	Result *Plugin `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2345,7 +2345,7 @@ type CreateServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2480,7 +2480,7 @@ type CreateUpstreamResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamId *string `json:"UpstreamId,omitnil,omitempty" name:"UpstreamId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2566,7 +2566,7 @@ type CreateUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlanInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2623,7 +2623,7 @@ type DeleteAPIDocResponseParams struct {
 	// 操作是否成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2681,7 +2681,7 @@ type DeleteApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2739,7 +2739,7 @@ type DeleteApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2804,7 +2804,7 @@ type DeleteApiResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2869,7 +2869,7 @@ type DeleteIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2926,7 +2926,7 @@ type DeletePluginResponseParams struct {
 	// 删除操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2991,7 +2991,7 @@ type DeleteServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3062,7 +3062,7 @@ type DeleteServiceSubDomainMappingResponseParams struct {
 	// 删除自定义域名的路径映射操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3120,7 +3120,7 @@ type DeleteUpstreamResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamId *string `json:"UpstreamId,omitnil,omitempty" name:"UpstreamId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3178,7 +3178,7 @@ type DeleteUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3250,7 +3250,7 @@ type DemoteServiceUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3385,7 +3385,7 @@ type DescribeAPIDocDetailResponseParams struct {
 	// API文档详细信息
 	Result *APIDocInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3449,7 +3449,7 @@ type DescribeAPIDocsResponseParams struct {
 	// API文档列表信息
 	Result *APIDocs `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3534,7 +3534,7 @@ type DescribeAllPluginApisResponseParams struct {
 	// 插件相关API的列表。
 	Result *ApiInfoSummary `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3613,7 +3613,7 @@ type DescribeApiAppBindApisStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiAppApiInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3671,7 +3671,7 @@ type DescribeApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiAppInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3743,7 +3743,7 @@ type DescribeApiAppsStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiAppInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3829,7 +3829,7 @@ type DescribeApiBindApiAppsStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiAppApiInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3915,7 +3915,7 @@ type DescribeApiEnvironmentStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiEnvironmentStrategyStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3986,7 +3986,7 @@ type DescribeApiForApiAppResponseParams struct {
 	// API 详情。
 	Result *ApiInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4044,7 +4044,7 @@ type DescribeApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiKey `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4116,7 +4116,7 @@ type DescribeApiKeysStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiKeysStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4180,7 +4180,7 @@ type DescribeApiResponseParams struct {
 	// API 详情。
 	Result *ApiInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4278,7 +4278,7 @@ type DescribeApiUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiUsagePlanSet `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4356,7 +4356,7 @@ type DescribeApisStatusResponseParams struct {
 	// API 详情列表。
 	Result *DescribeApisStatusResultInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4499,7 +4499,7 @@ type DescribeExclusiveInstanceDetailResponseParams struct {
 	// 独享实例详情
 	Result *InstanceDetail `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4570,7 +4570,7 @@ type DescribeExclusiveInstancesResponseParams struct {
 	// 独享实例列表查询结果
 	Result *DescribeExclusiveInstancesResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4645,7 +4645,7 @@ type DescribeExclusiveInstancesStatusResponseParams struct {
 	// 独享实例列表查询结果
 	Result *InstanceSummary `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4738,7 +4738,7 @@ type DescribeIPStrategyApisStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *IPStrategyApiStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4831,7 +4831,7 @@ type DescribeIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *IPStrategy `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4896,7 +4896,7 @@ type DescribeIPStrategysStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *IPStrategiesStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5064,7 +5064,7 @@ type DescribeLogSearchResponseParams struct {
 	// 单次搜索返回的日志条数，TotalCount <= Limit
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5135,7 +5135,7 @@ type DescribePluginApisResponseParams struct {
 	// 插件绑定的API列表信息。
 	Result *AttachedApiSummary `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5206,7 +5206,7 @@ type DescribePluginResponseParams struct {
 	// 插件详情。
 	Result *Plugin `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5291,7 +5291,7 @@ type DescribePluginsByApiResponseParams struct {
 	// 插件可绑定的API列表信息。
 	Result *AttachedPluginSummary `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5383,7 +5383,7 @@ type DescribePluginsResponseParams struct {
 	// 插件详情。
 	Result *PluginSummary `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5455,7 +5455,7 @@ type DescribeServiceEnvironmentListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceEnvironmentSet `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5534,7 +5534,7 @@ type DescribeServiceEnvironmentReleaseHistoryResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceReleaseHistory `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5606,7 +5606,7 @@ type DescribeServiceEnvironmentStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceEnvironmentStrategyStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5740,7 +5740,7 @@ type DescribeServiceForApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5812,7 +5812,7 @@ type DescribeServiceReleaseVersionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceReleaseVersion `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5967,7 +5967,7 @@ type DescribeServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6031,7 +6031,7 @@ type DescribeServiceSubDomainMappingsResponseParams struct {
 	// 自定义路径映射列表。
 	Result *ServiceSubDomainMappings `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6102,7 +6102,7 @@ type DescribeServiceSubDomainsResponseParams struct {
 	// 查询服务自定义域名列表。
 	Result *DomainSets `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6174,7 +6174,7 @@ type DescribeServiceUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceUsagePlanSet `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6246,7 +6246,7 @@ type DescribeServicesStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServicesStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6332,7 +6332,7 @@ type DescribeUpstreamBindApisResponseParams struct {
 	// 查询结果
 	Result *DescribeUpstreamBindApis `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6411,7 +6411,7 @@ type DescribeUpstreamsResponseParams struct {
 	// 查询结果
 	Result *DescribeUpstreamInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6490,7 +6490,7 @@ type DescribeUsagePlanEnvironmentsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlanEnvironmentStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6548,7 +6548,7 @@ type DescribeUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlanInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6620,7 +6620,7 @@ type DescribeUsagePlanSecretIdsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlanBindSecretStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6692,7 +6692,7 @@ type DescribeUsagePlansStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlansStatus `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6770,7 +6770,7 @@ type DetachPluginResponseParams struct {
 	// 解绑操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6828,7 +6828,7 @@ type DisableApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6920,7 +6920,7 @@ type EnableApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7153,7 +7153,7 @@ type ImportOpenApiResponseParams struct {
 	// 导入OpenApi返回参数。
 	Result *CreateApiRspSet `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7422,7 +7422,7 @@ type ModifyAPIDocResponseParams struct {
 	// API文档基本信息
 	Result *APIDoc `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7494,7 +7494,7 @@ type ModifyApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7573,7 +7573,7 @@ type ModifyApiEnvironmentStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7655,7 +7655,7 @@ func (r *ModifyApiIncrementRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApiIncrementResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8087,7 +8087,7 @@ func (r *ModifyApiRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApiResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8165,7 +8165,7 @@ type ModifyExclusiveInstanceResponseParams struct {
 	// 独享实例详情信息
 	Result *InstanceDetail `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8237,7 +8237,7 @@ type ModifyIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8315,7 +8315,7 @@ type ModifyPluginResponseParams struct {
 	// 修改操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8387,7 +8387,7 @@ type ModifyServiceEnvironmentStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8476,7 +8476,7 @@ func (r *ModifyServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyServiceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8582,7 +8582,7 @@ type ModifySubDomainResponseParams struct {
 	// 修改自定义域名操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8717,7 +8717,7 @@ type ModifyUpstreamResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ModifyUpstreamResultInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8847,7 +8847,7 @@ type ModifyUsagePlanResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UsagePlanInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9051,7 +9051,7 @@ type ReleaseServiceResponseParams struct {
 	// 发布信息。
 	Result *ReleaseService `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9156,7 +9156,7 @@ type ResetAPIDocPasswordResponseParams struct {
 	// API文档基本信息
 	Result *APIDoc `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9539,7 +9539,7 @@ type UnBindEnvironmentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9618,7 +9618,7 @@ type UnBindIPStrategyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9683,7 +9683,7 @@ type UnBindSecretIdsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9747,7 +9747,7 @@ type UnBindSubDomainResponseParams struct {
 	// 解绑自定义域名操作是否成功。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9819,7 +9819,7 @@ type UnReleaseServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9898,7 +9898,7 @@ type UnbindApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9970,7 +9970,7 @@ type UpdateApiAppKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10035,7 +10035,7 @@ type UpdateApiKeyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiKey `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10114,7 +10114,7 @@ type UpdateServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

@@ -130,7 +130,7 @@ type AddSpecifyPrivateZoneVpcResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqId *string `json:"UniqId,omitnil,omitempty" name:"UniqId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -209,7 +209,7 @@ func (r *CreatePrivateDNSAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrivateDNSAccountResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -308,7 +308,7 @@ type CreatePrivateZoneRecordResponseParams struct {
 	// 记录Id
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -417,7 +417,7 @@ type CreatePrivateZoneResponseParams struct {
 	// 私有域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -479,7 +479,7 @@ func (r *DeleteEndPointRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteEndPointResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -533,7 +533,7 @@ func (r *DeletePrivateDNSAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePrivateDNSAccountResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -601,7 +601,7 @@ func (r *DeletePrivateZoneRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePrivateZoneRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -662,7 +662,7 @@ func (r *DeletePrivateZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePrivateZoneResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -750,7 +750,7 @@ type DeleteSpecifyPrivateZoneVpcResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqId *string `json:"UniqId,omitnil,omitempty" name:"UniqId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -831,7 +831,7 @@ type DescribeAccountVpcListResponseParams struct {
 	// VPC 列表
 	VpcSet []*AccountVpcInfoOut `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -916,7 +916,7 @@ type DescribeAuditLogResponseParams struct {
 	// 操作日志列表
 	Data []*AuditLog `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -979,7 +979,7 @@ type DescribeDashboardResponseParams struct {
 	// 流量包用量
 	FlowUsage []*FlowUsage `json:"FlowUsage,omitnil,omitempty" name:"FlowUsage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1053,7 +1053,7 @@ type DescribePrivateDNSAccountListResponseParams struct {
 	// 私有域解析账号列表
 	AccountSet []*PrivateDNSAccount `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1127,7 +1127,7 @@ type DescribePrivateZoneListResponseParams struct {
 	// 私有域列表
 	PrivateZoneSet []*PrivateZone `json:"PrivateZoneSet,omitnil,omitempty" name:"PrivateZoneSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1208,7 +1208,7 @@ type DescribePrivateZoneRecordListResponseParams struct {
 	// 解析记录列表
 	RecordSet []*PrivateZoneRecord `json:"RecordSet,omitnil,omitempty" name:"RecordSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1265,7 +1265,7 @@ type DescribePrivateZoneResponseParams struct {
 	// 私有域详情
 	PrivateZone *PrivateZone `json:"PrivateZone,omitnil,omitempty" name:"PrivateZone"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1319,7 +1319,7 @@ type DescribePrivateZoneServiceResponseParams struct {
 	// 私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1373,7 +1373,7 @@ type DescribeQuotaUsageResponseParams struct {
 	// Tld额度使用情况
 	TldQuota *TldQuota `json:"TldQuota,omitnil,omitempty" name:"TldQuota"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1447,7 +1447,7 @@ type DescribeRequestDataResponseParams struct {
 	// 请求量单位时间: Day：天，Hour：小时
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1584,7 +1584,7 @@ func (r *ModifyPrivateZoneRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPrivateZoneRecordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1659,7 +1659,7 @@ func (r *ModifyPrivateZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPrivateZoneResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1736,7 +1736,7 @@ type ModifyPrivateZoneVpcResponseParams struct {
 	// 私有域账号关联的全部VPC列表
 	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitnil,omitempty" name:"AccountVpcSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1813,7 +1813,7 @@ type ModifyRecordsStatusResponseParams struct {
 	// enabled：生效，disabled：失效
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1999,7 +1999,7 @@ type QueryAsyncBindVpcStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2053,7 +2053,7 @@ type SubscribePrivateZoneServiceResponseParams struct {
 	// 私有域解析服务开通状态
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

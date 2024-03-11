@@ -169,7 +169,7 @@ type BindAutoSnapshotPolicyResponseParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -270,7 +270,7 @@ type CreateAutoSnapshotPolicyResponseParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -460,7 +460,7 @@ type CreateCfsFileSystemResponseParams struct {
 	// 文件系统是否加密
 	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -536,7 +536,7 @@ type CreateCfsPGroupResponseParams struct {
 	// 权限组创建时间
 	CDate *string `json:"CDate,omitnil,omitempty" name:"CDate"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -636,7 +636,7 @@ type CreateCfsRuleResponseParams struct {
 	// 优先级
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -707,7 +707,7 @@ type CreateCfsSnapshotResponseParams struct {
 	// 文件系统快照id
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -862,7 +862,7 @@ type CreateMigrationTaskResponseParams struct {
 	// 迁移任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -919,7 +919,7 @@ type DeleteAutoSnapshotPolicyResponseParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -973,7 +973,7 @@ func (r *DeleteCfsFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCfsFileSystemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1033,7 +1033,7 @@ type DeleteCfsPGroupResponseParams struct {
 	// 用户 ID
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1100,7 +1100,7 @@ type DeleteCfsRuleResponseParams struct {
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1164,7 +1164,7 @@ type DeleteCfsSnapshotResponseParams struct {
 	// 文件系统ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1218,7 +1218,7 @@ func (r *DeleteMigrationTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMigrationTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1279,7 +1279,7 @@ func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMountTargetResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1347,7 +1347,7 @@ func (r *DeleteUserQuotaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserQuotaResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1442,7 +1442,7 @@ type DescribeAutoSnapshotPoliciesResponseParams struct {
 	// 快照策略信息
 	AutoSnapshotPolicies []*AutoSnapshotPolicyInfo `json:"AutoSnapshotPolicies,omitnil,omitempty" name:"AutoSnapshotPolicies"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1496,7 +1496,7 @@ type DescribeAvailableZoneInfoResponseParams struct {
 	// 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
 	RegionZones []*AvailableRegion `json:"RegionZones,omitnil,omitempty" name:"RegionZones"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1570,7 +1570,7 @@ type DescribeBucketListResponseParams struct {
 	// 桶列表
 	BucketList []*BucketInfo `json:"BucketList,omitnil,omitempty" name:"BucketList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1644,7 +1644,7 @@ type DescribeCfsFileSystemClientsResponseParams struct {
 	// 文件系统总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1739,7 +1739,7 @@ type DescribeCfsFileSystemsResponseParams struct {
 	// 文件系统总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1793,7 +1793,7 @@ type DescribeCfsPGroupsResponseParams struct {
 	// 权限组信息列表
 	PGroupList []*PGroupInfo `json:"PGroupList,omitnil,omitempty" name:"PGroupList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1850,7 +1850,7 @@ type DescribeCfsRulesResponseParams struct {
 	// 权限组规则列表
 	RuleList []*PGroupRuleInfo `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1904,7 +1904,7 @@ type DescribeCfsServiceStatusResponseParams struct {
 	// 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
 	CfsServiceStatus *string `json:"CfsServiceStatus,omitnil,omitempty" name:"CfsServiceStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1958,7 +1958,7 @@ type DescribeCfsSnapshotOverviewResponseParams struct {
 	// 统计信息
 	StatisticsList []*SnapshotStatistics `json:"StatisticsList,omitnil,omitempty" name:"StatisticsList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2077,7 +2077,7 @@ type DescribeCfsSnapshotsResponseParams struct {
 	// 快照列表快照汇总
 	TotalSize *uint64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2179,7 +2179,7 @@ type DescribeMigrationTasksResponseParams struct {
 	// 迁移任务详情
 	MigrationTasks []*MigrationTaskInfo `json:"MigrationTasks,omitnil,omitempty" name:"MigrationTasks"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2239,7 +2239,7 @@ type DescribeMountTargetsResponseParams struct {
 	// 挂载点数量
 	NumberOfMountTargets *int64 `json:"NumberOfMountTargets,omitnil,omitempty" name:"NumberOfMountTargets"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2313,7 +2313,7 @@ type DescribeSnapshotOperationLogsResponseParams struct {
 	// 操作日志
 	SnapshotOperates []*SnapshotOperateLog `json:"SnapshotOperates,omitnil,omitempty" name:"SnapshotOperates"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2398,7 +2398,7 @@ type DescribeUserQuotaResponseParams struct {
 	// UserQuota条目
 	UserQuotaInfo []*UserQuota `json:"UserQuotaInfo,omitnil,omitempty" name:"UserQuotaInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2707,7 +2707,7 @@ type ModifyFileSystemAutoScaleUpRuleResponseParams struct {
 	// 扩容后达到阈值,范围[10-90]
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2854,7 +2854,7 @@ type ScaleUpFileSystemResponseParams struct {
 	// 扩容的目标容量（单位GiB）
 	TargetCapacity *uint64 `json:"TargetCapacity,omitnil,omitempty" name:"TargetCapacity"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2936,7 +2936,7 @@ func (r *SetUserQuotaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetUserQuotaResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2990,7 +2990,7 @@ type SignUpCfsServiceResponseParams struct {
 	// 该用户当前 CFS 服务的状态，creating 是开通中，created 是已开通
 	CfsServiceStatus *string `json:"CfsServiceStatus,omitnil,omitempty" name:"CfsServiceStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3135,7 +3135,7 @@ type StopMigrationTaskResponseParams struct {
 	// 迁移状态。0: 已完成；1: 进行中；2: 已终止
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3213,7 +3213,7 @@ type UnbindAutoSnapshotPolicyResponseParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3319,7 +3319,7 @@ type UpdateAutoSnapshotPolicyResponseParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3389,7 +3389,7 @@ type UpdateCfsFileSystemNameResponseParams struct {
 	// 用户自定义文件系统名称
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3456,7 +3456,7 @@ type UpdateCfsFileSystemPGroupResponseParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3517,7 +3517,7 @@ func (r *UpdateCfsFileSystemSizeLimitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsFileSystemSizeLimitResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3594,7 +3594,7 @@ type UpdateCfsPGroupResponseParams struct {
 	// 描述信息
 	DescInfo *string `json:"DescInfo,omitnil,omitempty" name:"DescInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3701,7 +3701,7 @@ type UpdateCfsRuleResponseParams struct {
 	// 优先级
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3772,7 +3772,7 @@ type UpdateCfsSnapshotAttributeResponseParams struct {
 	// 文件系统快照ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3833,7 +3833,7 @@ func (r *UpdateFileSystemBandwidthLimitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateFileSystemBandwidthLimitResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

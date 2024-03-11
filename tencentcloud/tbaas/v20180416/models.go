@@ -65,7 +65,7 @@ type ApplyChainMakerBatchUserCertResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUserCrtList []*string `json:"SignUserCrtList,omitnil,omitempty" name:"SignUserCrtList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -181,7 +181,7 @@ type ApplyUserCertResponseParams struct {
 	// 证书DN
 	CertDn *string `json:"CertDn,omitnil,omitempty" name:"CertDn"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -345,7 +345,7 @@ type DescribeFabricBlockResponseParams struct {
 	// 提案组织
 	ProposerOrg *string `json:"ProposerOrg,omitnil,omitempty" name:"ProposerOrg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -440,7 +440,7 @@ type DescribeFabricTransactionResponseParams struct {
 	// 交易数据，base64编码，解码后为json化的字符串
 	TransactionData *string `json:"TransactionData,omitnil,omitempty" name:"TransactionData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -540,7 +540,7 @@ type DownloadUserCertResponseParams struct {
 	// 证书内容
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -664,7 +664,7 @@ type GetBlockListResponseParams struct {
 	// 区块列表
 	BlockList []*Block `json:"BlockList,omitnil,omitempty" name:"BlockList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -773,7 +773,7 @@ type GetBlockTransactionListForUserResponseParams struct {
 	// 交易列表
 	TransactionList []*TransactionItem `json:"TransactionList,omitnil,omitempty" name:"TransactionList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -900,7 +900,7 @@ type GetClusterSummaryResponseParams struct {
 	// 当前组织业务证书数量
 	ClientCertCount *uint64 `json:"ClientCertCount,omitnil,omitempty" name:"ClientCertCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1012,7 +1012,7 @@ type GetInvokeTxResponseParams struct {
 	// 交易所在区块ID
 	BlockId *int64 `json:"BlockId,omitnil,omitempty" name:"BlockId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1135,7 +1135,7 @@ type GetLatesdTransactionListResponseParams struct {
 	// 交易列表
 	TransactionList []*TransactionItem `json:"TransactionList,omitnil,omitempty" name:"TransactionList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1258,7 +1258,7 @@ type GetLatestTransactionListResponseParams struct {
 	// 交易列表
 	TransactionList []*TransactionItem `json:"TransactionList,omitnil,omitempty" name:"TransactionList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1393,7 +1393,7 @@ type GetTransactionDetailForUserResponseParams struct {
 	// 背书组织列表
 	EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitnil,omitempty" name:"EndorserOrgList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1486,7 +1486,7 @@ type InvokeChainMakerContractResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1579,7 +1579,7 @@ type InvokeChainMakerDemoContractResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1677,7 +1677,7 @@ type InvokeFabricChaincodeResponseParams struct {
 	// 交易结果
 	TxResult *string `json:"TxResult,omitnil,omitempty" name:"TxResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1805,7 +1805,7 @@ type InvokeResponseParams struct {
 	// 交易ID
 	TxId *string `json:"TxId,omitnil,omitempty" name:"TxId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1895,7 +1895,7 @@ type QueryChainMakerBlockTransactionResponseParams struct {
 	// 区块时间戳，单位是秒
 	BlockTimestamp *int64 `json:"BlockTimestamp,omitnil,omitempty" name:"BlockTimestamp"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1981,7 +1981,7 @@ type QueryChainMakerContractResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2063,7 +2063,7 @@ type QueryChainMakerDemoBlockTransactionResponseParams struct {
 	// 区块时间戳，单位是秒
 	BlockTimestamp *int64 `json:"BlockTimestamp,omitnil,omitempty" name:"BlockTimestamp"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2149,7 +2149,7 @@ type QueryChainMakerDemoContractResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2221,7 +2221,7 @@ type QueryChainMakerDemoTransactionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2293,7 +2293,7 @@ type QueryChainMakerTransactionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2384,7 +2384,7 @@ type QueryFabricChaincodeResponseParams struct {
 	// 交易结果
 	TxResult *string `json:"TxResult,omitnil,omitempty" name:"TxResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2497,7 +2497,7 @@ type QueryResponseParams struct {
 	// 查询结果数据
 	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2582,7 +2582,7 @@ type SrvInvokeResponseParams struct {
 	// 返回数据
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

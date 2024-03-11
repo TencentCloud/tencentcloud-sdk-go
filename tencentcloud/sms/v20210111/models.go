@@ -159,7 +159,7 @@ type AddSmsSignResponseParams struct {
 	// 添加签名响应
 	AddSignStatus *AddSignStatus `json:"AddSignStatus,omitnil,omitempty" name:"AddSignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -248,7 +248,7 @@ type AddSmsTemplateResponseParams struct {
 	// 添加短信模板响应包体
 	AddTemplateStatus *AddTemplateStatus `json:"AddTemplateStatus,omitnil,omitempty" name:"AddTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -373,7 +373,7 @@ type CallbackStatusStatisticsResponseParams struct {
 	// 回执数据统计响应包体。
 	CallbackStatusStatistics *CallbackStatusStatistics `json:"CallbackStatusStatistics,omitnil,omitempty" name:"CallbackStatusStatistics"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -440,7 +440,7 @@ type DeleteSmsSignResponseParams struct {
 	// 删除签名响应
 	DeleteSignStatus *DeleteSignStatus `json:"DeleteSignStatus,omitnil,omitempty" name:"DeleteSignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -497,7 +497,7 @@ type DeleteSmsTemplateResponseParams struct {
 	// 删除模板响应
 	DeleteTemplateStatus *DeleteTemplateStatus `json:"DeleteTemplateStatus,omitnil,omitempty" name:"DeleteTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -564,7 +564,7 @@ type DescribePhoneNumberInfoResponseParams struct {
 	// 获取号码信息。
 	PhoneNumberInfoSet []*PhoneNumberInfo `json:"PhoneNumberInfoSet,omitnil,omitempty" name:"PhoneNumberInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -655,7 +655,7 @@ type DescribeSmsSignListResponseParams struct {
 	// 获取签名信息响应
 	DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitnil,omitempty" name:"DescribeSignListStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -743,7 +743,7 @@ type DescribeSmsTemplateListResponseParams struct {
 	// 获取短信模板信息响应
 	DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitnil,omitempty" name:"DescribeTemplateStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -932,7 +932,7 @@ type ModifySmsSignResponseParams struct {
 	// 修改签名响应
 	ModifySignStatus *ModifySignStatus `json:"ModifySignStatus,omitnil,omitempty" name:"ModifySignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1028,7 +1028,7 @@ type ModifySmsTemplateResponseParams struct {
 	// 修改模板参数响应
 	ModifyTemplateStatus *ModifyTemplateStatus `json:"ModifyTemplateStatus,omitnil,omitempty" name:"ModifyTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1175,7 +1175,7 @@ type PullSmsReplyStatusByPhoneNumberResponseParams struct {
 	// 回复状态响应集合。
 	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitnil,omitempty" name:"PullSmsReplyStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1239,7 +1239,7 @@ type PullSmsReplyStatusResponseParams struct {
 	// 回复状态响应集合。
 	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitnil,omitempty" name:"PullSmsReplyStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1362,7 +1362,7 @@ type PullSmsSendStatusByPhoneNumberResponseParams struct {
 	// 下发状态响应集合。
 	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitnil,omitempty" name:"PullSmsSendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1426,7 +1426,7 @@ type PullSmsSendStatusResponseParams struct {
 	// 下发状态响应集合。
 	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitnil,omitempty" name:"PullSmsSendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1497,7 +1497,7 @@ type ReportConversionResponseParams struct {
 	// 转化率上报响应包体。
 	ReportConversionStatus *ReportConversionStatus `json:"ReportConversionStatus,omitnil,omitempty" name:"ReportConversionStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1621,7 +1621,7 @@ type SendSmsResponseParams struct {
 	// 短信发送状态。
 	SendStatusSet []*SendStatus `json:"SendStatusSet,omitnil,omitempty" name:"SendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1746,7 +1746,7 @@ type SendStatusStatisticsResponseParams struct {
 	// 发送数据统计响应包体。
 	SendStatusStatistics *SendStatusStatistics `json:"SendStatusStatistics,omitnil,omitempty" name:"SendStatusStatistics"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1858,7 +1858,7 @@ type SmsPackagesStatisticsResponseParams struct {
 	// 发送数据统计响应包体。
 	SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitnil,omitempty" name:"SmsPackagesStatisticsSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

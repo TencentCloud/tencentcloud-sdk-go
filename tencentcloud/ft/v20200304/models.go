@@ -63,7 +63,7 @@ func (r *CancelFaceMorphJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelFaceMorphJobResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -156,7 +156,7 @@ type ChangeAgePicResponseParams struct {
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -247,7 +247,7 @@ type FaceCartoonPicResponseParams struct {
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -412,7 +412,7 @@ type MorphFaceResponseParams struct {
 	// 预估处理时间，粒度为秒
 	EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitnil,omitempty" name:"EstimatedProcessTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -477,7 +477,7 @@ type QueryFaceMorphJobResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobStatusCode *int64 `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -570,7 +570,7 @@ type SwapGenderPicResponseParams struct {
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

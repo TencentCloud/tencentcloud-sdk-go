@@ -26,7 +26,7 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// 当前子帐号无权执行该操作。
+	// 当前子账号无权执行该操作。
 	INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 
 	// 非法的实例名。

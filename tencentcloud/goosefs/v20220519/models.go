@@ -61,7 +61,7 @@ func (r *AddCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type AddCrossVpcSubnetSupportForClientNodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -122,7 +122,7 @@ func (r *AttachFileSystemBucketRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachFileSystemBucketResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -190,7 +190,7 @@ func (r *BatchAddClientNodesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchAddClientNodesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -258,7 +258,7 @@ func (r *BatchDeleteClientNodesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchDeleteClientNodesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -411,7 +411,7 @@ type CreateDataRepositoryTaskResponseParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -521,7 +521,7 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileSystemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -582,7 +582,7 @@ func (r *DeleteCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -636,7 +636,7 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFileSystemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -693,7 +693,7 @@ type DescribeClientNodesResponseParams struct {
 	// 客户端节点数组
 	ClientNodes []*ClientNodeAttribute `json:"ClientNodes,omitnil,omitempty" name:"ClientNodes"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -750,7 +750,7 @@ type DescribeClusterClientTokenResponseParams struct {
 	// 客户端凭证
 	ClientTokens []*ClientToken `json:"ClientTokens,omitnil,omitempty" name:"ClientTokens"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -814,7 +814,7 @@ type DescribeClusterRoleTokenResponseParams struct {
 	// 角色凭证
 	RoleTokens []*RoleToken `json:"RoleTokens,omitnil,omitempty" name:"RoleTokens"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -878,7 +878,7 @@ type DescribeClusterRolesResponseParams struct {
 	// 集群角色
 	ClusterRoles []*ClusterRole `json:"ClusterRoles,omitnil,omitempty" name:"ClusterRoles"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -951,7 +951,7 @@ type DescribeDataRepositoryTaskStatusResponseParams struct {
 	// 已完成的数据量
 	FinishedCapacity *uint64 `json:"FinishedCapacity,omitnil,omitempty" name:"FinishedCapacity"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1008,7 +1008,7 @@ type DescribeFileSystemBucketsResponseParams struct {
 	// bucket列表
 	BucketList []*MappedBucket `json:"BucketList,omitnil,omitempty" name:"BucketList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1075,7 +1075,7 @@ type DescribeFileSystemsResponseParams struct {
 	// 总共的文件系统数量
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1136,7 +1136,7 @@ func (r *DetachFileSystemBucketRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachFileSystemBucketResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1197,7 +1197,7 @@ func (r *ExpandCapacityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExpandCapacityResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1375,7 +1375,7 @@ func (r *ModifyDataRepositoryBandwidthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDataRepositoryBandwidthResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1432,7 +1432,7 @@ type QueryCrossVpcSubnetSupportForClientNodeResponseParams struct {
 	// 支持的子网信息集合
 	SubnetInfoCollection []*SubnetInfo `json:"SubnetInfoCollection,omitnil,omitempty" name:"SubnetInfoCollection"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1495,7 +1495,7 @@ type QueryDataRepositoryBandwidthResponseParams struct {
 	// 能设置的最小带宽, 单位MB/s
 	MinBandwidth *uint64 `json:"MinBandwidth,omitnil,omitempty" name:"MinBandwidth"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

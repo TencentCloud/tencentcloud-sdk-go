@@ -163,7 +163,7 @@ func (r *AssociateSecurityGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateSecurityGroupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -303,7 +303,7 @@ func (r *BalanceReadOnlyGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BalanceReadOnlyGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -433,7 +433,7 @@ type CloneDBResponseParams struct {
 	// 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -490,7 +490,7 @@ type CloseInterCommunicationResponseParams struct {
 	// 实例和异步流程ID
 	InterInstanceFlowSet []*InterInstanceFlow `json:"InterInstanceFlowSet,omitnil,omitempty" name:"InterInstanceFlowSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -547,7 +547,7 @@ type CompleteExpansionResponseParams struct {
 	// 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -604,7 +604,7 @@ type CompleteMigrationResponseParams struct {
 	// 完成迁移流程发起后，返回的流程id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -676,7 +676,7 @@ type CreateAccountResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -761,7 +761,7 @@ type CreateBackupMigrationResponseParams struct {
 	// 备份导入任务ID
 	BackupMigrationId *string `json:"BackupMigrationId,omitnil,omitempty" name:"BackupMigrationId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -846,7 +846,7 @@ type CreateBackupResponseParams struct {
 	// 异步任务ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1050,7 +1050,7 @@ type CreateBasicDBInstancesResponseParams struct {
 	// 订单名称
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1213,7 +1213,7 @@ type CreateBusinessDBInstancesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1291,7 +1291,7 @@ type CreateBusinessIntelligenceFileResponseParams struct {
 	// 文件名称
 	FileTaskId *string `json:"FileTaskId,omitnil,omitempty" name:"FileTaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1502,7 +1502,7 @@ type CreateCloudDBInstancesResponseParams struct {
 	// 订单名称
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1720,7 +1720,7 @@ type CreateCloudReadOnlyDBInstancesResponseParams struct {
 	// 订单名称数组
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1927,7 +1927,7 @@ type CreateDBInstancesResponseParams struct {
 	// 订单名称数组
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1991,7 +1991,7 @@ type CreateDBResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2069,7 +2069,7 @@ type CreateIncrementalMigrationResponseParams struct {
 	// 增量备份导入任务ID
 	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitnil,omitempty" name:"IncrementalMigrationId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2168,7 +2168,7 @@ type CreateMigrationResponseParams struct {
 	// 迁移任务ID
 	MigrateId *int64 `json:"MigrateId,omitnil,omitempty" name:"MigrateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2246,7 +2246,7 @@ type CreatePublishSubscribeResponseParams struct {
 	// 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2450,7 +2450,7 @@ type CreateReadOnlyDBInstancesResponseParams struct {
 	// 订单名称数组
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2957,7 +2957,7 @@ type DeleteAccountResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3018,7 +3018,7 @@ func (r *DeleteBackupMigrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBackupMigrationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3079,7 +3079,7 @@ func (r *DeleteBusinessIntelligenceFileRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBusinessIntelligenceFileResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3133,7 +3133,7 @@ func (r *DeleteDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDBInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3197,7 +3197,7 @@ type DeleteDBResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3265,7 +3265,7 @@ func (r *DeleteIncrementalMigrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIncrementalMigrationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3319,7 +3319,7 @@ func (r *DeleteMigrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMigrationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3380,7 +3380,7 @@ func (r *DeletePublishSubscribeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePublishSubscribeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3441,7 +3441,7 @@ func (r *DeleteRestoreTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRestoreTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3529,7 +3529,7 @@ type DescribeAccountPrivilegeByDBResponseParams struct {
 	// 账号权限列表
 	Accounts []*AccountPrivilege `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3627,7 +3627,7 @@ type DescribeAccountsResponseParams struct {
 	// 总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3727,7 +3727,7 @@ type DescribeBackupByFlowIdResponseParams struct {
 	// 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3805,7 +3805,7 @@ type DescribeBackupCommandResponseParams struct {
 	// 创建备份命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3900,7 +3900,7 @@ type DescribeBackupFilesResponseParams struct {
 	// 备份文件列表详情
 	BackupFiles []*BackupFile `json:"BackupFiles,omitnil,omitempty" name:"BackupFiles"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4030,7 +4030,7 @@ type DescribeBackupMigrationResponseParams struct {
 	// 迁移任务集合
 	BackupMigrationSet []*Migration `json:"BackupMigrationSet,omitnil,omitempty" name:"BackupMigrationSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4113,7 +4113,7 @@ type DescribeBackupMonitorResponseParams struct {
 	// 数据备份空间
 	DataBackupSpace []*float64 `json:"DataBackupSpace,omitnil,omitempty" name:"DataBackupSpace"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4218,7 +4218,7 @@ type DescribeBackupStatisticalResponseParams struct {
 	// 实例列表。
 	Items []*SummaryDetailRes `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4338,7 +4338,7 @@ type DescribeBackupSummaryResponseParams struct {
 	// 跨地域备份预估收费金额，单位（元/小时）
 	CrossEstimatedAmount *float64 `json:"CrossEstimatedAmount,omitnil,omitempty" name:"CrossEstimatedAmount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4409,7 +4409,7 @@ type DescribeBackupUploadSizeResponseParams struct {
 	// 已上传的备份的信息
 	CosUploadBackupFileSet []*CosUploadBackupFile `json:"CosUploadBackupFileSet,omitnil,omitempty" name:"CosUploadBackupFileSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4560,7 +4560,7 @@ type DescribeBackupsResponseParams struct {
 	// 备份列表详情
 	Backups []*Backup `json:"Backups,omitnil,omitempty" name:"Backups"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4669,7 +4669,7 @@ type DescribeBusinessIntelligenceFileResponseParams struct {
 	// 文件部署任务集合
 	BackupMigrationSet []*BusinessIntelligenceFile `json:"BackupMigrationSet,omitnil,omitempty" name:"BackupMigrationSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4731,7 +4731,7 @@ type DescribeCollationTimeZoneResponseParams struct {
 	// 系统时区列表
 	TimeZone []*string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4840,7 +4840,7 @@ type DescribeCrossBackupStatisticalResponseParams struct {
 	// 跨地域备份概览实时统计列表
 	Items []*CrossSummaryDetailRes `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4900,7 +4900,7 @@ type DescribeCrossRegionZoneResponseParams struct {
 	// 备机所在可用区的字符串ID，形如：ap-guangzhou-1
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4954,7 +4954,7 @@ type DescribeCrossRegionsResponseParams struct {
 	// 支持跨地域备份的目标地域集合
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5011,7 +5011,7 @@ type DescribeDBCharsetsResponseParams struct {
 	// 数据库字符集列表
 	DatabaseCharsets []*string `json:"DatabaseCharsets,omitnil,omitempty" name:"DatabaseCharsets"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5106,7 +5106,7 @@ type DescribeDBInstanceInterResponseParams struct {
 	// 互通组内实例信息详情
 	InterInstanceSet []*InterInstance `json:"InterInstanceSet,omitnil,omitempty" name:"InterInstanceSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5193,7 +5193,7 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// 备机只读信息
 	DrReadableInfo *DrReadableInfo `json:"DrReadableInfo,omitnil,omitempty" name:"DrReadableInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5389,7 +5389,7 @@ type DescribeDBInstancesResponseParams struct {
 	// 实例列表
 	DBInstances []*DBInstance `json:"DBInstances,omitnil,omitempty" name:"DBInstances"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5477,7 +5477,7 @@ type DescribeDBPrivilegeByAccountResponseParams struct {
 	// 数据库权限列表
 	DBList []*DBPrivilege `json:"DBList,omitnil,omitempty" name:"DBList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5565,7 +5565,7 @@ type DescribeDBRestoreTimeResponseParams struct {
 	// 可回档数据库列表
 	Details []*DBRenameRes `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5622,7 +5622,7 @@ type DescribeDBSecurityGroupsResponseParams struct {
 	// 安全组详情。
 	SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitnil,omitempty" name:"SecurityGroupSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5682,7 +5682,7 @@ type DescribeDBsNormalResponseParams struct {
 	// 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
 	DBList []*DbNormalDetail `json:"DBList,omitnil,omitempty" name:"DBList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5777,7 +5777,7 @@ type DescribeDBsResponseParams struct {
 	// 实例数据库列表
 	DBInstances []*InstanceDBDetail `json:"DBInstances,omitnil,omitempty" name:"DBInstances"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5844,7 +5844,7 @@ type DescribeDatabaseNamesResponseParams struct {
 	// 数据库名称集合
 	DatabaseNameSet []*string `json:"DatabaseNameSet,omitnil,omitempty" name:"DatabaseNameSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5904,7 +5904,7 @@ type DescribeDatabasesNormalResponseParams struct {
 	// 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
 	DBList []*DbNormalDetail `json:"DBList,omitnil,omitempty" name:"DBList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5999,7 +5999,7 @@ type DescribeDatabasesResponseParams struct {
 	// 实例数据库列表
 	DBInstances []*InstanceDBDetail `json:"DBInstances,omitnil,omitempty" name:"DBInstances"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6056,7 +6056,7 @@ type DescribeFlowStatusResponseParams struct {
 	// 流程状态，0：成功，1：失败，2：运行中
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6151,7 +6151,7 @@ type DescribeHASwitchLogResponseParams struct {
 	// 主备切换日志
 	SwitchLog []*SwitchLog `json:"SwitchLog,omitnil,omitempty" name:"SwitchLog"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6267,7 +6267,7 @@ type DescribeIncrementalMigrationResponseParams struct {
 	// 增量导入任务集合
 	IncrementalMigrationSet []*Migration `json:"IncrementalMigrationSet,omitnil,omitempty" name:"IncrementalMigrationSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6390,7 +6390,7 @@ type DescribeInquiryPriceParameterResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6447,7 +6447,7 @@ type DescribeInstanceByOrdersResponseParams struct {
 	// 资源ID集合
 	DealInstance []*DealInstance `json:"DealInstance,omitnil,omitempty" name:"DealInstance"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6521,7 +6521,7 @@ type DescribeInstanceParamRecordsResponseParams struct {
 	// 参数修改记录
 	Items []*ParamRecord `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6581,7 +6581,7 @@ type DescribeInstanceParamsResponseParams struct {
 	// 参数详情
 	Items []*ParameterDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6662,7 +6662,7 @@ type DescribeInstanceTasksResponseParams struct {
 	// 异步任务信息数组
 	InstanceTaskSet []*InstanceTask `json:"InstanceTaskSet,omitnil,omitempty" name:"InstanceTaskSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6867,7 +6867,7 @@ type DescribeInstanceTradeParameterResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6930,7 +6930,7 @@ type DescribeMaintenanceSpanResponseParams struct {
 	// 每天可维护的持续时间，单位是h，例如：1 表示从可维护的开始时间起持续1小时。
 	Span *uint64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7005,7 +7005,7 @@ type DescribeMigrationDatabasesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrateDBSet []*string `json:"MigrateDBSet,omitnil,omitempty" name:"MigrateDBSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7101,7 +7101,7 @@ type DescribeMigrationDetailResponseParams struct {
 	// 迁移DB对象 ，离线迁移（SourceType=4或SourceType=5）不使用。
 	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitnil,omitempty" name:"MigrateDBSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7196,7 +7196,7 @@ type DescribeMigrationsResponseParams struct {
 	// 查询结果的列表
 	MigrateTaskSet []*MigrateTask `json:"MigrateTaskSet,omitnil,omitempty" name:"MigrateTaskSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7256,7 +7256,7 @@ type DescribeOrdersResponseParams struct {
 	// 返回多少个订单的信息
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7323,7 +7323,7 @@ type DescribeProductConfigResponseParams struct {
 	// 返回总共多少条数据
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7380,7 +7380,7 @@ type DescribeProductSpecResponseParams struct {
 	// 规格信息数组
 	SpecInfoList []*ProductSpec `json:"SpecInfoList,omitnil,omitempty" name:"SpecInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7437,7 +7437,7 @@ type DescribeProjectSecurityGroupsResponseParams struct {
 	// 安全组详情。
 	SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitnil,omitempty" name:"SecurityGroupSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7553,7 +7553,7 @@ type DescribePublishSubscribeResponseParams struct {
 	// 发布订阅列表
 	PublishSubscribeSet []*PublishSubscribe `json:"PublishSubscribeSet,omitnil,omitempty" name:"PublishSubscribeSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7656,7 +7656,7 @@ type DescribeReadOnlyGroupAutoWeightResponseParams struct {
 	// 主实例ID，形如mssql-sgeshe3th
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7749,7 +7749,7 @@ type DescribeReadOnlyGroupByReadOnlyInstanceResponseParams struct {
 	// 主实例的地域ID
 	MasterRegionId *string `json:"MasterRegionId,omitnil,omitempty" name:"MasterRegionId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7852,7 +7852,7 @@ type DescribeReadOnlyGroupDetailsResponseParams struct {
 	// 主实例ID，形如mssql-sgeshe3th
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7909,7 +7909,7 @@ type DescribeReadOnlyGroupListResponseParams struct {
 	// 只读组列表
 	ReadOnlyGroupSet []*ReadOnlyGroup `json:"ReadOnlyGroupSet,omitnil,omitempty" name:"ReadOnlyGroupSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7966,7 +7966,7 @@ type DescribeRegionsResponseParams struct {
 	// 地域信息数组
 	RegionSet []*RegionInfo `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8061,7 +8061,7 @@ type DescribeRegularBackupPlanResponseParams struct {
 	// 定期备份计划
 	SaveModeRegular []*string `json:"SaveModeRegular,omitnil,omitempty" name:"SaveModeRegular"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8191,7 +8191,7 @@ type DescribeRestoreTaskResponseParams struct {
 	// 回档任务记录列表
 	Tasks []*RestoreTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8255,7 +8255,7 @@ type DescribeRollbackTimeResponseParams struct {
 	// 数据库可回档实例信息
 	Details []*DbRollbackTimeInfo `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8348,7 +8348,7 @@ type DescribeSlowlogsResponseParams struct {
 	// 慢查询日志信息列表
 	SlowLogs []*SlowLog `json:"SlowLogs,omitnil,omitempty" name:"SlowLogs"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8440,7 +8440,7 @@ type DescribeSpecSellStatusResponseParams struct {
 	// 规格在不同地域状态集合
 	DescribeSpecSellStatusSet []*SpecSellStatus `json:"DescribeSpecSellStatusSet,omitnil,omitempty" name:"DescribeSpecSellStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8548,7 +8548,7 @@ type DescribeUpgradeInstanceCheckResponseParams struct {
 	// 检查项列表
 	CheckItems []*CheckItem `json:"CheckItems,omitnil,omitempty" name:"CheckItems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8638,7 +8638,7 @@ type DescribeUploadBackupInfoResponseParams struct {
 	// 临时密钥Token
 	CosSecurityToken *string `json:"CosSecurityToken,omitnil,omitempty" name:"CosSecurityToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8735,7 +8735,7 @@ type DescribeUploadIncrementalInfoResponseParams struct {
 	// 临时密钥Token
 	CosSecurityToken *string `json:"CosSecurityToken,omitnil,omitempty" name:"CosSecurityToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8830,7 +8830,7 @@ type DescribeXEventsResponseParams struct {
 	// 扩展事件总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8887,7 +8887,7 @@ type DescribeZonesResponseParams struct {
 	// 可用区数组
 	ZoneSet []*ZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8948,7 +8948,7 @@ func (r *DisassociateSecurityGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateSecurityGroupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9150,7 +9150,7 @@ type InquiryPriceCreateDBInstancesResponseParams struct {
 	// 例如10010，在InstanceChargeType=PREPAID情况下，表示每月100.10元。
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9224,7 +9224,7 @@ type InquiryPriceRenewDBInstanceResponseParams struct {
 	// 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
 	Price *uint64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9305,7 +9305,7 @@ type InquiryPriceUpgradeDBInstanceResponseParams struct {
 	// 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9644,7 +9644,7 @@ type ModifyAccountPrivilegeResponseParams struct {
 	// 异步任务流程ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9705,7 +9705,7 @@ func (r *ModifyAccountRemarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAccountRemarkResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9804,7 +9804,7 @@ type ModifyBackupMigrationResponseParams struct {
 	// 备份导入任务ID
 	BackupMigrationId *string `json:"BackupMigrationId,omitnil,omitempty" name:"BackupMigrationId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9881,7 +9881,7 @@ func (r *ModifyBackupNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBackupNameResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10023,7 +10023,7 @@ type ModifyBackupStrategyResponseParams struct {
 	// 返回错误码
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10087,7 +10087,7 @@ type ModifyCloseWanIpResponseParams struct {
 	// 关闭外网流程Id
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10176,7 +10176,7 @@ func (r *ModifyCrossBackupStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCrossBackupStrategyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10240,7 +10240,7 @@ type ModifyDBEncryptAttributesResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10301,7 +10301,7 @@ func (r *ModifyDBInstanceNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNameResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10393,7 +10393,7 @@ type ModifyDBInstanceNetworkResponseParams struct {
 	// 实例转网流程id，可通过[DescribeFlowStatus](https://cloud.tencent.com/document/product/238/19967)接口查询流程状态
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10454,7 +10454,7 @@ func (r *ModifyDBInstanceNoteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNoteResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10518,7 +10518,7 @@ type ModifyDBInstanceProjectResponseParams struct {
 	// 修改成功的实例个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10575,7 +10575,7 @@ type ModifyDBInstanceRenewFlagResponseParams struct {
 	// 修改成功的个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10646,7 +10646,7 @@ type ModifyDBInstanceSSLResponseParams struct {
 	// 异步任务流程ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10707,7 +10707,7 @@ func (r *ModifyDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSecurityGroupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10778,7 +10778,7 @@ type ModifyDBNameResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10839,7 +10839,7 @@ func (r *ModifyDBRemarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBRemarkResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10924,7 +10924,7 @@ type ModifyDReadableResponseParams struct {
 	// 任务ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11006,7 +11006,7 @@ type ModifyDatabaseCDCResponseParams struct {
 	// 流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11084,7 +11084,7 @@ type ModifyDatabaseCTResponseParams struct {
 	// 流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11148,7 +11148,7 @@ type ModifyDatabaseMdfResponseParams struct {
 	// 流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11212,7 +11212,7 @@ type ModifyDatabaseShrinkMDFResponseParams struct {
 	// 流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11297,7 +11297,7 @@ type ModifyIncrementalMigrationResponseParams struct {
 	// 增量备份导入任务ID
 	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitnil,omitempty" name:"IncrementalMigrationId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11368,7 +11368,7 @@ type ModifyInstanceEncryptAttributesResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11436,7 +11436,7 @@ func (r *ModifyInstanceParamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11511,7 +11511,7 @@ func (r *ModifyMaintenanceSpanRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMaintenanceSpanResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11610,7 +11610,7 @@ type ModifyMigrationResponseParams struct {
 	// 迁移任务ID
 	MigrateId *uint64 `json:"MigrateId,omitnil,omitempty" name:"MigrateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11674,7 +11674,7 @@ type ModifyOpenWanIpResponseParams struct {
 	// 开通外网流程Id
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11735,7 +11735,7 @@ func (r *ModifyPublishSubscribeNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPublishSubscribeNameResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11806,7 +11806,7 @@ type ModifyPublishSubscribeResponseParams struct {
 	// 任务流id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11916,7 +11916,7 @@ func (r *ModifyReadOnlyGroupDetailsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyReadOnlyGroupDetailsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11973,7 +11973,7 @@ type OpenInterCommunicationResponseParams struct {
 	// 实例和异步流程ID
 	InterInstanceFlowSet []*InterInstanceFlow `json:"InterInstanceFlowSet,omitnil,omitempty" name:"InterInstanceFlowSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12154,7 +12154,7 @@ type QueryMigrationCheckProcessResponseParams struct {
 	// 所有步骤详情
 	StepDetails []*StepDetail `json:"StepDetails,omitnil,omitempty" name:"StepDetails"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12357,7 +12357,7 @@ type RecycleDBInstanceResponseParams struct {
 	// 流程id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12421,7 +12421,7 @@ type RecycleReadOnlyGroupResponseParams struct {
 	// 任务流ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12510,7 +12510,7 @@ func (r *RemoveBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveBackupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12604,7 +12604,7 @@ type RenewDBInstanceResponseParams struct {
 	// 订单名称
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12658,7 +12658,7 @@ func (r *RenewPostpaidDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewPostpaidDBInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12722,7 +12722,7 @@ type ResetAccountPasswordResponseParams struct {
 	// 修改账号密码的异步任务流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12787,7 +12787,7 @@ type RestartDBInstanceResponseParams struct {
 	// 异步任务流程ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12886,7 +12886,7 @@ type RestoreInstanceResponseParams struct {
 	// 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13025,7 +13025,7 @@ type RollbackInstanceResponseParams struct {
 	// 异步任务ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13082,7 +13082,7 @@ type RunMigrationResponseParams struct {
 	// 迁移流程启动后，返回流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13354,7 +13354,7 @@ type StartBackupMigrationResponseParams struct {
 	// 流程ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13425,7 +13425,7 @@ type StartIncrementalMigrationResponseParams struct {
 	// 流程ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13486,7 +13486,7 @@ func (r *StartInstanceXEventRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartInstanceXEventResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13543,7 +13543,7 @@ type StartMigrationCheckResponseParams struct {
 	// 迁移检查流程发起后，返回的流程id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13611,7 +13611,7 @@ type StopMigrationResponseParams struct {
 	// 中止迁移流程发起后，返回的流程id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13719,7 +13719,7 @@ type SwitchCloudInstanceHAResponseParams struct {
 	// 异步任务流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13807,7 +13807,7 @@ func (r *TerminateDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateDBInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13927,7 +13927,7 @@ type UpgradeDBInstanceResponseParams struct {
 	// 订单名称
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

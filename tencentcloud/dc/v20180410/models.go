@@ -54,7 +54,7 @@ func (r *AcceptDirectConnectTunnelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AcceptDirectConnectTunnelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -174,7 +174,7 @@ type ApplyInternetAddressResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -399,7 +399,7 @@ type CreateDirectConnectResponseParams struct {
 	// 物理专线的ID。
 	DirectConnectIdSet []*string `json:"DirectConnectIdSet,omitnil,omitempty" name:"DirectConnectIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -593,7 +593,7 @@ type CreateDirectConnectTunnelResponseParams struct {
 	// 专用通道ID。
 	DirectConnectTunnelIdSet []*string `json:"DirectConnectTunnelIdSet,omitnil,omitempty" name:"DirectConnectTunnelIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -647,7 +647,7 @@ func (r *DeleteDirectConnectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDirectConnectResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -701,7 +701,7 @@ func (r *DeleteDirectConnectTunnelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDirectConnectTunnelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -779,7 +779,7 @@ type DescribeAccessPointsResponseParams struct {
 	// 符合接入点数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -836,7 +836,7 @@ type DescribeDirectConnectTunnelExtraResponseParams struct {
 	// 专用通道扩展信息
 	DirectConnectTunnelExtra *DirectConnectTunnelExtra `json:"DirectConnectTunnelExtra,omitnil,omitempty" name:"DirectConnectTunnelExtra"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -925,7 +925,7 @@ type DescribeDirectConnectTunnelsResponseParams struct {
 	// 符合专用通道数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1010,7 +1010,7 @@ type DescribeDirectConnectsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllSignLaw *bool `json:"AllSignLaw,omitnil,omitempty" name:"AllSignLaw"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1081,7 +1081,7 @@ type DescribeInternetAddressQuotaResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv4OtherNum *int64 `json:"Ipv4OtherNum,omitnil,omitempty" name:"Ipv4OtherNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1166,7 +1166,7 @@ type DescribeInternetAddressResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnets []*InternetAddressDetail `json:"Subnets,omitnil,omitempty" name:"Subnets"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1224,7 +1224,7 @@ type DescribeInternetAddressStatisticsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetAddressStatistics []*InternetAddressStatistics `json:"InternetAddressStatistics,omitnil,omitempty" name:"InternetAddressStatistics"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1309,7 +1309,7 @@ type DescribePublicDirectConnectTunnelRoutesResponseParams struct {
 	// 记录总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1761,7 +1761,7 @@ func (r *DisableInternetAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableInternetAddressResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1815,7 +1815,7 @@ func (r *EnableInternetAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableInternetAddressResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2025,7 +2025,7 @@ func (r *ModifyDirectConnectAttributeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDirectConnectAttributeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2128,7 +2128,7 @@ func (r *ModifyDirectConnectTunnelAttributeRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyDirectConnectTunnelAttributeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2308,7 +2308,7 @@ func (r *ModifyDirectConnectTunnelExtraRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDirectConnectTunnelExtraResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2373,7 +2373,7 @@ func (r *RejectDirectConnectTunnelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RejectDirectConnectTunnelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2427,7 +2427,7 @@ func (r *ReleaseInternetAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseInternetAddressResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

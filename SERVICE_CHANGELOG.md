@@ -1,101 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 本地专用集群(cdc) 版本：2020-12-14
 
-### 第 154 次发布
+### 第 9 次发布
 
-发布时间：2024-03-11 01:15:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
-
-	* 新增成员：ApproverIdCardType, ApproverIdCardNumber
-
-
-### 第 153 次发布
-
-发布时间：2024-03-08 19:37:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [UserFlowType](https://cloud.tencent.com/document/api/1323/70369#UserFlowType)
-
-修改数据结构：
-
-* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
-
-	* 新增成员：UserFlowType
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 156 次发布
-
-发布时间：2024-03-11 01:15:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [FillApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FillApproverInfo)
-
-	* 新增成员：ApproverIdCardType, ApproverIdCardNumber
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 59 次发布
-
-发布时间：2024-03-11 01:18:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
-
-	* 新增入参：InitCommand
-
-
-新增数据结构：
-
-* [Command](https://cloud.tencent.com/document/api/1207/47576#Command)
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
-
-	* 新增成员：InitInvocationId
-
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 58 次发布
-
-发布时间：2024-03-11 01:21:49
+发布时间：2024-03-12 01:14:14
 
 本次发布包含了以下内容：
 
@@ -103,15 +12,19 @@
 
 新增接口：
 
-* [ModifyDReadable](https://cloud.tencent.com/document/api/238/104234)
+* [DescribeDedicatedClusterCbsStatistics](https://cloud.tencent.com/document/api/1346/104267)
+
+新增数据结构：
+
+* [SetInfo](https://cloud.tencent.com/document/api/1346/73770#SetInfo)
 
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+## 数据安全治理中心(dsgc) 版本：2019-07-23
 
-### 第 105 次发布
+### 第 8 次发布
 
-发布时间：2024-03-11 01:24:01
+发布时间：2024-03-12 01:27:10
 
 本次发布包含了以下内容：
 
@@ -119,9 +32,70 @@
 
 修改接口：
 
-* [DescribeRocketMQMsgTrace](https://cloud.tencent.com/document/api/1179/97760)
+* [DescribeDSPASupportedMetas](https://cloud.tencent.com/document/api/1087/97175)
 
-	* 新增入参：QueryDeadLetterMessage
+	* 新增出参：MaxDBInstanceLimit
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+### 第 6 次发布
+
+发布时间：2024-03-11 15:09:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClientConnections](https://cloud.tencent.com/document/api/240/37233)
+
+	* 新增出参：TotalCount
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 72 次发布
+
+发布时间：2024-03-12 01:45:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/239/20022#Account)
+
+	* 新增成员：CreateTime
+
+
+
+
+## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 60 次发布
+
+发布时间：2024-03-12 01:59:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)
+
+	* <font color="#dd0000">**修改成员**：</font>Id
 
 
 
@@ -19005,6 +18979,22 @@
 
 
 ## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 9 次发布
+
+发布时间：2024-03-12 01:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDedicatedClusterCbsStatistics](https://cloud.tencent.com/document/api/1346/104267)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SetInfo](https://cloud.tencent.com/document/api/1346/73770#SetInfo)](https://cloud.tencent.com/document/api/1346/73770#[SetInfo](https://cloud.tencent.com/document/api/1346/73770#SetInfo))
 
 ### 第 8 次发布
 
@@ -51792,6 +51782,21 @@
 
 ## 数据安全治理中心(dsgc) 版本：2019-07-23
 
+### 第 8 次发布
+
+发布时间：2024-03-12 01:27:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDSPASupportedMetas](https://cloud.tencent.com/document/api/1087/97175)
+
+	* 新增出参：MaxDBInstanceLimit
+
+
 ### 第 7 次发布
 
 发布时间：2024-03-07 01:14:47
@@ -58818,7 +58823,7 @@
 
 新增数据结构：
 
-* [[UserFlowType](https://cloud.tencent.com/document/api/1323/70369#UserFlowType)](https://cloud.tencent.com/document/api/1323/70369#[UserFlowType](https://cloud.tencent.com/document/api/1323/70369#UserFlowType))
+* [UserFlowType](https://cloud.tencent.com/document/api/1323/70369#UserFlowType)
 
 修改数据结构：
 
@@ -78633,7 +78638,7 @@
 
 新增数据结构：
 
-* [[Command](https://cloud.tencent.com/document/api/1207/47576#Command)](https://cloud.tencent.com/document/api/1207/47576#[Command](https://cloud.tencent.com/document/api/1207/47576#Command))
+* [Command](https://cloud.tencent.com/document/api/1207/47576#Command)
 
 修改数据结构：
 
@@ -84142,6 +84147,21 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+### 第 6 次发布
+
+发布时间：2024-03-11 15:09:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClientConnections](https://cloud.tencent.com/document/api/240/37233)
+
+	* 新增出参：TotalCount
+
 
 ### 第 5 次发布
 
@@ -98319,6 +98339,21 @@
 
 ## 云数据库Redis(redis) 版本：2018-04-12
 
+### 第 72 次发布
+
+发布时间：2024-03-12 01:45:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/239/20022#Account)
+
+	* 新增成员：CreateTime
+
+
 ### 第 71 次发布
 
 发布时间：2024-02-22 01:21:35
@@ -102873,7 +102908,7 @@
 
 新增接口：
 
-* [[ModifyDReadable](https://cloud.tencent.com/document/api/238/104234)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyDReadable](https://cloud.tencent.com/document/api/238/104234)
 
 ### 第 57 次发布
 
@@ -132285,6 +132320,21 @@
 
 
 ## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 60 次发布
+
+发布时间：2024-03-12 01:59:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GovernanceInstanceUpdate](https://cloud.tencent.com/document/api/1364/54942#GovernanceInstanceUpdate)
+
+	* <font color="#dd0000">**修改成员**：</font>Id
+
 
 ### 第 59 次发布
 

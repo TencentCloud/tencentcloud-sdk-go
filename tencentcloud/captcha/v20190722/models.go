@@ -231,7 +231,7 @@ type DescribeCaptchaAppIdInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -317,7 +317,7 @@ type DescribeCaptchaDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -413,7 +413,7 @@ type DescribeCaptchaDataSumResponseParams struct {
 	// 票据验证拦截量
 	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitnil,omitempty" name:"TicketInterceptSum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -499,7 +499,7 @@ type DescribeCaptchaMiniDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -603,7 +603,7 @@ type DescribeCaptchaMiniDataSumResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitnil,omitempty" name:"TicketInterceptSum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -689,7 +689,7 @@ type DescribeCaptchaMiniOperDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaOperDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -816,7 +816,7 @@ type DescribeCaptchaMiniResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -962,7 +962,7 @@ type DescribeCaptchaMiniRiskResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManageMarketingRiskValue *OutputManageMarketingRiskValue `json:"ManageMarketingRiskValue,omitnil,omitempty" name:"ManageMarketingRiskValue"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1048,7 +1048,7 @@ type DescribeCaptchaOperDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaOperDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1207,7 +1207,7 @@ type DescribeCaptchaRceResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RceResult *RceResult `json:"RceResult,omitnil,omitempty" name:"RceResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1362,7 +1362,7 @@ type DescribeCaptchaResultResponseParams struct {
 	// 提交验证码时间
 	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitnil,omitempty" name:"SubmitCaptchaTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1441,7 +1441,7 @@ type DescribeCaptchaTicketDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaTicketDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1503,7 +1503,7 @@ type DescribeCaptchaUserAllAppIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1588,7 +1588,7 @@ type GetRequestStatisticsResponseParams struct {
 	// 验证码返回信息
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1673,7 +1673,7 @@ type GetTicketStatisticsResponseParams struct {
 	// 验证码返回信息
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1751,7 +1751,7 @@ type GetTotalRequestStatisticsResponseParams struct {
 	// 验证码返回信息
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1835,7 +1835,7 @@ type GetTotalTicketStatisticsResponseParams struct {
 	// 返回信息
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2140,7 +2140,7 @@ type UpdateCaptchaAppIdInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

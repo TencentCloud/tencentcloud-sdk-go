@@ -98,7 +98,7 @@ func (r *AssociateAccessGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateAccessGroupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -176,7 +176,7 @@ type CreateAccessGroupResponseParams struct {
 	// 权限组
 	AccessGroup *AccessGroup `json:"AccessGroup,omitnil,omitempty" name:"AccessGroup"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -241,7 +241,7 @@ type CreateAccessRulesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -361,7 +361,7 @@ type CreateFileSystemResponseParams struct {
 	// 文件系统
 	FileSystem *FileSystem `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -422,7 +422,7 @@ func (r *CreateLifeCycleRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLifeCycleRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -493,7 +493,7 @@ type CreateMountPointResponseParams struct {
 	// 挂载点
 	MountPoint *MountPoint `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -554,7 +554,7 @@ func (r *CreateRestoreTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRestoreTasksResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -608,7 +608,7 @@ func (r *DeleteAccessGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAccessGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -662,7 +662,7 @@ func (r *DeleteAccessRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAccessRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -716,7 +716,7 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFileSystemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -770,7 +770,7 @@ func (r *DeleteLifeCycleRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLifeCycleRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -824,7 +824,7 @@ func (r *DeleteMountPointRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMountPointResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -881,7 +881,7 @@ type DescribeAccessGroupResponseParams struct {
 	// 权限组
 	AccessGroup *AccessGroup `json:"AccessGroup,omitnil,omitempty" name:"AccessGroup"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -947,7 +947,7 @@ type DescribeAccessGroupsResponseParams struct {
 	// 权限组列表
 	AccessGroups []*AccessGroup `json:"AccessGroups,omitnil,omitempty" name:"AccessGroups"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1004,7 +1004,7 @@ type DescribeAccessRulesResponseParams struct {
 	// 权限规则列表
 	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1085,7 +1085,7 @@ type DescribeFileSystemResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligentCapacityUsed *uint64 `json:"IntelligentCapacityUsed,omitnil,omitempty" name:"IntelligentCapacityUsed"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1139,7 +1139,7 @@ type DescribeFileSystemsResponseParams struct {
 	// 文件系统列表
 	FileSystems []*FileSystem `json:"FileSystems,omitnil,omitempty" name:"FileSystems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1196,7 +1196,7 @@ type DescribeLifeCycleRulesResponseParams struct {
 	// 生命周期规则列表
 	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitnil,omitempty" name:"LifeCycleRules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1253,7 +1253,7 @@ type DescribeMountPointResponseParams struct {
 	// 挂载点
 	MountPoint *MountPoint `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1326,7 +1326,7 @@ type DescribeMountPointsResponseParams struct {
 	// 挂载点列表
 	MountPoints []*MountPoint `json:"MountPoints,omitnil,omitempty" name:"MountPoints"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1383,7 +1383,7 @@ type DescribeResourceTagsResponseParams struct {
 	// 资源标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1440,7 +1440,7 @@ type DescribeRestoreTasksResponseParams struct {
 	// 回热任务列表
 	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil,omitempty" name:"RestoreTasks"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1501,7 +1501,7 @@ func (r *DisassociateAccessGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateAccessGroupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1638,7 +1638,7 @@ func (r *ModifyAccessGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAccessGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1692,7 +1692,7 @@ func (r *ModifyAccessRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAccessRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1797,7 +1797,7 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFileSystemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1851,7 +1851,7 @@ func (r *ModifyLifeCycleRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLifeCycleRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1919,7 +1919,7 @@ func (r *ModifyMountPointRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMountPointResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1980,7 +1980,7 @@ func (r *ModifyResourceTagsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyResourceTagsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

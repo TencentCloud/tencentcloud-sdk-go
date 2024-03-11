@@ -216,7 +216,7 @@ type CreateAppScanTaskRepeatResponseParams struct {
 	// 任务id
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -403,7 +403,7 @@ type CreateAppScanTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -501,7 +501,7 @@ type DescribeChannelTaskReportUrlResponseParams struct {
 	// 诊断报告/堆栈/报告json结果的名称
 	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -576,7 +576,7 @@ type DescribeFileTicketResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FildID *string `json:"FildID,omitnil,omitempty" name:"FildID"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -657,7 +657,7 @@ type DescribeResourceUsageInfoResponseParams struct {
 	// 资源使用信息
 	Data *ResourceUsageInfoData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -777,7 +777,7 @@ type DescribeScanTaskListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AppTaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -874,7 +874,7 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportResult *string `json:"ReportResult,omitnil,omitempty" name:"ReportResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -963,7 +963,7 @@ type DescribeScanTaskStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitnil,omitempty" name:"FlowSteps"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

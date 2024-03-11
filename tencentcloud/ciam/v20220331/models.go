@@ -78,7 +78,7 @@ type CreateApiImportUserJobResponseParams struct {
 	// 数据流任务
 	Job *Job `json:"Job,omitnil,omitempty" name:"Job"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -168,7 +168,7 @@ type CreateFileExportUserJobResponseParams struct {
 	// 数据流任务
 	Job *Job `json:"Job,omitnil,omitempty" name:"Job"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -239,7 +239,7 @@ type CreateUserGroupResponseParams struct {
 	// 用户组ID
 	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -395,7 +395,7 @@ type CreateUserResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -466,7 +466,7 @@ type CreateUserStoreResponseParams struct {
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -531,7 +531,7 @@ type DeleteUserGroupsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupDeletedInfo *UserGroupDeleteResp `json:"UserGroupDeletedInfo,omitnil,omitempty" name:"UserGroupDeletedInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -585,7 +585,7 @@ func (r *DeleteUserStoreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserStoreResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -646,7 +646,7 @@ func (r *DeleteUsersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUsersResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -724,7 +724,7 @@ type DescribeUserByIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -818,7 +818,7 @@ type DescribeUserResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*User `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1073,7 +1073,7 @@ func (r *LinkAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type LinkAccountResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1138,7 +1138,7 @@ type ListJobsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobSet []*Job `json:"JobSet,omitnil,omitempty" name:"JobSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1227,7 +1227,7 @@ type ListLogMessageByConditionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*LogMessage `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1312,7 +1312,7 @@ type ListUserByPropertyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Users []*User `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1396,7 +1396,7 @@ type ListUserGroupsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1489,7 +1489,7 @@ type ListUserResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*User `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1544,7 +1544,7 @@ type ListUserStoreResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserStoreSet []*UserStore `json:"UserStoreSet,omitnil,omitempty" name:"UserStoreSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1714,7 +1714,7 @@ type ResetPasswordResponseParams struct {
 	// 重置后的用户密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1803,7 +1803,7 @@ func (r *SetPasswordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetPasswordResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1886,7 +1886,7 @@ func (r *UpdateUserGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2042,7 +2042,7 @@ type UpdateUserResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2118,7 +2118,7 @@ func (r *UpdateUserStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserStatusResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2193,7 +2193,7 @@ func (r *UpdateUserStoreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserStoreResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

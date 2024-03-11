@@ -69,7 +69,7 @@ type AnalyzeSentimentResponseParams struct {
 	// neutral：中性、无情感
 	Sentiment *string `json:"Sentiment,omitnil,omitempty" name:"Sentiment"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -172,7 +172,7 @@ type ClassifyContentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdClassification *Category `json:"ThirdClassification,omitnil,omitempty" name:"ThirdClassification"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -242,7 +242,7 @@ type ComposeCoupletResponseParams struct {
 	// 当对联随机生成时，展示随机生成原因。
 	RandomCause *string `json:"RandomCause,omitnil,omitempty" name:"RandomCause"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -316,7 +316,7 @@ type ComposePoetryResponseParams struct {
 	// 诗的内容。
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -452,7 +452,7 @@ type EvaluateSentenceSimilarityResponseParams struct {
 	// 每个句子对的相似度分值。
 	ScoreList []*float64 `json:"ScoreList,omitnil,omitempty" name:"ScoreList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -516,7 +516,7 @@ type EvaluateWordSimilarityResponseParams struct {
 	// 词相似度分值。
 	Similarity *float64 `json:"Similarity,omitnil,omitempty" name:"Similarity"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -595,7 +595,7 @@ type GenerateKeywordSentenceResponseParams struct {
 	// 生成的句子列表。
 	KeywordSentenceList []*KeywordSentence `json:"KeywordSentenceList,omitnil,omitempty" name:"KeywordSentenceList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -666,7 +666,7 @@ type ParseWordsResponseParams struct {
 	// 实体识别结果。（请参见附录[实体类型数据](https://cloud.tencent.com/document/product/271/90592)）
 	Entities []*Entity `json:"Entities,omitnil,omitempty" name:"Entities"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -730,7 +730,7 @@ type RetrieveSimilarWordsResponseParams struct {
 	// 召回的相似词数组。
 	WordList []*string `json:"WordList,omitnil,omitempty" name:"WordList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -788,7 +788,7 @@ type SentenceCorrectionResponseParams struct {
 	// （注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
 	CorrectionList []*CorrectionItem `json:"CorrectionList,omitnil,omitempty" name:"CorrectionList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -892,7 +892,7 @@ type TextEmbellishResponseParams struct {
 	// 润色结果列表。
 	EmbellishList []*Embellish `json:"EmbellishList,omitnil,omitempty" name:"EmbellishList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -999,7 +999,7 @@ type TextWritingResponseParams struct {
 	// 续写结果列表。
 	WritingList []*Writing `json:"WritingList,omitnil,omitempty" name:"WritingList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

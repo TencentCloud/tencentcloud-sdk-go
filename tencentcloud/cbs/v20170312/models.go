@@ -79,7 +79,7 @@ func (r *ApplyDiskBackupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplyDiskBackupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -154,7 +154,7 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplySnapshotResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -240,7 +240,7 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachDisksResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -376,7 +376,7 @@ func (r *BindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BindAutoSnapshotPolicyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -491,7 +491,7 @@ type CopySnapshotCrossRegionsResponseParams struct {
 	// 快照跨地域复制的结果，如果请求下发成功，则返回相应地地域的新快照ID，否则返回Error。
 	SnapshotCopyResultSet []*SnapshotCopyResult `json:"SnapshotCopyResultSet,omitnil,omitempty" name:"SnapshotCopyResultSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -586,7 +586,7 @@ type CreateAutoSnapshotPolicyResponseParams struct {
 	// 首次开始备份的时间。
 	NextTriggerTime *string `json:"NextTriggerTime,omitnil,omitempty" name:"NextTriggerTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -650,7 +650,7 @@ type CreateDiskBackupResponseParams struct {
 	// 云硬盘备份点的ID。
 	DiskBackupId *string `json:"DiskBackupId,omitnil,omitempty" name:"DiskBackupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -820,7 +820,7 @@ type CreateDisksResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskIdSet []*string `json:"DiskIdSet,omitnil,omitempty" name:"DiskIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -906,7 +906,7 @@ type CreateSnapshotResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -960,7 +960,7 @@ func (r *DeleteAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAutoSnapshotPoliciesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1014,7 +1014,7 @@ func (r *DeleteDiskBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDiskBackupsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1075,7 +1075,7 @@ func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSnapshotsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1170,7 +1170,7 @@ type DescribeAutoSnapshotPoliciesResponseParams struct {
 	// 定期快照策略列表。
 	AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitnil,omitempty" name:"AutoSnapshotPolicySet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1230,7 +1230,7 @@ type DescribeDiskAssociatedAutoSnapshotPolicyResponseParams struct {
 	// 云盘绑定的定期快照列表。
 	AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitnil,omitempty" name:"AutoSnapshotPolicySet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1329,7 +1329,7 @@ type DescribeDiskBackupsResponseParams struct {
 	// 云硬盘备份点的详细信息列表。
 	DiskBackupSet []*DiskBackup `json:"DiskBackupSet,omitnil,omitempty" name:"DiskBackupSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1442,7 +1442,7 @@ type DescribeDiskConfigQuotaResponseParams struct {
 	// 云盘配置列表。
 	DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitnil,omitempty" name:"DiskConfigSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1526,7 +1526,7 @@ type DescribeDiskStoragePoolResponseParams struct {
 	// 独享集群的详细信息列表
 	DiskStoragePoolSet []*Cdc `json:"DiskStoragePoolSet,omitnil,omitempty" name:"DiskStoragePoolSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1628,7 +1628,7 @@ type DescribeDisksResponseParams struct {
 	// 云硬盘的详细信息列表。
 	DiskSet []*Disk `json:"DiskSet,omitnil,omitempty" name:"DiskSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1685,7 +1685,7 @@ type DescribeInstancesDiskNumResponseParams struct {
 	// 各个云服务器已挂载和可挂载弹性云盘的数量。
 	AttachDetail []*AttachDetail `json:"AttachDetail,omitnil,omitempty" name:"AttachDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1742,7 +1742,7 @@ type DescribeSnapshotSharePermissionResponseParams struct {
 	// 快照的分享信息的集合
 	SharePermissionSet []*SharePermission `json:"SharePermissionSet,omitnil,omitempty" name:"SharePermissionSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1841,7 +1841,7 @@ type DescribeSnapshotsResponseParams struct {
 	// 快照的详情列表。
 	SnapshotSet []*Snapshot `json:"SnapshotSet,omitnil,omitempty" name:"SnapshotSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1902,7 +1902,7 @@ func (r *DetachDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachDisksResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2245,7 +2245,7 @@ type GetSnapOverviewResponseParams struct {
 	// 快照总个数
 	TotalNums *int64 `json:"TotalNums,omitnil,omitempty" name:"TotalNums"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2307,7 +2307,7 @@ func (r *InitializeDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InitializeDisksResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2371,7 +2371,7 @@ type InquirePriceModifyDiskBackupQuotaResponseParams struct {
 	// 描述了修改云硬盘备份点之后的云盘价格。
 	DiskPrice *Price `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2435,7 +2435,7 @@ type InquirePriceModifyDiskExtraPerformanceResponseParams struct {
 	// 描述了调整云盘额外性能时对应的价格。
 	DiskPrice *Price `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2541,7 +2541,7 @@ type InquiryPriceCreateDisksResponseParams struct {
 	// 描述了新购云盘的价格。
 	DiskPrice *Price `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2619,7 +2619,7 @@ type InquiryPriceRenewDisksResponseParams struct {
 	// 描述了续费云盘的价格。
 	DiskPrice *PrepayPrice `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2690,7 +2690,7 @@ type InquiryPriceResizeDiskResponseParams struct {
 	// 描述了扩容云盘的价格。
 	DiskPrice *PrepayPrice `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2779,7 +2779,7 @@ func (r *ModifyAutoSnapshotPolicyAttributeRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifyAutoSnapshotPolicyAttributeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2875,7 +2875,7 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDiskAttributesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2936,7 +2936,7 @@ func (r *ModifyDiskBackupQuotaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDiskBackupQuotaResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2997,7 +2997,7 @@ func (r *ModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDiskExtraPerformanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3065,7 +3065,7 @@ func (r *ModifyDisksChargeTypeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisksChargeTypeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3126,7 +3126,7 @@ func (r *ModifyDisksRenewFlagRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisksRenewFlagResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3201,7 +3201,7 @@ func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySnapshotAttributeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3269,7 +3269,7 @@ func (r *ModifySnapshotsSharePermissionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySnapshotsSharePermissionResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3451,7 +3451,7 @@ func (r *RenewDiskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewDiskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3512,7 +3512,7 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResizeDiskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3665,7 +3665,7 @@ func (r *TerminateDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateDisksResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3726,7 +3726,7 @@ func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UnbindAutoSnapshotPolicyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

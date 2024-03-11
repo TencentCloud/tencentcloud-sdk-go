@@ -87,7 +87,7 @@ type DescribeFraudBaseResponseParams struct {
 	// 离线风险信息
 	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -177,7 +177,7 @@ type DescribeFraudPremiumResponseParams struct {
 	// 设备匿名标识
 	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -332,7 +332,7 @@ type DescribeFraudUltimateResponseParams struct {
 	// 图灵盾统一ID
 	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -416,7 +416,7 @@ type DescribeTrustedIDResponseParams struct {
 	// SDK版本号
 	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

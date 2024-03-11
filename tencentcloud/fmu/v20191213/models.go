@@ -114,7 +114,7 @@ type BeautifyPicResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -218,7 +218,7 @@ type BeautifyVideoResponseParams struct {
 	// 预估处理时间，粒度为秒
 	EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitnil,omitempty" name:"EstimatedProcessTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -286,7 +286,7 @@ func (r *CancelBeautifyVideoJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelBeautifyVideoJobResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -350,7 +350,7 @@ type CreateModelResponseParams struct {
 	// 唇色素材ID。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -404,7 +404,7 @@ func (r *DeleteModelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteModelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -486,7 +486,7 @@ type GetModelListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelInfos []*ModelInfo `json:"ModelInfos,omitnil,omitempty" name:"ModelInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -577,7 +577,7 @@ type QueryBeautifyVideoJobResponseParams struct {
 	// 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
 	JobStatusCode *int64 `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -693,7 +693,7 @@ type StyleImageProResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -795,7 +795,7 @@ type StyleImageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -888,7 +888,7 @@ type TryLipstickPicResponseParams struct {
 	// RspImgType 为 url 时，返回处理后的图片 url 数据。
 	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

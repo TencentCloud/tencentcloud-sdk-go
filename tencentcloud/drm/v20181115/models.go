@@ -100,7 +100,7 @@ type AddFairPlayPemResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -175,7 +175,7 @@ func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEncryptKeysResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -265,7 +265,7 @@ type CreateLicenseResponseParams struct {
 	// 加密内容的内容ID
 	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -328,7 +328,7 @@ func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFairPlayPemResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -419,7 +419,7 @@ type DescribeAllKeysResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -500,7 +500,7 @@ type DescribeDRMLicenseResponseParams struct {
 	// 加密密钥。
 	TXEncryptionToken *string `json:"TXEncryptionToken,omitnil,omitempty" name:"TXEncryptionToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -567,7 +567,7 @@ type DescribeFairPlayPemResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitnil,omitempty" name:"FairPlayPems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -668,7 +668,7 @@ type DescribeKeysResponseParams struct {
 	// Fairplay方案无该值。
 	Pssh *string `json:"Pssh,omitnil,omitempty" name:"Pssh"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -798,7 +798,7 @@ type GenerateTDRMKeyResponseParams struct {
 	// 加密密钥。
 	TXEncryptionToken *string `json:"TXEncryptionToken,omitnil,omitempty" name:"TXEncryptionToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -938,7 +938,7 @@ type ModifyFairPlayPemResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1035,7 +1035,7 @@ func (r *StartEncryptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartEncryptionResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

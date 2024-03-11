@@ -85,7 +85,7 @@ type CreateSmpnEpaResponseParams struct {
 	// 业号码认证回应内容
 	ResponseData *EPAResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -149,7 +149,7 @@ type DescribeSmpnChpResponseParams struct {
 	// 终端骚扰保护回应
 	ResponseData *CHPResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -213,7 +213,7 @@ type DescribeSmpnFnrResponseParams struct {
 	// 虚假号码识别回应内容
 	ResponseData *FNRResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -277,7 +277,7 @@ type DescribeSmpnMhmResponseParams struct {
 	// 号码营销监控回应内容
 	ResponseData *MHMResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -341,7 +341,7 @@ type DescribeSmpnMrlResponseParams struct {
 	// 恶意标记等级回应内容
 	ResponseData *MRLResponse `json:"ResponseData,omitnil,omitempty" name:"ResponseData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

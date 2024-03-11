@@ -434,7 +434,7 @@ type AuthorizeDSPAMetaResourcesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -505,7 +505,7 @@ type BindDSPAResourceCosBucketsResponseParams struct {
 	// 绑定结果数组
 	CosTaskResults []*CosTaskResult `json:"CosTaskResults,omitnil,omitempty" name:"CosTaskResults"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -590,7 +590,7 @@ type BindDSPAResourceDatabasesResponseParams struct {
 	// 绑定结果数组
 	DbTaskResults []*DbTaskResult `json:"DbTaskResults,omitnil,omitempty" name:"DbTaskResults"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -758,7 +758,7 @@ type CopyDSPATemplateResponseParams struct {
 	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -871,7 +871,7 @@ type CreateAssetSortingReportRetryTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -947,7 +947,7 @@ type CreateAssetSortingReportTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -998,7 +998,7 @@ func (r *CreateClassificationRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClassificationRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1088,7 +1088,7 @@ func (r *CreateDSPAAssessmentRiskLevelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDSPAAssessmentRiskLevelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1170,7 +1170,7 @@ func (r *CreateDSPAAssessmentRiskTemplateRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateDSPAAssessmentRiskTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1289,7 +1289,7 @@ type CreateDSPAAssessmentTaskResponseParams struct {
 	// 评估任务Id，格式“task-xxxxxxxx”
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1443,7 +1443,7 @@ type CreateDSPACOSDiscoveryTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1518,7 +1518,7 @@ func (r *CreateDSPACategoryRelationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDSPACategoryRelationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1582,7 +1582,7 @@ type CreateDSPACategoryResponseParams struct {
 	// 敏感数据分类ID
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1667,7 +1667,7 @@ type CreateDSPAComplianceGroupResponseParams struct {
 	// 合规组ID
 	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil,omitempty" name:"ComplianceGroupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1742,7 +1742,7 @@ func (r *CreateDSPAComplianceRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDSPAComplianceRulesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1810,7 +1810,7 @@ func (r *CreateDSPACosMetaResourcesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDSPACosMetaResourcesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1911,7 +1911,7 @@ type CreateDSPADbMetaResourcesResponseParams struct {
 	// 资源所处地域。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1996,7 +1996,7 @@ type CreateDSPADiscoveryRuleResponseParams struct {
 	// 规则ID
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2157,7 +2157,7 @@ type CreateDSPADiscoveryTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2235,7 +2235,7 @@ type CreateDSPALevelGroupResponseParams struct {
 	// 分级组ID
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2336,7 +2336,7 @@ type CreateDSPAMetaResourcesResponseParams struct {
 	// 资源所处地域。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2503,7 +2503,7 @@ type CreateDSPASelfBuildMetaResourceResponseParams struct {
 	// 连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
 	ConnectivityDescription *string `json:"ConnectivityDescription,omitnil,omitempty" name:"ConnectivityDescription"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2614,7 +2614,7 @@ type CreateIdentifyRuleAnotherNameResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleName *string `json:"AliasRuleName,omitnil,omitempty" name:"AliasRuleName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2665,7 +2665,7 @@ func (r *CreateNewClassificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNewClassificationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2716,7 +2716,7 @@ func (r *CreateOrCopyStandardRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrCopyStandardResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2968,7 +2968,7 @@ type DecribeSuggestRiskLevelMatrixResponseParams struct {
 	// 矩阵
 	SuggestRiskLevelMatrix []*SuggestRiskLevelMatrix `json:"SuggestRiskLevelMatrix,omitnil,omitempty" name:"SuggestRiskLevelMatrix"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3043,7 +3043,7 @@ type DeleteCosMetaResourceResponseParams struct {
 	// DSPA实例ID。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3104,7 +3104,7 @@ func (r *DeleteDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDSPAAssessmentTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3165,7 +3165,7 @@ func (r *DeleteDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3226,7 +3226,7 @@ func (r *DeleteDSPACOSDiscoveryTaskResultRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskResultResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3294,7 +3294,7 @@ func (r *DeleteDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3355,7 +3355,7 @@ func (r *DeleteDSPADiscoveryTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskResultResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3422,7 +3422,7 @@ type DeleteDSPAMetaResourceResponseParams struct {
 	// 删除结果。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3489,7 +3489,7 @@ type DescribeAssetDetailDataExportResultResponseParams struct {
 	// 导出文件地址
 	ExportFileUrl *string `json:"ExportFileUrl,omitnil,omitempty" name:"ExportFileUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3621,7 +3621,7 @@ type DescribeAssetOverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoFieldNums *uint64 `json:"MongoFieldNums,omitnil,omitempty" name:"MongoFieldNums"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3697,7 +3697,7 @@ type DescribeBindDBListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindList []*DBInstanceInfo `json:"BindList,omitnil,omitempty" name:"BindList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3777,7 +3777,7 @@ type DescribeCOSAssetSensitiveDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosDetail []*AssetCosDetail `json:"CosDetail,omitnil,omitempty" name:"CosDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3828,7 +3828,7 @@ func (r *DescribeClassificationInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClassificationInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3879,7 +3879,7 @@ func (r *DescribeClassificationRuleCountRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeClassificationRuleCountResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3953,7 +3953,7 @@ type DescribeDSPAAssessmentHighRiskTop10OverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsList []*HighRiskAssetsDetail `json:"AssetsList,omitnil,omitempty" name:"AssetsList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4097,7 +4097,7 @@ type DescribeDSPAAssessmentLatestRiskDetailInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AKSKLeak []*AKSKLeak `json:"AKSKLeak,omitnil,omitempty" name:"AKSKLeak"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4242,7 +4242,7 @@ type DescribeDSPAAssessmentLatestRiskListResponseParams struct {
 	// 总条数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4312,7 +4312,7 @@ type DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponseParams struct {
 	// 周同比
 	WeekRatio *float64 `json:"WeekRatio,omitnil,omitempty" name:"WeekRatio"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4382,7 +4382,7 @@ type DescribeDSPAAssessmentPendingRiskOverviewResponseParams struct {
 	// 周同比
 	WeekRatio *float64 `json:"WeekRatio,omitnil,omitempty" name:"WeekRatio"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4452,7 +4452,7 @@ type DescribeDSPAAssessmentProcessingRiskOverviewResponseParams struct {
 	// 周同比
 	WeekRatio *float64 `json:"WeekRatio,omitnil,omitempty" name:"WeekRatio"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4519,7 +4519,7 @@ type DescribeDSPAAssessmentRiskAmountOverviewResponseParams struct {
 	// 受影响的资产数
 	TotalAffectedAssetCount *int64 `json:"TotalAffectedAssetCount,omitnil,omitempty" name:"TotalAffectedAssetCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4577,7 +4577,7 @@ type DescribeDSPAAssessmentRiskDatasourceTop5ResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4643,7 +4643,7 @@ type DescribeDSPAAssessmentRiskDealedOverviewResponseParams struct {
 	// 遗留待处理风险数日环比
 	UnDealedRiskDayRatio *float64 `json:"UnDealedRiskDayRatio,omitnil,omitempty" name:"UnDealedRiskDayRatio"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4722,7 +4722,7 @@ type DescribeDSPAAssessmentRiskDealedTrendResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskDealedTrendItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4804,7 +4804,7 @@ type DescribeDSPAAssessmentRiskDistributionOverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskAssetsDistribution []*Note `json:"RiskAssetsDistribution,omitnil,omitempty" name:"RiskAssetsDistribution"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4862,7 +4862,7 @@ type DescribeDSPAAssessmentRiskItemTop5ResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4941,7 +4941,7 @@ type DescribeDSPAAssessmentRiskLevelDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelMatrix []*RiskLevelMatrix `json:"RiskLevelMatrix,omitnil,omitempty" name:"RiskLevelMatrix"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5016,7 +5016,7 @@ type DescribeDSPAAssessmentRiskLevelListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelList []*RiskLevelRisk `json:"RiskLevelList,omitnil,omitempty" name:"RiskLevelList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5095,7 +5095,7 @@ type DescribeDSPAAssessmentRiskLevelTrendResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskLevelTrendItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5161,7 +5161,7 @@ type DescribeDSPAAssessmentRiskOverviewResponseParams struct {
 	// 高危风险数日环比
 	HighRiskDayRatio *float64 `json:"HighRiskDayRatio,omitnil,omitempty" name:"HighRiskDayRatio"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5226,7 +5226,7 @@ type DescribeDSPAAssessmentRiskProcessHistoryResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessHistory []*ProcessHistory `json:"ProcessHistory,omitnil,omitempty" name:"ProcessHistory"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5291,7 +5291,7 @@ type DescribeDSPAAssessmentRiskSideDistributedResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSideDistributed []*RiskSideDistributed `json:"RiskSideDistributed,omitnil,omitempty" name:"RiskSideDistributed"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5356,7 +5356,7 @@ type DescribeDSPAAssessmentRiskSideListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitnil,omitempty" name:"RiskSideItmeList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5459,7 +5459,7 @@ type DescribeDSPAAssessmentRiskTemplateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCitations *int64 `json:"TaskCitations,omitnil,omitempty" name:"TaskCitations"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5555,7 +5555,7 @@ type DescribeDSPAAssessmentRiskTemplateVulnerableListResponseParams struct {
 	// 总条数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5651,7 +5651,7 @@ type DescribeDSPAAssessmentRisksResponseParams struct {
 	// 评估风险项列表
 	Items []*AssessmentRisk `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5744,7 +5744,7 @@ type DescribeDSPAAssessmentTasksResponseParams struct {
 	// 评估任务列表
 	Items []*AssessmentTask `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5844,7 +5844,7 @@ type DescribeDSPAAssessmentTemplateControlItemsResponseParams struct {
 	// 模板关联的评估项列表
 	Items []*AssessmentControlItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5935,7 +5935,7 @@ type DescribeDSPAAssessmentTemplatesResponseParams struct {
 	// 模板列表。
 	Items []*AssessmentTemplate `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6000,7 +6000,7 @@ type DescribeDSPACOSDataAssetBucketsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6066,7 +6066,7 @@ type DescribeDSPACOSDataAssetByComplianceIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stats *DspaCOSDataAssetCount `json:"Stats,omitnil,omitempty" name:"Stats"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6134,7 +6134,7 @@ type DescribeDSPACOSDataAssetDetailResponseParams struct {
 	// 符合条件的COS对象存储敏感数据资产数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6199,7 +6199,7 @@ type DescribeDSPACOSDiscoveryTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Task *DspaCOSDiscoveryTaskDetail `json:"Task,omitnil,omitempty" name:"Task"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6271,7 +6271,7 @@ type DescribeDSPACOSDiscoveryTaskFilesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6366,7 +6366,7 @@ type DescribeDSPACOSDiscoveryTaskResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6462,7 +6462,7 @@ type DescribeDSPACOSDiscoveryTasksResponseParams struct {
 	// 符合条件的任务列表数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6593,7 +6593,7 @@ type DescribeDSPACOSTaskResultDetailResponseParams struct {
 	// 符合条件的详情数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6683,7 +6683,7 @@ type DescribeDSPACategoriesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6748,7 +6748,7 @@ type DescribeDSPACategoryRuleStatisticResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticSet []*CategoryRuleStatistic `json:"StatisticSet,omitnil,omitempty" name:"StatisticSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6820,7 +6820,7 @@ type DescribeDSPACategoryRulesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryRules []*CategoryRule `json:"CategoryRules,omitnil,omitempty" name:"CategoryRules"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6885,7 +6885,7 @@ type DescribeDSPACategoryTreeResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultJson *string `json:"ResultJson,omitnil,omitempty" name:"ResultJson"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6957,7 +6957,7 @@ type DescribeDSPACategoryTreeWithRulesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultJson *string `json:"ResultJson,omitnil,omitempty" name:"ResultJson"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7022,7 +7022,7 @@ type DescribeDSPAComplianceGroupDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *ComplianceGroupDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7119,7 +7119,7 @@ type DescribeDSPAComplianceGroupsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7188,7 +7188,7 @@ type DescribeDSPAComplianceUpdateNotificationResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNameSet []*string `json:"TaskNameSet,omitnil,omitempty" name:"TaskNameSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7260,7 +7260,7 @@ type DescribeDSPADataSourceDbInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DSPADataSourceDbInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7356,7 +7356,7 @@ type DescribeDSPADiscoveryRulesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryRuleDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7413,7 +7413,7 @@ type DescribeDSPADiscoveryServiceStatusResponseParams struct {
 	// 分类分级服务是否开通，true 表示已开通，false表示未开通
 	ServiceEnabled *bool `json:"ServiceEnabled,omitnil,omitempty" name:"ServiceEnabled"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7478,7 +7478,7 @@ type DescribeDSPADiscoveryTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Task *DspaDiscoveryTaskDetail `json:"Task,omitnil,omitempty" name:"Task"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7610,7 +7610,7 @@ type DescribeDSPADiscoveryTaskResultDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7742,7 +7742,7 @@ type DescribeDSPADiscoveryTaskResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7821,7 +7821,7 @@ type DescribeDSPADiscoveryTaskTablesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DSPATableInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7900,7 +7900,7 @@ type DescribeDSPAESDataAssetByComplianceIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stats *ESDataAssetCountDto `json:"Stats,omitnil,omitempty" name:"Stats"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7999,7 +7999,7 @@ type DescribeDSPAESDataAssetDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*ESDataAssetDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8064,7 +8064,7 @@ type DescribeDSPAESDataSampleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8175,7 +8175,7 @@ type DescribeDSPAESDiscoveryTaskResultDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8248,7 +8248,7 @@ type DescribeDSPALevelDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8319,7 +8319,7 @@ type DescribeDSPALevelGroupsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8398,7 +8398,7 @@ type DescribeDSPARDBDataAssetByComplianceIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stats *DspaRDBDataAssetCount `json:"Stats,omitnil,omitempty" name:"Stats"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8475,7 +8475,7 @@ type DescribeDSPARDBDataAssetDetailResponseParams struct {
 	// 符合条件的RDB关系数据库敏感数据资产数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8533,7 +8533,10 @@ type DescribeDSPASupportedMetasResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metas []*DSPAMetaType `json:"Metas,omitnil,omitempty" name:"Metas"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 最大支持每批次同步数量
+	MaxDBInstanceLimit *int64 `json:"MaxDBInstanceLimit,omitnil,omitempty" name:"MaxDBInstanceLimit"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8598,7 +8601,7 @@ type DescribeDSPATaskResultDataSampleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaFieldResultDataSample `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8678,7 +8681,7 @@ type DescribeESAssetSensitiveDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ESDetail []*ESAssetDBDetail `json:"ESDetail,omitnil,omitempty" name:"ESDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8745,7 +8748,7 @@ type DescribeExportTaskResultResponseParams struct {
 	// 导出文件地址
 	ExportFileUrl *string `json:"ExportFileUrl,omitnil,omitempty" name:"ExportFileUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8796,7 +8799,7 @@ func (r *DescribeLeafClassificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLeafClassificationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8876,7 +8879,7 @@ type DescribeMongoAssetSensitiveDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoDetail []*MongoAssetDBDetail `json:"MongoDetail,omitnil,omitempty" name:"MongoDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8956,7 +8959,7 @@ type DescribeRDBAssetSensitiveDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDBDetail []*AssetDBDetail `json:"RDBDetail,omitnil,omitempty" name:"RDBDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9028,7 +9031,7 @@ type DescribeReportTaskDownloadUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrlSet []*string `json:"DownloadUrlSet,omitnil,omitempty" name:"DownloadUrlSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9111,7 +9114,7 @@ type DescribeReportTasksResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemSet []*ReportInfo `json:"ItemSet,omitnil,omitempty" name:"ItemSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9162,7 +9165,7 @@ func (r *DescribeRuleDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleDetailResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9213,7 +9216,7 @@ func (r *DescribeRuleListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleListResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9297,7 +9300,7 @@ type DescribeSensitiveCOSDataDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil,omitempty" name:"SensitiveDataNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9381,7 +9384,7 @@ type DescribeSensitiveRDBDataDistributionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil,omitempty" name:"SensitiveDataNum"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9463,7 +9466,7 @@ type DisableDSPAMetaResourceAuthResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10845,7 +10848,7 @@ func (r *EnableDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableDSPADiscoveryRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10906,7 +10909,7 @@ func (r *EnableTrialVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableTrialVersionResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11008,7 +11011,7 @@ type ExportAssetDetailDataResponseParams struct {
 	// 导出任务id
 	ExportTaskId *uint64 `json:"ExportTaskId,omitnil,omitempty" name:"ExportTaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11098,7 +11101,7 @@ type GetResourceConnectionStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionDesc *string `json:"ConnectionDesc,omitnil,omitempty" name:"ConnectionDesc"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11158,7 +11161,7 @@ type GetTrialVersionResponseParams struct {
 	// 版本体验结束时间戳。
 	TrialEndAt *uint64 `json:"TrialEndAt,omitnil,omitempty" name:"TrialEndAt"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11230,7 +11233,7 @@ type GetUserQuotaInfoResponseParams struct {
 	// COS存储量单位，例如TB。
 	CosQuotaUnit *string `json:"CosQuotaUnit,omitnil,omitempty" name:"CosQuotaUnit"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11382,7 +11385,7 @@ type ListDSPAClustersResponseParams struct {
 	// 是否被拒绝访问所有dspa实例资源。
 	DenyAll *bool `json:"DenyAll,omitnil,omitempty" name:"DenyAll"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11485,7 +11488,7 @@ type ListDSPACosMetaResourcesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11596,7 +11599,7 @@ type ListDSPAMetaResourcesResponseParams struct {
 	// 资源总量。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11647,7 +11650,7 @@ func (r *ModifyClassificationRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClassificationRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11698,7 +11701,7 @@ func (r *ModifyClassificationRuleStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClassificationRuleStateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11789,7 +11792,7 @@ func (r *ModifyDSPAAssessmentRiskLatestRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLatestResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11871,7 +11874,7 @@ func (r *ModifyDSPAAssessmentRiskLevelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLevelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11946,7 +11949,7 @@ func (r *ModifyDSPAAssessmentRiskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12035,7 +12038,7 @@ func (r *ModifyDSPAAssessmentRiskTemplateRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskTemplateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12175,7 +12178,7 @@ func (r *ModifyDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPACOSDiscoveryTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12271,7 +12274,7 @@ func (r *ModifyDSPACOSTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPACOSTaskResultResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12346,7 +12349,7 @@ func (r *ModifyDSPACategoryRelationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPACategoryRelationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12414,7 +12417,7 @@ func (r *ModifyDSPACategoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPACategoryResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12482,7 +12485,7 @@ func (r *ModifyDSPAClusterInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAClusterInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12578,7 +12581,7 @@ func (r *ModifyDSPAComplianceGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAComplianceGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12667,7 +12670,7 @@ func (r *ModifyDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPADiscoveryRuleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12828,7 +12831,7 @@ func (r *ModifyDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPADiscoveryTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12952,7 +12955,7 @@ func (r *ModifyDSPAESTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPAESTaskResultResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13078,7 +13081,7 @@ func (r *ModifyDSPATaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDSPATaskResultResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13129,7 +13132,7 @@ func (r *ModifyLevelInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLevelInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13180,7 +13183,7 @@ func (r *ModifyLevelNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLevelNameResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13231,7 +13234,7 @@ func (r *ModifyLevelStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLevelStateResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13282,7 +13285,7 @@ func (r *ModifyMergeClassificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMergeClassificationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13333,7 +13336,7 @@ func (r *ModifyNewClassificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNewClassificationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13384,7 +13387,7 @@ func (r *ModifyStandardInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyStandardInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13581,7 +13584,7 @@ type QueryDSPAMetaResourceDbListResponseParams struct {
 	// 数据库实例DB列表的查询结果。
 	DbRelationStatusItems []*DbRelationStatusItem `json:"DbRelationStatusItems,omitnil,omitempty" name:"DbRelationStatusItems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13662,7 +13665,7 @@ type QueryResourceDbBindStatusResponseParams struct {
 	// 未绑定DB数量。
 	UnbindDbNums *uint64 `json:"UnbindDbNums,omitnil,omitempty" name:"UnbindDbNums"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -13820,7 +13823,7 @@ func (r *RestartDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartDSPAAssessmentTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14188,7 +14191,7 @@ type StartDSPADiscoveryTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14253,7 +14256,7 @@ type StopDSPADiscoveryTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14397,7 +14400,7 @@ func (r *UpdateDSPASelfBuildResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateDSPASelfBuildResourceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14473,7 +14476,7 @@ type VerifyDSPACOSRuleResponseParams struct {
 	// 验证结果详情
 	DetailInfo *string `json:"DetailInfo,omitnil,omitempty" name:"DetailInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -14570,7 +14573,7 @@ type VerifyDSPADiscoveryRuleResponseParams struct {
 	// 验证结果详情
 	DetailInfo *string `json:"DetailInfo,omitnil,omitempty" name:"DetailInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

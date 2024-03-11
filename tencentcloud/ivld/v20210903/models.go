@@ -74,7 +74,7 @@ type AddCustomPersonImageResponseParams struct {
 	// 自定义人脸图片信息
 	ImageInfo *PersonImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -219,7 +219,7 @@ type CreateCustomCategoryResponseParams struct {
 	// 自定义分类信息ID
 	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -273,7 +273,7 @@ func (r *CreateCustomGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -361,7 +361,7 @@ type CreateCustomPersonResponseParams struct {
 	// 自定义人脸信息
 	ImageInfo *PersonImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -412,7 +412,7 @@ func (r *CreateDefaultCategoriesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDefaultCategoriesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -504,7 +504,7 @@ type CreateTaskResponseParams struct {
 	// 智能标签视频分析任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -615,7 +615,7 @@ type DeleteCustomCategoryResponseParams struct {
 	// 123
 	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -682,7 +682,7 @@ type DeleteCustomPersonImageResponseParams struct {
 	// 已删除的人物图片Id
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -739,7 +739,7 @@ type DeleteCustomPersonResponseParams struct {
 	// 已删除的自定义人物Id
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -793,7 +793,7 @@ func (r *DeleteMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMediaResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -847,7 +847,7 @@ func (r *DeleteTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTaskResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -901,7 +901,7 @@ type DescribeCustomCategoriesResponseParams struct {
 	// 自定义人物类型数组
 	CategorySet []*CustomCategory `json:"CategorySet,omitnil,omitempty" name:"CategorySet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -958,7 +958,7 @@ type DescribeCustomGroupResponseParams struct {
 	// 自定义人物库图片后续所在的存储桶
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1019,7 +1019,7 @@ type DescribeCustomPersonDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIdSet []*string `json:"TaskIdSet,omitnil,omitempty" name:"TaskIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1100,7 +1100,7 @@ type DescribeCustomPersonsResponseParams struct {
 	// 自定义人物信息
 	PersonInfoSet []*CustomPersonInfo `json:"PersonInfoSet,omitnil,omitempty" name:"PersonInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1158,7 +1158,7 @@ type DescribeMediaResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1240,7 +1240,7 @@ type DescribeMediasResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitnil,omitempty" name:"MediaInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1314,7 +1314,7 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTaskData *TextData `json:"TextTaskData,omitnil,omitempty" name:"TextTaskData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1372,7 +1372,7 @@ type DescribeTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfo *TaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1454,7 +1454,7 @@ type DescribeTasksResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfoSet []*TaskInfo `json:"TaskInfoSet,omitnil,omitempty" name:"TaskInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1621,7 +1621,7 @@ type ImportMediaResponseParams struct {
 	// 媒资文件在系统中的ID
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1847,7 +1847,7 @@ func (r *ModifyCallbackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCallbackResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1960,7 +1960,7 @@ type QueryCallbackResponseParams struct {
 	// 媒体导入完成后回调地址
 	MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitnil,omitempty" name:"MediaFinishNotifyURL"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2285,7 +2285,7 @@ type UpdateCustomCategoryResponseParams struct {
 	// 成功更新的自定义人物类型Id
 	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2363,7 +2363,7 @@ type UpdateCustomPersonResponseParams struct {
 	// 成功更新的自定义人物Id
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

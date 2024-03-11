@@ -242,7 +242,7 @@ type DescribeKBComponentResponseParams struct {
 	// 匹配的组件信息
 	Component *Component `json:"Component,omitnil,omitempty" name:"Component"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -299,7 +299,7 @@ type DescribeKBComponentVersionListResponseParams struct {
 	// 该组件的版本列表信息
 	VersionList []*ComponentVersion `json:"VersionList,omitnil,omitempty" name:"VersionList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -357,7 +357,7 @@ type DescribeKBComponentVulnerabilityResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitnil,omitempty" name:"VulnerabilityList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -418,7 +418,7 @@ type DescribeKBLicenseResponseParams struct {
 	// 用于匹配的License表达式
 	NormalizedLicenseExpression *string `json:"NormalizedLicenseExpression,omitnil,omitempty" name:"NormalizedLicenseExpression"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -497,7 +497,7 @@ type DescribeKBVulnerabilityResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityDetailList []*VulnerabilityUnion `json:"VulnerabilityDetailList,omitnil,omitempty" name:"VulnerabilityDetailList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -611,7 +611,7 @@ type MatchKBPURLListResponseParams struct {
 	// 是否命中数据库。
 	Hit *bool `json:"Hit,omitnil,omitempty" name:"Hit"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -721,7 +721,7 @@ type SearchKBComponentResponseParams struct {
 	// 满足搜索条件的总个数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

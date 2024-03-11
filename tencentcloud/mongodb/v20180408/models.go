@@ -22,20 +22,20 @@ import (
 
 // Predefined struct for user
 type AssignProjectRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID 列表。格式如：cmgo-p8vn****，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID
+	// 项目ID。项目 ID 具有唯一性，请[登录 MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息的下拉菜单中，选择**项目管理**，即可获取项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type AssignProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID 列表。格式如：cmgo-p8vn****，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID
+	// 项目ID。项目 ID 具有唯一性，请[登录 MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息的下拉菜单中，选择**项目管理**，即可获取项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -61,10 +61,10 @@ func (r *AssignProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssignProjectResponseParams struct {
-	// 返回的异步任务ID列表
+	// 返回的异步任务ID列表。
 	FlowIds []*uint64 `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -230,7 +230,7 @@ type CreateDBInstanceHourResponseParams struct {
 	// 创建的实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -374,7 +374,7 @@ type CreateDBInstanceResponseParams struct {
 	// 创建的实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -432,7 +432,11 @@ type DescribeClientConnectionsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clients []*ClientConnection `json:"Clients,omitnil,omitempty" name:"Clients"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 连接数总结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -454,74 +458,86 @@ func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+	// 实例类型，取值范围：
+	// <ul><li>0： 所有实例</li><li>1： 正式实例</li><li>2： 临时实例</li><li>3： 只读实例</li><li>-1： 正式实例+只读+灾备实例</li></ul>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+	// 集群类型，取值范围： 
+	// <ul><li>0： 副本集实例</li><li>1： 正式实例</li> <li>-1： 所有实例</li></ul>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+	// 实例状态，取值范围： 
+	// <ul><li>0： 待初始化</li><li>1： 流程执行中</li> <li>2： 有效实例</li><li>-2： 已过期实例</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 私有网络的ID，基础网络则不传该参数
+	// 私有网络的ID，基础网络则不传该参数。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+	// 付费类型，取值范围：
+	// <ul><li>0： 按量计费</li><li>1：包年包月</li><li>-1： 按量计费+包年包月</li></ul>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+	// 返回结果集排序的字段，目前支持： 
+	// <ul><li>ProjectId： 按照项目ID排序</li><li>InstanceName：按照实例名称排序</li><li>CreateTime： 根据创建时间排序</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
+	// 返回结果集排序方式，目前支持："ASC"或者"DESC"。
+	// <ul><li>ASC： 顺序取值</li><li>DESC：倒序取值</li></ul>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+	// 实例类型，取值范围：
+	// <ul><li>0： 所有实例</li><li>1： 正式实例</li><li>2： 临时实例</li><li>3： 只读实例</li><li>-1： 正式实例+只读+灾备实例</li></ul>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+	// 集群类型，取值范围： 
+	// <ul><li>0： 副本集实例</li><li>1： 正式实例</li> <li>-1： 所有实例</li></ul>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+	// 实例状态，取值范围： 
+	// <ul><li>0： 待初始化</li><li>1： 流程执行中</li> <li>2： 有效实例</li><li>-2： 已过期实例</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 私有网络的ID，基础网络则不传该参数
+	// 私有网络的ID，基础网络则不传该参数。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+	// 付费类型，取值范围：
+	// <ul><li>0： 按量计费</li><li>1：包年包月</li><li>-1： 按量计费+包年包月</li></ul>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+	// 返回结果集排序的字段，目前支持： 
+	// <ul><li>ProjectId： 按照项目ID排序</li><li>InstanceName：按照实例名称排序</li><li>CreateTime： 根据创建时间排序</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
+	// 返回结果集排序方式，目前支持："ASC"或者"DESC"。
+	// <ul><li>ASC： 顺序取值</li><li>DESC：倒序取值</li></ul>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -562,7 +578,7 @@ type DescribeDBInstancesResponseParams struct {
 	// 实例详细信息
 	InstanceDetails []*MongoDBInstanceDetail `json:"InstanceDetails,omitnil,omitempty" name:"InstanceDetails"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -657,7 +673,7 @@ type DescribeSlowLogResponseParams struct {
 	// 符合查询条件的慢查询日志详情。
 	SlowLogList []*string `json:"SlowLogList,omitnil,omitempty" name:"SlowLogList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -714,7 +730,7 @@ type DescribeSpecInfoResponseParams struct {
 	// 实例售卖规格信息列表
 	SpecInfoList []*SpecificationInfo `json:"SpecInfoList,omitnil,omitempty" name:"SpecInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -894,7 +910,7 @@ type RenameInstanceRequestParams struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// 实例自定义名称
 	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
 }
 
@@ -904,7 +920,7 @@ type RenameInstanceRequest struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// 实例自定义名称
 	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
 }
 
@@ -930,7 +946,7 @@ func (r *RenameInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenameInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -955,7 +971,10 @@ type SetAutoRenewRequestParams struct {
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
+	// 配置自动续费标识。
+	// - 0：手动续费。
+	// - 1：自动续费。
+	// - 2：确认不续费。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -965,7 +984,10 @@ type SetAutoRenewRequest struct {
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
+	// 配置自动续费标识。
+	// - 0：手动续费。
+	// - 1：自动续费。
+	// - 2：确认不续费。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -991,7 +1013,7 @@ func (r *SetAutoRenewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetAutoRenewResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1016,7 +1038,7 @@ type SetPasswordRequestParams struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例账户名称
+	// 实例账户名。初始化实例密码，本参数传mongouser。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
@@ -1029,7 +1051,7 @@ type SetPasswordRequest struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例账户名称
+	// 实例账户名。初始化实例密码，本参数传mongouser。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
@@ -1062,7 +1084,7 @@ type SetPasswordResponseParams struct {
 	// 返回的异步任务ID
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1200,10 +1222,10 @@ func (r *TerminateDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateDBInstanceResponseParams struct {
-	// 订单ID，表示注销实例成功
+	// 订单ID，表示注销实例成功。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1281,7 +1303,7 @@ type UpgradeDBInstanceHourResponseParams struct {
 	// 订单ID
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1359,7 +1381,7 @@ type UpgradeDBInstanceResponseParams struct {
 	// 订单ID
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

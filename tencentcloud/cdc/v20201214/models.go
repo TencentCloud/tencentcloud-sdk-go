@@ -120,7 +120,7 @@ type CreateDedicatedClusterOrderResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -198,7 +198,7 @@ type CreateDedicatedClusterResponseParams struct {
 	// 创建的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -425,7 +425,7 @@ type CreateSiteResponseParams struct {
 	// 创建Site生成的id
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -724,7 +724,7 @@ func (r *DeleteDedicatedClustersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDedicatedClustersResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -778,7 +778,7 @@ func (r *DeleteSitesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSitesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -795,6 +795,110 @@ func (r *DeleteSitesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSitesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDedicatedClusterCbsStatisticsRequestParams struct {
+	// 查询的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 云硬盘仓库id
+	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 时间范围精度，1分钟/5分钟
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDedicatedClusterCbsStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 云硬盘仓库id
+	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 时间范围精度，1分钟/5分钟
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDedicatedClusterCbsStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDedicatedClusterCbsStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedClusterId")
+	delete(f, "SetId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDedicatedClusterCbsStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDedicatedClusterCbsStatisticsResponseParams struct {
+	// 云硬盘仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetList []*SetInfo `json:"SetList,omitnil,omitempty" name:"SetList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDedicatedClusterCbsStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDedicatedClusterCbsStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDedicatedClusterCbsStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDedicatedClusterCbsStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -835,7 +939,7 @@ type DescribeDedicatedClusterCosCapacityResponseParams struct {
 	// 本集群内cos容量信息，单位：‘GB’
 	CosCapacity *CosCapacity `json:"CosCapacity,omitnil,omitempty" name:"CosCapacity"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -920,7 +1024,7 @@ type DescribeDedicatedClusterHostStatisticsResponseParams struct {
 	// 该集群内宿主机的统计信息列表
 	HostStatisticSet []*HostStatistic `json:"HostStatisticSet,omitnil,omitempty" name:"HostStatisticSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -995,7 +1099,7 @@ type DescribeDedicatedClusterHostsResponseParams struct {
 	// 宿主机总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1052,7 +1156,7 @@ type DescribeDedicatedClusterInstanceTypesResponseParams struct {
 	// 支持的实例规格列表
 	DedicatedClusterInstanceTypeSet []*DedicatedClusterInstanceType `json:"DedicatedClusterInstanceTypeSet,omitnil,omitempty" name:"DedicatedClusterInstanceTypeSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1147,7 +1251,7 @@ type DescribeDedicatedClusterOrdersResponseParams struct {
 	// 符合条件的专用集群订单总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1235,7 +1339,7 @@ type DescribeDedicatedClusterOverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostNormalCount *uint64 `json:"HostNormalCount,omitnil,omitempty" name:"HostNormalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1323,7 +1427,7 @@ type DescribeDedicatedClusterTypesResponseParams struct {
 	// 符合条件的个数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1425,7 +1529,7 @@ type DescribeDedicatedClustersResponseParams struct {
 	// 符合条件的专用集群数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1482,7 +1586,7 @@ type DescribeDedicatedSupportedZonesResponseParams struct {
 	// 支持的可用区列表
 	ZoneSet []*RegionZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1563,7 +1667,7 @@ type DescribeSitesDetailResponseParams struct {
 	// 符合条件的站点总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1644,7 +1748,7 @@ type DescribeSitesResponseParams struct {
 	// 符合条件的站点数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1867,7 +1971,7 @@ func (r *ModifyDedicatedClusterInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDedicatedClusterInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1935,7 +2039,7 @@ func (r *ModifyOrderStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyOrderStatusResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2103,7 +2207,7 @@ func (r *ModifySiteDeviceInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySiteDeviceInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2213,7 +2317,7 @@ func (r *ModifySiteInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySiteInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2249,6 +2353,56 @@ type RegionZoneInfo struct {
 
 	// ZoneInfo数组
 	Zones []*ZoneInfo `json:"Zones,omitnil,omitempty" name:"Zones"`
+}
+
+type SetInfo struct {
+	// 云硬盘仓库id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
+
+	// 云硬盘仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetName *string `json:"SetName,omitnil,omitempty" name:"SetName"`
+
+	// 云硬盘仓库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetType *string `json:"SetType,omitnil,omitempty" name:"SetType"`
+
+	// 云硬盘仓库容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetSize *float64 `json:"SetSize,omitnil,omitempty" name:"SetSize"`
+
+	// 云硬盘仓库状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetStatus *string `json:"SetStatus,omitnil,omitempty" name:"SetStatus"`
+
+	// 云硬盘仓库创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 读流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadTraffic *DetailData `json:"ReadTraffic,omitnil,omitempty" name:"ReadTraffic"`
+
+	// 写流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteTraffic *DetailData `json:"WriteTraffic,omitnil,omitempty" name:"WriteTraffic"`
+
+	// 读IO
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadIO *DetailData `json:"ReadIO,omitnil,omitempty" name:"ReadIO"`
+
+	// 写IO
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteIO *DetailData `json:"WriteIO,omitnil,omitempty" name:"WriteIO"`
+
+	// 平均等待时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Await *DetailData `json:"Await,omitnil,omitempty" name:"Await"`
+
+	// 利用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Util *DetailData `json:"Util,omitnil,omitempty" name:"Util"`
 }
 
 type Site struct {

@@ -98,7 +98,7 @@ type AssessQualityResponseParams struct {
 	// 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
 	AestheticScore *int64 `json:"AestheticScore,omitnil,omitempty" name:"AestheticScore"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -353,7 +353,7 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGroupResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -528,7 +528,7 @@ type CreateImageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *ObjectInfo `json:"Object,omitnil,omitempty" name:"Object"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -656,7 +656,7 @@ type CropImageResponseParams struct {
 	// 以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
 	CropResult *int64 `json:"CropResult,omitnil,omitempty" name:"CropResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -724,7 +724,7 @@ func (r *DeleteImagesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteImagesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -796,7 +796,7 @@ type DescribeGroupsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -873,7 +873,7 @@ type DescribeImagesResponseParams struct {
 	// 图片信息。
 	ImageInfos []*ImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -978,7 +978,7 @@ type DetectChefDressResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bodies []*AttributesForBody `json:"Bodies,omitnil,omitempty" name:"Bodies"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1061,7 +1061,7 @@ type DetectDisgustResponseParams struct {
 	// 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1138,7 +1138,7 @@ type DetectEnvelopeResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondTags []*ImageTag `json:"SecondTags,omitnil,omitempty" name:"SecondTags"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1265,7 +1265,7 @@ type DetectLabelBetaResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationLabels []*Product `json:"LocationLabels,omitnil,omitempty" name:"LocationLabels"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1368,7 +1368,7 @@ type DetectLabelProResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*DetectLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1491,7 +1491,7 @@ type DetectLabelResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewsLabels []*DetectLabelItem `json:"NewsLabels,omitnil,omitempty" name:"NewsLabels"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1574,7 +1574,7 @@ type DetectMisbehaviorResponseParams struct {
 	// 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1646,7 +1646,7 @@ type DetectPetResponseParams struct {
 	// 识别出图片中的宠物信息列表。
 	Pets []*Pet `json:"Pets,omitnil,omitempty" name:"Pets"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1731,7 +1731,7 @@ type DetectProductBetaResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductInfoList []*ProductInfo `json:"ProductInfoList,omitnil,omitempty" name:"ProductInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1811,7 +1811,7 @@ type DetectProductResponseParams struct {
 	// 商品识别结果数组
 	Products []*Product `json:"Products,omitnil,omitempty" name:"Products"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1918,7 +1918,7 @@ type DetectSecurityResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bodies []*AttributesForBody `json:"Bodies,omitnil,omitempty" name:"Bodies"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1998,7 +1998,7 @@ type EnhanceImageResponseParams struct {
 	// 增强后图片的base64编码。
 	EnhancedImage *string `json:"EnhancedImage,omitnil,omitempty" name:"EnhancedImage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2270,7 +2270,7 @@ type RecognizeCarProResponseParams struct {
 	// 注意：置信度是指车牌信息置信度。
 	CarTags []*CarTagItem `json:"CarTags,omitnil,omitempty" name:"CarTags"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2355,7 +2355,7 @@ type RecognizeCarResponseParams struct {
 	// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
 	CarTags []*CarTagItem `json:"CarTags,omitnil,omitempty" name:"CarTags"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2583,7 +2583,7 @@ type SearchImageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *ObjectInfo `json:"Object,omitnil,omitempty" name:"Object"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2658,7 +2658,7 @@ func (r *UpdateImageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateImageResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

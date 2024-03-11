@@ -103,7 +103,7 @@ type CreateDisclosedCredentialResponseParams struct {
 	// 凭证字符串
 	CredentialData *string `json:"CredentialData,omitnil,omitempty" name:"CredentialData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -202,7 +202,7 @@ type CreatePresentationResponseParams struct {
 	// 可验证表达内容
 	PresentationData *string `json:"PresentationData,omitnil,omitempty" name:"PresentationData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -269,7 +269,7 @@ type CreateTDidByHostResponseParams struct {
 	// 链上交易信息
 	Transaction *ChainTransaction `json:"Transaction,omitnil,omitempty" name:"Transaction"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -350,7 +350,7 @@ type CreateTDidByPubKeyResponseParams struct {
 	// 链上交易信息
 	Transaction *ChainTransaction `json:"Transaction,omitnil,omitempty" name:"Transaction"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -465,7 +465,7 @@ type DeactivateTDidResponseParams struct {
 	// 上链交易信息
 	Transaction *ChainTransaction `json:"Transaction,omitnil,omitempty" name:"Transaction"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -535,7 +535,7 @@ type GetAppSummaryResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCounter *ResourceCounterData `json:"UserCounter,omitnil,omitempty" name:"UserCounter"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -600,7 +600,7 @@ type GetCredentialStateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CredentialState *CredentialState `json:"CredentialState,omitnil,omitempty" name:"CredentialState"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -671,7 +671,7 @@ type GetOverSummaryResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainCnt *uint64 `json:"ChainCnt,omitnil,omitempty" name:"ChainCnt"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -736,7 +736,7 @@ type GetTDidByObjectIdResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Did *string `json:"Did,omitnil,omitempty" name:"Did"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -800,7 +800,7 @@ type GetTDidDocumentResponseParams struct {
 	// DID文档内容
 	Document *string `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -864,7 +864,7 @@ type GetTDidPubKeyResponseParams struct {
 	// DID公钥数组
 	AuthPublicKeyList []*string `json:"AuthPublicKeyList,omitnil,omitempty" name:"AuthPublicKeyList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -935,7 +935,7 @@ type IssueCredentialResponseParams struct {
 	// 可验证凭证内容
 	CredentialData *string `json:"CredentialData,omitnil,omitempty" name:"CredentialData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1018,7 +1018,7 @@ type QueryAuthorityInfoResponseParams struct {
 	// 认证时间
 	RecognizeTime *string `json:"RecognizeTime,omitnil,omitempty" name:"RecognizeTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1082,7 +1082,7 @@ type QueryCPTResponseParams struct {
 	// 凭证模板内容
 	CPTJson *string `json:"CPTJson,omitnil,omitempty" name:"CPTJson"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1182,7 +1182,7 @@ type SetTDidAttributeResponseParams struct {
 	// 上链交易信息
 	Transaction *ChainTransaction `json:"Transaction,omitnil,omitempty" name:"Transaction"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1247,7 +1247,7 @@ type UpdateCredentialStateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1324,7 +1324,7 @@ type VerifyCredentialsResponseParams struct {
 	// 验证结果信息
 	VerifyMessage *string `json:"VerifyMessage,omitnil,omitempty" name:"VerifyMessage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1408,7 +1408,7 @@ type VerifyPresentationResponseParams struct {
 	// 验证消息
 	VerifyMessage *string `json:"VerifyMessage,omitnil,omitempty" name:"VerifyMessage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

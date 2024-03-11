@@ -65,9 +65,7 @@ func NewAssignProjectResponse() (response *AssignProjectResponse) {
 }
 
 // AssignProject
-// 本接口(AssignProject)用于指定云数据库实例的所属项目。
-//
-// 
+// 本接口（AssignProject）用于指定云数据库实例的所属项目。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -79,9 +77,7 @@ func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignP
 }
 
 // AssignProject
-// 本接口(AssignProject)用于指定云数据库实例的所属项目。
-//
-// 
+// 本接口（AssignProject）用于指定云数据库实例的所属项目。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -566,7 +562,7 @@ func NewSetPasswordResponse() (response *SetPasswordResponse) {
 }
 
 // SetPassword
-// 本接口(SetPassword)用于设置云数据库账户的密码。
+// 本接口(SetPassword)用于设置（初始化）MongoDB云数据库实例账户密码。
 //
 // 
 //
@@ -582,7 +578,7 @@ func (c *Client) SetPassword(request *SetPasswordRequest) (response *SetPassword
 }
 
 // SetPassword
-// 本接口(SetPassword)用于设置云数据库账户的密码。
+// 本接口(SetPassword)用于设置（初始化）MongoDB云数据库实例账户密码。
 //
 // 
 //
@@ -629,21 +625,31 @@ func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
 }
 
 // TerminateDBInstance
-// 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
+// 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
 func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
     return c.TerminateDBInstanceWithContext(context.Background(), request)
 }
 
 // TerminateDBInstance
-// 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
+// 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
 func (c *Client) TerminateDBInstanceWithContext(ctx context.Context, request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
     if request == nil {
         request = NewTerminateDBInstanceRequest()

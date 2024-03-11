@@ -178,6 +178,7 @@ func NewApplyFirewallTemplateResponse() (response *ApplyFirewallTemplateResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
+//  RESOURCEUNAVAILABLE_FIREWALLTEMPLATEINUSE = "ResourceUnavailable.FirewallTemplateInUse"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ApplyFirewallTemplate(request *ApplyFirewallTemplateRequest) (response *ApplyFirewallTemplateResponse, err error) {
     return c.ApplyFirewallTemplateWithContext(context.Background(), request)
@@ -190,6 +191,7 @@ func (c *Client) ApplyFirewallTemplate(request *ApplyFirewallTemplateRequest) (r
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
+//  RESOURCEUNAVAILABLE_FIREWALLTEMPLATEINUSE = "ResourceUnavailable.FirewallTemplateInUse"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ApplyFirewallTemplateWithContext(ctx context.Context, request *ApplyFirewallTemplateRequest) (response *ApplyFirewallTemplateResponse, err error) {
     if request == nil {

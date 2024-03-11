@@ -98,7 +98,7 @@ type ApplyEmbedIntervalResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -365,7 +365,7 @@ type CreateDatasourceCloudResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -561,7 +561,7 @@ type CreateDatasourceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -680,7 +680,7 @@ type CreateEmbedTokenResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -782,7 +782,7 @@ type CreateProjectResponseParams struct {
 	// 返回信息
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -873,7 +873,7 @@ type CreateUserRoleProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -957,7 +957,7 @@ type CreateUserRoleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1189,7 +1189,7 @@ type DeleteDatasourceResponseParams struct {
 	// 信息
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1272,7 +1272,7 @@ type DeleteProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1349,7 +1349,7 @@ type DeleteUserRoleProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1419,7 +1419,7 @@ type DeleteUserRoleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1529,7 +1529,7 @@ type DescribeDatasourceListResponseParams struct {
 	// 信息
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1606,7 +1606,7 @@ type DescribeProjectInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *Project `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1704,7 +1704,7 @@ type DescribeProjectListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *ProjectListData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1795,7 +1795,7 @@ type DescribeUserProjectListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1907,7 +1907,7 @@ type DescribeUserRoleListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1998,7 +1998,7 @@ type DescribeUserRoleProjectListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2317,7 +2317,7 @@ type ModifyDatasourceCloudResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2520,7 +2520,7 @@ type ModifyDatasourceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2646,7 +2646,7 @@ type ModifyProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2751,7 +2751,7 @@ type ModifyUserRoleProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2863,7 +2863,7 @@ type ModifyUserRoleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

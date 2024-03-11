@@ -136,7 +136,7 @@ type AssumeRoleResponseParams struct {
 	// 临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
 	Expiration *string `json:"Expiration,omitnil,omitempty" name:"Expiration"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -227,7 +227,7 @@ type AssumeRoleWithSAMLResponseParams struct {
 	// 临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
 	Expiration *string `json:"Expiration,omitnil,omitempty" name:"Expiration"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -318,7 +318,7 @@ type AssumeRoleWithWebIdentityResponseParams struct {
 	// 临时访问凭证
 	Credentials *Credentials `json:"Credentials,omitnil,omitempty" name:"Credentials"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -400,7 +400,7 @@ type GetCallerIdentityResponseParams struct {
 	// 身份类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -484,7 +484,7 @@ type GetFederationTokenResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expiration *string `json:"Expiration,omitnil,omitempty" name:"Expiration"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -541,7 +541,7 @@ type QueryApiKeyResponseParams struct {
 	// 密钥ID列表
 	IdKeys []*ApiKey `json:"IdKeys,omitnil,omitempty" name:"IdKeys"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

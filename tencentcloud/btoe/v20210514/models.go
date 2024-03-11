@@ -103,7 +103,7 @@ type CreateAudioDepositResponseParams struct {
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -192,7 +192,7 @@ type CreateDataDepositResponseParams struct {
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -295,7 +295,7 @@ type CreateDocDepositResponseParams struct {
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -370,7 +370,7 @@ type CreateHashDepositNoCertResponseParams struct {
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -445,7 +445,7 @@ type CreateHashDepositNoSealResponseParams struct {
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -527,7 +527,7 @@ type CreateHashDepositResponseParams struct {
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -630,7 +630,7 @@ type CreateImageDepositResponseParams struct {
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -733,7 +733,7 @@ type CreateVideoDepositResponseParams struct {
 	// 请求成功，返回存证编码,用于查询存证后续业务数据
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -793,7 +793,7 @@ type GetDepositCertResponseParams struct {
 	// 存证证书文件临时链接
 	EvidenceCert *string `json:"EvidenceCert,omitnil,omitempty" name:"EvidenceCert"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -853,7 +853,7 @@ type GetDepositFileResponseParams struct {
 	// 存证文件临时链接
 	EvidenceFile *string `json:"EvidenceFile,omitnil,omitempty" name:"EvidenceFile"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -916,7 +916,7 @@ type GetDepositInfoResponseParams struct {
 	// 区块链交易哈希
 	EvidenceTxHash *string `json:"EvidenceTxHash,omitnil,omitempty" name:"EvidenceTxHash"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -981,7 +981,7 @@ type VerifyEvidenceBlockChainTxHashResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvidenceId *string `json:"EvidenceId,omitnil,omitempty" name:"EvidenceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1038,7 +1038,7 @@ type VerifyEvidenceHashResponseParams struct {
 	// 核验结果，true为核验成功，false为核验失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

@@ -72,7 +72,7 @@ type AdvertiseOCRResponseParams struct {
 	// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
 	TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitnil,omitempty" name:"TextDetections"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -361,7 +361,7 @@ type ArithmeticOCRResponseParams struct {
 	// 图片横屏的角度(90度或270度)
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -505,7 +505,7 @@ type BankCardOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityValue *int64 `json:"QualityValue,omitnil,omitempty" name:"QualityValue"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -602,7 +602,7 @@ type BankSlipOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -734,7 +734,7 @@ type BizLicenseOCRResponseParams struct {
 	// 
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -906,7 +906,7 @@ type BusInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1025,7 +1025,7 @@ type BusinessCardOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1139,7 +1139,7 @@ type CarInvoiceOCRResponseParams struct {
 	// 购车发票识别结果，具体内容请点击左侧链接。
 	CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitnil,omitempty" name:"CarInvoiceInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1282,7 +1282,7 @@ type ClassifyDetectOCRResponseParams struct {
 	// 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
 	ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitnil,omitempty" name:"ClassifyDetectInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1373,7 +1373,7 @@ type CreateAIFormTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1572,7 +1572,7 @@ type DriverLicenseOCRResponseParams struct {
 	// 驾驶证副页证号
 	BackPageCardCode *string `json:"BackPageCardCode,omitnil,omitempty" name:"BackPageCardCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1679,7 +1679,7 @@ type DutyPaidProofOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1782,7 +1782,7 @@ type EduPaperOCRResponseParams struct {
 	// 结构化方式输出，具体内容请点击左侧链接。
 	QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitnil,omitempty" name:"QuestionBlockInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2247,7 +2247,7 @@ type EnglishOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angel *float64 `json:"Angel,omitnil,omitempty" name:"Angel"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2337,7 +2337,7 @@ type EnterpriseLicenseOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2448,7 +2448,7 @@ type EstateCertOCRResponseParams struct {
 	// 不动产权号
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2540,7 +2540,7 @@ type FinanBillOCRResponseParams struct {
 	// 金融票据整单识别结果，具体内容请点击左侧链接。
 	FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitnil,omitempty" name:"FinanBillInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2627,7 +2627,7 @@ type FinanBillSliceOCRResponseParams struct {
 	// 金融票据切片识别结果，具体内容请点击左侧链接。
 	FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitnil,omitempty" name:"FinanBillSliceInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2731,7 +2731,7 @@ type FlightInvoiceOCRResponseParams struct {
 	// 机票行程单识别结果，具体内容请点击左侧链接。
 	FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitnil,omitempty" name:"FlightInvoiceInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2876,7 +2876,7 @@ type FormulaOCRResponseParams struct {
 	// 检测到的文本信息，具体内容请点击左侧链接。
 	FormulaInfos []*TextFormula `json:"FormulaInfos,omitnil,omitempty" name:"FormulaInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2991,7 +2991,7 @@ type GeneralAccurateOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3162,7 +3162,7 @@ type GeneralBasicOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3237,7 +3237,7 @@ type GeneralEfficientOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angel *float64 `json:"Angel,omitnil,omitempty" name:"Angel"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3339,7 +3339,7 @@ type GeneralFastOCRResponseParams struct {
 	// 图片为PDF时，返回PDF的总页数，默认为0
 	PdfPageSize *int64 `json:"PdfPageSize,omitnil,omitempty" name:"PdfPageSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3445,7 +3445,7 @@ type GeneralHandwritingOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angel *float64 `json:"Angel,omitnil,omitempty" name:"Angel"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3533,7 +3533,7 @@ type GetTaskStateResponseParams struct {
 	// 6:任务识别失败
 	TaskState *uint64 `json:"TaskState,omitnil,omitempty" name:"TaskState"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3674,7 +3674,7 @@ type HKIDCardOCRResponseParams struct {
 	// -9103：证照翻拍告警
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3791,7 +3791,7 @@ type HmtResidentPermitOCRResponseParams struct {
 	// 通行证号码
 	PassNo *string `json:"PassNo,omitnil,omitempty" name:"PassNo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3969,7 +3969,7 @@ type IDCardOCRResponseParams struct {
 	// 反光点覆盖区域详情结果，具体内容请点击左侧链接
 	ReflectDetailInfos []*ReflectDetailInfo `json:"ReflectDetailInfos,omitnil,omitempty" name:"ReflectDetailInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4096,7 +4096,7 @@ type ImageEnhancementResponseParams struct {
 	// 图片数据，返回预处理后图像或原图像base64字符
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4186,7 +4186,7 @@ type InstitutionOCRResponseParams struct {
 	// 法定代表人
 	LegalPerson *string `json:"LegalPerson,omitnil,omitempty" name:"LegalPerson"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4280,7 +4280,7 @@ type InsuranceBillOCRResponseParams struct {
 	// 保险单据识别结果，具体内容请点击左侧链接。
 	InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitnil,omitempty" name:"InsuranceBillInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4418,7 +4418,7 @@ type InvoiceGeneralOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4619,7 +4619,7 @@ type LicensePlateOCRResponseParams struct {
 	// 全部车牌信息。
 	LicensePlateInfos []*LicensePlateInfo `json:"LicensePlateInfos,omitnil,omitempty" name:"LicensePlateInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4748,7 +4748,7 @@ type MLIDCardOCRResponseParams struct {
 	// 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4879,7 +4879,7 @@ type MLIDPassportOCRResponseParams struct {
 	// 信息区证件内容
 	PassportRecognizeInfos *PassportRecognizeInfos `json:"PassportRecognizeInfos,omitnil,omitempty" name:"PassportRecognizeInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5116,7 +5116,7 @@ type MainlandPermitOCRResponseParams struct {
 	// 背面字段信息
 	MainlandTravelPermitBackInfos *MainlandTravelPermitBackInfos `json:"MainlandTravelPermitBackInfos,omitnil,omitempty" name:"MainlandTravelPermitBackInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5284,7 +5284,7 @@ type MixedInvoiceDetectResponseParams struct {
 	// 检测出的票据类型列表，具体内容请点击左侧链接。
 	InvoiceDetectInfos []*InvoiceDetectInfo `json:"InvoiceDetectInfos,omitnil,omitempty" name:"InvoiceDetectInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5468,7 +5468,7 @@ type MixedInvoiceOCRResponseParams struct {
 	// 混贴票据识别结果，具体内容请点击左侧链接。
 	MixedInvoiceItems []*MixedInvoiceItem `json:"MixedInvoiceItems,omitnil,omitempty" name:"MixedInvoiceItems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5798,7 +5798,7 @@ type OrgCodeCertOCRResponseParams struct {
 	// 有效期
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5964,7 +5964,7 @@ type PassportOCRResponseParams struct {
 	// 名
 	FirstName *string `json:"FirstName,omitnil,omitempty" name:"FirstName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6113,7 +6113,7 @@ type PermitOCRResponseParams struct {
 	// 出生日期
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6220,7 +6220,7 @@ type PropOwnerCertOCRResponseParams struct {
 	// 房地坐落
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6299,7 +6299,7 @@ type QrcodeOCRResponseParams struct {
 	// 图片大小，具体内容请点击左侧链接。
 	ImgSize *QrcodeImgSize `json:"ImgSize,omitnil,omitempty" name:"ImgSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6503,7 +6503,7 @@ type QuotaInvoiceOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasStamp *string `json:"HasStamp,omitnil,omitempty" name:"HasStamp"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6690,7 +6690,7 @@ type RecognizeContainerOCRResponseParams struct {
 	// 集装箱自身重量，单位：磅（LB）
 	TareLB *string `json:"TareLB,omitnil,omitempty" name:"TareLB"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6888,7 +6888,7 @@ type RecognizeEncryptedIDCardOCRResponseParams struct {
 	// 敏感数据加密信息
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7012,7 +7012,7 @@ type RecognizeForeignPermanentResidentIdCardResponseParams struct {
 	// 签发机关。
 	IssuedAuthority *string `json:"IssuedAuthority,omitnil,omitempty" name:"IssuedAuthority"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7178,7 +7178,7 @@ type RecognizeGeneralInvoiceResponseParams struct {
 	// PDF文件总页码
 	TotalPDFCount *int64 `json:"TotalPDFCount,omitnil,omitempty" name:"TotalPDFCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7292,7 +7292,7 @@ type RecognizeHealthCodeOCRResponseParams struct {
 	// 疫苗接种时间
 	VaccinationTime *string `json:"VaccinationTime,omitnil,omitempty" name:"VaccinationTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7441,7 +7441,7 @@ type RecognizeIndonesiaIDCardOCRResponseParams struct {
 	// 城市，Scene为V2时支持识别
 	Kota *string `json:"Kota,omitnil,omitempty" name:"Kota"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7550,7 +7550,7 @@ type RecognizeMedicalInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7642,7 +7642,7 @@ type RecognizeOnlineTaxiItineraryOCRResponseParams struct {
 	// 网约车行程单识别结果，具体内容请点击左侧链接。
 	OnlineTaxiItineraryInfos []*OnlineTaxiItineraryInfo `json:"OnlineTaxiItineraryInfos,omitnil,omitempty" name:"OnlineTaxiItineraryInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7760,7 +7760,7 @@ type RecognizePhilippinesDrivingLicenseOCRResponseParams struct {
 	// 出生日期
 	Birthday *TextDetectionResult `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7854,7 +7854,7 @@ type RecognizePhilippinesSssIDOCRResponseParams struct {
 	// 生日
 	Birthday *TextDetectionResult `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7954,7 +7954,7 @@ type RecognizePhilippinesTinIDOCRResponseParams struct {
 	// 发证日期
 	IssueDate *TextDetectionResult `json:"IssueDate,omitnil,omitempty" name:"IssueDate"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8046,7 +8046,7 @@ type RecognizePhilippinesUMIDOCRResponseParams struct {
 	// 人像照片Base64后的结果
 	HeadPortrait *TextDetectionResult `json:"HeadPortrait,omitnil,omitempty" name:"HeadPortrait"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8155,7 +8155,7 @@ type RecognizePhilippinesVoteIDOCRResponseParams struct {
 	// 地区
 	PrecinctNo *TextDetectionResult `json:"PrecinctNo,omitnil,omitempty" name:"PrecinctNo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8252,7 +8252,7 @@ type RecognizeTableAccurateOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8354,7 +8354,7 @@ type RecognizeTableOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8455,7 +8455,7 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// 证件人像照片抠取
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8545,7 +8545,7 @@ type RecognizeTravelCardOCRResponseParams struct {
 	// 电话号码
 	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8726,7 +8726,7 @@ type ResidenceBookletOCRResponseParams struct {
 	// 曾用名
 	FormerName *string `json:"FormerName,omitnil,omitempty" name:"FormerName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8806,7 +8806,7 @@ type RideHailingDriverLicenseOCRResponseParams struct {
 	// 初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
 	ReleaseDate *string `json:"ReleaseDate,omitnil,omitempty" name:"ReleaseDate"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8889,7 +8889,7 @@ type RideHailingTransportLicenseOCRResponseParams struct {
 	// 初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
 	ReleaseDate *string `json:"ReleaseDate,omitnil,omitempty" name:"ReleaseDate"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9007,7 +9007,7 @@ type SealOCRResponseParams struct {
 	// 三角形印章：4
 	SealShape *string `json:"SealShape,omitnil,omitempty" name:"SealShape"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9114,7 +9114,7 @@ type ShipInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9401,7 +9401,7 @@ type SmartStructuralOCRResponseParams struct {
 	// 识别信息
 	StructuralItems []*StructuralItem `json:"StructuralItems,omitnil,omitempty" name:"StructuralItems"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9560,7 +9560,7 @@ type SmartStructuralOCRV2ResponseParams struct {
 	// 还原文本信息
 	WordList []*WordItem `json:"WordList,omitnil,omitempty" name:"WordList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9755,7 +9755,7 @@ type TableOCRResponseParams struct {
 	// Base64 编码后的 Excel 数据。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9888,7 +9888,7 @@ type TaxiInvoiceOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10060,7 +10060,7 @@ type TextDetectResponseParams struct {
 	// 图片中是否包含文字。
 	HasText *bool `json:"HasText,omitnil,omitempty" name:"HasText"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10458,7 +10458,7 @@ type TollInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10684,7 +10684,7 @@ type TrainTicketOCRResponseParams struct {
 	// 仅供报销使用：1为是，0为否
 	IsReceipt *string `json:"IsReceipt,omitnil,omitempty" name:"IsReceipt"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11482,7 +11482,7 @@ type VatInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11696,7 +11696,7 @@ type VatInvoiceVerifyNewResponseParams struct {
 	// 全电发票（航空运输电子客票行程单）详细字段信息。
 	ElectronicAirTransport *ElectronicAirTransport `json:"ElectronicAirTransport,omitnil,omitempty" name:"ElectronicAirTransport"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11804,7 +11804,7 @@ type VatInvoiceVerifyResponseParams struct {
 	// 二手车销售统一发票信息
 	UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitnil,omitempty" name:"UsedVehicleInvoiceInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11911,7 +11911,7 @@ type VatRollInvoiceOCRResponseParams struct {
 	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12082,7 +12082,7 @@ type VehicleLicenseOCRResponseParams struct {
 	// 注：告警信息可以同时存在多个
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitnil,omitempty" name:"RecognizeWarnMsg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12179,7 +12179,7 @@ type VehicleRegCertOCRResponseParams struct {
 	// 机动车登记证书识别结果，具体内容请点击左侧链接。
 	VehicleRegCertInfos []*VehicleRegCertInfo `json:"VehicleRegCertInfos,omitnil,omitempty" name:"VehicleRegCertInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12305,7 +12305,7 @@ type VerifyOfdVatInvoiceOCRResponseParams struct {
 	// 铁路电子客票
 	RailwayTicketInfo *RailwayTicketInfo `json:"RailwayTicketInfo,omitnil,omitempty" name:"RailwayTicketInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12383,7 +12383,7 @@ type VinOCRResponseParams struct {
 	// 检测到的车辆 VIN 码。
 	Vin *string `json:"Vin,omitnil,omitempty" name:"Vin"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -12482,7 +12482,7 @@ type WaybillOCRResponseParams struct {
 	// 检测到的文本信息，具体内容请点击左侧链接。
 	TextDetections *TextWaybill `json:"TextDetections,omitnil,omitempty" name:"TextDetections"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

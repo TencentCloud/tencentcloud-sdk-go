@@ -316,6 +316,59 @@ func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSite
     return
 }
 
+func NewDescribeDedicatedClusterCbsStatisticsRequest() (request *DescribeDedicatedClusterCbsStatisticsRequest) {
+    request = &DescribeDedicatedClusterCbsStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterCbsStatistics")
+    
+    
+    return
+}
+
+func NewDescribeDedicatedClusterCbsStatisticsResponse() (response *DescribeDedicatedClusterCbsStatisticsResponse) {
+    response = &DescribeDedicatedClusterCbsStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDedicatedClusterCbsStatistics
+// 查询本地专用集群云硬盘仓库信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"
+func (c *Client) DescribeDedicatedClusterCbsStatistics(request *DescribeDedicatedClusterCbsStatisticsRequest) (response *DescribeDedicatedClusterCbsStatisticsResponse, err error) {
+    return c.DescribeDedicatedClusterCbsStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeDedicatedClusterCbsStatistics
+// 查询本地专用集群云硬盘仓库信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"
+func (c *Client) DescribeDedicatedClusterCbsStatisticsWithContext(ctx context.Context, request *DescribeDedicatedClusterCbsStatisticsRequest) (response *DescribeDedicatedClusterCbsStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDedicatedClusterCbsStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDedicatedClusterCbsStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDedicatedClusterCbsStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDedicatedClusterCosCapacityRequest() (request *DescribeDedicatedClusterCosCapacityRequest) {
     request = &DescribeDedicatedClusterCosCapacityRequest{
         BaseRequest: &tchttp.BaseRequest{},

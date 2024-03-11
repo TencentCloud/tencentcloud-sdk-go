@@ -103,7 +103,7 @@ type ApplyChorusResponseParams struct {
 	// 合唱 Token。
 	ChorusToken *string `json:"ChorusToken,omitnil,omitempty" name:"ChorusToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -200,7 +200,7 @@ type BatchDescribeKTVMusicDetailsResponseParams struct {
 	// 不存在歌曲Id列表。
 	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitnil,omitempty" name:"NotExistMusicIdSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -295,7 +295,7 @@ type CreateKTVRobotResponseParams struct {
 	// 机器人Id。
 	RobotId *string `json:"RobotId,omitnil,omitempty" name:"RobotId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -369,7 +369,7 @@ type DescribeKTVMatchMusicsResponseParams struct {
 	// 未匹配的规则列表。
 	NotMatchRuleSet []*KTVMatchRule `json:"NotMatchRuleSet,omitnil,omitempty" name:"NotMatchRuleSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -480,7 +480,7 @@ type DescribeKTVMusicAccompanySegmentUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherSegments []*KTVOtherSegments `json:"OtherSegments,omitnil,omitempty" name:"OtherSegments"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -566,7 +566,7 @@ type DescribeKTVMusicAccompanySegmentUrlVipResponseParams struct {
 	// 链接文件大小 (单位:字节)
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -676,7 +676,7 @@ type DescribeKTVMusicsByTagResponseParams struct {
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -795,7 +795,7 @@ type DescribeKTVPlaylistDetailResponseParams struct {
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -889,7 +889,7 @@ type DescribeKTVPlaylistsResponseParams struct {
 	// 歌单总数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -999,7 +999,7 @@ type DescribeKTVRobotsResponseParams struct {
 	// 机器人信息集合。
 	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitnil,omitempty" name:"KTVRobotInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1070,7 +1070,7 @@ type DescribeKTVSuggestionsResponseParams struct {
 	// 联想词信息列表。
 	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitnil,omitempty" name:"KTVSuggestionInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1134,7 +1134,7 @@ type DescribeKTVTagsResponseParams struct {
 	// 标签分组列表。
 	TagGroupInfoSet []*KTVTagGroupInfo `json:"TagGroupInfoSet,omitnil,omitempty" name:"TagGroupInfoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1240,7 +1240,7 @@ type DescribeLiveVipTradeInfosResponseParams struct {
 	// 直播会员充值流水总数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1304,7 +1304,7 @@ type DescribeUserInfoResponseParams struct {
 	// 用户信息。
 	UserInfo *UserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1380,7 +1380,7 @@ type DescribeVipUserInfoResponseParams struct {
 	// 会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1448,7 +1448,7 @@ func (r *DestroyKTVRobotRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DestroyKTVRobotResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1808,7 +1808,7 @@ type RechargeLiveVipResponseParams struct {
 	// 直播会员信息。
 	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitnil,omitempty" name:"LiveVipUserInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1899,7 +1899,7 @@ type RechargeVipResponseParams struct {
 	// 订单创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2018,7 +2018,7 @@ type SearchKTVMusicsResponseParams struct {
 	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2154,7 +2154,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncKTVRobotCommandResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
