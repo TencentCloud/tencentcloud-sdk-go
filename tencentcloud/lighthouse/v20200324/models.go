@@ -667,6 +667,21 @@ type CcnAttachedInstance struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type Command struct {
+	// Base64编码后的命令内容，长度不可超过64KB。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 命令超时时间，默认60秒。取值范围[1, 86400]。
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
+	WorkingDirectory *string `json:"WorkingDirectory,omitnil,omitempty" name:"WorkingDirectory"`
+
+	// 在 Lighthouse 实例中执行命令的用户名称。
+	// 默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+}
+
 type ContainerEnv struct {
 	// 环境变量Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -1251,6 +1266,9 @@ type CreateInstancesRequestParams struct {
 	// 如果标签不存在会为您自动创建标签。
 	// 数组最多支持10个元素。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 创建实例后自动执行的命令。
+	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
 }
 
 type CreateInstancesRequest struct {
@@ -1303,6 +1321,9 @@ type CreateInstancesRequest struct {
 	// 如果标签不存在会为您自动创建标签。
 	// 数组最多支持10个元素。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 创建实例后自动执行的命令。
+	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -1330,6 +1351,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "FirewallTemplateId")
 	delete(f, "Tags")
+	delete(f, "InitCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -6229,6 +6251,9 @@ type Instance struct {
 	// 实例封禁状态。取值范围：
 	// <li>NORMAL实例正常。</li><li>NETWORK_RESTRICT：网络封禁。</li>
 	InstanceRestrictState *string `json:"InstanceRestrictState,omitnil,omitempty" name:"InstanceRestrictState"`
+
+	// 创建实例后自动执行TAT命令的调用ID。
+	InitInvocationId *string `json:"InitInvocationId,omitnil,omitempty" name:"InitInvocationId"`
 }
 
 type InstanceChargePrepaid struct {

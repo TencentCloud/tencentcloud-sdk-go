@@ -7499,7 +7499,12 @@ type DescribeRocketMQMsgTraceRequestParams struct {
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 查询死信时该值为true
+	//
+	// Deprecated: QueryDLQMsg is deprecated.
 	QueryDLQMsg *bool `json:"QueryDLQMsg,omitnil,omitempty" name:"QueryDLQMsg"`
+
+	// 查询死信时该值为true
+	QueryDeadLetterMessage *string `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
 }
 
 type DescribeRocketMQMsgTraceRequest struct {
@@ -7522,6 +7527,9 @@ type DescribeRocketMQMsgTraceRequest struct {
 
 	// 查询死信时该值为true
 	QueryDLQMsg *bool `json:"QueryDLQMsg,omitnil,omitempty" name:"QueryDLQMsg"`
+
+	// 查询死信时该值为true
+	QueryDeadLetterMessage *string `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
 }
 
 func (r *DescribeRocketMQMsgTraceRequest) ToJsonString() string {
@@ -7542,6 +7550,7 @@ func (r *DescribeRocketMQMsgTraceRequest) FromJsonString(s string) error {
 	delete(f, "MsgId")
 	delete(f, "GroupName")
 	delete(f, "QueryDLQMsg")
+	delete(f, "QueryDeadLetterMessage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQMsgTraceRequest has unknown keys!", "")
 	}

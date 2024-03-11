@@ -1593,19 +1593,21 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 }
 
 // CreateFlowApprovers
-// 适用场景：
-//
-// 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+// 适用场景： 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
 //
 // 
 //
 // 限制条件：
 //
-// 1. 本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
+// 
 //
-// 2. 本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+// 1.本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
 //
-// 3. 他方企业仅支持通过姓名+手机号进行补充。
+// 2.本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+//
+// 3.他方企业仅支持通过姓名+手机号进行补充。
+//
+// 4.个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1680,19 +1682,21 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 }
 
 // CreateFlowApprovers
-// 适用场景：
-//
-// 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+// 适用场景： 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
 //
 // 
 //
 // 限制条件：
 //
-// 1. 本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
+// 
 //
-// 2. 本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+// 1.本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
 //
-// 3. 他方企业仅支持通过姓名+手机号进行补充。
+// 2.本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+//
+// 3.他方企业仅支持通过姓名+手机号进行补充。
+//
+// 4.个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8520,6 +8524,7 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
@@ -8560,6 +8565,7 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"

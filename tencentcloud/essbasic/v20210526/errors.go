@@ -260,7 +260,7 @@ const (
 	// 角色ID不正确
 	INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
 
-	// 文件内容敏感信息。
+	// 上传的文件包含敏感（不合规）的内容，请确认。
 	INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 
 	// 参数错误，不合法的签署控件类型，请修改后重试。

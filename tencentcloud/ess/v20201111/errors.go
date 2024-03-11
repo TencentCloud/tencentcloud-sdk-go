@@ -308,6 +308,9 @@ const (
 	// 参数包含有敏感词
 	INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 
+	// 上传的文件包含敏感（不合规）的内容，请确认。
+	INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
+
 	// 参数错误,暂不支持该种签署控件类型
 	INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
 

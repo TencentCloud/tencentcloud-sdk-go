@@ -1061,7 +1061,7 @@ func NewChannelCreateFlowApproversResponse() (response *ChannelCreateFlowApprove
 //
 // 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
 //
-// 2. 个人签署人仅支持通过姓名+手机号进行补充。
+// 2. 个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1085,7 +1085,7 @@ func (c *Client) ChannelCreateFlowApprovers(request *ChannelCreateFlowApproversR
 //
 // 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
 //
-// 2. 个人签署人仅支持通过姓名+手机号进行补充。
+// 2. 个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8540,6 +8540,7 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -8579,6 +8580,7 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"

@@ -7114,6 +7114,67 @@ func (c *Client) ModifyDBRemarkWithContext(ctx context.Context, request *ModifyD
     return
 }
 
+func NewModifyDReadableRequest() (request *ModifyDReadableRequest) {
+    request = &ModifyDReadableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDReadable")
+    
+    
+    return
+}
+
+func NewModifyDReadableResponse() (response *ModifyDReadableResponse) {
+    response = &ModifyDReadableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDReadable
+// 本接口（ModifyDReadable）用于开通或者关闭备机只读
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+func (c *Client) ModifyDReadable(request *ModifyDReadableRequest) (response *ModifyDReadableResponse, err error) {
+    return c.ModifyDReadableWithContext(context.Background(), request)
+}
+
+// ModifyDReadable
+// 本接口（ModifyDReadable）用于开通或者关闭备机只读
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+func (c *Client) ModifyDReadableWithContext(ctx context.Context, request *ModifyDReadableRequest) (response *ModifyDReadableResponse, err error) {
+    if request == nil {
+        request = NewModifyDReadableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDReadable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDReadableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDatabaseCDCRequest() (request *ModifyDatabaseCDCRequest) {
     request = &ModifyDatabaseCDCRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -10859,6 +10859,91 @@ func (r *ModifyDBRemarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDReadableRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 操作类型。enable-开启备机只读，disable-关闭备机只读
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 备机网络ID，不填默认和主实例保持一致
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 备机网络子网ID，不填默认和主实例保持一致
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 指定的备机只读vip，不填自动分配
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+}
+
+type ModifyDReadableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 操作类型。enable-开启备机只读，disable-关闭备机只读
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 备机网络ID，不填默认和主实例保持一致
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 备机网络子网ID，不填默认和主实例保持一致
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 指定的备机只读vip，不填自动分配
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+}
+
+func (r *ModifyDReadableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDReadableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDReadableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDReadableResponseParams struct {
+	// 任务ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDReadableResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDReadableResponseParams `json:"Response"`
+}
+
+func (r *ModifyDReadableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDReadableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDataBaseTuple struct {
 	// 要修改的订阅关系
 	DatabaseTuple *DatabaseTuple `json:"DatabaseTuple,omitnil,omitempty" name:"DatabaseTuple"`
