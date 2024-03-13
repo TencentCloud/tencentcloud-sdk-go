@@ -510,6 +510,178 @@ func (c *Client) CreateLogstashInstanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateServerlessInstanceRequest() (request *CreateServerlessInstanceRequest) {
+    request = &CreateServerlessInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateServerlessInstance")
+    
+    
+    return
+}
+
+func NewCreateServerlessInstanceResponse() (response *CreateServerlessInstanceResponse) {
+    response = &CreateServerlessInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateServerlessInstance
+// 创建Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INDEXNAMEEXIST = "InvalidParameter.IndexNameExist"
+//  INVALIDPARAMETER_INDEXNAMEINVALID = "InvalidParameter.IndexNameInvalid"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) CreateServerlessInstance(request *CreateServerlessInstanceRequest) (response *CreateServerlessInstanceResponse, err error) {
+    return c.CreateServerlessInstanceWithContext(context.Background(), request)
+}
+
+// CreateServerlessInstance
+// 创建Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INDEXNAMEEXIST = "InvalidParameter.IndexNameExist"
+//  INVALIDPARAMETER_INDEXNAMEINVALID = "InvalidParameter.IndexNameInvalid"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) CreateServerlessInstanceWithContext(ctx context.Context, request *CreateServerlessInstanceRequest) (response *CreateServerlessInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateServerlessInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServerlessInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateServerlessInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateServerlessSpaceV2Request() (request *CreateServerlessSpaceV2Request) {
+    request = &CreateServerlessSpaceV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateServerlessSpaceV2")
+    
+    
+    return
+}
+
+func NewCreateServerlessSpaceV2Response() (response *CreateServerlessSpaceV2Response) {
+    response = &CreateServerlessSpaceV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateServerlessSpaceV2
+// 创建Serverless索引空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
+//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) CreateServerlessSpaceV2(request *CreateServerlessSpaceV2Request) (response *CreateServerlessSpaceV2Response, err error) {
+    return c.CreateServerlessSpaceV2WithContext(context.Background(), request)
+}
+
+// CreateServerlessSpaceV2
+// 创建Serverless索引空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
+//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request *CreateServerlessSpaceV2Request) (response *CreateServerlessSpaceV2Response, err error) {
+    if request == nil {
+        request = NewCreateServerlessSpaceV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServerlessSpaceV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateServerlessSpaceV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
     request = &DeleteIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -740,6 +912,160 @@ func (c *Client) DeleteLogstashPipelinesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteLogstashPipelinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServerlessInstanceRequest() (request *DeleteServerlessInstanceRequest) {
+    request = &DeleteServerlessInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DeleteServerlessInstance")
+    
+    
+    return
+}
+
+func NewDeleteServerlessInstanceResponse() (response *DeleteServerlessInstanceResponse) {
+    response = &DeleteServerlessInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteServerlessInstance
+// 删除Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteServerlessInstance(request *DeleteServerlessInstanceRequest) (response *DeleteServerlessInstanceResponse, err error) {
+    return c.DeleteServerlessInstanceWithContext(context.Background(), request)
+}
+
+// DeleteServerlessInstance
+// 删除Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteServerlessInstanceWithContext(ctx context.Context, request *DeleteServerlessInstanceRequest) (response *DeleteServerlessInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteServerlessInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteServerlessInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteServerlessInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServerlessSpaceUserRequest() (request *DeleteServerlessSpaceUserRequest) {
+    request = &DeleteServerlessSpaceUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DeleteServerlessSpaceUser")
+    
+    
+    return
+}
+
+func NewDeleteServerlessSpaceUserResponse() (response *DeleteServerlessSpaceUserResponse) {
+    response = &DeleteServerlessSpaceUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteServerlessSpaceUser
+// 删除Serverless空间子用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteServerlessSpaceUser(request *DeleteServerlessSpaceUserRequest) (response *DeleteServerlessSpaceUserResponse, err error) {
+    return c.DeleteServerlessSpaceUserWithContext(context.Background(), request)
+}
+
+// DeleteServerlessSpaceUser
+// 删除Serverless空间子用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteServerlessSpaceUserWithContext(ctx context.Context, request *DeleteServerlessSpaceUserRequest) (response *DeleteServerlessSpaceUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteServerlessSpaceUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteServerlessSpaceUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteServerlessSpaceUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -1407,6 +1733,164 @@ func (c *Client) DescribeLogstashPipelinesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeLogstashPipelinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServerlessSpaceUserRequest() (request *DescribeServerlessSpaceUserRequest) {
+    request = &DescribeServerlessSpaceUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeServerlessSpaceUser")
+    
+    
+    return
+}
+
+func NewDescribeServerlessSpaceUserResponse() (response *DescribeServerlessSpaceUserResponse) {
+    response = &DescribeServerlessSpaceUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessSpaceUser
+// 查看Serverless空间子用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DescribeServerlessSpaceUser(request *DescribeServerlessSpaceUserRequest) (response *DescribeServerlessSpaceUserResponse, err error) {
+    return c.DescribeServerlessSpaceUserWithContext(context.Background(), request)
+}
+
+// DescribeServerlessSpaceUser
+// 查看Serverless空间子用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DescribeServerlessSpaceUserWithContext(ctx context.Context, request *DescribeServerlessSpaceUserRequest) (response *DescribeServerlessSpaceUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessSpaceUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessSpaceUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessSpaceUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServerlessSpacesRequest() (request *DescribeServerlessSpacesRequest) {
+    request = &DescribeServerlessSpacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeServerlessSpaces")
+    
+    
+    return
+}
+
+func NewDescribeServerlessSpacesResponse() (response *DescribeServerlessSpacesResponse) {
+    response = &DescribeServerlessSpacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessSpaces
+// 获取Serverless索引空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServerlessSpaces(request *DescribeServerlessSpacesRequest) (response *DescribeServerlessSpacesResponse, err error) {
+    return c.DescribeServerlessSpacesWithContext(context.Background(), request)
+}
+
+// DescribeServerlessSpaces
+// 获取Serverless索引空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServerlessSpacesWithContext(ctx context.Context, request *DescribeServerlessSpacesRequest) (response *DescribeServerlessSpacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessSpacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessSpaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessSpacesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2975,6 +3459,158 @@ func (c *Client) UpdateRequestTargetNodeTypesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewUpdateRequestTargetNodeTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateServerlessInstanceRequest() (request *UpdateServerlessInstanceRequest) {
+    request = &UpdateServerlessInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "UpdateServerlessInstance")
+    
+    
+    return
+}
+
+func NewUpdateServerlessInstanceResponse() (response *UpdateServerlessInstanceResponse) {
+    response = &UpdateServerlessInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateServerlessInstance
+// 更新Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ISOLATEDSTATUS = "ResourceInUse.IsolatedStatus"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateServerlessInstance(request *UpdateServerlessInstanceRequest) (response *UpdateServerlessInstanceResponse, err error) {
+    return c.UpdateServerlessInstanceWithContext(context.Background(), request)
+}
+
+// UpdateServerlessInstance
+// 更新Serverless索引
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ISOLATEDSTATUS = "ResourceInUse.IsolatedStatus"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateServerlessInstanceWithContext(ctx context.Context, request *UpdateServerlessInstanceRequest) (response *UpdateServerlessInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpdateServerlessInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateServerlessInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateServerlessInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateServerlessSpaceRequest() (request *UpdateServerlessSpaceRequest) {
+    request = &UpdateServerlessSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "UpdateServerlessSpace")
+    
+    
+    return
+}
+
+func NewUpdateServerlessSpaceResponse() (response *UpdateServerlessSpaceResponse) {
+    response = &UpdateServerlessSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateServerlessSpace
+// 更新Serverless索引空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateServerlessSpace(request *UpdateServerlessSpaceRequest) (response *UpdateServerlessSpaceResponse, err error) {
+    return c.UpdateServerlessSpaceWithContext(context.Background(), request)
+}
+
+// UpdateServerlessSpace
+// 更新Serverless索引空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateServerlessSpaceWithContext(ctx context.Context, request *UpdateServerlessSpaceRequest) (response *UpdateServerlessSpaceResponse, err error) {
+    if request == nil {
+        request = NewUpdateServerlessSpaceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateServerlessSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateServerlessSpaceResponse()
     err = c.Send(request, response)
     return
 }

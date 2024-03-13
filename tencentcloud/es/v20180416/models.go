@@ -701,6 +701,229 @@ func (r *CreateLogstashInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateServerlessInstanceRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 索引名，需以-AppId结尾
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 创建的索引元数据JSON，如mappings、settings
+	IndexMetaJson *string `json:"IndexMetaJson,omitnil,omitempty" name:"IndexMetaJson"`
+
+	// 创建索引的空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 创建索引的用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 创建索引的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 创建数据接入
+	ServerlessDi *ServerlessDi `json:"ServerlessDi,omitnil,omitempty" name:"ServerlessDi"`
+
+	// 是否自行添加白名单ip
+	AutoGetIp *uint64 `json:"AutoGetIp,omitnil,omitempty" name:"AutoGetIp"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// kibana公网白名单
+	KibanaWhiteIpList []*string `json:"KibanaWhiteIpList,omitnil,omitempty" name:"KibanaWhiteIpList"`
+}
+
+type CreateServerlessInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 索引名，需以-AppId结尾
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 创建的索引元数据JSON，如mappings、settings
+	IndexMetaJson *string `json:"IndexMetaJson,omitnil,omitempty" name:"IndexMetaJson"`
+
+	// 创建索引的空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 创建索引的用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 创建索引的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 创建数据接入
+	ServerlessDi *ServerlessDi `json:"ServerlessDi,omitnil,omitempty" name:"ServerlessDi"`
+
+	// 是否自行添加白名单ip
+	AutoGetIp *uint64 `json:"AutoGetIp,omitnil,omitempty" name:"AutoGetIp"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// kibana公网白名单
+	KibanaWhiteIpList []*string `json:"KibanaWhiteIpList,omitnil,omitempty" name:"KibanaWhiteIpList"`
+}
+
+func (r *CreateServerlessInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServerlessInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "IndexName")
+	delete(f, "IndexMetaJson")
+	delete(f, "SpaceId")
+	delete(f, "Username")
+	delete(f, "Password")
+	delete(f, "ServerlessDi")
+	delete(f, "AutoGetIp")
+	delete(f, "TagList")
+	delete(f, "KibanaWhiteIpList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServerlessInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateServerlessInstanceResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateServerlessInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateServerlessInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateServerlessInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServerlessInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateServerlessSpaceV2RequestParams struct {
+	// vpc信息
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 索引空间名
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 空间名称
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 白名单列表
+	KibanaWhiteIpList []*string `json:"KibanaWhiteIpList,omitnil,omitempty" name:"KibanaWhiteIpList"`
+
+	// 空间id
+	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type CreateServerlessSpaceV2Request struct {
+	*tchttp.BaseRequest
+	
+	// vpc信息
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 索引空间名
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 空间名称
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 白名单列表
+	KibanaWhiteIpList []*string `json:"KibanaWhiteIpList,omitnil,omitempty" name:"KibanaWhiteIpList"`
+
+	// 空间id
+	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *CreateServerlessSpaceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServerlessSpaceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcInfo")
+	delete(f, "SpaceName")
+	delete(f, "Zone")
+	delete(f, "KibanaWhiteIpList")
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServerlessSpaceV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateServerlessSpaceV2ResponseParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateServerlessSpaceV2Response struct {
+	*tchttp.BaseResponse
+	Response *CreateServerlessSpaceV2ResponseParams `json:"Response"`
+}
+
+func (r *CreateServerlessSpaceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServerlessSpaceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIndexRequestParams struct {
 	// ES集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -955,6 +1178,121 @@ func (r *DeleteLogstashPipelinesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLogstashPipelinesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServerlessInstanceRequestParams struct {
+	// serverless实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DeleteServerlessInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// serverless实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteServerlessInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServerlessInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServerlessInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServerlessInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteServerlessInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteServerlessInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeleteServerlessInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServerlessInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServerlessSpaceUserRequestParams struct {
+	// 空间的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 创建索引的用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+}
+
+type DeleteServerlessSpaceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 创建索引的用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+}
+
+func (r *DeleteServerlessSpaceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServerlessSpaceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "Username")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServerlessSpaceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServerlessSpaceUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteServerlessSpaceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteServerlessSpaceUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteServerlessSpaceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServerlessSpaceUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2091,6 +2429,205 @@ func (r *DescribeLogstashPipelinesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServerlessSpaceUserRequestParams struct {
+	// 空间的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 游标
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 用户名列表过滤
+	UserNames []*string `json:"UserNames,omitnil,omitempty" name:"UserNames"`
+
+	// 用户类型
+	UserTypes []*int64 `json:"UserTypes,omitnil,omitempty" name:"UserTypes"`
+
+	// 权限类型
+	PrivilegeTypes []*int64 `json:"PrivilegeTypes,omitnil,omitempty" name:"PrivilegeTypes"`
+}
+
+type DescribeServerlessSpaceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 游标
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 用户名列表过滤
+	UserNames []*string `json:"UserNames,omitnil,omitempty" name:"UserNames"`
+
+	// 用户类型
+	UserTypes []*int64 `json:"UserTypes,omitnil,omitempty" name:"UserTypes"`
+
+	// 权限类型
+	PrivilegeTypes []*int64 `json:"PrivilegeTypes,omitnil,omitempty" name:"PrivilegeTypes"`
+}
+
+func (r *DescribeServerlessSpaceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessSpaceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "UserNames")
+	delete(f, "UserTypes")
+	delete(f, "PrivilegeTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessSpaceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessSpaceUserResponseParams struct {
+	// 用户数组
+	ServerlessSpaceUsers []*ServerlessSpaceUser `json:"ServerlessSpaceUsers,omitnil,omitempty" name:"ServerlessSpaceUsers"`
+
+	// 用户总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessSpaceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessSpaceUserResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessSpaceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessSpaceUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessSpacesRequestParams struct {
+	// 过滤的空间ID
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 过滤的空间名
+	SpaceNames []*string `json:"SpaceNames,omitnil,omitempty" name:"SpaceNames"`
+
+	// 排序顺序，支持升序asc、降序desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段，支持空间创建时间SpaceCreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// vpcId信息数组
+	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
+
+	// 分页起始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeServerlessSpacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤的空间ID
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 过滤的空间名
+	SpaceNames []*string `json:"SpaceNames,omitnil,omitempty" name:"SpaceNames"`
+
+	// 排序顺序，支持升序asc、降序desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段，支持空间创建时间SpaceCreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// vpcId信息数组
+	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
+
+	// 分页起始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeServerlessSpacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessSpacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "SpaceNames")
+	delete(f, "Order")
+	delete(f, "OrderBy")
+	delete(f, "VpcIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessSpacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessSpacesResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Serverless空间信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerlessSpaces []*ServerlessSpace `json:"ServerlessSpaces,omitnil,omitempty" name:"ServerlessSpaces"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessSpacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessSpacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessSpacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessSpacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeViewsRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2154,6 +2691,189 @@ func (r *DescribeViewsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeViewsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiData struct {
+	// 数据接入id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiId *string `json:"DiId,omitnil,omitempty" name:"DiId"`
+
+	// 数据接入创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 数据接入状态，0处理中，1正常，-2删除中，-3已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// cvm数据源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiDataSourceCvm *DiDataSourceCvm `json:"DiDataSourceCvm,omitnil,omitempty" name:"DiDataSourceCvm"`
+
+	// tke数据源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiDataSourceTke *DiDataSourceTke `json:"DiDataSourceTke,omitnil,omitempty" name:"DiDataSourceTke"`
+
+	// serverless目的端信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiDataSinkServerless *DiDataSinkServerless `json:"DiDataSinkServerless,omitnil,omitempty" name:"DiDataSinkServerless"`
+
+	// 数据接入类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiDataSourceType *string `json:"DiDataSourceType,omitnil,omitempty" name:"DiDataSourceType"`
+}
+
+type DiDataSinkServerless struct {
+	// serverless实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerlessId *string `json:"ServerlessId,omitnil,omitempty" name:"ServerlessId"`
+}
+
+type DiDataSourceCvm struct {
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 采集路径列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogPaths []*string `json:"LogPaths,omitnil,omitempty" name:"LogPaths"`
+
+	// cvm实例信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstances []*DiDataSourceCvmInstance `json:"CvmInstances,omitnil,omitempty" name:"CvmInstances"`
+
+	// 采集器id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectorId *string `json:"CollectorId,omitnil,omitempty" name:"CollectorId"`
+}
+
+type DiDataSourceCvmInstance struct {
+	// cvm实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
+type DiDataSourceTke struct {
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// tke实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeId *string `json:"TkeId,omitnil,omitempty" name:"TkeId"`
+
+	// 采集器id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectorId *string `json:"CollectorId,omitnil,omitempty" name:"CollectorId"`
+
+	// 采集源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectorName *string `json:"CollectorName,omitnil,omitempty" name:"CollectorName"`
+
+	// 采集器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectorType *string `json:"CollectorType,omitnil,omitempty" name:"CollectorType"`
+
+	// 采集器版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectorVersion *string `json:"CollectorVersion,omitnil,omitempty" name:"CollectorVersion"`
+
+	// tke包含的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncludeNamespaces []*string `json:"IncludeNamespaces,omitnil,omitempty" name:"IncludeNamespaces"`
+
+	// tke不包含的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeNamespaces []*string `json:"ExcludeNamespaces,omitnil,omitempty" name:"ExcludeNamespaces"`
+
+	// tke pod标签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodLabelKeys []*string `json:"PodLabelKeys,omitnil,omitempty" name:"PodLabelKeys"`
+
+	// tke pod标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodLabelValues []*string `json:"PodLabelValues,omitnil,omitempty" name:"PodLabelValues"`
+
+	// tke容器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// tke采集器beat配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+
+	// /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// TKE 日志采集路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+}
+
+type DiSourceCvm struct {
+	// 数据源所属vpc id，创建后不允许修改
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// cvm列表
+	CvmIds []*string `json:"CvmIds,omitnil,omitempty" name:"CvmIds"`
+
+	// 采集路径列表，支持通配符
+	LogPaths []*string `json:"LogPaths,omitnil,omitempty" name:"LogPaths"`
+}
+
+type DiSourceTke struct {
+	// 数据源所属vpc id，创建后不允许修改
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// tke实例id，创建后不允许修改
+	TkeId *string `json:"TkeId,omitnil,omitempty" name:"TkeId"`
+
+	// tke包含的命名空间
+	IncludeNamespaces []*string `json:"IncludeNamespaces,omitnil,omitempty" name:"IncludeNamespaces"`
+
+	// tke不包含的命名空间
+	ExcludeNamespaces []*string `json:"ExcludeNamespaces,omitnil,omitempty" name:"ExcludeNamespaces"`
+
+	// tke容器名称
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// tke日志内容过滤
+	LogFilters *string `json:"LogFilters,omitnil,omitempty" name:"LogFilters"`
+
+	// tke beats配置项
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+
+	// tke pod标签
+	PodLabel []*DiSourceTkePodLabel `json:"PodLabel,omitnil,omitempty" name:"PodLabel"`
+
+	// /
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// tke 日志采集路径
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+}
+
+type DiSourceTkePodLabel struct {
+	// 标签key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -3047,6 +3767,11 @@ type KibanaNodeInfo struct {
 
 	// Kibana节点磁盘大小
 	KibanaNodeDiskSize *uint64 `json:"KibanaNodeDiskSize,omitnil,omitempty" name:"KibanaNodeDiskSize"`
+}
+
+type KibanaPublicAcl struct {
+	// kibana访问白名单
+	WhiteIpList []*string `json:"WhiteIpList,omitnil,omitempty" name:"WhiteIpList"`
 }
 
 type KibanaView struct {
@@ -3963,6 +4688,108 @@ func (r *SaveAndDeployLogstashPipelineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SaveAndDeployLogstashPipelineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ServerlessDi struct {
+	// 数据链路采集源类型，如cvm_collector、tke_collector
+	DiSourceType *string `json:"DiSourceType,omitnil,omitempty" name:"DiSourceType"`
+
+	// cvm数据源
+	DiSourceCvm *DiSourceCvm `json:"DiSourceCvm,omitnil,omitempty" name:"DiSourceCvm"`
+
+	// tke数据源
+	DiSourceTke *DiSourceTke `json:"DiSourceTke,omitnil,omitempty" name:"DiSourceTke"`
+}
+
+type ServerlessSpace struct {
+	// Serverless索引空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// Serverless索引空间名
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// Serverless索引空间状态，0正常，-1已删除
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建日期
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 空间内索引数量
+	IndexCount *int64 `json:"IndexCount,omitnil,omitempty" name:"IndexCount"`
+
+	// kibana公网uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaUrl *string `json:"KibanaUrl,omitnil,omitempty" name:"KibanaUrl"`
+
+	// kibana内网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitnil,omitempty" name:"KibanaPrivateUrl"`
+
+	// 空间内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexAccessUrl *string `json:"IndexAccessUrl,omitnil,omitempty" name:"IndexAccessUrl"`
+
+	// 空间白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPublicAcl *EsAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
+
+	// 空间检索分析域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaEmbedUrl *string `json:"KibanaEmbedUrl,omitnil,omitempty" name:"KibanaEmbedUrl"`
+
+	// 数据联路
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiDataList *DiData `json:"DiDataList,omitnil,omitempty" name:"DiDataList"`
+
+	// 空间vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// kibana公网开关，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableKibanaPublicAccess *int64 `json:"EnableKibanaPublicAccess,omitnil,omitempty" name:"EnableKibanaPublicAccess"`
+
+	// kibana内网开关，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableKibanaPrivateAccess *int64 `json:"EnableKibanaPrivateAccess,omitnil,omitempty" name:"EnableKibanaPrivateAccess"`
+
+	// 空间所属appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type ServerlessSpaceUser struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 用户密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 用户状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 有权限的索引数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicesScope []*string `json:"IndicesScope,omitnil,omitempty" name:"IndicesScope"`
+
+	// 权限类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeType *int64 `json:"PrivilegeType,omitnil,omitempty" name:"PrivilegeType"`
 }
 
 type SettingDetail struct {
@@ -5150,6 +5977,177 @@ func (r *UpdateRequestTargetNodeTypesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateServerlessInstanceRequestParams struct {
+	// Serveless实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 更新的索引元数据JSON，如mappings、settings
+	UpdateMetaJson *string `json:"UpdateMetaJson,omitnil,omitempty" name:"UpdateMetaJson"`
+
+	// 实例访问密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 开启kibana内网访问，如OPEN、CLOSE
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// 开启kibana外网访问，如OPEN、CLOSE
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// 访问控制列表
+	KibanaPublicAcl *KibanaPublicAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
+}
+
+type UpdateServerlessInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// Serveless实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 更新的索引元数据JSON，如mappings、settings
+	UpdateMetaJson *string `json:"UpdateMetaJson,omitnil,omitempty" name:"UpdateMetaJson"`
+
+	// 实例访问密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 开启kibana内网访问，如OPEN、CLOSE
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// 开启kibana外网访问，如OPEN、CLOSE
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// 访问控制列表
+	KibanaPublicAcl *KibanaPublicAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
+}
+
+func (r *UpdateServerlessInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateServerlessInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UpdateMetaJson")
+	delete(f, "Password")
+	delete(f, "KibanaPrivateAccess")
+	delete(f, "KibanaPublicAccess")
+	delete(f, "KibanaPublicAcl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateServerlessInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateServerlessInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateServerlessInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateServerlessInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpdateServerlessInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateServerlessInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateServerlessSpaceRequestParams struct {
+	// Serveless索引空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// Serveless索引空间名
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// kibana内网开关
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// kibana公网开关
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// kibana公网白名单
+	KibanaPublicAcl *EsAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
+}
+
+type UpdateServerlessSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// Serveless索引空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// Serveless索引空间名
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// kibana内网开关
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// kibana公网开关
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// kibana公网白名单
+	KibanaPublicAcl *EsAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
+}
+
+func (r *UpdateServerlessSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateServerlessSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "SpaceName")
+	delete(f, "KibanaPrivateAccess")
+	delete(f, "KibanaPublicAccess")
+	delete(f, "KibanaPublicAcl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateServerlessSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateServerlessSpaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateServerlessSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateServerlessSpaceResponseParams `json:"Response"`
+}
+
+func (r *UpdateServerlessSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateServerlessSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpgradeInstanceRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5343,6 +6341,28 @@ func (r *UpgradeLicenseResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VpcInfo struct {
+	// vpcId信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// SubnetId信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// VpcUid信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcUid *uint64 `json:"VpcUid,omitnil,omitempty" name:"VpcUid"`
+
+	// SubnetUid 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetUid *uint64 `json:"SubnetUid,omitnil,omitempty" name:"SubnetUid"`
+
+	// 可用ip数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitnil,omitempty" name:"AvailableIpAddressCount"`
 }
 
 type WebNodeTypeInfo struct {

@@ -17,6 +17,9 @@ package v20180416
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 当前用户对创建集群实例操作未授权，请添加CAM权限
 	AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 
@@ -25,6 +28,9 @@ const (
 
 	// 操作未授权。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
 
 	// 关闭数据层失败，至少要保留热层和温层其中一层。
 	FAILEDOPERATION_CLOSEDATATIER = "FailedOperation.CloseDataTier"
@@ -37,6 +43,9 @@ const (
 
 	// 集群状态错误。
 	FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+
+	// 集群状态不健康。
+	FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 
 	// 由于EsDictionaryInfo错误，不允许操纵。
 	FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
@@ -91,6 +100,12 @@ const (
 
 	// Gc类型的取值和预期不符。
 	INVALIDPARAMETER_GC = "InvalidParameter.GC"
+
+	// 索引名已存在。
+	INVALIDPARAMETER_INDEXNAMEEXIST = "InvalidParameter.IndexNameExist"
+
+	// 索引名不合法。
+	INVALIDPARAMETER_INDEXNAMEINVALID = "InvalidParameter.IndexNameInvalid"
 
 	// AppId的取值和预期不符。
 	INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
@@ -269,6 +284,15 @@ const (
 	// 可用区Zone的信息与预期不符。
 	INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
 
+	// 空间名已存在。
+	INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
+
+	// 空间名不合法。
+	INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
+
+	// 用户名已存在。
+	INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
@@ -335,6 +359,9 @@ const (
 	// 升级方式UpgradeMode的取值有误。
 	INVALIDPARAMETERVALUE_UPGRADEMODE = "InvalidParameterValue.UpgradeMode"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 该账号下的集群数超过限额。
 	LIMITEXCEEDED_CLUSTERNUM = "LimitExceeded.ClusterNum"
 
@@ -343,6 +370,12 @@ const (
 
 	// 节点磁盘块数超过最大限额。
 	LIMITEXCEEDED_DISKCOUNT = "LimitExceeded.DiskCount"
+
+	// 空间索引数超过配额。
+	LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+
+	// 空间索引每日创建数超过配额。
+	LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
 
 	// 节点数量或索引存储量超过限额。
 	LIMITEXCEEDED_NODENUMORINDICES = "LimitExceeded.NodeNumOrIndices"
@@ -353,17 +386,32 @@ const (
 	// 超出一个用户可以拥有的最大资源限制。
 	LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 
+	// 空间数超过配额。
+	LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+
+	// 空间每日创建数超过配额。
+	LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+
 	// 更新参数值过多，超过限制。
 	LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
 
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// 地域错误
 	REGIONERROR = "RegionError"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
 	// 存在诊断中的作业，请等待作业诊断完成后重试。
 	RESOURCEINUSE_DIAGNOSE = "ResourceInUse.Diagnose"
+
+	// 索引状态处于隔离状态，不能进行其他操作。
+	RESOURCEINUSE_ISOLATEDSTATUS = "ResourceInUse.IsolatedStatus"
 
 	// 订单被锁定。
 	RESOURCEINUSE_ORDER = "ResourceInUse.Order"
@@ -446,8 +494,14 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
 	// Uin不在白名单中。
 	UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

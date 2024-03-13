@@ -154,6 +154,10 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //
 // 3. <font color='red'>撤销合同会返还合同额度</font>
 //
+// 
+//
+// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -199,6 +203,10 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 // 
 //
 // 3. <font color='red'>撤销合同会返还合同额度</font>
+//
+// 
+//
+// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3633,7 +3641,13 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 }
 
 // CreateIntegrationEmployees
-// 此接口（CreateIntegrationEmployees）用于创建企业员工。
+// 此接口（CreateIntegrationEmployees）用于创建企业员工。创建的员工初始化为未实名，如下图所示。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/2bdcc0d91ac3146b5e8c28811a78ffe9.png)
+//
+// 
 //
 // 支持以下场景
 //
@@ -3657,7 +3671,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）   ![image]() </td>
 //
 // </tr>
 //
@@ -3689,9 +3703,23 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // 
 //
-// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
+// -  <b> 新增员工的手机号、OpenId不能与已加入员工重复</b>， 不管已加入员工的手机号、OpenId是否已经实名
+//
+// - <b>若通过手机号发现员工已经创建且信息一致（名字，openId等），则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
 //
 // - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
+//
+// 
+//
+// 
+//
+// 
+//
+// 短信的样式
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b6ad1b79e0adaaa41d282456c72a1ee6.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3710,7 +3738,13 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 }
 
 // CreateIntegrationEmployees
-// 此接口（CreateIntegrationEmployees）用于创建企业员工。
+// 此接口（CreateIntegrationEmployees）用于创建企业员工。创建的员工初始化为未实名，如下图所示。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/2bdcc0d91ac3146b5e8c28811a78ffe9.png)
+//
+// 
 //
 // 支持以下场景
 //
@@ -3734,7 +3768,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）   ![image]() </td>
 //
 // </tr>
 //
@@ -3766,9 +3800,23 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // 
 //
-// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
+// -  <b> 新增员工的手机号、OpenId不能与已加入员工重复</b>， 不管已加入员工的手机号、OpenId是否已经实名
+//
+// - <b>若通过手机号发现员工已经创建且信息一致（名字，openId等），则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
 //
 // - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
+//
+// 
+//
+// 
+//
+// 
+//
+// 短信的样式
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b6ad1b79e0adaaa41d282456c72a1ee6.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5661,15 +5709,37 @@ func NewDeleteIntegrationEmployeesResponse() (response *DeleteIntegrationEmploye
 }
 
 // DeleteIntegrationEmployees
-// 该接口（DeleteIntegrationEmployees）用于移除企业员工，同时可选择是否进行离职交接。
-//
-// -  如果不设置交接人的ReceiveUserId或ReceiveOpenId，则该员工将被直接移除而不进行交接操作。
-//
-// -  如果设置了ReceiveUserId或ReceiveOpenId，该员工未处理的合同将会被系统交接给设置的交接人，然后再对该员工进行离职操作。
+// 该接口（DeleteIntegrationEmployees）用于离职本企业员工，同时可选择是否进行离职交接。
 //
 // 
 //
-// 注：`1. 超管或法人身份的员工不能被删除。2. 员工存在待处理合同且无人交接时不能被删除。`
+// 
+//
+// - 如果该员工没有未处理的合同，可不设置交接人的ReceiveUserId或ReceiveOpenId进行离职操作。
+//
+// - 如果该员工有未处理的合同，需要设置ReceiveUserId或ReceiveOpenId表示交接的负责人，交接后员工会进行离职操作。
+//
+// 
+//
+// 未处理的合同包括以下：
+//
+// 
+//
+// - 待签署的合同（包括顺序签署还没有轮到的合同，此类合同某些情况可能不会出现在用户的列表中）。
+//
+// - 待填写的合同。
+//
+// - 待解除的合同等。
+//
+// 
+//
+// 注：
+//
+// 1. <font color="red">超管或法人身份的员工不能被离职</font>， 需要在控制台或小程序更换法人和超管后进行离职删除。
+//
+// 2. <font color="red">员工存在待处理合同时必须交接</font>后才能离职无人交接时不能被离职删除。
+//
+// 3. 未实名的员工可以直接离职，不用交接合同
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5685,15 +5755,37 @@ func (c *Client) DeleteIntegrationEmployees(request *DeleteIntegrationEmployeesR
 }
 
 // DeleteIntegrationEmployees
-// 该接口（DeleteIntegrationEmployees）用于移除企业员工，同时可选择是否进行离职交接。
-//
-// -  如果不设置交接人的ReceiveUserId或ReceiveOpenId，则该员工将被直接移除而不进行交接操作。
-//
-// -  如果设置了ReceiveUserId或ReceiveOpenId，该员工未处理的合同将会被系统交接给设置的交接人，然后再对该员工进行离职操作。
+// 该接口（DeleteIntegrationEmployees）用于离职本企业员工，同时可选择是否进行离职交接。
 //
 // 
 //
-// 注：`1. 超管或法人身份的员工不能被删除。2. 员工存在待处理合同且无人交接时不能被删除。`
+// 
+//
+// - 如果该员工没有未处理的合同，可不设置交接人的ReceiveUserId或ReceiveOpenId进行离职操作。
+//
+// - 如果该员工有未处理的合同，需要设置ReceiveUserId或ReceiveOpenId表示交接的负责人，交接后员工会进行离职操作。
+//
+// 
+//
+// 未处理的合同包括以下：
+//
+// 
+//
+// - 待签署的合同（包括顺序签署还没有轮到的合同，此类合同某些情况可能不会出现在用户的列表中）。
+//
+// - 待填写的合同。
+//
+// - 待解除的合同等。
+//
+// 
+//
+// 注：
+//
+// 1. <font color="red">超管或法人身份的员工不能被离职</font>， 需要在控制台或小程序更换法人和超管后进行离职删除。
+//
+// 2. <font color="red">员工存在待处理合同时必须交接</font>后才能离职无人交接时不能被离职删除。
+//
+// 3. 未实名的员工可以直接离职，不用交接合同
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8323,7 +8415,11 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 }
 
 // UpdateIntegrationEmployees
-// 此接口（UpdateIntegrationEmployees）用于修改未实名企业员工信息(姓名，手机号，邮件、部门)。
+// 此接口（UpdateIntegrationEmployees）<font color="red"><b>用于修改未实名企业员工信息(姓名，手机号，邮件、部门)</b></font>。
+//
+// 如果企业员工已经实名， 姓名，手机号，邮件等需要企业员工到小程序或者控制台自己修改， 部门则需要超管到控制台分配
+//
+// 
 //
 // 修改手机号的时候,支持以下场景进行提醒通知
 //
@@ -8335,7 +8431,7 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //
 // <td>生成端</td>
 //
-// <td>入参</td>
+// <td >入参</td>
 //
 // <td>提醒方式</td>
 //
@@ -8345,9 +8441,9 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //
 // <td>普通saas员工</td>
 //
-// <td>不需要传递 InvitationNotifyType</td>
+// <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>短信</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
 //
 // </tr>
 //
@@ -8355,7 +8451,7 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //
 // <td>企微员工</td>
 //
-// <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+// <td>将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，需<font color="red">确保该企微员工在应用的可见范围内</font></td>
 //
 // <td>企微内部实名消息</td>
 //
@@ -8365,9 +8461,9 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //
 // <td>H5端 saas员工</td>
 //
-// <td>传递 InvitationNotifyType = H5，不支持企微</td>
+// <td>传递 InvitationNotifyType = H5，将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号，<font color="red">此场景不支持企微</font></td>
 //
-// <td>生成H5链接</td>
+// <td>生成认证加入企业的H5链接，贵方可以通过自己的渠道触达到此员工</td>
 //
 // </tr>
 //
@@ -8378,6 +8474,8 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 // 注意：
 //
 // 
+//
+// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
 //
 // - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //
@@ -8393,7 +8491,11 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 }
 
 // UpdateIntegrationEmployees
-// 此接口（UpdateIntegrationEmployees）用于修改未实名企业员工信息(姓名，手机号，邮件、部门)。
+// 此接口（UpdateIntegrationEmployees）<font color="red"><b>用于修改未实名企业员工信息(姓名，手机号，邮件、部门)</b></font>。
+//
+// 如果企业员工已经实名， 姓名，手机号，邮件等需要企业员工到小程序或者控制台自己修改， 部门则需要超管到控制台分配
+//
+// 
 //
 // 修改手机号的时候,支持以下场景进行提醒通知
 //
@@ -8405,7 +8507,7 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //
 // <td>生成端</td>
 //
-// <td>入参</td>
+// <td >入参</td>
 //
 // <td>提醒方式</td>
 //
@@ -8415,9 +8517,9 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //
 // <td>普通saas员工</td>
 //
-// <td>不需要传递 InvitationNotifyType</td>
+// <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>短信</td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）</td>
 //
 // </tr>
 //
@@ -8425,7 +8527,7 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //
 // <td>企微员工</td>
 //
-// <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+// <td>将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，需<font color="red">确保该企微员工在应用的可见范围内</font></td>
 //
 // <td>企微内部实名消息</td>
 //
@@ -8435,9 +8537,9 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //
 // <td>H5端 saas员工</td>
 //
-// <td>传递 InvitationNotifyType = H5，不支持企微</td>
+// <td>传递 InvitationNotifyType = H5，将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号，<font color="red">此场景不支持企微</font></td>
 //
-// <td>生成H5链接</td>
+// <td>生成认证加入企业的H5链接，贵方可以通过自己的渠道触达到此员工</td>
 //
 // </tr>
 //
@@ -8448,6 +8550,8 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 // 注意：
 //
 // 
+//
+// - <b>若通过手机号发现员工已经创建，则不会重复创建，但会发送短信或者生成链接提醒员工实名。</b>
 //
 // - jumpUrl 仅支持H5的邀请方式，回跳的url，使用前请联系对接的客户经理沟通，进行域名的配置。
 //

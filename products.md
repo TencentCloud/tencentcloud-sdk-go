@@ -95,8 +95,8 @@
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2024-03-12 01:29:44 |
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-03-12 01:29:59 |
-| es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-03-12 01:30:18 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-03-11 01:15:16 |
+| es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-03-13 16:49:04 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-03-13 16:49:19 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-03-13 01:15:56 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-03-12 01:31:22 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-03-12 19:51:24 |
@@ -226,7 +226,7 @@
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-03-12 01:58:53 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-03-12 10:45:07 |
 | tse | [微服务引擎](https://cloud.tencent.com/document/product/1364) | 2024-03-12 01:59:06 |
-| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-02-23 01:26:28 |
+| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-03-13 15:09:33 |
 | tsw | [微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2024-03-12 02:00:39 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2024-03-12 02:00:41 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2024-03-12 02:00:43 |

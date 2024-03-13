@@ -490,7 +490,7 @@ type BindEmployeeUserIdWithClientOpenIdResponseParams struct {
 	// <ul><li>**0**：失败</li><li>**1**：成功</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -613,7 +613,7 @@ func (r *CancelFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelFlowResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -685,7 +685,7 @@ func (r *CancelMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelMultiFlowSignQRCodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -766,7 +766,7 @@ func (r *CancelUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelUserAutoSignEnableUrlResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1124,7 +1124,7 @@ type CreateBatchCancelFlowUrlResponseParams struct {
 	// 例如:2023-07-28 17:25:59
 	UrlExpireOn *string `json:"UrlExpireOn,omitnil,omitempty" name:"UrlExpireOn"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1293,7 +1293,7 @@ type CreateBatchQuickSignUrlResponseParams struct {
 	// 签署人签署链接信息
 	FlowApproverUrlInfo *FlowApproverUrlInfo `json:"FlowApproverUrlInfo,omitnil,omitempty" name:"FlowApproverUrlInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1495,7 +1495,7 @@ type CreateBatchSignUrlResponseParams struct {
 	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1623,7 +1623,7 @@ type CreateConvertTaskApiResponseParams struct {
 	// 接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1784,7 +1784,7 @@ type CreateDocumentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1934,7 +1934,7 @@ type CreateEmbedWebUrlResponseParams struct {
 	// <br/>EmbedType=PREVIEW_CC_FLOW，该url为h5链接
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2019,7 +2019,7 @@ func (r *CreateExtendedServiceAuthInfosRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExtendedServiceAuthInfosResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2138,7 +2138,7 @@ type CreateFlowApproversResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FillError []*FillError `json:"FillError,omitnil,omitempty" name:"FillError"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2470,7 +2470,7 @@ type CreateFlowByFilesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2573,7 +2573,7 @@ type CreateFlowEvidenceReportResponseParams struct {
 	// Deprecated: ReportUrl is deprecated.
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2677,7 +2677,7 @@ type CreateFlowGroupByFilesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2781,7 +2781,7 @@ type CreateFlowGroupByTemplatesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2898,7 +2898,7 @@ func (r *CreateFlowGroupSignReviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowGroupSignReviewResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3024,7 +3024,7 @@ type CreateFlowRemindsResponseParams struct {
 	// 合同催办结果的详细信息列表。
 	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitnil,omitempty" name:"RemindFlowRecords"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3290,7 +3290,7 @@ type CreateFlowResponseParams struct {
 	// 
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3418,7 +3418,7 @@ func (r *CreateFlowSignReviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowSignReviewResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3545,7 +3545,7 @@ type CreateFlowSignUrlResponseParams struct {
 	// 签署人签署链接信息
 	FlowApproverUrlInfos []*FlowApproverUrlInfo `json:"FlowApproverUrlInfos,omitnil,omitempty" name:"FlowApproverUrlInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3650,7 +3650,7 @@ type CreateIntegrationDepartmentResponseParams struct {
 	// 电子签部门ID。建议开发者保存此部门ID，方便后续查询或修改部门信息。
 	DeptId *string `json:"DeptId,omitnil,omitempty" name:"DeptId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3676,23 +3676,31 @@ type CreateIntegrationEmployeesRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 待创建员工的信息，最多不超过20个。
-	// 其中入参Mobile和DisplayName必填，OpenId、Email和Department.DepartmentId选填，其他字段暂不支持设置。
-	// 在创建企微企业员工场景下，只需传入WeworkOpenId，无需再传其他信息。
+	// 待创建员工的信息最多不超过20个。
+	// 
+	// **1. 在创建企业微信员工的场景下** :  只需传入下面的参数，其他信息不支持设置。
+	// <table> <thead> <tr> <th>参数</th> <th>是否必填</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>WeworkOpenId</td> <td>是</td> <td>企业微信用户账号ID</td> </tr> </tbody> </table>
+	// 
+	// **2. 在其他场景下** :   只需传入下面的参数，其他信息不支持设置。
+	// <table> <thead> <tr> <th>参数</th> <th>是否必填</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>DisplayName</td> <td>是</td> <td>用户的真实名字</td> </tr> <tr> <td>Mobile</td> <td>是</td> <td>用户手机号码</td> </tr> <tr> <td>OpenId</td> <td>否</td> <td>用户的自定义ID</td> </tr> <tr> <td>Email</td> <td>否</td> <td>用户的邮箱</td> </tr> <tr> <td>Department.DepartmentId</td> <td>否</td> <td>用户加入后的部门ID</td> </tr> </tbody> </table>
+	// 
+	// 
+	// 注: `每个手机号每天最多使用3次`
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式
-	// 如果是来自H5的，参数需要传递H5
-	// 短信或者企微 请传递SMS，或者不传递
+	// 员工邀请方式可通过以下方式进行设置：
+	// 
+	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
+	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，
-	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
-	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// 
+	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
@@ -3703,23 +3711,31 @@ type CreateIntegrationEmployeesRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 待创建员工的信息，最多不超过20个。
-	// 其中入参Mobile和DisplayName必填，OpenId、Email和Department.DepartmentId选填，其他字段暂不支持设置。
-	// 在创建企微企业员工场景下，只需传入WeworkOpenId，无需再传其他信息。
+	// 待创建员工的信息最多不超过20个。
+	// 
+	// **1. 在创建企业微信员工的场景下** :  只需传入下面的参数，其他信息不支持设置。
+	// <table> <thead> <tr> <th>参数</th> <th>是否必填</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>WeworkOpenId</td> <td>是</td> <td>企业微信用户账号ID</td> </tr> </tbody> </table>
+	// 
+	// **2. 在其他场景下** :   只需传入下面的参数，其他信息不支持设置。
+	// <table> <thead> <tr> <th>参数</th> <th>是否必填</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>DisplayName</td> <td>是</td> <td>用户的真实名字</td> </tr> <tr> <td>Mobile</td> <td>是</td> <td>用户手机号码</td> </tr> <tr> <td>OpenId</td> <td>否</td> <td>用户的自定义ID</td> </tr> <tr> <td>Email</td> <td>否</td> <td>用户的邮箱</td> </tr> <tr> <td>Department.DepartmentId</td> <td>否</td> <td>用户加入后的部门ID</td> </tr> </tbody> </table>
+	// 
+	// 
+	// 注: `每个手机号每天最多使用3次`
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式
-	// 如果是来自H5的，参数需要传递H5
-	// 短信或者企微 请传递SMS，或者不传递
+	// 员工邀请方式可通过以下方式进行设置：
+	// 
+	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
+	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，
-	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
-	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// 
+	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
@@ -3751,7 +3767,7 @@ type CreateIntegrationEmployeesResponseParams struct {
 	// 创建员工的结果。包含创建成功的数据与创建失败数据。
 	CreateEmployeeResult *CreateStaffResult `json:"CreateEmployeeResult,omitnil,omitempty" name:"CreateEmployeeResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3860,7 +3876,7 @@ type CreateIntegrationRoleResponseParams struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3938,7 +3954,7 @@ type CreateIntegrationUserRolesResponseParams struct {
 	// 绑定角色失败列表信息
 	FailedCreateRoleData []*FailedCreateRoleData `json:"FailedCreateRoleData,omitnil,omitempty" name:"FailedCreateRoleData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4105,7 +4121,7 @@ type CreateMultiFlowSignQRCodeResponseParams struct {
 	// 一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。
 	SignUrls *SignUrl `json:"SignUrls,omitnil,omitempty" name:"SignUrls"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4224,7 +4240,7 @@ type CreateOrganizationBatchSignUrlResponseParams struct {
 	// 链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4304,7 +4320,7 @@ type CreateOrganizationInfoChangeUrlResponseParams struct {
 	// 链接过期时间。链接7天有效。
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4441,7 +4457,7 @@ type CreatePersonAuthCertificateImageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4695,7 +4711,7 @@ type CreatePrepareFlowResponseParams struct {
 	// 创建的合同id（还未实际发起），每次调用会生成新的id，用户可以记录此字段对应后续页面发起的合同，若在页面上未成功发起，则此字段无效。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4903,7 +4919,7 @@ type CreatePreparedPersonalEsignResponseParams struct {
 	// 建议开发者保存此印章ID，开头实名认证后，通过此 ID查询导入的印章。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5027,7 +5043,7 @@ type CreateReleaseFlowResponseParams struct {
 	// `注意：这里的流程编号对应的合同是本次发起的解除协议。`
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5251,7 +5267,7 @@ type CreateSchemeUrlResponseParams struct {
 	// 二维码，在生成动态签署人跳转封面页链接时返回
 	SchemeQrcodeUrl *string `json:"SchemeQrcodeUrl,omitnil,omitempty" name:"SchemeQrcodeUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5359,7 +5375,7 @@ type CreateSealPolicyResponseParams struct {
 	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5594,7 +5610,7 @@ type CreateSealResponseParams struct {
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5749,7 +5765,7 @@ type CreateUserAutoSignEnableUrlResponseParams struct {
 	// <li> **H5SIGN** : h5端链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5852,7 +5868,7 @@ type CreateUserAutoSignSealUrlResponseParams struct {
 	// base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
 	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -5933,7 +5949,7 @@ func (r *CreateWebThemeConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWebThemeConfigResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6018,7 +6034,7 @@ func (r *DeleteExtendedServiceAuthInfosRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteExtendedServiceAuthInfosResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6099,7 +6115,7 @@ func (r *DeleteIntegrationDepartmentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIntegrationDepartmentResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6125,9 +6141,11 @@ type DeleteIntegrationEmployeesRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 待移除员工的信息。应符合以下规则：
-	// <ul><li>UserId和OpenId不可同时为空。</li>
-	// <li>若需要进行离职交接，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空。否则视为不进行离职交接。</li></ul>
+	// 待离职员工的信息最多不超过100个。应符合以下规则：
+	// 
+	// 1. UserId和OpenId不可同时为空，必须填写其中一个，优先使用UserId。
+	// 
+	// 2. **若需要进行离职交接**，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空，必须填写其中一个，优先使用ReceiveUserId。
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
@@ -6142,9 +6160,11 @@ type DeleteIntegrationEmployeesRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 待移除员工的信息。应符合以下规则：
-	// <ul><li>UserId和OpenId不可同时为空。</li>
-	// <li>若需要进行离职交接，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空。否则视为不进行离职交接。</li></ul>
+	// 待离职员工的信息最多不超过100个。应符合以下规则：
+	// 
+	// 1. UserId和OpenId不可同时为空，必须填写其中一个，优先使用UserId。
+	// 
+	// 2. **若需要进行离职交接**，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空，必须填写其中一个，优先使用ReceiveUserId。
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
@@ -6180,7 +6200,7 @@ type DeleteIntegrationEmployeesResponseParams struct {
 	// <li>**失败数据**：展示员工电子签平台UserId、第三方平台OpenId和失败原因</li></ul>
 	DeleteEmployeeResult *DeleteStaffsResult `json:"DeleteEmployeeResult,omitnil,omitempty" name:"DeleteEmployeeResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6258,7 +6278,7 @@ type DeleteIntegrationRoleUsersResponseParams struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6352,7 +6372,7 @@ func (r *DeleteSealPoliciesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSealPoliciesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6501,7 +6521,7 @@ type DescribeBillUsageDetailResponseParams struct {
 	// 消耗详情
 	Details []*BillUsageDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6598,7 +6618,7 @@ type DescribeExtendedServiceAuthDetailResponseParams struct {
 	// 服务授权的信息列表，根据查询类型返回特定扩展服务的授权状况。
 	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil,omitempty" name:"AuthInfoDetail"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6699,7 +6719,7 @@ type DescribeExtendedServiceAuthInfosResponseParams struct {
 	// 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
 	AuthInfoList []*ExtendAuthInfo `json:"AuthInfoList,omitnil,omitempty" name:"AuthInfoList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6874,7 +6894,7 @@ type DescribeFileUrlsResponseParams struct {
 	// URL数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -6960,7 +6980,7 @@ type DescribeFlowBriefsResponseParams struct {
 	// 注：`与入参 FlowIds 的顺序可能存在不一致的情况。`
 	FlowBriefs []*FlowBrief `json:"FlowBriefs,omitnil,omitempty" name:"FlowBriefs"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7040,7 +7060,7 @@ type DescribeFlowComponentsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil,omitempty" name:"RecipientComponentInfos"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7134,7 +7154,7 @@ type DescribeFlowEvidenceReportResponseParams struct {
 	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7231,7 +7251,7 @@ type DescribeFlowInfoResponseParams struct {
 	// 合同组名称，只有在查询合同组信息时才会返回。
 	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7395,7 +7415,7 @@ type DescribeFlowTemplatesResponseParams struct {
 	// 查询到的模板总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7492,7 +7512,7 @@ type DescribeIntegrationDepartmentsResponseParams struct {
 	// 部门信息列表。部门信息根据部门排序号OrderNo降序排列，根据部门创建时间升序排列。
 	Departments []*IntegrationDepartment `json:"Departments,omitnil,omitempty" name:"Departments"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7610,7 +7630,7 @@ type DescribeIntegrationEmployeesResponseParams struct {
 	// 符合条件的员工数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7742,7 +7762,7 @@ type DescribeIntegrationRolesResponseParams struct {
 	// 企业角色信息列表。
 	IntegrateRoles []*IntegrateRole `json:"IntegrateRoles,omitnil,omitempty" name:"IntegrateRoles"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -7882,7 +7902,7 @@ type DescribeOrganizationGroupOrganizationsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivatedTotal *uint64 `json:"ActivatedTotal,omitnil,omitempty" name:"ActivatedTotal"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8041,7 +8061,7 @@ type DescribeOrganizationSealsResponseParams struct {
 	// 查询到的印章结果数组
 	Seals []*OccupiedSeal `json:"Seals,omitnil,omitempty" name:"Seals"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8131,7 +8151,7 @@ type DescribePersonCertificateResponseParams struct {
 	// 证书的Base64
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8220,7 +8240,7 @@ type DescribeSignFaceVideoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitnil,omitempty" name:"IntentionActionResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8298,7 +8318,7 @@ type DescribeThirdPartyAuthCodeResponseParams struct {
 	// <li> **UNVERIFIED**: 此个人未实名</li></ul>
 	VerifyStatus *string `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8397,7 +8417,7 @@ type DescribeUserAutoSignStatusResponseParams struct {
 	// <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -8486,7 +8506,7 @@ func (r *DisableUserAutoSignRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableUserAutoSignResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9282,7 +9302,7 @@ type GetTaskResultApiResponseParams struct {
 	// 资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9574,7 +9594,7 @@ func (r *ModifyApplicationCallbackInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationCallbackInfoResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9703,7 +9723,7 @@ type ModifyExtendedServiceResponseParams struct {
 	// 返回的链接当前操作人（超管或法人）点击链接完成服务开通操作。
 	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9797,7 +9817,7 @@ func (r *ModifyFlowDeadlineRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFlowDeadlineResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -9897,7 +9917,7 @@ func (r *ModifyIntegrationDepartmentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyIntegrationDepartmentResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10004,7 +10024,7 @@ type ModifyIntegrationRoleResponseParams struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10593,7 +10613,7 @@ type StartFlowResponseParams struct {
 	// <li> **EXECUTING** : 已提交发起任务且PDF合同正在合成中, 等PDF合同合成成功后进入签署环节</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10857,7 +10877,7 @@ type UnbindEmployeeUserIdWithClientOpenIdResponseParams struct {
 	// <li> **1**：成功 </li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -10883,23 +10903,25 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 员工信息，不超过100个。
-	// 根据UserId或OpenId更新员工，必填一个，优先UserId。
-	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
+	// 需要更新的员工信息，最多不超过100个。根据UserId或OpenId更新员工信息，必须填写其中一个，优先使用UserId。
+	// 
+	// 可更新以下字段，其他字段暂不支持
+	// <table> <thead> <tr> <th>参数</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>DisplayName</td> <td>用户的真实名字</td> </tr> <tr> <td>Mobile</td> <td>用户手机号码</td> </tr> <tr> <td>Email</td> <td>用户的邮箱</td> </tr> <tr> <td>Department.DepartmentId</td> <td>用户进入后的部门ID</td> </tr> </tbody> </table>
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式
-	// 如果是来自H5的，参数需要传递H5
-	// 短信或者企微 请传递SMS，或者不传递
+	// 员工邀请方式可通过以下方式进行设置：
+	// 
+	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
+	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，
-	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
-	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置。
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// 
+	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
@@ -10910,23 +10932,25 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 员工信息，不超过100个。
-	// 根据UserId或OpenId更新员工，必填一个，优先UserId。
-	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
+	// 需要更新的员工信息，最多不超过100个。根据UserId或OpenId更新员工信息，必须填写其中一个，优先使用UserId。
+	// 
+	// 可更新以下字段，其他字段暂不支持
+	// <table> <thead> <tr> <th>参数</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>DisplayName</td> <td>用户的真实名字</td> </tr> <tr> <td>Mobile</td> <td>用户手机号码</td> </tr> <tr> <td>Email</td> <td>用户的邮箱</td> </tr> <tr> <td>Department.DepartmentId</td> <td>用户进入后的部门ID</td> </tr> </tbody> </table>
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式
-	// 如果是来自H5的，参数需要传递H5
-	// 短信或者企微 请传递SMS，或者不传递
+	// 员工邀请方式可通过以下方式进行设置：
+	// 
+	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
+	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，
-	// 在认证成功之后，进行回跳，请保证回跳地址的可用性。
-	// 使用前请联系对接的客户经理沟通，提供回跳地址的域名，进行域名配置。
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// 
+	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
@@ -10961,7 +10985,7 @@ type UpdateIntegrationEmployeesResponseParams struct {
 	// 更新失败的用户列表
 	FailedEmployeeData []*FailedUpdateStaffData `json:"FailedEmployeeData,omitnil,omitempty" name:"FailedEmployeeData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11125,7 +11149,7 @@ type UploadFilesResponseParams struct {
 	// 上传成功文件数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -11279,7 +11303,7 @@ type VerifyPdfResponseParams struct {
 	// 合同文件MD5哈希值
 	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil,omitempty" name:"PdfResourceMd5"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
