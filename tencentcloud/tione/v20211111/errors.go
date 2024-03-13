@@ -149,6 +149,9 @@ const (
 	// 该Notebook实例不支持保存镜像，如果您使用的是自定义镜像请重启Notebook实例后再执行保存操作
 	FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
 
+	// 未找到Notebook实例相关容器，无法生成访问地址。
+	FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
+
 	// 请求正在处理中，请稍后再试。
 	FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
 

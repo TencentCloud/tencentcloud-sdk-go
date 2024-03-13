@@ -1599,6 +1599,9 @@ type DescribePreDomainListRequestParams struct {
 
 	// 用于结束时间筛选
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 用户指定上架时间筛选
+	UpTime *string `json:"UpTime,omitnil,omitempty" name:"UpTime"`
 }
 
 type DescribePreDomainListRequest struct {
@@ -1612,6 +1615,9 @@ type DescribePreDomainListRequest struct {
 
 	// 用于结束时间筛选
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 用户指定上架时间筛选
+	UpTime *string `json:"UpTime,omitnil,omitempty" name:"UpTime"`
 }
 
 func (r *DescribePreDomainListRequest) ToJsonString() string {
@@ -1629,6 +1635,7 @@ func (r *DescribePreDomainListRequest) FromJsonString(s string) error {
 	delete(f, "Page")
 	delete(f, "Size")
 	delete(f, "EndTime")
+	delete(f, "UpTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreDomainListRequest has unknown keys!", "")
 	}

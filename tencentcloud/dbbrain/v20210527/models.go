@@ -3174,7 +3174,7 @@ type DescribeProxyProcessStatisticsRequestParams struct {
 	// 偏移量，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	// 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。
@@ -3199,7 +3199,7 @@ type DescribeProxyProcessStatisticsRequest struct {
 	// 偏移量，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	// 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。

@@ -6958,6 +6958,12 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 是否给平台应用授权:
+	// - true: 是（无需设置AuthorizedOrganizationId和AuthorizedOrganizationName）
+	// - false: 否（默认）
+	//  注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
+	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
@@ -6981,6 +6987,12 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
 	// 注：`被授权企业必须和当前企业在同一应用号下`
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 是否给平台应用授权:
+	// - true: 是（无需设置AuthorizedOrganizationId和AuthorizedOrganizationName）
+	// - false: 否（默认）
+	//  注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
+	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -6998,6 +7010,7 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "AuthorizedOrganizationId")
 	delete(f, "AuthorizedOrganizationName")
+	delete(f, "PlatformAppAuthorization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}

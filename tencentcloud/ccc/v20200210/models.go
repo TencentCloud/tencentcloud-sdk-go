@@ -3595,7 +3595,7 @@ func (r *DisableCCCPhoneNumberResponse) FromJsonString(s string) error {
 }
 
 type ErrStaffItem struct {
-	// 坐席邮箱地址
+	// 座席邮箱地址
 	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
 
 	// 错误码
@@ -3633,10 +3633,10 @@ type ExtensionInfo struct {
 	// 是否注册
 	Register *bool `json:"Register,omitnil,omitempty" name:"Register"`
 
-	// 绑定坐席邮箱
+	// 绑定座席邮箱
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 
-	// 绑定坐席名称
+	// 绑定座席名称
 	RelationName *string `json:"RelationName,omitnil,omitempty" name:"RelationName"`
 }
 
@@ -3719,10 +3719,10 @@ type IMCdrInfo struct {
 	// 结束状态
 	// 0 异常结束
 	// 1 正常结束
-	// 3 无坐席在线
-	// 17 坐席放弃接听
+	// 3 无座席在线
+	// 17 座席放弃接听
 	// 100 黑名单
-	// 101 坐席手动转接
+	// 101 座席手动转接
 	// 102 IVR阶段放弃
 	// 108 用户超时自动结束
 	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
@@ -4013,15 +4013,15 @@ type PSTNSession struct {
 	// 接听时间，Unix 时间戳
 	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
 
-	// 坐席工号
+	// 座席工号
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
 	// 会话状态
 	// ringing 振铃中
-	// seatJoining  等待坐席接听
+	// seatJoining  等待座席接听
 	// inProgress 进行中
 	// finished 已完成
 	SessionStatus *string `json:"SessionStatus,omitnil,omitempty" name:"SessionStatus"`
@@ -4061,13 +4061,13 @@ type PSTNSessionInfo struct {
 	// 接听时间，Unix 时间戳
 	AcceptTimestamp *string `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
 
-	// 坐席工号
+	// 座席工号
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
-	// 坐席状态 inProgress 进行中
+	// 座席状态 inProgress 进行中
 	SessionStatus *string `json:"SessionStatus,omitnil,omitempty" name:"SessionStatus"`
 
 	// 会话呼叫方向， 0 呼入 | 1 - 呼出
@@ -4316,10 +4316,10 @@ type SdkAppIdBuyInfo struct {
 	// 应用名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 坐席购买数（还在有效期内）
+	// 座席购买数（还在有效期内）
 	StaffBuyNum *int64 `json:"StaffBuyNum,omitnil,omitempty" name:"StaffBuyNum"`
 
-	// 坐席购买列表 （还在有效期内）
+	// 座席购买列表 （还在有效期内）
 	StaffBuyList []*StaffBuyInfo `json:"StaffBuyList,omitnil,omitempty" name:"StaffBuyList"`
 
 	// 号码购买列表
@@ -4331,26 +4331,26 @@ type SdkAppIdBuyInfo struct {
 }
 
 type SeatUserInfo struct {
-	// 坐席名称
+	// 座席名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 工号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
-	// 坐席电话号码（带0086前缀）
+	// 座席电话号码（带0086前缀）
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 坐席昵称
+	// 座席昵称
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 坐席关联的技能组列表
+	// 座席关联的技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitnil,omitempty" name:"SkillGroupNameList"`
 
@@ -4363,11 +4363,11 @@ type SeatUserInfo struct {
 }
 
 type ServeParticipant struct {
-	// 坐席邮箱
+	// 座席邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
-	// 坐席电话
+	// 座席电话
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
@@ -4383,7 +4383,7 @@ type ServeParticipant struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
 
-	// 录音 ID，能够索引到坐席侧的录音
+	// 录音 ID，能够索引到座席侧的录音
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
@@ -4391,7 +4391,7 @@ type ServeParticipant struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 转接来源坐席信息
+	// 转接来源座席信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferFrom *string `json:"TransferFrom,omitnil,omitempty" name:"TransferFrom"`
 
@@ -4399,7 +4399,7 @@ type ServeParticipant struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferFromType *string `json:"TransferFromType,omitnil,omitempty" name:"TransferFromType"`
 
-	// 转接去向坐席信息
+	// 转接去向座席信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferTo *string `json:"TransferTo,omitnil,omitempty" name:"TransferTo"`
 
@@ -4450,7 +4450,7 @@ type SkillGroupInfoItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutePolicy *string `json:"RoutePolicy,omitnil,omitempty" name:"RoutePolicy"`
 
-	// 会话分配是否优先上次服务坐席
+	// 会话分配是否优先上次服务座席
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsingLastSeat *int64 `json:"UsingLastSeat,omitnil,omitempty" name:"UsingLastSeat"`
 
@@ -4482,7 +4482,7 @@ type SkillGroupItem struct {
 }
 
 type StaffBuyInfo struct {
-	// 购买坐席数量
+	// 购买座席数量
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 购买时间戳
@@ -4497,22 +4497,22 @@ type StaffBuyInfo struct {
 }
 
 type StaffInfo struct {
-	// 坐席名称
+	// 座席名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
-	// 坐席电话号码
+	// 座席电话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 坐席昵称
+	// 座席昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
-	// 坐席工号
+	// 座席工号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
@@ -4545,13 +4545,13 @@ type StaffStatusExtra struct {
 }
 
 type StaffStatusMetrics struct {
-	// 坐席邮箱
+	// 座席邮箱
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+	// 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 坐席状态补充信息
+	// 座席状态补充信息
 	StatusExtra *StaffStatusExtra `json:"StatusExtra,omitnil,omitempty" name:"StatusExtra"`
 
 	// 当天在线总时长
@@ -4680,7 +4680,7 @@ type TelCdrInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 坐席信息
+	// 座席信息
 	SeatUser *SeatUserInfo `json:"SeatUser,omitnil,omitempty" name:"SeatUser"`
 
 	// EndStatus与EndStatusString一一对应，具体枚举如下：
@@ -4697,7 +4697,7 @@ type TelCdrInfo struct {
 	// 
 	// 电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
 	// 
-	// 电话呼入	             105	        noSeatOnline	       无坐席在线
+	// 电话呼入	             105	        noSeatOnline	       无座席在线
 	// 
 	// 电话呼入              106	       notWorkTime	       非工作时间   
 	// 
@@ -4756,7 +4756,7 @@ type TelCdrInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IVRKeyPressed []*string `json:"IVRKeyPressed,omitnil,omitempty" name:"IVRKeyPressed"`
 
-	// 挂机方 seat 坐席 user 用户 system 系统
+	// 挂机方 seat 座席 user 用户 system 系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HungUpSide *string `json:"HungUpSide,omitnil,omitempty" name:"HungUpSide"`
 
@@ -4782,7 +4782,7 @@ type TelCdrInfo struct {
 	// 
 	// 电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
 	// 
-	// 电话呼入	             105	        noSeatOnline	       无坐席在线
+	// 电话呼入	             105	        noSeatOnline	       无座席在线
 	// 
 	// 电话呼入              106	       notWorkTime	       非工作时间   
 	// 

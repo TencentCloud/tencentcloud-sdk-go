@@ -107,7 +107,7 @@ type BankCard2EVerificationResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -226,7 +226,7 @@ type BankCard4EVerificationResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -337,7 +337,7 @@ type BankCardVerificationResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -450,7 +450,7 @@ type CheckBankCardInformationResponseParams struct {
 	// 卡性质：1. 借记卡；2. 贷记卡；3. 预付费卡；4. 准贷记卡
 	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -511,7 +511,7 @@ type CheckEidTokenStatusResponseParams struct {
 	// timeout: token已超时
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -675,7 +675,7 @@ type CheckIdCardInformationResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -773,7 +773,7 @@ type CheckIdNameDateResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -854,7 +854,7 @@ type CheckPhoneAndNameResponseParams struct {
 	// 业务结果描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -951,7 +951,7 @@ type DetectAIFakeFacesResponseParams struct {
 	// 额外信息
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1093,7 +1093,7 @@ type DetectAuthResponseParams struct {
 	// 完成核身后，可用该标识获取验证结果信息。
 	BizToken *string `json:"BizToken,omitnil,omitempty" name:"BizToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1469,7 +1469,7 @@ type EncryptedPhoneVerificationResponseParams struct {
 	// 取值范围为["移动","联通","电信",""]
 	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1554,7 +1554,7 @@ type GetActionSequenceResponseParams struct {
 	// 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
 	ActionSequence *string `json:"ActionSequence,omitnil,omitempty" name:"ActionSequence"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1704,7 +1704,7 @@ type GetDetectInfoEnhancedResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1827,7 +1827,7 @@ type GetDetectInfoResponseParams struct {
 	// }
 	DetectInfo *string `json:"DetectInfo,omitnil,omitempty" name:"DetectInfo"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1941,7 +1941,7 @@ type GetEidResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitnil,omitempty" name:"IntentionActionResult"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2078,7 +2078,7 @@ type GetEidTokenResponseParams struct {
 	// 发起核身流程的URL，用于H5场景核身。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2188,7 +2188,7 @@ type GetFaceIdResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInfoTag *string `json:"RiskInfoTag,omitnil,omitempty" name:"RiskInfoTag"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2298,7 +2298,7 @@ type GetFaceIdTokenResponseParams struct {
 	// 有效期 10分钟。只能完成1次核身。
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2352,7 +2352,7 @@ type GetLiveCodeResponseParams struct {
 	// 数字验证码，如：1234
 	LiveCode *string `json:"LiveCode,omitnil,omitempty" name:"LiveCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2429,7 +2429,7 @@ type GetWeChatBillDetailsResponseParams struct {
 	// 数据
 	WeChatBillDetails []*WeChatBillDetail `json:"WeChatBillDetails,omitnil,omitempty" name:"WeChatBillDetails"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2563,7 +2563,7 @@ type IdCardOCRVerificationResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2647,7 +2647,7 @@ type IdCardVerificationResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2742,7 +2742,7 @@ type ImageRecognitionResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2837,7 +2837,7 @@ type ImageRecognitionV2ResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3135,7 +3135,7 @@ type LivenessCompareResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameList []*string `json:"BestFrameList,omitnil,omitempty" name:"BestFrameList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3277,7 +3277,7 @@ type LivenessRecognitionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameList []*string `json:"BestFrameList,omitnil,omitempty" name:"BestFrameList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3380,7 +3380,7 @@ type LivenessResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameList []*string `json:"BestFrameList,omitnil,omitempty" name:"BestFrameList"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3495,7 +3495,7 @@ type MinorsVerificationResponseParams struct {
 	// [18,+)表示年龄大于18周岁。
 	AgeRange *string `json:"AgeRange,omitnil,omitempty" name:"AgeRange"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3573,7 +3573,7 @@ type MobileNetworkTimeVerificationResponseParams struct {
 	// 格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3655,7 +3655,7 @@ type MobileStatusResponseParams struct {
 	// 99：未知状态
 	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3791,7 +3791,7 @@ type ParseNfcDataResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultDescription *string `json:"ResultDescription,omitnil,omitempty" name:"ResultDescription"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3885,7 +3885,7 @@ type PhoneVerificationCMCCResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -3979,7 +3979,7 @@ type PhoneVerificationCTCCResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4073,7 +4073,7 @@ type PhoneVerificationCUCCResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -4181,7 +4181,7 @@ type PhoneVerificationResponseParams struct {
 	// 取值范围为["","移动","电信","联通"]
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

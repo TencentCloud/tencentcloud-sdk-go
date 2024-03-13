@@ -689,6 +689,75 @@ func (c *Client) CreateOptimizedModelWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreatePresignedNotebookUrlRequest() (request *CreatePresignedNotebookUrlRequest) {
+    request = &CreatePresignedNotebookUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreatePresignedNotebookUrl")
+    
+    
+    return
+}
+
+func NewCreatePresignedNotebookUrlResponse() (response *CreatePresignedNotebookUrlResponse) {
+    response = &CreatePresignedNotebookUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePresignedNotebookUrl
+// 生成Notebook访问链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreatePresignedNotebookUrl(request *CreatePresignedNotebookUrlRequest) (response *CreatePresignedNotebookUrlResponse, err error) {
+    return c.CreatePresignedNotebookUrlWithContext(context.Background(), request)
+}
+
+// CreatePresignedNotebookUrl
+// 生成Notebook访问链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreatePresignedNotebookUrlWithContext(ctx context.Context, request *CreatePresignedNotebookUrlRequest) (response *CreatePresignedNotebookUrlResponse, err error) {
+    if request == nil {
+        request = NewCreatePresignedNotebookUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePresignedNotebookUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePresignedNotebookUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTrainingModelRequest() (request *CreateTrainingModelRequest) {
     request = &CreateTrainingModelRequest{
         BaseRequest: &tchttp.BaseRequest{},

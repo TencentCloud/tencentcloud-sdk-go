@@ -1586,6 +1586,9 @@ type CreateConfigExtraRequestParams struct {
 	// 绑定的机器组id列表
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
+	// 采集相关配置信息。详情见CollectInfo复杂类型配置。
+	CollectInfos []*CollectInfo `json:"CollectInfos,omitnil,omitempty" name:"CollectInfos"`
+
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
@@ -1648,6 +1651,9 @@ type CreateConfigExtraRequest struct {
 	// 绑定的机器组id列表
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
+	// 采集相关配置信息。详情见CollectInfo复杂类型配置。
+	CollectInfos []*CollectInfo `json:"CollectInfos,omitnil,omitempty" name:"CollectInfos"`
+
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
@@ -1685,6 +1691,7 @@ func (r *CreateConfigExtraRequest) FromJsonString(s string) error {
 	delete(f, "UserDefineRule")
 	delete(f, "GroupId")
 	delete(f, "GroupIds")
+	delete(f, "CollectInfos")
 	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigExtraRequest has unknown keys!", "")
@@ -3069,7 +3076,7 @@ type CreateTopicRequestParams struct {
 	// 仅在StorageType为 hot 时生效。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 免鉴权开关。 false：关闭； true：开启。
+	// 免鉴权开关。 false：关闭； true：开启。默认为false。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
@@ -3110,7 +3117,7 @@ type CreateTopicRequest struct {
 	// 仅在StorageType为 hot 时生效。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 免鉴权开关。 false：关闭； true：开启。
+	// 免鉴权开关。 false：关闭； true：开启。默认为false。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 }
@@ -5051,42 +5058,11 @@ type DescribeDashboardsRequestParams struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <br><li>dashboardId
-	// 
-	// 按照【仪表盘id】进行过滤。
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> dashboardName
-	// 
-	// 按照【仪表盘名字】进行模糊搜索过滤。
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> dashboardRegion
-	// 
-	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> tagKey
-	// 
-	// 按照【标签键】进行过滤。
-	// 
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> tag:tagKey
-	// 
-	// 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。使用请参考示例二。
-	// 
-	// 类型：String
-	// 
-	// 必选：否</li>
+	// - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+	// - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
+	// - dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+	// - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
+	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -5104,42 +5080,11 @@ type DescribeDashboardsRequest struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <br><li>dashboardId
-	// 
-	// 按照【仪表盘id】进行过滤。
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> dashboardName
-	// 
-	// 按照【仪表盘名字】进行模糊搜索过滤。
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> dashboardRegion
-	// 
-	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> tagKey
-	// 
-	// 按照【标签键】进行过滤。
-	// 
-	// 类型：String
-	// 
-	// 必选：否</li>
-	// 
-	// <br><li> tag:tagKey
-	// 
-	// 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。使用请参考示例二。
-	// 
-	// 类型：String
-	// 
-	// 必选：否</li>
+	// - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+	// - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
+	// - dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+	// - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
+	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6325,7 +6270,7 @@ type DescribeScheduledSqlInfoRequestParams struct {
 	// <li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
 	// <li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
-	// <li>bizType按照【主题类型】进行过滤，0日志主题 1指标主题。类型：String。必选：否</li>
+	// <li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
 	// <li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
 	// <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
@@ -6351,7 +6296,7 @@ type DescribeScheduledSqlInfoRequest struct {
 	// <li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
 	// <li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
-	// <li>bizType按照【主题类型】进行过滤，0日志主题 1指标主题。类型：String。必选：否</li>
+	// <li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
 	// <li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
 	// <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 	// <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
@@ -6762,7 +6707,9 @@ type ExtractRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 需要过滤日志的key，及其对应的regex
+	// 日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
+	//  注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterKeyRegex []*KeyRegexInfo `json:"FilterKeyRegex,omitnil,omitempty" name:"FilterKeyRegex"`
 
@@ -6860,10 +6807,10 @@ type FullTextInfo struct {
 
 // Predefined struct for user
 type GetAlarmLogRequestParams struct {
-	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
+	// 要查询的执行详情的起始时间，Unix时间戳，单位ms。
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
+	// 要查询的执行详情的结束时间，Unix时间戳，单位ms。
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询过滤条件，例如：
@@ -6876,26 +6823,31 @@ type GetAlarmLogRequestParams struct {
 	// 单次查询返回的执行详情条数，最大值为1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	// 注意：
+	// * 透传该参数时，请勿修改除该参数外的其它参数
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
-	// 为false代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
+	// true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
+	// false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
 	// 两种返回方式在编码格式上有少量区别，建议使用true。
-	// 示例值：false
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 type GetAlarmLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
+	// 要查询的执行详情的起始时间，Unix时间戳，单位ms。
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
+	// 要查询的执行详情的结束时间，Unix时间戳，单位ms。
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 查询过滤条件，例如：
@@ -6908,16 +6860,21 @@ type GetAlarmLogRequest struct {
 	// 单次查询返回的执行详情条数，最大值为1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	// 注意：
+	// * 透传该参数时，请勿修改除该参数外的其它参数
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
-	// 为false代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
+	// true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
+	// false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
 	// 两种返回方式在编码格式上有少量区别，建议使用true。
-	// 示例值：false
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
@@ -6963,7 +6920,6 @@ type GetAlarmLogResponseParams struct {
 	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
 	// 执行详情查询结果。
-	// 
 	// 当Query字段无SQL语句时，返回查询结果。
 	// 当Query字段有SQL语句时，可能返回null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10695,6 +10651,7 @@ type TopicInfo struct {
 
 	// 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
 	// 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
+	// HotPeriod=0为没有开启日志沉降。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 

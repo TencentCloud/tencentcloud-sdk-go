@@ -2132,6 +2132,59 @@ func (c *Client) SetAccountUserPrivilegeWithContext(ctx context.Context, request
     return
 }
 
+func NewSetInstanceMaintenanceRequest() (request *SetInstanceMaintenanceRequest) {
+    request = &SetInstanceMaintenanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "SetInstanceMaintenance")
+    
+    
+    return
+}
+
+func NewSetInstanceMaintenanceResponse() (response *SetInstanceMaintenanceResponse) {
+    response = &SetInstanceMaintenanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetInstanceMaintenance
+// 本接口（SetInstanceMaintenance ） 用于设置实例维护时间窗。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SetInstanceMaintenance(request *SetInstanceMaintenanceRequest) (response *SetInstanceMaintenanceResponse, err error) {
+    return c.SetInstanceMaintenanceWithContext(context.Background(), request)
+}
+
+// SetInstanceMaintenance
+// 本接口（SetInstanceMaintenance ） 用于设置实例维护时间窗。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SetInstanceMaintenanceWithContext(ctx context.Context, request *SetInstanceMaintenanceRequest) (response *SetInstanceMaintenanceResponse, err error) {
+    if request == nil {
+        request = NewSetInstanceMaintenanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetInstanceMaintenance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetInstanceMaintenanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateDBInstancesRequest() (request *TerminateDBInstancesRequest) {
     request = &TerminateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

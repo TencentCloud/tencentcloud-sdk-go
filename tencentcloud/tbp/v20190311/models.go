@@ -67,7 +67,7 @@ type CreateBotResponseParams struct {
 	// 任务信息
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -190,7 +190,7 @@ type ResetResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaveData *string `json:"WaveData,omitnil,omitempty" name:"WaveData"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -324,7 +324,7 @@ type TextProcessResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitnil,omitempty" name:"ResponseMessage"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -420,7 +420,7 @@ type TextResetResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseText *string `json:"ResponseText,omitnil,omitempty" name:"ResponseText"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

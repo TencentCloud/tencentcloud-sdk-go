@@ -3983,8 +3983,8 @@ type CompareRuleItem struct {
 	// IRLORO:在区间内(左开右开)
 	// NRLCRO:不在区间内(左闭右开)
 	// NRLORC:不在区间内(左开右闭)
-	// NRLCRC:不在在区间内(左闭右闭)
-	// NRLORO:不在在区间内(左开右开)
+	// NRLCRC:不在区间内(左闭右闭)
+	// NRLORO:不在区间内(左开右开)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
@@ -5848,10 +5848,10 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRuleTemplateRequestParams struct {
-	// 模版类型  1.系统模版   2.自定义模版
+	// 模板类型  1.系统模板   2.自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 模版名称
+	// 模板名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
@@ -5882,10 +5882,10 @@ type CreateRuleTemplateRequestParams struct {
 type CreateRuleTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版类型  1.系统模版   2.自定义模版
+	// 模板类型  1.系统模板   2.自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 模版名称
+	// 模板名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
@@ -7999,7 +7999,7 @@ type DeleteRuleTemplateRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 模版Id列表
+	// 模板Id列表
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
@@ -8009,7 +8009,7 @@ type DeleteRuleTemplateRequest struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 模版Id列表
+	// 模板Id列表
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
@@ -18979,7 +18979,7 @@ func (r *DescribeRuleTemplatesByPageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleTemplatesRequestParams struct {
-	// 模版类型 1.系统模版 2.自定义模版
+	// 模板类型 1.系统模板 2.自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 1.常量 2.离线表级 2.离线字段级
@@ -18995,7 +18995,7 @@ type DescribeRuleTemplatesRequestParams struct {
 type DescribeRuleTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版类型 1.系统模版 2.自定义模版
+	// 模板类型 1.系统模板 2.自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 1.常量 2.离线表级 2.离线字段级
@@ -19032,7 +19032,7 @@ func (r *DescribeRuleTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleTemplatesResponseParams struct {
-	// 规则模版列表
+	// 规则模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*RuleTemplate `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -25807,6 +25807,10 @@ type InstanceLifeCycleOpsDto struct {
 	// 实例日志简略信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceLogListOpsDto *InstanceLogInfo `json:"InstanceLogListOpsDto,omitnil,omitempty" name:"InstanceLogListOpsDto"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 }
 
 type InstanceLifeDetailDto struct {
@@ -25817,6 +25821,14 @@ type InstanceLifeDetailDto struct {
 	// 该状态开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 实例生命周期阶段状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailState *string `json:"DetailState,omitnil,omitempty" name:"DetailState"`
+
+	// 该状态结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type InstanceList struct {

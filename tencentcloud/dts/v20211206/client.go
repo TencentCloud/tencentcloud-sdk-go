@@ -4384,7 +4384,7 @@ func NewResetConsumerGroupOffsetResponse() (response *ResetConsumerGroupOffsetRe
 }
 
 // ResetConsumerGroupOffset
-// 本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。掉用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
+// 本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。调用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4410,7 +4410,7 @@ func (c *Client) ResetConsumerGroupOffset(request *ResetConsumerGroupOffsetReque
 }
 
 // ResetConsumerGroupOffset
-// 本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。掉用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
+// 本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。调用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
