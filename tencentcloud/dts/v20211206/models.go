@@ -5767,7 +5767,7 @@ type ProcessProgress struct {
 
 	// 进度信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 总的步骤数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6816,7 +6816,7 @@ type StepDetailInfo struct {
 
 	// 执行进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7076,7 +7076,7 @@ type SubscribeCheckStepInfo struct {
 
 	// 当前步骤进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 错误提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
