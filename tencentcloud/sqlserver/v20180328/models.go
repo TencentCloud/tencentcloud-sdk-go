@@ -4694,6 +4694,9 @@ type DescribeCollationTimeZoneRequestParams struct {
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，
 	// CLOUD_SSD-云服务器SSD云盘,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘,CLOUD_BASIC-云服务器云硬盘，默认取值PM
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 购买实例版本号
+	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 }
 
 type DescribeCollationTimeZoneRequest struct {
@@ -4702,6 +4705,9 @@ type DescribeCollationTimeZoneRequest struct {
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，
 	// CLOUD_SSD-云服务器SSD云盘,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘,CLOUD_BASIC-云服务器云硬盘，默认取值PM
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 购买实例版本号
+	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 }
 
 func (r *DescribeCollationTimeZoneRequest) ToJsonString() string {
@@ -4717,6 +4723,7 @@ func (r *DescribeCollationTimeZoneRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "MachineType")
+	delete(f, "DBVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCollationTimeZoneRequest has unknown keys!", "")
 	}

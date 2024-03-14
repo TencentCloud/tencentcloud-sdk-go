@@ -217,6 +217,16 @@ type ApplicationStatics struct {
 	CountApps *int64 `json:"CountApps,omitnil,omitempty" name:"CountApps"`
 }
 
+type Arg struct {
+	// key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type AutoScaleRecord struct {
 	// 扩缩容规则名。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
@@ -6725,6 +6735,9 @@ type StartStopServiceOrMonitorRequestParams struct {
 
 	// 操作策略
 	StrategyConfig *StrategyConfig `json:"StrategyConfig,omitnil,omitempty" name:"StrategyConfig"`
+
+	// 暂停服务时用的参数
+	StopParams *StopParams `json:"StopParams,omitnil,omitempty" name:"StopParams"`
 }
 
 type StartStopServiceOrMonitorRequest struct {
@@ -6746,6 +6759,9 @@ type StartStopServiceOrMonitorRequest struct {
 
 	// 操作策略
 	StrategyConfig *StrategyConfig `json:"StrategyConfig,omitnil,omitempty" name:"StrategyConfig"`
+
+	// 暂停服务时用的参数
+	StopParams *StopParams `json:"StopParams,omitnil,omitempty" name:"StopParams"`
 }
 
 func (r *StartStopServiceOrMonitorRequest) ToJsonString() string {
@@ -6764,6 +6780,7 @@ func (r *StartStopServiceOrMonitorRequest) FromJsonString(s string) error {
 	delete(f, "OpType")
 	delete(f, "OpScope")
 	delete(f, "StrategyConfig")
+	delete(f, "StopParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStopServiceOrMonitorRequest has unknown keys!", "")
 	}
@@ -6808,6 +6825,15 @@ type Step struct {
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
+type StopParams struct {
+	// 安全模式：safe
+	// 默认模式：default
+	StopPolicy *string `json:"StopPolicy,omitnil,omitempty" name:"StopPolicy"`
+
+	// 线程数
+	ThreadCount *int64 `json:"ThreadCount,omitnil,omitempty" name:"ThreadCount"`
+}
+
 type StrategyConfig struct {
 	// 0:关闭滚动重启
 	// 1:开启滚动启动
@@ -6825,6 +6851,10 @@ type StrategyConfig struct {
 	// 操作失败处理策略，0:失败阻塞, 1:失败自动跳过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealOnFail *int64 `json:"DealOnFail,omitnil,omitempty" name:"DealOnFail"`
+
+	// 指令需要指定的参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Args []*Arg `json:"Args,omitnil,omitempty" name:"Args"`
 }
 
 type SubnetInfo struct {

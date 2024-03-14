@@ -3909,7 +3909,15 @@ func NewChannelDescribeBillUsageDetailResponse() (response *ChannelDescribeBillU
 }
 
 // ChannelDescribeBillUsageDetail
-// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。可以支持单个子客和整个应用下所有子客的查询。
+//
+// <ul>
+//
+// <li>对于单个子客企业的查询，通过指定子客的唯一标识(Agent.ProxyOrganizationOpenId)来查询该子客消耗详情</li>
+//
+// <li>对于整个应用下所有企业的查询，不需要指定子客的唯一标识，只需要传入渠道应用标识(Agent.AppId)直接查询整个应用下所有子客企业消耗详情</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3922,7 +3930,15 @@ func (c *Client) ChannelDescribeBillUsageDetail(request *ChannelDescribeBillUsag
 }
 
 // ChannelDescribeBillUsageDetail
-// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+// 通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。可以支持单个子客和整个应用下所有子客的查询。
+//
+// <ul>
+//
+// <li>对于单个子客企业的查询，通过指定子客的唯一标识(Agent.ProxyOrganizationOpenId)来查询该子客消耗详情</li>
+//
+// <li>对于整个应用下所有企业的查询，不需要指定子客的唯一标识，只需要传入渠道应用标识(Agent.AppId)直接查询整个应用下所有子客企业消耗详情</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4735,6 +4751,87 @@ func (c *Client) ChannelModifyRoleWithContext(ctx context.Context, request *Chan
     request.SetContext(ctx)
     
     response = NewChannelModifyRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelRenewAutoSignLicenseRequest() (request *ChannelRenewAutoSignLicenseRequest) {
+    request = &ChannelRenewAutoSignLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelRenewAutoSignLicense")
+    
+    
+    return
+}
+
+func NewChannelRenewAutoSignLicenseResponse() (response *ChannelRenewAutoSignLicenseResponse) {
+    response = &ChannelRenewAutoSignLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChannelRenewAutoSignLicense
+// 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelRenewAutoSignLicense(request *ChannelRenewAutoSignLicenseRequest) (response *ChannelRenewAutoSignLicenseResponse, err error) {
+    return c.ChannelRenewAutoSignLicenseWithContext(context.Background(), request)
+}
+
+// ChannelRenewAutoSignLicense
+// 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelRenewAutoSignLicenseWithContext(ctx context.Context, request *ChannelRenewAutoSignLicenseRequest) (response *ChannelRenewAutoSignLicenseResponse, err error) {
+    if request == nil {
+        request = NewChannelRenewAutoSignLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelRenewAutoSignLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelRenewAutoSignLicenseResponse()
     err = c.Send(request, response)
     return
 }

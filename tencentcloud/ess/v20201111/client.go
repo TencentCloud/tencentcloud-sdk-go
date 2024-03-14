@@ -8157,6 +8157,89 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewRenewAutoSignLicenseRequest() (request *RenewAutoSignLicenseRequest) {
+    request = &RenewAutoSignLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "RenewAutoSignLicense")
+    
+    
+    return
+}
+
+func NewRenewAutoSignLicenseResponse() (response *RenewAutoSignLicenseResponse) {
+    response = &RenewAutoSignLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewAutoSignLicense
+// 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) RenewAutoSignLicense(request *RenewAutoSignLicenseRequest) (response *RenewAutoSignLicenseResponse, err error) {
+    return c.RenewAutoSignLicenseWithContext(context.Background(), request)
+}
+
+// RenewAutoSignLicense
+// 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+//
+// 
+//
+// 注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) RenewAutoSignLicenseWithContext(ctx context.Context, request *RenewAutoSignLicenseRequest) (response *RenewAutoSignLicenseResponse, err error) {
+    if request == nil {
+        request = NewRenewAutoSignLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewAutoSignLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewAutoSignLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartFlowRequest() (request *StartFlowRequest) {
     request = &StartFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3442,14 +3442,14 @@ func (r *DescribeCdnDomainLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCdnIpRequestParams struct {
-	// 需要查询的 IP 列表
+	// 需要查询的 IP 列表，单次可支持1-20个IP查询。
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 }
 
 type DescribeCdnIpRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的 IP 列表
+	// 需要查询的 IP 列表，单次可支持1-20个IP查询。
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 }
 

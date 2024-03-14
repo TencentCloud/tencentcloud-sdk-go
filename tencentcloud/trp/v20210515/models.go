@@ -5100,6 +5100,14 @@ type Quota struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskQuota *int64 `json:"RiskQuota,omitnil,omitempty" name:"RiskQuota"`
 
+	// AI文字数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AigcTextQuota *int64 `json:"AigcTextQuota,omitnil,omitempty" name:"AigcTextQuota"`
+
+	// AI图片数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AigcImageQuota *int64 `json:"AigcImageQuota,omitnil,omitempty" name:"AigcImageQuota"`
+
 	// 溯源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackType *int64 `json:"TrackType,omitnil,omitempty" name:"TrackType"`

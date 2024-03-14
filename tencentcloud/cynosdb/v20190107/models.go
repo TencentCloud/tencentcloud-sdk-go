@@ -248,6 +248,9 @@ type AddInstancesRequestParams struct {
 
 	// 安全组ID，新建只读实例时可以指定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// proxy同步升级
+	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
 type AddInstancesRequest struct {
@@ -301,6 +304,9 @@ type AddInstancesRequest struct {
 
 	// 安全组ID，新建只读实例时可以指定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// proxy同步升级
+	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
 func (r *AddInstancesRequest) ToJsonString() string {
@@ -331,6 +337,7 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateId")
 	delete(f, "InstanceParams")
 	delete(f, "SecurityGroupIds")
+	delete(f, "UpgradeProxy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddInstancesRequest has unknown keys!", "")
 	}
@@ -13853,6 +13860,9 @@ type UpgradeInstanceRequestParams struct {
 
 	// NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
 	UpgradeMode *string `json:"UpgradeMode,omitnil,omitempty" name:"UpgradeMode"`
+
+	// proxy同步升级
+	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -13884,6 +13894,9 @@ type UpgradeInstanceRequest struct {
 
 	// NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
 	UpgradeMode *string `json:"UpgradeMode,omitnil,omitempty" name:"UpgradeMode"`
+
+	// proxy同步升级
+	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -13907,6 +13920,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DbType")
 	delete(f, "DealMode")
 	delete(f, "UpgradeMode")
+	delete(f, "UpgradeProxy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}
@@ -13944,6 +13958,20 @@ func (r *UpgradeInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeProxy struct {
+	// cpu
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// memory
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 代理节点信息
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+
+	// 重新负载均衡
+	ReloadBalance *string `json:"ReloadBalance,omitnil,omitempty" name:"ReloadBalance"`
 }
 
 // Predefined struct for user

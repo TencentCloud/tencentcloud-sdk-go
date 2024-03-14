@@ -4313,10 +4313,8 @@ type ChannelDescribeBillUsageDetailRequestParams struct {
 	// 此接口下面信息必填。
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
@@ -4361,10 +4359,8 @@ type ChannelDescribeBillUsageDetailRequest struct {
 	// 此接口下面信息必填。
 	// <ul>
 	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// 第三方平台子客企业必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
@@ -5476,6 +5472,90 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
 	// </ul>
 	AuthorizationType *string `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
+}
+
+// Predefined struct for user
+type ChannelRenewAutoSignLicenseRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 要查询状态的用户信息, 包括名字,身份证等
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type ChannelRenewAutoSignLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 要查询状态的用户信息, 包括名字,身份证等
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *ChannelRenewAutoSignLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelRenewAutoSignLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelRenewAutoSignLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelRenewAutoSignLicenseResponseParams struct {
+	// 续期成功后自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+	// 
+	// 值为unix时间戳,单位为秒。
+	LicenseTo *int64 `json:"LicenseTo,omitnil,omitempty" name:"LicenseTo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChannelRenewAutoSignLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelRenewAutoSignLicenseResponseParams `json:"Response"`
+}
+
+func (r *ChannelRenewAutoSignLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelRenewAutoSignLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChannelRole struct {

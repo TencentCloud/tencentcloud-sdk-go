@@ -879,7 +879,16 @@ type ConfigInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+	// 采集的日志类型。
+	// - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+	// - delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+	// - minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+	// - fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+	// - multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+	// - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
@@ -901,7 +910,7 @@ type ConfigInfo struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用户自定义解析字符串
+	// 用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
@@ -909,7 +918,10 @@ type ConfigInfo struct {
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 样例：
+	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+	// 
+	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
@@ -1735,7 +1747,16 @@ type CreateConfigRequestParams struct {
 	// 日志采集路径,包含文件名
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+	// 采集的日志类型，默认为minimalist_log。支持以下类型：
+	// - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+	// - delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+	// - minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+	// - fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+	// - multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+	// - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -1744,14 +1765,17 @@ type CreateConfigRequestParams struct {
 	// 采集黑名单路径列表
 	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
-	// 用户自定义采集规则，Json格式序列化的字符串
+	// 用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 样例：
+	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+	// 
+	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
@@ -1767,7 +1791,16 @@ type CreateConfigRequest struct {
 	// 日志采集路径,包含文件名
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+	// 采集的日志类型，默认为minimalist_log。支持以下类型：
+	// - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+	// - delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+	// - minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+	// - fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+	// - multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+	// - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -1776,14 +1809,17 @@ type CreateConfigRequest struct {
 	// 采集黑名单路径列表
 	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitnil,omitempty" name:"ExcludePaths"`
 
-	// 用户自定义采集规则，Json格式序列化的字符串
+	// 用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 样例：
+	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+	// 
+	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
@@ -2454,6 +2490,9 @@ type CreateKafkaRechargeRequestParams struct {
 	// 导入数据位置，-2:最早（默认），-1：最晚
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// 日志导入规则。
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
+
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
@@ -2469,10 +2508,6 @@ type CreateKafkaRechargeRequestParams struct {
 
 	// 用户Kafka消费组名称
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
-
-	// 日志导入规则。
-	// 必填字段。
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 type CreateKafkaRechargeRequest struct {
@@ -2493,6 +2528,9 @@ type CreateKafkaRechargeRequest struct {
 	// 导入数据位置，-2:最早（默认），-1：最晚
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// 日志导入规则。
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
+
 	// 腾讯云CKafka实例ID，KafkaType为0时必填
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
@@ -2508,10 +2546,6 @@ type CreateKafkaRechargeRequest struct {
 
 	// 用户Kafka消费组名称
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
-
-	// 日志导入规则。
-	// 必填字段。
-	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 }
 
 func (r *CreateKafkaRechargeRequest) ToJsonString() string {
@@ -2531,12 +2565,12 @@ func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "KafkaType")
 	delete(f, "UserKafkaTopics")
 	delete(f, "Offset")
+	delete(f, "LogRechargeRule")
 	delete(f, "KafkaInstance")
 	delete(f, "ServerAddr")
 	delete(f, "IsEncryptionAddr")
 	delete(f, "Protocol")
 	delete(f, "ConsumerGroupName")
-	delete(f, "LogRechargeRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKafkaRechargeRequest has unknown keys!", "")
 	}
@@ -8036,7 +8070,7 @@ func (r *ModifyConfigExtraResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyConfigRequestParams struct {
-	// 采集规则配置ID
+	// 采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
@@ -8045,7 +8079,17 @@ type ModifyConfigRequestParams struct {
 	// 日志采集路径，包含文件名
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+	// 采集的日志类型。支持以下类型：
+	// - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+	// - delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+	// - minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+	// - fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+	// - multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+	// - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+	// 
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -8057,21 +8101,22 @@ type ModifyConfigRequestParams struct {
 	// 采集配置关联的日志主题（TopicId）
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 用户自定义解析字符串，Json格式序列化的字符串
+	// 用户自定义解析字符串，Json格式序列化的字符串。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 样例：
+	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 采集规则配置ID
+	// 采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
@@ -8080,7 +8125,17 @@ type ModifyConfigRequest struct {
 	// 日志采集路径，包含文件名
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+	// 采集的日志类型。支持以下类型：
+	// - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+	// - delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+	// - minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+	// - fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+	// - multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+	// - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+	// 
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -8092,14 +8147,15 @@ type ModifyConfigRequest struct {
 	// 采集配置关联的日志主题（TopicId）
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 用户自定义解析字符串，Json格式序列化的字符串
+	// 用户自定义解析字符串，Json格式序列化的字符串。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
 	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 样例：
+	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 

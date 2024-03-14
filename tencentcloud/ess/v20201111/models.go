@@ -6747,7 +6747,7 @@ type DescribeFileUrlsRequestParams struct {
 
 	// 文件对应的业务类型，目前支持：
 	// <ul>
-	// <li>**FLOW ** : 如需下载合同文件请选择此项</li>
+	// <li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
 	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
 	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
 	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
@@ -6808,7 +6808,7 @@ type DescribeFileUrlsRequest struct {
 
 	// 文件对应的业务类型，目前支持：
 	// <ul>
-	// <li>**FLOW ** : 如需下载合同文件请选择此项</li>
+	// <li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
 	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
 	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
 	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
@@ -10409,6 +10409,92 @@ type RemindFlowRecords struct {
 
 	// 在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。
 	RemindMessage *string `json:"RemindMessage,omitnil,omitempty" name:"RemindMessage"`
+}
+
+// Predefined struct for user
+type RenewAutoSignLicenseRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 需要续期自动签的个人的信息，如姓名，证件信息等。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type RenewAutoSignLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 需要续期自动签的个人的信息，如姓名，证件信息等。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *RenewAutoSignLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAutoSignLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewAutoSignLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewAutoSignLicenseResponseParams struct {
+	// 续期成功后新的自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+	// 
+	// 值为unix时间戳,单位为秒。
+	LicenseTo *int64 `json:"LicenseTo,omitnil,omitempty" name:"LicenseTo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewAutoSignLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewAutoSignLicenseResponseParams `json:"Response"`
+}
+
+func (r *RenewAutoSignLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAutoSignLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReviewerInfo struct {

@@ -1169,6 +1169,12 @@ type CreateRoomRequestParams struct {
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 type CreateRoomRequest struct {
@@ -1272,6 +1278,12 @@ type CreateRoomRequest struct {
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1313,6 +1325,8 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordLiveUrl")
 	delete(f, "EnableAutoStart")
 	delete(f, "RecordBackground")
+	delete(f, "RecordScene")
+	delete(f, "RecordLang")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -3000,6 +3014,12 @@ type DescribeRoomResponseParams struct {
 	// RTMP推流链接
 	RTMPStreamingURL *string `json:"RTMPStreamingURL,omitnil,omitempty" name:"RTMPStreamingURL"`
 
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4664,6 +4684,12 @@ type ModifyRoomRequestParams struct {
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 type ModifyRoomRequest struct {
@@ -4759,6 +4785,12 @@ type ModifyRoomRequest struct {
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4797,6 +4829,8 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "LiveType")
 	delete(f, "RecordLiveUrl")
 	delete(f, "EnableAutoStart")
+	delete(f, "RecordScene")
+	delete(f, "RecordLang")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -5097,6 +5131,12 @@ type RoomInfo struct {
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 type RoomItem struct {
@@ -5189,6 +5229,14 @@ type RoomItem struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
+
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
+
+	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
 type SceneItem struct {
